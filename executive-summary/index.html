@@ -31,7 +31,7 @@
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
       <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/find/">Find yours</a>
       <a href="/Affil3/about/">About</a>
     </nav>
   </div>
@@ -44,7 +44,7 @@
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, 3 category clusters, 10 question-led guides, a three-question fit check, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -55,6 +55,7 @@
 <li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
 <li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
+<li>A further independent round on 2026-11-20 re-fetched the observed listings for P01, P02 and P05, the manufacturer pages for P01, P03 and P04, the USDA safe-temperature chart and Google's breadcrumb documentation. Every re-fetched page matched the register, and the raw dated record is kept at <code>data/observations/2026-11-20-session-ca51f5b3.json</code>. The listings for P03 and P04 were not re-fetched in that round and carry their earlier dated observations.</li>
 <li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
 <li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a buy button and a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14).</li>
 </ul>
@@ -90,9 +91,9 @@
       <h2 class="foot-h">Guides</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
-        <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
-        <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
-        <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
+        <li><a href="/Affil3/guides/dual-basket-or-one-big-basket/">Dual basket or one big basket: which fits your weeknights?</a></li>
+        <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
+        <li><a href="/Affil3/guides/instant-read-or-leave-in-probe/">Instant read or leave-in probe: which earns a drawer?</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -121,6 +122,90 @@
     <p class="fine">ShopNow Kitchen is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Illustrations are AI-generated and labeled at the point of use. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
   </div>
 </footer>
-<script src="/Affil3/assets/analytics.js" defer></script>
+<script src="/Affil3/assets/analytics.js" defer></script><script>(function(){
+  var form = document.getElementById('fit-form');
+  var rowsEl = document.getElementById('finder-rows');
+  var out = document.getElementById('fit-out');
+  if (!form || !rowsEl || !out) return;
+  var rows = [];
+  try { rows = JSON.parse(rowsEl.textContent); } catch (e) { rows = []; }
+  function chosen(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function node(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function scoreRow(r, cooking, counter, household) {
+    var why = [], miss = [], score = 0;
+    if (cooking === 'two') {
+      if (r.dual) { score += 3; why.push('Two independent baskets is what this maker states for the model: ' + (r.capacityNote || r.capacity)); }
+      else if (r.oven) { score += 1; why.push('One chamber with a door, which handles two trays at different times less neatly than two drawers'); }
+      else { miss.push('A single ' + r.capacity + ' basket, so two timings share one clock'); }
+    }
+    if (cooking === 'batch') {
+      if (!r.dual && !r.oven) { score += 3; why.push('One ' + r.capacity + ' basket with no divider to plan around'); }
+      else if (r.oven) { score += 1; why.push('More room than a basket, in a taller footprint'); }
+      else { miss.push('Two ' + r.capacity + ' baskets rather than one large one'); }
+    }
+    if (cooking === 'meal') {
+      if (r.oven) { score += 3; why.push('Oven-style room, stated at ' + r.capacity); }
+      else { miss.push('A basket rather than a multi-level oven'); }
+    }
+    var need = counter === 'tight' ? 12.5 : counter === 'some' ? 15 : Infinity;
+    if (r.caseMax === null) { miss.push('No case size is published for this model, so counter fit stays unverified'); }
+    else if (r.caseMax <= need) { score += 2; why.push('Its largest published case figure is ' + r.caseMax + ' in, inside the space you named'); }
+    else { miss.push('Its largest published case figure is ' + r.caseMax + ' in, above the space you named'); }
+    if (household === 'yes') {
+      if (r.capacityNum >= 20) { score += 2; why.push('The largest capacity on this shelf, at ' + r.capacity); }
+      else { miss.push('Capacity is ' + r.capacity + ', so plan in batches rather than in one go'); }
+    }
+    return { why: why, miss: miss, score: score };
+  }
+  function render(r, res, tag) {
+    var card = node('div', 'fit-card');
+    card.appendChild(node('p', 'fit-tag', tag));
+    card.appendChild(node('h3', null, r.name)).appendChild(node('span', 'fit-cat', r.cat));
+    var link = node('a', 'btn btn-primary', 'Open the ' + r.name + ' page');
+    link.href = r.href;
+    var wrap = node('p', 'fit-link');
+    wrap.appendChild(link);
+    var reasons = node('ul', 'fit-why');
+    res.why.forEach(function (t) { reasons.appendChild(node('li', null, t)); });
+    var cautions = node('ul', 'fit-miss');
+    res.miss.forEach(function (t) { var li = node('li', null, t); cautions.appendChild(li); });
+    if (!res.miss.length) { cautions.className = 'fit-miss is-hidden'; }
+    card.appendChild(node('p', 'small muted', r.bestFor));
+    card.appendChild(reasons);
+    card.appendChild(node('p', 'small muted', 'Worth knowing: ' + (r.tradeoff || 'read the row for its gaps')));
+    card.appendChild(cautions);
+    card.appendChild(wrap);
+    return card;
+  }
+  form.addEventListener('click', function (ev) {
+    if (!ev.target || ev.target.id !== 'fit-go') return;
+    ev.preventDefault();
+    var cooking = chosen('cooking'), counter = chosen('counter'), household = chosen('household');
+    while (out.firstChild) out.removeChild(out.firstChild);
+    if (!cooking || !counter) {
+      out.appendChild(node('p', 'fit-note', 'Two answers are needed first: what you cook, and how much counter you have.'));
+      return;
+    }
+    var scored = rows.map(function (r) { return { r: r, res: scoreRow(r, cooking, counter, household) }; })
+      .sort(function (a, b) { return b.res.score - a.res.score || (a.r.caseMax || 99) - (b.r.caseMax || 99); });
+    var top = scored[0], next = scored[1];
+    var criteria = 2 + (household ? 1 : 0);
+    if (top.res.score === 0) {
+      out.appendChild(node('p', 'fit-note', 'Nothing on this shelf matches those two answers at once. The numbers that usually cause it are counter depth and basket volume, and the comparison table shows both for every row.'));
+    } else {
+      out.appendChild(node('p', 'fit-note', 'Closest match: this row lines up with ' + top.res.why.length + ' of the ' + criteria + ' things you told us, on the figures its manufacturer publishes. It is a matcher, not a verdict, so open the row and read the sources.'));
+    }
+    out.appendChild(render(top.r, top.res, 'Closest match'));
+    if (next && next.res.score > 0) out.appendChild(render(next.r, next.res, 'Second, on these answers'));
+  });
+})();</script>
 </body>
 </html>

@@ -219,8 +219,18 @@
       "used_for": "The specifications published for P03: model RJ38-SQSS-8T, 8 qt / 7.57 L, 200-400 °F, 1700W/120V, 15.4 x 12.6 x 13.5 in, 12.8 lb, four presets, top-rack dishwasher-safe basket, cETL, 1-year assurance.",
       "status": "verified",
       "quote": "Max temp: 400ºF/ 205ºC. 4 cooking presets. Top-rack dishwasher-safe basket. Capacity: 5 Qt or 8 Qt / 4.73 L or 7.57 L. 200–400°F / 95º-205ºC temperature range. Power: 1700W/120V. Dimensions: (8 Qt Model) 15.4 in x 12.6 in x 13.5 in. Weight: (8 Qt Model) 12.8 lbs. Model Number: RJ38-SQSS-8T (8 Qt model). cETL approved with a 1-year Chefman® assurance"
+    },
+    {
+      "id": "S24",
+      "title": "Breadcrumb (BreadcrumbList) structured data",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
+      "method": "fetched in full 2026-11-20 (session ca51f5b3)",
+      "used_for": "The trail shape used on guide and product pages: absolute item URLs for every level except the last, which is the current page. The page states the feature is available on desktop in all regions and languages where Google Search is available, and lists 'Follow the guidelines' and validation in the Rich Results Test as steps.",
+      "status": "verified",
+      "quote": "A breadcrumb trail on a page indicates the page's position in the site hierarchy, and it may help users understand and explore a site effectively."
     }
   ],
   "note": "Every product fact on this site points at one of these sources. 'fetched' means the full page text was retrieved and read in this session (2026-11-20). 'excerpt' means only a search-result excerpt of the official page was available; the wording should be re-checked by hand before it is relied on. 'observed' means a value read off an Amazon page on a dated fetch; observations can change without notice. Nothing in this register is a third-party blog or review site.",
-  "rechecked": "2026-11-20 by session 66f2548a: S01, S02 and S06 re-read against the live official pages and the verbatim text appended to each used_for field. S02 §2(a)-(b) is now read in full rather than from a search excerpt. Rows not re-fetched keep the status the fetching session recorded; nothing here was re-verified that was not actually re-fetched."
+  "rechecked": "2026-11-20 by session ca51f5b3: S04 re-observed for three of the five rows (P01 B0CDY277D3, P02 B09B7SB46R, P05 B0DZFD6R9Z) and every title matched the register character for character; S10, S11, S21 and S23 re-fetched in full and matched the figures published on the product pages; S24 added from a fresh fetch. S13, S14, S15, S16 and the P03/P04 listings were not re-fetched in that round and keep the status their fetching session recorded. Nothing here was re-verified that was not actually re-fetched."
 }

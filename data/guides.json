@@ -1,6 +1,661 @@
 {
-  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, ul, ol, table, faq, cta.",
+  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, ul, ol, table, faq, cta, note. Guides 6 to 10 were added on 2026-11-20 by session ca51f5b3 from the same source register the product rows use; every figure in them is repeated from a manufacturer page or an observed Amazon listing, and nothing in them is a measurement this site took.",
   "guides": [
+    {
+      "slug": "dual-basket-or-one-big-basket",
+      "title": "Dual basket or one big basket: which fits your weeknights?",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-dual-basket-vs-single.png",
+      "image_alt": "Editorial illustration of a two-drawer dual-basket air fryer beside a single-basket air fryer on a kitchen counter; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "Two small drawers or one large one is a counter-space question before it is a capacity question. Here is what the two maker pages state.",
+      "description": "Chefman's 6 qt dual-basket and 8 qt single-basket air fryers, compared on the numbers their own product pages publish, not on a taste test.",
+      "sources": [
+        "S04",
+        "S11",
+        "S23",
+        "S16"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Two drawers sounds like more cooking than one drawer. It is not, unless the food you cook wants two timers at once. Start with what lands on your table on a Tuesday, then read the two spec sheets against each other."
+        },
+        {
+          "type": "h2",
+          "text": "What each machine holds"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Field",
+            "CHEFMAN 6 Qt Dual Basket (RJ38-SQPF-3TDB-2W)",
+            "Chefman TurboFry Touch 8 Qt (RJ38-SQSS-8T)"
+          ],
+          "rows": [
+            [
+              "Baskets",
+              "Two independent 3 qt baskets",
+              "One 8 qt basket"
+            ],
+            [
+              "Volume as stated",
+              "6 qt total",
+              "8 qt / 7.57 L"
+            ],
+            [
+              "Temperature range",
+              "200-450 °F, with a 450 °F Hi-Fry function",
+              "200-400 °F"
+            ],
+            [
+              "Power",
+              "1700 W / 120 V",
+              "1700 W / 120 V"
+            ],
+            [
+              "Case size",
+              "13.38 D x 11.81 W x 10.63 H in",
+              "15.4 x 12.6 x 13.5 in"
+            ],
+            [
+              "Weight",
+              "13.3 lb",
+              "12.8 lb"
+            ],
+            [
+              "Baskets in the dishwasher",
+              "Yes: nonstick, dishwasher-safe baskets",
+              "Yes: top-rack dishwasher safe, basket and rack"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Both columns come from Chefman's own product pages for those exact model strings, with the Amazon listing as the second reading. The dual-basket page labels its case dimensions depth, width and height. The 8 qt page gives three numbers with no labels, so which one is your cabinet height is your measurement to take, not theirs to read off."
+        },
+        {
+          "type": "h2",
+          "text": "The split nobody prints on the box"
+        },
+        {
+          "type": "p",
+          "text": "A 3 qt basket holds a 3 qt basket's worth. Two of them do not become one 6 qt chamber, so a batch that needs a single layer has to be divided between drawers. Where the split pays is two foods that want different clocks and one finishing moment: the dual-window model carries Sync Finish and a window on each drawer, both stated on the maker's page."
+        },
+        {
+          "type": "p",
+          "text": "The single 8 qt chamber is the opposite trade. One food, one temperature, more surface, and no divider deciding how much of the basket your chicken thighs are allowed to claim."
+        },
+        {
+          "type": "h2",
+          "text": "Counter maths, in inches"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "The 8 qt unit is the taller of the two on paper, 13.5 in against 10.63 in, so a cabinet 15 in above the counter is the number to check before you order it.",
+            "Neither machine is light enough to live in a cupboard nightly: 13.3 lb and 12.8 lb, which is a two-hands job with a full basket.",
+            "Neither page states a required clearance gap around the unit, so the air space behind it and above it is yours to decide and yours to measure."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Which one to pick"
+        },
+        {
+          "type": "p",
+          "text": "Two drawers if a weeknight for you is a protein and a vegetable on different timers, and each of them fits one layer inside 3 qt. One 8 qt basket if the meal is a single big batch and you have the vertical room. Both of those statements are about published volume and published case size. Nobody here has cooked in either machine, and neither maker publishes a servings figure for these two models, so this page stops where the documents stop."
+        },
+        {
+          "type": "note",
+          "text": "Every number above is from a manufacturer product page or the observed Amazon listing, both linked from the shop row for that model. None of it is a measurement this site took."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is a dual-basket machine really two air fryers?",
+              "a": "It is one machine with two baskets. Chefman's page for RJ38-SQPF-3TDB-2W states a single 1700 W / 120 V figure alongside the two 3 qt baskets, so the drawers share one published power specification."
+            },
+            {
+              "q": "Is 6 qt of two baskets the same as 6 qt of one?",
+              "a": "No, because shape matters more than the sum. Two shallow drawers hold two single-layer foods; one 6 qt chamber holds one food with more depth. That is the whole argument on both sides, and it is why the case-size row above matters more than the total quarts."
+            },
+            {
+              "q": "Do either of them have a viewing window?",
+              "a": "The dual-window model is named for it: the maker's page and the listing title both state a window per basket. For the 8 Qt single basket, neither the maker's page nor the listing states a window, so this site does not claim one."
+            },
+            {
+              "q": "Which is easier to clean?",
+              "a": "Both pages say the baskets go in a dishwasher; Chefman adds top-rack for the 8 Qt basket and rack. Coating life, rack count and whether the drawer body can get wet are not stated by either page."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Both rows, their sources and the other three appliances, in one table.",
+          "href": "/shop/",
+          "label": "Open the shop table"
+        }
+      ]
+    },
+    {
+      "slug": "can-you-cook-a-whole-chicken-in-an-air-fryer",
+      "title": "Can you cook a whole chicken in it? Check the sheet first",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens",
+        "cooking-thermometers"
+      ],
+      "image": "/assets/img/guide-whole-chicken-fit.png",
+      "image_alt": "Editorial illustration of an open oven-style air fryer with french doors, a tape measure across its opening and a whole chicken on a plate beside it; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "Quarts are a volume and a chicken is a shape. Here is what the makers publish, and the one measurement only you can take.",
+      "description": "Whether a whole chicken fits, worked out from the capacity and case size makers publish, plus the USDA poultry temperature that decides doneness.",
+      "sources": [
+        "S04",
+        "S11",
+        "S23",
+        "S13",
+        "S10",
+        "S20"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "No manufacturer page in this set states a maximum bird weight, and the phrase whole chicken does not appear on the pages this site cites for these models. So the honest answer is a method rather than a number, and the method starts with what is actually printed."
+        },
+        {
+          "type": "h2",
+          "text": "What the makers do publish"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Appliance",
+            "Capacity as stated",
+            "Case size as stated",
+            "Not stated by either official page"
+          ],
+          "rows": [
+            [
+              "CHEFMAN 6 Qt Dual Basket",
+              "Two independent 3 qt baskets",
+              "13.38 x 11.81 x 10.63 in",
+              "A rack, an internal height, a bird weight"
+            ],
+            [
+              "Chefman TurboFry Touch 8 Qt",
+              "8 qt / 7.57 L",
+              "15.4 x 12.6 x 13.5 in",
+              "Which of those three numbers is the height, and a bird weight"
+            ],
+            [
+              "Emeril Lagasse 26 QT French Door",
+              "26 qt / 24.6 L, which the manufacturer describes as food for 4-6 people",
+              "16.9 x 15.8 x 14.8 in",
+              "Interior dimensions and a maximum temperature"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Read the first two rows as drawers and the third as a small oven. A 3 qt basket is shallow and split down the middle. The 8 qt basket is one chamber with more floor. The 26 qt cooker is the only one of the three with a vertical dimension to plan around, and it is the only one whose maker states who it feeds."
+        },
+        {
+          "type": "img",
+          "src": "/assets/img/guide-airfryer-size-test.png",
+          "alt": "Editorial illustration of an air fryer basket pulled out on a counter with a tape measure, a paper grocery bag and a notebook beside it",
+          "caption": "The chamber is the measurement that decides. The box is not."
+        },
+        {
+          "type": "h2",
+          "text": "The two measurements only you can take"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Measure the bird as you intend to cook it: the widest circumference around the breast and drumsticks, and the height it sits at once trussed. Write both down before you look at a product page.",
+            "Measure the chamber, not the carton: the largest flat area inside the basket or on the rack, and the distance from that floor to the element housing or the inner ridge of the door."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Then compare the two pairs, and subtract the walls from the maker's numbers. A case listed at 10.63 in tall is not 10.63 in of clearance, and neither Chefman page states an internal height for these models."
+        },
+        {
+          "type": "h2",
+          "text": "Why the temperature line outranks the size question"
+        },
+        {
+          "type": "p",
+          "text": "A bird that fits is not a bird that is cooked. The USDA Food Safety and Inspection Service chart sets 165 °F (73.9 °C) for all poultry, and it names breasts, whole bird, legs, thighs, wings, ground poultry, giblets and stuffing in the same row. The chart asks for that reading to come from a food thermometer, not from a colour judgement or a timer. It is the one number in this guide that does not depend on which appliance you buy."
+        },
+        {
+          "type": "note",
+          "text": "The same chart lists 160 °F for ground meats, 145 °F with a three-minute rest for whole cuts of beef, pork, veal and lamb, and 145 °F for fish and shellfish. It was last updated by FSIS on Apr 14, 2025 and is linked as S10."
+        },
+        {
+          "type": "h2",
+          "text": "What this page is not saying"
+        },
+        {
+          "type": "p",
+          "text": "Nothing above claims that any machine cooks a whole chicken well. A buying guide that invents a capacity claim is worse than an empty cell, and the empty cells are the point of this site: where a maker is silent, the number is missing here too, and the gap is written down rather than averaged away."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does a rotisserie function change the answer?",
+              "a": "Not on the pages cited here. The Amazon listing for the 26 QT French Door names cooking accessories in its title, and neither that title nor the maker's page states a maximum rotisserie weight for this model, so the two measurements still apply."
+            },
+            {
+              "q": "Is spatchcocking cheating?",
+              "a": "It is the usual way to solve a chamber that is too short rather than too narrow, because butterflying removes height instead of floor space. It does not change what the spec sheet says, which is why this page tells you to measure both."
+            },
+            {
+              "q": "How many rack levels does the 26 QT have?",
+              "a": "No rack count is stated on either official page recorded for that model, so this site publishes none. Check the quick-start guide in the box before you plan a two-level dinner."
+            },
+            {
+              "q": "What if the chicken fits but the skin touches the element?",
+              "a": "Then you have a clearance problem, not a capacity problem, and no page in this register states a minimum gap for these models. That is a reason to prefer the cooker with the taller published interior and to keep a thermometer handy for the last ten minutes."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "All five appliances, side by side, with the disagreement rows kept in.",
+          "href": "/compare/",
+          "label": "Compare the shelf"
+        }
+      ]
+    },
+    {
+      "slug": "instant-read-or-leave-in-probe",
+      "title": "Instant read or leave-in probe: which earns a drawer?",
+      "category": "cooking-thermometers",
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-instant-read-vs-leavein.png",
+      "image_alt": "Editorial illustration of a folding instant-read digital thermometer beside a wireless leave-in probe with a cable and small hub; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "One answers a question you ask it. The other keeps answering while you are in another room. The spec sheets decide which is which.",
+      "description": "A folding instant-read against a wireless leave-in probe: accuracy, waterproofing, probe count and app dependence, from the makers' own pages.",
+      "sources": [
+        "S21",
+        "S14",
+        "S15",
+        "S04",
+        "S10",
+        "S20"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Both tools end an argument about whether something is done. Only one of them keeps reading while you walk away, and that single difference drags a train of consequences behind it: batteries, an app, a hub, a cable, and a new way for dinner to go wrong."
+        },
+        {
+          "type": "h2",
+          "text": "What each maker publishes"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Field",
+            "ThermoMaven 1 Sec (F1 Ace page)",
+            "CHEF iQ Sense, Gen3"
+          ],
+          "rows": [
+            [
+              "Reading",
+              "1-second instant read on a thermocouple sensor",
+              "Leave-in probe reported to an app, so the reading continues unattended"
+            ],
+            [
+              "Accuracy",
+              "NIST-certified to ±0.5 °F / ±0.3 °C",
+              "Not stated on the product page"
+            ],
+            [
+              "Water",
+              "100% waterproof design per the maker; the listing states IP67",
+              "The maker states a waterproof, dishwasher-safe probe"
+            ],
+            [
+              "Probes",
+              "One folding probe",
+              "Listing title states three ultra-thin probes; the maker page records the probe at 0.19 in diameter by 4.75 in long"
+            ],
+            [
+              "Range",
+              "Your arm",
+              "Listing title states WiFi with unlimited range"
+            ],
+            [
+              "Sensors",
+              "One",
+              "Listing title states five sensors; the maker's page records an ambient sensor alongside the probe"
+            ],
+            [
+              "Power",
+              "One AAA battery, stated in the listing's own details",
+              "Rechargeable. Battery life is disputed across CHEF iQ's own pages, so no figure is published here"
+            ],
+            [
+              "Warranty",
+              "Lifetime, to be activated within 30 days of purchase",
+              "Not stated on the product page"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Three of those cells are blank on purpose. Where a maker's page does not state a value, this site leaves it empty and records the gap, rather than borrowing a figure from a similar model or from a reseller."
+        },
+        {
+          "type": "h2",
+          "text": "The failure modes nobody prints on the box"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "A wireless probe is a network device before it is a cooking device. The listing title for the CHEF iQ Sense claims WiFi and unlimited range, and the product's own register row carries a warning: the maker's product page says 70+ hours of battery while the same brand's FAQ says up to 60 hours for Gen 3, so neither figure is published as a spec here.",
+            "An instant read is a habit device. Its failure mode is the drawer it lives in, which is why the maker's page leads with motion-sensing wake and sleep and an auto-rotate display: features that make it faster to grab than to doubt.",
+            "Both tools depend on placement more than on precision. USDA guidance on food thermometers exists because a probe resting against bone or in the wrong part of a breast tells you something true about the wrong spot."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Which one your cooking actually needs"
+        },
+        {
+          "type": "p",
+          "text": "A steak, a chop, a pan of leftovers, a fillet at the last minute: one spot check settles it, and a folding probe is the tool. An hour of smoke, a slow roast, a turkey you would rather not stand next to: the leave-in is the tool, and the app is the price you pay for the distance. Neither answer is about accuracy in marketing terms. It is about whether the number reaches you while you are elsewhere."
+        },
+        {
+          "type": "h2",
+          "text": "The number that stays the same"
+        },
+        {
+          "type": "p",
+          "text": "165 °F for all poultry. 160 °F for ground meats. 145 °F with a three-minute rest for whole cuts of beef, pork, veal and lamb. 145 °F for fish and shellfish. 165 °F for leftovers and casseroles. Those come from the USDA Food Safety and Inspection Service chart, and they do not change with the thermometer you buy, or with the price you paid for it."
+        },
+        {
+          "type": "note",
+          "text": "The CHEF iQ row records 32-1000 °F as an ambient sensor range from the maker's page. That is the air around the meat, not a food-probe limit, and this site does not present it as one."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is an instant read less accurate than a leave-in?",
+              "a": "Nothing published here says so. ThermoMaven states NIST-certified ±0.5 °F for the F1 Ace. The CHEF iQ product page cited on this site states no accuracy figure, which is a missing value, not a worse one."
+            },
+            {
+              "q": "Do I need both?",
+              "a": "Many kitchens end up with both, because the two tools answer different questions. This site takes no further position: nobody here has cooked with either unit, and a recommendation that starts there would be decoration."
+            },
+            {
+              "q": "Can a wireless probe go in an air fryer?",
+              "a": "The listing title for the CHEF iQ Sense names air fryer among its cooking uses. Before you leave a probe and its cable in a small, high-velocity chamber, check the manual for the probe's own limits, because the ranges recorded on this site belong to the ambient sensor."
+            },
+            {
+              "q": "What does NIST-certified mean on a thermometer page?",
+              "a": "It is the maker's own statement about how the instrument was certified, and it is published in ThermoMaven's specification copy. This site quotes the claim and its source rather than restating it as a laboratory result."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Accuracy, calibration and probe placement are covered in the thermometer guide.",
+          "href": "/guides/is-your-meat-thermometer-telling-you-the-right-number/",
+          "label": "Read the thermometer guide"
+        }
+      ]
+    },
+    {
+      "slug": "do-air-fryer-presets-matter",
+      "title": "Do air fryer presets do anything you cannot do yourself?",
+      "category": "air-fryer-ovens",
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "image": "/assets/img/guide-presets-panel.png",
+      "image_alt": "Editorial illustration of a digital air fryer control panel with a small screen and a grid of round touch buttons; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "A preset is a start point somebody else chose. Here is what the official pages actually say about the counts they advertise.",
+      "description": "What 24 presets, 4 presets and no published count tell a buyer, read from manufacturer pages and Amazon listings side by side.",
+      "sources": [
+        "S04",
+        "S13",
+        "S23",
+        "S11",
+        "S16",
+        "S02"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "A preset count is the easiest number to put in a product title and the hardest to confirm on a specification block. Three rows in this small shelf answer it three different ways, and reading them together is more useful than any single one."
+        },
+        {
+          "type": "h2",
+          "text": "Three machines, three kinds of answer"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Appliance",
+            "What the listing states",
+            "What the maker states"
+          ],
+          "rows": [
+            [
+              "Emeril Lagasse 26 QT French Door",
+              "24 one-touch preset options, in the listing title",
+              "Its own page disagrees with itself: 25 cooking pre-sets in the specification strip, 24 one-touch cooking presets in the description. No count is published here."
+            ],
+            [
+              "Chefman TurboFry Touch 8 Qt (RJ38-SQSS-8T)",
+              "Named functions such as bake, dehydrate and frozen in the listing title",
+              "4 cooking presets, stated on the maker's product page"
+            ],
+            [
+              "CHEFMAN 6 Qt Dual Basket (RJ38-SQPF-3TDB-2W)",
+              "Digital touch controls in the listing title",
+              "Functions rather than a count: Sync Finish, Hi-Fry, a plus-two-minute control and a shake reminder"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Put those three rows in a row and a pattern appears. A preset count describes buttons, not cooking ability. One maker publishes functions instead of a number, one publishes a number its own page contradicts, and one publishes a small count against a temperature range that lets you do the same job by hand."
+        },
+        {
+          "type": "h2",
+          "text": "What a preset is actually worth"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Check the temperature range first. Chefman states 200-400 °F for the 8 Qt and a 450 °F ceiling for the dual-basket model's Hi-Fry function. If the settings your recipes ask for already sit inside that range, a button saves you two dial turns and nothing else.",
+            "Then look for what you cannot set by hand. Neither page for these models states a multi-stage programme, so a recipe that says 400 °F for ten minutes then 320 °F for eight is two manual steps whatever the button count.",
+            "Treat accessories as a separate question. Presets do not add a rack, a tray or a rotisserie spit. The Emeril Lagasse listing names six cooking accessories in its title while the maker's description says seven, which is its own flagged disagreement."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The one case where presets earn their place"
+        },
+        {
+          "type": "p",
+          "text": "A preset is a shortcut for a food you cook on repeat, in the same basket, at the same load. Frozen fries from a 3 qt drawer are exactly that, and a button there is a small, real saving. A dinner you are trying to time is not: the timing problem is the surface area of a basket, and no count changes it."
+        },
+        {
+          "type": "note",
+          "text": "Where two official pages disagree about a number, this site treats it as a flag rather than a specification. Both readings stay visible on the product row and the disagreement is listed on the Flagged for review page."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does more presets mean better cooking?",
+              "a": "No source cited on this site says that. The two Chefman pages state functions and a 4-preset count without describing cooking outcomes, and the Emeril Lagasse count differs between two official pages."
+            },
+            {
+              "q": "Should I ignore presets completely?",
+              "a": "Ignore them as a ranking number. Read them as a list of start points, then go back to basket volume and temperature range, which is where a weeknight is decided."
+            },
+            {
+              "q": "Are dehydrate and bake modes worth paying for?",
+              "a": "They are named on the 8 Qt listing and on Chefman's page for that model. Time ranges, tray counts and any accessory each mode needs are not stated on either page, so read the manual before you plan a weekend of chips."
+            },
+            {
+              "q": "Why does this site not just pick a number?",
+              "a": "Because the average of two conflicting figures is a third number that no official page states. Amazon's program terms also bar using a site to present price and promotion data the program has not authorised, so a count that cannot be confirmed stays unconfirmed and the reason is published."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Every preset, capacity and temperature cell for the five appliances, with its source.",
+          "href": "/compare/",
+          "label": "Open the comparison table"
+        }
+      ]
+    },
+    {
+      "slug": "black-friday-air-fryer-deal-checklist",
+      "title": "Is a Black Friday air fryer deal worth waiting for?",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-deal-checklist.png",
+      "image_alt": "Editorial illustration of a countertop air fryer in an open shipping box on a kitchen floor with a blank tag on a string beside it; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "This site publishes no prices, so this is not a deal page. It is the checklist a discounted appliance still has to pass.",
+      "description": "Judging a Black Friday air fryer offer without a price history: match the model string, read the capacity, and know what an affiliate page may show.",
+      "sources": [
+        "S01",
+        "S02",
+        "S03",
+        "S11",
+        "S23",
+        "S04",
+        "S22"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Any guide in this category can tell you what to compare. None of them can tell you whether a discount is real, and this page is no different. What it can do is hand you the four checks a sale-priced appliance still has to pass, in the order they catch a bad buy."
+        },
+        {
+          "type": "h2",
+          "text": "Check one: the model string, not the name"
+        },
+        {
+          "type": "p",
+          "text": "The words 8 qt air fryer can describe two different machines. Chefman sells RJ38-SQSS-8T, whose own page states 8 qt / 7.57 L and a 200-400 °F range, and Chefman sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte black finish. This project made that mistake itself: an earlier revision of one row was compared against the wrong Chefman page and had to be corrected, and the wrong comparison is still visible in the register so nobody repeats it. A discounted listing that omits the model string is a listing you cannot verify, whatever it costs."
+        },
+        {
+          "type": "h2",
+          "text": "Check two: the fields a sale page blurs"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Field",
+            "Where the official answer lives",
+            "What a deal page leaves out"
+          ],
+          "rows": [
+            [
+              "Basket volume",
+              "The maker's product page for that model string",
+              "The difference between two small baskets and one large chamber"
+            ],
+            [
+              "Case size",
+              "The maker's specification block",
+              "Whether the three numbers are labelled depth, width and height"
+            ],
+            [
+              "Temperature ceiling",
+              "The maker's page, plus the listing where the two disagree",
+              "Which of the two the box inside matches"
+            ],
+            [
+              "Warranty",
+              "The maker's warranty line",
+              "Whether activation is required, and by when"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Check three: what this kind of guide may not show you"
+        },
+        {
+          "type": "p",
+          "text": "A site in the Amazon Associates program may display price and availability only where Amazon serves that data or it arrives through the Creators or Product Advertising API. This site has no API access and no price feed, so it shows no prices, no availability and no star ratings, in deal season or any other week. That is why nothing here goes stale overnight, and why the listing is still the only place a number is live."
+        },
+        {
+          "type": "h2",
+          "text": "Check four: whether it is the thing you needed"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Replacing a basket whose coating lifted: the warranty line and the dishwasher statement decide it, not the discount.",
+            "First appliance: the question is capacity and counter height, and the answer starts with how many people you feed at once rather than with a percentage.",
+            "Waiting for one specific model: the useful work is knowing its model string and its published numbers, which is the part a sale page is worst at stating clearly."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The takedown promise on this page"
+        },
+        {
+          "type": "p",
+          "text": "Seasonal pages here carry an obligation instead of a celebration. Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as that promotion ends, so a guide that leans on a sale event is written to be taken down after it. That decision is recorded on the site's own question board rather than left to someone's memory, and the same rule is why this site names no event dates and no discounts."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do you know when the sale starts?",
+              "a": "No. Amazon sets its own event timing, and this site republishes no promotional dates and no prices. The date in the byline above is the date the specifications were last checked against the official pages."
+            },
+            {
+              "q": "Is an older model on offer a bad buy?",
+              "a": "Not automatically. Older and newer model strings can differ in the two places a spec sheet is read for, basket volume and temperature ceiling, so compare the string against the maker's page before deciding. One row on this site also records a listing that Amazon itself presents alongside a newer variant."
+            },
+            {
+              "q": "Will you add price tracking later?",
+              "a": "Only with Amazon's authorisation. Price tracking and price alerting on a site in this program need approval, which is a decision on the board, not a feature someone can quietly switch on."
+            },
+            {
+              "q": "How do I know your own links are not steering me to a sale?",
+              "a": "Because no sale is linked anywhere on this site. Every outbound product link goes to an Amazon detail page, carries the disclosure and is marked sponsored, which is the same answer we give on a Tuesday in March."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "The five appliances, their published numbers and every open disagreement, in one table.",
+          "href": "/compare/",
+          "label": "Compare before you buy"
+        }
+      ]
+    },
     {
       "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
       "title": "Basket or oven-style air fryer: what should you compare?",

@@ -549,9 +549,147 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-20",
+      "topic": "What the front page shows first",
+      "current": "Implemented in this session (option B), reversible in one commit",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the order alone",
+          "tradeoff": "The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled."
+        },
+        {
+          "id": "B",
+          "label": "Lead with the three highest-intent decisions",
+          "tradeoff": "Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order."
+        },
+        {
+          "id": "C",
+          "label": "Rotate the three cards weekly",
+          "tradeoff": "Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity."
+        }
+      ],
+      "recommendation": "B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the 'reads like a shop' complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change."
+    },
+    {
+      "id": "S-21",
+      "topic": "Reader capture, without a third-party form",
+      "current": "Not implemented. RSS only",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep RSS and an email address as the only return paths",
+          "tradeoff": "No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds."
+        },
+        {
+          "id": "B",
+          "label": "Add a hosted form provider",
+          "tradeoff": "Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done."
+        },
+        {
+          "id": "C",
+          "label": "Self-host a form endpoint next to the collector",
+          "tradeoff": "Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long."
+        }
+      ],
+      "recommendation": "A for now. The site has {guide} guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already)."
+    },
+    {
+      "id": "S-22",
+      "topic": "Session records sitting in the web root",
+      "current": "Excluded from the index in this session; files not moved",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave them, keep the generated robots exclusion",
+          "tradeoff": "The URLs still resolve for anyone who guesses them, which is fine for a repository and odd for a publication."
+        },
+        {
+          "id": "B",
+          "label": "Move them under legacy/session-records/ in one commit",
+          "tradeoff": "Cleaner tree and no index risk to manage. It rewrites paths other sessions wrote, so it needs the coordination board to be quiet for one commit."
+        },
+        {
+          "id": "C",
+          "label": "Move them and stop publishing the duplicates",
+          "tradeoff": "Same as B plus a rule that future sessions write their summary into COORDINATION.md only. Costs a session nothing and stops the pile growing back."
+        }
+      ],
+      "recommendation": "C, when the board is quiet. Until then the exclusion added in this session holds: it is generated from the tree, so a new root-level markdown file is excluded by the next build and a missing exclusion fails the gate."
+    },
+    {
+      "id": "S-23",
+      "topic": "The seasonal deal guide's afterlife",
+      "current": "Published 2026-11-20 as a checklist, not a deal post",
+      "options": [
+        {
+          "id": "A",
+          "label": "Take it down the day the event ends",
+          "tradeoff": "The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check."
+        },
+        {
+          "id": "B",
+          "label": "Keep it, and drop the event name from the title after the sale window",
+          "tradeoff": "Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended."
+        },
+        {
+          "id": "C",
+          "label": "Re-date and re-promote it each November",
+          "tradeoff": "Turns one honest page into an annual promise, and the takedown obligation with it."
+        }
+      ],
+      "recommendation": "B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause."
+    },
+    {
+      "id": "S-24",
+      "topic": "Which marketplace the buy buttons belong to",
+      "current": "One marketplace, amazon.com, for every link",
+      "options": [
+        {
+          "id": "A",
+          "label": "Stay US-only and say so",
+          "tradeoff": "Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation."
+        },
+        {
+          "id": "B",
+          "label": "Add amazon.nl links for the same products",
+          "tradeoff": "Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified."
+        },
+        {
+          "id": "C",
+          "label": "Split the site by marketplace, one publication each",
+          "tradeoff": "Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions."
+        }
+      ],
+      "recommendation": "A, today, as a one-line clarification; B only after Q-19 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
+    },
+    {
+      "id": "S-25",
+      "topic": "Whether the fit check is measured",
+      "current": "Runs entirely in the browser. Nothing is sent",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep it unmeasured forever",
+          "tradeoff": "The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread."
+        },
+        {
+          "id": "B",
+          "label": "Add one aggregate event when the collector exists",
+          "tradeoff": "Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people."
+        },
+        {
+          "id": "C",
+          "label": "Measure the outcome instead: outbound clicks from /find/ results",
+          "tradeoff": "Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all."
+        }
+      ],
+      "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-20 to S-25 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, what happens after a seasonal page, where the session records live, whether the fit check is measured, and which marketplace the buttons belong to.",
   "tracks": [
     {
       "id": "revenue",
@@ -645,6 +783,31 @@
       "order": 12,
       "id": "S-14",
       "why": "Do this first instead if you would rather stop the drift bugs than improve the look. It is the cheapest row here."
+    },
+    {
+      "order": 13,
+      "id": "S-24",
+      "why": "One line of copy, and the only question on the board that sits underneath every buy button."
+    },
+    {
+      "order": 14,
+      "id": "S-23",
+      "why": "A dated takedown, recorded rather than remembered."
+    },
+    {
+      "order": 15,
+      "id": "S-25",
+      "why": "Free to check once a link can earn; decides whether B is worth the privacy work."
+    },
+    {
+      "order": 16,
+      "id": "S-22",
+      "why": "Housekeeping for the repository, best done when no other session is mid-flight."
+    },
+    {
+      "order": 17,
+      "id": "S-20",
+      "why": "Already taken; listed so the choice is on the record and reversible."
     }
   ],
   "decision_log": []

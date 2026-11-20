@@ -31,7 +31,7 @@
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
       <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/find/">Find yours</a>
       <a href="/Affil3/about/">About</a>
     </nav>
   </div>
@@ -85,10 +85,10 @@
 </section>
 <section class="flag-card" id="FLG-007">
   <p class="flag-head"><span class="badge flag">FLG-007</span> <span class="badge sev-medium">medium</span> <strong>Content depth is below the official &#39;robust content&#39; rule of thumb</strong></p>
-  <p>The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).</p>
+  <p>An earlier revision of this flag cited S11 for the &#39;at least 10 posts&#39; rule of thumb; S11 is Chefman&#39;s product page, and the help page the sentence came from is S19, so the citation is corrected here (see FLG-036). The count is written as a token and filled by the builder, because a hand-typed number on a page about provenance is the one typo this site cannot afford. As of this build the site has 10 guides and 5 product rows, which reaches the rule of thumb read from S19; the reading is still an excerpt awaiting a manual re-check, so this flag stays open until the account status behind Q-03 is known. Adding content remains a decision for the owner (suggestions S-05 and S-07).</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a></p>
-  <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-07) before submitting the site for Associates review.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Read the application-review help page in a signed-in Associates account and confirm what it asks for, then decide the content plan (S-05) before submitting the site for review.</p>
 </section>
 <section class="flag-card" id="FLG-008">
   <p class="flag-head"><span class="badge flag">FLG-008</span> <span class="badge sev-medium">medium</span> <strong>Measurement events were not defined in the brief</strong></p>
@@ -286,6 +286,41 @@
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="small"><strong>Manual step:</strong> Review the shipped /privacy/ page against §3(e) and decide whether counsel should read it before any endpoint is configured (Q-16).</p>
 </section>
+<section class="flag-card is-resolved" id="FLG-036">
+  <p class="flag-head"><span class="badge flag">FLG-036</span> <span class="badge sev-low">low</span> <strong>A flag cited the wrong source id for the 10-posts rule of thumb (corrected)</strong> <span class="badge resolved">resolved</span></p>
+  <p>FLG-007 cited S11 as the page that says a rule of thumb is at least 10 posts. In this register S11 is Chefman&#39;s product page for the dual-basket air fryer; the Associates application-review help page is S19. The mismatch was found by reading each source id in the flag register against data/sources.json on 2026-11-20 (session ca51f5b3), not by fetching anything new. The citation is corrected in FLG-007 itself, and the excerpt-reading caveat on S19 is kept rather than upgraded, because nobody has read that page in full from a signed-in account.</p>
+  <p class="resolution"><strong>Resolution:</strong> FLG-007 now cites S19; the same sentence in the publishing workflow page was corrected in the same commit.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a>, <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a></p>
+  <p class="small"><strong>Manual step:</strong> None for the owner. Confirming the rule of thumb itself needs a signed-in read of S19.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-037">
+  <p class="flag-head"><span class="badge flag">FLG-037</span> <span class="badge sev-medium">medium</span> <strong>Two superseded editions were still crawlable, and the exclusion list was typed rather than derived</strong> <span class="badge resolved">resolved</span></p>
+  <p>FLG-032 states that the other editions are &#39;excluded from the index through robots.txt and noindex metadata&#39;. Checked against the tree on 2026-11-20: /editorial/ is both disallowed and carries noindex; /crisp-index/ and /legacy/ are disallowed; /counter/ and /counterwise/ were neither, and both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain as the root publication. Their HTML was not edited, in keeping with the archive rule that preserved editions are not corrected, so the fix is made where this build has authority: robots.txt is now generated from the repository tree, so every root directory that publishes a page of its own and is not written by this build is excluded automatically, and tools/verify.mjs fails if the file ever falls behind the tree. Residual limit, stated plainly: a disallowed page that lacks a noindex tag can still be indexed by URL if another site links to it, and their own robots.txt files are not read by crawlers for sub-paths.</p>
+  <p class="resolution"><strong>Resolution:</strong> Generated exclusion list added to tools/build.mjs and gated by tools/verify.mjs; negative test in the merge log: deleting one line makes the build fail.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
+  <p class="small"><strong>Manual step:</strong> If any of those editions is to become the product instead, publish it on its own domain or subdomain and remove it from this tree; the owner can reverse this exclusion for any one of them in a single commit (suggestions S-01 and S-11).</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-038">
+  <p class="flag-head"><span class="badge flag">FLG-038</span> <span class="badge sev-high">high</span> <strong>The gate walked a shorter page list than the builder wrote, so five published pages were never checked</strong> <span class="badge resolved">resolved</span></p>
+  <p>tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder&#39;s list grew to cover /compare/, /workflow/, /privacy/, /design-brief/ and now /find/; the gate&#39;s copy did not, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.</p>
+  <p class="resolution"><strong>Resolution:</strong> Shared tools/site-scope.mjs consumed by builder and gate; OWNED drift is no longer possible without a failing check.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a></p>
+  <p class="small"><strong>Manual step:</strong> None. Two negative tests were run and are recorded in the merge log: a stripped sponsored attribute and a deleted robots line each fail the build.</p>
+</section>
+<section class="flag-card" id="FLG-039">
+  <p class="flag-head"><span class="badge flag">FLG-039</span> <span class="badge sev-low">low</span> <strong>A third dated fetch of the submitted short links again returned the Amazon home page</strong></p>
+  <p>On 2026-11-20 an independent session fetched https://link.amazon/B04G1MEwY and was returned amazon.com&#39;s home page rather than a product page, with no product title and no ASIN in the result. This corroborates FLG-031 and FLG-004 rather than adding a new kind of failure. In the same round the three observed listings for that session&#39;s rows were fetched directly by their /dp/ identifier and every title matched the register. The register therefore still carries its observed mapping from the earlier dated rounds. No short link is claimed to be dead, and FLG-003 stays open: the compliance status of the supplied links is unresolved, not invalid.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Open each short link in a signed-in browser, record the product name and the 10-character ASIN from the address bar, and keep that record as the confirmation source. That closes Q-01 and narrows FLG-003.</p>
+</section>
+<section class="flag-card" id="FLG-040">
+  <p class="flag-head"><span class="badge flag">FLG-040</span> <span class="badge sev-low">low</span> <strong>Session records at the repository root are served as plain text on the public site</strong></p>
+  <p>The executive summaries each session wrote, the design brief, the QA brief, the decision review and the verification log sit at the repository root, which is also the web root because Pages publishes main at /. With .nojekyll set, each is served as unrendered markdown at a guessable URL, so a reader who wanders there finds internal session notes, and a pile of near-identical summaries is itself the &#39;generated, not published&#39; tell the owner asked about. The correct half was already in place: none of them is in the sitemap. This session did not move another session&#39;s file; it added a derived robots exclusion for every markdown file at the root, generated from the tree so it cannot go stale, and left the relocation itself as a decision (S-22). tools/verify.mjs fails if a new root-level file joins the list and the exclusion does not.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
+  <p class="small"><strong>Manual step:</strong> Choose S-22: move them under legacy/session-records/ in one commit, or keep them where they are with the exclusion in place.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -298,9 +333,9 @@
       <h2 class="foot-h">Guides</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
-        <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
-        <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
-        <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
+        <li><a href="/Affil3/guides/dual-basket-or-one-big-basket/">Dual basket or one big basket: which fits your weeknights?</a></li>
+        <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
+        <li><a href="/Affil3/guides/instant-read-or-leave-in-probe/">Instant read or leave-in probe: which earns a drawer?</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -329,6 +364,90 @@
     <p class="fine">ShopNow Kitchen is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Illustrations are AI-generated and labeled at the point of use. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
   </div>
 </footer>
-<script src="/Affil3/assets/analytics.js" defer></script>
+<script src="/Affil3/assets/analytics.js" defer></script><script>(function(){
+  var form = document.getElementById('fit-form');
+  var rowsEl = document.getElementById('finder-rows');
+  var out = document.getElementById('fit-out');
+  if (!form || !rowsEl || !out) return;
+  var rows = [];
+  try { rows = JSON.parse(rowsEl.textContent); } catch (e) { rows = []; }
+  function chosen(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function node(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function scoreRow(r, cooking, counter, household) {
+    var why = [], miss = [], score = 0;
+    if (cooking === 'two') {
+      if (r.dual) { score += 3; why.push('Two independent baskets is what this maker states for the model: ' + (r.capacityNote || r.capacity)); }
+      else if (r.oven) { score += 1; why.push('One chamber with a door, which handles two trays at different times less neatly than two drawers'); }
+      else { miss.push('A single ' + r.capacity + ' basket, so two timings share one clock'); }
+    }
+    if (cooking === 'batch') {
+      if (!r.dual && !r.oven) { score += 3; why.push('One ' + r.capacity + ' basket with no divider to plan around'); }
+      else if (r.oven) { score += 1; why.push('More room than a basket, in a taller footprint'); }
+      else { miss.push('Two ' + r.capacity + ' baskets rather than one large one'); }
+    }
+    if (cooking === 'meal') {
+      if (r.oven) { score += 3; why.push('Oven-style room, stated at ' + r.capacity); }
+      else { miss.push('A basket rather than a multi-level oven'); }
+    }
+    var need = counter === 'tight' ? 12.5 : counter === 'some' ? 15 : Infinity;
+    if (r.caseMax === null) { miss.push('No case size is published for this model, so counter fit stays unverified'); }
+    else if (r.caseMax <= need) { score += 2; why.push('Its largest published case figure is ' + r.caseMax + ' in, inside the space you named'); }
+    else { miss.push('Its largest published case figure is ' + r.caseMax + ' in, above the space you named'); }
+    if (household === 'yes') {
+      if (r.capacityNum >= 20) { score += 2; why.push('The largest capacity on this shelf, at ' + r.capacity); }
+      else { miss.push('Capacity is ' + r.capacity + ', so plan in batches rather than in one go'); }
+    }
+    return { why: why, miss: miss, score: score };
+  }
+  function render(r, res, tag) {
+    var card = node('div', 'fit-card');
+    card.appendChild(node('p', 'fit-tag', tag));
+    card.appendChild(node('h3', null, r.name)).appendChild(node('span', 'fit-cat', r.cat));
+    var link = node('a', 'btn btn-primary', 'Open the ' + r.name + ' page');
+    link.href = r.href;
+    var wrap = node('p', 'fit-link');
+    wrap.appendChild(link);
+    var reasons = node('ul', 'fit-why');
+    res.why.forEach(function (t) { reasons.appendChild(node('li', null, t)); });
+    var cautions = node('ul', 'fit-miss');
+    res.miss.forEach(function (t) { var li = node('li', null, t); cautions.appendChild(li); });
+    if (!res.miss.length) { cautions.className = 'fit-miss is-hidden'; }
+    card.appendChild(node('p', 'small muted', r.bestFor));
+    card.appendChild(reasons);
+    card.appendChild(node('p', 'small muted', 'Worth knowing: ' + (r.tradeoff || 'read the row for its gaps')));
+    card.appendChild(cautions);
+    card.appendChild(wrap);
+    return card;
+  }
+  form.addEventListener('click', function (ev) {
+    if (!ev.target || ev.target.id !== 'fit-go') return;
+    ev.preventDefault();
+    var cooking = chosen('cooking'), counter = chosen('counter'), household = chosen('household');
+    while (out.firstChild) out.removeChild(out.firstChild);
+    if (!cooking || !counter) {
+      out.appendChild(node('p', 'fit-note', 'Two answers are needed first: what you cook, and how much counter you have.'));
+      return;
+    }
+    var scored = rows.map(function (r) { return { r: r, res: scoreRow(r, cooking, counter, household) }; })
+      .sort(function (a, b) { return b.res.score - a.res.score || (a.r.caseMax || 99) - (b.r.caseMax || 99); });
+    var top = scored[0], next = scored[1];
+    var criteria = 2 + (household ? 1 : 0);
+    if (top.res.score === 0) {
+      out.appendChild(node('p', 'fit-note', 'Nothing on this shelf matches those two answers at once. The numbers that usually cause it are counter depth and basket volume, and the comparison table shows both for every row.'));
+    } else {
+      out.appendChild(node('p', 'fit-note', 'Closest match: this row lines up with ' + top.res.why.length + ' of the ' + criteria + ' things you told us, on the figures its manufacturer publishes. It is a matcher, not a verdict, so open the row and read the sources.'));
+    }
+    out.appendChild(render(top.r, top.res, 'Closest match'));
+    if (next && next.res.score > 0) out.appendChild(render(next.r, next.res, 'Second, on these answers'));
+  });
+})();</script>
 </body>
 </html>
