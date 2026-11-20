@@ -28,4 +28,17 @@ jobs:
           git diff --stat
           git diff --exit-code -- index.html shop compare find design-brief products categories guides articles decisions how-we-choose executive-summary sources questions suggestions flagged ledger measurement compliance about workflow privacy 404.html feed.xml sitemap.xml robots.txt assets .nojekyll
       - name: Run the publishing gate
-        run: node tools/verify.mjs
+        # The gate's own output is the useful part of a red run, and Actions logs are not always
+        # readable from an API-only environment. Repeating each failure as an annotation puts it in
+        # the Checks UI and on the PR, so a broken gate is diagnosable without leaving the API.
+        run: |
+          set +e
+          out=$(node tools/verify.mjs 2>&1)
+          rc=$?
+          printf '%s\n' "$out"
+          if [ "$rc" -ne 0 ]; then
+            printf '%s\n' "$out" | grep -E "^  FAIL|^verify:" | head -30 | while IFS= read -r line; do
+              printf '::error::%s\n' "$line"
+            done
+            exit "$rc"
+          fi
