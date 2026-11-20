@@ -1,0 +1,35 @@
+{
+  "privacyModel": "daily aggregates only; no cookies, account IDs, referrers, full URLs, query strings, IP addresses, or user-agent strings are written to storage",
+  "events": [
+    {
+      "name": "page_view",
+      "source": "site",
+      "definition": "One page-load count for a stable page ID. Not a unique visitor or session count."
+    },
+    {
+      "name": "guide_engagement",
+      "source": "site",
+      "definition": "One count when a guide reader crosses the 60% scroll threshold; no scroll depth or duration is stored."
+    },
+    {
+      "name": "outbound_click",
+      "source": "site",
+      "definition": "One count for a click on a published, approved product link, keyed only by a site-assigned link ID."
+    },
+    {
+      "name": "reader_capture_intent",
+      "source": "site",
+      "definition": "One count for an explicit RSS/newsletter follow action. It does not claim that a subscription completed and contains no email address."
+    },
+    {
+      "name": "reported_order_import",
+      "source": "Amazon Associates Central report import",
+      "definition": "An aggregate report row imported by an authorized operator. No order-level or customer data is accepted; imported clicks and orders remain report-reported metrics."
+    }
+  ],
+  "clientFields": ["event", "contentId", "linkId", "channel"],
+  "channels": ["direct", "organic", "paid", "social", "newsletter", "unknown"],
+  "excludedFields": ["email", "customerId", "orderId", "fullUrl", "queryString", "referrer", "ipAddress", "userAgent", "cookie", "deviceFingerprint"],
+  "liveCollection": false,
+  "liveCollectionReason": "GitHub Pages serves static files and cannot execute the included API handler. Collection stays off until the site and first-party endpoint share a supported host."
+}
