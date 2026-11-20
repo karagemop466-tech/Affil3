@@ -8,8 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
-  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+// Kept in step with OWNED in tools/build.mjs. It omitted compare, workflow, privacy and design-brief, so
+// every per-page rule below silently skipped four published directories.
+const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
+  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief', '404.html'];
 // Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
 function imageSize(file) {
   try {
@@ -294,6 +296,105 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
+}
+
+// ---------- 3. citation integrity (added 2026-11-20 by session b7320829-affil3) ----------
+// Registers and prose cross-reference rows by id: S01.. sources, FLG-nnn flags, S-nn suggestions, and
+// Q-/K-/D- rows on the questions board. Nothing else in this file could see a broken reference, and a
+// batch of them shipped (FLG-044). Two layers: every id mentioned anywhere has to resolve to a real row,
+// and a citation that resolves still has to be allowed to carry the claim it is attached to.
+{
+  const questionsDoc = read('data/questions.json');
+  const resolves = {
+    src: new Set(sources.map((x) => x.id)),
+    flag: new Set(flags.map((x) => x.id)),
+    sug: new Set(read('data/suggestions.json').suggestions.map((x) => x.id)),
+    q: new Set(questionsDoc.unknown.map((x) => x.id)),
+    k: new Set(questionsDoc.known.map((x) => x.id)),
+    d: new Set(questionsDoc.discovery.map((x) => x.id)),
+  };
+  const PAT = /\b(S\d{2}|FLG-\d{3}|S-\d{2}|Q-\d{2}|K-\d{2}|D-\d{2})\b/g;
+  const setFor = (tok) => (tok.startsWith('FLG-') ? resolves.flag
+    : tok.startsWith('S-') ? resolves.sug
+    : tok[0] === 'S' ? resolves.src
+    : tok[0] === 'Q' ? resolves.q : tok[0] === 'K' ? resolves.k : resolves.d);
+  const stringsIn = (o, out = []) => {
+    if (typeof o === 'string') out.push(o);
+    else if (Array.isArray(o)) o.forEach((v) => stringsIn(v, out));
+    else if (o && typeof o === 'object') Object.values(o).forEach((v) => stringsIn(v, out));
+    return out;
+  };
+  const REGISTERS = ['data/products.json', 'data/sources.json', 'data/flags.json', 'data/questions.json',
+    'data/suggestions.json', 'data/guides.json', 'data/events.json', 'data/ledger.json', 'data/config.json', 'data/design-brief.json'];
+  for (const f of REGISTERS) {
+    if (!fs.existsSync(path.join(ROOT, f))) continue;
+    const seen = new Set();
+    for (const str of stringsIn(JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')))) {
+      for (const m of str.matchAll(PAT)) {
+        const key = f + '|' + m[1];
+        if (seen.has(key)) continue;
+        seen.add(key);
+        check(`${f}: reference ${m[1]} resolves to a real row`, setFor(m[1]).has(m[1]), str.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' '));
+      }
+    }
+  }
+  // The same rule over the rendered pages: a sentence in a template is as much a citation as one in a register.
+  if (fs.existsSync(path.join(DOCS, 'index.html'))) {
+    const htmlFiles2 = [];
+    const walk2 = (d) => { for (const f of fs.readdirSync(d)) { const p2 = path.join(d, f); if (fs.statSync(p2).isDirectory()) walk2(p2); else if (f.endsWith('.html')) htmlFiles2.push(p2); } };
+    for (const o of OWNED) { const p2 = path.join(DOCS, o); if (!fs.existsSync(p2)) continue; if (fs.statSync(p2).isDirectory()) walk2(p2); else htmlFiles2.push(p2); }
+    for (const f of htmlFiles2) {
+      const text = fs.readFileSync(f, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ');
+      const seen = new Set();
+      for (const m of text.matchAll(PAT)) {
+        if (seen.has(m[1])) continue;
+        seen.add(m[1]);
+        check(`${path.relative(DOCS, f).split(path.sep).join('/')}: rendered reference ${m[1]} resolves`, setFor(m[1]).has(m[1]), text.slice(Math.max(0, m.index - 45), m.index + 30).replace(/\s+/g, ' '));
+      }
+    }
+  }
+}
+
+// ---------- 3b. citation meaning, not just citation existence ----------
+// Existence cannot catch a reference to a row that exists and says something else, which is the defect class
+// this repository keeps producing: five guides cited the FTC endorsement page (S22) for Chefman wattage
+// figures, and two flags credited a Chefman product page (S11) with Amazon's application-review text (FLG-044).
+{
+  const SRC2 = new Map(sources.map((x) => [x.id, x]));
+  // A source that can carry a product measurement: the maker, the observed retailer page, or the food-safety
+  // authority whose temperatures are quoted on the shelf. A policy, disclosure or developer page cannot.
+  const SPEC_HOSTS = new Set(['chefman.com', 'www.emerileveryday.com', 'chefiq.com', 'www.thermomaven.com',
+    'www.amazon.com', 'link.amazon', 'www.fsis.usda.gov']);
+  const hostOf2 = (u) => { try { return new URL(u).hostname; } catch { return ''; } };
+  const stringsOf = (o, out = []) => {
+    if (typeof o === 'string') out.push(o);
+    else if (Array.isArray(o)) o.forEach((v) => stringsOf(v, out));
+    else if (o && typeof o === 'object') Object.values(o).forEach((v) => stringsOf(v, out));
+    return out;
+  };
+  const MEASURE = /\d+(?:[.,]\d+)?\s*(?:°f|ºf|℉|\bw\b|\bkw\b|\bqt\b|\blb\b|\bv\b|\bin\b|litre|liter|presets?|pre-sets?)/i;
+  for (const g of guides) {
+    const strs = stringsOf(g.body).concat([g.deck, g.description, g.summary || '', g.amended || '']);
+    for (const str of strs) {
+      for (const m of str.matchAll(/\((S\d{2})\)/g)) {
+        const id = m[1];
+        check(`guide ${g.slug}: inline citation ${id} is also declared in its source list`, (g.sources || []).includes(id), str.slice(0, 70));
+        const row = SRC2.get(id);
+        if (!row || !row.url || !MEASURE.test(str)) continue;
+        check(`guide ${g.slug}: a sentence carrying a measurement cites a maker, retailer or food-safety page, not ${id}`,
+          SPEC_HOSTS.has(hostOf2(row.url)), `${hostOf2(row.url)} :: ${str.slice(Math.max(0, m.index - 70), m.index + 12).replace(/\s+/g, ' ')}`);
+      }
+    }
+  }
+  for (const p of products) {
+    const strs = stringsOf({ f: p.functions, c: p.capacity_note, d: p.dimensions_in, w: p.weight_lb, pw: p.power_w, t: p.temp_max_f, n: p.verification_note, b: p.blank_reason });
+    for (const str of strs) for (const m of str.matchAll(/\((S\d{2})\)/g)) {
+      const row = SRC2.get(m[1]);
+      if (!row || !row.url || !MEASURE.test(str)) continue;
+      check(`product ${p.id}: a sentence carrying a measurement cites a maker, retailer or food-safety page, not ${m[1]}`,
+        SPEC_HOSTS.has(hostOf2(row.url)), `${hostOf2(row.url)} :: ${str.slice(0, 70)}`);
+    }
+  }
 }
 
 // ---------- report ----------

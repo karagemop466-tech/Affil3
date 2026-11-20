@@ -164,9 +164,41 @@
         "S14",
         "S15"
       ]
+    },
+    {
+      "id": "K-23",
+      "statement": "Four dated rounds have read the five observed listings. Each round that reached the pages matched the register's titles; the most recent (2026-11-20, session b7320829-affil3) could not reach amazon.com at all and re-derived nothing, and is recorded as a failed round rather than as agreement.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-24",
+      "statement": "robots.txt is not an exclusion mechanism, and noindex cannot live in robots.txt: both sentences are read verbatim from Google's documentation, held here as S24 and S26; and Google reads robots.txt from the host root, which FLG-038 established for this project path.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "K-25",
+      "statement": "The shelf publishes 17 guides, 7 Journal articles and 5 product rows across 3 clusters, so the 'at least 10 posts' rule of thumb is met on page count alone. Whether a reviewer calls the content robust is not something a count can answer.",
+      "sources": [
+        "S19"
+      ]
+    },
+    {
+      "id": "K-26",
+      "statement": "The submitted short links are not usable as the site's outbound route: in the latest round four of four that resolved at all landed on the Amazon home page. The site publishes its own tagged /dp/ links for that reason, and not because the short links were declared invalid.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-24, D-19 and D-20 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping). Its original Q-25 was dropped at merge as a duplicate of Q-18, and its D-13/D-14 were renumbered to D-19/D-20 because main already uses those ids. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3.",
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-23 to Q-25, K-23 to K-26 and D-19 to D-22 were added by session b7320829-affil3 on 2026-11-20, after a round that read seven official pages first-hand and merged this branch with main; two of the three new questions close in one sitting in Associates Central. Q-26, D-23 and D-24 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping); at merge they were renumbered from Q-24/D-19/D-20 because main had taken those ids. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3. This session's original Q-25 had already been dropped as a duplicate of main's Q-18.",
   "unknown": [
     {
       "id": "Q-01",
@@ -387,7 +419,56 @@
       "blocking": true
     },
     {
+      "id": "Q-22",
+      "question": "Where will reader email capture run, and under what consent wording?",
+      "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
+      "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-23",
+      "question": "What counts as a page for the 10-post threshold, and who decides the site is ready to submit?",
+      "have": "17 guides, 7 Journal articles and 5 product rows; S19's wording, read from an excerpt; FLG-007 open since the first pass.",
+      "lack": "Amazon's answer, and a decision to submit.",
+      "who": "The owner, in a signed-in Associates session.",
+      "why_it_matters": "A count is not a pass and page count is not content quality; submitting early with thin pages risks the account review for no gain.",
+      "how_to_close": "Read S19 signed-in, decide, submit, and record the outcome with its date. That closes FLG-007.",
+      "blocking": true,
+      "sources": [
+        "S19"
+      ]
+    },
+    {
       "id": "Q-24",
+      "question": "Will each buy link be replaced by a Special Link generated in Associates Central, and when?",
+      "have": "Five constructed tagged links (observed ASIN + tag), the Program Policies clause they satisfy (S02), and gate G-02 saying none has been tested.",
+      "lack": "A link issued by Amazon for each product, and one confirmation that the click lands in the tracking report.",
+      "who": "The owner, in Associates Central. No agent can do this from the repository.",
+      "why_it_matters": "This is the difference between a site built to earn and a site that looks ready to. Everything else is presentation.",
+      "how_to_close": "S-02 option D: generate one link per product, paste it into the row's special_link field with its date, re-run the gate.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-25",
+      "question": "Who re-checks listing copy, and where is that record kept?",
+      "have": "A per-product observed date, four dated rounds, and one round that failed to reach the source at all.",
+      "lack": "An owner and a cadence for a ten-minute check, and a field on the product row for its result.",
+      "who": "The owner, or the editorial team once one exists (Q-06).",
+      "why_it_matters": "Titles, included accessories and prices change without notice on the retailer's side; the site publishes the wording it saw with a date on it, so the date has to stay near the truth.",
+      "how_to_close": "S-34 option B: one short monthly pass into data/observations/ with its date, rendered as a last-seen line on the product page.",
+      "blocking": false,
+      "sources": [
+        "S04",
+        "S03"
+      ]
+    },
+    {
+      "id": "Q-26",
       "question": "Which acquisition channels will the owner actually run?",
       "why_it_matters": "Design brief prescription PB-11 lists the channels the policies permit (organic search, an opted-in email list, the RSS feed) and the ones they bar (paid search on Amazon trademarks as a Prohibited Paid Search Placement, any reward or incentive for using Special Links, unsolicited outreach containing Special Links). Without a chosen set, every growth suggestion on the board assumes a channel that may never exist.",
       "how_to_close": "Pick the channels on the decision board (S-06 covers the reader-capture half) and record the allowed set on /compliance/ after checking it against Participation Requirements 6(e)-(g) and Operating Agreement section 4. Refused channels are recorded with the clause that refuses them.",
@@ -489,6 +570,13 @@
       "closes": []
     },
     {
+      "id": "D-15",
+      "suggestion": "Name one reader persona from S-30 and write it at the top of the December commission list before any new guide is drafted.",
+      "closes": [
+        "Q-13"
+      ]
+    },
+    {
       "id": "D-16",
       "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
       "closes": [
@@ -512,14 +600,46 @@
     },
     {
       "id": "D-19",
-      "suggestion": "List each candidate acquisition channel, check it against Participation Requirements 6(e)-(g) and Operating Agreement section 4, and write the allowed set down before running any of them; refused channels are recorded with the clause that refuses them.",
+      "suggestion": "Fetch each published edition's index.html once and write down whether it carries a noindex meta tag, then compare what you find with what FLG-032 claims. Two minutes, and it turns a findability argument into a checked fact.",
       "closes": [
-        "Q-24"
+        "Q-17"
       ]
     },
     {
       "id": "D-20",
-      "suggestion": "Owner replies with the confirmed name (or 'keep ShopNow Kitchen') in the decision log; the reply is copied to data/config.json only if it changes, and design-brief row DX-6 is updated the same day.",
+      "suggestion": "In Associates Central, generate one Special Link per product, paste it into the product row with its generation date, then click it once and confirm the click in the tracking report. That sequence closes Q-01, Q-02 and Q-24 together.",
+      "closes": [
+        "Q-01",
+        "Q-02",
+        "Q-24"
+      ]
+    },
+    {
+      "id": "D-21",
+      "suggestion": "Run a ten-minute monthly listing re-check: open each tagged link in a signed-in browser, compare the title and the included-accessory wording with the row, and write the outcome into data/observations/ with its date.",
+      "closes": [
+        "Q-25"
+      ]
+    },
+    {
+      "id": "D-22",
+      "suggestion": "Write to manufacturer support for the disputed figures (P03 wattage and case size, P02 preset and accessory counts, P05 battery hours and probe working temperature). A one-line reply from the brand is an official source; a forum post is not and will not be used.",
+      "closes": [
+        "Q-11",
+        "Q-12",
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-23",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": [
+        "Q-26"
+      ]
+    },
+    {
+      "id": "D-24",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
       "closes": [
         "Q-18"
       ]

@@ -63,10 +63,10 @@
       "id": "FLG-006",
       "severity": "medium",
       "title": "Associates account status and declared site are unknown",
-      "detail": "Associates help states that tags must be embedded in links on the sites declared in the application (S11). The declared site URL and account approval status are unknown to this build. The qualifying-sales requirement (three within 180 days) is also stated (S11).",
+      "detail": "Associates help states that tags must be embedded in links on the sites declared in the application, and the qualifying-sales requirement is three sales within 180 days (S19, read from an excerpt: re-check in a signed-in session). Program Policies 2(b) is the clause tying the tag to every link on a declared site (S02). The declared site URL and account approval status are unknown to this build. Citation corrected 2026-11-20 by session b7320829-affil3, which had credited S11 for both statements: in this register S11 is the Chefman dual-basket product page (FLG-044).",
       "sources": [
-        "S11",
-        "S03"
+        "S19",
+        "S02"
       ],
       "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active."
     },
@@ -74,9 +74,9 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07). Update (478e6577, 2026-11-20): the site now has 13 guides (data/guides.json), not five. S11 does not say whether guides count as posts, so this flag stays open until the owner decides (S-05).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 16 question-shaped guides and 5 product rows after the 2026-11-20 parallel sessions. Adding content is a decision for the user (see suggestion S-05). Citation corrected 2026-11-20: the rule of thumb was credited to S11, a Chefman product page; the row that holds it is S19 (FLG-044).",
       "sources": [
-        "S11"
+        "S19"
       ],
       "manual_step": "Decide the content plan (suggestion S-05) before submitting the site for Associates review."
     },
@@ -122,12 +122,12 @@
       "id": "FLG-012",
       "severity": "medium",
       "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
+      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources. Corrected 2026-11-20: this row also credited S12, which is the Chefman High-Fry product page and says nothing about what an ASIN is; the sell.amazon.com candidate page is listed as text in the manual step because that host is not on the gate's source allowlist (FLG-044).",
       "sources": [
         "S04",
-        "S12"
+        "S23"
       ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+      "manual_step": "Either cite https://sell.amazon.com/learn/prepare-to-sell after adding sell.amazon.com to ALLOWED_SOURCE_HOSTS in tools/verify.mjs, or accept the observed-identifier basis and close this flag as 'not needed'."
     },
     {
       "id": "FLG-013",
@@ -143,7 +143,7 @@
       "id": "FLG-014",
       "severity": "low",
       "title": "Author is a team byline, not a named person",
-      "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
+      "detail": "No named author, credential or biography is supplied, so every byline reads with the team name held in data/config.json ('ShopNow Kitchen editorial team'). Inventing a person would be a fabrication, and a fabricated credential would also cut against the truthfulness the Program Policies ask of an Associates site. If a named editor is wanted, the name, the role and any claimed experience have to come from the owner (Q-06, suggestion S-08). Corrected 2026-11-20: this row quoted a byline string ('Affil3 editorial team') that the config has not held since the rename (FLG-044).",
       "sources": [],
       "manual_step": "Decide on a named author and bio (suggestion S-08)."
     },
@@ -352,7 +352,7 @@
       "status": "open",
       "area": "site structure",
       "title": "Four editions of this publication are published under one domain; only the root one is in the sitemap",
-      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml; the others are excluded from the index through robots.txt and noindex metadata, and they are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
+      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml. What protects the others is thinner than that sentence used to claim, and is now stated exactly: every non-root page is reachable, the root robots.txt disallows /editorial/, /legacy/, /crisp-index/, /counter/ and /counterwise/ (widened 2026-11-20), only /editorial/ ships a noindex tag of its own, and robots.txt is not an indexing control at all - Google reads it from the host root, not from a project path, and says it 'is not a mechanism for keeping a web page out of Google' (S24, S25, S26, FLG-038, FLG-043). They are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
       "impact": "Five near-identical editions on one domain split the search signals and the tracking data. The fix applied here is one indexed site plus a labelled archive; the owner can reverse it for any edition.",
       "manual_step": "Decide which single edition is the product, and whether the other three should stay on this domain at all. Suggestion S-11 records the options; each edition keeps its own generator and gate, so republishing one is a one-line change.",
       "sources": [
@@ -501,15 +501,63 @@
     {
       "id": "FLG-043",
       "severity": "medium",
+      "status": "open",
+      "area": "findability",
+      "title": "The root robots.txt the site leans on is not read where the site is served, and the board said the editions were de-indexed",
+      "detail": "Wording: FLG-032 stated the non-root editions 'are excluded from the index through robots.txt and noindex metadata'. Google's pages say a robots.txt file 'is not a mechanism for keeping a web page out of Google', that a disallowed URL 'can still appear in search results' without a description, that 'Specifying the noindex rule in the robots.txt file is not supported by Google', and that a page blocked in robots.txt cannot have its noindex tag seen (S24, S26). Against the shipped files: /editorial/ carries noindex; /counter/, /counterwise/, /counter-desk/ and /crisp-index/ do not, and /counter/ and /counterwise/ advertise sitemaps of their own. That sentence is now replaced with what the files actually do. Mechanism: main's FLG-038 established that Google reads robots.txt from the host root, so /Affil3/robots.txt is not consulted for these URLs at all - which means the Disallow lines for the secondary editions, and the index,follow meta tag now on every root page, buy crawl-budget management and explicit intent for crawlers that read path-scoped files, and nothing for Google today. The only per-page control available without host access is a noindex meta tag in each edition's own generator, with those paths left crawlable so the tag can be read: S-20 option B. Moving an edition under /legacy/ is option C.",
+      "impact": "Either the site says plainly that four near-duplicate editions of the same five products are indexable and competing, or it does not get to claim it de-indexed them. The first is honest and fixable; the second is a promise the repository cannot keep from the root.",
+      "manual_step": "Pick S-20 option B (noindex,follow in each secondary edition's generator, no Disallow line on those paths) or option C (archive them off this Pages site). Each edition is built by its own session's tooling, so the request is logged in COORDINATION.md rather than executed here.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26",
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-044",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "citation",
+      "title": "Eleven cross-references pointed at rows that exist and say something else",
+      "detail": "Found while merging with main and by reading the registers against the documents they cite. Five guides - counter-space, dual-versus-single basket, how to read a listing, the preset guide and the chicken-breast guide - cite S22 for Chefman specification figures, but S22 in this register is the FTC Endorsement Guides page; those figures come from S23 (the maker's page for RJ38-SQSS-8T) and, for the matte-black High-Fry unit, S12. FLG-006 and FLG-007 credited S11, a Chefman product page, with the declared-site rule and the 'at least 10 posts' rule of thumb, which both live in S19, and the workflow page carried the same wrong id. FLG-012 credited S12 with support for the ASIN definition. FLG-014 quoted a byline string the config has not held since the rename. DESIGN-BRIEF PB-4 blocks on the house-style row but cites S-20, which is crawl control; the house-style row is S-19. And the chicken-breast guide cited S11 and S23 inline without declaring either in its own source list. All eleven corrected on 2026-11-20, and the last one was caught by the gate rule written for this class the moment it ran. Recorded together for one reason: every one of these ids resolves to a row that exists, so a check limited to existence passes all of them. The rules that do catch it now live in tools/verify.mjs - an inline citation must be declared by the guide that uses it, and a sentence carrying a measurement may not cite a policy or consumer-advice page (S-35).",
+      "impact": "A source id is the whole evidentiary claim of a row. Pointing a reader from a wattage figure to an FTC disclosure page is worse than no citation, because it looks like one.",
+      "resolution": "Corrections and both gate rules by session b7320829-affil3 on 2026-11-20, in the merge commit that resolves the branch.",
+      "manual_step": "If those guide figures are re-checked, compare against S23 and S12 - never S22.",
+      "sources": [
+        "S22",
+        "S23",
+        "S12",
+        "S19",
+        "S11"
+      ]
+    },
+    {
+      "id": "FLG-045",
+      "severity": "low",
+      "status": "resolved",
+      "area": "editorial",
+      "title": "This session's five new guides would have duplicated pages that landed on main first",
+      "detail": "Cut from 7fac552, where the shelf held five guides, this session drafted five more: dishwasher-safe parts, reading thermometer certification labels, what Sync Finish and Hi-Fry do, how to read a preset list, and holiday capacity planning. main published eleven more in the meantime, and four of the five drafts covered ground its pages already own - the cleanup guide already reads dishwasher claims, the preset guide already runs the 24-versus-25 comparison, the holiday guide already plans a big meal on a small counter, and the listing guide already teaches listing-versus-maker checking. Publishing both sets would have produced near-duplicate pages on one domain, the pattern Google's spam policies call scaled content abuse (S09) and the pattern FLG-032 already reproaches this repository for. Resolution: one guide ships (Sync Finish and Hi-Fry, whose subject - what the named buttons do, and the disputed 450 °F ceiling - no other page answers), and even that page had its basket-shape paragraph cut to a cross-reference because the dual-basket guide owns that argument. The first-hand material from the other four was merged into the existing pages as new sections carrying their own sources and dated 'amended' notes. Convergence recorded in the same pass rather than re-filed: the stray degree sign in P01's function list, the stale 'fifth link resolves to nothing' executive summary and the /docs/ row in the README had all been fixed on main first, and the unreproducible short-link fetches are main's FLG-036 and FLG-037.",
+      "impact": "Had the merge been a concatenation, the site would have published twins about the same appliances while arguing in its own flag board that the editions' twins are a problem.",
+      "resolution": "Resolved in the merge commit by session b7320829-affil3 on 2026-11-20: five drafts became one page plus three enriched pages; one unused illustration was deleted.",
+      "manual_step": "None. If the withdrawn topics are revisited, check the shelf first: presets, holiday planning, cleanup and listing-reading all have an owner page already.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-046",
+      "severity": "medium",
       "title": "Decision cross-references pointed at renumbered rows",
       "detail": "Reader-facing copy and the design brief referenced suggestion and question ids that no longer match the registers. The workflow page cited S-02 for cadence (now S-05), Q-09 for topic choice, Q-04 for the Associates link test (now Q-02), and SG-29, which exists in no register. The design brief's sequence, prescriptions and prompt cited S-04 (name), S-05 (imagery), S-06 (byline), S-13 (navigation), S-15/S-16 (acquisition), S-18 (publications), S-20 (house style) and Q-08 (byline question) under a numbering that was dropped in an earlier merge. Five flags' manual steps cited the same stale ids (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016). Anyone following those references would open the wrong decision.",
       "sources": [],
       "status": "resolved",
-      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (commit ad43826: derived counts, S-05 cadence citation, FLG-007 annotation, garbled sentence rewritten) while session arena/5a91ea5c-affil3 remapped data/design-brief.json's sequence, prescriptions and prompt (now S-06, S-07, S-08, S-11, S-16, S-19, S-36, S-37, Q-06, Q-18), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open by main's annotation (S11 does not say whether guides count as posts).",
+      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (commit ad43826: derived counts, S-05 cadence citation, FLG-007 annotation) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (recorded in data/design-brief.json's amended note and main's FLG-044). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-39, S-40, Q-06, Q-18), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open by the register's own annotation (what counts as a post is now question Q-23). Renumbered from FLG-043 at merge: main had already taken FLG-043 for a robots/noindex finding.",
       "manual_step": "Adopt suggestion S-14's gate rule so hand-written counts and stale decision ids cannot be reintroduced."
     },
     {
-      "id": "FLG-044",
+      "id": "FLG-047",
       "severity": "medium",
       "title": "Session c252594d's work log claims register changes that its merged PR did not ship",
       "detail": "PR #54 ('Expand to 13 guides, add decision boards and deterministic artwork', merged 2026-11-20 as 1f65f70) contains data/guides.json and the eight new guides, but no data/suggestions.json, data/questions.json, data/flags.json, data/products.json, data/sources.json, tools/build.mjs or tools/verify.mjs. The session's work log in COORDINATION.md nevertheless records 'Suggestions S-11 to S-18 added', 'Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added', product-row corrections, FLG-012 closed, and build/gate changes. None of that is on main; main's registers were carried by other sessions. The session's scripts are preserved at tools/sessions/c252594d/: running add-decision-boards.py now would write rows with ids S-11 to S-18 that collide with ids already taken.",
@@ -518,6 +566,6 @@
       "manual_step": "Session c252594d (or the owner) re-lands its decision-board rows with fresh ids, or the work log entry is corrected to say the scripts were written but not applied. Do not run the scripts as-is against the current registers."
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 and FLG-044 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references, and a work-log claim not carried by its merged PR); the stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass. FLG-007 keeps main's open status and dated annotation.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-046 and FLG-047 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references, and a work-log claim not carried by its merged PR); they were renumbered from FLG-043/FLG-044 at merge because main had taken those ids. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
   "checked": "2026-11-20"
 }

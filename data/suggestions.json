@@ -37,9 +37,16 @@
           "id": "B",
           "label": "Hide every buy button until gate G-02 passes.",
           "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
+        },
+        {
+          "id": "D",
+          "label": "Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.",
+          "tradeoff": "Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.",
+          "effort": "20 minutes per product",
+          "risk": "low"
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders."
     },
     {
       "id": "S-03",
@@ -956,7 +963,210 @@
       "decided_by": ""
     },
     {
+      "id": "S-29",
+      "topic": "December content direction",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).",
+          "tradeoff": "Matches the seasonal questions readers actually have in December; heavily thermometer-weighted."
+        },
+        {
+          "id": "B",
+          "label": "Gift-guide cluster: small appliances as gifts, what to check before gifting.",
+          "tradeoff": "Wide appeal; a crowded field with big publishers owning most search results."
+        },
+        {
+          "id": "C",
+          "label": "Deal-week follow-ups: price-check method posts and post-holiday clearance guides.",
+          "tradeoff": "Timely and linkable; ages quickly and must be date-stamped."
+        }
+      ],
+      "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
+    },
+    {
+      "id": "S-30",
+      "topic": "Target reader",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Small-household weeknight cooks: one to three people, limited counter, limited time (current).",
+          "tradeoff": "Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally."
+        },
+        {
+          "id": "B",
+          "label": "Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.",
+          "tradeoff": "Matches the seasonal spikes; thin the rest of the year."
+        },
+        {
+          "id": "C",
+          "label": "Gadget-first early adopters: smart features, apps, wireless probes.",
+          "tradeoff": "High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item."
+        }
+      ],
+      "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
+    },
+    {
+      "id": "S-31",
+      "topic": "Order of operations: measurement or content first",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.",
+          "tradeoff": "Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login."
+        },
+        {
+          "id": "B",
+          "label": "Keep publishing on editorial judgement until traffic exists, then measure (current).",
+          "tradeoff": "No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break."
+        }
+      ],
+      "recommendation": "A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it."
+    },
+    {
+      "id": "S-32",
+      "track": "trust",
+      "topic": "Answer-first summaries on every guide",
+      "problem": "A guide that buries its answer under four headings is a guide a reader leaves, and a page a reader leaves is a page a search engine discounts. The brief's 'not AI slop' instruction is answered by giving the answer plainly, with its sources, before the argument - not by decoration.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the deck as the only above-the-fold summary.",
+          "tradeoff": "The deck is a teaser by design, so the answer arrives later. Nothing to maintain.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a 'summary' field per guide, rendered as a boxed short answer under the byline, and compute the word and minute count from the guide's own text at build time.",
+          "tradeoff": "Implemented 2026-11-20 for all seventeen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page's word count over 225 words a minute - a property of the text, not a measurement of the reader.",
+          "effort": "done",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B, shipped. If a guide cannot be summarised in four sentences, that is a finding about the guide, not about the format.",
+      "depends_on": [
+        "S-19"
+      ]
+    },
+    {
       "id": "S-33",
+      "track": "findability",
+      "topic": "How much structured data to publish",
+      "problem": "The shelf emits Article on guides and Product on product pages. Question-shaped guides with questions and answers on the page, and a hierarchy under one root, are both describable in machine-readable form - the cheapest findability lever available that needs no owner action and no host access, unlike the robots.txt problem in S-20.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Article only (as shipped before 2026-11-20).",
+          "tradeoff": "Minimal and valid; nothing about site structure or the Q&A content is declared.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.",
+          "tradeoff": "Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add Product offers and price data.",
+          "tradeoff": "Not available while the site publishes no prices: the price clause (S03) and the no-republished-prices rule both stand until the Creators API decision at S-04.",
+          "effort": "blocked",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B, shipped, and not sold as a rich-result win. C waits for an API enrolment decision.",
+      "depends_on": [
+        "S-04",
+        "S-20"
+      ]
+    },
+    {
+      "id": "S-34",
+      "track": "trust",
+      "topic": "A dated re-check ritual for listing copy",
+      "problem": "Four rounds have read the five listings; three matched, and the fourth could not reach the site at all. Listing titles, accessories and prices change without notice, and this site publishes the wording it saw with a date on it. That is honest, but it quietly ages - and an automated check cannot do the job, because unauthenticated fetches of Amazon fail or land on the home page (FLG-036, FLG-037).",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the dated reads as they are and let the dates speak.",
+          "tradeoff": "Zero work. A reader sees 'observed November 20, 2026' and can judge staleness themselves.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "A monthly ten-minute manual re-check, written into data/observations/ with its date and rendered on the product page as a last-seen line.",
+          "tradeoff": "Recommended. It is the only check that sees the page a shopper sees, and it needs a person - which is why it is a suggestion and not an automation claim.",
+          "effort": "10 minutes a month",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Automate the fetch in CI.",
+          "tradeoff": "Rejected on this repository's own evidence: a scheduled job would raise a flag every week for reasons unrelated to the fact it claims to verify. Do not build an alarm nobody can trust.",
+          "effort": "hours",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.",
+      "depends_on": [
+        "FLG-037",
+        "S-21"
+      ]
+    },
+    {
+      "id": "S-35",
+      "track": "platform",
+      "topic": "A citation check that catches wrong meaning, not just a dangling id",
+      "problem": "Eleven cross-reference defects shipped in this repository before anyone noticed, because every id involved resolved: five guides cited the FTC endorsement page for Chefman wattage figures, two flags credited a Chefman product page with Amazon's application-review text, a byline sentence named a team the config had already renamed, a design-brief row blocked on the wrong suggestion, and one guide used source ids it never declared. None of that is catchable by an existence check, and traceability is the whole claim this site makes about itself.",
+      "current": "C",
+      "options": [
+        {
+          "id": "A",
+          "label": "Rely on reviewers noticing.",
+          "tradeoff": "Eleven were missed across several sessions and found only by reading text against the documents it cites.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.",
+          "tradeoff": "Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Two further rules, implemented with B: an inline citation in a guide must be declared in that guide's own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.",
+          "tradeoff": "Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches 'Chefman states 1700 W (S22)'. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "D",
+          "label": "Also require every guide sentence to carry an inline source id.",
+          "tradeoff": "Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.",
+          "effort": "hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.",
+      "depends_on": [
+        "FLG-044",
+        "S-19"
+      ]
+    },
+    {
+      "id": "S-36",
       "track": "growth",
       "topic": "Cluster pillars and related-guide linking (PB-9)",
       "problem": "Guides link to products and categories link to guides, but guides do not link to each other, so each guide is a dead end for a reader and for a crawler. Prescription PB-9 specifies the fix and the data (cluster_links) already exists in the register.",
@@ -993,7 +1203,7 @@
       "decided_by": ""
     },
     {
-      "id": "S-34",
+      "id": "S-37",
       "track": "growth",
       "topic": "Reader-shaped titles, descriptions, and a length check",
       "problem": "Titles are process-first ('Kitchen picks, traced to their listings') and no gate checks title or description length, so a redesign can silently ship a title nobody would type into a search box. This is prescription PB-10 with its mechanical half unimplemented.",
@@ -1030,7 +1240,7 @@
       "decided_by": ""
     },
     {
-      "id": "S-35",
+      "id": "S-38",
       "track": "growth",
       "topic": "A decision-review cadence for this board",
       "problem": "The suggestions page exists so someone can review options and choose a path before anything is implemented, but the decision log is empty: no cadence exists for actually working the board, so rows wait indefinitely. The board is built; what is missing is the calendar.",
@@ -1065,10 +1275,10 @@
       "decided_by": ""
     },
     {
-      "id": "S-36",
+      "id": "S-39",
       "track": "growth",
       "topic": "Seasonality expiry machinery (PB-8)",
-      "problem": "Prescription PB-8 says any page referencing a limited-time promotion needs an expiry date and a build check that fails after it — Participation Requirements 2(b) requires removing links and references to a promotion as soon as it ends. No field and no gate rule exist yet, which is what blocks the seasonal lane at S-31.",
+      "problem": "Prescription PB-8 says any page referencing a limited-time promotion needs an expiry date and a build check that fails after it — Participation Requirements 2(b) requires removing links and references to a promotion as soon as it ends. No field and no gate rule exist yet, which is what blocks the seasonal lane at S-23.",
       "current": "A",
       "options": [
         {
@@ -1093,7 +1303,7 @@
           "risk": "high"
         }
       ],
-      "recommendation": "B. Build it together with the first seasonal page from S-31, not after it.",
+      "recommendation": "B. Build it together with the first seasonal page from S-23, not after it.",
       "depends_on": [],
       "decision": "undecided",
       "decided_on": "",
@@ -1105,7 +1315,7 @@
       }
     },
     {
-      "id": "S-37",
+      "id": "S-40",
       "track": "trust",
       "topic": "Navigation labels and a footer gloss (PB-6)",
       "problem": "The masthead is reader-shaped already, but the footer's dashboard list uses internal vocabulary ('Flagged for review', 'Campaign ledger') with no gloss, so a reader arriving from a search result cannot tell what those links are. Prescription PB-6 names the fix.",
@@ -1140,7 +1350,7 @@
       "decided_by": ""
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-28 and S-33 to S-37 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (design prompt of record, cluster linking, reader-shaped titles, decision-review cadence, seasonality expiry machinery, footer gloss). Its original S-20, S-31 and S-32 were dropped at merge rather than renumbered over main's rows: main already carries the crawl-control row (S-20), the seasonal-lane row (S-23) and the measured-queries row (S-21).",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-32 to S-35 continue main's board after the 2026-11-20 merge, renumbered because main took this session's draft ids while the branch was open. Three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session's de-indexing proposal was folded into main's S-20 and its Special-Link field became option D of main's S-02, for the same reason the board exists: one row per decision. S-28 and S-36 to S-40 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (design prompt of record, cluster linking, reader-shaped titles, decision-review cadence, seasonality expiry machinery, footer gloss) in the growth track; at merge they were renumbered from S-20 and S-33 to S-37 because main had taken those ids (S-20 crawl control; S-33 to S-35 other rows). Its original S-31 and S-32 were dropped rather than renumbered: main already carries the seasonal-lane row (S-23) and the measured-queries row (S-21).",
   "tracks": [
     {
       "id": "revenue",
@@ -1239,6 +1449,26 @@
       "order": 12,
       "id": "S-14",
       "why": "Do this first instead if you would rather stop the drift bugs than improve the look. It is the cheapest row here."
+    },
+    {
+      "order": 13,
+      "id": "S-32",
+      "why": "Shipped with this merge: answer-first summaries and computed reading stats on all seventeen guides."
+    },
+    {
+      "order": 14,
+      "id": "S-33",
+      "why": "Shipped: Article + BreadcrumbList + FAQPage graph. Do not expect rich results from it."
+    },
+    {
+      "order": 15,
+      "id": "S-34",
+      "why": "The only check that sees what a shopper sees, and deliberately manual (FLG-036, FLG-037)."
+    },
+    {
+      "order": 16,
+      "id": "S-35",
+      "why": "Shipped: eleven mis-citations was the evidence; the gate now tests meaning, not just existence."
     }
   ],
   "decision_log": []

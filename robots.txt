@@ -1,7 +1,12 @@
+# Root publication only: /Affil3/ is the site this repository maintains for readers.
+# Superseded editions live in the directories disallowed below; they are kept, not deleted.
 User-agent: *
 Allow: /
 Disallow: /editorial/
 Disallow: /legacy/
 Disallow: /crisp-index/
+Disallow: /counter/
+Disallow: /counterwise/
+Disallow: /counter-desk/
 
 Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml
