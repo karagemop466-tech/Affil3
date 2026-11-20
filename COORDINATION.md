@@ -2173,3 +2173,53 @@ marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own
 - Nothing is inferred. Any value not confirmable from an official source stays blank and flagged.
 - No price, rating, review count, or search-volume claim is published. Working titles stay labelled
   as hypotheses.
+
+## Session `arena/991c8230-affil3` — completion record (2026-11-20, log only)
+
+- **Tasks:** M-01 done (suggestions S-21…S-25), M-02 done (Q-18, Q-19, D-13, D-14), M-03 done
+  (fifth-round re-observation + FLG-040), M-04 done (`EXECUTIVE_SUMMARY-991c8230.md`),
+  M-05 done (integration: all gates run locally, PR, merge, Pages confirmation).
+- **PR #75:** https://github.com/karagemop466-tech/Affil3/pull/75 — opened from
+  `arena/991c8230-affil3`, CI checks (gate, verify, disclosure, check-site, Pages gate,
+  Counter Desk) all passing at merge time. **Merged** into `main` as merge commit
+  `2d30c089b2b7a091d715fec9c7e26ffd7f1d319b` at 2026-11-20T07:04:08Z
+  (`gh pr merge 75 --merge`, no --auto). First merge attempt was blocked because main had
+  advanced (PR #76/#77 window); origin/main was merged into the branch twice during the session,
+  keeping both coordination records and both sessions' register rows both times.
+- **Identifier collisions resolved by renumbering this session's rows at merge time:**
+  FLG-037 → FLG-040, S-20…S-24 → S-21…S-25, Q-17/Q-18 → Q-18/Q-19 (478e6577 had landed
+  colliding IDs while this session worked). No row from either session was dropped.
+- **GitHub Pages:** build for main's tip `fbbb7c3` (which includes PRs #77/#78 landed after
+  this session's merge, with this session's rows intact) reported `built`; HTTPS enforced;
+  source `main` at `/`. Live spot-check with a cache-busting URL:
+  https://karagemop466-tech.github.io/Affil3/suggestions/ renders S-20…S-25 with correct
+  cross-references and the disclosure strip above the fold. Note: an ordinary fetch right
+  after the build returned a stale CDN copy ending at S-19; the checked-in
+  `suggestions/index.html` on main contains 14 S-21…S-25 references, and the cache-busted
+  fetch serves them, so this was a cache artefact, not a deploy failure.
+- **Sources verified this session (dated 2026-11-20):** all five submitted short links and all
+  five `/dp/` product pages fetched first-hand by this session (results in
+  `data/observations/2026-11-20-991c8230-recheck.json`). Policy and USDA sources are cited as
+  previously verified by earlier sessions' dated rounds and are linked for manual review in
+  `EXECUTIVE_SUMMARY-991c8230.md`; they were not re-fetched here and no policy claim in this
+  session's rows rests on a new reading of them.
+- **Verification performed:** `npm run check` after every change (final: 40 pages, gate 4,644
+  checks 0 failed after the last merge, editorial 21 pages PASS); docs gates (build_site --check,
+  check_site 23 pages PASS, link_report --strict OK, check_all_links 0 broken); disclosure-check
+  PASS; archive-check PASS; counterwise gate clean; counter-desk gate 4,266/4,266; CI drift check
+  clean (the only dirty file ever produced was the tracked `scripts/__pycache__` bytecode, restored
+  each time).
+- **Irregularities found this session (published on /flagged/):** FLG-040 (new, low, this
+  session's homepage-only short-link round and the 'product summary' page variant). Two minor
+  observations that are not new flags: (1) `scripts/__pycache__/build_site.cpython-311.pyc` is
+  tracked although `.gitignore` lists `__pycache__/` and `*.pyc` — every run of the docs scripts
+  dirties the tree and would trip the CI drift check; recommended one-line fix by the file's
+  owner is `git rm --cached scripts/__pycache__/build_site.cpython-311.pyc`. (2) The c252594d
+  work-log describes its S-11…S-18 additions with topics that do not match the rows actually
+  landed in `data/suggestions.json` (e.g. 'design direction', 'distribution'); the rows on main
+  are different titles. Historical log-vs-data discrepancy recorded here for review; not edited
+  because it belongs to another session's record.
+- **Still blocked on the owner (unchanged):** intended-ASIN confirmation (FLG-002, Q-01),
+  Special Link test in Associates Central (G-02, Q-02/Q-03), analytics endpoint choice (S-03,
+  FLG-009), Search Console property (FLG-013, Q-12), privacy-notice review (Q-16), the
+  decision-board choices themselves (S-01…S-25).
