@@ -1911,3 +1911,43 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - **PR:** https://github.com/karagemop466-tech/Affil3/pull/59 — checks `disclosure`, `gate`, and `verify` all passed. Awaiting merge at the time this note was written.
 - **Completion record (session e52ea644):** PR #59 https://github.com/karagemop466-tech/Affil3/pull/59 — first merge attempt failed because main had advanced; merged `origin/main` into the branch, kept both coordination records (conflict only in this file), re-ran `npm run check` (40 pages, 4,588 checks, 0 failures), CI `disclosure`/`gate`/`verify`/`check-site`/Pages gate all passed. **Merged** into `main` as `c86d085b3e88e366ac41f23367b96aab9382cbf9`. Pages: latest build reported `built` for that commit; live https://karagemop466-tech.github.io/Affil3/flagged/ serves the current flagged page.
 - **Not done:** no intended ASIN, listing URL, or confirmation date set (FLG-002 owner step); no Associates Central Special Link test (G-02); no analytics endpoint, Search Console, or ledger data.
+
+---
+
+# Session `arena/59912c68-affil3` — root publication row-level citation integrity
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena/59912c68-affil3` | `arena/59912c68-affil3` | active | Root ShopNow publication only: row-level source citations in the generator and the verification gate, plus the generated root pages. Namespaced editions and archived surfaces are read-only. |
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| S599-T1 | Reconcile row-level product/source mismatches on the root publication and add gate coverage so a row can only cite its own listing | in progress | `arena/59912c68-affil3` | `data/products.json`, `data/guides.json`, `tools/build.mjs`, `tools/verify.mjs`, generated root pages, `COORDINATION.md` |
+
+## Review findings against the current `origin/main` (`c86d085`)
+
+The branch was rebased onto `origin/main` before this pass. Upstream had already advanced well past the
+earlier base: 13 guides, 36 flags, a ThermoMaven F1 Ace manufacturer page (S21), an expanded decision
+board (19 suggestions with tracks) and a design-brief page. That work is preserved; this session does
+not rewrite it. Three defects remain in the root publication and are in scope for this pass:
+
+1. **Generic S04/S05 citations on product pages.** `data/sources.json` defines S04 as one Amazon detail
+   page (P01's `B0CDY277D3`) and S05 as one submitted short link (P01's `B04G1MEwY`), but every product
+   row lists both. The generated product pages therefore link *P01's* listing and *P01's* submitted token
+   as the evidence for P02, P03, P04 and P05. A reader on the Emeril page is sent to the Chefman listing
+   to check the Emeril. This is the row-versus-source mismatch this pass exists to fix.
+2. **Guide rows cite a source ID that no longer matches its subject.** Four guides cite `S22` for Chefman
+   TurboFry Touch stainless-steel figures, but in the current register `S22` is the FTC Endorsement
+   Guides; the Chefman stainless page is `S23`. The `air-fryer-chicken-breast` guide additionally cites
+   `S11` and `S22` in its body without listing either in its declared sources.
+3. **No gate for either.** `tools/verify.mjs` checks that source IDs exist and that product pages name
+   their source IDs, but nothing checks that a row's link points at that row's own listing, that a
+   product page does not cite a sibling row's listing, or that a guide's in-text citations are declared.
+
+No external page was fetched in this session; every source cited is a record already in the repository
+register, and the manual re-check steps stay open on the flags.
+
