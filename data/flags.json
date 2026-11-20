@@ -1,230 +1,256 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
-  "flags": [
-    {
-      "id": "FLG-001",
-      "severity": "high",
-      "title": "Submitted tokens are 9 characters, not 10",
-      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.",
-      "sources": [
-        "S04",
-        "S05",
-        "S12"
-      ],
-      "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
-    },
-    {
-      "id": "FLG-002",
-      "severity": "high",
-      "title": "Observed destination ASIN differs from the token in the link",
-      "detail": "The short links resolved to different 10-character ASINs than the submitted token (for example B04G1MEwY resolved to B0CDY277D3). The observed destinations are recorded in separate fields and are not treated as the intended product. The site links to the observed destination only as a tagged, observed product (see FLG-005).",
-      "sources": [
-        "S04",
-        "S05"
-      ],
-      "manual_step": "Open each submitted short link in a signed-in browser and confirm the product shown. Confirm whether the intended product is the observed product before it is published as the buy link."
-    },
-    {
-      "id": "FLG-003",
-      "severity": "high",
-      "title": "Compliance status of the supplied short links is unresolved",
-      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.",
-      "sources": [
-        "S02",
-        "S05",
-        "S13"
-      ],
-      "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely."
-    },
-    {
-      "id": "FLG-004",
-      "severity": "high",
-      "title": "One submitted link (B00hJ57DV) initially appeared not to resolve to a product",
-      "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.",
-      "sources": [
-        "S05"
-      ],
-      "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
-      "status": "resolved",
-      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
-    },
-    {
-      "id": "FLG-005",
-      "severity": "high",
-      "title": "Tagged Special Links are not yet validated in Associates Central",
-      "detail": "The outbound links use the Associates tracking ID shopnow047c-20 in the /dp/ format (?tag=). Operating Agreement §1 defines Special Links as links in the tagged formats Amazon provides, and Participation Requirements §2 requires the tag as a URL parameter (S01, S02). The links have not been generated or tested in Associates Central, and no tracking report has been reviewed, because the sandbox has no Associates login. Gate G-02 requires one link per product to be validated before any scaling.",
-      "sources": [
-        "S01",
-        "S02",
-        "S04"
-      ],
-      "manual_step": "Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done."
-    },
-    {
-      "id": "FLG-006",
-      "severity": "medium",
-      "title": "Associates account status and declared site are unknown",
-      "detail": "Associates help states that tags must be embedded in links on the sites declared in the application (S11). The declared site URL and account approval status are unknown to this build. The qualifying-sales requirement (three within 180 days) is also stated (S11).",
-      "sources": [
-        "S11",
-        "S03"
-      ],
-      "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active."
-    },
-    {
-      "id": "FLG-007",
-      "severity": "medium",
-      "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
-      "sources": [
-        "S11"
-      ],
-      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
-    },
-    {
-      "id": "FLG-008",
-      "severity": "medium",
-      "title": "Measurement events were not defined in the brief",
-      "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
-      "sources": [],
-      "manual_step": "Confirm or replace the five events (question Q-05)."
-    },
-    {
-      "id": "FLG-009",
-      "severity": "high",
-      "title": "Analytics endpoint is not deployed; analytics is inactive on the live site",
-      "detail": "GitHub Pages serves static files and cannot run the collector. The client code is present but sends nothing until an endpoint is configured in data/config.json. The collector (tools/collector.mjs) is self-hostable. No clicks or conversions are being recorded on the live site yet.",
-      "sources": [],
-      "manual_step": "Choose a hosting option for the collector (suggestion S-03). Then set analyticsEndpoint in data/config.json and rebuild."
-    },
-    {
-      "id": "FLG-010",
-      "severity": "medium",
-      "title": "Disclosure placement needs manual review on real devices",
-      "detail": "The disclosure strip is placed under the masthead on every page and repeated in the footer, using the statement required by Operating Agreement §5 (S01). FTC guidance asks that disclosures be placed where they are hard to miss and near the link (S07, S08). Automated checks confirm presence, not visibility on a phone.",
-      "sources": [
-        "S01",
-        "S07",
-        "S08"
-      ],
-      "manual_step": "Open the live site on a phone-sized screen and confirm the strip is visible without scrolling on the home page and on a guide page."
-    },
-    {
-      "id": "FLG-011",
-      "severity": "low",
-      "title": "Tracking ID format matches Associates convention; ownership not confirmed",
-      "detail": "shopnow047c-20 ends in -20, the form Associates help describes for the US program (S03). The sandbox cannot confirm that the ID belongs to the signed-in account.",
-      "sources": [
-        "S03"
-      ],
-      "manual_step": "In Associates Central, confirm that shopnow047c-20 is listed as a tracking ID on the account."
-    },
-    {
-      "id": "FLG-012",
-      "severity": "medium",
-      "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
-      "sources": [
-        "S04",
-        "S12"
-      ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
-    },
-    {
-      "id": "FLG-013",
-      "severity": "medium",
-      "title": "Google Search Console is not connected",
-      "detail": "The sitemap and feed are generated, and robots.txt references the sitemap. Search Console ownership verification needs a signed-in Google account, which the sandbox does not have. No verification token has been created or added.",
-      "sources": [
-        "S06"
-      ],
-      "manual_step": "Add the site as a URL-prefix property in Search Console, verify it, and submit sitemap.xml."
-    },
-    {
-      "id": "FLG-014",
-      "severity": "low",
-      "title": "Author is a team byline, not a named person",
-      "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
-      "sources": [],
-      "manual_step": "Decide on a named author and bio (suggestion S-06)."
-    },
-    {
-      "id": "FLG-015",
-      "severity": "medium",
-      "title": "No product imagery is used",
-      "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).",
-      "sources": [
-        "S02"
-      ],
-      "manual_step": "Decide the imagery approach (suggestion S-05)."
-    },
-    {
-      "id": "FLG-016",
-      "severity": "medium",
-      "title": "Prices, ratings and availability are not recorded",
-      "detail": "Prices and ratings were visible only in carousel items on the fetched pages, not as confirmed values for the observed product. They change over time. Nothing is recorded or displayed, so no unverified number appears on the site.",
-      "sources": [
-        "S04"
-      ],
-      "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source."
-    },
-    {
-      "id": "FLG-017",
-      "severity": "medium",
-      "title": "Parallel sessions claim the same task on separate branches",
-      "detail": "Five other arena/*-affil3 branches on origin each claim the same overall task and each has its own COORDINATION.md. They were read (not modified) to check for overlap. Merging them to main will conflict. This branch builds at the repository root and uses its own file names to limit collisions, but a single integration branch should be chosen by the user. The other session's site (PR #1) is preserved unchanged at legacy/arena-83a43a96/ and is not linked from this site.",
-      "sources": [],
-      "manual_step": "Choose which branch becomes the integration branch, or close the others."
-    },
-    {
-      "id": "FLG-018",
-      "severity": "low",
-      "title": "Repository review: the starting repo had only a one-line README",
-      "detail": "The repository had one commit with a README.md containing '# Affil3'. No code, data, configuration or history beyond that was present, so there were no existing irregularities to review.",
-      "sources": [],
-      "manual_step": "None."
-    },
-    {
-      "id": "FLG-019",
-      "severity": "medium",
-      "title": "Branch naming request differs from the session rule",
-      "detail": "The brief asks for session-<id>/<task> branches. This session may only work on its assigned branch, arena/6249757a-affil3, so all work is committed there and the PR is opened from it.",
-      "sources": [],
-      "manual_step": "None unless you want a different naming policy."
-    },
-    {
-      "id": "FLG-020",
-      "severity": "high",
-      "title": "GitHub Pages source could not be changed from this session",
-      "detail": "The sandbox token returned HTTP 403 ('Resource not accessible by integration') when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings > Pages.",
-      "sources": [],
-      "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies."
-    },
-    {
-      "id": "FLG-021",
-      "severity": "low",
-      "title": "Thermometer guide omitted the FSIS ground-meat row; corrected",
-      "detail": "The guide 'Is your meat thermometer telling you the right number?' listed beef, poultry and ham minimums but omitted the FSIS row 'Ground Meats: 160 degrees F'. Corrected on 2026-11-20 by adding 'Ground meats: 160 °F.' to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.",
-      "sources": [
-        "S09",
-        "S10"
-      ],
-      "action": "None. Recorded for transparency."
-    },
-    {
-      "id": "FLG-022",
-      "title": "Two product destinations were transposed in the root-site register (corrected)",
-      "severity": "high",
-      "status": "resolved",
-      "area": "product data",
-      "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
-      "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
-      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
-      "sources": [
-        "S05"
-      ],
-      "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
-    }
-  ],
-  "checked": "2026-11-20"
+ "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+ "flags": [
+  {
+   "id": "FLG-001",
+   "severity": "high",
+   "title": "Submitted tokens are 9 characters, not 10",
+   "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.",
+   "sources": [
+    "S04",
+    "S05",
+    "S12"
+   ],
+   "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
+  },
+  {
+   "id": "FLG-002",
+   "severity": "high",
+   "title": "Observed destination ASIN differs from the token in the link",
+   "detail": "The short links resolved to different 10-character ASINs than the submitted token (for example B04G1MEwY resolved to B0CDY277D3). The observed destinations are recorded in separate fields and are not treated as the intended product. The site links to the observed destination only as a tagged, observed product (see FLG-005).",
+   "sources": [
+    "S04",
+    "S05"
+   ],
+   "manual_step": "Open each submitted short link in a signed-in browser and confirm the product shown. Confirm whether the intended product is the observed product before it is published as the buy link."
+  },
+  {
+   "id": "FLG-003",
+   "severity": "high",
+   "title": "Compliance status of the supplied short links is unresolved",
+   "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.",
+   "sources": [
+    "S02",
+    "S05",
+    "S13"
+   ],
+   "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely."
+  },
+  {
+   "id": "FLG-004",
+   "severity": "high",
+   "title": "One submitted link (B00hJ57DV) initially appeared not to resolve to a product",
+   "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.",
+   "sources": [
+    "S05"
+   ],
+   "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
+   "status": "resolved",
+   "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
+  },
+  {
+   "id": "FLG-005",
+   "severity": "high",
+   "title": "Tagged Special Links are not yet validated in Associates Central",
+   "detail": "The outbound links use the Associates tracking ID shopnow047c-20 in the /dp/ format (?tag=). Operating Agreement §1 defines Special Links as links in the tagged formats Amazon provides, and Participation Requirements §2 requires the tag as a URL parameter (S01, S02). The links have not been generated or tested in Associates Central, and no tracking report has been reviewed, because the sandbox has no Associates login. Gate G-02 requires one link per product to be validated before any scaling.",
+   "sources": [
+    "S01",
+    "S02",
+    "S04"
+   ],
+   "manual_step": "Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done."
+  },
+  {
+   "id": "FLG-006",
+   "severity": "medium",
+   "title": "Associates account status and declared site are unknown",
+   "detail": "Associates help states that tags must be embedded in links on the sites declared in the application (S11). The declared site URL and account approval status are unknown to this build. The qualifying-sales requirement (three within 180 days) is also stated (S11).",
+   "sources": [
+    "S11",
+    "S03"
+   ],
+   "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active."
+  },
+  {
+   "id": "FLG-007",
+   "severity": "medium",
+   "title": "Content depth is below the official 'robust content' rule of thumb",
+   "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
+   "sources": [
+    "S11"
+   ],
+   "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
+  },
+  {
+   "id": "FLG-008",
+   "severity": "medium",
+   "title": "Measurement events were not defined in the brief",
+   "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
+   "sources": [],
+   "manual_step": "Confirm or replace the five events (question Q-05)."
+  },
+  {
+   "id": "FLG-009",
+   "severity": "high",
+   "title": "Analytics endpoint is not deployed; analytics is inactive on the live site",
+   "detail": "GitHub Pages serves static files and cannot run the collector. The client code is present but sends nothing until an endpoint is configured in data/config.json. The collector (tools/collector.mjs) is self-hostable. No clicks or conversions are being recorded on the live site yet.",
+   "sources": [],
+   "manual_step": "Choose a hosting option for the collector (suggestion S-03). Then set analyticsEndpoint in data/config.json and rebuild."
+  },
+  {
+   "id": "FLG-010",
+   "severity": "medium",
+   "title": "Disclosure placement needs manual review on real devices",
+   "detail": "The disclosure strip is placed under the masthead on every page and repeated in the footer, using the statement required by Operating Agreement §5 (S01). FTC guidance asks that disclosures be placed where they are hard to miss and near the link (S07, S08). Automated checks confirm presence, not visibility on a phone.",
+   "sources": [
+    "S01",
+    "S07",
+    "S08"
+   ],
+   "manual_step": "Open the live site on a phone-sized screen and confirm the strip is visible without scrolling on the home page and on a guide page."
+  },
+  {
+   "id": "FLG-011",
+   "severity": "low",
+   "title": "Tracking ID format matches Associates convention; ownership not confirmed",
+   "detail": "shopnow047c-20 ends in -20, the form Associates help describes for the US program (S03). The sandbox cannot confirm that the ID belongs to the signed-in account.",
+   "sources": [
+    "S03"
+   ],
+   "manual_step": "In Associates Central, confirm that shopnow047c-20 is listed as a tracking ID on the account."
+  },
+  {
+   "id": "FLG-012",
+   "severity": "medium",
+   "title": "No Amazon-owned ASIN definition was retrieved",
+   "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
+   "sources": [
+    "S04",
+    "S12"
+   ],
+   "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+  },
+  {
+   "id": "FLG-013",
+   "severity": "medium",
+   "title": "Google Search Console is not connected",
+   "detail": "The sitemap and feed are generated, and robots.txt references the sitemap. Search Console ownership verification needs a signed-in Google account, which the sandbox does not have. No verification token has been created or added.",
+   "sources": [
+    "S06"
+   ],
+   "manual_step": "Add the site as a URL-prefix property in Search Console, verify it, and submit sitemap.xml."
+  },
+  {
+   "id": "FLG-014",
+   "severity": "low",
+   "title": "Author is a team byline, not a named person",
+   "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
+   "sources": [],
+   "manual_step": "Decide on a named author and bio (suggestion S-06)."
+  },
+  {
+   "id": "FLG-015",
+   "severity": "medium",
+   "title": "No product imagery is used",
+   "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).",
+   "sources": [
+    "S02"
+   ],
+   "manual_step": "Decide the imagery approach (suggestion S-05)."
+  },
+  {
+   "id": "FLG-016",
+   "severity": "medium",
+   "title": "Prices, ratings and availability are not recorded",
+   "detail": "Prices and ratings were visible only in carousel items on the fetched pages, not as confirmed values for the observed product. They change over time. Nothing is recorded or displayed, so no unverified number appears on the site.",
+   "sources": [
+    "S04"
+   ],
+   "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source."
+  },
+  {
+   "id": "FLG-017",
+   "severity": "medium",
+   "title": "Parallel sessions claim the same task on separate branches",
+   "detail": "Five other arena/*-affil3 branches on origin each claim the same overall task and each has its own COORDINATION.md. They were read (not modified) to check for overlap. Merging them to main will conflict. This branch builds at the repository root and uses its own file names to limit collisions, but a single integration branch should be chosen by the user. The other session's site (PR #1) is preserved unchanged at legacy/arena-83a43a96/ and is not linked from this site.",
+   "sources": [],
+   "manual_step": "Choose which branch becomes the integration branch, or close the others."
+  },
+  {
+   "id": "FLG-018",
+   "severity": "low",
+   "title": "Repository review: the starting repo had only a one-line README",
+   "detail": "The repository had one commit with a README.md containing '# Affil3'. No code, data, configuration or history beyond that was present, so there were no existing irregularities to review.",
+   "sources": [],
+   "manual_step": "None."
+  },
+  {
+   "id": "FLG-019",
+   "severity": "medium",
+   "title": "Branch naming request differs from the session rule",
+   "detail": "The brief asks for session-<id>/<task> branches. This session may only work on its assigned branch, arena/6249757a-affil3, so all work is committed there and the PR is opened from it.",
+   "sources": [],
+   "manual_step": "None unless you want a different naming policy."
+  },
+  {
+   "id": "FLG-020",
+   "severity": "high",
+   "title": "GitHub Pages source could not be changed from this session",
+   "detail": "The sandbox token returned HTTP 403 ('Resource not accessible by integration') when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings > Pages.",
+   "sources": [],
+   "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies."
+  },
+  {
+   "id": "FLG-021",
+   "severity": "low",
+   "title": "Thermometer guide omitted the FSIS ground-meat row; corrected",
+   "detail": "The guide 'Is your meat thermometer telling you the right number?' listed beef, poultry and ham minimums but omitted the FSIS row 'Ground Meats: 160 degrees F'. Corrected on 2026-11-20 by adding 'Ground meats: 160 °F.' to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.",
+   "sources": [
+    "S09",
+    "S10"
+   ],
+   "action": "None. Recorded for transparency."
+  },
+  {
+   "id": "FLG-022",
+   "title": "Two product destinations were transposed in the root-site register (corrected)",
+   "severity": "high",
+   "status": "resolved",
+   "area": "product data",
+   "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
+   "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
+   "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
+   "sources": [
+    "S05"
+   ],
+   "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+  },
+  {
+   "id": "FLG-023",
+   "title": "CI freshness gate diffed a directory that does not exist; committed editorial CSS was stale (corrected)",
+   "severity": "medium",
+   "status": "resolved",
+   "area": "build pipeline",
+   "detail": ".github/workflows/verify.yml rebuilt the site with tools/build.py and then asserted 'git diff --quiet -- docs'. The builder writes editorial/ (and the root builder writes the repo root); docs/ does not exist, so the freshness gate always passed without checking anything. Evidence that this mattered: on 2026-11-20 (session arena-2e0c91d0-affil3) a fresh 'python3 tools/build.py' produced a diff in editorial/assets/site.css — the committed file was missing the resolved-flag styles the current builder emits — while CI on main reported success.",
+   "impact": "The live /Affil3/editorial/ site shipped without styles for resolved-flag badges; more generally, any stale generated output would have passed CI silently.",
+   "resolution": "Workflow now runs both builders (node tools/build.mjs and python3 tools/build.py), asserts the whole working tree is clean afterwards, and runs both gates (node tools/verify.mjs and python3 tools/check_site.py). The regenerated editorial/assets/site.css is committed in the same change.",
+   "sources": [],
+   "detected_by": "session arena/2e0c91d0-affil3, repo review: ran both builders against the committed tree and compared with CI behaviour on main"
+  },
+  {
+   "id": "FLG-024",
+   "title": "The two published sites take opposite outbound-link positions",
+   "severity": "high",
+   "area": "compliance / editorial",
+   "detail": "The root site (https://karagemop466-tech.github.io/Affil3/) renders 'View on Amazon' buttons linking to https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20, marked rel=\"sponsored\" and annotated 'Associates link check pending (gate G-02)'. The editorial site (/Affil3/editorial/) withholds every outbound button ('Outbound link withheld', citing its own FLG-003) on the reasoning that no supplied link carries the tracking tag and Special Links are not yet validated in Associates Central. Both positions are defensible, but publishing both at once means the site's own compliance posture is inconsistent, and the root buttons point at observed-redirect ASINs whose intended-ASIN confirmation is still open (FLG-001, FLG-002, Q-01).",
+   "manual_step": "Choose one policy for both publications via suggestion S-13 (options: keep tagged buttons everywhere, withhold everywhere until gate G-02 passes, or retire one of the two publications). Until then, treat the root-site buttons as the riskier of the two positions.",
+   "sources": [
+    "S01",
+    "S02",
+    "S05"
+   ],
+   "detected_by": "session arena/2e0c91d0-affil3, side-by-side review of index.html and editorial/index.html"
+  }
+ ],
+ "checked": "2026-11-20"
 }

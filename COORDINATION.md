@@ -451,14 +451,18 @@ No other session had claimed work on `main` @ `9287de5` at the time of this clai
 
 | ID | Task | Status | Owner | Files touched |
 | --- | --- | --- | --- | --- |
-| R1 | Repo review line by line; run both builders and both gates; flag irregularities | in progress | `2e0c91d0` | COORDINATION.md, data/flags.json |
-| R2 | Re-verify official sources reachable today (S01 Operating Agreement; submitted short links) and record the re-check | in progress | `2e0c91d0` | data/sources.json, data/observations/2026-11-20-session-2e0c91d0.json |
-| R3 | Fix the CI freshness gate (workflow diffed `docs/`, which does not exist; the build writes `editorial/` and the repo root) | unclaimed->claimed | `2e0c91d0` | .github/workflows/verify.yml |
-| R4 | Commit the stale regenerated editorial output (`editorial/assets/site.css`) | claimed | `2e0c91d0` | editorial/assets/site.css |
-| R5 | Decision-board updates: new suggestion for the two-publication outbound-link divergence; new flags | claimed | `2e0c91d0` | data/suggestions.json, data/flags.json, rebuilt root pages |
-| R6 | Executive summary for this session | claimed | `2e0c91d0` | EXECUTIVE_SUMMARY-2e0c91d0.md |
+| R1 | Repo review line by line; run both builders and both gates; flag irregularities | done | `2e0c91d0` | COORDINATION.md, data/flags.json |
+| R2 | Re-verify official sources reachable today (S01 Operating Agreement; submitted short links) and record the re-check | done | `2e0c91d0` | data/sources.json, data/observations/2026-11-20-session-2e0c91d0.json |
+| R3 | Fix the CI freshness gate (workflow diffed `docs/`, which does not exist; the build writes `editorial/` and the repo root) | done | `2e0c91d0` | .github/workflows/verify.yml |
+| R4 | Commit the stale regenerated editorial output (`editorial/assets/site.css`) | done | `2e0c91d0` | editorial/assets/site.css |
+| R5 | Decision-board updates: new suggestion for the two-publication outbound-link divergence; new flags | done | `2e0c91d0` | data/suggestions.json, data/flags.json, rebuilt root pages |
+| R6 | Executive summary for this session | done | `2e0c91d0` | EXECUTIVE_SUMMARY-2e0c91d0.md |
 | R7 | Integration: gates green, PR to main, merge, Pages deploy verification, record result | claimed | `2e0c91d0` | this file |
 
 ## Work log
 
 - 2026-11-20 — Claimed R1–R7 on `arena/2e0c91d0-affil3`. Ran `node tools/build.mjs && node tools/verify.mjs`: 23 pages, 1316 checks, 0 failed; root output fresh (no diff). Ran `python3 tools/build.py && python3 tools/check_site.py`: 21 pages, PASS, but the rebuild produced a diff in `editorial/assets/site.css` — the committed editorial CSS was stale (missing the resolved-flag styles the current builder emits). CI did not catch it because `verify.yml` asserts freshness against `docs/`, a directory that does not exist (the Python builder writes `editorial/`). Irregularities logged as FLG-023 (fixed this session) and FLG-024 (owner decision; see S-13).
+- 2026-11-20 — R2 verification. S01 (Operating Agreement) re-fetched in full: header still "Updated: October 15, 2025"; §1 Special Links definition and §2 compliance text match the register's `used_for`. Two submitted short links re-fetched: `B04G1MEwY → https://www.amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Qt Dual Basket Air Fryer Oven) and `B02NbDxp3 → https://www.amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT French Door Air Fryer Toaster Oven); both agree with the register, neither final URL carried `tag=`. One transient HTTP 502 on the first attempt at B02NbDxp3; retry succeeded. Recorded in `data/observations/2026-11-20-session-2e0c91d0.json`; re-check notes appended to S01/S05 `method` fields. Intended ASINs untouched (still blank; FLG-001/FLG-002/Q-01 unchanged).
+- 2026-11-20 — R3/R4 fix. `verify.yml` now: setup Node 20, run `node tools/build.mjs` **and** `python3 tools/build.py`, fail if the working tree is dirty afterwards, then run `node tools/verify.mjs` and `python3 tools/check_site.py`. The regenerated `editorial/assets/site.css` is committed. Logged as FLG-023 (resolved).
+- 2026-11-20 — R5 decision board. FLG-024 added (open, high): root site shows tagged `/dp/?tag=shopnow047c-20` buttons while the editorial site withholds all outbound buttons — one compliance question, two opposite answers, both live. S-13 added with options A–D and a recommendation (C now, then D). Root site regenerated: `/flagged/` and `/suggestions/` carry both.
+- 2026-11-20 — Gates after all changes: root 23 pages / 1322 checks / 0 failed; editorial 21 pages / PASS. Fresh rebuild of both leaves the tree clean (the exact assertion the new CI makes).

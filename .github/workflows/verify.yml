@@ -18,14 +18,27 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Rebuild the site from the registers
-        run: python3 tools/build.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      # Both builders run: tools/build.mjs regenerates the root site (index.html,
+      # shop/, guides/, dashboards, sitemap.xml, feed.xml) and tools/build.py
+      # regenerates the editorial site into editorial/. There is no docs/ output;
+      # an earlier revision of this workflow diffed docs/, so the freshness gate
+      # never fired (FLG-023).
+      - name: Rebuild both sites from the registers
+        run: |
+          node tools/build.mjs
+          python3 tools/build.py
       - name: Assert committed output matches a fresh build
         run: |
-          if ! git diff --quiet -- docs; then
-            echo "::error::docs/ is out of date with data/. Run tools/build.py and commit."
-            git diff --stat -- docs
+          if ! git diff --quiet || [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Generated site is out of date with data/. Run 'node tools/build.mjs && python3 tools/build.py' and commit the output."
+            git status --porcelain
+            git diff --stat
             exit 1
           fi
-      - name: Gate - links, prices, ratings, tracking tags, disclosures, sitemap
+      - name: Gate - root site (links, disclosures, tracking tags, sitemap, feed)
+        run: node tools/verify.mjs
+      - name: Gate - editorial site (links, prices, ratings, tracking tags, disclosures, sitemap)
         run: python3 tools/check_site.py

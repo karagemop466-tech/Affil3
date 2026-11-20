@@ -189,6 +189,20 @@
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   
 </section>
+<section class="flag-card is-resolved" id="FLG-023">
+  <p class="flag-head"><span class="badge flag">FLG-023</span> <span class="badge sev-medium">medium</span> <strong>CI freshness gate diffed a directory that does not exist; committed editorial CSS was stale (corrected)</strong> <span class="badge resolved">resolved</span></p>
+  <p>.github/workflows/verify.yml rebuilt the site with tools/build.py and then asserted &#39;git diff --quiet -- docs&#39;. The builder writes editorial/ (and the root builder writes the repo root); docs/ does not exist, so the freshness gate always passed without checking anything. Evidence that this mattered: on 2026-11-20 (session arena-2e0c91d0-affil3) a fresh &#39;python3 tools/build.py&#39; produced a diff in editorial/assets/site.css — the committed file was missing the resolved-flag styles the current builder emits — while CI on main reported success.</p>
+  <p class="resolution"><strong>Resolution:</strong> Workflow now runs both builders (node tools/build.mjs and python3 tools/build.py), asserts the whole working tree is clean afterwards, and runs both gates (node tools/verify.mjs and python3 tools/check_site.py). The regenerated editorial/assets/site.css is committed in the same change.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  
+</section>
+<section class="flag-card" id="FLG-024">
+  <p class="flag-head"><span class="badge flag">FLG-024</span> <span class="badge sev-high">high</span> <strong>The two published sites take opposite outbound-link positions</strong></p>
+  <p>The root site (https://karagemop466-tech.github.io/Affil3/) renders &#39;View on Amazon&#39; buttons linking to https://www.amazon.com/dp/&lt;observed ASIN&gt;?tag=shopnow047c-20, marked rel=&quot;sponsored&quot; and annotated &#39;Associates link check pending (gate G-02)&#39;. The editorial site (/Affil3/editorial/) withholds every outbound button (&#39;Outbound link withheld&#39;, citing its own FLG-003) on the reasoning that no supplied link carries the tracking tag and Special Links are not yet validated in Associates Central. Both positions are defensible, but publishing both at once means the site&#39;s own compliance posture is inconsistent, and the root buttons point at observed-redirect ASINs whose intended-ASIN confirmation is still open (FLG-001, FLG-002, Q-01).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
+  <p class="small"><strong>Manual step:</strong> Choose one policy for both publications via suggestion S-13 (options: keep tagged buttons everywhere, withhold everywhere until gate G-02 passes, or retire one of the two publications). Until then, treat the root-site buttons as the riskier of the two positions.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
