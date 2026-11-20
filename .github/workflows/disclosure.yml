@@ -1,0 +1,35 @@
+name: Disclosure and archive integrity
+
+# Independent second gate. The editorial edition's verify.yml already checks
+# 1638 assertions; this workflow adds the two things it does not cover:
+#
+#   1. The FTC's own example disclosure wording appears above the fold on every
+#      published page. Amazon Operating Agreement section 5 requires the
+#      Associates statement; the FTC requires wording a reader understands, and
+#      its published example is the sentence checked here. Both are required.
+#   2. Archived editions under legacy/ keep resolving their own links, so the
+#      record stays readable rather than decaying into broken pages.
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  disclosure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Every published page carries both statements, above the fold
+        run: node tools/disclosure-check.mjs
+
+      - name: Archived editions still resolve
+        run: node tools/archive-check.mjs

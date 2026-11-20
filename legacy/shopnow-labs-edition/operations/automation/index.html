@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automation and gates — ShopNow Labs</title>
+<meta name="description" content="What is automated in this build, what is refused on policy grounds, and the exact checks that block publication.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/operations/automation/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow Labs">
+<meta property="og:title" content="Automation and gates — ShopNow Labs">
+<meta property="og:description" content="What is automated in this build, what is refused on policy grounds, and the exact checks that block publication.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/operations/automation/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fbf8f3">
+<meta name="generator" content="ShopNow Labs static desk v1">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Labs — new guides" href="../../feed.xml">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<script defer src="../../assets/js/analytics-config.js"></script>
+<script defer src="../../assets/js/shop.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <a class="brand" href="../../index.html">
+      <span class="brand__mark">ShopNow<em>.</em>Labs</span>
+      <span class="brand__tag">Countertop buying desk</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../../buying-guides/index.html">Guides</a><a href="../../air-fryers/index.html">Air fryers</a><a href="../../thermometers/index.html">Thermometers</a><a href="../../how-we-pick/index.html">How we pick</a>
+      <a class="nav__cta" href="../../buying-guides/index.html">Start with a guide</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap">
+    <span class="disclosure__tag">Disclosure</span>
+    <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links are marked <strong>paid</strong> and open Amazon in a new tab. <a href="../../disclosure/index.html">How this works</a></span>
+  </div>
+</div>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span>Operations<span>/</span>Automation</nav>
+
+<section class="article-head wrap">
+  <p class="kicker">Automation and gates</p>
+  <h1>What the machine does, and what it refuses to do</h1>
+  <p class="lede">The rule for this site: automate anything that can be checked deterministically, and put a hard gate in front of anything that requires a judgement. A build that fails is cheaper than a page that is wrong.</p>
+  <div class="article-head__meta"><span>Updated 2026-11-20</span><span>Runs on every push</span></div>
+</section>
+<section class="section wrap">
+  <div class="callout callout--warn" style="margin-bottom:1.75rem"><span class="callout__label">Read this first</span><p class="small" style="margin:0">The original brief asked for an engine that researches products, writes articles and optimises campaigns automatically. Two of those are constrained by Amazon's own policies and one cannot be done without data the site does not have yet. The table below says which is which rather than pretending all three shipped.</p></div>
+
+  <h2>The boundary</h2>
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Task</th><th>Automated?</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Page generation from data</td><td><span class="chip chip--ok">yes</span></td><td>Deterministic. Every page is built from <code>data/*.json</code>, so a fact changes in one place and can never disagree with itself across pages.</td></tr>
+        <tr><td>Sitemap, feed, robots</td><td><span class="chip chip--ok">yes</span></td><td>Generated at build time from the same guide registry that generates the pages. A new guide cannot be missing from the sitemap or the feed.</td></tr>
+        <tr><td>Link resolution check</td><td><span class="chip chip--ok">yes</span></td><td>The validator fails the build if a published product's intended ASIN disagrees with the recorded observation, or if any product link lacks the tag parameter.</td></tr>
+        <tr><td>Disclosure presence</td><td><span class="chip chip--ok">yes</span></td><td>The validator fails the build if any page is missing either the FTC wording or the Amazon Associates statement, or if a paid link is not labelled.</td></tr>
+        <tr><td>Broken internal links</td><td><span class="chip chip--ok">yes</span></td><td>Every internal href is resolved against the generated file tree; the build fails on a 404.</td></tr>
+        <tr><td>Price and availability</td><td><span class="chip chip--stop">refused</span></td><td>Not permitted unless Amazon serves the data or it comes from the Creators API. No credentials exist, so the site publishes none.</td></tr>
+        <tr><td>Article generation from listing text</td><td><span class="chip chip--stop">refused</span></td><td>Amazon prohibits using Program Content to develop machine learning models without prior written approval.</td></tr>
+        <tr><td>Automatic product selection</td><td><span class="chip chip--flag">gated</span></td><td>Topics and products are an editorial judgement with a legal consequence. The machine can check a choice; it cannot defend one.</td></tr>
+        <tr><td>Campaign optimisation</td><td><span class="chip chip--muted">not possible yet</span></td><td>Requires measured click and order data. The instrument is shipped and dormant; the collector is not configured.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What the gate actually checks</h2>
+  <p><code>tools/validate.mjs</code> runs on every push and blocks publication on any of the following. These are hard failures, not warnings.</p>
+  <ol>
+    <li><strong>Disclosure present on every page.</strong> Both the FTC wording and the exact Amazon Associates statement must appear in the HTML.</li>
+    <li><strong>Every outbound Amazon link is tagged and labelled.</strong> The <code>tag=shopnow047c-20</code> parameter must be present, the link must carry <code>rel="sponsored"</code>, and the literal words <em>Paid link</em> must sit beside it.</li>
+    <li><strong>Identity agreement.</strong> For every published product, <code>intended_asin</code> must equal the ASIN embedded in <code>intended_listing_url</code>, and the resolution status must be <code>resolved</code>.</li>
+    <li><strong>No price or rating leakage.</strong> A currency pattern or a star-rating pattern in the generated HTML fails the build, because both are things this site has decided never to publish.</li>
+    <li><strong>No unresolved product in the catalogue.</strong> A product without a verified ASIN cannot be marked published.</li>
+    <li><strong>Internal links resolve.</strong> Every relative href must correspond to a generated file.</li>
+    <li><strong>Structured data parses.</strong> Every JSON-LD block is parsed and required fields are asserted.</li>
+    <li><strong>Sitemap and feed agree with the pages.</strong> Every indexable route appears in the sitemap exactly once.</li>
+  </ol>
+  <p class="small muted">The gate is deliberately blunt. It cannot tell whether a sentence is true — that remains a human job — but it can make the mechanical failures impossible to ship.</p>
+
+  <h2>Product data path, if API access is ever granted</h2>
+  <p>Any future automation must target the <strong>Creators API</strong>. PA-API 5 is deprecated and returns an access-denied error to integrations that still call it. <a href="../../review/sources/#C-13">C-13</a></p>
+  <ol>
+    <li>Obtain credentials: a key pair plus the Associates tag, both assigned to this account. <a href="../../review/sources/#C-14">C-14</a></li>
+    <li>Fetch only the fields the design uses. Do not cache image content; the licence limits even a stored image link to 24 hours. <a href="../../review/sources/#C-12">C-12</a></li>
+    <li>Render price only inside an Amazon-served element, and never in a cross-retailer comparison without both the lowest new and lowest used price. <a href="../../review/sources/#C-09">C-09</a> <a href="../../review/sources/#C-10">C-10</a></li>
+    <li>Re-verify at build time that no cached figure is older than the permitted window.</li>
+  </ol>
+
+  <h2>What is not automated, on purpose</h2>
+  <ul>
+    <li>Choosing which product to recommend. That carries a legal disclosure obligation, so a named editor owns it.</li>
+    <li>Writing the prose. A model may not be fed listing content, so there is no compliant way to generate these articles from the data the site holds.</li>
+    <li>Deciding whether a claim is true. The validator checks that a source exists for a claim; it cannot check that the source says what we think it says.</li>
+    <li>Publishing a new guide. A new file appears in the sitemap and feed automatically, but the gate runs first and a human signs the page.</li>
+  </ul>
+
+  <div class="callout">
+    <span class="callout__label">Failure direction</span>
+    <p class="small" style="margin:0">When the gate is unsure, it fails the build. A blocked deploy costs an hour; a published page with a missing disclosure or an untagged link costs the account.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html"><span class="brand__mark">ShopNow<em>.</em>Labs</span></a>
+        <p style="margin-top:.7rem">A small buying desk for countertop cooking appliances. We publish the reasoning, not just the ranking.</p>
+        <p class="tiny" style="margin-top:.7rem">Tracking ID <code>shopnow047c-20</code> · Amazon.com</p>
+      </div>
+      <div>
+      <h3>The desk</h3>
+      <ul><li><a href="../../buying-guides/index.html">All buying guides</a></li><li><a href="../../air-fryers/index.html">Air fryers</a></li><li><a href="../../thermometers/index.html">Thermometers</a></li><li><a href="../../how-we-pick/index.html">How we pick</a></li><li><a href="../../collections/index.html">Seasonal collections</a></li></ul>
+    </div><div>
+      <h3>Review room</h3>
+      <ul><li><a href="../../review/executive-summary/index.html">Executive summary</a></li><li><a href="../../review/flagged-for-review/index.html">Flagged for review</a></li><li><a href="../../review/suggestions/index.html">Suggestion register</a></li><li><a href="../../review/questions/index.html">Open questions</a></li><li><a href="../../review/product-register/index.html">Product register</a></li></ul>
+    </div><div>
+      <h3>Operations</h3>
+      <ul><li><a href="index.html">Automation & gates</a></li><li><a href="../measurement/index.html">Measurement plan</a></li><li><a href="../../review/campaign-ledger/index.html">Campaign ledger</a></li><li><a href="../../review/sources/index.html">Source register</a></li></ul>
+    </div><div>
+      <h3>The fine print</h3>
+      <ul><li><a href="../../disclosure/index.html">Disclosure</a></li><li><a href="../../privacy/index.html">Privacy</a></li><li><a href="../../editorial-standards/index.html">Editorial standards</a></li><li><a href="../../contact/index.html">Contact</a></li><li><a href="../../index.html">Archived editions</a></li></ul>
+    </div>
+    </div>
+    <div class="footer__legal">
+      <p class="assoc"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> I get commissions for purchases made through links in this post.</p>
+      <p>Prices and availability are shown on Amazon and can change at any time. We do not publish prices on this site. Product names, logos and brands are the property of their respective owners and are used for identification only. This site is not endorsed by or affiliated with any brand mentioned.</p>
+      <p>© 2026 ShopNow Labs. Editorial content published 2026-11-20. <a href="../../privacy/index.html">Privacy</a> · <a href="../../disclosure/index.html">Disclosure</a> · <a href="../../review/flagged-for-review/index.html">Known gaps</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
