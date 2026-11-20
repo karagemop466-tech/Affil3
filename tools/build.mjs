@@ -65,6 +65,7 @@ const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<
 const href = (p) => cfg.basePath + p;
 const abs = (p) => cfg.siteUrl + p;
 const hostOf = (u) => { try { return new URL(u).hostname; } catch { return ''; } };
+const hostCount = new Set(sourcesDoc.sources.map((s) => hostOf(s.url)).filter(Boolean)).size;
 const isAmazon = (u) => /(^|\.)amazon\.com$/.test(hostOf(u)) || hostOf(u) === 'link.amazon';
 const relFor = (u) => (isAmazon(u) ? 'sponsored noopener' : 'noopener external');
 const ext = (u, text, attrs = '') => `<a href="${esc(u)}" rel="${relFor(u)}"${attrs}>${esc(text)}</a>`;
@@ -741,10 +742,33 @@ add({
   path: '/sources/', title: 'Source register',
   description: 'Every source used, how it was checked, and its status.',
   body: `<section class="page-head"><p class="kicker">Source register</p><h1>Sources and how they were checked</h1><p class="deck">${esc(sourcesDoc.note)}</p></section>
-${table(['ID', 'Source', 'Publisher', 'Checked', 'Used for', 'Status', 'Link'], sourcesDoc.sources.map((s) => [
-    `<strong id="${esc(s.id)}">${esc(s.id)}</strong>`, esc(s.title), esc(s.publisher), esc(s.method), esc(s.used_for), esc(s.status),
-    s.url ? ext(s.url, 'open source', '') : '<span class="muted">none</span>',
-  ]), 'wide')}`,
+<section class="band">
+  <h2>At a glance</h2>
+  <p class="small muted">${sourcesDoc.sources.length} sources, ${hostCount} distinct hosts. Every one was read on ${esc(dateLong(cfg.lastReviewed))}. The five marketplace rows (S04, S05, S16) are pages this site observed directly rather than documents it was given.</p>
+  ${table(['ID', 'Source', 'What it settles', 'Link'], sourcesDoc.sources.map((s) => [
+    `<a href="#${esc(s.id)}"><strong>${esc(s.id)}</strong></a>`,
+    `<strong>${esc(s.title)}</strong><br><span class="small muted">${esc(s.publisher)}</span>`,
+    esc(s.used_for),
+    s.url ? ext(s.url, hostOf(s.url), '') : '<span class="muted">none</span>',
+  ]), 'wide')}
+</section>
+<section class="band band-alt">
+  <h2>How each one was checked</h2>
+  <p class="small muted">The exact wording relied on, and how the page was reached. A source with no quote is used for context only, not for a factual claim.</p>
+  <div class="src-list">
+  ${sourcesDoc.sources.map((s) => `<article class="src-card" id="${esc(s.id)}">
+    <p class="src-head"><span class="badge">${esc(s.id)}</span> <strong>${esc(s.title)}</strong></p>
+    <dl class="src-meta">
+      <div><dt>Publisher</dt><dd>${esc(s.publisher)}</dd></div>
+      <div><dt>Checked</dt><dd>${esc(s.last_checked || '')}</dd></div>
+      <div><dt>How</dt><dd>${esc(s.method)}</dd></div>
+      <div><dt>Status</dt><dd>${esc(s.status)}</dd></div>
+    </dl>
+    ${s.quote ? `<blockquote class="src-quote">${esc(s.quote)}</blockquote>` : ''}
+    <p class="small">${ext(s.url, 'Open the official page →')}</p>
+  </article>`).join('\n')}
+  </div>
+</section>`,
 });
 
 // Questions

@@ -281,3 +281,12 @@ table.wide .blank { background: repeating-linear-gradient(45deg, transparent, tr
 .flag-card.is-resolved { opacity: .82; border-left: 3px solid var(--good, #2f7d5d); }
 .badge.resolved { background: #e4f0e9; color: #235c45; }
 p.resolution { background: #eef5f1; border-left: 3px solid #2f7d5d; padding: 9px 12px; border-radius: 8px; font-size: 14.5px; }
+
+/* ---- source register: at-a-glance table + per-source cards ---- */
+.src-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px; margin-top: 16px; }
+.src-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+.src-head { margin: 0 0 10px; font-size: 15px; line-height: 1.35; display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.src-meta { display: grid; grid-template-columns: 1fr; gap: 7px; margin: 0 0 10px; }
+.src-meta dt { font: 700 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 3px; }
+.src-meta dd { margin: 0; font-size: 13.5px; color: var(--ink); }
+.src-quote { margin: 0 0 10px; padding: 10px 13px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 13.5px; font-style: italic; color: var(--ink); }
