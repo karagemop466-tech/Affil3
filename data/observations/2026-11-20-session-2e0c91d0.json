@@ -1,0 +1,33 @@
+{
+  "_about": "Dated re-check of two submitted short links and of S01 by session arena-2e0c91d0-affil3. Kept separate from intent: intended ASINs remain blank in data/products.json. Observations only; no site field was changed by this re-check.",
+  "retest_date": "2026-11-20",
+  "session": "arena-2e0c91d0-affil3",
+  "method": "Unauthenticated platform page fetch of each short link, following redirects, with no Associates session. Final URL and page title recorded.",
+  "links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "retest_final_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "retest_observed_asin": "B0CDY277D3",
+      "retest_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "final_url_had_tag": false,
+      "agrees_with_register": true
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "retest_final_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "retest_observed_asin": "B09B7SB46R",
+      "retest_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "final_url_had_tag": false,
+      "agrees_with_register": true,
+      "note": "First fetch attempt returned HTTP 502 (transient); retry succeeded."
+    }
+  ],
+  "policy_recheck": {
+    "source": "S01 https://affiliate-program.amazon.com/help/operating/agreement",
+    "result": "Full page retrieved 2026-11-20. Header states 'Updated: October 15, 2025'. Section 1 defines Special Links as links that 'must properly use the special tagged link formats we provide'. Section 2 compliance requirements and Section 3 customer-language clauses read; consistent with the register's used_for text."
+  },
+  "effect_on_site": "None. No product field, outbound link or intended ASIN changed. Both re-observed destinations agree with data/products.json and data/observations/2026-11-20-retest.json.",
+  "still_open": "Tag attribution: neither observed final URL contains tag=; gate G-02 (one validated Special Link per product, tested in Associates Central) remains the owner step. See FLG-003, FLG-005, FLG-024."
+}

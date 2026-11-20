@@ -1,0 +1,136 @@
+{
+  "accessed": "2026-11-20",
+  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read in this session. 'excerpt' = text retrieved from a search-result excerpt of the official page; re-check the exact wording manually before relying on it. 'observed' = a value read from an Amazon page during this session; observations are dated and can change.",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Associates Program Operating Agreement",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "updated": "October 15, 2025 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "§1 defines 'Special Links' as tagged links in the formats Amazon provides; §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site; §5 also bars misrepresenting or embellishing the Amazon relationship.",
+      "status": "verified"
+    },
+    {
+      "id": "S02",
+      "title": "Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Trademark Guidelines)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "updated": "April 14, 2026 (as stated on the page)",
+      "method": "fetched (Commission Income Statement §1, Participation Requirements (g), (q), (s), (u), (v), (w), Trademark Guidelines 3(iv)); excerpt (Participation Requirements §2(a)-(b) tag requirement)",
+      "used_for": "Special Links must carry the Associates tag as a URL parameter (§2(a)-(b), excerpt). Cloaking and redirect-based hiding of the URL are prohibited (v). Link shorteners that make it unclear that the link goes to Amazon are restricted (w). No artificial clicks (s). Amazon Marks may not be used in email or offline material (Trademark Guidelines 3(iv)).",
+      "status": "verified (2 clauses by excerpt; re-check §2 wording)"
+    },
+    {
+      "id": "S03",
+      "title": "Amazon.com Associates Central - Help: Can I change my Associates ID?",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Associates IDs end in '-20' for the US program (the software adds '-20'); additional tracking IDs are requested through Customer Service.",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S04",
+      "title": "Amazon product detail pages observed for the five submitted links (amazon.com/dp/ pages)",
+      "publisher": "Amazon.com, Inc.",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "updated": "observed 2026-11-20",
+      "method": "observed (automated fetch; final page title and breadcrumb read; the same fetch returned pages for B09B7SB46R, B08DKYBTPH and B0DZFD6R9Z)",
+      "used_for": "Observed redirect destinations and the 10-character /dp/ ASINs that the destinations carry. Recorded as observations, not as the intended product for each submitted link.",
+      "status": "observed"
+    },
+    {
+      "id": "S05",
+      "title": "Submitted short links (link.amazon)",
+      "publisher": "Amazon.com, Inc. (link.amazon host as supplied by the user)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "updated": "observed 2026-11-20",
+      "method": "observed (automated fetch of each of the five submitted links)",
+      "used_for": "Source of the five submitted tokens and of the observed redirect targets. Recorded only as observations.",
+      "status": "observed"
+    },
+    {
+      "id": "S06",
+      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "updated": "2025-12-10 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links). nofollow is an accepted alternative. Google's guidance is that these attributes are hints.",
+      "status": "verified"
+    },
+    {
+      "id": "S07",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "updated": "November 2019 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "Disclosures must be hard to miss, placed with the endorsement, and in the same language. Disclosures that appear only on an About page or behind a 'more' link are likely to be missed. 'sp', 'spon', 'collab' and stand-alone 'thanks' or 'ambassador' are too vague.",
+      "status": "verified"
+    },
+    {
+      "id": "S08",
+      "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising",
+      "publisher": "U.S. Federal Trade Commission / eCFR (U.S. Government Publishing Office)",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
+      "updated": "current eCFR text (revised 2023)",
+      "method": "excerpt",
+      "used_for": "Definition of endorsement (§255.0(b)), general considerations (§255.1), and disclosure of material connections (§255.5). Used as the legal reference for disclosure placement on every page.",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S09",
+      "title": "Safe Minimum Internal Temperature Chart",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "updated": "not stated on the excerpt",
+      "method": "excerpt",
+      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S10",
+      "title": "Food Thermometers",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "updated": "July 9, 2026 (as indicated in the search index)",
+      "method": "excerpt",
+      "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Poultry parts: insert into the thickest area, avoiding bone.",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S11",
+      "title": "Amazon Associates Central - Application review process (help)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Associates require at least three qualifying sales within the first 180 days; personal orders do not count. Sites must have robust original content; the help text gives 'at least 10 posts' as a rule of thumb. Tags must be embedded in links on the sites declared in the application.",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S12",
+      "title": "Amazon Seller Central: 'Prepare to sell' (names ASIN as 'Amazon Standard Identification Number')",
+      "publisher": "Amazon Seller Central (sell.amazon.com)",
+      "url": "",
+      "updated": "",
+      "method": "Not fetched and no link recorded (rule: leave unconfirmed values blank). Candidate page for manual check: sell.amazon.com/learn/prepare-to-sell (seen in search results as a snippet naming 'Amazon Standard Identification Number'; host not on the gate allowlist).",
+      "used_for": "Expansion of the term 'ASIN' only. 10-character format is supported by the observed amazon.com /dp/ URLs in S04 (all 10 characters). An Amazon page stating the format still needs manual review (FLG-012).",
+      "status": "not verified"
+    },
+    {
+      "id": "S13",
+      "title": "Amazon Associates Central help: OneLink and link support (Amazon full links and short links)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GC4NVV7K3XNG99X5",
+      "updated": "",
+      "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
+      "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
+      "status": "excerpt verified; manual check pending"
+    }
+  ]
+}

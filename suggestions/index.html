@@ -3,560 +3,163 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suggestions: choose a path before anything changes | Affil3</title>
-<meta name="description" content="Twenty-four decisions in six tracks, each with options, cost, risk, evidence and what it depends on. Nothing is implemented until an option is chosen.">
+<title>Suggestions to choose between — Affil3</title>
+<meta name="description" content="The decisions waiting on the owner, each with its trade-offs. Nothing is implemented until an option is chosen.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/suggestions/">
-<meta property="og:title" content="Suggestions: choose a path before anything changes">
-<meta property="og:description" content="Twenty-four decisions in six tracks, each with options, cost, risk, evidence and what it depends on. Nothing is implemented until an option is chosen.">
+<meta property="og:title" content="Suggestions to choose between">
+<meta property="og:description" content="The decisions waiting on the owner, each with its trade-offs. Nothing is implemented until an option is chosen.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/suggestions/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Affil3">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-counter.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="analytics-endpoint" content="">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Affil3 — buying guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
 
 </head>
-<body data-page="page" >
+<body data-page="suggestions" >
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
-  <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+  <div class="wrap">
+    <div class="masthead-top">
+      <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span><small>Kitchen buying guides</small></a>
+      <p class="masthead-issue"><b>Independent</b> · checked November 20, 2026</p>
+    </div>
     <nav class="nav" aria-label="Main">
-      <a href="/Affil3/shop/">Shop</a>
-      <a href="/Affil3/guides/">Guides</a>
+      <a href="/Affil3/shop/">The picks</a>
+      <a href="/Affil3/guides/">Buying guides</a>
       <a href="/Affil3/categories/">Categories</a>
-      <a href="/Affil3/about/">About</a>
+      <a href="/Affil3/about/">How we choose</a>
     </nav>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
-  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
+  <div class="wrap"><strong>Disclosure.</strong> <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</span> <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
-<main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Suggestions · 25 rows · 25 awaiting a choice</p>
-<h1>Choose a path before anything changes</h1>
-<p class="deck">Suggestions for you to choose between. Nothing on this list is implemented until you pick an option, except where a row says implemented in this session - those were done because leaving them undone meant shipping a known defect, and each one is still reversible in one commit and is listed here for review. Reply with the suggestion ID and option letter, for example &#39;S-18 B&#39;.</p>
-<p class="deck">Read the tracks in order. Track 1 is mostly owner-access work measured in minutes and it gates every other track: until one tagged link has been tested in Associates Central, the site cannot earn and no amount of design work changes that. Track 2 is the answer to &#39;it should not read like AI slop&#39; - it is deliberately concrete, because a vague instruction here produces vague copy. Tracks 3 and 4 are findability and measurement. Track 5 records two policy clauses found in this session&#39;s re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository&#39;s own repeated bugs came from.</p></section>
-<section class="band"><h2>The order to decide in</h2>
-<p class="small muted">Computed from the dependency fields on each row, not written by hand.</p>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">#</th><th scope="col">Row</th><th scope="col">Why here</th></tr></thead><tbody><tr><td>1</td><td><a href="#S-01"><strong>S-01</strong> Outbound link handling</a></td><td>Gate G-02. One tagged link, tested once, before anything scales. Minutes of owner time; unblocks all revenue.</td></tr><tr><td>2</td><td><a href="#S-22"><strong>S-22</strong> Record the two policy clauses that constrain the AI part of the brief</a></td><td>Decide the automation boundary before building more automation, not after.</td></tr><tr><td>3</td><td><a href="#S-18"><strong>S-18</strong> How many publications should a crawler see</a></td><td>Settle how many publications a crawler sees before verifying Search Console, or you submit sitemaps for pages you may retire.</td></tr><tr><td>4</td><td><a href="#S-19"><strong>S-19</strong> What the front page is for</a></td><td>The front page is where the &#39;reads like generated output&#39; complaint lands. Depends on S-04 for the name.</td></tr><tr><td>5</td><td><a href="#S-04"><strong>S-04</strong> Brand name</a></td><td>A publication needs a name. Cheap, and S-13, S-19 and S-20 all read better once it exists.</td></tr><tr><td>6</td><td><a href="#S-20"><strong>S-20</strong> A house style rule that can be checked</a></td><td>A checkable house style is what stops the next page regressing.</td></tr><tr><td>7</td><td><a href="#S-15"><strong>S-15</strong> Search Console</a></td><td>Search Console, after S-18, so the next topic is chosen from measured queries.</td></tr><tr><td>8</td><td><a href="#S-03"><strong>S-03</strong> Where the analytics collector runs</a></td><td>An analytics endpoint with an owner. Meaningless before there is traffic to measure.</td></tr><tr><td>9</td><td><a href="#S-16"><strong>S-16</strong> Reader capture</a></td><td>Reader capture, after S-14 and after the privacy notice at S-23 is reviewed.</td></tr><tr><td>10</td><td><a href="#S-02"><strong>S-02</strong> Publishing cadence</a></td><td>Cadence, once S-15 can tell you what to write next.</td></tr></tbody></table></div>
-<p class="small muted">Rows not in this order are still open; they are either unblocked-and-cheap or waiting on one of the above.</p></section>
-
-<section class="band track" id="track-revenue">
-  <h2>1. Unblock revenue</h2>
-  <p class="track-why">Nothing on this site earns until a tagged Special Link exists and has been tested once. These rows come first and are mostly owner-access tasks measured in minutes, not build work.</p>
-  
-  <article class="sugg" id="S-01">
-    <p class="sugg-head"><span class="badge">S-01</span> <strong>Outbound link handling</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The five supplied links resolve to Amazon product pages with no tag= parameter, so as supplied they cannot attribute a purchase. The site currently publishes constructed https://www.amazon.com/dp/&lt;ASIN&gt;?tag=shopnow047c-20 URLs, which have the shape Participation Requirements 2(b) asks for but have never been tested in Associates Central.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep tagged /dp/ links on the observed products, marked as pending validation (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Readers can click now; the links are not yet validated in Associates Central.</span></li>
-      <li class="opt"><strong>B.</strong> Hide all buy buttons until gate G-02 passes.
-        <span class="opt-meta">Tradeoff: Safer for compliance; the site has no paths to purchase until the owner tests.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B, until G-02 passes.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-003">FLG-003</a> <a class="badge flag" href="/Affil3/flagged/#FLG-005">FLG-005</a></p>
-    
-    <p class="small dep"><strong>Gate:</strong> G-02</p>
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-01 &lt;option letter&gt;</code>, for example <code>S-01 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-07">
-    <p class="sugg-head"><span class="badge">S-07</span> <strong>Content depth before Associates review</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Content depth before the Associates application review.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Fewer than the 10-post rule of thumb at launch (FLG-007).</span></li>
-      <li class="opt"><strong>B.</strong> Hold the site from review until 10 original posts exist.
-        <span class="opt-meta">Tradeoff: Aligns with S11; delays the tag-based program.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S11</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-007">FLG-007</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-02">S-02</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-07 &lt;option letter&gt;</code>, for example <code>S-07 B</code>.</p>
-  </article>
+<main id="main">
+<div class="wrap">
+<section class="page-head"><p class="kicker">Decision board</p><h1>Choose a path before anything changes</h1>
+<p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example &#39;S-03 B&#39;.</p></section>
+<section class="flag-card" id="S-01" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-01</span> <strong>Two publications in one repository</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current). <span class="muted small">Trade-off: Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</span></li>
+    <li><strong>B.</strong> Retire /editorial/ entirely and redirect its URLs to the equivalent root pages. <span class="muted small">Trade-off: Cleanest signal for search engines; a redirect map has to be written and tested first.</span></li>
+    <li><strong>C.</strong> Merge the better parts of the old edition into the root site and remove the duplicate pages. <span class="muted small">Trade-off: Best content outcome, most work, and the old edition&#39;s data conflicts with the root data and must be reconciled.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.</p>
 </section>
-
-<section class="band track" id="track-trust">
-  <h2>2. Reader trust and publication polish</h2>
-  <p class="track-why">The brief&#39;s complaint is that the site reads like generated output. These rows are the design and editorial decisions that make it read like something a person published: a name, a voice, a byline, pictures, and a front page that leads with a promise instead of an audit trail.</p>
-  
-  <article class="sugg" id="S-04">
-    <p class="sugg-head"><span class="badge">S-04</span> <strong>Brand name</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The site is called Affil3, which is a repository name rather than a publication a reader would remember, recommend or type into a search box.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep the working name &#39;Affil3&#39; (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Matches the repository.</span></li>
-      <li class="opt"><strong>B.</strong> Choose a consumer-facing name and domain.
-        <span class="opt-meta">Tradeoff: Better recall; needs a domain and a naming check.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B before wider promotion.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-031">FLG-031</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-13">S-13</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-04 &lt;option letter&gt;</code>, for example <code>S-04 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-05">
-    <p class="sugg-head"><span class="badge">S-05</span> <strong>Imagery</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">No page carries a product image. Program Content rules govern what imagery may be used and how it may be altered, so this is a policy question before it is a design one.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Typography and layout only, no product photos (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Avoids use of Program Content outside the Associates purpose (S02).</span></li>
-      <li class="opt"><strong>B.</strong> Original photography of products you own.
-        <span class="opt-meta">Tradeoff: Strong for reader trust; needs equipment and time.</span></li>
-      <li class="opt"><strong>C.</strong> Amazon-supplied images through the Associates tools.
-        <span class="opt-meta">Tradeoff: Allowed only as Program Content on your site; needs review against the IP License.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B for guides; A for the front page.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-015">FLG-015</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-05 &lt;option letter&gt;</code>, for example <code>S-05 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-06">
-    <p class="sugg-head"><span class="badge">S-06</span> <strong>Authorship</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Every guide is bylined to an organisation. Google&#39;s own guidance and the FTC&#39;s endorsement guidance both turn on who is speaking, and Program Policies 2(b) bars misleading claims about a Product.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Team byline &#39;Affil3 editorial team&#39; (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: No invented person.</span></li>
-      <li class="opt"><strong>B.</strong> Named author with a real bio and a review date.
-        <span class="opt-meta">Tradeoff: Stronger signal of accountability; needs a real person.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B once a real reviewer is named.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a>, <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener external">S07</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-014">FLG-014</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-14">S-14</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-06 &lt;option letter&gt;</code>, for example <code>S-06 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-13">
-    <p class="sugg-head"><span class="badge">S-13</span> <strong>Navigation labels</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The masthead reads Shop / Guides / Categories / About and the footer group is headed &#39;Dashboards and records&#39; with fourteen entries. &#39;Shop&#39; is the only label a buyer would use; the rest are internal vocabulary. A reader who wants the disclosure has to guess which of fourteen footer links carries it.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep the current labels: Shop, Guides, Categories, About in the masthead; all fourteen dashboards in one footer group. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: No work. The footer group is a list of our nouns, not a reader&#39;s. · Effort: none · Risk: low</span></li>
-      <li class="opt"><strong>B.</strong> Relabel to reader vocabulary - Shop, Buying guides, By category, How we review - and split the footer into two headed groups, &#39;For readers&#39; and &#39;Records and verification&#39;.
-        <span class="opt-meta">Tradeoff: An hour in the generator. Nothing else changes; the same pages stay reachable. · Effort: 1 hour · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Cut the masthead to three items and move every record page behind a single &#39;How we review&#39; page.
-        <span class="opt-meta">Tradeoff: Cleanest for a buyer. Adds a click to reach the register, which the brief explicitly wants kept reachable. · Effort: 2 hours · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B. It satisfies the brief&#39;s &#39;one navigation group&#39; and &#39;dashboards reachable from the footer&#39; while stopping the footer reading like a file listing. C is the better answer once there is enough editorial content to carry a real &#39;How we review&#39; page.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-030">FLG-030</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-13 &lt;option letter&gt;</code>, for example <code>S-13 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-14">
-    <p class="sugg-head"><span class="badge">S-14</span> <strong>The RSS feed that already ships</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">feed.xml exists, carries one item per guide, and the gate asserts that coverage. It is not linked from any page body, only from the footer, and it has no &lt;updated&gt; discipline beyond lastmod. A feed that ships but is never surfaced cannot gain subscribers, and the brief lists it as a row to carry.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep the feed as it is: generated, gated, footer-linked. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Zero work. It stays a compliance artefact rather than a channel. · Effort: none · Risk: low</span></li>
-      <li class="opt"><strong>B.</strong> Surface it where a reader finishes something: one line at the foot of every guide - &#39;New guides go out by RSS&#39; - plus the existing footer link.
-        <span class="opt-meta">Tradeoff: Twenty minutes in the generator. No new dependency, no third party. · Effort: 20 minutes · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Add a JSON Feed alongside RSS.
-        <span class="opt-meta">Tradeoff: Some readers and apps prefer it; two feeds to keep in step for an audience of zero. · Effort: 1 hour · Risk: low</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B. It is the cheapest change that turns an existing artefact into something a reader can act on. Do it with S-16 so the two offers sit together rather than competing.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-030">FLG-030</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-14 &lt;option letter&gt;</code>, for example <code>S-14 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-16">
-    <p class="sugg-head"><span class="badge">S-16</span> <strong>Reader capture</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">There is no way for a reader to come back. No email list, no feed subscription surfaced in the body, no bookmark prompt. For an affiliate site whose entire revenue depends on a returning reader clicking a tagged link, that is the missing half of the model.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> None (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Nothing to maintain and nothing to comply with. Also nothing that brings a reader back. · Effort: none · Risk: none</span></li>
-      <li class="opt"><strong>B.</strong> RSS only - implement S-14 B and stop there.
-        <span class="opt-meta">Tradeoff: No personal data collected, so no privacy notice obligation attaches to it and no third-party processor appears. Weakest retention. · Effort: 20 minutes · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> An email list via a third-party form provider.
-        <span class="opt-meta">Tradeoff: Real retention. Introduces a data processor, which needs the privacy notice at FLG-029, and Program Policies 4 permits Special Links in email only where the message was solicited, so the list must be genuine opt-in. 6(g) bars any incentive for clicking a Special Link, so no &#39;enter to win&#39; framing. · Effort: half a day · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B now, C once the privacy notice is reviewed and a provider is chosen. Do not run C without settling S-03 and FLG-029 first, or the site collects personal data with no notice on it.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-029">FLG-029</a> <a class="badge flag" href="/Affil3/flagged/#FLG-030">FLG-030</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-14">S-14</a>, <a href="#S-03">S-03</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-16 &lt;option letter&gt;</code>, for example <code>S-16 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-19">
-    <p class="sugg-head"><span class="badge">S-19</span> <strong>What the front page is for</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The front page currently opens with the kicker &#39;Observed on 2026-11-20 - Amazon listings&#39;, the headline &#39;Five kitchen picks, each traced to its listing&#39;, and cards showing &#39;Observed ASIN B0CDY277D3&#39; and &#39;Associates link check pending (gate G-02)&#39;. Every one of those is true and every one is about us rather than the reader. It is the single clearest reason the site reads as generated.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep it (current). Fully traceable above the fold. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Honest, and it costs every click. No buyer has ever wanted to know a link check is pending. · Effort: none · Risk: high</span></li>
-      <li class="opt"><strong>B.</strong> Lead with the reader&#39;s problem, keep the trace one line down. Headline becomes a claim about the category, each card leads with a human product name and a one-line &#39;who it fits&#39;, and &#39;observed ASIN / gate pending&#39; moves to a small muted line under the button and to the product page.
-        <span class="opt-meta">Tradeoff: A day in the generator plus display-only fields in data/products.json. No verified value changes and nothing is removed from the record. · Effort: 1 day · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Full editorial redesign: hero, curated &#39;best for&#39; slots, imagery, related-guide rail.
-        <span class="opt-meta">Tradeoff: What a real affiliate publication looks like. Depends on S-05 imagery and S-04 name being settled, and it is the largest single change on this page. · Effort: 3-5 days · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B immediately, C once S-04 and S-05 are decided. B is implemented in this session as far as it can be without inventing anything: the copy is rewritten from fields that already exist or from display-only fields, and every verification string is preserved somewhere on the page.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-014">FLG-014</a> <a class="badge flag" href="/Affil3/flagged/#FLG-015">FLG-015</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-04">S-04</a>, <a href="#S-05">S-05</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-19 &lt;option letter&gt;</code>, for example <code>S-19 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-20">
-    <p class="sugg-head"><span class="badge">S-20</span> <strong>A house style rule that can be checked</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">&#39;Do not read like AI slop&#39; is not implementable as stated. It becomes implementable as a short list of forbidden patterns that a build can test: the same sentence rhythm in every paragraph, a heading that is a noun phrase rather than a claim, every list item the same length, &#39;in today&#39;s fast-paced world&#39; openers, a bolded pull-quote per section, and the word &#39;delve&#39;.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Rely on editorial judgement per page. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Free, and it is how the current copy was produced. · Effort: none · Risk: medium</span></li>
-      <li class="opt"><strong>B.</strong> Write a house style file - a page of concrete do/don&#39;t rules with before-and-after examples drawn from this site&#39;s own copy - and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.
-        <span class="opt-meta">Tradeoff: Half a day. The gate catches the mechanical failures; the rest stays editorial. This is the row most likely to change how the site reads. · Effort: half a day · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Add a readability score threshold per page (Flesch-Kincaid or similar) to the gate.
-        <span class="opt-meta">Tradeoff: Objective and easy to implement, and it optimises for the wrong thing - it will push copy toward short dumb sentences, which is its own kind of slop. · Effort: 2 hours · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B, and publish the house style file on the site so a reader can see the standard the copy is held to. That page does more for trust than any badge.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-014">FLG-014</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-20 &lt;option letter&gt;</code>, for example <code>S-20 B</code>.</p>
-  </article>
+<section class="flag-card" id="S-02" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-02</span> <strong>Buy buttons while links are untested</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current). <span class="muted small">Trade-off: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li>
+    <li><strong>B.</strong> Hide every buy button until gate G-02 passes. <span class="muted small">Trade-off: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
 </section>
-
-<section class="band track" id="track-findability">
-  <h2>3. Findability</h2>
-  <p class="track-why">One site for a crawler to index, a sitemap and feed that grow with each guide, and a way to see which queries actually arrive. Without this the next topic is chosen by instinct.</p>
-  
-  <article class="sugg" id="S-02">
-    <p class="sugg-head"><span class="badge">S-02</span> <strong>Publishing cadence</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Five guides exist. The brief asks for a cadence, and the Associates application review looks at content depth; an earlier session recorded the &#39;at least 10 posts&#39; rule of thumb from S11 as an excerpt, not as a policy requirement.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> One new guide every two weeks (proposed default). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Steady growth; needs a writing slot every two weeks.</span></li>
-      <li class="opt"><strong>B.</strong> One new guide per week.
-        <span class="opt-meta">Tradeoff: Faster growth; higher manual load.</span></li>
-      <li class="opt"><strong>C.</strong> A batch of 10 guides before launch, then monthly.
-        <span class="opt-meta">Tradeoff: Meets the &#39;at least 10 posts&#39; rule of thumb (S11) sooner.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> C, to reach the 10-post rule of thumb before the Associates review.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S11</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-007">FLG-007</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-02 &lt;option letter&gt;</code>, for example <code>S-02 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-08">
-    <p class="sugg-head"><span class="badge">S-08</span> <strong>Seasonal content</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Seasonal angles for countertop cooking. Program Policies 2(b) requires removing links and references to a limited-time promotion as soon as it ends, so seasonal content carries a takedown obligation, not just a writing one.</p>
-    <ul class="opts">
-      <li class="opt"><strong>A.</strong> A gift and holiday-cooking guide hub for November and December 2026.
-        <span class="opt-meta">Tradeoff: Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand.</span></li>
-      <li class="opt opt-current"><strong>B.</strong> Evergreen guides only (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Simpler; no seasonal claims.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B until measured queries (from S-03) show interest.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-02">S-02</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-08 &lt;option letter&gt;</code>, for example <code>S-08 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-09">
-    <p class="sugg-head"><span class="badge">S-09</span> <strong>Category focus</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Whether to widen beyond the three clusters the five products imply.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Reflects the five links; the &#39;unresolved&#39; cluster is a holding area.</span></li>
-      <li class="opt"><strong>B.</strong> Focus on air fryers and move the thermometer to a supporting note.
-        <span class="opt-meta">Tradeoff: Tighter topic; drops the thermometer cluster.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> A until the unresolved link is decided.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-01">S-01</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-09 &lt;option letter&gt;</code>, for example <code>S-09 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-12">
-    <p class="sugg-head"><span class="badge">S-12</span> <strong>Search Console</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Search Console is not connected, so no query data exists.</p>
-    <ul class="opts">
-      <li class="opt"><strong>A.</strong> Do not connect Search Console.
-        <span class="opt-meta">Tradeoff: No search data.</span></li>
-      <li class="opt opt-current"><strong>B.</strong> Verify the site in Search Console and submit the sitemap after deploy (recommended). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Needs a Google account owner (Q-12).</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-013">FLG-013</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-15">S-15</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-12 &lt;option letter&gt;</code>, for example <code>S-12 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-15">
-    <p class="sugg-head"><span class="badge">S-15</span> <strong>Search Console</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Not connected, so there is no query data, no coverage report and no way to submit the sitemap. Every editorial choice is therefore made on instinct, which is exactly what the brief asks to stop doing.</p>
-    <ul class="opts">
-      <li class="opt"><strong>A.</strong> Verify the property now, submit both sitemaps, and read the coverage report after two weeks.
-        <span class="opt-meta">Tradeoff: Needs a Google account and control of the domain; about an hour. Submitting two sitemaps assumes S-18 is settled first. · Effort: 1 hour · Risk: low</span></li>
-      <li class="opt opt-current"><strong>B.</strong> Not connected (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Nothing to do. No measured queries, so the next guide topic is a guess. · Effort: none · Risk: none</span></li>
-      <li class="opt"><strong>C.</strong> Verify with the HTML-tag method rather than the file method, to avoid committing a verification file to the repository root.
-        <span class="opt-meta">Tradeoff: Same cost as A; keeps a third-party token out of the published tree. GitHub Pages serves whatever is committed, so the token would be public either way - it is a site-scoped token, not a credential. · Effort: 1 hour · Risk: low</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> A or C, after S-18. Verifying before deciding how many publications exist means submitting sitemaps for pages you may then retire.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-013">FLG-013</a> <a class="badge flag" href="/Affil3/flagged/#FLG-034">FLG-034</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-18">S-18</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-15 &lt;option letter&gt;</code>, for example <code>S-15 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-18">
-    <p class="sugg-head"><span class="badge">S-18</span> <strong>How many publications should a crawler see</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Three surfaces publish the same five products: the root site, /editorial/, and /legacy/arena-83a43a96/. robots.txt advertises two of them. The brief asks for one site to index. The three do not merely duplicate content, they disagree about policy: the root site marks every amazon.com link rel=&quot;sponsored&quot; and publishes tagged buy buttons, while /editorial/ marks its Amazon citations class=&quot;cite&quot; rel=&quot;nofollow&quot; and publishes no buy button at all, because its own gate refuses a call-to-action without a validated tag. Both positions are defensible and each is enforced by its own build. A reader who lands on both sees two sites with different rules about the same products.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Leave all three served and both sitemaps declared (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Preserves every session&#39;s provenance exactly as merged. Splits ranking signal three ways and gives a crawler no reason to prefer any of them. · Effort: none · Risk: high</span></li>
-      <li class="opt"><strong>B.</strong> Keep one publication indexed. Add noindex to /editorial/ and /legacy/, drop the second Sitemap line from robots.txt, and leave both fully reachable and linked from the footer for humans.
-        <span class="opt-meta">Tradeoff: One canonical surface for a crawler, nothing deleted, provenance intact. The second publication stops earning traffic, which is the point. · Effort: 2 hours · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Merge the editorial register&#39;s verified spec data into the root register and retire /editorial/ as a served surface, keeping it in git history.
-        <span class="opt-meta">Tradeoff: The strongest single site, and it reunites the two verification passes. It is also the largest change here, and it discards a published surface another session built. · Effort: 2-3 days · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B now, C later if the data merge is wanted. B is reversible in one commit and immediately fixes the duplicate-coverage problem; C is a data-modelling project that should not be rushed into a compliance-sensitive register.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-034">FLG-034</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-04">S-04</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-18 &lt;option letter&gt;</code>, for example <code>S-18 B</code>.</p>
-  </article>
+<section class="flag-card" id="S-03" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-03</span> <strong>Where the analytics collector runs</strong> <span class="badge good">current: D</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS. <span class="muted small">Trade-off: Full control of raw data; the owner runs a server and patches it.</span></li>
+    <li><strong>B.</strong> Run it as a serverless function on a platform that supports Node. <span class="muted small">Trade-off: No server to patch; cold starts and platform limits on storage.</span></li>
+    <li><strong>C.</strong> Skip self-hosting and use a privacy-focused hosted analytics service. <span class="muted small">Trade-off: Fastest to start; one more third party, and the data leaves your control.</span></li>
+    <li><strong>D.</strong> Stay inactive until there is traffic worth measuring (current). <span class="muted small">Trade-off: Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B. It removes the server maintenance objection without handing the data away.</p>
 </section>
-
-<section class="band track" id="track-measurement">
-  <h2>4. Measurement</h2>
-  <p class="track-why">Click and conversion counting, and the campaign ledger. Deliberately last among the build tracks: measuring a page nobody can find produces zeros, and zeros are not a signal.</p>
-  
-  <article class="sugg" id="S-03">
-    <p class="sugg-head"><span class="badge">S-03</span> <strong>Where the analytics collector runs</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The click counter ships on every page but the endpoint is empty, so nothing is recorded. GitHub Pages cannot run a receiver.</p>
-    <ul class="opts">
-      <li class="opt"><strong>A.</strong> Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.
-        <span class="opt-meta">Tradeoff: Full control of raw data; you run the server.</span></li>
-      <li class="opt"><strong>B.</strong> Run the collector on a platform that supports Node.js with persistent storage.
-        <span class="opt-meta">Tradeoff: Less server work; check the platform&#39;s data terms.</span></li>
-      <li class="opt"><strong>C.</strong> Use a third-party privacy-focused analytics product.
-        <span class="opt-meta">Tradeoff: Quickest setup; a separate processor, so it needs its own disclosure.</span></li>
-      <li class="opt opt-current"><strong>D.</strong> No analytics for now (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Nothing to maintain; no click or conversion data.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> A or B if you want measured queries before choosing the next topic.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a> <a class="badge flag" href="/Affil3/flagged/#FLG-029">FLG-029</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-16">S-16</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-03 &lt;option letter&gt;</code>, for example <code>S-03 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-11">
-    <p class="sugg-head"><span class="badge">S-11</span> <strong>Reader capture (email list)</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">A reader email list. Program Policies 4 permits Special Links in email only where the communication was solicited, and 6(g) bars offering any reward or incentive for using Special Links.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> No email capture (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: No email data to store.</span></li>
-      <li class="opt"><strong>B.</strong> Opt-in email list.
-        <span class="opt-meta">Tradeoff: Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> A until the email rules are reviewed.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-029">FLG-029</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-11 &lt;option letter&gt;</code>, for example <code>S-11 B</code>.</p>
-  </article>
+<section class="flag-card" id="S-04" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-04</span> <strong>Pricing display</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Show no prices; every button reads &#39;Check the current price on Amazon&#39; (current). <span class="muted small">Trade-off: Always accurate, and compliant with the price clause; readers have to click to know a budget.</span></li>
+    <li><strong>B.</strong> Enroll in the Creators API and display Amazon-served prices with a timestamp. <span class="muted small">Trade-off: Better for budget-led shoppers; more engineering, and a stale price is a compliance risk.</span></li>
+    <li><strong>C.</strong> Show a coarse price band instead of a figure. <span class="muted small">Trade-off: Useful and stable; still a claim that needs checking, and it ages badly.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> A until traffic justifies the Creators API work. Then B.</p>
 </section>
-
-<section class="band track" id="track-compliance">
-  <h2>5. Compliance gates</h2>
-  <p class="track-why">Rules that should be enforced by the build rather than remembered by an editor. Two clauses found in this session&#39;s re-read had never been recorded and both change what may be built.</p>
-  
-  <article class="sugg" id="S-10">
-    <p class="sugg-head"><span class="badge">S-10</span> <strong>Prices and ratings</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Prices and ratings. Participation Requirements 2(b) allows prices only where Amazon serves the link or the data comes from the Creators API or PA API, and 6(t) bars displaying customer reviews or star ratings without the same. 6(y) separately bars price tracking or alerting functionality on the Site unless Amazon agrees.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Show no prices or ratings (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: No stale or unverified numbers.</span></li>
-      <li class="opt"><strong>B.</strong> Show dated prices from an authorized source, refreshed on a schedule.
-        <span class="opt-meta">Tradeoff: Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here.</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> A now; B only after an authorized source is confirmed.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-016">FLG-016</a> <a class="badge flag" href="/Affil3/flagged/#FLG-028">FLG-028</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-10 &lt;option letter&gt;</code>, for example <code>S-10 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-22">
-    <p class="sugg-head"><span class="badge">S-22</span> <strong>Record the two policy clauses that constrain the AI part of the brief</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The brief asks for an AI-powered platform that automates product research and pricing analysis. Two clauses read verbatim in this session&#39;s re-fetch bear on that directly and neither had been recorded: Participation Requirements 5 bars using Special Links or Program Content to develop machine learning models without Amazon&#39;s express prior written approval, and 6(y) bars price tracking or alerting functionality on the Site unless Amazon agrees.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Treat the automation in the brief as unqualified and build it. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Fastest path to the thing the brief describes, and the most likely path to a material breach. The preamble to the Program Policies makes any violation of the Participation Requirements a material breach of the Agreement. · Effort: none · Risk: high</span></li>
-      <li class="opt"><strong>B.</strong> Build only the automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, drafts from manufacturer pages with citations. Keep pricing analysis off the Site entirely. Ask Amazon about 5 before going further.
-        <span class="opt-meta">Tradeoff: Slower, and it means part of the brief stays unbuilt. Everything already in this repository is inside it. · Effort: ongoing · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Request the PA API / Creators API and Amazon&#39;s written approval, then build the full pipeline.
-        <span class="opt-meta">Tradeoff: The only route to prices, ratings and the automated research the brief describes. Requires an approved account and a qualifying site, so it depends on S-01 and Q-03. · Effort: weeks · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B now, C as the destination. Published on the compliance page in this session so the constraint is visible to whoever builds next.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-027">FLG-027</a> <a class="badge flag" href="/Affil3/flagged/#FLG-028">FLG-028</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-01">S-01</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-22 &lt;option letter&gt;</code>, for example <code>S-22 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-23">
-    <p class="sugg-head"><span class="badge">S-23</span> <strong>A privacy notice for the click counter</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Participation Requirements 3(e) requires disclosing cookies, pixels and other technologies and how visitor data is collected, used, stored and disclosed. The site loads a click counter on every page and publishes no notice. The only privacy page in the repository belongs to a superseded site.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Ship no notice (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset. · Effort: none · Risk: medium</span></li>
-      <li class="opt"><strong>B.</strong> Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what changes if a third-party analytics product is adopted.
-        <span class="opt-meta">Tradeoff: An hour. Written plainly rather than from a generator, and it should be reviewed rather than trusted. · Effort: 1 hour · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Adopt a hosted consent and privacy service.
-        <span class="opt-meta">Tradeoff: Proportionate for a site with a real audience and third-party processors. Overkill now and adds a processor of its own. · Effort: a day · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B, implemented in this session for review. It is a draft of a legal-adjacent page, not legal advice; Q-13 stands.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener external">S07</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-029">FLG-029</a></p>
-    <p class="small dep"><strong>Settle first:</strong> <a href="#S-03">S-03</a></p>
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-23 &lt;option letter&gt;</code>, for example <code>S-23 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-25">
-    <p class="sugg-head"><span class="badge">S-25</span> <strong>Should the gate tell a product link apart from a citation?</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The gate requires every amazon.com hyperlink on the site to carry rel=&quot;sponsored&quot;. For the links that pay for this site that is exactly right, and it is what Google&#39;s guidance asks for. It is over-broad for a citation: linking to Amazon&#39;s own privacy notice or help pages and marking them as paid placements tells Google something false about them. This surfaced while writing /privacy/ in this session - the gate correctly refused the page, and the link was removed rather than mislabelled or the gate weakened.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep the blanket rule. Any amazon.com link must be rel=&quot;sponsored&quot;, and pages cite Amazon URLs as plain text instead of linking them (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Impossible to ship an untagged or unmarked product link, which is the failure that matters. Costs a few convenience links, and plain-text URLs are worse for readers on phones. · Effort: none · Risk: low</span></li>
-      <li class="opt"><strong>B.</strong> Make the rule precise and fail-closed: a link is product-intent if it targets /dp/ or carries tag= or data-outbound, and must then be sponsored AND tagged; every other amazon.com link must NOT be sponsored. Anything that cannot be classified fails the build.
-        <span class="opt-meta">Tradeoff: Semantically correct against Google&#39;s guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test proving an untagged product link still fails, and it should not be made by a build session on its own authority. · Effort: 2 hours · Risk: medium</span></li>
-      <li class="opt"><strong>C.</strong> Keep the blanket rule for product links and allow an explicit allowlist of informational Amazon hosts and paths, checked literally.
-        <span class="opt-meta">Tradeoff: Narrower than B and easier to audit - the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have. · Effort: 1 hour · Risk: low</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B, with the negative test written first: break a product link&#39;s tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently the only thing standing between this site and an untagged outbound link.</p>
-    <p class="small ev"><strong>Evidence:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> · <a class="badge flag" href="/Affil3/flagged/#FLG-003">FLG-003</a> <a class="badge flag" href="/Affil3/flagged/#FLG-029">FLG-029</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-25 &lt;option letter&gt;</code>, for example <code>S-25 B</code>.</p>
-  </article>
+<section class="flag-card" id="S-05" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-05</span> <strong>Publishing cadence</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> One new guide every two weeks (current). <span class="muted small">Trade-off: Sustainable; slow to build a topic cluster.</span></li>
+    <li><strong>B.</strong> One new guide per week. <span class="muted small">Trade-off: Faster topical coverage; needs a real writing slot weekly.</span></li>
+    <li><strong>C.</strong> A batch of eight guides before launch, then monthly. <span class="muted small">Trade-off: Reaches a useful site size quickly; risks thin pages if the batch is rushed.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.</p>
 </section>
-
-<section class="band track" id="track-platform">
-  <h2>6. Platform and repo machinery</h2>
-  <p class="track-why">CI, registers, and the failure modes that produced real errors in this repository&#39;s own history. Cheap to fix, and they are what stops the same mistake recurring.</p>
-  
-  <article class="sugg" id="S-17">
-    <p class="sugg-head"><span class="badge">S-17</span> <strong>Derive every count on a page from the rows that page counts</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">This repository has now shipped the same class of bug three times. A shop page said &#39;four short links resolved&#39; under a table of five. A flag with status resolved rendered as open. A source row named three ASINs after the data said five. In each case a sentence was written once by hand and never re-derived from the data it described.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Fix each instance as it is found (what has happened so far). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: Works until the next one. There is no mechanism preventing recurrence. · Effort: none · Risk: high</span></li>
-      <li class="opt"><strong>B.</strong> Add a gate rule: any digit-word or numeral in page copy that refers to a row count must be generated from that row set. Practically, forbid a small list of hand-written count phrases in templates and require the computed form.
-        <span class="opt-meta">Tradeoff: A few hours in tools/verify.mjs. Catches the class rather than the instance. · Effort: half a day · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Add a build-time assertion that every collection rendered on a page is non-empty unless the page says so explicitly, and that no rendered section has an empty body.
-        <span class="opt-meta">Tradeoff: Cheaper than B, catches the FLG-032 empty-cluster case as well as count drift. · Effort: 2 hours · Risk: low</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B and C together. They are the only two rows on this page that prevent a defect rather than describe one, and both are small.</p>
-    <p class="small ev"><strong>Evidence:</strong> no external source — editorial or repo-internal · <a class="badge flag" href="/Affil3/flagged/#FLG-032">FLG-032</a> <a class="badge flag" href="/Affil3/flagged/#FLG-033">FLG-033</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-17 &lt;option letter&gt;</code>, for example <code>S-17 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-21">
-    <p class="sugg-head"><span class="badge">S-21</span> <strong>Fix CI so the gate actually runs</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">The workflow diffs docs/, which does not exist, and never runs the root site&#39;s 1316-check gate. The assertion that committed output matches a fresh build therefore always passes without checking anything.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Leave it. The gate passes locally and that has been treated as sufficient. <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: It has been sufficient until it has not: two of the three count-drift bugs in this repository&#39;s history shipped to main. · Effort: none · Risk: high</span></li>
-      <li class="opt"><strong>B.</strong> Rebuild both sites in CI, diff the paths each actually writes, and run both gates.
-        <span class="opt-meta">Tradeoff: About thirty lines of YAML. Makes the local gate a merge requirement rather than a habit. · Effort: 1 hour · Risk: low</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B. Implemented in this session; review the diff.</p>
-    <p class="small ev"><strong>Evidence:</strong> no external source — editorial or repo-internal · <a class="badge flag" href="/Affil3/flagged/#FLG-023">FLG-023</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-21 &lt;option letter&gt;</code>, for example <code>S-21 B</code>.</p>
-  </article>
-
-  <article class="sugg" id="S-24">
-    <p class="sugg-head"><span class="badge">S-24</span> <strong>One register or two</strong>
-      <span class="badge pending">awaiting your choice</span></p>
-    <p class="problem">Two product registers exist: data/products.json for the root site and data/register/products.json for /editorial/. They disagreed once, in a way that put a meat thermometer against the wrong submitted link, and the disagreement was only caught because a third session re-read both. Every verified fact is currently maintained twice.</p>
-    <ul class="opts">
-      <li class="opt opt-current"><strong>A.</strong> Keep both, and re-check them against each other each session (current). <span class="badge">current</span>
-        <span class="opt-meta">Tradeoff: No migration risk. The check is manual, and manual checks in this repository have a documented record of being missed. · Effort: none · Risk: medium</span></li>
-      <li class="opt"><strong>B.</strong> Add a gate rule that fails the build when the two registers disagree on any shared field for any product.
-        <span class="opt-meta">Tradeoff: An hour. Does not remove the duplication but makes disagreement impossible to ship - which is the failure that actually happened. · Effort: 1 hour · Risk: low</span></li>
-      <li class="opt"><strong>C.</strong> Merge into one register with per-publication views.
-        <span class="opt-meta">Tradeoff: Removes the duplication permanently. It is the largest data change available here and touches files owned by two earlier sessions. · Effort: 2 days · Risk: medium</span></li>
-    </ul>
-    <p class="rec"><strong>Recommendation.</strong> B now, C if S-18 C is chosen. B is a few dozen lines and it converts a class of silent error into a build failure.</p>
-    <p class="small ev"><strong>Evidence:</strong> no external source — editorial or repo-internal · <a class="badge flag" href="/Affil3/flagged/#FLG-022">FLG-022</a> <a class="badge flag" href="/Affil3/flagged/#FLG-034">FLG-034</a></p>
-    
-    
-    <p class="small choose"><strong>To choose:</strong> reply <code>S-24 &lt;option letter&gt;</code>, for example <code>S-24 B</code>.</p>
-  </article>
+<section class="flag-card" id="S-06" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-06</span> <strong>Reader capture</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> No email capture yet; the RSS feed is the only subscription route (current). <span class="muted small">Trade-off: Nothing to maintain and no consent obligations; no direct channel to readers.</span></li>
+    <li><strong>B.</strong> Add a single-field email capture with double opt-in on guide pages. <span class="muted small">Trade-off: Owns the audience instead of renting it from search; adds a privacy notice and a provider.</span></li>
+    <li><strong>C.</strong> Publish a &#39;notify me when a new guide ships&#39; link that opens a mail draft. <span class="muted small">Trade-off: Zero infrastructure and honest; very low conversion.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.</p>
 </section>
-<section class="band"><h2>Decision record</h2>
-<p class="small muted">Empty until you choose. Each decision will be recorded here with the row, the option, the date and who decided, so the site can show why it looks the way it does.</p>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Date</th><th scope="col">Row</th><th scope="col">Chosen</th><th scope="col">Decided by</th><th scope="col">Note</th></tr></thead><tbody><tr><td><span class="muted">—</span></td><td><span class="muted">no decisions recorded yet</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
+<section class="flag-card" id="S-07" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-07</span> <strong>Imagery</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep editorial illustration, clearly labelled as not the reviewed unit (current). <span class="muted small">Trade-off: Consistent look, no licensing exposure, no misleading product photography.</span></li>
+    <li><strong>B.</strong> Use Amazon-hosted product images through the approved image service. <span class="muted small">Trade-off: Shows the actual product; images must be served by Amazon&#39;s tools and can change without notice.</span></li>
+    <li><strong>C.</strong> Commission real photography of the units. <span class="muted small">Trade-off: Highest trust and highest cost; needs physical units.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.</p>
 </section>
+<section class="flag-card" id="S-08" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-08</span> <strong>The byline</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the team byline, flagged as a weakness (current). <span class="muted small">Trade-off: Honest and unchanging; weaker trust signal than a person.</span></li>
+    <li><strong>B.</strong> Add a named editor with a short bio and a contact address. <span class="muted small">Trade-off: Strongest trust signal; a person has to be accountable for the corrections.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B as soon as a real person will take the byline. This is one of the cheapest trust wins available.</p>
+</section>
+<section class="flag-card" id="S-09" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-09</span> <strong>Product scope</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Stay at five submitted products and go deep on them (current). <span class="muted small">Trade-off: Focused and honest; a thin catalogue for a shopping site.</span></li>
+    <li><strong>B.</strong> Add three to five comparison products per category, researched the same way. <span class="muted small">Trade-off: Makes the categories credible; each added product needs its own source page and verification.</span></li>
+    <li><strong>C.</strong> Expand into a second niche once the first converts. <span class="muted small">Trade-off: Scales the model; splits attention before anything is proven.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> B, one category at a time, and only where a manufacturer page exists to verify against.</p>
+</section>
+<section class="flag-card" id="S-10" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">S-10</span> <strong>Disclosure prominence</strong> <span class="badge good">current: A</span></p>
+  <ul class="opts">
+    <li><strong>A.</strong> Dark disclosure bar directly under the masthead, repeated in the footer (current). <span class="muted small">Trade-off: Impossible to miss, and slightly heavy visually.</span></li>
+    <li><strong>B.</strong> A lighter inline notice above the first product, plus the footer repeat. <span class="muted small">Trade-off: Prettier; risks being read as decoration rather than disclosure.</span></li>
+  </ul>
+  <p class="manual"><strong>Our recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
+</section>
+<div class="prose"><div class="note">To decide, reply with the suggestion ID and the letter, for example “S-03 B”. The site keeps working with whatever is current until then.</div></div>
+</div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <h2 class="foot-h">Dashboards and records</h2>
-    <ul class="foot-links">
-      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
-      <li><a href="/Affil3/categories/">Categories</a></li>
-      <li><a href="/Affil3/sources/">Source register</a></li>
-      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
-      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
-      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
-      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
-      <li><a href="/Affil3/measurement/">Measurement</a></li>
-      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-      <li><a href="/Affil3/about/">About and editorial policy</a></li>
-      <li><a href="/Affil3/privacy/">Privacy and what we record</a></li>
-      <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
-      <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
-      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
-      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
-    </ul>
-    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span></a>
+        <p class="foot-blurb">An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/shop/">The full comparison table</a></li>
+          <li><a href="/Affil3/sources/">Source register</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/suggestions/">Suggestions to review</a></li>
+          <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
+          <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/legacy/archive/">Archived editions</a></li>
+          <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Some links here are affiliate links and are marked sponsored. Photography on this site is editorial illustration, not the reviewed units.</p>
+    <p class="fine">Affil3 is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown here. Product photography is editorial illustration, not the reviewed unit. Last checked November 20, 2026. Source links appear on every claim, and the full register is in the footer.</p>
   </div>
 </footer>
 <script src="/Affil3/assets/analytics.js" defer></script>

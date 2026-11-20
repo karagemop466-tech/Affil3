@@ -1,14 +1,5 @@
 name: Verify site
 
-# Rebuilds both published surfaces from their registers and runs both gates.
-#
-# Corrected 2026-11-20 by session 66f2548a (FLG-023). The previous version of this file ran only
-# `python3 tools/build.py` and then asserted `git diff --quiet -- docs`. There is no docs/
-# directory in this repository - the root site is generated at the repository root and the
-# editorial site into editorial/ - so that assertion could never fail and reported success on
-# every run. The root site's 1300-check gate was never run in CI at all. This version diffs the
-# paths each build actually writes and runs both gates.
-
 on:
   push:
     branches: [main]
@@ -18,61 +9,27 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: verify-${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   verify:
-    name: Rebuild from the registers and run both gates
+    name: Gate the published Pages site
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-
-      # The paths each build writes. Kept in step-level env so the diff below cannot silently
-      # drift from the generator's OWNED list; if build.mjs gains a path, add it here too.
-      - name: Rebuild the root site from data/*.json
-        run: node tools/build.mjs
-
-      - name: Rebuild the editorial site from data/register/*.json
-        run: python3 tools/build.py
-
-      - name: Assert the committed output matches a fresh build
+          python-version: '3.11'
+      # Runs both generators, both gates, then requires the committed output to
+      # match. Without the last step a source file can be edited without its
+      # emitted copy being regenerated, and the live site silently serves the
+      # old one. That happened once; this is the check that catches it.
+      - run: npm run check
+      - name: Require committed output to match a clean build
         run: |
-          set -euo pipefail
-          ROOT_PATHS="index.html shop categories guides executive-summary sources questions \
-          suggestions flagged ledger measurement compliance about privacy design-brief 404.html \
-          feed.xml sitemap.xml robots.txt assets .nojekyll DESIGN-BRIEF.md"
-          fail=0
-          # Tracked files that changed.
-          if ! git diff --quiet -- $ROOT_PATHS editorial; then
-            echo "::error::Generated output is out of date with the registers. Run 'node tools/build.mjs && python3 tools/build.py' and commit."
-            git --no-pager diff --stat -- $ROOT_PATHS editorial
-            fail=1
+          git status --short
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Committed site output does not match a clean build. Run npm run check and commit the difference."
+            exit 1
           fi
-          # Untracked files the build produced but nobody committed. git diff cannot see these.
-          dirty="$(git status --porcelain -- $ROOT_PATHS editorial | grep -E '^\?\?' || true)"
-          if [ -n "$dirty" ]; then
-            echo "::error::The build produced files that are not committed:"
-            echo "$dirty"
-            fail=1
-          fi
-          exit $fail
-
-      - name: Gate the root site - links, prices, ratings, tracking tags, disclosures, sitemap, external requests
-        run: node tools/verify.mjs
-
-      - name: Gate the editorial site - links, prices, ratings, tracking tags, disclosures, sitemap
-        run: python3 tools/check_site.py
-
-      - name: Report
-        if: success()
-        run: echo "Both surfaces rebuilt from their registers, both gates green, committed output byte-identical to a fresh build."

@@ -1,0 +1,31 @@
+name: Verify site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Rebuild from data and run the gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Rebuild the site from the registers
+        run: python3 tools/build.py
+      - name: Assert committed output matches a fresh build
+        run: |
+          if ! git diff --quiet -- docs; then
+            echo "::error::docs/ is out of date with data/. Run tools/build.py and commit."
+            git diff --stat -- docs
+            exit 1
+          fi
+      - name: Gate - links, prices, ratings, tracking tags, disclosures, sitemap
+        run: python3 tools/check_site.py
