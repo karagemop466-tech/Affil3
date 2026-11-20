@@ -1,0 +1,15 @@
+{
+  "policy": "Priority 4 — measure before automating optimization. This campaign ledger starts empty but well-defined. Rows are added ONLY from authorized first-party reports: Amazon Associates reports for reported orders (and their own session/click figures), or the self-hosted analytics endpoint for eligible sessions and clicks once deployed. Each row carries a dated provenance entry. No conversion score or revenue forecast is presented anywhere in this project.",
+  "schema": [
+    {"field": "timestamp", "type": "ISO 8601 date", "definition": "Report period start (or run date for point-in-time pulls)", "required": true},
+    {"field": "source", "type": "string", "definition": "Report origin, e.g. 'Amazon Associates Orders report 2026-12-01 run'", "required": true},
+    {"field": "channel", "type": "string", "definition": "Traffic channel as reported, e.g. 'organic search', 'direct'", "required": true},
+    {"field": "eligible_sessions", "type": "integer", "definition": "Sessions counted by the authorized first-party analytics endpoint", "required": true},
+    {"field": "clicks", "type": "integer", "definition": "Outbound product clicks counted by the authorized first-party analytics endpoint", "required": true},
+    {"field": "reported_orders", "type": "integer", "definition": "Orders as reported by Amazon Associates first-party reports for the tagged links", "required": true},
+    {"field": "provenance", "type": "string", "definition": "Report name, date pulled, and who pulled it — dated provenance trail", "required": true}
+  ],
+  "entries": [],
+  "last_updated": null,
+  "note": "Empty at launch (2026-11-20). No authorized first-party reports have been obtained yet; nothing is estimated, inferred, or forecast."
+}

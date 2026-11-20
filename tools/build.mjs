@@ -9,7 +9,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
+const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
   'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
@@ -28,11 +28,18 @@ const events = read('data/events.json');
 const ledger = read('data/ledger.json');
 
 const CATEGORIES = [
-  { slug: 'air-fryers', name: 'Air fryers', blurb: 'Basket-style air fryers, observed on Amazon listings on 2026-11-20.', img: '/assets/img/guide-basket-vs-oven.png' },
-  { slug: 'air-fryer-ovens', name: 'Air fryer ovens', blurb: 'Oven-style air fryers and toaster ovens with a door and racks.', img: '/assets/img/guide-multifunction.png' },
-  { slug: 'cooking-thermometers', name: 'Cooking thermometers', blurb: 'Wireless meat thermometers, with the USDA temperature reference.', img: '/assets/img/guide-thermometer.png' },
-  { slug: 'unresolved', name: 'Unresolved links', blurb: 'Submitted links that did not resolve to a product page. No buy link is published here.', img: '' },
+  { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
+  { slug: 'air-fryer-ovens', name: 'Countertop ovens', tagline: 'Doors, racks and a whole meal at once', blurb: 'Oven-style air fryers and toaster ovens: bigger footprint, more levels, more at once.', img: '/assets/img/guide-multifunction.png' },
+  { slug: 'cooking-thermometers', name: 'Thermometers', tagline: 'The number that decides when to pull it', blurb: 'Instant-read spot checks and leave-in wireless probes, with the USDA targets that go with them.', img: '/assets/img/guide-thermometer.png' },
 ];
+// Editorial product imagery (from the parallel register session; editorial illustration, not the reviewed units).
+const PRODUCT_IMAGE = {
+  P01: '/assets/img/hero-counter.jpg',
+  P02: '/assets/img/oven-french-door.jpg',
+  P03: '/assets/img/basket-turbofry-8qt.jpg',
+  P04: '/assets/img/thermometer-instant-read.jpg',
+  P05: '/assets/img/guide-thermometer.png',
+};
 const catName = (slug) => (CATEGORIES.find((c) => c.slug === slug) || { name: slug }).name;
 const catImg = (slug) => (CATEGORIES.find((c) => c.slug === slug) || { img: '' }).img;
 
@@ -81,10 +88,10 @@ function figure(src, alt, caption = '') {
   return `<figure class="figure"><img src="${esc(href(src))}" alt="${esc(alt)}" loading="lazy" width="1536" height="1024">${credit}</figure>`;
 }
 // Small labeled artwork used on product cards (kept visually separate from the buy button).
-function cardArt(slug) {
-  const src = catImg(slug);
+function cardArt(p) {
+  const src = PRODUCT_IMAGE[p.id] || catImg(p.category);
   if (!src) return '';
-  return `<div class="card-art"><img src="${esc(href(src))}" alt="" loading="lazy" width="768" height="512"><span class="art-tag">Illustration</span></div>`;
+  return `<div class="card-art"><img src="${esc(href(src))}" alt="Editorial illustration for ${esc(p.name || p.id)}; not the reviewed unit" loading="lazy" width="768" height="512"><span class="art-tag">Illustration</span></div>`;
 }
 
 function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png' }) {
@@ -168,19 +175,32 @@ ${body}
 
 // ---------- components ----------
 function productCard(p, placement) {
-  const title = displayName(p);
+  const title = p.name || displayName(p);
   const cat = catName(p.category);
-  const note = p.editorial_note || '';
+  const note = p.lede || p.editorial_note || '';
+  const fit = p.best_for && p.tradeoff ? `<p class="fit-line"><strong>Best for:</strong> ${esc(p.best_for)}<br><strong>Trade-off:</strong> ${esc(p.tradeoff)}</p>` : '';
   if (tagged(p)) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
-  ${cardArt(p.category)}
+  ${cardArt(p)}
   <div class="card-body">
     <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
     <h3>${esc(title)}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
+    ${placement === 'front-shelf' ? '' : fit}
     ${placement === 'front-shelf' ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
     <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
     ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
+  </div>
+</article>`;
+  }
+  if (p.no_buy_link) {
+    return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
+  ${cardArt(p)}
+  <div class="card-body">
+    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <h3>${esc(p.name || displayName(p))}</h3>
+    ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
+    <p class="status"><strong>No buy button on this card.</strong> ${esc(p.no_buy_link_reason || 'No manufacturer specification page exists for this model, so nothing here is stood behind yet.')} ${flagLinks(p.flags || [])}</p>
   </div>
 </article>`;
   }
@@ -208,6 +228,40 @@ function renderBlock(b, gslug = '') {
     case 'cta': return `<aside class="cta-band"><div><p class="cta-text">${esc(b.text)}</p></div><a class="btn btn-ghost" href="${esc(href(b.href))}">${esc(b.label)}</a></aside>`;
     default: throw new Error('unknown block ' + b.type + (gslug ? ' in guide ' + gslug : ''));
   }
+}
+
+// Specification grid. A field the maker does not state renders as a labelled "not stated" cell;
+// the count of those cells must match the data exactly (verified by tools/verify.mjs).
+function specGrid(p) {
+  const rows = [
+    ['Model', p.model],
+    ['Capacity', p.capacity_qt ? `${p.capacity_qt} qt` : ''],
+    ['Temperature', p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}–${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : '')],
+    ['Power', p.power_w ? `${p.power_w} W` : ''],
+    ['Voltage', p.voltage],
+    ['Size', p.dimensions_in ? `${p.dimensions_in} in` : ''],
+    ['Weight', p.weight_lb ? `${p.weight_lb} lb` : ''],
+    ['Dishwasher', p.dishwasher_safe],
+    ['Certified', p.certification],
+    ['Warranty', p.warranty],
+  ];
+  const cells = rows.map(([k, v]) => `<div class="spec"><dt>${esc(k)}</dt>${v
+    ? `<dd>${esc(v)}</dd>`
+    : `<dd class="na" title="Not stated on the manufacturer page">not stated</dd>`}</div>`).join('\n    ');
+  return `<dl class="spec-grid">\n    ${cells}\n  </dl>`;
+}
+
+function buyBox(p, placement = 'product-page') {
+  if (p.no_buy_link) {
+    return `<div class="buybox hidden-link">
+    <p><strong>No buy button on this page.</strong> ${esc(p.no_buy_link_reason)}</p>
+    <p class="small">The listing this unit was observed on is recorded on the <a href="${esc(href('/shop/'))}">comparison table</a> with its source link.</p>
+  </div>`;
+  }
+  return `<div class="buybox">
+    <a class="btn btn-primary" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">Check it on Amazon</a>
+    <span class="btn-note">Affiliate link, marked sponsored. Opens the ${esc(p.brand || 'manufacturer')} listing on Amazon.com. We do not display prices because they change and we do not use Amazon price data.</span>
+  </div>`;
 }
 
 function table(headers, rows, cls = '') {
@@ -260,17 +314,18 @@ const add = (p) => pages.push(p);
       <a class="btn btn-ghost" href="${esc(href('/guides/'))}">Start with a question</a>
     </div>
   </div>
-  <div class="hero-art">
-    <img src="${esc(href('/assets/img/hero.png'))}" alt="Illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter" width="1536" height="1024">
+  <div class="hero-figure">
+    <img src="${esc(href('/assets/img/hero.png'))}" alt="Editorial illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter; not the reviewed unit" width="1536" height="1024">
     <p class="credit">Illustration: AI-generated for ${esc(cfg.siteName)}. It is artwork, not a product photo.</p>
   </div>
 </section>
 <section class="band" id="shelf">
+  <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
     <h2>On the shelf this month</h2>
-    <p>Five submitted products, each resolved to an observed Amazon listing. Two destinations needed a retest after an earlier register revision transposed them; the cards below say what the listing titles claim, and the buttons go straight to the listings.</p>
+    <p>Five submitted products, each resolved to an observed Amazon listing and checked against the maker's own specification pages where those exist — including one unit where the listing and the maker describe two different machines (flagged on its product page). The buttons go straight to the listings.</p>
   </div>
-  <div class="shelf">${shelf}</div>
+  <div class="picks"><div class="shelf">${shelf}</div></div>
   <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
 </section>
 <section class="band band-alt">
@@ -309,6 +364,12 @@ const add = (p) => pages.push(p);
     </div>
   </div>
   <div class="seasonal-art"><img src="${esc(href('/assets/img/guide-thermometer.png'))}" alt="" loading="lazy" width="768" height="512"></div>
+</section>
+<section class="band band-alt whatsite">
+  <div class="band-head">
+    <h2>What this site is</h2>
+    <p>An independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
+  </div>
 </section>`,
   });
 }
@@ -349,7 +410,7 @@ const add = (p) => pages.push(p);
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
     <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
-    <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-023'])}</li>
+    <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-028'])}</li>
     <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
@@ -375,13 +436,12 @@ for (const c of CATEGORIES) {
     attrs: `data-category="${esc(c.slug)}"`,
     type: 'category',
     ogImage: c.img || '/assets/img/hero.png',
-    body: `${c.img ? `<section class="cat-hero"><img src="${esc(href(c.img))}" alt="Illustration for the ${esc(c.name)} category" width="768" height="512"><p class="credit">Illustration: AI-generated.</p></section>` : ''}
-<section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.blurb)}</p></section>
+    body: `${c.img ? `<section class="cat-hero"><img src="${esc(href(c.img))}" alt="Illustration for the ${esc(c.name)} category; not the reviewed unit" width="768" height="512"><p class="credit">Illustration: AI-generated. ${esc(cfg.imageDisclosure || '')}</p></section>` : ''}
+<section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.tagline ? c.tagline + '. ' : '')}${esc(c.blurb)}</p></section>
 <section class="shelf">${cards || '<p>No product rows in this category.</p>'}</section>
 <section class="band"><h2>Guides for this cluster</h2>
 ${gl.length ? `<ul class="guide-list">${gl.map((g) => `<li class="guide-item"><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a><p>${esc(g.deck)}</p></li>`).join('')}</ul>` : '<p>No guide yet in this cluster.</p>'}
-</section>
-${c.slug === 'unresolved' ? `<section class="band"><h2>Why this cluster is empty</h2><p>${esc(products.find((p) => p.category === 'unresolved') ? 'No submitted link remains unresolved. The B00hJ57DV link first hit an intermittent checkpoint page and later resolved to a product, so this cluster is empty. We did not substitute any product.' : '')}</p><p>${flagLinks(['FLG-003', 'FLG-004', 'FLG-022'])}</p></section>` : ''}`,
+</section>`,
   });
 }
 
@@ -415,15 +475,105 @@ for (const g of guides) {
     <p class="deck">${esc(g.deck)}</p>
     <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(g.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
   </header>
-  <div class="prose">${g.body.map((b) => renderBlock(b, g.slug)).join('\n')}</div>
+  <figure class="article-hero"><img src="${esc(href(g.image))}" alt="${esc(g.image_alt || 'Editorial illustration for this guide; not the reviewed unit')}" width="1536" height="1024"><figcaption>${esc(g.image_alt || 'Editorial illustration')} — editorial illustration, not the reviewed unit.</figcaption></figure>
+  <div class="prose">${g.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, g.slug)).join('\n')}</div>
   ${productsHere.length ? `<aside class="band"><h2>Products in this cluster</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${productsHere.map((p) => productCard(p, 'guide-box')).join('')}</div></aside>` : ''}
-  <section class="band sources"><h2>Sources</h2>
+  <section class="band sources"><h2>Sources for this guide</h2>
     ${g.sources.length ? `<ul>${g.sources.map((id) => `<li>${guideSource(id)}</li>`).join('')}</ul>` : '<p>This guide makes no factual claim that needs an external source. It refers only to the observed listing data on the Shop page.</p>'}
     <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a></p>
   </section>
 </article>`,
   });
 }
+
+// Product detail pages (specifications from the manufacturer page, gaps as labelled "not stated")
+for (const p of products) {
+  const c = CATEGORIES.find((x) => x.slug === p.category) || { name: p.category };
+  const facts = [
+    ['Best for', p.best_for],
+    ['The trade-off', p.tradeoff],
+    ['Cleanup', p.dishwasher_safe || 'Not stated by the manufacturer. Check the manual before assuming a part is washable.'],
+    ['What we could not verify', p.no_buy_link ? 'Everything: no manufacturer page exists for this model, so no specification is published.' : (Object.keys(p.blank_reason || {}).length ? Object.values(p.blank_reason).join(' ') : 'No gaps in the table above: every field came from the manufacturer page or is labelled not stated.')],
+  ];
+  const jsonld = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: { '@type': 'Brand', name: p.brand },
+    description: p.lede, url: abs('/products/' + p.slug + '/'),
+  })}</script>`;
+  const conflictTable = p.observed_specs ? `
+<section class="band">
+  <h2>The listing and the maker disagree</h2>
+  <p>These figures come from the listing's own copy, not from the manufacturer. They are kept in a separate table on purpose, because on this listing they describe a different model from the manufacturer page. Read them as evidence of the conflict, not as specifications of the product.</p>
+  ${table(['Field', 'Listing states', 'Manufacturer states'], [
+    ['Model', esc(p.observed_specs.model || ''), esc(p.model || '')],
+    ['Power', esc(p.observed_specs.power || ''), p.power_w ? esc(p.power_w + ' W') : '<span class="muted">not stated</span>'],
+    ['Temperature', esc(p.observed_specs.temperature || ''), p.temp_max_f ? esc('up to ' + p.temp_max_f + ' °F') : '<span class="muted">not stated</span>'],
+    ['Size', esc(p.observed_specs.dimensions || ''), p.dimensions_in ? esc(p.dimensions_in + ' in') : '<span class="muted">not stated</span>'],
+    ['Capacity', esc(p.observed_specs.capacity || ''), p.capacity_qt ? esc(p.capacity_qt + ' qt') : '<span class="muted">not stated</span>'],
+    ['Material', esc(p.observed_specs.material || ''), '<span class="muted">not stated</span>'],
+  ])}
+  <p class="small">${flagLinks((p.flags || []).filter((f) => ['FLG-026', 'FLG-027'].includes(f)))}</p>
+</section>` : '';
+  add({
+    path: `/products/${p.slug}/`, type: 'product', ogType: 'article', jsonld,
+    ogImage: PRODUCT_IMAGE[p.id] || '/assets/img/hero.png',
+    attrs: `data-product-view="${esc(p.id)}"`,
+    title: p.name,
+    description: `${p.short_name || p.name}: ${p.lede || ''} Specifications from the manufacturer page, with every gap and conflict recorded.`,
+    body: `
+<nav class="crumbs small muted" aria-label="Breadcrumb"><a href="${esc(href('/shop/'))}">The picks</a> / <a href="${esc(href('/categories/' + p.category + '/'))}">${esc(c.name)}</a> / ${esc(p.short_name || p.name)}</nav>
+<section class="pd-hero">
+  <figure class="pd-figure">
+    <img src="${esc(href(PRODUCT_IMAGE[p.id] || '/assets/img/hero.png'))}" alt="Editorial illustration for ${esc(p.name)}; not the reviewed unit" width="768" height="512">
+    <figcaption class="credit">Editorial illustration, not the reviewed unit.</figcaption>
+  </figure>
+  <div>
+    <p class="kicker">${esc(p.brand || '')} · ${esc(c.name)}</p>
+    <h1>${esc(p.name)}</h1>
+    <p class="deck">${esc(p.lede || '')}</p>
+    ${buyBox(p)}
+    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-005'])}), so treat it as provisional.` : 'No outbound link is published for this product.'}</p>
+  </div>
+</section>
+<section class="band">
+  <h2>The specifications we could confirm</h2>
+  ${specGrid(p)}
+  <p class="small muted">${esc(p.capacity_note || '')}${p.model_note ? ' ' + esc(p.model_note) : ''}${p.dimensions_order ? ' Dimensions are shown as ' + esc(p.dimensions_order) + '.' : ''}</p>
+  ${conflictTable}
+</section>
+<section class="band band-alt">
+  <h2>Who it suits, and what it costs you</h2>
+  <div class="facts">
+    ${facts.map(([h, v]) => `<div class="fact"><h3>${esc(h)}</h3><p>${esc(v || '')}</p></div>`).join('\n    ')}
+  </div>
+</section>
+<section class="band sources">
+  <h2>Sources for this product</h2>
+  <ul>${(p.sources || []).map((id) => `<li>${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}${(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id)).map((id) => `<li>${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}</ul>
+  <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · <a href="${esc(href('/flagged/'))}">${(p.flags || []).length} open flag(s) on this row</a></p>
+</section>`,
+  });
+}
+
+// How we choose
+add({
+  path: '/how-we-choose/', title: 'How we choose and check',
+  description: 'The selection and verification rules behind the shortlist: what gets listed, what gets checked, what gets flagged.',
+  body: `<section class="page-head"><p class="kicker">Method</p><h1>How we choose and check</h1><p class="deck">The rules every product row and every guide on this site must pass.</p></section>
+<div class="prose">
+<h2>What gets listed</h2>
+<p>Only appliances the site's owner submitted. We do not add products from our own research, and we do not rank or score them, because we hold no authorized performance data. Five rows, each with its submitted link, its observed Amazon destination, and its manufacturer specification sources.</p>
+<h2>How each row is checked</h2>
+<ol>
+<li><strong>Observe the listing.</strong> Each submitted short link is fetched and the final Amazon page recorded (title, breadcrumb, /dp/ identifier). Observations are dated and never copied into the intended-product fields.</li>
+<li><strong>Check the maker.</strong> Where the manufacturer publishes a specification page, its figures populate the product page's specification grid. Where the maker is silent, the cell reads <em>not stated</em> — never filled in.</li>
+<li><strong>Record conflicts.</strong> Where the listing and the maker disagree, both readings are published side by side and the row is flagged (see FLG-023 through FLG-027 on the <a href="${esc(href('/flagged/'))}">flag page</a>).</li>
+<li><strong>Withhold what we cannot stand behind.</strong> No prices, ratings, availability, or hands-on test claims. If a maker publishes no specification page at all, every specification is withheld (FLG-025).</li>
+<li><strong>Link everything.</strong> Every row and guide carries its source IDs, linked in the <a href="${esc(href('/sources/'))}">source register</a>.</li>
+</ol>
+<h2>What would change a row</h2>
+<p>A confirmation from the owner about the intended product behind each link (Q-01), or a manufacturer page appearing for a model we could not verify. Corrections are logged on the <a href="${esc(href('/flagged/'))}">Flagged for review</a> page with their dates.</p>
+</div>`,
+});
 
 // Executive summary
 add({
@@ -433,7 +583,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, four category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -449,7 +599,7 @@ add({
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-023). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
@@ -580,6 +730,8 @@ ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-09', 'Analytics: only the five listed events; no cookies', 'Automated', 'Passed (automated)'],
     ['G-10', 'Sitemap and feed cover every guide; no broken internal links', 'Automated', 'Passed (automated)'],
     ['G-11', 'Generated files match the registers (no hand-edited HTML drift)', 'Automated (CI re-runs build and compares)', 'Passed (automated)'],
+    ['G-12', 'Observed product destinations cross-checked by an independent retest', 'Retest register + independent fetch; corrections logged', 'Passed (FLG-022 corrected, FLG-028 corroborated)'],
+    ['G-13', "Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over", 'Manufacturer-page register (S11–S16) + retest', 'Passed — conflicts published (FLG-023…FLG-027)'],
   ])}
 <div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>`,
 });

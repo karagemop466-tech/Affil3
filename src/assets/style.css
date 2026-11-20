@@ -227,3 +227,27 @@ table.checklist { min-width: 560px; }
   .btn { width: 100%; text-align: center; }
   .hero-ctas { flex-direction: column; }
 }
+
+/* ---- spec sheets, buy boxes, facts (product detail pages) ---- */
+.crumbs { margin-bottom: 18px; }
+.pd-hero { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 34px; align-items: center; padding: 10px 0 8px; }
+.pd-figure img { border-radius: 16px; box-shadow: var(--shadow-lift); display: block; }
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 18px 0 10px; padding: 0; }
+.spec { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; box-shadow: var(--shadow); }
+.spec dt { font: 700 11.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 6px; }
+.spec dd { margin: 0; font-weight: 650; font-size: 15.5px; }
+.spec dd.na { color: var(--muted); font-weight: 400; font-style: italic; font-size: 13.5px; border-bottom: 1px dashed var(--line-strong); display: inline-block; }
+.buybox { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; background: var(--accent-soft); border: 1px solid #e8cdb8; border-radius: var(--radius); padding: 16px 20px; margin: 16px 0; }
+.buybox.hidden-link { background: var(--warn-bg); border-color: #e5c37a; display: block; }
+.btn-note { font-size: 12.5px; color: var(--muted); max-width: 46ch; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+.fact { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; box-shadow: var(--shadow); }
+.fact h3 { font-size: 16px; margin: 0 0 6px; color: var(--accent-deep); }
+.fact p { margin: 0; font-size: 14.5px; color: var(--muted); }
+.fit-line { font-size: 13.5px; color: var(--muted); border-top: 1px dashed var(--line); padding-top: 10px; margin: 8px 0; }
+.article-hero { margin: 6px 0 26px; max-width: 860px; }
+.article-hero img { width: 100%; border-radius: 16px; box-shadow: var(--shadow-lift); display: block; }
+.article-hero figcaption { font-size: 12.5px; color: var(--muted); margin-top: 8px; }
+.hero-figure img { border-radius: 18px; box-shadow: var(--shadow-lift); display: block; }
+.picks { position: relative; }
+@media (max-width: 900px) { .pd-hero { grid-template-columns: 1fr; } }

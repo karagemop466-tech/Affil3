@@ -14,5 +14,7 @@
   "suggestionsNote": "Suggestions are listed at /suggestions/ and are not implemented until chosen.",
   "imageryCredit": "Illustrations on this site are AI-generated for this publication and do not depict the actual products tracked on the Shop page. Product questions are answered from the observed Amazon listing data, never from the artwork.",
   "brandNote": "ShopNow Kitchen is the reader-facing name for this publication. The repository and internal dashboards keep the working name Affil3.",
-  "priorName": "Affil3"
+  "priorName": "Affil3",
+  "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
+  "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units."
 }

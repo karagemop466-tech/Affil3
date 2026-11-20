@@ -40,79 +40,67 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the &#39;current&#39; option in each row. Reply with the suggestion ID and option letter (for example &#39;S-03 B&#39;).</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example &#39;S-03 B&#39;.</p></section>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
-  <p class="kicker">S-01 · Outbound link handling</p>
+  <p class="kicker">S-01 · Two publications in one repository</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep tagged /dp/ links on the observed products, marked as pending validation (current).<br><span class="muted small">Tradeoff: Readers can click now; the links are not yet validated in Associates Central.</span></li><li><strong>B.</strong> Hide all buy buttons until gate G-02 passes.<br><span class="muted small">Tradeoff: Safer for compliance; the site has no paths to purchase until the owner tests.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, until G-02 passes.</p>
+  <ul class="opts"><li><strong>A.</strong> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).<br><span class="muted small">Tradeoff: Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</span></li><li><strong>B.</strong> Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.<br><span class="muted small">Tradeoff: Cleanest signal for search engines; a redirect map has to be written and tested first.</span></li><li><strong>C.</strong> Merge the better parts of the old edition into the root site and remove the duplicate pages.<br><span class="muted small">Tradeoff: Best content outcome, most work, and the old edition&#39;s data conflicts with the root data and must be reconciled.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.</p>
 </section>
 <section class="choice-card" id="S-02">
-  <p class="kicker">S-02 · Publishing cadence</p>
+  <p class="kicker">S-02 · Buy buttons while links are untested</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> One new guide every two weeks (proposed default).<br><span class="muted small">Tradeoff: Steady growth; needs a writing slot every two weeks.</span></li><li><strong>B.</strong> One new guide per week.<br><span class="muted small">Tradeoff: Faster growth; higher manual load.</span></li><li><strong>C.</strong> A batch of 10 guides before launch, then monthly.<br><span class="muted small">Tradeoff: Meets the &#39;at least 10 posts&#39; rule of thumb (S11) sooner.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A after measurement is live. Review Search Console query and page performance monthly; choose the next question from reader intent and keep unmeasured ideas labeled as hypotheses.</p>
+  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
 </section>
 <section class="choice-card" id="S-03">
   <p class="kicker">S-03 · Where the analytics collector runs</p>
   <p class="choice-current">Current: <span class="badge">D</span></p>
-  <ul class="opts"><li><strong>A.</strong> Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.<br><span class="muted small">Tradeoff: Full control of raw data; you run the server.</span></li><li><strong>B.</strong> Run the collector on a platform that supports Node.js with persistent storage.<br><span class="muted small">Tradeoff: Less server work; check the platform&#39;s data terms.</span></li><li><strong>C.</strong> Use a third-party privacy-focused analytics product.<br><span class="muted small">Tradeoff: Quickest setup; a separate processor, so it needs its own disclosure.</span></li><li><strong>D.</strong> No analytics for now (current).<br><span class="muted small">Tradeoff: Nothing to maintain; no click or conversion data.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A or B for on-site events. Use the verified Google Search Console Performance report for search queries and authorized Associates reporting for orders. Those are three different sources.</p>
+  <ul class="opts"><li><strong>A.</strong> Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS.<br><span class="muted small">Tradeoff: Full control of raw data; the owner runs a server and patches it.</span></li><li><strong>B.</strong> Run it as a serverless function on a platform that supports Node.<br><span class="muted small">Tradeoff: No server to patch; cold starts and platform limits on storage.</span></li><li><strong>C.</strong> Skip self-hosting and use a privacy-focused hosted analytics service.<br><span class="muted small">Tradeoff: Fastest to start; one more third party, and the data leaves your control.</span></li><li><strong>D.</strong> Stay inactive until there is traffic worth measuring (current).<br><span class="muted small">Tradeoff: Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. It removes the server maintenance objection without handing the data away.</p>
 </section>
 <section class="choice-card" id="S-04">
-  <p class="kicker">S-04 · Brand name</p>
+  <p class="kicker">S-04 · Pricing display</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the working name &#39;Affil3&#39; (current).<br><span class="muted small">Tradeoff: Matches the repository.</span></li><li><strong>B.</strong> Choose a consumer-facing name and domain.<br><span class="muted small">Tradeoff: Better recall; needs a domain and a naming check.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B before wider promotion.</p>
+  <ul class="opts"><li><strong>A.</strong> Show no prices; every button reads &#39;Check the current price on Amazon&#39; (current).<br><span class="muted small">Tradeoff: Always accurate, and compliant with the price clause; readers have to click to know a budget.</span></li><li><strong>B.</strong> Enroll in the Creators API and display Amazon-served prices with a timestamp.<br><span class="muted small">Tradeoff: Better for budget-led shoppers; more engineering, and a stale price is a compliance risk.</span></li><li><strong>C.</strong> Show a coarse price band instead of a figure.<br><span class="muted small">Tradeoff: Useful and stable; still a claim that needs checking, and it ages badly.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A until traffic justifies the Creators API work. Then B.</p>
 </section>
 <section class="choice-card" id="S-05">
-  <p class="kicker">S-05 · Imagery</p>
+  <p class="kicker">S-05 · Publishing cadence</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Typography and layout only, no product photos (current).<br><span class="muted small">Tradeoff: Avoids use of Program Content outside the Associates purpose (S02).</span></li><li><strong>B.</strong> Original photography of products you own.<br><span class="muted small">Tradeoff: Strong for reader trust; needs equipment and time.</span></li><li><strong>C.</strong> Amazon-supplied images through the Associates tools.<br><span class="muted small">Tradeoff: Allowed only as Program Content on your site; needs review against the IP License.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B for guides; A for the front page.</p>
+  <ul class="opts"><li><strong>A.</strong> One new guide every two weeks (current).<br><span class="muted small">Tradeoff: Sustainable; slow to build a topic cluster.</span></li><li><strong>B.</strong> One new guide per week.<br><span class="muted small">Tradeoff: Faster topical coverage; needs a real writing slot weekly.</span></li><li><strong>C.</strong> A batch of eight guides before launch, then monthly.<br><span class="muted small">Tradeoff: Reaches a useful site size quickly; risks thin pages if the batch is rushed.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.</p>
 </section>
 <section class="choice-card" id="S-06">
-  <p class="kicker">S-06 · Authorship</p>
+  <p class="kicker">S-06 · Reader capture</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Team byline &#39;Affil3 editorial team&#39; (current).<br><span class="muted small">Tradeoff: No invented person.</span></li><li><strong>B.</strong> Named author with a real bio and a review date.<br><span class="muted small">Tradeoff: Stronger signal of accountability; needs a real person.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B once a real reviewer is named.</p>
+  <ul class="opts"><li><strong>A.</strong> No email capture yet; the RSS feed is the only subscription route (current).<br><span class="muted small">Tradeoff: Nothing to maintain and no consent obligations; no direct channel to readers.</span></li><li><strong>B.</strong> Add a single-field email capture with double opt-in on guide pages.<br><span class="muted small">Tradeoff: Owns the audience instead of renting it from search; adds a privacy notice and a provider.</span></li><li><strong>C.</strong> Publish a &#39;notify me when a new guide ships&#39; link that opens a mail draft.<br><span class="muted small">Tradeoff: Zero infrastructure and honest; very low conversion.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.</p>
 </section>
 <section class="choice-card" id="S-07">
-  <p class="kicker">S-07 · Content depth before Associates review</p>
+  <p class="kicker">S-07 · Imagery</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).<br><span class="muted small">Tradeoff: Fewer than the 10-post rule of thumb at launch (FLG-007).</span></li><li><strong>B.</strong> Hold the site from review until 10 original posts exist.<br><span class="muted small">Tradeoff: Aligns with S11; delays the tag-based program.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B.</p>
+  <ul class="opts"><li><strong>A.</strong> Keep editorial illustration, clearly labelled as not the reviewed unit (current).<br><span class="muted small">Tradeoff: Consistent look, no licensing exposure, no misleading product photography.</span></li><li><strong>B.</strong> Use Amazon-hosted product images through the approved image service.<br><span class="muted small">Tradeoff: Shows the actual product; images must be served by Amazon&#39;s tools and can change without notice.</span></li><li><strong>C.</strong> Commission real photography of the units.<br><span class="muted small">Tradeoff: Highest trust and highest cost; needs physical units.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.</p>
 </section>
 <section class="choice-card" id="S-08">
-  <p class="kicker">S-08 · Seasonal content</p>
-  <p class="choice-current">Current: <span class="badge">B</span></p>
-  <ul class="opts"><li><strong>A.</strong> A gift and holiday-cooking guide hub for November and December 2026.<br><span class="muted small">Tradeoff: Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand.</span></li><li><strong>B.</strong> Evergreen guides only (current).<br><span class="muted small">Tradeoff: Simpler; no seasonal claims.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B until measured queries (from S-03) show interest.</p>
+  <p class="kicker">S-08 · The byline</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the team byline, flagged as a weakness (current).<br><span class="muted small">Tradeoff: Honest and unchanging; weaker trust signal than a person.</span></li><li><strong>B.</strong> Add a named editor with a short bio and a contact address.<br><span class="muted small">Tradeoff: Strongest trust signal; a person has to be accountable for the corrections.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B as soon as a real person will take the byline. This is one of the cheapest trust wins available.</p>
 </section>
 <section class="choice-card" id="S-09">
-  <p class="kicker">S-09 · Category focus</p>
+  <p class="kicker">S-09 · Product scope</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).<br><span class="muted small">Tradeoff: Reflects the five links; the &#39;unresolved&#39; cluster is a holding area.</span></li><li><strong>B.</strong> Focus on air fryers and move the thermometer to a supporting note.<br><span class="muted small">Tradeoff: Tighter topic; drops the thermometer cluster.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A until the unresolved link is decided.</p>
+  <ul class="opts"><li><strong>A.</strong> Stay at five submitted products and go deep on them (current).<br><span class="muted small">Tradeoff: Focused and honest; a thin catalogue for a shopping site.</span></li><li><strong>B.</strong> Add three to five comparison products per category, researched the same way.<br><span class="muted small">Tradeoff: Makes the categories credible; each added product needs its own source page and verification.</span></li><li><strong>C.</strong> Expand into a second niche once the first converts.<br><span class="muted small">Tradeoff: Scales the model; splits attention before anything is proven.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, one category at a time, and only where a manufacturer page exists to verify against.</p>
 </section>
 <section class="choice-card" id="S-10">
-  <p class="kicker">S-10 · Prices and ratings</p>
+  <p class="kicker">S-10 · Disclosure prominence</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Show no prices or ratings (current).<br><span class="muted small">Tradeoff: No stale or unverified numbers.</span></li><li><strong>B.</strong> Show dated prices from an authorized source, refreshed on a schedule.<br><span class="muted small">Tradeoff: Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A now; B only after an authorized source is confirmed.</p>
-</section>
-<section class="choice-card" id="S-11">
-  <p class="kicker">S-11 · Reader capture (email list)</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> No email capture (current).<br><span class="muted small">Tradeoff: No email data to store.</span></li><li><strong>B.</strong> Opt-in email list.<br><span class="muted small">Tradeoff: Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A until the email rules are reviewed.</p>
-</section>
-<section class="choice-card" id="S-12">
-  <p class="kicker">S-12 · Search Console</p>
-  <p class="choice-current">Current: <span class="badge">B</span></p>
-  <ul class="opts"><li><strong>A.</strong> Do not connect Search Console.<br><span class="muted small">Tradeoff: No search data.</span></li><li><strong>B.</strong> Verify the site in Search Console and submit the sitemap after deploy (recommended).<br><span class="muted small">Tradeoff: Needs a Google account owner (Q-12).</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B.</p>
+  <ul class="opts"><li><strong>A.</strong> Dark disclosure bar directly under the masthead, repeated in the footer (current).<br><span class="muted small">Tradeoff: Impossible to miss, and slightly heavy visually.</span></li><li><strong>B.</strong> A lighter inline notice above the first product, plus the footer repeat.<br><span class="muted small">Tradeoff: Prettier; risks being read as decoration rather than disclosure.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
 </section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>

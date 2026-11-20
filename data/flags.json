@@ -1,5 +1,5 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -9,8 +9,7 @@
       "sources": [
         "S04",
         "S05",
-        "S12",
-        "S14"
+        "S12"
       ],
       "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
     },
@@ -124,12 +123,12 @@
       "id": "FLG-012",
       "severity": "medium",
       "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources. Update (2026-11-20, session arena63534e5d): an Amazon-owned Associates help page describing ASINs as a 10-digit code and the official text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID) was located and recorded as S12; it was read as a search excerpt of the official domain, so a manual full-page re-check remains the step that closes this flag.",
+      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
       "sources": [
         "S04",
         "S12"
       ],
-      "manual_step": "Open S12 in a browser, confirm the ASIN definition wording in the full page text, and update the S12 register entry from 'excerpt' to 'fetched'."
+      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
     },
     {
       "id": "FLG-013",
@@ -228,9 +227,78 @@
     },
     {
       "id": "FLG-023",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "CHEF iQ battery life: the manufacturer's own pages disagree",
+      "detail": "The CHEF iQ Sense product page states '70+ Hours of Battery'. The CHEF iQ Sense FAQ on the same domain states that Gen 3 probes hold a charge for 'up to 60 hours'. Both are official CHEF iQ pages, so this site publishes no battery figure at all rather than choosing the friendlier one. The ambient temperature range, sensor count and probe dimensions on the product page are not in dispute and are published.",
+      "impact": "One marketing figure is unusable. No other specification is affected.",
+      "manual_step": "Ask CHEF iQ support which figure applies to the Gen 3 unit sold under B0DZFD6R9Z, or leave the battery field blank.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
+    },
+    {
+      "id": "FLG-024",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "Emeril Lagasse 26 QT: preset and accessory counts differ across official pages",
+      "detail": "The Emeril Everyday product page shows '25 Cooking Pre-sets' in its specification strip and '24 one-touch cooking presets' in its own description, and an image on the same page reads '11-in-1'. The Amazon listing title says '24 One-Touch Preset Options' and 'Six Cooking Accessories Included', while the manufacturer description mentions seven. Because the official sources conflict, this site publishes no preset count and no accessory count.",
+      "impact": "Two secondary specifications are withheld. Capacity, dimensions and form factor are unaffected.",
+      "manual_step": "Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.",
+      "sources": [
+        "S13",
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-025",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
+      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
+      "impact": "One of five products is present but not recommended, and carries no outbound link.",
+      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "sources": [
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-026",
+      "severity": "high",
+      "status": "open",
+      "area": "product data",
+      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
+      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
+      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
+      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "sources": [
+        "S16",
+        "S12"
+      ]
+    },
+    {
+      "id": "FLG-027",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The same listing carries two different temperature ranges in two places",
+      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
+      "impact": "Temperature is withheld on one product.",
+      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "sources": [
+        "S16"
+      ]
+    },
+    {
+      "id": "FLG-028",
       "severity": "low",
+      "status": "open",
       "title": "Independent fetch by session arena63534e5d corroborated the corrected P03/P04 mapping",
-      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. An earlier draft of this flag (temporarily numbered FLG-021 on this session's branch) described a disagreement between registers; the corrected register (FLG-022) explains it. Kept as dated corroborating evidence.",
+      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. An earlier draft of this flag (temporarily numbered FLG-021, then FLG-023 on this session's branch; those numbers belong to other sessions' findings) is kept as dated corroborating evidence.",
       "sources": [
         "S04",
         "S05"

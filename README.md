@@ -78,15 +78,41 @@ As an Amazon Associate I earn from qualifying purchases.
 
 ---
 
-## Session addendum — `arena63534e5d` (publication polish pass, 2026-11-20)
+## Session `93cee724` addition (integrated 2026-11-20; nothing above changed)
 
-This session merged `main` twice (PR #6, then PRs #17/#19/#20) without discarding anything,
-and executed the reader-facing polish pass on top of the machinery above: rebrand to
-"ShopNow Kitchen" (disclosed on About), a new editorial design system, labeled AI-generated
-illustrations, rewritten human-voice guides (including the FSIS ground-meat correction),
-`/workflow/` and `/privacy/` pages, a card-based decision board, and a CI drift gate
-(`.github/workflows/publish.yml`). All build rules ("Rules the build enforces") are unchanged
-and still enforced by `tools/verify.mjs`; the `editorial/` second publication and its
-tooling from session `arena/4578ad4b-affil3` are untouched. This session's work is tracked
-in the `arena63534e5d-affil3` section of [`COORDINATION.md`](COORDINATION.md), and its PR is
+| Path | Owner | What it is |
+|---|---|---|
+| `/crisp-index/` | `tools/build_site.py` (Python, stdlib) | A third publication surface: shop front page, 5 question-shaped guides (incl. seasonal), compare hub, test queue with verbatim listing quotes, about/methodology, disclosure, and a Workshop group (product register with intended-vs-observed separation, flagged-for-review, suggestions & decisions queue, open questions, campaign ledger & analytics gates) |
+
+Also added at root: [`VERIFICATION.md`](VERIFICATION.md) (line-by-line verification log,
+sources S-01…S-15 with links for manual review) and
+[`EXECUTIVE_SUMMARY-93cee724.md`](EXECUTIVE_SUMMARY-93cee724.md). This session's register is
+[`data/93cee724/`](data/93cee724/) (its own namespace — `data/*.json` above are untouched).
+
+**Build & gates (this surface):**
+
+```bash
+python3 tools/build_site.py   # data/93cee724/*.json -> crisp-index/
+python3 tools/validate.py     # data + compliance gates
+python3 tools/check_links.py  # internal links + anchors
+```
+
+**Find worth knowing:** the Amazon-owned ASIN definition that FLG-012 (board) recorded as
+"not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
+ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
+
+---
+
+## Session addendum — `arena63534e5d` (publication polish pass, 2026-11-20, third integration)
+
+This session merged `main` three times (after PR #6; after PRs #17/#19/#20; after PRs
+#22/#24/#27/#29/#30) without discarding anything, and owns the reader-facing layer now
+served: the ShopNow Kitchen design system, the products-first front page, human-voice
+guides (with the manufacturer-conflict findings merged in), labeled editorial imagery from
+both sessions, `/products/<slug>/` spec pages, `/how-we-choose/`, `/workflow/`, `/privacy/`,
+and the card-based decision board. The data layer (manufacturer cross-checks, flags
+FLG-021…FLG-027, sources S09–S17) comes from the parallel sessions' registers and is kept
+verbatim; this session's additions are renumbered (FLG-028, S18–S20). Both CI workflows
+(`verify.yml` from session `9abfdc62`, `publish.yml` from this session) gate every push.
+Session details in [`COORDINATION.md`](COORDINATION.md); PR
 [#26](https://github.com/karagemop466-tech/Affil3/pull/26).

@@ -222,6 +222,10 @@
           "text": "Notice also what the titles do with temperature: one advertises a 450°F high-heat setting. That is a feature claim from the listing, not something we have measured. We do not repeat pricing or rating numbers on this site, and we treat listing-title specifications as claims to verify on the listing page, not as established facts."
         },
         {
+          "type": "note",
+          "text": "One warning from our own register: for the tracked 8-quart unit, the Amazon listing and the manufacturer's own page describe two different machines, and the listing shows two different temperature ranges in two places (flags FLG-026 and FLG-027 on our Flagged for review page). A quart figure printed on a box is only as reliable as the consistency of the pages behind it. When a listing and the maker disagree, treat the spec as unresolved and check the model number before you buy."
+        },
+        {
           "type": "h2",
           "text": "A rule of thumb for households"
         },
@@ -416,6 +420,10 @@
           "text": "Presets are recipes, not features. One appliance we track advertises twenty-four one-touch preset options in its title; the number reads impressively, but think about what it means. You do not need twenty-four buttons to cook twenty-four foods. You need a temperature, a time, and the judgment to check early. Presets earn their keep for foods you cook on repeat; the rest are shortcuts you will never press. When you compare units, ignore the count and hunt for the presets matching your weekly foods."
         },
         {
+          "type": "note",
+          "text": "A check we now run on every tracked appliance: the preset and accessory counts on the tracked 26-quart unit differ across official pages (flag FLG-024). Count from the listing's own spec table, and treat round numbers in marketing copy as marketing."
+        },
+        {
           "type": "h2",
           "text": "The accessory audit"
         },
@@ -484,8 +492,8 @@
       "deck": "A thermometer is only as useful as the number you compare it with, and the place you stick the probe.",
       "description": "How to use a meat thermometer so the reading means something: USDA target temperatures, probe placement, calibration checks, and what wireless specs like range and probe count really buy you.",
       "sources": [
-        "S09",
         "S10",
+        "S20",
         "S04"
       ],
       "body": [
@@ -518,17 +526,17 @@
             [
               "Beef, pork, veal, lamb — steaks, chops, roasts",
               "145°F plus a 3-minute rest",
-              "USDA FSIS safe temperature chart (S09)"
+              "USDA FSIS safe temperature chart (S10)"
             ],
             [
               "Ground meats (beef, pork, veal, lamb)",
               "160°F",
-              "USDA FSIS safe temperature chart (S09)"
+              "USDA FSIS safe temperature chart (S10)"
             ],
             [
               "All poultry (whole or ground)",
               "165°F",
-              "USDA FSIS safe temperature chart (S09)"
+              "USDA FSIS safe temperature chart (S10)"
             ]
           ]
         },
@@ -561,6 +569,10 @@
             "If your model adjusts, follow its calibration instructions; if not, remember the offset and apply it mentally, or retire the probe.",
             "Repeat whenever the probe is dropped, and whenever readings start feeling suspicious. Drops knock probes out of true more than any other cause."
           ]
+        },
+        {
+          "type": "note",
+          "text": "Two things our register caught while checking the tracked units against their makers' pages: the manufacturer's own pages disagree about the tracked wireless thermometer's battery life (flag FLG-023), and for the tracked instant-read unit no manufacturer specification page could be located at all, so every specification on its row is withheld (flag FLG-025). Conflicts like these are exactly why we link our sources instead of summarizing them."
         },
         {
           "type": "h2",
