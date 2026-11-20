@@ -43,10 +43,10 @@
 <section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
 <div class="prose">
 <h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-02 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has five original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S11, FLG-007).</p>
+<p>Current default: one new guide every two weeks (suggestion S-05, marked current, not yet chosen by the owner). A faster cadence or a pre-review batch of eight guides are on the decision board; nothing changes until you choose. At the current count, the site has 13 guides. Amazon's application-review help page gives “at least 10 posts” as a rule of thumb (S11). That page does not say whether guides count as posts, so FLG-007 stays open.</p>
 <h2>From question to page</h2>
 <ol>
-<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
+<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the questions buyers ask, checked against the sources the guides cite. The decision board tracks this (S-03 and Q-07).</li>
 <li><strong>Answer it honestly.</strong> Facts come from official sources only (the observed listings on the Shop table, USDA food-safety pages, Amazon's own help pages). Opinion and reasoning are labeled as such.</li>
 <li><strong>Link every claim.</strong> Each guide's Sources section lists the exact source IDs used; the <a href="/Affil3/sources/">source register</a> records how each one was checked.</li>
 <li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="/Affil3/compliance/">Compliance</a>).</li>

@@ -74,7 +74,7 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07). Update (478e6577, 2026-11-20): the site now has 13 guides (data/guides.json), not five. S11 does not say whether guides count as posts, so this flag stays open until the owner decides (S-05).",
       "sources": [
         "S11"
       ],
