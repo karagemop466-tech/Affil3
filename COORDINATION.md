@@ -1626,6 +1626,129 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - **Follow-up:** this log entry was added in a separate log-only PR (see the next PR number in the commit message); no content changed.
 - **Not done in this session:** no claim that any short link is valid or invalid; no intended ASIN set; Associates Central test (G-02) still pending the owner.
 
+---
+
+# Session `arena/77e4ac42-affil3` board (Journal + decision board)
+
+**Nothing above this line was edited.** This section appends a new board for session
+`arena/77e4ac42-affil3`, branched from `main` @ `16ee89f`. It is the reader-facing polish pass.
+
+## Claim
+
+- Session: `arena/77e4ac42-affil3` (short id `77e4`)
+- Branch: `arena/77e4ac42-affil3`, branched from `main` @ `16ee89f`
+- File scope claimed: `data/articles.json` (new), `data/decisions.json` (new), `tools/build.mjs`,
+  `tools/verify.mjs`, `.github/workflows/publish.yml`, and the generated root site it owns
+  (`index.html`, `feed.xml`, `sitemap.xml`, `articles/`, `decisions/`, and every root page whose
+  nav/footer/home copy changes), `EXECUTIVE_SUMMARY-77e4ac42.md` (new), `VERIFICATION.md`, this file.
+- Scopes NOT touched (claimed by other open sessions, read only): `data/products.json`,
+  `data/sources.json`, `data/flags.json`, `data/suggestions.json`, `data/questions.json`,
+  `data/guides.json`, `data/register/`, `data/93cee724/`, `data/c46310a7-affil3/`, `editorial/`,
+  `counter/`, `counterwise/`, `crisp-index/`, `counter-desk/`, `README.md`, `src/assets/style.css`.
+  Shared-data edits were deliberately avoided to prevent merge conflicts with the open PRs below.
+
+## Open parallel PRs at claim time (read only, not merged by this session)
+
+PR #40 (`arena/0e710695`), #44 (`arena/c7a56e3d`), #51 (`arena/acb0bd16`), #53 (`arena/82e6b5eb`),
+#58 (`arena/3b45b513`), #59 (`arena/e52ea644`). Several touch `COORDINATION.md` and the shared data
+files. This session's merge is clean against current `main`; later merges of those PRs may need the
+established add/add resolution (keep every session's section).
+
+## Task board
+
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| J-01 | The Journal: 7 catchy trend-shaped articles, sourced, with product boxes | done | `data/articles.json` + generated `/articles/` (index + 7 pages) |
+| J-02 | Decision board: 8 suggestions + 10 questions + design prompt | done | `data/decisions.json` + generated `/decisions/` |
+| J-03 | Wire Journal into nav, home band, footer, RSS feed | done | `tools/build.mjs` |
+| J-04 | Extend the publishing gate to cover the new pages | done | `tools/verify.mjs` (article + decision checks; feed article coverage) |
+| J-05 | CI drift list includes the new paths | done | `.github/workflows/publish.yml` |
+| J-06 | Executive summary + verification log for this session | done | `EXECUTIVE_SUMMARY-77e4ac42.md`, `VERIFICATION.md` |
+| J-07 | Build, verify, link checks, PR, merge, Pages deploy | in progress (see completion record) | — |
+
+## Verification performed
+
+- Baseline before edits: `node tools/build.mjs` 32 pages; `node tools/verify.mjs` 3,484 checks, 0 failed.
+- After edits: `node tools/build.mjs` **41 pages, 12 feed items, 40 sitemap URLs**; `node tools/verify.mjs`
+  **4,876 checks, 0 failed**.
+- `npm run check` (root build + gate + editorial build + editorial gate) passes; editorial output did not drift.
+- `python3 tools/link_report.py --strict`: OK — every checked data table 100% sourced.
+- `python3 tools/check_all_links.py`: 0 broken internal links, 54 external links recorded for manual review.
+- `python3 scripts/build_sitemap.py --check`: 18 pages present. `python3 scripts/check_links.py --no-external`:
+  593 links, no broken internal links. `python3 tools/check_site.py`: PASS, 21 pages.
+- Every Journal article's source IDs resolve; every article product box is a tagged, `rel="sponsored"`
+  Amazon link. No price, rating, review count or hands-on test claim appears in any new page.
+
+## Irregularities for review
+
+- **The Journal is editorial content, not a performance claim.** No traffic, conversion or revenue
+  figure is presented. Topic selection remains a hypothesis until Search Console and the click counter
+  are live (extends FLG-013, FLG-009).
+- **Article titles are working titles.** They are not claims about popularity, search volume or product
+  superiority, per the brief.
+- **README.md is claimed by session `3b45b513` (PR #58).** The Journal is part of the root publication,
+  so no new README row is required. If the integration session wants to mention it explicitly, README is
+  the place — logged here rather than edited, per the coordination rule.
+- **Shared data files were not edited.** Marketing/decision suggestions were placed in a new
+  `data/decisions.json` rather than appended to the shared `data/suggestions.json` / `data/questions.json`,
+  because those are claimed by open PRs #40 and #53.
+
+## Completion record
+
+- **Pull request:** https://github.com/karagemop466-tech/Affil3/pull/76 — "Journal + decision board: a
+  reader-facing marketing pass for the ShopNow Kitchen site" (`arena/77e4ac42-affil3` → `main`).
+- **Merge result: MERGED** as merge commit `f41ef98a518a7a10c1cf92d0849b9bd2974fc789` on
+  2026-11-20T07:06:05Z (`gh pr merge 76 --merge`). CI gates `gate`, `verify`, `disclosure` all SUCCESS.
+- **Merge conflict resolved (not discarding other work):** while the PR was open, `main` advanced via
+  PRs #73/#74 (8 more guides, new images, dynamic counts in the executive summary, a changed
+  `tools/build.mjs` and `src/assets/style.css`). Merged `origin/main` into this branch, combined the
+  executive-summary bullet (main's dynamic counts + this session's Journal/decision-board bullets),
+  union-resolved the append-only `COORDINATION.md` and `VERIFICATION.md` boards, and regenerated the
+  root site from the merged generator (`node tools/build.mjs` → 49 pages). Re-verified after the merge:
+  `node tools/verify.mjs` 6,090 checks, 0 failed; `npm run check` pass; `link_report --strict` OK;
+  `check_all_links` 0 broken.
+- **GitHub Pages deploy: confirmed.** Source `main` at `/`; build status `built`. Live checks via fetch:
+  `/articles/` (The Journal, 7 articles), `/decisions/` (decision board), and the home page serve with
+  the disclosure strip above the fold. Site: https://karagemop466-tech.github.io/Affil3/
+- **Not done in this session:** no revenue figure, conversion score or forecast is presented; revenue
+  still gates on the owner-access items (a tested tagged Special Link, a live tracking ID, the intended
+  product per short link). No submitted short link is claimed invalid (FLG-003).
+
+## Session `4c8c7811` — claim, verification and irregularities (branch `arena/4c8c7811-affil3`, base `main` @ `16ee89f`)
+
+**Claim.** Session `4c8c7811` claims the integrity and verification pass over the root site (`/`) and the Crisp Index sitemap gate. Scope: `scripts/build_sitemap.py`, `crisp-index/sitemap.xml` (regenerated by `tools/build_site.py`), `data/flags.json` (one new flag), `data/observations/2026-11-20-4c8c7811-recheck.json`, `EXECUTIVE_SUMMARY-4c8c7811.md`, `README.md` (read-first list), and this log. It does not touch the root site's tables, product data, guides or templates. Other sessions' surfaces (`editorial/`, `docs/`, `counterwise/`, `counter/`, `legacy/`) are not edited.
+
+**Verification performed (this session):**
+
+1. Baseline on this branch: `node tools/build.mjs` produced no drift; `node tools/verify.mjs` 3,484 checks passed, 0 failed.
+2. CI commands run locally, one per workflow: `node tools/disclosure-check.mjs` PASS; `node tools/archive-check.mjs` PASS; `python3 scripts/build_sitemap.py --check` **FAILED on main** (see FLG-040, fixed here); `python3 scripts/check_links.py --no-external` 593 links, no broken internal links; `python3 scripts/build_site.py --check` (counter) and `scripts/check_site.py` PASS; `python3 tools/link_report.py --strict` 5/5 and 34/34 rows with official source; `python3 tools/check_all_links.py` 0 broken internal links; `python3 tools/build.py` + `tools/check_site.py` (editorial) PASS; `tools/build_site.py` + `tools/validate.py` + `tools/check_links.py` (crisp) PASS; `scripts/build_site.py` + `tools/verify_site.py` (counter) PASS.
+3. Short links, re-fetched with the exact supplied URLs (`https://link.amazon/B04G1MEwY`, `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59`, `B0f3GKalj`): all five returned `https://www.amazon.com/` (title "Amazon.com. Spend less. Smile more."). No product destination was observed. Recorded in `data/observations/2026-11-20-4c8c7811-recheck.json`. This matches FLG-031 and FLG-036 and does not show any link to be dead.
+4. Associates Program Policies page (`https://affiliate-program.amazon.com/help/operating/policies`, "Updated: April 14, 2026") fetched and confirmed as the live policy document. Its Commission Income Statement section defines Qualifying Purchases by reference to a click through a Special Link. The full text was not re-read line by line in this session; the existing S02/S03 citations stand as recorded above.
+5. A wrong-host attempt (`https://link.amazon.com/...`) was redirected to an Amazon internal sign-in page. That host is not the supplied short-link domain and was not used for any value.
+
+**Irregularities found in this pass:**
+
+- **FLG-040 (new, medium, root Flagged page):** on main, `crisp-index/sitemap.xml` had two writers. `scripts/build_sitemap.py` wrote every `<loc>` as `https:/…` and dropped the `crisp-index/` segment, so the URLs pointed at nothing. Its `--check` used a substring test, so it passed on those malformed entries; the same file also failed when regenerated correctly, because the 404 page was missing from it. Fixed here: the writer refuses to write; `--check` compares exact `<loc>` values against files on disk and skips `noindex` pages; the file is regenerated by `tools/build_site.py`.
+- **Tracked build artifact:** `scripts/__pycache__/build_site.cpython-311.pyc` was committed to git even though `.gitignore` excludes `__pycache__/`. Untracked here.
+- **Short links re-observed as homepage** (extends FLG-031 and FLG-036): see item 3 above.
+
+**What this session did not do, and why:**
+
+- It did not test a Special Link in Associates Central. There is no Associates login in the sandbox. Gate G-02 stays pending the account holder.
+- It did not set any intended ASIN, official listing URL or confirmation date. Those need the owner's confirmation (FLG-002).
+- It did not add a Search Console property or an analytics endpoint. Both need owner accounts and infrastructure that this sandbox does not have.
+- It did not state any conversion, revenue or traffic figure. None exists in the repository.
+
+**Pages incident (this session):** main's Pages builds for `29daada` and `a448c57` reported `errored` ("Page build failed.", no detail in the Pages API) at 06:50–06:51 UTC. A rebuild request from this token returned 403. Main then advanced to `a42e974` (PR #63), whose Pages build reported `built` at 06:53 UTC, so the live site serves that commit. The branch was synced to `a42e974` (merge `87929fa`) and every CI command was re-run on the merged tree: all pass, no drift. The cause of the earlier errors was not identified and was not reproduced.
+
+**Completion record (session `4c8c7811`):**
+- **PR:** https://github.com/karagemop466-tech/Affil3/pull/61 — "Session 4c8c7811: sitemap gate fix (FLG-040), dated short-link re-check, executive summary".
+- **Merge result:** **MERGED** into `main` as merge commit `c8282ea` at 2026-11-20T07:01:58Z (`gh pr merge 61 --merge`, no auto-merge). Checks on the PR head `0e38e24`: site-checks, publish-gate, Verify site, Disclosure and archive integrity, Site checks, counter-desk — all success.
+- **Sync history:** main moved four times while this PR was open (`a42e974`, `e3743de`, `efe0124`, `9732c4c`). Each time the branch was merged with main, the conflicts were resolved by keeping both sides, and every gate was re-run. FLG-037 was renumbered to FLG-040 because main had already used FLG-037 to FLG-039.
+- **GitHub Pages:** source `main` at `/` (legacy). Latest build for `9732c4c` reported `built` at 2026-11-20T07:02:04Z. Live fetch (cache-busted `?v=c8282ea`) of `/flagged/` shows FLG-040 and the disclosure strip above the fold; the root homepage serves with the disclosure strip above the fold.
+- **Not done, owner-only:** Associates Central Special Link test (G-02); intended ASINs and listing URLs (FLG-002); Search Console property (FLG-013); analytics endpoint (FLG-009); decision on publishing `/crisp-index/` (FLG-040).
+- **Not claimed:** no short link is called valid or invalid; no conversion, revenue or traffic figure is stated.
+
 | CB-01 | Read `COORDINATION.md` & `origin/main`; register non-overlapping scope and push claim immediately | done | `3b45b513` | `COORDINATION.md` |
 | CB-02 | Line-by-line repo review across root (`data/*.json`, `tools/build.mjs`, `QA-BRIEF.md`, `EXECUTIVE-SUMMARY.md`), `/editorial/`, `/crisp-index/`, and CI workflows; log cross-session irregularities | done | `3b45b513` | `data/3b45b513/repo-audit.json`, `VERIFICATION-3b45b513.md`, `COORDINATION.md` |
 | CB-03 | Independent primary-source verification pass: all 5 `link.amazon` links, observed `/dp/` pages, all manufacturer pages (`chefman.com`, `emerileveryday.com`, `chefiq.com`, `thermomaven.com`), Amazon OA + Program Policies + ASIN guide, FTC 16 CFR 255, Google Search Central, USDA FSIS | done | `3b45b513` | `data/3b45b513/{sources,products,flags}.json`, `VERIFICATION-3b45b513.md` |
@@ -1671,7 +1794,9 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 | CI on the PR head | `Build, gate and test the Counter Desk edition` pass · `Gate the published Pages site` pass · `check-site` pass · `disclosure` pass · `gate` pass · `verify` pass — six checks, six passes |
 | GitHub Pages source | `main` at `/`, `https_enforced: true`, unchanged by this session |
 | Live verification | `/counter-desk/`, `/counter-desk/shelf/`, `/counter-desk/counter-space/`, `/counter-desk/guides/`, `/counter-desk/products/chefman-turbofry-touch-8-quart-air-fryer/`, `/counter-desk/review/compliance/`, `/counter-desk/sitemap.xml` all fetched from the live URL after the merge and render the merged content — front page product-led with the disclosure bar above it, three withheld cells on the 8 Qt page each with its reason, twelve gates on the compliance page, 31 URLs in the sitemap |
-| Pages build record | Two builds in the same minute reported `Page build failed` (`a448c57` at 06:50:49Z, `29daada` at 06:51:13Z) while the site continued to serve the merged content correctly. This is the same same-minute race an earlier session recorded (`arena-9abfdc62`, 2026-11-20): two pushes inside one minute, one Pages build races the other. The content check above is the authority on whether the site is correct; the next push re-runs the build. |
+| Pages build record | Two builds in the same minute reported `Page build failed` (`a448c57` at 06:50:49Z, `29daada` at 06:51:13Z) while the site continued to serve the merged content correctly. This is the same same-minute race an earlier session recorded (`arena-9abfdc62`, 2026-11-20): two pushes inside one minute, one Pages build races the other. The content check above is the authority on whether the site is correct; the next push re-runs the build. The build for `a035c6b` and `e3743de` afterwards reported `built`, and `pages.status` returned to `built`. |
+| Follow-up: count corrections | [#67](https://github.com/karagemop466-tech/Affil3/pull/67) — **merged 2026-11-20T06:57:10Z**, merge commit `a035c6b`. Two printed counts on a live page were wrong: the operator index said "fifteen" flags when the register holds fourteen, and the executive-summary tile printed a page count computed before the page list was finished (28 against the real 31). Both are fixed at the source — the flag sentence is derived from the register, the page count is substituted at write time — and the gate now fails on an unresolved template token or a leftover build comment, which is what would have caught the second one. Gate 4,330 checks / 0 failed; tests 19 / 0 failed. |
+| Live re-verification after the fix | `/counter-desk/review/executive-summary/` fetched from the published URL: the tiles read **31 pages**, **23 sources**, **0 prices and ratings**, **0 validated buy links**; `/counter-desk/review/flagged/` reads **14 items**; `/counter-desk/review/compliance/` lists twelve gates with G-02 pending; `/counter-desk/sitemap.xml` carries 31 URLs. |
 
 ### The one thing worth reading if you read nothing else
 
@@ -1844,7 +1969,7 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 
 - Registry: session `478e6577`, branch `arena/478e6577-affil3`, cut from `main` @ `1f65f70` (after PR #54). Status: active.
 - Scope claimed on this branch only: `COORDINATION.md` (this section), `data/observations/2026-11-20-478e6577-recheck.json` (new),
-  `data/sources.json` (append S25 only), `data/flags.json` (append FLG-037 to FLG-039 only), `data/questions.json` (K-13 note and Q-17 only),
+  `data/sources.json` (append S25 only), `data/flags.json` (append FLG-040 to FLG-039 only), `data/questions.json` (K-13 note and Q-17 only),
   `data/suggestions.json` (append S-20 only), `README.md` (stale-claim fixes and one link), `EXECUTIVE-SUMMARY-478e6577.md` (new),
   and the generated root pages that `tools/build.mjs` owns.
 - Not claimed and not touched: every other session's directory (`editorial/`, `counter/`, `counterwise/`, `crisp-index/`, `legacy/`, `docs/`,
@@ -1855,7 +1980,7 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 | ID | Task | Status | Files touched |
 |---|---|---|---|
 | R-01 | Repo review of the current root publication, its registers and its gate | done | none (read only) |
-| R-02 | Re-check the five submitted short links, unauthenticated, 2026-11-20 | done. Result: all five returned the Amazon home page; the same-day record conflicts (FLG-037) | `data/observations/2026-11-20-478e6577-recheck.json`, `data/flags.json` (FLG-037) |
+| R-02 | Re-check the five submitted short links, unauthenticated, 2026-11-20 | done. Result: all five returned the Amazon home page; the same-day record conflicts (FLG-040) | `data/observations/2026-11-20-478e6577-recheck.json`, `data/flags.json` (FLG-040) |
 | R-03 | Re-read Operating Agreement §1 and §5 and Program Policies §2 and clauses (g), (u), (v), (w), (y), (z) | done. §5 sentence on the site matches verbatim. Tag rule is §2(b), not §2(a) | observation file; `README.md` |
 | R-04 | Crawl-control check: robots.txt location, host-root fetch, noindex coverage of each surface | done. Found robots.txt is not read at a project path; FLG-038 and S-20 added. robots.txt left unchanged on purpose | `data/flags.json` (FLG-038), `data/suggestions.json` (S-20), `data/sources.json` (S25) |
 | R-05 | Correct stale README claims (check count, `/docs/` row, tag citation, short-link paragraph) | done | `README.md`, `data/flags.json` (FLG-039) |
@@ -1873,12 +1998,12 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 | [S01 Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | fetched 2026-11-20, chunks 0 and 1 | §1 tagged link formats; §5 statement | verified (re-read this round) |
 | [S02 Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | fetched 2026-11-20, chunks 0, 3, 4, 5, 6 | §2(a), §2(b), clauses (g), (u), (v), (w), (y), (z) | verified (re-read this round) |
 | [S25 Google robots.txt guide](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt) | fetched 2026-11-20, chunk 0 | host-root location rule | verified |
-| [S05 submitted short links](https://link.amazon/B04G1MEwY) (x5) | fetched 2026-11-20 | destination observation (homepage) | observed; contested (FLG-037) |
+| [S05 submitted short links](https://link.amazon/B04G1MEwY) (x5) | fetched 2026-11-20 | destination observation (homepage) | observed; contested (FLG-040) |
 | https://karagemop466-tech.github.io/Affil3/robots.txt and https://karagemop466-tech.github.io/robots.txt | fetched 2026-11-20 | project-path robots.txt present; host-root robots.txt error | observed |
 
 ## Irregularities raised by this session
 
-- **FLG-037 (medium):** same-day short-link observations conflict. Two rounds show homepage, three show product pages. Open.
+- **FLG-040 (medium):** same-day short-link observations conflict. Two rounds show homepage, three show product pages. Open.
 - **FLG-038 (medium):** robots.txt at a project path is not read by search engines; the other editions are not all noindexed; `/docs/` absent from the tree. Open; decision S-20.
 - **FLG-039 (low, resolved here):** README stale check count and `/docs/` row; tag citation corrected.
 - **Other stale text, not edited (other sessions' files):** `COORDINATION.md` earlier entries still describe the tag rule as §2(a) in places and refer to the 2,808 figure. These are historical logs and are left as written.
@@ -1899,9 +2024,13 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - **Checks before merge:** `disclosure`, `gate`, `verify`, `check-site`, `Gate the published Pages site`, and `Build, gate and test the Counter Desk edition`: all SUCCESS on the final head.
 - **Merge result: MERGED** into `main` as merge commit `c0bee1ed3aedd566114bc3b979259da65630b417` at 2026-11-20T06:55:51Z (`gh pr merge 65 --merge`). Post-merge workflows on `main` (Verify site, Site checks, Disclosure and archive integrity) all completed with success.
 - **GitHub Pages deploy:** `gh api repos/karagemop466-tech/Affil3/pages/builds/latest` reports status `built` for commit `c0bee1e…`, source `main` at `/`.
-- **Live check:** https://karagemop466-tech.github.io/Affil3/flagged/?v=478e6577 serves FLG-037 to FLG-039. The same URL without the query string returned a cached copy without FLG-037 at the time of the first check.
+- **Live check:** https://karagemop466-tech.github.io/Affil3/flagged/?v=478e6577 serves FLG-040 to FLG-039. The same URL without the query string returned a cached copy without FLG-040 at the time of the first check.
 - **Not done, and owner-only:** Associates Central test of one Special Link per product (G-02); signed-in check of the five short links (Q-17); Search Console verification and sitemap submission (FLG-013, FLG-038); analytics endpoint host (FLG-009); named editor (FLG-014, Q-06); publishing-cadence and crawl-control decisions (S-05, S-20).
 - **Follow-up:** this log-only entry was merged through a second PR from the same branch, because `main` cannot be written to directly. No content outside this file changed in that PR.
+- **Second content fix (PR #74, merge commit `3baf4d6`, 2026-11-20T07:03:19Z):** the live front page said "All five guides", the executive-summary page said "five question-led guides", and the cadence paragraph on `/workflow/` said five guides and cited S-02 for the cadence (the cadence suggestion is S-05). These were found on the live site after PR #65. The counts now come from `data/guides.json` and the category list, the cadence paragraph cites S-05, and FLG-007 was annotated with the 13-guide update. Checks on PR #74: all six SUCCESS. Live check: https://karagemop466-tech.github.io/Affil3/?v=3baf4d6 shows "All 13 guides →".
+- **Pages build history during this session:** `37bbf87` (PR #69 merge) and `c8282ea` (another session's merge) each ended `errored` with the generic message "Page build failed." Both were superseded by later builds of `main` that completed with `built` (`efe0124`, `9732c4c`, `3baf4d6`). Nothing in the content of those two commits was changed to fix them; the next commit built cleanly. The current latest build is `built` for `3baf4d6`.
+- **Coordinating with other sessions during the merge window:** `main` advanced at least five times while this branch was open (PRs #58 to #74). Each time the branch was merged with `origin/main` before the next push. The only conflict was `COORDINATION.md`, resolved by keeping both logs.
+- **Final state of this session:** the root site is live at https://karagemop466-tech.github.io/Affil3/ from `main` at `3baf4d6` (or a later commit of `main`).
 
 ---
 
@@ -1963,13 +2092,159 @@ FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data c
 - Merge result: **MERGED** into `main` as merge commit `a42e974b8a9581e403577edda65312ef6bbaac93` (`gh pr merge 63 --merge`, merged without waiting for review, as authorized).
 - GitHub Pages: source `main` at `/`, HTTPS enforced; status `built` — https://karagemop466-tech.github.io/Affil3/
 - Nothing on this branch was force-pushed and no other session's file was reverted or discarded.
+# Session `arena/d19dff2c-affil3` — independent release QA
+
+## Claim
+
+- Session: `arena/d19dff2c-affil3`
+- Branch: `arena/d19dff2c-affil3` (rebased onto `origin/main` at `c86d085` before work)
+- Scope: append-only entries in `COORDINATION.md`; new `RELEASE-REVIEW-d19dff2c.md` only.
+- Task: independently inspect the current live root publication and its release state, record verified repository facts and remaining decision gates, and send non-editing requests for discrepancies in files owned by concurrent integration work.
+- Explicitly excluded: `tools/build.mjs`, `tools/verify.mjs`, `data/*.json`, root generated pages, `robots.txt`, `sitemap.xml`, `feed.xml`, CSS/assets, and README. Those overlap other active PRs, including #51 and #53; no edits will be made to their scope.
+
+| ID | Task | Status | Files |
+|---|---|---|---|
+| D19-01 | Claim isolated QA/documentation scope | in progress | `COORDINATION.md`, `RELEASE-REVIEW-d19dff2c.md` |
+| D19-02 | Run root/editorial build gates and inspect current Pages deployment | pending | none (read-only) |
+| D19-03 | Compare live register counts and release claims; document gaps and manual-review questions | pending | `RELEASE-REVIEW-d19dff2c.md` |
+| D19-04 | Record source links, verification limits, and non-overlapping requests for the owning integration sessions | pending | `COORDINATION.md`, `RELEASE-REVIEW-d19dff2c.md` |
+
+
+## Work log (session `d19dff2c`)
+
+| ID | Task | Status | Evidence |
+|---|---|---|---|
+| D19-01 | Claim isolated QA/documentation scope | done | claim section above; branch pushed 2026-11-20 |
+| D19-02 | Run root/editorial build gates; inspect Pages deployment | done | `npm run check` exit 0 on `c0bee1e`: root 40 pages / 4,642 checks passed / 0 failed; editorial 21 pages PASS; disclosure-check 102 pages PASS; archive-check 100 pages, 3,152 refs PASS; docs sitemap 18 pages OK; docs links 593, none broken; `tools/integrity-check.mjs` 425 passed / 1 failed (→ RR-05). Pages API: source `main` at `/`, HTTPS enforced, build `built` for `a42e974` at 06:53:31Z. |
+| D19-03 | Compare live register counts and release claims; document gaps | done | `RELEASE-REVIEW-d19dff2c.md` — RR-01…RR-07, DQ-1…DQ-10, R-S01…R-S23; live fetches of `/` and `/flagged/` on 2026-11-20 |
+| D19-04 | Re-fetch official sources; record verification limits and owner requests | done | §3 of the report: 9 official pages re-fetched first-hand (rows 1–17); requests below |
+
+### Sources re-fetched first-hand by this session (2026-11-20)
+
+- https://affiliate-program.amazon.com/help/operating/agreement — §1 tagged Special Links; §5 exact statement; header “Updated: October 15, 2025”.
+- https://affiliate-program.amazon.com/help/operating/policies — header “Updated: April 14, 2026”; §2(a)/(b) tag as URL parameter; price/availability clause; Participation Requirements (v) cloaking, (w) shortener, (t) star ratings, (y) price tracking; 24-hour session / 89-day cart.
+- https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking — affiliate section verbatim: “I get commissions for purchases made through links in this post.”; “affiliate link” label and “buy now” button inadequate; home-page-only disclosure insufficient; hyperlinked disclosure button insufficient.
+- https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links — rel="sponsored" for paid links (last updated 2025-12-10).
+- https://developers.google.com/crawling/docs/robots-txt/create-robots-txt — robots.txt must be at host root, cannot be in a subdirectory; meta tags are the alternative (corroborates S25/FLG-038 first-hand).
+- https://sell.amazon.com/blog/what-is-an-asin — Amazon-owned ASIN definition: 10-character, typically B0, after /dp/ (decides the factual question behind FLG-012 → RR-03).
+- https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart — 145 °F + 3 min rest; ground meats 160 °F; poultry 165 °F (chart last updated Apr 14, 2025).
+- Not re-fetched (left for manual review, listed in the report): manufacturer pages, Amazon `/dp/` pages, excerpt-grade Associates help pages, 16 CFR 255, Google spam policies. The five `link.amazon` short links were deliberately not dereferenced (FLG-037 documents conflicting same-day rounds; no sixth round added).
+
+### Requests to owning sessions (this session edits none of these files)
+
+| Finding | File(s) owned elsewhere | Requested change |
+|---|---|---|
+| RR-01 stale counts (“All five guides”, “five original guides”, FLG-007 “5 guides”) vs 13 guides | `tools/build.mjs` (lines 372, 864), `index.html`, `data/flags.json` (owners with open PRs #51/#40/#53 lineage) | derive counts from `data/guides.json`, rebuild, update FLG-007 detail |
+| RR-02 wrong source citations rendered on `/flagged/` (FLG-001→S12, FLG-003→S13, FLG-006→S11/S03, FLG-007→S11) | `data/flags.json` | re-cite to the current register numbering (policy/help pages: S01/S02/S03/S19 + OneLink help); drop S12 from FLG-001 |
+| RR-03 FLG-012 open with “No Amazon-owned definitional page was located” contradicts `VERIFICATION.md` “Closed” and the fetched Amazon page | `data/flags.json` | close FLG-012 citing https://sell.amazon.com/blog/what-is-an-asin; fix FLG-001’s dependent sentence |
+| RR-04 FLG-003 says “four observed product redirects” (five rows exist) | `data/flags.json` | update count in the same pass |
+| RR-05 integrity check red: FLG-030 empty `manual_step`; tool not wired into CI | `data/flags.json` (+ `package.json`/workflows by the tool’s owner) | add manual_step or mark FLG-030 resolved; then wire `tools/integrity-check.mjs` into a gate |
+| RR-06 S15/S18/S19/S20 status `"verified (excerpt; re-check manually)"` is self-contradictory | `data/sources.json` | normalize to `excerpt` |
+| RR-07 `/counter/feed.xml` not well-formed (raw `&` in channel title, line 4) | `counter/` edition generator | escape `&amp;`, rebuild |
+
+Corroborated (no action requested by this session): FLG-037 (conflicting short-link rounds) and FLG-038/S-20 (project-path robots.txt + partial noindex coverage) — independently re-counted and re-fetched, matches.
+
+
+## Completion record (session `arena/d19dff2c-affil3`)
+
+- **Pull request: [#71](https://github.com/karagemop466-tech/Affil3/pull/71)** — “Independent release QA: first-hand source verification, seven flagged irregularities, decision gates and owner suggestions” (`arena/d19dff2c-affil3` → `main`), opened 2026-11-20. Body summarizes the two files changed, the official sources re-fetched, the gate results, and RR-01…RR-07.
+- **Checks before merge:** all completed, zero failures (`mergeable: MERGEABLE`, `mergeStateStatus: CLEAN`) — disclosure, verify, gate ×2, check-site, Counter Desk gate, “Gate the published Pages site”.
+- **Merge result: MERGED** into `main` as `efe0124e7b2a6bdb84b0fedfb1452878592acf20` at 2026-11-20T07:00:07Z (`gh pr merge 71 --merge`; no review wait, per the brief).
+- **Post-merge verification on `main`:** `npm run check` → 40 pages, 4,642 checks passed, 0 failed; editorial 21 pages PASS; disclosure-check PASS (both statements above the fold, no prices/ratings); docs-site link check 593 links, none broken; working tree clean after rebuild (deterministic).
+- **GitHub Pages:** source `main` at `/`, HTTPS enforced; build for `efe0124` reported **built** at 2026-11-20T07:00:36Z; live fetch of `/flagged/` and `/` after deploy serves the disclosure strip above the fold (spot-checked this session).
+- **Deliverable:** `RELEASE-REVIEW-d19dff2c.md` in the repository root — executive summary, release state, 17-row first-hand source verification, RR-01…RR-07, DQ-1…DQ-10, R-S01…R-S23, manual-review links.
+- **Not done here, by scope:** RR-01…RR-07 fixes (requested from owning sessions in the table above); owner gates DQ-1…DQ-5 (Associates Central, intended ASINs, G-02, analytics host, Search Console); no intended ASIN set, no short-link dereference, no price/rating recorded.
+
+---
+
+# Session `arena/991c8230-affil3` — claim (2026-11-20)
+
+Registry: session `991c8230-affil3`, branch `arena/991c8230-affil3`, cut from `main` @ `16ee89f`,
+rebased onto `main` @ `29daada` (merge of PRs #58/#60) before any work. The sandbox pins this
+session to its Arena-managed branch, so the `session-<id>/<task>` branch naming cannot be used
+here; all work stays on `arena/991c8230-affil3` and is recorded here instead (same deviation
+already logged by earlier sessions as FLG-019).
+
+Claims read before starting: boards for `arena-83a43a96`, `6249757a`, `93cee724`, `c252594d`,
+`e52ea644`, `dd2ad3dc` and the shared task board rows I01–I12. On that board, **I09 and I10 are
+marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own owners/integration.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched | Notes |
+| --- | --- | --- | --- | --- | --- |
+| M-01 | Suggestions board: marketing, design-prompt and organic-traffic suggestions S-21+ for owner review before implementation (continues I09) | done | `991c8230-affil3` | `data/suggestions.json` (append-only), generated `/suggestions/` page | New rows only; no existing row edited. |
+| M-02 | Questions board: the decision-blocking questions and discovery actions that close them (continues I10) | done | `991c8230-affil3` | `data/questions.json` (append-only: Q-18, Q-19, D-13, D-14), generated `/questions/` page | New rows only. |
+| M-03 | Dated re-observation of the five submitted short links and the five /dp/ pages, plus a liveness check of the cited policy sources | done | `991c8230-affil3` | `data/observations/2026-11-20-991c8230-recheck.json` (new), `data/flags.json` (append-only, FLG-037..FLG-040; landed as FLG-040 after renumber) | Follows D-12. No link is claimed invalid; observed targets recorded separately from intended fields. |
+| M-04 | Session executive summary | done | `991c8230-affil3` | `EXECUTIVE_SUMMARY-991c8230.md` (new file) | No existing summary file edited. |
+| M-05 | Baseline + integration: run every build/gate on latest main, rebuild generated pages, line-by-line check of new rows, PR to `main`, merge, confirm Pages deploy, record result | pending | `991c8230-affil3` | generated pages, `COORDINATION.md` (this section) | Flagged/unverified items do not block merge per the brief. |
+
+## Scope rules for this session
+
+- Append-only to `COORDINATION.md` and to `data/suggestions.json`, `data/questions.json`,
+  `data/flags.json`. No existing row in any register is edited or reordered.
+- Files owned by other sessions (`data/products.json`, `data/sources.json`, `data/guides.json`,
+  `EXECUTIVE-SUMMARY.md`, `README.md`, `VERIFICATION.md`) are read, never written.
+- Nothing is inferred. Any value not confirmable from an official source stays blank and flagged.
+- No price, rating, review count, or search-volume claim is published. Working titles stay labelled
+  as hypotheses.
+
+## Session `arena/991c8230-affil3` — completion record (2026-11-20, log only)
+
+- **Tasks:** M-01 done (suggestions S-21…S-25), M-02 done (Q-18, Q-19, D-13, D-14), M-03 done
+  (fifth-round re-observation + FLG-040), M-04 done (`EXECUTIVE_SUMMARY-991c8230.md`),
+  M-05 done (integration: all gates run locally, PR, merge, Pages confirmation).
+- **PR #75:** https://github.com/karagemop466-tech/Affil3/pull/75 — opened from
+  `arena/991c8230-affil3`, CI checks (gate, verify, disclosure, check-site, Pages gate,
+  Counter Desk) all passing at merge time. **Merged** into `main` as merge commit
+  `2d30c089b2b7a091d715fec9c7e26ffd7f1d319b` at 2026-11-20T07:04:08Z
+  (`gh pr merge 75 --merge`, no --auto). First merge attempt was blocked because main had
+  advanced (PR #76/#77 window); origin/main was merged into the branch twice during the session,
+  keeping both coordination records and both sessions' register rows both times.
+- **Identifier collisions resolved by renumbering this session's rows at merge time:**
+  FLG-037 → FLG-040, S-20…S-24 → S-21…S-25, Q-17/Q-18 → Q-18/Q-19 (478e6577 had landed
+  colliding IDs while this session worked). No row from either session was dropped.
+- **GitHub Pages:** build for main's tip `fbbb7c3` (which includes PRs #77/#78 landed after
+  this session's merge, with this session's rows intact) reported `built`; HTTPS enforced;
+  source `main` at `/`. Live spot-check with a cache-busting URL:
+  https://karagemop466-tech.github.io/Affil3/suggestions/ renders S-20…S-25 with correct
+  cross-references and the disclosure strip above the fold. Note: an ordinary fetch right
+  after the build returned a stale CDN copy ending at S-19; the checked-in
+  `suggestions/index.html` on main contains 14 S-21…S-25 references, and the cache-busted
+  fetch serves them, so this was a cache artefact, not a deploy failure.
+- **Sources verified this session (dated 2026-11-20):** all five submitted short links and all
+  five `/dp/` product pages fetched first-hand by this session (results in
+  `data/observations/2026-11-20-991c8230-recheck.json`). Policy and USDA sources are cited as
+  previously verified by earlier sessions' dated rounds and are linked for manual review in
+  `EXECUTIVE_SUMMARY-991c8230.md`; they were not re-fetched here and no policy claim in this
+  session's rows rests on a new reading of them.
+- **Verification performed:** `npm run check` after every change (final: 40 pages, gate 4,644
+  checks 0 failed after the last merge, editorial 21 pages PASS); docs gates (build_site --check,
+  check_site 23 pages PASS, link_report --strict OK, check_all_links 0 broken); disclosure-check
+  PASS; archive-check PASS; counterwise gate clean; counter-desk gate 4,266/4,266; CI drift check
+  clean (the only dirty file ever produced was the tracked `scripts/__pycache__` bytecode, restored
+  each time).
+- **Irregularities found this session (published on /flagged/):** FLG-040 (new, low, this
+  session's homepage-only short-link round and the 'product summary' page variant). Two minor
+  observations that are not new flags: (1) `scripts/__pycache__/build_site.cpython-311.pyc` is
+  tracked although `.gitignore` lists `__pycache__/` and `*.pyc` — every run of the docs scripts
+  dirties the tree and would trip the CI drift check; recommended one-line fix by the file's
+  owner is `git rm --cached scripts/__pycache__/build_site.cpython-311.pyc`. (2) The c252594d
+  work-log describes its S-11…S-18 additions with topics that do not match the rows actually
+  landed in `data/suggestions.json` (e.g. 'design direction', 'distribution'); the rows on main
+  are different titles. Historical log-vs-data discrepancy recorded here for review; not edited
+  because it belongs to another session's record.
+- **Still blocked on the owner (unchanged):** intended-ASIN confirmation (FLG-002, Q-01),
+  Special Link test in Associates Central (G-02, Q-02/Q-03), analytics endpoint choice (S-03,
+  FLG-009), Search Console property (FLG-013, Q-12), privacy-notice review (Q-16), the
+  decision-board choices themselves (S-01…S-25).
 
 
 ---
 
 > **Integration note (merge of `arena/f0300606-affil3`).** Everything above this line is
 > kept verbatim from `origin/main` at merge time. The board below was written on this
-> session's branch; its integration adjustments are recorded in its own merge log section.
+> session's branch; its integration adjustments are recorded in its own merge log sections.
 
 # Session `arena/f0300606-affil3` board (publication polish pass; appended, nothing above edited)
 
@@ -2098,3 +2373,31 @@ altered.** Conflicts and their resolutions:
 10. **Fluke fixed in passing:** the equal-date comparator in the shared guide sort returned -1
     both ways; it now returns 0 for equal dates so later-published guides lead the front page
     and the RSS feed deterministically.
+
+## Integration log 2 — second merge of `origin/main` (2026-11-20, PRs #75–#80)
+
+`main` advanced again while the first integration was being pushed. **Nothing from
+`origin/main` was discarded or altered.** New on their side: a **Journal** of seven
+trend-shaped articles (`/articles/`), a `/decisions/` front door for the decision board,
+suggestions S-21…S-25, questions Q-18/Q-19, discovery D-13/D-14, and FLG-040. Resolutions:
+
+1. **ID collisions renumbered again (mine moved twice).** My December-content, target-reader
+   and measurement-order suggestions are now **S-26, S-27, S-28** (their S-21…S-25 keep their
+   ids; their S-21/S-23 cover adjacent ground to mine — measured-query topic choice vs
+   measurement-first sequencing, seasonal hooks vs December cluster choice — kept distinct).
+   My email-capture question is now **Q-20**. My Search-console-to-topic discovery step was
+   **dropped as superseded** by their more specific D-13 (export the Performance report's
+   query rows); my persona step is now **D-15** and points at S-27.
+2. **`data/flags.json`** — theirs wholesale (through FLG-040); the FLG-007 guide-count and
+   cross-ref edit re-applied (16 guides, suggestion S-05).
+3. **`tools/build.mjs`** — four-way union kept both sides: their Journal band on the front page
+   and "The Journal" footer link, my `latestFirst` ordering (also applied to their combined
+   guides+articles feed with the equal-date comparator fixed to return 0), the executive-summary
+   bullet now derives its counts from the data (`${guides.length}`, `${articles.length}`).
+4. **Generated pages** — all conflicts regenerated from the merged sources: **52 pages,
+   23 feed items (16 guides + 7 articles), 51 sitemap URLs, 6,739 gate checks, 0 failed**.
+5. **Editors' note for the owner.** This branch and `main` independently answered the same
+   brief ("catchy trendy articles", "decision board", "shop not audit"). Both answers are now
+   live side by side: `main`'s Journal + `/decisions/` and this session's guide set, `/shop/`
+   buyer table and S-26…S-28. Nothing is lost; a later tidy-up can merge near-duplicate guides
+   and fold S-26…S-28 into the Journal's editorial calendar if that is preferred.
