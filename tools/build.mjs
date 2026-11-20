@@ -936,7 +936,7 @@ add({
 <h2>What is built</h2>
 <ul>
 <li>A three-question fit check at <code>/find/</code>: a matcher over published capacity and case-size figures, run in the reader's browser, with the reasoning and the missing values shown rather than hidden.</li>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of seven catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of ${articles.length} articles tied to the products, a three-question fit check at <code>/find/</code>, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
