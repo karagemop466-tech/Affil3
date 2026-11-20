@@ -50,6 +50,15 @@
 <p class="small muted">Read the <a href="/Affil3/privacy/">privacy notice</a> for the plain-English version.</p>
 <h2>Why clicks are not routed through a redirect</h2>
 <p>The Program Policies prohibit cloaking the URL of a site that carries Special Links, including by sending readers indirectly through an intermediate page. A redirect-based click counter is exactly that pattern, so the counter records the click in the browser and lets the link go straight to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+<h2>The collector was tested, not just written</h2>
+<p>The self-hosted collector in <code>tools/collector.mjs</code> was started locally and exercised during this publishing pass. What it did:</p>
+<ul>
+<li><strong>Accepted the defined event.</strong> A single <code>outbound_click</code> with a product id, destination host and placement returned 204 and was stored.</li>
+<li><strong>Rejected an undefined event.</strong> A request named <code>purchase</code>, an event outside the five, returned 400 and stored nothing. The list is enforced by the collector, not only by the browser script.</li>
+<li><strong>Rejected an unsafe value.</strong> A property value containing markup returned 400.</li>
+<li><strong>Stored one aggregate counter, nothing else.</strong> The whole data file after those three requests was a single key holding a count of one. No address, user agent, cookie or referrer URL was written, because the collector has nowhere to put them.</li>
+</ul>
+<p>What the test does not show is live traffic: the endpoint is not deployed, so on the public site the script exits before sending anything. The test proves the machinery refuses what it should, not that anyone has been measured. <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a></p>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
