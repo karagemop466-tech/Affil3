@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/flagged/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Flagged for review">
 <meta name="twitter:description" content="Irregularities and unverified items, with the sources and the manual step that would close each one.">
-<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -321,6 +321,20 @@
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
   <p class="small"><strong>Manual step:</strong> Owner to confirm that /crisp-index/ stays out of search indexes (robots.txt disallow) or decide to publish it. If it is published, submit the regenerated crisp-index/sitemap.xml in Search Console after verification.</p>
+</section>
+<section class="flag-card" id="FLG-041">
+  <p class="flag-head"><span class="badge flag">FLG-041</span> <span class="badge sev-medium">medium</span> <strong>The CHEF iQ Sense specification table showed the ambient sensor range as the probe&#39;s temperature</strong></p>
+  <p>The CHEF iQ specification page (S14) publishes two ranges: &#39;Internal temp range of 32ºF to 212ºF&#39; and &#39;Ambient temp range of 32ºF to 1,000ºF&#39;. The brand&#39;s own FAQ (S15) repeats the distinction: &#39;The max temperature for the portion of the probe inserted into the food is 212˚F... iQ Sense® Gen 3&#39;s maximum ambient temperature limit is 1,000ºF.&#39; The register carried 32-1000 °F in temp_min_f/temp_max_f, so the product page and the side-by-side comparison table both rendered the ambient range as though it were the probe&#39;s food-temperature range. Corrected on 2026-11-20 to 32-212 °F, with the 1,000 °F ambient rating moved into the product&#39;s summary line, because a 1,000 °F figure sitting in a specification row invites the reading that the probe may be left in a 1,000 °F oven. The correction is recorded in the P05 record and in data/observations/2026-11-20-0e102530-verification.json.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a>, <a href="https://chefiq.com/pages/new-iq-sense-faq" rel="noopener external">S15</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask CHEF iQ in writing which range applies to which part of the probe in each cooking method, and publish the answer as a line of guidance beside the table rather than leaving a reader to infer it from two numbers.</p>
+</section>
+<section class="flag-card" id="FLG-042">
+  <p class="flag-head"><span class="badge flag">FLG-042</span> <span class="badge sev-low">low</span> <strong>Two manufacturer pages disagree with themselves, and the site publishes no figure where that happens</strong></p>
+  <p>The Emeril Lagasse page (S13) shows &#39;25 Cooking Pre-sets&#39; in its specification block, describes the appliance as &#39;10-in-1&#39; in its own product description, and carries an image whose alt text on the same page reads &#39;11-in-1&#39;. The Amazon listing title for the same product says &#39;24 One-Touch Preset Options&#39;. Separately, the CHEF iQ page (S14) says &#39;Five internal sensors&#39; in its introduction while its specification list enumerates &#39;4 internal temperature sensors&#39; plus &#39;1 ambient temperature sensor&#39; - five in total, but not five internal ones. In both cases the site publishes no count: no preset count and no in-1 count for the oven, and the sensor count only as the specification list states it. Choosing between four official statements would be inference rather than verification.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask each manufacturer which figure is current. Until then, treat any preset or in-1 count in a listing title as a claim, not a specification.</p>
 </section>
 </main>
 <footer class="site-footer">

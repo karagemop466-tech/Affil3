@@ -1,0 +1,224 @@
+{
+  "_about": "Dated line-by-line re-verification by session 0e102530-affil3 on 2026-11-20. Every spec field in data/products.json was checked against the manufacturer page named in spec_sources, and every observed ASIN/title/breadcrumb against the Amazon detail page. Observed values only. Nothing here sets an intended ASIN, a confirmation date or an official listing URL; those fields stay blank until the owner confirms intent (FLG-002). Prices, ratings and review counts seen on pages were not recorded (site rule, S03).",
+  "check_date": "2026-11-20",
+  "method": "fetch_page on each official URL below; spec values compared field by field against data/products.json",
+  "short_links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-004 / FLG-031). Not evidence the link is dead."
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-004 / FLG-031). Not evidence the link is dead."
+    },
+    {
+      "token": "B00hJ57DV",
+      "row": "P03",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-004 / FLG-031). Not evidence the link is dead."
+    },
+    {
+      "token": "B0c8moW59",
+      "row": "P04",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-004 / FLG-031). Not evidence the link is dead."
+    },
+    {
+      "token": "B0f3GKalj",
+      "row": "P05",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-004 / FLG-031). Not evidence the link is dead."
+    }
+  ],
+  "amazon_detail_pages": [
+    {
+      "row": "P01",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "page_title_contains_register_observed_title": true,
+      "asin_in_url_matches_register": true,
+      "breadcrumb_matches_register": true
+    },
+    {
+      "row": "P02",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "page_title_contains_register_observed_title": true,
+      "asin_in_url_matches_register": true,
+      "breadcrumb_matches_register": true
+    },
+    {
+      "row": "P03",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "page_title_contains_register_observed_title": true,
+      "asin_in_url_matches_register": true,
+      "breadcrumb_matches_register": true
+    },
+    {
+      "row": "P04",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "page_title_contains_register_observed_title": true,
+      "asin_in_url_matches_register": true,
+      "breadcrumb_matches_register": true
+    },
+    {
+      "row": "P05",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "page_title_contains_register_observed_title": true,
+      "asin_in_url_matches_register": true,
+      "breadcrumb_matches_register": true
+    }
+  ],
+  "manufacturer_spec_check": [
+    {
+      "row": "P01",
+      "source": "S11 https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "fields_checked": [
+        "model",
+        "capacity_qt",
+        "temp_min_f",
+        "temp_max_f",
+        "power_w",
+        "voltage",
+        "dimensions_in",
+        "weight_lb",
+        "dishwasher_safe",
+        "certification",
+        "warranty"
+      ],
+      "result": "All fields match the register. Page states: Capacity 6 Qt / 5.67 L; 200-450 F; 13.38 x 11.81 x 10.63 in; 13.3 lbs; 1700W/120V; RJ38-SQPF-3TDB-2W; cETL, 1-year; nonstick dishwasher-safe baskets; dual viewing windows; Sync Finish; Hi-Fry max 450 F.",
+      "drift": null
+    },
+    {
+      "row": "P02",
+      "source": "S13 https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "fields_checked": [
+        "model",
+        "capacity_qt",
+        "capacity_note",
+        "voltage",
+        "dimensions_in",
+        "warranty"
+      ],
+      "result": "All published fields match the register. Page states: 26-Quart, 4-6 people, 24.6 Liters, 16.9D x 15.8W x 14.8H, 120 volts, 4-00675-02A-VN. Presets correctly blank: the page says '25 Cooking Pre-sets' while the Amazon listing title says 24 (FLG-024). New observation: the page description says '10-in-1' while an image alt on the same page says '11-in-1' - an internal inconsistency on the manufacturer page itself, extending FLG-024. No in-1 count is published by the register.",
+      "drift": null
+    },
+    {
+      "row": "P03",
+      "source": "S23 https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "fields_checked": [
+        "model",
+        "capacity_qt",
+        "capacity_note",
+        "temp_min_f",
+        "temp_max_f",
+        "power_w",
+        "voltage",
+        "dimensions_in",
+        "weight_lb",
+        "dishwasher_safe",
+        "certification",
+        "warranty"
+      ],
+      "result": "All fields match the register. Page states for the 8 Qt model: 8 Qt / 7.57 L; 200-400 F; 1700W/120V; 15.4 x 12.6 x 13.5 in; 12.8 lbs; RJ38-SQSS-8T; cETL, 1-year; 4 cooking presets; top-rack dishwasher-safe basket; auto-shutoff. The listing's 1000 W and 450 F title claims remain flagged (FLG-026, FLG-027) and are not published as specs.",
+      "drift": null
+    },
+    {
+      "row": "P04",
+      "source": "S21 https://www.thermomaven.com/products/f1-ace",
+      "fields_checked": [
+        "functions",
+        "dishwasher_safe",
+        "certification",
+        "warranty"
+      ],
+      "result": "All published fields match the F1 Ace family page: NIST-certified +/-0.5 F; 1-second instant read; thermocouple sensor; bright LCD; 100% waterproof design; built-in magnet; lifetime warranty activated within 30 days. The listing still does not name a model, so the family-page correspondence stays flagged (FLG-025).",
+      "drift": null
+    },
+    {
+      "row": "P05",
+      "source": "S14 https://chefiq.com/products/iq-sense and S15 https://chefiq.com/pages/new-iq-sense-faq",
+      "fields_checked": [
+        "temp_min_f",
+        "temp_max_f",
+        "dimensions_in",
+        "functions",
+        "dishwasher_safe"
+      ],
+      "result": "DRIFT FOUND AND CORRECTED. S14 Specifications list two ranges: 'Internal temp range of 32 F to 212 F' and 'Ambient temp range of 32 F to 1,000 F'. S15 FAQ: 'The max temperature for the portion of the probe inserted into the food is 212 F... iQ Sense Gen 3 maximum ambient temperature limit is 1,000 F.' The register's Temperature row showed 32-1000 F (the ambient range) as the probe temperature. Corrected to 32-212 F (food range); the ambient rating is now stated in the lede. Probe 0.19 in x 4.75 in, 4 internal + 1 ambient sensor, USB-C hub, speaker, waterproof/dishwasher-safe probe all match. Battery correctly blank (S14 '70+ Hours' vs S15 'up to 60 hours' Gen 3, FLG-023). New observation: the S14 intro paragraph says 'Five internal sensors' while its Features list says 4 internal + 1 ambient; the register matches the Features list.",
+      "drift": "temp_max_f 1000 -> 212; lede now states the 1,000 F ambient rating; temp_max_f_note removed from blank_reason; correction block added to the P05 record"
+    }
+  ],
+  "collector_test": {
+    "date": "2026-11-20",
+    "what_was_tested": "tools/collector.mjs run locally (PORT=8791, DATA_DIR in a temp directory) and driven with one request per defined event, then with four deliberately invalid requests.",
+    "endpoint_under_test": "http://127.0.0.1:8791/collect",
+    "results": [
+      {
+        "request": "page_view, path /, referrer_host google.com",
+        "http_status": 204,
+        "stored": true
+      },
+      {
+        "request": "category_view, path /categories/air-fryers/, category air-fryers",
+        "http_status": 204,
+        "stored": true
+      },
+      {
+        "request": "product_view, path /products/chefman-6-qt-dual-basket-air-fryer/, product_id P01",
+        "http_status": 204,
+        "stored": true
+      },
+      {
+        "request": "outbound_click, path /shop/, product_id P01, destination_host amazon.com, placement shop-table",
+        "http_status": 204,
+        "stored": true
+      },
+      {
+        "request": "guide_read_75, path /guides/is-your-meat-thermometer-telling-you-the-right-number/",
+        "http_status": 204,
+        "stored": true
+      },
+      {
+        "request": "unknown event name",
+        "http_status": 400,
+        "stored": false
+      },
+      {
+        "request": "property value with spaces (referrer_host)",
+        "http_status": 400,
+        "stored": false
+      },
+      {
+        "request": "path with a space",
+        "http_status": 400,
+        "stored": false
+      },
+      {
+        "request": "body over the 2048-byte cap",
+        "http_status": "connection closed (000), no row written",
+        "stored": false
+      }
+    ],
+    "stored_file": "counts-2026-11-20.json, one row per event|path|property combination, counter incremented by 1 per accepted request",
+    "verdict": "The collector works. All five defined events are accepted and aggregated; malformed input is rejected and not counted; no IP address, user agent, cookie or identifier is stored.",
+    "what_is_still_not_done": "Nothing in this test puts the collector on the public internet. GitHub Pages cannot run a server, so analyticsEndpoint in data/config.json stays empty and the live site sends no events. Deploying the collector needs a host and an owner decision, and it is still FLG-009.",
+    "sources": [
+      "S02",
+      "S03"
+    ]
+  },
+  "conclusion": "One spec drift found (P05 temperature range) and corrected with sources S14/S15. All other published values re-confirmed against official manufacturer pages on 2026-11-20. No intended ASIN, confirmation date or official listing URL was set. No short link was declared valid or invalid."
+}

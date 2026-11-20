@@ -89,18 +89,66 @@ const slugId = (t = '') => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/
 
 // An editorial illustration block. Every image on the site is AI-generated artwork and is
 // labeled as such at the point of use; the credit line comes from data/config.json.
+// Reads the pixel size of an image file so the width and height attributes match the real file.
+// A wrong intrinsic size makes the browser reserve the wrong box and the page jumps when the
+// image arrives. The size is read once per file and cached for the build.
+const IMAGE_SIZE_CACHE = new Map();
+function imageSize(src) {
+  if (!src) return null;
+  const file = path.join(ROOT, 'src' + src);
+  if (IMAGE_SIZE_CACHE.has(file)) return IMAGE_SIZE_CACHE.get(file);
+  let size = null;
+  try {
+    const buf = fs.readFileSync(file);
+    if (buf.length > 24 && buf[0] === 0x89 && buf[1] === 0x50) {
+      size = { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+    } else if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+      for (let i = 2; i < buf.length - 9; ) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const marker = buf[i + 1];
+        if (marker >= 0xc0 && marker <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(marker)) {
+          size = { w: buf.readUInt16BE(i + 7), h: buf.readUInt16BE(i + 5) };
+          break;
+        }
+        if (marker === 0xd8 || marker === 0xd9 || (marker >= 0xd0 && marker <= 0xd7)) { i += 2; continue; }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch { size = null; }
+  IMAGE_SIZE_CACHE.set(file, size);
+  return size;
+}
+// width/height attributes for an image, taken from the file itself.
+function dims(src, fallback = '1200', fallbackH = '800') {
+  const s = imageSize(src);
+  return s ? `width="${s.w}" height="${s.h}"` : `width="${fallback}" height="${fallbackH}"`;
+}
+
 function figure(src, alt, caption = '') {
   const credit = caption ? `<figcaption>${esc(caption)}</figcaption>` : '';
-  return `<figure class="figure"><img src="${esc(href(src))}" alt="${esc(alt)}" loading="lazy" width="1536" height="1024">${credit}</figure>`;
+  return `<figure class="figure"><img src="${esc(href(src))}" alt="${esc(alt)}" loading="lazy" decoding="async" ${dims(src)}>${credit}</figure>`;
 }
+// Grid cards render at roughly 380 CSS pixels, so they get a 768-wide variant and a srcset that
+// lets a phone pick the smaller file. The full-size illustration is still offered for wider viewports.
+// Every variant is derived from the same source file, so the artwork is identical at either size.
+function cardVariant(src) {
+  if (!src) return src;
+  const m = src.match(/^(.*)\.(png|jpg|jpeg)$/i);
+  if (!m) return src;
+  const variant = `${m[1]}-card.jpg`;
+  // Only offer the variant when the file is really there. A srcset that points at a 404 is worse
+  // than no srcset, and this keeps a new guide from needing two image files on day one.
+  return fs.existsSync(path.join(ROOT, 'src' + variant)) ? variant : src;
+}
+
 // Small labeled artwork used on product cards (kept visually separate from the buy button).
 function cardArt(p) {
   const src = PRODUCT_IMAGE[p.id] || catImg(p.category);
   if (!src) return '';
-  return `<div class="card-art"><img src="${esc(href(src))}" alt="Editorial illustration for ${esc(p.name || p.id)}; not the reviewed unit" loading="lazy" width="768" height="512"><span class="art-tag">Illustration</span></div>`;
+  return `<div class="card-art"><img src="${esc(href(cardVariant(src)))}" srcset="${esc(href(cardVariant(src)))} 768w, ${esc(href(src))} 1200w" sizes="(max-width: 700px) 92vw, 380px" alt="Editorial illustration for ${esc(p.name || p.id)}; not the reviewed unit" loading="lazy" decoding="async" ${dims(cardVariant(src), '768', '512')}><span class="art-tag">Illustration</span></div>`;
 }
 
-function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png' }) {
+function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.jpg' }) {
   const canonical = abs(p);
   const ogImg = abs(ogImage);
   return `<!doctype html>
@@ -311,7 +359,7 @@ const guideSource = (id) => (id === 'S04'
 // labelled as a Journal piece, and carries the topic so a reader sees what it is about.
 function articleCard(a) {
   return `<a class="card guide-card" href="${esc(href('/articles/' + a.slug + '/'))}">
-  <div class="guide-card-art"><img src="${esc(href(a.image))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="guide-card-art"><img src="${esc(href(cardVariant(a.image)))}" srcset="${esc(href(cardVariant(a.image)))} 768w, ${esc(href(a.image))} 1200w" sizes="(max-width: 700px) 92vw, 380px" alt="" loading="lazy" decoding="async" ${dims(cardVariant(a.image), '768', '512')}></div>
   <div class="card-body"><p class="kicker">${esc(catName(a.category))} · ${esc(a.topic)} · ${esc(dateLong(a.date))} · ${esc(a.read_minutes)} min read</p><h3>${esc(a.title)}</h3><p class="muted small">${esc(a.deck)}</p><p class="read-more">Read the article →</p></div>
 </a>`;
 }
@@ -335,7 +383,7 @@ const add = (p) => pages.push(p);
 </div>`).join('\n');
   const newestGuides = [...guides].slice(0, 3);
   const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
-  <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="guide-card-art"><img src="${esc(href(cardVariant(g.image)))}" srcset="${esc(href(cardVariant(g.image)))} 768w, ${esc(href(g.image))} 1200w" sizes="(max-width: 700px) 92vw, 380px" alt="" loading="lazy" decoding="async" ${dims(cardVariant(g.image), '768', '512')}></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
 </a>`).join('\n');
   const catCards = CATEGORIES.filter((c) => c.slug !== 'unresolved').map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p></a>`).join('\n');
@@ -347,7 +395,7 @@ const add = (p) => pages.push(p);
     path: '/', title: 'Kitchen gear, explained like a friend would',
     description: 'Air fryers, oven-style cookers and smart thermometers, explained in plain English. Every product links straight to its Amazon listing and every claim says where it came from.',
     type: 'home',
-    ogImage: '/assets/img/hero.png',
+    ogImage: '/assets/img/hero.jpg',
     jsonld,
     body: `
 <section class="hero">
@@ -361,7 +409,7 @@ const add = (p) => pages.push(p);
     </div>
   </div>
   <div class="hero-figure">
-    <img src="${esc(href('/assets/img/hero.png'))}" alt="Editorial illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter; not the reviewed unit" width="1536" height="1024">
+    <img src="${esc(href('/assets/img/hero.jpg'))}" alt="Editorial illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter; not the reviewed unit" width="1200" height="768" fetchpriority="high" decoding="async">
     <p class="credit">Illustration: AI-generated for ${esc(cfg.siteName)}. It is artwork, not a product photo.</p>
   </div>
 </section>
@@ -424,7 +472,7 @@ const add = (p) => pages.push(p);
       <a class="btn btn-ghost" href="${esc(href('/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/'))}">Is a combo appliance worth it?</a>
     </div>
   </div>
-  <div class="seasonal-art"><img src="${esc(href('/assets/img/guide-thermometer.png'))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="seasonal-art"><img src="${esc(href('/assets/img/guide-thermometer.png'))}" alt="" loading="lazy" decoding="async" ${dims('/assets/img/guide-thermometer.png')}></div>
 </section>
 <section class="band band-alt whatsite">
   <div class="band-head">
@@ -549,8 +597,8 @@ for (const c of CATEGORIES) {
     description: `${c.name}: ${c.blurb}`,
     attrs: `data-category="${esc(c.slug)}"`,
     type: 'category',
-    ogImage: c.img || '/assets/img/hero.png',
-    body: `${c.img ? `<section class="cat-hero"><img src="${esc(href(c.img))}" alt="Illustration for the ${esc(c.name)} category; not the reviewed unit" width="768" height="512"><p class="credit">Illustration: AI-generated. ${esc(cfg.imageDisclosure || '')}</p></section>` : ''}
+    ogImage: c.img || '/assets/img/hero.jpg',
+    body: `${c.img ? `<section class="cat-hero"><img src="${esc(href(c.img))}" alt="Illustration for the ${esc(c.name)} category; not the reviewed unit" ${dims(c.img)}><p class="credit">Illustration: AI-generated. ${esc(cfg.imageDisclosure || '')}</p></section>` : ''}
 <section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.tagline ? c.tagline + '. ' : '')}${esc(c.blurb)}</p></section>
 <section class="shelf">${cards || '<p>No product rows in this category.</p>'}</section>
 <section class="band"><h2>Guides for this cluster</h2>
@@ -566,7 +614,7 @@ add({
   body: `<section class="page-head"><p class="kicker">Guides</p><h1>Buying guides, by question</h1>
 <p class="deck">Each guide starts with a question buyers ask. Working titles are editorial hypotheses, not claims about popularity or search volume.</p></section>
 <div class="guide-grid">${guides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
-  <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="guide-card-art"><img src="${esc(href(cardVariant(g.image)))}" srcset="${esc(href(cardVariant(g.image)))} 768w, ${esc(href(g.image))} 1200w" sizes="(max-width: 700px) 92vw, 380px" alt="" loading="lazy" decoding="async" ${dims(cardVariant(g.image), '768', '512')}></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
 </a>`).join('\n')}</div>`,
 });
@@ -589,7 +637,7 @@ for (const g of guides) {
     <p class="deck">${esc(g.deck)}</p>
     <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(g.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
   </header>
-  <figure class="article-hero"><img src="${esc(href(g.image))}" alt="${esc(g.image_alt || 'Editorial illustration for this guide; not the reviewed unit')}" width="1536" height="1024"><figcaption>${esc(g.image_alt || 'Editorial illustration')} — editorial illustration, not the reviewed unit.</figcaption></figure>
+  <figure class="article-hero"><img src="${esc(href(g.image))}" alt="${esc(g.image_alt || 'Editorial illustration for this guide; not the reviewed unit')}" ${dims(g.image)}><figcaption>${esc(g.image_alt || 'Editorial illustration')} — editorial illustration, not the reviewed unit.</figcaption></figure>
   <div class="prose">${g.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, g.slug)).join('\n')}</div>
   ${productsHere.length ? `<aside class="band"><h2>Products in this cluster</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${productsHere.map((p) => productCard(p, 'guide-box')).join('')}</div></aside>` : ''}
   <section class="band sources"><h2>Sources for this guide</h2>
@@ -630,7 +678,7 @@ for (const a of articles) {
     <p class="deck">${esc(a.deck)}</p>
     <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(a.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
   </header>
-  <figure class="article-hero"><img src="${esc(href(a.image))}" alt="${esc(a.image_alt)}" width="1536" height="1024"><figcaption>${esc(a.image_alt)} — editorial illustration, not the reviewed unit.</figcaption></figure>
+  <figure class="article-hero"><img src="${esc(href(a.image))}" alt="${esc(a.image_alt)}" ${dims(a.image)}><figcaption>${esc(a.image_alt)} — editorial illustration, not the reviewed unit.</figcaption></figure>
   <div class="prose">${a.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, a.slug)).join('\n')}</div>
   ${related.length ? `<aside class="band"><h2>Products in this article</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${related.map((p) => productCard(p, 'article-box')).join('')}</div></aside>` : ''}
   <section class="band sources"><h2>Sources for this article</h2>
@@ -723,7 +771,7 @@ for (const p of products) {
   })();
   add({
     path: `/products/${p.slug}/`, type: 'product', ogType: 'article', jsonld,
-    ogImage: PRODUCT_IMAGE[p.id] || '/assets/img/hero.png',
+    ogImage: PRODUCT_IMAGE[p.id] || '/assets/img/hero.jpg',
     attrs: `data-product-view="${esc(p.id)}"`,
     title: p.name,
     description: `${p.short_name || p.name}: ${p.lede || ''} Specifications from the manufacturer page, with every gap and conflict recorded.`,
@@ -731,7 +779,7 @@ for (const p of products) {
 <nav class="crumbs small muted" aria-label="Breadcrumb"><a href="${esc(href('/shop/'))}">The picks</a> / <a href="${esc(href('/categories/' + p.category + '/'))}">${esc(c.name)}</a> / ${esc(p.short_name || p.name)}</nav>
 <section class="pd-hero">
   <figure class="pd-figure">
-    <img src="${esc(href(PRODUCT_IMAGE[p.id] || '/assets/img/hero.png'))}" alt="Editorial illustration for ${esc(p.name)}; not the reviewed unit" width="768" height="512">
+    <img src="${esc(href(PRODUCT_IMAGE[p.id] || '/assets/img/hero.jpg'))}" alt="Editorial illustration for ${esc(p.name)}; not the reviewed unit" ${dims(PRODUCT_IMAGE[p.id] || '/assets/img/hero.jpg')}>
     <figcaption class="credit">Editorial illustration, not the reviewed unit.</figcaption>
   </figure>
   <div>
@@ -758,7 +806,7 @@ for (const p of products) {
 <section class="band sources">
   <h2>Sources for this product</h2>
   <ul>${(p.sources || []).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}${(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id)).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}</ul>
-  <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · <a href="${esc(href('/flagged/'))}">${(p.flags || []).length} open flag(s) on this row</a></p>
+  <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · ${(p.flags || []).length} flag(s) on this row: ${flagLinks(p.flags || [])}</p>
 </section>`,
   });
 }
