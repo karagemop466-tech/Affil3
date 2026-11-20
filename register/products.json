@@ -1,0 +1,236 @@
+{
+  "$comment": "Product-intent confirmation record. Per the project brief, the INTENDED ASIN and the OBSERVED redirect target are stored in separate fields and are never merged. Blank means 'not confirmed from an official source', never 'assumed'.",
+  "record_type": "product-intent-confirmation",
+  "record_date": "2026-11-20",
+  "retrieval": {
+    "accessed_date": "2026-11-20",
+    "method": "HTTPS GET of the submitted short link, following redirects; final URL and document <title> recorded verbatim",
+    "tooling": "Arena fetch_page (sandbox has no direct egress to amazon.com; resolution observed through the fetcher)",
+    "note": "Amazon listings render differently per session; a 'checkpoint/continue' interstitial was returned for one token on all three attempts."
+  },
+  "asin_format_rule": {
+    "statement": "An Amazon ASIN is a 10-character alphanumeric identifier. Each of the five strings supplied in the brief is 9 characters, so none of them can be an ASIN.",
+    "status": "verified-by-observation",
+    "evidence": "All five submitted tokens measured 9 characters; every listing URL actually resolved by Amazon in this session carried a 10-character /dp/ identifier (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DZFD6R9Z).",
+    "source_id": "S06"
+  },
+  "products": [
+    {
+      "id": "P01",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "submitted_token_length": 9,
+      "submitted_token_is_valid_asin_format": false,
+      "intended_asin": null,
+      "intended_asin_status": "unknown - the brief supplies no product name and no ASIN; the token is not decodable to an ASIN by this project",
+      "official_listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed_redirect_target": {
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+        "asin": "B0CDY277D3",
+        "listing_title_observed": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+        "category_trail_observed": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "tag_parameter_present_on_final_url": false
+      },
+      "confirmation": {
+        "confirmed_date": "2026-11-20",
+        "confirmed_by": "redirect resolution observed against amazon.com listing title",
+        "source_id": "S06",
+        "identity_confirmed_by_owner": false
+      },
+      "published_fields": {
+        "brand": "Chefman",
+        "form_factor": "dual basket",
+        "product_name_from_listing": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+        "price": null,
+        "availability": null,
+        "star_rating": null,
+        "review_count": null,
+        "commission_rate": null,
+        "specifications": null
+      },
+      "unverified_fields_reason": "Price, availability, rating and review counts are volatile and may only be surfaced through an Amazon-served link or the Creators/PA API; this project has no API credentials. Commission rate is only obtainable from Associates Central. See FLG-002.",
+      "status": "listing resolved; product identity not owner-confirmed",
+      "flag_ids": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-003"
+      ],
+      "slug": "chefman-6-quart-dual-basket"
+    },
+    {
+      "id": "P02",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "submitted_token_length": 9,
+      "submitted_token_is_valid_asin_format": false,
+      "intended_asin": null,
+      "intended_asin_status": "unknown - see P01",
+      "official_listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed_redirect_target": {
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+        "asin": "B09B7SB46R",
+        "listing_title_observed": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+        "tag_parameter_present_on_final_url": false
+      },
+      "confirmation": {
+        "confirmed_date": "2026-11-20",
+        "confirmed_by": "redirect resolution observed against amazon.com listing title",
+        "source_id": "S06",
+        "identity_confirmed_by_owner": false
+      },
+      "published_fields": {
+        "brand": "Emeril Lagasse",
+        "form_factor": "oven-style / French door multi-function",
+        "product_name_from_listing": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+        "price": null,
+        "availability": null,
+        "star_rating": null,
+        "review_count": null,
+        "commission_rate": null,
+        "specifications": null
+      },
+      "unverified_fields_reason": "See P01.",
+      "status": "listing resolved; product identity not owner-confirmed",
+      "flag_ids": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-003"
+      ],
+      "slug": "emergil-lagasse-26qt-oven-style"
+    },
+    {
+      "id": "P03",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "submitted_token_length": 9,
+      "submitted_token_is_valid_asin_format": false,
+      "intended_asin": null,
+      "intended_asin_status": "unknown - see P01. Note the token begins 'B00', a prefix associated with older listings, while the resolved target begins 'B08'.",
+      "official_listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_redirect_target": {
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+        "asin": "B08DKYBTPH",
+        "listing_title_observed": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+        "tag_parameter_present_on_final_url": false
+      },
+      "confirmation": {
+        "confirmed_date": "2026-11-20",
+        "confirmed_by": "redirect resolution observed against amazon.com listing title",
+        "source_id": "S06",
+        "identity_confirmed_by_owner": false
+      },
+      "published_fields": {
+        "brand": "Chefman",
+        "form_factor": "single basket",
+        "product_name_from_listing": "Chefman Air Fryer 8 Qt TurboFry 4-in-1",
+        "price": null,
+        "availability": null,
+        "star_rating": null,
+        "review_count": null,
+        "commission_rate": null,
+        "specifications": null
+      },
+      "unverified_fields_reason": "See P01. The listing title's numeric claims (8 Qt, 450F) are the seller's title text, reproduced as an observation, not adopted as a verified specification.",
+      "status": "listing resolved; product identity not owner-confirmed",
+      "flag_ids": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-003"
+      ],
+      "slug": "chefman-8qt-single-basket"
+    },
+    {
+      "id": "P04",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "submitted_token_length": 9,
+      "submitted_token_is_valid_asin_format": false,
+      "intended_asin": null,
+      "intended_asin_status": "unknown - unresolved, see below",
+      "official_listing_url": null,
+      "observed_redirect_target": {
+        "final_url": "https://www.amazon.com/checkpoint/continue?token=v1.rJwhW5U-…",
+        "asin": null,
+        "listing_title_observed": null,
+        "attempts": 3,
+        "outcome": "Amazon anti-bot interstitial ('To continue, please click the Continue shopping button'). No listing title obtained."
+      },
+      "confirmation": {
+        "confirmed_date": null,
+        "confirmed_by": null,
+        "source_id": null,
+        "identity_confirmed_by_owner": false
+      },
+      "published_fields": {
+        "brand": null,
+        "form_factor": null,
+        "product_name_from_listing": null,
+        "price": null,
+        "availability": null,
+        "star_rating": null,
+        "review_count": null,
+        "commission_rate": null,
+        "specifications": null
+      },
+      "unverified_fields_reason": "The submitted link could not be resolved to a listing in this environment on three attempts. Nothing about this product is known to this project. No placeholder, category guess, or brand guess is published.",
+      "status": "UNRESOLVED - withheld from the shop floor",
+      "flag_ids": [
+        "FLG-004",
+        "FLG-001",
+        "FLG-002"
+      ],
+      "slug": "unresolved-link"
+    },
+    {
+      "id": "P05",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "submitted_token_length": 9,
+      "submitted_token_is_valid_asin_format": false,
+      "intended_asin": null,
+      "intended_asin_status": "unknown - see P01",
+      "official_listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_redirect_target": {
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+        "asin": "B0DZFD6R9Z",
+        "listing_title_observed": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+        "tag_parameter_present_on_final_url": false
+      },
+      "confirmation": {
+        "confirmed_date": "2026-11-20",
+        "confirmed_by": "redirect resolution observed against amazon.com listing title",
+        "source_id": "S06",
+        "identity_confirmed_by_owner": false
+      },
+      "published_fields": {
+        "brand": "CHEF iQ",
+        "form_factor": "accessory - wireless probe thermometer",
+        "product_name_from_listing": "CHEF iQ Sense smart wireless meat thermometer",
+        "price": null,
+        "availability": null,
+        "star_rating": null,
+        "review_count": null,
+        "commission_rate": null,
+        "specifications": null
+      },
+      "unverified_fields_reason": "See P01.",
+      "status": "listing resolved; product identity not owner-confirmed",
+      "flag_ids": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-003"
+      ],
+      "slug": "chef-iq-sense-wireless-probe"
+    }
+  ],
+  "aggregate_findings": {
+    "submitted": 5,
+    "resolved_to_a_listing": 4,
+    "unresolved": 1,
+    "tokens_that_are_valid_asin_format": 0,
+    "resolved_urls_carrying_a_tag_parameter": 0,
+    "products_with_owner_confirmed_identity": 0,
+    "products_with_published_price": 0,
+    "note": "Four of five tokens resolve, but none of the five strings supplied in the brief is an ASIN, and none of the observed final URLs carried a tracking tag. The set is a coherent kitchen cluster (3 air fryers across basket/dual-basket/oven-style, 1 probe thermometer, 1 unknown), which matches the brief's air-fryer editorial hypotheses - but that coherence is an observation, not confirmation of owner intent."
+  }
+}

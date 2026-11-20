@@ -1,0 +1,298 @@
+{
+  "$comment": "Source register. Every row states what was checked, where it was checked, and how far the verification actually got. Three tiers are used and never conflated: 'verbatim' (official page fetched in this session and quoted exactly), 'excerpt' (official-domain text returned by the search index, full page not fetched in this session), 'unresolved' (conflicting or absent - no value adopted).",
+  "accessed_date": "2026-11-20",
+  "publisher_allowlist": [
+    "affiliate-program.amazon.com",
+    "amazon.com",
+    "consumer.ftc.gov",
+    "ftc.gov",
+    "fsis.usda.gov",
+    "developers.google.com",
+    "docs.github.com"
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "publisher": "Amazon Services LLC",
+      "title": "Associates Program Operating Agreement (US)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher_type": "official-contracting-party",
+      "page_stated_update_date": "2025-10-15",
+      "verified_claims": [
+        {
+          "claim_id": "C-LINK",
+          "claim": "Associate links must use Amazon's special 'tagged' link formats ('Special Links').",
+          "quote": "The links must properly use the special \u201ctagged\u201d link formats we provide and comply with this Agreement (\u201cSpecial Links\u201d).",
+          "section": "1. Description of the Associates Program",
+          "status": "verbatim"
+        },
+        {
+          "claim_id": "C-DISCLOSE",
+          "claim": "The disclosure sentence is fixed and must be clear and prominent on the Site.",
+          "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \u201cAs an Amazon Associate I earn from qualifying purchases.\u201d",
+          "section": "5. Identifying Yourself as an Associate",
+          "status": "verbatim"
+        },
+        {
+          "claim_id": "C-NONESE",
+          "claim": "We may not imply Amazon supports, sponsors or endorses us or our Site.",
+          "quote": "You will not misrepresent or embellish our relationship with you (including by expressing or implying that we support, sponsor, or endorse you) ...",
+          "section": "5. Identifying Yourself as an Associate",
+          "status": "verbatim"
+        },
+        {
+          "claim_id": "C-BREACH",
+          "claim": "Violating Section 5 or the Program Policies is a material breach.",
+          "quote": "For the avoidance of doubt and without limitation for purposes of the foregoing subsection (a) any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
+          "section": "6. Term and Termination",
+          "status": "verbatim"
+        },
+        {
+          "claim_id": "C-NOWARRANT",
+          "claim": "Amazon makes no representation about traffic or commission income an Associate can expect.",
+          "quote": "We do not make any representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time in connection with the Associates Program, and we will not be liable for any actions you undertake based on your expectations.",
+          "section": "4. Warranties",
+          "status": "verbatim"
+        }
+      ],
+      "verification_method": "fetched in-session with the page fetcher; chunks 0 and 1 of 4 read; quotes copied from the fetched text",
+      "notes": "Cited throughout the site as the contractual basis for the disclosure strip, the sponsored marking, and the no-price rule."
+    },
+    {
+      "id": "S02",
+      "publisher": "Amazon Services LLC",
+      "title": "Associates Program Policies",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher_type": "official-contracting-party",
+      "verified_claims": [
+        {
+          "claim_id": "C-PRICE",
+          "claim": "A site may display price and availability only when the data comes from an Amazon-served link or the Creators/PA API, and cached data must be refreshed within 24 hours.",
+          "status": "unresolved",
+          "why_unresolved": "This page was not fetched in-session (the URL routes through a JavaScript console shell). The rule is described consistently by two independent secondary write-ups, but this project does not treat a secondary description as a verified contract term.",
+          "corroboration": [
+            "https://devdome.com/blog/amazon-price-display-rules-affiliates/ (secondary, 2026-08-16)",
+            "https://www.keywordrush.com/blog/amazon-pa-api-associatenoteligible-error-is-there-a-new-10-sales-rule/ (secondary, 2026-08-11)"
+          ],
+          "effect_on_this_project": "Precautionary and strict: no price, availability, star rating or review count is published anywhere on the site, and the build fails if a currency pattern reaches the output. Being wrong about the rule therefore cannot cause a violation."
+        }
+      ],
+      "verification_method": "URL and section name confirmed from the nav links present in the fetched S01 page; policy body not fetched",
+      "owner_action": "Open this page while logged into Associates Central and confirm the price/caching wording before any price is ever displayed. Blocks SG-14."
+    },
+    {
+      "id": "S03",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "FTC's Endorsement Guides: What People Are Asking (affiliate marketing section)",
+      "url": "https://consumer.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "publisher_type": "official-regulator",
+      "verified_claims": [
+        {
+          "claim_id": "C-FTC-AFF",
+          "claim": "Affiliate marketers must disclose the relationship clearly and conspicuously on the site.",
+          "quote": "You should disclose your relationship to the retailer clearly and conspicuously on your site, so readers can decide how much weight to give your endorsement. You could say something like, \u201cI get commissions for purchases made through links in this post.\u201d",
+          "status": "excerpt"
+        },
+        {
+          "claim_id": "C-FTC-MC",
+          "claim": "A material connection that a significant minority of consumers would not expect must be disclosed.",
+          "quote": "if there's a connection between an endorser and the marketer that a significant minority of consumers wouldn't expect and it would affect how they evaluate the endorsement, that connection should be disclosed clearly and conspicuously",
+          "status": "excerpt"
+        }
+      ],
+      "verification_method": "official-domain text returned by the search index on 2026-11-20; full page not fetched in-session",
+      "notes": "Regulatory basis for putting the disclosure in a visible strip rather than only on a separate page, and for repeating it in the footer."
+    },
+    {
+      "id": "S04",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "FTC staff sample educational letter to influencers (clear and conspicuous standard)",
+      "url": "https://www.ftc.gov/system/files/attachments/press-releases/ftc-staff-reminds-influencers-brands-clearly-disclose-relationship/influencer_template.pdf",
+      "publisher_type": "official-regulator",
+      "verified_claims": [
+        {
+          "claim_id": "C-FTC-PLACE",
+          "claim": "Placement matters: disclose above any 'more' cutoff, do not bury the disclosure in a string of tags, use unambiguous language.",
+          "quote": "To make a disclosure both \u201cclear\u201d and \u201cconspicuous,\u201d you should use unambiguous language and make the disclosure stand out. Consumers should be able to notice the disclosure easily, and not have to look for it.",
+          "status": "excerpt"
+        },
+        {
+          "claim_id": "C-FTC-NOLINK",
+          "claim": "A button or hyperlink to a disclosure page is not, by itself, a sufficient disclosure.",
+          "quote": "Would a button on a web page that says DISCLOSURE or LEGAL or something like that be enough, so long as the button links to a full disclosure? No. A hyperlinked disclosure like that is easily avoidable, meaning that the disclosure is not clear and conspicuous.",
+          "status": "excerpt"
+        }
+      ],
+      "verification_method": "official-domain text returned by the search index on 2026-11-20",
+      "notes": "This is why the site's disclosure is inline text on every page and the /disclosure/ page is a supplement, never a replacement."
+    },
+    {
+      "id": "S05",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "title": "Keep Food Safe! Food Safety Basics (cooking temperatures)",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+      "publisher_type": "official-government",
+      "verified_claims": [
+        {
+          "claim_id": "C-TEMP-POULTRY",
+          "claim": "All poultry to 165 F as measured with a food thermometer.",
+          "quote": "Poultry: Cook all poultry to an internal temperature of 165 \u00b0F as measured with a food thermometer.",
+          "status": "excerpt"
+        },
+        {
+          "claim_id": "C-TEMP-GROUND",
+          "claim": "Raw ground beef, pork, lamb and veal to 160 F.",
+          "quote": "Ground meats: Cook all raw ground beef, pork, lamb, and veal to an internal temperature of 160 \u00b0F as measured with a food thermometer.",
+          "status": "excerpt"
+        },
+        {
+          "claim_id": "C-TEMP-WHOLE",
+          "claim": "Whole cuts of beef, pork, lamb, veal to 145 F with a 3-minute rest.",
+          "quote": "Cook all raw beef, pork, lamb and veal steaks, chops, and roasts to a minimum internal temperature of 145 \u00b0F as measured with a food thermometer before removing meat from the heat source. For safety and quality, allow meat to rest for at least three minutes before carving or consuming.",
+          "status": "excerpt"
+        }
+      ],
+      "verification_method": "official-domain text returned by the search index on 2026-11-20; three direct fetch attempts to the page failed in-session (fetcher error), so the row is marked excerpt rather than verbatim",
+      "notes": "Used in one guide, as a citation for a cooking-safety standard. It is not a claim about any product's performance."
+    },
+    {
+      "id": "S06",
+      "publisher": "Amazon.com (primary observation)",
+      "title": "Live listing pages reached by resolving the five submitted short links",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "publisher_type": "first-party-primary-observation",
+      "additional_urls": [
+        "https://www.amazon.com/dp/B09B7SB46R",
+        "https://www.amazon.com/dp/B08DKYBTPH",
+        "https://www.amazon.com/dp/B0DZFD6R9Z"
+      ],
+      "verified_claims": [
+        {
+          "claim_id": "C-RESOLVE",
+          "claim": "The submitted link.amazon short links resolve to real Amazon product listings, and the resolved ASINs differ from the submitted tokens.",
+          "status": "verbatim",
+          "evidence": "register/products.json - four final URLs and four listing titles captured verbatim on 2026-11-20"
+        },
+        {
+          "claim_id": "C-NOFORMAT",
+          "claim": "The five submitted strings are 9 characters and therefore cannot be ASINs; every listing Amazon actually served carried a 10-character identifier.",
+          "status": "verbatim",
+          "evidence": "measured locally (string length) and compared with the four observed /dp/ identifiers"
+        }
+      ],
+      "verification_method": "HTTPS fetch of each submitted short link; final URL and document title recorded; one token (B0c8moW59) returned an anti-bot interstitial on 3 attempts and remains unresolved",
+      "notes": "Titles are reproduced as observed listing text. The site never restates a title's numbers as a verified specification."
+    },
+    {
+      "id": "S07",
+      "publisher": "Amazon Services LLC",
+      "title": "Product Advertising API 5.0 / Creators API access eligibility",
+      "url": "https://webservices.amazon.com/paapi5/documentation/",
+      "publisher_type": "official",
+      "verified_claims": [
+        {
+          "claim_id": "C-APIGATE",
+          "claim": "Catalog API access is gated on recent qualifying sales; the exact threshold is disputed.",
+          "status": "unresolved",
+          "effect_on_this_project": "No sales threshold, eligibility date, or 'you qualify because' statement is published anywhere on the site. The pipeline is built to refuse catalog data until credentials exist (see the research_snapshot schema), so the dispute changes nothing that a reader sees.",
+          "conflict": {
+            "position_a": "3 qualifying sales in the past 30 days (older, widely repeated account of PA-API 5.0 rules)",
+            "position_b": "10 qualifying sales in the trailing 30 days (reported from Associates Central documentation as of late 2025; also reported per-locale)",
+            "position_c": "official API usage text historically read 'loses access ... if it has not generated qualified referring sales for a consecutive 30-day period'"
+          },
+          "resolution": "Not resolved in this session. No sales figure, threshold, or eligibility date is published on the site. The site states only that API credentials are required and are not held."
+        },
+        {
+          "claim_id": "C-APIRETIRE",
+          "claim": "PA-API 5.0 is reported to be superseded by the Creators API (OAuth-based, re-registration required).",
+          "status": "unresolved",
+          "why_unresolved": "Secondhand; the official deprecation notice was not fetched. Recorded as an open question (Q-12), not as a fact."
+        }
+      ],
+      "verification_method": "not fetched (fetch attempts failed in-session); secondary sources disagree, so the row is deliberately left unresolved",
+      "notes": "This row is the honest version of 'we could not get product data': the gate is real, the number is not confirmed."
+    },
+    {
+      "id": "S08",
+      "publisher": "GitHub, Inc.",
+      "title": "GitHub Pages - publishing source (deploy from a branch and folder)",
+      "url": "https://docs.github.com/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site",
+      "publisher_type": "official-platform",
+      "verified_claims": [
+        {
+          "claim_id": "C-PAGES",
+          "description": "This site is published from the /docs folder of the default branch; Pages was enabled through the repository API in this session and the build status and live URL were read back from the API.",
+          "status": "verified-by-action",
+          "evidence": "recorded in COORDINATION.md LOG at integration time, and in register/deploy.json"
+        }
+      ],
+      "verification_method": "action + read-back via the authenticated API rather than documentation paraphrase"
+    },
+    {
+      "id": "S09",
+      "publisher": "Amazon Services LLC",
+      "title": "Associates Central - Tracking ID management and Special Link generation",
+      "url": "https://affiliate-program.amazon.com/home/accounturldetails",
+      "publisher_type": "official-login-walled",
+      "verified_claims": [
+        {
+          "claim_id": "C-TRACKID",
+          "claim": "The selected tracking ID is shopnow047c-20, as supplied in the project brief. Whether that ID exists on the account, and whether this site's URL is registered to it, cannot be checked without the account holder's login.",
+          "status": "unresolved",
+          "effect_on_this_project": "The ID is used in every generated link and is validated for format only. Creation/registration is an owner step (Q-08, Q-09)."
+        }
+      ],
+      "verification_method": "not verifiable in this environment; login-walled. Format checked against the -20 suffix convention visible in the brief and against the pattern shown in the resolved listing URLs (no tag parameter present)."
+    },
+    {
+      "id": "S10",
+      "publisher": "Google",
+      "title": "Search Central - qualify your outbound links (rel=sponsored)",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "publisher_type": "official-search-engine",
+      "verified_claims": [
+        {
+          "claim_id": "C-SPONSORED",
+          "claim": "Paid placements, including affiliate links, should be marked rel=\"sponsored\".",
+          "status": "excerpt",
+          "corroboration": [
+            "https://www.mattmcwilliams.com/do-affiliate-links-hurt-your-seo/ (secondary, 2026-09-14, cites Search Central doc last updated 2025-12-10)",
+            "https://www.makeinfluence.com/en/academy/does-googles-rel-sponsored-rule-apply-to-influencer-and-affiliate-links (secondary, 2026-08-25)"
+          ],
+          "effect_on_this_project": "Every outbound commerce link in the generated HTML carries rel=\"sponsored nofollow\" plus the 'Sponsored' label. checks.mjs fails the build on any amazon.com anchor lacking it."
+        }
+      ],
+      "verification_method": "secondary corroboration of official documentation; official page not fetched in-session"
+    },
+    {
+      "id": "S11",
+      "publisher": "Project brief (owner-supplied, unverified)",
+      "title": "Owner-supplied intent: tracking ID, five product links, editorial hypotheses, section codes",
+      "url": null,
+      "publisher_type": "owner-statement",
+      "verified_claims": [
+        {
+          "claim_id": "C-BRIEF",
+          "claim": "The air-fryer editorial hypotheses ('Basket or oven-style...', capacity checklist, cleanup/counter space, multi-function questions) are owner-proposed working titles, explicitly not claims about popularity, search volume or product superiority.",
+          "status": "owner-statement",
+          "handling": "Used as topic selection only. No search-volume, trend, or ranking claim is made anywhere on the site."
+        },
+        {
+          "claim_id": "C-CODES",
+          "claim": "The brief cites registers FLG-003, SG-27..SG-30, S01/S07/S24 and a prior 'source register' that do not exist in this repository at base commit 847ae37.",
+          "status": "verified-absent",
+          "handling": "Recreated forward with the same identifiers where the brief's meaning was unambiguous (FLG-003, SG-27..SG-30), and marked as newly established rather than restored."
+        }
+      ],
+      "verification_method": "git ls-tree of main at 847ae37 (one file: README.md) plus full history inspection"
+    }
+  ],
+  "source_register_integrity": {
+    "rows": 11,
+    "verbatim": 3,
+    "excerpt": 4,
+    "unresolved": 4,
+    "claims_with_no_source": 0,
+    "values_backfilled_by_inference": 0
+  }
+}

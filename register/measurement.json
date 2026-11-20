@@ -1,0 +1,86 @@
+{
+  "$comment": "The five events the brief requires, defined before any of them is collected. A field that no source populates stays absent; it is never defaulted to zero in a report.",
+  "design_constraints": {
+    "host": "GitHub Pages serves static files only - there is no server to receive an event here.",
+    "chosen_shape": "client-side recorder + an optional self-hosted collector (scripts/collect.mjs). Endpoint unset = events buffered locally only, and the site says so.",
+    "privacy": [
+      "no cookies",
+      "no IP capture server-side (only the access log the host keeps anyway)",
+      "no cross-site identifier, no fingerprinting",
+      "session token is random, stored in sessionStorage, and dies with the tab",
+      "no page text, no form contents, and no referrer beyond the origin is sent"
+    ]
+  },
+  "events": [
+    {
+      "id": "page_view",
+      "definition": "A reader loaded a page on this site.",
+      "trigger": "DOMContentLoaded, once per page",
+      "fields": ["session_token", "path", "cluster_or_guide_slug", "ts"],
+      "why_this_and_not_more": "Path plus a timestamp answers 'did anyone arrive', which is the question Search Console only answers for impressions. Deliberately excludes scroll, mouse and timing so the payload stays explainable in one sentence.",
+      "conversion_role": "denominator for outbound click-through rate",
+      "privacy_note": "no personal data; sessionStorage only",
+      "status": "instrumented; endpoint unset"
+    },
+    {
+      "id": "guide_view",
+      "definition": "A reader loaded a guide, tagged with its slug and cluster.",
+      "trigger": "page_view on a /guides/* path",
+      "fields": ["session_token", "guide_slug", "cluster", "ts"],
+      "why_this_and_not_more": "Lets topic demand be read per guide without a separate scroll-tracking layer. Distinguishable from page_view because the guide set is the editorial bet being tested.",
+      "conversion_role": "input to 'which topic earned the click'",
+      "privacy_note": "same as page_view",
+      "status": "instrumented; endpoint unset"
+    },
+    {
+      "id": "outbound_click",
+      "definition": "A reader clicked a sponsored commerce link.",
+      "trigger": "click on a[data-aff], before navigation",
+      "fields": ["session_token", "product_id", "asin_observed", "placement", "link_format", "ts"],
+      "why_this_and_not_more": "This is the only event with direct revenue meaning. 'placement' (card | guide-inline | cluster | compare-row) makes it possible to say which surface earns, which is the entire point of measuring before optimising.",
+      "conversion_role": "numerator for click-through; the join key to Amazon's click report",
+      "privacy_note": "records our own product id and the link's placement, never the destination URL's query string",
+      "status": "instrumented; endpoint unset"
+    },
+    {
+      "id": "intent_confirm",
+      "definition": "A reader asked the page to copy a validated Special Link - an explicit, deliberate buying action.",
+      "trigger": "click on the 'copy link' control on a product page",
+      "fields": ["session_token", "product_id", "link_format", "ts"],
+      "why_this_and_not_more": "Higher-intent than a click on a card and it survives ad-blocking of outbound navigation. It is also the event that ties a reader action back to the product-intent record (register/products.json) the brief requires.",
+      "conversion_role": "leading indicator when clicks are under-counted",
+      "privacy_note": "clipboard action only; nothing read from the clipboard",
+      "status": "instrumented; endpoint unset"
+    },
+    {
+      "id": "register_gap_view",
+      "definition": "A reader opened a page whose register row is unverified or unresolved, i.e. we showed them a blank where a number should be.",
+      "trigger": "page_view on a page carrying a data-gap notice, with the flag id",
+      "fields": ["session_token", "flag_id", "field_names", "ts"],
+      "why_this_and_not_more": "The brief wants the missing-information list to be actionable. If readers never look at the gap, closing it is low priority; if they crowd it, that is the strongest possible signal that prices or ratings are worth the API spend. Measuring our own holes turns FLG rows into a ranked backlog.",
+      "conversion_role": "modifier - reads alongside click-through to show whether withheld data is costing revenue",
+      "privacy_note": "flag id only",
+      "status": "instrumented; endpoint unset"
+    }
+  ],
+  "explicitly_not_instrumented": [
+    "scroll depth and dwell time - noisy, low decision value, high creep factor",
+    "mouse movement or any fingerprinting input",
+    "per-user persistent identity across visits",
+    "third-party pixels of any kind, including ad-network tags",
+    "recording what the reader typed into on-site search (the zero-result count is aggregated instead)"
+  ],
+  "conversion_reporting": {
+    "rule": "Orders, units and earnings come only from Associates Central reports into register/ledger.json. This event stream never asserts a sale happened, because a click is the last thing this site can actually observe.",
+    "why": "Attribution belongs to Amazon's session cookie. Any conversion figure computed here would be a guess wearing a decimal point.",
+    "source_id": "S01"
+  },
+  "collector_contract": {
+    "endpoint": "POST /event, application/json, one event object",
+    "response": "204 on accept, 400 on unknown event id",
+    "storage": "append-only NDJSON at data/events.ndjson",
+    "totals": "GET /summary returns per-event counts per day",
+    "configured_by": "window.SHOPNOW_COLLECTOR (string URL) injected by the builder only when register/site.json carries a collector_url",
+    "run_locally": "node scripts/collect.mjs --port 8788"
+  }
+}
