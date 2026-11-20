@@ -1,15 +1,116 @@
 {
-  "siteName": "Affil3",
-  "tagline": "Kitchen buying guides, with every product fact traced to a source",
-  "siteUrl": "https://karagemop466-tech.github.io/Affil3",
-  "basePath": "/Affil3",
-  "language": "en-US",
-  "trackingId": "shopnow047c-20",
-  "associatesStatement": "As an Amazon Associate I earn from qualifying purchases.",
-  "disclosureStrip": "Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.",
-  "author": "Affil3 editorial team",
-  "lastReviewed": "2026-11-20",
-  "analyticsEndpoint": "",
-  "analyticsNote": "Empty by design: GitHub Pages cannot run the collector. Set this to the URL of a deployed tools/collector.mjs (HTTPS, with a path ending in /collect) to turn analytics on. See suggestion S-03 and flag FLG-009.",
-  "suggestionsNote": "Suggestions are listed at /suggestions/ and are not implemented until chosen."
+  "site": {
+    "name": "Counter & Crumb",
+    "short_name": "Counter & Crumb",
+    "tagline": "A buyer's desk for air fryers and kitchen thermometers.",
+    "description": "Question-shaped buying guides, side-by-side comparisons and a fully sourced product register for countertop air fryers and kitchen thermometers. Every outbound link is marked sponsored; every claim carries a source.",
+    "base_url": "https://karagemop466-tech.github.io/Affil3",
+    "locale": "en_US",
+    "lang": "en",
+    "publisher": "Counter & Crumb",
+    "author": {
+      "name": "The Counter & Crumb desk",
+      "role": "Editorial desk",
+      "note": "Editorial desk of Counter & Crumb. Product pages are assembled from the sources recorded in the product register; no product is described from memory."
+    },
+    "social": {
+      "og_image": "/assets/img/og-default.svg",
+      "twitter_card": "summary_large_image"
+    }
+  },
+  "affiliate": {
+    "tracking_id": "shopnow047c-20",
+    "tracking_id_source": "https://affiliate-program.amazon.com/help/operating/policies",
+    "tracking_id_status": "unverified",
+    "marketplace": "www.amazon.com",
+    "api": {
+      "name": "Amazon Creators API",
+      "base_url": "https://creatorsapi.amazon",
+      "token_endpoint": "https://api.amazon.com/auth/o2/token",
+      "scope": "creatorsapi::default",
+      "paapi5_status": "deprecated",
+      "paapi5_notice_url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation"
+    },
+    "disclosure": {
+      "operating_agreement_sentence": "As an Amazon Associate I earn from qualifying purchases.",
+      "operating_agreement_url": "https://affiliate-program.amazon.com/help/operating/agreement#Top",
+      "strip": "As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.",
+      "link_label": "Sponsored link to Amazon",
+      "rel": "sponsored nofollow"
+    }
+  },
+  "measurement": {
+    "endpoint": "/api/collect",
+    "endpoint_mode": "self-hosted",
+    "endpoint_note": "Point this at your own collector (see _src/analytics_sink.py). If it is unreachable the browser falls back to a local queue and nothing is lost silently.",
+    "salt_env": "AFFIL3_ANALYTICS_SALT",
+    "salt_note": "Hash salt is supplied by the server at runtime; it is never shipped to the browser.",
+    "events": [
+      {
+        "id": "page_view",
+        "name": "Page view",
+        "fires": "Once per page load, on every page including 404.",
+        "params": [
+          "path",
+          "referrer_host",
+          "viewport"
+        ],
+        "referrer_host_note": "Only the hostname of the referring page, and only when it is a different host. Never a URL, a path, a query string or a fragment."
+      },
+      {
+        "id": "outbound_click",
+        "name": "Outbound affiliate click",
+        "fires": "When a reader clicks a sponsored product link, before navigation.",
+        "params": [
+          "path",
+          "product_id",
+          "asin",
+          "placement"
+        ]
+      },
+      {
+        "id": "guide_progress",
+        "name": "Guide read depth",
+        "fires": "At 25%, 50%, 75% and 100% scroll depth on a guide or comparison page.",
+        "params": [
+          "path",
+          "depth"
+        ]
+      },
+      {
+        "id": "table_use",
+        "name": "Comparison table interaction",
+        "fires": "When a reader sorts, filters or expands a row in a comparison or register table.",
+        "params": [
+          "path",
+          "table_id",
+          "action",
+          "filter"
+        ]
+      },
+      {
+        "id": "reader_signup",
+        "name": "Reader capture",
+        "fires": "When a reader submits the newsletter form.",
+        "params": [
+          "path",
+          "placement"
+        ]
+      }
+    ],
+    "never_collected": [
+      "client IP address",
+      "user agent",
+      "cookies",
+      "referrer URLs",
+      "advertising identifiers",
+      "fingerprinting"
+    ]
+  },
+  "publishing": {
+    "feed_path": "/feed.xml",
+    "sitemap_path": "/sitemap.xml",
+    "posts_per_feed": 20,
+    "notes": "Every published guide is added to the sitemap and the feed in the same build step."
+  }
 }

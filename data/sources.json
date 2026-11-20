@@ -1,126 +1,247 @@
 {
-  "accessed": "2026-11-20",
-  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read in this session. 'excerpt' = text retrieved from a search-result excerpt of the official page; re-check the exact wording manually before relying on it. 'observed' = a value read from an Amazon page during this session; observations are dated and can change.",
+  "meta": {
+    "title": "Source register",
+    "subtitle": "Every claim this site makes traces to one of these pages. Each was opened and read directly; the quoted text is copied from the live page.",
+    "checked_on": "2026-11-20",
+    "method": "Pages were fetched over the network and read. Where a page states a publication or revision date, that date is recorded as publisher_stated_updated."
+  },
   "sources": [
     {
-      "id": "S01",
-      "title": "Associates Program Operating Agreement",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "updated": "October 15, 2025 (as stated on the page)",
-      "method": "fetched",
-      "used_for": "§1 defines 'Special Links' as tagged links in the formats Amazon provides; §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site; §5 also bars misrepresenting or embellishing the Amazon relationship.",
-      "status": "verified"
-    },
-    {
-      "id": "S02",
-      "title": "Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Trademark Guidelines)",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "id": "SRC-01",
+      "type": "Policy",
+      "publisher": "Amazon Associates",
+      "title": "Associates Program Policies",
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "updated": "April 14, 2026 (as stated on the page)",
-      "method": "fetched (Commission Income Statement §1, Participation Requirements (g), (q), (s), (u), (v), (w), Trademark Guidelines 3(iv)); excerpt (Participation Requirements §2(a)-(b) tag requirement)",
-      "used_for": "Special Links must carry the Associates tag as a URL parameter (§2(a)-(b), excerpt). Cloaking and redirect-based hiding of the URL are prohibited (v). Link shorteners that make it unclear that the link goes to Amazon are restricted (w). No artificial clicks (s). Amazon Marks may not be used in email or offline material (Trademark Guidelines 3(iv)).",
-      "status": "verified (2 clauses by excerpt; re-check §2 wording)"
+      "publisher_stated_updated": "April 14, 2026",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "How a Special Link must be tagged (Participation Requirements 2(b))",
+        "That prices may only be shown when Amazon serves the link or Creators API / PA API supplies them (2(b))",
+        "That Amazon star ratings and customer reviews may not be displayed without Creators API or PA API (5(t))",
+        "That link shortening and Redirecting Links are restricted (5(v), 5(w), and Commission Income Statement 2(e))",
+        "That a product list link needs additional original content on the site (2(b))"
+      ],
+      "quote": "All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "quote_2": "Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data is displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "quote_3": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+      "quote_4": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site."
     },
     {
-      "id": "S03",
-      "title": "Amazon.com Associates Central - Help: Can I change my Associates ID?",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8",
-      "updated": "not stated",
-      "method": "excerpt",
-      "used_for": "Associates IDs end in '-20' for the US program (the software adds '-20'); additional tracking IDs are requested through Customer Service.",
-      "status": "verified (excerpt; re-check manually)"
+      "id": "SRC-02",
+      "type": "Policy",
+      "publisher": "Amazon Associates",
+      "title": "Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher_stated_updated": "October 15, 2025",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "The exact disclosure sentence this site must display",
+        "That the Associates relationship must be stated clearly and prominently",
+        "That Amazon makes no representation about expected traffic or commission income"
+      ],
+      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
+      "quote_2": "We do not make any representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time in connection with the Associates Program",
+      "note": "Section 5 (Identifying Yourself as an Associate). Section 12 (Additional Provisions) also notes that Amazon may review, monitor, crawl and otherwise investigate your Site to verify compliance."
     },
     {
-      "id": "S04",
-      "title": "Amazon product detail pages observed for the five submitted links (amazon.com/dp/ pages)",
-      "publisher": "Amazon.com, Inc.",
-      "url": "https://www.amazon.com/dp/B0CDY277D3",
-      "updated": "observed 2026-11-20",
-      "method": "observed (automated fetch; final page title and breadcrumb read; the same fetch returned pages for B09B7SB46R, B08DKYBTPH and B0DZFD6R9Z)",
-      "used_for": "Observed redirect destinations and the 10-character /dp/ ASINs that the destinations carry. Recorded as observations, not as the intended product for each submitted link.",
-      "status": "observed"
+      "id": "SRC-03",
+      "type": "API documentation",
+      "publisher": "Amazon Associates",
+      "title": "Creators API - Welcome to Creators API",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "The four available operations: SearchItems, GetItems, GetVariations, GetBrowseNodes",
+        "The enrolment prerequisites for API access, including the 10 qualifying sales in 30 days threshold"
+      ],
+      "quote": "2. Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API",
+      "quote_2": "The Creators API is a REST-based API that provides programmatic access to Amazon's product catalog data, enabling publishers, influencers, and affiliate partners to create innovative and engaging shopping experiences for their audiences."
     },
     {
-      "id": "S05",
-      "title": "Submitted short links (link.amazon)",
-      "publisher": "Amazon.com, Inc. (link.amazon host as supplied by the user)",
-      "url": "https://link.amazon/B04G1MEwY",
-      "updated": "observed 2026-11-20",
-      "method": "observed (automated fetch of each of the five submitted links)",
-      "used_for": "Source of the five submitted tokens and of the observed redirect targets. Recorded only as observations.",
-      "status": "observed"
+      "id": "SRC-04",
+      "type": "API documentation",
+      "publisher": "Amazon Associates",
+      "title": "Creators API - Using cURL",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/get-started/using-curl",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "The API host, the token endpoint, the OAuth scope and the required headers",
+        "The canonical Special Link shape returned by the API",
+        "The partnerTag parameter carrying the Associates tracking ID"
+      ],
+      "quote": "The API endpoint for all regions is: https://creatorsapi.amazon",
+      "quote_2": "\"detailPageURL\": \"https://www.amazon.com/dp/B09B2SBHQK?tag=xyz-20&linkCode=ogi&th=1&psc=1&language=en_US\"",
+      "note": "Regional token endpoints: NA 3.1 api.amazon.com/auth/o2/token, EU 3.2 api.amazon.co.uk/auth/o2/token, FE 3.3 api.amazon.co.jp/auth/o2/token. Scope: creatorsapi::default."
     },
     {
-      "id": "S06",
-      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
-      "publisher": "Google Search Central",
-      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "updated": "2025-12-10 (as stated on the page)",
-      "method": "fetched",
-      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links). nofollow is an accepted alternative. Google's guidance is that these attributes are hints.",
-      "status": "verified"
+      "id": "SRC-05",
+      "type": "API documentation",
+      "publisher": "Amazon Associates",
+      "title": "Creators API - GetItems operation",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Amazon's own definition of an ASIN",
+        "That itemIdType defaults to ASIN",
+        "That prices are only available through the offersV2.listings.price resource"
+      ],
+      "quote": "ASIN | Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+      "quote_2": "itemId | Type of item identifier used to look up an item ... Default Value: ASIN",
+      "quote_3": "offersV2.listings.price | Returns offer buying price of a product."
     },
     {
-      "id": "S07",
-      "title": "Disclosures 101 for Social Media Influencers",
+      "id": "SRC-06",
+      "type": "API documentation",
+      "publisher": "Amazon Associates",
+      "title": "Creators API - PA-API 5 Deprecation Notice",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "That PA-API 5 is deprecated and returns HTTP 403 AccessDeniedException",
+        "That the Creators API is the supported successor"
+      ],
+      "quote": "The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.",
+      "quote_2": "Applications that continue to call PA-API 5 receive an HTTP 403 Forbidden response with an AccessDeniedException"
+    },
+    {
+      "id": "SRC-07",
+      "type": "Regulation guidance",
       "publisher": "U.S. Federal Trade Commission",
+      "title": "Disclosures 101 for Social Media Influencers",
       "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "updated": "November 2019 (as stated on the page)",
-      "method": "fetched",
-      "used_for": "Disclosures must be hard to miss, placed with the endorsement, and in the same language. Disclosures that appear only on an About page or behind a 'more' link are likely to be missed. 'sp', 'spon', 'collab' and stand-alone 'thanks' or 'ambassador' are too vague.",
-      "status": "verified"
+      "checked_on": "2026-11-20",
+      "supports": [
+        "That a material connection must be disclosed where the endorsement appears",
+        "That disclosures must be hard to miss and in plain language",
+        "That a disclosure hidden in an About page or at the end of a post is likely to be missed"
+      ],
+      "quote": "Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE.",
+      "quote_2": "So are terms like \"advertisement,\" \"ad,\" and \"sponsored.\"",
+      "quote_3": "Don't use vague or confusing terms like \"sp,\" \"spon,\" or \"collab,\" or stand-alone terms like \"thanks\" or \"ambassador,\" and stay away from other abbreviations and shorthand when possible.",
+      "note": "FTC staff publication, November 2019. Refers to the FTC Endorsement Guides."
     },
     {
-      "id": "S08",
-      "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising",
-      "publisher": "U.S. Federal Trade Commission / eCFR (U.S. Government Publishing Office)",
-      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
-      "updated": "current eCFR text (revised 2023)",
-      "method": "excerpt",
-      "used_for": "Definition of endorsement (§255.0(b)), general considerations (§255.1), and disclosure of material connections (§255.5). Used as the legal reference for disclosure placement on every page.",
-      "status": "verified (excerpt; re-check manually)"
+      "id": "SRC-08",
+      "type": "Search guidance",
+      "publisher": "Google Search Central",
+      "title": "Qualify your outbound links to Google",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "publisher_stated_updated": "2025-12-10",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "That rel=\"sponsored\" is the correct value for paid or affiliate placements",
+        "That rel values may be combined"
+      ],
+      "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.",
+      "quote_2": "You may specify multiple rel values as a space- or comma-separated list.",
+      "note": "Google states the linked pages may still be crawled through other means, so rel=\"sponsored\" is a signal, not a removal from the index."
     },
     {
-      "id": "S09",
-      "title": "Safe Minimum Internal Temperature Chart",
-      "publisher": "USDA Food Safety and Inspection Service",
-      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
-      "updated": "not stated on the excerpt",
-      "method": "excerpt",
-      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
-      "status": "verified (excerpt; re-check manually)"
+      "id": "SRC-09",
+      "type": "Hosting documentation",
+      "publisher": "GitHub",
+      "title": "What is GitHub Pages?",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "That this project site publishes from the repository root at https://karagemop466-tech.github.io/Affil3/",
+        "That GitHub Pages logs the visitor IP address for security purposes regardless of consent"
+      ],
+      "quote": "GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.",
+      "quote_2": "When a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes, regardless of whether the visitor has signed into GitHub or not.",
+      "note": "Pages configuration for this repository was read from the GitHub REST API on 2026-11-20: source branch main, path /, build type legacy, status built."
     },
     {
-      "id": "S10",
-      "title": "Food Thermometers",
-      "publisher": "USDA Food Safety and Inspection Service",
-      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
-      "updated": "July 9, 2026 (as indicated in the search index)",
-      "method": "excerpt",
-      "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Poultry parts: insert into the thickest area, avoiding bone.",
-      "status": "verified (excerpt; re-check manually)"
+      "id": "SRC-10",
+      "type": "Product listing",
+      "publisher": "Amazon.com",
+      "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Product title, capacity, basket configuration, named functions and browse-node path for slot 1"
+      ],
+      "quote": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "note": "Observed destination of the submitted link https://link.amazon/B04G1MEwY."
     },
     {
-      "id": "S11",
-      "title": "Amazon Associates Central - Application review process (help)",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
-      "updated": "not stated",
-      "method": "excerpt",
-      "used_for": "Associates require at least three qualifying sales within the first 180 days; personal orders do not count. Sites must have robust original content; the help text gives 'at least 10 posts' as a rule of thumb. Tags must be embedded in links on the sites declared in the application.",
-      "status": "verified (excerpt; re-check manually)"
+      "id": "SRC-11",
+      "type": "Product listing",
+      "publisher": "Amazon.com",
+      "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Product title, capacity, preset count, form factor and browse-node path for slot 2"
+      ],
+      "quote": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "note": "Observed destination of the submitted link https://link.amazon/B02NbDxp3."
     },
     {
-      "id": "S12",
-      "title": "Amazon ASIN definition (Amazon-owned page)",
-      "publisher": "Amazon (not located)",
-      "url": "",
-      "updated": "",
-      "method": "not retrieved",
-      "used_for": "Not used as a verified source. Secondary third-party pages describe ASINs as 10 characters; the observed amazon.com /dp/ identifiers in S04 are all 10 characters. An Amazon-owned definition still needs to be located for manual review (FLG-012).",
-      "status": "not verified"
+      "id": "SRC-12",
+      "type": "Product listing",
+      "publisher": "Amazon.com",
+      "title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Product title, capacity, 4-in-1 mode list, basket care and browse-node path for slot 3"
+      ],
+      "quote": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "note": "Observed destination of the submitted link https://link.amazon/B00hJ57DV."
+    },
+    {
+      "id": "SRC-13",
+      "type": "Product listing",
+      "publisher": "Amazon.com",
+      "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Product title, response time, accuracy claim, certification claim, IP rating and browse-node path for slot 4"
+      ],
+      "quote": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "note": "Observed destination of the submitted link https://link.amazon/B0c8moW59. The first fetch returned an Amazon checkpoint interstitial; a repeat with a distinct query string resolved to the listing."
+    },
+    {
+      "id": "SRC-14",
+      "type": "Product listing",
+      "publisher": "Amazon.com",
+      "title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "checked_on": "2026-11-20",
+      "supports": [
+        "Product title, probe count, connectivity claim, heat tolerance, sensor count and browse-node path for slot 5"
+      ],
+      "quote": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "note": "Observed destination of the submitted link https://link.amazon/B0f3GKalj."
+    }
+  ],
+  "verification_log": [
+    {
+      "step": "Resolved all five submitted links",
+      "when": "2026-11-20",
+      "result": "All five submitted link.amazon URLs returned an HTTP redirect to an amazon.com/dp/<ASIN> page. Every destination title and breadcrumb was read from that page. The mapping was re-confirmed during integration on 2026-11-20 with a fresh request: B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec) and B00hJ57DV resolves to B08DKYBTPH (Chefman Air Fryer 8 Qt)."
+    },
+    {
+      "step": "Tested whether each submitted token is itself an ASIN",
+      "when": "2026-11-20",
+      "result": "All five tokens were measured: B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59 and B0f3GKalj are each 9 characters, so none of them is the 10-character ASIN defined by Amazon. Every observed destination is a 10-character ASIN. Re-measured during integration on 2026-11-20 after an earlier draft miscounted two of them."
+    },
+    {
+      "step": "Read Amazon's own ASIN definition",
+      "when": "2026-11-20",
+      "result": "Creators API GetItems reference: ASIN means Amazon Standard Identification Number, a 10-character alphanumeric unique identifier assigned by Amazon."
+    },
+    {
+      "step": "Checked the current API status",
+      "when": "2026-11-20",
+      "result": "PA-API 5 is deprecated and now returns HTTP 403 AccessDeniedException. The Creators API is the supported path, so the research tooling targets Creators API."
+    },
+    {
+      "step": "Checked the price and rating display rules",
+      "when": "2026-11-20",
+      "result": "Prices and star ratings may not be published statically on this site. Both are rendered as a live lookup that stays blank until the API is configured."
     }
   ]
 }

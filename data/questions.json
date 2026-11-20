@@ -1,35 +1,258 @@
 {
-  "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/.",
-  "known": [
-    {"id": "K-01", "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S03"]},
-    {"id": "K-02", "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.", "sources": ["S01"]},
-    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a URL parameter.", "sources": ["S02"]},
-    {"id": "K-04", "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).", "sources": ["S02"]},
-    {"id": "K-05", "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.", "sources": ["S06"]},
-    {"id": "K-06", "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.", "sources": ["S04", "S05"]},
-    {"id": "K-07", "statement": "The submitted tokens are 9 characters long.", "sources": ["S05"]}
-  ],
-  "unknown": [
-    {"id": "Q-01", "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?", "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.", "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.", "sources": ["S05", "S04"], "blocking": true},
-    {"id": "Q-02", "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?", "why_it_matters": "Decides whether to keep, replace or drop the short links.", "how_to_close": "Check the links in Associates Central and against the policy text.", "sources": ["S02"], "blocking": true},
-    {"id": "Q-03", "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?", "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.", "how_to_close": "Check Associates Central account settings and the declared site list.", "sources": ["S11"], "blocking": true},
-    {"id": "Q-04", "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?", "why_it_matters": "This is gate G-02. No scaling until it passes.", "how_to_close": "Run the Associates test for one link per product and record the result.", "sources": ["S01", "S02"], "blocking": true},
-    {"id": "Q-05", "question": "Which five measurement events should be recorded?", "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).", "how_to_close": "Owner confirms or replaces the list.", "sources": [], "blocking": false},
-    {"id": "Q-06", "question": "Where should the analytics collector run, and who may access its data?", "why_it_matters": "GitHub Pages cannot run it (FLG-009).", "how_to_close": "Choose a hosting option (S-03).", "sources": [], "blocking": false},
-    {"id": "Q-07", "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)", "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).", "how_to_close": "Owner confirms the US marketplace.", "sources": ["S03", "S04"], "blocking": false},
-    {"id": "Q-08", "question": "Who is the named author, and what credentials, if any, should appear?", "why_it_matters": "Reader trust and publication polish (FLG-014).", "how_to_close": "Owner supplies a name and bio, or keeps the team byline.", "sources": [], "blocking": false},
-    {"id": "Q-09", "question": "What publishing cadence should be used?", "why_it_matters": "Sets how the feed and sitemap grow.", "how_to_close": "Choose a cadence (S-02).", "sources": [], "blocking": false},
-    {"id": "Q-10", "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?", "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).", "how_to_close": "Choose the approach in S-10.", "sources": ["S04"], "blocking": false},
-    {"id": "Q-11", "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?", "why_it_matters": "The ledger stays empty until authorized first-party reports exist.", "how_to_close": "Owner exports reports and provides them with their date and source.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).", "how_to_close": "Owner adds the property and verifies it.", "sources": ["S06"], "blocking": false},
-    {"id": "Q-13", "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?", "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.", "how_to_close": "Owner decides whether to obtain legal review.", "sources": [], "blocking": false}
-  ],
-  "discovery": [
-    {"id": "D-01", "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.", "closes": ["Q-01", "Q-02"]},
-    {"id": "D-02", "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.", "closes": ["Q-04"]},
-    {"id": "D-03", "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.", "closes": ["Q-03", "Q-07"]},
-    {"id": "D-04", "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.", "closes": []},
-    {"id": "D-05", "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.", "closes": ["Q-12"]},
-    {"id": "D-06", "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.", "closes": ["Q-05", "Q-06"]}
+  "meta": {
+    "title": "Open questions",
+    "subtitle": "What has to be answered before the next real decision can be made. Each row says what we already know and where it came from, what is missing, and the specific step that would close the gap.",
+    "checked_on": "2026-11-20",
+    "how_to_read": "A question is closed when the evidence column has a value that can be re-checked at the source. A question stays open while the answer would only be a guess."
+  },
+  "groups": [
+    {
+      "id": "GRP-A",
+      "name": "The affiliate account itself",
+      "why_it_matters": "Almost every downstream decision depends on whether the tracking ID is the real one and whether the account can actually reach the API.",
+      "questions": [
+        {
+          "id": "Q-01",
+          "decision_blocked": "Which tag every outbound link on this site carries",
+          "question": "Is shopnow047c-20 the live Store ID for this site's Associates account?",
+          "what_we_know": "Amazon publishes the tag shape as an Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate). The submitted value matches that shape.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "Any public confirmation that this specific tag was issued, is active, or belongs to this account.",
+          "how_to_close": "Read the Store ID from the account header in Associates Central and set affiliate.tracking_id in data/config.json.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-02",
+          "decision_blocked": "Whether the site can be published as an affiliate site at all",
+          "question": "Is the site enrolled in the Associates Program, and is its URL on the approved Site list?",
+          "what_we_know": "The Operating Agreement requires that a Site contain original content and be publicly available at the address given in the application, and it states that Amazon may review, monitor and crawl the Site to verify compliance.",
+          "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+          "what_is_missing": "Enrolment state and approved Site URLs, both of which sit behind a login.",
+          "how_to_close": "Check the account's Site list and add the live GitHub Pages URL before the next review cycle.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-03",
+          "decision_blocked": "Whether the five submitted links are usable at all",
+          "question": "Are the five submitted link.amazon URLs enrolled in the owner's Associates workflow, and do they report clicks and orders?",
+          "what_we_know": "All five resolve to an amazon.com/dp page today, and each destination was read directly. Amazon's policies require Special Links to be accessed directly from your Site, restrict Redirecting Links, and restrict shorteners that make the Amazon destination unclear.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "Whether these specific short links carry the owner's tag and appear in their tracking report. This is private account data and cannot be read from any public page.",
+          "how_to_close": "Open one link in the enrolled workflow and check the destination and the tracking report before touching the other four.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-04",
+          "decision_blocked": "Which ASIN each guide should link to",
+          "question": "For each of the five submitted links, what product was the owner actually trying to promote?",
+          "what_we_know": "Where each link goes today, confirmed on 2026-11-20 and re-confirmed during integration. All five submitted tokens are 9 characters, so under Amazon's own definition none of them can be an ASIN.",
+          "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+          "what_is_missing": "The intended ASIN, official listing URL, confirmation date and source for each of the five.",
+          "how_to_close": "Owner confirms each intent. Until then the intended fields in the register stay blank.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-05",
+          "decision_blocked": "Any pricing, ranking or revenue claim",
+          "question": "What commission rate applies to Kitchen and Dining and to Kitchen Utensils and Gadgets?",
+          "what_we_know": "Amazon states Standard Commission Income is described in the Appendix, and that the rate card sits behind sign-in. The Operating Agreement states Amazon makes no representation about expected traffic or commission income.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "The actual percentage for each category, and therefore any earnings model.",
+          "how_to_close": "Read the rate card while signed in and record it with the date it was read.",
+          "status": "open",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "GRP-B",
+      "name": "The data we can and cannot publish",
+      "why_it_matters": "Amazon's rules decide what may appear on a page at all. Getting this wrong is what gets an account closed.",
+      "questions": [
+        {
+          "id": "Q-06",
+          "decision_blocked": "Whether price and availability can be shown on product pages",
+          "question": "May this site display a price, and if so, how does it get one?",
+          "what_we_know": "Program Policies 2(b) allows prices and availability on your Site only if Amazon serves the link that displays them, or if you obtain pricing through Creators API or PA API. The GetItems reference exposes prices only through the offersV2.listings.price resource.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "Live API credentials, so no price can be fetched yet.",
+          "how_to_close": "Register for Creators API and wire the price lookup to the self-hosted endpoint. Until then the widget stays blank and links out.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-07",
+          "decision_blocked": "Whether ratings and review counts can appear in comparison tables",
+          "question": "May this site show Amazon star ratings or customer review counts?",
+          "what_we_know": "Program Policies 5(t) bars displaying Amazon customer reviews or star ratings on your Site unless they are obtained through Creators API or PA API. They were seen while reading the listing pages, and they are deliberately absent from every table on this site.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "API access, which would make a rating display compliant.",
+          "how_to_close": "Same as Q-06. Until then the comparison tables compare only what the official titles state.",
+          "status": "open",
+          "priority": "P2"
+        },
+        {
+          "id": "Q-08",
+          "decision_blocked": "How the research tooling talks to Amazon",
+          "question": "Which API should the platform call, and what happens if it is called with old credentials?",
+          "what_we_know": "PA-API 5 is deprecated. Calls to it now return HTTP 403 with an AccessDeniedException. The Creators API is the supported path, with the host https://creatorsapi.amazon, a regional token endpoint and the scope creatorsapi::default.",
+          "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+          "what_is_missing": "Client credentials for the Creators API.",
+          "how_to_close": "Register in Associates Central and set the credentials in the server environment, never in the repository.",
+          "status": "open",
+          "priority": "P2"
+        },
+        {
+          "id": "Q-09",
+          "decision_blocked": "Which product attributes are safe to restate",
+          "question": "Which specifications can be repeated on this site without an API call?",
+          "what_we_know": "Program Policies 2(b) forbids inaccurate, overbroad or misleading claims about any Product, and separately restricts prices and availability. The safe reading is that descriptive attributes taken from the official listing title can be restated as long as they stay accurate.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "A published Amazon ruling on exactly which attribute classes are restricted. The line drawn on this site is conservative.",
+          "how_to_close": "Review the first season of published copy with the account owner's compliance reviewer.",
+          "status": "open",
+          "priority": "P3"
+        },
+        {
+          "id": "Q-10",
+          "decision_blocked": "Whether the comparison pages are allowed to exist as product lists",
+          "question": "Does a comparison page need extra original content to host Special Links?",
+          "what_we_know": "Program Policies 2(b) says that when linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link, and defines product lists to include search results, events and department homepages.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "Nothing. Each comparison page on this site carries original written analysis alongside the links.",
+          "how_to_close": "Already handled. Listed so the review can confirm the analysis is genuinely original and not a rewritten manufacturer blurb.",
+          "status": "closed",
+          "priority": "P2"
+        }
+      ]
+    },
+    {
+      "id": "GRP-C",
+      "name": "Editorial and traffic",
+      "why_it_matters": "The site needs to earn its traffic from questions people actually ask, not from guesses about what ranks.",
+      "questions": [
+        {
+          "id": "Q-11",
+          "decision_blocked": "Which guide gets written next",
+          "question": "Which question do readers in this niche actually type into a search box?",
+          "what_we_know": "Four candidate topics exist as working titles. They are hypotheses, not claims about popularity, search volume or product superiority.",
+          "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+          "what_is_missing": "Real query data. There is no Search Console property and no analytics history.",
+          "how_to_close": "Verify the site in Search Console, let the analytics endpoint collect for a season, then pick from measured queries.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-12",
+          "decision_blocked": "Whether the first-party click counter is worth trusting",
+          "question": "How much of the traffic converts, and does the site's own counter agree with Amazon's report?",
+          "what_we_know": "The site records five defined events and posts them to a self-hosted endpoint. The campaign ledger is defined with the exact columns Amazon's own reporting can fill.",
+          "source": "https://affiliate-program.amazon.com/help/operating/policies",
+          "what_is_missing": "An enrolled account with a working tracking report to reconcile against, and enough traffic for the numbers to mean anything.",
+          "how_to_close": "After one full reporting month, reconcile the ledger's reported_orders column against the Amazon report for the same period.",
+          "status": "open",
+          "priority": "P2"
+        },
+        {
+          "id": "Q-13",
+          "decision_blocked": "Whether to add more products to the register",
+          "question": "Should the register stay at five products or grow into a wider catalogue?",
+          "what_we_know": "Five products across two categories. The register and the site structure both handle more without a redesign.",
+          "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+          "what_is_missing": "A niche decision, which depends on the path chosen in the Suggestions section, and on real traffic data.",
+          "how_to_close": "Pick a path in the Suggestions section, then grow the register along the chosen path.",
+          "status": "open",
+          "priority": "P3"
+        },
+        {
+          "id": "Q-14",
+          "decision_blocked": "Whether the two categories should share a site",
+          "question": "Do air fryers and meat thermometers belong on one site?",
+          "what_we_know": "Both are countertop cooking tools, both are in Home and Kitchen on Amazon, and both of the supplied links land there. One of the supplied thermometers is even listed for air fryer use.",
+          "source": "https://www.amazon.com/dp/B0DZFD6R9Z",
+          "what_is_missing": "Measured search behaviour for each category separately, and any evidence about how a reader moves between the two.",
+          "how_to_close": "Use the path chooser in the Suggestions section, then let the analytics settle it.",
+          "status": "open",
+          "priority": "P2"
+        },
+        {
+          "id": "Q-15",
+          "decision_blocked": "Whether the newsletter capture is worth running",
+          "question": "Will readers give an email address, and what happens to it?",
+          "what_we_know": "The site has a reader_signup event defined and a capture form in the footer of every page. No list provider has been chosen or connected.",
+          "source": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+          "what_is_missing": "A list provider, a consent flow, and a place to store the addresses.",
+          "how_to_close": "Choose a provider, wire it to the reader_signup event, and document the consent text before the form goes live for real traffic.",
+          "status": "open",
+          "priority": "P3"
+        }
+      ]
+    },
+    {
+      "id": "GRP-D",
+      "name": "Trust, disclosure and site machinery",
+      "why_it_matters": "The site has to read like a publication and still survive a compliance review.",
+      "questions": [
+        {
+          "id": "Q-16",
+          "decision_blocked": "Whether the disclosure strip is prominent enough",
+          "question": "Does the disclosure clear both Amazon's standard and the FTC's guidance on placement?",
+          "what_we_know": "Amazon requires the statement to be clearly and prominently stated where Program Content appears. The FTC says disclosures are likely to be missed if they appear only on an About page, at the end of a post, or behind a click. This site puts the statement directly under the masthead on every page and repeats it in the footer.",
+          "source": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+          "what_is_missing": "A human compliance read of the final rendered pages.",
+          "how_to_close": "Open the live site on a phone and confirm the strip is above the fold and legible at every width.",
+          "status": "open",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-17",
+          "decision_blocked": "Whether outbound links are correctly marked",
+          "question": "Is every outbound product link marked as sponsored and pointing directly at Amazon?",
+          "what_we_know": "Google's documentation states that paid placements should be marked with rel=\"sponsored\", and that multiple rel values may be combined. Amazon requires that Special Links carry the Associates tag and be accessed directly from your Site.",
+          "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+          "what_is_missing": "Nothing for the build. The build gate fails if a product link lacks the sponsored rel or a direct amazon.com destination.",
+          "how_to_close": "Already automated in the check step. Listed so the review knows the gate exists and can be re-run.",
+          "status": "closed",
+          "priority": "P1"
+        },
+        {
+          "id": "Q-18",
+          "decision_blocked": "Whether the analytics collector is legally usable",
+          "question": "Does the click counter collect anything it should not?",
+          "what_we_know": "The collector stores no IP address, no user agent, no cookie, no advertising identifier and no email address. It uses a rotating per-visitor pseudonymous id, honours Do Not Track, and sends nothing when no endpoint is configured. GitHub Pages separately logs visitor IP addresses for security, which the privacy note states.",
+          "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+          "what_is_missing": "A jurisdiction-specific privacy assessment, which depends on where the audience is.",
+          "how_to_close": "Have the privacy note reviewed against the audience's location before scaling up traffic.",
+          "status": "open",
+          "priority": "P2"
+        },
+        {
+          "id": "Q-19",
+          "decision_blocked": "Whether the site needs a formal authorship policy",
+          "question": "Who is the byline on a page, and does it need to be a person?",
+          "what_we_know": "The Operating Agreement requires original content with significant commentary, analysis or transformation of any third-party material. Amazon's own Endorsement Guides note that a disclosure must come from the endorser, not from someone else.",
+          "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+          "what_is_missing": "A decision about whether the desk is presented as a named editorial team or a single named reviewer.",
+          "how_to_close": "Pick a byline model in the Suggestions section before the first season of publishing.",
+          "status": "open",
+          "priority": "P3"
+        },
+        {
+          "id": "Q-20",
+          "decision_blocked": "How the register stays accurate",
+          "question": "How often should the register be re-read, and who owns that job?",
+          "what_we_know": "Every row carries an observed_on date. Listings change; the Operating Agreement says service offerings may change at any time.",
+          "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+          "what_is_missing": "An owner for the refresh and a schedule.",
+          "how_to_close": "Schedule a monthly re-read, or wire the refresh through the Creators API once access exists.",
+          "status": "open",
+          "priority": "P3"
+        }
+      ]
+    }
   ]
 }

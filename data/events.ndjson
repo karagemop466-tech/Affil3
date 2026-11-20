@@ -1,0 +1,5 @@
+{"ts": "2026-11-20T05:26:05+00:00", "ev": "page_view", "path": "/guides/basket-or-oven-style-air-fryer/", "sid": "53f9d562a545744337c53347a886899f", "referrer_host": "news.example", "viewport": "wide"}
+{"ts": "2026-11-20T05:26:05+00:00", "ev": "outbound_click", "path": "/guides/basket-or-oven-style-air-fryer/", "sid": "53f9d562a545744337c53347a886899f", "product_id": "chefman-dual-basket-6qt", "asin": "B0CDY277D3", "placement": "guide-card"}
+{"ts": "2026-11-20T05:26:05+00:00", "ev": "guide_progress", "path": "/guides/basket-or-oven-style-air-fryer/", "sid": "53f9d562a545744337c53347a886899f", "depth": 50}
+{"ts": "2026-11-20T05:26:05+00:00", "ev": "table_use", "path": "/products/", "sid": "53f9d562a545744337c53347a886899f", "table_id": "register", "action": "sort", "filter": "asin"}
+{"ts": "2026-11-20T05:26:05+00:00", "ev": "reader_signup", "path": "/desk/suggestions/", "sid": "53f9d562a545744337c53347a886899f", "placement": "footer"}

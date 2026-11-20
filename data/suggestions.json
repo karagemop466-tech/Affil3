@@ -1,129 +1,323 @@
 {
-  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
+  "meta": {
+    "title": "Suggestions",
+    "subtitle": "Everything this desk would like to change, with the reason, the effort and the risk. Nothing here has been done on its own except where the build notes say it has. Read the paths first, then pick.",
+    "checked_on": "2026-11-20",
+    "status_legend": {
+      "done": "Built into this release. The change is live and can be checked on the site.",
+      "next": "Recommended next. Small, unblocks more than it costs.",
+      "later": "Worth doing once the site has traffic data to justify it.",
+      "blocked": "Cannot start until a specific question in the Open Questions section is closed."
+    }
+  },
+  "paths": [
+    {
+      "id": "PATH-A",
+      "name": "One desk, two tools",
+      "shape": "Keep both categories on a single site: air fryers and kitchen thermometers, published as one brand with two category hubs.",
+      "why_it_works": "It matches the five supplied links exactly, so nothing in the brief has to be re-scoped. Both categories sit in Home and Kitchen on Amazon, and one of the supplied thermometers is listed for air fryer use, which gives the site a natural bridge between them.",
+      "unlocks": [
+        "Both category hubs have enough product to be worth a hub",
+        "A thermometer guide can send readers to an air fryer guide and vice versa",
+        "One brand, one disclosure, one ledger"
+      ],
+      "costs": [
+        "Neither category gets the depth a specialist site would have",
+        "Search intent is split across two very different question sets"
+      ],
+      "best_when": "The owner wants the site to look like a publication quickly and is not yet sure which category will carry the traffic.",
+      "recommendation": "Recommended starting point. It is what the supplied links already describe."
+    },
+    {
+      "id": "PATH-B",
+      "name": "Air fryer desk only",
+      "shape": "Drop the thermometers, build one deep air fryer desk with many more products and far more guides.",
+      "why_it_works": "It is the same site with one category removed, so nothing has to be rebuilt — only narrowed. The register, the disclosure and the ledger all keep working.",
+      "unlocks": [
+        "Deeper guides on a single question set, which is what search engines reward",
+        "A bigger register, which makes comparison pages worth their own category"
+      ],
+      "costs": [
+        "Two of the five supplied links have no home on the site",
+        "The site starts over with a smaller product set"
+      ],
+      "best_when": "Measured traffic later shows that air fryer questions bring readers, and the air fryer category has a much larger commission or a better conversion rate.",
+      "recommendation": "Defer. Make it after the analytics have run for a season."
+    },
+    {
+      "id": "PATH-C",
+      "name": "One product, one long page",
+      "shape": "A single deep page per product, with all the comparison content on it.",
+      "why_it_works": "It is the smallest possible build and the fastest way to find out whether anything you write brings a single click.",
+      "unlocks": [
+        "The fastest possible build",
+        "A very clear single click path to Amazon"
+      ],
+      "costs": [
+        "Almost no search surface area, so organic traffic will stay thin",
+        "Hard to add a second product later without a redesign",
+        "Reads exactly like the kind of thin affiliate page the brief is trying to avoid"
+      ],
+      "best_when": "The goal is a link to send to a small audience, not to build a site.",
+      "recommendation": "Not recommended. It contradicts the brief's goal of organic traffic."
+    },
+    {
+      "id": "PATH-D",
+      "name": "Kitchen appliance desk",
+      "shape": "Broaden to the whole small-appliance category: blenders, toasters, coffee, air fryers, thermometers.",
+      "why_it_works": "It matches the shape of Amazon's own catalogue and lets the guides follow real shopping journeys rather than one narrow decision.",
+      "unlocks": [
+        "A much larger register and a much larger keyword surface",
+        "A natural home for the cross-category buying guides"
+      ],
+      "costs": [
+        "Every product needs its own verification and its own page, which multiplies the review burden",
+        "The site stops being about anything in particular",
+        "Amazon's Program Policies require additional original content for product-list pages, which gets expensive fast"
+      ],
+      "best_when": "A dedicated operator and a functioning Creators API make catalogue research cheap.",
+      "recommendation": "Not yet. Earn it with data first."
+    }
+  ],
   "suggestions": [
     {
-      "id": "S-01",
-      "topic": "Outbound link handling",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
-        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
-      ],
-      "recommendation": "B, until G-02 passes."
+      "id": "SUG-01",
+      "title": "Publish the comparison tables without prices and without ratings, and say why on the page",
+      "problem": "A comparison table with a price column is the single most common affiliate pattern, and it is also the one Amazon's Program Policies restrict most sharply.",
+      "change": "The tables compare the attributes the official listing titles state: capacity, form factor, named functions, basket care, probe count, stated accuracy. A price cell is replaced by a live lookup that stays blank until the API is configured, and a rating column does not exist.",
+      "why_it_works": "It keeps the page useful without breaking 2(b) or 5(t), and being explicit about the rule is a trust signal rather than a gap.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "Readers may want a price. The page explains where to see it and links straight there.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     },
     {
-      "id": "S-02",
-      "topic": "Publishing cadence",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
-        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
-        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+      "id": "SUG-02",
+      "title": "Replace the five submitted short links with direct Special Links before publishing them",
+      "problem": "The submitted links are Amazon-hosted redirects. Amazon's policies require Special Links to be accessed directly from your Site, restrict Redirecting Links, and restrict shorteners that make the Amazon destination unclear.",
+      "change": "Every outbound product link on the site points at https://www.amazon.com/dp/<ASIN> with the Associates tag, in the same parameter shape Amazon's own API returns. The submitted links stay in the register as the source of the record, never as published outbound links.",
+      "why_it_works": "It is the difference between a click that can be attributed and a click that might not.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "If the submitted short links were already enrolled in the owner's Associates workflow, replacing them changes which link reports. Confirm one link first.",
+      "status": "done",
+      "depends_on": [
+        "Q-01",
+        "Q-03"
       ],
-      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
+      "owner": "engineering"
     },
     {
-      "id": "S-03",
-      "topic": "Where the analytics collector runs",
-      "current": "D",
-      "options": [
-        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
-        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
-        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
-        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
-      ],
-      "recommendation": "A or B if you want measured queries before choosing the next topic."
+      "id": "SUG-03",
+      "title": "Put the disclosure directly under the masthead on every page and repeat it in the footer",
+      "problem": "Disclosure at the end of a post is the placement the FTC says readers miss, and the Operating Agreement requires it to be clear and prominent wherever Program Content appears.",
+      "change": "A single-line strip sits between the masthead and the first content block on every page, and the same sentence is repeated in the footer above the affiliate statement.",
+      "why_it_works": "It is the only placement that survives both rules at once, and it keeps the site from feeling like it is hiding something.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "None identified.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     },
     {
-      "id": "S-04",
-      "topic": "Brand name",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
-        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
-      ],
-      "recommendation": "B before wider promotion."
+      "id": "SUG-04",
+      "title": "Mark every outbound product link with rel=\"sponsored nofollow\" and a visible sponsored marker",
+      "problem": "Unmarked affiliate links fail Google's guidance for paid placements and blur the line between editorial and advertising.",
+      "change": "Every product link carries rel=\"sponsored nofollow\", a visible Sponsored marker, and an aria-label that says where it goes. The build gate fails the release if a product link is missing any of the three.",
+      "why_it_works": "The link is honest to the reader, honest to the crawler, and the rule is enforced by the build rather than by good intentions.",
+      "effort": "S",
+      "impact": "medium",
+      "risk": "Google states that rel=\"sponsored\" is a signal and the page may still be crawled through other means, so this is not a way to remove pages from the index.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
     },
     {
-      "id": "S-05",
-      "topic": "Imagery",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
-        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
-        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
-      ],
-      "recommendation": "B for guides; A for the front page."
+      "id": "SUG-05",
+      "title": "Keep the product-intent record and the observed redirect in two separate fields, and never merge them",
+      "problem": "The observed destination of a short link is easy to mistake for the thing the owner meant to promote. Once merged, a wrong product ships to readers with a full page of confident copy around it.",
+      "change": "Two tables on the register page and two fields in the data file: intent, which stays blank until the owner confirms it, and observation, which is filled and dated.",
+      "why_it_works": "It makes the gap visible instead of hiding it, and it means a wrong guess can never look like a verified fact.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "A blank column looks incomplete. The label says why it is blank.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     },
     {
-      "id": "S-06",
-      "topic": "Authorship",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
-        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
-      ],
-      "recommendation": "B once a real reviewer is named."
+      "id": "SUG-06",
+      "title": "Give every guide the shape of the question it answers",
+      "problem": "An article titled 'Top 10 Air Fryers' competes with every other list on the internet and gives the reader nothing to hold on to.",
+      "change": "Working titles are questions a buyer would actually type, and each guide opens with a direct answer, follows with what to compare, and closes with the questions to ask before buying.",
+      "why_it_works": "A question-shaped page can be summarised accurately, quoted accurately, and judged by whether it answered the question.",
+      "effort": "M",
+      "impact": "high",
+      "risk": "These are editorial hypotheses. None of them is described as popular or high volume, because that has not been measured.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     },
     {
-      "id": "S-07",
-      "topic": "Content depth before Associates review",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
-        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
-      ],
-      "recommendation": "B."
+      "id": "SUG-07",
+      "title": "Build the measurement first and the content second",
+      "problem": "Publishing more before anything is measured is how a site ends up with a lot of pages and no idea which ones work.",
+      "change": "Five defined events, a privacy-preserving collector, a self-hosted endpoint and an empty but fully defined campaign ledger, all in place before the next season of guides.",
+      "why_it_works": "Every later decision about topics, word counts and link placement can then be made from measured queries and click data rather than from instinct.",
+      "effort": "M",
+      "impact": "high",
+      "risk": "None to the content. It is a small amount of work before the content that pays for itself.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
     },
     {
-      "id": "S-08",
-      "topic": "Seasonal content",
-      "current": "B",
-      "options": [
-        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
-        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+      "id": "SUG-08",
+      "title": "Add the reader capture, but only with a real consent flow and a real list provider",
+      "problem": "An email box that goes nowhere is a form that collects addresses and loses them.",
+      "change": "The capture form is built and fires the reader_signup event. It stays disabled until a provider is chosen and the consent text is written.",
+      "why_it_works": "Reader capture is the only durable asset an affiliate site owns, but only if the addresses actually go somewhere legal.",
+      "effort": "M",
+      "impact": "medium",
+      "risk": "Storing addresses without a provider or a consent flow is the wrong kind of durable.",
+      "status": "next",
+      "depends_on": [
+        "Q-15"
       ],
-      "recommendation": "B until measured queries (from S-03) show interest."
+      "owner": "editorial"
     },
     {
-      "id": "S-09",
-      "topic": "Category focus",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
-        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
-      ],
-      "recommendation": "A until the unresolved link is decided."
+      "id": "SUG-09",
+      "title": "Make the site one site: a single canonical domain, a sitemap, a feed, and canonical tags on every page",
+      "problem": "A reader-facing affiliate site with duplicate URLs, no feed and no sitemap is asking to be ignored.",
+      "change": "One domain, a canonical tag on every page, a generated sitemap.xml, a shipped feed.xml, robots.txt pointing at both, and every new guide added to the sitemap and the feed in the same build step.",
+      "why_it_works": "It gives a crawler one site to index and a reason to come back, which is the whole of the technical side of organic traffic.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "The feed and the sitemap are generated from the same source of truth as the pages, so they cannot drift out of date on their own.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
     },
     {
-      "id": "S-10",
-      "topic": "Prices and ratings",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
-        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+      "id": "SUG-10",
+      "title": "Give the site a real publication identity: a name, a byline, an editor, and a season",
+      "problem": "Pages with no author read as generated. That is the single fastest way to look like the thing the brief says to avoid.",
+      "change": "A masthead, a named desk byline on every article, an editorial standards page, and seasonal publishing so a reader can tell a new guide from an old one.",
+      "why_it_works": "Authorship is what a reader checks before trusting a recommendation, and it is the cheapest thing that makes a site read as published.",
+      "effort": "M",
+      "impact": "medium",
+      "risk": "A desk byline is not a person. Decide whether a real named reviewer is wanted.",
+      "status": "next",
+      "depends_on": [
+        "Q-19"
       ],
-      "recommendation": "A now; B only after an authorized source is confirmed."
+      "owner": "editorial"
     },
     {
-      "id": "S-11",
-      "topic": "Reader capture (email list)",
-      "current": "A",
-      "options": [
-        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
-        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
-      ],
-      "recommendation": "A until the email rules are reviewed."
+      "id": "SUG-11",
+      "title": "Move the audit out of the shop floor",
+      "problem": "A front page that opens with a verification table reads like a compliance document and sends readers away.",
+      "change": "The front page is a publication front page: a lead guide, a product shelf, the newest guides and a reader capture. Every dashboard surface, including the register and the flags, stays reachable from the footer and from one navigation group.",
+      "why_it_works": "Readers came for an answer. The audit is the supporting evidence, and it should be one click away rather than the first thing in the way.",
+      "effort": "M",
+      "impact": "high",
+      "risk": "None. Nothing was removed, only moved.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     },
     {
-      "id": "S-12",
-      "topic": "Search Console",
-      "current": "B",
-      "options": [
-        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
-        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+      "id": "SUG-12",
+      "title": "Add a comparison hub that filters, so a reader can narrow five products without scrolling",
+      "problem": "A static table works for three rows and falls apart at twenty.",
+      "change": "Filter controls on capacity, form factor and category, plus a sortable table. The interaction fires the table_use event so the editor learns which filters readers actually use.",
+      "why_it_works": "It turns the register into a tool, and the tool usage data becomes the raw material for the next guide.",
+      "effort": "M",
+      "impact": "medium",
+      "risk": "Filters over five rows can be more friction than it is worth. The build keeps the default view complete.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
+    },
+    {
+      "id": "SUG-13",
+      "title": "Make the build the gate: a link checker, a disclosure check and a sponsored-link check that fail the release",
+      "problem": "A site that depends on someone remembering to add a disclosure will eventually publish a page without one.",
+      "change": "One check script crawls every generated page and fails on a missing disclosure, an unmarked outbound product link, a broken internal link, a missing canonical, or a page that is absent from the sitemap and the feed.",
+      "why_it_works": "Compliance stops being a habit and becomes a property of the build.",
+      "effort": "M",
+      "impact": "high",
+      "risk": "A strict gate blocks releases. The failures are specific and each one names the file and the rule.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
+    },
+    {
+      "id": "SUG-14",
+      "title": "Refresh the register on a schedule and show the age of every row",
+      "problem": "A listing read six months ago is presented with the same confidence as one read this morning.",
+      "change": "Every row carries an observed_on date, the register page shows how old each observation is, and a scheduled job re-reads the listings through the Creators API once access exists.",
+      "why_it_works": "Amazon says listings change. Showing the date is cheaper than pretending they do not.",
+      "effort": "M",
+      "impact": "medium",
+      "risk": "Needs API access, so it is blocked until FLG-007 is closed.",
+      "status": "later",
+      "depends_on": [
+        "Q-06",
+        "Q-08"
       ],
-      "recommendation": "B."
+      "owner": "engineering"
+    },
+    {
+      "id": "SUG-15",
+      "title": "Write the FAQ block from the questions people ask in the comments and the support inbox",
+      "problem": "Guides written from a keyword list answer the keyword and skip the question.",
+      "change": "Every guide ends with a question-and-answer block drawn from real reader questions, once there are readers.",
+      "why_it_works": "It is the cheapest available source of long-tail questions, and it is honest by construction.",
+      "effort": "S",
+      "impact": "medium",
+      "risk": "Depends on traffic. Until then the questions in the guide come from the open-questions list.",
+      "status": "later",
+      "depends_on": [
+        "Q-11"
+      ],
+      "owner": "editorial"
+    },
+    {
+      "id": "SUG-16",
+      "title": "Bring the whole site into one visual system so it reads as published, not generated",
+      "problem": "A site assembled page by page drifts, and the drift is what makes it look machine-made.",
+      "change": "One stylesheet, one type scale, one spacing rhythm, a defined colour system, and consistent card, table and callout components across every page.",
+      "why_it_works": "Consistency is what separates a publication from a pile of pages. It also makes the next page cheap to build.",
+      "effort": "M",
+      "impact": "medium",
+      "risk": "None.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "engineering"
+    },
+    {
+      "id": "SUG-17",
+      "title": "Do not build a revenue forecast, a conversion score or a popularity ranking",
+      "problem": "Every one of those numbers would have to be invented, and the brief forbids it.",
+      "change": "The campaign ledger ships empty with defined columns. No score, no forecast and no ranking appears anywhere on the site.",
+      "why_it_works": "An empty ledger with a dated provenance trail is a better artefact than a plausible-looking guess. It also leaves room for the real numbers later.",
+      "effort": "S",
+      "impact": "high",
+      "risk": "Readers may want a 'best overall' pick. The guides say which product fits which situation instead of crowning one.",
+      "status": "done",
+      "depends_on": [],
+      "owner": "editorial"
     }
+  ],
+  "recommended_sequence": [
+    "Close Q-01 and Q-03. Both are inside the owner's own account and take minutes.",
+    "Apply the chosen path from the four above, then publish the first season of guides on it.",
+    "Let the analytics endpoint and Search Console run for a season before choosing the next topic.",
+    "Then pick up the blocked items in the order of their dependency."
   ]
 }

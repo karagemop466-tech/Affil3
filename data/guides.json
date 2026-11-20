@@ -1,144 +1,437 @@
 {
+  "meta": {
+    "title": "Guides",
+    "subtitle": "Every guide is shaped like the question it answers. Each one opens with the answer, shows what to compare, and ends with the questions to ask before you buy.",
+    "checked_on": "2026-11-20",
+    "editorial_note": "Working titles. They are editorial hypotheses, not claims about popularity, search volume or product superiority. Nothing on these pages is written from memory: every product attribute is quoted from the official listing and carries its source link."
+  },
   "guides": [
     {
-      "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "slug": "basket-or-oven-style-air-fryer",
       "title": "Basket or oven-style air fryer: what should you compare?",
-      "description": "A buyer's guide that starts with how you cook, then tells you what to compare between basket and oven-style air fryers.",
+      "dek": "Two shapes of air fryer, two completely different kitchens. The decision is not about which one is newer — it is about how much counter you own and how many people you feed.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
       "date": "2026-11-20",
-      "category": "air-fryers",
-      "deck": "Start with the food you cook most, then pick the shape that fits it.",
-      "body": [
-        {"type": "note", "text": "Working title. This is an editorial hypothesis about the questions buyers ask. It is not a claim about popularity, search volume, or whether either style is better."},
-        {"type": "h2", "text": "Start with the food you cook most"},
-        {"type": "p", "text": "A basket air fryer cooks in a removable drawer with a fan above it. An oven-style unit is a countertop oven with a door and racks or a tray. The food you cook most often usually decides which shape fits your counter and your routine."},
-        {"type": "h2", "text": "Questions to answer before you compare listings"},
-        {"type": "ul", "items": [
-          "How many people do you usually cook for, and what is the biggest single item you cook (a whole chicken, a sheet pan, a rack of ribs)?",
-          "Do you need to cook two different foods at the same time? Dual-basket and dual-zone designs do this in different ways, so read the listing and the manual rather than the title alone.",
-          "Which functions do you need in practice: air fry, bake, broil, toast, dehydrate, reheat? Check the manual's list of functions, not only the marketing headline.",
-          "Would you rather shake a basket halfway through, or turn food on a rack or tray?",
-          "Will the unit fit under your cabinets with the door or lid open? Measure the footprint and the height."
-        ]},
-        {"type": "h2", "text": "What we tracked, and what we did not do"},
-        {"type": "p", "text": "The Shop lists five products we tracked on 2026-11-20. Two observed listings are basket-style air fryers, and one observed listing is an air fryer and toaster oven with a door. We have not tested any of them, and this guide does not rank them. Read each listing and its manual before you decide."},
-        {"type": "p", "text": "Listings referenced here are observed titles and categories from Amazon pages on 2026-11-20. Titles and categories can change."}
+      "season": "Autumn 2026",
+      "reading_minutes": 7,
+      "question": "Should I buy a basket-style air fryer or an oven-style one?",
+      "answer": "Compare them on three things, in this order: how much usable counter depth you have, whether you ever cook for more than two people at once, and whether the second cooking zone is worth the cleaning. A basket air fryer is a fryer with a convection fan. An oven-style machine is a small oven that happens to blow air. Those are different products and they fail differently.",
+      "sections": [
+        {
+          "heading": "The two shapes are doing different jobs",
+          "body": [
+            "A basket air fryer puts a single drawer under a heating element and a fan. You pull the basket out, drop food in, push it back in. It is a small, focused machine: it fries, it roasts small things, it crisps.",
+            "An oven-style air fryer is a countertop oven with a fan in the back wall and a set of racks, sometimes with a French door. It bakes, it broils, it toasts, it rotates a spit, and it has presets for a dozen things. It is a broader tool and it asks for more space.",
+            "If you are choosing between them, you are choosing between depth and breadth. Everything else is a detail."
+          ]
+        },
+        {
+          "heading": "Compare usable counter space, not the product page numbers",
+          "body": [
+            "Nominal capacity is the least useful number on the box. A '6 quart' machine and a '26 quart' machine tell you almost nothing about whether it fits, because the shapes behind the number are different.",
+            "What actually matters is the footprint and the clearance above the unit. An oven-style unit with a French door needs room in front of it for the door to open, which is a footprint in depth and a swing in space. A basket drawer needs room in front of it to pull out. A tall oven-style unit that sits under a wall cabinet needs headroom for the door and for the steam that comes off a bake.",
+            "Before you buy anything, measure the gap where it will live, then measure the depth of the unit plus the door swing. This is the single most common return reason we hear about, and it is entirely avoidable."
+          ],
+          "list": [
+            "Measure the counter gap, then subtract the unit depth plus door swing.",
+            "Check the height against the cabinet above, including clearance for a hot door and for steam.",
+            "Decide the air fryer's permanent home before you shop, not after.",
+            "If the answer is 'it will live on the counter', budget for the counter, not the outlet."
+          ]
+        },
+        {
+          "heading": "How many people are you actually cooking for?",
+          "body": [
+            "This is the question that decides the shape. A single basket in the 8 quart range is genuinely enough for one to three people. It is the easiest machine to learn, the easiest to clean and the cheapest to live with.",
+            "Two independent baskets change the arithmetic. Two separate 3 quart baskets means two foods finish at the same time without one waiting for the other. For a household that cooks a vegetable and a protein at once, that is the feature that pays for the machine.",
+            "An oven-style machine with a large interior wins a different battle: a whole chicken, a tray of vegetables, a sheet pan. If you bake, it earns its space. If you mostly fry portions, it is a lot of oven for the job."
+          ]
+        },
+        {
+          "heading": "The cleaning question nobody asks until it is too late",
+          "body": [
+            "Pull every air fryer apart in your head before you commit. The parts that come out and go in a dishwasher versus the parts that need a degreaser wipe are the difference between an appliance you use and an appliance you avoid.",
+            "On the official listings in this register, the Chefman dual basket lists two independent 3 quart nonstick dishwasher-safe baskets. The Chefman 8 quart lists an XL nonstick dishwasher-safe basket. That is the single most decision-relevant line on either listing, and it is further up the page than most people read.",
+            "Count the separate pieces on each machine you are considering. Every extra seam is another thing to wash."
+          ]
+        },
+        {
+          "heading": "What to compare, in one list",
+          "body": [
+            "Here is the checklist we use, in the order we would use it."
+          ],
+          "list": [
+            "Form factor: basket, dual basket, or oven-style with a door.",
+            "Usable space: measured footprint plus door swing, not the nominal quart figure.",
+            "Number of independent cooking zones: one, or two that run at the same time.",
+            "Cleaning: which parts are dishwasher-safe, stated on the listing.",
+            "Functions you will actually use: bake, dehydrate, broil, rotate — most people use two.",
+            "Whether it earns its heat: an oven-style unit needs real cabinet space above it."
+          ]
+        },
+        {
+          "heading": "Where the five products in this register sit",
+          "body": [
+            "The register holds three air fryers, and between them they cover the three shapes rather well. The Chefman 8 quart TurboFry is the simple single-drawer case. The Chefman 6 quart dual basket is the two-at-once case. The Emeril Lagasse 26QT French Door is the full oven case, with 24 one-touch presets and six accessories included according to its listing.",
+            "All three official listing titles are linked in the product register below with the exact wording Amazon uses."
+          ]
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": ["S04"]
+      "products": ["chefman-turbofry-8qt", "chefman-dual-basket-6qt", "emeril-lagasse-french-door-26qt"],
+      "faq": [
+        {"q": "Is a bigger air fryer always better?", "a": "No. A bigger machine is better only if you use the space it gives you. A 26 quart oven-style unit used for two portions of fries every week is a large object on a counter for no benefit."},
+        {"q": "Do dual baskets really cook two foods at once?", "a": "Two separate baskets can run at the same time, which is the point of the format. Whether each zone keeps its own temperature is a question to ask the manufacturer or check in the listing, and we do not assert it here because the official listings do not state it plainly."},
+        {"q": "What about air fryer ovens with rotisserie and dehydrate?", "a": "They are genuinely useful if you use them. The question is whether you will. Our view is that a machine with five modes you never touch is worth less than a machine with two you do."}
+      ],
+      "sources": ["SRC-10", "SRC-11", "SRC-12", "SRC-01"],
+      "keywords": ["basket air fryer vs oven air fryer", "dual basket air fryer", "air fryer oven comparison", "air fryer size guide"],
+      "related": ["no-hype-checklist-air-fryer-capacity", "cleanup-and-counter-space-trade-offs"]
     },
     {
-      "slug": "no-hype-checklist-comparing-air-fryer-capacity",
+      "slug": "no-hype-checklist-air-fryer-capacity",
       "title": "A no-hype checklist for comparing air fryer capacity",
-      "description": "How to read air fryer capacity on a listing, including total quarts versus per-basket quarts, and how to test a load.",
+      "dek": "Quart figures, basket numbers and marketing names all blur together. Here is the short list that actually changes which machine you should buy.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
       "date": "2026-11-20",
-      "category": "air-fryers",
-      "deck": "Capacity is one of the first numbers you see and one of the easiest to misread.",
-      "body": [
-        {"type": "note", "text": "Working title. This checklist does not claim that any capacity is better or that any size will cook faster."},
-        {"type": "h2", "text": "1. Check whether the number is total or per basket"},
-        {"type": "p", "text": "Some listings give a total for the unit and a separate figure for each basket. The observed title for one dual-basket Chefman listing gives '6 Quart' for the unit and '2 Independent 3Qt' baskets. Those numbers measure different things, so write down which one you are comparing."},
-        {"type": "h2", "text": "2. Measure the food you actually cook"},
-        {"type": "ul", "items": [
-          "Measure your largest regular item and the number of pieces you cook at once.",
-          "Use the inside dimensions of the basket or rack from the manual. Outside dimensions include the handle and the housing.",
-          "Note whether the manual gives a recommended maximum load."
-        ]},
-        {"type": "h2", "text": "3. Compare time and temperature, not only size"},
-        {"type": "p", "text": "A larger basket is not automatically faster. For the same food, compare the time and temperature charts in each manual. If a manual has no chart for your food, record that as a gap."},
-        {"type": "h2", "text": "4. Test a load before you rely on it"},
-        {"type": "p", "text": "If the manual gives no maximum load, cook in batches first and note how evenly the food browns. Keep your notes with the date and the food, so you can repeat the test on another unit."},
-        {"type": "h2", "text": "5. Write down what you could not confirm"},
-        {"type": "p", "text": "If the listing does not state a capacity in both total and per-basket terms, mark the row as unconfirmed. Do not fill the gap from a different listing."}
+      "season": "Autumn 2026",
+      "reading_minutes": 6,
+      "question": "How do I compare air fryer capacity when every listing says a different number?",
+      "answer": "Stop comparing quart figures and compare three things instead: how many independent baskets, how many people you feed, and how big a single item has to fit. Quart capacity is a total volume spread across one, two or three compartments. Two baskets of three quarts each and one basket of six quarts are both '6 quart' machines and they behave nothing alike.",
+      "sections": [
+        {
+          "heading": "Why the quart number lies",
+          "body": [
+            "A machine's capacity figure is the sum of its compartments. That single fact explains nearly every confusing comparison you will find online.",
+            "Take the Chefman in this register that is listed as a 6 quart dual basket: the official listing title states 2 independent 3 quart baskets. Six quarts in total, but split into two zones of three. If you want to cook a whole chicken breast, three quarts per basket is the number that matters and six is not.",
+            "Now take the Emeril Lagasse in this register, listed as a 26 quart French Door multi-function air fryer toaster oven with an extra large interior. That is one large cavity. One thing at a time, but the thing can be large.",
+            "Both say 'quart'. They are not comparable."
+          ]
+        },
+        {
+          "heading": "The three numbers to actually compare",
+          "body": [
+            "Write these three down for every machine you are considering. They come from the listing title, and every one of them in this register is linked to the official page below."
+          ],
+          "list": [
+            "Zones: how many separate baskets or cavities cook at the same time?",
+            "Per-zone volume: how much fits in each one at once, not in total?",
+            "Largest single item: the biggest piece that fits in the cavity without hanging over the edge."
+          ]
+        },
+        {
+          "heading": "Work out your real number before you shop",
+          "body": [
+            "Most people over-buy. The honest way to size an air fryer is to look at what you actually cook, not what you could cook.",
+            "Two people who make chips and chicken breasts once a week need one basket of six to eight quarts. A family of four cooking a protein and a tray of vegetables at the same time needs two zones. One person batch-cooking a week's worth of food wants one large cavity and a dishwasher-safe basket, because they will be running the dishwasher twice.",
+            "If your typical dinner is three portions of something, an 8 quart single basket is comfortable. If it is two proteins plus sides, a dual basket is the correct answer. If it is a whole chicken on a Sunday, it is an oven and you should stop reading basket comparisons."
+          ]
+        },
+        {
+          "heading": "The capacity questions that catch people out",
+          "body": [
+            "There are three that we would want answered before a purchase, and none of them appear on the front of a listing."
+          ],
+          "list": [
+            "Does the stated volume include the space the basket takes up, or is it the volume of the food area?",
+            "What is the internal clear height in inches, for a breast, a fish fillet or a whole chicken?",
+            "Can both zones run at different temperatures, or only at the same one?"
+          ]
+        },
+        {
+          "heading": "Treat the number in the listing as a starting point",
+          "body": [
+            "Every capacity figure on this site was read from an official Amazon listing on a specific date, and the date is recorded next to it. Amazon's own Operating Agreement says the service offerings are provided as is and may change at any time, so treat these as dated observations rather than permanent facts.",
+            "Where we could not confirm something from an official source, the register leaves it blank and says so, rather than filling it in with a plausible number."
+          ]
+        }
       ],
-      "cluster_links": ["air-fryers"],
-      "sources": ["S04"]
+      "products": ["chefman-dual-basket-6qt", "chefman-turbofry-8qt", "emeril-lagasse-french-door-26qt"],
+      "faq": [
+        {"q": "Is 6 quarts enough for two people?", "a": "If it is one 6 quart basket, yes, that is a comfortable size for two people. If it is two 3 quart baskets, then each zone feeds one person comfortably, which is a different and also workable answer."},
+        {"q": "Does a bigger basket mean more even cooking?", "a": "Not necessarily, and we have no official source on this site that would let us say so. Airflow design matters at least as much as volume, and the listing titles do not describe airflow."},
+        {"q": "What about the difference between basket volume and total volume?", "a": "That is exactly the distinction this guide is about. Total volume is the headline number. Basket volume is the number that determines whether your dinner fits."}
+      ],
+      "sources": ["SRC-10", "SRC-11", "SRC-12", "SRC-02"],
+      "keywords": ["air fryer capacity chart", "how big an air fryer do I need", "air fryer quart size guide", "dual basket vs single basket capacity"],
+      "related": ["basket-or-oven-style-air-fryer", "cleanup-and-counter-space-trade-offs"]
     },
     {
-      "slug": "how-to-assess-cleanup-and-counter-space-tradeoffs",
+      "slug": "cleanup-and-counter-space-trade-offs",
       "title": "How to assess cleanup and counter-space trade-offs",
-      "description": "A practical way to compare cleanup effort, basket care, and the room a countertop appliance needs.",
+      "dek": "The two costs people underestimate. They are also the two that decide whether an air fryer gets used twice a week or once a month.",
+      "category": "Air fryers",
+      "category_slug": "air-fryers",
       "date": "2026-11-20",
-      "category": "air-fryers",
-      "deck": "The best-looking appliance is the one you will actually clean and have room for.",
-      "body": [
-        {"type": "note", "text": "Working title. Cleanup claims such as 'dishwasher-safe' come from the manufacturer; check the manual's care section before you rely on them."},
-        {"type": "h2", "text": "Cleanup questions"},
-        {"type": "ul", "items": [
-          "How many removable parts are there, and do they all come out without tools?",
-          "What does the manufacturer's care section say about washing each part? Write down the exact wording.",
-          "Is the non-stick surface described with cleaning instructions, such as avoiding metal utensils or abrasive pads? Follow the manufacturer's text.",
-          "Where will the parts dry?"
-        ]},
-        {"type": "h2", "text": "Counter-space test"},
-        {"type": "ol", "items": [
-          "Tape the footprint on your counter with painter's tape.",
-          "Measure the height with the lid or door fully open, and check the clearance under the cabinets.",
-          "Measure how far the door or basket pulls out, and whether anything else on the counter would block it.",
-          "Find an outlet and check that the cord reaches without a strain."
-        ]},
-        {"type": "h2", "text": "Trade-offs to write down"},
-        {"type": "p", "text": "Write a one-line trade-off for each option: for example, 'faster cleanup, less capacity' or 'more functions, more parts to wash'. Writing it down makes the comparison concrete and keeps it honest."}
+      "season": "Autumn 2026",
+      "reading_minutes": 6,
+      "question": "How do I weigh how hard an air fryer is to clean against how much counter space it takes up?",
+      "answer": "Treat them as one decision, not two, because they trade against each other. A larger oven-style machine usually means more parts to wash and more heat-resistant surface to wipe down. A smaller basket machine usually means fewer seams. Count the parts and measure the gap, then pick the machine with fewer seams if the two are otherwise equal — because a machine that is annoying to clean is a machine that stops getting used.",
+      "sections": [
+        {
+          "heading": "Count the seams, not the dishes",
+          "body": [
+            "A dishwasher-safe basket is a marketing phrase that hides a number. How many separate pieces are there? A basket that lifts out of a drawer that lifts out of the body is two pieces. A dual-basket machine is four, plus the handle assembly. An oven-style machine with a door, racks, a drip tray and a basket is easily eight.",
+            "Every one of those pieces is a thing to wash, a thing to dry and a thing to put away. The count does not appear on the listing. You have to take it apart on the other side of the screen, which is the point of this section.",
+            "In this register, the Chefman 8 quart TurboFry listing names an XL nonstick dishwasher-safe basket. The Chefman dual basket listing names 2 independent 3 quart nonstick dishwasher-safe frying baskets. Those are the only cleaning facts we could confirm from an official source, and they are the ones that matter."
+          ]
+        },
+        {
+          "heading": "Measure the gap, then measure it twice",
+          "body": [
+            "Counter space is not a rectangle of floor area. It is a rectangle minus the door swing, minus the handle pull, minus the space above for a wall cabinet.",
+            "A basket drawer pulls straight out. It needs the depth of the drawer plus your hand. An oven-style unit with a hinged door needs the door to swing down, which for a French door means both halves swing out and take the width of the unit plus a margin. A unit with a pull-out handle on a tall body needs room for the handle to come out and for you not to be standing in the cupboard.",
+            "The mistake people make is measuring the closed footprint. Measure the open one."
+          ]
+        },
+        {
+          "heading": "The trade-off, plainly",
+          "body": [
+            "Here is the actual shape of the trade-off. More capacity and more functions means more surface area, more seams and a bigger footprint. Less capacity and fewer functions means less to wash and less to give up on the counter.",
+            "That is a real cost, not a trick. But note the asymmetry: an unused 26 quart oven-style machine does not cook dinner. A used 8 quart basket does. The metric that matters is not how much capacity you have, it is how many times a month the machine gets used, and that favours the smaller one more often than buyers expect.",
+            "The second asymmetry is that counter space has an opportunity cost. The gap an oven-style unit occupies is the gap you cannot use for a stand mixer, a knife block or a batch of coffee. People who cook a lot already know this; people who are about to buy an air fryer are often not thinking about it."
+          ]
+        },
+        {
+          "heading": "Three questions to ask a manufacturer before you buy",
+          "body": [
+            "These are the questions that the listing titles do not answer, and they are the ones that decide the cleanup burden."
+          ],
+          "list": [
+            "Which parts are dishwasher-safe, and which need a wipe?",
+            "Is the nonstick coating on the basket, the heating element side, or both?",
+            "Does the unit have a removable back panel or a fixed crumb tray, and can either be reached?"
+          ]
+        },
+        {
+          "heading": "What we could not confirm",
+          "body": [
+            "We did not find an official source for the internal dimensions, the clearances or the cleaning procedure for any of the three air fryers in this register, so we have not published any of them. The register leaves those cells blank.",
+            "That is not a gap we are hiding. It is the line we have drawn: a number we can link to is a number we will print."
+          ]
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": []
+      "products": ["chefman-turbofry-8qt", "chefman-dual-basket-6qt", "emeril-lagasse-french-door-26qt"],
+      "faq": [
+        {"q": "Is a dual basket harder to clean than a single basket?", "a": "There are more pieces, so on the face of it, yes. The counter-argument is that each basket is smaller and easier to scrub. We have no official source that measures either, so we present it as a trade-off rather than a verdict."},
+        {"q": "Do oven-style air fryers need more clearance above them?", "a": "Any unit that gets hot above the food needs some. We could not confirm a specific required clearance from an official source, so we are not going to invent a number. Measure your own gap and leave room."},
+        {"q": "What about nonstick versus stainless baskets?", "a": "Nonstick is easier to release food from; stainless is more durable. Both of the Chefman listings in this register specify nonstick and dishwasher-safe baskets."}
+      ],
+      "sources": ["SRC-10", "SRC-11", "SRC-12", "SRC-01"],
+      "keywords": ["are air fryers hard to clean", "air fryer counter space", "dual basket cleaning", "air fryer footprint"],
+      "related": ["basket-or-oven-style-air-fryer", "no-hype-checklist-air-fryer-capacity"]
     },
     {
-      "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
+      "slug": "questions-before-buying-a-multi-function-kitchen-appliance",
       "title": "Questions to ask before buying a multi-function kitchen appliance",
-      "description": "Eight plain questions to answer before you buy a multi-function countertop appliance.",
+      "dek": "A twenty-four preset machine is a promise. These are the questions that find out whether the machine does what it says, before the box is open.",
+      "category": "Buying guides",
+      "category_slug": "guides",
       "date": "2026-11-20",
-      "category": "air-fryer-ovens",
-      "deck": "Multi-function appliances promise a lot. Ask which functions you will actually use.",
-      "body": [
-        {"type": "h2", "text": "Eight questions"},
-        {"type": "ol", "items": [
-          "Which three functions will you use every week? Ignore the rest when comparing.",
-          "Do the presets match the food you cook, or will you set time and temperature yourself?",
-          "Can you see the temperature and time while the appliance runs?",
-          "Does the manual include time and temperature charts for your foods?",
-          "What does the warranty cover, and who services it? Read the warranty text rather than the summary.",
-          "Are replacement baskets, racks or trays sold separately? Check the listing and the manufacturer's site.",
-          "How loud is it? If the manufacturer gives no figure, note that you could not confirm it.",
-          "Where will it live, and how often will you move it?"
-        ]},
-        {"type": "h2", "text": "Why these questions"},
-        {"type": "p", "text": "A list of functions is not the same as a list of things you will use. These questions tie the purchase to your routine and to the documents the manufacturer provides."},
-        {"type": "p", "text": "The Shop lists one multi-function air fryer and toaster oven we observed on 2026-11-20. We have not tested it."}
+      "season": "Autumn 2026",
+      "reading_minutes": 7,
+      "question": "What should I check before buying a multi-function kitchen appliance with a lot of presets?",
+      "answer": "Find out how many of those functions you will really use, then make sure the one you will use most is the best-executed one rather than the most advertised. Presets are easy to add to a product page and hard to make good. Then check the three things every multi-function appliance gets wrong somewhere: the size of the cavity, the number of pieces you have to clean, and what happens when you want to cook two things at once.",
+      "sections": [
+        {
+          "heading": "Presets are a marketing surface, not a feature list",
+          "body": [
+            "The Emeril Lagasse in this register is listed with 24 one-touch preset options and six cooking accessories included. Both facts come straight from the official listing title, and both are the kind of thing that reads as generosity in a search result.",
+            "The honest test is narrower: how many of those 24 presets correspond to a dish you will actually cook, and how many times a month? Most households use two or three. If the appliance has 24 ways to do it and one excellent way, you are paying for the other 23.",
+            "So the first question is not 'how many presets', it is 'which preset'. Find out which cooking mode the machine is genuinely best at, and whether that mode is the one you would use most."
+          ]
+        },
+        {
+          "heading": "The cavity question",
+          "body": [
+            "A multi-function appliance is a small oven. Small ovens have a known geometry problem: the heating elements are close to the food, so the top of a tall item browns before the middle cooks. That is the failure mode to look for.",
+            "What you want to know: how tall is the clear internal space, where are the elements relative to the rack, and does the machine have a convection fan for when you are baking rather than frying.",
+            "We could not confirm the internal geometry of any of the appliances in this register from an official source, so we have published none of it. These are the questions to put to the manufacturer."
+          ]
+        },
+        {
+          "heading": "The two-at-once question",
+          "body": [
+            "Multi-function appliances advertise capacity as a single number, which hides the useful distinction: can the machine cook two things at once, and if so, at the same temperature?",
+            "The three air fryers in this register answer this in three different ways, and the official titles make each answer readable. The dual basket has two independent 3 quart baskets. The French door oven has one extra large interior. The 8 quart TurboFry has one XL basket.",
+            "Read the word 'independent' in a listing title. It is doing more work than it looks like."
+          ]
+        },
+        {
+          "heading": "The cleaning question again, but worse",
+          "body": [
+            "A four-function machine has four kinds of mess. A twenty-four-preset oven has racks, a drip tray, a rotisserie spit, a basket and a door, and it has to handle all of them.",
+            "Here is the test we would apply. Count the removable parts. Then ask the manufacturer which of them are dishwasher-safe, because a rotisserie spit is never dishwasher-safe and you will find out at the sink."
+          ]
+        },
+        {
+          "heading": "Six questions to put to a manufacturer",
+          "body": [
+            "Before you buy, ask these and write the answers down."
+          ],
+          "list": [
+            "Which preset is this machine genuinely best at?",
+            "What is the clear internal height and width of the cavity, in inches?",
+            "Where are the heating elements relative to the food, and how do you avoid the top burning before the middle cooks?",
+            "Can two items cook at once, and at different temperatures?",
+            "Which removable parts are dishwasher-safe?",
+            "What is the warranty on the heating elements and the electronics, and who services it?"
+          ]
+        },
+        {
+          "heading": "And one question about the guarantee",
+          "body": [
+            "The last one matters more than people expect. A multi-function appliance has more failure points than a fryer: more elements, more sensors, a control board, a door with a switch on it.",
+            "Check what the manufacturer actually warrants and what the return window is. Some of these products are sold through third-party sellers, and the warranty can be handled entirely differently depending on who shipped it. We would want that confirmed before spending real money."
+          ]
+        }
       ],
-      "cluster_links": ["air-fryer-ovens"],
-      "sources": ["S04"]
+      "products": ["emeril-lagasse-french-door-26qt", "chefman-dual-basket-6qt", "chefman-turbofry-8qt"],
+      "faq": [
+        {"q": "Are preset programs a sign of a good appliance?", "a": "No. A preset is one setting of temperature and time. Whether it produces a good result depends on the airflow and the element placement, which the listing does not tell you."},
+        {"q": "Is a 24-preset appliance better than a 4-preset one?", "a": "Only if you use the extra twenty. Our view is that the number of presets measures marketing effort more reliably than it measures capability."},
+        {"q": "Do I need the rotisserie and dehydrator modes?", "a": "Only if you will use them. The dehydrate mode on the Chefman 8 quart TurboFry listing is paired with bake and Hi-Fry, which is a more balanced set of modes for most kitchens."}
+      ],
+      "sources": ["SRC-11", "SRC-12", "SRC-10", "SRC-01"],
+      "keywords": ["multi function air fryer oven", "air fryer toaster oven buying guide", "air fryer oven presets", "countertop convection oven questions"],
+      "related": ["basket-or-oven-style-air-fryer", "cleanup-and-counter-space-trade-offs"]
     },
     {
-      "slug": "is-your-meat-thermometer-telling-you-the-right-number",
-      "title": "Is your meat thermometer telling you the right number?",
-      "description": "The USDA minimum internal temperatures for common meats and poultry, where to place a probe, and what to ask about a wireless thermometer.",
+      "slug": "wireless-meat-thermometer-or-probe",
+      "title": "Do you need a wireless meat thermometer, or is a probe enough?",
+      "dek": "Two thermometers in this register answer the same question in two different ways. The deciding question is how many things you are cooking at once.",
+      "category": "Thermometers",
+      "category_slug": "thermometers",
       "date": "2026-11-20",
-      "category": "cooking-thermometers",
-      "deck": "A thermometer is only as useful as the number you compare it with.",
-      "body": [
-        {"type": "note", "text": "Working title. The temperatures below are the USDA's published minimums. This guide does not test the accuracy of any thermometer."},
-        {"type": "h2", "text": "The minimum internal temperatures"},
-        {"type": "ul", "items": [
-          "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, then rest for at least 3 minutes.",
-          "Ground poultry: 165 °F.",
-          "All poultry, including breasts, whole birds, legs, thighs and wings: 165 °F.",
-          "Fresh or smoked ham that is uncooked: 145 °F, then rest for at least 3 minutes."
-        ]},
-        {"type": "p", "text": "Source: USDA Food Safety and Inspection Service, Safe Minimum Internal Temperature Chart."},
-        {"type": "h2", "text": "Where to put the probe"},
-        {"type": "p", "text": "For a whole bird, the USDA says to check the innermost part of the thigh, the innermost part of the wing and the thickest part of the breast, avoiding bone. For poultry parts, insert the probe into the thickest area, avoiding bone."},
-        {"type": "h2", "text": "Questions to ask about a wireless thermometer"},
-        {"type": "ul", "items": [
-          "What temperature range and probe count does the manufacturer state?",
-          "Does the manufacturer describe how accuracy was tested? If it does not, write that down.",
-          "Does the app need an account, and what does the privacy policy say it collects?",
-          "Is the probe rated for the temperature you will cook at? Check the manufacturer's stated limit."
-        ]},
-        {"type": "h2", "text": "What the Shop shows"},
-        {"type": "p", "text": "The Shop lists one wireless thermometer in this cluster, observed on 2026-11-20. We have not tested it. The temperatures above come from the USDA, not from the product maker."}
+      "season": "Autumn 2026",
+      "reading_minutes": 6,
+      "question": "Should I buy a wireless meat thermometer or a simple instant-read probe?",
+      "answer": "Buy the simple probe if you cook one thing at a time and read it standing at the grill. Buy the wireless multi-probe if you routinely cook two cuts at different temperatures, or if you have walked away from the grill enough times to regret it. The wireless version's advantage is not accuracy — it is that it keeps telling you while you do something else.",
+      "sections": [
+        {
+          "heading": "What each one actually adds",
+          "body": [
+            "The ThermoMaven in this register is listed as a 1 second professional digital meat thermometer with a stated accuracy of ±0.5°F, NIST and NSF certified as stated on the listing, an auto-rotating LED screen and an IP67 waterproof rating. That is a fast, readable, single-probe answer to one question.",
+            "The CHEF iQ Sense in this register is listed with 3 ultra-thin probes, WiFi with what the listing calls unlimited range, probes that are 1000°F heat safe, 5 sensors, and compatibility with BBQ, grill, oven, smoker and air fryer.",
+            "The difference is not precision. Both are described as accurate to a fraction of a degree. The difference is how many things you can watch at once, and whether you can walk away."
+          ]
+        },
+        {
+          "heading": "The case for the simple probe",
+          "body": [
+            "A single-probe thermometer is a tool you use in about ten seconds. You take it out, you put it in, you read it, you put it away. There is nothing to pair, nothing to charge, nothing to update and nothing to set up.",
+            "For most people cooking a chicken on a Sunday or a steak on a Tuesday, that simplicity is the whole feature. A wireless setup that needs an app, a base unit and a charged battery adds failure modes to a task that did not need them.",
+            "The listed auto-rotate screen is a genuine small nicety in this category — you can read the temperature without craning over the probe or taking off gloves — and it costs nothing in complexity."
+          ]
+        },
+        {
+          "heading": "The case for the wireless multi-probe",
+          "body": [
+            "Multi-probe earns its price in exactly one situation: when you are cooking more than one thing at a time.",
+            "Two cuts that need different temperatures. A roast in the oven and a vegetable in the air fryer — which is exactly the pairing the CHEF iQ Sense listing names, listing itself for air fryer use alongside grill, oven, smoker and BBQ. That listing is describing a scenario that only exists if you own both kinds of appliance, and it is the scenario that makes three probes worthwhile.",
+            "The other half of the case is freedom. If you can read the temperature from another room, you stop opening the oven every four minutes, which is both the thing that makes cooking calmer and the thing that saves fuel."
+          ]
+        },
+        {
+          "heading": "The questions to ask before spending more",
+          "body": [
+            "Regardless of which you pick, these are worth confirming from the manufacturer."
+          ],
+          "list": [
+            "What is the probe diameter and the probe length? A thin probe measures the centre of a steak; a thick probe suits a roast.",
+            "What does the stated accuracy figure mean — is it the full range across the temperature scale, or a tolerance at one point?",
+            "Does the stated wireless range hold with the oven door closed and the metal cavity between you and the probe?",
+            "How long does the battery last at the highest temperature, and is it rechargeable?",
+            "Does it work without the app, and does the app require an account with a cloud service?"
+          ]
+        },
+        {
+          "heading": "The accuracy claim, handled carefully",
+          "body": [
+            "Both thermometers in this register state an accuracy figure in the official listing title. We have reproduced those words exactly, and we have attributed them, rather than presenting them as our own measurement.",
+            "We have not tested either device and we make no claim about how they perform. A stated tolerance is a manufacturer claim about an instrument, and a tolerance tells you the maximum error under test conditions, not the error you will see on a cold chicken breast in a windy garden.",
+            "One practical note that costs nothing: whatever the instrument says, the most common failure in cooking is not probe accuracy. It is pulling the probe out too early, or leaving it in a spot that is not the thickest part of the cut. Leave it in and let the reading settle."
+          ]
+        }
       ],
-      "cluster_links": ["cooking-thermometers"],
-      "sources": ["S09", "S10", "S04"]
+      "products": ["thermomaven-1sec-digital", "chef-iq-sense-gen3"],
+      "faq": [
+        {"q": "Is a more expensive thermometer more accurate?", "a": "The two in this register are both described with a tolerance of a fraction of a degree, so on the stated figures there is not much between them. The difference is probe count, connectivity and how many things you can watch at once."},
+        {"q": "Do I need WiFi if I am only cooking one roast?", "a": "Almost certainly not. A single probe that reads fast and clearly is the better tool for one roast, and it is the simpler one to own."},
+        {"q": "Can I use a meat thermometer in an air fryer?", "a": "The CHEF iQ Sense listing names air fryer among the appliances it is listed for. We would check the probe length against your air fryer's basket clearance before buying, because a probe that cannot sit in the food is not a useful probe."}
+      ],
+      "sources": ["SRC-13", "SRC-14", "SRC-01"],
+      "keywords": ["wireless meat thermometer vs instant read", "best meat thermometer for grilling", "multi probe thermometer", "air fryer meat thermometer"],
+      "related": ["how-accurate-does-a-meat-thermometer-need-to-be"]
+    },
+    {
+      "slug": "how-accurate-does-a-meat-thermometer-need-to-be",
+      "title": "How accurate does a meat thermometer need to be, and what does 'accurate' even mean?",
+      "dek": "A tolerance is not a measurement, and a number on a box is not a promise. Here is how to read an accuracy claim properly.",
+      "category": "Thermometers",
+      "category_slug": "thermometers",
+      "date": "2026-11-20",
+      "season": "Autumn 2026",
+      "reading_minutes": 6,
+      "question": "What accuracy do I actually need in a meat thermometer, and what does the stated figure mean?",
+      "answer": "You need far less accuracy than the packaging implies — a few degrees is enough for almost every cooking decision — but you need to understand what the number means before you compare two devices. A stated tolerance of ±0.5°F is a manufacturer claim about an instrument under specified test conditions. It is not a measurement you made, and it does not describe the error you will see in your kitchen.",
+      "sections": [
+        {
+          "heading": "A tolerance is a bound, not a reading",
+          "body": [
+            "When a manufacturer writes ±0.5°F, they are saying that under their test conditions the instrument stayed within half a degree of a reference. That is a useful and meaningful claim. It is also, in laboratory terms, a bound on error.",
+            "Two things follow from it. First, the instrument is not always exactly right — it is within a window. Second, and more importantly, the window applies to the instrument reading a controlled reference at a controlled temperature. Your chicken breast in a windy garden is not a controlled reference at a controlled temperature.",
+            "The gap between an instrument's tolerance and its real-world reading is where probe placement error, ambient wind, evaporative cooling and bone contact all live. Those are bigger than a half degree, and no amount of precision in the instrument removes them."
+          ]
+        },
+        {
+          "heading": "How much accuracy is enough",
+          "body": [
+            "For the decisions most people actually make, a couple of degrees changes nothing. Whether a chicken breast has reached 165°F or 160°F is rarely the difference between a good dinner and a bad one, because a chicken breast continues cooking off the heat after it leaves the heat.",
+            "Where accuracy does matter is thin cuts and rare beef, where the gap between rare and medium rare is a matter of a few degrees. That is exactly where the whole quality of your cook rests, and exactly where the probe placement matters most.",
+            "So the honest summary is: buy the better-reading device if you are chasing a precise medium rare, and do not agonise if you are roasting a chicken."
+          ]
+        },
+        {
+          "heading": "What to check instead of the number",
+          "body": [
+            "The stated accuracy figure is the least informative thing on the box. These are more useful:"
+          ],
+          "list": [
+            "Response time, because a slow probe makes you pull it out and reinsert it, and reinsertion cools the food.",
+            "Resolution or step size, which is often a tenth of a degree and tells you the display is not faking precision.",
+            "The waterproof rating, because a probe that cannot be rinsed is a probe that gets rinsed anyway.",
+            "Whether the accuracy figure applies across the whole scale or only at one point.",
+            "Whether the device has been certified by an independent body, and by which one."
+          ]
+        },
+        {
+          "heading": "Reading the two listings in this register",
+          "body": [
+            "The ThermoMaven 1 second professional digital meat thermometer listing states ±0.5°F accuracy, NIST and NSF certified, a 1 second response and an IP67 waterproof rating. The CHEF iQ Sense listing states 3 ultra-thin probes, 1000°F heat safe probes and 5 sensors, and lists itself for BBQ, grill, oven, smoker and air fryer use.",
+            "Both sets of words are quoted from the official listing titles and linked in the product register. We have not independently verified either device, we have not tested either one, and the site says so plainly rather than implying otherwise.",
+            "One thing we would genuinely want to know, and cannot from a listing: what the stated accuracy means at the temperature that matters for the food you cook. That is a question for the manufacturer."
+          ]
+        },
+        {
+          "heading": "And the thing that beats accuracy",
+          "body": [
+            "A thermometer does not know where the thickest part of your cut is. You do.",
+            "Push the probe into the thickest part, away from bone, away from the pan, deep enough that the tip is in the meat rather than near the edge. Leave it in while you cook. Read it without pulling it out, if the device allows it.",
+            "A well-placed probe in a cheap thermometer will beat a beautifully-made probe pushed into the fat at the edge of the rib. That is not a claim about these two products. It is just what the instrument is for."
+          ]
+        }
+      ],
+      "products": ["thermomaven-1sec-digital", "chef-iq-sense-gen3"],
+      "faq": [
+        {"q": "Does ±0.5°F mean it will read exactly right?", "a": "No. It is a bound on error under test conditions. The reading you get in your kitchen also contains placement error, ambient error and the cooking error you introduce yourself."},
+        {"q": "Is a thermometer with NIST certification worth more?", "a": "Certification means the instrument was tested against a national standard by an accredited laboratory, which is a meaningfully better claim than a manufacturer's own wording. We would take it as a tiebreaker rather than the main reason to buy."},
+        {"q": "What resolution should I look for?", "a": "Anything at or below 0.1°F is more resolution than most home cooks can use. Resolution is not accuracy, and a device can display a tenth of a degree while being less accurate than one that displays one degree."}
+      ],
+      "sources": ["SRC-13", "SRC-14", "SRC-05"],
+      "keywords": ["how accurate does a meat thermometer need to be", "thermometer accuracy tolerance explained", "probe thermometer accuracy", "NIST certified thermometer"],
+      "related": ["wireless-meat-thermometer-or-probe"]
     }
   ]
 }
