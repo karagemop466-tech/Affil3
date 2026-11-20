@@ -66,7 +66,7 @@
 <section class="flag-card is-resolved" id="FLG-004">
   <p class="flag-head"><span class="badge flag">FLG-004</span> <span class="badge sev-high">high</span> <strong>One submitted link (B00hJ57DV) initially appeared not to resolve to a product</strong> <span class="badge good">resolved</span></p>
   <p>The link landed on an Amazon &#39;Continue shopping&#39; checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.</p>
-  <p class="manual"><strong>Resolution:</strong> Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier &quot;Continue shopping&quot; checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted.</p>
+  <p class="manual"><strong>Resolution:</strong> Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier &quot;Continue shopping&quot; checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH</p>
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   <p class="manual"><strong>What would close it:</strong> Open the link in a signed-in browser. Supply the intended product URL if it can be identified.</p>
 </section>
@@ -192,7 +192,7 @@
 <section class="flag-card is-resolved" id="FLG-022">
   <p class="flag-head"><span class="badge flag">FLG-022</span> <span class="badge sev-high">high</span> <strong>Two product destinations were transposed in the root-site register (corrected)</strong> <span class="badge good">resolved</span></p>
   <p>data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a &quot;reverification&quot; block preserving the earlier value, so the fix is auditable rather than silent.</p>
-  <p class="manual"><strong>Resolution:</strong> P03 and P04 corrected in data/products.json; previous values retained in each record&#39;s reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated.</p>
+  <p class="manual"><strong>Resolution:</strong> P03 and P04 corrected in data/products.json; previous values retained in each record&#39;s reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5</p>
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   
 </section>

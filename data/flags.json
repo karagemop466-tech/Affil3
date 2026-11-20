@@ -46,7 +46,7 @@
       ],
       "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
       "status": "resolved",
-      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted."
+      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
     },
     {
       "id": "FLG-005",
@@ -219,7 +219,7 @@
       "area": "product data",
       "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
       "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
-      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated.",
+      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
       "sources": [
         "S05"
       ],
