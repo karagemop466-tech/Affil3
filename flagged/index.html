@@ -40,7 +40,7 @@
 <main id="main">
 <div class="wrap">
 <section class="page-head"><p class="kicker">Flagged for review</p><h1>What we could not confirm</h1>
-<p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.</p></section>
+<p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-030 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; numbering continues from main&#39;s FLG-029 because this branch had independently allocated FLG-023 to FLG-034 and those numbers were taken. Three findings from that earlier allocation were dropped rather than renumbered because main had already fixed them: the CI workflow that diffed a non-existent docs/ directory, robots.txt advertising two sitemaps over three crawlable publications, and the empty &#39;unresolved links&#39; category page. Two more were dropped as duplicates of FLG-024 and FLG-025. FLG-036 was added and resolved by session 66f2548a on 2026-11-20; FLG-015 was resolved in the same pass because the site shipped imagery after the flag said it had none. Both keep their original wording so the register shows what changed rather than pretending it never did.</p></section>
 <div class="status-box"><strong>Nothing here blocks the site.</strong> Each item is a gap between what a reader might assume and what we can actually show. The manual step in each card is the fastest way to close it.</div>
 <section class="flag-card" id="FLG-001">
   <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
@@ -140,10 +140,10 @@
   
   <p class="manual"><strong>What would close it:</strong> Decide on a named author and bio (suggestion S-06).</p>
 </section>
-<section class="flag-card" id="FLG-015">
-  <p class="flag-head"><span class="badge flag">FLG-015</span> <span class="badge sev-medium">medium</span> <strong>No product imagery is used</strong></p>
+<section class="flag-card is-resolved" id="FLG-015">
+  <p class="flag-head"><span class="badge flag">FLG-015</span> <span class="badge sev-medium">medium</span> <strong>No product imagery is used</strong> <span class="badge good">resolved</span></p>
   <p>Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).</p>
-  
+  <p class="manual"><strong>Resolution:</strong> Superseded 2026-11-20. The site now ships nine editorial illustrations (five product, four guide). The compliance point that made the flag worth raising survives and is the part that was resolved: no image on the site is Amazon Program Content, so the IP License limits on altering or redistributing Program Content never engage, and every image is captioned &#39;Editorial illustration, not the reviewed unit.&#39; Kept rather than deleted because the register&#39;s job is to record what was once believed and why it changed. The open decision is now about licensing and sourcing original photography, recorded at suggestion S-07.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="manual"><strong>What would close it:</strong> Decide the imagery approach (suggestion S-05).</p>
 </section>
@@ -245,6 +245,55 @@
   
   <p class="manual"><strong>What would close it:</strong> None. The image was created in the same photographic style as the other hero images and committed; the gate now checks that every referenced image exists, is served locally, and has alt text.</p>
 </section>
+<section class="flag-card" id="FLG-030">
+  <p class="flag-head"><span class="badge flag">FLG-030</span> <span class="badge sev-high">high</span> <strong>Program Policies bar using Special Links or Program Content to develop machine learning models without Amazon&#39;s prior written approval</strong></p>
+  <p>Participation Requirements §5, read verbatim 2026-11-20: &quot;You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.&quot; The brief for this project asks for an AI-powered platform that automates product research, generates content and optimises campaigns. The clause does not forbid that outright - it is about using Special Links or Program Content as model input - but it draws a hard boundary around the automation the brief describes, and no earlier session had recorded it. Everything built so far stays inside it: no Amazon content was used to train or fine-tune anything, product facts were read from manufacturer and Amazon pages and cited by source ID, and outbound links are constructed from an observed ASIN plus the tracking ID rather than harvested at scale.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></p>
+  <p class="manual"><strong>What would close it:</strong> Before adding automated scraping, model training or bulk link generation, ask Associates support whether it needs prior written approval under §5 and record the reply against this flag. Do not build the automated product-research pipeline until that answer exists.</p>
+</section>
+<section class="flag-card" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-high">high</span> <strong>The Site may not have price tracking or price alerting functionality unless Amazon agrees</strong></p>
+  <p>Participation Requirements §6(y), read verbatim 2026-11-20: &quot;Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.&quot; The brief asks the platform to analyse pricing and to track conversions. Recording prices for internal analysis is a different act from shipping a price-tracking feature to readers, and only the second is barred by 6(y) - but the distinction has to be chosen deliberately rather than arrived at by accident. Related and stricter: §2(b) allows the Site to show prices and availability only where Amazon serves the link or the data comes from the Creators API or PA API, and §6(t) bars displaying customer reviews or star ratings without the same.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> Decide explicitly: no price feature on the site (current, and the safe reading), or apply for PA API / Creators API access and get Amazon&#39;s agreement under 6(y) before building one. Any suggestion that would surface a price should be marked as needing this decision first.</p>
+</section>
+<section class="flag-card" id="FLG-032">
+  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-medium">medium</span> <strong>The published site loads a click counter and carries no privacy notice</strong></p>
+  <p>Participation Requirements §3(e) makes the Associate responsible for &quot;disclosing on your Site accurately and adequately and otherwise satisfying applicable legal requirements, either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors&quot;. The site loads assets/analytics.js on every page and posts events to a configurable endpoint. The script is genuinely privacy-preserving - the gate asserts it sets no cookies, no localStorage and no sessionStorage, and it returns early when Do Not Track is set - and the endpoint is empty so nothing is currently sent. But no page told a reader any of that. Privacy pages existed in the repository only under legacy/, belonging to superseded editions and not linked from the live one.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> Review the /privacy/ page added by session 66f2548a. It describes what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. It is a first draft of a legal-adjacent page written by a build session, not legal advice; Q-13 on the questions page stands.</p>
+</section>
+<section class="flag-card" id="FLG-033">
+  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-low">low</span> <strong>The tracking ID&#39;s shape does not match the example format in the policy, which is not the same as being wrong</strong></p>
+  <p>Participation Requirements §2(b) gives the tag format as &quot;XXXXX-##, or such other format as we may designate&quot;. The supplied ID shopnow047c-20 has an eleven-character prefix rather than five, and a two-digit suffix that does match. Because the clause expressly allows other designated formats, the shape proves nothing either way: it cannot confirm the ID is valid and it cannot show it is invalid. Recorded so that nobody later reads the eleven-character prefix as evidence of a problem, and so that the weaker argument - an Associates help page saying IDs end in -20 - is not mistaken for the policy text. Separately, §1(g) bars any Amazon trademark or variant or misspelling in a tag or Associates ID; shopnow047c contains none, which is a genuine pass.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a></p>
+  <p class="manual"><strong>What would close it:</strong> Export the tracking-ID list from Associates Central and confirm shopnow047c-20 appears on it. That closes this flag and FLG-011 together.</p>
+</section>
+<section class="flag-card" id="FLG-034">
+  <p class="flag-head"><span class="badge flag">FLG-034</span> <span class="badge sev-medium">medium</span> <strong>Amazon presents the product behind submitted link 4 as superseded</strong></p>
+  <p>The official page for B0DHZTCNR5 (ThermoMaven 1 Sec instant-read, Black) carries a &quot;Newer Version Available&quot; block linking to a different ASIN, B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh fetch 2026-11-20 and recorded in data/observations/2026-11-20-reverify-66f2548a.json. The submitted link therefore points at a variant Amazon itself flags as superseded. The successor ASIN is recorded as an observation only and is not published as a product row: it was not submitted, and its intended status cannot be confirmed. A price and a star rating were visible inside that block and neither was transcribed or published, per §6(t) and §2(b).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> Decide whether slot 4 should promote B0GL7Z4KP4. If it should, supply it as the intended product so the intended fields can be filled from an official source, then issue a tagged Special Link for it in Associates Central.</p>
+</section>
+<section class="flag-card" id="FLG-035">
+  <p class="flag-head"><span class="badge flag">FLG-035</span> <span class="badge sev-medium">medium</span> <strong>Category pages published picks with no table and no per-row source link</strong></p>
+  <p>The brief requires every table row to carry a source link to an official site. The shop table does, and each product page cites its own manufacturer source. The three category pages did neither: they rendered pick cards with no table at all, so the specifications shown on them (capacity, temperature, shape) carried no citation on that page. Verified by counting table elements in the committed category pages: zero.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a>, <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a></p>
+  <p class="manual"><strong>What would close it:</strong> Review the sourced comparison table added to each category page by session 66f2548a. Each row cites the manufacturer source already recorded in spec_sources, and a blank cell means the value was not confirmed rather than that it was overlooked.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-036">
+  <p class="flag-head"><span class="badge flag">FLG-036</span> <span class="badge sev-medium">medium</span> <strong>Product illustrations carried alt text naming the brand and model they do not depict</strong> <span class="badge good">resolved</span></p>
+  <p>tools/build.mjs passed each product&#39;s own name as the alt text of its illustration, so the card for the CHEFMAN 6 Qt dual basket announced &#39;CHEFMAN 6 Quart Dual Basket Air Fryer&#39; over an image that is, in fact, a black basket fryer holding roasted potatoes on a counter. A screen-reader user was told the image showed a specific branded unit when it shows an illustration, which both misdescribes the image and implies an endorsement the illustration cannot carry. Verified by opening all five image files and writing down what each shows.</p>
+  <p class="manual"><strong>Resolution:</strong> Fixed 2026-11-20 by session 66f2548a: a PRODUCT_IMAGE_ALT map in tools/build.mjs now carries one description per image, written by looking at the file, and each begins &#39;Editorial illustration, not the reviewed unit&#39;. The guide gallery alts were already descriptive and were left as they were.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> Spot-check the rendered alt attributes on /shop/ and on a product page; they should read as descriptions of a scene, not as product names.</p>
+</section>
 </div>
 </main>
 <footer class="site-footer">
@@ -267,6 +316,8 @@
           <li><a href="/Affil3/measurement/">Measurement</a></li>
           <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
           <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/privacy/">Privacy and what we record</a></li>
+          <li><a href="/Affil3/design-brief/">Design brief</a></li>
           <li><a href="/Affil3/feed.xml">RSS feed</a></li>
           <li><a href="/Affil3/legacy/archive/">Archived editions</a></li>
           <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>

@@ -323,3 +323,25 @@ caption + thead th { border-radius: 0; }
   body { background: #fff; font-size: 11pt; }
   a { color: #000; }
 }
+
+/* ==========================================================================
+   Decision board (/suggestions/) and design brief (/design-brief/).
+   Added 2026-11-20 by session 66f2548a for the two pages it shipped. Reuses the
+   palette variables above so the new surfaces inherit the print-shop look
+   rather than introducing a second one.
+   ========================================================================== */
+.sugg .problem { color: var(--ink-2); margin: 0 0 .6em; max-width: 74ch; }
+.sugg .opt { margin: .35em 0; padding: .5em .7em; border-radius: 6px; }
+.sugg .opt-current { background: var(--paper-2); border-left: 3px solid var(--accent); }
+.sugg .opt-meta { display: block; font-size: .82rem; color: var(--muted); margin-top: .15em; }
+.sugg .manual { background: var(--accent-wash); border-left: 3px solid var(--accent); padding: .5em .8em; border-radius: 4px; }
+.track-why { color: var(--muted); font-size: .92rem; max-width: 74ch; }
+.track { scroll-margin-top: 80px; }
+
+.invariants { padding-left: 1.4em; max-width: 76ch; }
+.invariants li { margin: .55em 0; }
+.forbidden { padding-left: 1.3em; max-width: 76ch; }
+.forbidden li { margin: .4em 0; }
+.beforeafter { margin: .4em 0; max-width: 76ch; font-size: .92rem; }
+.ba-label { display: inline-block; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; color: var(--muted); background: var(--paper-2); border-radius: 3px; padding: 1px 6px; margin-right: .5em; vertical-align: 1px; }
+.prompt-block { background: var(--ink); color: var(--paper); padding: 1.1em 1.3em; border-radius: 8px; overflow-x: auto; font: .82rem/1.65 var(--mono); white-space: pre-wrap; word-break: break-word; }

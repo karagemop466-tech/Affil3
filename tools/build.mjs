@@ -8,8 +8,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = ROOT;
+// 'privacy' and 'design-brief' were added by session 66f2548a so the two new pages are regenerated
+// and gated rather than left as orphans the build does not know about.
 const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary',
   'sources', 'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about',
+  'privacy', 'design-brief',
   '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt', 'assets/style.css', 'assets/analytics.js', '.nojekyll'];
 
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
@@ -48,6 +51,18 @@ const PRODUCT_IMAGE = {
   P04: 'thermometer-instant-read.jpg',
   P05: 'hero-thermometer.jpg',
 };
+// Alt text must say what the illustration shows, not the brand and model beside it. These images
+// are editorial illustrations, not photographs of the named units, so an alt of "CHEFMAN 6 Quart
+// Dual Basket Air Fryer" would tell a screen-reader user something the image cannot support and
+// would imply an endorsement the image cannot carry (FLG-036). Each line below was written by
+// looking at the file on 2026-11-20, not from the product name.
+const PRODUCT_IMAGE_ALT = {
+  P01: 'Editorial illustration, not the reviewed unit: a black basket-style air fryer on a dark wood counter, drawer open over parchment-lined roasted potato chunks with rosemary, steam rising.',
+  P02: 'Editorial illustration, not the reviewed unit: a stainless countertop oven with two french doors open and two racks, a speckled tray of roasted root vegetables above a cast-iron skillet holding a whole chicken.',
+  P03: 'Editorial illustration, not the reviewed unit: a grey basket-style air fryer on a wood counter by a window, drawer pulled out over chicken wings and potato wedges.',
+  P04: 'Editorial illustration, not the reviewed unit: a folding instant-read thermometer lying on dark slate with its probe extended, beside a carved steak on a wooden board.',
+  P05: 'Editorial illustration, not the reviewed unit: a folding thermometer whose probe is inserted into a roast in a metal pan, its display resting on the counter beside it.',
+};
 const GALLERY = [
   { file: 'guide-cleanup.jpg', alt: 'A clean air fryer basket and crisper tray drying on a linen towel beside a soft brush.' },
   { file: 'guide-basket-vs-oven.jpg', alt: 'A basket air fryer of fries next to a countertop oven holding roasted vegetables.' },
@@ -65,6 +80,8 @@ const DASHBOARDS = [
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Disclosure and compliance'],
   ['/about/', 'About and corrections'],
+  ['/privacy/', 'Privacy and what we record'],
+  ['/design-brief/', 'Design brief'],
 ];
 const NAV = [
   ['/shop/', 'The picks'],
@@ -175,7 +192,7 @@ function pickCard(p) {
   ].filter(Boolean).join('');
   return `<a class="pick" href="${esc(href('/products/' + p.slug + '/'))}">
   ${p.flags.includes('FLG-025') ? '<span class="pick-flag">No source page</span>' : ''}
-  <div class="pick-media">${img(PRODUCT_IMAGE[p.id], p.name)}</div>
+  <div class="pick-media">${img(PRODUCT_IMAGE[p.id], PRODUCT_IMAGE_ALT[p.id])}</div>
   <div class="pick-body">
     <span class="pick-brand">${esc(p.brand)} · ${esc(c.name)}</span>
     <span class="pick-name">${esc(p.short_name)}</span>
@@ -245,7 +262,7 @@ function inlineProduct(id) {
   const p = products.find((x) => x.id === id);
   if (!p) return '';
   return `<aside class="inline-product">
-  ${img(PRODUCT_IMAGE[p.id], p.name)}
+  ${img(PRODUCT_IMAGE[p.id], PRODUCT_IMAGE_ALT[p.id])}
   <div>
     <p class="kicker">${esc(p.brand)} · ${esc(catOf(p.category).name)}</p>
     <h3>${esc(p.name)}</h3>
@@ -461,7 +478,7 @@ for (const p of products) {
 <nav class="small" aria-label="Breadcrumb" style="margin-bottom:18px"><a href="${esc(href('/shop/'))}">The picks</a> <span class="muted">/</span> <a href="${esc(href('/categories/' + c.slug + '/'))}">${esc(c.name)}</a> <span class="muted">/</span> <span class="muted">${esc(p.short_name)}</span></nav>
 <section class="pd-hero">
   <figure style="margin:0">
-    ${img(PRODUCT_IMAGE[p.id], p.name)}
+    ${img(PRODUCT_IMAGE[p.id], PRODUCT_IMAGE_ALT[p.id])}
     <figcaption class="small muted" style="margin-top:9px">Editorial illustration, not the reviewed unit.</figcaption>
   </figure>
   <div>
@@ -536,13 +553,13 @@ ${g ? `<section class="band">
 add({
   path: '/categories/', type: 'categories',
   title: 'Browse by category',
-  description: 'Three clusters: basket air fryers, countertop ovens and thermometers. Each with its picks and the guide that covers it.',
+  description: `${CATEGORIES.length} clusters: basket air fryers, countertop ovens and thermometers. Each with its picks, a sourced comparison table and the guide that covers it.`,
   body: `<div class="wrap">
-<section class="page-head"><p class="kicker">Categories</p><h1>Three shapes, three jobs</h1>
+<section class="page-head"><p class="kicker">Categories · ${CATEGORIES.length} clusters</p><h1>${CATEGORIES.length} shapes, ${CATEGORIES.length} jobs</h1>
 <p class="deck">Everything here is organised by the job the appliance does, not by brand. Start with the job.</p></section>
 <div class="cats">
 ${CATEGORIES.map((c) => `<a class="cat" href="${esc(href('/categories/' + c.slug + '/'))}">
-  <span class="count">${inCat(c.slug).length} picks · ${guides.filter((g) => g.category === c.slug).length} guide</span>
+  <span class="count">${inCat(c.slug).length} ${inCat(c.slug).length === 1 ? 'pick' : 'picks'} · ${guides.filter((g) => g.category === c.slug).length} ${guides.filter((g) => g.category === c.slug).length === 1 ? 'guide' : 'guides'}</span>
   <h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p></a>`).join('\n')}
 </div>
 </div>`,
@@ -562,6 +579,17 @@ for (const c of CATEGORIES) {
   <p class="deck">${esc(c.blurb)}</p>
 </section>
 <div class="picks">${list.map(pickCard).join('\n')}</div>
+<section class="band"><div class="band-head"><h2>What actually differs</h2></div>
+<p class="muted small">Every figure comes from the maker's own specification page and each row cites it. A blank cell means the value was not stated by an official source, not that it was overlooked — nothing here is inferred. Where two official pages contradict each other the field is left blank and the conflict is on the <a href="${esc(href('/flagged/'))}">flagged for review</a> page.</p>
+${table(['Product', 'Shape', 'Capacity', 'Temperature', 'Footprint', 'Good for', 'Source'], list.map((p) => [
+  `<a href="${esc(href('/products/' + p.slug + '/'))}"><strong>${esc(p.short_name)}</strong></a>`,
+  cellText(p.shape),
+  p.capacity_qt ? `${esc(p.capacity_qt)} qt` : cellText(''),
+  p.temp_min_f && p.temp_max_f ? `${esc(p.temp_min_f)}–${esc(p.temp_max_f)} °F` : (p.temp_max_f ? `up to ${esc(p.temp_max_f)} °F` : cellText('')),
+  p.dimensions_in ? `${esc(p.dimensions_in)} in` : cellText(''),
+  esc(p.best_for || ''),
+  (p.spec_sources || []).length ? p.spec_sources.map(srcLink).join(', ') : `<span class="muted">none — ${esc(p.no_buy_link ? 'no manufacturer page exists' : 'not stated')}${p.flags.includes('FLG-025') ? ' ' + flagLinks(['FLG-025']) : ''}</span>`,
+]), 'wide')}</section>
 ${gs.length ? `<section class="band"><div class="band-head"><h2>The guides</h2></div><div class="stories">${gs.map(storyRow).join('\n')}</div></section>` : ''}
 <p class="band"><a class="more" href="${esc(href('/shop/'))}">See all five picks side by side →</a></p>
 </div>`,
@@ -669,10 +697,24 @@ add({
 // ---------------- EXECUTIVE SUMMARY ----------------
 {
   const verified = products.filter((p) => (p.spec_sources || []).length).length;
+  // Derived rather than hand-written. The tile is labelled "open flags" and used to render the
+  // total flag count, so it silently overstated by however many flags had been resolved (S-14).
+  const resolvedFlags = flagsDoc.flags.filter((f) => f.status === 'resolved').length;
+  const openFlags = flagsDoc.flags.length - resolvedFlags;
+  const withSpecs = products.filter((p) => (p.spec_sources || []).length);
+  const noSpecs = products.filter((p) => !(p.spec_sources || []).length);
+  // The decisions list, so the heading count and the meta description cannot drift from the items.
+  const ownerDecisions = [
+    { text: 'Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site: until it is answered, the intended-product columns stay blank on purpose.', q: 'Q-01' },
+    { text: 'Test one Special Link per product in Associates Central, then confirm the click appears in a tracking report. Section 6(u) bars testing it by placing an order, including your own.', q: 'Q-02' },
+    { text: 'Confirm the account is active and that this site is declared in it.', q: 'Q-03' },
+    { text: 'Deploy the analytics collector somewhere with an owner, or decide to run with no measurement for now.', q: 'Q-04' },
+    { text: 'Pick a publishing cadence, or the feed will not grow.', q: 'Q-07' },
+  ];
   add({
     path: '/executive-summary/', type: 'summary',
     title: 'Executive summary',
-    description: 'What is built, what is verified, what is blocked, and the four decisions needed from the owner.',
+    description: `What is built, what is verified, what is blocked, and the ${ownerDecisions.length} decisions needed from the owner.`,
     body: `<div class="wrap">
 <section class="page-head"><p class="kicker">Executive summary <span class="sep">|</span> ${esc(dateLong(cfg.lastReviewed))}</p><h1>Where this stands</h1>
 <p class="deck">One page for the owner. Everything below is reproducible from the repository and the source links.</p></section>
@@ -681,13 +723,13 @@ add({
   <div class="tile"><span class="n">5</span><div class="t">products tracked</div><div class="d">Every one submitted by the owner. None added by us.</div></div>
   <div class="tile"><span class="n">${verified}</span><div class="t">with a manufacturer spec page</div><div class="d">One has none, so its specifications are blank.</div></div>
   <div class="tile"><span class="n">${guides.length}</span><div class="t">buying guides</div><div class="d">Question-led, each with its sources listed.</div></div>
-  <div class="tile"><span class="n">${flagsDoc.flags.length}</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking.</div></div>
+  <div class="tile"><span class="n">${openFlags}</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking. ${resolvedFlags ? `${resolvedFlags} more are resolved and shown with their resolution.` : ''}</div></div>
 </div>
 
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site: front page, five product pages, three category pages, five guides, a comparison table and a source register.</li>
+<li>A publication-style site: front page, ${products.length} product pages, ${CATEGORIES.length} category pages, ${guides.length} guides, a comparison table and a source register.</li>
 <li>A disclosure strip above the fold on every page, repeated in the footer, using the exact wording required by the Associates Operating Agreement ${srcLink('S01')}.</li>
 <li>A privacy-preserving click counter and a self-hostable collector. The collector is not deployed, so nothing is being measured yet ${flagLinks(['FLG-009'])}.</li>
 <li>A publishing gate (<code>tools/verify.mjs</code>) that fails the build if a page loses its disclosure, an Amazon link loses <code>rel="sponsored"</code>, a row loses its source, or an internal link breaks.</li>
@@ -699,7 +741,7 @@ add({
 <li>The disclosure requirement, the tagged-link rule and the price-display restriction, each read from the official Associates pages on 2026-11-20 ${srcLink('S01')} ${srcLink('S02')} ${srcLink('S03')}.</li>
 <li><code>rel="sponsored"</code> on outbound affiliate links, per Google's guidance ${srcLink('S06')}.</li>
 <li>The endorsement-disclosure rule, read from 16 CFR 255.5 on eCFR ${srcLink('S07')}.</li>
-<li>Manufacturer specifications for four of five products, each on the maker's own page ${srcLink('S11')} ${srcLink('S12')} ${srcLink('S13')} ${srcLink('S14')}.</li>
+<li>Manufacturer specifications for ${withSpecs.length} of ${products.length} products, each on the maker's own page ${withSpecs.flatMap((p) => p.spec_sources).filter((v, i, a) => a.indexOf(v) === i).map(srcLink).join(' ')}${noSpecs.length ? `. ${noSpecs.length === 1 ? 'One has' : noSpecs.length + ' have'} no manufacturer page, so ${noSpecs.length === 1 ? 'its specifications are' : 'their specifications are'} blank rather than inferred ${flagLinks(noSpecs.flatMap((p) => p.flags).filter((f) => f === 'FLG-025'))}` : ''}.</li>
 <li>USDA safe minimum internal temperatures, quoted from FSIS ${srcLink('S10')}.</li>
 </ul>
 
@@ -708,15 +750,13 @@ add({
 <li><strong>Which product each submitted short link was meant to reach.</strong> The links resolve, but the observed destination is not the same as the owner's intent, and the mapping changed between fetch rounds ${flagLinks(['FLG-001', 'FLG-002'])}.</li>
 <li><strong>Whether the buy links credit a sale.</strong> No link has been clicked inside an enrolled Associates session ${flagLinks(['FLG-005'])}.</li>
 <li><strong>The ThermoMaven specifications.</strong> No manufacturer page exists for that model ${flagLinks(['FLG-025'])}.</li>
-<li><strong>Whether the Associates account is active and declares this site</strong> ${flagLinks(['FLG-008'])}.</li>
+<li><strong>Whether the Associates account is active and declares this site</strong> ${flagLinks(['FLG-006', 'FLG-011'])}.</li>
 </ul>
 
-<h2>Four decisions only the owner can make</h2>
+<h2>${ownerDecisions.length} decisions only the owner can make</h2>
+<p class="muted small">Each one links to the open question it closes. None of them can be answered from inside this repository: they need an Associates login, a hosting choice or an editorial judgement from the owner.</p>
 <ol>
-<li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site.</li>
-<li>Test one Special Link per product in Associates Central, then confirm the click appears in a report.</li>
-<li>Deploy the analytics collector, or decide to run with no measurement for now.</li>
-<li>Pick a publishing cadence, or the feed will not grow.</li>
+${ownerDecisions.map((o) => `<li>${o.text} ${o.q ? `<a class="badge" href="${href('/questions/')}#${esc(o.q)}">${esc(o.q)}</a>` : ''}</li>`).join('\n')}
 </ol>
 <p>Each of those is written up with its trade-offs on the <a href="${esc(href('/suggestions/'))}">suggestions page</a>.</p>
 
@@ -777,20 +817,37 @@ add({
   path: '/questions/', type: 'questions',
   title: 'Open questions',
   description: 'What is known, what is not, how each gap can be closed, and whether it blocks progress.',
-  body: `<div class="wrap">
-<section class="page-head"><p class="kicker">Open questions</p><h1>What we know, what we do not, and how to find out</h1>
+  body: (() => {
+    // Counts in the headings are computed from the rows below them. This page has a documented
+    // history of hand-written sentences drifting away from the data they described (S-14).
+    const blocking = questions.unknown.filter((q) => q.blocking);
+    const superseded = questions.known.filter((k) => k.superseded_by);
+    return `<div class="wrap">
+<section class="page-head"><p class="kicker">Open questions · ${questions.known.length} established · ${questions.unknown.length} open · ${blocking.length} blocking</p>
+<h1>What we know, what we do not, and how to find out</h1>
 <p class="deck">${esc(questions.note)}</p></section>
-<h2>Established</h2>
-${table(['ID', 'Statement', 'Sources'], questions.known.map((k) => [`<strong>${esc(k.id)}</strong>`, esc(k.statement), (k.sources || []).map(srcLink).join(', ') || '<span class="muted">none</span>']), 'wide')}
-<h2>Open</h2>
-${table(['ID', 'Question', 'Why it matters', 'How to close it', 'Blocks?', 'Sources'], questions.unknown.map((q) => [
-    `<strong>${esc(q.id)}</strong>`, esc(q.question), esc(q.why_it_matters), esc(q.how_to_close),
+${blocking.length ? `<section class="band"><div class="band-head"><h2>Blocking</h2></div>
+<p class="muted small">These ${blocking.length} have to be answered before anything scales. Every one of them is an access question rather than a research question, and none of them can be closed from inside this repository.</p>
+${table(['ID', 'Question', 'Who can answer'], blocking.map((q) => [
+  `<a href="#${esc(q.id)}"><strong>${esc(q.id)}</strong></a>`, esc(q.question), esc(q.who || 'owner'),
+]), 'wide')}</section>` : ''}
+<section class="band"><div class="band-head"><h2>Established</h2></div>
+${superseded.length ? `<p class="muted small">${superseded.length} of these are marked superseded by later evidence and kept with their original wording, because a register that quietly rewrites its own history cannot be audited.</p>` : ''}
+${table(['ID', 'Statement', 'Sources'], questions.known.map((k) => [
+  `<strong>${esc(k.id)}</strong>${k.superseded_by ? ` <span class="badge">superseded by ${esc(k.superseded_by)}</span>` : ''}`,
+  esc(k.statement), (k.sources || []).map(srcLink).join(', ') || '<span class="muted">none</span>']), 'wide')}</section>
+<section class="band"><div class="band-head"><h2>Open</h2></div>
+<p class="muted small">Read across a row: what is already in hand, what is missing, who can supply it, and the step that closes it. An empty "Who" means nobody has been assigned.</p>
+${table(['ID', 'Question', 'What we already have', 'What is missing', 'Who', 'Why it matters and how to close it', 'Blocks?', 'Sources'], questions.unknown.map((q) => [
+    `<strong id="${esc(q.id)}">${esc(q.id)}</strong>`, esc(q.question), esc(q.have || ''), esc(q.lack || ''), esc(q.who || ''),
+    `${esc(q.why_it_matters)}<br><span class="muted small">Close it by: ${esc(q.how_to_close)}</span>`,
     q.blocking ? '<span class="badge sev-high">yes</span>' : '<span class="badge sev-low">no</span>',
     (q.sources || []).map(srcLink).join(', ') || '<span class="muted">none</span>',
-  ]), 'wide')}
-<h2>Ways to discover what is missing</h2>
-${table(['ID', 'Method', 'Closes'], questions.discovery.map((d) => [`<strong>${esc(d.id)}</strong>`, esc(d.suggestion), (d.closes || []).map(esc).join(', ') || '<span class="muted">none</span>']), 'wide')}
-</div>`,
+  ]), 'wide')}</section>
+<section class="band"><div class="band-head"><h2>Ways to discover what is missing</h2></div>
+${table(['ID', 'Method', 'Closes'], questions.discovery.map((d) => [`<strong>${esc(d.id)}</strong>`, esc(d.suggestion), (d.closes || []).map((x) => `<a href="#${esc(x)}">${esc(x)}</a>`).join(', ') || '<span class="muted">prevents recurrence rather than closing a question</span>']), 'wide')}</section>
+</div>`;
+  })(),
 });
 
 // ---------------- SUGGESTIONS ----------------
@@ -798,18 +855,48 @@ add({
   path: '/suggestions/', type: 'suggestions',
   title: 'Suggestions to choose between',
   description: 'The decisions waiting on the owner, each with its trade-offs. Nothing is implemented until an option is chosen.',
-  body: `<div class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Choose a path before anything changes</h1>
-<p class="deck">${esc(suggestionsDoc.note)}</p></section>
-${suggestionsDoc.suggestions.map((s) => `<section class="flag-card" id="${esc(s.id)}" style="border-left-color:var(--accent)">
-  <p class="flag-head"><span class="badge">${esc(s.id)}</span> <strong>${esc(s.topic)}</strong> <span class="badge good">current: ${esc(s.current)}</span></p>
+  body: (() => {
+    // Grouped into tracks and ordered by what has to be settled first, so this reads as a decision
+    // queue rather than a flat list. Rows written before tracks existed are placed in "unsorted"
+    // and still rendered; nothing is dropped for lacking a field.
+    const rows = suggestionsDoc.suggestions;
+    const undecided = rows.filter((s) => (s.decision || 'undecided') === 'undecided').length;
+    const tracks = suggestionsDoc.tracks || [];
+    const grouped = tracks.map((t) => [t, rows.filter((s) => s.track === t.id)]);
+    const leftovers = rows.filter((s) => !tracks.some((t) => t.id === s.track));
+    if (leftovers.length) grouped.push([{ id: 'unsorted', name: 'Not yet assigned to a track', why: '' }, leftovers]);
+    const card = (s) => `<section class="flag-card sugg" id="${esc(s.id)}" style="border-left-color:var(--accent)">
+  <p class="flag-head"><span class="badge">${esc(s.id)}</span> <strong>${esc(s.topic)}</strong> <span class="badge good">current: ${esc(s.current)}</span> <span class="badge ${(s.decision || 'undecided') === 'undecided' ? 'flag' : 'good'}">${(s.decision || 'undecided') === 'undecided' ? 'awaiting your choice' : 'decided: ' + esc(s.decision)}</span></p>
+  ${s.problem ? `<p class="problem">${esc(s.problem)}</p>` : ''}
   <ul class="opts">
-    ${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)} <span class="muted small">Trade-off: ${esc(o.tradeoff)}</span></li>`).join('\n    ')}
+    ${s.options.map((o) => `<li class="opt${o.id === s.current ? ' opt-current' : ''}"><strong>${esc(o.id)}.</strong> ${esc(o.label)}${o.id === s.current ? ' <span class="badge">current</span>' : ''} <span class="muted small opt-meta">Trade-off: ${esc(o.tradeoff)}${o.effort ? ` · Effort: ${esc(o.effort)}` : ''}${o.risk ? ` · Risk: ${esc(o.risk)}` : ''}</span></li>`).join('\n    ')}
   </ul>
   <p class="manual"><strong>Our recommendation:</strong> ${esc(s.recommendation)}</p>
-</section>`).join('\n')}
+  ${s.evidence && ((s.evidence.sources || []).length || (s.evidence.flags || []).length) ? `<p class="muted small"><strong>Evidence:</strong> ${(s.evidence.sources || []).map(srcLink).join(', ') || 'no external source — editorial or repo-internal'}${(s.evidence.flags || []).length ? ' · ' + flagLinks(s.evidence.flags) : ''}</p>` : ''}
+  ${s.depends_on && s.depends_on.length ? `<p class="muted small"><strong>Settle first:</strong> ${s.depends_on.map((x) => `<a href="#${esc(x)}">${esc(x)}</a>`).join(', ')}</p>` : ''}
+  <p class="muted small"><strong>To choose:</strong> reply <code>${esc(s.id)} &lt;letter&gt;</code>.</p>
+</section>`;
+    return `<div class="wrap">
+<section class="page-head"><p class="kicker">Decision board · ${rows.length} rows · ${undecided} awaiting a choice</p><h1>Choose a path before anything changes</h1>
+<p class="deck">${esc(suggestionsDoc.note)}</p>
+${suggestionsDoc.how_to_use ? `<p class="deck">${esc(suggestionsDoc.how_to_use)}</p>` : ''}</section>
+${(suggestionsDoc.sequence || []).length ? `<section class="band"><div class="band-head"><h2>The order to decide in</h2></div>
+<p class="muted small">Computed from the dependency field on each row rather than written by hand, so it cannot drift from the rows it describes.</p>
+${table(['#', 'Row', 'Why here'], suggestionsDoc.sequence.map((r) => {
+  const found = rows.find((s) => s.id === r.id) || {};
+  return [String(r.order), `<a href="#${esc(r.id)}"><strong>${esc(r.id)}</strong> ${esc(found.topic || '')}</a>`, esc(r.why)];
+}), 'wide')}</section>` : ''}
+${grouped.map(([t, list]) => list.length ? `<section class="band track"><div class="band-head"><h2>${esc(t.name)}</h2></div>
+${t.why ? `<p class="muted track-why">${esc(t.why)}</p>` : ''}
+${list.map(card).join('\n')}</section>` : '').join('\n')}
+<section class="band"><div class="band-head"><h2>Decision record</h2></div>
+<p class="muted small">Empty until you choose. Each decision is recorded here with the row, the option, the date and who decided it, so the site can show why it looks the way it does.</p>
+${table(['Date', 'Row', 'Chosen', 'Decided by', 'Note'], (suggestionsDoc.decision_log || []).length
+  ? suggestionsDoc.decision_log.map((l) => [esc(l.date), esc(l.id), esc(l.option), esc(l.by), esc(l.note || '')])
+  : [['<span class="muted">—</span>', '<span class="muted">no decisions recorded yet</span>', '<span class="muted">—</span>', '<span class="muted">—</span>', '<span class="muted">—</span>']])}</section>
 <div class="prose"><div class="note">To decide, reply with the suggestion ID and the letter, for example “S-03 B”. The site keeps working with whatever is current until then.</div></div>
-</div>`,
+</div>`;
+  })(),
 });
 
 // ---------------- LEDGER ----------------
@@ -913,6 +1000,94 @@ add({
 </div>`,
 });
 
+// ---------------- PRIVACY ----------------
+// Required by Program Policies Participation Requirements 3(e), which makes the Associate
+// responsible for disclosing cookies, pixels and other technologies and how visitor data is
+// collected, used, stored and disclosed (FLG-032). The wording describes what
+// src/assets/analytics.js actually does, read line by line. It is a draft for owner review and is
+// not legal advice (Q-16).
+add({
+  path: '/privacy/', type: 'privacy',
+  title: 'Privacy and what this site records',
+  description: 'What the click counter on this site does, what it never collects, why it is currently switched off, and what would change if a third-party analytics product were adopted.',
+  body: `<div class="wrap">
+<section class="page-head"><p class="kicker">Privacy</p><h1>What this site records about you</h1>
+<p class="deck">Short version: right now, nothing. The measurement script is on every page but it has no destination configured, so it returns before sending anything. This page describes what would change if that were switched on, because you are entitled to know before it happens rather than after.</p></section>
+<div class="prose">
+<h2>What loads on every page</h2>
+<p>One stylesheet and one script, both from this site. There is no advertising script, no social widget, no third-party tag and no cookie banner, because there are no cookies to banner about. The build gate fails if any page loads a stylesheet, script or webfont from another origin, so that property is enforced rather than promised.</p>
+<p>You can read the script. It is in the repository at <a href="https://github.com/karagemop466-tech/Affil3/blob/main/src/assets/analytics.js" rel="noopener external">src/assets/analytics.js</a>, and the gate fails if it ever sets <code>document.cookie</code>, <code>localStorage</code> or <code>sessionStorage</code>.</p>
+<h2>What it does today</h2>
+<p>The script looks for a destination address in a <code>&lt;meta name="analytics-endpoint"&gt;</code> tag. That tag is empty on every page of this site, and the script returns immediately when it is. Nothing is sent anywhere. That is a deliberate default rather than an oversight: the collector has no host and no owner yet, and measuring without someone responsible for the data is how a small site ends up holding personal information it should not have.</p>
+<h2>What it would send if the endpoint were switched on</h2>
+<p>Five events, and only those five. The name list is duplicated in the browser script, in the collector and in <code>data/events.json</code>, and the build gate fails if the three disagree, so a sixth event cannot be added quietly.</p>
+${table(['Event', 'When it fires', 'What is sent'], (events.events || []).map((e) => [
+  `<code>${esc(e.name)}</code>`, esc(e.fires), (e.properties || []).map((pr) => `<code>${esc(pr)}</code>`).join(', '),
+]), 'wide')}
+<p>${esc(events.privacy || '')}</p>
+<h2>What is never collected</h2>
+<ul>${(events.not_collected || []).map((n) => `<li>${esc(n)}</li>`).join('\n')}
+<li>a returning-visitor identifier of any kind — there is no ID to have, because nothing is written to your device</li>
+<li>anything at all from a browser that sends Do Not Track; the script returns early and counts nothing</li></ul>
+<h2>Links to Amazon</h2>
+<p>Product links are not redirected and not proxied. When you click one, the script records the click and your browser goes directly to the Amazon listing — the two happen independently, and the link works whether or not the measurement does. Those links carry our Associates tracking ID, which is how Amazon attributes a purchase to this site, and they are marked <code>rel="sponsored"</code>.</p>
+<p>Once you are on amazon.com, Amazon's own privacy notice governs what happens next, not this page. It is reachable from the footer of any Amazon page, under "Privacy Notice". Amazon sets its own cookies there. That is true of every affiliate link on every site, and it is a large part of why affiliate disclosure exists.</p>
+<p class="muted small">That reference is deliberately plain text and not a link. This site's link policy adds the tracking tag and <code>rel="sponsored"</code> to every retail amazon.com link, which is right for a product link and would be a misstatement for a citation to Amazon's own help pages — Google reserves <code>sponsored</code> for advertisements and paid placements. Rather than mislabel the link or weaken the policy, the reference is given as text. Amazon's documentation hosts are already exempted by the policy; its help pages on <code>www.amazon.com</code> are not, and refining that is recorded as an open decision (S-18) rather than changed here.</p>
+<h2>Photography</h2>
+<p>${esc(cfg.imageDisclosure || '')} No product image on this site is Amazon Program Content, so no question arises about altering or redistributing Program Content through it.</p>
+<h2>If a third-party analytics product were adopted instead</h2>
+<p>That is an open decision, not a plan. If it were taken, a separate processor would appear, this page would be rewritten to name it and describe what it collects, and the choice would be recorded in the decision log on the <a href="${esc(href('/suggestions/'))}">suggestions page</a>. Nothing on this site currently sends data to any third party.</p>
+<h2>Status of this page</h2>
+<div class="note">This is a first draft, written by a build session from reading the code, and it should be reviewed by the site owner before it is relied on. It describes the measurement script accurately as of ${esc(dateLong(cfg.lastReviewed))}. It is not legal advice, and whether it is adequate where this site is operated from is open at Q-16.</div>
+</div>
+</div>`,
+});
+
+// ---------------- DESIGN BRIEF ----------------
+// Rendered from data/design-brief.json, and DESIGN-BRIEF.md is written from the same object in the
+// write step below, so the page and the markdown file cannot disagree with each other.
+{
+  const db = read('data/design-brief.json');
+  add({
+    path: '/design-brief/', type: 'design-brief',
+    title: 'Design brief: making this read like a publication',
+    description: 'The brief to hand whoever designs this site next: diagnosed problems with evidence, invariants no art direction may relax, prescriptions with before-and-after copy, a forbidden-phrases list, a sequence, and the prompt itself.',
+    body: `<div class="wrap">
+<section class="page-head"><p class="kicker">Design brief · ${db.diagnosis.length} problems · ${db.invariants.length} invariants · ${db.prescriptions.length} prescriptions</p>
+<h1>${esc(db.title)}</h1>
+<p class="deck">${esc(db.purpose)}</p>
+<div class="note">${esc(db.status)}</div></section>
+<section class="band"><div class="band-head"><h2>What was wrong, with evidence</h2></div>
+<p class="muted small">Several of these were fixed while this brief was being written, by this branch and by others working in parallel. Each row says so where it applies; a diagnosis that quietly stops being true is as bad as one that was never accurate.</p>
+${db.diagnosis.map((x) => `<section class="flag-card" id="${esc(x.id)}">
+  <p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.problem)}</strong>${x.fixed ? ' <span class="badge good">addressed</span>' : ''}</p>
+  <p><strong>Evidence.</strong> ${esc(x.evidence)}</p>
+  ${x.fixed ? `<p class="muted small"><strong>Where it stands now.</strong> ${esc(x.fixed)}</p>` : ''}
+  <p class="muted small"><strong>Why it reads as generated.</strong> ${esc(x.why_it_reads_as_generated)}</p>
+</section>`).join('\n')}</section>
+<section class="band"><div class="band-head"><h2>Invariants: what no redesign may change</h2></div>
+<p class="muted small">Each of these is either enforced by the build gate or required by the Associates Program Policies and Operating Agreement. An art direction that breaks one is not a bolder art direction, it is a failed build.</p>
+<ol class="invariants">${db.invariants.map((i) => `<li>${esc(i)}</li>`).join('\n')}</ol></section>
+<section class="band"><div class="band-head"><h2>Prescriptions</h2></div>
+${db.prescriptions.map((x) => `<section class="flag-card" id="${esc(x.id)}">
+  <p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.area)}</strong> <span class="badge">${esc(x.effort)}</span></p>
+  <p><strong>Rule.</strong> ${esc(x.rule)}</p>
+  <p class="beforeafter"><span class="ba-label">Before</span> ${esc(x.before)}</p>
+  <p class="beforeafter"><span class="ba-label">After</span> ${esc(x.after)}</p>
+  <p class="muted small"><strong>Checkable?</strong> ${esc(x.checkable)}</p>
+</section>`).join('\n')}</section>
+<section class="band"><div class="band-head"><h2>Forbidden</h2></div>
+<p class="muted small">Patterns that make copy read as machine-written. The last one is the test that matters.</p>
+<ul class="forbidden">${db.forbidden.map((f) => `<li>${esc(f)}</li>`).join('\n')}</ul></section>
+<section class="band"><div class="band-head"><h2>Sequence</h2></div>
+${table(['Step', 'Do this', 'Depends on'], db.sequence.map((s) => [String(s.step), esc(s.do), esc(s.depends || '—')]), 'wide')}</section>
+<section class="band"><div class="band-head"><h2>The prompt to hand the next session</h2></div>
+<p class="muted small">Also written to <code>DESIGN-BRIEF.md</code> in the repository from this same JSON document, so the page and the file cannot drift apart.</p>
+<pre class="prompt-block">${esc(db.prompt)}</pre></section>
+</div>`,
+  });
+}
+
 // ---------------- 404 ----------------
 add({
   path: '/404.html', type: '404', noSitemap: true,
@@ -1005,5 +1180,48 @@ ${feedItems.map((g) => `  <item>
 `);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
+// file and the published page cannot disagree. That is the principle behind S-14 applied to itself.
+{
+  const db = read('data/design-brief.json');
+  const L = [];
+  L.push(`# ${db.title}`, '');
+  L.push(`> Generated from \`data/design-brief.json\` by \`tools/build.mjs\`. The published page is`);
+  L.push(`> \`${cfg.siteUrl}/design-brief/\`. Edit the JSON and rebuild; do not edit this file directly.`, '');
+  L.push(db.purpose, '');
+  L.push(`**Status:** ${db.status}`, '');
+  L.push('## What was wrong, with evidence', '');
+  L.push('Several of these were fixed while this brief was being written, by this branch and by others');
+  L.push('working in parallel. Each row says so where it applies; a diagnosis that quietly stops being');
+  L.push('true is as bad as one that was never accurate.', '');
+  for (const x of db.diagnosis) {
+    L.push(`### ${x.id}. ${x.problem}${x.fixed ? ' — addressed' : ''}`, '');
+    L.push(`**Evidence.** ${x.evidence}`, '');
+    if (x.fixed) L.push(`**Where it stands now.** ${x.fixed}`, '');
+    L.push(`**Why it reads as generated.** ${x.why_it_reads_as_generated}`, '');
+  }
+  L.push('## Invariants: what no redesign may change', '');
+  L.push('Each of these is either enforced by `tools/verify.mjs` or required by the Associates Program');
+  L.push('Policies and Operating Agreement. An art direction that breaks one is not a bolder art');
+  L.push('direction, it is a failed build.', '');
+  db.invariants.forEach((i, n) => L.push(`${n + 1}. ${i}`));
+  L.push('', '## Prescriptions', '');
+  for (const x of db.prescriptions) {
+    L.push(`### ${x.id}. ${x.area}`, '');
+    L.push(`**Rule.** ${x.rule}`, '');
+    L.push(`- **Before.** ${x.before}`);
+    L.push(`- **After.** ${x.after}`);
+    L.push(`- **Effort.** ${x.effort}`);
+    L.push(`- **Checkable?** ${x.checkable}`, '');
+  }
+  L.push('## Forbidden', '');
+  L.push('Patterns that make copy read as machine-written. The last one is the test that matters.', '');
+  db.forbidden.forEach((f) => L.push(`- ${f}`));
+  L.push('', '## Sequence', '', '| Step | Do this | Depends on |', '|---|---|---|');
+  db.sequence.forEach((s) => L.push(`| ${s.step} | ${s.do.replace(/\|/g, '\\|')} | ${s.depends || '—'} |`));
+  L.push('', '## The prompt to hand the next session', '', '```', db.prompt, '```', '');
+  fs.writeFileSync(path.join(ROOT, 'DESIGN-BRIEF.md'), L.join('\n'));
+}
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

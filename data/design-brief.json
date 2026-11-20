@@ -5,45 +5,52 @@
   "diagnosis": [
     {
       "id": "DX-1",
-      "problem": "The front page is about us, not the reader.",
-      "evidence": "Before this session the front page opened with the kicker 'Observed on 2026-11-20 - Amazon listings', the headline 'Five kitchen picks, each traced to its listing', and product cards whose only description was 'Observed ASIN B0CDY277D3' followed by 'Associates link check pending (gate G-02)'. Every string was true. None of them answered a question a buyer arrived with.",
+      "problem": "The front page was about our process, not the reader's problem.",
+      "evidence": "Before November 2026 the front page opened with the kicker 'Observed on 2026-11-20 - Amazon listings' and the headline 'Five kitchen picks, each traced to its listing', and each product card's only description was an observed ASIN followed by 'Associates link check pending (gate G-02)'. Every string was true; none of them answered a question a buyer arrived with.",
+      "fixed": "Addressed. The shipped front page now opens with 'Good gear, for the kitchen you actually have.' and cards lead with a fit line. Provenance sits on the product pages and the source register, where a reader goes looking for it.",
       "why_it_reads_as_generated": "A person writing for readers leads with the reader's problem. A system writing for auditors leads with its own provenance. The tell is not the vocabulary, it is the subject of the sentence."
     },
     {
       "id": "DX-2",
-      "problem": "Every card is the same shape, so nothing is skimmable.",
-      "evidence": "Five identical cards in one row, each with a kicker, an h3, one muted line, one button, one status line. The two thermometers are functionally opposite products - one is a spot-check you hold in your hand, the other is a leave-in probe monitor - and they were rendered identically.",
-      "why_it_reads_as_generated": "Uniform card anatomy is what a loop produces. A shop gives the reader a reason to stop on one item: a different size, a badge, a pull-quote, a 'best for' line that differs in length because the products differ."
+      "problem": "Every card had the same anatomy, so nothing was skimmable.",
+      "evidence": "Five identical cards in one row: kicker, heading, one muted line, one button, one status line. The two thermometers are functionally opposite products - a handheld spot check and a leave-in monitor - and rendered identically.",
+      "fixed": "Largely addressed. Cards now carry shape, capacity, a fit line and an illustration, and product pages differ by shape. A deliberate size hierarchy on the front page is still open (PB-2).",
+      "why_it_reads_as_generated": "Uniform card anatomy is what a loop produces. A shop gives the reader a reason to stop on one item."
     },
     {
       "id": "DX-3",
-      "problem": "There is no imagery at all.",
-      "evidence": "FLG-015. No page carries a product image, a diagram or an illustration. Before this session the category pages were text and buttons only; they now carry a comparison table, which is more useful but is still not a picture.",
-      "why_it_reads_as_generated": "A buying guide for kitchen appliances with no pictures of kitchens or appliances is the single loudest signal that nobody shopped for this. It is also a real constraint: Program Content rules govern what Amazon imagery may be used and how it may be altered, so this needs a decision (S-05), not a shortcut."
+      "problem": "There was no imagery at all.",
+      "evidence": "An earlier state of this repository shipped no image on any page. Category pages were text and buttons only.",
+      "fixed": "Addressed by main: nine editorial illustrations now ship, each captioned 'Editorial illustration, not the reviewed unit', and none is Amazon Program Content. The remaining open question is licensing and whether original photography is worth commissioning (suggestion S-07), not whether imagery exists.",
+      "why_it_reads_as_generated": "A buying guide for kitchen appliances with no pictures of kitchens or appliances is the loudest signal that nobody shopped for this."
     },
     {
       "id": "DX-4",
       "problem": "Nobody is speaking.",
-      "evidence": "FLG-014. Every guide is bylined to 'Affil3 editorial team' and the JSON-LD author is an Organization. There is no face, no credential, no first person anywhere.",
-      "why_it_reads_as_generated": "Readers and search engines both ask who is talking. A team byline on a five-product site reads as a placeholder. Google's own guidance and the FTC's endorsement guidance both turn on the identity of the speaker, and Program Policies 2(b) bars misleading claims, so a credential may only be stated if it is real."
+      "evidence": "Every guide is bylined to 'Affil3 editorial team' and the structured-data author is an Organization. The /about/ page says so plainly and logs it as FLG-014 rather than papering over it.",
+      "fixed": "Open, and honestly disclosed rather than hidden. A named byline with a real credential, or the honest sentence 'we have not cooked with these units', is decision S-08.",
+      "why_it_reads_as_generated": "Readers and search engines both ask who is talking. A team byline on a five-product site reads as a placeholder, and an honest disclosure builds more trust than an invented reviewer."
     },
     {
       "id": "DX-5",
-      "problem": "Three publications compete for the same reader and the same crawler.",
-      "evidence": "FLG-034. The root site, /editorial/ and /legacy/arena-83a43a96/ all cover the same five products, and robots.txt declares two sitemaps.",
-      "why_it_reads_as_generated": "A reader who finds two versions of the same guide at different URLs concludes neither is maintained. Duplicate coverage also splits whatever ranking signal the site earns."
+      "problem": "Three publications competed for the same crawler.",
+      "evidence": "The root site, /editorial/ and /legacy/ covered the same five products, and robots.txt declared two sitemaps.",
+      "fixed": "Addressed by main: robots.txt now disallows /editorial/, /legacy/ and /crisp-index/ and declares a single sitemap, so one publication is indexed while the others stay reachable for humans. Whether the secondary surfaces should stay served at all remains open at S-01.",
+      "why_it_reads_as_generated": "A reader who finds two versions of the same guide at different URLs concludes neither is maintained."
     },
     {
       "id": "DX-6",
       "problem": "The site name is a directory name.",
-      "evidence": "'Affil3' appears in the masthead, the title suffix, the OG site_name and the footer. It is the repository name.",
-      "why_it_reads_as_generated": "Nobody names a publication after its folder. It cannot be remembered, recommended, spelled from hearing, or typed into a search box, and it cannot become a brand a reader trusts enough to click through."
+      "evidence": "'Affil3' appears as the wordmark, the title suffix, the og:site_name and the footer. It is the repository name.",
+      "fixed": "Open. Nobody names a publication after its folder; it cannot be remembered, spelled from hearing, or typed into a search box. It is a decision for the owner because it touches every template and every piece of copy.",
+      "why_it_reads_as_generated": "It is the one string on the site that exists for the machine's convenience rather than a reader's."
     },
     {
       "id": "DX-7",
-      "problem": "Copy drifts from the data it describes.",
-      "evidence": "Three shipped instances: a shop page that said 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five. A fourth, an empty category page under a heading that promised an explanation (FLG-032).",
-      "why_it_reads_as_generated": "Hand-written sentences about generated tables go stale silently. This is a machinery problem with a reader-facing symptom, and it is the most damaging one on this list because it makes correct data look wrong."
+      "problem": "Copy drifted from the data it described.",
+      "evidence": "Four shipped instances: a shop page saying 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five; an empty category page under a heading that promised an explanation. Two further instances were found live in November 2026: the executive-summary tile labelled 'open flags' rendered the total flag count including resolved ones, and a category card rendered '1 picks'.",
+      "fixed": "Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.",
+      "why_it_reads_as_generated": "Hand-written sentences about generated tables go stale silently, and stale correctness is worse than a visible gap: it makes good data look wrong."
     }
   ],
   "invariants": [
@@ -61,18 +68,18 @@
       "id": "PB-1",
       "area": "Front page",
       "rule": "The first thing above the fold is a claim about the reader's problem, not a statement about our process. Provenance moves to a small muted line under the offer and to the product page.",
-      "before": "Kicker 'Observed on 2026-11-20 - Amazon listings' / H1 'Five kitchen picks, each traced to its listing' / card body 'Observed ASIN B0CDY277D3'.",
-      "after": "Kicker listing the three categories / H1 'Pick the right countertop cooker without reading forty reviews' / card body a one-line description and a 'Good for' line, with the ASIN and link-check status in a trace line beneath the button.",
-      "effort": "Done in this session for the front page and product cards. The rest of the site still uses process-first headings.",
+      "before": "Kicker 'Observed on 2026-11-20 - Amazon listings', headline 'Five kitchen picks, each traced to its listing', card body an ASIN and a gate status.",
+      "after": "Already shipped by main: 'Good gear, for the kitchen you actually have.', cards leading with a fit line, provenance moved to the product pages and the register. What remains is holding that standard on the pages main wrote after the front page - several section decks still open with our vocabulary rather than the reader's.",
+      "effort": "An editorial pass, not a build change.",
       "checkable": "A gate rule can assert that no h1 on a reader-facing page contains the words observed, verified, register or unresolved."
     },
     {
       "id": "PB-2",
       "area": "Card anatomy",
       "rule": "Cards may differ. Give the reader a reason to stop: a shape badge, a 'Good for' line of genuinely different length, and one hero card per page that is larger than the rest.",
-      "before": "Five identical cards, identical line counts, identical button labels.",
-      "after": "A lead card at roughly double width carrying the strongest fit statement, then the rest; each card shows its shape (basket, oven, instant-read, wireless-probe) so two thermometers are visibly not the same product.",
-      "effort": "Half a day: a CSS grid change plus a 'lead' field on one product row. The grid hook is already in src/assets/style.css as .product.is-lead and is deliberately unused - promoting one card implies a verdict, and the editorial register already removed two 'winner' badges for exactly that reason (its SG-04). Use it only once there is a stated, sourced reason for one product to lead.",
+      "before": "Five identical cards in one row, each with the same kicker, heading, muted line, button and status line.",
+      "after": "Cards that differ by shape and fit, with an illustration each, and one card per page promoted in size once there is a stated, sourced reason for it. The CSS hook exists as .pick.is-lead and is deliberately unused: promoting one product implies a verdict, and this repository already removed two 'winner' badges for exactly that reason.",
+      "effort": "Half a day: the grid change plus a 'lead' field on one product row, plus the decision about what justifies leading.",
       "checkable": "Not mechanically. Review by eye."
     },
     {
@@ -80,8 +87,8 @@
       "area": "Imagery",
       "rule": "Decide the imagery source before designing around it. Three options, in ascending order of effort and descending order of risk: no imagery (current); original diagrams and photography that we make or license, which Program Content rules do not touch; Amazon Program Content imagery, which is governed by the IP License and by 6(a), which bars altering Program Content except resizing graphics proportionally or truncating text without changing its meaning.",
       "before": "No image on any page.",
-      "after": "At minimum one original diagram per category - a basket versus an oven footprint drawn to scale, a probe-placement illustration - because those are the two things readers actually struggle to picture and no licence question attaches to our own drawings.",
-      "effort": "One to three days depending on the option chosen. Blocked on S-05.",
+      "after": "Nine editorial illustrations already ship, captioned and disclosed, none of them Program Content. The next step is original diagrams - a basket versus oven footprint to scale, a probe-placement drawing - because those are the two things readers struggle to picture and no licence question attaches to drawings we make ourselves.",
+      "effort": "One to three days depending on the source chosen at S-07.",
       "checkable": "A gate rule can assert that every <img> on the site is either from an allowlisted host or has an explicit licence field in the data."
     },
     {
@@ -97,28 +104,28 @@
       "id": "PB-5",
       "area": "Byline",
       "rule": "Name a person or stop implying there is one. A byline block carries a name, one credential that is true, and what that person actually did - cooked with the product, read the manual, measured the counter. If nobody has, say so: 'We have not cooked with these units. Everything on this page is read from the manufacturer's and Amazon's own listings, and cited.' That sentence builds more trust than an invented reviewer.",
-      "before": "'Affil3 editorial team' on every guide, Organization in the JSON-LD.",
-      "after": "Either a named person with a real credential, or the honest disclosure above, repeated on the About page.",
+      "before": "A team byline on every guide and an Organization author in the structured data, with the weakness disclosed on /about/ as FLG-014.",
+      "after": "Either a named person with one credential that is true and a statement of what they actually did, or the honest sentence: 'We have not cooked with these units. Everything here is read from the manufacturer's and Amazon's own pages, and cited.' The second option is cheaper and builds more trust than the first if the first cannot be made true.",
       "effort": "An hour once the decision is made. Blocked on S-06 and Q-08.",
-      "checkable": "A gate rule can assert that the JSON-LD author type matches the byline the page renders."
+      "checkable": "A gate rule can assert the structured-data author type matches the byline the page renders."
     },
     {
       "id": "PB-6",
       "area": "Navigation",
       "rule": "Reader vocabulary in the masthead, internal vocabulary in one clearly-labelled footer group. Four items maximum above the fold.",
-      "before": "Masthead: Shop, Guides, Categories, About. Footer: fourteen entries under 'Dashboards and records', including 'Editorial register (second publication)'.",
-      "after": "Masthead: Shop, Buying guides, By category, How we review. Footer split into 'For readers' and 'Records and verification', the second group explicitly labelled as the audit trail.",
-      "effort": "An hour. Blocked on S-13.",
+      "before": "Masthead: The picks, Buying guides, Categories, How we choose. Footer: a flat list of ten dashboards under 'Records and dashboards'.",
+      "after": "The masthead is already reader-shaped. The footer keeps every record reachable - the gate asserts that - but gains a second heading or a one-line plain-English gloss under each record link, so 'Flagged for review' and 'Campaign ledger' say what they are to someone arriving from a search result.",
+      "effort": "An hour.",
       "checkable": "The gate already asserts that every dashboard is reachable from the footer; extend it to assert the two groups exist."
     },
     {
       "id": "PB-7",
       "area": "Typography and colour",
-      "rule": "Keep the serif/sans pairing and the warm paper, which are already right. Change three things: a display face with more character than Georgia for h1 and the brand, chosen from a system stack so no webfont request is added; a measure cap of about 70 characters on body copy; and reserve the saturated accent for actions only, moving links to a distinguisher that is not colour - an underline that thickens on hover, which the CSS already does.",
-      "before": "Correction to an earlier draft of this row: the current CSS is NOT a single sans throughout. src/assets/style.css already pairs a serif (Georgia) for headings with the system sans for body, uses a warm paper background (#fbf9f4) rather than pure white, and reserves one accent (#7a3b1d) for links. That is better than the generic default and it was verified by reading the file rather than assumed. What is actually missing: Georgia is the most generic serif available and gives the site no silhouette of its own; body copy has no line-length cap except on .deck, so paragraphs run to the full 1120px container; there is no defined type scale beyond three heading sizes; and the accent is used for links as well as actions, so a button does not stand out from a sentence.",
-      "after": "A display stack (Iowan Old Style, Palatino, Baskerville, then Georgia) for h1 and the brand, which reads as a magazine rather than a document; body copy capped near 70ch with wider tables allowed to overflow their own scroll container; links underlined in ink rather than coloured, so the one accent colour means 'you can act here' and nothing else.",
+      "rule": "Keep the pairing and the paper, both of which are already right. The open questions are whether the display face is distinctive enough to be recognisable in a search result, whether the accent is reserved for actions only, and whether adding a webfont would break the site's zero-third-party-request property - which /privacy/ states and the gate enforces.",
+      "before": "Correction to an earlier draft: the CSS was never a single generic sans. It pairs a serif display with a system sans, caps measures at several widths, and uses a warm paper background. Verified by reading src/assets/style.css rather than assuming.",
+      "after": "A display face with more character than the current system serif stack, loaded without a third-party request (self-hosted, subsetted, with the gate extended to keep it same-origin), and the accent reserved strictly for actions so a button is never mistaken for a link.",
       "effort": "Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate and stays open at S-04.",
-      "checkable": "Type scale and measure are not mechanically checkable. One thing is: a gate rule can assert that no stylesheet or page requests a font from an external origin, which keeps the site's zero-third-party-request property intact and keeps the privacy page true."
+      "checkable": "Partly: the gate already asserts no external stylesheet, script or font origin, so any font change is automatically checked for the third-party property. Type scale and measure are not mechanically checkable."
     },
     {
       "id": "PB-8",

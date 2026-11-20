@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Executive summary — Affil3</title>
-<meta name="description" content="What is built, what is verified, what is blocked, and the four decisions needed from the owner.">
+<meta name="description" content="What is built, what is verified, what is blocked, and the 5 decisions needed from the owner.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/executive-summary/">
 <meta property="og:title" content="Executive summary">
-<meta property="og:description" content="What is built, what is verified, what is blocked, and the four decisions needed from the owner.">
+<meta property="og:description" content="What is built, what is verified, what is blocked, and the 5 decisions needed from the owner.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Affil3">
@@ -46,13 +46,13 @@
   <div class="tile"><span class="n">5</span><div class="t">products tracked</div><div class="d">Every one submitted by the owner. None added by us.</div></div>
   <div class="tile"><span class="n">4</span><div class="t">with a manufacturer spec page</div><div class="d">One has none, so its specifications are blank.</div></div>
   <div class="tile"><span class="n">5</span><div class="t">buying guides</div><div class="d">Question-led, each with its sources listed.</div></div>
-  <div class="tile"><span class="n">29</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking.</div></div>
+  <div class="tile"><span class="n">30</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking. 6 more are resolved and shown with their resolution.</div></div>
 </div>
 
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site: front page, five product pages, three category pages, five guides, a comparison table and a source register.</li>
+<li>A publication-style site: front page, 5 product pages, 3 category pages, 5 guides, a comparison table and a source register.</li>
 <li>A disclosure strip above the fold on every page, repeated in the footer, using the exact wording required by the Associates Operating Agreement <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>.</li>
 <li>A privacy-preserving click counter and a self-hostable collector. The collector is not deployed, so nothing is being measured yet <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a>.</li>
 <li>A publishing gate (<code>tools/verify.mjs</code>) that fails the build if a page loses its disclosure, an Amazon link loses <code>rel="sponsored"</code>, a row loses its source, or an internal link breaks.</li>
@@ -64,7 +64,7 @@
 <li>The disclosure requirement, the tagged-link rule and the price-display restriction, each read from the official Associates pages on 2026-11-20 <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a>.</li>
 <li><code>rel="sponsored"</code> on outbound affiliate links, per Google's guidance <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a>.</li>
 <li>The endorsement-disclosure rule, read from 16 CFR 255.5 on eCFR <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5" rel="noopener external">S07</a>.</li>
-<li>Manufacturer specifications for four of five products, each on the maker's own page <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a> <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a> <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a>.</li>
+<li>Manufacturer specifications for 4 of 5 products, each on the maker's own page <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a> <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a> <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a>. One has no manufacturer page, so its specifications are blank rather than inferred <a class="badge flag" href="/Affil3/flagged/#FLG-025">FLG-025</a>.</li>
 <li>USDA safe minimum internal temperatures, quoted from FSIS <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" rel="noopener external">S10</a>.</li>
 </ul>
 
@@ -73,15 +73,17 @@
 <li><strong>Which product each submitted short link was meant to reach.</strong> The links resolve, but the observed destination is not the same as the owner's intent, and the mapping changed between fetch rounds <a class="badge flag" href="/Affil3/flagged/#FLG-001">FLG-001</a> <a class="badge flag" href="/Affil3/flagged/#FLG-002">FLG-002</a>.</li>
 <li><strong>Whether the buy links credit a sale.</strong> No link has been clicked inside an enrolled Associates session <a class="badge flag" href="/Affil3/flagged/#FLG-005">FLG-005</a>.</li>
 <li><strong>The ThermoMaven specifications.</strong> No manufacturer page exists for that model <a class="badge flag" href="/Affil3/flagged/#FLG-025">FLG-025</a>.</li>
-<li><strong>Whether the Associates account is active and declares this site</strong> <a class="badge flag" href="/Affil3/flagged/#FLG-008">FLG-008</a>.</li>
+<li><strong>Whether the Associates account is active and declares this site</strong> <a class="badge flag" href="/Affil3/flagged/#FLG-006">FLG-006</a> <a class="badge flag" href="/Affil3/flagged/#FLG-011">FLG-011</a>.</li>
 </ul>
 
-<h2>Four decisions only the owner can make</h2>
+<h2>5 decisions only the owner can make</h2>
+<p class="muted small">Each one links to the open question it closes. None of them can be answered from inside this repository: they need an Associates login, a hosting choice or an editorial judgement from the owner.</p>
 <ol>
-<li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site.</li>
-<li>Test one Special Link per product in Associates Central, then confirm the click appears in a report.</li>
-<li>Deploy the analytics collector, or decide to run with no measurement for now.</li>
-<li>Pick a publishing cadence, or the feed will not grow.</li>
+<li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site: until it is answered, the intended-product columns stay blank on purpose. <a class="badge" href="/Affil3/questions/#Q-01">Q-01</a></li>
+<li>Test one Special Link per product in Associates Central, then confirm the click appears in a tracking report. Section 6(u) bars testing it by placing an order, including your own. <a class="badge" href="/Affil3/questions/#Q-02">Q-02</a></li>
+<li>Confirm the account is active and that this site is declared in it. <a class="badge" href="/Affil3/questions/#Q-03">Q-03</a></li>
+<li>Deploy the analytics collector somewhere with an owner, or decide to run with no measurement for now. <a class="badge" href="/Affil3/questions/#Q-04">Q-04</a></li>
+<li>Pick a publishing cadence, or the feed will not grow. <a class="badge" href="/Affil3/questions/#Q-07">Q-07</a></li>
 </ol>
 <p>Each of those is written up with its trade-offs on the <a href="/Affil3/suggestions/">suggestions page</a>.</p>
 
@@ -110,6 +112,8 @@
           <li><a href="/Affil3/measurement/">Measurement</a></li>
           <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
           <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/privacy/">Privacy and what we record</a></li>
+          <li><a href="/Affil3/design-brief/">Design brief</a></li>
           <li><a href="/Affil3/feed.xml">RSS feed</a></li>
           <li><a href="/Affil3/legacy/archive/">Archived editions</a></li>
           <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
