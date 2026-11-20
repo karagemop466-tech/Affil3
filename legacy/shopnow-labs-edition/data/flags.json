@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "purpose": "Irregularities found while verifying. Nothing here blocks publication: each item is published openly on /review/flagged-for-review/ with its source, so a reviewer can act on it after launch.",
+    "retrieved": "2026-11-20"
+  },
+  "flags": [
+    {
+      "id": "FLG-001",
+      "severity": "medium",
+      "title": "The fifth submitted link is intercepted non-deterministically",
+      "detail": "https://link.amazon/B0c8moW59 returned Amazon's interstitial checkpoint page on three of four requests from this environment and a product page on the fourth. An independent dated retest by another session in this repository observed the product page. The product behind the link is therefore known, but the link is not reliable from an automated or datacenter network.",
+      "impact": "A reader on a normal browser will most likely reach the product. An automated check, monitoring job or preview crawler will frequently see a checkpoint page instead, which makes the link impossible to monitor automatically and makes 'is this link live?' unanswerable by script.",
+      "published_handling": "The product is identified on the register as the ThermoMaven digital thermometer with the observation count shown, but it is NOT added to the catalogue: the owner never submitted it, so recommending it would go beyond the brief.",
+      "fix": "Confirm with the owner whether this link was meant to be submitted. If it was, send the intended product and it can be evaluated on its merits.",
+      "sources": [
+        "https://www.amazon.com/dp/B0DHZTCNR5"
+      ]
+    },
+    {
+      "id": "FLG-002",
+      "severity": "high",
+      "title": "Submitted short links carry no visible Associates tag in the redirect",
+      "detail": "The four links that resolved produced redirect targets on amazon.com with tracking parameters such as btn_ref and channelId, but none of the four observed targets contained a tag parameter. Amazon's policies state that the Associates ID or tag must appear as a parameter in the URL of each link placed on the site.",
+      "impact": "It cannot be shown from outside the account that a click through these links attributes to tag shopnow047c-20. This is the single largest commercial risk in the project.",
+      "published_handling": "Every outbound product link on this site is a canonical amazon.com/dp/ URL with the tag appended, and the observed redirect is recorded separately in the register rather than being trusted.",
+      "fix": "Generate one link in SiteStripe, compare, then click one supplied link and confirm the click appears in the Associates report before scaling.",
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-003",
+      "severity": "high",
+      "title": "Associates enrollment and tag ownership are unconfirmed",
+      "detail": "The tracking ID shopnow047c-20 matches the documented XXXXX-## format and is used throughout the site, but nothing in this environment can confirm that the account is approved, that the tag is active, or that this site is registered against it. Amazon permits Special Links only after applying, and prohibits using a tag assigned to anyone else.",
+      "impact": "If the tag is not active for this site, no commission accrues and the disclosure statement would describe a relationship that does not exist.",
+      "published_handling": "Stated plainly on the disclosure page as an item awaiting confirmation rather than asserted as fact.",
+      "fix": "Sign in to the Associates dashboard, confirm approval status, confirm the tag, and confirm the registered site URL.",
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/agreement",
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-004",
+      "severity": "medium",
+      "title": "No prices or ratings are published anywhere on the site",
+      "detail": "Amazon permits price and availability display only where Amazon serves the link containing the data or where the data is obtained through the Creators API or PA API. This site has no API credentials. Prices also change hourly, and Amazon states it cannot confirm a price until an order is placed.",
+      "impact": "Readers must click through to see a price. This is a deliberate limitation, not an oversight.",
+      "published_handling": "Every product card links to the live listing. No price, star average or review count is printed.",
+      "fix": "Apply for Creators API access; if granted, add a price module that renders API-sourced data and never caches it beyond the permitted window.",
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies",
+        "https://www.amazon.com/gp/help/customer/display.html?nodeId=508088"
+      ]
+    },
+    {
+      "id": "FLG-005",
+      "severity": "medium",
+      "title": "No Amazon product imagery is used",
+      "detail": "Program Content may not be altered, and image caching is restricted under the IP License. Republishing listing photography without the licensed tools is a common breach. The site therefore uses typographic product cards and no third-party images.",
+      "impact": "The design is text-forward. A photo-led design would need either licensed API images or original photography.",
+      "published_handling": "Monogram tiles only. No external asset requests in the page.",
+      "fix": "If visual richness is wanted, commission original photography or use the Creators API image endpoint once approved.",
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-006",
+      "severity": "high",
+      "title": "The analytics endpoint is not live, so no data is being collected",
+      "detail": "The site emits five defined, non-identifying events to a documented interface. No collector is configured because no host or privacy decision was supplied. Nothing is currently recorded.",
+      "impact": "No click, view, or product-engagement data exists yet. Any future optimisation claims will need to cite the date collection began.",
+      "published_handling": "The measurement page describes the events and states clearly that collection is not yet active.",
+      "fix": "Supply an endpoint URL and a retention policy, then set ANALYTICS_ENDPOINT in assets/js/analytics-config.js.",
+      "sources": []
+    },
+    {
+      "id": "FLG-007",
+      "severity": "high",
+      "title": "Search Console verification and sitemap submission were not possible",
+      "detail": "The sitemap, robots.txt and feed are generated and valid, but the property cannot be verified from this environment, so no submission was made and no query data exists.",
+      "impact": "The content plan cannot be validated against real search demand until this is done.",
+      "published_handling": "Documented on the discoverability and open-questions pages as a pending step rather than reported as complete.",
+      "fix": "Verify the property with a DNS or file method, submit /Affil3/sitemap.xml, and check coverage after a week.",
+      "sources": [
+        "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+      ]
+    },
+    {
+      "id": "FLG-008",
+      "severity": "medium",
+      "title": "No product was physically tested, and two listings have no narrative review summary captured",
+      "detail": "Every product statement on this site is drawn from the listing as retrieved on 2026-11-20. No unit was purchased or tested. For the Chefman dual basket and the CHEF iQ Sense probe, Amazon's AI-generated review summary text was not captured during retrieval and is therefore left blank rather than characterised.",
+      "impact": "The site can report specifications with confidence and user sentiment only where it was actually displayed.",
+      "published_handling": "Stated in the editorial standards and in each guide's verification note.",
+      "fix": "Either capture the summaries on a second pass with the retrieval date recorded, or fund a test unit and publish measured results.",
+      "sources": [
+        "https://www.amazon.com/dp/B0CDY277D3",
+        "https://www.amazon.com/dp/B0DZFD6R9Z"
+      ]
+    },
+    {
+      "id": "FLG-009",
+      "severity": "medium",
+      "title": "The 'AI generates the articles' requirement conflicts with Amazon policy",
+      "detail": "The brief asks for an AI-powered engine that generates product articles. The Program Policies prohibit using Program Content or Special Links to develop or improve machine learning models without prior written approval. Generating articles from scraped listing text would sit inside that prohibition.",
+      "impact": "Automation was therefore limited to checks, generation of the sitemap and feed, and link validation. Prose was written, not generated from listing text.",
+      "published_handling": "Described on the automation page as a deliberate boundary rather than a missing feature.",
+      "fix": "Scope any future model use to our own notes and non-Amazon sources, with a human editor signing each page.",
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-010",
+      "severity": "low",
+      "title": "Internal navigation uses relative links from the CNAME-free Pages root",
+      "detail": "The site is served from a project path (/Affil3/) rather than a custom domain. Some relative-link forms resolve differently at the root than in a subdirectory, which can produce broken links on a project page if absolute paths are not used consistently.",
+      "impact": "Handled by prefixing every internal link with the base path. Any future move to a custom domain requires changing one constant.",
+      "published_handling": "The link checker runs on every build and fails on a broken internal link.",
+      "fix": "If a custom domain is added, set the base path to empty and re-run the checks.",
+      "sources": [
+        "https://docs.github.com/en/pages"
+      ]
+    },
+    {
+      "id": "FLG-012",
+      "severity": "high",
+      "title": "This session's own register contained a transcription error, now corrected",
+      "detail": "An earlier version of data/products.json recorded that link B0c8moW59 resolved to amazon.com/dp/B08DKYBTPH. That was wrong. B08DKYBTPH is the destination of B00hJ57DV; no request of B0c8moW59 ever returned it. An independent retest by another session (data/observations/2026-11-20-retest.json) surfaced the discrepancy, and the original fetch log confirms the error.",
+      "impact": "Had it stood, the register would have attributed one product's destination to another link, and a reader comparing registers would have seen two sessions disagree with no way to tell which was right. It is the exact class of error the intended/observed split exists to catch.",
+      "published_handling": "Corrected in the data file with a correction notice retained in data/products.json meta, and logged here rather than quietly overwritten. The public register now shows the real observation sequence.",
+      "fix": "Two independent observations now agree on all five links. Keep the dated-retest file as the tiebreaker for any future disagreement, and never merge two observations into one field.",
+      "sources": []
+    }
+  ]
+}

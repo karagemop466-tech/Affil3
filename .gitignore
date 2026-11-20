@@ -9,5 +9,10 @@ __pycache__/
 *.pyc
 .venv/
 
-# Shop surface (/shop/) — generated event data from scripts/collect.mjs
+# Never commit a regenerated legacy tree at the repository root. The frozen
+# editions live under legacy/ only, where they are unambiguously archived.
+/docs/
+/editorial-legacy/
+
+# ShopNow surface (/shopnow/) — generated event data from scripts/collect.mjs
 data/events.ndjson

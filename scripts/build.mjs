@@ -156,7 +156,7 @@ function layout(o) {
   const canonical = BASE + (o.href === "/" ? "/" : o.href);
   const crumbs = o.crumbs || [];
   const strip = `<div class="strip" role="note" aria-label="Affiliate disclosure">
-  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>${esc(site.disclosure.required_text)}</strong> Links marked Sponsored pay us a commission. ${esc(site.brand)} has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="${U("/disclosure/")}" style="white-space:nowrap">Full disclosure</a></span></div>
+  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>${esc(site.disclosure.required_text)}</strong> ${esc(site.disclosure.ftc_example_sentence)} Links marked Sponsored pay us a commission. ${esc(site.brand)} has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="${U("/disclosure/")}" style="white-space:nowrap">Full disclosure</a></span></div>
 </div>`;
   const nav = `<nav class="main" aria-label="Primary"><div class="nav-in">
   <a href="${U("/")}"${o.active === "home" ? ' aria-current="page"' : ""}>${esc(site.brand.split(" ")[0])}</a>
@@ -173,6 +173,7 @@ ${site.nav.reader.map((n) => `  <a href="${U(n.href)}"${o.active === n.href ? ' 
 </div></nav>`;
   const footer = `<footer class="site"><div class="foot-in">
   <div class="foot-disclose"><strong>${esc(site.disclosure.required_text)}</strong>
+  <p class="tiny" style="margin:.4rem 0 0">In the regulator's own example wording: &ldquo;I get commissions for purchases made through links in this post.&rdquo; That is the FTC's suggested phrasing for an affiliate relationship, and it is stated here in words rather than behind a disclosure button, because a linked disclosure is one most readers never open.</p>
   <p class="tiny" style="margin:.4rem 0 0">Repeated here because it belongs on every page, not only on a page you have to go looking for. A purchase is assigned to us by Amazon through your click and a session we cannot see. We publish no price, availability, rating or review figure, because we cannot refresh one. <a href="${U("/disclosure/")}">Disclosure</a> · <a href="${U("/privacy/")}">Privacy</a> · <a href="${U("/methodology/")}">Methodology</a></p></div>
   <div class="foot-cols">
 ${site.nav.footer_groups.map((g) => `  <div><h5>${esc(g.label)}</h5><ul>${g.items.map((it) => `<li><a href="${U(it.href)}">${esc(it.label)}</a></li>`).join("")}</ul></div>`).join("\n")}

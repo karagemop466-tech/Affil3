@@ -16,12 +16,14 @@
     "placement": [
       "masthead strip on every page, above the fold",
       "footer of every page",
-      "inline line adjacent to every sponsored link"
+      "inline line adjacent to every sponsored link",
+      "FTC example wording quoted in the footer of every page"
     ],
     "source_id": "S01",
     "quote_verified_verbatim": true,
     "link_level_text": "Sponsored - we may earn a commission if you buy after clicking.",
-    "rule": "Amazon requires the sentence above, clear and prominent (Operating Agreement s.5). The FTC adds that a material connection must be clear and conspicuous and cannot be hidden behind a 'DISCLOSURE' button (S03, S04). So the sentence is rendered inline on every page, not linked to."
+    "rule": "Amazon requires the first sentence, clear and prominent (Operating Agreement s.5). The FTC separately requires the material connection to be clear and conspicuous and says a hyperlinked DISCLOSURE control is not enough (S03, S04), so both the Amazon sentence and the FTC's own example wording are rendered inline on every page, not linked to. The repo-wide disclosure gate (tools/disclosure-check.mjs) checks for both strings on every HTML page in the repository, including archived trees; this surface satisfies it.",
+    "ftc_example_sentence": "In the FTC's own example wording: “I get commissions for purchases made through links in this post.”"
   },
   "nav": {
     "reader": [

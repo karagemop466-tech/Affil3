@@ -149,6 +149,7 @@ ${body}
         <ul class="foot-links">
           ${DASHBOARDS.map(([u, t]) => `<li><a href="${esc(href(u))}">${esc(t)}</a></li>`).join('\n          ')}
           <li><a href="${esc(href('/feed.xml'))}">RSS feed</a></li>
+          <li><a href="${esc(href('/legacy/archive/'))}">Archived editions</a></li>
           <li><a href="${esc(href('/sitemap.xml'))}">Sitemap</a></li>
         </ul>
       </div>
@@ -922,13 +923,49 @@ add({
 <p><a class="btn" href="${esc(href('/shop/'))}">Back to the five picks</a></p></section></div>`,
 });
 
+// ---------- outbound link policy ----------
+// Program Policies 2(b): the tag must be a URL parameter on every link to an Amazon retail site.
+// 6(v),(w): nothing may obscure where a link goes, and a shortener may not hide it — so a link.amazon
+// short link is shown as text rather than as a clickable link. Documentation hosts
+// (affiliate-program, sell) are references, not retail links, and are left alone.
+const DOC_HOSTS = new Set(['affiliate-program.amazon.com', 'sell.amazon.com', 'developer.amazon.com', 'advertising.amazon.com']);
+const isRetailAmazon = (host) => /(^|\.)amazon\.com$/.test(host) && !DOC_HOSTS.has(host);
+function linkPolicy(html) {
+  let out = html;
+  // 1. A short link cannot carry the tag: render its anchor as plain code.
+  out = out.replace(/<a\b[^>]*href="(https:\/\/link\.amazon\/[^"]*)"[^>]*>([\s\S]*?)<\/a>/g,
+    (_m, url, inner) => `<code>${url.replace(/^https:\/\/link\.amazon\//, 'link.amazon/')}</code>`);
+  // 2. Every retail Amazon link carries the tag and the sponsored rel.
+  out = out.replace(/<a\b([^>]*)>/g, (m, attrs) => {
+    const h = (attrs.match(/href="([^"]*)"/) || [])[1];
+    if (!h) return m;
+    let host = '';
+    try { host = new URL(h).hostname; } catch { return m; }
+    if (!isRetailAmazon(host)) return m;
+    let next = attrs;
+    if (!/[?&]tag=/.test(h)) {
+      const url = new URL(h);
+      url.searchParams.set('tag', cfg.trackingId);
+      next = next.replace(/href="[^"]*"/, `href="${esc(url.toString())}"`);
+    }
+    const rel = (next.match(/rel="([^"]*)"/) || [])[1] || '';
+    const parts = rel.split(/\s+/).filter(Boolean);
+    if (!parts.includes('sponsored')) parts.push('sponsored');
+    if (!parts.includes('noopener')) parts.push('noopener');
+    const relAttr = `rel="${parts.join(' ')}"`;
+    next = /rel="[^"]*"/.test(next) ? next.replace(/rel="[^"]*"/, relAttr) : `${next} ${relAttr}`;
+    return `<a${next}>`;
+  });
+  return out;
+}
+
 // ---------- write ----------
 for (const o of OWNED) fs.rmSync(path.join(OUT, o), { recursive: true, force: true });
 const written = [];
 for (const p of pages) {
   const file = p.path.endsWith('.html') ? path.join(OUT, p.path) : path.join(OUT, p.path, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, page(p));
+  fs.writeFileSync(file, linkPolicy(page(p)));
   written.push({ path: p.path, file: path.relative(ROOT, file), noSitemap: !!p.noSitemap });
 }
 
@@ -967,6 +1004,6 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);
