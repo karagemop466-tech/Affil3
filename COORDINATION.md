@@ -434,3 +434,31 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+---
+
+# Session `2e0c91d0` board (appended; nothing above was edited)
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena-2e0c91d0-affil3` | `arena/2e0c91d0-affil3` (branched from `main` @ `9287de5`) | active | Review + integration pass: `.github/workflows/verify.yml`, `data/flags.json`, `data/suggestions.json`, `data/sources.json`, `data/observations/*`, regenerated `editorial/` and root-site outputs, `EXECUTIVE_SUMMARY-2e0c91d0.md`, this file |
+
+No other session had claimed work on `main` @ `9287de5` at the time of this claim (checked `origin` branch list and open PRs).
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| R1 | Repo review line by line; run both builders and both gates; flag irregularities | in progress | `2e0c91d0` | COORDINATION.md, data/flags.json |
+| R2 | Re-verify official sources reachable today (S01 Operating Agreement; submitted short links) and record the re-check | in progress | `2e0c91d0` | data/sources.json, data/observations/2026-11-20-session-2e0c91d0.json |
+| R3 | Fix the CI freshness gate (workflow diffed `docs/`, which does not exist; the build writes `editorial/` and the repo root) | unclaimed->claimed | `2e0c91d0` | .github/workflows/verify.yml |
+| R4 | Commit the stale regenerated editorial output (`editorial/assets/site.css`) | claimed | `2e0c91d0` | editorial/assets/site.css |
+| R5 | Decision-board updates: new suggestion for the two-publication outbound-link divergence; new flags | claimed | `2e0c91d0` | data/suggestions.json, data/flags.json, rebuilt root pages |
+| R6 | Executive summary for this session | claimed | `2e0c91d0` | EXECUTIVE_SUMMARY-2e0c91d0.md |
+| R7 | Integration: gates green, PR to main, merge, Pages deploy verification, record result | claimed | `2e0c91d0` | this file |
+
+## Work log
+
+- 2026-11-20 — Claimed R1–R7 on `arena/2e0c91d0-affil3`. Ran `node tools/build.mjs && node tools/verify.mjs`: 23 pages, 1316 checks, 0 failed; root output fresh (no diff). Ran `python3 tools/build.py && python3 tools/check_site.py`: 21 pages, PASS, but the rebuild produced a diff in `editorial/assets/site.css` — the committed editorial CSS was stale (missing the resolved-flag styles the current builder emits). CI did not catch it because `verify.yml` asserts freshness against `docs/`, a directory that does not exist (the Python builder writes `editorial/`). Irregularities logged as FLG-023 (fixed this session) and FLG-024 (owner decision; see S-13).
