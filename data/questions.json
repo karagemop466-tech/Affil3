@@ -1,0 +1,35 @@
+{
+  "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/.",
+  "known": [
+    {"id": "K-01", "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S03"]},
+    {"id": "K-02", "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.", "sources": ["S01"]},
+    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a URL parameter.", "sources": ["S02"]},
+    {"id": "K-04", "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).", "sources": ["S02"]},
+    {"id": "K-05", "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.", "sources": ["S06"]},
+    {"id": "K-06", "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.", "sources": ["S04", "S05"]},
+    {"id": "K-07", "statement": "The submitted tokens are 9 characters long.", "sources": ["S05"]}
+  ],
+  "unknown": [
+    {"id": "Q-01", "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?", "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.", "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.", "sources": ["S05", "S04"], "blocking": true},
+    {"id": "Q-02", "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?", "why_it_matters": "Decides whether to keep, replace or drop the short links.", "how_to_close": "Check the links in Associates Central and against the policy text.", "sources": ["S02"], "blocking": true},
+    {"id": "Q-03", "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?", "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.", "how_to_close": "Check Associates Central account settings and the declared site list.", "sources": ["S11"], "blocking": true},
+    {"id": "Q-04", "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?", "why_it_matters": "This is gate G-02. No scaling until it passes.", "how_to_close": "Run the Associates test for one link per product and record the result.", "sources": ["S01", "S02"], "blocking": true},
+    {"id": "Q-05", "question": "Which five measurement events should be recorded?", "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).", "how_to_close": "Owner confirms or replaces the list.", "sources": [], "blocking": false},
+    {"id": "Q-06", "question": "Where should the analytics collector run, and who may access its data?", "why_it_matters": "GitHub Pages cannot run it (FLG-009).", "how_to_close": "Choose a hosting option (S-03).", "sources": [], "blocking": false},
+    {"id": "Q-07", "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)", "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).", "how_to_close": "Owner confirms the US marketplace.", "sources": ["S03", "S04"], "blocking": false},
+    {"id": "Q-08", "question": "Who is the named author, and what credentials, if any, should appear?", "why_it_matters": "Reader trust and publication polish (FLG-014).", "how_to_close": "Owner supplies a name and bio, or keeps the team byline.", "sources": [], "blocking": false},
+    {"id": "Q-09", "question": "What publishing cadence should be used?", "why_it_matters": "Sets how the feed and sitemap grow.", "how_to_close": "Choose a cadence (S-02).", "sources": [], "blocking": false},
+    {"id": "Q-10", "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?", "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).", "how_to_close": "Choose the approach in S-10.", "sources": ["S04"], "blocking": false},
+    {"id": "Q-11", "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?", "why_it_matters": "The ledger stays empty until authorized first-party reports exist.", "how_to_close": "Owner exports reports and provides them with their date and source.", "sources": ["S01"], "blocking": false},
+    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).", "how_to_close": "Owner adds the property and verifies it.", "sources": ["S06"], "blocking": false},
+    {"id": "Q-13", "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?", "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.", "how_to_close": "Owner decides whether to obtain legal review.", "sources": [], "blocking": false}
+  ],
+  "discovery": [
+    {"id": "D-01", "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.", "closes": ["Q-01", "Q-02"]},
+    {"id": "D-02", "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.", "closes": ["Q-04"]},
+    {"id": "D-03", "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.", "closes": ["Q-03", "Q-07"]},
+    {"id": "D-04", "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.", "closes": []},
+    {"id": "D-05", "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.", "closes": ["Q-12"]},
+    {"id": "D-06", "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.", "closes": ["Q-05", "Q-06"]}
+  ]
+}
