@@ -27,6 +27,7 @@ verification pass rather than merging them into one file whose provenance nobody
 | File | What it is |
 |---|---|
 | [`EXECUTIVE-SUMMARY-478e6577.md`](EXECUTIVE-SUMMARY-478e6577.md) | **The current summary (2026-11-20, session `478e6577`)**: what this pass re-checked, what changed, the open conflicts (FLG-037, FLG-038), and the decisions waiting |
+| [`EXECUTIVE_SUMMARY-4c8c7811.md`](EXECUTIVE_SUMMARY-4c8c7811.md) | Session 4c8c7811: sitemap gate fix (FLG-040), dated short-link re-check, what is still open |
 | [`EXECUTIVE-SUMMARY-c252594d.md`](EXECUTIVE-SUMMARY-c252594d.md) | The previous session's summary: the five products, what was corrected on 2026-11-20, what is verified and from where, what is still open, and the decisions waiting |
 | [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md) | The first session's summary, kept for the record (describes an earlier, smaller shape of the site) |
 | [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's earlier summary |
