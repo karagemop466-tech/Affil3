@@ -3,9 +3,11 @@
 link. External http(s) links are listed as 'externals' for manual review — this
 gate never touches the network, so it cannot hallucinate reachability.
 """
+import importlib.util
 import pathlib
 import re
 import sys
+import tempfile
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -23,9 +25,13 @@ def resolve(base_file, href):
     target = (base_file.parent / urllib.parse.unquote(href)).resolve()
     return target
 
-for f in sorted(ROOT.rglob("*.html")):
-    if any(part in skip for part in f.relative_to(ROOT).parts[:-1]):
-        continue
+spec = importlib.util.spec_from_file_location("build_site", ROOT / "scripts" / "build_site.py")
+bs = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(bs)
+with tempfile.TemporaryDirectory() as td:
+    PAGE_SET = sorted(bs.build(td).keys())
+for rel in PAGE_SET:
+    f = ROOT / rel
     html = f.read_text()
     for attr in ("href", "src"):
         for m in re.finditer(attr + r'="([^"]+)"', html):
@@ -36,7 +42,7 @@ for f in sorted(ROOT.rglob("*.html")):
             if t.is_dir():
                 t = t / "index.html"
             if not t.exists():
-                broken.append((str(f.relative_to(ROOT)), raw))
+                broken.append((rel, raw))
 
 for page, raw in broken:
     print(f"BROKEN: {page} -> {raw}")

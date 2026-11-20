@@ -22,7 +22,14 @@
       "category_path": "Home &amp; Kitchen › Kitchen &amp; Dining › Small Appliances › Fryers › Air Fryers",
       "category": "air-fryers",
       "category_label": "Air fryers &amp; oven-style",
-      "spec_chips": ["6 quarts", "Two independent 3 qt baskets", "Easy-view windows", "Sync Finish", "Hi-Fry option", "Dishwasher-safe baskets"],
+      "spec_chips": [
+        "6 quarts",
+        "Two independent 3 qt baskets",
+        "Easy-view windows",
+        "Sync Finish",
+        "Hi-Fry option",
+        "Dishwasher-safe baskets"
+      ],
       "rating_stars": "",
       "rating_count": "",
       "price_observed": "$79.93",
@@ -33,7 +40,10 @@
       "image": "https://m.media-amazon.com/images/I/81VavY-KG8L._AC_SY355_.jpg",
       "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
       "affiliate_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-      "flags": ["FLG-001", "FLG-005"]
+      "flags": [
+        "FLG-001",
+        "FLG-005"
+      ]
     },
     {
       "id": "P2",
@@ -54,7 +64,13 @@
       "category_path": "Home &amp; Kitchen › Kitchen &amp; Dining › Small Appliances › Fryers › Air Fryers",
       "category": "air-fryers",
       "category_label": "Air fryers &amp; oven-style",
-      "spec_chips": ["26 quarts", "French door", "24 one-touch presets", "6 accessories included", "Countertop convection"],
+      "spec_chips": [
+        "26 quarts",
+        "French door",
+        "24 one-touch presets",
+        "6 accessories included",
+        "Countertop convection"
+      ],
       "rating_stars": "4.3",
       "rating_count": "18,379",
       "price_observed": "$149.99",
@@ -65,7 +81,10 @@
       "image": "https://m.media-amazon.com/images/I/81AUxm--7pL._AC_SY355_.jpg",
       "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
       "affiliate_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-      "flags": ["FLG-001", "FLG-005"]
+      "flags": [
+        "FLG-001",
+        "FLG-005"
+      ]
     },
     {
       "id": "P3",
@@ -86,7 +105,13 @@
       "category_path": "Home &amp; Kitchen › Kitchen &amp; Dining › Small Appliances › Fryers › Air Fryers",
       "category": "air-fryers",
       "category_label": "Air fryers &amp; oven-style",
-      "spec_chips": ["8 quarts", "4-in-1 (air fry, bake, dehydrate, frozen)", "450°F Hi-Fry option", "Dishwasher-safe basket", "Stainless steel"],
+      "spec_chips": [
+        "8 quarts",
+        "4-in-1 (air fry, bake, dehydrate, frozen)",
+        "450°F Hi-Fry option",
+        "Dishwasher-safe basket",
+        "Stainless steel"
+      ],
       "rating_stars": "4.4",
       "rating_count": "16,892",
       "price_observed": "$69.99",
@@ -97,39 +122,51 @@
       "image": "https://m.media-amazon.com/images/I/71VzGtbzyFL._AC_SX355_.jpg",
       "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "affiliate_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
-      "flags": ["FLG-001", "FLG-005"]
+      "flags": [
+        "FLG-001",
+        "FLG-005"
+      ]
     },
     {
       "id": "P4",
-      "status": "unresolved",
-      "short_name": "",
-      "brand": "",
+      "status": "verified-observed",
+      "short_name": "ThermoMaven 1-Second Instant-Read Meat Thermometer",
+      "brand": "ThermoMaven",
       "submitted_link": "https://link.amazon/B0c8moW59",
       "submitted_token": "B0c8moW59",
       "intended_asin": "",
       "intended_listing_url": "",
       "confirmation_date": "",
       "intended_source": "Owner-submitted link, project brief dated 2026-11-20",
-      "observed_redirect_url": "",
-      "observed_asin": "",
-      "observed_on": "",
-      "observed_method": "Fetch attempted twice on 2026-11-20; Amazon returned a 'Continue shopping' checkpoint interstitial both times, so no final listing target was observed",
-      "official_title": "",
-      "category_path": "",
-      "category": "unresolved",
-      "category_label": "Unresolved — not yet categorized",
-      "spec_chips": [],
+      "observed_redirect_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_asin": "B0DHZTCNR5",
+      "observed_on": "2026-11-20",
+      "observed_method": "First two fetches of the submitted short link returned an Amazon 'Continue shopping' checkpoint interstitial; a same-day retest resolved to this listing and was independently corroborated by the parallel session's dated retest (data/observations/2026-11-20-retest.json on main)",
+      "official_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
+      "category_path": "Home &amp; Kitchen › Kitchen &amp; Dining › Kitchen Utensils &amp; Gadgets › Thermometers &amp; Timers › Meat",
+      "category": "kitchen-tech",
+      "category_label": "Smart kitchen tools",
+      "spec_chips": [
+        "1-second read",
+        "±0.5°F accuracy (NIST-certified)",
+        "NIST & NSF certified",
+        "IP67 waterproof",
+        "Auto-rotate LED screen"
+      ],
       "rating_stars": "",
-      "rating_count": "",
-      "price_observed": "",
+      "rating_count": "3,499 (count observed in bundle components; star average not captured)",
+      "price_observed": "$16.99",
       "list_price_observed": "",
-      "offer_note": "",
-      "bought_note": "",
+      "offer_note": "Buy New $16.99 (sold and shipped by Amazon.com); a newer model (B0GL7Z4KP4) is advertised on the same listing — observed 2026-11-20",
+      "bought_note": "Rating line not fully captured in the fetched page sections — see listing (FLG-005)",
       "badge": "",
-      "image": "",
-      "listing_url": "",
-      "affiliate_url": "",
-      "flags": ["FLG-001", "FLG-002", "FLG-003"]
+      "image": "https://m.media-amazon.com/images/I/41770O+wQdL.jpg",
+      "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "affiliate_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+      "flags": [
+        "FLG-001",
+        "FLG-005"
+      ]
     },
     {
       "id": "P5",
@@ -150,7 +187,13 @@
       "category_path": "Home &amp; Kitchen › Kitchen &amp; Dining › Kitchen Utensils &amp; Gadgets › Thermometers &amp; Timers › Meat",
       "category": "kitchen-tech",
       "category_label": "Smart kitchen tools",
-      "spec_chips": ["3 ultra-thin probes", "WiFi monitoring", "1000°F heat-safe", "5 sensors", "Gen3"],
+      "spec_chips": [
+        "3 ultra-thin probes",
+        "WiFi monitoring",
+        "1000°F heat-safe",
+        "5 sensors",
+        "Gen3"
+      ],
       "rating_stars": "4.2",
       "rating_count": "2,178",
       "price_observed": "$119.99",
@@ -161,7 +204,10 @@
       "image": "https://m.media-amazon.com/images/I/71X7AbK8FlL._SX342_.jpg",
       "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "affiliate_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-      "flags": ["FLG-001", "FLG-005"]
+      "flags": [
+        "FLG-001",
+        "FLG-005"
+      ]
     }
   ]
 }

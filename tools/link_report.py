@@ -10,9 +10,11 @@ Official source domains (the register's publishers + submitted links + repo):
   amazon.com, advertising.amazon.com, affiliate-program.amazon.com,
   ftc.gov, developers.google.com, docs.github.com, link.amazon, github.com
 """
+import importlib.util
 import pathlib
 import re
 import sys
+import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OFFICIAL = ("amazon.com", "advertising.amazon.com", "affiliate-program.amazon.com",
@@ -29,10 +31,13 @@ def official_hits(row):
 
 failures = 0
 report = []
-skip = {".git", "node_modules", "server", "scripts", "tools", "content", "data", "docs", "assets"}
-for f in sorted(ROOT.rglob("*.html")):
-    if any(part in skip for part in f.relative_to(ROOT).parts[:-1]):
-        continue
+spec = importlib.util.spec_from_file_location("build_site", ROOT / "scripts" / "build_site.py")
+bs = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(bs)
+with tempfile.TemporaryDirectory() as td:
+    PAGE_SET = sorted(bs.build(td).keys())
+for rel in PAGE_SET:
+    f = ROOT / rel
     html = f.read_text()
     for ti, m in enumerate(re.finditer(r"<table class=\"data sourced\">.*?</table>", html, re.S)):
         rows = re.findall(r"<tr>.*?</tr>", m.group(0), re.S)[1:]
@@ -44,7 +49,7 @@ for f in sorted(ROOT.rglob("*.html")):
             if official_hits(row):
                 covered += 1
         pct = (100.0 * covered / len(rows)) if rows else 100.0
-        report.append((str(f.relative_to(ROOT)), ti + 1, covered, len(rows), pct))
+        report.append((rel, ti + 1, covered, len(rows), pct))
         if pct < 100.0:
             failures += 1
 

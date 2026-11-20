@@ -9,19 +9,27 @@ Checks (each maps to a compliance gate on desk/compliance/):
   5. no placeholder text (TODO / lorem / FIXME) in published pages
   6. sitemap lists every published page; feed carries every guide
 """
+import importlib.util
+import json
 import pathlib
 import re
 import sys
+import tempfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ERRORS = []
 
 def pages():
-    skip = {".git", "node_modules", "server", "scripts", "tools", "content", "data", "docs", "assets"}
-    for f in sorted(ROOT.rglob("*.html")):
-        if any(part in skip for part in f.relative_to(ROOT).parts[:-1]):
-            continue
-        yield f
+    """Yield exactly the pages this edition generates (other editions on the
+    tree — editorial/, legacy/ — are other sessions' surfaces and are gated by
+    their own checks)."""
+    spec = importlib.util.spec_from_file_location("build_site", ROOT / "scripts" / "build_site.py")
+    bs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bs)
+    with tempfile.TemporaryDirectory() as td:
+        rels = list(bs.build(td).keys())
+    for rel in sorted(rels):
+        yield ROOT / rel
 
 def check(cond, msg):
     if not cond:
@@ -58,12 +66,25 @@ for f in html_files:
     for bad in ("TODO", "FIXME", "lorem ipsum", "Lorem ipsum"):
         check(bad not in html, f"{rel}: placeholder text '{bad}'")
 
-# 4 — unresolved products must not carry an affiliate CTA
+# 4 — intent fields stay blank until owner confirmation (FLG-001), and CTA
+# rendering follows data truth: any product without an observed listing must
+# carry no affiliate URL and render the pending-verification state.
+prod_data = json.loads((ROOT / "data" / "products-0a90f62c.json").read_text())["products"]
+for p in prod_data:
+    check(p["intended_asin"] == "" and p["intended_listing_url"] == "" and p["confirmation_date"] == "",
+          f"{p['id']}: intent fields must stay blank until owner confirmation (FLG-001)")
+    if not p.get("observed_asin"):
+        check(p.get("affiliate_url", "") == "", f"{p['id']}: unresolved product must not carry an affiliate URL")
 shop = (ROOT / "shop" / "index.html")
 if shop.exists():
     s = shop.read_text()
-    check("Link pending verification" in s, "shop/index.html: unresolved product must show pending-verification state")
-    check('data-aff="P4"' not in s, "shop/index.html: P4 must not carry an affiliate CTA while unresolved")
+    for p in prod_data:
+        if p.get("affiliate_url"):
+            check(f'data-aff="{p["id"]}"' in s, f"shop/index.html: {p['id']} should render an affiliate CTA")
+        else:
+            check(f'data-aff="{p["id"]}"' not in s, f"shop/index.html: {p['id']} must not carry an affiliate CTA")
+    check("Link pending verification" in s or all(p.get("affiliate_url") for p in prod_data),
+          "shop/index.html: unresolved products must show the pending-verification state")
 
 # 6 — sitemap + feed coverage
 sm = ROOT / "sitemap.xml"
