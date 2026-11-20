@@ -71,11 +71,13 @@
     "counterwise": "1 of 30",
     "crisp-index": "1 of 18",
     "legacy": "4 of 100",
-    "docs": "directory not present in the working tree at 1f65f70 (git ls-files returns no docs/ paths)"
+    "docs": "directory not present in the working tree at 1f65f70 (git ls-files returns no docs/ paths)",
+    "counter-desk": "32 html files, 1 with name=robots noindex; own sitemap.xml and robots.txt; not linked from root or listed in root sitemap (added on main, commit 627ddfb, after this branch was cut)"
   },
   "not_done": [
     "No intended ASIN, official listing URL or confirmation date was set. The observed values are not a substitute (FLG-002).",
     "No Associates Central test of a Special Link was run. No Associates login is available in the sandbox (gate G-02 stays pending).",
     "No price, rating or review count was read or recorded."
-  ]
+  ],
+  "integrity_tool_note": "tools/integrity-check.mjs (added on main) reports 425 passed, 1 failed on the merged tree: FLG-030 has no manual_step, resolution or action. FLG-030 is not this session's record and was not edited. No workflow runs the tool."
 }

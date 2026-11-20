@@ -554,7 +554,7 @@
       "id": "S-20",
       "track": "findability",
       "topic": "Crawl control for a site served at a project path",
-      "problem": "robots.txt is generated at /Affil3/, but search engines read it only from the host root (FLG-038). The 'one site to index' goal therefore depends on noindex tags and on how the other editions are handled, not on robots.txt.",
+      "problem": "robots.txt is generated at /Affil3/, but search engines read it only from the host root (FLG-038). The 'one site to index' goal therefore depends on noindex tags and on how the other editions are handled, not on robots.txt. The surfaces that now compete with the root are /editorial/, /counter/, /counterwise/, /crisp-index/, /legacy/ and /counter-desk/ (added on main after this branch was cut).",
       "current": "A",
       "options": [
         {
@@ -566,7 +566,7 @@
         },
         {
           "id": "B",
-          "label": "Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/), then keep the root publication as the only indexed site.",
+          "label": "Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.",
           "tradeoff": "Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.",
           "effort": "about 2 hours",
           "risk": "low"

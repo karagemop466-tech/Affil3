@@ -37,11 +37,13 @@ Full record: `data/observations/2026-11-20-478e6577-recheck.json`.
 | ID | Severity | Finding | Status after this pass |
 |---|---|---|---|
 | FLG-037 | Medium | Same-day short-link results conflict: three rounds show product pages, two show the Amazon home page. Nothing can be called confirmed. | Open. Owner check needed (Q-17). |
-| FLG-038 | Medium | robots.txt is generated at `/Affil3/`, but search engines read it only from the host root, which returns an error. The other editions (`/counter/`, `/counterwise/`, `/crisp-index/`, `/legacy/`) are not all noindexed. | Open. Not "fixed" by rewriting robots.txt, because that would look like a control without being one. Decision on S-20. |
+| FLG-038 | Medium | robots.txt is generated at `/Affil3/`, but search engines read it only from the host root, which returns an error. The other editions (`/counter/`, `/counterwise/`, `/crisp-index/`, `/legacy/`, and `/counter-desk/`, merged to `main` after this branch was cut) are not all noindexed. | Open. Not "fixed" by rewriting robots.txt, because that would look like a control without being one. Decision on S-20. |
 | FLG-039 | Low | README gave a stale check count (2,808) and listed a `/docs/` publication that is not in the tree. The README also cited the tag rule as §2(b) while the register cited §2(a). | Resolved in this pass. |
 | K-13 | — | A known-facts entry said all five short links resolve to product pages on a "fourth pass". It now carries a note that the same-day record is contested. | Annotated, not deleted. |
 
 Earlier flags remain open and are not repeated here in full. The ones that block the most work are below.
+
+**Integrity tool.** `tools/integrity-check.mjs`, added on `main`, reports one failure on the merged tree: FLG-030 has no `manual_step`, resolution or action. That is another session's record, so it was not edited here. No CI workflow runs the tool. The root gate (`npm run check`) passes.
 
 ## 4. Open items that block the revenue path
 
@@ -109,4 +111,4 @@ Each suggestion lists its options and tradeoffs on `/suggestions/`. None is impl
 - `README.md`: stale count and `/docs/` row corrected; tag citation corrected; short-link paragraph rewritten to show the conflict; this summary linked.
 - `EXECUTIVE-SUMMARY-478e6577.md` (new): this document.
 - Generated root pages rebuilt by `tools/build.mjs`.
-- `COORDINATION.md`: session board and completion record.
+- `COORDINATION.md`: session board, verification log, merge log with `main` (one conflict, resolved by keeping both session logs), and completion record.

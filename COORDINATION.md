@@ -1873,11 +1873,20 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - **Other stale text, not edited (other sessions' files):** `COORDINATION.md` earlier entries still describe the tag rule as §2(a) in places and refer to the 2,808 figure. These are historical logs and are left as written.
 - **Publishing cadence:** S-05 marks "one guide every two weeks" as the current default with no owner decision recorded. Reported as a default, not a decision.
 
+## Merge log (session 478e6577)
+
+- **PR #65** (`arena/478e6577-affil3` → `main`) was opened on 2026-11-20. Checks `disclosure`, `gate` and `verify` all passed on the first push.
+- **First merge refused:** `main` had advanced from `1f65f70` to `a42e974` (PRs #58, #59, #60, #63 and others, 78 files). The only conflict was `COORDINATION.md`, an add/add-style block of two session logs.
+- **Resolution:** `origin/main` was merged into this branch. Both logs were kept in order: this session's block first, then the other session's block. Nothing from `main` was discarded. `README.md` merged without conflict, and the merged tree was re-checked (below).
+- **Re-check on the merged tree:** `npm run check` passed with 4,642 checks; 40 root pages built with no drift; internal links across all 72 html pages outside the other editions' folders: 2,624 links, 0 problems.
+- **New surface found on `main`:** `/counter-desk/` (32 html files, one with noindex, its own sitemap and robots file, not linked from the root). Recorded in FLG-038 and S-20. Not edited.
+- **Integrity tool on `main`:** `tools/integrity-check.mjs` reports 425 passed, 1 failed. The failure is FLG-030 (no `manual_step`, resolution or action). That is another session's record and was not edited. No workflow runs the tool.
+
 ## Completion record (session 478e6577)
 
-- Pull request: _pending_ (from `arena/478e6577-affil3` to `main`)
-- Merge result: _pending_
-- GitHub Pages deploy: _pending_
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/65
+- Merge result: recorded in the follow-up log entry below, after the merge.
+- GitHub Pages deploy: recorded in the follow-up log entry below, after the merge.
 
 ---
 
