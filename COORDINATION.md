@@ -1,32 +1,48 @@
 # Coordination — Affil3
 
-Shared task board for the Affil3 Amazon affiliate site. Single active session in this checkout.
+Shared task board. The first checkout observed only `README.md`; another session subsequently completed and merged the initial publication build while this branch was active. This file preserves that work and records the follow-up integration below.
 
-## Session
-- Session ID: `arena-83a43a96-affil3`
-- Branch: `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
-- Owner: this session claims every task below (single-session coordination; no overlapping scopes)
+## Sessions
+
+| Session | Branch | Status | Scope / handoff |
+|---|---|---|---|
+| `arena-83a43a96-affil3` | `arena/83a43a96-affil3` | merged | Initial publication build, product register, guides, disclosure, sitemap/feed, first-pass measurement notes. Merged to `main` in PR [#1](https://github.com/karagemop466-tech/Affil3/pull/1) on 2026-11-20. |
+| `arena/35d0727e-affil3` | `arena/35d0727e-affil3` | active | Final integration: independently verify sources and supplied-link observations, add source-backed questions/suggestions/review surfaces, repair measurement/privacy claims, preserve the separate intended-vs-observed product fields, test, and deploy through a PR from this branch. |
 
 ## Task board
 
-| # | Task | Status | Owner | Files touched | Sources verified | Notes |
-|---|------|--------|-------|---------------|------------------|-------|
-| 1 | Repo review: read every file, flag irregularities | done | arena-83a43a96-affil3 | COORDINATION.md, README.md | none (repo had only README) | Repo contained only `README.md` ("# Affil3"). No source data, no existing links to verify. |
-| 2 | Product-intent confirmation record (5 submitted Amazon links) | done | arena-83a43a96-affil3 | products.html, flagged.html, EXECUTIVE_SUMMARY.md | Amazon Associates Program policies (docs), link.amazon short links NOT resolvable in this sandbox (no outbound access to amazon.com) | All ASIN / listing-URL / date / source / redirect-target fields left blank and flagged UNVERIFIED. Never inferred. Short-link compliance status unresolved (see FLG-003 note); links are NOT claimed invalid. |
-| 3 | Site design system (CSS) + assets | done | arena-83a43a96-affil3 | assets/css/main.css | none | Self-authored CSS; no external frameworks or fonts (zero external dependencies). |
-| 4 | Landing page — publication front page, products lead, disclosure above fold | done | arena-83a43a96-affil3 | index.html | none | Editorial hypotheses used as working titles only; no popularity/search-volume claims. |
-| 5 | Category subpages + entries table with sources + findings/analysis | done | arena-83a43a96-affil3 | products.html | Amazon Associates Program Operating Agreement; FTC disclosure guidance (ftc.gov) | Every table row carries a source link or is left blank + flagged unverified. |
-| 6 | Question-shaped buyer guides (4 working titles) | done | arena-83a43a96-affil3 | guides/*.html | none | Working titles only; presented as hypotheses, not performance claims. Added to sitemap.xml and feed.xml. |
-| 7 | Disclosure strip (above fold, every page) + footer repeat + `rel="sponsored"` on outbound links | done | arena-83a43a96-affil3 | all HTML pages | FTC "clear and conspicuous" guidance; Amazon Associates disclosure requirement | Disclosure strip under masthead on every page; repeated in footer. |
-| 8 | Sitemap + RSS feed | done | arena-83a43a96-affil3 | sitemap.xml, feed.xml | none | Feed includes the 4 guides; sitemap lists all pages. |
-| 9 | Click & conversion measurement instrumentation (5 events) | done | arena-83a43a96-affil3 | assets/js/app.js | none | Privacy-preserving client-side outbound click counter; beacon POST to `/analytics/collect`. Endpoint is NOT self-hosted on GitHub Pages (static hosting) — flagged, requires separate self-hosted receiver before it is operational. |
-| 10 | Search Console / real analytics documentation | done | arena-83a43a96-affil3 | about.html, flagged.html | none | Cannot enable Search Console without a Google account; setup steps documented, flagged as not yet enabled. |
-| 11 | Link check + build verification (no broken links) | done | arena-83a43a96-affil3 | all HTML | none | Internal links checked by script; outbound Amazon short links cannot be dereferenced in this sandbox. |
-| 12 | GitHub Pages enable + deploy verification | in progress | arena-83a43a96-affil3 | repo settings via GitHub API | none | Pages source: `main` branch, `/ (root)`. To be enabled after merge to main. |
-| 13 | Pull request + merge to main; record PR link and merge result | in progress | arena-83a43a96-affil3 | COORDINATION.md | none | PR from `arena/83a43a96-affil3` to `main`. Flagged/unverified items published on `flagged.html` and do not block merge. |
+| # | Task | Status | Owner | Files touched / scope | Notes |
+|---|---|---|---|---|---|
+| 1 | Initial repository review | done | `arena-83a43a96-affil3` | `README.md`, `COORDINATION.md` | Initial checkout contained only `README.md` (`# Affil3`). |
+| 2 | Product-intent confirmation record for five submitted links | needs review | `arena/35d0727e-affil3` | `products.html`, `flagged.html`, new product/source data | Keep intended ASIN, intended official listing URL, confirmation date, confirmation source, and observed redirect target separate. Intended fields remain blank until confirmed. Link status is unresolved; no claim that a submitted short link is invalid. |
+| 3 | Publication design, categories, and home-page polish | in progress | `arena/35d0727e-affil3` | `index.html`, shared CSS, navigation/footer | Integration pass after PR #1: lead with useful buyer questions, keep dashboard links inside one Studio group and in the footer. |
+| 4 | Question-led buyer guides and cadence | done / needs iteration | `arena-83a43a96-affil3` + `arena/35d0727e-affil3` | `guides/*.html`, `guides/index.html`, `feed.xml`, `sitemap.xml` | Four question-led guides exist. Current session will verify language, cross-links, publication dates, and discoverability; titles remain editorial hypotheses, not demand claims. |
+| 5 | Disclosure placement and sponsored-link handling | in progress | `arena/35d0727e-affil3` | all HTML pages, CSS, site scripts | Ensure the exact Associates statement is visible under the masthead and repeated in the footer on every page; every outbound product link must include `rel="sponsored"`. |
+| 6 | Source-backed executive brief, questions, suggestions, and flagged items | in progress | `arena/35d0727e-affil3` | `EXECUTIVE_SUMMARY.md`, `about.html`, `flagged.html`, new `studio/**` | Publish known facts, gaps, discovery steps, recommendation options, hosting/measurement constraints, and official source links. |
+| 7 | RSS, sitemap, canonical origin, internal links, and Search Console notes | in progress | `arena/35d0727e-affil3` | `feed.xml`, `sitemap.xml`, `robots.txt`, all HTML pages, `scripts/**` | Canonical origin is the existing project Pages URL. Search Console ownership is not connected or verified. |
+| 8 | Privacy-preserving analytics endpoint and event definitions | needs review | `arena/35d0727e-affil3` | `analytics/**`, `assets/js/app.js`, `site-config.js`, `privacy.html` | A dependency-free endpoint and tests are being added. GitHub Pages is static, so public collection stays disabled until a supported first-party server host is configured. Do not describe uncollected data as live analytics. |
+| 9 | Campaign ledger and authorized report-import gate | in progress | `arena/35d0727e-affil3` | new `studio/campaign-ledger.html`, `data/**`, `analytics/**` | Start empty. Store only dated, authorized first-party report data with provenance; no inferred sessions, conversions, revenue, or forecasts. |
+| 10 | Automated build, link/disclosure checks, PR and Pages deployment verification | in progress | `arena/35d0727e-affil3` | `scripts/**`, `.github/workflows/**`, `COORDINATION.md` | Do not merge a failing build. Preserve PR #1 work, verify the new integration on this branch, then create and merge a separate PR to `main`. |
 
-## Ground rules followed
-- Work only on the current branch (`arena/83a43a96-affil3`); push only to this branch; PR opened from this branch to `main`.
-- Small, frequent commits; `git pull --rebase` before every push.
-- No values inferred or filled in. Anything not confirmed against an official source is left blank and flagged "unverified" with a source link where one exists.
-- Outbound Amazon links kept as submitted; `rel="sponsored"` added; no claim made that short links are invalid (compliance status unresolved, see FLG-003).
+## Verification and source log
+
+- 2026-11-20 — Confirmed the repository is public, default branch `main`, and GitHub Pages is enabled at `https://karagemop466-tech.github.io/Affil3/`, publishing from `main` root. PR #1 is merged; no branch switch is being made.
+- 2026-11-20 — Independently fetched the official Amazon ASIN explainer. It defines ASIN as a unique 10-character alphanumeric code and says a product page URL identifies the ASIN after `/dp/`. The five submitted path strings are each nine characters; they are stored as submitted identifiers, not marked as ASINs.
+- 2026-11-20 — Fetched the five user-supplied `https://link.amazon/...` URLs. Four tool-observed responses landed on Amazon detail URLs with different 10-character `/dp/` identifiers; the fifth stopped at an Amazon “Continue shopping” checkpoint without exposing a product destination. These are observed outcomes only, not confirmations of intended products, Special Link compliance, or tracking attribution. See the separate product record and FLG-002/FLG-003.
+- 2026-11-20 — Verified Amazon's Associates Operating Agreement and Program Policies, FTC affiliate/endorsement guidance, Google's people-first and sitemap guidance, Amazon's official Associates Order Report help, and GitHub Pages' static-hosting and usage-limits documentation. Source URLs and the verified implications are published in the site source register.
+- 2026-11-20 — Rebase conflict: `origin/main` advanced with merged PR #1 and added this file while the current branch still carried its original claim. Resolved by retaining the existing session's board and adding the current branch's follow-up scope. No upstream site files were discarded.
+
+## Irregularities / items requiring review
+
+- The earlier PR #1 site stated that the short links could not be resolved. The current session did fetch them; the earlier claim is superseded by the dated observations above. This does **not** establish the intended product or link validity.
+- GitHub Pages documentation says Pages is static and cannot run server-side code; it also says Pages is not intended or allowed as free hosting for online businesses/e-commerce sites or sites primarily directed at commercial transactions/SaaS. The affiliate-publication use case needs hosting-policy review. GitHub's Pages documentation also says it logs and stores visitor IP addresses for security; the site cannot disable that host-level processing.
+- Amazon policy pages require a valid Associates ID in Special Links, impose conditions on product information/pricing/reviews, and restrict use of Program Content/API data for machine learning or analysis without required permissions. No product-data API, scraping, review aggregation, or autonomous Amazon interaction is enabled.
+- The selected tracking ID `shopnow047c-20`, enrollment status, official product identities, live pricing, review data, commission rates, conversion totals, and Search Console property have not been verified in the relevant first-party accounts.
+- Analytics code can be tested locally, but GitHub Pages cannot receive `/api/events`; production collection remains off until a compatible first-party host is selected and configured.
+
+## Ground rules
+
+- Work on the active Arena branch `arena/35d0727e-affil3`; do not switch, rename, or push another branch.
+- Preserve completed work from PR #1. The new session owns only the final integration pass and the files scoped above; coordinate before any further overlap.
+- Before every push, rebase against the current `origin/main`; push only `arena/35d0727e-affil3`.
+- Leave unconfirmed values blank and label them unverified. Never treat an observed redirect target as the intended product.
