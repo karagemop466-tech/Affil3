@@ -22,8 +22,19 @@ Shared task board for the Affil3 Amazon affiliate site. Single active session in
 | 9 | Click & conversion measurement instrumentation (5 events) | done | arena-83a43a96-affil3 | assets/js/app.js | none | Privacy-preserving client-side outbound click counter; beacon POST to `/analytics/collect`. Endpoint is NOT self-hosted on GitHub Pages (static hosting) — flagged, requires separate self-hosted receiver before it is operational. |
 | 10 | Search Console / real analytics documentation | done | arena-83a43a96-affil3 | about.html, flagged.html | none | Cannot enable Search Console without a Google account; setup steps documented, flagged as not yet enabled. |
 | 11 | Link check + build verification (no broken links) | done | arena-83a43a96-affil3 | all HTML | none | Internal links checked by script; outbound Amazon short links cannot be dereferenced in this sandbox. |
-| 12 | GitHub Pages enable + deploy verification | in progress | arena-83a43a96-affil3 | repo settings via GitHub API | none | Pages source: `main` branch, `/ (root)`. To be enabled after merge to main. |
-| 13 | Pull request + merge to main; record PR link and merge result | in progress | arena-83a43a96-affil3 | COORDINATION.md | none | PR from `arena/83a43a96-affil3` to `main`. Flagged/unverified items published on `flagged.html` and do not block merge. |
+| 12 | GitHub Pages enable + deploy verification | done | arena-83a43a96-affil3 | repo settings via GitHub API | https://docs.github.com/en/pages | Pages already configured on `main` / `(root)`; build `built` with no errors; live at https://karagemop466-tech.github.io/Affil3/ |
+| 13 | Pull request + merge to main; record PR link and merge result | done | arena-83a43a96-affil3 | COORDINATION.md | https://github.com/karagemop466-tech/Affil3/pull/1 | PR #1 `arena/83a43a96-affil3` -> `main`, merged via `gh pr merge 1 --merge`; merge commit `db77ec4b4da339e1919bf2f3b5a6f39ebb564dd3`; state closed/merged=true. Flagged/unverified items published on `flagged.html` and did not block merge. |
+
+## Results (this session)
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/1 (PR #1, `arena/83a43a96-affil3` -> `main`)
+- Merge: `gh pr merge 1 --merge`, merge commit `db77ec4b4da339e1919bf2f3b5a6f39ebb564dd3`, state closed / merged = true
+- GitHub Pages: source `main` / `(root)`, build `built` with no errors
+- Live site: https://karagemop466-tech.github.io/Affil3/
+- Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml (11 URLs)
+- Feed: https://karagemop466-tech.github.io/Affil3/feed.xml (4 guides)
+- Flagged for review: https://karagemop466-tech.github.io/Affil3/flagged.html (FLG-001..FLG-007, open)
+- Executive summary: EXECUTIVE_SUMMARY.md
 
 ## Ground rules followed
 - Work only on the current branch (`arena/83a43a96-affil3`); push only to this branch; PR opened from this branch to `main`.
