@@ -221,21 +221,22 @@
       "quote": "Max temp: 400ºF/ 205ºC. 4 cooking presets. Top-rack dishwasher-safe basket. Capacity: 5 Qt or 8 Qt / 4.73 L or 7.57 L. 200–400°F / 95º-205ºC temperature range. Power: 1700W/120V. Dimensions: (8 Qt Model) 15.4 in x 12.6 in x 13.5 in. Weight: (8 Qt Model) 12.8 lbs. Model Number: RJ38-SQSS-8T (8 Qt model). cETL approved with a 1-year Chefman® assurance"
     },
     {
+      "id": "S25",
+      "title": "Google Search Central: How to write and submit a robots.txt file",
+      "publisher": "Google for Developers",
+      "url": "https://developers.google.com/crawling/docs/robots-txt/create-robots-txt",
+      "method": "fetched 2026-11-20 by session 478e6577-affil3 (first chunk of the page read in full for the format and location rules)",
+      "used_for": "Format and location rule: robots.txt 'must be located at the root of the site host' and 'cannot be placed in a subdirectory'; use meta tags when the site root is not accessible. Basis for FLG-038.",
+      "status": "verified",
+      "quote": "The robots.txt file must be located at the root of the site host to which it applies. ... It cannot be placed in a subdirectory (for example, at https://example.com/pages/robots.txt)."
+    },
+    {
       "id": "S24",
       "title": "Understanding ASINs — Amazon Ads guide",
       "publisher": "Amazon (advertising.amazon.com)",
       "url": "https://advertising.amazon.com/library/guides/asins-introduction",
       "method": "Fetched in full 2026-11-20 by session arena/acb0bd16-affil3; definition quoted verbatim.",
       "used_for": "Amazon-owned definition of an ASIN: 'a unique combination of 10 letters and numbers that Amazon assigns to a product'. Cites FLG-012.",
-      "status": "verified (fetched in full)"
-    },
-    {
-      "id": "S25",
-      "title": "Introduction to robots.txt — Google Search Central",
-      "publisher": "Google",
-      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
-      "method": "Fetched 2026-11-20 by session arena/acb0bd16-affil3.",
-      "used_for": "States that robots.txt 'is not a mechanism for keeping a web page out of Google' and that a blocked URL can still appear in results. Basis for adding noindex to the archived editions instead of relying on Disallow alone.",
       "status": "verified (fetched in full)"
     },
     {

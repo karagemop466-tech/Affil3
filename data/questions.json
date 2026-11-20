@@ -93,7 +93,7 @@
     },
     {
       "id": "K-13",
-      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
       "sources": [
         "S05",
         "S04",
@@ -192,7 +192,7 @@
         "S04"
       ],
       "blocking": true,
-      "answer_template": "B04G1MEwY = <product name> = <10-character ID>\nB02NbDxp3 = …\nB00hJ57DV = …\nB0c8moW59 = …\nB0f3GKalj = …"
+      "answer_template": "Link 1 (B04G1MEwY) → product: <name>, ID: <10 chars>\nLink 2 (B02NbDxp3) → …\nLink 3 (B00hJ57DV) → …\nLink 4 (B0c8moW59) → …\nLink 5 (B0f3GKalj) → …"
     },
     {
       "id": "Q-02",
@@ -204,7 +204,7 @@
         "S02"
       ],
       "blocking": true,
-      "answer_template": "For each of the five links: product name, and whether the landing page was the product you meant (yes/no)."
+      "answer_template": "Product I meant for each link:\n1. <name>  2. <name>  3. <name>  4. <name>  5. <name>"
     },
     {
       "id": "Q-03",
@@ -215,7 +215,7 @@
         "S01"
       ],
       "blocking": true,
-      "answer_template": "Tracking ID on my account: shopnow047c-20 → yes/no\nDeclared website: <exact URL>"
+      "answer_template": "Tracking ID on the account: shopnow047c-20 → yes / no\nWebsite declared in Associates: <exact URL>"
     },
     {
       "id": "Q-04",
@@ -314,7 +314,7 @@
       "how_to_close": "Open https://www.amazon.com/dp/B0DHZTCNR5 in a signed-in browser, read the model or product-details field, and record what it says with the date. If it names the F1 Ace, the figures can be promoted and FLG-025 can close.",
       "sources": [
         "S04",
-        "S24"
+        "S21"
       ],
       "blocking": false
     },
@@ -331,7 +331,7 @@
     {
       "id": "Q-16",
       "question": "Is the draft privacy notice adequate, and does it need legal review before the analytics endpoint is switched on?",
-      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-040).",
+      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-035).",
       "lack": "A review by anyone qualified to give one. The draft was written by a build session from the code and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
       "who": "Site owner / counsel",
       "why_it_matters": "§3(e) is an Associates obligation and a violation of the Participation Requirements is a material breach. Switching the endpoint on before the notice is settled would collect data under an unreviewed disclosure.",
@@ -343,17 +343,13 @@
     },
     {
       "id": "Q-17",
-      "question": "Which of the five products did you actually mean to promote with each short link?",
-      "plain": "The five links you sent do not contain product IDs, and on re-test four of them opened the Amazon homepage instead of a product. I can see where each one landed on a given day, but I cannot know that the landing page is the one you chose. Without your answer, every product page here says 'this is where the link landed', never 'this is the product you submitted'.",
-      "why_it_matters": "It is the difference between a shop and a guess. If the destination is wrong, every article, every table and every button points at the wrong machine.",
-      "how_to_close": "Open each link signed in to your Associates account and reply with the product name and the 10-character ID from the address bar, one line per link.",
-      "answer_template": "B04G1MEwY = <product name> = <10-character ID>\nB02NbDxp3 = …\nB00hJ57DV = …\nB0c8moW59 = …\nB0f3GKalj = …",
-      "blocking": true,
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
       "sources": [
-        "S05",
-        "S04",
-        "S07"
-      ]
+        "S05"
+      ],
+      "blocking": false
     },
     {
       "id": "Q-18",

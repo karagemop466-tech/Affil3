@@ -502,6 +502,33 @@
     <p class="small muted">To have it built, reply with “S-19 A” and the option letter you want.</p>
   </div>
 </article>
+<article class="decision" id="S-20">
+  <header class="decision-head">
+    <p class="kicker">S-20 · Crawl control for a site served at a project path</p>
+    <h3>Crawl control for a site served at a project path</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site. </p>
+      <p class="opt-tradeoff">Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served. </p>
+      <p class="opt-tradeoff">Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.</p>
+    </li><li class="">
+      <p><span class="opt-id">D</span> Serve the root publication from a repository named for the owner&#39;s GitHub Pages host, so robots.txt is read from the host root. </p>
+      <p class="opt-tradeoff">Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
+    <p class="small muted">To have it built, reply with “S-20 A” and the option letter you want.</p>
+  </div>
+</article>
 <article class="decision" id="S-21">
   <header class="decision-head">
     <p class="kicker">S-21 · Where the site actually lives</p>
