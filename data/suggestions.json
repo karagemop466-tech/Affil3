@@ -40,13 +40,13 @@
         },
         {
           "id": "D",
-          "label": "Keep A, and give every product row a special_link field: the moment one link is generated in Associates Central, it is pasted there with its date, and the build prefers it over the constructed URL.",
+          "label": "Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.",
           "tradeoff": "Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.",
           "effort": "20 minutes per product",
           "risk": "low"
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it needs no change to the site's copy and makes the tested link the one that renders."
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders."
     },
     {
       "id": "S-03",
@@ -837,6 +837,98 @@
     },
     {
       "id": "S-26",
+      "track": "measurement",
+      "topic": "Where the analytics collector actually runs",
+      "problem": "The counter is built, reviewed and tested, and it is switched off, because GitHub Pages cannot run a server. Until 2026-11-20 nobody had demonstrated that it works. It now has been: tools/collector.mjs was started locally and driven with one request per defined event, all five were accepted and aggregated, and four kinds of malformed request were rejected and counted for nothing. What is left is not code. It is a host, and a decision about what is worth collecting at all.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the endpoint unset. The site publishes no traffic figures and no revenue figures, and the /measurement/ page says so in plain words.",
+          "tradeoff": "Nothing to deploy, nothing to disclose, nothing to get wrong. It also means the next guide topic is chosen by instinct rather than by measured queries, which is the gap S-21 was written to close.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a small always-on host and point analyticsEndpoint at it.",
+          "tradeoff": "Turns measurement on the day it is deployed. It also makes the host, its logs, its uptime and its backups part of what this site promises a reader, and the privacy notice has to describe a real company rather than a generic process.",
+          "effort": "an afternoon",
+          "risk": "medium"
+        },
+        {
+          "id": "C",
+          "label": "Write daily aggregate counts to a public JSON file in this repository from a scheduled GitHub Actions workflow, and let the browser POST to a queue instead of to the collector.",
+          "tradeoff": "No separate host, no server to pay for, and the counts stay in the repository history. It needs a browser write path that does not accept arbitrary POSTs, so the workflow is the part that has to be designed and reviewed carefully.",
+          "effort": "two to three days",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Measure only outbound clicks, with no page-view events at all.",
+          "tradeoff": "The smallest possible data set, and the only number actually tied to revenue. It cannot answer which guide brought the reader, which is the question the cadence decision needs.",
+          "effort": "one day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B if a host is available and the privacy notice can be settled first (Q-16). D if the only thing worth counting is revenue-bearing clicks. The collector is ready; the remaining work is hosting and disclosure, not code.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      "depends_on": [
+        "S-03",
+        "S-21"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-27",
+      "track": "platform",
+      "topic": "Image weight, and the intrinsic size nobody was checking",
+      "problem": "Every illustration on the site was a 3.3 to 4.0 MB PNG, and the front page loaded ten images before a line of text was read. The artwork is flat, grainy and mid-tone, which is exactly what a small palette compresses well, and it had been saved as a full-colour PNG. Separately, every <img> carried a hand-typed width and height and four of them no longer matched their files, so the browser reserved the wrong box and the page jumped as images arrived.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the images as they were.",
+          "tradeoff": "Free, and the pages render. It leaves the heaviest element on the page untouched on a site whose whole purpose is organic traffic, where page experience on a phone is a ranking input rather than a detail.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Re-encode the illustrations to a 256-colour palette at 1200 px, derive a 768 px card variant for grid cards and serve it through srcset, take the hero to JPEG, read every declared width and height from the file, and gate all of it (done 2026-11-20).",
+          "tradeoff": "No artwork changed and no file path moved, so no page reference moved. Front page images fell from 3,947 KB to 1,176 KB and the guides index from 3,568 KB to 442 KB (measured pixel RMSE 0.012 against the originals). The gate now fails if a declared size ever disagrees with its file again.",
+          "effort": "one hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Go further: move every illustration to JPEG, delete the PNGs, and add a weight ceiling to the gate so no image over 300 KB may be committed.",
+          "tradeoff": "The smallest files and a rule that stops the problem returning. It also means the illustration pages are no longer lossless, and a ceiling needs an exception path for a genuinely detailed image.",
+          "effort": "half a day",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B is done and was safe to do without a decision, because it changed no path and no pixel. C is the version that stops it coming back, and is worth doing the next time an illustration is added.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "B",
+      "decided_on": "2026-11-20",
+      "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
+    },
+    {
+      "id": "S-28",
       "track": "trust",
       "topic": "Answer-first summaries on every guide",
       "problem": "A guide that buries its answer under four headings is a guide a reader leaves, and a page a reader leaves is a page a search engine discounts. The brief's 'not AI slop' instruction is answered by giving the answer plainly, with its sources, before the argument - not by decoration.",
@@ -852,7 +944,7 @@
         {
           "id": "B",
           "label": "Add a 'summary' field per guide, rendered as a boxed short answer under the byline, and compute the word and minute count from the guide's own text at build time.",
-          "tradeoff": "Implemented 2026-11-20 for all fourteen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is a word count divided by 225 words a minute - a property of the page, not a measurement of the reader.",
+          "tradeoff": "Implemented 2026-11-20 for all fourteen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page's word count over 225 words a minute - a property of the text, not a measurement of the reader.",
           "effort": "done",
           "risk": "low"
         }
@@ -863,10 +955,10 @@
       ]
     },
     {
-      "id": "S-27",
+      "id": "S-29",
       "track": "findability",
       "topic": "How much structured data to publish",
-      "problem": "The shelf emits Article on guides and Product on product pages. Question-shaped guides with questions and answers on the page, and a three-level hierarchy under one root, are both describable in machine-readable form - the cheapest findability lever that needs no owner action and no host access, unlike the robots.txt problem in S-20.",
+      "problem": "The shelf emits Article on guides and Product on product pages. Question-shaped guides with questions and answers on the page, and a hierarchy under one root, are both describable in machine-readable form - the cheapest findability lever available that needs no owner action and no host access, unlike the robots.txt problem in S-20.",
       "current": "B",
       "options": [
         {
@@ -878,7 +970,7 @@
         },
         {
           "id": "B",
-          "label": "An @graph per guide: Article (with wordCount, section, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.",
+          "label": "An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.",
           "tradeoff": "Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.",
           "effort": "done",
           "risk": "low"
@@ -898,10 +990,10 @@
       ]
     },
     {
-      "id": "S-28",
+      "id": "S-30",
       "track": "trust",
       "topic": "A dated re-check ritual for listing copy",
-      "problem": "Four rounds have now read the five listings; three matched, and the fourth could not reach the site at all. Listing titles, accessories and prices change without notice, and this site publishes the wording it saw with a date on it. That is honest, but it quietly ages, and an automated check cannot do the job: unauthenticated fetches of Amazon fail or land on the home page in this sandbox (FLG-036, FLG-037).",
+      "problem": "Four rounds have read the five listings; three matched, and the fourth could not reach the site at all. Listing titles, accessories and prices change without notice, and this site publishes the wording it saw with a date on it. That is honest, but it quietly ages - and an automated check cannot do the job, because unauthenticated fetches of Amazon fail or land on the home page (FLG-036, FLG-037).",
       "current": "B",
       "options": [
         {
@@ -926,56 +1018,56 @@
           "risk": "high"
         }
       ],
-      "recommendation": "B, and explicitly not C. The same logic that keeps G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.",
+      "recommendation": "B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.",
       "depends_on": [
         "FLG-037",
         "S-21"
       ]
     },
     {
-      "id": "S-29",
+      "id": "S-31",
       "track": "platform",
-      "topic": "A citation-integrity check that catches wrong-meaning references",
-      "problem": "Eleven citation defects have now been found by hand in this repository: a flag crediting the 10-post rule to a manufacturer page, a workflow paragraph crediting the cadence to the wrong suggestion, four guides citing the FTC page for Chefman wattage figures, a byline sentence naming a team the config had already renamed, a stray degree sign inside a feature name, and a design-brief row blocking on the wrong suggestion. None of them broke a build, because every id involved resolves to a row that exists. A site whose whole claim is traceability cannot rely on 'the id exists' as its definition of a good citation.",
+      "topic": "A citation check that catches wrong meaning, not just a dangling id",
+      "problem": "Eleven cross-reference defects shipped in this repository before anyone noticed, because every id involved resolved: four guides cited the FTC endorsement page for Chefman wattage figures, two flags credited a Chefman product page with Amazon's application-review text, a byline sentence named a team the config had already renamed, a design-brief row blocked on the wrong suggestion, and one guide used source ids it never declared. None of these can be caught by an existence check, and traceability is the entire claim this site makes about itself.",
       "current": "C",
       "options": [
         {
           "id": "A",
           "label": "Rely on reviewers noticing.",
-          "tradeoff": "Eleven were missed across several sessions and found only by reading text against sources.",
+          "tradeoff": "Eleven were missed across several sessions and found only by reading text against the documents it cites.",
           "effort": "none",
           "risk": "medium"
         },
         {
           "id": "B",
           "label": "Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.",
-          "tradeoff": "Implemented 2026-11-20. It catches the dangling-reference class (FLG-038, FLG-040, FLG-041 in this repository's own numbering) and nothing else; a mis-numbered but existing id passes it.",
+          "tradeoff": "Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.",
           "effort": "done",
           "risk": "low"
         },
         {
           "id": "C",
-          "label": "Gate rules, further: an inline citation in guide prose must appear in that guide's own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, presets) may not cite a policy or consumer-advice page - only a maker, regulator or observed-listing row.",
-          "tradeoff": "Implemented 2026-11-20 alongside B; this is the rule that catches 'Chefman states 1700 W (S22-FTC)'. It will occasionally flag a legitimate sentence that quotes a regulator's number in a comparison, and the answer then is to cite the regulator properly rather than to loosen the rule.",
+          "label": "Two further rules, implemented with B: an inline citation in a guide must be declared in that guide's own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.",
+          "tradeoff": "Implemented 2026-11-20 in tools/verify.mjs section 3b; this is the pair that catches 'Chefman states 1700 W (S22)'. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.",
           "effort": "done",
           "risk": "low"
         },
         {
           "id": "D",
           "label": "Also require every guide sentence to carry an inline source id.",
-          "tradeoff": "Maximum auditability and every guide reads like a legal filing. The source list plus the product-page grid already do this job where the facts live.",
+          "tradeoff": "Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.",
           "effort": "hours",
           "risk": "medium"
         }
       ],
-      "recommendation": "B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason written above.",
+      "recommendation": "B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.",
       "depends_on": [
-        "FLG-042",
+        "FLG-044",
         "S-19"
       ]
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-26 to S-29 continue main's board after the 2026-11-20 merge; three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session's de-indexing proposal was folded into main's S-20 rather than duplicated, and its Special-Link idea became option D of main's S-02, for the same reason.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-28 to S-31 continue main's board after the 2026-11-20 merge (renumbered from this session's draft ids, which collided with main's S-20 to S-27). Three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session's de-indexing proposal was folded into main's S-20 and its Special-Link field became option D of main's S-02, for the same reason: the board should hold one row per decision.",
   "tracks": [
     {
       "id": "revenue",
@@ -1072,23 +1164,23 @@
     },
     {
       "order": 13,
-      "id": "S-26",
+      "id": "S-28",
       "why": "Shipped with this merge: answer-first summaries and computed reading stats on all fourteen guides."
     },
     {
       "order": 14,
-      "id": "S-27",
+      "id": "S-29",
       "why": "Shipped: Article + BreadcrumbList + FAQPage graph. Do not expect rich results from it."
     },
     {
       "order": 15,
-      "id": "S-28",
-      "why": "The only check that sees what a shopper sees, and deliberately manual (FLG-037)."
+      "id": "S-30",
+      "why": "The only check that sees what a shopper sees, and deliberately manual (FLG-036, FLG-037)."
     },
     {
       "order": 16,
-      "id": "S-29",
-      "why": "Shipped: eleven hand-found citation defects was the evidence; the gate now checks meaning, not just existence."
+      "id": "S-31",
+      "why": "Shipped: eleven mis-citations was the evidence; the gate now tests meaning, not just existence."
     }
   ],
   "decision_log": []

@@ -8,10 +8,31 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-// Kept in step with OWNED in tools/build.mjs. It previously omitted compare, workflow, privacy and
-// design-brief, so every per-page rule below silently skipped four published directories.
+// Kept in step with OWNED in tools/build.mjs. It omitted compare, workflow, privacy and design-brief, so
+// every per-page rule below silently skipped four published directories.
 const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
   'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief', '404.html'];
+// Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
+function imageSize(file) {
+  try {
+    const buf = fs.readFileSync(file);
+    if (buf.length > 24 && buf[0] === 0x89 && buf[1] === 0x50) {
+      return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+    }
+    if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+      for (let i = 2; i < buf.length - 9; ) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const m = buf[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) {
+          return { w: buf.readUInt16BE(i + 7), h: buf.readUInt16BE(i + 5) };
+        }
+        if (m === 0xd8 || m === 0xd9 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch { /* unreadable: treated as no size known */ }
+  return null;
+}
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -142,6 +163,16 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`${name}: image is served from this site`, src.startsWith(base + '/assets/img/'), src);
       const imgFile = src.startsWith(base) ? path.join(DOCS, src.slice(base.length)) : '';
       check(`${name}: image file exists`, !!imgFile && fs.existsSync(imgFile), src);
+      // The declared width and height must match the real file. A wrong intrinsic size makes the
+      // browser reserve the wrong box, so the page jumps when the image arrives.
+      if (imgFile && fs.existsSync(imgFile)) {
+        const real = imageSize(imgFile);
+        const w = (attrs.match(/\bwidth="(\d+)"/) || [])[1];
+        const h = (attrs.match(/\bheight="(\d+)"/) || [])[1];
+        if (real && w && h) {
+          check(`${name}: image dimensions match the file`, Number(w) === real.w && Number(h) === real.h, `${src} declares ${w}x${h}, file is ${real.w}x${real.h}`);
+        }
+      }
     }
     check(`${name}: has a canonical URL`, /<link rel="canonical" href="https:\/\/karagemop466-tech\.github\.io\/Affil3\//.test(html));
     if (path.basename(f) !== '404.html') {
@@ -268,12 +299,10 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
 }
 
 // ---------- 3. citation integrity (added 2026-11-20 by session b7320829-affil3) ----------
-// Registers and prose cross-reference rows by id: S01.. for sources, FLG-001.. for flags, S-01.. for
-// suggestions, Q-/K-/D-.. for the questions board. Nothing else in this file can see a broken reference,
-// and three of them shipped before this check existed (FLG-038, FLG-040, FLG-041): a flag citing a
-// manufacturer page for an Associates rule, a workflow paragraph citing the wrong suggestion, and a
-// byline sentence naming a team the config had already renamed. A dangling id is a citation that sends a
-// reviewer to the wrong document, so it fails the build.
+// Registers and prose cross-reference rows by id: S01.. sources, FLG-nnn flags, S-nn suggestions, and
+// Q-/K-/D- rows on the questions board. Nothing else in this file could see a broken reference, and a
+// batch of them shipped (FLG-044). Two layers: every id mentioned anywhere has to resolve to a real row,
+// and a citation that resolves still has to be allowed to carry the claim it is attached to.
 {
   const questionsDoc = read('data/questions.json');
   const resolves = {
@@ -299,13 +328,14 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     'data/suggestions.json', 'data/guides.json', 'data/events.json', 'data/ledger.json', 'data/config.json', 'data/design-brief.json'];
   for (const f of REGISTERS) {
     if (!fs.existsSync(path.join(ROOT, f))) continue;
-    const strs = stringsIn(JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')));
     const seen = new Set();
-    for (const str of strs) for (const m of str.matchAll(PAT)) {
-      const key = f + '|' + m[1];
-      if (seen.has(key)) continue;
-      seen.add(key);
-      check(`${f}: reference ${m[1]} resolves to a real row`, setFor(m[1]).has(m[1]), str.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' '));
+    for (const str of stringsIn(JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')))) {
+      for (const m of str.matchAll(PAT)) {
+        const key = f + '|' + m[1];
+        if (seen.has(key)) continue;
+        seen.add(key);
+        check(`${f}: reference ${m[1]} resolves to a real row`, setFor(m[1]).has(m[1]), str.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' '));
+      }
     }
   }
   // The same rule over the rendered pages: a sentence in a template is as much a citation as one in a register.
@@ -326,10 +356,9 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
 }
 
 // ---------- 3b. citation meaning, not just citation existence ----------
-// Existence checks cannot catch a reference to a row that exists and says something else, which is the
-// defect class this repository keeps producing: four guides cited the FTC endorsement page (S22) for Chefman
-// wattage figures, and two flags credited a Chefman product page (S11) with Amazon's application-review text
-// (FLG-042). Two rules follow, both about prose rather than bookkeeping.
+// Existence cannot catch a reference to a row that exists and says something else, which is the defect class
+// this repository keeps producing: five guides cited the FTC endorsement page (S22) for Chefman wattage
+// figures, and two flags credited a Chefman product page (S11) with Amazon's application-review text (FLG-044).
 {
   const SRC2 = new Map(sources.map((x) => [x.id, x]));
   // A source that can carry a product measurement: the maker, the observed retailer page, or the food-safety

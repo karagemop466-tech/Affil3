@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Executive summary">
 <meta name="twitter:description" content="Executive summary: what is built, what is verified, what is blocked, and the decisions needed.">
-<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
@@ -49,7 +49,8 @@
 <li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, 3 category clusters, 14 question-led guides, a Journal of seven catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
-<li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
+<li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5, and an explicit <code>index,follow</code> robots meta on every root page.</li>
+<li>Four dated verification rounds are on file in <code>data/observations/</code>. The most recent re-read seven official pages first-hand, recorded the fetches it could not complete as failures instead of as agreement, corrected eleven mis-citations, and added the gate rules that catch that class (FLG-044). The same round corrected a findability claim this site had been making about itself: a robots.txt file manages crawling and neither excludes a page from Google's index nor carries a noindex rule, which is Google's own wording (S24, S26) and is recorded as FLG-043.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>

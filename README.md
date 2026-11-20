@@ -17,7 +17,6 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 | `/counterwise/` | session `arena/c7a56e3d-affil3` | A fourth, independently generated publication: 5 question-shaped guides, 4 verified listings with product-intent records, comparison table, source register with retrieval grades, gate report, suggestions board, open questions, flagged-for-review, executive summary. Built and policed by `counterwise/tools/build.py` + `gate.py` (12 rules), 31 tests, self-hosted event collector shipped unarmed |
 | `/counter-desk/` | session `arena/3b45b513-affil3` | A reader-facing publication generated from its own register: front page, 5 product pages with withheld-value reasoning, 3 clusters, 7 question-led guides, an interactive counter-space & fit finder, an RSS feed and a sitemap. Gated by `tools/3b45b513/gate.mjs` (4,330 checks, 0 failed) with 19 gate tests; CI in `.github/workflows/counter-desk.yml` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
-| `/counter-desk/` | session `arena/77e4ac42-affil3` | A dashboard surface added on main; disallowed in the root `robots.txt` since 2026-11-20 |
 
 `/editorial/` and `/docs/` exist because their builds were written against different data models and
 each verification pass found things the other register did not. Keeping all builds preserves every
@@ -80,7 +79,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` prints its own tally; at this commit it runs **7,757 checks** over the published root
+`node tools/verify.mjs` prints its own tally; at this commit it runs **7,990 checks** over the published root
 pages (the figure grew because the gate's page list was synced with the build's, which had been skipping
 `compare/`, `workflow/`, `privacy/` and `design-brief/`, and because of the citation rules below). It stops the build on:
 
