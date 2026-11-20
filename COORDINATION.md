@@ -596,3 +596,25 @@ Parallel proposals remain untouched. Root publication is already the Pages sourc
 checkpoint. It was never dead. That single over-cautious observation cost a product row, put a meat
 thermometer under the wrong submitted link, and was carried into the published page. **A checkpoint
 is not evidence a link is dead** — retry before recording a negative.
+# Session `f5136b4e` — publication/index and link-validation safety pass
+
+Registry: session `f5136b4e`, branch `arena/f5136b4e-affil3`, status active. Scope: `COORDINATION.md`, `data/config.json`, `data/products.json`, `data/suggestions.json`, `tools/build.mjs`, `tools/verify.mjs`, `tools/build.py`, generated site pages, and robots/sitemap output. This scope addresses two newly identified publication risks: two independently indexable site surfaces and product CTAs rendered before Associates Central validation.
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| One indexable canonical publication | done | `tools/build.py`, generated `editorial/`, `robots.txt`, `tools/build.mjs`, `README.md` | Root publication remains indexable and is the only sitemap in root robots.txt; every `/editorial/` HTML page is `noindex,follow`, and its sitemap is empty. Source S18 is Google Search Central robots-meta guidance: https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag. |
+| Special Link G-02 rendering gate | done | `data/products.json`, `data/flags.json`, `data/suggestions.json`, `tools/build.mjs`, `tools/verify.mjs`, generated root pages | All five records have separate pending validation evidence fields. No product CTA renders until all five have a validated Associates URL, matching confirmed destination, tracking-report reference, date, and source. The submitted short links are not called invalid; FLG-003 stays unresolved. |
+| Buyer-facing front page and decision queue | done | `tools/build.mjs`, generated pages, `data/questions.json`, `data/suggestions.json`, executive-summary files, `README.md` | Front page uses buyer-guide navigation and product cards rather than ASIN/status labels. Added Q-14/S-11 for an AI/data-provider and human-review gate. Old executive snapshots clearly marked superseded. |
+| Verify, rebuild and record findings | done | root + archive generated files, this board | `node tools/build.mjs && node tools/verify.mjs`: 28 pages, 5 feed items, 27 root sitemap URLs, 1,689 checks passed, 0 failed. `python3 tools/build.py && python3 tools/check_site.py`: 21 archive pages passed; no prices/ratings, no broken internal links, all noindex, empty archive sitemap. |
+
+**Sources checked for this scope:** Google Search Central robots-meta guidance (S18) fetched and read, including the page-specific meta directive and meaning of `noindex`. Existing site citations/policies were not rewritten; product identity values and observed destinations were left unchanged.
+
+**Limits/irregularities still open:** G-02 needs an Associates Central session; intended ASINs and confirmation fields remain blank; Search Console and analytics collector are inactive; AI/provider, authorized data sources, and a human reviewer are unselected (Q-14/S-13). These require account/owner access and are published in the Questions/Flagged pages.
+
+Claim recorded before implementation. The existing PR/merge history above is historical and does not change the current branch assignment.
+
+## Rebase / integration note — 2026-11-20
+
+`git pull --rebase origin main` found that `main` had advanced to `07f209d` and conflicted across the generated root HTML, root generator, data registers, and coordination board. Resolved by retaining the updated `main` publication, its official manufacturer-source findings and original imagery; re-applied this session's CTA gate, canonical-index change, Q-14/S-11 and source S18; regenerated both sites; and re-ran both verification gates. No upstream product evidence or corrections were discarded. Current branch remains `arena/f5136b4e-affil3`.
+
+PR/deploy record is pending until the rebased commit is pushed and GitHub checks/Pages status are observed.

@@ -41,6 +41,14 @@ for (const s of sources) {
 const REQUIRED = ['id', 'category', 'submitted_url', 'submitted_token', 'intended_asin', 'official_listing_url', 'confirmation_date', 'confirmation_source', 'confirmation_status', 'flags', 'observed_final_url', 'observed_asin', 'observed_title', 'observed_breadcrumb', 'observed_date', 'sources', 'tagged_outbound_url', 'outbound_status'];
 for (const p of products) {
   for (const k of REQUIRED) check(`${p.id} has field ${k}`, Object.prototype.hasOwnProperty.call(p, k), k);
+  const validation = p.special_link_validation || {};
+  check(`${p.id} has Special Link evidence record`, ['pending', 'validated'].includes(validation.status));
+  if (validation.status === 'pending') check(`${p.id} pending link has no false validation evidence`, !validation.validated_url && !validation.confirmation_source && !validation.confirmation_date && !validation.tracking_report_reference);
+  if (validation.status === 'validated') {
+    let validatedUrl; try { validatedUrl = new URL(validation.validated_url); } catch {}
+    check(`${p.id} validated Special Link has URL, destination, report, date and source`, !!validatedUrl && !!validation.confirmed_destination && !!validation.tracking_report_reference && !!validation.confirmation_source && /^\d{4}-\d{2}-\d{2}$/.test(validation.confirmation_date || ''));
+    check(`${p.id} validated Special Link carries expected tag and destination`, !!validatedUrl && validatedUrl.protocol === 'https:' && validatedUrl.hostname === 'www.amazon.com' && validatedUrl.searchParams.get('tag') === TAG && validation.confirmed_destination === validatedUrl.origin + validatedUrl.pathname && !!validatedUrl.pathname.match(/\/dp\/[A-Z0-9]{10}/i));
+  }
   check(`${p.id} submitted token length recorded correctly`, p.submitted_token.length === p.submitted_token_length);
   // Intended fields: only filled when a 10-character ASIN and an official listing URL are confirmed.
   if (p.intended_asin) {
@@ -69,6 +77,18 @@ for (const p of products) {
   check(`${p.id} has no price, rating or availability field`, !/price|rating|availability|stock/i.test(Object.keys(p).join(' ')));
 }
 check('five submitted product rows present', products.length === 5, String(products.length));
+const specialLinksReady = products.length > 0 && products.every((p) => {
+  const v = p.special_link_validation || {};
+  return v.status === 'validated' && !!v.validated_url && !!v.confirmed_destination &&
+    !!v.tracking_report_reference && !!v.confirmation_date && !!v.confirmation_source;
+});
+check('G-02 evidence exists for every product before enabling purchase links', !specialLinksReady || products.every((p) => {
+  const v = p.special_link_validation;
+  let u; try { u = new URL(v.validated_url); } catch { return false; }
+  return u.protocol === 'https:' && u.hostname === 'www.amazon.com' &&
+    u.searchParams.get('tag') === TAG && !!u.pathname.match(/\/dp\/[A-Z0-9]{10}/i) &&
+    v.confirmed_destination === u.origin + u.pathname && /^\d{4}-\d{2}-\d{2}$/.test(v.confirmation_date);
+}));
 for (const g of guides) {
   for (const sid of g.sources) check(`guide ${g.slug} source ${sid} exists`, SRC.has(sid), sid);
 }
@@ -112,6 +132,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const name = rel(f);
     const body = html.replace(/<script[\s\S]*?<\/script>/g, '');
     check(`${name}: disclosure strip above main`, /<div class="disclosure-strip"[\s\S]*?Disclosure\.[\s\S]*?<\/div>\s*<main/.test(html));
+    if (!specialLinksReady) check(`${name}: no purchase CTA before G-02 evidence`, !/data-outbound/.test(html));
     check(`${name}: Associates statement present`, html.includes(cfg.associatesStatement));
     check(`${name}: footer repeats disclosure`, /<footer[\s\S]*<p class="disclosure-footer">[\s\S]*?Disclosure\./.test(html));
     check(`${name}: no meta refresh / redirect`, !/http-equiv="refresh"|window\.location\s*=/.test(html));
@@ -167,8 +188,11 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     if (p.no_buy_link) {
       check(`product page ${p.id} publishes no buy button`, !/data-outbound/.test(h));
       check(`product page ${p.id} explains why`, /No buy button on this page/.test(h));
+    } else if (!specialLinksReady) {
+      check(`product page ${p.id} publishes no buy button before G-02`, !/data-outbound/.test(h));
+      check(`product page ${p.id} explains its G-02 hold`, /Purchase link held for validation/.test(h));
     } else {
-      check(`product page ${p.id} has exactly one tagged outbound buy link`, (h.match(/data-outbound/g) || []).length === 1 && h.includes(`tag=${TAG}`));
+      check(`product page ${p.id} has exactly one validated outbound buy link`, (h.match(/data-outbound/g) || []).length === 1 && h.includes(p.special_link_validation.validated_url));
     }
     check(`product page ${p.id} names its source ids`, (p.sources || []).every((id) => h.includes(`>${id}<`) || h.includes(id)));
   }
@@ -191,9 +215,28 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
-  check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
+  const robotsText = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
+  check('robots.txt references the canonical sitemap', robotsText.includes(cfg.siteUrl + '/sitemap.xml'));
+  check('robots.txt does not advertise duplicate editorial sitemap', !robotsText.includes('/editorial/sitemap.xml'));
+  check('robots.txt allows crawlers to read editorial noindex directives', !robotsText.includes('Disallow: /editorial/'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
+}
+
+// The historical editorial register stays available as a review archive, not a second search publication.
+const editorialDir = path.join(ROOT, 'editorial');
+if (fs.existsSync(editorialDir)) {
+  const archiveHtml = [];
+  const walkArchive = (dir) => { for (const entry of fs.readdirSync(dir)) { const f = path.join(dir, entry); if (fs.statSync(f).isDirectory()) walkArchive(f); else if (f.endsWith('.html')) archiveHtml.push(f); } };
+  walkArchive(editorialDir);
+  for (const f of archiveHtml) {
+    const html = fs.readFileSync(f, 'utf8');
+    check(`${path.relative(ROOT, f)} is noindex`, /<meta name="robots" content="noindex,follow">/.test(html));
+  }
+  const archiveMap = fs.readFileSync(path.join(editorialDir, 'sitemap.xml'), 'utf8');
+  check('editorial archive sitemap contains no URLs', !/<url>/.test(archiveMap));
+  const rootMap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+  check('canonical root sitemap excludes editorial archive', !rootMap.includes('/editorial/'));
 }
 
 // ---------- report ----------

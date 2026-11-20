@@ -160,6 +160,16 @@
       "used_for": "Explaining in plain English how a click earns: a 24-hour session, or up to 89 days if the item is added to the cart first.",
       "status": "verified",
       "quote": "during a single session, which is measured as beginning when a customer clicks through that Special Link and ending upon the first to occur of the following: (x) 24 hours elapse from that click"
+    },
+    {
+      "id": "S18",
+      "title": "Robots meta tag, data-nosnippet, and X-Robots-Tag specifications",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "updated": "not stated",
+      "method": "fetched; read the robots meta tag and noindex sections",
+      "used_for": "Google documents the robots meta tag as a page-specific indexing control and says noindex means do not show that page in search results. Used to mark the retained editorial archive noindex.",
+      "status": "verified"
     }
   ]
 }

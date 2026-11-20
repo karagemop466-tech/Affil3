@@ -26,6 +26,12 @@ const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
+const specialLinksReady = products.length > 0 && products.every((p) => {
+  const v = p.special_link_validation || {};
+  return v.status === 'validated' && !!v.validated_url && !!v.confirmed_destination &&
+    !!v.tracking_report_reference && !!v.confirmation_date && !!v.confirmation_source;
+});
+const validatedSpecialLink = (p) => p.special_link_validation?.validated_url || '';
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake',
@@ -65,6 +71,7 @@ const DASHBOARDS = [
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Disclosure and compliance'],
   ['/about/', 'About and corrections'],
+  ['/editorial/', 'Editorial record (noindex archive)'],
 ];
 const NAV = [
   ['/shop/', 'The picks'],
@@ -166,7 +173,7 @@ ${body}
 // ---------- components ----------
 function pickCard(p) {
   const c = catOf(p.category);
-  const hasLink = !!p.tagged_outbound_url && !p.no_buy_link;
+  const hasLink = specialLinksReady && !!validatedSpecialLink(p) && !p.no_buy_link;
   const specs = [
     p.capacity_qt ? `<span><b>${esc(p.capacity_qt)} qt</b></span>` : '',
     p.temp_max_f ? `<span>to <b>${esc(p.temp_max_f)} °F</b></span>` : '',
@@ -180,7 +187,7 @@ function pickCard(p) {
     <span class="pick-name">${esc(p.short_name)}</span>
     <p class="pick-fit">${esc(p.fit_line)}</p>
     <div class="pick-spec">${specs || `<span>Specifications pending</span>`}</div>
-    <span class="pick-cta">${hasLink ? 'Read the verdict' : 'Read why there is no link'}</span>
+    <span class="pick-cta">${hasLink ? 'View product details' : 'See what we could verify'}</span>
   </div>
 </a>`;
 }
@@ -215,8 +222,14 @@ function buyBox(p, placement = 'product-page') {
     <p class="small">The listing this unit was observed on is recorded on the <a href="${esc(href('/shop/'))}">comparison table</a> with its source link.</p>
   </div>`;
   }
+  if (!specialLinksReady || !validatedSpecialLink(p)) {
+    return `<div class="buybox hidden-link">
+    <p><strong>Purchase link held for validation.</strong> This product's Associates Central destination and tracking-report check have not been recorded yet.</p>
+    <p class="small">The product remains in the comparison; no claim is made that the supplied short link is invalid. See <a href="${esc(href('/flagged/'))}#FLG-005">G-02 / FLG-005</a>.</p>
+  </div>`;
+  }
   return `<div class="buybox">
-    <a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">Check the current price on Amazon</a>
+    <a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a>
     <span class="btn-note">Affiliate link, marked sponsored. Opens the ${esc(p.brand)} listing on Amazon.com. We do not display prices because they change and we do not use Amazon price data.</span>
   </div>`;
 }
@@ -384,9 +397,11 @@ const guideBySlug = (s) => guides.find((g) => g.slug === s);
     p.dimensions_in ? `${esc(p.dimensions_in)} in` : cellText(''),
     p.dishwasher_safe ? 'Yes' : cellText(''),
     p.observed_title ? ext(p.observed_final_url, 'listing', '') : cellText(''),
-    p.tagged_outbound_url && !p.no_buy_link
-      ? ext(p.tagged_outbound_url, 'Amazon', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)
-      : '<span class="small muted">withheld</span>',
+    p.no_buy_link
+      ? `<span class="small muted">No buy link: ${esc(p.no_buy_link_reason || 'no eligible product link')}</span>`
+      : specialLinksReady && validatedSpecialLink(p)
+        ? ext(validatedSpecialLink(p), 'Amazon', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)
+        : '<span class="small muted">withheld pending G-02</span>',
     flagLinks(p.flags),
   ]);
   const sourceRows = products.map((p) => [
@@ -412,7 +427,7 @@ const guideBySlug = (s) => guides.find((g) => g.slug === s);
   <p class="deck">The short version first. Every number in the top table comes from the maker's own specification page; a dash means the maker did not state it, and we would rather show a dash than borrow a number from a reseller.</p>
 </section>
 ${table(['', 'Product', 'Shape', 'Capacity', 'Max temp', 'Size (in)', 'Dishwasher', 'Listing', 'Buy', 'Flags'], rows, 'wide')}
-<div class="prose"><div class="note">Two links are still unresolved. One of the five supplied short links never reached a product page, and the ThermoMaven unit has no manufacturer page for its specifications, so it carries no buy button. Both are explained on the <a href="${esc(href('/flagged/'))}">flagged for review</a> page.</div></div>
+<div class="prose"><div class="note">All five submitted links have dated observed destinations, but none is treated as the product the owner intended until confirmed. The ThermoMaven has no manufacturer specification page, so no product CTA is planned for it. Affiliate purchase links for the other products remain held until Associates Central destination and tracking-report evidence is recorded (G-02). See <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</div></div>
 
 <section class="band">
   <h2>The source register behind the table</h2>
@@ -468,7 +483,7 @@ for (const p of products) {
     <h1 style="font-size:clamp(30px,3.6vw,44px)">${esc(p.name)}</h1>
     <p class="deck">${esc(p.lede)}</p>
     ${buyBox(p)}
-    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-005'])}), so treat it as provisional.` : `No outbound link is published for this product. ${esc(p.note || '')}`}</p>
+    <p class="small muted">${p.no_buy_link ? `No product purchase link is published. ${esc(p.note || '')}` : specialLinksReady && validatedSpecialLink(p) ? 'The tested Special Link and its tracking-report evidence are recorded.' : `The draft tagged destination is not published as a purchase link until its Associates Central destination and tracking report are verified (${flagLinks(['FLG-005'])}).`}</p>
   </div>
 </section>
 
@@ -710,17 +725,18 @@ add({
 <li><strong>Whether the Associates account is active and declares this site</strong> ${flagLinks(['FLG-008'])}.</li>
 </ul>
 
-<h2>Four decisions only the owner can make</h2>
+<h2>Five decisions only the owner can make</h2>
 <ol>
 <li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site.</li>
-<li>Test one Special Link per product in Associates Central, then confirm the click appears in a report.</li>
+<li>Test one Special Link per product in Associates Central, then confirm the destination and tracking-report row.</li>
 <li>Deploy the analytics collector, or decide to run with no measurement for now.</li>
-<li>Pick a publishing cadence, or the feed will not grow.</li>
+<li>Pick a publishing cadence and nominate the reader the guides are written for.</li>
+<li>Choose whether to pilot AI-assisted research/drafting, and name the authorized data sources, provider, budget, and human editor.</li>
 </ol>
 <p>Each of those is written up with its trade-offs on the <a href="${esc(href('/suggestions/'))}">suggestions page</a>.</p>
 
-<h2>What this build cannot do</h2>
-<p>It cannot read Amazon prices, sales, or Associates reports, because that needs authorized API access the build does not have. It does not scrape Amazon. Any figure that would require that data is absent on purpose, not forgotten.</p>
+<h2>What this build cannot do yet</h2>
+<p>This is a sourced static publication, not an AI-powered research or publishing platform. No AI provider, Amazon product-data API, trend/keyword feed, Search Console property, or analytics endpoint is connected. Product research, query-led topic selection and publication are not automated; no popularity, conversion, commission, or revenue claims are made. It cannot read Amazon prices, sales, or Associates reports without authorized access, and it does not scrape Amazon. See <a href="${esc(href('/questions/'))}">Q-14</a> and <a href="${esc(href('/suggestions/'))}">S-11</a>.</p>
 </div>
 </div>`,
   });
@@ -796,7 +812,7 @@ ${table(['ID', 'Method', 'Closes'], questions.discovery.map((d) => [`<strong>${e
 add({
   path: '/suggestions/', type: 'suggestions',
   title: 'Suggestions to choose between',
-  description: 'The decisions waiting on the owner, each with its trade-offs. Nothing is implemented until an option is chosen.',
+  description: 'Owner decisions with trade-offs. Safety gates remain in force until their validation evidence is recorded.',
   body: `<div class="wrap">
 <section class="page-head"><p class="kicker">Decision board</p><h1>Choose a path before anything changes</h1>
 <p class="deck">${esc(suggestionsDoc.note)}</p></section>
@@ -869,9 +885,9 @@ add({
 </div>
 ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-01', 'Disclosure above the fold on every page, repeated in the footer', 'Automated in the build', '<span class="badge good">passing</span>'],
-    ['G-02', 'One Special Link per product tested in Associates Central, destination and report confirmed', 'Manual, needs Associates login', `<span class="badge sev-high">pending</span> ${flagLinks(['FLG-005'])}`],
+    ['G-02', 'One Special Link per product tested in Associates Central, destination and report evidence recorded', 'Manual, needs Associates login', specialLinksReady ? '<span class="badge good">passed</span>' : `<span class="badge sev-high">pending; purchase CTAs withheld</span> ${flagLinks(['FLG-005'])}`],
     ['G-03', 'Every Amazon-hosted link carries rel="sponsored"', 'Automated in the build', '<span class="badge good">passing</span>'],
-    ['G-04', 'Every outbound product link uses the tag ' + cfg.trackingId, 'Automated in the build', '<span class="badge good">passing</span>'],
+    ['G-04', 'Every published product CTA uses a validated link tagged ' + cfg.trackingId, 'Automated + G-02 evidence', specialLinksReady ? '<span class="badge good">passing</span>' : '<span class="badge sev-low">no product CTAs published</span>'],
     ['G-05', 'No redirect or cloaking page generated', 'Automated in the build', '<span class="badge good">passing</span>'],
     ['G-06', 'No price, rating or availability displayed', 'Automated in the build', '<span class="badge good">passing</span>'],
     ['G-07', 'Every product row has at least one official source link', 'Automated in the build', '<span class="badge good">passing</span>'],
@@ -967,6 +983,6 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /editorial/
 
 Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml

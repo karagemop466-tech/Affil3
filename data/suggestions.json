@@ -1,5 +1,5 @@
 {
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B'.",
+  "note": "Decision queue: 'Current' describes the live setting; recommendations are proposals, not owner approvals. Optional changes remain unimplemented until chosen. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation. Reply with a suggestion ID and option letter (for example 'S-03 B').",
   "suggestions": [
     {
       "id": "S-01",
@@ -27,20 +27,20 @@
     {
       "id": "S-02",
       "topic": "Buy buttons while links are untested",
-      "current": "A",
+      "current": "B",
       "options": [
         {
           "id": "A",
-          "label": "Keep the buy buttons, labelled as provisional and pending a tracking check (current).",
+          "label": "Keep buy buttons while the Associates test is pending (not selected).",
           "tradeoff": "The site can earn from day one, but an untested link that silently fails credits nothing."
         },
         {
           "id": "B",
-          "label": "Hide every buy button until gate G-02 passes.",
+          "label": "Hide every buy button until gate G-02 passes (current).",
           "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
+      "recommendation": "B until every product has a recorded Associates Central test, confirmed destination, and tracking-report evidence."
     },
     {
       "id": "S-03",
@@ -220,6 +220,29 @@
         }
       ],
       "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    },
+    {
+      "id": "S-11",
+      "topic": "AI research and publishing automation",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep research and publishing manual for now; use explicit source, validation, and disclosure gates (current).",
+          "tradeoff": "No provider cost or generated claims, but no automated research or drafts."
+        },
+        {
+          "id": "B",
+          "label": "Pilot AI-assisted drafts using only approved product/query data, with citations and mandatory human approval.",
+          "tradeoff": "Can speed research and first drafts; requires an authorized source, model/provider, data terms, budget, and named editor."
+        },
+        {
+          "id": "C",
+          "label": "Automatically publish AI-generated product pages and links.",
+          "tradeoff": "Highest automation and risk; requires validated source data, policy checks, working analytics, and rollback owner. Not recommended now."
+        }
+      ],
+      "recommendation": "B only after Q-14 and D-09 are answered; do not automate publication before evidence and review gates exist."
     }
   ]
 }

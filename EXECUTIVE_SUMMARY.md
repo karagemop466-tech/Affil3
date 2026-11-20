@@ -1,4 +1,8 @@
-# Affil3 — Executive summary
+# Historical executive-summary snapshot — superseded
+
+> **Do not use this snapshot for current product or release status.** It describes an earlier site version and contains findings that were later corrected. The current summary is [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) and the current site page is https://karagemop466-tech.github.io/Affil3/executive-summary/.
+
+# Affil3 — Executive summary (historical)
 
 **Repository:** `karagemop466-tech/Affil3`
 **Branch:** `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)

@@ -52,13 +52,13 @@
       "id": "FLG-005",
       "severity": "high",
       "title": "Tagged Special Links are not yet validated in Associates Central",
-      "detail": "The outbound links use the Associates tracking ID shopnow047c-20 in the /dp/ format (?tag=). Operating Agreement §1 defines Special Links as links in the tagged formats Amazon provides, and Participation Requirements §2 requires the tag as a URL parameter (S01, S02). The links have not been generated or tested in Associates Central, and no tracking report has been reviewed, because the sandbox has no Associates login. Gate G-02 requires one link per product to be validated before any scaling.",
+      "detail": "The product register contains draft /dp/ URLs with the Associates tracking ID, but they are not published as product links. They have not been generated or tested in Associates Central, and no tracking report has been reviewed because the sandbox has no Associates login. Gate G-02 requires a per-product test, destination confirmation, tracking-report reference, date and source before these links can render.",
       "sources": [
         "S01",
         "S02",
         "S04"
       ],
-      "manual_step": "Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done."
+      "manual_step": "In Associates Central, generate one Special Link per intended product, click it, confirm its destination and tracking-report entry, then record each result in the product validation record. The publishing gate remains closed until all five records are complete."
     },
     {
       "id": "FLG-006",
