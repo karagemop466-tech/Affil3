@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "id": "clusters",
+    "purpose": "The topic clusters that hold guides together. A cluster is a buyer question plus the axes that answer it; it is not a keyword bucket.",
+    "note": "Everything in 'basis' is an assumption inherited from the brief's working titles, marked as such on the rendered page (FLG-005)."
+  },
+  "clusters": [
+    {
+      "id": "air-fryers",
+      "title": "Air fryers, without the hype",
+      "question": "What should a person actually compare when the marketing is identical on every box?",
+      "basis": "The brief's suggested editorial hypotheses are all air-fryer and multi-function cooker topics. No listing data supports the assignment.",
+      "axes": [
+        { "name": "Capacity you can use", "why": "Advertised quarts measure the cavity, not what fits in one batch; a 6-quart basket still cooks a single layer of wings.", "verify_by": "the listing's own capacity statement plus the internal dimensions if published" },
+        { "name": "Footprint and clearance", "why": "The appliance has to live somewhere with vent clearance, and the counter is the scarce resource, not the outlet.", "verify_by": "measured dimensions on the listing, a tape measure, and your own counter" },
+        { "name": "Cleanup surface area", "why": "Coatings, baskets, trays and lids are where owners quit; this is the most common abandoned-appliance complaint pattern, and it is checkable from the parts list.", "verify_by": "the parts diagram and the dishwasher-safe statement on the listing" },
+        { "name": "Controls you will actually use", "why": "Oven-style units with dozens of presets trade a learning curve for buttons you may press twice. Multi-function claims only pay rent if you cook more than fried things.", "verify_by": "the control description and the included-accessory list" }
+      ],
+      "status": "live",
+      "review_by": "2027-03-31",
+      "review_by_basis": "Seasonal copy is reviewed before its next season, not left to rot: promotional and seasonal sentences must be pulled once the underlying Amazon promotion ends."
+    },
+    {
+      "id": "counter-space",
+      "title": "Counter space and cleanup",
+      "question": "Where will it live, and who washes it?",
+      "basis": "Same inheritance as above; promoted to its own cluster because it is the angle the big review sites cover worst.",
+      "axes": [
+        { "name": "Permanent vs. cupboard home", "why": "Decide this before you buy, because it changes the size you should want more than any rating does.", "verify_by": "your kitchen" },
+        { "name": "Cord and outlet geometry", "why": "Short cords and rear vents kill otherwise good placements.", "verify_by": "listing spec plus a tape measure" },
+        { "name": "Number of washable parts", "why": "Parts count predicts abandonment better than taste does.", "verify_by": "included-accessories list" }
+      ],
+      "status": "live",
+      "review_by": "2027-03-31",
+      "review_by_basis": "tied to the air-fryers cluster"
+    }
+  ],
+  "seasons": [
+    {
+      "id": "holiday-kitchen-2026",
+      "title": "Holiday kitchen, 2026",
+      "window": "2026-11-20 to 2026-12-24",
+      "angle": "Oven is the bottleneck, not the counter: what a second heat source is actually for.",
+      "status": "planning",
+      "note": "Deliberately not a deal page. No price or promotion language, per the gate: mentions of time-limited offers must be removed the moment they end.",
+      "review_by": "2026-12-26"
+    },
+    {
+      "id": "january-reset-2027",
+      "title": "January cooking reset, 2027",
+      "window": "2027-01-01 to 2027-01-31",
+      "angle": "The appliance you will still use in March.",
+      "status": "planning",
+      "review_by": "2027-02-07"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "id": "people",
+    "purpose": "Authorship. The brief asked for authorship as a reader-trust device; a fabricated reviewer is a liability, so this file carries what is true and leaves the rest null pending Q-10.",
+    "rule": "If a person row has consent=false or credentials=null, the build renders no bio for them and no 'expert reviewed' badge anywhere."
+  },
+  "site_team": {
+    "name": "Counter Tested",
+    "kind": "collective",
+    "consent": true,
+    "who_we_are": "A small publishing operation that writes buying questions and publishes its own verification paperwork. We have not tested any of the five products on this shelf, and we say so on every page.",
+    "what_we_can_claim": [
+      "we read the programme rules and the FTC guidance and built the site to them",
+      "we state the source of every number we print, and leave the rest blank"
+    ],
+    "what_we_cannot_claim": [
+      "hands-on testing",
+      "laboratory measurement",
+      "professional review status",
+      "that Amazon endorses us (it does not; the agreement forbids implying it)"
+    ],
+    "contact": { "email": null, "channel": "open an issue on the repository", "why_null": "No contact address was supplied in the brief. Add one at data/people.json:site_team.contact.email - a mailto link is the only capture mechanism this build ships (see SG-30)." }
+  },
+  "named_authors": [],
+  "reviewer": null,
+  "_pending": "Q-10: name a real byline or keep the collective. The build will not invent one."
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Measurement · Counter Tested</title>
+<meta name="description" content="The five defined events, the cookieless self-hosted collector, and the honest limits of what site-side measurement can say.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/measurement.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counter Tested">
+<meta property="og:title" content="Measurement">
+<meta property="og:description" content="The five defined events, the cookieless self-hosted collector, and the honest limits of what site-side measurement can say.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/measurement.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Counter Tested guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body data-page-kind="page" data-doc="" data-collector="" data-schema-version="1">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="index.html"><b>Counter Tested</b><span>Small kitchen appliances, picked the slow way.</span></a>
+  <nav class="main" aria-label="Primary"><a href="shelf.html">Shelf</a><a href="guides.html">Guides</a><a href="topics.html">Topics</a>
+    <span class="group">How we work</span><a href="executive-summary.html">Executive summary</a><a href="source-register.html">Source register</a><a href="suggestions.html">Suggestions</a><a href="questions.html">Open questions</a>
+    <a href="executive-summary.html" aria-current="page">Full index</a>
+  </nav>
+</div></header>
+<div class="disclosure" id="disclosure-strip"><div class="wrap"><b>Disclosure.</b> <span>Counter Tested may earn a commission on qualifying purchases made through the Amazon links on this page. That is paid to us by Amazon, not added to what you pay. Links to Amazon are marked sponsored. <a href="about.html">How this site works</a>.</span><span class="tag-line">“As an Amazon Associate I earn from qualifying purchases.”</span></div></div>
+<main id="main">
+<div class="wrap page-head">
+  <p class="kicker">Instrument</p>
+  <h1>Measurement</h1>
+  <p class="measure">Five events, one collector we run ourselves, no cookies, and an explicit refusal to record anything a bot could fire. The point is not vanity numbers: it is that the site should be able to say which paragraph earned a click, and then behave as if that answer exists.</p>
+  <div class="statgrid">
+    <div class="stat"><b>5</b><span>events defined</span></div>
+    <div class="stat"><b>not configured</b><span>collector endpoint</span></div>
+    <div class="stat"><b>0</b><span>cookies set</span></div>
+    <div class="stat"><b>0</b><span>third-party scripts</span></div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="callout"><h4>Endpoint status, stated plainly</h4><p style="margin:0">The endpoint is <code>null</code>. GitHub Pages serves static files and cannot run a process, so as published this site records nothing about its visitors; the script counts in the visitor’s browser and goes no further. Deploying <code>tools/collect_server.py</code> on any host that runs a process turns measurement on by writing one value into <code>data/program.json</code>. An empty ledger is a legitimate result. A filled one that nobody measured is not.</p></div>
+  <h2>The five events</h2>
+  <div class="flagcard" id="EV-01"><h3>EV-01 · <code>page_view</code></h3>
+            <dl><dt>Fires on</dt><dd>the page&#x27;s own script, after first paint, once per load</dd>
+            <dt>Extra fields</dt><dd>host_kind (pages|local)</dd>
+            <dt>What it answers</dt><dd>Did anyone arrive, and on which page?</dd>
+            <dt>Deliberately not recorded</dt><dd>referrer string, user agent, screen size, IP</dd>
+            <dt>Why it is limited that way</dt><dd>Referrer is deliberately dropped: it is the only field in this design that could identify a person&#x27;s browsing, and the value of keeping it is smaller than the cost of disclosing it.</dd></dl></div><div class="flagcard" id="EV-02"><h3>EV-02 · <code>guide_view</code></h3>
+            <dl><dt>Fires on</dt><dd>a guide or topic page, when the reader has been visible to the page for 30 seconds or has scrolled past 75%, whichever comes first</dd>
+            <dt>Extra fields</dt><dd>doc, dwell_s, depth_pct</dd>
+            <dt>What it answers</dt><dd>Is the editorial work being read, or bounced from?</dd>
+            <dt>Deliberately not recorded</dt><dd>mouse movement, keystrokes, exact scroll trace</dd>
+            <dt>Why it is limited that way</dt><dd>A threshold instead of a continuous trace keeps it a reading signal rather than surveillance, and &#x27;engaged&#x27; means something defensible: 30 seconds is stated in the schema, so it cannot quietly be redefined later to flatter a page.</dd></dl></div><div class="flagcard" id="EV-03"><h3>EV-03 · <code>outbound_click</code></h3>
+            <dl><dt>Fires on</dt><dd>pointer activation on an element marked data-affiliate, before navigation</dd>
+            <dt>Extra fields</dt><dd>product_slot, destination_host, tag_present, block_id</dd>
+            <dt>What it answers</dt><dd>Which shelf card or which paragraph turned a reader into a click - the only on-site signal that has a commission attached to it.</dd>
+            <dt>Deliberately not recorded</dt><dd>the final URL, the query string, anything after the host</dd>
+            <dt>Why it is limited that way</dt><dd>tag_present is a boolean, not the tag value, so the event never carries account credentials anywhere they do not belong. Nothing is sent to Amazon; the click itself is what Amazon measures, and its report is the only conversion source we trust <a class="srcchip" href="source-register.html#S18">[S18]</a>.</dd></dl></div><div class="flagcard" id="EV-04"><h3>EV-04 · <code>disclosure_view</code></h3>
+            <dl><dt>Fires on</dt><dd>the disclosure strip entering the viewport on a page that contains at least one outbound link (IntersectionObserver; no timer, no synthetic firing)</dd>
+            <dt>Extra fields</dt><dd>page_kind</dd>
+            <dt>What it answers</dt><dd>Does the disclosure actually appear before the click, which is the claim the site makes about itself?</dd>
+            <dt>Deliberately not recorded</dt><dd>whether the reader read it - nobody can measure that honestly</dd>
+            <dt>Why it is limited that way</dt><dd>This is a placement instrument, not a legal defence. Seeing a strip is not comprehension, and no report should ever claim that the ratio above satisfies the FTC standard on its own.</dd></dl></div><div class="flagcard" id="EV-05"><h3>EV-05 · <code>product_intent_confirmation</code></h3>
+            <dl><dt>Fires on</dt><dd>the local collector, when tools/product_intake.py confirm writes a confirmation record (so the shelf&#x27;s go-live trail is time-stamped by a server, not by an editor&#x27;s claim)</dd>
+            <dt>Extra fields</dt><dd>slot, method, confirmation_date, actor</dd>
+            <dt>What it answers</dt><dd>When did a product become shoppable, on what evidence, and who said so?</dd>
+            <dt>Deliberately not recorded</dt><dd>nothing extra is needed; the durable copy is the git commit of data/products.json</dd>
+            <dt>Why it is limited that way</dt><dd>The register is the truth; this event is only its clock. Do not treat it as proof of a buyer&#x27;s consent or of the listing&#x27;s accuracy.</dd></dl></div>
+  <div class="grid two">
+    <div class="card"><h4>Running the collector</h4><p class="mono" style="font-size:13px;white-space:pre-wrap;background:#f6f2ea;padding:10px;border-radius:8px">python3 tools/collect_server.py --host 0.0.0.0 --port 8099 \
+  --out data/ledger/events.jsonl --origin karagemop466-tech.github.io</p>
+      <p class="muted" style="font-size:14px">Stdlib only. Accepts one JSON object per POST, validates it against the schema above, rejects unknown event names and any payload over 2 KB, and does not read or store the peer address. Summarise with <code>python3 tools/events.py report</code>.</p></div>
+    <div class="callout plain"><h4>What this cannot tell you</h4>
+      <p style="margin:0">Not revenue, not orders, not a person. Conversions live in Amazon's reports and arrive only through the path described in the <a href="campaign-ledger.html">ledger</a>; a click here that produced nothing may still produce an order for 89 days. And the traffic is currently near zero, so read any early count as an anecdote — the tooling labels it that way rather than letting a chart imply significance. <a href="source-register.html#S18">[S18]</a></p></div>
+  </div>
+</div>
+<p class="meta" style="margin:14px 0 0"><a href="executive-summary.html">How we work</a> &rsaquo; Measurement</p></main>
+<footer class="site"><div class="wrap"><div class="cols"><div><h4>Shop</h4><ul><li><a href="shelf.html">The shelf</a></li><li><a href="product-b04g1mewy.html">B04G1MEwY</a></li><li><a href="product-b02nbdxp3.html">B02NbDxp3</a></li><li><a href="product-b00hj57dv.html">B00hJ57DV</a></li><li><a href="product-b0c8mow59.html">B0c8moW59</a></li><li><a href="product-b0f3gkalj.html">B0f3GKalj</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="guide-basket-or-oven-style.html">Basket or oven-style air fryer: what should you compare?</a></li><li><a href="guide-before-multi-function.html">Questions to ask before buying a multi-function kitchen appliance</a></li><li><a href="guide-capacity-checklist.html">A no-hype checklist for comparing air fryer capacity</a></li><li><a href="guide-cleanup-and-counter-space.html">How to assess cleanup and counter-space trade-offs</a></li><li><a href="guide-what-we-did-not-test.html">What we did not test, and why that sentence is on every page</a></li></ul></div><div><h4>How we work</h4><ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="source-register.html">Source register</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="flagged-for-review.html">Flagged for review</a></li><li><a href="campaign-ledger.html">Campaign ledger</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance-gate.html">Compliance gate</a></li></ul></div><div><h4>Site</h4><ul><li><a href="about.html">About &amp; method</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="https://github.com/karagemop466-tech/Affil3" rel="noopener">Repo</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul></div></div><div class="fine"><div class="stmt">As an Amazon Associate I earn from qualifying purchases. We do not make or receive any claim that Amazon endorses this site.</div><div>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</div><div>Product prices and availability are determined by Amazon at the time of purchase; this site displays no price it obtained elsewhere, because it has none it is licensed to show. Every factual claim carries a source in the <a href="source-register.html">source register</a>; items we could not confirm are blank and flagged on <a href="flagged-for-review.html">Flagged for review</a>.</div><div>Counter Tested · built from data in <code>data/</code> · source: <a href="https://github.com/karagemop466-tech/Affil3">karagemop466-tech/Affil3</a></div></div></div></footer>
+<script src="assets/track.js" defer></script>
+</body></html>

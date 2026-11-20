@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "id": "editorial-calendar",
+    "purpose": "Publishing cadence and the evidence state of each planned piece. The build refuses to publish a guide whose status is 'planned'; it only publishes rows whose file exists in src/content/guides/.",
+    "cadence_rule": "two pieces a week for six weeks, then re-plan from measured queries (SG-16). Cap exists because every claim must be sourced by a human, not because generation is slow.",
+    "updated": "2026-11-20"
+  },
+  "weeks": [
+    {
+      "week": 1,
+      "start": "2026-11-23",
+      "planned": [
+        { "slug": "basket-or-oven-style", "title": "Basket or oven-style air fryer: what should you compare?", "cluster": "air-fryers", "status": "published" },
+        { "slug": "capacity-checklist", "title": "A no-hype checklist for comparing air fryer capacity", "cluster": "air-fryers", "status": "published" }
+      ]
+    },
+    {
+      "week": 2,
+      "start": "2026-11-30",
+      "planned": [
+        { "slug": "cleanup-and-counter-space", "title": "How to assess cleanup and counter-space trade-offs", "cluster": "counter-space", "status": "published" },
+        { "slug": "before-multi-function", "title": "Questions to ask before buying a multi-function kitchen appliance", "cluster": "air-fryers", "status": "published" }
+      ]
+    },
+    {
+      "week": 3,
+      "start": "2026-12-07",
+      "planned": [
+        { "slug": "holiday-oven-bottleneck", "title": "When the oven is the bottleneck: what a second heat source is for", "cluster": "air-fryers", "status": "planned", "note": "Seasonal. Goes out with the season, and its seasonal sentence is pulled after 2026-12-26 (review_by in data/clusters.json)." },
+        { "slug": "what-we-did-not-test", "title": "What we did not test, and why that is on every page", "cluster": null, "status": "published", "note": "Method piece; doubles as the shareable artifact in SG-21." }
+      ]
+    },
+    {
+      "week": 4,
+      "start": "2026-12-14",
+      "planned": [
+        { "slug": "TBD-query-driven-1", "title": "\u2014 chosen from Search Console queries \u2014", "cluster": null, "status": "blocked", "blocked_by": "SG-29 (property verified) and Q-13 (\u2265 20 impressions on a non-brand query)" },
+        { "slug": "TBD-query-driven-2", "title": "\u2014 second slot, same rule \u2014", "cluster": null, "status": "blocked", "blocked_by": "Q-13" }
+      ]
+    },
+    {
+      "week": 5,
+      "start": "2026-12-21",
+      "planned": [
+        { "slug": "deferred", "title": "held for the holidays", "cluster": null, "status": "skipped", "note": "Publishing into a holiday week with no links to click is noise; one planned piece is better than two rushed ones." }
+      ]
+    },
+    {
+      "week": 6,
+      "start": "2026-12-28",
+      "planned": [
+        { "slug": "six-week-review", "title": "Six weeks of data: what we measured and what we are changing", "cluster": null, "status": "planned", "note": "The re-plan. Publishes the ledger, not a resolution." }
+      ]
+    }
+  ],
+  "guides_shipped_this_build": [
+    "basket-or-oven-style",
+    "capacity-checklist",
+    "cleanup-and-counter-space",
+    "before-multi-function",
+    "what-we-did-not-test"
+  ],
+  "rules": [
+    "Every new guide is added here AND gets a real file under src/content/guides/. tools/new_guide.py does both, and the build fails if the two disagree (CHK-12).",
+    "A guide with an empty claims table does not get published. There is no auto-fill.",
+    "No guide is written about a product whose link_state is pending unless it is question-shaped and names no product."
+  ]
+}

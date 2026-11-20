@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Published for completeness. On a GitHub Pages project site this file is served at
+# /Affil3/robots.txt, which is not the host root, so crawlers will not read it as a directive.
+# Indexing is controlled per page by <meta name="robots"> and by the sitemap submitted in Search Console.
+Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml

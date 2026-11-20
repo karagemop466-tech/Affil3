@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "id": "events.schema",
+    "purpose": "The five events the site is allowed to record. Defined in this session because no definition existed in the repo (FLG-006, SG-12).",
+    "updated": "2026-11-20",
+    "universal_fields": {
+      "ts": "ISO-8601 UTC, second precision, set by the collector on arrival - never trusted from the client",
+      "ev": "one of the event ids below",
+      "path": "site-relative pathname of the page that fired the event",
+      "sid": "random per-page-load id, discarded when the tab closes; not a cookie, not persistent",
+      "v": "schema version, integer"
+    },
+    "hard_rules": [
+      "No event may be fired by an automated process. Generating clicks or impressions artificially, by robot or software, is prohibited by the Participation Requirements [S12].",
+      "The collector must not store or log the source IP address [S19]; it does not.",
+      "No cross-page identity stitching: sid is per page load, so 'sessions' here are not users.",
+      "A sub-tag or report identifier must never be tied to a specific visitor [S03]. The collector therefore never forwards anything to Amazon."
+    ]
+  },
+  "version": 1,
+  "events": [
+    {
+      "id": "EV-01",
+      "name": "page_view",
+      "fires_on": "the page's own script, after first paint, once per load",
+      "extra_fields": ["host_kind (pages|local)"],
+      "answers": "Did anyone arrive, and on which page?",
+      "not_recorded": "referrer string, user agent, screen size, IP",
+      "why_limited": "Referrer is deliberately dropped: it is the only field in this design that could identify a person's browsing, and the value of keeping it is smaller than the cost of disclosing it."
+    },
+    {
+      "id": "EV-02",
+      "name": "guide_view",
+      "fires_on": "a guide or topic page, when the reader has been visible to the page for 30 seconds or has scrolled past 75%, whichever comes first",
+      "extra_fields": ["doc", "dwell_s", "depth_pct"],
+      "answers": "Is the editorial work being read, or bounced from?",
+      "not_recorded": "mouse movement, keystrokes, exact scroll trace",
+      "why_limited": "A threshold instead of a continuous trace keeps it a reading signal rather than surveillance, and 'engaged' means something defensible: 30 seconds is stated in the schema, so it cannot quietly be redefined later to flatter a page."
+    },
+    {
+      "id": "EV-03",
+      "name": "outbound_click",
+      "fires_on": "pointer activation on an element marked data-affiliate, before navigation",
+      "extra_fields": ["product_slot", "destination_host", "tag_present", "block_id"],
+      "answers": "Which shelf card or which paragraph turned a reader into a click - the only on-site signal that has a commission attached to it.",
+      "not_recorded": "the final URL, the query string, anything after the host",
+      "why_limited": "tag_present is a boolean, not the tag value, so the event never carries account credentials anywhere they do not belong. Nothing is sent to Amazon; the click itself is what Amazon measures, and its report is the only conversion source we trust [S18]."
+    },
+    {
+      "id": "EV-04",
+      "name": "disclosure_view",
+      "fires_on": "the disclosure strip entering the viewport on a page that contains at least one outbound link (IntersectionObserver; no timer, no synthetic firing)",
+      "extra_fields": ["page_kind"],
+      "answers": "Does the disclosure actually appear before the click, which is the claim the site makes about itself?",
+      "not_recorded": "whether the reader read it - nobody can measure that honestly",
+      "why_limited": "This is a placement instrument, not a legal defence. Seeing a strip is not comprehension, and no report should ever claim that the ratio above satisfies the FTC standard on its own."
+    },
+    {
+      "id": "EV-05",
+      "name": "product_intent_confirmation",
+      "fires_on": "the local collector, when tools/product_intake.py confirm writes a confirmation record (so the shelf's go-live trail is time-stamped by a server, not by an editor's claim)",
+      "extra_fields": ["slot", "method", "confirmation_date", "actor"],
+      "answers": "When did a product become shoppable, on what evidence, and who said so?",
+      "not_recorded": "nothing extra is needed; the durable copy is the git commit of data/products.json",
+      "why_limited": "The register is the truth; this event is only its clock. Do not treat it as proof of a buyer's consent or of the listing's accuracy."
+    }
+  ]
+}

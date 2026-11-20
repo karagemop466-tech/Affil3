@@ -1,0 +1,244 @@
+{
+  "_meta": {
+    "id": "questions",
+    "purpose": "What has to be known before a decision can be made, plus how to find each answer. Three states only: KNOWN (with a source), UNKNOWN-BUT-DISCOVERABLE (with the method), UNKNOWN-AND-NEEDS-YOU (with what to ask Amazon or the account holder).",
+    "updated": "2026-11-20",
+    "count_known": 9,
+    "count_discoverable": 6,
+    "count_needs_owner": 6
+  },
+  "known": [
+    {
+      "id": "K-01",
+      "question": "What disclosure sentence is mandatory on the site?",
+      "answer": "\"As an Amazon Associate I earn from qualifying purchases.\", clearly and prominently.",
+      "basis": "Operating Agreement Section 5, verbatim [S01]",
+      "consequence": "Already implemented as the strip under the masthead and the footer repeat. Changing it is an agreement breach, not a design choice."
+    },
+    {
+      "id": "K-02",
+      "question": "What must every outbound product link contain?",
+      "answer": "The tag parameter, in the form XXXXX-##, on a link to an Amazon Site, accessed directly from the site, in a link format Amazon provides.",
+      "basis": "Participation Requirements 2(a)-2(b) [S02] [S03]",
+      "consequence": "tools/build_site.py generates links only in that form, and check_site.py fails the build if the tag is absent or differs from the registered tracking ID."
+    },
+    {
+      "id": "K-03",
+      "question": "Can the site display prices, star ratings or review quotes that came from anywhere except a live Amazon-served link or an approved API call?",
+      "answer": "No. Not from a cached spreadsheet, not from a search snippet, not from a memory of the ASIN.",
+      "basis": "Participation Requirements 2(b), 6(t) [S06] [S07]",
+      "consequence": "There is no price column and no rating column anywhere on the site, by design, until API access is confirmed. This is why the tables look sparse."
+    },
+    {
+      "id": "K-04",
+      "question": "Can we scrape Amazon listing pages to populate product data?",
+      "answer": "No, on two independent grounds: the licence excludes robots and data-mining tools, and Program Content may not be aggregated, analysed, extracted or repurposed without express prior written approval.",
+      "basis": "IP License 1 and 2(e) [S10] [S14]",
+      "consequence": "Nothing in tools/ makes an HTTP request to Amazon. Any future 'research agent' must either use the licensed API or run on data we create ourselves."
+    },
+    {
+      "id": "K-05",
+      "question": "Can Amazon product data be used to train or fine-tune a model, including our own content generator?",
+      "answer": "Not without express prior written approval; the same clause also covers Special Links.",
+      "basis": "IP License 1 final paragraph; Participation Requirements 5 [S10]",
+      "consequence": "The generator in tools/ composes from our own data files and human-written guide bodies only. No fine-tuning on Program Content is attempted anywhere in this repo."
+    },
+    {
+      "id": "K-06",
+      "question": "How long is a click worth, and what does that mean for reporting?",
+      "answer": "The session window closes 24 hours after the click, an order completed within 89 days of the click still counts if it was added to cart, and the item must ship and be paid for within 180 days of purchase.",
+      "basis": "Commission Income Statement 1(b)-(c) [S18]",
+      "consequence": "Clicks and orders are reported as separate, non-adjacent columns in the ledger and on the measurement page. Any 'clicks this week x assumed rate' figure would be fiction."
+    },
+    {
+      "id": "K-07",
+      "question": "Can we validate tracking by making a test purchase ourselves?",
+      "answer": "No. You may not purchase through your own Special Links, or have friends/family/contractors do it, for any reason including testing.",
+      "basis": "Participation Requirements 6(u) [S12]",
+      "consequence": "The link test in docs/LINK_TEST_PROTOCOL.md verifies destination and the tag in the address bar, and otherwise waits for a real reader's click to show in reports. The protocol says 'do not buy' in its first line."
+    },
+    {
+      "id": "K-08",
+      "question": "Can the site offer 'notify me when the price drops' or a price-history chart?",
+      "answer": "No. Price tracking and price alerting functionality is prohibited unless otherwise agreed by Amazon.",
+      "basis": "Participation Requirements 6(y) [S13]",
+      "consequence": "Rejected as a feature (SG-11) rather than deferred. 'Price alert' strings are grepped for by the compliance gate and fail the build."
+    },
+    {
+      "id": "K-09",
+      "question": "How long may product data and images be stored locally?",
+      "answer": "Images: not storable at all, only a link to the image, for up to 24 hours. Other Product Advertising Content: cacheable up to 24 hours, then it must be refreshed and re-displayed. ASINs: indefinitely.",
+      "basis": "IP License 2(h) [S08]",
+      "consequence": "The site uses original illustrations and ASIN strings; data_shelf_life in program.json encodes the 24h rule and the build warns when a non-null product field is older than 24 hours."
+    }
+  ],
+  "discoverable": [
+    {
+      "id": "Q-01",
+      "question": "What is the account's application date, and how many qualifying sales are on the board?",
+      "why_it_blocks": "The 180-day/3-sale rule decides whether there is any runway left to spend on content before the account is withdrawn [S17].",
+      "who_can_answer": "Account holder",
+      "discovery": "Associates Central home page states the deadline and the count in plain text. Record it: python3 tools/campaign_ledger.py program --application-date YYYY-MM-DD --qualifying-sales N",
+      "answer_template": { "application_date": "", "qualifying_sales": null, "window_state": "" },
+      "priority": "P0",
+      "status": "needs answer"
+    },
+    {
+      "id": "Q-02",
+      "question": "Is `shopnow047c-20` a tracking ID that exists on this account, and is this site's URL listed among the registered websites?",
+      "why_it_blocks": "Links tagged with a tracking ID that is not on the account, or from an unregistered site, will not report - and an unregistered site is exactly what the reporting rules assume is registered.",
+      "who_can_answer": "Account holder",
+      "discovery": "Associates Central > Account Settings > Manage your tracking IDs, and the website list on the same account page. Compare character-for-character with data/program.json.",
+      "answer_template": { "tracking_id_exists": null, "registered_site_url": "", "marketplace": "" },
+      "priority": "P0",
+      "status": "needs answer"
+    },
+    {
+      "id": "Q-03",
+      "question": "What do the five submitted short links actually resolve to, and what is each product's real title, brand and category?",
+      "why_it_blocks": "Every shelf card, guide reference and cluster assignment depends on it (FLG-002, FLG-005).",
+      "who_can_answer": "Anyone with a browser",
+      "discovery": "Open each link in a signed-out browser window and read the final URL and the H1; or search the 9-character string on amazon.com and see whether any listing matches. Record with: python3 tools/product_intake.py confirm --slot N --observed-redirect '<url>' --title '<exact listing title>' --method 'manual click' --date YYYY-MM-DD",
+      "answer_template": { "observed_redirect_target": "", "product_name": "", "brand": "", "category_from_listing": "" },
+      "priority": "P0",
+      "status": "needs answer"
+    },
+    {
+      "id": "Q-04",
+      "question": "Do we have Creators API or PA API access, and which operations does the granted licence permit?",
+      "why_it_blocks": "It decides whether prices, availability, ratings and images can ever appear on the site, and therefore whether comparison tables are buildable at all [S06] [S07].",
+      "who_can_answer": "Account holder, from the Associates Central API tab",
+      "discovery": "Check the account for API credentials; read the licence grant screen. If credentials exist, one ItemsApi call against a confirmed ASIN settles it.",
+      "answer_template": { "api_available": null, "credentials_present": null, "operations_granted": [], "note": "" },
+      "priority": "P0",
+      "status": "needs answer"
+    },
+    {
+      "id": "Q-05",
+      "question": "Which product attributes can we lawfully state, and from where?",
+      "why_it_blocks": "Everything a buyer calls 'useful' in a comparison \u2014 capacity in quarts, wattage, footprint, dishwasher-safe basket \u2014 has to come from a citable source, and a third-party spec sheet is not one we are allowed to cache.",
+      "who_can_answer": "Editorial, with a source decision",
+      "discovery": "Three permitted routes: (1) text we write from our own measurement, (2) a link to the manufacturer's published specification page, (3) fresh API-served content within its 24h window. Pick the route per field and record it in the guide's claims table.",
+      "answer_template": { "route_per_field": {}, "reviewer": "", "approved_date": "" },
+      "priority": "P1",
+      "status": "needs answer"
+    },
+    {
+      "id": "Q-06",
+      "question": "Is hands-on testing feasible \u2014 do we own or can we borrow the units, and on what schedule?",
+      "why_it_blocks": "Original testing is the only durable defence against the 'thin affiliate' classification and the only honest basis for any recommendation sentence [S27].",
+      "who_can_answer": "Account holder / budget owner",
+      "discovery": "Answer yes/no per product. If no, the site's editorial voice must stay question-shaped and checklist-shaped (as it does now) and must never say 'we tested'.",
+      "answer_template": { "units_available": [], "test_window_days": null, "budget": null },
+      "priority": "P1",
+      "status": "needs answer"
+    }
+  ],
+  "needs_owner": [
+    {
+      "id": "Q-07",
+      "question": "What is the intended conversion measurement, given that a test purchase is prohibited and self-reported revenue is not available?",
+      "why_it_blocks": "It decides what the ledger can ever contain, and therefore whether 'optimise campaigns' is a real instruction or a slogan [S12] [S18].",
+      "who_can_answer": "Account holder, plus reading one report screen",
+      "discovery": "Decide: do you accept 'clicks measured locally, orders transcribed from Associates reports with a dated provenance line' as the ceiling, or do you want to apply for API-based reporting access too?",
+      "answer_template": { "accepted_definition_of_conversion": "", "report_cadence": "", "who_transcribes": "" },
+      "priority": "P0",
+      "status": "needs owner decision"
+    },
+    {
+      "id": "Q-08",
+      "question": "Does disclosure placement meet the FTC standard you want to be judged against?",
+      "why_it_blocks": "Amazon's rule is 'clear and prominent'; the FTC's standard is a disclosure a significant minority would not miss, close to the recommendation. We implemented the stricter reading, but the acceptable floor is your risk appetite [S19] [S20] [S21].",
+      "who_can_answer": "Owner, optionally with counsel",
+      "discovery": "Look at the top of any guide on a phone, without scrolling. If the strip is not the first thing you register, we tighten it. Legal sign-off is only needed if you want to relax placement, not to keep it.",
+      "answer_template": { "placement_approved": null, "reviewed_on_mobile": null, "notes": "" },
+      "priority": "P1",
+      "status": "needs owner decision"
+    },
+    {
+      "id": "Q-09",
+      "question": "Which niche do we actually own \u2014 air fryers, or kitchen appliances broadly, or something else entirely?",
+      "why_it_blocks": "Niche decides the cluster plan, the competitive set, and whether the five products even belong on the same shelf. The brief supplied topics as working titles only.",
+      "who_can_answer": "Owner",
+      "discovery": "One hour: list 10 sites ranking for 'best air fryer' and note how many are hands-on. If most are, we either find a sub-niche with real testing or pick a different category where the shelf is thinner. Record the decision in SG-04.",
+      "answer_template": { "chosen_niche": "", "sub_niche": "", "rejected": [], "rationale": "" },
+      "priority": "P0",
+      "status": "needs owner decision"
+    },
+    {
+      "id": "Q-10",
+      "question": "Who is the byline, and does that person exist and consent to being named?",
+      "why_it_blocks": "Authorship is the trust signal the brief asked for, and the FTC's review-solicitation guidance plus Amazon's anti-manipulation stance both make a fake reviewer identity a liability rather than a decoration.",
+      "who_can_answer": "Owner",
+      "discovery": "Name a real person or a real, described collective ('Counter Tested is written by two home cooks; no laboratory') and edit data/people.json. The build refuses to render a bio longer than what is true.",
+      "answer_template": { "author_name": "", "author_basis_for_advice": "", "contact_channel": "" },
+      "priority": "P1",
+      "status": "needs owner decision"
+    },
+    {
+      "id": "Q-11",
+      "question": "Stay on GitHub Pages, or move to a host where one small process can run?",
+      "why_it_blocks": "On Pages there is no collector endpoint, no form handling and no rewrite rules, so measurement, reader capture and any personalisation are capped until this is decided (FLG-009).",
+      "who_can_answer": "Owner",
+      "discovery": "Cost a custom domain (about $10-15/yr at a mainstream registrar) and one small host against the value of measuring clicks server-side. Decide, then either point DNS at Pages or run tools/collect_server.py on the host and set measurement.endpoint.",
+      "answer_template": { "decision": "", "domain": "", "host_for_endpoint": "", "budget_monthly": null },
+      "priority": "P1",
+      "status": "needs owner decision"
+    },
+    {
+      "id": "Q-12",
+      "question": "What is the policy on the identifier gap \u2014 publish the shelf as-is, or hold publication until the five links resolve?",
+      "why_it_blocks": "It decides whether this merge ships links at all, and how the front page reads for the next few weeks.",
+      "who_can_answer": "Owner",
+      "discovery": "Current behaviour is the middle path: content published, links gated. The alternatives are (a) publish live /dp/ links now without confirmation, or (b) no shelf until every identifier is confirmed. Each is one flag change; the trade-off is honesty-to-readers versus time-to-clicks.",
+      "answer_template": { "policy": "gated (current)", "alternatives_considered": [], "review_date": "" },
+      "priority": "P0",
+      "status": "needs owner decision"
+    }
+  ],
+  "next_round": [
+    {
+      "id": "Q-13",
+      "question": "Which queries do real people arrive on after six weeks of publishing?",
+      "why_it_blocks": "The next topic should come from measured queries, not from another round of guessing. Until there is data, the calendar is a hypothesis.",
+      "discovery": "Read the Search Console query report once 20+ impressions accumulate; add each winning query to the calendar with tools/new_guide.py --from-query.",
+      "priority": "P1",
+      "status": "waiting on data"
+    },
+    {
+      "id": "Q-14",
+      "question": "Do guide pages earn any outbound clicks at all, and on which paragraph?",
+      "discovery": "EV-03 (outbound_click) with the path and the block id is exactly this measurement. Answer needs >= 200 guide_views to mean anything.",
+      "priority": "P1",
+      "status": "waiting on data"
+    },
+    {
+      "id": "Q-15",
+      "question": "Does the disclosure strip get seen before the click, or skipped?",
+      "discovery": "Compare EV-04 (disclosure_view) against EV-03 (outbound_click) per page. A ratio far below 1 means placement is decorative and needs to move up the page.",
+      "priority": "P1",
+      "status": "waiting on data"
+    },
+    {
+      "id": "Q-16",
+      "question": "Which of the five products, if any, is worth a full comparison article?",
+      "discovery": "Requires Q-03 (identities resolved) and Q-06 (test access) first. Then pick by evidence, not by which link was supplied first.",
+      "priority": "P2",
+      "status": "blocked by Q-03, Q-06"
+    },
+    {
+      "id": "Q-17",
+      "question": "Is there an overlap risk with parallel sessions touching this repo?",
+      "discovery": "Check COORDINATION.md board and git log --since before starting any task; if another session has claimed a scope, request the change instead of making it.",
+      "priority": "P2",
+      "status": "operational"
+    },
+    {
+      "id": "Q-18",
+      "question": "What does 'profitable niche' mean numerically for this project?",
+      "discovery": "Set a threshold you would accept as success \u2014 e.g. monthly commission, or qualifying sales per 100 outbound clicks \u2014 and record it here, so 'maximise affiliate revenue' becomes measurable instead of rhetorical.",
+      "priority": "P2",
+      "status": "needs owner decision"
+    }
+  ]
+}

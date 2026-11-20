@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flagged for review · Counter Tested</title>
+<meta name="description" content="Every unresolved item in this project, what was done about it, and how to close it — with source links.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/flagged-for-review.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counter Tested">
+<meta property="og:title" content="Flagged for review">
+<meta property="og:description" content="Every unresolved item in this project, what was done about it, and how to close it — with source links.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/flagged-for-review.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Counter Tested guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body data-page-kind="page" data-doc="" data-collector="" data-schema-version="1">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="index.html"><b>Counter Tested</b><span>Small kitchen appliances, picked the slow way.</span></a>
+  <nav class="main" aria-label="Primary"><a href="shelf.html">Shelf</a><a href="guides.html">Guides</a><a href="topics.html">Topics</a>
+    <span class="group">How we work</span><a href="executive-summary.html">Executive summary</a><a href="source-register.html">Source register</a><a href="suggestions.html">Suggestions</a><a href="questions.html">Open questions</a>
+    <a href="executive-summary.html" aria-current="page">Full index</a>
+  </nav>
+</div></header>
+<div class="disclosure" id="disclosure-strip"><div class="wrap"><b>Disclosure.</b> <span>Counter Tested may earn a commission on qualifying purchases made through the Amazon links on this page. That is paid to us by Amazon, not added to what you pay. Links to Amazon are marked sponsored. <a href="about.html">How this site works</a>.</span><span class="tag-line">“As an Amazon Associate I earn from qualifying purchases.”</span></div></div>
+<main id="main">
+<div class="wrap page-head">
+  <p class="kicker">Needs review</p>
+  <h1>Flagged for review</h1>
+  <p class="measure">Everything we could not settle, published rather than buried. A flag does not block the merge — a broken build does. Read it as the list of things where this site declines to guess, in the order that unblocks the most.</p>
+  <div class="chips"><a class="chip" href="#FLG-001">FLG-001</a><a class="chip" href="#FLG-002">FLG-002</a><a class="chip" href="#FLG-003">FLG-003</a><a class="chip" href="#FLG-004">FLG-004</a><a class="chip" href="#FLG-005">FLG-005</a><a class="chip" href="#FLG-006">FLG-006</a><a class="chip" href="#FLG-007">FLG-007</a><a class="chip" href="#FLG-008">FLG-008</a><a class="chip" href="#FLG-009">FLG-009</a><a class="chip" href="#FLG-010">FLG-010</a></div>
+</div>
+<div class="wrap measure"><div class="flagcard " id="FLG-001">
+  <h3>FLG-001 · The brief refers to registers that do not exist in this repository</h3>
+  <p style="margin:0 0 6px"><span class="badge grey">scope</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>main@847ae37 contained exactly one file, README.md, 8 bytes. There was no requirements list, no source register, no landing page, no COORDINATION.md, no FLG-003, no SG-27..SG-30 and no S01/S07/S24 definitions anywhere in the repository or its history.</dd>
+    <dt>What we did about it</dt><dd>Reconstructed each register from the brief&#x27;s own description and labelled the reconstruction as ours. Numbering continues from the brief&#x27;s scheme so future sessions can extend rather than renumber: SG-01..SG-24 suggestions, FLG-001.. flags, S01..S28 sources.</dd>
+    <dt>How to close it</dt><dd>If a canonical version of those registers exists elsewhere (another repo, a spreadsheet, an issue), drop it in data/ and re-run the build; the site reads from data/, so nothing is hard-coded. Reviewer: confirm the numbering is compatible.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6" rel="noopener">https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-002">
+  <h3>FLG-002 · The five submitted links use host `link.amazon` and 9-character identifiers</h3>
+  <p style="margin:0 0 6px"><span class="badge assumed">data</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>Every submitted URL is https://link.amazon/&lt;identifier&gt; where &lt;identifier&gt; is 9 characters: B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj. Public examples of an item identifier on Amazon are 10 characters, and Amazon&#x27;s own policy text refers to &#x27;Amazon Standard Identification Numbers (ASINs)&#x27; without publishing a length definition that this session could retrieve.</dd>
+    <dt>What we did about it</dt><dd>Recorded the strings verbatim, counted them, generated a candidate /dp/ URL by mechanical substitution, and refused to describe either as valid or invalid. No product attribute was filled from the identifier.</dd>
+    <dt>How to close it</dt><dd>Paste each identifier into Amazon&#x27;s search box while signed in to the enrolled account, or generate the link from SiteStripe, and record what actually resolves. Then run tools/product_intake.py confirm.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-003">
+  <h3>FLG-003 · Compliance status of the supplied short links: unresolved</h3>
+  <p style="margin:0 0 6px"><span class="badge flag">compliance</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>Two primary clauses bear on it and neither settles it. Participation Requirements 6(w) prohibits using a link shortening service &#x27;in a manner that makes it unclear that you are linking to an Amazon Site&#x27; - a presentation test, not a format ban. Commission Income Statement 2(e) disqualifies purchases arriving through a &#x27;Redirecting Link&#x27; that sends users indirectly to Amazon via an intermediate site without an affirmative click there - a tracking test. Whether link.amazon is (i) an Amazon-owned short-link surface that preserves the tag, (ii) an unrelated intermediate, or (iii) nothing at all, cannot be determined without clicking it from a browser.</dd>
+    <dt>What we did about it</dt><dd>Did not claim the links are invalid, per instruction. Did not publish them as affiliate links either. They are listed as submitted inputs with the two clauses attached, and the site emits direct, properly tagged /dp/ links generated from confirmed data instead.</dd>
+    <dt>How to close it</dt><dd>One test closes it: from a signed-in session with the enrolled account, click the short link, check the final URL for tag=shopnow047c-20, and check the Associates reports for the click the following day. Record the outcome in data/products.json (observed_redirect_target) and mark this flag resolved or escalated.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-004">
+  <h3>FLG-004 · The &#x27;AI-powered agent that researches, analyses and scrapes Amazon&#x27; part of the brief collides with the licence</h3>
+  <p style="margin:0 0 6px"><span class="badge flag">compliance</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>The IP License prohibits using Program Content to develop or improve large-language, multimodal or machine-learning models, and prohibits accessing or using Creators API / PA API / Data Feeds &#x27;for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content&#x27; without express prior written approval. It also excludes data-mining and robot tools from the licence, bars Program Content from browser extensions and client-side software, and adds Agent Terms requiring any autonomous software touching Program Content to self-identify as &#x27;Agent/[name]&#x27; in the User-Agent string and not to mimic human interaction.</dd>
+    <dt>What we did about it</dt><dd>Built the automation that is unambiguously inside the licence - data plumbing, validation, generation of our own editorial content from our own data files, link construction, publishing gates, reporting - and left every Amazon-facing collection step behind a written-approval gate rather than quietly implementing it. Nothing in tools/ opens a socket to amazon.com.</dd>
+    <dt>How to close it</dt><dd>Decide the intended data source for product signals (see Q-04, SG-01, SG-02). Options: (a) licensed API use with attributes displayed only from a fresh call and no analytics store, (b) written Amazon approval for analysis use, (c) our own hands-on test data only, (d) drop the automated research claim from the roadmap.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-005">
+  <h3>FLG-005 · All five products are filed under kitchen/air-fryer topics on the strength of the brief&#x27;s own hypotheses, not on listing data</h3>
+  <p style="margin:0 0 6px"><span class="badge assumed">data</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>The only category signal in the input was the suggested editorial topics (&#x27;Basket or oven-style air fryer...&#x27;, &#x27;air fryer capacity&#x27;, &#x27;multi-function kitchen appliance&#x27;), which the brief itself labels as &#x27;working titles - not claims about popularity, search volume or product superiority&#x27;.</dd>
+    <dt>What we did about it</dt><dd>Used that topic set for the shelf structure and guides, and marked the product-to-category assignment as assumed on every product record and on the category page.</dd>
+    <dt>How to close it</dt><dd>Confirm each listing&#x27;s category and title from the /dp/ page, then set category_from_listing in data/products.json.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-006">
+  <h3>FLG-006 · The &#x27;five defined events&#x27; were not defined anywhere retrievable, so this session defined them</h3>
+  <p style="margin:0 0 6px"><span class="badge grey">measurement</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>The brief says to &#x27;record the five defined events&#x27; but the definitions were not in the repo. Inventing them silently would make the ledger unreviewable.</dd>
+    <dt>What we did about it</dt><dd>Defined EV-01..EV-05 in data/events.schema.json with an explicit field list, a justification per event, and the rule that no event may be fired without a real user interaction <a class="srcchip" href="source-register.html#S12">[S12]</a>. Marked &#x27;proposed by S-A3-01, needs approval&#x27;.</dd>
+    <dt>How to close it</dt><dd>Approve, rename or reject in the decision register (SG-12). The collector validates every incoming row against the schema, so a rename is a one-file change plus a rebuild.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">https://affiliate-program.amazon.com/help/operating/policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-007">
+  <h3>FLG-007 · Account state unknown: no API access, no application date, no confirmation that the tracking ID belongs to an active account</h3>
+  <p style="margin:0 0 6px"><span class="badge pending">access</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>Nothing in this environment carries Associates credentials. Whether shopnow047c-20 is live, whether the 180-day / 3-qualifying-sales window has started, and whether Creators API or PA API access exists are all unanswerable here.</dd>
+    <dt>What we did about it</dt><dd>Left api_access, application_date, registered_website_confirmed and marketplace confirmation null, and made the build refuse to fabricate a launch date or a status badge for them.</dd>
+    <dt>How to close it</dt><dd>In Associates Central: check Manage your Tracking IDs for shopnow047c-20 and the registered website list; record the application date; note whether the API tab is enabled. Enter with tools/campaign_ledger.py program.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG" rel="noopener">https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG</a></li><li><a href="https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8" rel="noopener">https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-008">
+  <h3>FLG-008 · No traffic history exists, so every ranking or revenue expectation in the brief is unfounded</h3>
+  <p style="margin:0 0 6px"><span class="badge grey">expectation</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>The repo is new, the domain is a GitHub Pages project path, and there are zero measured queries. Any claim like &#x27;this will rank&#x27;, &#x27;this converts at x%&#x27; or &#x27;trending products&#x27; would be invented.</dd>
+    <dt>What we did about it</dt><dd>The campaign ledger ships empty with a schema; no conversion score, revenue forecast or search-volume claim appears anywhere on the site; the site&#x27;s own front page states the publish date and the measured-data state.</dd>
+    <dt>How to close it</dt><dd>Run 6 weeks of two guides a week with measurement switched on, then revisit topic selection from real query data (SG-16, Q-13).</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">https://developers.google.com/search/docs/essentials/spam-policies</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard " id="FLG-009">
+  <h3>FLG-009 · A GitHub Pages project site is a weak substrate for the ambitions in the brief</h3>
+  <p style="margin:0 0 6px"><span class="badge grey">infrastructure</span> <span class="badge pending">open</span></p>
+  <dl>
+    <dt>What we found</dt><dd>Pages deployment (the workflow in T-12) publishes static files only: no server-side rendering, no POST handling, no rewrite rules, and the site lives under the /Affil3/ project path, which also means robots.txt is not at the host root where crawlers expect it.</dd>
+    <dt>What we did about it</dt><dd>Kept everything deployable on Pages (static, relative URLs, no build-time secrets, no server) and shipped the collector, scheduler and intake tools as processes you can run elsewhere. Consequences: no server-rendered pages, no form handling, no email capture endpoint, no rewrite rules, and the URL carries /Affil3/.</dd>
+    <dt>How to close it</dt><dd>Answer Q-11. If the answer is &#x27;stay on Pages&#x27;, accept the limits in writing and remove the endpoint-dependent tasks from the roadmap. If it is &#x27;move&#x27;, the only code change needed is measurement.endpoint plus the base_url in data/program.json, then rebuild.</dd>
+    <dt>Sources</dt><dd><ul><li><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" rel="noopener">https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages</a></li></ul></dd>
+  </dl>
+</div><div class="flagcard resolved" id="FLG-010">
+  <h3>FLG-010 · Two &#x27;verification&#x27; requirements in the brief are in tension and were resolved in favour of the reader</h3>
+  <p style="margin:0 0 6px"><span class="badge grey">policy</span> <span class="badge live">resolved-by-decision</span></p>
+  <dl>
+    <dt>What we found</dt><dd>The brief asks for a page that reads like a shop and a table where every row carries an official source link. With five unresolvable identifiers, a fully sourced table is mostly empty cells, which reads like an audit and converts nobody.</dd>
+    <dt>What we did about it</dt><dd>Split the surfaces. The reader-facing pages (front page, shelf, guides, product pages) carry plain language and only verified or explicitly marked-assumed facts. The evidence lives in one Inside section - source register, decision register, questions, flags, ledger, measurement, gate - reachable from the footer and one nav group, exactly as the brief&#x27;s &#x27;publication&#x27; row asked.</dd>
+    <dt>How to close it</dt><dd>If you would rather have the tables on the product pages themselves, flip layout.product_tables_inline in data/layout.json and rebuild.</dd>
+    
+  </dl>
+</div>
+<div class="callout"><h4>If you only do one thing</h4><p style="margin:0">Close FLG-003 and FLG-002 together, in one browser session, with the protocol in <code>docs/LINK_TEST_PROTOCOL.md</code>. Ten minutes of clicking turns most of this page into history and turns the shelf into a shop.</p></div></div>
+<p class="meta" style="margin:14px 0 0"><a href="executive-summary.html">How we work</a> &rsaquo; Flags</p></main>
+<footer class="site"><div class="wrap"><div class="cols"><div><h4>Shop</h4><ul><li><a href="shelf.html">The shelf</a></li><li><a href="product-b04g1mewy.html">B04G1MEwY</a></li><li><a href="product-b02nbdxp3.html">B02NbDxp3</a></li><li><a href="product-b00hj57dv.html">B00hJ57DV</a></li><li><a href="product-b0c8mow59.html">B0c8moW59</a></li><li><a href="product-b0f3gkalj.html">B0f3GKalj</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="guide-basket-or-oven-style.html">Basket or oven-style air fryer: what should you compare?</a></li><li><a href="guide-before-multi-function.html">Questions to ask before buying a multi-function kitchen appliance</a></li><li><a href="guide-capacity-checklist.html">A no-hype checklist for comparing air fryer capacity</a></li><li><a href="guide-cleanup-and-counter-space.html">How to assess cleanup and counter-space trade-offs</a></li><li><a href="guide-what-we-did-not-test.html">What we did not test, and why that sentence is on every page</a></li></ul></div><div><h4>How we work</h4><ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="source-register.html">Source register</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="flagged-for-review.html">Flagged for review</a></li><li><a href="campaign-ledger.html">Campaign ledger</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance-gate.html">Compliance gate</a></li></ul></div><div><h4>Site</h4><ul><li><a href="about.html">About &amp; method</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="https://github.com/karagemop466-tech/Affil3" rel="noopener">Repo</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul></div></div><div class="fine"><div class="stmt">As an Amazon Associate I earn from qualifying purchases. We do not make or receive any claim that Amazon endorses this site.</div><div>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</div><div>Product prices and availability are determined by Amazon at the time of purchase; this site displays no price it obtained elsewhere, because it has none it is licensed to show. Every factual claim carries a source in the <a href="source-register.html">source register</a>; items we could not confirm are blank and flagged on <a href="flagged-for-review.html">Flagged for review</a>.</div><div>Counter Tested · built from data in <code>data/</code> · source: <a href="https://github.com/karagemop466-tech/Affil3">karagemop466-tech/Affil3</a></div></div></div></footer>
+<script src="assets/track.js" defer></script>
+</body></html>

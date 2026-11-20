@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "id": "layout",
+    "purpose": "Navigation labels, section toggles and small presentation switches. Reader-facing labels and the operator-facing 'Inside' group live here so a rename never touches page code."
+  },
+  "nav_reader": [
+    { "label": "Shelf", "href": "shelf.html" },
+    { "label": "Guides", "href": "guides.html" },
+    { "label": "Topics", "href": "topics.html" }
+  ],
+  "nav_inside_label": "How we work",
+  "nav_inside": [
+    { "label": "Executive summary", "href": "executive-summary.html" },
+    { "label": "Source register", "href": "source-register.html" },
+    { "label": "Suggestions", "href": "suggestions.html" },
+    { "label": "Open questions", "href": "questions.html" },
+    { "label": "Flagged for review", "href": "flagged-for-review.html" },
+    { "label": "Campaign ledger", "href": "campaign-ledger.html" },
+    { "label": "Measurement", "href": "measurement.html" },
+    { "label": "Compliance gate", "href": "compliance-gate.html" }
+  ],
+  "footer_extra": [
+    { "label": "About & method", "href": "about.html" },
+    { "label": "Privacy", "href": "privacy.html" },
+    { "label": "Repo", "href": "https://github.com/karagemop466-tech/Affil3", "external": true },
+    { "label": "Feed (RSS)", "href": "feed.xml" },
+    { "label": "Sitemap", "href": "sitemap.xml" }
+  ],
+  "layout": {
+    "product_tables_inline": false,
+    "show_flags_on_product_pages": true,
+    "reading_time_estimate": true,
+    "max_shelf_cards_above_fold": 3,
+    "contact_email": ""
+  },
+  "search_console_tag": "",
+  "_search_console_tag_note": "SG-29: paste the Google-provided verification meta content here and it is emitted in <head>. Left empty until you verify the property - an invented token would be a fake."
+}

@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Suggestions · Counter Tested</title>
+<meta name="description" content="Every recommendation for this project with cost, risk, evidence and a decision field to fill in before anything is implemented.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/suggestions.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counter Tested">
+<meta property="og:title" content="Suggestions">
+<meta property="og:description" content="Every recommendation for this project with cost, risk, evidence and a decision field to fill in before anything is implemented.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/suggestions.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Counter Tested guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body data-page-kind="page" data-doc="" data-collector="" data-schema-version="1">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="index.html"><b>Counter Tested</b><span>Small kitchen appliances, picked the slow way.</span></a>
+  <nav class="main" aria-label="Primary"><a href="shelf.html">Shelf</a><a href="guides.html">Guides</a><a href="topics.html">Topics</a>
+    <span class="group">How we work</span><a href="executive-summary.html">Executive summary</a><a href="source-register.html">Source register</a><a href="suggestions.html">Suggestions</a><a href="questions.html">Open questions</a>
+    <a href="executive-summary.html" aria-current="page">Full index</a>
+  </nav>
+</div></header>
+<div class="disclosure" id="disclosure-strip"><div class="wrap"><b>Disclosure.</b> <span>Counter Tested may earn a commission on qualifying purchases made through the Amazon links on this page. That is paid to us by Amazon, not added to what you pay. Links to Amazon are marked sponsored. <a href="about.html">How this site works</a>.</span><span class="tag-line">“As an Amazon Associate I earn from qualifying purchases.”</span></div></div>
+<main id="main">
+<div class="wrap page-head">
+  <p class="kicker">Decisions</p>
+  <h1>Suggestions, for review before implementation</h1>
+  <p class="measure">The brief asked for a place where the path can be chosen rather than assumed. This is it: 28 rows, each with the problem, the proposal, the cost, the risk, the evidence and a measurable success test. <b>17</b> are already implemented in this build because they are the ones that keep the site inside its licence or stop it fabricating — those still need your approval to stay, and the rest wait for you.</p>
+  <div class="cta-row"><a class="btn" href="#SG-01">Start with the licence boundary</a><a class="btn ghost" href="questions.html">Questions first? →</a></div>
+</div>
+<div class="wrap">
+  <div class="chips"><a class="chip" href="#SG-03">the page a buyer acts on · 7</a><a class="chip" href="#SG-15">findable · 6</a><a class="chip" href="#SG-04">topics, cadence, voice · 4</a><a class="chip" href="#SG-10">click and conversion evidence · 3</a><a class="chip" href="#SG-01">automation that is safe to automate · 3</a><a class="chip" href="#SG-02">the licence and the FTC · 3</a><a class="chip" href="#SG-14">hosting, domain, endpoints · 2</a></div>
+  <section><div class="sec-head"><h2>the page a buyer acts on</h2><span class="muted">7 rows</span></div>
+            <div class="flagcard" id="SG-03">
+              <h3>SG-03 · Sequence content against the 180-day / 3-qualifying-sales clock before anything else</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The programme&#x27;s own survival rule is 3 qualifying sales within 180 days of application, after which an application can be withdrawn and cannot be reinstated. Nobody knows when the clock started.</dd>
+                <dt>Proposal</dt><dd>Treat Q-01 as the first task of the week. Until it is answered, publish only pages that could plausibly convert a reader who already knows what they want - i.e. the shelf and the question-shaped guides - and skip brand-building pages.</dd>
+                <dt>Why it wins</dt><dd>A dead account has no site. This is the only deadline in the whole project that cannot be recovered later.</dd>
+                <dt>What it costs</dt><dd>10 minutes to look at the dashboard; a one-line data entry.</dd>
+                <dt>Risk</dt><dd>None. Inaction has the deadline attached, not the action.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S17">[S17]</a></dd>
+                <dt>Measurable</dt><dd>application_date and qualifying_sales non-null in data/program.json</dd>
+                <dt>How to implement</dt><dd>python3 tools/campaign_ledger.py program --application-date &lt;date&gt; --qualifying-sales &lt;n&gt;; the build then renders a countdown on the Inside pages.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-06">
+              <h3>SG-06 · Lead the front page with the shelf, and demote the machinery to one nav group</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>A source register is not a home page. The brief asks for a publication front page with every dashboard surface reachable from the footer and one navigation group.</dd>
+                <dt>Proposal</dt><dd>Front page = masthead, disclosure strip, the current shelf (what is on it and what is not, and why), the guides row, one &#x27;how we decide&#x27; paragraph, footer. The seven Inside pages sit behind a single nav group.</dd>
+                <dt>Why it wins</dt><dd>A buyer can act in one screen; a skeptic can audit in two clicks. Both audiences get their page without sharing it.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Less visible diligence on the home page; mitigated by a link to the source register from every card.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a> <a href="source-register.html#S27">[S27]</a></dd>
+                <dt>Measurable</dt><dd>front-page exit rate; shelf-card to product-page rate (EV-01/EV-02)</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-07">
+              <h3>SG-07 · Say what is not on the shelf, in the reader&#x27;s language</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Five unconfirmed identifiers look like broken design unless the page explains the state. Silence reads as &#x27;AI slop that forgot to finish&#x27;.</dd>
+                <dt>Proposal</dt><dd>One short, unapologetic line on each gated card: &#x27;Not shoppable yet - we could not confirm this listing points where the brief said it points. Here is the exact check we are waiting on.&#x27; plus a link to the product&#x27;s status page.</dd>
+                <dt>Why it wins</dt><dd>Turns the weakest part of the data into the trust signal, and gives a reader a reason to come back.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Admitting a gap can cost some clicks now; buying them with a fake &#x27;live&#x27; badge would cost the account later.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a></dd>
+                <dt>Measurable</dt><dd>returning-visitor share after links go live</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-08">
+              <h3>SG-08 · Do not build a price-comparison table; build a spec-and-trade-off table</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Prices may only be displayed from an Amazon-served link or from API data within its licence; a static price column is both stale on arrival and a licence problem. Comparison layouts carry an extra lowest-new/used requirement.</dd>
+                <dt>Proposal</dt><dd>Columns = what the buyer can verify themselves from the listing: capacity, footprint, controls, basket material, dishwasher-safe yes/no, wattage - each cell sourced, blank when unverified. Price appears only as &#x27;see the current price on Amazon&#x27; inside the link.</dd>
+                <dt>Why it wins</dt><dd>Same perceived usefulness, no licence exposure, and stale-proof: nothing to update when prices move.</dd>
+                <dt>What it costs</dt><dd>Done in this build; per-field sourcing is the ongoing cost.</dd>
+                <dt>Risk</dt><dd>Loses &#x27;cheapest&#x27; as a decision axis, which some readers want.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S06">[S06]</a> <a href="source-register.html#S09">[S09]</a> <a href="source-register.html#S13">[S13]</a></dd>
+                <dt>Measurable</dt><dd>0 CHK-07 failures per deploy</dd>
+                <dt>How to implement</dt><dd>Nothing. CHK-07 blocks any price or rating markup without an API provenance row.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-09">
+              <h3>SG-09 · Use original illustrations, and label them as illustrations</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>A shop needs pictures. Program Content images cannot be stored or cached (only a link to them, for 24 hours), and there is no API access to serve a live link from.</dd>
+                <dt>Proposal</dt><dd>Editorial illustrations (drawn for this site, committed as assets), never captioned as the product, plus a one-line policy note on the imagery page explaining why there are no product photos.</dd>
+                <dt>Why it wins</dt><dd>The site stops looking generated, and the explanation is more convincing than a stock photo would be.</dd>
+                <dt>What it costs</dt><dd>Done: three illustrations in this build. New artwork per guide ~10 minutes.</dd>
+                <dt>Risk</dt><dd>Readers may expect product photography and find none; the caption answers that in one line.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S08">[S08]</a></dd>
+                <dt>Measurable</dt><dd>guide pages with a non-placeholder image: 100%</dd>
+                <dt>How to implement</dt><dd>Add to assets/img/ and reference from the guide front matter.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-17">
+              <h3>SG-17 · Give every claim on the page a visible source affordance</h3>
+              <p style="margin:0 0 4px"><span class="badge assumed">partially-adopted</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>&#x27;Every table row has a source link&#x27; is what makes this project credible, but a wall of &#x27;official source&#x27; links is what makes it read like an audit.</dd>
+                <dt>Proposal</dt><dd>One small superscript-style chip per sourced statement that expands inline (details/summary, no JS required), and the full register kept on the Inside pages. Cards keep prose.</dd>
+                <dt>Why it wins</dt><dd>Evidence becomes optional depth instead of visual noise; the marketing page stays a marketing page.</dd>
+                <dt>What it costs</dt><dd>Implemented in the register and product pages; extending to guide prose is ~1 hour.</dd>
+                <dt>Risk</dt><dd>Chips could be missed; acceptable - the register page is the authoritative copy.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a></dd>
+                <dt>Measurable</dt><dd>% of factual sentences on guide pages carrying a source chip</dd>
+                <dt>How to implement</dt><dd>The renderer already supports one annotation: a bracketed source id like <a class="srcchip" href="source-register.html#S06">[S06]</a> inside guide markdown becomes a link into the register. Use it on any sentence a reader could reasonably ask to see sourced. Nothing else is supported, on purpose.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-27">
+              <h3>SG-27 · Navigation labels (carried over from the parallel pass)</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief named &#x27;nav labels&#x27; as a parallel-pass row: &#x27;Inside&#x27; and &#x27;Audit&#x27; read as accounting; the reader needs &#x27;Shop&#x27;, &#x27;Guides&#x27;, &#x27;How we work&#x27;.</dd>
+                <dt>Proposal</dt><dd>Top nav: Shelf / Guides / Topics / How we work. Footer keeps the dashboard names (source register, decision register, questions, flags, ledger, measurement, gate), because those are search terms for the operator, not for the reader.</dd>
+                <dt>Why it wins</dt><dd>One vocabulary for buyers, one for auditors, both reachable - which is the whole design of this build.</dd>
+                <dt>What it costs</dt><dd>Done in this build; edit data/layout.json to change a label and rebuild.</dd>
+                <dt>Risk</dt><dd>&#x27;How we work&#x27; still sounds corporate; could become &#x27;Why trust us&#x27;. Flagged for your call.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a></dd>
+                <dt>Measurable</dt><dd>nav click-through to Inside pages tracked by EV-02/EV-01</dd>
+                <dt>How to implement</dt><dd>Nothing; relabel in data/layout.json.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>findable</h2><span class="muted">6 rows</span></div>
+            <div class="flagcard" id="SG-15">
+              <h3>SG-15 · Emit Article + FAQPage markup now, Product markup only after confirmation</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Product rich results need review, aggregateRating or offers on a single-product page, and Google may try to verify merchant listing data. We have none of the three lawfully, and a fake rating is both a licence breach and a deception.</dd>
+                <dt>Proposal</dt><dd>Guides emit Article + FAQPage JSON-LD (their questions are real and answered on the page). The product page emits Product markup only when a row is confirmed and only with fields that have provenance; otherwise it emits nothing but a canonical link.</dd>
+                <dt>Why it wins</dt><dd>Findable without fabricating the very fields Google checks hardest.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>No shopping-carousel appearance for now.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S23">[S23]</a> <a href="source-register.html#S06">[S06]</a> <a href="source-register.html#S07">[S07]</a></dd>
+                <dt>Measurable</dt><dd>Rich Results Test reports 0 critical errors per page</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-19">
+              <h3>SG-19 · Build the cluster page around the buyer&#x27;s question, not the keyword</h3>
+              <p style="margin:0 0 4px"><span class="badge assumed">partially-adopted</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>A tag page listing &#x27;air fryers&#x27; is a doorway page. A cluster that walks a reader from &#x27;what should I compare&#x27; to &#x27;what to check on the listing&#x27; is a destination.</dd>
+                <dt>Proposal</dt><dd>One cluster page per topic: the question, the four decision axes, the guides that take them, the shelf cards assigned to it, and the open items on that topic pulled from the flags register.</dd>
+                <dt>Why it wins</dt><dd>Internal links carry context, readers go two pages deep, and there is something for a search engine to judge as &#x27;a site&#x27; rather than &#x27;a page&#x27;.</dd>
+                <dt>What it costs</dt><dd>Done for one cluster in this build; ~45 min per added cluster.</dd>
+                <dt>Risk</dt><dd>Manual curation needed to keep clusters meaningful as they multiply.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S27">[S27]</a> <a href="source-register.html#S23">[S23]</a></dd>
+                <dt>Measurable</dt><dd>pages per session &gt;= 1.8 once there is traffic</dd>
+                <dt>How to implement</dt><dd>Add to data/clusters.json; the build renders and links them automatically.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-21">
+              <h3>SG-21 · Earn links with a shareable artifact instead of outreach</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>A new site has no link authority, and buying or swapping links is the exact behaviour Google&#x27;s link-spam policies target. Outreach from an unestablished affiliate site also reads as spam.</dd>
+                <dt>Proposal</dt><dd>Publish the one thing nobody else will: the compliance and verification apparatus itself - the source register, the gate list, the &#x27;what we did not test&#x27; standard - as a page other affiliate and indie publishers would link to. Keep it factual and citeable.</dd>
+                <dt>Why it wins</dt><dd>Links that arrive because a page is useful are the only kind that is safe to want.</dd>
+                <dt>What it costs</dt><dd>Already published as the Inside section; polishing it for an external audience is ~2 hours.</dd>
+                <dt>Risk</dt><dd>Slow, and possibly zero. Do not schedule it against the 180-day clock.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S27">[S27]</a> <a href="source-register.html#S22">[S22]</a></dd>
+                <dt>Measurable</dt><dd>referring domains in Search Console after 90 days</dd>
+                <dt>How to implement</dt><dd>Optional: add a /method/ page that states the standard in reusable form.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-22">
+              <h3>SG-22 · Keep one canonical site, and stop the multi-domain instinct</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief asks search engines to have &#x27;one site to index&#x27;. The temptation with these projects is to spin sister sites per niche, which is the network pattern called out in both Google&#x27;s thin-affiliate policy and Amazon&#x27;s redistribution rule.</dd>
+                <dt>Proposal</dt><dd>Everything on one host under one path, canonical tags self-referential, no duplicated guide copies, sitemap rebuilt from data on every deploy. Sub-tags are allowed for report splitting, but never tied to a visitor.</dd>
+                <dt>Why it wins</dt><dd>One place to rank, one place to audit, one place for Amazon to check.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Niche expansion slows down. Good.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S03">[S03]</a> <a href="source-register.html#S27">[S27]</a></dd>
+                <dt>Measurable</dt><dd>duplicate-title warnings in Search Console: 0</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-28">
+              <h3>SG-28 · RSS feed (carried over from the parallel pass)</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief lists &#x27;the shipped RSS feed&#x27; as a parallel row; a feed only counts if it is valid, linked from every page, and regenerated with the sitemap.</dd>
+                <dt>Proposal</dt><dd>feed.xml (RSS 2.0) generated from the same editorial calendar as the sitemap, linked with &lt;link rel=&quot;alternate&quot; type=&quot;application/rss+xml&quot;&gt;, validated for well-formedness at build; every new guide lands in both files with no extra step.</dd>
+                <dt>Why it wins</dt><dd>One publish path, two distribution surfaces; also gives a machine-readable freshness signal for a brand-new site.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Feed readers are a rounding error at this size; it is infrastructure, not audience.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S28">[S28]</a></dd>
+                <dt>Measurable</dt><dd>sitemap and feed entry counts equal the number of published pages (CHK-12)</dd>
+                <dt>How to implement</dt><dd>Nothing; python3 tools/build_site.py regenerates it.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-29">
+              <h3>SG-29 · Search Console verification (carried over from the parallel pass)</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief&#x27;s parallel pass lists Search Console, and it is the one input that turns &#x27;measure before automating&#x27; into a real instruction. It cannot be done from this sandbox - it needs you, in a browser, on the domain.</dd>
+                <dt>Proposal</dt><dd>Verify the Pages property, submit site/sitemap.xml, and after ~10 indexed pages record the top queries in data/queries.json so the calendar reads them. Also confirm the robots.txt is not blocking and the site is not noindexed (CHK-13 checks the meta tag on every page).</dd>
+                <dt>Why it wins</dt><dd>Free, official, first-party, and it is the only source for the &#x27;next topic&#x27; decision in Q-13.</dd>
+                <dt>What it costs</dt><dd>10 minutes to set up; 10 minutes a week to read.</dd>
+                <dt>Risk</dt><dd>New-domain data is sparse for weeks; do not plan around it yet.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S28">[S28]</a> <a href="source-register.html#S24">[S24]</a></dd>
+                <dt>Measurable</dt><dd>property verified; sitemap submitted; first non-brand query recorded in data/queries.json</dd>
+                <dt>How to implement</dt><dd>Manual, in a browser: add property, verify by meta tag (we will commit the tag to data/layout.json.search_console_tag), submit sitemap.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>topics, cadence, voice</h2><span class="muted">4 rows</span></div>
+            <div class="flagcard" id="SG-04">
+              <h3>SG-04 · Buy the niche before buying the traffic: sub-niche on capacity and cleanup, not &#x27;best air fryer&#x27;</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>&#x27;Best air fryer&#x27; pages are dominated by outlets with labs and staff. A new GitHub Pages site with five unconfirmed ASINs will not out-rank them, and thin affiliate material is explicitly a spam-policy problem.</dd>
+                <dt>Proposal</dt><dd>Own the two questions the big pages answer badly - &#x27;which footprint fits my counter&#x27; and &#x27;what does cleanup cost you weekly&#x27; - and make the comparison table about dimensions and dishwasher-safety rather than about scores. Then let one measured query widen the niche.</dd>
+                <dt>Why it wins</dt><dd>It is the only angle where a small site&#x27;s honesty is an advantage instead of a handicap, and it matches the working titles already in the brief.</dd>
+                <dt>What it costs</dt><dd>4 guides, written over two weeks; no new infrastructure.</dd>
+                <dt>Risk</dt><dd>Lower search volume than head terms.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S27">[S27]</a> <a href="source-register.html#S23">[S23]</a></dd>
+                <dt>Measurable</dt><dd>impressions on non-head queries within 6 weeks of indexing</dd>
+                <dt>How to implement</dt><dd>Adopt Q-09, then run tools/new_guide.py --cluster &lt;cluster&gt; --title &#x27;&lt;question&gt;&#x27; for each new topic.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-16">
+              <h3>SG-16 · Publish two guides a week for six weeks, then choose from data</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>&#x27;Set a publishing cadence&#x27; was asked for; the risk is that cadence becomes an excuse to mass-produce, which is the thin-affiliate pattern.</dd>
+                <dt>Proposal</dt><dd>The generator scaffolds a page with an empty claims table and refuses to build a guide whose table is empty or whose title contains a superlative. Twelve guides in six weeks is the plan; anything beyond that needs a reviewer, not a faster generator.</dd>
+                <dt>Why it wins</dt><dd>Volume stays inside what one person can verify, which is the actual constraint on being good enough to rank.</dd>
+                <dt>What it costs</dt><dd>Roughly 3-4 focused hours per guide while there is no assistant data to lean on.</dd>
+                <dt>Risk</dt><dd>Slow. Deliberately so.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S27">[S27]</a> <a href="source-register.html#S17">[S17]</a></dd>
+                <dt>Measurable</dt><dd>guides published vs. planned in data/editorial-calendar.json</dd>
+                <dt>How to implement</dt><dd>python3 tools/new_guide.py --week 1 --title &#x27;Basket or oven-style air fryer: what should you compare?&#x27; --cluster air-fryers</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-18">
+              <h3>SG-18 · Add an honest &#x27;what we did not test&#x27; block to every guide</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The fastest way an affiliate page gets disbelieved (or flagged) is a review-shaped article with no hands-on basis. Amazon also bars misleading or overbroad product claims.</dd>
+                <dt>Proposal</dt><dd>A fixed block, rendered by the build under the byline, that lists: no hands-on test performed; no unit purchased through our own links (and why we may not); what a reader must check themselves. It is generated from data, so it cannot accidentally claim more than the data says.</dd>
+                <dt>Why it wins</dt><dd>Reads like an editorial standard rather than a legal disclaimer, and is the single cheapest differentiation against template sites.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Some readers bounce; those readers were not going to trust a no-testing site anyway.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a> <a href="source-register.html#S12">[S12]</a> <a href="source-register.html#S27">[S27]</a></dd>
+                <dt>Measurable</dt><dd>100% of guide pages render the block (CHK-11)</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-20">
+              <h3>SG-20 · Do not claim &#x27;trending&#x27; or &#x27;high-converting&#x27; anywhere on the site</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>There is no trend source we are licensed to read and no conversion data. &#x27;Trending and high-converting products&#x27; is the brief&#x27;s language, not an observation, and on-page it would be an unsupported claim about a product.</dd>
+                <dt>Proposal</dt><dd>Keep trend claims in the roadmap only (as things to measure), and have CHK-03 fail the build on a fixed list of unsupported-claim strings: &#x27;best-selling&#x27;, &#x27;#1&#x27;, &#x27;trending&#x27;, &#x27;highest rated&#x27;, &#x27;lowest price&#x27;, &#x27;guaranteed&#x27;, &#x27;editor&#x27;s choice&#x27; unless the row carries a provenance id.</dd>
+                <dt>Why it wins</dt><dd>It is the difference between a shop people believe and a template people distrust in two seconds.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Copy gets quieter than competitors&#x27; - which is the strategy.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S16">[S16]</a> <a href="source-register.html#S27">[S27]</a></dd>
+                <dt>Measurable</dt><dd>0 CHK-03 failures; spot-check 5 pages per month</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>click and conversion evidence</h2><span class="muted">3 rows</span></div>
+            <div class="flagcard" id="SG-10">
+              <h3>SG-10 · Instrument five events, locally, without cookies, before writing another word</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Every optimisation instruction in the brief (&#x27;continuously optimise&#x27;, &#x27;evidence-based iteration&#x27;, &#x27;choose the next topic from measured queries&#x27;) is unexecutable without click data, and there is no analytics endpoint on Pages.</dd>
+                <dt>Proposal</dt><dd>Ship the collector (stdlib, one file, no cookies, no IP logging, no third-party JS), the five event definitions, the JSONL ledger and the schema validator. Wire the site to it through one config value; when the value is null the site records nothing remotely and says so.</dd>
+                <dt>Why it wins</dt><dd>Zero-cost, self-hosted, and it cannot fabricate: an empty ledger is a legitimate state, a filled one is evidence.</dd>
+                <dt>What it costs</dt><dd>Done in this build; hosting the endpoint is SG-14 / Q-11.</dd>
+                <dt>Risk</dt><dd>Traffic is tiny for weeks, so early numbers are anecdotes. The tooling labels them that way.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S12">[S12]</a> <a href="source-register.html#S18">[S18]</a> <a href="source-register.html#S19">[S19]</a></dd>
+                <dt>Measurable</dt><dd>events.jsonl rows with valid schema = rows counted; 0 rejected</dd>
+                <dt>How to implement</dt><dd>To see it work locally: python3 tools/collect_server.py --port 8099 --out data/ledger/events.jsonl then open the site with measurement.endpoint set to that URL. Never send synthetic events <a class="srcchip" href="source-register.html#S12">[S12]</a>.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-12">
+              <h3>SG-12 · Approve or rename the five event names</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief&#x27;s &#x27;five defined events&#x27; were not defined anywhere retrievable, so this session named them EV-01 page_view, EV-02 guide_view, EV-03 outbound_click, EV-04 disclosure_view, EV-05 product_intent_confirmation (FLG-006).</dd>
+                <dt>Proposal</dt><dd>Approve as-is, or rename in data/events.schema.json - the validator, the collector, the ledger and the measurement page all read that file, so a rename cannot half-apply.</dd>
+                <dt>Why it wins</dt><dd>The register and the code stay the same object; nobody argues about what a number meant six months from now.</dd>
+                <dt>What it costs</dt><dd>5 minutes.</dd>
+                <dt>Risk</dt><dd>If the real definitions exist elsewhere, adopting ours first creates a migration.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S12">[S12]</a> <a href="source-register.html#S18">[S18]</a> <a href="source-register.html#S19">[S19]</a></dd>
+                <dt>Measurable</dt><dd>FLG-006 closed</dd>
+                <dt>How to implement</dt><dd>Edit data/events.schema.json, run python3 tools/build_site.py &amp;&amp; python3 tools/check_site.py.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-23">
+              <h3>SG-23 · Make the ledger refuse bad data rather than accept good-looking data</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The moment a ledger accepts a number without provenance, every later decision inherits a guess. The brief asked for a dated provenance trail and for no forecasts.</dd>
+                <dt>Proposal</dt><dd>tools/campaign_ledger.py appends only rows that name an authorized first-party report and a date, rejects any row where clicks/orders are invented, and never computes a conversion score into the file - the site shows the raw columns and an explicit &#x27;orders may arrive up to 89 days after the click&#x27; footnote.</dd>
+                <dt>Why it wins</dt><dd>Keeps the evidence base clean enough to make the next decision from.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Reporting looks unfinished because it is unfinished. That is the honest display.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S18">[S18]</a> <a href="source-register.html#S12">[S12]</a></dd>
+                <dt>Measurable</dt><dd>100% ledger rows carry a source and a report date</dd>
+                <dt>How to implement</dt><dd>python3 tools/campaign_ledger.py append --source &#x27;Associates Central &gt; Reports &gt; Tracking report&#x27; --report-date &lt;date&gt; --channel organic --eligible-sessions N --clicks N --reported-orders N</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>automation that is safe to automate</h2><span class="muted">3 rows</span></div>
+            <div class="flagcard" id="SG-01">
+              <h3>SG-01 · Redefine the &#x27;AI-powered platform&#x27; as a publishing pipeline, not an Amazon-facing research agent</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The brief asks for an agent that researches products, analyses pricing/reviews/competition, publishes and optimises. Four of those five verbs require touching Program Content, and the licence bars robots, bars storing images, bars analysing or repurposing API content without prior written approval, bars using Program Content to build or improve ML models, and requires any Agent to self-identify as &#x27;Agent/[name]&#x27;.</dd>
+                <dt>Proposal</dt><dd>Keep the automation where it is legal and valuable - validation, generation, gating, scheduling, reporting, integrity checks - and make every Amazon-facing read a gated, human-approved step. Document the boundary in the repo so nobody &#x27;fixes&#x27; it by adding a scraper.</dd>
+                <dt>Why it wins</dt><dd>It is the only version of the brief that can still be running in a year. An account suspended for a scraping or model-training violation loses every link on the site at once, and Section 2 of the agreement says the commissions can be withheld.</dd>
+                <dt>What it costs</dt><dd>Already implemented in this branch. Reviewing the boundary: 20 minutes.</dd>
+                <dt>Risk</dt><dd>Slower than the fantasy version; less &#x27;trending product&#x27; magic on the roadmap.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S10">[S10]</a> <a href="source-register.html#S11">[S11]</a> <a href="source-register.html#S14">[S14]</a> <a href="source-register.html#S08">[S08]</a></dd>
+                <dt>Measurable</dt><dd>count of CI failures caused by CHK-01 in the next 90 days (target: 0)</dd>
+                <dt>How to implement</dt><dd>Nothing to do; read docs/COMPLIANCE.md section &#x27;What the pipeline deliberately does not do&#x27;.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-13">
+              <h3>SG-13 · Write the licence boundary into the CI job, not just the docs</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The most likely future break in this repo is a well-meaning contributor adding an Amazon fetcher, a cached price column, or a &#x27;review sentiment&#x27; model.</dd>
+                <dt>Proposal</dt><dd>CHK-01 greps tools/ and src/ for network access to Amazon hosts and for Program-Content ingestion patterns, and fails the deploy. A short WHY comment is required next to any new outbound network call.</dd>
+                <dt>Why it wins</dt><dd>Makes the compliance posture durable against exactly the failure mode that ends these projects.</dd>
+                <dt>What it costs</dt><dd>Implemented; costs a little friction on legitimate future fetchers, which then need written approval.</dd>
+                <dt>Risk</dt><dd>Could block a lawful future feature and cause gate fatigue; mitigate with an explicit ignore-and-justify list in data/exceptions.json.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S10">[S10]</a> <a href="source-register.html#S11">[S11]</a> <a href="source-register.html#S14">[S14]</a></dd>
+                <dt>Measurable</dt><dd>0 unexplained network calls in CI diff reviews</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-24">
+              <h3>SG-24 · Name the automation work that is worth doing next, in order</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P2</span></p>
+              <dl>
+                <dt>Problem</dt><dd>&#x27;Prioritise automation and scalability&#x27; has no order attached to it, and the wrong first automation (a scraper, a generator) is the one that ends the account.</dd>
+                <dt>Proposal</dt><dd>Ordered queue: (1) intake validator for listing confirmations, (2) publish gate (done), (3) event collector + schema (done), (4) ledger with provenance (done), (5) staleness check that pulls any promotional sentence after its date (needs a promotions table), (6) report transcription helper that reads an Associates report export you place in data/ledger/ and appends ledger rows with the file&#x27;s hash as provenance. Stop there until traffic justifies more.</dd>
+                <dt>Why it wins</dt><dd>Each step is either mechanical or gated, and each one makes the next decision cheaper.</dd>
+                <dt>What it costs</dt><dd>Items 1-4 done. Item 5 ~2 h, item 6 ~3 h and it must never touch Amazon directly.</dd>
+                <dt>Risk</dt><dd>Automation ahead of readers yields machinery nobody measures.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S10">[S10]</a> <a href="source-register.html#S11">[S11]</a> <a href="source-register.html#S15">[S15]</a> <a href="source-register.html#S18">[S18]</a></dd>
+                <dt>Measurable</dt><dd>queue position 5 shipped with a passing test that a lapsed promotion disappears from output</dd>
+                <dt>How to implement</dt><dd>Approve the order, then work item 5 in its own branch (session-S-A3-02/gate-promotions) so scopes stay disjoint.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>the licence and the FTC</h2><span class="muted">3 rows</span></div>
+            <div class="flagcard" id="SG-02">
+              <h3>SG-02 · Replace the supplied short links with generated, validated Special Links before anything is clickable</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Five links arrive as https://link.amazon/&lt;9 chars&gt;. Their destination, their tag-preservation and their existence are all unconfirmed, and both the redirect rule and the formatting rule can void a commission.</dd>
+                <dt>Proposal</dt><dd>Never ship the supplied strings as the site&#x27;s outbound href. Generate the link ourselves in the canonical /dp/ + tag form from a confirmed record, one link per product, tested in the enrolled workflow, then scale. Leave the supplied strings visible in the register as inputs, so the trail is intact.</dd>
+                <dt>Why it wins</dt><dd>It removes the single failure mode that silently earns nothing: a whole shelf of clicks that never attribute.</dd>
+                <dt>What it costs</dt><dd>One manual pass of the protocol in docs/LINK_TEST_PROTOCOL.md, about 3 minutes per product.</dd>
+                <dt>Risk</dt><dd>Publishing with links gated looks less &#x27;live&#x27; for the first week.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S02">[S02]</a> <a href="source-register.html#S03">[S03]</a> <a href="source-register.html#S04">[S04]</a> <a href="source-register.html#S05">[S05]</a></dd>
+                <dt>Measurable</dt><dd>100% of published outbound links carry tag=shopnow047c-20 and survive check_site.py</dd>
+                <dt>How to implement</dt><dd>python3 tools/product_intake.py confirm --slot 1 --observed-redirect &#x27;&lt;final url&gt;&#x27; --method SiteStripe --date &lt;YYYY-MM-DD&gt;; then set allow_live_links=true and rebuild.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-05">
+              <h3>SG-05 · Keep the disclosure strip above the fold on every page, including the front page</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P0</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Amazon demands clear and prominent identification; the FTC&#x27;s standard is effectively &#x27;you cannot miss it and you understand it&#x27;, and a footer or &#x27;Legal&#x27;-labelled link is the example of what does not qualify.</dd>
+                <dt>Proposal</dt><dd>One line under the masthead on all pages, repeated in the footer, plus a one-sentence plain-language note immediately above the first outbound link on any page that has one. Ship it in the layout, not in per-page copy, so it cannot drift.</dd>
+                <dt>Why it wins</dt><dd>Costs a few lines of vertical space; removes the highest-severity breach class available to a site like this.</dd>
+                <dt>What it costs</dt><dd>Done in this build.</dd>
+                <dt>Risk</dt><dd>Readers may notice they can be sold to - which is the point; expect no measurable CTR harm from a single honest line.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S01">[S01]</a> <a href="source-register.html#S19">[S19]</a> <a href="source-register.html#S20">[S20]</a> <a href="source-register.html#S21">[S21]</a></dd>
+                <dt>Measurable</dt><dd>CHK-02 green on every deploy; EV-04/EV-03 ratio above 0.9 on guide pages</dd>
+                <dt>How to implement</dt><dd>Nothing. check_site.py CHK-02 fails the build if any page loses the strip.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-11">
+              <h3>SG-11 · Reject price alerts, deal-roundups and &#x27;lowest price ever&#x27; content permanently</h3>
+              <p style="margin:0 0 4px"><span class="badge live">adopted-in-build</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Price tracking/alerting is prohibited functionality, and any deal mention has to be pulled the moment the promotion ends - which a static site cannot do reliably.</dd>
+                <dt>Proposal</dt><dd>Add CHK-09/CHK-10 to the gate: the build fails if a page contains price-alert UI strings, and every seasonal page carries a review-by date that the build reports once it passes. Deal content is out of scope, not &#x27;later&#x27;.</dd>
+                <dt>Why it wins</dt><dd>Kills the two most common accidental-violation patterns in affiliate sites, permanently, at build time rather than at audit time.</dd>
+                <dt>What it costs</dt><dd>Done in this build. Forgoes some short-term seasonal traffic.</dd>
+                <dt>Risk</dt><dd>Seasonal traffic is real; the answer is seasonal buying questions, not seasonal prices.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S13">[S13]</a> <a href="source-register.html#S15">[S15]</a></dd>
+                <dt>Measurable</dt><dd>0 price-alert strings in build output; overdue seasonal pages flagged in the build log</dd>
+                <dt>How to implement</dt><dd>Nothing.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section><section><div class="sec-head"><h2>hosting, domain, endpoints</h2><span class="muted">2 rows</span></div>
+            <div class="flagcard" id="SG-14">
+              <h3>SG-14 · Decide where the collector lives</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed</span>
+                 <span class="badge grey">P1</span></p>
+              <dl>
+                <dt>Problem</dt><dd>Pages cannot run a process, so measurement, reader capture and anything with a POST is capped until one small host exists.</dd>
+                <dt>Proposal</dt><dd>Cheapest useful path: keep the site on Pages, run tools/collect_server.py on any container/VM you already have (it is one stdlib file, JSONL to disk, no database), and point measurement.endpoint at it over HTTPS. If you would rather not operate anything, accept &#x27;no click data&#x27; explicitly and stop writing optimisation tasks.</dd>
+                <dt>Why it wins</dt><dd>It converts &#x27;evidence-based iteration&#x27; from a slogan into a one-file deployment, or it retires the claim honestly.</dd>
+                <dt>What it costs</dt><dd>1-2 hours first time; ongoing: disk space, and the odd restart.</dd>
+                <dt>Risk</dt><dd>You now operate something. Abuse is possible (no rate limit yet), so put it behind a reverse proxy with a body-size limit if it is public.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S19">[S19]</a> <a href="source-register.html#S24">[S24]</a></dd>
+                <dt>Measurable</dt><dd>endpoint reachable over HTTPS; EV-01 rows appear after a real visit</dd>
+                <dt>How to implement</dt><dd>python3 tools/collect_server.py --host 0.0.0.0 --port 8099 --out data/ledger/events.jsonl --origin &lt;site-origin&gt;</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div>
+            <div class="flagcard" id="SG-30">
+              <h3>SG-30 · Reader capture (carried over from the parallel pass) - deferred, with a reason</h3>
+              <p style="margin:0 0 4px"><span class="badge grey">proposed-defer</span>
+                 <span class="badge grey">P3</span></p>
+              <dl>
+                <dt>Problem</dt><dd>The parallel pass lists reader capture, but Pages cannot accept a form POST, an email list is a privacy commitment we would have to write and honour, and Amazon&#x27;s rules put Special Links in email behind an opt-in requirement.</dd>
+                <dt>Proposal</dt><dd>Do not build a form yet. Ship a plain &#x27;email us what you are deciding&#x27; mailto link on guides (already present), and revisit capture only if SG-14 lands a host: then a 200-person-per-week list with a real double opt-in, or nothing.</dd>
+                <dt>Why it wins</dt><dd>Avoids collecting personal data we cannot lawfully promise to look after, and avoids a compliance obligation with zero measurement value.</dd>
+                <dt>What it costs</dt><dd>Decision costs nothing; building it later costs a host plus a privacy policy rewrite.</dd>
+                <dt>Risk</dt><dd>No owned audience while we wait. Accepted: at this traffic level an email list is a list of nobody.</dd>
+                <dt>Evidence</dt><dd><a href="source-register.html#S19">[S19]</a></dd>
+                <dt>Measurable</dt><dd>not applicable until approved</dd>
+                <dt>How to implement</dt><dd>No code. Revisit when Q-11 is answered.</dd>
+              </dl>
+              <div class="decision"><strong>Decision (yours):</strong> <code>pending</code> by <code>unassigned</code> on <code>—</code>
+                <div class="box">Set it in <code>data/suggestions.json</code> → <code>"decision": "approve" | "approve-with-changes" | "reject" | "defer"</code>, then rebuild. The register and this page cannot disagree.</div></div>
+            </div></section>
+  <p class="muted">SG-25 and SG-26 do not exist; the gap is recorded in the register's metadata so nobody wastes an hour looking for lost rows. SG-27..SG-30 are the four parallel-pass rows named in the brief (nav labels, RSS, Search Console, reader capture), reproduced here with their original numbers.</p>
+</div>
+<p class="meta" style="margin:14px 0 0"><a href="executive-summary.html">How we work</a> &rsaquo; Suggestions</p></main>
+<footer class="site"><div class="wrap"><div class="cols"><div><h4>Shop</h4><ul><li><a href="shelf.html">The shelf</a></li><li><a href="product-b04g1mewy.html">B04G1MEwY</a></li><li><a href="product-b02nbdxp3.html">B02NbDxp3</a></li><li><a href="product-b00hj57dv.html">B00hJ57DV</a></li><li><a href="product-b0c8mow59.html">B0c8moW59</a></li><li><a href="product-b0f3gkalj.html">B0f3GKalj</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="guide-basket-or-oven-style.html">Basket or oven-style air fryer: what should you compare?</a></li><li><a href="guide-before-multi-function.html">Questions to ask before buying a multi-function kitchen appliance</a></li><li><a href="guide-capacity-checklist.html">A no-hype checklist for comparing air fryer capacity</a></li><li><a href="guide-cleanup-and-counter-space.html">How to assess cleanup and counter-space trade-offs</a></li><li><a href="guide-what-we-did-not-test.html">What we did not test, and why that sentence is on every page</a></li></ul></div><div><h4>How we work</h4><ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="source-register.html">Source register</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="flagged-for-review.html">Flagged for review</a></li><li><a href="campaign-ledger.html">Campaign ledger</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance-gate.html">Compliance gate</a></li></ul></div><div><h4>Site</h4><ul><li><a href="about.html">About &amp; method</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="https://github.com/karagemop466-tech/Affil3" rel="noopener">Repo</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul></div></div><div class="fine"><div class="stmt">As an Amazon Associate I earn from qualifying purchases. We do not make or receive any claim that Amazon endorses this site.</div><div>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</div><div>Product prices and availability are determined by Amazon at the time of purchase; this site displays no price it obtained elsewhere, because it has none it is licensed to show. Every factual claim carries a source in the <a href="source-register.html">source register</a>; items we could not confirm are blank and flagged on <a href="flagged-for-review.html">Flagged for review</a>.</div><div>Counter Tested · built from data in <code>data/</code> · source: <a href="https://github.com/karagemop466-tech/Affil3">karagemop466-tech/Affil3</a></div></div></div></footer>
+<script src="assets/track.js" defer></script>
+</body></html>

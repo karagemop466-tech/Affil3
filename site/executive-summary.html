@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Executive summary · Counter Tested</title>
+<meta name="description" content="What shipped, what the licence forbids, what is unverified, and the six decisions that gate everything else.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/executive-summary.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counter Tested">
+<meta property="og:title" content="Executive summary">
+<meta property="og:description" content="What shipped, what the licence forbids, what is unverified, and the six decisions that gate everything else.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Counter Tested guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body data-page-kind="page" data-doc="" data-collector="" data-schema-version="1">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="index.html"><b>Counter Tested</b><span>Small kitchen appliances, picked the slow way.</span></a>
+  <nav class="main" aria-label="Primary"><a href="shelf.html">Shelf</a><a href="guides.html">Guides</a><a href="topics.html">Topics</a>
+    <span class="group">How we work</span><a href="executive-summary.html">Executive summary</a><a href="source-register.html">Source register</a><a href="suggestions.html">Suggestions</a><a href="questions.html">Open questions</a>
+    <a href="executive-summary.html" aria-current="page">Full index</a>
+  </nav>
+</div></header>
+<div class="disclosure" id="disclosure-strip"><div class="wrap"><b>Disclosure.</b> <span>Counter Tested may earn a commission on qualifying purchases made through the Amazon links on this page. That is paid to us by Amazon, not added to what you pay. Links to Amazon are marked sponsored. <a href="about.html">How this site works</a>.</span><span class="tag-line">“As an Amazon Associate I earn from qualifying purchases.”</span></div></div>
+<main id="main">
+<div class="wrap page-head">
+  <p class="kicker">Executive summary</p>
+  <h1>What this project is, what it is not, and what it costs to finish</h1>
+  <p class="muted">Written for the person who has to make six decisions. Every number on this page comes from a file in <code>data/</code>; the claims it rests on are in the <a href="source-register.html">source register</a> (28 rows, each with the official page and the date it was read).</p>
+</div>
+<div class="wrap measure">
+  <div class="statgrid">
+    <div class="stat"><b>5</b><span>listings assigned</span></div>
+    <div class="stat"><b>0</b><span>confirmed destinations</span></div>
+    <div class="stat"><b>5</b><span>guides published</span></div>
+    <div class="stat"><b>28</b><span>suggestions to review</span></div>
+    <div class="stat"><b>12</b><span>questions needing answers</span></div>
+    <div class="stat"><b>0</b><span>ledger rows</span></div>
+  </div>
+
+  <h2>The one-paragraph version</h2>
+  <p>An affiliate site was asked for: five product links, a tracking ID, automation, measurement, compliance. What exists is a working publishing system that refuses to lie — pages generated from a register, a build gate that will not deploy without disclosure and without a properly tagged link, an event schema, an empty-but-correct campaign ledger, and a live GitHub Pages site. What does not exist is any verifiable fact about the five products, because their identifiers could not be resolved from this environment, and a site that invented them would be worth less than nothing.</p>
+
+  <h2>The finding that changes the brief</h2>
+  <p>Amazon's programme policies do not permit the version of "AI-powered affiliate platform" that reads the market for you. The IP licence bars robots and data mining against Program Content, bars storing Program Content images at all (a link to them may be stored for 24 hours), caps other product data caching at 24 hours, bars displaying prices or ratings except from a link Amazon serves or an API call under licence, bars using Program Content to develop or improve machine-learning models, and bars accessing the APIs "for the purpose of aggregating, analyzing, extracting, or repurposing" their content without express prior written approval. A 2026 addition requires any autonomous Agent touching that content to name itself in the HTTP User-Agent string as <code>Agent/[name]</code> and not to mimic human interaction.</p>
+  <blockquote>An affiliate automation platform built on scraping or warehousing Amazon data is not a risky version of the plan. It is a different plan, and the risk is the whole account: the agreement lets Amazon stop paying commissions earned anywhere on the site.</blockquote>
+  <p>Everything this repo automates therefore sits on our side of the line: intake, validation, generation, gating, scheduling, reporting. The Amazon-facing steps are one human, five minutes per link, and a documented protocol.</p>
+
+  <h2>Constraints that shaped the build (each one is a rule, not a preference)</h2>
+  <ul>
+    <li><b>Disclosure is not optional or footnoted.</b> <cite>Operating Agreement §5</cite> requires the exact associate sentence, clearly and prominently; the FTC's standard pushes it close to the recommendation and hard to miss, so it is in the layout, above the fold, on every page. <a href="source-register.html#S01">[S01]</a> <a href="source-register.html#S20">[S20]</a></li>
+    <li><b>Links must be the tagged format, direct, and correctly formatted.</b> Improperly formatted or indirect links are disqualified purchases — the traffic still happens, the commission does not. <a href="source-register.html#S03">[S03]</a> <a href="source-register.html#S04">[S04]</a></li>
+    <li><b>No prices, no ratings, no review quotes, no Amazon images.</b> All four are licence-restricted without API access, which is unconfirmed. The tables look sparse for exactly this reason. <a href="source-register.html#S06">[S06]</a> <a href="source-register.html#S07">[S07]</a> <a href="source-register.html#S08">[S08]</a></li>
+    <li><b>No self-purchase, no synthetic clicks.</b> Testing the link by buying through it is prohibited, which is why the protocol verifies the address bar and waits for a real reader. <a href="source-register.html#S12">[S12]</a></li>
+    <li><b>No price alerts or deal pages.</b> Price tracking and alerting functionality is prohibited; time-limited promotional copy has to be pulled the day it expires, which a static site should not pretend to do. <a href="source-register.html#S13">[S13]</a> <a href="source-register.html#S15">[S15]</a></li>
+    <li><b>There is a clock.</b> Three qualifying sales within 180 days of application, or the application can be withdrawn and the account is not reinstatable. Nobody here knows when it started. That is question Q-01 and it outranks every design decision. <a href="source-register.html#S17">[S17]</a></li>
+  </ul>
+
+  <h2>What ships today</h2>
+  <ul>
+    <li>A GitHub Pages site: front page, shelf, 5 product-intent records, 5 guides, 2 topic clusters, a reader-facing status page, and 7 operator surfaces (source register, suggestions, questions, flags, ledger, measurement, gate).</li>
+    <li>A deterministic builder and a 13-check publish gate in CI that fails the deploy on a missing disclosure, a mistagged link, an unlicensed field, an unsupported claim string, or a sitemap/feed/calendar disagreement.</li>
+    <li>An intake tool that records confirmations with dates and keeps intended and observed values in separate fields.</li>
+    <li>A cookieless event collector with a published schema, five defined events, and a refusal to accept a row that is not one of them.</li>
+    <li>A campaign ledger that will not take a number without naming the first-party report it came from.</li>
+  </ul>
+
+  <h2>What we need from you — the short version of <a href="questions.html">the questions page</a></h2>
+  <ol>
+    <li>The application date and qualifying-sale count (Q-01). Without it the roadmap has no deadline and may be pointless.</li>
+    <li>Confirmation that <code>shopnow047c-20</code> exists on the account and that this site's URL is registered (Q-02).</li>
+    <li>The five link test, five minutes each (Q-03) — this is the only thing standing between the shelf and revenue.</li>
+    <li>Whether API access exists, or will be applied for (Q-04). It decides whether comparison tables with real fields are ever buildable.</li>
+    <li>The niche and the byline (Q-09, Q-10), and a definition of success worth measuring (Q-18).</li>
+    <li>Approve or reject the 28 suggestions; 8 are proposed and waiting, and none of them will self-implement.</li>
+  </ol>
+
+  <h2>Honest statement of the risk</h2>
+  <p>This site is a correct foundation with almost no demand evidence under it. It is hosted on a project path at GitHub Pages, has no backlinks, no measured queries, and no traffic history, so "optimise campaigns to maximise affiliate revenue" is currently an instruction with nothing to optimise against. The plan in the register is deliberately sequenced: resolve the links, get indexed, write twelve guides, read the queries, and only then automate the parts that measurement justifies. Anyone who promises revenue from a five-ASIN starter shelf before that point is guessing.</p>
+</div>
+<p class="meta" style="margin:14px 0 0"><a href="executive-summary.html">How we work</a> &rsaquo; Executive summary</p></main>
+<footer class="site"><div class="wrap"><div class="cols"><div><h4>Shop</h4><ul><li><a href="shelf.html">The shelf</a></li><li><a href="product-b04g1mewy.html">B04G1MEwY</a></li><li><a href="product-b02nbdxp3.html">B02NbDxp3</a></li><li><a href="product-b00hj57dv.html">B00hJ57DV</a></li><li><a href="product-b0c8mow59.html">B0c8moW59</a></li><li><a href="product-b0f3gkalj.html">B0f3GKalj</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="guide-basket-or-oven-style.html">Basket or oven-style air fryer: what should you compare?</a></li><li><a href="guide-before-multi-function.html">Questions to ask before buying a multi-function kitchen appliance</a></li><li><a href="guide-capacity-checklist.html">A no-hype checklist for comparing air fryer capacity</a></li><li><a href="guide-cleanup-and-counter-space.html">How to assess cleanup and counter-space trade-offs</a></li><li><a href="guide-what-we-did-not-test.html">What we did not test, and why that sentence is on every page</a></li></ul></div><div><h4>How we work</h4><ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="source-register.html">Source register</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="flagged-for-review.html">Flagged for review</a></li><li><a href="campaign-ledger.html">Campaign ledger</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance-gate.html">Compliance gate</a></li></ul></div><div><h4>Site</h4><ul><li><a href="about.html">About &amp; method</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="https://github.com/karagemop466-tech/Affil3" rel="noopener">Repo</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul></div></div><div class="fine"><div class="stmt">As an Amazon Associate I earn from qualifying purchases. We do not make or receive any claim that Amazon endorses this site.</div><div>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</div><div>Product prices and availability are determined by Amazon at the time of purchase; this site displays no price it obtained elsewhere, because it has none it is licensed to show. Every factual claim carries a source in the <a href="source-register.html">source register</a>; items we could not confirm are blank and flagged on <a href="flagged-for-review.html">Flagged for review</a>.</div><div>Counter Tested · built from data in <code>data/</code> · source: <a href="https://github.com/karagemop466-tech/Affil3">karagemop466-tech/Affil3</a></div></div></div></footer>
+<script src="assets/track.js" defer></script>
+</body></html>

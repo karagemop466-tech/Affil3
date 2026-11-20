@@ -1,0 +1,105 @@
+name: Build, verify gate, publish to GitHub Pages
+
+# Runs on every push that touches the site's inputs, and can be dispatched by hand.
+# Order matters: build -> verify the build is the committed build -> run the publish gate -> deploy.
+# A failed gate means no deployment, which is the point of the gate.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "src/**"
+      - "site/**"
+      - "tools/**"
+      - ".github/workflows/deploy.yml"
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild from data/ and src/
+        run: python3 tools/build_site.py --out .build-ci
+
+      - name: Committed site/ must equal the tool output (no hand-edited HTML)
+        run: |
+          if ! diff -r .build-ci site >/tmp/drift.txt 2>&1; then
+            echo "::error::site/ has drifted from the tools. Run: python3 tools/build_site.py and commit the result."
+            head -40 /tmp/drift.txt
+            exit 1
+          fi
+          python3 - <<'PY'
+          import pathlib
+          a = sorted(p.relative_to(".build-ci") for p in pathlib.Path(".build-ci").rglob("*") if p.is_file())
+          b = sorted(p.relative_to("site") for p in pathlib.Path("site").rglob("*") if p.is_file())
+          assert a == b, f"file set mismatch: only-in-ci={[x for x in a if x not in b]} only-in-site={[x for x in b if x not in a]}"
+          print(f"build output identical to committed site/ ({len(a)} files)")
+          PY
+
+      - name: Data registers are valid and internally consistent
+        run: python3 tools/product_intake.py scan && python3 tools/campaign_ledger.py show
+
+      - name: Publish gate (13 checks)
+        run: python3 tools/check_site.py --root site
+
+      - name: Validate every emitted file that claims to be XML/JSON-LD
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, re, sys
+          from xml.etree import ElementTree as ET
+          bad = []
+          for f in pathlib.Path("site").glob("*.xml"):
+              try:
+                  ET.parse(f)
+              except ET.ParseError as e:
+                  bad.append(f"{f}: {e}")
+          for f in pathlib.Path("site").glob("*.html"):
+              for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', f.read_text(), re.S):
+                  try:
+                      json.loads(m.group(1))
+                  except json.JSONDecodeError as e:
+                      bad.append(f"{f}: malformed JSON-LD ({e})")
+          for f in pathlib.Path("data").glob("*.json"):
+              try:
+                  json.loads(f.read_text())
+              except json.JSONDecodeError as e:
+                  bad.append(f"{f}: {e}")
+          if bad:
+              print("\n".join(bad)); sys.exit(1)
+          print("all XML, JSON-LD and data registers parse cleanly")
+          PY
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build-and-verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Campaign ledger · Counter Tested</title>
+<meta name="description" content="The campaign record: schema, provenance rules, and zero rows until an authorised first-party report supplies them.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/campaign-ledger.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counter Tested">
+<meta property="og:title" content="Campaign ledger">
+<meta property="og:description" content="The campaign record: schema, provenance rules, and zero rows until an authorised first-party report supplies them.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/campaign-ledger.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Counter Tested guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+
+</head>
+<body data-page-kind="page" data-doc="" data-collector="" data-schema-version="1">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="index.html"><b>Counter Tested</b><span>Small kitchen appliances, picked the slow way.</span></a>
+  <nav class="main" aria-label="Primary"><a href="shelf.html">Shelf</a><a href="guides.html">Guides</a><a href="topics.html">Topics</a>
+    <span class="group">How we work</span><a href="executive-summary.html">Executive summary</a><a href="source-register.html">Source register</a><a href="suggestions.html">Suggestions</a><a href="questions.html">Open questions</a>
+    <a href="executive-summary.html" aria-current="page">Full index</a>
+  </nav>
+</div></header>
+<div class="disclosure" id="disclosure-strip"><div class="wrap"><b>Disclosure.</b> <span>Counter Tested may earn a commission on qualifying purchases made through the Amazon links on this page. That is paid to us by Amazon, not added to what you pay. Links to Amazon are marked sponsored. <a href="about.html">How this site works</a>.</span><span class="tag-line">“As an Amazon Associate I earn from qualifying purchases.”</span></div></div>
+<main id="main">
+<div class="wrap page-head">
+  <p class="kicker">Evidence, later</p>
+  <h1>Campaign ledger</h1>
+  <p class="measure">An empty ledger with a fixed schema, on purpose. Rows arrive only from authorised first-party reports, and only with the dated provenance attached, so that any future claim about performance can be walked back to a screen somebody read. There is no conversion score, no revenue forecast and no projection on this page, because there is nothing to compute them from.</p>
+</div>
+<div class="wrap">
+  <div class="tablewrap"><table><caption><code>data/ledger/campaign.jsonl</code> · 0 rows</caption><thead><tr><th>timestamp</th><th>source</th><th>report date</th><th>channel</th><th>tracking id</th><th>eligible sessions</th><th>clicks</th><th>reported orders</th></tr></thead><tbody><tr><td colspan="8" class="blank" style="text-align:center;padding:26px">No rows. This is the correct state: there are no authorised first-party report numbers to transcribe yet, and the tool refuses to invent them.</td></tr></tbody></table></div>
+  <div class="grid two">
+    <div class="card"><h4>How a row gets added</h4><p class="mono" style="font-size:13px;white-space:pre-wrap;background:#f6f2ea;padding:10px;border-radius:8px">python3 tools/campaign_ledger.py append \
+  --source 'Associates Central &gt; Reports &gt; Tracking report' \
+  --report-date 2026-12-14 --channel organic \
+  --eligible-sessions 12 --clicks 31 --reported-orders 2</p>
+      <p class="muted" style="font-size:14px">The tool rejects a row with no <code>--source</code> or no <code>--report-date</code>, rejects unknown field names, and never writes a computed percentage into the file.</p></div>
+    <div class="callout"><h4>Why the columns are the columns</h4>
+      <p style="margin:0">The brief specified timestamp, source, channel, eligible sessions, clicks and reported orders. Two facts from the programme explain why "and that is all we can honestly say": the commission session closes 24 hours after the click, an order completed up to 89 days later still counts if it came from the cart, and payment/dispatch can lag up to 180 days after purchase. So a clicks-to-orders ratio computed on this week's numbers is a fiction about a window that has not closed. <a href="source-register.html#S18">[S18]</a></p></div>
+  </div>
+</div>
+<p class="meta" style="margin:14px 0 0"><a href="executive-summary.html">How we work</a> &rsaquo; Ledger</p></main>
+<footer class="site"><div class="wrap"><div class="cols"><div><h4>Shop</h4><ul><li><a href="shelf.html">The shelf</a></li><li><a href="product-b04g1mewy.html">B04G1MEwY</a></li><li><a href="product-b02nbdxp3.html">B02NbDxp3</a></li><li><a href="product-b00hj57dv.html">B00hJ57DV</a></li><li><a href="product-b0c8mow59.html">B0c8moW59</a></li><li><a href="product-b0f3gkalj.html">B0f3GKalj</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="guide-basket-or-oven-style.html">Basket or oven-style air fryer: what should you compare?</a></li><li><a href="guide-before-multi-function.html">Questions to ask before buying a multi-function kitchen appliance</a></li><li><a href="guide-capacity-checklist.html">A no-hype checklist for comparing air fryer capacity</a></li><li><a href="guide-cleanup-and-counter-space.html">How to assess cleanup and counter-space trade-offs</a></li><li><a href="guide-what-we-did-not-test.html">What we did not test, and why that sentence is on every page</a></li></ul></div><div><h4>How we work</h4><ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="source-register.html">Source register</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="flagged-for-review.html">Flagged for review</a></li><li><a href="campaign-ledger.html">Campaign ledger</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance-gate.html">Compliance gate</a></li></ul></div><div><h4>Site</h4><ul><li><a href="about.html">About &amp; method</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="https://github.com/karagemop466-tech/Affil3" rel="noopener">Repo</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul></div></div><div class="fine"><div class="stmt">As an Amazon Associate I earn from qualifying purchases. We do not make or receive any claim that Amazon endorses this site.</div><div>CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED ‘AS IS’ AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.</div><div>Product prices and availability are determined by Amazon at the time of purchase; this site displays no price it obtained elsewhere, because it has none it is licensed to show. Every factual claim carries a source in the <a href="source-register.html">source register</a>; items we could not confirm are blank and flagged on <a href="flagged-for-review.html">Flagged for review</a>.</div><div>Counter Tested · built from data in <code>data/</code> · source: <a href="https://github.com/karagemop466-tech/Affil3">karagemop466-tech/Affil3</a></div></div></div></footer>
+<script src="assets/track.js" defer></script>
+</body></html>

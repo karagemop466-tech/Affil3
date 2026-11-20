@@ -1,0 +1,130 @@
+{
+  "_meta": {
+    "id": "flags",
+    "purpose": "Everything a human has to look at. A flag never blocks the merge; a broken build does. Each row says what is wrong, what we did about it, and what would close it.",
+    "updated": "2026-11-20",
+    "published_on_site": "flagged-for-review.html"
+  },
+  "flags": [
+    {
+      "id": "FLG-001",
+      "title": "The brief refers to registers that do not exist in this repository",
+      "severity": "scope",
+      "status": "open",
+      "what_we_found": "main@847ae37 contained exactly one file, README.md, 8 bytes. There was no requirements list, no source register, no landing page, no COORDINATION.md, no FLG-003, no SG-27..SG-30 and no S01/S07/S24 definitions anywhere in the repository or its history.",
+      "what_we_did": "Reconstructed each register from the brief's own description and labelled the reconstruction as ours. Numbering continues from the brief's scheme so future sessions can extend rather than renumber: SG-01..SG-24 suggestions, FLG-001.. flags, S01..S28 sources.",
+      "how_to_close": "If a canonical version of those registers exists elsewhere (another repo, a spreadsheet, an issue), drop it in data/ and re-run the build; the site reads from data/, so nothing is hard-coded. Reviewer: confirm the numbering is compatible.",
+      "source_links": [
+        "https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6"
+      ]
+    },
+    {
+      "id": "FLG-002",
+      "title": "The five submitted links use host `link.amazon` and 9-character identifiers",
+      "severity": "data",
+      "status": "open",
+      "what_we_found": "Every submitted URL is https://link.amazon/<identifier> where <identifier> is 9 characters: B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj. Public examples of an item identifier on Amazon are 10 characters, and Amazon's own policy text refers to 'Amazon Standard Identification Numbers (ASINs)' without publishing a length definition that this session could retrieve.",
+      "what_we_did": "Recorded the strings verbatim, counted them, generated a candidate /dp/ URL by mechanical substitution, and refused to describe either as valid or invalid. No product attribute was filled from the identifier.",
+      "how_to_close": "Paste each identifier into Amazon's search box while signed in to the enrolled account, or generate the link from SiteStripe, and record what actually resolves. Then run tools/product_intake.py confirm.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-003",
+      "title": "Compliance status of the supplied short links: unresolved",
+      "severity": "compliance",
+      "status": "open",
+      "what_we_found": "Two primary clauses bear on it and neither settles it. Participation Requirements 6(w) prohibits using a link shortening service 'in a manner that makes it unclear that you are linking to an Amazon Site' - a presentation test, not a format ban. Commission Income Statement 2(e) disqualifies purchases arriving through a 'Redirecting Link' that sends users indirectly to Amazon via an intermediate site without an affirmative click there - a tracking test. Whether link.amazon is (i) an Amazon-owned short-link surface that preserves the tag, (ii) an unrelated intermediate, or (iii) nothing at all, cannot be determined without clicking it from a browser.",
+      "what_we_did": "Did not claim the links are invalid, per instruction. Did not publish them as affiliate links either. They are listed as submitted inputs with the two clauses attached, and the site emits direct, properly tagged /dp/ links generated from confirmed data instead.",
+      "how_to_close": "One test closes it: from a signed-in session with the enrolled account, click the short link, check the final URL for tag=shopnow047c-20, and check the Associates reports for the click the following day. Record the outcome in data/products.json (observed_redirect_target) and mark this flag resolved or escalated.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-004",
+      "title": "The 'AI-powered agent that researches, analyses and scrapes Amazon' part of the brief collides with the licence",
+      "severity": "compliance",
+      "status": "open",
+      "what_we_found": "The IP License prohibits using Program Content to develop or improve large-language, multimodal or machine-learning models, and prohibits accessing or using Creators API / PA API / Data Feeds 'for the purpose of aggregating, analyzing, extracting, or repurposing any Product Advertising Content' without express prior written approval. It also excludes data-mining and robot tools from the licence, bars Program Content from browser extensions and client-side software, and adds Agent Terms requiring any autonomous software touching Program Content to self-identify as 'Agent/[name]' in the User-Agent string and not to mimic human interaction.",
+      "what_we_did": "Built the automation that is unambiguously inside the licence - data plumbing, validation, generation of our own editorial content from our own data files, link construction, publishing gates, reporting - and left every Amazon-facing collection step behind a written-approval gate rather than quietly implementing it. Nothing in tools/ opens a socket to amazon.com.",
+      "how_to_close": "Decide the intended data source for product signals (see Q-04, SG-01, SG-02). Options: (a) licensed API use with attributes displayed only from a fresh call and no analytics store, (b) written Amazon approval for analysis use, (c) our own hands-on test data only, (d) drop the automated research claim from the roadmap.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-005",
+      "title": "All five products are filed under kitchen/air-fryer topics on the strength of the brief's own hypotheses, not on listing data",
+      "severity": "data",
+      "status": "open",
+      "what_we_found": "The only category signal in the input was the suggested editorial topics ('Basket or oven-style air fryer...', 'air fryer capacity', 'multi-function kitchen appliance'), which the brief itself labels as 'working titles - not claims about popularity, search volume or product superiority'.",
+      "what_we_did": "Used that topic set for the shelf structure and guides, and marked the product-to-category assignment as assumed on every product record and on the category page.",
+      "how_to_close": "Confirm each listing's category and title from the /dp/ page, then set category_from_listing in data/products.json.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-006",
+      "title": "The 'five defined events' were not defined anywhere retrievable, so this session defined them",
+      "severity": "measurement",
+      "status": "open",
+      "what_we_found": "The brief says to 'record the five defined events' but the definitions were not in the repo. Inventing them silently would make the ledger unreviewable.",
+      "what_we_did": "Defined EV-01..EV-05 in data/events.schema.json with an explicit field list, a justification per event, and the rule that no event may be fired without a real user interaction [S12]. Marked 'proposed by S-A3-01, needs approval'.",
+      "how_to_close": "Approve, rename or reject in the decision register (SG-12). The collector validates every incoming row against the schema, so a rename is a one-file change plus a rebuild.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
+    },
+    {
+      "id": "FLG-007",
+      "title": "Account state unknown: no API access, no application date, no confirmation that the tracking ID belongs to an active account",
+      "severity": "access",
+      "status": "open",
+      "what_we_found": "Nothing in this environment carries Associates credentials. Whether shopnow047c-20 is live, whether the 180-day / 3-qualifying-sales window has started, and whether Creators API or PA API access exists are all unanswerable here.",
+      "what_we_did": "Left api_access, application_date, registered_website_confirmed and marketplace confirmation null, and made the build refuse to fabricate a launch date or a status badge for them.",
+      "how_to_close": "In Associates Central: check Manage your Tracking IDs for shopnow047c-20 and the registered website list; record the application date; note whether the API tab is enabled. Enter with tools/campaign_ledger.py program.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/node/topic/G7MJTPEP9NC3YKMG",
+        "https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8"
+      ]
+    },
+    {
+      "id": "FLG-008",
+      "title": "No traffic history exists, so every ranking or revenue expectation in the brief is unfounded",
+      "severity": "expectation",
+      "status": "open",
+      "what_we_found": "The repo is new, the domain is a GitHub Pages project path, and there are zero measured queries. Any claim like 'this will rank', 'this converts at x%' or 'trending products' would be invented.",
+      "what_we_did": "The campaign ledger ships empty with a schema; no conversion score, revenue forecast or search-volume claim appears anywhere on the site; the site's own front page states the publish date and the measured-data state.",
+      "how_to_close": "Run 6 weeks of two guides a week with measurement switched on, then revisit topic selection from real query data (SG-16, Q-13).",
+      "source_links": [
+        "https://developers.google.com/search/docs/essentials/spam-policies"
+      ]
+    },
+    {
+      "id": "FLG-009",
+      "title": "A GitHub Pages project site is a weak substrate for the ambitions in the brief",
+      "severity": "infrastructure",
+      "status": "open",
+      "what_we_did": "Kept everything deployable on Pages (static, relative URLs, no build-time secrets, no server) and shipped the collector, scheduler and intake tools as processes you can run elsewhere. Consequences: no server-rendered pages, no form handling, no email capture endpoint, no rewrite rules, and the URL carries /Affil3/.",
+      "how_to_close": "Answer Q-11. If the answer is 'stay on Pages', accept the limits in writing and remove the endpoint-dependent tasks from the roadmap. If it is 'move', the only code change needed is measurement.endpoint plus the base_url in data/program.json, then rebuild.",
+      "severity_note": "not a defect — a trade-off that needs your decision",
+      "source_links": [
+        "https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages"
+      ],
+      "what_we_found": "Pages deployment (the workflow in T-12) publishes static files only: no server-side rendering, no POST handling, no rewrite rules, and the site lives under the /Affil3/ project path, which also means robots.txt is not at the host root where crawlers expect it."
+    },
+    {
+      "id": "FLG-010",
+      "title": "Two 'verification' requirements in the brief are in tension and were resolved in favour of the reader",
+      "severity": "policy",
+      "status": "resolved-by-decision",
+      "what_we_found": "The brief asks for a page that reads like a shop and a table where every row carries an official source link. With five unresolvable identifiers, a fully sourced table is mostly empty cells, which reads like an audit and converts nobody.",
+      "what_we_did": "Split the surfaces. The reader-facing pages (front page, shelf, guides, product pages) carry plain language and only verified or explicitly marked-assumed facts. The evidence lives in one Inside section - source register, decision register, questions, flags, ledger, measurement, gate - reachable from the footer and one nav group, exactly as the brief's 'publication' row asked.",
+      "how_to_close": "If you would rather have the tables on the product pages themselves, flip layout.product_tables_inline in data/layout.json and rebuild.",
+      "source_links": []
+    }
+  ]
+}

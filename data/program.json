@@ -1,0 +1,91 @@
+{
+  "_meta": {
+    "id": "program",
+    "purpose": "Everything the site needs to know about the affiliate relationship, and the licence constraints that bind the machinery. Values here are either supplied by the operator, derived from a fetched primary source (see source), or null because nothing official confirms them.",
+    "updated": "2026-11-20"
+  },
+  "brand": {
+    "name": "Counter Tested",
+    "tagline": "Small kitchen appliances, picked the slow way.",
+    "blurb": "We publish buyer questions, comparison dimensions and the paperwork behind each recommendation. When we have not confirmed something, the page says so instead of guessing.",
+    "voice_rules": [
+      "Second person, plain words, no hype adjectives.",
+      "Never claim hands-on testing that did not happen.",
+      "Every number on the page has a source row or is blank.",
+      "Say what we do not know before we say what we think."
+    ],
+    "why_this_name": "Chosen in this session. Nothing in the repo defined a brand; the brief only fixed the tracking ID. Rename in one place: data/program.json -> brand, then rebuild."
+  },
+  "site": {
+    "base_url": "https://karagemop466-tech.github.io/Affil3/",
+    "published_from": "GitHub Pages, deployed by .github/workflows/deploy.yml from the committed site/ folder produced by tools/build_site.py",
+    "repo": "https://github.com/karagemop466-tech/Affil3",
+    "default_marketplace_domain": "www.amazon.com",
+    "status": "published-v0",
+    "note_on_base_url": "Relative URLs are used in every page, so the site also works from a file:// preview and from any custom domain without a rebuild; absolute URLs appear only in canonical tags, the sitemap and the RSS feed."
+  },
+  "associates": {
+    "program": "Amazon Associates (Amazon.com)",
+    "tracking_id": "shopnow047c-20",
+    "tracking_id_source": "operator-supplied in the task brief (2026-11-20)",
+    "implied_associates_id": "shopnow047c",
+    "implied_associates_id_basis": "Amazon's help text says the software automatically appends \"-20\" to Associate IDs [S25]. This is an arithmetic observation about the supplied string, not a confirmed account identifier.",
+    "tag_format_rule": "XXXXX-## must appear as a URL parameter on every link placed on the site [S03]",
+    "registered_website_confirmed": null,
+    "account_marketplace_confirmed": null,
+    "api_access": {
+      "creators_or_pa_api_available": null,
+      "why_null": "PA-API/Creators API credentials are account-held; nothing in this repo or environment carries them. Qualifying-sales and application status are also unknown [S17].",
+      "flag": "FLG-007"
+    },
+    "join_clock": {
+      "rule": "3 qualifying sales within 180 days of application, or the application can be withdrawn and the account cannot be reinstated [S17].",
+      "application_date": null,
+      "days_remaining": null,
+      "why_null": "The application date is not in the repo and cannot be read without account access. Operator must enter it: python3 tools/campaign_ledger.py program --application-date 2026-11-XX"
+    },
+    "required_disclosures": {
+      "associate_statement": "As an Amazon Associate I earn from qualifying purchases.",
+      "associate_statement_source": "Operating Agreement Section 5, verbatim [S01]",
+      "amazon_content_disclaimer": "CERTAIN CONTENT THAT APPEARS ON THIS SITE COMES FROM AMAZON. THIS CONTENT IS PROVIDED \u2018AS IS\u2019 AND IS SUBJECT TO CHANGE OR REMOVAL AT ANY TIME.",
+      "amazon_content_disclaimer_source": "IP License Section 2(k), verbatim [S09]",
+      "price_disclaimer_template": "Product prices and availability are accurate as of the date/time indicated and are subject to change. Any price and availability information displayed on [relevant Amazon Site(s), as applicable] at the time of purchase will apply to the purchase of this product.",
+      "price_disclaimer_source": "IP License Section 2(i), verbatim [S09]",
+      "plain_language_note": "We may earn a commission if you buy through links on this page. That commission is paid by Amazon, not by you, and it does not change what you pay.",
+      "placement_rule": "The associate statement and the plain-language note sit under the masthead on every page, and are repeated in the footer; a short note also sits immediately above the first outbound link on any page that has one.",
+      "placement_basis": "Amazon requires clear and prominent display [S01]; the FTC expects the disclosure to be hard to miss and close to the recommendation, which is why a footer-only disclosure is treated as insufficient [S20] [S19]."
+    }
+  },
+  "commerce_switch": {
+    "allow_live_links": false,
+    "meaning": "false = the build renders product cards and guide links in 'showcase' form (destination printed, no affiliate click). true = the build emits live tagged Special Links for every product whose own link_state is 'live'.",
+    "why_gate_exists": "Participation Requirements require correctly formatted Special Links that are accessed directly from the site [S03]; purchases via improperly formatted or indirect links are disqualified [S04]; and the brief itself instructs a one-link test in the enrolled account before scaling. Neither the destination nor the tracking report can be read from this environment, so nothing is allowed to click until a human confirms it.",
+    "how_to_flip": "Run the test in docs/LINK_TEST_PROTOCOL.md, then: python3 tools/product_intake.py confirm --slot 1 --observed-redirect '<final url>' --method SiteStripe --date 2026-11-XX; then set commerce_switch.allow_live_links=true and rebuild."
+  },
+  "imagery": {
+    "policy": "No Amazon product photography is stored, embedded or cached. The shelf uses original illustrations and typographic cards.",
+    "basis": "The IP License forbids storing or caching image Program Content and caps storing an image link at 24 hours [S08]; without API access there is no lawful source of product imagery at build time.",
+    "alt_text_rule": "Illustration alt text never names a product and never implies the picture is the product. A caption states 'illustration, not product photography'."
+  },
+  "editorial": {
+    "cadence": "two guides per week for six weeks, then choose topics from measured queries",
+    "cadence_basis": "The brief set a cadence requirement; no traffic history exists yet, so volume is capped at what one writer can verify rather than at what a generator could emit. See SG-16 and FLG-008.",
+    "clusters": ["air fryers", "multi-function cooking", "counter space and cleanup", "kitchen small appliances"],
+    "seasons": ["holiday kitchen (Nov-Dec)", "New Year cooking reset (Jan)", "graduation/first-apartment (May-Jun)"],
+    "no_generated_claims": "Templates may scaffold a page. They may not invent specs, ratings, prices, availability, or 'we tested it' language. tools/new_guide.py refuses to write a guide whose claim table is empty."
+  },
+  "measurement": {
+    "endpoint": null,
+    "endpoint_note": "GitHub Pages serves static files only, so the collector in tools/collect_server.py has to be hosted somewhere that runs a process. While endpoint is null the site records nothing remotely: counters stay local to the visitor's browser and the ledger stays empty. An empty ledger is a correct state; a fabricated one is not.",
+    "no_cookies": true,
+    "no_third_party_js": true,
+    "ip_policy": "The collector does not log the source address at all; events carry a path, an event name, a timestamp to the second and an ephemeral per-page id.",
+    "basis": "Participation Requirements make the operator responsible for disclosing cookie/pixel use [S19]; not setting cookies removes that obligation for our own collector and is also the least-invasive design.",
+    "do_not_do": "No synthetic clicks or impressions - prohibited outright [S12]. Link checking in CI therefore validates markup and reachability of our own files only, never by clicking out to Amazon."
+  },
+  "data_shelf_life": {
+    "product_fields_ttl_hours": 24,
+    "asin_ttl": "indefinite (ASINs may be stored for an indefinite period until licence termination [S08])",
+    "enforcement": "tools/product_intake.py stamps fetched_at on every product field and the build prints a staleness warning if any non-null product field is older than 24h."
+  }
+}
