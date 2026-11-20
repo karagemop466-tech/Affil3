@@ -1250,7 +1250,6 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
   after merge.
 
-
 ## Publish log (session 0a90f62c)
 
 - **PR #18** — https://github.com/karagemop466-tech/Affil3/pull/18 — "Crisp & Counter: verified
@@ -1270,11 +1269,43 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
 
+## Session `66f2548a` — second merge record (2026-11-20)
+
+`origin/main` advanced a second time while this branch worked: a further rewrite of
+`tools/build.mjs` and `src/assets/style.css`, a restructured source register now reaching S20, its
+own `/privacy/` and `/workflow/` pages, and FLG-030. Thirty-six conflicts; all resolved in favour of
+main with `git checkout --theirs`, nothing discarded, no file hand-merged. This branch's additions to
+`data/questions.json` and `data/suggestions.json` merged cleanly and were kept.
+
+**Superseded by the newest main, therefore not re-applied:** all five live defects this branch had
+fixed (the "open flags" tile counting resolved flags, "1 picks", the hand-written decision count, the
+FLG-008 miscitation, the brand-named alt text) — the newest main fixes each of them independently, and
+its alt text now reads "Editorial illustration for …; not the reviewed unit" with an `art-tag` badge.
+Main's own `/privacy/` page also superseded this branch's draft; the §3(e) obligation is recorded as
+FLG-035 resolved by main rather than claimed here.
+
+**Still missing on the newest main, re-applied in commit 78143a3:** the `/design-brief/` page with its
+stylesheet, `OWNED` and `DASHBOARDS` entries and the generated `DESIGN-BRIEF.md`; the verbatim re-read
+of the Operating Agreement and Program Policies appended to S01, S02 and S06 `used_for` (closing the
+excerpt caveat on §2(a)-(b)); and five flags renumbered to continue main's sequence — FLG-031 (the
+machine-learning clause, §5), FLG-032 (price tracking, §6(y)), FLG-033 (tracking-ID format caveat),
+FLG-034 (the superseded variant behind submitted link 4), FLG-035 (privacy notice, resolved by main).
+This branch's earlier numbering was dropped twice rather than renumbered over main's, and every
+affected register file says so in its `note`.
+
+**Final gate state on this branch:** `node tools/build.mjs` builds 31 pages, 30 sitemap URLs, 5 feed
+items; `node tools/verify.mjs` reports 3,407 checks passed, 0 failed; `python3 tools/build.py` and
+`tools/check_site.py` report 21 pages, PASS. Both builds re-run after the commit leave `git status`
+clean. A repository-wide scan of 8,261 anchors found zero broken internal links; the only Amazon
+anchors without `sponsored` or `nofollow` are citations to policy hosts plus eight inside the
+crawler-disallowed `legacy/` archive and one `gp/help` reference, none of them product links on an
+indexed surface.
+
 ---
 
 # Session `arena/533ac993-affil3` — integration, verification and publication
 
-Registry: session `arena/533ac993-affil3`, branch `arena/533ac993-affil3`, status active. Branch rebased onto `origin/main` (`67cfe2f`); the branch tree is `main`'s tree plus this session's claim/completion records only.
+Registry: session `arena/533ac993-affil3`, branch `arena/533ac993-affil3`, status active. Branch merged with `origin/main` (`3afbacd`); nothing from any concurrent session was discarded — all 45 files main advanced are kept, and this session adds only this claim/completion record.
 
 ## File scope claimed
 
@@ -1282,17 +1313,17 @@ Registry: session `arena/533ac993-affil3`, branch `arena/533ac993-affil3`, statu
 
 ## Scope NOT touched
 
-Everything owned by the root-site generator and its inputs is deliberately left unchanged: `index.html`, `shop/`, `products/`, `categories/`, `guides/`, `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `workflow/`, `about/`, `privacy/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`, `data/*.json`, `src/`, `tools/build.mjs`, `tools/verify.mjs`. These surfaces were published on `main` by prior sessions; this session verifies the combined tree and publishes it through this branch's PR/merge, changing none of them. Any irregularity found on those files is logged here as a request, not edited.
+Everything owned by the root-site generator and its inputs is deliberately left unchanged by this session: `index.html`, `shop/`, `products/`, `categories/`, `guides/`, `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `workflow/`, `about/`, `privacy/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`, `data/*.json`, `src/`, `tools/build.mjs`, `tools/verify.mjs`. These surfaces were published on `main` by prior sessions; this session verifies the combined tree and publishes it through this branch's PR/merge, changing none of them. Any irregularity found on those files is logged here as a request, not edited.
 
-Note for awareness: P04's manufacturer-page correction is carried by open PR #39 (`arena/b1c9cb53-affil3`), which conflicts with `main`; this session does not touch product data. ThermoMaven (P04) therefore keeps no specifications and no buy button, consistent with `data/products.json` on `main`.
+Note for awareness: P04's manufacturer-page correction is carried by open PR #39 (`arena/b1c9cb53-affil3`); this session does not touch product data. ThermoMaven (P04) therefore keeps no specifications and no buy button, consistent with `data/products.json` on `main`.
 
 ## Task board
 
 | ID | Task | Status | Notes |
 |---|---|---|---|
-| I-01 | Rebase onto `origin/main`; read root site, gates and data model | done | branch is now `67cfe2f` + this claim |
+| I-01 | Rebase onto `origin/main`; read root site, gates and data model | done | merged `origin/main` `3afbacd`; concurrent work preserved |
 | I-02 | Run build + verify + link checks on the combined tree; confirm green | pending | `npm run check` |
-| I-03 | Open PR from this branch to `main` | pending | summary, sources used, flagged irregularities in the body |
+| I-03 | Open PR from this branch to `main` | done | PR #48; summary, sources used, flagged irregularities in the body |
 | I-04 | Merge the PR without waiting for review | pending | user-authorized; `gh pr merge --merge` |
 | I-05 | Confirm GitHub Pages deploys; fetch the live site | pending | `https://karagemop466-tech.github.io/Affil3/` |
 | I-06 | Record PR link, merge result and deploy status in this file | pending | follow-up PR from this branch if needed |

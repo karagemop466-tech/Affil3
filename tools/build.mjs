@@ -10,7 +10,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
 const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
-  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
+  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
+  '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 
@@ -57,6 +58,7 @@ const DASHBOARDS = [
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
+  ['/design-brief/', 'Design brief (next redesign)'],
   ['/editorial/', 'Editorial register (second publication)'],
 ];
 
@@ -799,6 +801,49 @@ add({
 </div>`,
 });
 
+// ---------------- DESIGN BRIEF ----------------
+// Re-added by session 66f2548a after the second main advance dropped it. Rendered from
+// data/design-brief.json, and DESIGN-BRIEF.md is written from the same object in the write step,
+// so the page and the markdown file cannot disagree.
+{
+  const db = read('data/design-brief.json');
+  add({
+    path: '/design-brief/', title: 'Design brief: making this read like a publication',
+    description: 'The brief to hand whoever designs this site next: diagnosed problems with evidence and where each now stands, invariants no art direction may relax, prescriptions with before-and-after copy, a forbidden list, a sequence, and the prompt itself.',
+    body: `<section class="page-head"><p class="kicker">Design brief · ${db.diagnosis.length} problems · ${db.invariants.length} invariants · ${db.prescriptions.length} prescriptions</p>
+<h1>${esc(db.title)}</h1>
+<p class="deck">${esc(db.purpose)}</p>
+<p class="note">${esc(db.status)}</p></section>
+<section class="band"><h2>What was wrong, with evidence</h2>
+<p class="muted small">Several of these were fixed while this brief was being written, by this branch and by others working in parallel. Each row says so where it applies; a diagnosis that quietly stops being true is as bad as one that was never accurate.</p>
+${db.diagnosis.map((x) => `<article class="flag-card" id="${esc(x.id)}">
+<p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.problem)}</strong>${x.fixed ? ' <span class="badge good">addressed</span>' : ''}</p>
+<p><strong>Evidence.</strong> ${esc(x.evidence)}</p>
+${x.fixed ? `<p class="small muted"><strong>Where it stands now.</strong> ${esc(x.fixed)}</p>` : ''}
+<p class="small muted"><strong>Why it reads as generated.</strong> ${esc(x.why_it_reads_as_generated)}</p>
+</article>`).join('\n')}</section>
+<section class="band"><h2>Invariants: what no redesign may change</h2>
+<p class="small muted">Each is either enforced by the build gate or required by the Associates Program Policies and Operating Agreement. An art direction that breaks one is not a bolder art direction, it is a failed build.</p>
+<ol class="invariants">${db.invariants.map((i) => `<li>${esc(i)}</li>`).join('\n')}</ol></section>
+<section class="band"><h2>Prescriptions</h2>
+${db.prescriptions.map((x) => `<article class="flag-card" id="${esc(x.id)}">
+<p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.area)}</strong> <span class="badge">${esc(x.effort)}</span></p>
+<p><strong>Rule.</strong> ${esc(x.rule)}</p>
+<p class="beforeafter"><span class="ba-label">Before</span> ${esc(x.before)}</p>
+<p class="beforeafter"><span class="ba-label">After</span> ${esc(x.after)}</p>
+<p class="small muted"><strong>Checkable?</strong> ${esc(x.checkable)}</p>
+</article>`).join('\n')}</section>
+<section class="band"><h2>Forbidden</h2>
+<p class="small muted">Patterns that make copy read as machine-written. The last one is the test that matters.</p>
+<ul class="forbidden">${db.forbidden.map((f) => `<li>${esc(f)}</li>`).join('\n')}</ul></section>
+<section class="band"><h2>Sequence</h2>
+${table(['Step', 'Do this', 'Depends on'], db.sequence.map((s) => [String(s.step), esc(s.do), esc(s.depends || '—')]), 'wide')}</section>
+<section class="band"><h2>The prompt to hand the next session</h2>
+<p class="small muted">Also written to <code>DESIGN-BRIEF.md</code> in the repository from this same JSON document, so the page and the file cannot drift apart.</p>
+<pre class="prompt-block">${esc(db.prompt)}</pre></section>`,
+  });
+}
+
 // 404
 add({ path: '/404.html', title: 'Page not found', description: 'This page does not exist.', noSitemap: true,
   body: `<section class="page-head"><h1>Page not found</h1><p class="deck">Try the <a href="${esc(href('/'))}">front page</a>, the <a href="${esc(href('/shop/'))}">shop table</a>, or the <a href="${esc(href('/guides/'))}">guides</a>.</p></section>` });
@@ -888,5 +933,48 @@ ${feedItems.map((g) => `  <item>
 `);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
+// file and the published page cannot disagree. That is the principle behind S-14 applied to itself.
+{
+  const db = read('data/design-brief.json');
+  const L = [];
+  L.push(`# ${db.title}`, '');
+  L.push(`> Generated from \`data/design-brief.json\` by \`tools/build.mjs\`. The published page is`);
+  L.push(`> \`${cfg.siteUrl}/design-brief/\`. Edit the JSON and rebuild; do not edit this file directly.`, '');
+  L.push(db.purpose, '');
+  L.push(`**Status:** ${db.status}`, '');
+  L.push('## What was wrong, with evidence', '');
+  L.push('Several of these were fixed while this brief was being written, by this branch and by others');
+  L.push('working in parallel. Each row says so where it applies; a diagnosis that quietly stops being');
+  L.push('true is as bad as one that was never accurate.', '');
+  for (const x of db.diagnosis) {
+    L.push(`### ${x.id}. ${x.problem}${x.fixed ? ' — addressed' : ''}`, '');
+    L.push(`**Evidence.** ${x.evidence}`, '');
+    if (x.fixed) L.push(`**Where it stands now.** ${x.fixed}`, '');
+    L.push(`**Why it reads as generated.** ${x.why_it_reads_as_generated}`, '');
+  }
+  L.push('## Invariants: what no redesign may change', '');
+  L.push('Each of these is either enforced by `tools/verify.mjs` or required by the Associates Program');
+  L.push('Policies and Operating Agreement. An art direction that breaks one is not a bolder art');
+  L.push('direction, it is a failed build.', '');
+  db.invariants.forEach((i, n) => L.push(`${n + 1}. ${i}`));
+  L.push('', '## Prescriptions', '');
+  for (const x of db.prescriptions) {
+    L.push(`### ${x.id}. ${x.area}`, '');
+    L.push(`**Rule.** ${x.rule}`, '');
+    L.push(`- **Before.** ${x.before}`);
+    L.push(`- **After.** ${x.after}`);
+    L.push(`- **Effort.** ${x.effort}`);
+    L.push(`- **Checkable?** ${x.checkable}`, '');
+  }
+  L.push('## Forbidden', '');
+  L.push('Patterns that make copy read as machine-written. The last one is the test that matters.', '');
+  db.forbidden.forEach((f) => L.push(`- ${f}`));
+  L.push('', '## Sequence', '', '| Step | Do this | Depends on |', '|---|---|---|');
+  db.sequence.forEach((st) => L.push(`| ${st.step} | ${st.do.replace(/\|/g, '\\|')} | ${st.depends || '—'} |`));
+  L.push('', '## The prompt to hand the next session', '', '```', db.prompt, '```', '');
+  fs.writeFileSync(path.join(ROOT, 'DESIGN-BRIEF.md'), L.join('\n'));
+}
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

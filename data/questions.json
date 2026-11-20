@@ -1,42 +1,448 @@
 {
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at.",
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "known": [
-    {"id": "K-01", "statement": "The tracking ID supplied by the owner is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S01"]},
-    {"id": "K-02", "statement": "The Operating Agreement requires the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' to be stated clearly and prominently on the site.", "sources": ["S01"]},
-    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a parameter in the URL, and must be accessed directly from the site.", "sources": ["S02"]},
-    {"id": "K-04", "statement": "A site may show price and availability only if Amazon serves that data or it comes through the Creators or PA API. This site does neither, so it shows no prices.", "sources": ["S03"]},
-    {"id": "K-05", "statement": "Google asks that paid and affiliate links be marked with rel=\"sponsored\".", "sources": ["S06"]},
-    {"id": "K-06", "statement": "The FTC requires a material connection, including an affiliate commission, to be disclosed clearly and conspicuously, at the point of the endorsement.", "sources": ["S07", "S08"]},
-    {"id": "K-07", "statement": "Four of the five supplied short links resolved to a product page across three fetch rounds; one did not resolve to a product at all.", "sources": ["S05", "S04"]},
-    {"id": "K-08", "statement": "All five supplied link codes are 9 characters. Every resolved product page carries a 10-character ASIN.", "sources": ["S05", "S04"]},
-    {"id": "K-09", "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.", "sources": ["S05"]},
-    {"id": "K-10", "statement": "Four of the five products have a manufacturer specification page that states capacity, temperature, power or dimensions.", "sources": ["S11", "S12", "S13", "S14"]},
-    {"id": "K-11", "statement": "USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles.", "sources": ["S10"]},
-    {"id": "K-12", "statement": "A qualifying purchase session lasts 24 hours from the click, or up to 89 days if the item is added to the cart first.", "sources": ["S17"]}
+    {
+      "id": "K-01",
+      "statement": "The tracking ID supplied by the owner is shopnow047c-20, and the -20 suffix matches the US Associates convention.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-02",
+      "statement": "The Operating Agreement requires the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' to be stated clearly and prominently on the site.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-03",
+      "statement": "Special Links must carry the Associates tag as a parameter in the URL, and must be accessed directly from the site.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-04",
+      "statement": "A site may show price and availability only if Amazon serves that data or it comes through the Creators or PA API. This site does neither, so it shows no prices.",
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "K-05",
+      "statement": "Google asks that paid and affiliate links be marked with rel=\"sponsored\".",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "K-06",
+      "statement": "The FTC requires a material connection, including an affiliate commission, to be disclosed clearly and conspicuously, at the point of the endorsement.",
+      "sources": [
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "id": "K-07",
+      "statement": "SUPERSEDED by K-13, kept for the audit trail. Original: \"Four of the five supplied short links resolved to a product page across three fetch rounds; one did not.\" A fourth round on 2026-11-20 resolved all five, and the fifth has now resolved in three separate passes. The lesson stands and is worth more than the correction: a single fetch returning an Amazon checkpoint page is not evidence that a link is dead.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "superseded_by": "K-13"
+    },
+    {
+      "id": "K-08",
+      "statement": "All five supplied link codes are 9 characters. Every resolved product page carries a 10-character ASIN.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
+    },
+    {
+      "id": "K-09",
+      "statement": "SUPERSEDED by K-13, kept for the audit trail. Original: \"The observed destination for the same short link differed between fetch rounds, so the mapping is recorded per round rather than as a single fact.\" The destinations are now stable across the latest three independent passes and all five agree. The per-round recording practice is retained regardless: it is what made the earlier transposition visible instead of silent.",
+      "sources": [
+        "S05"
+      ],
+      "superseded_by": "K-13"
+    },
+    {
+      "id": "K-10",
+      "statement": "Four of the five products have a manufacturer specification page that states capacity, temperature, power or dimensions.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "id": "K-11",
+      "statement": "USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles.",
+      "sources": [
+        "S10"
+      ]
+    },
+    {
+      "id": "K-12",
+      "statement": "A qualifying purchase session lasts 24 hours from the click, or up to 89 days if the item is added to the cart first.",
+      "sources": [
+        "S17"
+      ]
+    },
+    {
+      "id": "K-13",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
+      "sources": [
+        "S05",
+        "S04",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-14",
+      "statement": "Participation Requirements §5 bars using Special Links or Program Content \"to develop machine learning models or related technology\" without Amazon's express prior written approval. Read verbatim 2026-11-20.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-15",
+      "statement": "Participation Requirements §6(y) bars price tracking and price alerting functionality on the Site unless Amazon agrees. Read verbatim 2026-11-20.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-16",
+      "statement": "Participation Requirements §6(u) bars purchasing through your own Special Links and bars permitting, requesting or encouraging friends, relatives, employees or contractors to do so. Gate G-02 must therefore be tested by checking the destination and the tracking report, never by placing an order.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-17",
+      "statement": "Participation Requirements §6(g) bars offering any consideration, reward or incentive for using Special Links, and §4 permits Special Links in email, SMS and direct messages only where the communication was solicited. Together these constrain any reader-capture offer: opt-in only, and no reward for clicking.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-18",
+      "statement": "A violation of the Participation Requirements, the IP License or Operating Agreement §5 is deemed a material breach of the Agreement, and Operating Agreement §6 permits immediate termination on a material breach. The compliance rules this site enforces in its build gate are termination-grade, not stylistic.",
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-19",
+      "statement": "Operating Agreement §4 states Amazon makes \"no representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time\". That is the official basis for the empty campaign ledger and for publishing no revenue forecast, conversion score or traffic estimate anywhere in this repository.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-20",
+      "statement": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID has an eleven-character prefix, which the clause permits; the shape neither confirms nor refutes the ID. §1(g) separately bars any Amazon trademark or variant in a tag, and the supplied ID contains none.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-21",
+      "statement": "Participation Requirements §2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends. Seasonal content therefore carries a takedown obligation, and any seasonal page needs an expiry date rather than just a publish date.",
+      "sources": [
+        "S02"
+      ]
+    }
   ],
   "unknown": [
-    {"id": "Q-01", "question": "Which product did the owner intend each supplied short link to reach?", "why_it_matters": "Until this is answered, no product row can say 'this is the product you submitted'. The site can only say 'this is where the link landed on this date', which is a different claim.", "how_to_close": "Open each of the five short links in a signed-in Amazon session and name the product. One message closes it.", "sources": ["S05", "S04"], "blocking": true},
-    {"id": "Q-02", "question": "Does a buy link with our tag actually credit a sale?", "why_it_matters": "This is the only question that decides whether any of this earns anything. The links match the tagging rule, but matching the rule is not the same as appearing in a tracking report.", "how_to_close": "In Associates Central, click one link per product, confirm the destination, and confirm the click in the tracking report. This is gate G-02.", "sources": ["S01", "S02"], "blocking": true},
-    {"id": "Q-03", "question": "Is the Associates account active, and is this site declared in it?", "why_it_matters": "An account that has not declared the site, or has gone dormant, will not pay out however good the pages are.", "how_to_close": "Check account status and the declared site list in Associates Central.", "sources": ["S01"], "blocking": true},
-    {"id": "Q-04", "question": "Where will the analytics collector run?", "why_it_matters": "GitHub Pages is static, so it cannot run the collector. Without an endpoint there is no measurement, and without measurement the next topic is chosen on instinct.", "how_to_close": "Pick a host that runs Node, deploy tools/collector.mjs, and set analyticsEndpoint in data/config.json.", "sources": [], "blocking": false},
-    {"id": "Q-05", "question": "Which marketplace is the intended one?", "why_it_matters": "Each Amazon marketplace has its own ASINs and its own Associates ID. The -20 tag and the amazon.com pages point to the US program, but that is inference, not a statement from the owner.", "how_to_close": "Confirm the US marketplace and the amazon.com storefront.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-06", "question": "Who is the named editor?", "why_it_matters": "A named person with a contact route is a stronger trust signal for both readers and search engines than a team byline. Inventing one would be worse than not having one.", "how_to_close": "Supply the name and role of the person who answers for corrections.", "sources": ["S09"], "blocking": false},
-    {"id": "Q-07", "question": "What publishing cadence can be sustained?", "why_it_matters": "The feed and the sitemap only grow if guides keep shipping. A cadence nobody can keep is worse than a slower one that holds.", "how_to_close": "Choose an option on the suggestions page.", "sources": [], "blocking": false},
-    {"id": "Q-08", "question": "Should prices ever be displayed?", "why_it_matters": "Displaying price requires Amazon-served data or the Creators API. It also creates a maintenance obligation, since a stale price is a misleading claim.", "how_to_close": "Decide whether to enroll in the Creators API. Until then, no price appears anywhere.", "sources": ["S03"], "blocking": false},
-    {"id": "Q-09", "question": "What belongs in the campaign ledger?", "why_it_matters": "The ledger stays empty until there is an authorized first-party report to put in it. Importing scraped or estimated numbers would poison every decision made from it.", "how_to_close": "Export an Associates report and supply it with its date range and provenance.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-10", "question": "Should the earlier /editorial/ publication be retired?", "why_it_matters": "Two publications in one repository splits the site's identity and its search signals. One site should be indexed.", "how_to_close": "Choose option S-01 on the suggestions page.", "sources": ["S09"], "blocking": false},
-    {"id": "Q-11", "question": "Does the click counter need a separate privacy notice?", "why_it_matters": "The counter stores no cookies, no IP address and no identifiers, which keeps it small. Whether that is enough is a question for the owner's counsel, not a conclusion this build should state.", "how_to_close": "Obtain legal review, or keep the counter off until it is reviewed.", "sources": [], "blocking": false},
-    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Without it, no query data exists and nobody can see which guides are actually being found.", "how_to_close": "Verify the property and submit the sitemap URL from robots.txt.", "sources": [], "blocking": false},
-    {"id": "Q-13", "question": "What is the target reader, precisely?", "why_it_matters": "A site for 'people buying kitchen gear' is not a site. A site for 'renters with two feet of counter who cook for two' produces different pages than 'families of six with a big kitchen'. This decision changes the guides.", "how_to_close": "Nominate one reader and one situation. Content decisions get easier immediately.", "sources": [], "blocking": false}
+    {
+      "id": "Q-01",
+      "question": "Which product did the owner intend each supplied short link to reach?",
+      "why_it_matters": "Until this is answered, no product row can say 'this is the product you submitted'. The site can only say 'this is where the link landed on this date', which is a different claim.",
+      "how_to_close": "Open each of the five short links in a signed-in Amazon session and name the product. One message closes it.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true,
+      "have": "Four independent fetch rounds agree on all five destinations, and four of the five products have a manufacturer specification page behind their figures.",
+      "lack": "Nothing observable from a destination page: whether it is the product that was meant. Intent is a property of the account that issued the link.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-02",
+      "question": "Does a buy link with our tag actually credit a sale?",
+      "why_it_matters": "This is the only question that decides whether any of this earns anything. The links match the tagging rule, but matching the rule is not the same as appearing in a tracking report.",
+      "how_to_close": "In Associates Central, click one link per product, confirm the destination, and confirm the click in the tracking report. This is gate G-02.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "blocking": true,
+      "have": "The exact required link shape from §2(b), the observation that no supplied link carries a tag, and a gate that refuses to publish a product call-to-action without tag=shopnow047c-20.",
+      "lack": "A click and a row in the tracking report. There is no Associates login in this environment, and §6(u) rules out testing by purchase.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-03",
+      "question": "Is the Associates account active, and is this site declared in it?",
+      "why_it_matters": "An account that has not declared the site, or has gone dormant, will not pay out however good the pages are.",
+      "how_to_close": "Check account status and the declared site list in Associates Central.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": true,
+      "have": "The tag format from §2(b) and §6(b), which bars displaying tag-formatted links on a site that is not your Site.",
+      "lack": "Whether the account is active and whether this GitHub Pages URL, or a custom domain, is on its declared-site list.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-04",
+      "question": "Where will the analytics collector run?",
+      "why_it_matters": "GitHub Pages is static, so it cannot run the collector. Without an endpoint there is no measurement, and without measurement the next topic is chosen on instinct.",
+      "how_to_close": "Pick a host that runs Node, deploy tools/collector.mjs, and set analyticsEndpoint in data/config.json.",
+      "sources": [],
+      "blocking": false,
+      "have": "A working collector in tools/collector.mjs plus a deployable endpoint under tools/analytics-endpoint/, tested for aggregate-only storage, unknown-event rejection and oversize bodies.",
+      "lack": "A running host with HTTPS and persistent storage, and a named person who may read the data. GitHub Pages cannot run it.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-05",
+      "question": "Which marketplace is the intended one?",
+      "why_it_matters": "Each Amazon marketplace has its own ASINs and its own Associates ID. The -20 tag and the amazon.com pages point to the US program, but that is inference, not a statement from the owner.",
+      "how_to_close": "Confirm the US marketplace and the amazon.com storefront.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false,
+      "have": "All five destinations are on www.amazon.com, the -20 suffix matches the US convention, and the policy text read is the US Program Policies.",
+      "lack": "An explicit confirmation. Marketplace choice determines both the ASIN set and which Associates ID applies.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-06",
+      "question": "Who is the named editor?",
+      "why_it_matters": "A named person with a contact route is a stronger trust signal for both readers and search engines than a team byline. Inventing one would be worse than not having one.",
+      "how_to_close": "Supply the name and role of the person who answers for corrections.",
+      "sources": [
+        "S09"
+      ],
+      "blocking": false,
+      "have": "A team byline, an Organization author in the structured data, and a published editorial method at /how-we-choose/.",
+      "lack": "A name and any credential worth stating. §2(b) bars misleading claims, so a credential may only appear if it is true.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-07",
+      "question": "What publishing cadence can be sustained?",
+      "why_it_matters": "The feed and the sitemap only grow if guides keep shipping. A cadence nobody can keep is worse than a slower one that holds.",
+      "how_to_close": "Choose an option on the suggestions page.",
+      "sources": [],
+      "blocking": false,
+      "have": "Five published guides, a gated feed with one item per guide, and a gated sitemap.",
+      "lack": "A cadence that can actually be sustained, and the next ten topics. Q-12 would supply the second half from measured queries.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-08",
+      "question": "Should prices ever be displayed?",
+      "why_it_matters": "Displaying price requires Amazon-served data or the Creators API. It also creates a maintenance obligation, since a stale price is a misleading claim.",
+      "how_to_close": "Decide whether to enroll in the Creators API. Until then, no price appears anywhere.",
+      "sources": [
+        "S03"
+      ],
+      "blocking": false,
+      "have": "The three clauses that govern it - §2(b), §6(t) and §6(y) - all read verbatim, and a gate that fails the build on any currency amount, star rating or review count.",
+      "lack": "An authorized data source. Without PA API or Creators API access the answer is already fixed: no prices, no ratings.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-09",
+      "question": "What belongs in the campaign ledger?",
+      "why_it_matters": "The ledger stays empty until there is an authorized first-party report to put in it. Importing scraped or estimated numbers would poison every decision made from it.",
+      "how_to_close": "Export an Associates report and supply it with its date range and provenance.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false,
+      "have": "A ledger schema with timestamp, source, channel, eligible sessions, clicks and reported orders, plus a dated provenance trail. It is empty by design.",
+      "lack": "Any authorized first-party report. Operating Agreement §4 disclaims any traffic or income representation, so nothing may be estimated to fill it.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-10",
+      "question": "Should the earlier /editorial/ publication be retired?",
+      "why_it_matters": "Two publications in one repository splits the site's identity and its search signals. One site should be indexed.",
+      "how_to_close": "Choose option S-01 on the suggestions page.",
+      "sources": [
+        "S09"
+      ],
+      "blocking": false,
+      "have": "robots.txt now disallows /editorial/, /legacy/ and /crisp-index/ and declares a single sitemap, so a crawler is already pointed at one publication.",
+      "lack": "A decision about whether the secondary publications stay served to humans at all, and whether the two data registers merge.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-11",
+      "question": "Does the click counter need a separate privacy notice?",
+      "why_it_matters": "The counter stores no cookies, no IP address and no identifiers, which keeps it small. Whether that is enough is a question for the owner's counsel, not a conclusion this build should state.",
+      "how_to_close": "Obtain legal review, or keep the counter off until it is reviewed.",
+      "sources": [],
+      "blocking": false,
+      "have": "A counter that sets no cookies, no localStorage and no sessionStorage - asserted by the gate - respects Do Not Track, and has an empty endpoint, plus §3(e) read verbatim.",
+      "lack": "A published notice. A draft /privacy/ page now exists for review; whether it is adequate where the site is operated from is a question for counsel.",
+      "who": "Site owner / counsel"
+    },
+    {
+      "id": "Q-12",
+      "question": "Who owns the Search Console property?",
+      "why_it_matters": "Without it, no query data exists and nobody can see which guides are actually being found.",
+      "how_to_close": "Verify the property and submit the sitemap URL from robots.txt.",
+      "sources": [],
+      "blocking": false,
+      "have": "A sitemap at a known URL and the verification methods Google documents.",
+      "lack": "Property ownership. Someone has to add the property in a Google account and verify it.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-13",
+      "question": "What is the target reader, precisely?",
+      "why_it_matters": "A site for 'people buying kitchen gear' is not a site. A site for 'renters with two feet of counter who cook for two' produces different pages than 'families of six with a big kitchen'. This decision changes the guides.",
+      "how_to_close": "Nominate one reader and one situation. Content decisions get easier immediately.",
+      "sources": [],
+      "blocking": false,
+      "have": "Three product shapes, five guides organised by the job the appliance does, and category pages written around a job rather than a brand.",
+      "lack": "A named reader. 'People who cook' is not a target; the copy cannot be sharpened against it until there is one.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-14",
+      "question": "Is the product behind submitted link 4 the one intended, given that Amazon presents it as superseded?",
+      "have": "The official page for B0DHZTCNR5 carries a \"Newer Version Available\" block pointing at ASIN B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh fetch 2026-11-20 (FLG-034).",
+      "lack": "Any indication of which of the two was meant. The successor was not submitted, so publishing it as a product row would be inventing intent.",
+      "who": "Account holder",
+      "why_it_matters": "A reader who clicks through to a variant Amazon labels superseded has a worse experience, and the site is promoting something its own source undercuts. It compounds FLG-025: this product already has no manufacturer page to verify against.",
+      "how_to_close": "Confirm the intended ASIN for slot 4. If it is B0GL7Z4KP4, supply it so the intended fields can be filled from an official source, then issue a tagged Special Link for it.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-15",
+      "question": "Will you ask Amazon for prior written approval before any part of the platform uses Special Links or Program Content as model input?",
+      "have": "The clause, read verbatim: Participation Requirements §5 (K-14), plus the preamble making any violation of the Participation Requirements a material breach (K-18).",
+      "lack": "An answer from Amazon, and a decision about whether the automation the brief describes needs one. Nothing built so far crosses the line; the brief's description of an AI-powered research pipeline does approach it.",
+      "who": "Account holder",
+      "why_it_matters": "It decides how much of the brief may be built at all. Building the automated research pipeline first and asking afterwards risks the account, and a material breach permits immediate termination.",
+      "how_to_close": "Contact Associates support with a precise description of the intended automation and record the reply verbatim against FLG-031 before building it.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-16",
+      "question": "Is the draft privacy notice adequate, and does it need legal review before the analytics endpoint is switched on?",
+      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-035).",
+      "lack": "A review by anyone qualified to give one. The draft was written by a build session from the code and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
+      "who": "Site owner / counsel",
+      "why_it_matters": "§3(e) is an Associates obligation and a violation of the Participation Requirements is a material breach. Switching the endpoint on before the notice is settled would collect data under an unreviewed disclosure.",
+      "how_to_close": "Read the page, correct anything that overstates or understates what the code does, and decide whether counsel should review it before Q-04 is answered.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": false
+    }
   ],
   "discovery": [
-    {"id": "D-01", "suggestion": "Open each supplied short link in a signed-in browser and record the product name and the 10-character ASIN from the URL.", "closes": ["Q-01"]},
-    {"id": "D-02", "suggestion": "Generate one Special Link per product inside Associates Central, then click it and confirm the row appears in the tracking report.", "closes": ["Q-02", "Q-03", "Q-05"]},
-    {"id": "D-03", "suggestion": "Export the account's tracking ID list and declared site list from Associates Central and keep the export with its date.", "closes": ["Q-03", "Q-05"]},
-    {"id": "D-04", "suggestion": "Run the collector against a known set of ten test clicks before trusting any number it produces.", "closes": ["Q-04"]},
-    {"id": "D-05", "suggestion": "Verify the site in Search Console, submit the sitemap, and read the Performance report after two weeks.", "closes": ["Q-12"]},
-    {"id": "D-06", "suggestion": "Write down the last five things actually cooked in the household, then match guides to that list instead of to guesses about search volume.", "closes": ["Q-13"]},
-    {"id": "D-07", "suggestion": "Contact each manufacturer's support line for any specification their own pages contradict, and keep the reply with the date.", "closes": []},
-    {"id": "D-08", "suggestion": "Read the manual PDF linked from each listing for the values the product page omits, such as overall dimensions and dishwasher guidance.", "closes": []}
+    {
+      "id": "D-01",
+      "suggestion": "Open each supplied short link in a signed-in browser and record the product name and the 10-character ASIN from the URL.",
+      "closes": [
+        "Q-01"
+      ]
+    },
+    {
+      "id": "D-02",
+      "suggestion": "Generate one Special Link per product inside Associates Central, then click it and confirm the row appears in the tracking report.",
+      "closes": [
+        "Q-02",
+        "Q-03",
+        "Q-05"
+      ]
+    },
+    {
+      "id": "D-03",
+      "suggestion": "Export the account's tracking ID list and declared site list from Associates Central and keep the export with its date.",
+      "closes": [
+        "Q-03",
+        "Q-05"
+      ]
+    },
+    {
+      "id": "D-04",
+      "suggestion": "Run the collector against a known set of ten test clicks before trusting any number it produces.",
+      "closes": [
+        "Q-04"
+      ]
+    },
+    {
+      "id": "D-05",
+      "suggestion": "Verify the site in Search Console, submit the sitemap, and read the Performance report after two weeks.",
+      "closes": [
+        "Q-12"
+      ]
+    },
+    {
+      "id": "D-06",
+      "suggestion": "Write down the last five things actually cooked in the household, then match guides to that list instead of to guesses about search volume.",
+      "closes": [
+        "Q-13"
+      ]
+    },
+    {
+      "id": "D-07",
+      "suggestion": "Contact each manufacturer's support line for any specification their own pages contradict, and keep the reply with the date.",
+      "closes": []
+    },
+    {
+      "id": "D-08",
+      "suggestion": "Read the manual PDF linked from each listing for the values the product page omits, such as overall dimensions and dishwasher guidance.",
+      "closes": []
+    },
+    {
+      "id": "D-09",
+      "suggestion": "Ask Associates support one written question covering both clauses - does the intended automation need prior approval under §5, and does the intended use of price data need agreement under §6(y) - and keep the reply verbatim in the source register rather than summarising it.",
+      "closes": [
+        "Q-15",
+        "Q-08"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Negative-test the gate before trusting it. Introduce a page whose hand-written sentence contradicts its own table, remove a sponsored attribute, and change a tracking tag; confirm the build fails each time. A gate that has never been seen to fail is not evidence of anything. Session 66f2548a ran three of these.",
+      "closes": []
+    },
+    {
+      "id": "D-11",
+      "suggestion": "Re-read the Operating Agreement and Program Policies on a schedule and record the date each time. Both pages state an \"Updated\" date that changes, and a clause read once is a clause that can quietly stop being true.",
+      "closes": []
+    },
+    {
+      "id": "D-12",
+      "suggestion": "Re-fetch each submitted link whenever a product row is edited, and keep the raw record in data/observations/ with the date. Two transposition errors and one false 'dead link' in this repository's history all came from a single fetch being trusted on its own.",
+      "closes": [
+        "Q-01"
+      ]
+    }
   ]
 }

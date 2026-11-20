@@ -131,9 +131,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`${name}: title within 90 characters`, title.length > 0 && title.length <= 90, String(title.length));
     }
     check(`${name}: no price-like amounts`, !/\$\s?\d/.test(body), (body.match(/.{0,20}\$\s?\d.{0,20}/) || [''])[0]);
+    // Zero third-party requests. The site loads one stylesheet, one script and its own images, all
+    // same-origin, and /privacy/ says so. A webfont, hosted analytics script or widget from another
+    // origin would make that page false and would add a data processor nobody has reviewed.
+    check(`${name}: no external stylesheet, script or font origin`,
+      !/<link[^>]+rel="stylesheet"[^>]*href="https?:\/\//i.test(html)
+      && !/<script[^>]+src="https?:\/\//i.test(html)
+      && !/@import\s+url\(\s*['"]?https?:/i.test(html)
+      && !/fonts\.(googleapis|gstatic)\.com/i.test(html),
+      (html.match(/<link[^>]+rel="stylesheet"[^>]*href="https?:[^>]*>|<script[^>]+src="https?:[^>]*>/i) || [''])[0]);
     // dashboards in footer
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
-    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/']) {
+    // Kept in step with DASHBOARDS in tools/build.mjs; /privacy/ and /design-brief/ were added by
+    // session 66f2548a so the two new pages cannot silently lose their footer entry.
+    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
       check(`${name}: footer links ${d}`, footer.includes(`${base}${d}`));
     }
     // links
