@@ -83,11 +83,17 @@
     },
     {
       "id": "FLG-008",
-      "severity": "medium",
-      "title": "Measurement events were not defined in the brief",
-      "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
-      "sources": [],
-      "manual_step": "Confirm or replace the five events (question Q-05)."
+      "severity": "low",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: the maker's page and the listing make different claims about one thermometer",
+      "detail": "The maker's page (S21) states a 'bright, ultra-clear LCD' and a '100% waterproof design' with no IP code. The Amazon listing (S22) states an 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof' and 'NIST&NSF Certified', and carries a 'newer model of this item' callout for B0GL7Z4KP4. The site publishes the maker's wording, records the listing's stronger claims as listing claims, and does not upgrade 'waterproof design' to IP67 on a retailer's word.",
+      "impact": "Display type and water resistance are published with both versions visible instead of one being chosen silently.",
+      "manual_step": "Ask ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing states, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.",
+      "sources": [
+        "S21",
+        "S22"
+      ]
     },
     {
       "id": "FLG-009",
@@ -256,13 +262,15 @@
     {
       "id": "FLG-025",
       "severity": "medium",
-      "status": "open",
+      "status": "resolved",
       "area": "product data",
-      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
-      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
-      "impact": "One of five products is present but not recommended, and carries no outbound link.",
-      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "title": "ThermoMaven: the manufacturer page exists, and it is narrower than the listing",
+      "detail": "An earlier pass concluded that no manufacturer page existed for the ThermoMaven unit and withheld every specification and the buy link. That conclusion was wrong: thermomaven.com/products/f1-ace is the maker's own page and was fetched in full on 2026-11-20 (S21). It states the 1-second thermocouple read, NIST-certified +/-0.5 F accuracy, a 'bright, ultra-clear LCD' display, motion-sensing wake/sleep, a '100% waterproof design' with no IP code, a built-in magnet, and a lifetime warranty on registration within 30 days. It states no model number, no maximum ambient or leave-in temperature, and no IP rating. Those specifications are now published where the maker states them and left blank where it does not. Where the Amazon listing (S22) goes further - 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof', 'NIST&NSF Certified', a 1x AAA battery - the claims are recorded as listing claims, and the listing's 'newer model of this item' callout (B0GL7Z4KP4) is published so a reader knows a successor SKU exists.",
+      "impact": "One of five products was published with no specifications and no buy link on the strength of a search that missed the maker's page. Both are now published, and four cross-channel differences are visible instead of hidden.",
+      "manual_step": "Confirm with ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing claims, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.",
       "sources": [
+        "S21",
+        "S22",
         "S04"
       ]
     },
@@ -271,13 +279,13 @@
       "severity": "high",
       "status": "open",
       "area": "product data",
-      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
-      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
-      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
-      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "title": "The 8 Qt air fryer conflict was measured against the wrong model page (corrected)",
+      "detail": "The Amazon listing for B08DKYBTPH states 1000 W/120 V, model RJ38-SQSS-8T, 200-400 F, 12.75 x 13.5 x 10 in and a stainless-steel finish. An earlier pass compared that listing against Chefman's page for RJ38-8T-BLACK (1700 W, 450 F Hi-Fry, matte black) and concluded that two different machines shared one listing. That was the wrong comparison: Chefman also publishes a page for RJ38-SQSS-8T itself (S19), which states 8 qt / 7.57 L, 200-400 F, 1700 W/120 V, 15.4 x 12.6 x 13.5 in and 12.8 lb. Against the correct page the two agree on capacity, model number and the 200-400 F range, and disagree on wattage (1000 W vs 1700 W) and case size (12.75 x 13.5 x 10 vs 15.4 x 12.6 x 13.5). The manufacturer figures are published for this model and both differences are named.",
+      "impact": "Wattage and case size stay contested; capacity, model number and the temperature range are published because the correct maker page was located.",
+      "manual_step": "Confirm the wattage and case dimensions for RJ38-SQSS-8T with Chefman support in writing, and confirm whether the listing ships this model or a successor.",
       "sources": [
-        "S16",
-        "S12"
+        "S19",
+        "S16"
       ]
     },
     {
@@ -285,12 +293,13 @@
       "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "The same listing carries two different temperature ranges in two places",
-      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
-      "impact": "Temperature is withheld on one product.",
-      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "title": "One Amazon listing states two different temperature ceilings",
+      "detail": "The Amazon listing for B08DKYBTPH advertises a '450 F Hi-Fry option' in its title while its own 'About this item' bullet and the maker's page for the same model number (S19) both state a 200-400 F range. A short Hi-Fry burst above the normal ceiling is plausible and common, but neither page explains how it works, so the 450 F figure is not adopted. The site publishes the 400 F range that both the maker and the listing's own bullet state, and records the title's claim here.",
+      "impact": "The temperature ceiling is published with the title claim named rather than silently dropped.",
+      "manual_step": "The user guide linked from the listing should settle whether Hi-Fry is a separate short-lived mode. Read it and record the page reference.",
       "sources": [
-        "S16"
+        "S16",
+        "S19"
       ]
     },
     {

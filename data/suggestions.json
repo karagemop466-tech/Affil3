@@ -220,6 +220,78 @@
         }
       ],
       "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    },
+    {
+      "id": "SG-27",
+      "topic": "Reader-facing identity: one brand, imagery that is what it says it is",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the two working names and keep editorial illustrations labelled as illustrations (current).",
+          "tradeoff": "Nothing is misrepresented; a reader moving between surfaces sees two names."
+        },
+        {
+          "id": "B",
+          "label": "Pick one consumer name and domain, and commission original photography of the units you own.",
+          "tradeoff": "Stronger recall and trust; needs a domain and physical units. Marketplace images remain Program Content and cannot simply be reused."
+        }
+      ],
+      "recommendation": "B once a name and units exist. Until then A is the only honest option, because the illustrations are labelled as illustrations."
+    },
+    {
+      "id": "SG-28",
+      "topic": "Reader-facing authorship: a name and a check date",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Team byline with a visible specification-check date on every guide and product page (current).",
+          "tradeoff": "No invented person; a team byline is a weaker trust signal than a name."
+        },
+        {
+          "id": "B",
+          "label": "Named editor with a short bio, a contact address and a stated review cadence.",
+          "tradeoff": "The cheapest trust win available, but a real person has to answer for corrections."
+        }
+      ],
+      "recommendation": "B as soon as a real person will take the byline. The check dates already exist, so this is a change of name, not of method."
+    },
+    {
+      "id": "SG-29",
+      "topic": "Reader-facing findability: Search Console, topic clusters, RSS",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Ship canonical URLs, JSON-LD, sitemap, robots.txt and the RSS feed, and leave Search Console unverified (current).",
+          "tradeoff": "Everything a crawler needs is present, but nobody can see which guides are being found."
+        },
+        {
+          "id": "B",
+          "label": "Verify the Search Console property, submit the sitemap, and choose the next guide from the query report.",
+          "tradeoff": "Turns topic choice from instinct into evidence; needs an owner Google account."
+        }
+      ],
+      "recommendation": "B. Cheapest remaining decision, and the only one that shows whether the guides are read at all."
+    },
+    {
+      "id": "SG-30",
+      "topic": "Reader-facing capture: RSS now, email only when there is something to send",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "RSS only; no email capture and no seasonal hub until query data justifies one (current).",
+          "tradeoff": "Nothing to maintain, no consent or retention obligations, and no direct channel to readers."
+        },
+        {
+          "id": "B",
+          "label": "Add a double opt-in list and a seasonal hub once demand is measured, after reading the Amazon Trademark Guidelines on email.",
+          "tradeoff": "Owns the audience instead of renting it from search; adds a privacy notice, a provider and an email-rules review."
+        }
+      ],
+      "recommendation": "A until there are at least three guides worth returning for and the email rules have been read."
     }
   ]
 }

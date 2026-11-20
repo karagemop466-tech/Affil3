@@ -15,7 +15,7 @@ A decision brief. Read this before changing anything on the site.
 | 2 | What product is link 2? | Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT, 4-00675-02A-VN | [emerileveryday.com](https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360) |
 | 3 | What product is link 3? | CHEFMAN TurboFry Touch Stainless-Steel Air Fryer, 8 Qt, RJ38-SQSS-8T | [chefman.com](https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1) |
 | 4 | What product is link 5? | CHEF iQ Sense Smart Wireless Meat Thermometer, 3-probe Gen3 bundle | [chefiq.com](https://chefiq.com/products/iq-sense) |
-| 5 | What product is link 4? | **Nothing.** Link goes to an interstitial; catalog search for the code returns no results | [amazon.com search](https://www.amazon.com/s?k=B0C8MOW59) |
+| 5 | What product is link 4? | ThermoMaven F1 Ace instant-read thermometer, `B0DHZTCNR5`. A first fetch hit an Amazon checkout interstitial; retries resolved. The bare code returns no catalog results because it is a 9-character short-link token, not an ASIN | [thermomaven.com](https://www.thermomaven.com/products/f1-ace) |
 | 6 | Do the supplied links carry our tag? | No. All resolve without a `tag=` parameter | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | 7 | What exact disclosure wording is required? | "As an Amazon Associate I earn from qualifying purchases." | [Operating Agreement §5](https://affiliate-program.amazon.com/help/operating/agreement) |
 | 8 | Can the site show prices? | Only if Amazon serves the link, or via Creators/PA API. Neither applies, so: no prices. | [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
@@ -25,7 +25,7 @@ A decision brief. Read this before changing anything on the site.
 | 12 | Is the grill plate included with the Emeril oven? | No. Manufacturer: "no longer included." | [Emeril Everyday accessory page](https://www.emerileveryday.com/products/parts_and_accesories_airfryers_ovens_french_door_fafo_series_french_door_airfryer_360_grill_plate__fafo-001) |
 | 13 | What is the Chef iQ probe's max temperature? | 212 °F for the inserted portion; 1,000 °F is the ambient sensor | [CHEF iQ FAQ](https://chefiq.com/pages/new-iq-sense-faq) |
 | 14 | Is there any first-party traffic or sales data? | No. Repository began as a one-line README. | — |
-| 15 | Is the site built and passing its checks? | Yes. 21 pages, 0 broken links, all gates green. | this repo |
+| 15 | Are both builds passing every gate? | Yes. 30 pages and 3,322 checks at the root with 0 failures; `/editorial/` 21 pages PASS; disclosure gate PASS on all 30 published pages; archive gate PASS | this repo |
 
 ## Part 2 — What we do not know, and what would settle it
 
@@ -39,12 +39,12 @@ A decision brief. Read this before changing anything on the site.
 | 21 | Who is the author? | Readers and quality raters weigh who is claiming | A name, a bio, and a method statement |
 | 22 | Where does the analytics endpoint live, and who reads it? | Measurement with no owner is a liability | Name the endpoint and the reader, or leave it off |
 | 23 | What is the privacy policy for the five events? | Required by Program Policies once anything is recorded | Publish it naming endpoint, fields, retention |
-| 24 | Is 24 or 25 the Emeril preset count? | | Email manufacturer support (`FLG-001`) |
-| 25 | Is the Chefman 8 Qt 1700 W or 1000 W? | | Email CHEFMAN support (`FLG-002`) |
+| 24 | Is 24 or 25 the Emeril preset count, and how many accessories ship? | | Email manufacturer support (`FLG-001`) |
+| 25 | Which is right for the Chefman 8 Qt: 1700 W or 1000 W, and which case size? | | Email CHEFMAN support (`FLG-002`) |
 | 26 | What is in the Emeril box today? | | Ask for the current list by model number (`FLG-006`) |
 | 27 | Is the site listed as an approved channel in the Associates account? | An unlisted site can be rejected after you send traffic to it | Add it in the account before promoting |
 | 28 | Is the site's permanent home github.io/Affil3? | Moving later costs redirects and ranking | Decide before content volume grows |
-| 29 | Which of the four products should lead? | Sets the whole front page | Currently P1, on editorial grounds — overrule it if you disagree |
+| 29 | Which of the five products should lead? | Sets the whole front page | Currently P1, on editorial grounds — overrule it if you disagree |
 | 30 | What separates this site from the ten air fryer sites already ranking? | Without an answer, guides compete on volume and lose | One sentence a competitor could not also write |
 
 ## Part 3 — Questions this project should not try to answer
@@ -65,7 +65,7 @@ deliberately shows nothing.
 
 1. **Re-issue one link with the tag and test it.** Until this happens, everything else is decoration.
 2. **Confirm the tracking ID is live and the site is a listed channel.** Two screens in Associates Central.
-3. **Resolve link 4 or drop slot 4.** An empty slot is honest; a guessed one is not.
+3. **Chase the four maker-versus-listing conflicts.** Each needs a manufacturer reply, not more reading (`FLG-002`, `FLG-006`, `FLG-023`, `FLG-008`).
 4. **Verify in Search Console and submit the sitemap.** This starts the measurement clock.
 5. **Decide the reader (SG-10).** Every piece of copy downstream depends on it.
 6. **Set the analytics endpoint and name its owner.** Then the five events mean something.

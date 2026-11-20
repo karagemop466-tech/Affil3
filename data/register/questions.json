@@ -26,12 +26,12 @@
     {
       "id": "Q03",
       "question": "What does link 4 (B0c8moW59) actually point to?",
-      "status": "dont_have",
-      "answer": "Not determinable. The link lands on a 'Continue shopping' interstitial and a catalog search for the code returns no results.",
-      "source": "S16",
-      "consequence": "Slot 4 is empty on the site. Naming a product for it would mean inventing one.",
+      "status": "have",
+      "answer": "ThermoMaven's F1 Ace instant-read thermometer at amazon.com/dp/B0DHZTCNR5 (S21); the maker's own page for it is S20. The first fetch returned a 'Continue shopping' interstitial, and a catalog search for the bare code B0C8MOW59 returns nothing, which is expected: the code is a 9-character short-link token, not an ASIN. Later fetches resolved consistently.",
+      "source": "S21",
+      "consequence": "P4 is populated from the maker's page, with the listing's stronger IP67/NSF/LED claims recorded separately as listing claims (FLG-008).",
       "owner": "Account holder",
-      "how_to_close": "Re-issue from SiteStripe and confirm the destination loads a detail page."
+      "how_to_close": "Re-issue the link from SiteStripe in a signed-in session and confirm the tagged destination."
     },
     {
       "id": "Q04",
@@ -95,9 +95,9 @@
     },
     {
       "id": "Q10",
-      "question": "Is the Chefman 8 Qt 1700 W or 1000 W?",
+      "question": "Is the Chefman 8 Qt 1700 W or 1000 W, 400 F or 450 F, and which case size is right?",
       "status": "dont_have",
-      "answer": "Unresolved. The manufacturer page says 1700 W; the Amazon bullet says 1000 W for the same model number.",
+      "answer": "Three disagreements on one model number, RJ38-SQSS-8T. The maker (S07) states 1700 W, 200-400 F and 15.4 x 12.6 x 13.5 in. The listing (S14) states 1000 W and 12.75 x 13.5 x 10 in, keeps 200-400 F in its bullet, and advertises a '450 F Hi-Fry' title. The site publishes the maker's figures and names every difference instead of choosing between them.",
       "source": "S07",
       "consequence": "The site uses the manufacturer figure and flags the conflict. It should not be used in an ad claim until confirmed.",
       "owner": "Editor",
@@ -205,9 +205,9 @@
     },
     {
       "id": "Q21",
-      "question": "Do the four resolved products still match the live listings?",
+      "question": "Do the five resolved products still match the live listings?",
       "status": "have",
-      "answer": "Yes as of 2026-11-20. Each was re-resolved and read that day.",
+      "answer": "Yes as of 2026-11-20. All five were re-fetched and read directly in full that day, and each also has a manufacturer page on file.",
       "source": "S12",
       "consequence": "This answer expires. Specs and model numbers change; the access date is on every row for that reason.",
       "owner": "Editor",
@@ -215,9 +215,9 @@
     },
     {
       "id": "Q22",
-      "question": "Which of the four resolved products is the one to lead with?",
+      "question": "Which of the five resolved products is the one to lead with?",
       "status": "have",
-      "answer": "The Chefman 6 Qt dual-window: it is the only one of the four with two independent zones and a window on each basket, and its specifications are the least contested across official sources. This is an editorial judgment from published specs, not a sales claim.",
+      "answer": "The Chefman 6 Qt dual-window: it is the only one of the five with two independent zones and a window on each basket, and its specifications are the least contested across official sources. This is an editorial judgment from published specs, not a sales claim.",
       "source": "S06",
       "consequence": "It sits first on the front page. If you disagree, move it and say why.",
       "owner": "Editor",
@@ -242,6 +242,16 @@
       "consequence": "A github.io subpath is a site Amazon will review. If it is rejected, every link here becomes a plain link with no commission and the disclosure language becomes inaccurate.",
       "owner": "Account holder",
       "how_to_close": "List the site in the Associates account before sending traffic to it. Confirm the site appears as an approved channel."
+    },
+    {
+      "id": "Q25",
+      "question": "Which probe battery runtime applies to CHEF iQ Sense Gen 3: 70+, 60 or 50 hours?",
+      "status": "dont_have",
+      "answer": "Unresolved. The chefiq.com product page (S10) states '70+ hours', the chefiq.com FAQ (S11) states 'up to 60 hours', and the Amazon listing (S15) states 'up to 50 hours'.",
+      "source": "S11",
+      "consequence": "The probe_battery_hours field is blank on P5 and all three figures are published rather than one being chosen (FLG-005).",
+      "owner": "Editor",
+      "how_to_close": "Confirm Gen 3 probe runtime with CHEF iQ support in writing."
     }
   ]
 }

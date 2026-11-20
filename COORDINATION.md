@@ -1024,3 +1024,82 @@ they want the other direction. Nothing was force-pushed and no other session's f
 
 ---
 
+
+---
+
+# Session `arena/0e710695-affil3` — source verification pass
+
+Branch `arena/0e710695-affil3`, based on `main` @ `09ae7e1`. Appended; nothing above was edited.
+
+## Every official source on file, re-read in full
+
+Fourteen pages were fetched and read line by line rather than trusted from the excerpt a previous
+session recorded: the Associates Operating Agreement, Program Policies, four Associates help topics
+(`GM6CHU93RDXZV7D8`, `G8TW5AE9XL2VX9VM`, `GC4NVV7K3XNG99X5`, `GHQNZAU6669EZS98`), the Amazon Ads ASIN
+guide, eCFR 16 CFR Part 255, two FTC resources, two USDA FSIS pages, and all five manufacturers'
+product pages.
+
+Four claims did not survive that reading.
+
+## 1 · The ThermoMaven maker page exists
+
+`FLG-025` and the storefront both said no manufacturer page could be located, so the product was
+published with **no specifications and no buy link**. `thermomaven.com/products/f1-ace` is the page.
+It states the 1-second thermocouple read, NIST-certified ±0.5 °F accuracy, a "bright, ultra-clear LCD",
+motion-sensing wake/sleep, a "100% waterproof design" with no IP code, a built-in magnet and a lifetime
+warranty on registration. It states no model number, no ambient rating and no IP code.
+
+P04 now publishes those, carries its tagged buy link, and shows the four points where the Amazon
+listing goes further than the maker — LED vs LCD, IP67 vs "waterproof design", NSF vs NIST, and a
+newer-model callout — as `FLG-008` rather than adopting the listing's wording.
+
+## 2 · The Chefman 8 Qt conflict was measured against the wrong page
+
+`FLG-026` compared the `B08DKYBTPH` listing with Chefman's page for `RJ38-8T-BLACK` and concluded two
+machines shared one listing. Chefman also publishes `RJ38-SQSS-8T`, the model the listing actually
+names. Against that page the two **agree** on capacity, model number and the 200–400 °F range, and
+differ only on wattage (1700 W vs 1000 W) and case size (15.4 × 12.6 × 13.5 vs 12.75 × 13.5 × 10).
+
+P03 now publishes the maker's figures and names both differences. The comparison table compares the
+numbers, not the typesetting: it normalises units before deciding whether two claims agree, and drops
+rows where only one side makes a claim at all, because an absence is not a disagreement.
+
+## 3 · No page states a viewing window for the 8 Qt
+
+The editorial register carried `viewing_window: true` with no sentence behind it on `P3`. Neither the
+maker page nor the listing mentions one. Blank now, with the reason recorded.
+
+## 4 · The CHEF iQ battery conflict is three-way, not two-way
+
+70+ hours on the product page, 60 on the FAQ, and **50 on the Amazon listing**, which the earlier pass
+had not counted. The field is blank and all three figures are published together. The two-year
+assurance turns out to be listing-only, and is labelled as such rather than printed as a spec.
+
+## Every source citation on `/editorial/` was a dead anchor
+
+`/flagged/`, `/questions/`, `/dashboard/` and `/disclosure/` each linked their sources to `#Sxx` on
+their own page, where no such id was ever emitted. A reader clicking a source landed at the top of the
+page they were already on. The links now resolve to `/sources/#Sxx`, the register emits matching ids,
+and **both** gates now verify cross-page fragments: `check_site.py` gained a path-plus-fragment walk,
+and `verify.mjs` checks that a `#frag` exists on the page it points at. Both were negative-tested by
+breaking an id on purpose and confirming the build fails.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| Root gate (`npm run check`) | 30 pages, **3,322 checks, 0 failed** |
+| Editorial gate | 21 pages, PASS |
+| Disclosure gate | PASS — both statements above the fold on all 30 published pages, no price or rating text |
+| Archive gate | PASS — 115 archived pages, all internal links resolve |
+| Negative test — a broken cross-page anchor | fails both gates, as intended |
+| Determinism | two consecutive full builds leave an identical tree |
+
+## Still open, and what would close each
+
+- **Intended ASIN for all five products.** Owner-only (`Q-01`). Unchanged.
+- **Gate G-02.** No tagged link has been clicked inside an enrolled Associates session (`FLG-005`).
+- **Four manufacturer conflicts** need a support reply, not more reading: wattage and case size for
+  `RJ38-SQSS-8T` (`FLG-026`), battery runtime for Gen 3 (`FLG-023`), IP67/NSF for the F1 Ace
+  (`FLG-008`), and the Emeril preset and accessory counts (`FLG-001`, `FLG-006`).
+- **Analytics and Search Console** (`FLG-009`, `FLG-013`). Both need an owner account.

@@ -91,11 +91,11 @@
   <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-07) before submitting the site for Associates review.</p>
 </section>
 <section class="flag-card" id="FLG-008">
-  <p class="flag-head"><span class="badge flag">FLG-008</span> <span class="badge sev-medium">medium</span> <strong>Measurement events were not defined in the brief</strong></p>
-  <p>The brief asks to &#39;record the five defined events&#39; but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.</p>
+  <p class="flag-head"><span class="badge flag">FLG-008</span> <span class="badge sev-low">low</span> <strong>ThermoMaven: the maker&#39;s page and the listing make different claims about one thermometer</strong></p>
+  <p>The maker&#39;s page (S21) states a &#39;bright, ultra-clear LCD&#39; and a &#39;100% waterproof design&#39; with no IP code. The Amazon listing (S22) states an &#39;Auto-Rotate Bright LED Screen&#39;, &#39;IP67 Waterproof&#39; and &#39;NIST&amp;NSF Certified&#39;, and carries a &#39;newer model of this item&#39; callout for B0GL7Z4KP4. The site publishes the maker&#39;s wording, records the listing&#39;s stronger claims as listing claims, and does not upgrade &#39;waterproof design&#39; to IP67 on a retailer&#39;s word.</p>
   
-  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
-  <p class="small"><strong>Manual step:</strong> Confirm or replace the five events (question Q-05).</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20" rel="sponsored noopener">S22</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing states, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.</p>
 </section>
 <section class="flag-card" id="FLG-009">
   <p class="flag-head"><span class="badge flag">FLG-009</span> <span class="badge sev-high">high</span> <strong>Analytics endpoint is not deployed; analytics is inactive on the live site</strong></p>
@@ -209,26 +209,26 @@
   <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="small"><strong>Manual step:</strong> Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.</p>
 </section>
-<section class="flag-card" id="FLG-025">
-  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: no manufacturer page, so every specification is withheld</strong></p>
-  <p>No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.</p>
+<section class="flag-card is-resolved" id="FLG-025">
+  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: the manufacturer page exists, and it is narrower than the listing</strong> <span class="badge resolved">resolved</span></p>
+  <p>An earlier pass concluded that no manufacturer page existed for the ThermoMaven unit and withheld every specification and the buy link. That conclusion was wrong: thermomaven.com/products/f1-ace is the maker&#39;s own page and was fetched in full on 2026-11-20 (S21). It states the 1-second thermocouple read, NIST-certified +/-0.5 F accuracy, a &#39;bright, ultra-clear LCD&#39; display, motion-sensing wake/sleep, a &#39;100% waterproof design&#39; with no IP code, a built-in magnet, and a lifetime warranty on registration within 30 days. It states no model number, no maximum ambient or leave-in temperature, and no IP rating. Those specifications are now published where the maker states them and left blank where it does not. Where the Amazon listing (S22) goes further - &#39;Auto-Rotate Bright LED Screen&#39;, &#39;IP67 Waterproof&#39;, &#39;NIST&amp;NSF Certified&#39;, a 1x AAA battery - the claims are recorded as listing claims, and the listing&#39;s &#39;newer model of this item&#39; callout (B0GL7Z4KP4) is published so a reader knows a successor SKU exists.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
-  <p class="small"><strong>Manual step:</strong> If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20" rel="sponsored noopener">S22</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Confirm with ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing claims, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.</p>
 </section>
 <section class="flag-card" id="FLG-026">
-  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>The 8 Qt air fryer listing and the manufacturer page describe two different machines</strong></p>
-  <p>The Amazon listing for B08DKYBTPH states, in its own &#39;About this item&#39; copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman&#39;s own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing&#39;s figures are shown in a separate column so a reader can see both without either being presented as verified.</p>
+  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>The 8 Qt air fryer conflict was measured against the wrong model page (corrected)</strong></p>
+  <p>The Amazon listing for B08DKYBTPH states 1000 W/120 V, model RJ38-SQSS-8T, 200-400 F, 12.75 x 13.5 x 10 in and a stainless-steel finish. An earlier pass compared that listing against Chefman&#39;s page for RJ38-8T-BLACK (1700 W, 450 F Hi-Fry, matte black) and concluded that two different machines shared one listing. That was the wrong comparison: Chefman also publishes a page for RJ38-SQSS-8T itself (S19), which states 8 qt / 7.57 L, 200-400 F, 1700 W/120 V, 15.4 x 12.6 x 13.5 in and 12.8 lb. Against the correct page the two agree on capacity, model number and the 200-400 F range, and disagree on wattage (1000 W vs 1700 W) and case size (12.75 x 13.5 x 10 vs 15.4 x 12.6 x 13.5). The manufacturer figures are published for this model and both differences are named.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
-  <p class="small"><strong>Manual step:</strong> Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a>, <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a></p>
+  <p class="small"><strong>Manual step:</strong> Confirm the wattage and case dimensions for RJ38-SQSS-8T with Chefman support in writing, and confirm whether the listing ships this model or a successor.</p>
 </section>
 <section class="flag-card" id="FLG-027">
-  <p class="flag-head"><span class="badge flag">FLG-027</span> <span class="badge sev-medium">medium</span> <strong>The same listing carries two different temperature ranges in two places</strong></p>
-  <p>In the &#39;About this item&#39; bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a &#39;450°F Hi-Fry option&#39;. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.</p>
+  <p class="flag-head"><span class="badge flag">FLG-027</span> <span class="badge sev-medium">medium</span> <strong>One Amazon listing states two different temperature ceilings</strong></p>
+  <p>The Amazon listing for B08DKYBTPH advertises a &#39;450 F Hi-Fry option&#39; in its title while its own &#39;About this item&#39; bullet and the maker&#39;s page for the same model number (S19) both state a 200-400 F range. A short Hi-Fry burst above the normal ceiling is plausible and common, but neither page explains how it works, so the 450 F figure is not adopted. The site publishes the 400 F range that both the maker and the listing&#39;s own bullet state, and records the title&#39;s claim here.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a></p>
-  <p class="small"><strong>Manual step:</strong> The user guide linked from the listing should settle it. Read it and supply the page reference.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a>, <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a></p>
+  <p class="small"><strong>Manual step:</strong> The user guide linked from the listing should settle whether Hi-Fry is a separate short-lived mode. Read it and record the page reference.</p>
 </section>
 <section class="flag-card is-resolved" id="FLG-028">
   <p class="flag-head"><span class="badge flag">FLG-028</span> <span class="badge sev-high">high</span> <strong>Amazon links were published without the tracking tag, including the citations</strong> <span class="badge resolved">resolved</span></p>

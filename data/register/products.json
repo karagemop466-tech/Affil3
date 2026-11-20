@@ -269,7 +269,8 @@
         "temp_max_f": {
           "value": 400,
           "source": "S07",
-          "listing_only": false
+          "listing_only": false,
+          "note": "The maker (S07) and the listing's own bullet (S14) both state 200-400 °F; the listing title advertises a '450°F Hi-Fry option'. 400 °F is published and the title claim is recorded in FLG-002."
         },
         "watts": {
           "value": 1700,
@@ -284,7 +285,8 @@
         "dimensions_in": {
           "value": "15.4 x 12.6 x 13.5",
           "source": "S07",
-          "listing_only": false
+          "listing_only": false,
+          "note": "The maker (S07) states 15.4 x 12.6 x 13.5 in; the listing (S14) states 12.75 x 13.5 x 10 in for the same model number. Both are recorded; the difference is FLG-002."
         },
         "weight_lb": {
           "value": 12.8,
@@ -307,9 +309,8 @@
           "listing_only": false
         },
         "viewing_window": {
-          "value": true,
-          "source": "S07",
-          "listing_only": false
+          "value": null,
+          "note": "Neither the CHEFMAN page for RJ38-SQSS-8T (S07) nor the Amazon listing (S14) states a viewing window. This field previously read true with no supporting sentence; it is blank now, because an unsourced 'yes' is worse than a gap."
         },
         "warranty_years": {
           "value": 1,
@@ -510,10 +511,8 @@
           "listing_only": false
         },
         "probe_battery_hours": {
-          "value": 70,
-          "note": "Manufacturer marketing states '70+ hours'; FAQ states Gen 3 holds up to 60 hours per charge. Range published as stated, not reconciled. See FLG-005.",
-          "source": "S10",
-          "listing_only": false
+          "value": null,
+          "note": "Three official pages disagree: the chefiq.com product page (S10) says '70+ hours', the chefiq.com FAQ (S11) says 'up to 60 hours', and the Amazon listing (S15) says 'up to 50 hours'. No single figure can be defended, so the field is blank (FLG-005)."
         },
         "dishwasher_safe": {
           "value": true,
@@ -522,8 +521,10 @@
           "listing_only": false
         },
         "warranty_years": {
-          "value": null,
-          "note": "Not stated on the manufacturer product page or FAQ."
+          "value": 2,
+          "note": "The Amazon listing bullet (S15) states a 'two-year assurance provided by CHEF iQ'. Neither the chefiq.com product page nor its FAQ states a warranty period, so this figure is listing-only.",
+          "source": "S15",
+          "listing_only": true
         }
       },
       "tradeoffs": {
@@ -570,13 +571,13 @@
       "id": "FLG-002",
       "severity": "medium",
       "product": "P3",
-      "title": "Amazon listing names a different model number than the manufacturer page",
-      "detail": "The Amazon 'About this item' block for B08DKYBTPH ends with '1000 Watts/120 Volts – RJ38-SQSS-8T', while the CHEFMAN product page for RJ38-SQSS-8T states 1700W/120V and 400 F. The wattage figure contradicts itself between the two official pages. The site publishes the manufacturer's 1700 W and flags the conflict; the wattage should not be used in ad copy until confirmed.",
+      "title": "The maker page and the Amazon listing disagree on wattage, ceiling temperature and dimensions (RJ38-SQSS-8T)",
+      "detail": "Both the CHEFMAN product page (S07) and the Amazon 'About this item' block (S14) name the same model number, RJ38-SQSS-8T, so this is not a model-number mismatch. They disagree on three specifications. Power: S07 states 1700 W / 120 V; S14 states '1000 Watts/120 Volts – RJ38-SQSS-8T'. Ceiling: S07 and the S14 bullet state 200-400 °F, while the S14 title advertises a '450°F Hi-Fry option'. Size: S07 states 15.4 x 12.6 x 13.5 in; S14 states 12.75 x 13.5 x 10 in. The site publishes the maker's figures with the conflicts named, rather than averaging them or picking the better-sounding number.",
       "sources": [
         "S07",
         "S14"
       ],
-      "action": "Confirm wattage with CHEFMAN support in writing before any paid or comparison claim."
+      "action": "Confirm wattage, ceiling temperature and case dimensions with CHEFMAN support in writing before making a comparison or advertising claim."
     },
     {
       "id": "FLG-003",
@@ -600,17 +601,20 @@
         "S16",
         "S20"
       ],
-      "action": "Re-confirm the link in a signed-in browser before relying on it; checkpoint pages are served to some clients intermittently."
+      "action": "Re-confirm the link in a signed-in browser before relying on it; checkpoint pages are served to some clients intermittently.",
+      "status": "resolved",
+      "resolution": "Resolved on re-fetch 2026-11-20: https://link.amazon/B0c8moW59 resolves to amazon.com/dp/B0DHZTCNR5, the ThermoMaven instant-read thermometer (S21); the maker's page for it is S20. The first automated fetch returned an Amazon 'Continue shopping' checkpoint, which is an intermittent bot check rather than a dead link. The record is kept because the checkpoint can recur."
     },
     {
       "id": "FLG-005",
       "severity": "low",
       "product": "P5",
-      "title": "Battery life differs between two CHEF iQ pages",
-      "detail": "The iQ Sense product page advertises '70+ Hours of Battery'. The iQ Sense FAQ states Gen 3 probes hold a charge for up to 60 hours. Both are on chefiq.com. The product register records the marketing figure and this note; no single number is asserted in buyer-facing copy.",
+      "title": "Battery life differs across three CHEF iQ pages (70+ vs 60 vs 50 hours)",
+      "detail": "The iQ Sense product page (S10) advertises '70+ Hours of Battery'. The FAQ on the same domain (S11) states that Gen 3 probes hold a charge for 'up to 60 hours'. The Amazon listing for B0DZFD6R9Z (S15) states 'up to 50 hours'. All three describe the same Gen 3 product. No battery figure is published; the field is blank and this note stands in its place.",
       "sources": [
         "S10",
-        "S11"
+        "S11",
+        "S15"
       ],
       "action": "Ask CHEF iQ which figure applies to the 3-probe Gen 3 bundle."
     },
@@ -636,6 +640,21 @@
         "S02"
       ],
       "action": "Turn on the self-hosted endpoint, accumulate 30 days, then populate data/campaign-ledger.json from an Associates report export."
+    },
+    {
+      "id": "FLG-008",
+      "severity": "low",
+      "product": "P4",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: the maker's page and the listing make different claims about one thermometer",
+      "detail": "The maker's page (S20) states a 'bright, ultra-clear LCD' and a '100% waterproof design' with no IP code. The Amazon listing (S21) states an 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof' and 'NIST&NSF Certified', and carries a 'newer model of this item' callout for B0GL7Z4KP4. The site publishes the maker's wording, records the listing's stronger claims as listing claims, and does not upgrade 'waterproof design' to IP67 on a retailer's word.",
+      "impact": "Display type and water resistance are published with both versions visible instead of one being chosen silently.",
+      "action": "Ask ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing states, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.",
+      "sources": [
+        "S20",
+        "S21"
+      ]
     }
   ]
 }

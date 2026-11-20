@@ -126,7 +126,7 @@
     {
       "id": "P03",
       "slug": "chefman-turbofry-8-qt-air-fryer",
-      "name": "Chefman TurboFry 8 Qt air fryer",
+      "name": "Chefman TurboFry Touch 8 Qt air fryer (RJ38-SQSS-8T)",
       "short_name": "Chefman TurboFry 8 Qt",
       "brand": "Chefman",
       "category": "air-fryers",
@@ -161,30 +161,30 @@
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
-      "model": "RJ38-8T-BLACK",
+      "model": "RJ38-SQSS-8T",
       "capacity_qt": "8",
-      "capacity_note": "8 qt / 7.57 L per the Chefman page; the Amazon listing also states 8 quarts.",
-      "temp_min_f": "",
-      "temp_max_f": "",
-      "power_w": "",
+      "capacity_note": "8 qt / 7.57 L, stated by the maker for RJ38-SQSS-8T and by the listing.",
+      "temp_min_f": "200",
+      "temp_max_f": "400",
+      "power_w": "1700",
       "voltage": "120V",
-      "dimensions_in": "",
-      "dimensions_order": "",
-      "weight_lb": "",
-      "functions": "Air fry, bake, dehydrate, frozen (Chefman page for RJ38-8T-BLACK). The Amazon listing describes four presets and a 200-400 °F range.",
-      "dishwasher_safe": "Basket and rack: yes (manufacturer states top-rack dishwasher safe)",
-      "certification": "cETL approved (manufacturer)",
-      "warranty": "1-year Chefman assurance",
+      "dimensions_in": "15.4 x 12.6 x 13.5",
+      "dimensions_order": "depth x width x height, as the maker lists them",
+      "weight_lb": "12.8",
+      "functions": "Air fry, bake, dehydrate and frozen; four presets. The maker states a 200-400 F range for RJ38-SQSS-8T; the listing title advertises a 450 F Hi-Fry burst that no page explains (FLG-027).",
+      "dishwasher_safe": "Basket and rack: yes (maker states top-rack dishwasher safe)",
+      "certification": "cETL approved (maker)",
+      "warranty": "1-year Chefman assurance (maker)",
       "best_for": "One big batch in one basket, with no divider to work around.",
-      "tradeoff": "No window and no second basket, so checking food means opening the drawer and losing heat. Confirm which 8 Qt model you are buying before you order.",
+      "tradeoff": "400 F in the specification, one chamber at one temperature, and no viewing window stated by either official page.",
       "fit_line": "One big batch, one basket, no dividers to work around.",
-      "lede": "Eight quarts in a single basket. Before you buy, read the model-number conflict below: the Amazon listing and Chefman's own page describe two different 8 Qt machines.",
+      "lede": "Eight quarts in a single basket, for the batch that does not fit in two small drawers. Read the wattage difference below before you order: the maker and the listing disagree.",
       "guide_title": "A no-hype checklist for comparing air fryer capacity",
       "guide_slug": "no-hype-checklist-comparing-air-fryer-capacity",
       "blank_reason": {
-        "power_w": "Chefman's page for RJ38-8T-BLACK states 1700 W; the Amazon listing for B08DKYBTPH states 1000 W and names a different model (FLG-026). Neither figure is published.",
-        "temp_max_f": "Chefman's page states up to 450 °F on Hi-Fry; the Amazon listing states a 200-400 °F range (FLG-026). Neither figure is published.",
-        "dimensions_in": "The Chefman page does not state dimensions; the Amazon listing states 12.75 x 13.5 x 10 in for a different model number, so it is shown in the listing column instead."
+        "viewing_window": "Neither the maker's page for RJ38-SQSS-8T nor the Amazon listing states a viewing window, so none is claimed.",
+        "watts": "The maker states 1700 W for RJ38-SQSS-8T; the listing states 1000 W for the same model number. The maker's figure is published and the difference is flagged (FLG-026).",
+        "temp_max_f": "The maker and the listing's own bullet both state 200-400 F; the listing title advertises 450 F. The 400 F figure is published and the title claim is flagged (FLG-027)."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -195,22 +195,22 @@
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
       },
       "observed_specs": {
-        "note": "Stated in the 'About this item' copy of the Amazon listing on 2026-11-20. Kept separate from the manufacturer column because the two describe different models.",
+        "note": "From the 'About this item' block of the Amazon listing on 2026-11-20. It names the same model number as the maker's page and disagrees with it on power and case size.",
         "model": "RJ38-SQSS-8T",
         "power": "1000 W / 120 V",
-        "temperature": "200–400 °F",
-        "dimensions": "12.75 × 13.5 × 10 in",
+        "temperature": "200-400 °F",
+        "dimensions": "12.75 x 13.5 x 10 in",
         "capacity": "8 quarts",
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "The Amazon listing's own copy names a different model, RJ38-SQSS-8T (FLG-026)."
+      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes at chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing (see FLG-026)."
     },
     {
       "id": "P04",
       "slug": "thermomaven-instant-read-thermometer",
-      "name": "ThermoMaven professional instant-read meat thermometer",
-      "short_name": "ThermoMaven instant-read",
+      "name": "ThermoMaven F1 Ace instant-read meat thermometer",
+      "short_name": "ThermoMaven F1 Ace",
       "brand": "ThermoMaven",
       "category": "cooking-thermometers",
       "shape": "Instant-read probe",
@@ -224,7 +224,8 @@
       "confirmation_status": "Unverified; no manufacturer source found",
       "flags": [
         "FLG-001",
-        "FLG-025"
+        "FLG-004",
+        "FLG-008"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
       "observed_asin": "B0DHZTCNR5",
@@ -233,14 +234,18 @@
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
-        "S04"
+        "S04",
+        "S21",
+        "S22"
       ],
-      "spec_sources": [],
-      "tagged_outbound_url": "",
+      "spec_sources": [
+        "S21"
+      ],
+      "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
       "model": "",
       "capacity_qt": "",
-      "capacity_note": "",
+      "capacity_note": "Not a capacity product: this is a handheld probe.",
       "temp_min_f": "",
       "temp_max_f": "",
       "power_w": "",
@@ -248,20 +253,21 @@
       "dimensions_in": "",
       "dimensions_order": "",
       "weight_lb": "",
-      "functions": "Instant-read spot check; not a leave-in probe",
-      "dishwasher_safe": "",
-      "certification": "",
-      "warranty": "",
+      "functions": "1-second thermocouple spot check; motion-sensing wake/sleep; auto-rotating display; built-in magnet. No leave-in oven rating is published.",
+      "dishwasher_safe": "Not stated as dishwasher-safe. The maker says '100% waterproof design' and 'rinse under water'; that is not the same claim.",
+      "certification": "NIST-certified +/-0.5 F accuracy (manufacturer). The listing also claims NSF certification.",
+      "warranty": "Lifetime warranty with registration within 30 days (manufacturer); no fixed period is stated.",
       "best_for": "A quick spot check at the grill, not an unattended cook.",
-      "tradeoff": "It reads one spot at a time, so it cannot watch a long smoke the way a leave-in probe can.",
+      "tradeoff": "It reads one spot at a time, so it cannot watch a long smoke the way a leave-in probe can. The maker publishes no leave-in or IP rating.",
       "fit_line": "A quick spot check at the grill, not a leave-in monitor.",
-      "lede": "A handheld probe for the moment before you pull the meat off the heat. Different job from a leave-in thermometer.",
+      "lede": "A folding one-second thermocouple for the moment before you pull the meat off the heat. A different job from a leave-in probe, and the maker publishes no oven-stay rating.",
       "guide_title": "Is your meat thermometer telling you the right number?",
       "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
-      "no_buy_link": true,
-      "no_buy_link_reason": "The submitted short links that resolved in this session landed on two air fryers and one wireless probe. No submitted link resolved to this listing, so it is shown as context only and carries no buy button. See FLG-001.",
       "blank_reason": {
-        "all_specs": "No manufacturer product page for this model was located, so every specification is left blank. The NIST and NSF claims appear only on the marketplace listing and are not treated as verified (FLG-007)."
+        "model": "The maker states no model number. 'F1 Ace' is the product name; treating it as a model number would be an inference.",
+        "temp_max_f": "No maximum ambient or leave-in temperature is stated, so whether the unit can stay in an oven is left blank rather than assumed.",
+        "waterproof": "The maker says '100% waterproof design' with no IP code. 'IP67' appears only on the Amazon listing (S22) and is recorded as a listing claim.",
+        "dimensions_in": "The maker states probe dimensions only in prose, without a case size, so no case size is published."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -270,6 +276,22 @@
         "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
+      },
+      "observed_specs": {
+        "note": "From the 'About this item' block of the Amazon listing on 2026-11-20. It goes further than the maker on four points, so each is shown next to the maker's wording rather than adopted.",
+        "model": "Not stated",
+        "power": "1x AAA battery (included)",
+        "temperature": "Not stated",
+        "dimensions": "Not stated",
+        "capacity": "n/a",
+        "material": "Plastic housing, black",
+        "source": "S22"
+      },
+      "observed_specs_extra": {
+        "display": "Auto-Rotate Bright LED Screen (listing) vs 'bright, ultra-clear LCD' (manufacturer)",
+        "waterproof": "IP67 Waterproof (listing) vs '100% waterproof design', no IP code (manufacturer)",
+        "certification": "NIST & NSF Certified (listing) vs NIST-certified +/-0.5 F (manufacturer)",
+        "newer_model": "A 'newer model of this item' callout points at B0GL7Z4KP4 (listing)"
       }
     },
     {
