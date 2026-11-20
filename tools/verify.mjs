@@ -297,7 +297,10 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   // record left at the repository root, has to be out of the index; the list is generated from the
   // tree, so a build that falls behind it fails here (FLG-047).
   const robotsTxt = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
-  const disallowed = [...robotsTxt.matchAll(/^Disallow:\s*(\/[^\s]+)/gm).map((m) => m[1])];
+  // Spread first, then map: the helpers on the iterator that matchAll returns are an ES2025
+  // addition, and package.json declares node >=18. Written the other way round this line runs on a
+  // newer sandbox and throws on CI's 20 (FLG-048), which is the worst kind of green build.
+  const disallowed = [...robotsTxt.matchAll(/^Disallow:\s*(\/[^\s]+)/gm)].map((m) => m[1]);
   for (const e of extraEditions(ROOT)) check(`robots.txt excludes superseded edition /${e}/`, disallowed.includes(`/${e}/`), e);
   for (const doc of rootMarkdown(ROOT).map((n) => `/${n}`)) check(`robots.txt excludes the session record ${doc}`, disallowed.includes(doc), doc);
   for (const o of OWNED) {

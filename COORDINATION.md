@@ -2789,3 +2789,21 @@ session record, and the gate keeps it in step with the tree.
 
 Gates on this merge: build 55 pages, 25 feed items, 54 sitemap URLs; `verify` 7,552 checks passed, 0
 failed; editorial, disclosure, archive, link-report, docs-site and sitemap gates all green.
+## The green-build-that-wasn't, found from the CI side (2026-11-20)
+
+`publish-gate` was red on every push of this branch while the same commit passed 7,552 checks in the
+sandbox and in a fresh clone of it. To find out why without the Actions log, the gate step in
+`.github/workflows/publish.yml` was changed to print the runtime version and re-emit the failure
+output as check annotations — that is readable through the API, and it is worth keeping for the same
+reason. It showed `TypeError: robotsTxt.matchAll.map is not a function` at `tools/verify.mjs:300`.
+
+The cause is a floor mismatch, not a content problem. The line read `[...str.matchAll(re).map(f)]`,
+which asks the iterator `matchAll` returns for `.map`. Iterator helpers are ES2025: the sandbox runs
+node 22.22.3 and has them, CI runs node 20 and does not, and `package.json` promises
+`engines.node >=18`. The gate's own code had broken the floor the gate exists to defend, and no local
+command could reveal it.
+
+Fixed by spreading first and then mapping, with a comment at the line so nobody "improves" it back.
+Every other `matchAll` site in `tools/` was read; they already spread first. Recorded as `FLG-048`,
+with `D-22` as the standing habit: run the gate on the runtime CI uses, not only on the sandbox's.
+Gate count on the fixed tree: 7,554 checks passed, 0 failed.

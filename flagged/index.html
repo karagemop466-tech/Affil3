@@ -371,6 +371,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a>, <a href="https://developers.google.com/crawling/docs/robots-txt/create-robots-txt" rel="noopener external">S25</a></p>
   <p class="small"><strong>Manual step:</strong> Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.</p>
 </section>
+<section class="flag-card is-resolved" id="FLG-048">
+  <p class="flag-head"><span class="badge flag">FLG-048</span> <span class="badge sev-medium">medium</span> <strong>The gate passed in the sandbox and threw on CI, because a newer JavaScript runtime accepted an API the declared floor does not have</strong> <span class="badge resolved">resolved</span></p>
+  <p>publish-gate failed on 2026-11-20 with `TypeError: robotsTxt.matchAll.map is not a function or its return value is not iterable` at tools/verify.mjs:300, while the same commit passed 7,552 checks in the working sandbox and in a fresh clone of it. Cause: the line read `[...str.matchAll(re).map(f)]`, which asks the iterator matchAll returns for `.map`. Iterator helpers are ES2025; the sandbox runs node 22.22.3, which has them, and CI runs node 20, which does not, while package.json declares `engines.node &gt;=18`. So the gate&#39;s own code broke the floor it is meant to protect, and nothing in the local loop could see it. The line is fixed to spread first and then map, and every other matchAll site in tools/ was read and already spreads first.</p>
+  <p class="resolution"><strong>Resolution:</strong> Fixed in tools/verify.mjs, and publish-gate now prints the runtime version and annotates the failure output.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
+  <p class="small"><strong>Manual step:</strong> None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate&#39;s output tail as check annotations, so a red run can be read from the API without the Actions log.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">

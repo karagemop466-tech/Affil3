@@ -597,6 +597,11 @@
       "closes": [
         "Q-23"
       ]
+    },
+    {
+      "id": "D-22",
+      "suggestion": "Before trusting a green gate, run it on the runtime CI actually uses: package.json declares node >=18, the sandbox may be two majors ahead, and an API that exists there can throw on the floor. A gate that only works on one machine is not a gate.",
+      "closes": []
     }
   ],
   "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Two sessions opened rows on 2026-11-20 that wanted the same ids; the ids that reached main first kept them, so this session's rows are K-23 to K-26, Q-23, Q-24 and Q-25, and D-19, D-20 and D-21. Q-25 is marked blocking because a marketplace choice sits underneath every buy button on the site, and Q-17 plus Q-22 are the short-link and content questions other sessions opened."

@@ -563,6 +563,20 @@
         "S09",
         "S25"
       ]
+    },
+    {
+      "id": "FLG-048",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "toolchain",
+      "title": "The gate passed in the sandbox and threw on CI, because a newer JavaScript runtime accepted an API the declared floor does not have",
+      "detail": "publish-gate failed on 2026-11-20 with `TypeError: robotsTxt.matchAll.map is not a function or its return value is not iterable` at tools/verify.mjs:300, while the same commit passed 7,552 checks in the working sandbox and in a fresh clone of it. Cause: the line read `[...str.matchAll(re).map(f)]`, which asks the iterator matchAll returns for `.map`. Iterator helpers are ES2025; the sandbox runs node 22.22.3, which has them, and CI runs node 20, which does not, while package.json declares `engines.node >=18`. So the gate's own code broke the floor it is meant to protect, and nothing in the local loop could see it. The line is fixed to spread first and then map, and every other matchAll site in tools/ was read and already spreads first.",
+      "impact": "Every push to this branch was red for the wrong reason, which teaches people to ignore a red gate. The build content was never affected: the generator itself avoided the API.",
+      "manual_step": "None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate's output tail as check annotations, so a red run can be read from the API without the Actions log.",
+      "resolution": "Fixed in tools/verify.mjs, and publish-gate now prints the runtime version and annotates the failure output.",
+      "sources": [
+        "S09"
+      ]
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
