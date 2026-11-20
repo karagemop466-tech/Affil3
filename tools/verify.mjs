@@ -252,6 +252,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     }
     for (const id of mentioned) {
       check(`guide ${g.slug} declares the source it cites (${id})`, declared.has(id), `declared: ${[...declared].join(',')}`);
+      check(`guide ${g.slug} links the source it cites (${id})`, h.includes(`class="cite" href="${cfg.basePath}/sources/#${id}"`) || h.includes(`>${id}</a>`), id);
     }
   }
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));

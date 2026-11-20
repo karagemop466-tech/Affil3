@@ -251,7 +251,10 @@ function renderBlock(b, gslug = '') {
     case 'ul': return `<ul>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
     case 'ol': return `<ol>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ol>`;
     case 'img': return figure(b.src, b.alt, b.caption || '');
-    case 'table': return `<div class="table-wrap"><table class="checklist"><thead><tr>${b.headers.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+    // A table cell may end with a source citation like "(S10)" or "(S11, S23)". The IDs are
+    // turned into links to the source register, so every row's evidence is one click away
+    // and the citation can never drift away from the register entry it names.
+    case 'table': return `<div class="table-wrap"><table class="checklist"><thead><tr>${b.headers.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c) => `<td>${citeCell(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     case 'faq': return `<section class="faq"><h2 id="${esc(slugId('Questions readers ask next'))}">Questions readers ask next</h2>${b.items.map((i) => `<details class="faq-item"><summary>${esc(i.q)}</summary><p>${esc(i.a)}</p></details>`).join('\n')}</section>`;
     case 'cta': return `<aside class="cta-band"><div><p class="cta-text">${esc(b.text)}</p></div><a class="btn btn-ghost" href="${esc(href(b.href))}">${esc(b.label)}</a></aside>`;
     default: throw new Error('unknown block ' + b.type + (gslug ? ' in guide ' + gslug : ''));
@@ -331,6 +334,20 @@ const productSourceList = (p) => {
 };
 
 const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label="blank: unverified">&nbsp;</span>' : esc(v));
+
+// Render a table cell, linking any source IDs it cites. The text is escaped first, then the
+// citation markers are replaced with anchors, so no raw text can inject markup.
+const citeCell = (c) => {
+  const text = esc(c === undefined || c === null ? '' : String(c));
+  return text.replace(/\((S\d\d(?:,\s*S\d\d)*)\)/g, (m, ids) => {
+    const links = ids.split(/,\s*/).map((id) => {
+      const rec = SOURCES[id.trim()];
+      if (!rec) return `<span class="badge bad">${esc(id.trim())} (missing)</span>`;
+      return `<a class="cite" href="${esc(href('/sources/'))}#${esc(id.trim())}">${esc(id.trim())}</a>`;
+    }).join(', ');
+    return `(${links})`;
+  });
+};
 
 // ---------- pages ----------
 const pages = [];
