@@ -45,14 +45,16 @@ const COLLECTIONS = [
   },
 ];
 
+// A typographic stand-in for product photography. We do not republish Amazon
+// listing images (see FLG-005), so each card carries a brand mark instead.
+const MARKS = {
+  "chefman-6qt-dual-basket": "CF",
+  "chefman-turbofry-8qt": "CF",
+  "emeril-26qt-french-door": "EL",
+  "chef-iq-sense-thermometer": "iQ",
+};
 function monogram(p) {
-  const initials = (p.short_name || p.working_name)
-    .split(/\s+/)
-    .filter((w) => /^[A-Za-z0-9]/.test(w))
-    .slice(0, 2)
-    .map((w) => w[0].toUpperCase())
-    .join("");
-  return initials || "··";
+  return MARKS[p.id] || (p.brand || "SN").slice(0, 2).toUpperCase();
 }
 
 export function productCard(p, { compact = false } = {}) {
