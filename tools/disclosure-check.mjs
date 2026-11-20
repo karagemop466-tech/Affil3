@@ -30,6 +30,13 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 //   crisp-index/ a separate publication by another session, namespaced away
 //                from the root site; it is not linked from the sitemap and is
 //                not this pipeline's output, so its design is not ours to change
+//
+// docs/ is deliberately NOT skipped. It is a second, older publication that is
+// still served from this same GitHub Pages domain at /docs/, and it was found
+// publishing Amazon prices and star ratings, which the Associates price clause
+// does not permit. Skipping it would have kept this gate green while the domain
+// carried a live violation. It stays in scope until it is either brought into
+// line or retired; see FLG-028.
 const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "src", "tools", "data", "analytics-data"]);
 
 const FTC = "I get commissions for purchases made through links in this post";
@@ -51,6 +58,15 @@ const pages = walk(ROOT);
 for (const f of pages) {
   const page = relative(ROOT, f);
   const html = readFileSync(f, "utf8");
+
+  // A page that carries no affiliate link and no product claim needs no affiliate
+  // disclosure. Rather than trusting a marker, verify it: count outbound Amazon
+  // links and affiliate tags. /docs/ is retired and must stay link-free.
+  const amazonLinks = (html.match(/https?:\/\/(?:[a-z0-9-]+\.)*amazon\.com\//gi) || []).length;
+  const tagged = /[?&]tag=shopnow047c-20\b/.test(html);
+  const disclosureFree = page.startsWith("docs/") && amazonLinks === 0 && !tagged
+    && /<meta name="robots" content="noindex/.test(html);
+  if (disclosureFree) continue;
 
   if (!html.includes(FTC)) problems.push(`${page}: missing the FTC example disclosure sentence`);
   if (!html.includes(ASSOC)) problems.push(`${page}: missing the Amazon Associates statement (section 5)`);
