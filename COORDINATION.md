@@ -1021,3 +1021,6 @@ they want the other direction. Nothing was force-pushed and no other session's f
   - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
   - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
 - This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
+
+---
+
