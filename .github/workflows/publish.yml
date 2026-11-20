@@ -33,11 +33,17 @@ jobs:
         # the Checks UI and on the PR, so a broken gate is diagnosable without leaving the API.
         run: |
           set +e
+          node --version
           out=$(node tools/verify.mjs 2>&1)
           rc=$?
           printf '%s\n' "$out"
           if [ "$rc" -ne 0 ]; then
-            printf '%s\n' "$out" | grep -E "^  FAIL|^verify:" | head -30 | while IFS= read -r line; do
+            # Both shapes of a red gate are reported: a failed check prints FAIL lines, an
+            # unexpected throw prints a stack. Annotate whichever came out, escaping the
+            # characters that would otherwise break the workflow command.
+            printf '%s\n' "$out" | tail -40 | while IFS= read -r line; do
+              line=${line//'%'/'%25'}
+              line=${line//$'\r'/'%0D'}
               printf '::error::%s\n' "$line"
             done
             exit "$rc"
