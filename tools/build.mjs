@@ -211,7 +211,10 @@ const add = (p) => pages.push(p);
 
 // Shop table
 {
-  const rows = products.map((p) => [
+    const resolvedCount = products.filter((p) => p.observed_asin).length;
+  const unanswered = products.filter((p) => !p.observed_asin);
+  const taggedCount = products.filter((p) => p.tagged_outbound_url).length;
+const rows = products.map((p) => [
     `<strong>${esc(p.id)}</strong>`,
     `<a href="${esc(href('/categories/' + p.category + '/'))}">${esc(catName(p.category))}</a>`,
     `${esc(p.observed_title || 'Not observed')}${p.observed_breadcrumb ? `<br><span class="muted small">${esc(p.observed_breadcrumb)}</span>` : ''}`,
@@ -241,9 +244,8 @@ const add = (p) => pages.push(p);
   <h2>What the table shows</h2>
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
-    <li>Four short links resolved to a product page, and each product ID differs from the token in its link. ${flagLinks(['FLG-002'])}</li>
-    <li>One short link (B00hJ57DV) landed on a checkpoint page, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}</li>
-    <li>Four tagged links to observed products are published with the tracking ID shopnow047c-20. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
+    <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
+    <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
   </ul>

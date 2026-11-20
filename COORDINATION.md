@@ -398,3 +398,22 @@ Observed redirect targets are not intended ASINs. All intended ASINs remain blan
 - Pull request: https://github.com/karagemop466-tech/Affil3/pull/11
 - Merge result: recorded on the PR (merge commit on `main`).
 - GitHub Pages: source `main` at `/`, status built. Root site unchanged by this PR except for the observations file, which the build does not read.
+
+## Follow-up (same session, after PR #10 merged)
+
+Merging the data fix was not enough: the shop page's summary bullets beneath the table were
+hard-coded text, so after the correction the page stated "Four short links resolved" and "One
+short link (B00hJ57DV) landed on a checkpoint page" directly under a table showing five resolved
+rows. The page contradicted itself.
+
+Fixed by deriving those counts from `products` in `tools/build.mjs` instead of hard-coding them,
+so the summary can no longer drift from the table:
+
+- `<resolved count> of five` short links resolved, computed from `observed_asin`
+- the list of unresolved tokens is generated from the data, and the sentence disappears when none remain
+- the tagged-link count is computed from `tagged_outbound_url`
+
+This is the same failure mode as the data error itself: a claim written once and never
+re-derived. Anything on a generated page that counts rows should be computed from those rows.
+
+Gate after the change: 23 pages, **1316 checks, 0 failed**.
