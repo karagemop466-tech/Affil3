@@ -149,6 +149,7 @@ ${body}
         <ul class="foot-links">
           ${DASHBOARDS.map(([u, t]) => `<li><a href="${esc(href(u))}">${esc(t)}</a></li>`).join('\n          ')}
           <li><a href="${esc(href('/feed.xml'))}">RSS feed</a></li>
+          <li><a href="${esc(href('/legacy/archive/'))}">Archived editions</a></li>
           <li><a href="${esc(href('/sitemap.xml'))}">Sitemap</a></li>
         </ul>
       </div>

@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "verified_on": "2026-11-20",
+  "ledger_note": "Empty by design. Every column below is either populated from an authorized first-party report or left as null. No conversion score, revenue forecast, or estimated traffic figure is stored or displayed. See FLG-007.",
+  "provenance": {
+    "report_source": null,
+    "report_window_start": null,
+    "report_window_end": null,
+    "entered_by": null,
+    "entered_on": null
+  },
+  "columns": ["date", "source", "channel", "eligible_sessions", "clicks", "reported_orders", "provenance_id"],
+  "rows": [],
+  "tomorrow": [
+    "Export the Associates orders report for the reporting month.",
+    "Record the export timestamp and the exact report name in provenance.",
+    "Append one row per source/channel combination that actually appears in the report.",
+    "Leave reported_orders null rather than 0 when the report does not cover that row."
+  ]
+}

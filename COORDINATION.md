@@ -767,3 +767,69 @@ they want the other direction. Nothing was force-pushed and no other session's f
 - Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
 - Merge result: pending at the time of writing.
 - GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
+
+---
+
+# Session `arena/01b24e2e-affil3` — compliance and gate pass (appended after PR #22)
+
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `ac89023`.
+Status **active**. This section is appended; nothing above it was edited.
+
+## What happened, honestly
+
+This session began a full redesign of the root publication (front page, product pages, comparison page,
+three extra guides, four illustrations, its own gate and a decision board). While it was working, `main`
+moved twelve commits ahead: another session had already rebuilt the root publication as a single
+editorial site with manufacturer specifications, product slugs, guide images and a 1,610-check gate.
+
+Rather than publish two competing redesigns, the merge resolved in favour of `main` for everything it
+owned — generator, data, CSS, generated pages — and this session re-applied only what `main` did not have:
+
+| Contribution | File | Why it was kept |
+|---|---|---|
+| Link policy: tag every retail Amazon link, never publish a short link | `tools/build.mjs` (`linkPolicy`) | Program Policies 2(b) was being broken by citations and short links |
+| Gate rules: tag on every retail link, no short-link anchors, images, canonical, one `h1`, title length | `tools/verify.mjs` | The gate could not see any of these |
+| `/legacy/` and `/crisp-index/` added to `robots.txt`; `noindex` meta on `/editorial/` | `tools/build.mjs`, `tools/build.py` | One site for search engines, enforced in two places |
+| Missing `hero-thermometer.jpg` created and committed | `assets/img/` | 14 references pointed at a file that never existed |
+| FLG-028, FLG-029 | `data/flags.json` | Recorded publicly, with the fix |
+
+The redesign this session had built stays in this branch's history (commits `a311ddc`..`8dd2b1b`). It is
+**superseded, not merged**: one generator owns the output paths, and the owner can compare the two if
+they want the other direction. Nothing was force-pushed and no other session's file was deleted.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| All five submitted links re-followed on 2026-11-20 | Destinations unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z` |
+| Operating Agreement §1, §5, §6 read in full | Confirmed; wording quoted on `/compliance/` |
+| Program Policies §2(a)-(b), §6(t),(v),(w),(y) read in full | Confirmed: tag as a URL parameter; no cloaking; no obscuring shortener; ratings and prices only via Amazon-served content or the API |
+| Google outbound-link guidance read | Confirmed (`rel="sponsored"`), page dated 2025-12-10 |
+| USDA FSIS temperature chart and thermometer page read | Confirmed: 145/160/165 °F rows, probe placement, 2–4 °F tolerance |
+| `npm run check` | 28 pages, **2,808 checks, 0 failed**; archive gate PASS |
+| Negative test: retail Amazon link without the tag | fails (`retail Amazon link carries the tag`) |
+| Negative test: hero image removed | fails (11 image checks) |
+| CI drift assertion | tree clean after a full rebuild of both publications |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-028 | Amazon links published without the tag, including the observation citations and the `link.amazon` short links | resolved (build-level policy + gate rule) |
+| FLG-029 | `hero-thermometer.jpg` referenced 14 times and never committed | resolved (image added, image check added) |
+| — | `robots.txt` excluded `/editorial/` but not `/legacy/` or `/crisp-index/` | fixed |
+| — | `/editorial/` relied on `robots.txt` alone to stay out of the index | fixed (`noindex` meta as well) |
+
+## Still open (unchanged by this session)
+
+- Intended ASIN for all five products: blank, owner-only (FLG-002, Q-01).
+- Gate G-02: no Special Link has been tested in Associates Central (FLG-005, FLG-009).
+- Analytics: no endpoint deployed, so the live site records nothing (FLG-009).
+- Search Console: not connected (FLG-013).
+- Named author, product photography, prices and ratings: decisions, not omissions.
+
+## Publish log
+
+- Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
+- Merge result: pending at the time of writing.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
