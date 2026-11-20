@@ -24,10 +24,17 @@
     <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/compare/">Compare</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/suggestions/">Suggestions</a>
       <a href="/Affil3/about/">About</a>
     </nav>
+    <form class="nav-search" role="search" action="/Affil3/search/" method="get" onsubmit="return true">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -188,6 +195,83 @@
   <p class="resolution"><strong>Resolution:</strong> P03 and P04 corrected in data/products.json; previous values retained in each record&#39;s reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5</p>
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   
+</section>
+<section class="flag-card" id="FLG-023">
+  <p class="flag-head"><span class="badge flag">FLG-023</span> <span class="badge sev-high">high</span> <strong>The Amazon title for P01 calls it an oven; the maker&#39;s page does not</strong></p>
+  <p>The Amazon title reads &#39;CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows&#39;. Chefman&#39;s own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat &#39;oven&#39;. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S14</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Read the shipped manual&#39;s function list. If it includes a bake or oven mode, correct the product page.</p>
+</section>
+<section class="flag-card" id="FLG-024">
+  <p class="flag-head"><span class="badge flag">FLG-024</span> <span class="badge sev-medium">medium</span> <strong>P02 preset and accessory counts disagree inside the maker&#39;s own page</strong></p>
+  <p>The Emeril Everyday page states 25 cooking presets in its specification tiles and 24 in its product description. The Amazon title says 24 preset options and six accessories; the maker&#39;s description says seven. No single count is confirmed, so the product page leaves the preset count blank and states the conflict.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S16</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Check the printed manual or quick-start card that ships with the unit, then publish the confirmed count.</p>
+</section>
+<section class="flag-card" id="FLG-025">
+  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>The 1,000 °F figure for P05 is an ambient rating, not an internal one</strong></p>
+  <p>The Amazon title says &#39;1000°F Heat Safe&#39;. CHEF iQ&#39;s specifications give a 32–1,000 °F ambient range and a 32–212 °F internal probe range. The two statements agree once ambient and internal are separated, but a reader could take the higher number to mean the probe reads or survives 1,000 °F internally. The product page separates them explicitly.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S18</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Confirm from the manual which parts of the probe are rated to 1,000 °F before using it over direct high heat.</p>
+</section>
+<section class="flag-card" id="FLG-026">
+  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>P03 maximum temperature: the listing says 450 °F, the maker says 400 °F</strong></p>
+  <p>The Amazon title advertises a &#39;450°F Hi-Fry Option&#39;. Chefman&#39;s specification list for model RJ38-SQSS-8T states a 200–400 °F range with a 400 °F maximum. The product page publishes the maker&#39;s figure and shows the listing&#39;s figure beside it. Neither is presented as confirmed.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1" rel="noopener external">S15</a>, <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">S20</a></p>
+  <p class="small"><strong>Manual step:</strong> Check the control panel or manual for the highest selectable temperature and settle the figure.</p>
+</section>
+<section class="flag-card" id="FLG-027">
+  <p class="flag-head"><span class="badge flag">FLG-027</span> <span class="badge sev-low">low</span> <strong>P04 has no IP rating on the maker&#39;s page, although the listing says IP67</strong></p>
+  <p>The Amazon title says &#39;IP67 Waterproof&#39;. ThermoMaven&#39;s page says &#39;100% waterproof design&#39; and does not give an ingress-protection rating. No IP rating is published on the product page; the maker&#39;s wording is quoted instead.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S17</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Look for an IP rating on the retail box or manual. Publish it only if it is printed there.</p>
+</section>
+<section class="flag-card" id="FLG-028">
+  <p class="flag-head"><span class="badge flag">FLG-028</span> <span class="badge sev-medium">medium</span> <strong>&#39;NIST-certified&#39; on P04 is not supported by a certificate we could find</strong></p>
+  <p>ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST&#39;s own published FAQ states that NIST &#39;does not recommend or endorse commercial equipment, instruments, or materials&#39; and does not &#39;define, specify, assure, or certify traceability&#39; of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker&#39;s claim and does not repeat &#39;NIST-certified&#39; as a fact.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S17</a>, <a href="https://www.nist.gov/pml/sensor-science/optical-radiation/faqs-spectral-responsivity-calibrations" rel="noopener external">S19</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker&#39;s.</p>
+</section>
+<section class="flag-card" id="FLG-029">
+  <p class="flag-head"><span class="badge flag">FLG-029</span> <span class="badge sev-medium">medium</span> <strong>The five events in data/events.json were chosen here, not supplied by the owner</strong></p>
+  <p>The brief asked for &#39;the five defined events&#39; but did not name them (also FLG-008). This build defines page_view, category_view, product_view, outbound_click and guide_read_75. They are documented on /measurement/ and enforced by the gate, but the owner has not confirmed the list. Question Q-05 remains open.</p>
+  
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Confirm or replace the five event names. If they change, update data/events.json, src/assets/analytics.js and tools/collector.mjs together, because the gate checks that all three agree.</p>
+</section>
+<section class="flag-card" id="FLG-030">
+  <p class="flag-head"><span class="badge flag">FLG-030</span> <span class="badge sev-medium">medium</span> <strong>No product photography; no image is used anywhere on the site</strong></p>
+  <p>The site uses no product images. This is deliberate: Amazon product images may not be hotlinked or reused outside the approved Associates tooling, and the maker&#39;s photography is copyrighted. The consequence is a shop with no visuals, which is the single largest gap between this site and a published retail page. Suggestion S-05 sets out the options.</p>
+  
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Choose an imagery path at S-05. Affiliate-programme image feeds and Amazon&#39;s own SiteStripe tooling are the compliant routes; copying listing images is not.</p>
+</section>
+<section class="flag-card" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-low">low</span> <strong>Prices exist on the maker&#39;s and Amazon&#39;s pages but are deliberately not shown</strong></p>
+  <p>The product pages on chefman.com, emerileveryday.com, thermomaven.com, chefiq.com and amazon.com all display prices on the day they were read. None is published here. Amazon&#39;s Operating Agreement restricts displaying prices and requires that any price shown come from approved programme content (S01, S02). Displaying a price is a separate decision with separate rules; see FLG-016 and suggestion S-10.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Decide at S-10 whether to show prices at all. If yes, they must come from an approved feed, not be typed in by hand, and they must carry a timestamp.</p>
+</section>
+<section class="flag-card" id="FLG-032">
+  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-low">low</span> <strong>The Amazon listing and the maker&#39;s specification describe the same model, but that was checked by name, not by barcode</strong></p>
+  <p>Each of the five Amazon listings was matched to a manufacturer page by brand, model number and product name. No UPC, EAN or manufacturer part number was compared field by field, because the Amazon pages read here did not expose a barcode and the maker&#39;s pages did not print one. The match is strong for P01 and P03 (model numbers agree) and by name for P02, P04 and P05.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S14</a>, <a href="https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1" rel="noopener external">S15</a>, <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S16</a>, <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S17</a>, <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S18</a></p>
+  <p class="small"><strong>Manual step:</strong> Compare the UPC on the retail box or the Amazon &#39;Product information&#39; table with the maker&#39;s part number, then close this flag.</p>
+</section>
+<section class="flag-card" id="FLG-033">
+  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-medium">medium</span> <strong>No product on this site has been tested; the copy is written to say so</strong></p>
+  <p>Nobody involved in this build has handled, cooked with or measured any of the five products. FTC guidance states that an endorser cannot describe experience with a product they have not tried (S07). Every product page therefore describes published specifications and design trade-offs only, labels the verdicts &#39;Best for&#39; and &#39;Not for&#39; rather than &#39;we loved it&#39;, and states on the page that the unit was not tested. This is a permanent constraint on how persuasive the site can be until a tester is available.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener external">S07</a></p>
+  <p class="small"><strong>Manual step:</strong> Owner answers Q-14 (which products, if any, have been handled). Pages are then labelled &#39;tested&#39;, &#39;owned&#39; or &#39;not tested&#39; per product, and only tested products may carry hands-on claims.</p>
 </section>
 </main>
 <footer class="site-footer">

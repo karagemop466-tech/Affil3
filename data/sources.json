@@ -88,9 +88,9 @@
       "publisher": "USDA Food Safety and Inspection Service",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
       "updated": "not stated on the excerpt",
-      "method": "excerpt",
-      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
-      "status": "verified (excerpt; re-check manually)"
+      "method": "fetched (full page, last updated April 14, 2025 as stated on the page)",
+      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F with a 3-minute rest. Ground meats: 160 °F. Ground poultry and all poultry: 165 °F. Eggs: 160 °F. Fish and shellfish: 145 °F. Leftovers and casseroles: 165 °F.",
+      "status": "verified"
     },
     {
       "id": "S10",
@@ -131,6 +131,76 @@
       "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
       "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
       "status": "excerpt verified; manual check pending"
+    },
+    {
+      "id": "S14",
+      "title": "TurboFry Touch 6 Qt. Dual-Window Air Fryer (RJ38-SQPF-3TDB-2W), product page and specification list",
+      "publisher": "Chefman (chefman.com)",
+      "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (product details, features and specifications read directly from the page)",
+      "used_for": "P01 capacity 6 qt / 5.67 L, 200–450 °F, two nonstick dishwasher-safe baskets, dual viewing windows, Sync Finish, dimensions 13.38 x 11.81 x 10.63 in, 13.3 lb, 1700 W / 120 V, cETL, 1-year assurance. The page describes a two-drawer basket air fryer and lists no oven mode.",
+      "status": "verified"
+    },
+    {
+      "id": "S15",
+      "title": "8 Qt. TurboFry Touch Air Fryer (RJ38-SQSS-8T), product page and specification list",
+      "publisher": "Chefman (chefman.com)",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (product details, features and specifications read directly from the page)",
+      "used_for": "P03 capacity 8 qt / 7.57 L, 200–400 °F range, 4 cooking presets, top-rack dishwasher-safe basket, 8 Qt dimensions 15.4 x 12.6 x 13.5 in, 12.8 lb, 1700 W / 120 V, cETL, 1-year assurance. The page also covers a 5 Qt model with different figures.",
+      "status": "verified"
+    },
+    {
+      "id": "S16",
+      "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT (4-00675-02A-VN), product page",
+      "publisher": "Emeril Everyday (emerileveryday.com)",
+      "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (specification tiles, product details, 10-in-1 function list and description read directly from the page)",
+      "used_for": "P02 capacity 26 qt / 24.6 L for 4–6 people, dimensions 16.9 D x 15.8 W x 14.8 H in, 120 V, dual-speed fan, ten named cooking functions, French doors, rotisserie, 1-year warranty. The same page states 25 presets in its specification tiles and 24 in its description; wattage and temperature range are not published.",
+      "status": "verified; two internal conflicts flagged (FLG-024)"
+    },
+    {
+      "id": "S17",
+      "title": "ThermoMaven F1 Ace Instant Read Thermometer, product page",
+      "publisher": "ThermoMaven (thermomaven.com)",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (features, specification and FAQ sections read directly from the page)",
+      "used_for": "P04 about-1-second read, stated accuracy +/-0.5 °F / +/-0.3 °C described by the maker as NIST-certified, thermocouple sensor, ultra-bright LCD, '100% waterproof design' (no IP rating given), built-in magnet, motion-sensing wake/sleep, lifetime warranty to be activated within 30 days.",
+      "status": "verified (the NIST and IP claims are the maker's wording, flagged at FLG-027 and FLG-028)"
+    },
+    {
+      "id": "S18",
+      "title": "iQ Sense Smart Wireless Meat Thermometer (CQ60 series), product page including specifications and FAQs",
+      "publisher": "CHEF iQ (chefiq.com)",
+      "url": "https://chefiq.com/products/iq-sense",
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (features, specifications, FAQ and documentation sections read directly from the page)",
+      "used_for": "P05 four internal sensors plus one ambient sensor, internal range 32–212 °F, ambient range 32–1,000 °F, probe 0.19 in x 4.75 in, Wi-Fi and Bluetooth, 70+ hours battery, USB-C charging through the Smart Hub, dishwasher safe, sold in 1/2/3/4 probe sets, box contains probe, hub and USB-C cable with no charging brick. Warranty not published on the page.",
+      "status": "verified"
+    },
+    {
+      "id": "S19",
+      "title": "NIST FAQs: traceability, certification and endorsement of commercial equipment",
+      "publisher": "National Institute of Standards and Technology (nist.gov)",
+      "url": "https://www.nist.gov/pml/sensor-science/optical-radiation/faqs-spectral-responsivity-calibrations",
+      "updated": "January 20, 2022 (page age shown in the search index)",
+      "method": "excerpt (search-result text of the official nist.gov page); the page text was not re-read in full",
+      "used_for": "Quote used at FLG-028: NIST is a government laboratory and 'as part of our policy NIST does not recommend or endorse commercial equipment, instruments, or materials'. Also: 'NIST does not define, specify, assure, or certify traceability of the results of measurements'. Used only to explain why the phrase 'NIST-certified' on a retail product page needs a certificate behind it.",
+      "status": "excerpt verified; re-check the exact wording on the page before quoting it in any other context"
+    },
+    {
+      "id": "S20",
+      "title": "Amazon detail page for B08DKYBTPH, read for the title claim only",
+      "publisher": "Amazon.com, Inc.",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "updated": "observed 2026-11-20",
+      "method": "observed 2026-11-20 (page title read)",
+      "used_for": "The Amazon title for B08DKYBTPH advertises a '450 °F Hi-Fry Option', which is the claim compared against Chefman's 200–400 °F specification at FLG-026. Recorded as an observation of the listing, not as a product fact.",
+      "status": "observed"
     }
   ]
 }

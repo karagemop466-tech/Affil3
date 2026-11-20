@@ -1,0 +1,528 @@
+{
+  "checked": "2026-11-20",
+  "rule": "Every specification below was read on the manufacturer's own product page on the date shown and is cited by source id. Values the manufacturer does not publish are left as empty strings and marked 'not published'. Where the Amazon listing and the manufacturer disagree, both values are shown and the row is flagged; neither is silently preferred.",
+  "products": [
+    {
+      "id": "P01",
+      "asin": "B0CDY277D3",
+      "slug": "chefman-turbofry-touch-6qt-dual-basket-air-fryer",
+      "brand": "Chefman",
+      "name": "TurboFry Touch 6 Qt Dual-Basket Air Fryer",
+      "model": "RJ38-SQPF-3TDB-2W",
+      "category": "air-fryers",
+      "shape": "Dual basket",
+      "one_liner": "Two 3-quart baskets with a window on each, so two foods can finish at the same moment.",
+      "best_for": "Cooking two different foods at once without heating the whole oven.",
+      "not_for": "A whole chicken or one big batch: the two baskets are separate 3-quart spaces, not one 6-quart chamber.",
+      "decide": [
+        "Pick this if your meals are usually a protein plus a side that need different times.",
+        "Pick a single-basket model if you often fill the basket with one thing, because two 3-quart drawers will feel small.",
+        "Measure the cabinet gap: the unit is 10.63 in tall and you need clearance to pull a drawer out."
+      ],
+      "listing_title_note": "The Amazon title calls this an \"Air Fryer Oven\". Chefman's own page describes a basket air fryer with two drawers and does not list an oven mode. The word \"oven\" in the listing is not supported by the maker's specification.",
+      "specs": [
+        {
+          "label": "Capacity",
+          "value": "6 qt / 5.67 L",
+          "note": "Two independent 3-quart baskets",
+          "source": "S14"
+        },
+        {
+          "label": "Temperature range",
+          "value": "200–450 °F",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Baskets",
+          "value": "2, nonstick, dishwasher-safe",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Viewing windows",
+          "value": "Yes, one per basket, plus interior light",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Sync finish",
+          "value": "Yes",
+          "note": "Lets both baskets finish together",
+          "source": "S14"
+        },
+        {
+          "label": "Dimensions",
+          "value": "13.38 × 11.81 × 10.63 in",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Weight",
+          "value": "13.3 lb",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Power",
+          "value": "1700 W / 120 V",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Certification",
+          "value": "cETL",
+          "note": "",
+          "source": "S14"
+        },
+        {
+          "label": "Warranty",
+          "value": "1 year",
+          "note": "\"1-year Chefman assurance\"",
+          "source": "S14"
+        },
+        {
+          "label": "Preset count",
+          "value": "",
+          "note": "Not published by the manufacturer. Left blank rather than inferred.",
+          "source": ""
+        }
+      ],
+      "faq": [
+        {
+          "q": "Is 6 quarts one big basket or two?",
+          "a": "Two. It is two independent 3-quart drawers, so a single large item will not fit across both.",
+          "source": "S14"
+        },
+        {
+          "q": "Can I see the food without opening it?",
+          "a": "Yes. Each basket has a window, and the unit has an interior light.",
+          "source": "S14"
+        },
+        {
+          "q": "How hot does it get?",
+          "a": "450 °F at the top of a 200–450 °F range, per Chefman's specifications.",
+          "source": "S14"
+        },
+        {
+          "q": "Will it fit under my cabinets?",
+          "a": "It stands 10.63 in tall and is 13.38 in deep. Measure the gap with the drawer open, not just closed.",
+          "source": "S14"
+        }
+      ]
+    },
+    {
+      "id": "P02",
+      "asin": "B09B7SB46R",
+      "slug": "emeril-lagasse-french-door-airfryer-360-26qt",
+      "brand": "Emeril Lagasse",
+      "name": "French Door AirFryer 360 Toaster Oven Combo, 26 Qt",
+      "model": "4-00675-02A-VN",
+      "category": "air-fryer-ovens",
+      "shape": "Oven style, French doors",
+      "one_liner": "A countertop oven with French doors that opens to 26 quarts: closest to a second oven of the five.",
+      "best_for": "Whole chickens, 12-inch pizzas, trays of cookies and anything that needs a rack rather than a basket.",
+      "not_for": "A small kitchen, or cooking for one: it takes 16.9 in of counter depth and 14.8 in of height.",
+      "decide": [
+        "Pick this if you want one appliance to replace a toaster oven and an air fryer.",
+        "Pick a basket model if you mostly cook single portions; a 26-quart oven takes time to preheat for a handful of fries.",
+        "Check the door swing: French doors open outward, so you need clear counter on both sides."
+      ],
+      "listing_title_note": "The Amazon title says six cooking accessories are included and 24 preset options; the maker's own page states seven accessories in one place, and both 24 and 25 presets in different places. These counts are flagged rather than published as fact.",
+      "specs": [
+        {
+          "label": "Capacity",
+          "value": "26 qt / 24.6 L",
+          "note": "Maker says it prepares food for 4–6 people",
+          "source": "S16"
+        },
+        {
+          "label": "Dimensions",
+          "value": "16.9 D × 15.8 W × 14.8 H in",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Voltage",
+          "value": "120 V",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Fan",
+          "value": "Dual-speed",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Cooking functions",
+          "value": "Air fry, bake, broil, defrost, dehydrate, grill, proof, reheat, roast, warm",
+          "note": "Maker calls the unit 10-in-1",
+          "source": "S16"
+        },
+        {
+          "label": "Door",
+          "value": "French doors",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Rotisserie",
+          "value": "Yes",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Warranty",
+          "value": "1 year",
+          "note": "",
+          "source": "S16"
+        },
+        {
+          "label": "Preset count",
+          "value": "",
+          "note": "The maker's page states 25 in its specification tiles and 24 in its description. Conflict not resolved; see FLG-024.",
+          "source": ""
+        },
+        {
+          "label": "Wattage",
+          "value": "",
+          "note": "Not published on the maker's page. Left blank.",
+          "source": ""
+        },
+        {
+          "label": "Temperature range",
+          "value": "",
+          "note": "Not published on the maker's page. Left blank.",
+          "source": ""
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does it air fry or bake?",
+          "a": "Both, plus eight other named functions: air fry, bake, broil, defrost, dehydrate, grill, proof, reheat, roast and warm.",
+          "source": "S16"
+        },
+        {
+          "q": "How much counter space does it need?",
+          "a": "16.9 in deep, 15.8 in wide and 14.8 in tall, and the French doors need clearance in front.",
+          "source": "S16"
+        },
+        {
+          "q": "Can it fit a whole chicken?",
+          "a": "The maker says 26 quarts fits a whole chicken, a 12-inch pizza or a full tray of cookies. We have not tested this.",
+          "source": "S16"
+        },
+        {
+          "q": "How many presets does it have?",
+          "a": "The maker's page says both 24 and 25 in different places, so we do not publish a number. Check the manual that ships with the unit.",
+          "source": "S16"
+        }
+      ]
+    },
+    {
+      "id": "P03",
+      "asin": "B08DKYBTPH",
+      "slug": "chefman-turbofry-touch-8qt-air-fryer",
+      "brand": "Chefman",
+      "name": "TurboFry Touch 8 Qt Air Fryer",
+      "model": "RJ38-SQSS-8T",
+      "category": "air-fryers",
+      "shape": "Single basket",
+      "one_liner": "One wide 8-quart basket with four presets: the simplest shape here, and the biggest single basket.",
+      "best_for": "Feeding several people from one basket, or cooking one large item at a time.",
+      "not_for": "Cooking two foods on different timings, since there is only one basket and one timer.",
+      "decide": [
+        "Pick this if you want one big basket and do not need two zones.",
+        "Pick the 6-quart dual-basket model if two different foods on two timings is your normal pattern.",
+        "Check the ceiling: the maker publishes a 400 °F maximum, while the Amazon title advertises a 450 °F \"Hi-Fry\" option. See FLG-026."
+      ],
+      "listing_title_note": "The Amazon title advertises a \"450 °F Hi-Fry Option\". Chefman's own specification sheet for this model states a 200–400 °F range. Both are shown; the difference is flagged.",
+      "specs": [
+        {
+          "label": "Capacity",
+          "value": "8 qt / 7.57 L",
+          "note": "",
+          "source": "S15"
+        },
+        {
+          "label": "Temperature range",
+          "value": "200–400 °F",
+          "note": "Maker's specification sheet",
+          "source": "S15"
+        },
+        {
+          "label": "Basket",
+          "value": "1, nonstick, top-rack dishwasher-safe",
+          "note": "",
+          "source": "S15"
+        },
+        {
+          "label": "Cooking presets",
+          "value": "4",
+          "note": "Touch screen controls",
+          "source": "S15"
+        },
+        {
+          "label": "Dimensions",
+          "value": "15.4 × 12.6 × 13.5 in (8 Qt model)",
+          "note": "The same page covers a 5-quart model with different dimensions",
+          "source": "S15"
+        },
+        {
+          "label": "Weight",
+          "value": "12.8 lb (8 Qt model)",
+          "note": "",
+          "source": "S15"
+        },
+        {
+          "label": "Power",
+          "value": "1700 W / 120 V",
+          "note": "",
+          "source": "S15"
+        },
+        {
+          "label": "Certification",
+          "value": "cETL",
+          "note": "",
+          "source": "S15"
+        },
+        {
+          "label": "Warranty",
+          "value": "1 year",
+          "note": "",
+          "source": "S15"
+        }
+      ],
+      "faq": [
+        {
+          "q": "How hot does it actually get?",
+          "a": "Chefman's specification sheet says 200–400 °F for this model. The Amazon listing advertises 450 °F, which we flag rather than repeat as fact.",
+          "source": "S15"
+        },
+        {
+          "q": "How many presets?",
+          "a": "Four, per the maker's feature list.",
+          "source": "S15"
+        },
+        {
+          "q": "Is the basket dishwasher-safe?",
+          "a": "Yes, on the top rack, per the maker.",
+          "source": "S15"
+        },
+        {
+          "q": "Does it have a window?",
+          "a": "Chefman's feature list for this model does not mention a viewing window. We do not claim one.",
+          "source": "S15"
+        }
+      ]
+    },
+    {
+      "id": "P04",
+      "asin": "B0DHZTCNR5",
+      "slug": "thermomaven-f1-ace-instant-read-thermometer",
+      "brand": "ThermoMaven",
+      "name": "F1 Ace Instant-Read Thermometer",
+      "model": "F1 Ace",
+      "category": "cooking-thermometers",
+      "shape": "Instant read, folding probe",
+      "one_liner": "A folding instant-read probe that reads in about a second and lives on the fridge magnet.",
+      "best_for": "Checking a temperature at the end of cooking, and moving between pans or the grill.",
+      "not_for": "Leaving in the oven or smoker while food cooks: this is a spot-check tool, not a leave-in probe.",
+      "decide": [
+        "Pick this if you want one fast reading per piece of food.",
+        "Pick a wireless probe if you want to watch a long cook without opening the oven.",
+        "Note the claim: \"NIST-certified\" is the maker's wording. NIST does not certify consumer products; see FLG-028."
+      ],
+      "listing_title_note": "The Amazon title claims an \"Auto-Rotate Bright LED Screen\" and \"IP67\". The maker's page says LCD, describes the display as auto-rotating by orientation, and says \"100% waterproof\" without stating an IP rating.",
+      "specs": [
+        {
+          "label": "Read time",
+          "value": "About 1 second",
+          "note": "",
+          "source": "S17"
+        },
+        {
+          "label": "Stated accuracy",
+          "value": "±0.5 °F / ±0.3 °C",
+          "note": "Maker's claim, described as NIST-certified",
+          "source": "S17"
+        },
+        {
+          "label": "Sensor",
+          "value": "Thermocouple",
+          "note": "",
+          "source": "S17"
+        },
+        {
+          "label": "Display",
+          "value": "LCD, ultra-bright",
+          "note": "Maker describes auto-rotation with orientation",
+          "source": "S17"
+        },
+        {
+          "label": "Water resistance",
+          "value": "\"100% waterproof design\"",
+          "note": "No IP rating stated by the maker",
+          "source": "S17"
+        },
+        {
+          "label": "Storage",
+          "value": "Built-in magnet; folds closed",
+          "note": "",
+          "source": "S17"
+        },
+        {
+          "label": "Power",
+          "value": "Motion-sensing wake and sleep",
+          "note": "",
+          "source": "S17"
+        },
+        {
+          "label": "Warranty",
+          "value": "Lifetime, to be activated within 30 days of purchase",
+          "note": "Maker's terms",
+          "source": "S17"
+        },
+        {
+          "label": "IP rating",
+          "value": "",
+          "note": "Not published by the maker. Left blank; see FLG-027.",
+          "source": ""
+        },
+        {
+          "label": "Calibration certificate",
+          "value": "",
+          "note": "No NIST certificate number is published. Left blank; see FLG-028.",
+          "source": ""
+        }
+      ],
+      "faq": [
+        {
+          "q": "Can I leave it in the oven?",
+          "a": "No. It is an instant-read probe for spot checks. The maker does not describe leave-in use.",
+          "source": "S17"
+        },
+        {
+          "q": "Is \"NIST-certified\" the same as a NIST certificate?",
+          "a": "No. NIST is a standards body and does not certify consumer products. Treat the phrase as the maker's marketing claim until a certificate is produced.",
+          "source": "S17"
+        },
+        {
+          "q": "How do I clean it?",
+          "a": "The maker describes a waterproof design that withstands spills and scrubbing. Wipe rather than immerse unless the manual says otherwise.",
+          "source": "S17"
+        },
+        {
+          "q": "What is the warranty?",
+          "a": "The maker advertises a lifetime warranty that has to be activated within 30 days of purchase.",
+          "source": "S17"
+        }
+      ]
+    },
+    {
+      "id": "P05",
+      "asin": "B0DZFD6R9Z",
+      "slug": "chef-iq-sense-smart-wireless-thermometer",
+      "brand": "CHEF iQ",
+      "name": "iQ Sense Smart Wireless Thermometer",
+      "model": "CQ60 series",
+      "category": "cooking-thermometers",
+      "shape": "Wireless leave-in probe with hub",
+      "one_liner": "A wireless probe that talks to a hub and your phone, so a long cook does not need the oven door opened.",
+      "best_for": "Long cooks in the oven, smoker or grill where you want to watch from another room.",
+      "not_for": "Someone who wants no app and no charging: the probe and hub both need USB-C charging.",
+      "decide": [
+        "Pick this if you cook long roasts and want a graph rather than a glance.",
+        "Pick the instant-read if you only need a final temperature.",
+        "Decide the probe count before you buy: it is sold in 1, 2, 3 and 4 probe sets.",
+        "Check the internal range: the maker publishes 32–212 °F for the probe's internal sensor, which is cooking-temperature territory, not a high-heat searing claim."
+      ],
+      "listing_title_note": "The Amazon title says \"5 Sensors\" and \"1000°F Heat Safe\". The maker's page says four internal sensors plus one ambient sensor, and a 1,000 °F ambient ceiling with a 32–212 °F internal range. The two descriptions agree once ambient and internal are separated; the distinction matters.",
+      "specs": [
+        {
+          "label": "Sensors",
+          "value": "4 internal + 1 ambient",
+          "note": "",
+          "source": "S18"
+        },
+        {
+          "label": "Internal temperature range",
+          "value": "32–212 °F",
+          "note": "Range of the probe's internal sensor",
+          "source": "S18"
+        },
+        {
+          "label": "Ambient temperature range",
+          "value": "32–1,000 °F",
+          "note": "The 1,000 °F figure applies to ambient heat, not the internal reading",
+          "source": "S18"
+        },
+        {
+          "label": "Probe size",
+          "value": "0.19 in thin, 4.75 in long",
+          "note": "",
+          "source": "S18"
+        },
+        {
+          "label": "Connectivity",
+          "value": "Wi-Fi and Bluetooth",
+          "note": "Hub relays probe data to the app",
+          "source": "S18"
+        },
+        {
+          "label": "Battery",
+          "value": "70+ hours per charge",
+          "note": "USB-C charging through the hub",
+          "source": "S18"
+        },
+        {
+          "label": "Cleaning",
+          "value": "Waterproof and dishwasher safe",
+          "note": "",
+          "source": "S18"
+        },
+        {
+          "label": "Probe sets sold",
+          "value": "1, 2, 3 or 4 probes",
+          "note": "The tracked Amazon listing is a 3-probe set",
+          "source": "S18"
+        },
+        {
+          "label": "In the box",
+          "value": "Probe, Smart Hub, USB-C cable",
+          "note": "Charging brick not included",
+          "source": "S18"
+        },
+        {
+          "label": "Warranty",
+          "value": "",
+          "note": "Not published on the maker's product page. Left blank.",
+          "source": ""
+        }
+      ],
+      "faq": [
+        {
+          "q": "Does 1,000 °F mean I can sear with the probe in?",
+          "a": "The 1,000 °F figure is the ambient rating. The maker publishes 32–212 °F for the internal sensor, so read the manual before using it over direct high heat.",
+          "source": "S18"
+        },
+        {
+          "q": "Do I need the hub?",
+          "a": "Yes. The hub charges the probe and relays readings to your phone over Wi-Fi.",
+          "source": "S18"
+        },
+        {
+          "q": "Is a charging brick included?",
+          "a": "No. The box has the probe, the hub and a USB-C cable.",
+          "source": "S18"
+        },
+        {
+          "q": "Can I put the probe in the dishwasher?",
+          "a": "The maker says the probe is waterproof and dishwasher safe.",
+          "source": "S18"
+        }
+      ]
+    }
+  ]
+}

@@ -1,129 +1,419 @@
 {
-  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
+  "note": "These are options, not changes. Nothing on this list is implemented until you pick an option and reply with the suggestion ID and letter (for example 'S-03 B'). Each row shows what the site does now, what each option would change, the cost of doing it, and what we would expect it to move. The expected effect is an editorial judgement, not a measured result: this site has no traffic data yet (see /ledger/).",
   "suggestions": [
     {
       "id": "S-01",
       "topic": "Outbound link handling",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
-        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
+        {
+          "id": "A",
+          "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).",
+          "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."
+        },
+        {
+          "id": "B",
+          "label": "Hide all buy buttons until gate G-02 passes.",
+          "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."
+        }
       ],
-      "recommendation": "B, until G-02 passes."
+      "recommendation": "B, until G-02 passes.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-02",
       "topic": "Publishing cadence",
       "current": "A",
       "options": [
-        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
-        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
-        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+        {
+          "id": "A",
+          "label": "One new guide every two weeks (proposed default).",
+          "tradeoff": "Steady growth; needs a writing slot every two weeks."
+        },
+        {
+          "id": "B",
+          "label": "One new guide per week.",
+          "tradeoff": "Faster growth; higher manual load."
+        },
+        {
+          "id": "C",
+          "label": "A batch of 10 guides before launch, then monthly.",
+          "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."
+        }
       ],
-      "recommendation": "A after measurement is live. Review Search Console query and page performance monthly; choose the next question from reader intent and keep unmeasured ideas labeled as hypotheses."
+      "recommendation": "A after measurement is live. Review Search Console query and page performance monthly; choose the next question from reader intent and keep unmeasured ideas labeled as hypotheses.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-03",
       "topic": "Where the analytics collector runs",
       "current": "D",
       "options": [
-        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
-        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
-        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
-        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
+        {
+          "id": "A",
+          "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.",
+          "tradeoff": "Full control of raw data; you run the server."
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a platform that supports Node.js with persistent storage.",
+          "tradeoff": "Less server work; check the platform's data terms."
+        },
+        {
+          "id": "C",
+          "label": "Use a third-party privacy-focused analytics product.",
+          "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."
+        },
+        {
+          "id": "D",
+          "label": "No analytics for now (current).",
+          "tradeoff": "Nothing to maintain; no click or conversion data."
+        }
       ],
-      "recommendation": "A or B for on-site events. Use the verified Google Search Console Performance report for search queries and authorized Associates reporting for orders. Those are three different sources."
+      "recommendation": "A or B for on-site events. Use the verified Google Search Console Performance report for search queries and authorized Associates reporting for orders. Those are three different sources.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-04",
       "topic": "Brand name",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
-        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
+        {
+          "id": "A",
+          "label": "Keep the working name 'Affil3' (current).",
+          "tradeoff": "Matches the repository."
+        },
+        {
+          "id": "B",
+          "label": "Choose a consumer-facing name and domain.",
+          "tradeoff": "Better recall; needs a domain and a naming check."
+        }
       ],
-      "recommendation": "B before wider promotion."
+      "recommendation": "B before wider promotion.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-05",
       "topic": "Imagery",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
-        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
-        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
+        {
+          "id": "A",
+          "label": "Typography and layout only, no product photos (current).",
+          "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."
+        },
+        {
+          "id": "B",
+          "label": "Original photography of products you own.",
+          "tradeoff": "Strong for reader trust; needs equipment and time."
+        },
+        {
+          "id": "C",
+          "label": "Amazon-supplied images through the Associates tools.",
+          "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."
+        }
       ],
-      "recommendation": "B for guides; A for the front page."
+      "recommendation": "B for guides; A for the front page.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-06",
       "topic": "Authorship",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
-        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
+        {
+          "id": "A",
+          "label": "Team byline 'Affil3 editorial team' (current).",
+          "tradeoff": "No invented person."
+        },
+        {
+          "id": "B",
+          "label": "Named author with a real bio and a review date.",
+          "tradeoff": "Stronger signal of accountability; needs a real person."
+        }
       ],
-      "recommendation": "B once a real reviewer is named."
+      "recommendation": "B once a real reviewer is named.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-07",
       "topic": "Content depth before Associates review",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
-        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
+        {
+          "id": "A",
+          "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).",
+          "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."
+        },
+        {
+          "id": "B",
+          "label": "Hold the site from review until 10 original posts exist.",
+          "tradeoff": "Aligns with S11; delays the tag-based program."
+        }
       ],
-      "recommendation": "B."
+      "recommendation": "B.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-08",
       "topic": "Seasonal content",
       "current": "B",
       "options": [
-        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
-        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+        {
+          "id": "A",
+          "label": "A gift and holiday-cooking guide hub for November and December 2026.",
+          "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."
+        },
+        {
+          "id": "B",
+          "label": "Evergreen guides only (current).",
+          "tradeoff": "Simpler; no seasonal claims."
+        }
       ],
-      "recommendation": "B until measured queries (from S-03) show interest."
+      "recommendation": "B until measured queries (from S-03) show interest.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-09",
       "topic": "Category focus",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
-        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
+        {
+          "id": "A",
+          "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).",
+          "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."
+        },
+        {
+          "id": "B",
+          "label": "Focus on air fryers and move the thermometer to a supporting note.",
+          "tradeoff": "Tighter topic; drops the thermometer cluster."
+        }
       ],
-      "recommendation": "A until the unresolved link is decided."
+      "recommendation": "A until the unresolved link is decided.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-10",
       "topic": "Prices and ratings",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
-        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+        {
+          "id": "A",
+          "label": "Show no prices or ratings (current).",
+          "tradeoff": "No stale or unverified numbers."
+        },
+        {
+          "id": "B",
+          "label": "Show dated prices from an authorized source, refreshed on a schedule.",
+          "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."
+        }
       ],
-      "recommendation": "A now; B only after an authorized source is confirmed."
+      "recommendation": "A now; B only after an authorized source is confirmed.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-11",
       "topic": "Reader capture (email list)",
       "current": "A",
       "options": [
-        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
-        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
+        {
+          "id": "A",
+          "label": "No email capture (current).",
+          "tradeoff": "No email data to store."
+        },
+        {
+          "id": "B",
+          "label": "Opt-in email list.",
+          "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."
+        }
       ],
-      "recommendation": "A until the email rules are reviewed."
+      "recommendation": "A until the email rules are reviewed.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
     },
     {
       "id": "S-12",
       "topic": "Search Console",
       "current": "B",
       "options": [
-        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
-        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+        {
+          "id": "A",
+          "label": "Do not connect Search Console.",
+          "tradeoff": "No search data."
+        },
+        {
+          "id": "B",
+          "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).",
+          "tradeoff": "Needs a Google account owner (Q-12)."
+        }
       ],
-      "recommendation": "B."
+      "recommendation": "B.",
+      "effort": "",
+      "impact": "",
+      "blocks": "",
+      "evidence": ""
+    },
+    {
+      "id": "S-13",
+      "topic": "What the front page leads with",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Lead with the five products in a grid, each with a short reason to pick it.",
+          "tradeoff": "Fastest route to a click; needs product imagery to look like a shop."
+        },
+        {
+          "id": "B",
+          "label": "Lead with products, then a 'start here if...' decision strip above them (current).",
+          "tradeoff": "Helps an undecided reader choose a lane; slightly more to read before the first product."
+        },
+        {
+          "id": "C",
+          "label": "Lead with the single best-fitting product as a full-width hero.",
+          "tradeoff": "Strongest editorial statement; implies a ranking this site cannot yet justify."
+        }
+      ],
+      "recommendation": "Keep B until imagery exists, then move to A.",
+      "effort": "Low",
+      "impact": "High",
+      "blocks": "None",
+      "evidence": "No traffic data yet; reasoning only."
+    },
+    {
+      "id": "S-14",
+      "topic": "Naming the shopper the site is written for",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Write for someone replacing one dead appliance, mid-decision (current).",
+          "tradeoff": "Narrow; the copy assumes a shortlist already exists."
+        },
+        {
+          "id": "B",
+          "label": "Write for someone furnishing a first kitchen, who needs the category explained.",
+          "tradeoff": "Bigger audience; needs much more explanatory content to be credible."
+        },
+        {
+          "id": "C",
+          "label": "Write for a gift buyer on a deadline.",
+          "tradeoff": "Seasonal spikes; needs price bands, which the site does not publish."
+        }
+      ],
+      "recommendation": "A now. Revisit after Search Console shows which queries actually arrive (Q-12).",
+      "effort": "Low",
+      "impact": "Medium",
+      "blocks": "Q-12",
+      "evidence": "Editorial hypothesis."
+    },
+    {
+      "id": "S-15",
+      "topic": "How the site earns beyond Amazon",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Amazon Associates only (current).",
+          "tradeoff": "Single revenue source, single set of rules, no extra disclosure needed."
+        },
+        {
+          "id": "B",
+          "label": "Add direct-to-brand affiliate programmes for the same products.",
+          "tradeoff": "Usually higher rates; a second disclosure line and separate tracking."
+        },
+        {
+          "id": "C",
+          "label": "Add display advertising.",
+          "tradeoff": "Revenue without a click; slows the page and dilutes the shop feel."
+        }
+      ],
+      "recommendation": "A until the Amazon programme is validated (G-02), then B.",
+      "effort": "Medium",
+      "impact": "Medium",
+      "blocks": "FLG-005",
+      "evidence": "Policy reasoning; no earnings data exists."
+    },
+    {
+      "id": "S-16",
+      "topic": "Whether to keep publishing a second, separate site at /editorial/",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep both surfaces (current).",
+          "tradeoff": "Preserves two independent verification passes; splits search signals between two sites for the same products."
+        },
+        {
+          "id": "B",
+          "label": "Fold /editorial/ into the root site and redirect it.",
+          "tradeoff": "One site to index and rank, better for SEO; loses the second build's distinct pages."
+        }
+      ],
+      "recommendation": "B, once the root site covers everything /editorial/ does. Until then, A.",
+      "effort": "Medium",
+      "impact": "Medium",
+      "blocks": "None",
+      "evidence": "Two sites with the same products compete for the same queries."
+    },
+    {
+      "id": "S-17",
+      "topic": "What to publish next",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Buyer-question guides in the three existing categories (current).",
+          "tradeoff": "Compounds topical authority; slow to show up."
+        },
+        {
+          "id": "B",
+          "label": "Seasonal gift round-ups built from the same five products.",
+          "tradeoff": "Fast seasonal traffic; dates quickly and needs annual rework."
+        },
+        {
+          "id": "C",
+          "label": "Nothing new until search data shows what to write.",
+          "tradeoff": "No wasted effort; risks falling below the Associates content rule of thumb (FLG-007)."
+        }
+      ],
+      "recommendation": "A, at two guides a month, until Search Console has 90 days of data.",
+      "effort": "Medium",
+      "impact": "High",
+      "blocks": "Q-09",
+      "evidence": "FLG-007: the site has 5 guides, below the stated 10-post rule of thumb."
     }
   ]
 }

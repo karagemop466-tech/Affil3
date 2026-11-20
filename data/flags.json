@@ -224,6 +224,124 @@
         "S05"
       ],
       "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "high",
+      "title": "The Amazon title for P01 calls it an oven; the maker's page does not",
+      "detail": "The Amazon title reads 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows'. Chefman's own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat 'oven'. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.",
+      "sources": [
+        "S14",
+        "S04"
+      ],
+      "manual_step": "Read the shipped manual's function list. If it includes a bake or oven mode, correct the product page."
+    },
+    {
+      "id": "FLG-024",
+      "severity": "medium",
+      "title": "P02 preset and accessory counts disagree inside the maker's own page",
+      "detail": "The Emeril Everyday page states 25 cooking presets in its specification tiles and 24 in its product description. The Amazon title says 24 preset options and six accessories; the maker's description says seven. No single count is confirmed, so the product page leaves the preset count blank and states the conflict.",
+      "sources": [
+        "S16",
+        "S04"
+      ],
+      "manual_step": "Check the printed manual or quick-start card that ships with the unit, then publish the confirmed count."
+    },
+    {
+      "id": "FLG-025",
+      "severity": "medium",
+      "title": "The 1,000 °F figure for P05 is an ambient rating, not an internal one",
+      "detail": "The Amazon title says '1000°F Heat Safe'. CHEF iQ's specifications give a 32–1,000 °F ambient range and a 32–212 °F internal probe range. The two statements agree once ambient and internal are separated, but a reader could take the higher number to mean the probe reads or survives 1,000 °F internally. The product page separates them explicitly.",
+      "sources": [
+        "S18",
+        "S04"
+      ],
+      "manual_step": "Confirm from the manual which parts of the probe are rated to 1,000 °F before using it over direct high heat."
+    },
+    {
+      "id": "FLG-026",
+      "severity": "high",
+      "title": "P03 maximum temperature: the listing says 450 °F, the maker says 400 °F",
+      "detail": "The Amazon title advertises a '450°F Hi-Fry Option'. Chefman's specification list for model RJ38-SQSS-8T states a 200–400 °F range with a 400 °F maximum. The product page publishes the maker's figure and shows the listing's figure beside it. Neither is presented as confirmed.",
+      "sources": [
+        "S15",
+        "S20"
+      ],
+      "manual_step": "Check the control panel or manual for the highest selectable temperature and settle the figure."
+    },
+    {
+      "id": "FLG-027",
+      "severity": "low",
+      "title": "P04 has no IP rating on the maker's page, although the listing says IP67",
+      "detail": "The Amazon title says 'IP67 Waterproof'. ThermoMaven's page says '100% waterproof design' and does not give an ingress-protection rating. No IP rating is published on the product page; the maker's wording is quoted instead.",
+      "sources": [
+        "S17",
+        "S04"
+      ],
+      "manual_step": "Look for an IP rating on the retail box or manual. Publish it only if it is printed there."
+    },
+    {
+      "id": "FLG-028",
+      "severity": "medium",
+      "title": "'NIST-certified' on P04 is not supported by a certificate we could find",
+      "detail": "ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST's own published FAQ states that NIST 'does not recommend or endorse commercial equipment, instruments, or materials' and does not 'define, specify, assure, or certify traceability' of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker's claim and does not repeat 'NIST-certified' as a fact.",
+      "sources": [
+        "S17",
+        "S19"
+      ],
+      "manual_step": "Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker's."
+    },
+    {
+      "id": "FLG-029",
+      "severity": "medium",
+      "title": "The five events in data/events.json were chosen here, not supplied by the owner",
+      "detail": "The brief asked for 'the five defined events' but did not name them (also FLG-008). This build defines page_view, category_view, product_view, outbound_click and guide_read_75. They are documented on /measurement/ and enforced by the gate, but the owner has not confirmed the list. Question Q-05 remains open.",
+      "sources": [],
+      "manual_step": "Confirm or replace the five event names. If they change, update data/events.json, src/assets/analytics.js and tools/collector.mjs together, because the gate checks that all three agree."
+    },
+    {
+      "id": "FLG-030",
+      "severity": "medium",
+      "title": "No product photography; no image is used anywhere on the site",
+      "detail": "The site uses no product images. This is deliberate: Amazon product images may not be hotlinked or reused outside the approved Associates tooling, and the maker's photography is copyrighted. The consequence is a shop with no visuals, which is the single largest gap between this site and a published retail page. Suggestion S-05 sets out the options.",
+      "sources": [],
+      "manual_step": "Choose an imagery path at S-05. Affiliate-programme image feeds and Amazon's own SiteStripe tooling are the compliant routes; copying listing images is not."
+    },
+    {
+      "id": "FLG-031",
+      "severity": "low",
+      "title": "Prices exist on the maker's and Amazon's pages but are deliberately not shown",
+      "detail": "The product pages on chefman.com, emerileveryday.com, thermomaven.com, chefiq.com and amazon.com all display prices on the day they were read. None is published here. Amazon's Operating Agreement restricts displaying prices and requires that any price shown come from approved programme content (S01, S02). Displaying a price is a separate decision with separate rules; see FLG-016 and suggestion S-10.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "manual_step": "Decide at S-10 whether to show prices at all. If yes, they must come from an approved feed, not be typed in by hand, and they must carry a timestamp."
+    },
+    {
+      "id": "FLG-032",
+      "severity": "low",
+      "title": "The Amazon listing and the maker's specification describe the same model, but that was checked by name, not by barcode",
+      "detail": "Each of the five Amazon listings was matched to a manufacturer page by brand, model number and product name. No UPC, EAN or manufacturer part number was compared field by field, because the Amazon pages read here did not expose a barcode and the maker's pages did not print one. The match is strong for P01 and P03 (model numbers agree) and by name for P02, P04 and P05.",
+      "sources": [
+        "S04",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "manual_step": "Compare the UPC on the retail box or the Amazon 'Product information' table with the maker's part number, then close this flag."
+    },
+    {
+      "id": "FLG-033",
+      "severity": "medium",
+      "title": "No product on this site has been tested; the copy is written to say so",
+      "detail": "Nobody involved in this build has handled, cooked with or measured any of the five products. FTC guidance states that an endorser cannot describe experience with a product they have not tried (S07). Every product page therefore describes published specifications and design trade-offs only, labels the verdicts 'Best for' and 'Not for' rather than 'we loved it', and states on the page that the unit was not tested. This is a permanent constraint on how persuasive the site can be until a tester is available.",
+      "sources": [
+        "S07"
+      ],
+      "manual_step": "Owner answers Q-14 (which products, if any, have been handled). Pages are then labelled 'tested', 'owned' or 'not tested' per product, and only tested products may carry hands-on claims."
     }
   ],
   "checked": "2026-11-20"

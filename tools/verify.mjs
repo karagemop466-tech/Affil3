@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
+const OWNED = ['index.html', 'shop', 'products', 'compare', 'search', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
   'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
@@ -17,10 +17,15 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const catalog = read('data/catalog.json').products;
 
 const ALLOWED_SOURCE_HOSTS = new Set([
   'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
+  // Manufacturer product pages: the primary source for every specification published on a product page.
+  'chefman.com', 'www.emerileveryday.com', 'www.thermomaven.com', 'chefiq.com',
+  // NIST, for the FAQ text used to qualify a "NIST-certified" marketing claim.
+  'www.nist.gov',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
@@ -67,6 +72,28 @@ for (const g of guides) {
   for (const sid of g.sources) check(`guide ${g.slug} source ${sid} exists`, SRC.has(sid), sid);
 }
 for (const f of flags) for (const sid of f.sources) check(`flag ${f.id} source ${sid} exists`, SRC.has(sid), sid);
+
+// ---------- 1b. catalog: every specification traced to a manufacturer source ----------
+const CATALOG_REQUIRED = ['id', 'asin', 'slug', 'brand', 'name', 'model', 'category', 'shape', 'one_liner', 'best_for', 'not_for', 'decide', 'specs', 'faq'];
+check('catalog covers every product row', catalog.length === products.length, `${catalog.length} vs ${products.length}`);
+for (const c of catalog) {
+  for (const k of CATALOG_REQUIRED) check(`catalog ${c.id} has ${k}`, Object.prototype.hasOwnProperty.call(c, k), k);
+  const p = products.find((x) => x.id === c.id);
+  check(`catalog ${c.id} matches the submitted ASIN`, !!p && p.observed_asin === c.asin, c.asin);
+  check(`catalog ${c.id} slug is url-safe`, /^[a-z0-9-]+$/.test(c.slug), c.slug);
+  check(`catalog ${c.id} decides at least two things`, c.decide.length >= 2, String(c.decide.length));
+  check(`catalog ${c.id} answers at least three buyer questions`, c.faq.length >= 3, String(c.faq.length));
+  check(`catalog ${c.id} has no price-like value`, !c.specs.some((sp) => /\d+(\.\d+)?\s*(USD|\$)/.test(sp.value || '')), c.id);
+  check(`catalog ${c.id} quotes no star rating`, !JSON.stringify(c).match(/\b\d(\.\d)?\s*(out of 5|stars?)\b/i), c.id);
+  for (const sp of c.specs) {
+    // A published value must carry a source. A blank value must NOT carry one (nothing to cite).
+    if (sp.value) check(`catalog ${c.id} "${sp.label}" value has a source`, !!sp.source, sp.label);
+    if (sp.value) check(`catalog ${c.id} "${sp.label}" source exists`, SRC.has(sp.source), String(sp.source));
+    if (!sp.value) check(`catalog ${c.id} "${sp.label}" blank value is explained`, !!sp.note, sp.label);
+    if (sp.source) check(`catalog ${c.id} "${sp.label}" cites a manufacturer or observed source`, /^S(1[4-9]|2[0-9])$/.test(sp.source), sp.source);
+  }
+  for (const f of c.faq) if (f.source) check(`catalog ${c.id} FAQ source exists`, SRC.has(f.source), f.source);
+}
 
 // analytics allowlist: events.json, the browser script and the collector must agree
 const EVENT_NAMES = events.map((e) => e.name).sort().join(',');
@@ -141,6 +168,14 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     }
     // data-attribute checks for analytics
     if (name.startsWith('/guides/') && name !== '/guides/index.html') check(`${name}: has data-guide`, /data-guide="/.test(html));
+    if (name.startsWith('/products/')) {
+      check(`${name}: has a tagged buy link`, /href="https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}\?tag=/.test(html));
+      check(`${name}: buy link is sponsored`, /rel="sponsored/.test(html));
+      check(`${name}: carries Product structured data`, /"@type":"Product"/.test(html));
+      check(`${name}: carries FAQ structured data`, /"@type":"FAQPage"/.test(html));
+      check(`${name}: says the unit was not tested`, /have not tested/.test(html));
+      check(`${name}: no unsourced buy button inside a headline`, !/class="btn"[^>]*>Buy now</.test(html));
+    }
   }
   // sitemap coverage
   for (const u of pageUrls) check(`sitemap includes ${u}`, sitemapUrls.includes(u));
@@ -149,6 +184,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
+  for (const c of catalog) check(`sitemap includes the product page for ${c.id}`, sitemapUrls.includes(cfg.siteUrl + `/products/${c.slug}/`), c.slug);
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
