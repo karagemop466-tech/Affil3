@@ -442,3 +442,5 @@ Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 2
 | Gate the published root build, improve buyer-facing copy, and document measurement-first decisions | in progress | arena/822d5c60-affil3 | `.github/workflows/verify.yml`, `tools/build.mjs`, root-generated HTML, `data/suggestions.json` |
 
 Parallel proposals remain untouched. Root publication is already the Pages source; no second deployment is planned.
+
+- Integration pull request: [#19](https://github.com/karagemop466-tech/Affil3/pull/19). The PR timeline and Pages deployment history are the authoritative merge and deploy records.
