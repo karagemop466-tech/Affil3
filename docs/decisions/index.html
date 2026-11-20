@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Open questions — ShopNow 047</title>
+<meta name="description" content="The information this project still needs before any decision is defensible: what is known, what is missing, and the cheapest action that closes each gap.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/decisions/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow 047">
+<meta property="og:title" content="Open questions — ShopNow 047">
+<meta property="og:description" content="The information this project still needs before any decision is defensible: what is known, what is missing, and the cheapest action that closes each gap.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/decisions/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="ShopNow 047 — Checked, not hyped." href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="icon" href="/Affil3/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/Affil3/assets/style.css">
+
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header class="masthead"><div class="masthead-in">
+  <a class="wordmark" href="/Affil3/">ShopNow<span class="num">047</span></a>
+  <div class="kicker">Counter-top desk · Amazon.com (US)</div>
+  <div class="tagline">Checked, not hyped.</div>
+</div></header>
+<div class="strip" role="note" aria-label="Affiliate disclosure">
+  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Links marked Sponsored pay us a commission. ShopNow 047 has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="/Affil3/disclosure/" style="white-space:nowrap">Full disclosure</a></span></div>
+</div>
+<nav class="main" aria-label="Primary"><div class="nav-in">
+  <a href="/Affil3/">ShopNow</a>
+  <a href="/Affil3/guides/">Guides</a>
+  <a href="/Affil3/clusters/basket-air-fryers/">Air fryers</a>
+  <a href="/Affil3/clusters/oven-style-multi-cookers/">Oven-style</a>
+  <a href="/Affil3/compare/">Compare</a>
+  <a href="/Affil3/methodology/">How we decide</a>
+  <details class="mech"><summary>Inside the project</summary><div class="pop">
+    <a href="/Affil3/dashboard/">Source dashboard</a>
+    <a href="/Affil3/suggestions/">Suggestions to review</a>
+    <a href="/Affil3/decisions/">Open questions</a>
+    <a href="/Affil3/flagged-for-review/">Flagged for review</a>
+    <a href="/Affil3/sources/">Source register</a>
+    <a href="/Affil3/executive-summary/">Executive summary</a>
+    <a href="/Affil3/search/">Search</a>
+  </div></details>
+</div></nav>
+<main id="top">
+<div class="breadcrumb" aria-label="Breadcrumb"><a href="/Affil3/">Home</a> <span>/</span> <em>Inside the project</em> <span>/</span> <em>Decisions</em></div>
+<div class="section-head"><span class="eyebrow">Decision gate</span><h2>Open questions, and how to close each one</h2></div>
+<p class="lede">22 questions. For each: what is already known, what is missing, the cheapest action that would settle it, and which decisions stay blocked until then. 0 are answered. The point of this page is that a decision made without the answer is a guess with a schedule attached.</p>
+<div class="kpi" style="margin:1.6rem 0 1.8rem">
+  <div><div class="v">22</div><div class="k">questions</div></div>
+  <div><div class="v zero">0</div><div class="k">answered</div></div>
+  <div><div class="v zero">6</div><div class="k">block the first move</div></div>
+  <div><div class="v">5</div><div class="k">areas</div></div>
+</div>
+<div class="panel panel-gap"><h4>What we are not going to do</h4><p class="tiny" style="margin:0">Fill any of these in with something plausible. Two rows an earlier outline contemplated — search volume and a paid-traffic target — were never created as questions at all, because no source for either exists in this repository and an invented figure would read like a measurement. That is the whole difference between this register and a confident one.</p></div>
+<section class="section">
+  <div class="section-head"><span class="eyebrow">Section A</span><h2 style="font-size:1.2rem">Inventory - what are we even promoting?</h2></div>
+  <p class="tiny muted">Four of five product identities are inferred from a redirect, and none is confirmed by the owner. Every downstream choice - categories, clusters, keywords, comparison criteria - depends on this block.</p>
+  <div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-01. Are the four listings our short links currently resolve to the products you intend us to promote?</h4>
+    <div class="kv">
+      <b>Known</b><span>link.amazon/B04G1MEwY -&gt; amazon.com/dp/B0CDY277D3 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven'; B02NbDxp3 -&gt; B09B7SB46R 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven'; B00hJ57DV -&gt; B08DKYBTPH 'Chefman Air Fryer 8 Qt TurboFry 4-in-1'; B0f3GKalj -&gt; B0DZFD6R9Z 'CHEF iQ Sense Smart Wireless Meat Thermometer'. Observed 2026-11-20.</span>
+      <b>Missing</b><span>Whether that is owner intent or a redirect that drifted. Amazon short links can be retargeted; a token is not a stable identifier.</span>
+      <b>How to close</b><span>Copy each ASIN out of Associates Central (Links &gt; Special Links) and paste it into register/products.json:intended_asin.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">product page copy</span> <span class="tag">SG-01</span> <span class="tag">SG-02</span> <span class="tag">category pages</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-02. What is the product behind B0c8moW59? It did not resolve.</h4>
+    <div class="kv">
+      <b>Known</b><span>Three fetch attempts returned an Amazon checkpoint interstitial. Nothing else is known.</span>
+      <b>Missing</b><span>Brand, model, category, price band, even whether it is a kitchen product.</span>
+      <b>How to close</b><span>Open the link in your own browser and paste the final URL. Or replace it.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">P04 product page</span> <span class="tag">SG-05</span> <span class="tag">cluster 'accessories'</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-03. Is the thermometer a fourth air fryer in disguise, or a deliberate accessory attach?</h4>
+    <div class="kv">
+      <b>Known</b><span>It resolved to CHEF iQ Sense, a wireless probe thermometer. The brief's editorial hypotheses are all air-fryer shaped.</span>
+      <b>Missing</b><span>Whether the strategy is one category (air fryers) or two (air fryers + cooking instruments), which changes the site's topical authority plan and the cluster structure.</span>
+      <b>How to close</b><span>One sentence from you: 'category = air fryers only' or 'category = air fryers + instruments'.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">navigation labels</span> <span class="tag">SG-06</span> <span class="tag">SG-07</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-04. Are there products beyond these five that should be in the first publish batch?</h4>
+    <div class="kv">
+      <b>Known</b><span>Five links were supplied. The brief says 'test one link per product ... then scale', implying more are coming.</span>
+      <b>Missing</b><span>The size and shape of the intended catalog, and therefore whether the site needs a real index/search now or later.</span>
+      <b>How to close</b><span>Give a count and a category list, even approximate. The register already scales; the question is how much navigation to build now.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">SG-08</span> <span class="tag">search build-out</span> <span class="tag">sitemap size</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-05. Are any of these listings out of stock, discontinued, or region-restricted?</h4>
+    <div class="kv">
+      <b>Known</b><span>Not determinable here. The listing bodies that would show it were not captured in a form we can stand behind.</span>
+      <b>Missing</b><span>Availability - and a page promoting an unavailable product earns nothing and reads badly.</span>
+      <b>How to close</b><span>Check each listing's Buy Box in a normal browser, or let the API do it once SG-13 is funded.</span>
+      <b>Who</b><span>Owner, or API</span>
+      <b>Blocks</b><span><span class="tag">publish gate for P02-P05</span> <span class="tag">SG-12</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><span class="eyebrow">Section B</span><h2 style="font-size:1.2rem">Account and eligibility - can this legally earn?</h2></div>
+  <p class="tiny muted">The whole model requires an approved Associates account with this site registered and this tracking ID live. Nothing on the site can be monetised until block B is green.</p>
+  <div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-06. Is tracking ID shopnow047c-20 actually created on the account?</h4>
+    <div class="kv">
+      <b>Known</b><span>The brief states it as the selected tracking ID. Its format (-20 suffix, lowercase alphanumerics) is consistent with the convention.</span>
+      <b>Missing</b><span>Existence, and whether it is attached to a registered site. Unverifiable without login.</span>
+      <b>How to close</b><span>Associates Central &gt; Account Settings &gt; Tracking IDs. Screenshot the row; paste the URL into register/links.json.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">every outbound link on the site</span> <span class="tag">SG-16</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-07. Is the production domain registered as a Site on the account?</h4>
+    <div class="kv">
+      <b>Known</b><span>The live site is currently a github.io subpath. Associates approval is per URL.</span>
+      <b>Missing</b><span>Whether a custom domain is owned or intended, and whether the account is approved or still in the qualifying-sales window.</span>
+      <b>How to close</b><span>Account Settings &gt; Site Settings. Add the exact URL, including subpath.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">domain choice</span> <span class="tag">SG-17</span> <span class="tag">FLG-005</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-08. Are you inside the first-180-days qualifying-sales window, and does the account already have API access?</h4>
+    <div class="kv">
+      <b>Known</b><span>New Associates accounts are expected to produce qualifying sales early or are closed and must re-apply - widely reported, and consistent with the Participation Requirements referenced by the Operating Agreement, which we could not fetch (S02).</span>
+      <b>Missing</b><span>Your account age, sales count, API status, and the exact threshold. Reports &gt; Earnings would answer all four.</span>
+      <b>How to close</b><span>One look at Associates Central home page and Reports. Record the date and the numbers in register/ledger.json provenance.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">urgency of publishing cadence</span> <span class="tag">SG-13</span> <span class="tag">SG-14</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-09. Which API should the pipeline target: PA-API 5.0 or the Creators API?</h4>
+    <div class="kv">
+      <b>Known</b><span>Secondary sources report PA-API 5.0 being superseded by a Creators API with OAuth and re-registration. Sources conflict on the sales threshold (3 vs 10 qualifying sales in a trailing window). Official pages were unreachable in-session.</span>
+      <b>Missing</b><span>The current official threshold and endpoint. Deliberately unresolved - see S07.</span>
+      <b>How to close</b><span>Associates Central &gt; Tools, look for the API access control, and read the eligibility sentence on screen. That one line resolves three rows.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">SG-13</span> <span class="tag">automated product refresh</span> <span class="tag">price display decision</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-10. Do you accept that no prices appear on the site until API access exists?</h4>
+    <div class="kv">
+      <b>Known</b><span>This session adopted strict suppression, and the build fails on any currency pattern. It costs the site some 'shop feel' and removes all stale-price risk.</span>
+      <b>Missing</b><span>Whether you prefer the looser 'update manually and date-stamp it' approach used by most affiliate sites, which carries contract risk.</span>
+      <b>How to close</b><span>Choose a path in SG-14. No further information needed - it is a preference about risk appetite.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">product card design</span> <span class="tag">comparison table columns</span> <span class="tag">SG-14</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><span class="eyebrow">Section C</span><h2 style="font-size:1.2rem">Editorial direction - what makes it a shop and not an audit</h2></div>
+  <p class="tiny muted">The brief's central instruction is tone: buyer-facing, not compliance-facing. The register already exists as data; this block decides how the reading experience behaves.</p>
+  <div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-11. What is the shop's promise in one line?</h4>
+    <div class="kv">
+      <b>Known</b><span>This build uses: 'we do not test, we tell you what to check'. It is honest, differentiated, and survives having no lab and no API. It also concedes the 'best X' search intents to competitors.</span>
+      <b>Missing</b><span>Whether you want that positioning, or a conventional 'we tested the best' shop that this project cannot honestly produce today.</span>
+      <b>How to close</b><span>Pick a path in SG-19. If you want tested reviews, the missing ingredient is physical product access - answer Q-12 with yes/no and we size that plan.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">masthead tagline</span> <span class="tag">guide titles</span> <span class="tag">home page hero</span> <span class="tag">SG-19</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-12. Can anyone on your side buy or borrow the five products for real testing?</h4>
+    <div class="kv">
+      <b>Known</b><span>No product is held by this project. Nothing that reads like a test result exists, and none was fabricated.</span>
+      <b>Missing</b><span>Whether hands-on content is on the table at all, and at what unit cost.</span>
+      <b>How to close</b><span>Yes/no plus a rough budget per product. If yes, the roadmap gains a 'protocol + photos + honest notes' track that is worth more than any on-page SEO tweak.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">SG-20</span> <span class="tag">SG-21</span> <span class="tag">authorship model</span> <span class="tag">photography</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa" style="border-left:3px solid var(--accent)">
+    <h4><span class="chip chip-sponsored" style="margin-right:.4rem">blocks the first move</span>Q-13. Who signs off before a guide goes live - a named human, the desk byline, or nobody?</h4>
+    <div class="kv">
+      <b>Known</b><span>Today: an automated pass plus a build gate, disclosed on the page as AI-assisted. A named byline with invented credentials is not an option this project will take.</span>
+      <b>Missing</b><span>Whether a human editor exists, and whether you want their name on it. This is an E-E-A-T lever and a legal exposure question at the same time.</span>
+      <b>How to close</b><span>Name a person and an email, or say 'keep the desk byline'. Then set the publish gate to require their approval or not.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">about page</span> <span class="tag">bylines</span> <span class="tag">SG-22</span> <span class="tag">FLG-006</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-14. Which audience are we writing for - first-time buyer, upgrader, or household-scale shopper?</h4>
+    <div class="kv">
+      <b>Known</b><span>The brief's hypotheses (capacity checklist, cleanup and counter space, multi-function questions) point at first and second-time buyers with small kitchens.</span>
+      <b>Missing</b><span>Whether that is your commercial preference too, since it changes price band, tone and which products are worth adding.</span>
+      <b>How to close</b><span>Pick one for the first six guides. Narrow beats accurate here.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">guide slugs</span> <span class="tag">SG-23</span> <span class="tag">cluster naming</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-15. Seasonal angle for the next batch: back-to-school dorm kitchens, or holiday cooking?</h4>
+    <div class="kv">
+      <b>Known</b><span>The brief lists 'seasons and clusters' as part of the reader-facing polish path. Today is 2026-11-20 - holiday cooking is live now, dorm kitchens is a January-August play.</span>
+      <b>Missing</b><span>Whether you want to chase a live season with thin content or build the evergreen set first and schedule the season. This is a timing judgement, not a fact.</span>
+      <b>How to close</b><span>Choose a path in SG-24.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">publishing cadence</span> <span class="tag">SG-24</span> <span class="tag">next 2 guide topics</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-16. How much brand identity is already owned - name, logo, domain, social handles?</h4>
+    <div class="kv">
+      <b>Known</b><span>This build derived the brand (ShopNow 047) from the supplied tracking ID 'shopnow047c-20' because the repo had no brand asset and no name. It is a placeholder with a rationale, not a decision by you.</span>
+      <b>Missing</b><span>Whether you own or prefer a different name, and whether a domain is available.</span>
+      <b>How to close</b><span>Say 'keep' or give the real brand string. One string changes the masthead, footer, feed title, and JSON-LD publisher.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">site.json</span> <span class="tag">SG-25</span> <span class="tag">JSON-LD publisher</span> <span class="tag">feed title</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><span class="eyebrow">Section D</span><h2 style="font-size:1.2rem">Measurement - what would tell us any of this worked</h2></div>
+  <p class="tiny muted">The brief says measure before automating optimisation. Without these answers, the campaign ledger stays empty forever and every topic choice stays a guess.</p>
+  <div class="qa">
+    <h4>Q-17. Is Search Console verified for the production domain?</h4>
+    <div class="kv">
+      <b>Known</b><span>The brief's parallel pass SG-29 lists Search Console as a tracked row. This environment cannot verify a domain it does not own.</span>
+      <b>Missing</b><span>Verification status, and therefore whether we can ever see the queries people actually arrive on.</span>
+      <b>How to close</b><span>Add a DNS TXT record or HTML file at the production domain, verify, then export queries for the first 28 days.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">topic selection from measured queries</span> <span class="tag">SG-26</span> <span class="tag">SG-29</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-18. Where do you want click data to live, given the static host?</h4>
+    <div class="kv">
+      <b>Known</b><span>GitHub Pages serves no backend. The click counter ships in two halves: a browser-side recorder with no cookies and no IP, and a 90-line Node collector that writes NDJSON and can run on any box you own.</span>
+      <b>Missing</b><span>Whether you will run the collector, prefer a self-hosted analytics product (Plausible/Umami), or accept 'no click data at all' for launch.</span>
+      <b>How to close</b><span>Choose a path in SG-27. Deploying the collector is a single command on a VPS.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">event capture</span> <span class="tag">five-event schema activation</span> <span class="tag">SG-30</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-19. Do you have a privacy policy decision to make about analytics?</h4>
+    <div class="kv">
+      <b>Known</b><span>The shipped counter uses no cookies, no fingerprinting, and no persistent identifier; the session id lives in sessionStorage and dies with the tab. That keeps it outside most consent regimes, but 'most' is not 'all' if you later target the EU.</span>
+      <b>Missing</b><span>Whether the audience is US-only, and whether any consent tooling is wanted.</span>
+      <b>How to close</b><span>Answer the jurisdiction question in SG-28. US-only means the current design stands as-is.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">privacy page</span> <span class="tag">SG-28</span> <span class="tag">cookie banner decision</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-20. What is the first success number, and by when?</h4>
+    <div class="kv">
+      <b>Known</b><span>There is no baseline. Any target set now would be invented. The register defines what to count; it does not guess what 'good' is.</span>
+      <b>Missing</b><span>Your tolerance: is '200 organic sessions in month two' a pass or a fail? Different answers change whether we invest in cadence or in one big pillar page.</span>
+      <b>How to close</b><span>Set it after 28 days of Search Console data, not before. This question is on the list so it is not forgotten.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">SG-26</span> <span class="tag">cadence decision</span> <span class="tag">budget</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+</section>
+<section class="section">
+  <div class="section-head"><span class="eyebrow">Section E</span><h2 style="font-size:1.2rem">Mechanics and money - what the pipeline may touch</h2></div>
+  
+  <div class="qa">
+    <h4>Q-21. May the automation publish without a human in the loop?</h4>
+    <div class="kv">
+      <b>Known</b><span>The brief asks for automation but also for 'a gate in front of the parts that cannot [be automated]'. Current build: fully automated generation, hard compliance gate at build time, no auto-publish to a monetised domain.</span>
+      <b>Missing</b><span>Whether you want an overnight publish job on the live domain once the site is approved - which changes the risk profile of a bad row.</span>
+      <b>How to close</b><span>Choose a path in SG-31 (gate at commit vs gate at publish vs no gate).</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">CI behaviour</span> <span class="tag">SG-31</span> <span class="tag">autopilot scope</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+<div class="qa">
+    <h4>Q-22. What is the monthly budget for data and hosting?</h4>
+    <div class="kv">
+      <b>Known</b><span>Everything shipped here runs on free tiers: GitHub Pages, stdlib Node, no npm dependencies, no paid data.</span>
+      <b>Missing</b><span>Whether a domain, a VPS for the collector, or an SEO dataset is in budget. That determines if SG-13, SG-20 and SG-32 are live options or paper options.</span>
+      <b>How to close</b><span>A number, even a range. Below 20/month the current build is the right build.</span>
+      <b>Who</b><span>Owner</span>
+      <b>Blocks</b><span><span class="tag">SG-13</span> <span class="tag">SG-20</span> <span class="tag">SG-32</span> <span class="tag">collector hosting</span></span>
+    </div>
+    <div class="answer"><strong>Answer:</strong> <span class="blank">awaiting input</span></div>
+  </div>
+</section>
+<div class="panel" style="margin-top:2rem"><h4>Discovery suggestions for the things nobody can answer yet</h4><ul class="tiny" style="margin:0">
+<li><strong>Read the redirect yourself.</strong> Open each supplied link in a normal browser and copy the final URL. Five minutes, closes Q-01 and usually Q-02.</li>
+<li><strong>One screenshot per account screen.</strong> Tracking IDs, Site Settings, the API access control, and Reports &gt; Transactions answer six questions at once and give the register dated provenance.</li>
+<li><strong>Verify Search Console the day the domain exists.</strong> It costs nothing and its value is strictly a function of how early the clock starts.</li>
+<li><strong>Ask the cheapest reader question first.</strong> Zero-result queries on the <a href="/Affil3/search/">search page</a> are a free demand signal the moment traffic exists — no tool, no cost, no consent problem.</li>
+<li><strong>Write down the number you would quit at.</strong> Q-20 has no source and needs one: a stopping rule is data about you, and it is as recordable as any metric.</li>
+</ul></div>
+</main>
+<footer class="site"><div class="foot-in">
+  <div class="foot-disclose"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+  <p class="tiny" style="margin:.4rem 0 0">Repeated here because it belongs on every page, not only on a page you have to go looking for. A purchase is assigned to us by Amazon through your click and a session we cannot see. We publish no price, availability, rating or review figure, because we cannot refresh one. <a href="/Affil3/disclosure/">Disclosure</a> · <a href="/Affil3/privacy/">Privacy</a> · <a href="/Affil3/methodology/">Methodology</a></p></div>
+  <div class="foot-cols">
+  <div><h5>Shop</h5><ul><li><a href="/Affil3/products/">All products</a></li><li><a href="/Affil3/clusters/dual-basket/">Dual-basket</a></li><li><a href="/Affil3/clusters/getting-the-temperature-right/">Temperature &amp; probes</a></li></ul></div>
+  <div><h5>Read</h5><ul><li><a href="/Affil3/guides/">Guides</a></li><li><a href="/Affil3/about/">Editorial standards</a></li><li><a href="/Affil3/methodology/">Methodology</a></li><li><a href="/Affil3/feed.xml">Feed</a></li></ul></div>
+  <div><h5>Inside the project</h5><ul><li><a href="/Affil3/dashboard/">Dashboard</a></li><li><a href="/Affil3/suggestions/">Suggestions</a></li><li><a href="/Affil3/decisions/">Open questions</a></li><li><a href="/Affil3/flagged-for-review/">Flagged for review</a></li><li><a href="/Affil3/executive-summary/">Executive summary</a></li></ul></div>
+  <div><h5>Legal</h5><ul><li><a href="/Affil3/disclosure/">Disclosure</a></li><li><a href="/Affil3/privacy/">Privacy</a></li><li><a href="/Affil3/sources/">Source register</a></li><li><a href="/Affil3/search/">Search</a></li></ul></div>
+  </div>
+  <div class="foot-legal">
+    <div>© 2026 ShopNow 047 · kitchen gear desk</div>
+    <div><a href="/Affil3/sources/">11 source rows</a> · <a href="/Affil3/flagged-for-review/">10 flagged</a> · <a href="/Affil3/feed.xml">RSS</a> · generated from a register, gated in CI</div>
+  </div>
+</div></footer>
+<script src="/Affil3/assets/track.js" defer></script>
+<script src="/Affil3/assets/app.js" defer></script>
+
+</body>
+</html>

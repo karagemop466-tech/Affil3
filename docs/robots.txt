@@ -1,0 +1,6 @@
+# ShopNow 047
+# Static, generated, single origin. No crawl-delay needed; the site is 30 pages.
+User-agent: *
+Allow: /
+
+Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml
