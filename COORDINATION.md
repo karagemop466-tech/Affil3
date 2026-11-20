@@ -1300,3 +1300,81 @@ clean. A repository-wide scan of 8,261 anchors found zero broken internal links;
 anchors without `sponsored` or `nofollow` are citations to policy hosts plus eight inside the
 crawler-disallowed `legacy/` archive and one `gp/help` reference, none of them product links on an
 indexed surface.
+
+---
+
+# Session `66f2548a` — task board, verification log and completion record (RESTORED 2026-11-20)
+
+**Restoration note.** This session's original board, verification log and repo-review table were
+appended early in the session and then **dropped when this session resolved the first `origin/main`
+merge by taking main's side of the `COORDINATION.md` conflict**. That was this session's error, not
+another session's: the file is append-only and both sides should have been kept, as was done for the
+third merge. Everything below is re-created from the session's own records; only the second-merge
+record at line 1272 survived in place. No other session's content was affected.
+
+## Task board (session `66f2548a`, branch `arena/66f2548a-affil3`)
+
+| Task | Status | Session | Files touched |
+|---|---|---|---|
+| A1 independent re-verification of the five submitted links | done | 66f2548a | `data/observations/2026-11-20-reverify-66f2548a.json` |
+| A2 verbatim re-read of S01, S02, S06 and the register | done | 66f2548a | `data/sources.json` |
+| A3 repo review and new flags | done | 66f2548a | `data/flags.json` |
+| A4 questions register with have/lack/who | done | 66f2548a | `data/questions.json` |
+| A5 decision board with tracks and order | done | 66f2548a | `data/suggestions.json`, `tools/build.mjs` |
+| A6 shop-voice pass | superseded by main | 66f2548a | dropped in merge; main shipped it first |
+| A7 privacy notice | superseded by main | 66f2548a | dropped in merge; main shipped `/privacy/` |
+| A8 design brief | done | 66f2548a | `data/design-brief.json`, `DESIGN-BRIEF.md`, `tools/build.mjs`, `src/assets/style.css` |
+| A9 gates, CI, PR, merge, Pages | done | 66f2548a | `tools/verify.mjs`, `.github/workflows/verify.yml` (superseded), PR #46 |
+
+## Verification log (A1, A2) — every claim read from the page, not recalled
+
+Fetched 2026-11-20 with `fetch_page`, one URL per call, redirects followed, unauthenticated.
+
+| Source | What was read | Result |
+|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | final URL, title, every query parameter | `amazon.com/dp/B0CDY277D3` · CHEFMAN 6 Quart Dual Basket · **no `tag=`** · agrees with every register |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | same | `amazon.com/dp/B09B7SB46R` · Emeril Lagasse 26QT French Door · **no `tag=`** · agrees |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | same | `amazon.com/dp/B08DKYBTPH` · Chefman TurboFry 8 Qt · **no `tag=`** · agrees; confirms the PR #10 correction |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | same | `amazon.com/dp/B0DHZTCNR5` · ThermoMaven 1 Sec · **no `tag=`** · agrees; page carries "Newer Version Available" → B0GL7Z4KP4 (FLG-034) |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | same | `amazon.com/dp/B0DZFD6R9Z` · CHEF iQ Sense Gen3 · **no `tag=`** · agrees |
+| [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §1, §4, §5, §6, §7 in full | §5 disclosure wording verbatim; §6 makes any §5 violation a material breach; §4 disclaims any traffic or income representation |
+| [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | CIS §1; PR §1(a)-(h), §2(a)-(b), §3(a)-(f), §4, §5, §6(a)-(z); Products §1-§3(b) | §2(a)-(b) promoted from excerpt to full text; newly recorded §5, §6(g), §6(s), §6(t), §6(u), §6(v), §6(w), §6(y), §3(e), the material-breach preamble, 24 h / 89 d / 180 d |
+| [Qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | full page | `sponsored` = "advertisements or paid placements"; multiple values allowed; "will generally not be followed"; "Last updated 2025-12-10 UTC" |
+
+Not re-fetched, so they keep the status the fetching session recorded: S03, S07–S13 plus main's
+S14–S20 manufacturer rows. No third-party page was used for any value. A price and a star rating
+were visible on two fetched pages and neither was transcribed anywhere.
+
+## Repo review — what was found, and what happened to each finding
+
+| Finding | Outcome |
+|---|---|
+| CI diffed `docs/`, which never existed, and never ran the root gate | Fixed here, then superseded: main shipped its own corrected workflow before the merge |
+| `editorial/assets/site.css` committed stale (resolved-flag styles missing from the emitted copy) | Regenerated; exposed only because the corrected CI could see it |
+| Category pages published rows with no table and no per-row source | Fixed here; main's later rewrite moved specifications onto cited product pages, so the finding closed |
+| S04's method text named three ASINs after the data said five | Corrected here; main restructured the register afterwards |
+| FLG-003 said "four observed redirects"; five resolve | Corrected and sharpened with the verbatim 6(w)/2(b) text |
+| Executive summary asserted "one link resolved to a checkpoint page" over a five-row table | Fixed by deriving the sentence; main later derived its own counts |
+| Empty `/categories/unresolved/` shipped as a public page with an empty body | Fixed here; main removed the cluster independently |
+| Click counter with no privacy notice, against §3(e) | Drafted here; main shipped `/privacy/` independently; recorded as FLG-035 resolved by main |
+| The brief's SG-27…SG-30 did not exist in either register | Added as decision rows; numbering reconciled to main's sequence |
+| Three crawlable publications, robots.txt advertising two | Fixed by main (disallow + one sitemap) before the merge |
+| Exec-summary "open flags" tile counted resolved flags; "1 picks"; "four decisions"; FLG-008 miscited for account status; brand-named alt text | Found live on the shipped site and fixed here; the newest main fixed each independently, so the surviving fixes are the ones main lacked |
+
+## Completion record
+
+- **Pull request: [#46](https://github.com/karagemop466-tech/Affil3/pull/46)** — "Verification pass,
+  decision board, design brief, privacy and five flags (session 66f2548a)".
+- **Merge result: MERGED** into `main` as `3afbacdda321c1e51d1bd5e9106d2c5aa0f5cc42` at
+  2026-11-20T06:31:50Z, after all five required checks passed on the head commit. Merged without
+  waiting for review, per the brief.
+- **GitHub Pages: deployed.** Pages API reports `status: built` for source `main` at `/`; the build
+  created 2026-11-20T06:31:52Z finished `built`. Live at https://karagemop466-tech.github.io/Affil3/,
+  including `/design-brief/` and the restructured `/suggestions/` and `/questions/`. The rendered HTML
+  cannot be fetched from this sandbox, so deployment is confirmed through the Pages API and build
+  status rather than by loading a page.
+- **Final gate state:** root `node tools/verify.mjs` 3,407 checks passed, 0 failed over 31 pages;
+  editorial `tools/check_site.py` 21 pages PASS; both builds deterministic; 8,261 anchors scanned
+  with zero broken internal links.
+- **Nothing blocked the merge.** Flagged and unverified items are published at `/flagged/` with their
+  sources, per the brief.
