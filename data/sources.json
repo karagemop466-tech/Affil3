@@ -6,7 +6,7 @@
       "title": "Associates Program Operating Agreement",
       "publisher": "Amazon.com Associates Central",
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "method": "fetched 2026-11-20 (agreement updated October 15, 2025); re-fetched in full 2026-11-20 by session arena-2e0c91d0-affil3 (independent corroboration: 'Updated: October 15, 2025' header and §1 tagged-link wording confirmed)",
+      "method": "fetched 2026-11-20 (agreement updated October 15, 2025); re-fetched in full 2026-11-20 by session arena-2e0c91d0-affil3 (independent corroboration: 'Updated: October 15, 2025' header and §1 tagged-link wording confirmed); re-fetched in full 2026-11-20 by session 197d4f9e-affil3: header 'Updated: October 15, 2025' confirmed, §1 'tagged' Special Links confirmed, and §5 read verbatim in the section text",
       "used_for": "Section 5 requires the exact statement 'As an Amazon Associate I earn from qualifying purchases.'; Section 1 defines Special Links and the tagged-link requirement.",
       "status": "verified",
       "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site ...: \"As an Amazon Associate I earn from qualifying purchases.\""
@@ -16,7 +16,7 @@
       "title": "Associates Program Policies (Commission Income Statement, Participation Requirements, IP License, Trademark Guidelines)",
       "publisher": "Amazon.com Associates Central",
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "method": "fetched 2026-11-20 (policies updated April 14, 2026)",
+      "method": "fetched 2026-11-20 (policies updated April 14, 2026); page reachable 2026-11-20 (session 197d4f9e-affil3)",
       "used_for": "Participation Requirements §2(a)-(b): Special Links must carry the Associates tag as a URL parameter and must be accessed directly from the site. §2(b) price clause: a site may show price and availability only if Amazon serves that data or it comes from the Creators/PA API. Also the anti-misleading-claims clause and the trademark rules.",
       "status": "verified",
       "quote": "All Special Links must be accessed directly from your Site. ... you must include your Associates ID or \"tag\" ... as a parameter in the URL of each link you place on your Site to an Amazon Site."
@@ -36,7 +36,7 @@
       "title": "Observed Amazon product detail pages (one per product row)",
       "publisher": "amazon.com",
       "url": "https://www.amazon.com/dp/B0CDY277D3",
-      "method": "observed 2026-11-20 by fetching each product URL directly; the per-row URL is listed in the row",
+      "method": "observed 2026-11-20 by fetching each product URL directly; the per-row URL is listed in the row; re-fetched 2026-11-20 by session 197d4f9e-affil3: all five observed product pages fetched directly by their /dp/ identifier and every page title matched the observed_title recorded in data/products.json, character for character (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z)",
       "used_for": "Observed title, breadcrumb and ASIN only. Kept in separate fields from the intended ASIN. Prices and ratings seen on these pages are deliberately not republished (S03).",
       "status": "observed"
     },
@@ -45,7 +45,7 @@
       "title": "Submitted short links (link.amazon)",
       "publisher": "link.amazon",
       "url": "https://link.amazon/B04G1MEwY",
-      "method": "observed 2026-11-20, three fetch rounds per link; the per-row URL is listed in the row; round 4 for two links 2026-11-20 by session arena-2e0c91d0-affil3: B04G1MEwY -> B0CDY277D3 and B02NbDxp3 -> B09B7SB46R re-observed, matching the register; neither final URL carried tag= (data/observations/2026-11-20-session-2e0c91d0.json)",
+      "method": "observed 2026-11-20, three fetch rounds per link; the per-row URL is listed in the row; round 4 for two links 2026-11-20 by session arena-2e0c91d0-affil3: B04G1MEwY -> B0CDY277D3 and B02NbDxp3 -> B09B7SB46R re-observed, matching the register; neither final URL carried tag= (data/observations/2026-11-20-session-2e0c91d0.json); re-fetched 2026-11-20 by session 197d4f9e-affil3: the two short links tried returned the Amazon home page rather than a product detail page, which is the same intermittent behaviour already recorded in FLG-004 and does not establish that any link is dead. The observed mapping is therefore carried from the dated rounds that observed it (FLG-031).",
       "used_for": "Evidence of where each submitted link lands. Observed mapping: B04G1MEwY to B0CDY277D3, B02NbDxp3 to B09B7SB46R, B00hJ57DV to B08DKYBTPH, B0f3GKalj to B0DZFD6R9Z. B0c8moW59 did not resolve to a product listing. The mapping is time-dependent and is not treated as the intended product.",
       "status": "observed"
     },
@@ -54,7 +54,7 @@
       "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
       "publisher": "Google Search Central",
       "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "method": "fetched 2026-11-20 (page last updated 2025-12-10)",
+      "method": "fetched 2026-11-20 (page last updated 2025-12-10); re-fetched in full 2026-11-20 by session 197d4f9e-affil3: the rel=\"sponsored\" row and the 'Last updated 2025-12-10 UTC' footer were confirmed on the page",
       "used_for": "Every outbound Amazon link on the site carries rel=\"sponsored\".",
       "status": "verified",
       "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value."
@@ -64,7 +64,7 @@
       "title": "16 CFR 255.5 - Disclosure of material connections",
       "publisher": "U.S. Federal Trade Commission (eCFR)",
       "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: §255.5(a) read in full from the eCFR text, which states that a material connection 'must be disclosed clearly and conspicuously'",
       "used_for": "Why the disclosure sits above the fold on every page: a material connection must be disclosed clearly and conspicuously, and an affiliate commission is a material connection (Example 11).",
       "status": "verified",
       "quote": "When there exists a connection between the endorser and the seller of the advertised product that might materially affect the weight or credibility of the endorsement, and that connection is not reasonably expected by the audience, such connection must be disclosed clearly and conspicuously."
@@ -74,7 +74,7 @@
       "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising (full part)",
       "publisher": "U.S. Federal Trade Commission (eCFR)",
       "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
-      "method": "fetched 2026-11-20 (section 255.5 read in full)",
+      "method": "fetched 2026-11-20 (section 255.5 read in full); part 255 confirmed reachable 2026-11-20 (session 197d4f9e-affil3); source note 88 FR 48102, July 26, 2023",
       "used_for": "The rule that the disclosure must be in the same place as the endorsement, not buried on a separate page.",
       "status": "verified"
     },
@@ -83,7 +83,7 @@
       "title": "Google Search spam policies (including scaled content abuse and site reputation abuse)",
       "publisher": "Google Search Central",
       "url": "https://developers.google.com/search/docs/essentials/spam-policies",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; reachable 2026-11-20 (session 197d4f9e-affil3)",
       "used_for": "The reason this site publishes a small number of hand-checked pages rather than auto-generated pages at scale, and the reason every page has a named publisher and a contact route. Google lists affiliate links used throughout a page, with links qualified properly, among practices that are not inconsistent with its site reputation policy.",
       "status": "verified"
     },
@@ -92,7 +92,7 @@
       "title": "Safe Minimum Internal Temperature Chart",
       "publisher": "USDA Food Safety and Inspection Service",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
-      "method": "fetched 2026-11-20 (page last updated April 14, 2025)",
+      "method": "fetched 2026-11-20 (page last updated April 14, 2025); re-fetched in full 2026-11-20 by session 197d4f9e-affil3: every row of the chart was read directly and compared with the thermometer guide, including the Ground Meats 160 °F row",
       "used_for": "The doneness temperatures quoted in the thermometer guides and on the thermometer product pages.",
       "status": "verified",
       "quote": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) 165 degrees F (73.9 degrees C)"
@@ -102,7 +102,7 @@
       "title": "Chefman TurboFry Touch 6 Qt. Dual-Window Air Fryer - product page",
       "publisher": "Chefman",
       "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: model RJ38-SQPF-3TDB-2W, 'Max temp: 450ºF/ 235ºC with Hi-Fry function' and the 6-quart dual-basket description were confirmed on the page",
       "used_for": "P01 model number RJ38-SQPF-3TDB-2W, 6 qt capacity, 200-450 F, 1700W/120V, dimensions 13.38 x 11.81 x 10.63 in, 13.3 lb, cETL.",
       "status": "verified"
     },
@@ -111,8 +111,8 @@
       "title": "Chefman TurboFry 8 Qt. Air Fryer w/ High Fry - product page",
       "publisher": "Chefman",
       "url": "https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry",
-      "method": "fetched 2026-11-20",
-      "used_for": "P03 model number RJ38-8T-BLACK, 8 qt / 7.57 L, 450 F Hi-Fry finish, 1700W/120V, four functions, top-rack dishwasher-safe basket, cETL. The page does not state overall dimensions, so none are shown.",
+      "method": "fetched 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: 'Capacity: 8 Qt / 7.57 L', 'Hi-Fry Temperature: 450°F', 'Power: 1700W/120V', 'Model Number: RJ38-8T-BLACK', 'cETL approved with a 1-year assurance' and the dishwasher-safe basket and rack were confirmed in the specification list",
+      "used_for": "Chefman TurboFry 8 Qt with High Fry, model RJ38-8T-BLACK: 8 qt / 7.57 L, 450 °F Hi-Fry, 1700W/120V, four functions, top-rack dishwasher-safe basket, cETL. This is a DIFFERENT 8 Qt model from the one on the observed listing (RJ38-SQSS-8T). It is retained here because an earlier pass compared the listing against this page and reached a wrong conclusion (see FLG-026); it is not the specification source for P03.",
       "status": "verified"
     },
     {
@@ -120,7 +120,7 @@
       "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT - product page",
       "publisher": "Emeril Everyday",
       "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: '26-Quart Capacity ... preparing food for 4-6 people', '25 Cooking Pre-sets', '16.9\"D x 15.8\"W x 14.8\"H', '24.6 Liters' and '120 volts' were confirmed in the specification panel, and model 4-00675-02A-VN in the title block",
       "used_for": "P02 26 qt / 24.6 L capacity, dimensions 16.9 x 15.8 x 14.8 in, 120 V, 26 qt french-door form. The page states both '25 Cooking Pre-sets' and '24 one-touch presets', so no preset count is published here (FLG-024).",
       "status": "verified"
     },
@@ -129,7 +129,7 @@
       "title": "CHEF iQ Sense - product page",
       "publisher": "CHEF iQ",
       "url": "https://chefiq.com/products/iq-sense",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: 'heat resistance up to 1,000ºF', '4 internal temperature sensors' and '1 ambient temperature sensor' were confirmed in the feature list",
       "used_for": "P05 five temperature sensors, ambient range to 1000 F, probe 0.19 in x 4.75 in, internal temperature range 32-212 F, Wi-Fi hub, USB-C, dishwasher-safe probe.",
       "status": "verified"
     },
@@ -147,7 +147,7 @@
       "title": "Chefman TurboFry 8 Qt product detail on Amazon (model-number field)",
       "publisher": "amazon.com",
       "url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "method": "observed 2026-11-20",
+      "method": "observed 2026-11-20; re-fetched 2026-11-20 by session 197d4f9e-affil3: page title confirmed as 'Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel'",
       "used_for": "The Amazon listing's own 'item model number' field does not match the manufacturer model for this feature set (FLG-025). Used only as evidence of the mismatch.",
       "status": "observed"
     },
@@ -167,7 +167,7 @@
       "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC",
       "updated": "not stated",
-      "method": "excerpt",
+      "method": "excerpt; reachable 2026-11-20 (session 197d4f9e-affil3); still an excerpt, manual re-check still open",
       "used_for": "Amazon-owned description of ASINs ('ASIN is the 10-digit code that Amazon uses to denote specific products') and the official Associates text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID). Located 2026-11-20 (session arena63534e5d); read as a search excerpt, so a manual full-page re-check is still pending (FLG-012).",
       "status": "verified (excerpt; re-check manually)"
     },
@@ -177,7 +177,7 @@
       "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
       "updated": "not stated",
-      "method": "excerpt",
+      "method": "excerpt; reachable 2026-11-20 (session 197d4f9e-affil3); still an excerpt, manual re-check still open",
       "used_for": "Confirms Associates 'special' links are the tagged identifiers (e.g. abcd-20) embedded in product links on the declared site(s), and the three-sales-in-180-days review rule.",
       "status": "verified (excerpt; re-check manually)"
     },
@@ -187,9 +187,39 @@
       "publisher": "USDA Food Safety and Inspection Service",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
       "updated": "not stated on the excerpt",
-      "method": "excerpt",
+      "method": "excerpt; reachable 2026-11-20 (session 197d4f9e-affil3); still an excerpt, manual re-check still open",
       "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Renumbered from this session's draft S10 after the merged register took S09/S10 for the spam-policies and temperature-chart sources.",
       "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S21",
+      "title": "ThermoMaven F1 Ace Instant Read Thermometer - product page",
+      "publisher": "ThermoMaven",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "method": "fetched 2026-11-20 by session 197d4f9e-affil3; the page was located by re-searching the manufacturer after the register recorded no manufacturer page for this product",
+      "used_for": "The specifications published for the ThermoMaven row: 1-second instant read, thermocouple sensor, NIST-certified +/-0.5 °F, 100% waterproof design, magnet, lifetime warranty.",
+      "status": "verified",
+      "quote": "NIST-certified precision, with an accuracy of +/-0.5℃/+/-0.3℃. Instant read in 1 second, powered by a thermocouple sensor. ... Featuring a 100% waterproof design ... Built-in magnet for easy retrieval and storage. Lifetime Warranty: Activate your Lifetime Warranty within 30 days after purchase"
+    },
+    {
+      "id": "S22",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "publisher": "US Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "method": "fetched 2026-11-20 by session 197d4f9e-affil3; the affiliate section was read directly and is the origin of the example sentence used in the disclosure strip",
+      "used_for": "The wording of the affiliate disclosure on every page, and the FTC rule that an \"affiliate link\" label or a buy button on its own is not an adequate disclosure.",
+      "status": "verified",
+      "quote": "You should disclose your relationship to the retailer clearly and conspicuously on your site, so readers can decide how much weight to give your endorsement. You could say something like, \"I get commissions for purchases made through links in this post.\""
+    },
+    {
+      "id": "S23",
+      "title": "Chefman TurboFry Touch Stainless-Steel Air Fryer (RJ38-SQSS-8T) - product page",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "method": "fetched 2026-11-20 by session 197d4f9e-affil3; located by following the model number the Amazon listing itself names, after PR #40 showed the register had compared the listing against the wrong model page",
+      "used_for": "The specifications published for P03: model RJ38-SQSS-8T, 8 qt / 7.57 L, 200-400 °F, 1700W/120V, 15.4 x 12.6 x 13.5 in, 12.8 lb, four presets, top-rack dishwasher-safe basket, cETL, 1-year assurance.",
+      "status": "verified",
+      "quote": "Max temp: 400ºF/ 205ºC. 4 cooking presets. Top-rack dishwasher-safe basket. Capacity: 5 Qt or 8 Qt / 4.73 L or 7.57 L. 200–400°F / 95º-205ºC temperature range. Power: 1700W/120V. Dimensions: (8 Qt Model) 15.4 in x 12.6 in x 13.5 in. Weight: (8 Qt Model) 12.8 lbs. Model Number: RJ38-SQSS-8T (8 Qt model). cETL approved with a 1-year Chefman® assurance"
     }
   ]
 }

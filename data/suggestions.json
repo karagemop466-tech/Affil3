@@ -220,6 +220,75 @@
         }
       ],
       "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    },
+    {
+      "id": "S-11",
+      "topic": "Four editions on one domain",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current).",
+          "tradeoff": "One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain."
+        },
+        {
+          "id": "B",
+          "label": "Publish the other editions on separate domains, each with its own tracking ID.",
+          "tradeoff": "Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain."
+        },
+        {
+          "id": "C",
+          "label": "Unpublish the other editions and keep only their pages in the repository history.",
+          "tradeoff": "The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them."
+        }
+      ],
+      "recommendation": "A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build."
+    },
+    {
+      "id": "S-12",
+      "topic": "Publishing the ThermoMaven buy button",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current).",
+          "tradeoff": "The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away."
+        },
+        {
+          "id": "B",
+          "label": "Keep the button hidden until the listing model field confirms the F1 Ace.",
+          "tradeoff": "The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken."
+        },
+        {
+          "id": "C",
+          "label": "Point the button at the manufacturer F1 Ace page instead of the Amazon listing.",
+          "tradeoff": "Breaks the affiliate link and the tracking the site exists for."
+        }
+      ],
+      "recommendation": "A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question."
+    },
+    {
+      "id": "S-13",
+      "topic": "A side-by-side comparison page",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current).",
+          "tradeoff": "It is the page a buyer actually wants and the strongest internal link target for every guide."
+        },
+        {
+          "id": "B",
+          "label": "Keep the comparison inside the shop table and the category pages only.",
+          "tradeoff": "Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table."
+        },
+        {
+          "id": "C",
+          "label": "Add comparison products beyond the five submitted rows so the table has more than one option per category.",
+          "tradeoff": "More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner."
+        }
+      ],
+      "recommendation": "A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research."
     }
   ]
 }

@@ -1279,3 +1279,59 @@ a merge conflicts, the resolution keeps both sides' content and is logged here.
 - `counter/`, `counterwise/`, `crisp-index/` and `editorial/` each ran their own gate on their own
   branch. This session does not rewrite their generators. Consolidation happens by excluding them
   from the index and linking them from one archive page, not by deleting them.
+
+## P03 correction (PR #40 claim verified first-hand, 2026-11-20)
+
+PR #40 reported that P03's register had compared the observed listing against the wrong Chefman
+page. Checked first-hand before integrating: the listing's own copy names **RJ38-SQSS-8T**, and
+Chefman publishes a page for that exact model
+(https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1, recorded as
+**S23**). The earlier comparison used Chefman's RJ38-8T-BLACK page (S12), which is a *different*
+8 qt model (450 °F Hi-Fry, matte black). The claim is **confirmed**.
+
+Resolved against the correct page (S23 + the listing, S16):
+
+| Field | Manufacturer (S23) | Listing (S16) | Published |
+| --- | --- | --- | --- |
+| Model | RJ38-SQSS-8T | RJ38-SQSS-8T | RJ38-SQSS-8T — agrees |
+| Capacity | 8 qt / 7.57 L | 8 quarts | 8 qt / 7.57 L — agrees |
+| Temperature | 200–400 °F | 200–400 °F | 200–400 °F — agrees |
+| Power | 1700 W / 120 V | 1000 W / 120 V | **1700 W**, difference flagged (FLG-026) |
+| Case size | 15.4 × 12.6 × 13.5 in | 12.75 × 13.5 × 10 in | **15.4 × 12.6 × 13.5 in**, difference flagged (FLG-026) |
+| Weight | 12.8 lb | not stated | 12.8 lb |
+
+- `data/products.json` P03 rewritten to the corrected model, capacity, range, power, dimensions,
+  weight, functions and trade-off; `model_note` records that the earlier comparison was against the
+  wrong page and is corrected here.
+- `FLG-026` rewritten: severity lowered to medium; the conflict is now wattage and case size, not
+  two different machines. `FLG-027` rewritten: the 450 °F Hi-Fry title claim is named, not adopted;
+  the 400 °F ceiling is published.
+- `S12` kept in the register with a note that it is a different model and not P03's spec source.
+- `tools/build.mjs` conflict table replaced with a normalised agrees/differs comparison (integrated
+  from PR #40): only rows both columns state are shown; rows where one side is silent are treated as
+  an absence, not a disagreement. P04 gained `observed_specs` + `observed_specs_extra` so its
+  listing-vs-maker display, waterproofing, certification and successor-SKU differences render as a
+  conflict table too.
+- Guide note in `data/guides.json` updated to describe the corrected state of FLG-023/025/026/027.
+
+## Task board update (2026-11-20)
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-02 | Fresh first-hand verification round | done | `197d4f9e-affil3` | `data/sources.json`, `data/flags.json`, `data/products.json` |
+| I-03 | Fix the stale P04 state | done | `197d4f9e-affil3` | `data/products.json`, `data/flags.json`, `tools/build.mjs` |
+| I-04 | One indexed publication | done | `197d4f9e-affil3` | `robots.txt`, `tools/build.mjs`, archive index |
+| I-05 | Reader polish: front page reads like a shop | done | `197d4f9e-affil3` | `tools/build.mjs`, `data/guides.json` |
+| I-06 | Merge parallel-session PRs that add verified value | done (selective) | `197d4f9e-affil3` | PR #40 corrections integrated by hand; #21 report copied to `DECISION-REVIEW-771fbf79.md` |
+| I-07 | Decisions surfaces | done | `197d4f9e-affil3` | `data/suggestions.json`, `data/questions.json` |
+| I-08 | Re-run every gate, confirm no broken links, open PR, merge, confirm Pages deploy | in progress | `197d4f9e-affil3` | CI, this file |
+
+**PR #40 integration decision:** its data corrections were verified first-hand against Chefman's own
+page and integrated deliberately (P03 model, specs, flags; guide note; conflict-table generator). Its
+PR #36 counterpart adds only an empty `special_link_validation` schema block, which duplicates the
+existing per-product confirmation fields and changes no rendered output, so it was **not** integrated.
+
+**Still open after this pass:** P02 preset count (24 on Amazon vs 25 on the Emeril page — both
+published, both flagged); Special Link validation in Associates Central (no login in the sandbox,
+gate G-02); intended-ASIN fields blank for all five products (FLG-001/002); short-link status
+unresolved, not invalid (FLG-003/031).
