@@ -26,6 +26,6 @@ jobs:
       - name: Fail on drift (generated files must match the registers)
         run: |
           git diff --stat
-          git diff --exit-code -- index.html shop products categories guides how-we-choose executive-summary sources questions suggestions flagged ledger measurement compliance about workflow privacy 404.html feed.xml sitemap.xml robots.txt assets .nojekyll
+          git diff --exit-code -- index.html shop products categories guides articles decisions how-we-choose executive-summary sources questions suggestions flagged ledger measurement compliance about workflow privacy 404.html feed.xml sitemap.xml robots.txt assets .nojekyll
       - name: Run the publishing gate
         run: node tools/verify.mjs

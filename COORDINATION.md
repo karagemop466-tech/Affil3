@@ -1628,6 +1628,77 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 
 ---
 
+# Session `arena/77e4ac42-affil3` board (Journal + decision board)
+
+**Nothing above this line was edited.** This section appends a new board for session
+`arena/77e4ac42-affil3`, branched from `main` @ `16ee89f`. It is the reader-facing polish pass.
+
+## Claim
+
+- Session: `arena/77e4ac42-affil3` (short id `77e4`)
+- Branch: `arena/77e4ac42-affil3`, branched from `main` @ `16ee89f`
+- File scope claimed: `data/articles.json` (new), `data/decisions.json` (new), `tools/build.mjs`,
+  `tools/verify.mjs`, `.github/workflows/publish.yml`, and the generated root site it owns
+  (`index.html`, `feed.xml`, `sitemap.xml`, `articles/`, `decisions/`, and every root page whose
+  nav/footer/home copy changes), `EXECUTIVE_SUMMARY-77e4ac42.md` (new), `VERIFICATION.md`, this file.
+- Scopes NOT touched (claimed by other open sessions, read only): `data/products.json`,
+  `data/sources.json`, `data/flags.json`, `data/suggestions.json`, `data/questions.json`,
+  `data/guides.json`, `data/register/`, `data/93cee724/`, `data/c46310a7-affil3/`, `editorial/`,
+  `counter/`, `counterwise/`, `crisp-index/`, `counter-desk/`, `README.md`, `src/assets/style.css`.
+  Shared-data edits were deliberately avoided to prevent merge conflicts with the open PRs below.
+
+## Open parallel PRs at claim time (read only, not merged by this session)
+
+PR #40 (`arena/0e710695`), #44 (`arena/c7a56e3d`), #51 (`arena/acb0bd16`), #53 (`arena/82e6b5eb`),
+#58 (`arena/3b45b513`), #59 (`arena/e52ea644`). Several touch `COORDINATION.md` and the shared data
+files. This session's merge is clean against current `main`; later merges of those PRs may need the
+established add/add resolution (keep every session's section).
+
+## Task board
+
+| ID | Task | Status | Notes |
+|----|------|--------|-------|
+| J-01 | The Journal: 7 catchy trend-shaped articles, sourced, with product boxes | done | `data/articles.json` + generated `/articles/` (index + 7 pages) |
+| J-02 | Decision board: 8 suggestions + 10 questions + design prompt | done | `data/decisions.json` + generated `/decisions/` |
+| J-03 | Wire Journal into nav, home band, footer, RSS feed | done | `tools/build.mjs` |
+| J-04 | Extend the publishing gate to cover the new pages | done | `tools/verify.mjs` (article + decision checks; feed article coverage) |
+| J-05 | CI drift list includes the new paths | done | `.github/workflows/publish.yml` |
+| J-06 | Executive summary + verification log for this session | done | `EXECUTIVE_SUMMARY-77e4ac42.md`, `VERIFICATION.md` |
+| J-07 | Build, verify, link checks, PR, merge, Pages deploy | in progress (see completion record) | — |
+
+## Verification performed
+
+- Baseline before edits: `node tools/build.mjs` 32 pages; `node tools/verify.mjs` 3,484 checks, 0 failed.
+- After edits: `node tools/build.mjs` **41 pages, 12 feed items, 40 sitemap URLs**; `node tools/verify.mjs`
+  **4,876 checks, 0 failed**.
+- `npm run check` (root build + gate + editorial build + editorial gate) passes; editorial output did not drift.
+- `python3 tools/link_report.py --strict`: OK — every checked data table 100% sourced.
+- `python3 tools/check_all_links.py`: 0 broken internal links, 54 external links recorded for manual review.
+- `python3 scripts/build_sitemap.py --check`: 18 pages present. `python3 scripts/check_links.py --no-external`:
+  593 links, no broken internal links. `python3 tools/check_site.py`: PASS, 21 pages.
+- Every Journal article's source IDs resolve; every article product box is a tagged, `rel="sponsored"`
+  Amazon link. No price, rating, review count or hands-on test claim appears in any new page.
+
+## Irregularities for review
+
+- **The Journal is editorial content, not a performance claim.** No traffic, conversion or revenue
+  figure is presented. Topic selection remains a hypothesis until Search Console and the click counter
+  are live (extends FLG-013, FLG-009).
+- **Article titles are working titles.** They are not claims about popularity, search volume or product
+  superiority, per the brief.
+- **README.md is claimed by session `3b45b513` (PR #58).** The Journal is part of the root publication,
+  so no new README row is required. If the integration session wants to mention it explicitly, README is
+  the place — logged here rather than edited, per the coordination rule.
+- **Shared data files were not edited.** Marketing/decision suggestions were placed in a new
+  `data/decisions.json` rather than appended to the shared `data/suggestions.json` / `data/questions.json`,
+  because those are claimed by open PRs #40 and #53.
+
+## Completion record
+
+- Pull request: _pending_ (to be opened from `arena/77e4ac42-affil3` to `main`)
+- Merge result: _pending_
+- GitHub Pages deploy: _pending_ (source `main` at `/`; to be confirmed after merge)
+
 ## Session `4c8c7811` — claim, verification and irregularities (branch `arena/4c8c7811-affil3`, base `main` @ `16ee89f`)
 
 **Claim.** Session `4c8c7811` claims the integrity and verification pass over the root site (`/`) and the Crisp Index sitemap gate. Scope: `scripts/build_sitemap.py`, `crisp-index/sitemap.xml` (regenerated by `tools/build_site.py`), `data/flags.json` (one new flag), `data/observations/2026-11-20-4c8c7811-recheck.json`, `EXECUTIVE_SUMMARY-4c8c7811.md`, `README.md` (read-first list), and this log. It does not touch the root site's tables, product data, guides or templates. Other sessions' surfaces (`editorial/`, `docs/`, `counterwise/`, `counter/`, `legacy/`) are not edited.

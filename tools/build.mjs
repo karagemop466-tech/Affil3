@@ -9,7 +9,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
+const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
   'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
   '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
@@ -25,6 +25,9 @@ const FLAGS = Object.fromEntries(flagsDoc.flags.map((f) => [f.id, f]));
 const questions = read('data/questions.json');
 const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
+const articlesDoc = read('data/articles.json');
+const articles = articlesDoc.articles;
+const decisions = read('data/decisions.json');
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
 
@@ -51,6 +54,7 @@ const DASHBOARDS = [
   ['/sources/', 'Source register'],
   ['/questions/', 'Questions and gaps'],
   ['/suggestions/', 'Suggestions (choose a path)'],
+  ['/decisions/', 'Decision board (this session)'],
   ['/flagged/', 'Flagged for review'],
   ['/ledger/', 'Campaign ledger'],
   ['/measurement/', 'Measurement'],
@@ -131,6 +135,7 @@ ${jsonld}
     <p class="tagline">${esc(cfg.tagline)}</p>
     <nav class="nav" aria-label="Main">
       <a href="${esc(href('/shop/'))}">Shop</a>
+      <a href="${esc(href('/articles/'))}">Journal</a>
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/categories/'))}">Categories</a>
       <a href="${esc(href('/about/'))}">About</a>
@@ -151,9 +156,10 @@ ${body}
       <p class="small muted"><a href="${esc(href('/feed.xml'))}">RSS feed</a> · <a href="${esc(href('/legacy/archive/'))}">Archived editions</a> · <a href="${esc(href('/sitemap.xml'))}">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="${esc(href('/guides/'))}">All guides</a></li>
+        <li><a href="${esc(href('/articles/'))}">The Journal</a></li>
         ${guides.slice(0, 3).map((g) => `<li><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a></li>`).join('\n        ')}
       </ul>
     </div>
@@ -301,6 +307,18 @@ const guideSource = (id) => (id === 'S04'
   ? `<a href="${esc(href('/shop/'))}">S04</a> · observed Amazon product pages, one per row on the Shop table`
   : `${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}`);
 
+// Article card for the Journal index and home band. Reuses the guide-card look but is
+// labelled as a Journal piece, and carries the topic so a reader sees what it is about.
+function articleCard(a) {
+  return `<a class="card guide-card" href="${esc(href('/articles/' + a.slug + '/'))}">
+  <div class="guide-card-art"><img src="${esc(href(a.image))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="card-body"><p class="kicker">${esc(catName(a.category))} · ${esc(a.topic)} · ${esc(dateLong(a.date))} · ${esc(a.read_minutes)} min read</p><h3>${esc(a.title)}</h3><p class="muted small">${esc(a.deck)}</p><p class="read-more">Read the article →</p></div>
+</a>`;
+}
+const articleSource = (id) => (id === 'S04'
+  ? `<a href="${esc(href('/shop/'))}">S04</a> · observed Amazon product pages, one per row on the Shop table`
+  : `${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}`);
+
 const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label="blank: unverified">&nbsp;</span>' : esc(v));
 
 // ---------- pages ----------
@@ -370,6 +388,14 @@ const add = (p) => pages.push(p);
   </div>
   <div class="guide-grid">${guideCards}</div>
   <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
+</section>
+<section class="band">
+  <div class="band-head">
+    <h2>The Journal</h2>
+    <p>Catchy, trend-shaped reads on the appliances we track — the questions people actually type, answered in plain English, with a source on every claim and a disclosed link when a product is mentioned.</p>
+  </div>
+  <div class="guide-grid">${articles.slice(0, 4).map((a) => articleCard(a)).join('\n')}</div>
+  <p><a class="text-link" href="${esc(href('/articles/'))}">All ${articles.length} articles →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -574,6 +600,73 @@ for (const g of guides) {
   });
 }
 
+// ---------- The Journal: articles index + article pages ----------
+add({
+  path: '/articles/', title: 'The Journal',
+  description: 'Catchy, trend-shaped articles on the kitchen appliances we track, with a source on every claim and a disclosed link when a product is mentioned.',
+  body: `<section class="page-head"><p class="kicker">The Journal</p><h1>Trend-shaped reads, sourced like everything else</h1>
+<p class="deck">${esc(articlesDoc.framing)} Article titles are editorial working titles, not claims about popularity, search volume or product superiority.</p></section>
+<div class="guide-grid">${articles.map((a) => articleCard(a)).join('\n')}</div>
+<section class="band"><h2>How the Journal works</h2>
+<p>Each article is written to answer a question or cover a trend a real buyer searches for, and to send the reader to a product page when the article is about a product we track. Every factual claim carries its source, and every product link is a disclosed, tagged Amazon affiliate link marked sponsored. No price, rating or review count is republished, and no hands-on test is claimed.</p>
+<p>The verification record behind these articles lives on the <a href="${esc(href('/shop/'))}">Shop table</a>, the <a href="${esc(href('/sources/'))}">source register</a>, and the <a href="${esc(href('/flagged/'))}">Flagged for review</a> page.</p></section>`,
+});
+for (const a of articles) {
+  const related = (a.related || []).map((id) => products.find((p) => p.id === id)).filter(Boolean);
+  const jsonld = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.description,
+    image: abs(a.image), datePublished: a.date, dateModified: cfg.lastReviewed,
+    author: { '@type': 'Organization', name: cfg.author },
+    publisher: { '@type': 'Organization', name: cfg.siteName }, mainEntityOfPage: abs(`/articles/${a.slug}/`),
+  })}</script>`;
+  add({
+    path: `/articles/${a.slug}/`, title: a.title, description: a.description, type: 'article', ogType: 'article', jsonld,
+    attrs: `data-article="${esc(a.slug)}"`,
+    ogImage: a.image,
+    body: `<article class="article">
+  <header class="page-head">
+    <p class="kicker">${esc(catName(a.category))} · Journal · ${esc(a.topic)} · ${esc(dateLong(a.date))} · ${esc(a.read_minutes)} min read</p>
+    <h1>${esc(a.title)}</h1>
+    <p class="deck">${esc(a.deck)}</p>
+    <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(a.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
+  </header>
+  <figure class="article-hero"><img src="${esc(href(a.image))}" alt="${esc(a.image_alt)}" width="1536" height="1024"><figcaption>${esc(a.image_alt)} — editorial illustration, not the reviewed unit.</figcaption></figure>
+  <div class="prose">${a.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, a.slug)).join('\n')}</div>
+  ${related.length ? `<aside class="band"><h2>Products in this article</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${related.map((p) => productCard(p, 'article-box')).join('')}</div></aside>` : ''}
+  <section class="band sources"><h2>Sources for this article</h2>
+    ${a.sources.length ? `<ul>${a.sources.map((id) => `<li>${articleSource(id)}</li>`).join('')}</ul>` : '<p>This article makes no factual claim that needs an external source. It refers only to the observed listing data on the Shop page.</p>'}
+    <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · <a href="${esc(href('/articles/'))}">All Journal articles</a></p>
+  </section>
+</article>`,
+  });
+}
+
+// ---------- Decision board (this session's suggestions & questions) ----------
+add({
+  path: '/decisions/', title: 'Decision board',
+  description: 'A reviewable board of suggestions and the questions that must be answered before any decision is made. Nothing is implemented until a choice is made.',
+  body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions and the questions before them</h1>
+<p class="deck">${esc(decisions.note)}</p></section>
+<p class="deck small">${esc(decisions.how_to_use)}</p>
+<h2>Questions to answer before deciding</h2>
+${table(['ID', 'Question', 'What we have', 'What is missing', 'Who closes it', 'How to close it', 'Blocks?', 'Sources'], decisions.questions.map((q) => [
+    `<strong id="${esc(q.id)}">${esc(q.id)}</strong>`, esc(q.question), esc(q.have), esc(q.missing), esc(q.who), esc(q.closes),
+    q.blocking ? '<strong>Yes</strong>' : 'No', q.sources.length ? q.sources.map(srcLink).join(', ') : '<span class="muted">none</span>',
+  ]), 'wide')}
+<h2>Suggestions: choose a path</h2>
+<div class="choice-grid">
+${decisions.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
+  <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
+  <p class="muted small">${esc(s.problem)}</p>
+  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
+</section>`).join('\n')}
+</div>
+<section class="band"><h2>The prompt to hand the next design session</h2>
+<p class="small muted">The assembled design brief below is the same text stored in <code>data/decisions.json</code>. It is the prompt this session's suggestions feed into.</p>
+<pre class="prompt-block">${esc(decisions.prompt)}</pre></section>`,
+});
+
 // Product detail pages (specifications from the manufacturer page, gaps as labelled "not stated")
 for (const p of products) {
   const c = CATEGORIES.find((x) => x.slug === p.category) || { name: p.category };
@@ -699,7 +792,8 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of seven catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -1026,12 +1120,15 @@ ${sitemapPages.map((w) => `  <url><loc>${esc(abs(w.path))}</loc><lastmod>${cfg.l
 </urlset>
 `);
 
-// Feed (guides only, newest first)
-const feedItems = [...guides].sort((a, b) => (a.date < b.date ? 1 : -1));
+// Feed (guides and Journal articles, newest first). Each item is an article-shaped page.
+const feedItems = [
+  ...guides.map((g) => ({ kind: 'guide', slug: g.slug, title: g.title, date: g.date, description: g.description })),
+  ...articles.map((a) => ({ kind: 'article', slug: a.slug, title: a.title, date: a.date, description: a.description })),
+].sort((a, b) => (a.date < b.date ? 1 : -1));
 fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>${esc(cfg.siteName)} guides</title>
+  <title>${esc(cfg.siteName)} guides and Journal</title>
   <link>${esc(abs('/'))}</link>
   <description>${esc(cfg.tagline)}</description>
   <language>${cfg.language}</language>
@@ -1039,8 +1136,8 @@ fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-
   <atom:link href="${esc(abs('/feed.xml'))}" rel="self" type="application/rss+xml"/>
 ${feedItems.map((g) => `  <item>
     <title>${esc(g.title)}</title>
-    <link>${esc(abs(`/guides/${g.slug}/`))}</link>
-    <guid isPermaLink="true">${esc(abs(`/guides/${g.slug}/`))}</guid>
+    <link>${esc(abs(`/${g.kind === 'guide' ? 'guides' : 'articles'}/${g.slug}/`))}</link>
+    <guid isPermaLink="true">${esc(abs(`/${g.kind === 'guide' ? 'guides' : 'articles'}/${g.slug}/`))}</guid>
     <pubDate>${rfc822(g.date)}</pubDate>
     <description>${esc(g.description)}</description>
   </item>`).join('\n')}

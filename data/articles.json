@@ -1,0 +1,694 @@
+{
+  "note": "A magazine of catchy, trend-shaped articles tied to the products on this site. Every factual claim is grounded in the cited source and every product link is a disclosed, tagged Amazon affiliate link. Article titles are editorial working titles, not claims about popularity, search volume or product superiority. No price, rating, review count or hands-on test claim appears anywhere.",
+  "framing": "These are reader-facing marketing articles: question- and trend-shaped, human in tone, written to earn organic traffic and to send a buyer to a product page. They are deliberately not a restatement of the audit trail. The verification record lives on the Shop, product, source and flagged pages.",
+  "disclosure": "Articles that mention a product link to its disclosed, tagged Amazon affiliate listing. Links are marked sponsored. We do not display prices or ratings.",
+  "articles": [
+    {
+      "slug": "two-baskets-one-machine-what-dual-basket-air-fryers-change",
+      "title": "Two baskets, one machine: what dual-basket air fryers change",
+      "category": "air-fryers",
+      "topic": "Dual-basket air fryers",
+      "date": "2026-11-20",
+      "image": "/assets/img/hero-counter.jpg",
+      "image_alt": "Illustration of a countertop air fryer with two pull-out baskets side by side on a kitchen counter; editorial artwork, not the reviewed unit",
+      "deck": "One appliance, two drawers, two timers. Here is what actually changes about a weeknight dinner.",
+      "description": "What a dual-basket air fryer does differently from a single-drawer model, and the one number to check before you buy one.",
+      "read_minutes": 5,
+      "related": [
+        "P01"
+      ],
+      "sources": [
+        "S11",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/hero-counter.jpg",
+          "alt": "Illustration of a countertop air fryer with two pull-out baskets side by side on a kitchen counter; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the shape, not the specific unit we track."
+        },
+        {
+          "type": "p",
+          "text": "A dual-basket air fryer sounds like a bigger air fryer. It is not. It is two smaller air fryers that happen to share one machine, one plug and one footprint. That distinction is the whole story, and it is the reason to pick one over a single-drawer model."
+        },
+        {
+          "type": "h2",
+          "text": "What a second basket changes"
+        },
+        {
+          "type": "p",
+          "text": "The unit we track is the Chefman 6 Quart Dual Basket Air Fryer. It carries 6 quarts in total, split into two independent 3-quart baskets. Each basket has its own nonstick surface and its own place in the cooking logic, so the two sides can be told to finish at the same moment — a feature the maker calls Sync Finish."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Two foods, two temperatures, two timings, in the space of one appliance.",
+            "Each basket has a window, so you can check one side without opening the drawer and letting the heat out.",
+            "The baskets are nonstick and dishwasher-safe, per the manufacturer.",
+            "The footprint is that of a single basket fryer, not two of them."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What to check before you buy"
+        },
+        {
+          "type": "p",
+          "text": "The number that decides whether a dual basket earns its place is not capacity. It is whether you actually cook two things at once. If your weeknight is one batch of fries and one protein, a dual basket removes the waiting-and-reheating step. If you routinely cook one large batch, two 3-quart drawers can feel like two half-measures."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Figure",
+            "What the maker publishes"
+          ],
+          "rows": [
+            [
+              "Total capacity",
+              "6 quarts, in two 3-quart baskets"
+            ],
+            [
+              "Temperature range",
+              "200 to 450 degrees F"
+            ],
+            [
+              "Power",
+              "1700 W, 120 V"
+            ],
+            [
+              "Baskets",
+              "Nonstick, dishwasher-safe"
+            ],
+            [
+              "Case size",
+              "13.38 x 11.81 x 10.63 inches"
+            ],
+            [
+              "Weight",
+              "13.3 lb"
+            ],
+            [
+              "Warranty",
+              "1-year Chefman assurance"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "All figures above are the manufacturer's published figures for this model, cited on the product page. We do not republish prices, ratings or availability, and we do not rank appliances against each other."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is two baskets the same as a larger single basket?",
+              "a": "No. Two 3-quart baskets hold the same total as one 6-quart drawer, but they let you run two different cooks at once. A single large drawer runs one cook and needs a shake halfway through."
+            },
+            {
+              "q": "Which is better for a large batch?",
+              "a": "If you usually cook one big batch, a single large basket is the more direct fit. The dual basket earns its place when two things are on the menu at once."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Read the full specifications and sources for the Chefman 6 Quart Dual Basket Air Fryer.",
+          "href": "/products/chefman-6-qt-dual-basket-air-fryer/",
+          "label": "Open the product page"
+        }
+      ]
+    },
+    {
+      "slug": "when-a-basket-isnt-enough-the-case-for-a-26-quart-oven",
+      "title": "When a basket isn't enough: the case for a 26-quart oven",
+      "category": "air-fryer-ovens",
+      "topic": "Oven-style air fryers",
+      "date": "2026-11-20",
+      "image": "/assets/img/oven-french-door.jpg",
+      "image_alt": "Illustration of a countertop oven-style air fryer with double french doors and a rack inside; editorial artwork, not the reviewed unit",
+      "deck": "When a drawer is the bottleneck, the answer is a door, a rack and a whole meal at once.",
+      "description": "Why oven-style air fryers exist, what they trade away, and the one figure to compare before you choose one.",
+      "read_minutes": 5,
+      "related": [
+        "P02"
+      ],
+      "sources": [
+        "S13",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/oven-french-door.jpg",
+          "alt": "Illustration of a countertop oven-style air fryer with double french doors and a rack inside; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the shape, not the specific unit we track."
+        },
+        {
+          "type": "p",
+          "text": "Basket air fryers are excellent at the small stuff. The moment a dinner stops being one tray of fries and becomes a protein, a side and something on a second level, the drawer starts to feel small. That is the gap an oven-style air fryer was built to close."
+        },
+        {
+          "type": "h2",
+          "text": "What an oven-style fryer adds"
+        },
+        {
+          "type": "p",
+          "text": "The unit we track is the Emeril Lagasse 26 QT French Door Air Fryer Toaster Oven. It is a countertop convection cooker with french doors, racks and 26 quarts of interior room — the maker describes it as food for four to six people. The point is not that it is bigger. It is that a door and a rack let you run two levels at once and rotate trays halfway through, the way a real oven does."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Two or more levels of food at once, instead of one drawer.",
+            "A door you can open to check without losing a whole drawer of heat.",
+            "French doors, so you do not need the clearance a single hinged door swings through.",
+            "It doubles as a toaster oven, so it can hold counter space at breakfast too."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What it trades away"
+        },
+        {
+          "type": "p",
+          "text": "An oven-style fryer is a bigger object. The Emeril unit's case measures 16.9 by 15.8 by 14.8 inches as the maker lists them, and it needs oven-sized counter depth. If your counter is the constraint, this shape costs you more room than a basket fryer, and that is the trade to weigh honestly."
+        },
+        {
+          "type": "p",
+          "text": "One honest note from our register: the number of one-touch presets is published differently by the retailer listing and the maker's own page. We publish both readings on the product page rather than picking the more flattering one."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is an oven-style fryer better than a basket fryer?",
+              "a": "Not categorically. If you cook small batches and care about counter space, a basket fryer is the better fit. If you cook whole meals at once, the oven-style earns its footprint."
+            },
+            {
+              "q": "Why does counter depth matter more than capacity?",
+              "a": "Because the case has to sit on the counter with the door open. A large capacity in a case that does not fit the space is not usable."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Read the full specifications, the preset discrepancy, and the sources for the Emeril Lagasse 26 QT.",
+          "href": "/products/emeril-lagasse-26qt-french-door-air-fryer-oven/",
+          "label": "Open the product page"
+        }
+      ]
+    },
+    {
+      "slug": "eight-quarts-one-basket-the-big-batch-air-fryer",
+      "title": "Eight quarts, one basket: the big-batch air fryer",
+      "category": "air-fryers",
+      "topic": "Large-capacity air fryers",
+      "date": "2026-11-20",
+      "image": "/assets/img/basket-turbofry-8qt.jpg",
+      "image_alt": "Illustration of a single-drawer air fryer with a large basket pulled partway out on a counter; editorial artwork, not the reviewed unit",
+      "deck": "For the batch that does not fit in two small drawers, one large basket is the simplest answer.",
+      "description": "What an 8-quart single-basket air fryer is good at, and the wattage figure to read carefully before ordering.",
+      "read_minutes": 5,
+      "related": [
+        "P03"
+      ],
+      "sources": [
+        "S12",
+        "S16",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/basket-turbofry-8qt.jpg",
+          "alt": "Illustration of a single-drawer air fryer with a large basket pulled partway out on a counter; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the shape, not the specific unit we track."
+        },
+        {
+          "type": "p",
+          "text": "The simplest air fryer is a drawer, a heating element and one basket. When you need more room than two small baskets offer but do not want a full oven, the single large-basket air fryer is the middle answer."
+        },
+        {
+          "type": "h2",
+          "text": "What an 8-quart basket is for"
+        },
+        {
+          "type": "p",
+          "text": "The unit we track is the Chefman TurboFry Touch 8 Qt air fryer, model RJ38-SQSS-8T. It holds 8 quarts (7.57 litres) in one basket, with a temperature range of 200 to 400 degrees F and a maker-published power figure of 1700 W. There is no divider to work around, which is the whole point: one big batch, one temperature, one basket."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "A single basket means no divider and no second drawer to coordinate.",
+            "Eight quarts is enough for a large batch that would split awkwardly across two small baskets.",
+            "The basket and rack are top-rack dishwasher-safe, per the maker."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Read the wattage figure carefully"
+        },
+        {
+          "type": "p",
+          "text": "This is the one place our register found the maker and the retailer listing disagree. The manufacturer's page for RJ38-SQSS-8T states 1700 W; the Amazon listing for the same model number states a different wattage. We publish both readings side by side on the product page and flag the row, because a wattage figure you cannot attribute is not a figure to build a decision on."
+        },
+        {
+          "type": "p",
+          "text": "There is a second, related point worth naming: a different 8-quart Chefman model, RJ38-8T-BLACK, carries a 450-degree Hi-Fry mode. The unit we track is the RJ38-SQSS-8T, whose published range tops out at 400 degrees F. Model numbers are the thing to match, not the quarts."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does 8 quarts mean it cooks more than a 6-quart dual basket?",
+              "a": "In total volume, yes. But the two shapes suit different habits: one large basket for a single big batch, two baskets for two cooks at once."
+            },
+            {
+              "q": "Why does the wattage differ between pages?",
+              "a": "The manufacturer page and the retailer listing for the same model number state different wattages. We flag it instead of choosing one, because we hold no authorized figure that settles it."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Read the full specifications, the wattage conflict, and the sources for the Chefman TurboFry 8 Qt.",
+          "href": "/products/chefman-turbofry-8-qt-air-fryer/",
+          "label": "Open the product page"
+        }
+      ]
+    },
+    {
+      "slug": "counter-space-is-the-real-spec-measure-before-you-buy",
+      "title": "Counter space is the real spec: measure before you buy",
+      "category": "air-fryers",
+      "topic": "Counter-space fit",
+      "date": "2026-11-20",
+      "image": "/assets/img/guide-capacity.png",
+      "image_alt": "Illustration of a measuring tape stretched across a kitchen counter next to an air fryer; editorial artwork, not the reviewed unit",
+      "deck": "Capacity gets the attention. Footprint is the number that decides whether an appliance stays.",
+      "description": "How to compare the real-world space three countertop appliances need, using the manufacturers' own case dimensions.",
+      "read_minutes": 4,
+      "related": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-capacity.png",
+          "alt": "Illustration of a measuring tape stretched across a kitchen counter next to an air fryer; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the idea, not the specific units we track."
+        },
+        {
+          "type": "p",
+          "text": "Every air fryer listing leads with capacity. The number that decides whether it stays on your counter is smaller and quieter: the case size, and the clearance the door or drawer needs when it is open."
+        },
+        {
+          "type": "h2",
+          "text": "The three cases, side by side"
+        },
+        {
+          "type": "p",
+          "text": "These are the manufacturers' own published case dimensions for the three basket-and-oven appliances we track. We publish them as the makers list them, without reordering or rounding them into a comparison we cannot support."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Product",
+            "Case dimensions (maker's order)",
+            "Shape"
+          ],
+          "rows": [
+            [
+              "Chefman 6 Qt Dual Basket",
+              "13.38 x 11.81 x 10.63 in",
+              "Two baskets"
+            ],
+            [
+              "Chefman TurboFry 8 Qt",
+              "15.4 x 12.6 x 13.5 in",
+              "Single basket"
+            ],
+            [
+              "Emeril Lagasse 26 QT",
+              "16.9 x 15.8 x 14.8 in",
+              "Oven, french doors"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Read the dimension order on the product page: the makers do not all label which figure is depth, width or height in the same way, so we reproduce their order rather than impose ours."
+        },
+        {
+          "type": "h2",
+          "text": "How to use these numbers"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Measure the counter space you actually have, including the clearance a swinging door or a pulled drawer needs.",
+            "Check the largest dimension against that clearance, not the capacity number.",
+            "Remember that a bigger case is not automatically better — it is a bigger commitment of the same space."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "We do not rank these appliances. The dimensions above are the makers' published figures, cited per product, and no value here is inferred or filled in."
+        },
+        {
+          "type": "cta",
+          "text": "Compare all three appliances, with their full specifications, on the comparison page.",
+          "href": "/compare/",
+          "label": "Open the comparison table"
+        }
+      ]
+    },
+    {
+      "slug": "the-number-that-decides-when-to-pull-it-thermometer-basics",
+      "title": "The number that decides when to pull it: thermometer basics",
+      "category": "cooking-thermometers",
+      "topic": "Cooking thermometers",
+      "date": "2026-11-20",
+      "image": "/assets/img/guide-thermometer.png",
+      "image_alt": "Illustration of a digital probe thermometer resting on a wooden cutting board beside a roast; editorial artwork, not the reviewed unit",
+      "deck": "Guessing at doneness is the most expensive habit in a kitchen. A thermometer turns it into a number.",
+      "description": "Why an internal-temperature target matters more than time, the safe minimums to aim for, and where to put the probe.",
+      "read_minutes": 6,
+      "related": [
+        "P04",
+        "P05"
+      ],
+      "sources": [
+        "S10",
+        "S20",
+        "S21",
+        "S14"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-thermometer.png",
+          "alt": "Illustration of a digital probe thermometer resting on a wooden cutting board beside a roast; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the idea, not the specific units we track."
+        },
+        {
+          "type": "p",
+          "text": "Recipes give a time. Time is a hint, not a guarantee: it changes with the thickness of the cut, the heat of the oven and the starting temperature of the food. The number that actually decides whether something is done is its internal temperature, and the only reliable way to read that number is a thermometer."
+        },
+        {
+          "type": "h2",
+          "text": "The safe minimums to aim for"
+        },
+        {
+          "type": "p",
+          "text": "The US Department of Agriculture publishes a Safe Minimum Internal Temperature Chart. These are the targets it lists, and they are the numbers to compare a thermometer reading against."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Food",
+            "Safe minimum internal temperature"
+          ],
+          "rows": [
+            [
+              "Beef, pork, veal, lamb (steaks, chops, roasts)",
+              "145 degrees F, plus a 3-minute rest"
+            ],
+            [
+              "Ground meats",
+              "160 degrees F"
+            ],
+            [
+              "All poultry, including ground poultry",
+              "165 degrees F"
+            ],
+            [
+              "Uncooked ham",
+              "145 degrees F, plus a 3-minute rest"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Source: USDA Food Safety and Inspection Service, Safe Minimum Internal Temperature Chart. We reproduce the chart's figures and do not add our own."
+        },
+        {
+          "type": "h2",
+          "text": "Where to put the probe"
+        },
+        {
+          "type": "p",
+          "text": "The USDA's food-thermometer guidance is equally specific about placement, because a reading taken in the wrong spot is a wrong reading. For whole poultry, insert the probe into the thickest part of the thigh, the wing and the breast, and avoid touching bone, fat or the pan."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Thickest part of the meat, not the edge.",
+            "Away from bone, fat and the cooking vessel, which conducts heat differently.",
+            "For whole poultry, check the thigh, the wing and the thickest part of the breast."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The two thermometers we track"
+        },
+        {
+          "type": "p",
+          "text": "We track two thermometers, and they do two different jobs. The ThermoMaven 1 Sec Professional is a folding instant-read probe built for quick spot checks; the CHEF iQ Sense is a wireless leave-in probe built to stay in the meat and report to an app. Both are grounded in their makers' published pages, cited on each product page."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is a thermometer really necessary?",
+              "a": "For anything where doneness and safety meet, yes. A target internal temperature is checkable; a time is not."
+            },
+            {
+              "q": "Where do these temperature figures come from?",
+              "a": "The USDA Food Safety and Inspection Service Safe Minimum Internal Temperature Chart and its food-thermometer guidance. We reproduce them and cite the source."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Read the thermometer guides and the two thermometer product pages with their sources.",
+          "href": "/categories/cooking-thermometers/",
+          "label": "Open the thermometers"
+        }
+      ]
+    },
+    {
+      "slug": "instant-read-vs-leave-in-two-thermometers-two-jobs",
+      "title": "Instant-read vs leave-in: two thermometers, two jobs",
+      "category": "cooking-thermometers",
+      "topic": "Thermometer types",
+      "date": "2026-11-20",
+      "image": "/assets/img/thermometer-instant-read.jpg",
+      "image_alt": "Illustration of a folding instant-read probe and a wireless leave-in probe side by side; editorial artwork, not the reviewed units",
+      "deck": "One thermometer gives you a number on demand. The other watches the cook for you. They are not the same purchase.",
+      "description": "What an instant-read probe and a wireless leave-in probe each do, and how to choose between them by the job.",
+      "read_minutes": 5,
+      "related": [
+        "P04",
+        "P05"
+      ],
+      "sources": [
+        "S21",
+        "S14",
+        "S15",
+        "S10"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/thermometer-instant-read.jpg",
+          "alt": "Illustration of a folding instant-read probe and a wireless leave-in probe side by side; editorial artwork, not the reviewed units",
+          "caption": "Illustration: AI-generated for this site. It shows the two types, not the specific units we track."
+        },
+        {
+          "type": "p",
+          "text": "Not every thermometer is built for the same moment. There are two basic designs, and picking the wrong one for your cooking is the fastest way to end up with a tool that sits in a drawer."
+        },
+        {
+          "type": "h2",
+          "text": "Instant-read: a number on demand"
+        },
+        {
+          "type": "p",
+          "text": "An instant-read probe gives you a reading in about a second when you stick it in. It is for spot checks: pulling a steak to confirm, checking a chicken breast at the thickest point, seeing whether the roast is close. The ThermoMaven 1 Sec Professional we track is this type. Its maker publishes a 1-second read time and a NIST-certified accuracy of plus or minus 0.5 degrees F, with a folding probe and a magnet back."
+        },
+        {
+          "type": "h2",
+          "text": "Leave-in: the cook watches itself"
+        },
+        {
+          "type": "p",
+          "text": "A wireless leave-in probe stays in the meat and reports to an app, so you can be elsewhere while the cook runs. It is for long cooks where the moment you need is not predictable: a smoker, a low-and-slow roast, a bird in the oven. The CHEF iQ Sense we track is this type, with an ambient sensor so the app tracks the meat and the heat around it, and a maker-stated heat-safe range up to 1000 degrees F."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "",
+            "Instant-read",
+            "Wireless leave-in"
+          ],
+          "rows": [
+            [
+              "Best moment",
+              "A quick spot check",
+              "A long, unpredictable cook"
+            ],
+            [
+              "You stay",
+              "At the cook",
+              "Free to be elsewhere"
+            ],
+            [
+              "The unit we track",
+              "ThermoMaven 1 Sec Professional",
+              "CHEF iQ Sense"
+            ],
+            [
+              "What it needs",
+              "A hand at the moment",
+              "A hub, an app and a battery"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "How to choose"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "If you mostly cook quick meals and want to confirm doneness at the moment, an instant-read is the tool.",
+            "If you run long cooks and want to be told when the target is reached, a leave-in is the tool.",
+            "If your cooking is mixed, two tools do different jobs; one tool chosen for the wrong job disappoints."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Accuracy, range and features above are the makers' published figures for each unit, cited on the product pages. We do not test or rank them, and we do not republish prices or ratings."
+        },
+        {
+          "type": "cta",
+          "text": "Read the full specifications and sources for both thermometers.",
+          "href": "/categories/cooking-thermometers/",
+          "label": "Open the thermometers"
+        }
+      ]
+    },
+    {
+      "slug": "the-big-roast-what-temperature-actually-means",
+      "title": "The big roast: what temperature actually means",
+      "category": "cooking-thermometers",
+      "topic": "Holiday roasting",
+      "date": "2026-11-20",
+      "image": "/assets/img/guide-questions.jpg",
+      "image_alt": "Illustration of a roasted bird on a platter with a thermometer nearby on a holiday table; editorial artwork, not the reviewed unit",
+      "deck": "For the roast that only happens a few times a year, the thermometer is the one tool that removes the guesswork.",
+      "description": "A seasonal plain-English guide to the internal-temperature targets that decide when a roast is done, straight from the USDA.",
+      "read_minutes": 5,
+      "related": [
+        "P04",
+        "P05"
+      ],
+      "sources": [
+        "S10",
+        "S20"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-questions.jpg",
+          "alt": "Illustration of a roasted bird on a platter with a thermometer nearby on a holiday table; editorial artwork, not the reviewed unit",
+          "caption": "Illustration: AI-generated for this site. It shows the idea, not the specific units we track."
+        },
+        {
+          "type": "p",
+          "text": "The big roast is the one cook of the year where timing feels like a gamble. The cut is expensive, the cook is long, and the moment you are waiting for — is it done — arrives only once. The way to take the gamble out of it is to stop asking the clock and start asking the meat."
+        },
+        {
+          "type": "h2",
+          "text": "The targets, from the USDA"
+        },
+        {
+          "type": "p",
+          "text": "The USDA Food Safety and Inspection Service publishes the Safe Minimum Internal Temperature Chart. For the classic roast-table proteins, these are the figures it lists."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "What you are roasting",
+            "Target"
+          ],
+          "rows": [
+            [
+              "Beef, pork, veal, lamb (steaks, chops, roasts)",
+              "145 degrees F, plus a 3-minute rest"
+            ],
+            [
+              "Ground meats",
+              "160 degrees F"
+            ],
+            [
+              "All poultry, including ground poultry",
+              "165 degrees F"
+            ],
+            [
+              "Uncooked ham",
+              "145 degrees F, plus a 3-minute rest"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The rest time matters. For beef, pork, veal and lamb at 145 degrees F, the chart specifies a three-minute rest, during which the temperature continues to rise or equalise. A roast pulled at the exact moment it hits target, with no rest, is not the same roast."
+        },
+        {
+          "type": "h2",
+          "text": "Where to check it"
+        },
+        {
+          "type": "p",
+          "text": "The USDA's food-thermometer guidance is specific about placement, and it is the difference between a real reading and a lucky one. Insert the probe into the thickest part of the meat, away from bone, fat or the pan. For whole poultry, check the thickest part of the thigh, the wing and the breast."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Thickest part, not the edge or the thin end.",
+            "Avoid bone and fat, which read heat differently than muscle.",
+            "For a whole bird, sample several spots — thigh, wing, breast — because one spot is not the whole bird."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Why this is a thermometer job"
+        },
+        {
+          "type": "p",
+          "text": "A roast's doneness window is narrow and the cook is long. An instant-read probe gives you the number at the moment you need it; a wireless leave-in probe watches the cook and tells you when the target is reached. Both are built for exactly this moment, and both are on the thermometers we track."
+        },
+        {
+          "type": "note",
+          "text": "Every temperature and placement rule above is reproduced from the USDA Food Safety and Inspection Service Safe Minimum Internal Temperature Chart and its food-thermometer guidance. We add no figures of our own."
+        },
+        {
+          "type": "cta",
+          "text": "Read the thermometer guides and the product pages for the two thermometers we track.",
+          "href": "/guides/is-your-meat-thermometer-telling-you-the-right-number/",
+          "label": "Open the thermometer guide"
+        }
+      ]
+    }
+  ]
+}
