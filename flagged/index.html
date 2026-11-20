@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Irregularities and unverified items, with the sources and the manual step that would close each one.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="analytics-endpoint" content="">
+
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
@@ -33,6 +34,7 @@
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
+      <a class="nav-desk" href="/Affil3/executive-summary/">The desk</a>
     </nav>
   </div>
 </header>
@@ -85,7 +87,7 @@
 </section>
 <section class="flag-card" id="FLG-007">
   <p class="flag-head"><span class="badge flag">FLG-007</span> <span class="badge sev-medium">medium</span> <strong>Content depth is below the official &#39;robust content&#39; rule of thumb</strong></p>
-  <p>The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).</p>
+  <p>The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 8 question-shaped guides and 5 product rows after the 2026-11-20 polish pass. Adding content is a decision for the user (see suggestion S-05).</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a></p>
   <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-07) before submitting the site for Associates review.</p>
@@ -249,6 +251,13 @@
   <p>During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03&#39;s mapping to B08DKYBTPH was confirmed independently, and P04&#39;s checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. Draft numbers this flag previously held on the session branch (FLG-021, FLG-023, FLG-028) all belong to other sessions&#39; published findings, so it is recorded here as FLG-028&#39;s successor number FLG-030.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  
+</section>
+<section class="flag-card is-resolved" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-low">low</span> <strong>P04&#39;s no-buy-button reason contradicted its own row (fixed)</strong> <span class="badge resolved">resolved</span></p>
+  <p>The P04 card text said &#39;No submitted link resolved to this listing&#39;, while the same row records its submitted token resolving to its own observed listing (B0c8moW59 -&gt; B0DHZTCNR5, corroborated by the dated retest and by three independent fetch passes). The prose predated the PR #10 transposition fix and was never re-derived from the corrected row. The actual reason the buy button is withheld is FLG-025: no manufacturer specification page was located for this model. P04&#39;s blank_reason also cited FLG-007 (content depth) for the NIST and NSF claims; that is FLG-025 as well.</p>
+  <p class="resolution"><strong>Resolution:</strong> Reason text rewritten to the actual cause (FLG-025) and the stale flag cross-references corrected on 2026-11-20. Same failure mode as the shop summary counts fixed earlier: prose derived from row state must be re-derived when the row changes.</p>
+  <p class="small"><strong>Sources:</strong> <code>link.amazon/B04G1MEwY</code>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   
 </section>
 </main>
