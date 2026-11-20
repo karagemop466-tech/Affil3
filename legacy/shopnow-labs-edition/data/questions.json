@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "purpose": "What must be answered before a decision can reasonably be made. Each question separates what we know, what we do not know, and how to find the missing piece. Nothing here is rhetorical: every question has an owner and a way to close it.",
+    "legend": {
+      "blocks": "What decision this question is holding up.",
+      "known": "Established in this session from a retrievable source.",
+      "unknown": "Not established. Do not act as though it is.",
+      "to_close": "The specific step that would answer it."
+    }
+  },
+  "questions": [
+    {
+      "id": "Q-01",
+      "question": "Was the fifth link meant to be submitted, and which product is it?",
+      "blocks": "Any page, table row or recommendation for that product. Also any claim about the 'five products'.",
+      "known": "The link resolves to a ThermoMaven digital meat thermometer (B0DHZTCNR5) when it is not intercepted, confirmed by two independent observations including a dated cross-session retest. Three of four requests from this environment were intercepted by an Amazon checkpoint page.",
+      "unknown": "Whether the owner intended this product at all. It is not a countertop cooking appliance in the same sense as the other four, and it was never mentioned in the brief. Nothing is inferred from that.",
+      "to_close": "The owner confirms the intended product, or sends the correct amazon.com/dp/ URL.",
+      "priority": "blocker",
+      "owner": "site owner",
+      "flag": "FLG-001"
+    },
+    {
+      "id": "Q-02",
+      "question": "Are the supplied short links valid Associates links for this account?",
+      "blocks": "Driving traffic. Attribution. The whole commercial premise.",
+      "known": "Four of the five resolved to real product pages. None of the four observed redirect targets contained a tag parameter. Amazon's policy requires the Associates ID to appear as a parameter in each link URL.",
+      "unknown": "Whether attribution happens through a mechanism we cannot see from the redirect, and whether these links were generated in the Associates account for tag shopnow047c-20 at all.",
+      "to_close": "Generate one link in SiteStripe for a known product, compare the resulting URL with the supplied short link, then click the supplied link once and look for a click in the Associates report.",
+      "priority": "blocker",
+      "owner": "site owner",
+      "flag": "FLG-002, FLG-003"
+    },
+    {
+      "id": "Q-03",
+      "question": "Is the account enrolled, and does 'shopnow047c-20' belong to it?",
+      "blocks": "Publishing paid links at all. Amazon permits Special Links only after applying, and only using the Associates ID assigned to you.",
+      "known": "The operator supplied the tracking ID shopnow047c-20 and it matches the XXXXX-## format named in the policies.",
+      "unknown": "Whether the account is approved, whether the tag is active, and which site is registered against it.",
+      "to_close": "Sign in to the Associates dashboard and confirm the tag against the registered site URL.",
+      "priority": "blocker",
+      "owner": "site owner",
+      "flag": "FLG-003"
+    },
+    {
+      "id": "Q-04",
+      "question": "What is the commercial goal, and what number would count as success?",
+      "blocks": "Every prioritisation decision, including which guides to write next and whether to fund original photography or testing.",
+      "known": "There is no stated revenue target, no conversion baseline and no traffic baseline. None was measured and none is invented here.",
+      "unknown": "Target commissions, acceptable payback period on content, and whether the owner intends to treat this as a business or a demonstration.",
+      "to_close": "Owner states one number and a date.",
+      "priority": "high",
+      "owner": "site owner",
+      "flag": ""
+    },
+    {
+      "id": "Q-05",
+      "question": "Does anyone actually search for these questions?",
+      "blocks": "The whole content plan. Guides were chosen on editorial judgement, not on volume data.",
+      "known": "Six guides exist because they map to genuine buying decisions. That is an argument about usefulness, not about demand.",
+      "unknown": "Impressions, clicks, search volume, competition, and which of the six would rank first.",
+      "to_close": "Verify the property in Search Console, submit the sitemap, and read queries after 4 to 6 weeks. Or use a keyword tool and record the date and the figures.",
+      "priority": "high",
+      "owner": "site owner",
+      "flag": "FLG-007"
+    },
+    {
+      "id": "Q-06",
+      "question": "Where will analytics be collected, and under what privacy posture?",
+      "blocks": "Every optimisation decision after launch. Also the content of the privacy page.",
+      "known": "The site now emits five defined events to a documented interface. No collector exists, so nothing is being recorded.",
+      "unknown": "Hosting for the endpoint, retention period, whether IP addresses are stored, and which jurisdictions the audience sits in.",
+      "to_close": "Choose a host, decide whether to store IPs (we recommend hashing or discarding), then point ANALYTICS_ENDPOINT at it.",
+      "priority": "high",
+      "owner": "site owner",
+      "flag": "FLG-006"
+    },
+    {
+      "id": "Q-07",
+      "question": "Does the product data path require API access, and is the account eligible?",
+      "blocks": "Any plan to show live prices, availability, ratings or images.",
+      "known": "PA-API 5 is deprecated in favour of the Creators API. Images and price data may only be used through the licensed tools.",
+      "unknown": "Eligibility thresholds for Creators API access. Secondary sources state a sales threshold, but that was not confirmed in a document retrieved from Amazon, so it is not published as fact.",
+      "to_close": "Read the Creators API introduction and FAQ while signed in, and record the stated eligibility rule with the date it was read.",
+      "priority": "medium",
+      "owner": "site owner",
+      "flag": ""
+    },
+    {
+      "id": "Q-08",
+      "question": "Is there any original testing, or is every claim second-hand?",
+      "blocks": "The strength of every recommendation. Also whether the site can ever claim a defensible advantage over Amazon's own reviews.",
+      "known": "No product on this desk has been physically tested. The site says so in the editorial standards and in each guide.",
+      "unknown": "Whether budget exists to buy units, and whether the owner can publish measured results lawfully.",
+      "to_close": "Decide whether to fund a test unit. If yes, publish method and measurements. If no, keep the current explicit disclosure.",
+      "priority": "medium",
+      "owner": "site owner",
+      "flag": "FLG-008"
+    },
+    {
+      "id": "Q-09",
+      "question": "Who is legally responsible for the site, and what jurisdiction governs it?",
+      "blocks": "The privacy page, the contact page and the complaints path.",
+      "known": "The site is published from a public GitHub repository under an individual account.",
+      "unknown": "Business entity, contact address, governing law, and whether any jurisdictions beyond the US are targeted.",
+      "to_close": "Owner supplies an entity name and a contact route.",
+      "priority": "medium",
+      "owner": "site owner",
+      "flag": ""
+    },
+    {
+      "id": "Q-10",
+      "question": "Can the site show a delivery estimate or availability?",
+      "blocks": "Any urgency-based merchandising.",
+      "known": "Amazon permits price and availability display only when Amazon serves the link or the data comes through the API.",
+      "unknown": "Nothing material. This one is closed as: no, not without API access.",
+      "to_close": "Closed. Recorded here so it is not re-litigated.",
+      "priority": "low",
+      "owner": "editorial",
+      "flag": ""
+    },
+    {
+      "id": "Q-11",
+      "question": "Should the site carry a second category beyond air fryers?",
+      "blocks": "The recommendation, the navigation and the design language.",
+      "known": "Four of five products are countertop cooking appliances with one thermometer. That is coherent as a single desk.",
+      "unknown": "Whether the owner has more products in other categories, and whether a narrow desk or a broad catalogue is the intent.",
+      "to_close": "Owner confirms catalogue breadth.",
+      "priority": "low",
+      "owner": "site owner",
+      "flag": ""
+    },
+    {
+      "id": "Q-12",
+      "question": "How will corrections be made after launch?",
+      "blocks": "Long-term trust, and the ability to comply with the accuracy requirement in the Program Policies.",
+      "known": "A correction policy is published. There is no automated change-detection yet.",
+      "unknown": "How often product listings change out from under the written copy, because nothing is watching them.",
+      "to_close": "Add a scheduled job that re-checks each product page and opens an issue when a listing no longer matches the stored attributes.",
+      "priority": "medium",
+      "owner": "editorial",
+      "flag": ""
+    }
+  ]
+}

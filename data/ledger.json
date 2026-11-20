@@ -1,0 +1,15 @@
+{
+  "status": "Empty. No authorized first-party report has been imported, so there is nothing to report.",
+  "rule": "A row is added only from an authorized first-party report, for example an Associates report exported by the account owner. Every row carries the date it was imported, the period it covers, the report it came from, and the file or URL kept with it. Nothing is estimated, scraped or modelled. No conversion score or revenue forecast is presented anywhere on this site.",
+  "columns": [
+    {"name": "timestamp_imported", "meaning": "When the row was added, in UTC."},
+    {"name": "report_date_range", "meaning": "The period the source report covers."},
+    {"name": "source", "meaning": "Name of the authorized first-party report or export."},
+    {"name": "provenance", "meaning": "File name or URL of the report, kept alongside the row."},
+    {"name": "channel", "meaning": "The site section or tracking ID the figures belong to, for example shopnow047c-20."},
+    {"name": "eligible_sessions", "meaning": "Sessions reported as eligible in the source. Blank if the report does not state it."},
+    {"name": "clicks", "meaning": "Clicks as reported in the source. Blank if the report does not state it."},
+    {"name": "reported_orders", "meaning": "Orders as reported in the source. Blank if the report does not state it."}
+  ],
+  "rows": []
+}

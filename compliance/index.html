@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disclosure and compliance — Affil3</title>
+<meta name="description" content="The exact disclosure wording, where it appears, the link rules applied, and the gates that must pass before scaling.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/compliance/">
+<meta property="og:title" content="Disclosure and compliance">
+<meta property="og:description" content="The exact disclosure wording, where it appears, the link rules applied, and the gates that must pass before scaling.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Affil3">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-counter.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="analytics-endpoint" content="">
+<link rel="stylesheet" href="/Affil3/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 — buying guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+
+</head>
+<body data-page="compliance" >
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span><small>Kitchen buying guides</small></a>
+      <p class="masthead-issue"><b>Independent</b> · checked November 20, 2026</p>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="/Affil3/shop/">The picks</a>
+      <a href="/Affil3/guides/">Buying guides</a>
+      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/about/">How we choose</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure.</strong> <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</span> <a href="/Affil3/compliance/">How we disclose</a></div>
+</div>
+<main id="main">
+<div class="wrap">
+<section class="page-head"><p class="kicker">Compliance</p><h1>Disclosure, links and gates</h1></section>
+<div class="prose">
+<h2>The required statement</h2>
+<p>Operating Agreement §5 requires the Site to state, clearly and prominently: <strong>“As an Amazon Associate I earn from qualifying purchases.”</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></p>
+<p>That sentence appears in the disclosure strip directly under the masthead on every page of this site, and again in the footer. The FTC's Endorsement Guides require a material connection to be disclosed clearly and conspicuously, and treat an affiliate commission as exactly that kind of connection; a disclosure buried on an About page is not enough <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5" rel="noopener external">S07</a> <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255" rel="noopener external">S08</a>.</p>
+<h2>How outbound links are handled</h2>
+<ul>
+<li>Every link to an Amazon host carries <code>rel="sponsored"</code>, which is what Google asks for on paid and affiliate links <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a>.</li>
+<li>Buy links carry the tracking ID <code>shopnow047c-20</code> as a tag parameter, which is the tagging rule in the Program Policies <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
+<li>No redirect, no cloaking and no link shortener sits between the reader and Amazon. The click counter records the click in the browser and lets the link go straight out <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
+<li>No price, star rating or availability figure is published, because Amazon's rules only permit that when Amazon serves the data or it arrives through its API <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a>.</li>
+</ul>
+<h2>Gates before this scales</h2>
+</div>
+<div class="table-wrap"><table class="wide"><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure above the fold on every page, repeated in the footer</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, destination and report confirmed</td><td>Manual, needs Associates login</td><td><span class="badge sev-high">pending</span> <a class="badge flag" href="/Affil3/flagged/#FLG-005">FLG-005</a></td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-04</td><td>Every outbound product link uses the tag shopnow047c-20</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-05</td><td>No redirect or cloaking page generated</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-06</td><td>No price, rating or availability displayed</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td><span class="badge sev-low">no rows yet</span></td></tr><tr><td>G-09</td><td>Only the five defined events are sent; no cookies</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated in the build</td><td><span class="badge good">passing</span></td></tr></tbody></table></div>
+<div class="prose"><p class="small">The automated gates run on every build in <code>tools/verify.mjs</code> and a failing gate stops the site from being published.</p></div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span></a>
+        <p class="foot-blurb">An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/shop/">The full comparison table</a></li>
+          <li><a href="/Affil3/sources/">Source register</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/suggestions/">Suggestions to review</a></li>
+          <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
+          <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/legacy/archive/">Archived editions</a></li>
+          <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Some links here are affiliate links and are marked sponsored. Photography on this site is editorial illustration, not the reviewed units.</p>
+    <p class="fine">Affil3 is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown here. Product photography is editorial illustration, not the reviewed unit. Last checked November 20, 2026. Source links appear on every claim, and the full register is in the footer.</p>
+  </div>
+</footer>
+<script src="/Affil3/assets/analytics.js" defer></script>
+</body>
+</html>

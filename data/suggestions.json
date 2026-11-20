@@ -1,0 +1,225 @@
+{
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B'.",
+  "suggestions": [
+    {
+      "id": "S-01",
+      "topic": "Two publications in one repository",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).",
+          "tradeoff": "Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL."
+        },
+        {
+          "id": "B",
+          "label": "Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.",
+          "tradeoff": "Cleanest signal for search engines; a redirect map has to be written and tested first."
+        },
+        {
+          "id": "C",
+          "label": "Merge the better parts of the old edition into the root site and remove the duplicate pages.",
+          "tradeoff": "Best content outcome, most work, and the old edition's data conflicts with the root data and must be reconciled."
+        }
+      ],
+      "recommendation": "B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies."
+    },
+    {
+      "id": "S-02",
+      "topic": "Buy buttons while links are untested",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the buy buttons, labelled as provisional and pending a tracking check (current).",
+          "tradeoff": "The site can earn from day one, but an untested link that silently fails credits nothing."
+        },
+        {
+          "id": "B",
+          "label": "Hide every buy button until gate G-02 passes.",
+          "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
+        }
+      ],
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
+    },
+    {
+      "id": "S-03",
+      "topic": "Where the analytics collector runs",
+      "current": "D",
+      "options": [
+        {
+          "id": "A",
+          "label": "Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS.",
+          "tradeoff": "Full control of raw data; the owner runs a server and patches it."
+        },
+        {
+          "id": "B",
+          "label": "Run it as a serverless function on a platform that supports Node.",
+          "tradeoff": "No server to patch; cold starts and platform limits on storage."
+        },
+        {
+          "id": "C",
+          "label": "Skip self-hosting and use a privacy-focused hosted analytics service.",
+          "tradeoff": "Fastest to start; one more third party, and the data leaves your control."
+        },
+        {
+          "id": "D",
+          "label": "Stay inactive until there is traffic worth measuring (current).",
+          "tradeoff": "Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid."
+        }
+      ],
+      "recommendation": "B. It removes the server maintenance objection without handing the data away."
+    },
+    {
+      "id": "S-04",
+      "topic": "Pricing display",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Show no prices; every button reads 'Check the current price on Amazon' (current).",
+          "tradeoff": "Always accurate, and compliant with the price clause; readers have to click to know a budget."
+        },
+        {
+          "id": "B",
+          "label": "Enroll in the Creators API and display Amazon-served prices with a timestamp.",
+          "tradeoff": "Better for budget-led shoppers; more engineering, and a stale price is a compliance risk."
+        },
+        {
+          "id": "C",
+          "label": "Show a coarse price band instead of a figure.",
+          "tradeoff": "Useful and stable; still a claim that needs checking, and it ages badly."
+        }
+      ],
+      "recommendation": "A until traffic justifies the Creators API work. Then B."
+    },
+    {
+      "id": "S-05",
+      "topic": "Publishing cadence",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "One new guide every two weeks (current).",
+          "tradeoff": "Sustainable; slow to build a topic cluster."
+        },
+        {
+          "id": "B",
+          "label": "One new guide per week.",
+          "tradeoff": "Faster topical coverage; needs a real writing slot weekly."
+        },
+        {
+          "id": "C",
+          "label": "A batch of eight guides before launch, then monthly.",
+          "tradeoff": "Reaches a useful site size quickly; risks thin pages if the batch is rushed."
+        }
+      ],
+      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones."
+    },
+    {
+      "id": "S-06",
+      "topic": "Reader capture",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "No email capture yet; the RSS feed is the only subscription route (current).",
+          "tradeoff": "Nothing to maintain and no consent obligations; no direct channel to readers."
+        },
+        {
+          "id": "B",
+          "label": "Add a single-field email capture with double opt-in on guide pages.",
+          "tradeoff": "Owns the audience instead of renting it from search; adds a privacy notice and a provider."
+        },
+        {
+          "id": "C",
+          "label": "Publish a 'notify me when a new guide ships' link that opens a mail draft.",
+          "tradeoff": "Zero infrastructure and honest; very low conversion."
+        }
+      ],
+      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send."
+    },
+    {
+      "id": "S-07",
+      "topic": "Imagery",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep editorial illustration, clearly labelled as not the reviewed unit (current).",
+          "tradeoff": "Consistent look, no licensing exposure, no misleading product photography."
+        },
+        {
+          "id": "B",
+          "label": "Use Amazon-hosted product images through the approved image service.",
+          "tradeoff": "Shows the actual product; images must be served by Amazon's tools and can change without notice."
+        },
+        {
+          "id": "C",
+          "label": "Commission real photography of the units.",
+          "tradeoff": "Highest trust and highest cost; needs physical units."
+        }
+      ],
+      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying."
+    },
+    {
+      "id": "S-08",
+      "topic": "The byline",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the team byline, flagged as a weakness (current).",
+          "tradeoff": "Honest and unchanging; weaker trust signal than a person."
+        },
+        {
+          "id": "B",
+          "label": "Add a named editor with a short bio and a contact address.",
+          "tradeoff": "Strongest trust signal; a person has to be accountable for the corrections."
+        }
+      ],
+      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available."
+    },
+    {
+      "id": "S-09",
+      "topic": "Product scope",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Stay at five submitted products and go deep on them (current).",
+          "tradeoff": "Focused and honest; a thin catalogue for a shopping site."
+        },
+        {
+          "id": "B",
+          "label": "Add three to five comparison products per category, researched the same way.",
+          "tradeoff": "Makes the categories credible; each added product needs its own source page and verification."
+        },
+        {
+          "id": "C",
+          "label": "Expand into a second niche once the first converts.",
+          "tradeoff": "Scales the model; splits attention before anything is proven."
+        }
+      ],
+      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against."
+    },
+    {
+      "id": "S-10",
+      "topic": "Disclosure prominence",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Dark disclosure bar directly under the masthead, repeated in the footer (current).",
+          "tradeoff": "Impossible to miss, and slightly heavy visually."
+        },
+        {
+          "id": "B",
+          "label": "A lighter inline notice above the first product, plus the footer repeat.",
+          "tradeoff": "Prettier; risks being read as decoration rather than disclosure."
+        }
+      ],
+      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    }
+  ]
+}

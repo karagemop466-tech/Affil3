@@ -1,0 +1,18 @@
+{
+  "siteName": "Affil3",
+  "tagline": "Kitchen buying guides, checked against the maker's own specification sheet",
+  "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
+  "siteUrl": "https://karagemop466-tech.github.io/Affil3",
+  "basePath": "/Affil3",
+  "language": "en-US",
+  "trackingId": "shopnow047c-20",
+  "associatesStatement": "As an Amazon Associate I earn from qualifying purchases.",
+  "disclosureStrip": "I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.",
+  "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units.",
+  "author": "Affil3 editorial team",
+  "lastReviewed": "2026-11-20",
+  "analyticsEndpoint": "",
+  "analyticsNote": "Empty by design: GitHub Pages cannot run the collector. Set this to the URL of a deployed tools/collector.mjs (HTTPS, path ending in /collect) to turn analytics on. See FLG-009.",
+  "suggestionsNote": "Suggestions are listed at /suggestions/ and are not implemented until chosen.",
+  "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer."
+}

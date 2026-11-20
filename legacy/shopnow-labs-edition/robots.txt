@@ -1,0 +1,7 @@
+# ShopNow Labs
+User-agent: *
+Allow: /
+
+# Dashboard and review surfaces are public and indexable on purpose:
+# the brief asks for every finding to be reachable and reviewable.
+Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml
