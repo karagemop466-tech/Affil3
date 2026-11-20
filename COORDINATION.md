@@ -2235,3 +2235,36 @@ Independent internal-link crawl of the root publication: 57 HTML pages, 2,009 in
 ## V-06 · Session summary — done
 
 `EXECUTIVE-SUMMARY-0e102530.md`.
+
+## Merge resolution — 2026-11-20 (session `0e102530-affil3`)
+
+`main` advanced 258 commits (PRs #57–#75) while this branch was open, so the merge collided in five
+files. **Conflict resolution log, as the coordination rules require:**
+
+1. **`COORDINATION.md`** — append-only, and both sessions added a section at the same point in the file.
+   Both sections are kept: main's first, this session's after it. Nothing was discarded.
+2. **`data/guides.json`** — this session had added two guides. Main now publishes thirteen, including
+   `dual-basket-or-single-basket-air-fryer` and `how-to-read-an-amazon-listing-before-you-buy-a-kitchen-appliance`,
+   which cover the same two questions better. **Both of this session's guides were withdrawn.** Two
+   versions of one question on one domain is the duplicate-content pattern S09 forbids, and publishing
+   them would have competed with main's own pages. The illustrations remain in `src/assets/img/` unused
+   (recorded, not hidden).
+3. **`data/flags.json`, `data/suggestions.json`, `data/questions.json`** — main had already used
+   FLG-037..040, S-20..S-25, Q-17..Q-19 and D-13..D-14 for other work. This session's rows were
+   **renumbered rather than overwritten**: FLG-037→**FLG-041**, FLG-038→**FLG-042**, S-20→**S-26**,
+   S-21→**S-27**, Q-17→**Q-20**, Q-18→**Q-21**, D-13→**D-16**, D-14→**D-17**, D-15→**D-18**.
+   K-22 was free and kept. No other session's row was edited or reordered.
+4. **`tools/build.mjs`** — two conflicts, both in text this session had only touched to replace a
+   hand-written guide count. Main's version of both sentences was better (it also removed a stale
+   count), so main's side was taken in both.
+5. **Generated HTML, `feed.xml`, `sitemap.xml`** — not hand-merged. The build was re-run from the merged
+   registers and the output committed, which is the only safe way to resolve a conflict in a generated
+   file.
+
+**Side effect of the merge:** main's eight new guides shipped illustrations with no card variant, which
+this session's `srcset` change would have pointed at files that did not exist. Eight `-card.jpg`
+variants were generated, and `cardVariant()` now checks that the variant file exists before offering it,
+so a new guide can never produce a `srcset` that 404s.
+
+**Gates after the merge:** `node tools/build.mjs` 40 pages, 13 feed items, 39 sitemap URLs;
+`node tools/verify.mjs` **4795 checks passed, 0 failed**; working tree clean after a rebuild (no drift).
