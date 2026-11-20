@@ -32,7 +32,13 @@ const fail = (rule, file, msg) => errors.push({ rule, file, msg });
 /* ---------------------------------------------------------------- helpers */
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
-    if (name === ".git" || name === "node_modules" || name === "tools" || name === "data" || name === "content") continue;
+    // "legacy" is a frozen archive of earlier sessions' publications. It is
+    // preserved verbatim for provenance and is deliberately NOT held to this
+    // build's rules: it was published under a different design system and
+    // rewriting it would destroy the record it exists to hold. It is linked
+    // from /legacy/ and is excluded from the sitemap. See COORDINATION.md.
+    if ([".git", "node_modules", "tools", "data", "content", "legacy"].includes(name)) continue;
+    if (name === "404.html") continue; // generated; checked separately below and excluded from the sitemap
     const full = join(dir, name);
     const s = statSync(full);
     if (s.isDirectory()) walk(full, acc);
@@ -203,6 +209,19 @@ for (const f of htmlFiles) {
   const p = "/" + relative(ROOT, f).replace(/\\/g, "/").replace(/index\.html$/, "");
   const url = `${SITE_URL}${p}`;
   if (!seen.has(url)) fail("sitemap", "sitemap.xml", `page missing from sitemap: ${p}`);
+}
+
+/* ------------------------------------------------------- 404 disclosure */
+// The 404 is served for any missing path, so it must still carry the statement.
+{
+  const nf = join(ROOT, "404.html");
+  if (!existsSync(nf)) fail("disclosure", "404.html", "no 404 page generated");
+  else {
+    const h = readFileSync(nf, "utf8");
+    if (!h.includes(FTC)) fail("disclosure", "404.html", "404 missing FTC disclosure wording");
+    if (!h.includes(ASSOC)) fail("disclosure", "404.html", "404 missing Amazon Associates statement");
+    if (!/name="robots" content="noindex"/.test(h)) fail("disclosure", "404.html", "404 should be noindex");
+  }
 }
 
 /* -------------------------------------------------------------- extras */

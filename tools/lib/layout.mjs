@@ -62,6 +62,7 @@ export const FOOTER_GROUPS = [
       ["Privacy", "/privacy/"],
       ["Editorial standards", "/editorial-standards/"],
       ["Contact", "/contact/"],
+      ["Archived editions", "/legacy/"],
     ],
   },
 ];

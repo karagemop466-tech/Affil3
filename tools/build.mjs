@@ -7,7 +7,7 @@
  *
  * Run: node tools/build.mjs
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync, unlinkSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -152,6 +152,24 @@ function favicon() {
 }
 
 // ---- build ---------------------------------------------------------------
+// This generator is the only one allowed to write to the repository root.
+// `tools/build.py` from an earlier session writes into editorial/ and must not
+// be run against this branch: it would regenerate a competing site. That file
+// is kept only because the archived edition references it. See COORDINATION.md.
+
+// Known output roots. Anything else at the root is suspicious and reported.
+const OWNED_ROOTS = new Set([
+  "index.html", "404.html", "sitemap.xml", "feed.xml", "robots.txt", ".nojekyll",
+  "air-fryers", "thermometers", "buying-guides", "products", "collections",
+  "disclosure", "editorial-standards", "how-we-pick", "privacy", "contact",
+  "review", "operations", "assets", "legacy", "content", "data", "tools", ".github",
+]);
+for (const entry of readdirSync(ROOT)) {
+  const name = entry;
+  if (OWNED_ROOTS.has(name) || name.startsWith(".") || name.endsWith(".md")) continue;
+  console.warn(`  warning: unexpected entry at repo root: ${name}`);
+}
+
 if (existsSync(join(ROOT, "review"))) rmSync(join(ROOT, "review"), { recursive: true, force: true });
 
 buildShop({ out, addRoute, DATA, GUIDES, published, esc });
@@ -162,6 +180,32 @@ buildOps({ out, addRoute, DATA, esc });
 out("sitemap.xml", sitemap());
 out("feed.xml", feed());
 out("robots.txt", robots);
+
+// 404 must still carry the disclosure strip: GitHub Pages serves it for any
+// missing URL, and a page without the affiliate statement is not publishable.
+out("404.html", notFound());
+
+function notFound() {
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — ${SITE.name}</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="${SITE.base}/assets/css/site.css">
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure"><div class="wrap">
+<span class="disclosure__tag">Disclosure</span>
+<span>${SITE.ftc} ${SITE.assoc} <a href="${SITE.base}/disclosure/">How this works</a></span>
+</div></div>
+<main id="main" class="wrap section" style="text-align:center;max-width:34rem">
+<p class="kicker kicker--plain" style="justify-content:center">404</p>
+<h1>That page isn't here</h1>
+<p class="lede" style="margin-inline:auto">The link may be old, or the page may have moved. Everything on this site is reachable from the guide index or the front page.</p>
+<p style="margin-top:1.5rem"><a class="btn btn--primary" href="${SITE.base}/">Front page</a>
+<a class="btn btn--ghost" href="${SITE.base}/buying-guides/">All guides</a></p>
+<p class="small muted" style="margin-top:2rem"><a href="${SITE.base}/review/flagged-for-review/">Known gaps</a> · <a href="${SITE.base}/disclosure/">Disclosure</a> · <a href="${SITE.base}/privacy/">Privacy</a></p>
+</main></body></html>`;
+}
 out("assets/img/favicon.svg", favicon());
 out(".nojekyll", "");
 

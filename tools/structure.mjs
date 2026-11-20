@@ -18,7 +18,10 @@ const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input"
 
 function walk(dir, acc = []) {
   for (const name of readdirSync(dir)) {
-    if ([".git", "node_modules", "tools"].includes(name)) continue;
+    // legacy/ is a frozen archive of earlier sessions' output; it predates this
+    // design system and is preserved for provenance, so it is not held to these
+    // markup rules. See COORDINATION.md.
+    if ([".git", "node_modules", "tools", "legacy"].includes(name)) continue;
     const full = join(dir, name);
     if (statSync(full).isDirectory()) walk(full, acc);
     else if (full.endsWith(".html")) acc.push(full);

@@ -1,3 +1,9 @@
 node_modules/
 .DS_Store
 *.log
+
+# Never commit a regenerated legacy tree. tools/build.py (an earlier session's
+# builder) writes into this directory; if it ever lands at the repository root it
+# would publish a second, competing site next to the live one. See COORDINATION.md.
+/docs/
+/editorial/
