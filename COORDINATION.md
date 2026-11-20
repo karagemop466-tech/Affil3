@@ -1269,3 +1269,34 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+---
+
+# Session `arena/533ac993-affil3` — integration, verification and publication
+
+Registry: session `arena/533ac993-affil3`, branch `arena/533ac993-affil3`, status active. Branch rebased onto `origin/main` (`67cfe2f`); the branch tree is `main`'s tree plus this session's claim/completion records only.
+
+## File scope claimed
+
+- `COORDINATION.md` — this session's claim and completion record sections only (append-only; nothing above this line is edited).
+
+## Scope NOT touched
+
+Everything owned by the root-site generator and its inputs is deliberately left unchanged: `index.html`, `shop/`, `products/`, `categories/`, `guides/`, `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `workflow/`, `about/`, `privacy/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`, `data/*.json`, `src/`, `tools/build.mjs`, `tools/verify.mjs`. These surfaces were published on `main` by prior sessions; this session verifies the combined tree and publishes it through this branch's PR/merge, changing none of them. Any irregularity found on those files is logged here as a request, not edited.
+
+Note for awareness: P04's manufacturer-page correction is carried by open PR #39 (`arena/b1c9cb53-affil3`), which conflicts with `main`; this session does not touch product data. ThermoMaven (P04) therefore keeps no specifications and no buy button, consistent with `data/products.json` on `main`.
+
+## Task board
+
+| ID | Task | Status | Notes |
+|---|---|---|---|
+| I-01 | Rebase onto `origin/main`; read root site, gates and data model | done | branch is now `67cfe2f` + this claim |
+| I-02 | Run build + verify + link checks on the combined tree; confirm green | pending | `npm run check` |
+| I-03 | Open PR from this branch to `main` | pending | summary, sources used, flagged irregularities in the body |
+| I-04 | Merge the PR without waiting for review | pending | user-authorized; `gh pr merge --merge` |
+| I-05 | Confirm GitHub Pages deploys; fetch the live site | pending | `https://karagemop466-tech.github.io/Affil3/` |
+| I-06 | Record PR link, merge result and deploy status in this file | pending | follow-up PR from this branch if needed |
+
+## Sources relied on (register already on `main`; not re-derived here)
+
+S01 Associates Operating Agreement; S02 Program Policies; S03/S11/S13/S18/S19 Associates help topics; S04/S05 submitted links and observed destinations; S06 Google qualified outbound links; S07/S08 FTC disclosure/endorsement; S09/S10 USDA FSIS temperatures and thermometers; manufacturer pages S12–S17. All product rows keep intended.* fields separate from observed.* fields; every outbound product link carries `rel="sponsored"`; disclosure strip is above the fold and repeated in the footer; the campaign ledger is empty by design and no traffic, conversion or revenue figures are claimed.
