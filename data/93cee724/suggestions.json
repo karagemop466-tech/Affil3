@@ -1,0 +1,248 @@
+{
+  "note": "Suggestion & decision queue. Every item is a proposal with options and a recommendation, status 'awaiting review' until the owner picks a path. Implementations that could not wait (site naming, link policy) shipped provisionally and are marked as such. Nothing here is a claim of product superiority, popularity, or search volume.",
+  "suggestions": [
+    {
+      "id": "SUG-001",
+      "title": "Site brand and masthead",
+      "context": "The publication needs a name that reads like a shop/editorial title, not a data audit.",
+      "options": [
+        {"id": "a", "label": "The Crisp Index", "pros": "Kitchen-specific, publication cadence, works as a noun ('the index')", "cons": "Slightly abstract"},
+        {"id": "b", "label": "Counter & Crisp", "pros": "Warm, spatial (counter space is a core theme)", "cons": "Ampersand names are harder to type"},
+        {"id": "c", "label": "The Kitchen Ledger", "pros": "Trustworthy register feel", "cons": "Too close to the audit tone we're avoiding"}
+      ],
+      "recommendation": "The Crisp Index (shipped provisionally).",
+      "effort": "low",
+      "risk": "low",
+      "depends_on": [],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Masthead, SEO titles, feed, social copy"
+    },
+    {
+      "id": "SUG-002",
+      "title": "Publishing cadence and topic selection loop",
+      "context": "The brief: publish question-shaped guides on a cadence, add each to the sitemap and feed, and choose the next topic from measured queries instead of instinct.",
+      "options": [
+        {"id": "a", "label": "2 question-shaped guides/month + 1 seasonal anchor", "pros": "Sustainable, leaves room for verification work", "cons": "Slow ramp in the first quarter"},
+        {"id": "b", "label": "4 guides/month", "pros": "Faster coverage of the cluster", "cons": "Quality and verification load risk"}
+      ],
+      "recommendation": "Option a; revisit after 90 days of Search Console query data (SUG-008).",
+      "effort": "medium",
+      "risk": "low",
+      "depends_on": ["Q-006", "Q-009"],
+      "status": "awaiting review",
+      "shipped_provisionally": false,
+      "feeds_into": "Editorial calendar, sitemap, feed"
+    },
+    {
+      "id": "SUG-003",
+      "title": "Five-event analytics schema (proposal for the brief's undefined 'five defined events')",
+      "context": "The brief requires recording 'the five defined events' but does not enumerate them (Q-003). A concrete, privacy-preserving proposal:",
+      "options": [
+        {"id": "a", "label": "page_view, outbound_click, guide_read, newsletter_signup, feedback_click", "pros": "Covers reach → interest → intent → capture → voice; no PII; no cookies", "cons": "guide_read needs a scroll heuristic"},
+        {"id": "b", "label": "page_view, outbound_click, cta_click, newsletter_signup, feedback_click", "pros": "Simpler", "cons": "Loses content-engagement signal"}
+      ],
+      "recommendation": "Option a (implemented in analytics.js, sending disabled until the endpoint is deployed — FLG-006).",
+      "effort": "low",
+      "risk": "low",
+      "depends_on": ["Q-003", "Q-004"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Campaign ledger, content optimization loop"
+    },
+    {
+      "id": "SUG-004",
+      "title": "Analytics endpoint hosting",
+      "context": "The brief demands a self-hosted analytics endpoint; GitHub Pages is static (FLG-006).",
+      "options": [
+        {"id": "a", "label": "Cloudflare Worker + KV/D1 (reference impl in tools/analytics-endpoint)", "pros": "Free tier, global edge, trivial deploy via wrangler", "cons": "Needs a Cloudflare account"},
+        {"id": "b", "label": "Small VPS/Fly.io Python server (reference impl ships)", "pros": "Full control, JSONL simplicity", "cons": "Ops burden, cost"},
+        {"id": "c", "label": "Privacy-focused third party (e.g. GoatCounter)", "pros": "Fastest", "cons": "Not self-hosted — deviates from the brief"}
+      ],
+      "recommendation": "Option a; endpoint accepts only {event, path, ts, ref}, drops IP and user agent at the edge.",
+      "effort": "medium",
+      "risk": "low",
+      "depends_on": ["Q-004"],
+      "status": "awaiting review",
+      "shipped_provisionally": false,
+      "feeds_into": "FLG-006 closure, campaign ledger clicks/sessions"
+    },
+    {
+      "id": "SUG-005",
+      "title": "Reader capture (newsletter) stack",
+      "context": "SG-30 reader capture; the form ships but collects nothing until an endpoint exists (FLG-008).",
+      "options": [
+        {"id": "a", "label": "Listmonk self-hosted", "pros": "Matches self-host preference, full data control", "cons": "Ops burden"},
+        {"id": "b", "label": "Buttondown", "pros": "Developer-friendly, cheap", "cons": "Third-party"},
+        {"id": "c", "label": "Keep the form gated until there is a first issue to send", "pros": "No dead list, no consent rot", "cons": "Slower list growth"}
+      ],
+      "recommendation": "Option c for 30 days, then a or b before the second guide batch ships.",
+      "effort": "low",
+      "risk": "low",
+      "depends_on": ["Q-005"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "SG-30 closure, first dispatch"
+    },
+    {
+      "id": "SUG-006",
+      "title": "Price and rating display policy",
+      "context": "Prices/ratings are volatile; the verification rule forbids unconfirmed values (FLG-010).",
+      "options": [
+        {"id": "a", "label": "Continue omitting prices; CTA 'Check today's price'", "pros": "Always accurate, no cache-policy risk", "cons": "Less 'shop-like'"},
+        {"id": "b", "label": "Integrate Product Advertising API for live price/rating", "pros": "Full shop feel, compliant refresh", "cons": "Needs PA-API access (Associates account), engineering"}
+      ],
+      "recommendation": "Option a until PA-API credentials exist; then b behind the same verification gate.",
+      "effort": "low (a) / high (b)",
+      "risk": "low",
+      "depends_on": ["Q-007", "Q-010"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Product cards, comparison tables"
+    },
+    {
+      "id": "SUG-007",
+      "title": "Link-validation protocol before scaling",
+      "context": "Brief item S02: test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling.",
+      "options": [
+        {"id": "a", "label": "Hold at 5 links; validate; then scale", "pros": "Compliant, matches the brief's gate", "cons": "Slower expansion"},
+        {"id": "b", "label": "Publish more links now, validate later", "pros": "Faster coverage", "cons": "Directly against the brief's gate; compliance risk"}
+      ],
+      "recommendation": "Option a — hard gate. No new products until FLG-003/FLG-005 close.",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": ["Q-002", "Q-007"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "FLG-003, FLG-005"
+    },
+    {
+      "id": "SUG-008",
+      "title": "Search Console + measured topic loop",
+      "context": "Brief: 'turn on real analytics so the next topic is chosen from measured queries instead of instinct' (SG-29).",
+      "options": [
+        {"id": "a", "label": "Verify property, submit sitemap, monthly query review meeting (documented in ledger provenance)", "pros": "Directly answers the brief", "cons": "Needs owner Google account once"},
+        {"id": "b", "label": "Skip Search Console; rely on the self-hosted counter only", "pros": "No Google dependency", "cons": "No query data — contradicts the brief"}
+      ],
+      "recommendation": "Option a; blocked only on the verification token (Q-006).",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": ["Q-006"],
+      "status": "awaiting review",
+      "shipped_provisionally": false,
+      "feeds_into": "SUG-002 topic selection"
+    },
+    {
+      "id": "SUG-009",
+      "title": "Comparison hub depth",
+      "context": "The compare hub ships as a decision framework (form factors, questions, trade-offs).",
+      "options": [
+        {"id": "a", "label": "Keep it decision-framework only until hands-on testing exists", "pros": "Honest; no fake tests", "cons": "Fewer 'winner' keywords"},
+        {"id": "b", "label": "Add 'editor's pick' style picks now", "pros": "Higher CTR", "cons": "Cannot be substantiated — would be exactly the slop the brief forbids"}
+      ],
+      "recommendation": "Option a. Picks/awards only after a documented hands-on method exists (SUG-011).",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": [],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Compare hub, guide CTAs"
+    },
+    {
+      "id": "SUG-010",
+      "title": "Seasonal calendar",
+      "context": "Brief asks for seasons as part of the publication polish path.",
+      "options": [
+        {"id": "a", "label": "Holiday hosting (Nov–Dec) → New Year reset (Jan) → Spring refresh (Mar)", "pros": "Matches buyer intent windows", "cons": "Seasonal copy needs refreshes"},
+        {"id": "b", "label": "Evergreen only", "pros": "Less upkeep", "cons": "Misses the brief's seasonal ask"}
+      ],
+      "recommendation": "Option a; holiday anchor ships now (November 2026).",
+      "effort": "medium",
+      "risk": "low",
+      "depends_on": ["Q-009"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Front-page seasonal band, guides"
+    },
+    {
+      "id": "SUG-011",
+      "title": "Experience & trust signals (E-E-A-T) roadmap",
+      "context": "A publication earns trust with methodology, corrections, and honest authorship — not fake personas.",
+      "options": [
+        {"id": "a", "label": "Editorial desk authorship + published methodology + corrections log (shipped), named editor later", "pros": "Honest now, upgrade path clear", "cons": "Anonymous desk is weaker than a named expert"},
+        {"id": "b", "label": "Invent a staff writer persona", "pros": "Looks fuller", "cons": "Fabrication — banned by the verification rules"}
+      ],
+      "recommendation": "Option a. Add a named editor with real credentials when one exists.",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": [],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "About page, guide bylines, trust"
+    },
+    {
+      "id": "SUG-012",
+      "title": "CTA wording",
+      "context": "Sponsored CTA copy affects click-through and honesty framing.",
+      "options": [
+        {"id": "a", "label": "'Check today's price on Amazon' + Sponsored chip", "pros": "Sets accurate expectation (price varies), FTC-clear", "cons": "Wordier"},
+        {"id": "b", "label": "'See it on Amazon' + Sponsored chip", "pros": "Shorter", "cons": "Less informative"}
+      ],
+      "recommendation": "Option a (shipped); measure via outbound_click events once the endpoint is live.",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": [],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "All product cards"
+    },
+    {
+      "id": "SUG-013",
+      "title": "Monetization balance",
+      "context": "How many money moments per page?",
+      "options": [
+        {"id": "a", "label": "Affiliate CTAs only (no display ads, no popups), one primary CTA per card/section", "pros": "Trust, speed, clean disclosure story", "cons": "Lower RPM short-term"},
+        {"id": "b", "label": "Add display ads", "pros": "Extra revenue", "cons": "Undermines the shop feel and page speed"}
+      ],
+      "recommendation": "Option a.",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": [],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Site layout policy"
+    },
+    {
+      "id": "SUG-014",
+      "title": "When (not) to automate optimization",
+      "context": "Priority 4: measure before automating optimization; Priority 5: compliance gate in the publishing workflow.",
+      "options": [
+        {"id": "a", "label": "Automate only mechanics (build, sitemap, feed, validation) now; keep content/pricing/compliance decisions human-gated until the ledger has first-party rows", "pros": "Matches the brief exactly", "cons": "Manual review time"},
+        {"id": "b", "label": "Automate content optimization from day one", "pros": "Fast", "cons": "No data yet — violates Priority 4"}
+      ],
+      "recommendation": "Option a (shipped as the machinery design).",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": ["Q-012"],
+      "status": "awaiting review",
+      "shipped_provisionally": true,
+      "feeds_into": "Roadmap, ledger policy"
+    },
+    {
+      "id": "SUG-015",
+      "title": "Swap provisional tagged URLs for validated Special Links",
+      "context": "FLG-005: current outbound URLs use ?tag=shopnow047c-20 on observed listing URLs, pending the Associates workflow test.",
+      "options": [
+        {"id": "a", "label": "After the one-link-per-product test passes, regenerate every product link from SiteStripe Special Links in the enrolled account", "pros": "Full OA alignment", "cons": "Manual pass once"},
+        {"id": "b", "label": "Keep tagged URLs indefinitely", "pros": "No work", "cons": "Unvalidated against OA 'tagged link formats' wording"}
+      ],
+      "recommendation": "Option a; scripted swap is ready (data/products.json site_outbound_url is a single field per product).",
+      "effort": "low",
+      "risk": "none",
+      "depends_on": ["Q-002", "Q-007"],
+      "status": "awaiting review",
+      "shipped_provisionally": false,
+      "feeds_into": "FLG-005 closure"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -46,7 +46,7 @@
       ],
       "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
       "status": "resolved",
-      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted."
+      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
     },
     {
       "id": "FLG-005",
@@ -219,7 +219,7 @@
       "area": "product data",
       "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
       "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
-      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated.",
+      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
       "sources": [
         "S05"
       ],
@@ -227,82 +227,144 @@
     },
     {
       "id": "FLG-023",
-      "severity": "high",
-      "title": "Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is",
-      "detail": "All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else, so the destination is best read as “where the link went” rather than “the product the token names”. data/register/products.json records identity_status resolved for these rows on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended.",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "CHEF iQ battery life: the manufacturer's own pages disagree",
+      "detail": "The CHEF iQ Sense product page states '70+ Hours of Battery'. The CHEF iQ Sense FAQ on the same domain states that Gen 3 probes hold a charge for 'up to 60 hours'. Both are official CHEF iQ pages, so this site publishes no battery figure at all rather than choosing the friendlier one. The ambient temperature range, sensor count and probe dimensions on the product page are not in dispute and are published.",
+      "impact": "One marketing figure is unusable. No other specification is affected.",
+      "manual_step": "Ask CHEF iQ support which figure applies to the Gen 3 unit sold under B0DZFD6R9Z, or leave the battery field blank.",
       "sources": [
-        "S04",
-        "S05"
-      ],
-      "manual_step": "Open each submitted link in a signed-in browser, read the ASIN out of the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish. Retrieved 2026-11-20 by session arena-43565031-affil3; verbatim text and reproduction links in docs/OFFICIAL-SOURCES.md.",
-      "observed_on": "2026-11-20"
+        "S14",
+        "S15"
+      ]
     },
     {
       "id": "FLG-024",
       "severity": "medium",
-      "title": "Two sessions recorded different outcomes for the same tokens",
-      "detail": "FLG-004 records B00hJ57DV as the link that hit an Amazon “Continue shopping” checkpoint. On an independent retrieval the same day, B00hJ57DV resolved to a product page (ASIN B08DKYBTPH) and it was B0c8moW59 that hit the checkpoint. Both records are kept and neither is overwritten. Read together they show the outcome depends on session, timing or routing rather than on the token, which is the same conclusion the fallback marker points to. It also means any re-verification job must append attempts, never replace a row.",
+      "status": "open",
+      "area": "product data",
+      "title": "Emeril Lagasse 26 QT: preset and accessory counts differ across official pages",
+      "detail": "The Emeril Everyday product page shows '25 Cooking Pre-sets' in its specification strip and '24 one-touch cooking presets' in its own description, and an image on the same page reads '11-in-1'. The Amazon listing title says '24 One-Touch Preset Options' and 'Six Cooking Accessories Included', while the manufacturer description mentions seven. Because the official sources conflict, this site publishes no preset count and no accessory count.",
+      "impact": "Two secondary specifications are withheld. Capacity, dimensions and form factor are unaffected.",
+      "manual_step": "Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.",
+      "sources": [
+        "S13",
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-025",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
+      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
+      "impact": "One of five products is present but not recommended, and carries no outbound link.",
+      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "sources": [
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-026",
+      "severity": "high",
+      "status": "open",
+      "area": "product data",
+      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
+      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
+      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
+      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "sources": [
+        "S16",
+        "S12"
+      ]
+    },
+    {
+      "id": "FLG-027",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The same listing carries two different temperature ranges in two places",
+      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
+      "impact": "Temperature is withheld on one product.",
+      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "sources": [
+        "S16"
+      ]
+    },
+    {
+      "id": "FLG-028",
+      "severity": "high",
+      "title": "Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is",
+      "detail": "All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [
         "S04",
         "S05"
       ],
-      "manual_step": "Re-run each of the five links twice from a private window a few minutes apart and record the ASIN each time before treating any mapping as stable.",
-      "observed_on": "2026-11-20"
+      "manual_step": "Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish."
     },
     {
-      "id": "FLG-025",
+      "id": "FLG-029",
+      "severity": "medium",
+      "title": "Two sessions recorded different outcomes for the same tokens",
+      "detail": "One record in this repo has B00hJ57DV as the link that hit an Amazon “Continue shopping” checkpoint. On an independent retrieval the same day, B00hJ57DV resolved to a product page (ASIN B08DKYBTPH) and it was B0c8moW59 that hit the checkpoint. Both records are kept and neither is overwritten. Read together they show the outcome depends on session, timing or routing rather than on the token, and that any re-verification job must append attempts rather than replace a row. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Re-run each of the five links twice from a private window a few minutes apart and record the ASIN each time before treating any mapping as stable."
+    },
+    {
+      "id": "FLG-030",
       "severity": "high",
       "title": "Program Policies forbid tying a sub-tag or program identifier to a specific end user",
-      "detail": "Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).” The site ships a client event emitter and an optional self-hosted collector. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule. What is unsettled is the future join: a per-visitor id in the collector, or an A/B bucket written into a sub-tag, would each breach it while looking like ordinary analytics.",
+      "detail": "Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [
         "S02"
       ],
-      "manual_step": "Before enabling the collector, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings. Retrieved 2026-11-20 by session arena-43565031-affil3; verbatim text and reproduction links in docs/OFFICIAL-SOURCES.md.",
-      "observed_on": "2026-11-20"
+      "manual_step": "Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings."
     },
     {
-      "id": "FLG-026",
+      "id": "FLG-031",
       "severity": "medium",
       "title": "The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here",
-      "detail": "Repeated widely across third-party affiliate guides as the condition for staying in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it, and no launch date or account-risk assumption should be built on it either until it is read in-account.",
+      "detail": "Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [
         "S01",
         "S02"
       ],
-      "manual_step": "Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way.",
-      "observed_on": "2026-11-20"
+      "manual_step": "Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way."
     },
     {
-      "id": "FLG-027",
+      "id": "FLG-032",
       "severity": "low",
       "title": "Attribution is a 24-hour session plus an 89-day cart path, not 90 days",
-      "detail": "Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate's link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”, where most published guides say 90. Any report, ledger note or article on this site that mentions an attribution window must use 24 hours and 89 days.",
+      "detail": "Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate's link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [
         "S02"
       ],
-      "manual_step": "Set the ledger's window definition from the policy line when the first row is written, not from a guide.",
-      "observed_on": "2026-11-20"
+      "manual_step": "Set the ledger's window definition from the policy line when the first row is written, not from a guide."
     },
     {
-      "id": "FLG-028",
+      "id": "FLG-033",
       "severity": "low",
-      "title": "CI asserts a directory the build no longer writes, so stale generated output can merge green",
-      "detail": ".github/workflows/verify.yml runs tools/build.py then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Running the build in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Committed output can therefore drift from its sources while the check passes. This branch commits the rebuilt output; the assertion still needs redirecting.",
+      "title": "CI asserts a directory the build does not write, so stale generated output merges green",
+      "detail": ".github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [],
-      "manual_step": "Change the assertion to `git diff --quiet -- editorial`, or to whatever path tools/build.py's DOCS constant targets.",
-      "observed_on": "2026-11-20"
+      "manual_step": "Assert `git diff --quiet -- editorial` after build.py, and add a build.mjs step with its own diff assertion, so neither publisher can ship output that has drifted from its data."
     },
     {
-      "id": "FLG-029",
+      "id": "FLG-034",
       "severity": "info",
-      "status": "resolved",
       "title": "The Operating Agreement section cited for the Associates statement was checked against the text",
-      "detail": "data/sources.json S01 attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles.",
+      "detail": "data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.",
       "sources": [
         "S01"
       ],
       "manual_step": "None. Recorded so a reviewer does not re-open it.",
-      "resolution": "Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: “As an Amazon Associate I earn from qualifying purchases.”” Section 6 adds that any violation of Section 5 will be deemed a material breach. Section 4 also states “We do not make any representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time in connection with the Associates Program, and we will not be liable for any actions you undertake based on your expectations.”, which is the basis for publishing no revenue forecast anywhere on this site."
+      "status": "resolved",
+      "resolution": "Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: ‘As an Amazon Associate I earn from qualifying purchases.’” Section 6 adds that any violation of Section 5 will be deemed a material breach, and Section 4 states Amazon makes no representation about expected traffic or commission income — the basis for publishing no revenue forecast."
     }
   ],
   "checked": "2026-11-20"
