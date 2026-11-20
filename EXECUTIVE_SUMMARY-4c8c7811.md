@@ -15,8 +15,9 @@
 
 ## What was verified, and against what
 
-- **Root site:** rebuilt with no drift; 3,484 checks pass, 0 fail (`node tools/verify.mjs`).
-- **CI commands:** each workflow's commands were run locally. Every gate passes after the fix above. Before the fix, `build_sitemap.py --check` failed on main.
+- **Root site:** rebuilt with no drift on the tree that includes main @ `a42e974`; 4,623 checks pass, 0 fail (`node tools/verify.mjs`).
+- **CI commands:** each workflow's commands (`check`, `counter-desk`, `disclosure`, `publish-gate`, `site-checks`, `verify`) were run locally, and the same six passed on the PR head. Before the fix, `build_sitemap.py --check` failed on main.
+- **GitHub Pages:** main's build for `29daada` and `a448c57` reported `errored` ("Page build failed.", no detail in the API) at 06:50–06:51 UTC. Main at `a42e974` built successfully at 06:53 UTC. The branch was brought up to date with that commit before the merge. No cause was found in the tree (no symlinks, invalid names, oversize files, or Liquid/front-matter in the new files). The failure was not reproduced.
 - **Short links:** all five supplied links (`https://link.amazon/…`) were fetched on 2026-11-20. Each returned `https://www.amazon.com/`. No product page was observed through a short link. This matches FLG-031 and FLG-036. It does not show any link to be dead. The register's observed mappings were not changed.
 - **Associates policy:** the live Program Policies page (updated April 14, 2026) was fetched and confirmed as the live document. The existing citations to it stand; the full text was not re-read line by line in this session. Sources and their links are on the site's source register.
 

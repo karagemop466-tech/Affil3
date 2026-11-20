@@ -1653,6 +1653,8 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - It did not add a Search Console property or an analytics endpoint. Both need owner accounts and infrastructure that this sandbox does not have.
 - It did not state any conversion, revenue or traffic figure. None exists in the repository.
 
+**Pages incident (this session):** main's Pages builds for `29daada` and `a448c57` reported `errored` ("Page build failed.", no detail in the Pages API) at 06:50–06:51 UTC. A rebuild request from this token returned 403. Main then advanced to `a42e974` (PR #63), whose Pages build reported `built` at 06:53 UTC, so the live site serves that commit. The branch was synced to `a42e974` (merge `87929fa`) and every CI command was re-run on the merged tree: all pass, no drift. The cause of the earlier errors was not identified and was not reproduced.
+
 **Completion record:** filled in below after the pull request is merged.
 
 | CB-01 | Read `COORDINATION.md` & `origin/main`; register non-overlapping scope and push claim immediately | done | `3b45b513` | `COORDINATION.md` |
