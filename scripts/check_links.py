@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Crawl every published page under docs/ and check for broken links.
+"""Crawl every published page under crisp-index/ and check for broken links.
 
 - Internal links (relative) must resolve to an existing file.
 - External links are probed with a HEAD request. Hosts blocked from this
@@ -16,7 +16,7 @@ import urllib.request
 import urllib.error
 from urllib.parse import urljoin, urlparse
 
-DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs")
+DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "crisp-index")
 HREF_RE = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
 
 

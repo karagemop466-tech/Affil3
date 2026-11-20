@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>Affil3 — buying guides</title>
+  <title>ShopNow Kitchen guides</title>
   <link>https://karagemop466-tech.github.io/Affil3/</link>
-  <description>Kitchen buying guides, checked against the maker&#39;s own specification sheet</description>
+  <description>Kitchen gear, explained like a friend would. Every claim traced to its source.</description>
   <language>en-US</language>
   <lastBuildDate>Fri, 20 Nov 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://karagemop466-tech.github.io/Affil3/feed.xml" rel="self" type="application/rss+xml"/>
@@ -12,35 +12,35 @@
     <link>https://karagemop466-tech.github.io/Affil3/guides/is-your-meat-thermometer-telling-you-the-right-number/</link>
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/is-your-meat-thermometer-telling-you-the-right-number/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>The USDA safe minimum temperatures, where to put the probe, and the difference between an instant-read spot check and a leave-in wireless probe.</description>
+    <description>How to use a meat thermometer so the reading means something: USDA target temperatures, probe placement, calibration checks, and what wireless specs like range and probe count really buy you.</description>
   </item>
   <item>
     <title>Questions to ask before buying a multi-function kitchen appliance</title>
     <link>https://karagemop466-tech.github.io/Affil3/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/</link>
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>A 26-quart countertop oven promises air frying, baking, rotisserie and more. Six questions that separate the functions you will use from the ones on the box.</description>
+    <description>A buyer&#39;s interrogation guide for combination air fryers, toaster ovens and other multi-function appliances: counting real functions, presets, accessories and the learning curve.</description>
   </item>
   <item>
     <title>How to assess cleanup and counter-space trade-offs</title>
     <link>https://karagemop466-tech.github.io/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/</link>
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>Dishwasher claims, window designs and real counter footprints: how to judge the two costs nobody puts on the box, using manufacturer specifications.</description>
+    <description>A practical method for weighing dishwasher claims, hand-washing reality, counter footprint, ventilation clearance and open-door space before you buy a kitchen appliance.</description>
   </item>
   <item>
     <title>A no-hype checklist for comparing air fryer capacity</title>
     <link>https://karagemop466-tech.github.io/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/</link>
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>Quarts are the easiest number to misread on an air fryer listing. Here is how to compare 6, 8 and 26 quart units honestly, including what the numbers do not tell you.</description>
+    <description>What quart ratings measure, what they leave out, and a printable checklist of questions to compare air fryer capacity without the marketing gloss.</description>
   </item>
   <item>
     <title>Basket or oven-style air fryer: what should you compare?</title>
     <link>https://karagemop466-tech.github.io/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/</link>
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>Basket and oven-style air fryers are different tools. Here is what actually changes between them, using manufacturer specifications from three units compared side by side.</description>
+    <description>A plain-English comparison of basket-style and oven-style air fryers: what each shape does well, what to check before you choose, and how the appliances we track blur the line.</description>
   </item>
 </channel>
 </rss>

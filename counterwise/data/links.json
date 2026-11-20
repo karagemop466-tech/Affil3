@@ -1,0 +1,194 @@
+{
+  "$comment": "One row per link supplied by the program owner. `supplied_*` is what we were given, untouched. `observed_*` is what this project saw when it followed that link on 2026-11-20. The two are never merged: a token in a link path is not an ASIN unless someone inside the enrolled account confirms it.",
+  "supplied_by": "program owner brief, 2026-11-20",
+  "resolution_method": "Server-side fetch that follows redirects (Arena verification fetch tool), no cookies, no Associates sign-in, US datacenter egress. Not a browser session, so a destination that varies by session or marketplace could differ; re-run from the enrolled account per RUNBOOK.md §2.",
+  "links": [
+    {
+      "id": "LNK-01",
+      "supplied_url": "https://link.amazon/B04G1MEwY",
+      "supplied_host": "link.amazon",
+      "supplied_token": "B04G1MEwY",
+      "supplied_token_length": 9,
+      "token_note": "Mixed case as supplied. Nine characters. Recorded exactly as given; not corrected, not padded, not guessed.",
+      "resolution_status": "resolved-to-listing",
+      "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+      "observed_host": "www.amazon.com",
+      "observed_path": "/dp/B0CDY277D3",
+      "observed_path_id": "B0CDY277D3",
+      "observed_path_id_length": 10,
+      "observed_page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "observed_breadcrumb": [
+        "Home & Kitchen",
+        "Kitchen & Dining",
+        "Small Appliances",
+        "Fryers",
+        "Air Fryers"
+      ],
+      "observed_query_params": [
+        "lv",
+        "btn_type",
+        "gaOptInStatus",
+        "btn_ref",
+        "channelId",
+        "plpRedirect"
+      ],
+      "observed_tag_param_present": false,
+      "observed_on": "2026-11-20",
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
+      "product_id": "P-01"
+    },
+    {
+      "id": "LNK-02",
+      "supplied_url": "https://link.amazon/B02NbDxp3",
+      "supplied_host": "link.amazon",
+      "supplied_token": "B02NbDxp3",
+      "supplied_token_length": 9,
+      "token_note": "Mixed case as supplied. Nine characters.",
+      "resolution_status": "resolved-to-listing",
+      "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+      "observed_host": "www.amazon.com",
+      "observed_path": "/dp/B09B7SB46R",
+      "observed_path_id": "B09B7SB46R",
+      "observed_path_id_length": 10,
+      "observed_page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "observed_breadcrumb": [
+        "Home & Kitchen",
+        "Kitchen & Dining",
+        "Small Appliances",
+        "Fryers",
+        "Air Fryers"
+      ],
+      "observed_query_params": [
+        "lv",
+        "btn_type",
+        "gaOptInStatus",
+        "btn_ref",
+        "channelId",
+        "plpRedirect"
+      ],
+      "observed_tag_param_present": false,
+      "observed_on": "2026-11-20",
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
+      "product_id": "P-02"
+    },
+    {
+      "id": "LNK-03",
+      "supplied_url": "https://link.amazon/B00hJ57DV",
+      "supplied_host": "link.amazon",
+      "supplied_token": "B00hJ57DV",
+      "supplied_token_length": 9,
+      "token_note": "Nine characters, and it begins with a lowercase-run pattern unlike the others. Recorded as supplied.",
+      "resolution_status": "resolved-to-listing",
+      "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+      "observed_host": "www.amazon.com",
+      "observed_path": "/dp/B08DKYBTPH",
+      "observed_path_id": "B08DKYBTPH",
+      "observed_path_id_length": 10,
+      "observed_page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "observed_breadcrumb": [
+        "Home & Kitchen",
+        "Kitchen & Dining",
+        "Small Appliances",
+        "Fryers",
+        "Air Fryers"
+      ],
+      "observed_query_params": [
+        "lv",
+        "btn_type",
+        "gaOptInStatus",
+        "btn_ref",
+        "channelId",
+        "plpRedirect",
+        "th"
+      ],
+      "observed_tag_param_present": false,
+      "observed_on": "2026-11-20",
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
+      "product_id": "P-03"
+    },
+    {
+      "id": "LNK-04",
+      "supplied_url": "https://link.amazon/B0c8moW59",
+      "supplied_host": "link.amazon",
+      "supplied_token": "B0c8moW59",
+      "supplied_token_length": 9,
+      "token_note": "Nine characters as supplied.",
+      "resolution_status": "unresolved-intercepted",
+      "observed_final_url": "https://www.amazon.com/checkpoint/continue?token=<one-time-session-token>",
+      "observed_host": "www.amazon.com",
+      "observed_path": "/checkpoint/continue",
+      "observed_path_id": "",
+      "observed_path_id_length": 0,
+      "observed_page_title": "Amazon.com",
+      "observed_breadcrumb": [],
+      "observed_query_params": [
+        "token"
+      ],
+      "observed_tag_param_present": false,
+      "observed_on": "2026-11-20",
+      "retry_note": "First attempt landed on Amazon's 'To continue, please click the Continue shopping button' checkpoint. A second attempt minutes later returned a fetch error. No product identity was obtained, so every downstream field for P-04 is blank.",
+      "flags": [
+        "FLG-001",
+        "FLG-004"
+      ],
+      "product_id": "P-04"
+    },
+    {
+      "id": "LNK-05",
+      "supplied_url": "https://link.amazon/B0f3GKalj",
+      "supplied_host": "link.amazon",
+      "supplied_token": "B0f3GKalj",
+      "supplied_token_length": 9,
+      "token_note": "Nine characters as supplied.",
+      "resolution_status": "resolved-to-listing",
+      "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+      "observed_host": "www.amazon.com",
+      "observed_path": "/dp/B0DZFD6R9Z",
+      "observed_path_id": "B0DZFD6R9Z",
+      "observed_path_id_length": 10,
+      "observed_page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "observed_breadcrumb": [
+        "Home & Kitchen",
+        "Kitchen & Dining",
+        "Kitchen Utensils & Gadgets",
+        "Thermometers & Timers",
+        "Meat"
+      ],
+      "observed_query_params": [
+        "lv",
+        "sbo",
+        "btn_type",
+        "gaOptInStatus",
+        "language",
+        "btn_ref",
+        "channelId",
+        "plpRedirect",
+        "th"
+      ],
+      "observed_tag_param_present": false,
+      "observed_on": "2026-11-20",
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
+      "product_id": "P-05"
+    }
+  ],
+  "summary": {
+    "supplied": 5,
+    "resolved_to_listing": 4,
+    "unresolved": 1,
+    "with_tracking_tag_in_destination": 0,
+    "tokens_of_length_9": 5,
+    "observation": "The four resolved destinations use a ten-character identifier in the /dp/ path and a different nine-character token in the supplied link. On that evidence the supplied token is a redirect code, not the catalog identifier of the page it landed on. Whether that is correct behaviour for a link.amazon code, or a paste error, cannot be settled from outside the account: FLG-003."
+  }
+}

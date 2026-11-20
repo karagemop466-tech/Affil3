@@ -1,0 +1,89 @@
+{
+  "identity": {
+    "name": "Counterwise",
+    "short_name": "Counterwise",
+    "kicker": "Countertop cooking, measured",
+    "tagline": "Independent buyer research for air fryers, countertop ovens and the tools that tell you when food is done.",
+    "description": "Counterwise publishes decision guides for countertop cooking appliances. Every product row on this site carries a source, a capture date and a verification state. Where we could not confirm something from an official source, the field is blank and the gap is listed on the Flagged for Review page.",
+    "issue_label": "Issue 01 · November 2026",
+    "language": "en-US",
+    "base_url": "https://karagemop466-tech.github.io/Affil3/counterwise",
+    "author_entity": "Counterwise Editorial Desk",
+    "launch_date": "2026-11-20",
+    "published_at": "/Affil3/counterwise/ — the surface this session owns; the repository root and other subdirectories belong to other sessions and are linked from the root README"
+  },
+  "amazon": {
+    "tracking_id": "shopnow047c-20",
+    "tracking_id_format_check": "matches the XXXXX-20 pattern named in the Associates Program Policies; existence inside an enrolled account cannot be confirmed from outside it",
+    "marketplace_host": "www.amazon.com",
+    "account_status": "unverified",
+    "special_link_test_status": "pending-in-account",
+    "pa_api_access": "not-confirmed",
+    "commission_rate_note": "Table A lists Furniture, Home, Home Improvement, Lawn & Garden, Pets Products at 3.00% and Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive at 1.25%. Which row Amazon applies to an air fryer is not stated on that page.",
+    "commission_rate_source": "SG-04",
+    "publish_prices": false,
+    "publish_ratings": false,
+    "use_product_images_from_amazon": false,
+    "image_rationale": "Amazon product imagery is licensed through program tooling, not scraped from listing pages. Until Product Advertising API access is confirmed, this site ships its own generated editorial artwork and no Amazon imagery at all.",
+    "tracking_id_state": "unverified"
+  },
+  "disclosure": {
+    "statement": "As an Amazon Associate I earn from qualifying purchases.",
+    "statement_source": "SG-01",
+    "link_label": "(paid link)",
+    "link_label_source": "SG-01",
+    "placement": [
+      "strip directly under the masthead on every page",
+      "above the first product link on every guide and gear page",
+      "repeated in the footer on every page"
+    ],
+    "outbound_rel": "sponsored nofollow",
+    "outbound_rel_source": "SG-05",
+    "cloaking_redirect_layer": false,
+    "cloaking_rationale": "A /go/ style redirect layer would obscure the destination for readers and crawlers; the Associates Program Policies require the Associates tag to sit in the URL of each link and forbid obscuring where a link goes. Linking straight to the marketplace URL with the tag parameter satisfies both.",
+    "ftc_example_sentence": "I get commissions for purchases made through links in this post.",
+    "ftc_example_note": "The Federal Trade Commission's own example of wording a reader understands. Amazon's agreement requires its own sentence (statement above); the two are different obligations and one does not substitute for the other. Quoted verbatim so the repository's shared disclosure check can find it, and placed in the same above-the-fold strip."
+  },
+  "measurement": {
+    "status": "not-deployed",
+    "endpoint": "",
+    "collector_command": "python3 counterwise/tools/collector.py serve --port 8099",
+    "storage": "append-only JSONL under counterwise/data/ledger/, one file per UTC day",
+    "privacy": [
+      "no IP address is stored",
+      "no cookie is set",
+      "no cross-site identifier is generated",
+      "do-not-track and global privacy control suppress collection entirely",
+      "events are limited to the five defined in data/events.json"
+    ],
+    "events_source": "EV-01..EV-05 in data/events.json",
+    "reason_not_deployed": "GitHub Pages serves static files only. The collector is shipped as a stdlib Python server to run anywhere; the site writes an event queue to localStorage while the endpoint stays unset, so no traffic is silently dropped and no dashboard claims numbers it does not have."
+  },
+  "reader_capture": {
+    "enabled": false,
+    "endpoint": "",
+    "fallback": "mailto",
+    "note": "No email collection is active. The form on every guide footer explains this instead of pretending to subscribe readers."
+  },
+  "search_console": {
+    "property": null,
+    "verification": "not-started",
+    "sitemap_path": "/Affil3/counterwise/sitemap.xml",
+    "feed_path": "/Affil3/counterwise/feed.xml",
+    "verification_token": "",
+    "note": "Paste the HTML-tag verification token here and rebuild; the build emits the meta tag only when the token is non-empty, so an unverified state stays visible in the markup rather than looking configured."
+  },
+  "cadence": {
+    "status": "proposed",
+    "rule": "Two guides per week, Tuesday and Friday, for eight weeks; each new guide is added to data/guides.json and regenerated, which updates the sitemap and the feed in the same commit.",
+    "first_publication_window": "2026-11-24 to 2027-01-15",
+    "review_point": "Week 3 (2026-12-08): the next four topics are chosen from Search Console queries and click events, not from preference."
+  },
+  "repository": {
+    "clone": "https://github.com/karagemop466-tech/Affil3",
+    "pages_url": "https://karagemop466-tech.github.io/Affil3/counterwise/",
+    "pages_source_observed": "build_type=legacy, source=main:/ (read from the GitHub Pages API on 2026-11-20). The root site, /editorial/ and /docs/ belong to other sessions; this site publishes into its own subdirectory so nothing has to be repointed or overwritten.",
+    "source_of_truth": "data/ and content/; docs/ is generated output"
+  },
+  "$comment": "One place where the site's identity, its disclosure duty and its measurement state are decided. Everything in docs/ is generated from this file plus the rest of data/; a switch flipped here must survive tools/gate.py."
+}

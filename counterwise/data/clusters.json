@@ -1,0 +1,63 @@
+{
+  "$comment": "A cluster is one buying decision, not one keyword. Every cluster must carry at least one guide and at least one product whose identity is observed; a cluster with neither is refused by the gate, because that is how a thin category page is born.",
+  "clusters": [
+    {
+      "id": "dual-basket",
+      "name": "Two baskets at once",
+      "short_name": "Dual basket",
+      "question": "Does a second basket earn its counter space?",
+      "products": [
+        "P-01"
+      ],
+      "guides": [
+        "G-01",
+        "G-02"
+      ],
+      "description": "The single question behind every twin-basket listing: can you actually finish two components together, and what do you give up in height, footprint and cleaning to do it. One observed listing sits in this cluster, which is why the comparison is honest about what it can and cannot line up.",
+      "seasonal": "evergreen"
+    },
+    {
+      "id": "oven-style",
+      "name": "Oven-style and multi-function",
+      "short_name": "Oven-style",
+      "question": "Is a countertop oven a better buy than a basket?",
+      "products": [
+        "P-02",
+        "P-03"
+      ],
+      "guides": [
+        "G-01",
+        "G-03",
+        "G-04"
+      ],
+      "description": "Capacity in quarts, racks and accessories, presets that replace other appliances, and the clearance a door needs. This is where a two-basket machine and a twenty-six-quart oven are genuinely the same shopping trip.",
+      "seasonal": "evergreen"
+    },
+    {
+      "id": "doneness",
+      "name": "Knowing when it is done",
+      "short_name": "Doneness",
+      "question": "How do you stop guessing at the thickest part?",
+      "products": [
+        "P-05"
+      ],
+      "guides": [
+        "G-05"
+      ],
+      "description": "A probe is the only instrument that turns a countertop appliance into a reliable one, and it is the pair that makes the November cooking useful. Safe minimum temperatures here come from the USDA chart, cited on the page.",
+      "seasonal": "peaks late November through December"
+    },
+    {
+      "id": "unresolved",
+      "name": "Not published",
+      "short_name": "Unresolved",
+      "question": "",
+      "products": [
+        "P-04"
+      ],
+      "guides": [],
+      "description": "Holding row for the fourth supplied link, whose destination could not be reached from this environment. It has no page, no guide and no claims; it exists so the count of five supplied links and four published products reconciles in public.",
+      "seasonal": "none"
+    }
+  ]
+}

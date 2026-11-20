@@ -1,0 +1,236 @@
+{
+  "$comment": "What has to be known before a decision is reasonable. Every row states what we already have, what is missing, how to go and get it, and — because the project may not wait — the default this build already applies. `default_applied` is what the site does while the question is open, so no row is a to-do with no fallback.",
+  "questions": [
+    {
+      "id": "Q-01",
+      "question": "For each of the five links, which listing did you actually mean to promote?",
+      "why_it_matters": "Everything downstream hangs on it: the product table, the Special Link, the article claims, and whether Product structured data is honest. Four links resolved somewhere; intent is a different fact from destination.",
+      "we_have": "The supplied URL for each link and, for four of them, the listing page it opened on 2026-11-20 with its title, path identifier and category breadcrumb (data/links.json).",
+      "we_lack": "A confirmation from the owner or the account that the observed listing is the intended one, and anything at all about LNK-04.",
+      "how_to_find_out": "Open each link.amazon URL in a browser while signed in to the account. For each, use SiteStripe → Get Link and save the produced /dp/ URL and ASIN into `intent` in data/products.json with the date. For LNK-04, run python3 tools/resolve_links.py from a normal connection, or look the product up by name if you know it.",
+      "who_can_answer": "Program owner (five minutes in-account).",
+      "blocks": [
+        "S-04",
+        "S-07",
+        "FLG-001",
+        "FLG-004",
+        "any product-level claim in a guide"
+      ],
+      "default_applied": "The site publishes the observed listing URL with the tracking tag, labelled 'destination observed 2026-11-20, intent unconfirmed'. No ASIN is claimed as intended.",
+      "status": "open"
+    },
+    {
+      "id": "Q-02",
+      "question": "Which version of the Operating Agreement governs this account, and does anything in it conflict with the layout we shipped?",
+      "why_it_matters": "The agreement is the contract that can end the program's income. Third-party summaries of it disagree with each other, and we could not read the US copy from here.",
+      "we_have": "Amazon's own help restatement of the disclosure requirement, read in full (SG-01), and the Special Links clause from a copy of the policies document (SG-02).",
+      "we_lack": "The agreement text itself: version date, the exact required statement wording, the participation requirements about site content, the rules on email, PDF, offline and app placements, and the bounty terms.",
+      "how_to_find_out": "Associates Central → Help → Operating Agreement. Read §Participation Requirements and §Links on your Site. Compare against docs/disclosure/index.html and the guide footers; note the version date in SG-03 and re-run python3 tools/gate.py.",
+      "who_can_answer": "Program owner, or anyone with account access.",
+      "blocks": [
+        "S-06",
+        "S-10",
+        "S-14",
+        "FLG-006"
+      ],
+      "default_applied": "Layout follows the strictest reading we could verify: disclosure above the fold on every page and in the footer, link-level '(paid link)' on every product link, no cloaking layer, no email or offline link use.",
+      "status": "open"
+    },
+    {
+      "id": "Q-03",
+      "question": "Is shopnow047c-20 live, and does a click through a link we publish show up in the reports?",
+      "why_it_matters": "A tag that does not exist earns nothing no matter how good the pages are. This is the single test that separates a real affiliate operation from a hobby site with nice CSS.",
+      "we_have": "The ID string as given, its format check, and links built with it.",
+      "we_lack": "Proof the ID exists on the account, and proof that a click on a link we generate is recorded.",
+      "how_to_find_out": "Associates Central → Tools → Tracking IDs: confirm the row exists. Then put one published product link on an unlisted page, click it from a clean browser profile, buy nothing, and check Reports → 'Links' and 'Clicks' for the next day. Record the date in data/products.json under `intent.confirmed_via`.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "any scaling decision",
+        "the campaign ledger's first row",
+        "FLG-002",
+        "FLG-009"
+      ],
+      "default_applied": "Every product link on the site carries data-link-state=\"pending-test\", and the gear table says the links are tagged but not yet proven in-account.",
+      "status": "open"
+    },
+    {
+      "id": "Q-04",
+      "question": "Which Table A commission row does Amazon apply to these listings?",
+      "why_it_matters": "Home is 3.00% and Kitchen is 1.25% — a factor of 2.4 in the same machine. Priorities, the price floor worth chasing, and whether a thermometer at 1.25% or 3% is the better editorial bet all move with this answer.",
+      "we_have": "Both rows, quoted verbatim from Amazon's Onsite Commission Income Statement (SG-04), and the observed breadcrumbs that make the choice genuinely ambiguous.",
+      "we_lack": "The category Amazon assigns to these ASINs for fee purposes, and whether the account is on Table A or Table B at all.",
+      "how_to_find_out": "After the first attributed order: Associates Central → Reports → 'Income Advisory Report' has a product-category column. Before that, PA-API Browse Node data would answer it if access exists (Q-05).",
+      "who_can_answer": "Report data only; not answerable from documentation.",
+      "blocks": [
+        "any revenue forecast",
+        "S-14",
+        "topic prioritisation by margin"
+      ],
+      "default_applied": "No rate is presented as fact on the site, and no forecast is published anywhere. The executive summary shows both candidate rates side by side with the ambiguity named.",
+      "status": "open"
+    },
+    {
+      "id": "Q-05",
+      "question": "Do we have Product Advertising API credentials, and at what rate tier?",
+      "why_it_matters": "This is the difference between an affiliate platform and a page generator. API access is what makes price, availability, image and attribute refresh automated and legal at once.",
+      "we_have": "The knowledge that the register's `not_verified` columns are exactly the ones the API would fill, and a stdlib client skeleton in tools/special_links.py for the request shape.",
+      "we_lack": "An access key, a secret, a partner tag, and confirmation of the account's eligibility. We did not accept third-party restatements of the eligibility rule as verified, so no threshold is asserted here.",
+      "how_to_find_out": "Associates Central → Tools → Product Advertising API → 'Join or manage your account'. If the request button is live, the account qualifies. Create credentials, store them in the deployment's secret store, never in this repo.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "S-04",
+        "S-07",
+        "the 90-day re-verification cycle in S-18",
+        "FLG-007"
+      ],
+      "default_applied": "Prices and ratings are absent from the site by design; the gate fails a build that introduces them.",
+      "status": "open"
+    },
+    {
+      "id": "Q-06",
+      "question": "Which marketplace are we enrolled in, and do readers outside it earn anything?",
+      "why_it_matters": "A tag is marketplace-specific. An Italian reader who lands on amazon.it through an amazon.com tag credits nothing, and Amazon's own policies say each marketplace is its own program.",
+      "we_have": "The -20 suffix on the tracking ID, which is the US convention, and four resolved amazon.com listings.",
+      "we_lack": "Confirmation of the enrolled marketplace, and whether additional marketplace Associates accounts exist.",
+      "how_to_find_out": "Associates Central → Account settings → the marketplace listed on the account. If non-US traffic is expected, decide between per-marketplace links and a single US destination with a note to readers.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "international link rewriting",
+        "S-15"
+      ],
+      "default_applied": "Every link targets amazon.com. No geo-redirection is attempted, and nothing claims worldwide availability.",
+      "status": "open"
+    },
+    {
+      "id": "Q-07",
+      "question": "Where does this live long-term — github.io or a domain we control?",
+      "why_it_matters": "The base URL is written into canonical tags, the sitemap, the feed and the RSS guid. Moving hosts later means every one of those changes at once and search results follow the move imperfectly. A branded domain also decides whether we can serve the collector from the same origin, which decides whether click data is even collectable.",
+      "we_have": "A working Pages deployment at karagemop466-tech.github.io/Affil3 and a build that takes base_url from config, so the change is one line plus a rebuild.",
+      "we_lack": "A chosen domain, DNS control, and the Pages CNAME.",
+      "how_to_find_out": "Decide, then: buy or point the domain, add docs/CNAME, set identity.base_url, rebuild, submit the new sitemap in Search Console.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "S-09",
+        "S-10",
+        "S-15"
+      ],
+      "default_applied": "Published on the existing Pages URL under /Affil3; all absolute URLs derive from config.identity.base_url so a domain change is a one-line edit.",
+      "status": "open"
+    },
+    {
+      "id": "Q-08",
+      "question": "Is there a verified Search Console property for this site?",
+      "why_it_matters": "The brief's own instruction is that the next topic should be chosen from measured queries instead of instinct. Without a verified property there are no queries, so 'measure then optimise' cannot start.",
+      "we_have": "A sitemap.xml, a feed.xml, robots.txt pointing at the sitemap, and a documented submission path.",
+      "we_lack": "Ownership verification and any index coverage history.",
+      "how_to_find_out": "search.google.com/search-console → Add property → Domain or URL-prefix. For a URL-prefix property on Pages, the easiest proof is an HTML meta tag: paste the token into data/config.json → search_console.verification_token, rebuild, verify, submit /Affil3/sitemap.xml.",
+      "who_can_answer": "Program owner (account holder).",
+      "blocks": [
+        "the week-3 topic review in the cadence plan",
+        "FLG-010"
+      ],
+      "default_applied": "The metrics page states plainly that no query data exists yet and lists the first four topics as unmeasured hypotheses.",
+      "status": "open"
+    },
+    {
+      "id": "Q-09",
+      "question": "Who has read the FTC endorsement rules as they apply to a site like this, as opposed to an influencer post?",
+      "why_it_matters": "The site's disclosure placement is designed to satisfy 'clear and conspicuous'. Whether the comparison wording in a guide reads as an endorsement of a product, rather than a framework for choosing one, is an editorial and legal judgement, not a regex.",
+      "we_have": "The structure of 16 CFR Part 255 and its section titles, read from the eCFR (SG-08), and Amazon's own pointer to FTC guidance (SG-01).",
+      "we_lack": "A full read of the FTC business guidance pages named SG-09 and SG-10, and any human legal opinion at all.",
+      "how_to_find_out": "Read SG-09 and SG-10, then review the guide text against them; escalate only the 'review' and 'recommend' vocabulary, which is where the risk concentrates. Record the review date in SG-03's row.",
+      "who_can_answer": "Owner, optionally counsel.",
+      "blocks": [
+        "using the word 'review' in page titles",
+        "S-11",
+        "any sample-or-gift relationship"
+      ],
+      "default_applied": "The site calls its pages guides, not reviews, states that no product was tested, and carries the disclosure strip above the fold plus link-level labels on every page.",
+      "status": "open"
+    },
+    {
+      "id": "Q-10",
+      "question": "Who is the human of record behind the byline, if anyone?",
+      "why_it_matters": "Reader trust, E-E-A-T and Amazon's own preference for sites with a real editor all point at the same thing. A fake persona is the one mistake that would justify every 'AI slop' accusation levelled at sites like this.",
+      "we_have": "An honest sign-off: 'Counterwise Editorial Desk', with an About page that says the desk is automation with a verification gate and no hands-on testing.",
+      "we_lack": "A name, a role, credentials, a photo only if they consent, and a contact route.",
+      "how_to_find_out": "Decide whether a person will own this. If yes, write their bio and add author Person markup; if no, keep the desk byline and never write 'our expert'.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "S-11",
+        "author pages",
+        "FLG-014"
+      ],
+      "default_applied": "Desk byline with an explicit 'what this is' statement on every About and Method page.",
+      "status": "open"
+    },
+    {
+      "id": "Q-11",
+      "question": "How are the five events in the brief defined, and does anything else count as an event?",
+      "why_it_matters": "The schema decides what the collector is allowed to write, which decides whether the ledger's columns mean anything. A tracking plan nobody agreed on becomes numbers nobody can defend.",
+      "we_have": "A proposed five — page_view, product_link_click, comparison_started, checklist_item_toggled, email_signup_submitted — each with a payload schema in data/events.json, and a collector that refuses any other name.",
+      "we_lack": "The owner's definition. The brief says 'the five defined events' but no definition exists anywhere in the materials available to this session.",
+      "how_to_find_out": "Edit data/events.json; the gate then enforces the new list automatically on both the collector and the front end.",
+      "who_can_answer": "Owner; any change is one file.",
+      "blocks": [
+        "S-09",
+        "ledger column meanings"
+      ],
+      "default_applied": "The five proposed events are marked 'proposed' in the schema and on the metrics page.",
+      "status": "open"
+    },
+    {
+      "id": "Q-12",
+      "question": "What is the niche expansion rule, and who is allowed to say a product is in scope?",
+      "why_it_matters": "A platform that can add any product to a topic list will do exactly that, and it is how affiliate sites end up on the wrong side of the scaled-content-abuse policy. A gate on topic addition matters more than a gate on writing quality.",
+      "we_have": "A tight scope — countertop cooking and doneness, four listings, five guides, one cluster per buying decision — and a cadence proposal of two pieces a week with a review point.",
+      "we_lack": "An agreed rule: does a new cluster require measured queries, an existing click, or a listing we can verify? Who adds a row to data/clusters.json?",
+      "how_to_find_out": "Answer in writing on the suggestions board (S-17 has three candidate rules with trade-offs); the cadence file then enforces it in review.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "any new cluster",
+        "S-17",
+        "S-13"
+      ],
+      "default_applied": "Nothing beyond the two clusters here is published, and the queue of next topics is explicitly labelled unmeasured hypothesis.",
+      "status": "open"
+    },
+    {
+      "id": "Q-13",
+      "question": "Do we accept product samples or run any non-Amazon program on the same pages?",
+      "why_it_matters": "A free unit is a material connection under 16 CFR 255 whether or not a post was requested, and a second affiliate network changes both the disclosure text and the link policy for the page it appears on.",
+      "we_have": "One program (Amazon), one required statement, one disclosure page, and no sample relationships recorded.",
+      "we_lack": "Any history of received units from these brands, and a decision about competing networks.",
+      "how_to_find_out": "Ask the brands; log the answer per product under `intent.confirmed_via`. If samples ever arrive, add a per-page sample disclosure and note the date.",
+      "who_can_answer": "Program owner.",
+      "blocks": [
+        "S-14",
+        "any 'hands-on' sentence",
+        "FLG-014"
+      ],
+      "default_applied": "The site states no product was received or tested, which keeps the current text accurate by construction.",
+      "status": "open"
+    },
+    {
+      "id": "Q-14",
+      "question": "How long may a page stand before its observations are treated as stale?",
+      "why_it_matters": "Listing titles, included accessories and prices move constantly. The failure mode of an affiliate site is not a wrong claim on day one, it is a right claim on day four hundred.",
+      "we_have": "Capture dates on every observation, a `not_verified` list per product, and a gate that fails when docs/ is out of step with data/.",
+      "we_lack": "An agreed staleness rule and a scheduled re-capture job.",
+      "how_to_find_out": "Adopt S-18 (90 days), add tools/resolve_links.py to a scheduled workflow, and let the build stamp 'captured <date>' on every gear page.",
+      "who_can_answer": "Owner, or an automated workflow with no owner at all.",
+      "blocks": [
+        "S-18",
+        "any long-running automation"
+      ],
+      "default_applied": "Every gear and guide page shows its capture date; the register labels a capture a snapshot, not a specification.",
+      "status": "open"
+    }
+  ],
+  "counts": {
+    "total": 14,
+    "answerable_only_inside_the_account": 6,
+    "answerable_by_reading_a_public_official_page": 3,
+    "owner_decisions_only": 5
+  }
+}

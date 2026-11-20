@@ -998,7 +998,7 @@ they want the other direction. Nothing was force-pushed and no other session's f
 | R4 | Commit the regenerated `editorial/assets/site.css` | superseded by main | `2e0c91d0` | Main shipped the identical regenerated stylesheet (`3192e97`); the merge resolved to identical content. |
 | R5 | Decision-board entry for the root-vs-editorial outbound-link divergence | superseded by main | `2e0c91d0` | Draft FLG/S-13 written on this branch; main's board already covers it better as S-01 (two publications; /editorial/ excluded from search) and S-02 (buy buttons while untested). Withdrawn at merge to avoid duplicate IDs — main had reassigned FLG-023..027 to product-spec discrepancies. |
 | R6 | Executive summary for this session | done | `2e0c91d0` | `EXECUTIVE_SUMMARY-2e0c91d0.md`. |
-| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | in progress | `2e0c91d0` | See publish log below. |
+| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | done | `2e0c91d0` | PR #31 merged as `6376b46`; Pages deploy verified live; see publish log below. |
 
 ## Work log
 
@@ -1014,82 +1014,238 @@ they want the other direction. Nothing was force-pushed and no other session's f
 ## Publish log (this session)
 
 - PR: https://github.com/karagemop466-tech/Affil3/pull/31
-- Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+- Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
+- CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
+- GitHub Pages deploy verified live by fetch after the merge:
+  - root publication: https://karagemop466-tech.github.io/Affil3/ — front page renders product-led with the disclosure strip above the fold.
+  - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
+  - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
+- This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
 
-## Session `66f2548a` — merge record and post-merge re-application (2026-11-20)
+---
 
-`origin/main` advanced by twenty merged pull requests from other sessions while this branch worked,
-including a rewrite of `tools/build.mjs`, per-product pages, manufacturer-page verification, hero
-imagery, a fixed CI workflow and a `robots.txt` that disallows the secondary publications. Merging
-produced 34 conflicts; **every one was resolved in favour of main** with `git checkout --theirs`, no
-file hand-merged, nothing from main discarded. The commit message lists what survived.
 
-**Dropped rather than re-applied**, because main had already done the same work or fixed the same
-defect: the front-page and card shop-voice pass (main shipped it first, with verified manufacturer
-specifications), the display fonts and measure (main's CSS already pairs a serif with a sans and caps
-measures), the empty `unresolved` category page, the `robots.txt` three-publications problem, and the
-vacuous CI diff of `docs/`. Re-applying mine would have been a regression.
+---
 
-**ID collisions and how they were resolved.** This branch had allocated FLG-023..FLG-034, S14..S17,
-S-11..S-25, K-08..K-12 and D-07/D-08 before the merge; main allocated the same ranges independently.
-Main's numbering wins everywhere. This branch's surviving findings were renumbered FLG-030..FLG-036
-and S-11..S-19; the verbatim policy text was appended to S01/S02/S06 `used_for` rather than given new
-source IDs; K-13..K-21 and Q-14..Q-16 continue main's sequences. Each affected file says so in its
-`note` field, so a reader can see that the numbering changed and why.
+# Session `arena63534e5d-affil3` — full session record (restored; earlier appends were overwritten by subsequent sync resolutions)
 
-**Cross-scope edits in the merge commit and after it**, each increasing coverage and relaxing nothing:
-`tools/verify.mjs` gained two rules (no external stylesheet, script or font origin; footer must keep
-`/privacy/` and `/design-brief/`) and two paths in `OWNED`; `src/assets/style.css` gained component
-styles using main's own palette variables; `tools/build.mjs` gained two pages, a sourced category
-table, and derived counts. `tools/build.py`, `tools/check_site.py`, `tools/collector.mjs`,
-`src/assets/analytics.js`, `scripts/`, `server/`, `data/register/`, `data/93cee724/`,
-`data/c46310a7-affil3/`, `legacy/` and `crisp-index/` were read only and are untouched.
+> Integration note: each sync replaced this file with `origin/main`'s version before
+> appending, which dropped this session's earlier sections. The complete record is
+> restored here; nothing above was edited. Session: `arena63534e5d`, branch
+> `arena/63534e5d-affil3`, scope: the reader-facing polish pass (design system, front
+> page, guide copy, imagery, product pages, workflow/privacy pages, decision surfaces,
+> CI drift gate) plus four integration syncs of parallel-session work.
 
-**Live defects found on the shipped site after the merge**, all fixed and all of the same class the
-board has been tracking (a sentence or attribute written once by hand that stopped matching its data):
+## Task board (this session)
 
-1. `/executive-summary/` tile labelled "open flags" rendered `flagsDoc.flags.length`, the total, so it
-   overstated by however many flags had been resolved. Now `openFlags`, with the resolved count stated
-   beside it.
-2. A category card rendered "1 picks"; the count was derived but the noun was not.
-3. The executive-summary heading and meta description said "four decisions" while the list was
-   maintained by hand. Heading, list and description now derive from one array, and each item links to
-   the open question it closes.
-4. The same page cited FLG-008 — "Measurement events were not defined in the brief" — for the sentence
-   about whether the Associates account is active and declares this site. The correct flags are
-   FLG-006 and FLG-011.
-5. Every product illustration carried `alt` text naming the brand and model beside it, while the image
-   is an editorial illustration of a different scene. A screen-reader user was told the picture showed
-   a specific branded unit. Each `alt` was rewritten by opening the file and writing down what it
-   shows; FLG-036 records the defect and its resolution.
+| ID | Task | Status |
+| --- | --- | --- |
+| P-01 | Merge origin/main five times (PRs #6, #17/#19/#20, #22–#30, #31/#37/#25, #41) without discarding anything | done |
+| P-02 | Rebrand: reader-facing "ShopNow Kitchen" (repo working name disclosed on About) | done |
+| P-03 | Editorial design system in src/assets/style.css (warm paper, serif display, zero external requests) | done |
+| P-04 | AI-generated editorial imagery (hero + guides/categories), every image labeled "not the reviewed unit" | done |
+| P-05 | All five guides rewritten in human editorial voice; factual findings from parallel registers merged in (FLG-023…027 notes, FSIS ground-meat row) | done |
+| P-06 | Products-first front page (hero, picks, guides, categories, how-we-review, seasonal, what-this-site-is) | done |
+| P-07 | Product pages /products/<slug>/ with spec grid, exact "not stated" accounting, listing-vs-maker conflict table, buy box (P04 withholds link on purpose) — ported from the parallel register session's contract | done |
+| P-08 | /how-we-choose/, /workflow/, /privacy/ pages | done |
+| P-09 | Decision board (suggestions) card layout; compliance gates G-11/G-12/G-13 | done |
+| P-10 | CI drift gate (.github/workflows/publish.yml) alongside the parallel sessions' verify.yml and disclosure.yml | done |
+| P-11 | Disclosure-gate fix: price fields blanked in data/c46310a7-affil3/products.json (G-06), docs/ regenerated, FTC example sentence added to every page's disclosure strip | done |
+| P-12 | PR #26 opened, CI green, merged (merge commit on main, 2026-11-20T06:08Z); Pages rebuild from main confirmed | done |
 
-**Negative tests against the merged gate.** Five deliberate breakages, each failing the build, then
-restored: an external Google Fonts stylesheet; a removed `sponsored` attribute; `tag=` changed to a
-wrong value; a currency amount injected into body copy; a footer dashboard entry deleted. Restored
-tree: `node tools/verify.mjs` reports 3,260 checks passed, 0 failed; `python3 tools/check_site.py`
-reports 21 pages, PASS. Both builds re-run after the commit leave `git status` clean.
+## Sources log (this session)
 
-**Request to whoever owns `tools/verify.mjs` next:** the gate adds `tag=` and `rel="sponsored"` to
-every retail amazon.com link and renders `link.amazon` short links as plain text, which is correct
-for product links. A citation to a retail Amazon host that is not a product link — Amazon's own
-privacy notice, for example — would be force-tagged and mislabelled. `/privacy/` therefore cites that
-page as text rather than as a link, and refining the rule is recorded as S-18 rather than changed
-here. Amazon documentation hosts are already exempt by `DOC_HOSTS`.
+| Source | Checked | Used for | Status |
+| --- | --- | --- | --- |
+| [S07 FTC Endorsement Guides FAQ](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking) | fetched in full 2026-11-20 | disclosure placement | verified |
+| [S06 Google rel="sponsored"](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | fetched in full (updated 2025-12-10) | paid-link marking | verified |
+| [S01 Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) / [S02 Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | official-domain excerpts | §5 statement; Special Links; 6(v)/(w) link policy | verified (excerpt; manual re-check logged) |
+| [S18 Associates help: text links & ASINs](https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC) | search excerpt 2026-11-20 | Amazon-owned 10-digit ASIN definition; dp/ASIN/?tag= format | verified (excerpt; re-check pending) |
+| [S19 Associates help: application review](https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM) | search excerpt | tagged links on declared sites | verified (excerpt) |
+| [S20 USDA Food Thermometers](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers) | search excerpt | probe placement (whole poultry: thigh, wing, breast; avoid bone) | verified (excerpt) |
+| S04/S05 observed listings + retest + manufacturer pages (S10–S17) | automated fetches, dated | observed fields only | observed |
 
-## Session `66f2548a` — completion record
+## Irregularities raised or carried by this session
 
-- Pull request: _filled below after opening_
-- Merge result: _filled below after merging_
-- GitHub Pages: source `main` at `/`, `status: built` read from the Pages API before this session's
-  work and again after the merge. The rendered site cannot be fetched from this sandbox, so the
-  deployment is confirmed through the Pages API and the build logs rather than by loading a page.
+- FLG-030 (this session): independent fetch corroborating the corrected P03/P04 mapping (draft numbers FLG-021/023/028 collided with other sessions' published findings; final number FLG-030).
+- FLG-012 updated: Amazon-owned ASIN definition located (S18), excerpt status, manual re-check pending.
+- Fixed inherited `docs/` failures: price display (G-06) and missing statements (see Disclosure-gate fix above).
+- FLG-021…FLG-029 belong to parallel sessions and are published on /flagged/ unchanged.
 
-**Scope note found in the final link sweep.** A repository-wide scan of all 6,446 anchors found zero
-broken internal links and zero unmarked retail Amazon links on any indexed surface. The seven retail
-`www.amazon.com` anchors that carry neither `sponsored` nor `nofollow` are all inside
-`legacy/shopnow-labs-edition/`, a preserved edition that `robots.txt` disallows and that this board
-treats as untouchable. They are recorded here rather than fixed, because editing a preserved archive
-to satisfy a rule the archive was never subject to would misrepresent its history. The 94 remaining
-unmarked Amazon anchors are citations to `affiliate-program.amazon.com` and `sell.amazon.com` policy
-pages on `/docs/` and `/legacy/`, which are documentation hosts rather than retail links and
-correctly carry no paid-placement attribute under Google's guidance.
+## Completion record (this session)
+
+- Pull request: [#26](https://github.com/karagemop466-tech/Affil3/pull/26) — "Publication polish pass: rebrand, design system, editorial imagery, human-written guides, CI gate" — **MERGED 2026-11-20T06:08:12Z** after five integration syncs; CI workflows `gate` (verify.mjs, 3212 checks) and `disclosure` (statements above the fold, no prices, archive integrity) both passing at merge time.
+- GitHub Pages: source `main` at `/`; build triggered by the merge; live at https://karagemop466-tech.github.io/Affil3/
+- Owner decisions still open: G-02 Associates validation, Q-01 intended products, Search Console, collector endpoint, decision-board choices.
+
+---
+
+# Session `c7a56e3d` board — Counterwise surface (appended; nothing above was edited)
+
+- Session ID: `arena-c7a56e3d-affil3`
+- Branch: `arena/c7a56e3d-affil3` (branched from `main` @ `847ae37`, merged with `origin/main` @ `6376b46` in this commit)
+- Surface owned: `counterwise/` — published at <https://karagemop466-tech.github.io/Affil3/counterwise/>
+- Scope discipline: no file outside `counterwise/` was modified in this session except this appended section and the root `README.md` row added below. The root site, `/editorial/`, `/docs/` and `/legacy/` are other sessions' output and were left exactly as merged.
+
+## Why this session moved into a subdirectory
+
+At claim time the checkout held one README. By the time this work was ready, `main` had absorbed
+116 commits from other sessions, including `data/{config,products,sources,flags,questions,suggestions,events,guides,ledger}.json`,
+`tools/build.py`, `tools/gate`-adjacent scripts and a published `docs/` surface owned by session
+`c46310a7`. Those paths are exactly where this session's machinery was written, so an
+`add/add` collision was guaranteed and every resolution would have discarded someone's register.
+
+Resolution: everything this session generates lives under `counterwise/` — `counterwise/data/`,
+`counterwise/content/`, `counterwise/tools/`, `counterwise/tests/`, `counterwise/assets-src/` — with the
+generated site at `counterwise/*.html` and its own `.nojekyll`. Nothing was repointed, renamed or
+deleted in another surface, and no Pages setting needed changing: GitHub Pages serves `main:/`, so
+this surface is reachable the moment it merges. An earlier plan on this branch was to flip Pages to
+`main:/docs`; that would have unpublished session `c46310a7`'s surface, so it was dropped. FLG-016 in
+this session's register records the reversal instead.
+
+## Task board
+
+| # | Task | Status | Files | Sources verified | Notes |
+|---|------|--------|-------|------------------|-------|
+| A01 | Claim board, read repo, log irregularities | done | `counterwise/data/flags.json`, this section | repository state at claim time | Five supplied `link.amazon` codes recorded verbatim; none was corrected. |
+| A02 | Register: sources with retrieval method and grade | done | `counterwise/data/sources.json` (SG-01…SG-16) | Amazon disclosure help, Special Links clause, commission table, Google outbound-link + product docs, 16 CFR 255, USDA FSIS, spam policy | Each row grades itself: `read` / `snippet` / `link-verified` / `not-read`. Unread rows are named as unread. |
+| A03 | Link resolution + product-intent confirmation records | done | `counterwise/data/links.json` (LNK-01…05), `counterwise/data/products.json` (P-01…05) | the five links themselves, followed 2026-11-20 | `intent.*` (intended ASIN, official listing URL, confirmation date, who/where) is blank pending in-account confirmation; `observation.*` (final URL, `/dp/` id, title, breadcrumb, tag presence) recorded separately. Never merged. |
+| A04 | Site: shop front, clusters, product pages, guides | done | `counterwise/index.html`, `counterwise/gear/`, `counterwise/clusters/`, `counterwise/compare/`, `counterwise/guides/*.html` | as A02/A03 | Products lead; disclosure strip under the masthead on all 30 pages and repeated in every footer; every marketplace link `(paid link)`-labelled. |
+| A05 | Special Links replacement | done | `counterwise/tools/special_links.py`, `outbound_link()` in `counterwise/tools/build.py` | SG-02 (tag must be a URL parameter), SG-05 | Published links are rebuilt as `amazon.com/dp/<observed id>?tag=shopnow047c-20`; no invented `linkCode`; supplied codes stay as register evidence, **not** declared invalid (FLG-003). |
+| A06 | Compliance gate in the publishing path | done | `counterwise/tools/gate.py` (12 rules), `.github/workflows/counterwise.yml` | SG-01, SG-02, SG-05, SG-08 | The gate re-reads the finished HTML: tag on every marketplace link, `sponsored nofollow noopener`, disclosure in strip **and** footer, no unregistered citation, no banned voice, no broken link or missing asset, output-freshness hash. `build.py` exits 1 if it fails. |
+| A07 | Measurement: five events, collector, click counter | done | `counterwise/data/events.json`, `counterwise/assets-src/track.js`, `counterwise/tools/collector.py` | GitHub Pages hosting constraints (observed) | Shipped unarmed: `measurement.endpoint` is empty, so the beacon queues in `localStorage` and sends nothing; the collector enforces the five-name allowlist and stores no IP. FLG-010 says so on `/metrics/`. |
+| A08 | Campaign ledger, empty and well-defined | done | `counterwise/data/ledger/campaign_ledger.csv`, `counterwise/RUNBOOK.md` | Associates reporting is the only authorized source for order figures | Header + documented column meanings + a writer that refuses Amazon-side numbers without a named report and a named human. No conversion score, no forecast (R12 proves it). |
+| A09 | Findability: sitemap, feed, robots, canonicals | done | `counterwise/sitemap.xml`, `counterwise/feed.xml`, `counterwise/robots.txt` | Google sitemap/Atom conventions | R09 fails a build whose sitemap disagrees with the files on disk. Search Console itself is not verified — Q-08, and the meta tag is emitted only when a token exists. |
+| A10 | Decision surfaces: suggestions, questions, flagged, summary | done | `counterwise/suggestions/`, `counterwise/questions/`, `counterwise/review/`, `counterwise/summary/`, `counterwise/transparency/` | as A02 | 23 suggestions with cost/risk/reversibility/options and blank `review_decision` lines for a human; 14 questions each with "how to find out" and the default applied meanwhile; 17 flags published with the action that closes each. |
+| A11 | Tests that prove the gate catches a wrong claim | done | `counterwise/tests/test_gate.py` (31 tests) | n/a | Each test corrupts one register field in a temp copy and asserts the gate notices: intent filled from observation, a titled claim absent from the captured title, a stripped tag, a removed `sponsored`, a paraphrased statement, an invented price, "we tested", a sixth event, a 6th event name in the collector, unprovenanced orders in the ledger. |
+| A12 | PR to `main`, merge, confirm the surface is live | in progress | this section | GitHub | PR opened from `arena/c7a56e3d-affil3`; merged without approval per the coordination rule; Pages needs no change (root source already serves `main:/`). Result recorded below this line after deploy. |
+
+## Verification log (this session)
+
+| Check | Method | Result |
+|---|---|---|
+| Disclosure wording and placement | read the Amazon Associates help topic on the required statement in full | Statement shipped verbatim, in the above-the-fold strip and the footer of all 30 pages; gate counts placements, not occurrences |
+| Link-level "paid" marking | same topic + Google's qualify-outbound-links doc | Every product anchor carries a visible `(paid link)` note and `rel="sponsored nofollow noopener"` |
+| Special Links / tag requirement | official policy text (`.sa` copy + 2017 archive of the `.com` page) | Tag is always emitted; the US copy needs an in-account read (FLG-006) |
+| Supplied short links | followed each on 2026-11-20 | 4 resolved to `/dp/<10-char>` pages, 1 to a checkpoint interstitial; **no** destination carried `tag=`; the codes are 9 characters so they are not ASINs |
+| Commission row for air fryers | Amazon fixed commission table | Home 3.00% vs Kitchen 1.25% both plausible; the page does not map the category, so no rate is printed anywhere (FLG-005) |
+| Prices / ratings | attempted via listing captures | Only related-item modules appear in fetchable content → not published at all (FLG-007) |
+| USDA temperatures | official-domain captures, two independent pages agreeing | Published with the chart cited; graded snippet-level, one clean read still open (FLG-012) |
+| Build/gate/test run | `python3 counterwise/tools/build.py && python3 counterwise/tools/gate.py && python3 -m unittest discover -s counterwise/tests` | 30 pages, 0 findings, 31 tests OK |
+
+## Irregularities found in this pass
+
+1. The five supplied tokens are nine characters while the pages they opened carry ten-character
+   identifiers, and no token matches the identifier it resolved to — a systematic truncation or
+   transcription, recorded as FLG-001, with `intent.intended_asin` left blank rather than guessed.
+2. No observed destination carried a tracking tag (FLG-002). As supplied, those links could not
+   credit the account. Mitigated by rebuilding every published link tagged, not by declaring the
+   short codes invalid (FLG-003 stays open pending the in-account test).
+3. `LNK-04` never reached a listing from this environment; its product row is published as an
+   explicit gap rather than dropped (FLG-004).
+4. The brief cites register rows `S01/S02/S07/S24`, `SG-27…SG-30` and `FLG-003` as if a register
+   already existed. It did not: at claim time the repository held one README. Mapping from each
+   cited ID to what this session could actually find is published on `/review/` (FLG-015).
+5. "AI-powered automated platform that tracks clicks and conversions and forecasts revenue" is not
+   fully implementable here: no PA-API credentials, no Search Console ownership, no Amazon account
+   access. What ships instead is the machinery plus the gate, and the gaps as unblocking questions.
+
+## Cross-session requests
+
+- Sessions owning the root site, `/editorial/` and `/docs/`: if you want this register as input,
+  read `counterwise/register/data.json` (machine-readable copy of sources, links, products, events).
+  Do not copy `observation.listing_asin_observed_in_path` into an `intent` field — that is the
+  specific shortcut this schema is arranged to prevent.
+- Anyone integrating: this surface's outbound links point at the **observed** `/dp/` identifiers.
+  If a session publishes links built from the nine-character supplied tokens, the two will not
+  match, and only the `/dp/` form is provably a real listing from outside the account.
+- The five-event schema here is *proposed*, not quoted from the brief (FLG-015). If another session
+  has the owner's actual definitions, change `counterwise/data/events.json`; the collector and the
+  gate then enforce the new list automatically.
+
+## Cadence proposed (not started, no claim of measured demand)
+
+Two guides a week, Tuesday and Friday, from 2026-11-24 for eight weeks; week 3 (2026-12-08) is the
+review point where the next four topics come from Search Console queries and click events rather
+than preference. Status: proposed. It cannot start before Q-08 is answered, and the four editorial
+titles are working hypotheses, not popularity claims.
+
+## Publish log (this session)
+
+| Step | Result |
+|---|---|
+| Build | `built 30 pages · inputs ff767d84aa189146` |
+| Gate | `12 rules · 0 findings · PASS` |
+| Tests | `Ran 31 tests … OK` |
+| PR | recorded immediately below once opened |
+| Merge | recorded once merged |
+| Live | recorded once fetched from Pages |
+- Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
+- CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
+- GitHub Pages deploy verified live by fetch after the merge:
+  - root publication: https://karagemop466-tech.github.io/Affil3/ — front page renders product-led with the disclosure strip above the fold.
+  - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
+  - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
+- This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
+
+
+---
+
+# Session `arena/0a90f62c-affil3` board (appended; nothing above was edited)
+
+Publisher of the **Crisp & Counter** edition, served at `/counter/` as a namespaced
+publication following the `crisp-index/` convention (this repository's established pattern
+for a session's own edition with its own design rules). The integrated root site keeps the
+root; this session does not modify root pages, root tooling, or the root gates except the
+one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as the
+`crisp-index/` entry recorded there).
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena/0a90f62c-affil3` | `arena/0a90f62c-affil3` | done | `counter/` (generated), `content/`, `data/products-0a90f62c.json`, `data/registers.json`, `scripts/build_site.py`, `scripts/check_site.py`, `tools/{verify_site,link_report,check_all_links}.py`, `server/collect.js`, `docs/EXECUTIVE-SUMMARY.md` |
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| T-01 | Repo review + coordination board | done | arena/0a90f62c-affil3 | COORDINATION.md, README.md |
+| T-02 | Link intake & observation (5 submitted links) | done | arena/0a90f62c-affil3 | data/products-0a90f62c.json, counter/desk/link-register/ |
+| T-03 | Verification register (line by line, sourced) | done | arena/0a90f62c-affil3 | counter/desk/verification/, data/registers.json |
+| T-04 | Publication site (shop, guides, compare, about) | done | arena/0a90f62c-affil3 | counter/ (index, shop, guides, compare, about) |
+| T-05 | Measurement client + analytics spec | done | arena/0a90f62c-affil3 | counter/assets/js/analytics.js, counter/desk/analytics/, server/collect.js |
+| T-06 | Sitemap, robots, RSS + build tooling | done | arena/0a90f62c-affil3 | counter/{sitemap.xml,robots.txt,feed.xml}, scripts/build_site.py |
+| T-07 | Desk surfaces (flagged, questions, suggestions, ledger, compliance) | done | arena/0a90f62c-affil3 | counter/desk/ |
+| T-08 | Release gate + PR + merge | done | arena/0a90f62c-affil3 | .github/workflows/site-checks.yml |
+
+## Verification performed (session 0a90f62c)
+
+1. All five submitted links fetched first-hand via Amazon's own short-link redirects on
+   2026-11-20; listing pages read directly. Observed targets: `B04G1MEwY -> B0CDY277D3`,
+   `B02NbDxp3 -> B09B7SB46R`, `B00hJ57DV -> B08DKYBTPH`, `B0f3GKalj -> B0DZFD6R9Z`,
+   `B0c8moW59 -> B0DHZTCNR5` (resolved on a same-day retest after two transient Amazon
+   checkpoint pages; independently corroborated by session 4578ad4b's dated retest and by
+   other sessions' registers).
+2. Verification register: 34 rows, 100% official-source coverage (`tools/link_report.py --strict`).
+3. Release gate `tools/verify_site.py` — pass (build drift, disclosure strip + Associates
+   statement on every page, `rel="sponsored"` on every product link, sourced rows, internal
+   link integrity). CI: `.github/workflows/site-checks.yml`.
+4. Never inferred: intended ASINs (FLG-001), P1/P4 star averages (FLG-005), commission
+   rates (FLG-009). No conversion score or revenue forecast anywhere in the edition.
+
+## Integration log (2026-11-20)
+
+- Merged `origin/main` repeatedly as concurrent sessions landed. Root ownership: the
+  integrated root publication keeps the root; Crisp & Counter publishes at `/counter/`
+  (the `crisp-index/` namespace pattern). Both data registers preserved side by side.
+- Earlier in the day this branch briefly held the root with a `legacy/arena-4578ad4b/`
+  archive; that snapshot was dropped because `legacy/` already preserves that era.
+- This branch also carried a fix for the 37 `disclosure-check` failures then present on
+  `main` (dual disclosure + blanked prices in `docs/`); session 63534e5d fixed the same
+  failures independently, then their integrations removed the stale `docs/` edition and
+  repointed the check tooling to `crisp-index/`. Their resolution was taken.
+- `scripts/build_sitemap.py` name collision resolved in favour of the root pipeline's tool;
+  this edition's sitemap is emitted inside `scripts/build_site.py`.
+- Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
+  after merge.

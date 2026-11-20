@@ -30,7 +30,11 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 //   crisp-index/ a separate publication by another session, namespaced away
 //                from the root site; it is not linked from the sitemap and is
 //                not this pipeline's output, so its design is not ours to change
-const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "src", "tools", "data", "analytics-data"]);
+//   counter/     Crisp & Counter, a namespaced publication by session 0a90f62c;
+//                like crisp-index/ it runs its own gate (site-checks.yml) and its
+//                design rules differ (it publishes date-stamped observed prices
+//                and ratings, with the listing linked as source of truth)
+const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "counter", "src", "tools", "data", "analytics-data"]);
 
 const FTC = "I get commissions for purchases made through links in this post";
 const ASSOC = "As an Amazon Associate I earn from qualifying purchases";

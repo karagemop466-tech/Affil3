@@ -1,5 +1,5 @@
 {
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-030 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; numbering continues from main's FLG-029 because this branch had independently allocated FLG-023 to FLG-034 and those numbers were taken. Three findings from that earlier allocation were dropped rather than renumbered because main had already fixed them: the CI workflow that diffed a non-existent docs/ directory, robots.txt advertising two sitemaps over three crawlable publications, and the empty 'unresolved links' category page. Two more were dropped as duplicates of FLG-024 and FLG-025. FLG-036 was added and resolved by session 66f2548a on 2026-11-20; FLG-015 was resolved in the same pass because the site shipped imagery after the flag said it had none. Both keep their original wording so the register shows what changed rather than pretending it never did.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -156,9 +156,7 @@
       "sources": [
         "S02"
       ],
-      "manual_step": "Decide the imagery approach (suggestion S-05).",
-      "status": "resolved",
-      "resolution": "Superseded 2026-11-20. The site now ships nine editorial illustrations (five product, four guide). The compliance point that made the flag worth raising survives and is the part that was resolved: no image on the site is Amazon Program Content, so the IP License limits on altering or redistributing Program Content never engage, and every image is captioned 'Editorial illustration, not the reviewed unit.' Kept rather than deleted because the register's job is to record what was once believed and why it changed. The open decision is now about licensing and sourcing original photography, recorded at suggestion S-07."
+      "manual_step": "Decide the imagery approach (suggestion S-05)."
     },
     {
       "id": "FLG-016",
@@ -321,100 +319,15 @@
     },
     {
       "id": "FLG-030",
-      "severity": "high",
-      "status": "open",
-      "area": "compliance",
-      "title": "Program Policies bar using Special Links or Program Content to develop machine learning models without Amazon's prior written approval",
-      "detail": "Participation Requirements §5, read verbatim 2026-11-20: \"You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.\" The brief for this project asks for an AI-powered platform that automates product research, generates content and optimises campaigns. The clause does not forbid that outright - it is about using Special Links or Program Content as model input - but it draws a hard boundary around the automation the brief describes, and no earlier session had recorded it. Everything built so far stays inside it: no Amazon content was used to train or fine-tune anything, product facts were read from manufacturer and Amazon pages and cited by source ID, and outbound links are constructed from an observed ASIN plus the tracking ID rather than harvested at scale.",
-      "impact": "Sets the ceiling on the automation half of the brief. Any pipeline that ingests Special Links or Program Content as model input needs Amazon's written approval first, and the Program Policies preamble makes a violation of the Participation Requirements a material breach.",
-      "manual_step": "Before adding automated scraping, model training or bulk link generation, ask Associates support whether it needs prior written approval under §5 and record the reply against this flag. Do not build the automated product-research pipeline until that answer exists.",
-      "sources": [
-        "S02",
-        "S01"
-      ]
-    },
-    {
-      "id": "FLG-031",
-      "severity": "high",
-      "status": "open",
-      "area": "compliance",
-      "title": "The Site may not have price tracking or price alerting functionality unless Amazon agrees",
-      "detail": "Participation Requirements §6(y), read verbatim 2026-11-20: \"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\" The brief asks the platform to analyse pricing and to track conversions. Recording prices for internal analysis is a different act from shipping a price-tracking feature to readers, and only the second is barred by 6(y) - but the distinction has to be chosen deliberately rather than arrived at by accident. Related and stricter: §2(b) allows the Site to show prices and availability only where Amazon serves the link or the data comes from the Creators API or PA API, and §6(t) bars displaying customer reviews or star ratings without the same.",
-      "impact": "A hard boundary on comparison tables and on any 'best value' framing. The build gate already fails on a currency amount, a star rating or a review count, so this is enforced rather than merely intended.",
-      "manual_step": "Decide explicitly: no price feature on the site (current, and the safe reading), or apply for PA API / Creators API access and get Amazon's agreement under 6(y) before building one. Any suggestion that would surface a price should be marked as needing this decision first.",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "FLG-032",
-      "severity": "medium",
-      "status": "open",
-      "area": "compliance",
-      "title": "The published site loads a click counter and carries no privacy notice",
-      "detail": "Participation Requirements §3(e) makes the Associate responsible for \"disclosing on your Site accurately and adequately and otherwise satisfying applicable legal requirements, either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors\". The site loads assets/analytics.js on every page and posts events to a configurable endpoint. The script is genuinely privacy-preserving - the gate asserts it sets no cookies, no localStorage and no sessionStorage, and it returns early when Do Not Track is set - and the endpoint is empty so nothing is currently sent. But no page told a reader any of that. Privacy pages existed in the repository only under legacy/, belonging to superseded editions and not linked from the live one.",
-      "impact": "A disclosure obligation under the Associates policies that was unmet on the published site, and a reader-facing gap: someone cannot tell what a page they are reading is doing.",
-      "manual_step": "Review the /privacy/ page added by session 66f2548a. It describes what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. It is a first draft of a legal-adjacent page written by a build session, not legal advice; Q-13 on the questions page stands.",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "FLG-033",
       "severity": "low",
       "status": "open",
-      "area": "account",
-      "title": "The tracking ID's shape does not match the example format in the policy, which is not the same as being wrong",
-      "detail": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID shopnow047c-20 has an eleven-character prefix rather than five, and a two-digit suffix that does match. Because the clause expressly allows other designated formats, the shape proves nothing either way: it cannot confirm the ID is valid and it cannot show it is invalid. Recorded so that nobody later reads the eleven-character prefix as evidence of a problem, and so that the weaker argument - an Associates help page saying IDs end in -20 - is not mistaken for the policy text. Separately, §1(g) bars any Amazon trademark or variant or misspelling in a tag or Associates ID; shopnow047c contains none, which is a genuine pass.",
-      "impact": "None on its own. It narrows what can be concluded from the ID's appearance and leaves ownership unconfirmed.",
-      "manual_step": "Export the tracking-ID list from Associates Central and confirm shopnow047c-20 appears on it. That closes this flag and FLG-011 together.",
+      "title": "Independent fetch by session arena63534e5d corroborated the corrected P03/P04 mapping",
+      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. Draft numbers this flag previously held on the session branch (FLG-021, FLG-023, FLG-028) all belong to other sessions' published findings, so it is recorded here as FLG-028's successor number FLG-030.",
       "sources": [
-        "S02",
-        "S03"
-      ]
-    },
-    {
-      "id": "FLG-034",
-      "severity": "medium",
-      "status": "open",
-      "area": "product data",
-      "title": "Amazon presents the product behind submitted link 4 as superseded",
-      "detail": "The official page for B0DHZTCNR5 (ThermoMaven 1 Sec instant-read, Black) carries a \"Newer Version Available\" block linking to a different ASIN, B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh fetch 2026-11-20 and recorded in data/observations/2026-11-20-reverify-66f2548a.json. The submitted link therefore points at a variant Amazon itself flags as superseded. The successor ASIN is recorded as an observation only and is not published as a product row: it was not submitted, and its intended status cannot be confirmed. A price and a star rating were visible inside that block and neither was transcribed or published, per §6(t) and §2(b).",
-      "impact": "A reader who clicks through lands on a variant the seller presents as superseded. It also compounds FLG-025: this product has no manufacturer page to verify against and now has a successor to decide about.",
-      "manual_step": "Decide whether slot 4 should promote B0GL7Z4KP4. If it should, supply it as the intended product so the intended fields can be filled from an official source, then issue a tagged Special Link for it in Associates Central.",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "FLG-035",
-      "severity": "medium",
-      "status": "open",
-      "area": "site",
-      "title": "Category pages published picks with no table and no per-row source link",
-      "detail": "The brief requires every table row to carry a source link to an official site. The shop table does, and each product page cites its own manufacturer source. The three category pages did neither: they rendered pick cards with no table at all, so the specifications shown on them (capacity, temperature, shape) carried no citation on that page. Verified by counting table elements in the committed category pages: zero.",
-      "impact": "A reader comparing two appliances on a category page sees numbers with no way to check them, and has to click through to a product page to find the source. It is the one place on the site where verified figures appeared uncited.",
-      "manual_step": "Review the sourced comparison table added to each category page by session 66f2548a. Each row cites the manufacturer source already recorded in spec_sources, and a blank cell means the value was not confirmed rather than that it was overlooked.",
-      "sources": [
-        "S11",
-        "S12",
-        "S13",
-        "S14"
-      ]
-    },
-    {
-      "id": "FLG-036",
-      "severity": "medium",
-      "status": "resolved",
-      "area": "accessibility",
-      "title": "Product illustrations carried alt text naming the brand and model they do not depict",
-      "detail": "tools/build.mjs passed each product's own name as the alt text of its illustration, so the card for the CHEFMAN 6 Qt dual basket announced 'CHEFMAN 6 Quart Dual Basket Air Fryer' over an image that is, in fact, a black basket fryer holding roasted potatoes on a counter. A screen-reader user was told the image showed a specific branded unit when it shows an illustration, which both misdescribes the image and implies an endorsement the illustration cannot carry. Verified by opening all five image files and writing down what each shows.",
-      "impact": "Screen-reader users received false descriptions, and the images implied a brand association the site elsewhere disclaims in the footer.",
-      "resolution": "Fixed 2026-11-20 by session 66f2548a: a PRODUCT_IMAGE_ALT map in tools/build.mjs now carries one description per image, written by looking at the file, and each begins 'Editorial illustration, not the reviewed unit'. The guide gallery alts were already descriptive and were left as they were.",
-      "manual_step": "Spot-check the rendered alt attributes on /shop/ and on a product page; they should read as descriptions of a scene, not as product names.",
-      "sources": [
-        "S02"
-      ]
+        "S04",
+        "S05"
+      ],
+      "manual_step": ""
     }
   ],
   "checked": "2026-11-20"

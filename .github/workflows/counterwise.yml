@@ -1,0 +1,52 @@
+name: Counterwise surface gate
+
+# The check that keeps this surface honest. It regenerates counterwise/ from its own register and
+# requires the committed output to match, then runs the 12-rule compliance gate and the tests that
+# prove the gate still catches a wrong claim. Scope-limited so it never runs for other surfaces.
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "counterwise/**"
+      - ".github/workflows/counterwise.yml"
+  pull_request:
+    paths:
+      - "counterwise/**"
+      - ".github/workflows/counterwise.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: counterwise
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Rebuild from data/ and content/
+        run: python3 tools/build.py
+
+      - name: Require the committed output to match the register
+        run: |
+          git -c core.safecrlf=false diff --exit-code -- . \
+            || { echo "::error::counterwise/ is not what tools/build.py produces from counterwise/data + counterwise/content. Run: python3 counterwise/tools/build.py"; exit 1; }
+
+      - name: Compliance gate (disclosure placement, tagged links, citations, voice, ledger)
+        run: python3 tools/gate.py
+
+      - name: Special Links check
+        run: python3 tools/special_links.py check
+
+      - name: Ledger provenance rule
+        run: python3 tools/ledger.py status
+
+      - name: Tests (each one corrupts a field and expects the gate to notice)
+        run: python3 -m unittest discover -s tests -v

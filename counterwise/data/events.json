@@ -1,0 +1,98 @@
+{
+  "$comment": "The five events this deployment is permitted to record. The program owner's brief says 'record the five defined events' but no definition exists in the materials available to this session (FLG-015), so these five are proposed: the collector rejects every other name, and the front end only emits these. Renaming or replacing the list is a one-file change that the gate then enforces everywhere.",
+  "status": "proposed",
+  "privacy_rules": [
+    "no IP address is stored, read or logged",
+    "no cookie and no local identifier beyond the browser's own session queue",
+    "no third-party endpoint receives a request",
+    "navigator.doNotTrack or the global privacy control signal stops collection before the first event",
+    "the page path is stored, never the query string, so a tagged outbound URL cannot leak a session token into the log",
+    "retention is the append-only file; there is no user-level profile to delete"
+  ],
+  "storage": {
+    "collector": "tools/collector.py, stdlib only",
+    "file": "data/ledger/events-YYYY-MM-DD.jsonl",
+    "rotation": "one file per UTC day; the ledger ingests daily",
+    "retention_days": 730
+  },
+  "events": [
+    {
+      "id": "EV-01",
+      "name": "page_view",
+      "fires_on": "a guide, gear, cluster or summary page finishes loading",
+      "properties": {
+        "page": "string, path only",
+        "kind": "guide | gear | cluster | summary | other",
+        "referring_path": "string, same-site only, empty for unknown"
+      },
+      "decision_it_serves": "which entry pages bring strangers in, which decides where internal links and the next topic go",
+      "conversion_role": "denominator for every rate in the ledger"
+    },
+    {
+      "id": "EV-02",
+      "name": "product_link_click",
+      "fires_on": "a click on any link carrying data-outbound, i.e. every tagged Amazon link",
+      "properties": {
+        "page": "string, path only",
+        "product_id": "P-xx",
+        "link_state": "pending-test | in-account-confirmed",
+        "placement": "rail | gear-page | guide-cta | table | footer"
+      },
+      "decision_it_serves": "the only signal that says a page made someone want to look at a listing; separates a read page from a useful one",
+      "conversion_role": "the numerator of click-through; joins to Amazon's click report by date, not by user"
+    },
+    {
+      "id": "EV-03",
+      "name": "comparison_started",
+      "fires_on": "two products selected in the comparison filter form",
+      "properties": {
+        "page": "string",
+        "product_ids": "array of two P-xx",
+        "cluster": "string"
+      },
+      "decision_it_serves": "which pairings readers actually want side by side, which is what decides the next comparison page",
+      "conversion_role": "intent signal ahead of a click; the highest-value editorial input in the set"
+    },
+    {
+      "id": "EV-04",
+      "name": "checklist_item_toggled",
+      "fires_on": "a buyer checks a line in a decision checklist",
+      "properties": {
+        "page": "string",
+        "checklist": "string id",
+        "item": "string id",
+        "checked": "boolean"
+      },
+      "decision_it_serves": "which criteria people actually use, which is how a guide earns its next revision without guessing",
+      "conversion_role": "engagement depth; correlates with return visits more reliably than time on page"
+    },
+    {
+      "id": "EV-05",
+      "name": "email_signup_submitted",
+      "fires_on": "the reader-capture form is submitted, whether or not capture is enabled",
+      "properties": {
+        "page": "string",
+        "capture_enabled": "boolean",
+        "outcome": "queued | disabled-noop"
+      },
+      "decision_it_serves": "demand for a list before we take on storing addresses; today it measures interest in something we cannot yet deliver, which is exactly the number we need",
+      "conversion_role": "owned-audience growth; independent of any search system"
+    }
+  ],
+  "not_collected": [
+    "names, emails or addresses",
+    "device fingerprints",
+    "scroll depth and time on page, which are the two most commonly collected numbers with the least decision attached",
+    "anything crossing a domain boundary"
+  ],
+  "amazon_side_metrics": {
+    "clicks_and_orders": "Associates Central reports are the authorized first-party source; nothing on this site claims an order count that did not come from them",
+    "ledger_join": "by UTC date, never by user; the two systems share no identifier",
+    "fields_ingested": [
+      "eligible sessions",
+      "clicks",
+      "reported orders"
+    ],
+    "note": "The five defined events above are the on-site half. 'Reported orders' and 'eligible sessions' exist only in Amazon's reports, so the campaign ledger starts empty by design: data/ledger/campaign_ledger.csv."
+  }
+}

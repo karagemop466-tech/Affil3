@@ -1,0 +1,287 @@
+{
+  "$comment": "Product-intent confirmation records. `intent` is what the program owner must confirm inside the enrolled Associates account; `observation` is what this project saw from outside it. The gate refuses to build if an intent field is filled from an observation field, and refuses to build if an unconfirmed product attribute reaches a page.",
+  "fields": {
+    "intent": "confirmation record — intended_asin, official_listing_url, confirmation_date, confirmed_via, confirmed_by",
+    "observation": "evidence captured 2026-11-20 by following the supplied link",
+    "titled_*": "text lifted verbatim from the seller's own listing title; a marketing string, not a specification",
+    "link_state": "observation only: pending-test until a click is seen in Associates Central reports (RUNBOOK R2), then in-account-confirmed; no-link-published for rows with no destination"
+  },
+  "products": [
+    {
+      "id": "P-01",
+      "slug": "chefman-6-quart-dual-basket-air-fryer-oven",
+      "display_name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+      "cluster": "dual-basket",
+      "intent": {
+        "intended_asin": "",
+        "official_listing_url": "",
+        "confirmation_date": "",
+        "confirmed_via": "",
+        "confirmed_by": "",
+        "status": "unconfirmed",
+        "why_blank": "Nothing outside the enrolled account can state which listing the owner meant to promote. The observed landing page is evidence of where the link went on one date, not of intent."
+      },
+      "observation": {
+        "source_link": "LNK-01",
+        "observed_on": "2026-11-20",
+        "listing_asin_observed_in_path": "B0CDY277D3",
+        "listing_url_observed": "https://www.amazon.com/dp/B0CDY277D3",
+        "page_title_observed": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+        "breadcrumb_observed": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "verification": "observed",
+        "flags": [
+          "FLG-001",
+          "FLG-008"
+        ],
+        "link_state": "pending-test"
+      },
+      "titled_brand": "CHEFMAN",
+      "titled_capacity": "6 Quart",
+      "titled_features": [
+        "Dual Basket Air Fryer Oven",
+        "Easy View Windows",
+        "Sync Finish",
+        "Hi-Fry",
+        "Auto Shutoff",
+        "Nonstick Dishwasher Safe Frying Baskets",
+        "Digital",
+        "Black"
+      ],
+      "compare_points": [
+        "Two 3-quart baskets is six quarts of volume, not six quarts of one batch — decide whether you actually cook two components at once",
+        "The title promises a single finish for both baskets; ask what happens when one basket needs four more minutes",
+        "Twin-basket machines are roughly twice the footprint of a single basket: measure the strip of counter and the cabinet height before ordering",
+        "View windows and auto shutoff are convenience features, not safety features; do not trade a probe thermometer for either"
+      ],
+      "not_verified": [
+        "price",
+        "availability",
+        "star rating and review count",
+        "warranty terms",
+        "external dimensions and weight",
+        "wattage and amperage",
+        "coating chemistry and PFAS status",
+        "app connectivity",
+        "certifications"
+      ],
+      "capacity_note": "The title states two independent 3Qt baskets: a sum of two halves, not one 6-quart cavity."
+    },
+    {
+      "id": "P-02",
+      "slug": "emergil-lagasse-26qt-french-door-air-fryer-toaster-oven",
+      "display_name": "Emeril Lagasse 26QT French Door Air Fryer Toaster Oven",
+      "cluster": "oven-style",
+      "intent": {
+        "intended_asin": "",
+        "official_listing_url": "",
+        "confirmation_date": "",
+        "confirmed_via": "",
+        "confirmed_by": "",
+        "status": "unconfirmed",
+        "why_blank": "Same as P-01: intent can only be confirmed in-account."
+      },
+      "observation": {
+        "source_link": "LNK-02",
+        "observed_on": "2026-11-20",
+        "listing_asin_observed_in_path": "B09B7SB46R",
+        "listing_url_observed": "https://www.amazon.com/dp/B09B7SB46R",
+        "page_title_observed": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+        "breadcrumb_observed": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "verification": "observed",
+        "flags": [
+          "FLG-001",
+          "FLG-008"
+        ],
+        "link_state": "pending-test"
+      },
+      "titled_brand": "Emeril Lagasse",
+      "titled_capacity": "26QT",
+      "titled_features": [
+        "French Door",
+        "Multi-Function Air Fryer Toaster Oven",
+        "Countertop Convection Cooker",
+        "24 One-Touch Preset Options",
+        "Extra Large Interior",
+        "Six Cooking Accessories Included"
+      ],
+      "compare_points": [
+        "Twenty-six quarts of cavity answers a different question from six quarts of basket: whole bird versus weeknight sides",
+        "Twenty-four presets is a count, not a capability — find out which two you will use before you pay for the other twenty-two",
+        "French doors swing out; check the clearance in front of the machine and the hinge side against your counter run",
+        "Included accessories are worth a number: pans, racks and a rotisserie spit decide what you can cook on day one without extra spend"
+      ],
+      "not_verified": [
+        "price",
+        "availability",
+        "star rating and review count",
+        "warranty terms",
+        "external dimensions",
+        "wattage",
+        "maximum temperature",
+        "whether a given accessory fits a given bird"
+      ],
+      "capacity_note": "26QT is cavity volume; rack positions are what decide what fits."
+    },
+    {
+      "id": "P-03",
+      "slug": "chefman-8-qt-turbofry-4-in-1-air-fryer",
+      "display_name": "Chefman 8 Qt TurboFry 4-in-1 Air Fryer",
+      "cluster": "single-basket",
+      "intent": {
+        "intended_asin": "",
+        "official_listing_url": "",
+        "confirmation_date": "",
+        "confirmed_via": "",
+        "confirmed_by": "",
+        "status": "unconfirmed",
+        "why_blank": "Same as P-01: intent can only be confirmed in-account."
+      },
+      "observation": {
+        "source_link": "LNK-03",
+        "observed_on": "2026-11-20",
+        "listing_asin_observed_in_path": "B08DKYBTPH",
+        "listing_url_observed": "https://www.amazon.com/dp/B08DKYBTPH",
+        "page_title_observed": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+        "breadcrumb_observed": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "verification": "observed",
+        "flags": [
+          "FLG-001",
+          "FLG-008"
+        ],
+        "link_state": "pending-test"
+      },
+      "titled_brand": "Chefman",
+      "titled_capacity": "8 Qt",
+      "titled_features": [
+        "TurboFry 4-in-1",
+        "450°F Hi-Fry Option",
+        "Bake",
+        "Dehydrate",
+        "Frozen",
+        "XL Nonstick Dishwasher-Safe Basket",
+        "Stainless Steel"
+      ],
+      "compare_points": [
+        "One tall basket versus two shallow ones changes what fits: a rack of wings needs height, not total quarts",
+        "The title names a 450°F high-heat option; ask what it is for and how long the machine holds it",
+        "Four functions in the name is a claim about controls, not about results; decide which function replaces an appliance you already own",
+        "A dishwasher-safe basket is a cleaning claim from the seller. Check the basket's shape against your rack before you count on it"
+      ],
+      "not_verified": [
+        "price",
+        "availability",
+        "star rating and review count",
+        "warranty terms",
+        "external dimensions",
+        "wattage",
+        "basket depth and footprint",
+        "noise level",
+        "coating chemistry"
+      ],
+      "capacity_note": "One 8 Qt basket, titled as XL."
+    },
+    {
+      "id": "P-04",
+      "slug": "unconfirmed-product-b0c8mow59",
+      "display_name": "Fourth supplied link — product not confirmed",
+      "cluster": "unresolved",
+      "intent": {
+        "intended_asin": "",
+        "official_listing_url": "",
+        "confirmation_date": "",
+        "confirmed_via": "",
+        "confirmed_by": "",
+        "status": "unconfirmed",
+        "why_blank": "The link never landed on a product page from this environment, so there is nothing to confirm and nothing to infer."
+      },
+      "observation": {
+        "source_link": "LNK-04",
+        "observed_on": "2026-11-20",
+        "listing_asin_observed_in_path": "",
+        "listing_url_observed": "",
+        "page_title_observed": "Amazon.com (checkpoint interstitial, not a product page)",
+        "breadcrumb_observed": "",
+        "verification": "unresolved",
+        "flags": [
+          "FLG-001",
+          "FLG-004"
+        ],
+        "link_state": "no-link-published"
+      },
+      "titled_brand": "",
+      "titled_capacity": "",
+      "titled_features": [],
+      "compare_points": [
+        "No comparison can be published for a product whose identity is unknown; the row stays here so the gap is visible rather than quietly dropped"
+      ],
+      "not_verified": [
+        "product identity",
+        "brand",
+        "price",
+        "availability",
+        "every attribute"
+      ]
+    },
+    {
+      "id": "P-05",
+      "slug": "chef-iq-sense-smart-wireless-meat-thermometer",
+      "display_name": "CHEF iQ Sense Smart Wireless Meat Thermometer",
+      "cluster": "doneness",
+      "intent": {
+        "intended_asin": "",
+        "official_listing_url": "",
+        "confirmation_date": "",
+        "confirmed_via": "",
+        "confirmed_by": "",
+        "status": "unconfirmed",
+        "why_blank": "Same as P-01: intent can only be confirmed in-account."
+      },
+      "observation": {
+        "source_link": "LNK-05",
+        "observed_on": "2026-11-20",
+        "listing_asin_observed_in_path": "B0DZFD6R9Z",
+        "listing_url_observed": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "page_title_observed": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+        "breadcrumb_observed": "Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat",
+        "verification": "observed",
+        "flags": [
+          "FLG-001",
+          "FLG-008"
+        ],
+        "link_state": "pending-test"
+      },
+      "titled_brand": "CHEF iQ",
+      "titled_capacity": "",
+      "titled_features": [
+        "Smart Wireless Meat Thermometer",
+        "3 Ultra-Thin Probes",
+        "WiFi Unlimited Range",
+        "1000°F Heat Safe",
+        "5 Sensors",
+        "BBQ, Grill, Oven, Smoker, Air Fryer",
+        "Gen3"
+      ],
+      "compare_points": [
+        "Three probes with five sensors is the useful part: one probe can watch thickness and doneness at the same time",
+        "WiFi range claims describe a test condition, not a promise about your kitchen: a metal oven door and a foil-lined basket are not an open field",
+        "Air fryers were named in the title's use list; the real job is the thickest part of the food, which is where a basket's airflow gives the noisiest readings",
+        "Heat-safe ratings cover the probe and lead, not the base unit; check what may stay in a 450°F cavity"
+      ],
+      "not_verified": [
+        "price",
+        "availability",
+        "star rating and review count",
+        "warranty terms",
+        "app store availability and platform support",
+        "battery life",
+        "calibration service or NIST traceability",
+        "cable and probe temperatures separately"
+      ]
+    }
+  ],
+  "rules": [
+    "An `intent.*` field may only be written by someone with access to the enrolled Associates account. An agent may not fill it from `observation.*`.",
+    "A `titled_*` string may appear on a page only with the words 'as titled' or a direct link to the listing it came from.",
+    "A field in `not_verified` may not appear anywhere in the site's HTML, in any form, including as an estimate."
+  ]
+}
