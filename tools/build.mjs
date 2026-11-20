@@ -391,6 +391,19 @@ const add = (p) => pages.push(p);
   <p class="shelf-note">Every button is a paid Amazon link (tag <code>${esc(cfg.trackingId)}</code>) and is marked sponsored. ${flagLinks(['FLG-005', 'FLG-034'])} One link per product still has to be validated inside the Associates account before anyone should treat the attribution as proven.</p>
 </section>
 
+<section class="band band-alt quickpick-band">
+  <div class="band-head">
+    <h2>Not sure which one? Pick by how you cook</h2>
+    <p class="band-sub">One line per product, with the guide that matches your kitchen.</p>
+  </div>
+  <div class="quick-pick">
+    ${products.map((p) => `<div class="qp-item">
+      <p class="qp-product">${esc(p.short_name)}</p>
+      <p class="qp-fit">${esc(p.fit_line || p.best_for || '')}</p>
+      <p class="qp-links">${tagged(p) && !p.no_buy_link ? `<a class="btn btn-ghost btn-sm" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a>` : '<span class="small muted">No buy button yet</span>'}${p.guide_slug ? ` · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a>` : ''}</p>
+    </div>`).join('\n')}
+  </div>
+</section>
 <section class="band band-alt">
   <div class="band-head">
     <h2>What people ask before they buy</h2>
