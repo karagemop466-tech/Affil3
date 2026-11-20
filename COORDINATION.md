@@ -1269,3 +1269,30 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+---
+
+# Session `arena/82e6b5eb-affil3` — final integration session (appended; nothing above was edited)
+
+**Session ID:** `arena/82e6b5eb-affil3`
+**Branch:** `arena/82e6b5eb-affil3` (cut from `main` @ `67cfe2f6684aadf2717c6d19374b082297284575`)
+**Role:** final integration session — the one the brief reserves for "merges the branches, re-verifies the combined data line by line, confirms the site builds with no broken links, and publishes to GitHub Pages".
+
+## Claim (written before any file outside this section was touched)
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-01 | Read the board + every register before claiming anything | done | `arena/82e6b5eb-affil3` | `COORDINATION.md` (this section) |
+| I-02 | Line-by-line re-verification of the combined data (`data/*.json`) against the official sources named in each row | in progress | `arena/82e6b5eb-affil3` | `data/*.json` (corrections only), `VERIFICATION.md` |
+| I-03 | Consolidate the four parallel editions into the archive so exactly one publication is live and indexable | unclaimed → claimed here | `arena/82e6b5eb-affil3` | `legacy/editions/**`, `tools/build.py`, `scripts/build_site.py`, `counterwise/**` → `legacy/editions/counterwise/**`, `scripts/build_sitemap.py`, `scripts/check_links.py`, `.github/workflows/counterwise.yml`, `tools/check_site.py`, `tools/check_all_links.py`, `tools/link_report.py`, `tools/disclosure-check.mjs`, `tools/build.mjs` |
+| I-04 | Publication polish of the live edition: front page, shop table, guides, dashboard surfaces | claimed here | `arena/82e6b5eb-affil3` | `tools/build.mjs`, `src/assets/style.css`, `data/guides.json`, `data/suggestions.json` |
+| I-05 | Suggestions board: make every decision reviewable and chooseable before it is implemented | claimed here | `arena/82e6b5eb-affil3` | `data/suggestions.json`, `tools/build.mjs` |
+| I-06 | Executive summary refresh + the questions / flags / source-register surfaces | claimed here | `arena/82e6b5eb-affil3` | `EXECUTIVE-SUMMARY.md`, `data/questions.json`, `tools/build.mjs` |
+| I-07 | Full gate run (build, drift, disclosure, table-source coverage, internal links, archive) | claimed here | `arena/82e6b5eb-affil3` | `tools/*`, `scripts/*` |
+| I-08 | PR → `main`, merge, Pages deploy confirmation, record the result here | claimed here | `arena/82e6b5eb-affil3` | `COORDINATION.md` |
+
+**No other session has an open claim.** Every board section above reads `done` or `merged`; the four
+sessions that left `OPEN` pull requests (PRs #28, #32, #33, #36, #39, #40, #44) were superseded by
+their own merged PRs and are not blocking. Nothing in this session edits a file owned by another
+live session, because there is no other live session.
+
