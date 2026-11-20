@@ -1,0 +1,3 @@
+# Local analytics data and temporary endpoint artifacts
+data/aggregate-counts.json
+data/aggregate-counts.json.tmp
