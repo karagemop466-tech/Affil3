@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karagemop466-tech.github.io/Affil3/legacy/arena-4578ad4b/sitemap.xml
+Sitemap: https://karagemop466-tech.github.io/Affil3/editorial/@sitemap.xml

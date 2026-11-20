@@ -1,59 +1,109 @@
-# Crisp & Counter — Amazon affiliate publication (Affil3)
+# Affil3
 
-A shop-shaped kitchen-gear publication with its research desk in the open.
-Products lead; the verification machinery is one footer link away. Every
-published claim carries an official source link, every affiliate link is
-marked, and everything unconfirmed is published on a **Flagged for Review**
-page instead of being guessed.
+Amazon Associates publications built from a verified source register. Tracking ID `shopnow047c-20`.
 
-**Live site:** https://karagemop466-tech.github.io/Affil3/
-**Tracking ID in use:** `shopnow047c-20` (owner-supplied; validation gate G3 pending — FLG-004)
+**Live:** https://karagemop466-tech.github.io/Affil3/
 
-## What's here
+GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
+Nothing was deleted to make room; each session's output is kept and reachable.
 
-| Path | What it is |
-| --- | --- |
-| `index.html`, `shop/`, `compare/`, `guides/`, `about/` | The reader-facing publication |
-| `desk/` | Research desk: verification register, link register, flagged items, open questions, suggestion board, campaign ledger, analytics spec, compliance gate, coordination log |
-| `data/products.json` | Data of record for the five submitted links (intent fields ≠ observed fields) |
-| `data/registers.json` | Sources (S01–S13), flags (FLG-001…010), questions (Q-01…10), suggestions (SG-01…12), event register, ledger schema |
-| `content/guides/` | Seven question-shaped buyer guides (the publication's editorial voice) |
-| `scripts/build_site.py` | Stdlib-only generator for the whole site (`--check` detects drift) |
-| `scripts/check_site.py` | Content/compliance gates (disclosure, sponsored marking, sourced rows) |
-| `scripts/build_sitemap.py` | Sitemap builder (`--check` for staleness) |
-| `tools/verify_site.py` | Whole-tree release gate (exit 3 on violation) |
-| `tools/link_report.py` | Per-table official-source coverage (`--strict`) |
-| `tools/check_all_links.py` | Internal link integrity |
-| `server/collect.js` | Self-hosted privacy-preserving event collector (Node, zero deps) |
-| `docs/EXECUTIVE-SUMMARY.md` | The executive summary |
-| `COORDINATION.md` | Shared task board (parallel sessions) |
+## What is published
 
-## Build & verify
+| Path | Owner | What it is |
+|---|---|---|
+| `/` | **Crisp & Counter** (`scripts/build_site.py`, session 0a90f62c) | Current root publication: shop, compare, 7 question-shaped guides, research desk (verification register, link register, flagged, questions, suggestion board, campaign ledger, analytics, compliance, coordination) |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
+| `/legacy/arena-4578ad4b/` | preserved | The previous integrated root edition (`tools/build.mjs`, sessions 6249757a/f761b123/4578ad4b), kept unchanged; internal `/Affil3/...` links rewritten into the archive so it is self-contained |
 
-```sh
-python3 scripts/build_site.py            # render the site
-python3 tools/verify_site.py             # release gate (run before any publish)
-python3 scripts/build_sitemap.py         # regenerate sitemap.xml from the tree
+`/editorial/` exists because its build was written against a different data model and its verification
+found things the other register did not. Keeping both builds preserves both verification passes rather
+than merging them into one file whose provenance nobody can reconstruct.
+
+## Read these first
+
+| File | What it is |
+|---|---|
+| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
+| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`data/`](data/) | Register for the root site |
+| [`data/register/`](data/register/) | Register for `/editorial/` |
+
+## Build
+
+**Root site** (Node, no dependencies):
+
+```bash
+node tools/build.mjs     # data/*.json  -> repository root
+node tools/verify.mjs    # gates
 ```
 
-No third-party dependencies — Python standard library only. CI runs the same
-gate on every push (`.github/workflows/site-checks.yml`).
+**Editorial site** (Python, no dependencies):
 
-## Verification stance (the rules this repo runs on)
+```bash
+python3 tools/build.py       # data/register/*.json -> editorial/
+python3 tools/check_site.py  # gates
+```
 
-1. Every table row links to an official source or is marked unverified.
-2. Values that can't be confirmed stay **blank and flagged** — never inferred.
-3. Intended ASIN / listing URL / confirmation date are stored separately from
-   observed redirect targets and are never merged (Amazon defines an ASIN as a
-   10-character identifier — source S04).
-4. The supplied short links are recorded exactly as given; their compliance
-   status is **unresolved**, and this project does not declare them invalid.
-5. No conversion score or revenue forecast is presented anywhere.
-6. Observed prices and ratings carry their observation date (2026-11-20).
+Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
 
-## Disclosure
+## What the editorial gate refuses to let through
 
-Crisp & Counter is a participant in the Amazon Services LLC Associates Program.
-**As an Amazon Associate we earn from qualifying purchases.** The disclosure
-strip sits under the masthead of every page and the full statement is repeated
-in every footer — enforced automatically on each build.
+- A price. No currency amount may appear in the HTML at all.
+- A star rating or review count.
+- A product call-to-action without `tag=shopnow047c-20`.
+- An Amazon citation not marked `rel="nofollow"`.
+- A page without the required Associates statement.
+- A spec row citing a source ID that does not exist.
+- A link that escapes the published subtree.
+- A page missing from that subtree's sitemap.
+
+This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
+See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
+
+## The finding both sessions independently agree on
+
+Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
+Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
+The links are untagged — that is a different claim from *invalid*, and only the first is made here.
+
+## Licence and attribution
+
+Product names and trademarks belong to their owners. Specification values are quoted from the
+publisher's own pages and cited by source ID. Neither publication is endorsed by or affiliated with
+Amazon.com, Inc. beyond participation in the Amazon Associates program.
+
+As an Amazon Associate I earn from qualifying purchases.
+
+
+## Crisp & Counter — current root edition (session `arena/0a90f62c-affil3`)
+
+The root site is a shop-shaped publication with its research desk in the open. Every published
+claim carries an official source link; every affiliate link is marked `rel="sponsored"` and
+tagged `shopnow047c-20`; everything unconfirmed is published on the Flagged for Review page
+instead of being guessed.
+
+```bash
+python3 scripts/build_site.py        # render the root edition (stdlib only)
+python3 tools/verify_site.py         # release gate (build drift, disclosures, sources, links)
+python3 scripts/build_sitemap.py     # regenerate sitemap.xml from the tree
+```
+
+Data of record for this edition: `data/products-0a90f62c.json` (intent fields kept strictly
+separate from observed redirect targets) and `data/registers.json` (sources S01–S13, flags
+FLG-001…010, questions Q-01…10, suggestions SG-01…12, event register, campaign ledger schema).
+`server/collect.js` is the self-hosted privacy-preserving analytics collector (not deployable
+on GitHub Pages — see FLG-006).
+
+Verification stance: every table row links to an official source or is marked unverified;
+values that can't be confirmed stay blank and flagged; observed prices and ratings carry their
+observation date (2026-11-20); no conversion score or revenue forecast is presented anywhere.
+See [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md) and the
+[Coordination log](https://karagemop466-tech.github.io/Affil3/desk/coordination/).
+
+**Note on `tools/build.mjs`:** its root output is superseded by `scripts/build_site.py`. The
+previous root edition is preserved at `legacy/arena-4578ad4b/`; regenerating it to root would
+overwrite the live site — coordinate in COORDINATION.md first. `tools/build.py` -> `editorial/`
+is unaffected.

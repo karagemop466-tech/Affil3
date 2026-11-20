@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement | Affil3</title>
+<meta name="description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/legacy/arena-4578ad4b/measurement/">
+<meta property="og:title" content="Measurement">
+<meta property="og:description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/legacy/arena-4578ad4b/measurement/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Affil3">
+<meta name="analytics-endpoint" content="">
+<link rel="stylesheet" href="/Affil3/legacy/arena-4578ad4b/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/legacy/arena-4578ad4b/feed.xml">
+
+</head>
+<body data-page="page" >
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a class="brand" href="/Affil3/legacy/arena-4578ad4b/">Affil3</a>
+    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+    <nav class="nav" aria-label="Main">
+      <a href="/Affil3/legacy/arena-4578ad4b/shop/">Shop</a>
+      <a href="/Affil3/legacy/arena-4578ad4b/guides/">Guides</a>
+      <a href="/Affil3/legacy/arena-4578ad4b/categories/">Categories</a>
+      <a href="/Affil3/legacy/arena-4578ad4b/about/">About</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/legacy/arena-4578ad4b/compliance/">How we disclose</a></div>
+</div>
+<main id="main" class="wrap">
+<section class="page-head"><p class="kicker">Measurement</p><h1>Measurement</h1><p class="deck">Proposed set (FLG-008, question Q-05). Client code records these only when analyticsEndpoint is set in config.json.</p></section>
+<div class="status-box"><strong>Live status:</strong> Inactive. No endpoint is configured, so the browser sends nothing. See suggestion S-03 and flag FLG-009.</div>
+<div class="table-wrap"><table class=""><thead><tr><th scope="col">Event</th><th scope="col">Fires when</th><th scope="col">Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load.</td><td><code>path</code> <code>referrer_host</code></td></tr><tr><td><code>category_view</code></td><td>Once per category page load.</td><td><code>category</code></td></tr><tr><td><code>product_view</code></td><td>When a product row or card is shown on a page (once per page load).</td><td><code>product_id</code></td></tr><tr><td><code>outbound_click</code></td><td>When a reader clicks a product link. The link itself is not redirected; the browser goes straight to the Amazon URL.</td><td><code>product_id</code> <code>destination_host</code> <code>placement</code></td></tr><tr><td><code>guide_read_75</code></td><td>When a reader scrolls past 75% of a guide.</td><td><code>guide</code></td></tr></tbody></table></div>
+<h2>Privacy</h2>
+<p>No cookies, no IP address stored, no user-agent stored, no fingerprinting. Browsers that send Do Not Track are not counted. Counts are aggregated per day.</p>
+<p>Not collected: cookies, IP address, user-agent, account data, anything typed into the page.</p>
+<h2>Why clicks are not routed through a redirect</h2>
+<p>Associates Program Policies (v) prohibit cloaking the URL of a Site with Special Links, including by use of Redirecting Links (S02). The click counter therefore records the click in the browser and lets the link go directly to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h2 class="foot-h">Dashboards and records</h2>
+    <ul class="foot-links">
+      <li><a href="/Affil3/legacy/arena-4578ad4b/executive-summary/">Executive summary</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/shop/">Shop table (all rows)</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/categories/">Categories</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/sources/">Source register</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/questions/">Questions and gaps</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/suggestions/">Suggestions (choose a path)</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/flagged/">Flagged for review</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/ledger/">Campaign ledger</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/measurement/">Measurement</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/compliance/">Compliance and gates</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/about/">About and editorial policy</a></li>
+      <li><a href="/Affil3/editorial/@">Editorial register (second publication)</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/feed.xml">RSS feed (guides)</a></li>
+      <li><a href="/Affil3/legacy/arena-4578ad4b/sitemap.xml">Sitemap</a></li>
+    </ul>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
+    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/legacy/arena-4578ad4b/sources/">source register</a>.</p>
+  </div>
+</footer>
+<script src="/Affil3/legacy/arena-4578ad4b/assets/analytics.js" defer></script>
+</body>
+</html>
