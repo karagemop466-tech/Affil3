@@ -292,6 +292,30 @@
       "sources": [
         "S16"
       ]
+    },
+    {
+      "id": "FLG-028",
+      "severity": "high",
+      "status": "resolved",
+      "area": "compliance",
+      "title": "Amazon links were published without the tracking tag, including the citations",
+      "detail": "Program Policies 2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. The site linked the observed Amazon page in the source column of the shop table and on product pages, and published the supplied link.amazon short links as clickable links, none of which carried tag=shopnow047c-20.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "None. The build now enforces the rule on every page: any link to an Amazon retail host gets the tag and rel=sponsored, and a link.amazon short link is rendered as text because it cannot carry the tag.",
+      "resolution": "Build-level link policy added and asserted by the gate on every page (retail Amazon link must carry the tag; no short link may be published as a link). Check count rose from 1,610 to 2,805."
+    },
+    {
+      "id": "FLG-029",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "site build",
+      "title": "Every thermometer page referenced an image that was never committed",
+      "detail": "Fourteen references pointed at /assets/img/hero-thermometer.jpg, which did not exist in the repository. The category page, both thermometer product pages, the guides index and the thermometer guide would have shown a broken image on the live site.",
+      "sources": [],
+      "manual_step": "None. The image was created in the same photographic style as the other hero images and committed; the gate now checks that every referenced image exists, is served locally, and has alt text.",
+      "resolution": "Image added on 2026-11-20. The image check was added to the gate, so a missing image fails the build from now on."
     }
   ],
   "checked": "2026-11-20"

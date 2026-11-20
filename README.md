@@ -62,6 +62,28 @@ python3 server/analytics_server.py --port 8080   # self-hosted analytics endpoin
 All builds are deterministic. CI rebuilds the root and editorial sites and fails if the committed
 output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the docs-site gates.
 
+## What the root gate refuses to let through
+
+`node tools/verify.mjs` runs **2,808 checks** over the 28 published pages. It stops the build on:
+
+- a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
+- an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
+- a `link.amazon` short link published as a clickable link (it cannot carry the tag, so it renders as text);
+- a currency amount anywhere in the HTML, a star rating or a review count;
+- an image that is missing, remote, or without `alt` text;
+- a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
+- a broken internal link, a missing anchor, or a page missing from the sitemap;
+- a source ID that does not exist, or a spec row citing one.
+
+The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
+cannot bypass them, and by the gate, so a hand-edited page cannot either.
+
+## One indexable site
+
+`robots.txt` disallows `/editorial/`, `/legacy/` and `/crisp-index/`, and every `/editorial/` page also
+carries `<meta name="robots" content="noindex,nofollow">`. The root publication is the one site offered
+to search engines; the other surfaces stay online and reachable for the people who need their evidence.
+
 ## What the editorial gate refuses to let through
 
 - A price. No currency amount may appear in the HTML at all.
