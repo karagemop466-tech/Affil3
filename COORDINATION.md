@@ -1627,17 +1627,46 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - **Not done in this session:** no claim that any short link is valid or invalid; no intended ASIN set; Associates Central test (G-02) still pending the owner.
 
 | CB-01 | Read `COORDINATION.md` & `origin/main`; register non-overlapping scope and push claim immediately | done | `3b45b513` | `COORDINATION.md` |
-| CB-02 | Line-by-line repo review across root (`data/*.json`, `tools/build.mjs`, `QA-BRIEF.md`, `EXECUTIVE-SUMMARY.md`), `/editorial/`, `/crisp-index/`, and CI workflows; log cross-session irregularities | in progress | `3b45b513` | `data/3b45b513/repo-audit.json`, `VERIFICATION-3b45b513.md`, `COORDINATION.md` |
-| CB-03 | Independent primary-source verification pass: all 5 `link.amazon` links, observed `/dp/` pages, all manufacturer pages (`chefman.com`, `emerileveryday.com`, `chefiq.com`, `thermomaven.com`), Amazon OA + Program Policies + ASIN guide, FTC 16 CFR 255, Google Search Central, USDA FSIS | in progress | `3b45b513` | `data/3b45b513/{sources,products,flags}.json`, `VERIFICATION-3b45b513.md` |
-| CB-04 | Policy-gated affiliate marketing platform engine & CLI (product intake, intent-vs-observed ledger, spec-completeness & niche matrix, verified guide scaffold generator, campaign ledger validator, 5-event privacy-preserving analytics collector) | in progress | `3b45b513` | `tools/3b45b513/{platform-cli.mjs,collector.mjs}`, `data/3b45b513/{events,ledger}.json` |
-| CB-05 | Publication front page, category clusters, product pages, interactive Counter-Space & Fit Finder, seasonal & trendy editorial guides + 4 working-title buyer guides (`SG-27..SG-30`), RSS feed, XML sitemap | in progress | `3b45b513` | `tools/3b45b513/{build.mjs,assets/*}`, `data/3b45b513/{config,guides}.json`, `counter-desk/**` |
-| CB-06 | Operator dashboards: Shop/Register table, Suggestions & Path Selector, Open Questions & Discovery Brief, Flagged for Review, Campaign Ledger, Measurement, Compliance & Gates, Executive Summary | in progress | `3b45b513` | `data/3b45b513/{suggestions,questions}.json`, `EXECUTIVE_SUMMARY-3b45b513.md`, `counter-desk/**` |
-| CB-07 | Automated compliance & broken-link gate + unit tests + CI repair for orphaned `check.yml` (`docs/` deletion in PR #26) | in progress | `3b45b513` | `tools/3b45b513/{gate.mjs,gate.test.mjs}`, `.github/workflows/counter-desk-3b45b513.yml`, `scripts/{build_sitemap,check_links}.py` |
-| CB-08 | Final integration sync with `origin/main`, PR to `main`, merge, GitHub Pages live verification, completion log | unclaimed | `3b45b513` | `README.md`, `COORDINATION.md` |
+| CB-02 | Line-by-line repo review across root (`data/*.json`, `tools/build.mjs`, `QA-BRIEF.md`, `EXECUTIVE-SUMMARY.md`), `/editorial/`, `/crisp-index/`, and CI workflows; log cross-session irregularities | done | `3b45b513` | `data/3b45b513/repo-audit.json`, `VERIFICATION-3b45b513.md`, `COORDINATION.md` |
+| CB-03 | Independent primary-source verification pass: all 5 `link.amazon` links, observed `/dp/` pages, all manufacturer pages (`chefman.com`, `emerileveryday.com`, `chefiq.com`, `thermomaven.com`), Amazon OA + Program Policies + ASIN guide, FTC 16 CFR 255, Google Search Central, USDA FSIS | done | `3b45b513` | `data/3b45b513/{sources,products,flags}.json`, `VERIFICATION-3b45b513.md` |
+| CB-04 | Policy-gated affiliate marketing platform engine & CLI (product intake, intent-vs-observed ledger, spec-completeness & niche matrix, verified guide scaffold generator, campaign ledger validator, 5-event privacy-preserving analytics collector) | done | `3b45b513` | `tools/3b45b513/{platform-cli.mjs,collector.mjs}`, `data/3b45b513/{events,ledger}.json` |
+| CB-05 | Publication front page, category clusters, product pages, interactive Counter-Space & Fit Finder, seasonal & trendy editorial guides + 4 working-title buyer guides (`SG-27..SG-30`), RSS feed, XML sitemap | done | `3b45b513` | `tools/3b45b513/{build.mjs,assets/*}`, `data/3b45b513/{config,guides}.json`, `counter-desk/**` |
+| CB-06 | Operator dashboards: Shop/Register table, Suggestions & Path Selector, Open Questions & Discovery Brief, Flagged for Review, Campaign Ledger, Measurement, Compliance & Gates, Executive Summary | done | `3b45b513` | `data/3b45b513/{suggestions,questions}.json`, `EXECUTIVE_SUMMARY-3b45b513.md`, `counter-desk/**` |
+| CB-07 | Automated compliance & broken-link gate + unit tests + CI repair for orphaned `check.yml` (`docs/` deletion in PR #26) | done (gate + tests + own workflow; the orphaned workflow was fixed on `main` by another session before this branch needed to) | `3b45b513` | `tools/3b45b513/{gate.mjs,gate.test.mjs}`, `.github/workflows/counter-desk-3b45b513.yml`, `scripts/{build_sitemap,check_links}.py` |
+| CB-08 | Final integration sync with `origin/main`, PR to `main`, merge, GitHub Pages live verification, completion log | done | `3b45b513` | `README.md`, `COORDINATION.md` |
 
 ## Conflict & coordination log
 
 - **2026-11-20 — Rebase conflict resolved cleanly on claim push:** `origin/main` advanced from `09ae7e1` to `2afaf62` (PR #43 appending session `arena63534e5d-affil3`'s completion record at the tail of `COORDINATION.md`). Resolved without discarding a single line: `arena63534e5d-affil3`'s section is kept verbatim in full and this session's `3b45b513` section is appended below it.
+
+## Completion record — session `3b45b513`
+
+| Field | Value |
+|---|---|
+| Branch | `arena/3b45b513-affil3` |
+| Pull request | [#58](https://github.com/karagemop466-tech/Affil3/pull/58) |
+| Scope built | `counter-desk/**` (32 generated pages), `data/3b45b513/**` (9 registers), `tools/3b45b513/**` (generator, gate, 19 tests, collector, assets), `.github/workflows/counter-desk.yml`, `EXECUTIVE_SUMMARY-3b45b513.md`, `VERIFICATION-3b45b513.md`, one appended `README.md` row and this section |
+| Gates at PR time | counter-desk **4,266 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
+| CI on the PR | `gate` (counter-desk) pass, `verify` pass, `disclosure` pass, `site-checks` pass, `publish-gate` pass |
+
+### What this session added that no earlier session had
+
+1. **A manufacturer page for the ThermoMaven unit.** Reading the listing's item-model field (`HT07`) located the maker's F1 Stealth page and its user manual, so that product's measured range, probe size, battery, accuracy and warranty are now published from official sources. Three earlier registers in this repository had recorded that no manufacturer page existed (`CDF-08`).
+2. **A correction to a published finding.** The claim that the 8 Qt Chefman listing and the maker "describe two different machines" was overstated: Chefman sells `RJ38-SQSS-8T`. Wattage and dimensions still conflict, so both stay withheld — with both official figures recorded (`CDF-05`, `CDF-09`).
+3. **A working decision tool rather than a described one.** The fit finder takes three real measurements, adds two inches of clearance, and prints its reasoning per product, using only dimension values already cited to manufacturer pages.
+4. **A gate that can be shown to fail.** Seven of the 19 tests deliberately break a page — untagged link, missing `sponsored`, a price, a missing disclosure bar, a broken internal link, a testing claim, an image with no alt text — and assert a non-zero exit.
+
+### What this session did not do, on purpose
+
+- It did not edit `data/*.json`, `tools/build.mjs`, `tools/verify.mjs`, `/editorial/`, `/crisp-index/`, `/counterwise/`, `/counter/` or `/legacy/`. The irregularities found in those files are written up in the cross-session request list above, with the exact wrong source ids, so the owning session can fix them without a conflicting edit from here.
+- It did not claim the supplied short links are invalid, and did not fill the four intent fields from the observed destinations. Both would have been easy and both would have been wrong.
+- It did not invent a named author, a price, an order count, a conversion rate or a revenue forecast.
+
+### The one thing worth reading if you read nothing else
+
+Three separate registers in this repository concluded that the ThermoMaven thermometer had **no manufacturer page**, and withheld every specification as a result. The page existed. The way it was found was to stop reading the listing's title and read its `item-model` field instead: `HT07`, which is the F1 Stealth. A search failure that gets written into a register becomes a fact that later sessions inherit and defend. The same lesson, from the opposite direction, is behind `CDF-05`: two official pages can disagree about wattage and size for the same model number, and the honest response is to withhold both figures, not to pick the one that reads better.
+
+---
 
 ## Cross-session file-change requests (logged instead of editing files owned by other sessions)
 
