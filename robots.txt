@@ -3,5 +3,7 @@ Allow: /
 Disallow: /editorial/
 Disallow: /legacy/
 Disallow: /crisp-index/
+Disallow: /counter/
+Disallow: /counterwise/
 
 Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml

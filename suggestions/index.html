@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
+
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
@@ -34,6 +35,7 @@
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
+      <a class="nav-desk" href="/Affil3/executive-summary/">The desk</a>
     </nav>
   </div>
 </header>
@@ -205,6 +207,24 @@
   <ul class="opts"><li><strong>A.</strong> Leave the images as they were.<br><span class="muted small">Tradeoff: Free, and the pages render. It leaves the heaviest element on the page untouched on a site whose whole purpose is organic traffic, where page experience on a phone is a ranking input rather than a detail.</span></li><li><strong>B.</strong> Re-encode the illustrations to a 256-colour palette at 1200 px, derive a 768 px card variant for grid cards and serve it through srcset, take the hero to JPEG, read every declared width and height from the file, and gate all of it (done 2026-11-20).<br><span class="muted small">Tradeoff: No artwork changed and no file path moved, so no page reference moved. Front page images fell from 3,947 KB to 1,176 KB and the guides index from 3,568 KB to 442 KB (measured pixel RMSE 0.012 against the originals). The gate now fails if a declared size ever disagrees with its file again.</span></li><li><strong>C.</strong> Go further: move every illustration to JPEG, delete the PNGs, and add a weight ceiling to the gate so no image over 300 KB may be committed.<br><span class="muted small">Tradeoff: The smallest files and a rule that stops the problem returning. It also means the illustration pages are no longer lossless, and a ceiling needs an exception path for a genuinely detailed image.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B is done and was safe to do without a decision, because it changed no path and no pixel. C is the version that stops it coming back, and is worth doing the next time an illustration is added.</p>
 </section>
+<section class="choice-card" id="S-29">
+  <p class="kicker">S-29 · December content direction</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).<br><span class="muted small">Tradeoff: Matches the seasonal questions readers actually have in December; heavily thermometer-weighted.</span></li><li><strong>B.</strong> Gift-guide cluster: small appliances as gifts, what to check before gifting.<br><span class="muted small">Tradeoff: Wide appeal; a crowded field with big publishers owning most search results.</span></li><li><strong>C.</strong> Deal-week follow-ups: price-check method posts and post-holiday clearance guides.<br><span class="muted small">Tradeoff: Timely and linkable; ages quickly and must be date-stamped.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list.</p>
+</section>
+<section class="choice-card" id="S-30">
+  <p class="kicker">S-30 · Target reader</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Small-household weeknight cooks: one to three people, limited counter, limited time (current).<br><span class="muted small">Tradeoff: Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally.</span></li><li><strong>B.</strong> Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.<br><span class="muted small">Tradeoff: Matches the seasonal spikes; thin the rest of the year.</span></li><li><strong>C.</strong> Gadget-first early adopters: smart features, apps, wireless probes.<br><span class="muted small">Tradeoff: High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13).</p>
+</section>
+<section class="choice-card" id="S-31">
+  <p class="kicker">S-31 · Order of operations: measurement or content first</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.<br><span class="muted small">Tradeoff: Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login.</span></li><li><strong>B.</strong> Keep publishing on editorial judgement until traffic exists, then measure (current).<br><span class="muted small">Tradeoff: No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it.</p>
+</section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
 </main>
@@ -220,9 +240,9 @@
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
         <li><a href="/Affil3/articles/">The Journal</a></li>
-        <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
-        <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
-        <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
+        <li><a href="/Affil3/guides/smart-meat-thermometer-what-actually-matters/">Smart meat thermometers: what actually matters before you buy</a></li>
+        <li><a href="/Affil3/guides/which-air-fryer-shape-fits-your-week/">Dual-basket, single-basket, or oven-style? Match the shape to your week</a></li>
+        <li><a href="/Affil3/guides/black-friday-kitchen-deals-a-shoppers-checklist/">Black Friday kitchen deals: a checklist before you click add to cart</a></li>
       </ul>
     </div>
     <div class="footer-col">

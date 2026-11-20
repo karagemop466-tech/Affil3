@@ -919,6 +919,70 @@
       "decision": "B",
       "decided_on": "2026-11-20",
       "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
+    },
+    {
+      "id": "S-29",
+      "topic": "December content direction",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).",
+          "tradeoff": "Matches the seasonal questions readers actually have in December; heavily thermometer-weighted."
+        },
+        {
+          "id": "B",
+          "label": "Gift-guide cluster: small appliances as gifts, what to check before gifting.",
+          "tradeoff": "Wide appeal; a crowded field with big publishers owning most search results."
+        },
+        {
+          "id": "C",
+          "label": "Deal-week follow-ups: price-check method posts and post-holiday clearance guides.",
+          "tradeoff": "Timely and linkable; ages quickly and must be date-stamped."
+        }
+      ],
+      "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
+    },
+    {
+      "id": "S-30",
+      "topic": "Target reader",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Small-household weeknight cooks: one to three people, limited counter, limited time (current).",
+          "tradeoff": "Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally."
+        },
+        {
+          "id": "B",
+          "label": "Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.",
+          "tradeoff": "Matches the seasonal spikes; thin the rest of the year."
+        },
+        {
+          "id": "C",
+          "label": "Gadget-first early adopters: smart features, apps, wireless probes.",
+          "tradeoff": "High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item."
+        }
+      ],
+      "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
+    },
+    {
+      "id": "S-31",
+      "topic": "Order of operations: measurement or content first",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.",
+          "tradeoff": "Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login."
+        },
+        {
+          "id": "B",
+          "label": "Keep publishing on editorial judgement until traffic exists, then measure (current).",
+          "tradeoff": "No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break."
+        }
+      ],
+      "recommendation": "A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it."
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",

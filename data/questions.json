@@ -385,6 +385,14 @@
         "S04"
       ],
       "blocking": true
+    },
+    {
+      "id": "Q-22",
+      "question": "Where will reader email capture run, and under what consent wording?",
+      "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
+      "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
+      "sources": [],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -476,6 +484,13 @@
       "id": "D-14",
       "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
       "closes": []
+    },
+    {
+      "id": "D-15",
+      "suggestion": "Name one reader persona from S-30 and write it at the top of the December commission list before any new guide is drafted.",
+      "closes": [
+        "Q-13"
+      ]
     },
     {
       "id": "D-16",
