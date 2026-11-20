@@ -918,7 +918,7 @@ add({
 ${REVIEW.filter(([href]) => href !== '/review/').map(([href, label]) => {
   const blurb = {
     '/review/executive-summary/': 'One page: what is built, what is verified, what is blocked, and the four decisions only the owner can make.',
-    '/review/flagged/': 'Fifteen irregularities and unverified values, each with the official page that settles it or the reason none does.',
+    '/review/flagged/': `${FLAGS.length} irregularities and unverified values — ${FLAGS.filter((f) => f.status === 'resolved').length} resolved and kept — each with the official page that settles it or the reason none does.`,
     '/review/questions/': 'What we know, what we do not, and the specific step that turns one into the other. Each row names an owner.',
     '/review/suggestions/': 'A decision queue with trade-offs, including the four reader-facing items SG-27 to SG-30.',
     '/review/ledger/': 'Nine columns, zero rows, and a provenance rule that keeps it that way until a real report arrives.',
@@ -949,7 +949,7 @@ add({
 </section>
 
 <div class="tiles">
-  <div class="tile"><span class="n">${pages.length + 5}</span><div class="t">published pages</div><div class="d">Publication plus records, one sitemap, one feed.</div></div>
+  <div class="tile"><span class="n">{{PAGE_COUNT}}</span><div class="t">published pages</div><div class="d">Publication plus records, one sitemap, one feed.</div></div>
   <div class="tile"><span class="n">${SR ? Object.keys(SR).length : 0}</span><div class="t">sources read</div><div class="d">Official pages only. No review site is cited for a value.</div></div>
   <div class="tile"><span class="n">0</span><div class="t">prices and ratings</div><div class="d">Not withheld by accident: Amazon's rules forbid it here.</div></div>
   <div class="tile"><span class="n">0</span><div class="t">validated buy links</div><div class="d">Formatted correctly, never confirmed against a report.</div></div>
@@ -1333,9 +1333,12 @@ const written = [];
 for (const p of pages) {
   const file = p.path.endsWith('.html') ? path.join(OUT, p.path) : path.join(OUT, p.path, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  let html = shell(p);
-  // A currency amount must never survive rendering, whatever a data file says.
-  html = html.replace(/\$\s?\d[\d,]*(\.\d{2})?/g, (m) => `<!-- stripped currency: ${m.replace(/--/g, '')} -->`);
+  // A currency amount must never survive rendering, whatever a data file says. The gate
+  // would catch it downstream, but a build that fails here points at the data file that
+  // caused it instead of at the generated page that carries it.
+  const html = shell(p).replace(/\{\{PAGE_COUNT\}\}/g, String(pages.filter((x) => !x.noSitemap).length));
+  const money = html.match(/\$\s?\d[\d,]*(?:\.\d{2})?/);
+  if (money) throw new Error(`currency amount in ${p.path}: "${money[0]}" — remove it from the data file`);
   fs.writeFileSync(file, html);
   written.push({ path: p.path, file: path.relative(ROOT, file), noSitemap: !!p.noSitemap, noindex: !!p.noindex });
 }

@@ -152,7 +152,7 @@ not evidence of a different machine. The conflict is wattage and size, not ident
 | Check | Command | Result |
 |---|---|---|
 | Generate the edition | `node tools/3b45b513/build.mjs` | 32 pages, 7 feed items, 31 sitemap URLs |
-| Publishing gate | `node tools/3b45b513/gate.mjs` | **4,266 checks, 0 failed** |
+| Publishing gate | `node tools/3b45b513/gate.mjs` | **4,330 checks, 0 failed** |
 | Gate unit tests | `node --test tools/3b45b513/gate.test.mjs` | **19 tests, 0 failed** (7 of them deliberately break a page) |
 | Collector behaviour | `POST /collect` with valid, unknown, malformed and wrong-type bodies | 204 / 400 / 400 / 415; `GET` → 405; a disallowed property is stripped before storage |
 | Root publication (another session's) | `npm run check` | 3,477 checks + 21 editorial pages, 0 failed |

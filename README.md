@@ -15,7 +15,7 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
 | `/docs/` | session `arena/c46310a7-affil3` | **Not in the tree at `1f65f70`** (no `docs/` path is tracked; see FLG-039). Described as: a third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
 | `/counterwise/` | session `arena/c7a56e3d-affil3` | A fourth, independently generated publication: 5 question-shaped guides, 4 verified listings with product-intent records, comparison table, source register with retrieval grades, gate report, suggestions board, open questions, flagged-for-review, executive summary. Built and policed by `counterwise/tools/build.py` + `gate.py` (12 rules), 31 tests, self-hosted event collector shipped unarmed |
-| `/counter-desk/` | session `arena/3b45b513-affil3` | A reader-facing publication generated from its own register: front page, 5 product pages with withheld-value reasoning, 3 clusters, 7 question-led guides, an interactive counter-space & fit finder, an RSS feed and a sitemap. Gated by `tools/3b45b513/gate.mjs` (4,266 checks, 0 failed) with 19 gate tests; CI in `.github/workflows/counter-desk.yml` |
+| `/counter-desk/` | session `arena/3b45b513-affil3` | A reader-facing publication generated from its own register: front page, 5 product pages with withheld-value reasoning, 3 clusters, 7 question-led guides, an interactive counter-space & fit finder, an RSS feed and a sitemap. Gated by `tools/3b45b513/gate.mjs` (4,330 checks, 0 failed) with 19 gate tests; CI in `.github/workflows/counter-desk.yml` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
 `/editorial/` and `/docs/` exist because their builds were written against different data models and
@@ -51,7 +51,7 @@ node tools/verify.mjs    # gates
 
 ```bash
 node tools/3b45b513/build.mjs      # data/3b45b513/*.json -> counter-desk/
-node tools/3b45b513/gate.mjs       # 4,266 publishing checks
+node tools/3b45b513/gate.mjs       # 4,330 publishing checks
 node --test tools/3b45b513/gate.test.mjs   # 19 tests, 7 of which break a page on purpose
 ```
 

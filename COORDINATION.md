@@ -1646,7 +1646,7 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 | Branch | `arena/3b45b513-affil3` |
 | Pull request | [#58](https://github.com/karagemop466-tech/Affil3/pull/58) |
 | Scope built | `counter-desk/**` (32 generated pages), `data/3b45b513/**` (9 registers), `tools/3b45b513/**` (generator, gate, 19 tests, collector, assets), `.github/workflows/counter-desk.yml`, `EXECUTIVE_SUMMARY-3b45b513.md`, `VERIFICATION-3b45b513.md`, one appended `README.md` row and this section |
-| Gates at PR time | counter-desk **4,266 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
+| Gates at PR time | counter-desk **4,330 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
 | CI on the PR | `gate` (counter-desk) pass, `verify` pass, `disclosure` pass, `site-checks` pass, `publish-gate` pass |
 
 ### What this session added that no earlier session had
@@ -1895,9 +1895,13 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 
 ## Completion record (session 478e6577)
 
-- Pull request: https://github.com/karagemop466-tech/Affil3/pull/65
-- Merge result: recorded in the follow-up log entry below, after the merge.
-- GitHub Pages deploy: recorded in the follow-up log entry below, after the merge.
+- **Pull request:** https://github.com/karagemop466-tech/Affil3/pull/65 (`arena/478e6577-affil3` → `main`)
+- **Checks before merge:** `disclosure`, `gate`, `verify`, `check-site`, `Gate the published Pages site`, and `Build, gate and test the Counter Desk edition`: all SUCCESS on the final head.
+- **Merge result: MERGED** into `main` as merge commit `c0bee1ed3aedd566114bc3b979259da65630b417` at 2026-11-20T06:55:51Z (`gh pr merge 65 --merge`). Post-merge workflows on `main` (Verify site, Site checks, Disclosure and archive integrity) all completed with success.
+- **GitHub Pages deploy:** `gh api repos/karagemop466-tech/Affil3/pages/builds/latest` reports status `built` for commit `c0bee1e…`, source `main` at `/`.
+- **Live check:** https://karagemop466-tech.github.io/Affil3/flagged/?v=478e6577 serves FLG-037 to FLG-039. The same URL without the query string returned a cached copy without FLG-037 at the time of the first check.
+- **Not done, and owner-only:** Associates Central test of one Special Link per product (G-02); signed-in check of the five short links (Q-17); Search Console verification and sitemap submission (FLG-013, FLG-038); analytics endpoint host (FLG-009); named editor (FLG-014, Q-06); publishing-cadence and crawl-control decisions (S-05, S-20).
+- **Follow-up:** this log-only entry was merged through a second PR from the same branch, because `main` cannot be written to directly. No content outside this file changed in that PR.
 
 ---
 
@@ -1911,6 +1915,54 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - **PR:** https://github.com/karagemop466-tech/Affil3/pull/59 — checks `disclosure`, `gate`, and `verify` all passed. Awaiting merge at the time this note was written.
 - **Completion record (session e52ea644):** PR #59 https://github.com/karagemop466-tech/Affil3/pull/59 — first merge attempt failed because main had advanced; merged `origin/main` into the branch, kept both coordination records (conflict only in this file), re-ran `npm run check` (40 pages, 4,588 checks, 0 failures), CI `disclosure`/`gate`/`verify`/`check-site`/Pages gate all passed. **Merged** into `main` as `c86d085b3e88e366ac41f23367b96aab9382cbf9`. Pages: latest build reported `built` for that commit; live https://karagemop466-tech.github.io/Affil3/flagged/ serves the current flagged page.
 - **Not done:** no intended ASIN, listing URL, or confirmation date set (FLG-002 owner step); no Associates Central Special Link test (G-02); no analytics endpoint, Search Console, or ledger data.
+
+---
+
+# Session `arena/259402a3-affil3` — final integration session (2026-11-20)
+
+Registry: session `arena/259402a3-affil3`, branch `arena/259402a3-affil3` (branched from `main` @ `16ee89f`), status **done**. Single-session coordination on this checkout; this session claims the integration task and touches `tools/build.mjs`, `src/assets/style.css`, `assets/style.css`, `index.html`, `tools/integrity-check.mjs` (new), and `COORDINATION.md` (this section only).
+
+## Task board
+
+| ID | Task | Status | Files touched | Notes |
+|----|------|--------|---------------|-------|
+| I-01 | Line-by-line repo review; internal consistency pass over data registers | done | `tools/integrity-check.mjs` (new) | 403 checks passed; 1 informational (FLG-030 has no manual step because it is a corroboration record; intentional) |
+| I-02 | Shop-style front page: add buyer decision helper so the page reads like a shop | done | `tools/build.mjs`, `src/assets/style.css`, generated `index.html` | New "Pick by how you cook" decision band; each of the five products gets its fit line, tagged `?tag=shopnow047c-20` buy link (`rel="sponsored"`), and matching guide link; built entirely from existing product data, no new unverified values |
+| I-03 | Run build + gate; confirm no failures and no broken internal links | done | generated site at root | `node tools/build.mjs` → 32 pages, 5 feed items, 31 sitemap URLs; `node tools/verify.mjs` → 3,519 checks passed, 0 failed |
+| I-04 | Open PR from this branch to `main` | done | PR #63 | https://github.com/karagemop466-tech/Affil3/pull/63 |
+| I-05 | Merge the PR without waiting for review | done | `gh pr merge 63 --merge` | Merged into `main` as merge commit `a42e974b8a9581e403577edda65312ef6bbaac93` |
+| I-06 | Confirm GitHub Pages deploys after the merge | done | `https://karagemop466-tech.github.io/Affil3/` | Pages source `main` at `/`, HTTPS enforced; status `built` |
+
+## Verification performed this session (against the tree at HEAD)
+
+- Build: `node tools/build.mjs` → 32 pages, 5 feed items, 31 sitemap URLs at the repository root.
+- Gate: `node tools/verify.mjs` → 3,519 checks passed, 0 failed (disclosure above the fold + Associates statement on every page, `rel="sponsored"` + `tag=shopnow047c-20` on every retail Amazon link, one `h1` per page, no prices/ratings, every image present and same-origin, every internal link resolves, sitemap/feed coverage, `.nojekyll`, legacy tree untouched).
+- Integrity: `node tools/integrity-check.mjs` → 403 passed / 1 informational. Confirmed on all five product rows: `intended_asin`, `official_listing_url`, `confirmation_date`, `confirmation_source` are blank and flagged (FLG-001, FLG-002); `observed_*` fields carry dated sources and are never merged with intended fields; tagged outbound URL = observed ASIN + `?tag=shopnow047c-20`; observed ASINs all distinct; campaign ledger empty; no price/rating/availability field anywhere.
+- Sources: every `data/sources.json` row is https on an allowed official host (Amazon Associates, Google, FTC, ECFR, USDA FSIS, manufacturer pages). No third-party value used for any published figure.
+
+## Sources used (recorded in `data/sources.json`)
+
+S01 Associates Operating Agreement; S02 Program Policies; S03/S11/S13/S18/S19 Associates help topics; S04/S05 submitted links and observed `/dp/` destinations; S06 Google qualify-outbound-links; S07/S08 FTC disclosure/endorsement; S09/S10 USDA FSIS temperatures and thermometers; manufacturer pages S11–S17, S21, S23. No value inferred; blanks are intentional and flagged.
+
+## Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each)
+
+FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data conflicts FLG-023…FLG-036. None were introduced by this session; none block publication. FLG-030 is an informational corroboration record and intentionally carries no manual step.
+
+## Open owner actions (not done by this session; require the owner's credentials or decision)
+
+- Gate G-02: sign in to Associates Central, generate one Special Link per product, confirm destination and tracking report before scaling (FLG-005).
+- Q-01: confirm the intended product for each submitted short link (FLG-001/FLG-002).
+- Q-03: confirm the Associates account is active and declares the GitHub Pages URL (FLG-006).
+- Q-04 / S-03: deploy `tools/collector.mjs` (HTTPS, path ending in `/collect`) and set `analyticsEndpoint` in `data/config.json` (FLG-009).
+- Q-12: connect Google Search Console and submit the sitemap (FLG-013).
+- Q-06/Q-07/Q-08/Q-16: named editor, publishing cadence, price display, privacy-notice adequacy (decisions for the owner).
+
+## Completion record
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/63
+- Merge result: **MERGED** into `main` as merge commit `a42e974b8a9581e403577edda65312ef6bbaac93` (`gh pr merge 63 --merge`, merged without waiting for review, as authorized).
+- GitHub Pages: source `main` at `/`, HTTPS enforced; status `built` — https://karagemop466-tech.github.io/Affil3/
+- Nothing on this branch was force-pushed and no other session's file was reverted or discarded.
 - PR and merge result: recorded below after the PR is created and merged in this session.
 
 ---
