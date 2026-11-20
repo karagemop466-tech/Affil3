@@ -1,0 +1,18 @@
+{
+  "checked_on": "2026-11-20",
+  "status": "Not recording. No endpoint is configured. The five event names are proposals; the brief does not define them (FLG-R10, Q-07).",
+  "endpoint": null,
+  "privacy_rules": [
+    "No cookies and no local storage identifiers.",
+    "No IP address, user agent or account identifier is sent by the site code.",
+    "Only the event name, the page path and a timestamp are sent, and only when an endpoint is configured.",
+    "Nothing is sent when the endpoint is empty."
+  ],
+  "events": [
+    {"name": "page_view", "fires_when": "A page loads.", "fields": "event, path, ts", "source_ids": ["SRC-07", "SRC-08"], "status": "Proposed. Not recording."},
+    {"name": "product_view", "fires_when": "A product card or product page is shown.", "fields": "event, path, ts", "source_ids": ["SRC-07", "SRC-08"], "status": "Proposed. Not recording."},
+    {"name": "guide_view", "fires_when": "A guide page loads.", "fields": "event, path, ts", "source_ids": ["SRC-07", "SRC-08"], "status": "Proposed. Not recording."},
+    {"name": "outbound_click", "fires_when": "A reader clicks a product link. This mirrors the Associates definition of a qualifying click-through of a Special Link.", "fields": "event, path, target_product_id, ts", "source_ids": ["SRC-02"], "status": "Proposed. Not recording."},
+    {"name": "feed_click", "fires_when": "A reader clicks the RSS feed link.", "fields": "event, path, ts", "source_ids": ["SRC-11"], "status": "Proposed. Not recording."}
+  ]
+}

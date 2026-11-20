@@ -1,0 +1,23 @@
+{
+  "slug": "basket-or-oven-air-fryer-compare",
+  "title": "Basket or oven-style air fryer: what should you compare?",
+  "dek": "The listing titles use both words. Here is what to check on the page before you decide.",
+  "published": "2026-11-20",
+  "status": "Published as a working draft. No named editor (FLG-R12).",
+  "products": ["P-01", "P-02", "P-03"],
+  "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-01", "SRC-03"],
+  "body": [
+    {"type": "p", "text": "The three air fryers we checked use different shapes, and their listing titles say so. One is titled as a dual basket air fryer oven ({{P-01}}). Another is titled as a French door multi-function air fryer toaster oven ({{P-02}}). A third is titled as an 8 Qt air fryer with a 4-in-1 function set ({{P-03}})."},
+    {"type": "h2", "text": "Questions to ask"},
+    {"type": "ul", "items": [
+      "How many cooking areas do you need: one basket, or two?",
+      "Do you want the appliance to bake, roast or toast as well as air-fry?",
+      "Will it fit where you want it? Check the dimensions in the listing's product information.",
+      "Do you need to see the food while it cooks? Check whether the listing mentions a window or door."
+    ]},
+    {"type": "h2", "text": "What we did not check"},
+    {"type": "p", "text": "We did not test these appliances, and we did not confirm how any of them cook. The listing titles are the only product text this guide is based on."},
+    {"type": "h2", "text": "Next step"},
+    {"type": "p", "text": "Open each listing, read its product information table, and compare the same measurements side by side."}
+  ]
+}

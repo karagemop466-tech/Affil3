@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-11-20",
+  "status": "Empty by design. No authorized first-party report has been supplied.",
+  "columns": [
+    {"name": "timestamp", "meaning": "When the report row was obtained (UTC)."},
+    {"name": "source", "meaning": "Named first-party report, e.g. Associates Reports export. Must be an official source."},
+    {"name": "channel", "meaning": "Where the traffic came from, e.g. guide page, product card."},
+    {"name": "eligible_sessions", "meaning": "Sessions reported as eligible, as given in the source report."},
+    {"name": "clicks", "meaning": "Clicks as given in the source report."},
+    {"name": "reported_orders", "meaning": "Orders as given in the source report. Never estimated."},
+    {"name": "provenance_note", "meaning": "File name, export date and who exported it."}
+  ],
+  "rows": [],
+  "rules": [
+    "A row is added only from an authorized first-party report. No estimated rows.",
+    "No conversion score, revenue forecast or commission estimate is shown.",
+    "Each new row keeps a dated provenance note."
+  ],
+  "source_ids": ["SRC-01", "SRC-02"]
+}

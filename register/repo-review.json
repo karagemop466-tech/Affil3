@@ -1,0 +1,16 @@
+{
+  "checked_on": "2026-11-20",
+  "rows": [
+    {"id": "R-01", "item": "Branches on origin", "finding": "Three branches: main (847ae37), arena/772f3220-affil3 (this session) and arena/114f47c4-affil3 (another session, commit ce8e459).", "source_ids": ["SRC-17", "SRC-19"], "flag": "FLG-R14"},
+    {"id": "R-02", "item": "Commit history", "finding": "main has one commit, 'Initial commit' (847ae37). The clone is shallow at depth 1 (.git/shallow lists 847ae37), so earlier history is not available here.", "source_ids": ["SRC-18"], "flag": null},
+    {"id": "R-03", "item": "README.md", "finding": "README.md contains only '# Affil3'. There is no description, setup note or statement of purpose.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-04", "item": "License", "finding": "No LICENSE file on main. Reuse and ownership terms are not stated.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-05", "item": ".gitignore", "finding": "No .gitignore on main. Build output and local files could be committed by accident. This build keeps generated files in docs/ and does not ignore them.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-06", "item": "CI and workflows", "finding": "No .github folder and no workflow files. Nothing runs checks on push. The checks run locally with scripts/checks.py.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-07", "item": "COORDINATION.md", "finding": "Not present on main at the start of this session. Created on this branch.", "source_ids": ["SRC-17"], "flag": "FLG-R14"},
+    {"id": "R-08", "item": "GitHub Pages settings", "finding": "Pages is enabled: build_type legacy, source main path /, status built, URL https://karagemop466-tech.github.io/Affil3/. The site currently serves the README. This build publishes from /docs, which needs a settings change at integration.", "source_ids": ["SRC-08", "SRC-17"], "flag": "FLG-R14"},
+    {"id": "R-09", "item": "Repository visibility", "finding": "Pages reports public: true, so the repository and site are public.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-10", "item": "Commit identity", "finding": "Commits in this session use the repository's configured identity (karagemop466-tech). The session does not change it.", "source_ids": ["SRC-17"], "flag": null},
+    {"id": "R-11", "item": "Hosting policy", "finding": "GitHub Pages limits describe a restriction on sites primarily directed at commercial transactions. The site is affiliate-driven.", "source_ids": ["SRC-07"], "flag": "FLG-R09"}
+  ]
+}

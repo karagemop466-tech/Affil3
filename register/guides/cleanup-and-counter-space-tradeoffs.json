@@ -1,0 +1,21 @@
+{
+  "slug": "cleanup-and-counter-space-tradeoffs",
+  "title": "How to assess cleanup and counter-space trade-offs",
+  "dek": "Two costs that show up after the box is open.",
+  "published": "2026-11-20",
+  "status": "Published as a working draft. No named editor (FLG-R12).",
+  "products": ["P-01", "P-02", "P-03"],
+  "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-01", "SRC-03"],
+  "body": [
+    {"type": "p", "text": "Cleanup and counter space are often decided after purchase. Two of the titles we read name dishwasher-safe parts: {{P-01}} lists 'Dishwasher Safe Frying Baskets', and {{P-03}} lists a 'Dishwasher-Safe Basket'. The title of {{P-02}} does not mention cleaning, so check its product information."},
+    {"type": "h2", "text": "Questions to ask"},
+    {"type": "ul", "items": [
+      "Which parts does the listing say are dishwasher-safe? Which parts are not mentioned?",
+      "How much counter space is needed in use, including the lid or door swing? Check the listing dimensions and the manufacturer's manual.",
+      "Where will the appliance be stored when not in use?",
+      "Is there a drip tray or crumb tray? How is it removed and cleaned?"
+    ]},
+    {"type": "h2", "text": "What we did not check"},
+    {"type": "p", "text": "We did not test cleaning and did not measure space. Dishwasher suitability is shown only by the wording of the listing titles."}
+  ]
+}

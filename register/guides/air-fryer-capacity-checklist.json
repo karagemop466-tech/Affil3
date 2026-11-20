@@ -1,0 +1,21 @@
+{
+  "slug": "air-fryer-capacity-checklist",
+  "title": "A no-hype checklist for comparing air fryer capacity",
+  "dek": "Capacity labels are not all written the same way. Compare them carefully.",
+  "published": "2026-11-20",
+  "status": "Published as a working draft. No named editor (FLG-R12).",
+  "products": ["P-01", "P-02", "P-03"],
+  "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-01", "SRC-03"],
+  "body": [
+    {"type": "p", "text": "Listing titles state capacity in different formats. {{P-01}} says '6 Quart'. {{P-02}} says '26QT'. {{P-03}} says '8 Qt'. Those are title labels, not measurements we checked."},
+    {"type": "h2", "text": "Checklist"},
+    {"type": "ul", "items": [
+      "Find the capacity figure in the product information table, not only in the title.",
+      "Check whether the figure refers to the whole appliance or to one basket or tray. Titles do not always say which.",
+      "Compare figures in the same unit. If one listing gives quarts and another gives litres, convert both yourself before comparing.",
+      "Ask how many people you usually cook for, and compare that with any serving or family-size wording on the listing."
+    ]},
+    {"type": "h2", "text": "What we did not check"},
+    {"type": "p", "text": "We did not convert or compare capacity figures across listings, and we did not measure any appliance."}
+  ]
+}

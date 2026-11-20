@@ -1,0 +1,236 @@
+{
+  "checked_on": "2026-11-20",
+  "note": "Every row cites a source ID from this file. 'fetched' means the page was retrieved during this session and its text was read. 'not verified' means the link was not retrieved or did not return the expected content. Official = published by the platform, regulator, standards body or the repository itself.",
+  "sources": [
+    {
+      "id": "SRC-01",
+      "title": "Associates Program Operating Agreement",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Page header: 'Updated: October 15, 2025'. Section 1 defines 'Special Links' as the tagged link formats Amazon provides. Section 5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site, and bars expressing or implying that Amazon supports, sponsors or endorses the Associate.",
+      "supports": "Disclosure wording (C-01), Special Links definition (C-06), no endorsement implication (C-09)",
+      "reverified_on": "2026-11-20",
+      "reverified_result": "Re-fetched 2026-11-20. Confirmed: \"Updated: October 15, 2025\"; §5 wording \"As an Amazon Associate I earn from qualifying purchases.\"; no tag= parameter in final URL."
+    },
+    {
+      "id": "SRC-02",
+      "title": "Associates Program Policies (Commission Income Statement, Section 2 disqualifications)",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Page header: 'Updated: April 14, 2026'. Section 2 lists disqualified purchases, including (e) referrals through a 'Redirecting Link' that sends users indirectly via an intermediate site without an affirmative action, and (g) purchases 'not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted'. The commission rate table is in an Appendix that links to SRC-04.",
+      "supports": "Link-format review (FLG-R01, FLG-R03, Q-02), commission appendix pointer (FLG-R05)"
+    },
+    {
+      "id": "SRC-03",
+      "title": "Why do I have to identify myself as an Associate? How should I do this on social media?",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Requires (1) a link-level disclosure that is clear, e.g. '(paid link)' or '#ad', and placed near any affiliate link or product review; and (2) the Section 5 statement on the Site. Points to the FTC Disclosures 101 guide.",
+      "supports": "Link-level disclosure (C-03), statement placement (C-01)"
+    },
+    {
+      "id": "SRC-04",
+      "title": "Associates Program Commission Income Statement Appendix (Standard Commission Income)",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/schedule",
+      "official": true,
+      "status": "not verified",
+      "page_says": "Fetch returned Amazon's sign-in page instead of the rate table. The rate table could not be read.",
+      "supports": "Commission potential (FLG-R05, Q-06). No rates are shown on this site."
+    },
+    {
+      "id": "SRC-05",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Disclose a material connection; place the disclosure where it is 'hard to miss' and with the endorsement itself; do not rely on About or profile pages, or on text hidden behind 'more'; use clear terms such as 'ad', 'sponsored'; do not make claims that would need proof you do not have. Page is dated November 2019.",
+      "supports": "Disclosure placement (C-07), no unsupported claims (C-08)"
+    },
+    {
+      "id": "SRC-06",
+      "title": "FTC Guides Concerning the Use of Endorsements and Testimonials in Advertising (PDF, linked from SRC-05)",
+      "publisher": "U.S. Federal Trade Commission",
+      "url": "https://www.ftc.gov/sites/default/files/attachments/press-releases/ftc-publishes-final-guides-governing-endorsements-testimonials/091005revisedendorsementguides.pdf",
+      "official": true,
+      "status": "not verified",
+      "page_says": "Linked from SRC-05. The PDF itself was not opened in this session.",
+      "supports": "Background only. No compliance claim depends on it in this build."
+    },
+    {
+      "id": "SRC-07",
+      "title": "GitHub Pages limits",
+      "publisher": "GitHub Docs",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits",
+      "official": true,
+      "status": "fetched",
+      "page_says": "'GitHub Pages is not intended for or allowed to be used as a free web-hosting service to run your online business, e-commerce site, or any other website that is primarily directed at either facilitating commercial transactions or providing commercial software as a service.' Soft limits: 100 GB bandwidth per month; 1 GB maximum site size. Static hosting only.",
+      "supports": "Hosting acceptable-use review (FLG-R09), size and bandwidth (repo review)"
+    },
+    {
+      "id": "SRC-08",
+      "title": "Configuring a publishing source for your GitHub Pages site",
+      "publisher": "GitHub Docs",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site",
+      "official": true,
+      "status": "fetched",
+      "page_says": "A publishing source can be a branch with either the root (/) or a /docs folder. Built-in Jekyll is the default when publishing from a branch; a .nojekyll file is commonly used with other build output. Pages sites are public even if the repository is private.",
+      "supports": "Choice of /docs as source (T-SITE), .nojekyll (T-SITE)"
+    },
+    {
+      "id": "SRC-09",
+      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Use rel=\"sponsored\" for links that are advertisements or paid placements (paid links). Multiple values may be space-separated. Last updated 2025-12-10 UTC.",
+      "supports": "rel=\"sponsored\" on outbound product links (C-04)"
+    },
+    {
+      "id": "SRC-10",
+      "title": "Sitemaps XML format (sitemaps.org protocol)",
+      "publisher": "sitemaps.org",
+      "url": "https://www.sitemaps.org/protocol.html",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Each <url> needs a <loc>; lastmod should be the date the page was last modified; all URLs must be from a single host; entity-escape &, <, > and quotes.",
+      "supports": "sitemap.xml format (T-SITE)"
+    },
+    {
+      "id": "SRC-11",
+      "title": "RSS 2.0 Specification",
+      "publisher": "RSS Advisory Board",
+      "url": "https://www.rssboard.org/rss-specification",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Required channel elements: title, link, description. Item pubDate uses RFC 822 date-time format. The rss element must carry version=\"2.0\".",
+      "supports": "feed.xml format (T-SITE)"
+    },
+    {
+      "id": "SRC-12",
+      "title": "Amazon product page (observed final URL of supplied short link P-01)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Fetched 2026-11-20 via the supplied short link. Page title and breadcrumb read as recorded in the Products table. The final URL carries no tag= parameter.",
+      "supports": "P-01 observed title, category, ASIN",
+      "reverified_on": "2026-11-20",
+      "reverified_result": "Re-fetched 2026-11-20. Confirmed: product title and breadcrumb as recorded; no tag= parameter in final URL. Price and rating not read as verified values."
+    },
+    {
+      "id": "SRC-13",
+      "title": "Amazon product page (observed final URL of supplied short link P-02)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Fetched 2026-11-20 via the supplied short link. Page title and breadcrumb read as recorded. The final URL carries no tag= parameter.",
+      "supports": "P-02 observed title, category, ASIN",
+      "reverified_on": "2026-11-20",
+      "reverified_result": "Re-fetched 2026-11-20. Confirmed: product title and breadcrumb as recorded; no tag= parameter in final URL. Price and rating not read as verified values."
+    },
+    {
+      "id": "SRC-14",
+      "title": "Amazon product page (observed final URL of supplied short link P-03)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Fetched 2026-11-20 via the supplied short link. Page title and breadcrumb read as recorded. The final URL carries no tag= parameter.",
+      "supports": "P-03 observed title, category, ASIN",
+      "reverified_on": "2026-11-20",
+      "reverified_result": "Re-fetched 2026-11-20. Confirmed: product title and breadcrumb as recorded; no tag= parameter in final URL. Price and rating not read as verified values."
+    },
+    {
+      "id": "SRC-15",
+      "title": "Amazon product page (observed final URL of supplied short link P-05)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Fetched 2026-11-20 via the supplied short link. Page title and breadcrumb read as recorded. The final URL carries no tag= parameter.",
+      "supports": "P-05 observed title, category, ASIN",
+      "reverified_on": "2026-11-20",
+      "reverified_result": "Re-fetched 2026-11-20. Confirmed: product title and breadcrumb as recorded; no tag= parameter in final URL. Price and rating not read as verified values."
+    },
+    {
+      "id": "SRC-16",
+      "title": "Amazon checkpoint page (observed final URL of supplied short link P-04)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/checkpoint/continue",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Two fetches on 2026-11-20 of the supplied short link returned an interstitial that says 'To continue, please click the Continue shopping button below.' No product title or ASIN appeared. The token in the full URL is omitted here.",
+      "supports": "P-04 unresolved status (FLG-R02)"
+    },
+    {
+      "id": "SRC-17",
+      "title": "karagemop466-tech/Affil3 repository",
+      "publisher": "GitHub",
+      "url": "https://github.com/karagemop466-tech/Affil3",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Repository state read with git and gh on 2026-11-20. Public. GitHub Pages reports status 'built', source main:/ at https://karagemop466-tech.github.io/Affil3/.",
+      "supports": "Repo review rows (T-REPO)"
+    },
+    {
+      "id": "SRC-18",
+      "title": "Initial commit 847ae37 (base of this branch)",
+      "publisher": "GitHub",
+      "url": "https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Only commit on main at the time of review. Repository shallow-cloned at depth 1 (.git/shallow lists this commit).",
+      "supports": "Repo review rows (T-REPO)"
+    },
+    {
+      "id": "SRC-19",
+      "title": "Other session's branch arena/114f47c4-affil3 (commit ce8e459)",
+      "publisher": "GitHub",
+      "url": "https://github.com/karagemop466-tech/Affil3/tree/arena/114f47c4-affil3",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Branch exists on origin. Commit ce8e459 'docs: claim affiliate publication task' adds COORDINATION.md claiming a root-level site scope.",
+      "supports": "Coordination overlap (FLG-R14)"
+    },
+    {
+      "id": "SRC-20",
+      "title": "Amazon Associates Program Policies: Commission Income Statement Section 2(g)",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies#Associates%20Program%20Participation%20Requirements",
+      "official": true,
+      "status": "fetched",
+      "page_says": "Same page as SRC-02, read at the Participation Requirements heading. Section 2(g) concerns improperly formatted links. The fetched text of the heading section was not fully read because the page is paginated across 11 chunks; only chunks 0, 1 and 10 were read.",
+      "supports": "Link-format review (Q-02). Read in part only: flagged as partial."
+    },
+    {
+      "id": "SRC-21",
+      "title": "Google Search Console (ownership verification and performance reports)",
+      "publisher": "Google",
+      "url": "https://search.google.com/search-console/about",
+      "official": true,
+      "status": "not verified",
+      "page_says": "Not retrieved in this session. Listed only as the tool the brief names. Ownership verification requires an account holder.",
+      "supports": "Search Console task (blocked, owner action)"
+    },
+    {
+      "id": "SRC-22",
+      "title": "ASIN format observation (no official Amazon ASIN definition page located)",
+      "publisher": "Amazon (observed product URL, not a definition page)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "official": true,
+      "status": "not verified",
+      "page_says": "No official Amazon ASIN glossary page was located in this session. Secondary sites were not used as sources. The format observation rests on the observed product URLs (SRC-12 to SRC-15), each of which carries a 10-character code after /dp/.",
+      "supports": "ASIN length observation (FLG-R01). Definition itself is not verified."
+    }
+  ]
+}

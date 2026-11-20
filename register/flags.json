@@ -1,0 +1,269 @@
+{
+  "checked_on": "2026-11-20",
+  "note": "Flagged items do not block publication, per the brief. Each one is listed on the Flagged for Review page with its source links.",
+  "flags": [
+    {
+      "id": "FLG-R01",
+      "type": "Unverified: intended ASIN",
+      "severity": "High",
+      "item": "Intended ASINs cannot be confirmed for any supplied short link.",
+      "detail": "The five supplied codes are each 9 characters. The product URLs observed in this check (SRC-12 to SRC-15) each use a 10-character code after /dp/. The mapping from short code to intended product is unknown. Nothing is inferred. The observed ASINs are recorded separately in the Products table.",
+      "source_ids": [
+        "SRC-12",
+        "SRC-13",
+        "SRC-14",
+        "SRC-15",
+        "SRC-22"
+      ],
+      "owner_action": "Confirm the intended product for each link, or supply the full product URL or ASIN.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R02",
+      "type": "Unverified: destination",
+      "severity": "High",
+      "item": "P-04 short link does not resolve to a product.",
+      "detail": "Two fetches of https://link.amazon/B0c8moW59 on 2026-11-20 returned the Amazon checkpoint page 'To continue, please click the Continue shopping button below.' No product title, ASIN or price was visible. This is recorded as unresolved, not as invalid.",
+      "source_ids": [
+        "SRC-16"
+      ],
+      "owner_action": "Open the link in a normal browser and send the product URL it leads to.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R03",
+      "type": "Unverified: attribution",
+      "severity": "High",
+      "item": "Attribution to the selected tracking ID is not confirmed.",
+      "detail": "The final URL of each observed product page (P-01, P-02, P-03, P-05) contains no tag= parameter. The selected tracking ID is shopnow047c-20. Whether the supplied links attribute to that ID cannot be confirmed from this check. The check was not run from an enrolled Associates account.",
+      "source_ids": [
+        "SRC-12",
+        "SRC-13",
+        "SRC-14",
+        "SRC-15",
+        "SRC-02"
+      ],
+      "owner_action": "Run T-LINK in the enrolled Associates account (see Questions Q-02 to Q-04).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R04",
+      "type": "Unverified: tracking ID",
+      "severity": "Medium",
+      "item": "Tracking ID format and enrollment are not verified.",
+      "detail": "The brief selects shopnow047c-20. The check did not sign in to Associates Central, so the ID's status in the account is unknown. The format is not checked against an official page in this session.",
+      "source_ids": [
+        "SRC-01",
+        "SRC-03"
+      ],
+      "owner_action": "Confirm the ID in Associates Central under Account Settings.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R05",
+      "type": "Unverified: commission potential",
+      "severity": "Medium",
+      "item": "Commission rates were not verified, so commission potential is not stated.",
+      "detail": "The commission schedule (SRC-04) redirected to Amazon's sign-in page. No rate table was read. The site shows no commission figures and no revenue forecast.",
+      "source_ids": [
+        "SRC-02",
+        "SRC-04"
+      ],
+      "owner_action": "Sign in to Associates Central and read the rate table, or provide the rate table as text.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R06",
+      "type": "Unverified: price, rating, availability",
+      "severity": "Medium",
+      "item": "No price, rating or availability is shown for any product.",
+      "detail": "The product pages returned price and rating text for other items in carousels. The price for the main listing could not be attributed reliably, so the fields are blank. Prices on Amazon change, so any value would need a date and a source.",
+      "source_ids": [
+        "SRC-12",
+        "SRC-13",
+        "SRC-14",
+        "SRC-15"
+      ],
+      "owner_action": "Decide whether to show dated price snapshots (see Suggestions S-07).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R07",
+      "type": "Scope: product mix",
+      "severity": "Medium",
+      "item": "The supplied products are not one category, and the editorial hypotheses cover only part of the set.",
+      "detail": "Three observed products are air fryers (P-01, P-02, P-03). One is a smart meat thermometer (P-05). One is unresolved (P-04). The working titles in the brief cover air fryers and kitchen appliances, not thermometers. No guide was written for P-05.",
+      "source_ids": [
+        "SRC-12",
+        "SRC-13",
+        "SRC-14",
+        "SRC-15"
+      ],
+      "owner_action": "Decide whether P-05 gets its own guide, or whether the site stays with appliances (Suggestions S-03).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R08",
+      "type": "Irregularity: source register missing",
+      "severity": "High",
+      "item": "The source register named in the brief is not in the repository.",
+      "detail": "The brief refers to source IDs S01, S02, S07, S24, FLG-003, and SG-27 to SG-30, and to a 'careful source register'. None of these exist in the repository (README.md is one line). They are not reproduced here. This site uses its own IDs (SRC-01 to SRC-22). Where the brief says the compliance status of the short links is 'unresolved in FLG-003', this build takes that statement as given.",
+      "source_ids": [
+        "SRC-17"
+      ],
+      "owner_action": "Supply the register as a file, or confirm that the SRC IDs here replace it.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R09",
+      "type": "Compliance: hosting policy",
+      "severity": "High",
+      "item": "GitHub Pages' acceptable-use wording may cover this site.",
+      "detail": "GitHub's limits page says Pages 'is not intended for or allowed to be used as a free web-hosting service to run your online business, e-commerce site, or any other website that is primarily directed at either facilitating commercial transactions'. This site exists to send readers to purchase links. Whether that is 'primarily' the purpose is a judgement GitHub would make, not this build. The site is published as asked; the owner should decide whether to keep it on Pages.",
+      "source_ids": [
+        "SRC-07",
+        "SRC-08"
+      ],
+      "owner_action": "Decide whether to keep Pages, or move to a host that allows the use (Suggestions S-01).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R10",
+      "type": "Blocked: analytics endpoint",
+      "severity": "High",
+      "item": "No analytics endpoint is deployed. Events are defined, but nothing is recorded.",
+      "detail": "GitHub Pages serves static files and cannot run a server endpoint (SRC-07, SRC-08). The measurement script sends events only when an endpoint is set, and none is set. The brief's 'five defined events' are not defined in the brief; the site proposes five names for approval (Questions Q-07). The brief asks for 'real analytics'; none is connected.",
+      "source_ids": [
+        "SRC-07",
+        "SRC-08"
+      ],
+      "owner_action": "Choose a hosted endpoint, or accept that measurement stays off (Suggestions S-02).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R11",
+      "type": "Blocked: Search Console",
+      "severity": "Medium",
+      "item": "Search Console is not connected and the sitemap is not submitted.",
+      "detail": "Ownership verification needs an account holder. The sitemap and RSS feed are built and linked from robots.txt. Submission is an owner action.",
+      "source_ids": [
+        "SRC-21",
+        "SRC-10",
+        "SRC-11"
+      ],
+      "owner_action": "Verify the site in Search Console and submit https://karagemop466-tech.github.io/Affil3/sitemap.xml.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R12",
+      "type": "Unverified: authorship",
+      "severity": "Low",
+      "item": "No author or editor is named. Pages are unsigned.",
+      "detail": "The brief asks for authorship but names no person or business. This build does not invent a byline.",
+      "source_ids": [
+        "SRC-05"
+      ],
+      "owner_action": "Supply a name and role for the byline, or keep the site unsigned (Suggestions S-05).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R13",
+      "type": "Unverified: cadence",
+      "severity": "Low",
+      "item": "No publishing cadence has been set.",
+      "detail": "The brief asks for a cadence but does not give one. Four guides were published on 2026-11-20 as one batch. No further schedule is implied.",
+      "source_ids": [
+        "SRC-11"
+      ],
+      "owner_action": "Choose a cadence (Suggestions S-04).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R14",
+      "type": "Irregularity: parallel session overlap",
+      "severity": "High",
+      "item": "Another session claims the same publication task with a conflicting file layout.",
+      "detail": "Branch arena/114f47c4-affil3 on origin claims a root-level site: index.html, guides/, sitemap.xml, feed.xml, robots.txt, data/ and .github/workflows/. This session builds into docs/ and avoids those paths. Both sessions claim COORDINATION.md. This session appends only. Pages currently publishes main:/, so the choice of root or /docs must be made at integration.",
+      "source_ids": [
+        "SRC-19",
+        "SRC-08"
+      ],
+      "owner_action": "Choose one layout for the Pages source, or merge the two sites.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R15",
+      "type": "Deviation: branch model",
+      "severity": "Medium",
+      "item": "Branch naming and integration model differ from the brief.",
+      "detail": "The brief asks for session-<id>/<task> branches and a separate integration branch. This session works only on arena/772f3220-affil3, as its instructions require. No other branch is created or pushed.",
+      "source_ids": [
+        "SRC-17"
+      ],
+      "owner_action": "Confirm the single-branch model, or ask for the multi-branch model once the constraint is lifted.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R16",
+      "type": "Not performed: market analysis",
+      "severity": "Medium",
+      "item": "Trend, competition, pricing and review analysis was not performed.",
+      "detail": "No authorized first-party or Amazon data feed is connected. The brief's trending-product and pricing analysis needs such data. No figures are presented for search volume, popularity, rankings or conversion.",
+      "source_ids": [
+        "SRC-02"
+      ],
+      "owner_action": "Connect an authorized data source, or accept manual observations with dates (Questions Q-12 to Q-14).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R17",
+      "type": "Partial read: Associates Policies",
+      "severity": "Medium",
+      "item": "Associates Program Policies were read in part only.",
+      "detail": "The policies page is paginated across 11 parts. Parts 0, 1 and 10 were read. Section 2(e) (Redirecting Link) and 2(g) (improperly formatted links) bear on the short links and were read. The full policy text was not read, so no compliance conclusion about the short links is drawn.",
+      "source_ids": [
+        "SRC-02",
+        "SRC-20"
+      ],
+      "owner_action": "Review the full policies with the owner, or let a later session finish reading the remaining parts.",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R18",
+      "type": "Link status: outbound",
+      "severity": "Medium",
+      "item": "Outbound links use the supplied short links, not validated Special Links.",
+      "detail": "The Operating Agreement defines Special Links as the tagged link formats Amazon provides (SRC-01, Section 1). The supplied short links are kept as supplied. They are marked rel=\"sponsored\" and are labelled as paid links. Their status is unresolved (FLG-003 in the brief).",
+      "source_ids": [
+        "SRC-01",
+        "SRC-09"
+      ],
+      "owner_action": "Run T-LINK (see Questions Q-02).",
+      "status": "Open"
+    },
+    {
+      "id": "FLG-R19",
+      "severity": "high",
+      "title": "Integrated site on main maps P04 to B08DKYBTPH; the register says otherwise",
+      "detail": "Re-fetched 2026-11-20: https://link.amazon/B00hJ57DV redirects to /dp/B08DKYBTPH (Chefman 8 Qt). https://link.amazon/B0c8moW59 still returns the Amazon checkpoint page (no product). origin/main's COORDINATION log and its P04 product link state the reverse. Its P04 link should be treated as unverified until the owner confirms the intended product.",
+      "owner_action": "Integration session on main: correct the P-04 / B0c8moW59 mapping, or leave P-04 unresolved.",
+      "blocks_merge": false
+    },
+    {
+      "id": "FLG-R20",
+      "severity": "high",
+      "title": "Outbound links on main are hand-tagged destination URLs, not the supplied short links",
+      "detail": "origin/main links use https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 with rel=\"sponsored noopener\". The brief asks for the supplied short links. Special Links are not validated (T-LINK blocked). Tracking-ID enrollment and attribution are unconfirmed (FLG-R03, FLG-R04).",
+      "owner_action": "Decide between supplied short links and validated Special Links after T-LINK is run in an enrolled Associates account.",
+      "blocks_merge": false
+    },
+    {
+      "id": "FLG-R21",
+      "severity": "medium",
+      "title": "This branch's docs/ site is not published",
+      "detail": "origin/main already serves an integrated site from the repository root (merged PRs #1, #4, #6; Pages source main:/). Publishing this branch's docs/ tree would duplicate that site and would be served under /docs/ on the live host. Not opened as a PR. Checks and register data kept on this branch for the integration owner.",
+      "owner_action": "Integration owner decides whether to adopt any part of scripts/checks.py or register/ data.",
+      "blocks_merge": false
+    }
+  ]
+}

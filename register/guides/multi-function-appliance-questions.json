@@ -1,0 +1,23 @@
+{
+  "slug": "multi-function-appliance-questions",
+  "title": "Questions to ask before buying a multi-function kitchen appliance",
+  "dek": "Presets, accessories and extras can be the most expensive part of the decision.",
+  "published": "2026-11-20",
+  "status": "Published as a working draft. No named editor (FLG-R12).",
+  "products": ["P-01", "P-02", "P-03"],
+  "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-01", "SRC-03"],
+  "body": [
+    {"type": "p", "text": "Multi-function appliances advertise many modes. The titles we read mention presets, accessories and modes: {{P-02}} lists '24 One-Touch Preset Options' and 'Six Cooking Accessories Included'; {{P-03}} lists a '4-in-1' function set; {{P-01}} lists 'Hi-Fry' and 'Auto Shutoff'."},
+    {"type": "h2", "text": "Questions to ask"},
+    {"type": "ul", "items": [
+      "Which two or three functions will you use most each week? Buy for those first.",
+      "Do you prefer presets or manual settings?",
+      "Which accessories are included, and which must be bought separately? Check the listing's 'what's in the box' text.",
+      "What warranty does the listing describe? If the page offers an optional protection plan, read its terms before you add it. We have not verified any plan's price or coverage."
+    ]},
+    {"type": "h2", "text": "Note on optional protection plans"},
+    {"type": "p", "text": "Amazon listings we checked offered optional protection plans from Asurion, LLC at checkout. This site does not recommend those plans, and we did not verify their terms."},
+    {"type": "h2", "text": "What we did not check"},
+    {"type": "p", "text": "We did not test any function or accessory. The list above is a set of questions, not a ranking."}
+  ]
+}

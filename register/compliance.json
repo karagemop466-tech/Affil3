@@ -1,0 +1,127 @@
+{
+  "checked_on": "2026-11-20",
+  "checks": [
+    {
+      "id": "C-01",
+      "requirement": "Associate statement appears clearly and prominently on every page: 'As an Amazon Associate I earn from qualifying purchases.'",
+      "source_ids": [
+        "SRC-01",
+        "SRC-03"
+      ],
+      "method": "Automated: scripts/checks.py confirms the exact sentence sits inside the strip under the masthead and inside the footer strip on every page. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items. Negative tests on copies of docs/ (2026-11-20): removing rel=\"sponsored\" failed the build check; changing the disclosure sentence failed; a broken internal link failed; a '$' price failed. The disclosure check was tightened after a tamper test passed it, then re-run.",
+      "status": "Pass (automated; checks.py run)"
+    },
+    {
+      "id": "C-02",
+      "requirement": "Disclosure sits directly under the masthead, so it is visible before the content.",
+      "source_ids": [
+        "SRC-05"
+      ],
+      "method": "Automated: checks.py confirms a disclosure strip directly under the masthead on every page. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items. A visual fold test at common screen sizes was not run.",
+      "status": "Pass (structure; checks.py run). Visual fold test not run."
+    },
+    {
+      "id": "C-03",
+      "requirement": "Link-level disclosure near each affiliate link ('(paid link)' or similar).",
+      "source_ids": [
+        "SRC-03",
+        "SRC-05"
+      ],
+      "method": "Automated: checks.py requires the text '(paid link)' within 160 characters after every sponsored anchor. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items.",
+      "status": "Pass (automated; checks.py run)"
+    },
+    {
+      "id": "C-04",
+      "requirement": "Every outbound product link is marked rel=\"sponsored\".",
+      "source_ids": [
+        "SRC-09"
+      ],
+      "method": "Automated: checks.py fails if any link to link.amazon or amazon.com lacks rel=\"sponsored\", and fails if any external host is not on its allowlist. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items.",
+      "status": "Pass (automated; checks.py run)"
+    },
+    {
+      "id": "C-05",
+      "requirement": "No statement implies that Amazon supports, sponsors or endorses the site.",
+      "source_ids": [
+        "SRC-01"
+      ],
+      "method": "Automated: checks.py searches the visible text of every page for endorsement-style phrases (list kept in scripts/checks.py). None found. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items.",
+      "status": "Pass (automated; checks.py run)"
+    },
+    {
+      "id": "C-06",
+      "requirement": "Links are Special Links tested in an enrolled Associates account (destination and tracking report checked).",
+      "source_ids": [
+        "SRC-01",
+        "SRC-02"
+      ],
+      "method": "Not run. Requires sign-in to Associates Central by the account holder.",
+      "status": "Blocked: owner action (T-LINK)"
+    },
+    {
+      "id": "C-07",
+      "requirement": "Disclosure is placed where it is hard to miss and with the recommendation, not only on an About page.",
+      "source_ids": [
+        "SRC-05"
+      ],
+      "method": "Design: the strip is on every page; the link-level label is beside each link.",
+      "status": "Pass (design)"
+    },
+    {
+      "id": "C-08",
+      "requirement": "No product claims that would need proof the site does not hold (performance, health, savings).",
+      "source_ids": [
+        "SRC-05"
+      ],
+      "method": "Automated: checks.py fails the build when visible text contains '$' followed by a digit. Guides are checked for endorsement-style claims by the same check. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items.",
+      "status": "Pass (automated; checks.py run)"
+    },
+    {
+      "id": "C-09",
+      "requirement": "No prices, commission figures or revenue forecasts are shown unless verified and dated.",
+      "source_ids": [
+        "SRC-04",
+        "SRC-12"
+      ],
+      "method": "Automated: product pages show price as not verified. Commission schedule not verified (FLG-R05).",
+      "status": "Pass (none shown)"
+    },
+    {
+      "id": "C-10",
+      "requirement": "Hosting acceptable-use: site is not 'primarily directed at facilitating commercial transactions' under GitHub's limits.",
+      "source_ids": [
+        "SRC-07"
+      ],
+      "method": "Judgement, not automated.",
+      "status": "Flagged for owner decision (FLG-R09)"
+    },
+    {
+      "id": "C-11",
+      "requirement": "No click incentives or pop-ups that send readers to Amazon.",
+      "source_ids": [
+        "SRC-02"
+      ],
+      "method": "Manual design review: no incentives or redirects; links open on click only. Full policy text not read (FLG-R17).",
+      "status": "Partial (see FLG-R17)"
+    },
+    {
+      "id": "C-12",
+      "requirement": "Analytics use does not record personal data.",
+      "source_ids": [
+        "SRC-07"
+      ],
+      "method": "Design: measure.js sends only event name and path, with no cookies and no IP field. Nothing is sent while the endpoint is empty.",
+      "status": "Pass (design). No endpoint active."
+    },
+    {
+      "id": "C-13",
+      "requirement": "Sitemap and feed list only pages that exist.",
+      "source_ids": [
+        "SRC-10",
+        "SRC-11"
+      ],
+      "method": "Automated: checks.py compares sitemap.xml (27 URLs, no duplicates, every entry maps to a built page) and feed.xml (4 RSS items, RFC 822 pubDate, every guide present) with the built pages. scripts/checks.py run on 2026-11-20 after scripts/build.py: 'OK: all checks passed', exit 0, 28 pages, 27 sitemap URLs, 4 feed items.",
+      "status": "Pass (automated; checks.py run)"
+    }
+  ]
+}

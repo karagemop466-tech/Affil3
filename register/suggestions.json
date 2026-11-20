@@ -1,0 +1,184 @@
+{
+  "checked_on": "2026-11-20",
+  "how_to_choose": "Pick one option per suggestion. Reply with the suggestion ID and option letter, e.g. 'S-01 A'. Nothing below is implemented until a choice is recorded. Recommendations are judgements and are labelled as such.",
+  "suggestions": [
+    {
+      "id": "S-01",
+      "topic": "Hosting",
+      "suggestion": "Resolve whether GitHub Pages fits this commercial site before growing it.",
+      "evidence": "GitHub's limits page restricts Pages for sites primarily directed at commercial transactions (FLG-R09).",
+      "source_ids": ["SRC-07"],
+      "options": [
+        {"id": "A", "label": "Keep on GitHub Pages and ask GitHub Support for a view", "tradeoff": "No change in build. Risk remains until GitHub answers."},
+        {"id": "B", "label": "Move the built site to another static host that allows affiliate sites", "tradeoff": "Needs a host chosen and checked against its terms. No host is named here because none was verified."},
+        {"id": "C", "label": "Keep Pages but limit it to editorial content and remove the purchase links", "tradeoff": "Lower risk, but the brief's purpose (buying) is lost."}
+      ],
+      "recommendation": "Option A first, because it costs nothing to ask. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-02",
+      "topic": "Measurement",
+      "suggestion": "Choose the analytics path before any event is recorded.",
+      "evidence": "No endpoint is available on Pages (SRC-07, SRC-08). The five events are not defined in the brief (Q-07).",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-02"],
+      "options": [
+        {"id": "A", "label": "No analytics. Keep the event code off.", "tradeoff": "Privacy-first. No data on clicks until a choice is made."},
+        {"id": "B", "label": "Self-hosted endpoint on a server or function host that the owner controls", "tradeoff": "Gives first-party click counts. Needs hosting, a privacy notice and maintenance."},
+        {"id": "C", "label": "Third-party analytics with consent", "tradeoff": "Quick to set up. Needs a consent banner and a provider agreement."}
+      ],
+      "recommendation": "Option A until the owner decides on B or C. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-03",
+      "topic": "Product set",
+      "suggestion": "Confirm the product set before writing more guides.",
+      "evidence": "Three observed products are air fryers, one is a thermometer, and one is unresolved (FLG-R07, Q-01).",
+      "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-15"],
+      "options": [
+        {"id": "A", "label": "Keep all five. Add a thermometer guide later.", "tradeoff": "Broad set. The thermometer has no guide yet."},
+        {"id": "B", "label": "Focus on the three air fryers. Hold the thermometer and the unresolved link.", "tradeoff": "Tighter topic. Fewer products on the site until Q-01 is answered."},
+        {"id": "C", "label": "Hold the unresolved P-04 until its destination is confirmed. Keep the rest.", "tradeoff": "Removes the only link that cannot be resolved, without changing the other four."}
+      ],
+      "recommendation": "Option C now, with B if the owner wants a single category. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-04",
+      "topic": "Publishing cadence",
+      "suggestion": "Set a cadence so the next guide is planned, not improvised.",
+      "evidence": "No cadence was supplied (FLG-R13). The feed and sitemap update on every build.",
+      "source_ids": ["SRC-11", "SRC-10"],
+      "options": [
+        {"id": "A", "label": "One guide every two weeks", "tradeoff": "Steady output. Needs an owner or editor for each one."},
+        {"id": "B", "label": "One guide a month", "tradeoff": "Lower load. Slower feedback from measured queries."},
+        {"id": "C", "label": "Publish when there is a measured question to answer", "tradeoff": "Matches the brief's measure-first aim. Output is irregular."}
+      ],
+      "recommendation": "Option B until query data exists, then review. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-05",
+      "topic": "Authorship",
+      "suggestion": "Name who is responsible for the content.",
+      "evidence": "No author is named (FLG-R12).",
+      "source_ids": ["SRC-05"],
+      "options": [
+        {"id": "A", "label": "Keep pages unsigned, with an editorial note", "tradeoff": "No invented person. Less personal trust."},
+        {"id": "B", "label": "Owner supplies a real name and role for the byline", "tradeoff": "Clear accountability. Owner must confirm the name is true."},
+        {"id": "C", "label": "Publish a reviewer statement without a named author", "tradeoff": "Shows review process. Needs a written process behind it."}
+      ],
+      "recommendation": "Option A until the owner supplies a name. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-06",
+      "topic": "Imagery",
+      "suggestion": "Decide how product images appear.",
+      "evidence": "The site uses typography and text only. Product images are not included in this build. The Operating Agreement defines Program Content and limits its use (SRC-01, Section 1).",
+      "source_ids": ["SRC-01"],
+      "options": [
+        {"id": "A", "label": "Keep typography only", "tradeoff": "No image rights question. Less visual."},
+        {"id": "B", "label": "Owner supplies licensed photos", "tradeoff": "Strong visual identity. Owner must hold the rights."},
+        {"id": "C", "label": "Use Associates Program Content images, where the Agreement permits", "tradeoff": "Needs a check of the permitted use in the Agreement."}
+      ],
+      "recommendation": "Option A now. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-07",
+      "topic": "Price display",
+      "suggestion": "Decide whether readers see prices at all.",
+      "evidence": "No price was verified for any product (FLG-R06, Q-05).",
+      "source_ids": ["SRC-12", "SRC-13", "SRC-14", "SRC-15"],
+      "options": [
+        {"id": "A", "label": "No prices. Readers see the product page.", "tradeoff": "Nothing to go stale. Less useful at a glance."},
+        {"id": "B", "label": "Dated price snapshot, labelled with the observation date and source", "tradeoff": "Useful. Goes stale; needs a refresh routine."},
+        {"id": "C", "label": "Live price from an authorized product data feed", "tradeoff": "Most current. Needs an authorized data source (Q-14)."}
+      ],
+      "recommendation": "Option A now. Option B once snapshots are taken with dates. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-08",
+      "topic": "Topic selection",
+      "suggestion": "Choose the next guide topics from measured queries, not from the working titles.",
+      "evidence": "No query or site data exists yet (Q-12). Search Console is not connected (FLG-R11).",
+      "source_ids": ["SRC-21"],
+      "options": [
+        {"id": "A", "label": "Verify Search Console, then pick topics after 60 days of data", "tradeoff": "Evidence-led. Slow to start."},
+        {"id": "B", "label": "Pick topics from the four working titles now and review later", "tradeoff": "Fast. Not measured."},
+        {"id": "C", "label": "Pick topics from manual observation of buyer questions, dated and sourced", "tradeoff": "Some evidence, but a manual process to keep up."}
+      ],
+      "recommendation": "Option A, with B for the first batch already published. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-09",
+      "topic": "Disclosure wording",
+      "suggestion": "Decide whether the disclosure should be stronger than the required sentence.",
+      "evidence": "The Associates sentence is required (SRC-01, Section 5). The Associates Help page asks for a link-level disclosure too (SRC-03). The FTC asks for disclosures that are hard to miss (SRC-05).",
+      "source_ids": ["SRC-01", "SRC-03", "SRC-05"],
+      "options": [
+        {"id": "A", "label": "Keep the required sentence, the '(paid link)' label, and the sponsored attribute", "tradeoff": "Meets the sources as read. Current build."},
+        {"id": "B", "label": "Add a plain sentence at the top of each guide: 'I earn a commission on qualifying purchases made through the links in this guide.'", "tradeoff": "Clearer for readers. Needs the owner to confirm it is true."},
+        {"id": "C", "label": "Add a disclosure box in each guide that states the relationship in full", "tradeoff": "Most explicit. Heavier layout."}
+      ],
+      "recommendation": "Option B, once the owner confirms the sentence. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-10",
+      "topic": "Event list",
+      "suggestion": "Confirm the five events.",
+      "evidence": "The brief refers to five defined events but does not name them (Q-07). Five are proposed on the Measurement page.",
+      "source_ids": ["SRC-02"],
+      "options": [
+        {"id": "A", "label": "Adopt the proposed five: page_view, product_view, guide_view, outbound_click, feed_click", "tradeoff": "Covers reach, interest, click-through and feed use."},
+        {"id": "B", "label": "Owner supplies a different five", "tradeoff": "Matches the brief exactly, once supplied."},
+        {"id": "C", "label": "Record only outbound_click", "tradeoff": "Smallest footprint. No reach data."}
+      ],
+      "recommendation": "Option A, subject to S-02. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-11",
+      "topic": "Navigation",
+      "suggestion": "Keep one navigation group and move dashboards to the footer.",
+      "evidence": "The brief asks for a single navigation group, with every dashboard reachable from the footer.",
+      "source_ids": ["SRC-08"],
+      "options": [
+        {"id": "A", "label": "One header group: Products, Categories, Guides, Executive summary. All dashboards in the footer.", "tradeoff": "Matches the brief. Current build."},
+        {"id": "B", "label": "Header shows dashboards too", "tradeoff": "Easier to reach. Crowds the reader-facing menu."}
+      ],
+      "recommendation": "Option A. Current build.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    },
+    {
+      "id": "S-12",
+      "topic": "Branch model",
+      "suggestion": "Confirm the branch model once the single-branch constraint allows it.",
+      "evidence": "The brief asks for session-<id>/<task> branches and an integration branch. This session is limited to one branch (FLG-R15).",
+      "source_ids": ["SRC-17", "SRC-19"],
+      "options": [
+        {"id": "A", "label": "Keep one branch per session", "tradeoff": "Simple. Other sessions' work must be merged by hand."},
+        {"id": "B", "label": "Adopt session-<id>/<task> branches and an integration branch", "tradeoff": "Matches the brief. More merges to manage."}
+      ],
+      "recommendation": "Option A for this site. This is a judgement.",
+      "decision": "Awaiting your choice",
+      "implemented": false
+    }
+  ]
+}
