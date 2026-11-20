@@ -81,11 +81,24 @@ const abs = (p) => cfg.siteUrl + p;
 const hostOf = (u) => { try { return new URL(u).hostname; } catch { return ''; } };
 const isAmazon = (u) => /(^|\.)amazon\.com$/.test(hostOf(u)) || hostOf(u) === 'link.amazon';
 const relFor = (u) => (isAmazon(u) ? 'sponsored noopener' : 'noopener external');
-const ext = (u, text, attrs = '') => `<a href="${esc(u)}" rel="${relFor(u)}"${attrs}>${esc(text)}</a>`;
+const withTag = (u) => {
+  try {
+    const url = new URL(u);
+    if (/(^|\.)amazon\.com$/.test(url.hostname)) { url.searchParams.set('tag', cfg.trackingId); return url.toString(); }
+  } catch { /* not a URL: return as given */ }
+  return u;
+};
+// Every link to an Amazon host carries the tracking tag (Program Policies 2(b)). A link.amazon short
+// link cannot carry it, so the token is shown as text rather than as a clickable link.
+const outbound = (u, text, attrs = '') => {
+  try { if (new URL(u).hostname === 'link.amazon') return `<code>${esc(text)}</code>`; } catch { /* ignore */ }
+  return `<a href="${esc(withTag(u))}" rel="${relFor(u)}"${attrs}>${esc(text)}</a>`;
+};
+const ext = (u, text, attrs = '') => outbound(u, text, attrs);
 const srcLink = (id) => {
   const s = SOURCES[id];
   if (!s) return `<span class="badge bad">${esc(id)} (missing)</span>`;
-  return s.url ? `<a href="${esc(s.url)}" rel="${relFor(s.url)}">${esc(id)}</a>` : `<span>${esc(id)}</span>`;
+  return s.url ? outbound(s.url, id) : `<span>${esc(id)}</span>`;
 };
 const flagLinks = (ids = []) => ids.map((f) => `<a class="badge flag" href="${href('/flagged/')}#${esc(f)}">${esc(f)}</a>`).join(' ');
 const shortName = (t = '') => t.split(/[|,]/)[0].trim();
@@ -259,8 +272,8 @@ function table(headers, rows, cls = '') {
 
 // Row-level sources: S05 and S04 point to this row's own submitted link and observed page.
 const rowSources = (p) => (p.sources || []).map((id) => {
-  if (id === 'S05') return `<a href="${esc(p.submitted_url)}" rel="sponsored noopener">S05</a>`;
-  if (id === 'S04' && p.observed_final_url) return `<a href="${esc(p.observed_final_url)}" rel="sponsored noopener">S04</a>`;
+  if (id === 'S05') return `S05 <code>${esc(p.submitted_token)}</code>`;
+  if (id === 'S04' && p.observed_final_url) return outbound(p.observed_final_url, 'S04');
   return srcLink(id);
 }).join(', ');
 const guideSource = (id) => (id === 'S04'
@@ -372,7 +385,7 @@ const add = (p) => pages.push(p);
     `<a href="${esc(href('/categories/' + p.category + '/'))}">${esc(catName(p.category))}</a>`,
     `<a href="${esc(href('/products/' + p.id.toLowerCase() + '/'))}">${esc(displayName(p))}</a>${p.observed_breadcrumb ? `<br><span class="muted small">${esc(p.observed_breadcrumb)}</span>` : ''}`,
     p.observed_asin ? `<code>${esc(p.observed_asin)}</code><br>${ext(p.observed_final_url, 'observed page', '')}` : '<span class="muted">none observed</span>',
-    `<a href="${esc(p.submitted_url)}" rel="sponsored noopener"><code>${esc(p.submitted_token)}</code></a> <span class="small muted">(${p.submitted_token_length} chars)</span>`,
+    `<code>${esc(p.submitted_token)}</code> <span class="small muted">(${p.submitted_token_length} chars, shown as text: the short link carries no tag)</span>`,
     cellText(p.intended_asin),
     cellText(p.official_listing_url),
     cellText(p.confirmation_date),
@@ -465,7 +478,7 @@ for (const p of products) {
 <section class="section">
   <h2>The listing we read</h2>
   <div class="table-wrap"><table class="spec-table"><tbody>
-    <tr><th scope="row">Submitted link</th><td><a href="${esc(p.submitted_url)}" rel="sponsored noopener">${esc(p.submitted_token)}</a> <span class="small muted">(${p.submitted_token_length} characters)</span></td></tr>
+    <tr><th scope="row">Submitted link</th><td><code>${esc(p.submitted_token)}</code> <span class="small muted">(${p.submitted_token_length} characters; shown as text, not linked, because it carries no tracking tag)</span></td></tr>
     <tr><th scope="row">Observed destination</th><td>${ext(p.observed_final_url, p.observed_final_url, '')}</td></tr>
     <tr><th scope="row">Observed ASIN</th><td><code>${esc(p.observed_asin)}</code></td></tr>
     <tr><th scope="row">Breadcrumb on Amazon</th><td>${esc(p.observed_breadcrumb)}</td></tr>
@@ -907,7 +920,8 @@ add({
 <li>Every link to an Amazon host carries <code>rel="sponsored noopener"</code>. Google recommends this for paid links and affiliate links ${srcLink('S06')}.</li>
 <li>Product links carry the tracking ID <code>${esc(cfg.trackingId)}</code> as a tag parameter ${srcLink('S02')}.</li>
 <li>No redirect, cloaking or link-shortener is used for outbound links. The click counter does not route clicks ${srcLink('S02')}.</li>
-<li>The five submitted short links are shown only as source evidence, not as buy links (FLG-003).</li>
+<li>Every Amazon link on the site carries the tracking ID, including links used only as evidence for an observation. A citation is still a link ${srcLink('S02')}.</li>
+<li>The five submitted short links are shown as text, never as links: a short link cannot carry the tag, so publishing it would place an untagged link to an Amazon host on the page (FLG-003, FLG-027).</li>
 </ul>
 <h2>Gates before scaling</h2>
 </div>
@@ -922,6 +936,8 @@ ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-08', 'Ledger rows only from authorized first-party reports', 'Manual', 'Not applicable (ledger empty)'],
     ['G-09', 'Analytics: only the five listed events; no cookies', 'Automated', 'Passed (automated)'],
     ['G-10', 'Sitemap and feed cover every guide; no broken internal links', 'Automated', 'Passed (automated)'],
+    ['G-11', 'Every Amazon-hosted link carries the tag, and no short link is published as a link', 'Automated', 'Passed (automated)'],
+    ['G-12', 'Every image is local, present, has alt text and explicit dimensions', 'Automated', 'Passed (automated)'],
   ])}
 <div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code>; a failing gate stops the build from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>`,
 });

@@ -116,15 +116,15 @@ stay exactly as they are.
 | `data/guides.json` | Eight guides: body, short version, limits, buyer questions, sources |
 | `data/suggestions.json` | Decision board: 19 decisions, 3 paths |
 | `data/questions.json` | Known facts, open questions, discovery steps |
-| `data/flags.json` | 26 flags, 5 resolved |
+| `data/flags.json` | 27 flags, 6 resolved |
 | `tools/build.mjs` → site root | Root publication build, no dependencies |
-| `tools/verify.mjs` | Publishing gate: 2,877 checks |
+| `tools/verify.mjs` | Publishing gate: 4,414 checks |
 | `tools/build.py` → `editorial/` | Archive publication build (Python, no dependencies) |
 | `tools/check_site.py` | Archive gate |
 | `.github/workflows/verify.yml` | Rebuilds both publications on every push and fails on drift |
 
 ```bash
-node tools/build.mjs && node tools/verify.mjs     # 32 pages, 2884 checks, 0 failed
+node tools/build.mjs && node tools/verify.mjs     # 32 pages, 4414 checks, 0 failed
 python3 tools/build.py && python3 tools/check_site.py   # 21 pages, PASS
 ```
 

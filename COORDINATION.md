@@ -487,7 +487,7 @@ Every row was read on 2026-11-20, in this session, from the page itself.
 
 ```
 node tools/build.mjs      32 pages, 8 feed items, 31 sitemap URLs
-node tools/verify.mjs     2884 checks passed, 0 failed
+node tools/verify.mjs     4414 checks passed, 0 failed
 python3 tools/build.py    21 pages into editorial/
 python3 tools/check_site.py  PASS
 ```
@@ -498,6 +498,7 @@ python3 tools/check_site.py  PASS
 |---|---|---|
 | Delete a referenced illustration | fail | `FAIL … image file exists …` , exit 1 |
 | Remove the canonical link from a built page | fail | `FAIL /404.html: has a canonical URL`, exit 1 |
+| Publish an untagged `link.amazon` anchor | fail | `FAIL /index.html: no untagged link.amazon short link is published`, exit 1 |
 | (earlier passes) remove `sponsored`, break an internal link, add a currency amount | fail | fail |
 
 ## Irregularities found in this pass
@@ -508,6 +509,7 @@ python3 tools/check_site.py  PASS
 | FLG-024 | CI asserted that `docs/` matched a fresh build; `docs/` does not exist, so the check was vacuous | resolved |
 | FLG-025 | `EXECUTIVE-SUMMARY.md` and `QA-BRIEF.md` said four of five links resolved, contradicting the register | resolved |
 | FLG-026 | `/editorial/` and `/legacy/` were indexable next to the root publication | mitigated, owner confirmation pending |
+| FLG-027 | Source citations linked to Amazon, and the short links were clickable, without the tag §2(b) requires | resolved |
 
 ## Cross-scope edits (logged, not silent)
 

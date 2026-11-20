@@ -135,12 +135,15 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       let host = ''; try { host = new URL(href).hostname; } catch {}
       if (/(^|\.)amazon\.com$/.test(host) || host === 'link.amazon') {
         check(`${name}: Amazon link is sponsored`, /\bsponsored\b/.test(rel_), href);
+        const t = href.match(/[?&]tag=([^&]+)/);
+        check(`${name}: every Amazon link carries the tracking tag`, !!t && decodeURIComponent(t[1]) === TAG, href);
       }
+      check(`${name}: no untagged link.amazon short link is published`, host !== 'link.amazon', href);
       if (href.includes('/dp/') && host.endsWith('amazon.com')) {
         const m2 = href.match(/\/dp\/([A-Za-z0-9]+)/);
         check(`${name}: /dp/ link has a 10-character ASIN`, !!m2 && m2[1].length === 10, href);
         const tagMatch = href.match(/[?&]tag=([^&]+)/);
-        if (tagMatch) check(`${name}: tag is ${TAG}`, decodeURIComponent(tagMatch[1]) === TAG, href);
+        check(`${name}: /dp/ link carries the tag ${TAG}`, !!tagMatch && decodeURIComponent(tagMatch[1]) === TAG, href);
       }
       if (href.startsWith(base) || href.startsWith('/')) {
         const target = fileFor(href.startsWith('/') && !href.startsWith(base) ? base + href : href);

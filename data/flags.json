@@ -269,6 +269,18 @@
         "S06"
       ],
       "manual_step": "Owner confirms that one indexable site is the intended arrangement. If a custom domain is chosen later (Q-16), the same rule has to be carried over."
+    },
+    {
+      "id": "FLG-027",
+      "severity": "high",
+      "title": "Source citations linked to Amazon without the tracking tag",
+      "detail": "The shop register and product pages cited the observed Amazon page, and linked the submitted short link, without a tag parameter. Program Policies §2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. A citation is still a link.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "None. Fixed: every Amazon link now carries tag=shopnow047c-20, including observation citations, and the five short links are shown as text because a short link cannot carry the tag.",
+      "status": "resolved",
+      "resolution": "Gate extended on 2026-11-20: every Amazon-hosted anchor must carry the tag, and no link.amazon anchor may be published. Check count rose from 2,884 to 4,407, all passing."
     }
   ],
   "checked": "2026-11-20"

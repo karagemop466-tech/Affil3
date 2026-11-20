@@ -44,7 +44,7 @@ Node 18+ for the root publication, Python 3.9+ for the archive. Neither has depe
 
 ```bash
 node tools/build.mjs     # data/*.json        -> repository root
-node tools/verify.mjs    # 2,877 checks
+node tools/verify.mjs    # 4,414 checks
 python3 tools/build.py   # data/register/*   -> editorial/
 python3 tools/check_site.py
 npm run check            # node build + node verify
@@ -54,12 +54,15 @@ CI rebuilds both publications on every push and fails if the committed output dr
 
 ## What the gate refuses to let through
 
-Root publication (`tools/verify.mjs`, 2,877 checks):
+Root publication (`tools/verify.mjs`, 4,414 checks):
 
 - A page without the Associates statement, or without the disclosure strip above `<main>`.
 - A page without a footer repeat of the disclosure.
 - An Amazon link without `rel="sponsored"`, or a `/dp/` link without a 10-character ASIN.
-- A `/dp/` link carrying a tag other than `shopnow047c-20`.
+- A `/dp/` link carrying a tag other than `shopnow047c-20`, or **any** Amazon link without the tag —
+  including a link used only as evidence for an observation.
+- An untagged `link.amazon` short link published as a link (they are shown as text, because a short link
+  cannot carry the tag).
 - A currency amount anywhere in the HTML. A price cannot be rendered, by construction.
 - A missing image, an image without `alt`, or an image served from another host.
 - An external stylesheet or font.
