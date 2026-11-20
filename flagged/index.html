@@ -40,7 +40,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. Flags do not block publication.</p></section>
+<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main&#39;s FLG-030 because this branch&#39;s earlier allocations were dropped in two merges rather than renumbered over main&#39;s. FLG-035 is recorded as resolved by main&#39;s own /privacy/ page, which shipped independently of this session. Flags do not block publication.</p></section>
 <section class="flag-card" id="FLG-001">
   <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
   <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.</p>
@@ -265,6 +265,27 @@
   <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
   <p class="small"><strong>Manual step:</strong> Decide which single edition is the product, and whether the other three should stay on this domain at all. Suggestion S-11 records the options; each edition keeps its own generator and gate, so republishing one is a one-line change.</p>
 </section>
+<section class="flag-card" id="FLG-033">
+  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-low">low</span> <strong>The tracking ID&#39;s shape does not match the example format in the policy, which is not the same as being wrong</strong></p>
+  <p>Participation Requirements §2(b) gives the tag format as &quot;XXXXX-##, or such other format as we may designate&quot;. The supplied ID shopnow047c-20 has an eleven-character prefix rather than five, and a two-digit suffix that does match. Because the clause expressly allows other designated formats, the shape proves nothing either way: it cannot confirm the ID is valid and it cannot show it is invalid. Recorded so nobody later reads the eleven-character prefix as evidence of a problem, and so the weaker argument - an Associates help page saying IDs end in -20 - is not mistaken for the policy text. Separately §1(g) bars any Amazon trademark or variant in a tag or Associates ID; shopnow047c contains none, which is a genuine pass.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a></p>
+  <p class="small"><strong>Manual step:</strong> Export the tracking-ID list from Associates Central and confirm shopnow047c-20 appears on it; that closes this flag and FLG-011 together.</p>
+</section>
+<section class="flag-card" id="FLG-034">
+  <p class="flag-head"><span class="badge flag">FLG-034</span> <span class="badge sev-medium">medium</span> <strong>Amazon presents the product behind submitted link 4 as superseded</strong></p>
+  <p>The official page for B0DHZTCNR5 (ThermoMaven 1 Sec instant-read, Black) carries a &quot;Newer Version Available&quot; block linking to a different ASIN, B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh unauthenticated fetch 2026-11-20 and recorded in data/observations/2026-11-20-reverify-66f2548a.json. The submitted link therefore points at a variant Amazon itself flags as superseded. The successor ASIN is recorded as an observation only and is not published as a product row: it was not submitted and its intended status cannot be confirmed. A price and a star rating were visible inside that block and neither was transcribed or published, per §6(t) and §2(b).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Decide whether slot 4 should promote B0GL7Z4KP4. If so, supply it as the intended product so the intended fields can be filled from an official source, then issue a tagged Special Link for it in Associates Central.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-035">
+  <p class="flag-head"><span class="badge flag">FLG-035</span> <span class="badge sev-medium">medium</span> <strong>The published site carried no privacy notice while loading a click counter on every page</strong> <span class="badge resolved">resolved</span></p>
+  <p>Participation Requirements §3(e) makes the Associate responsible for disclosing &quot;either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors&quot;. For most of this repository&#39;s history the site loaded assets/analytics.js on every page with no notice anywhere on the live surface; privacy pages existed only under legacy/, belonging to superseded editions.</p>
+  <p class="resolution"><strong>Resolution:</strong> RESOLVED 2026-11-20 by main, independently of this session: a /privacy/ page now ships and states that nothing is collected while the endpoint is unset. This session&#39;s separately written draft was dropped in the merge rather than kept as a second privacy page. What remains open is Q-16: whether the shipped wording is adequate where the site is operated from, which is a question for the owner or counsel rather than a build session.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Review the shipped /privacy/ page against §3(e) and decide whether counsel should read it before any endpoint is configured (Q-16).</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -298,6 +319,7 @@
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
+        <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
         <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
       </ul>
     </div>
