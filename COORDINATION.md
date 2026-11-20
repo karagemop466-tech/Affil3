@@ -966,31 +966,82 @@ they want the other direction. Nothing was force-pushed and no other session's f
 - Merge result: pending at the time of writing.
 - GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
 
-## Session `arena/0a417943-affil3` — reader-facing publication pass + independent verification (second reconcile)
+---
+
+- Combined data re-verified line by line against the official listing pages (2026-11-20).
+- `python3 scripts/check_links.py`: **0 broken internal links** (471 links across 15 pages;
+  external hosts unreachable from the sandbox are warnings, not failures).
+- `python3 scripts/build_sitemap.py --check`: **OK — 15 pages all present**.
+- Compliance audit: every page carries the disclosure strip above the fold and the footer
+  disclosure; every outbound product-listing link carries `rel="sponsored"` and a visible
+  "Sponsored" label.
+- Local render check: all 10 docs/ routes return HTTP 200.
+- Root-site gate re-run after integration: `npm run check` — 23 pages built, gate passed.
+
+---
+
+# Session `2e0c91d0` board (appended after merging `origin/main` @ `1075a62`, `c83e622` and `a2719a1`; nothing above was edited)
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena-2e0c91d0-affil3` | `arena/2e0c91d0-affil3` (branched from `main` @ `9287de5`; merged with `main` @ `1075a62` and again @ `c83e622`) | active | Review + corroboration: `data/sources.json` (S01/S05 re-check notes only), `data/observations/2026-11-20-session-2e0c91d0.json`, `EXECUTIVE_SUMMARY-2e0c91d0.md`, regenerated `sources/index.html`, this file |
+
+## Task board
+
+| ID | Task | Status | Owner | Notes |
+| --- | --- | --- | --- | --- |
+| R1 | Repo review line by line; run both builders and both gates | done | `2e0c91d0` | On `9287de5`: root 23 pages / 1316 checks / 0 failed; editorial 21 pages / PASS, but rebuild diffed `editorial/assets/site.css` (stale committed output). |
+| R2 | Re-verify official sources reachable today and record the re-check | done | `2e0c91d0` | S01 re-fetched in full ("Updated: October 15, 2025"; §1 tagged-link wording confirmed). Short links re-fetched: B04G1MEwY→B0CDY277D3, B02NbDxp3→B09B7SB46R (one transient 502, retry OK; neither final URL carried `tag=`). Recorded in `data/observations/2026-11-20-session-2e0c91d0.json`. Intended ASINs untouched (blank). |
+| R3 | Fix the CI freshness gate that diffed `docs/` (a directory that does not exist) | superseded by main | `2e0c91d0` | Independently found and fixed on this branch; while in flight, main landed the equivalent fix via PR #29 (`74d539c` "Gate both generators in CI so output cannot drift from source"; log line R-09). At merge this branch adopted main's workflow. The duplicate fix is kept here as corroboration only. |
+| R4 | Commit the regenerated `editorial/assets/site.css` | superseded by main | `2e0c91d0` | Main shipped the identical regenerated stylesheet (`3192e97`); the merge resolved to identical content. |
+| R5 | Decision-board entry for the root-vs-editorial outbound-link divergence | superseded by main | `2e0c91d0` | Draft FLG/S-13 written on this branch; main's board already covers it better as S-01 (two publications; /editorial/ excluded from search) and S-02 (buy buttons while untested). Withdrawn at merge to avoid duplicate IDs — main had reassigned FLG-023..027 to product-spec discrepancies. |
+| R6 | Executive summary for this session | done | `2e0c91d0` | `EXECUTIVE_SUMMARY-2e0c91d0.md`. |
+| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | in progress | `2e0c91d0` | See publish log below. |
+
+## Work log
+
+- 2026-11-20 — Claimed R1–R7 and pushed the claim (`5aa6f10`) before touching any other file.
+- 2026-11-20 — R1/R2 on `9287de5` as per the task board. Committed fixes as `8f68f55` (workflow, regenerated CSS, draft FLG-023/FLG-024, draft S-13, re-check notes, observation file, regenerated root pages). Gates: root 1322 checks / 0 failed; editorial PASS.
+- 2026-11-20 — Opened PR #31. While checks were pending, `main` advanced to `1075a62` (PRs #27/#29/#30/#22 from sessions `9abfdc62`, `4578ad4b`, `93cee724`). Merged `origin/main` into this branch: conflicts in `verify.yml`, `data/flags.json`, `data/suggestions.json`, `data/sources.json`, `COORDINATION.md` and three generated pages resolved in favour of **main** (their registers were restructured and their fixes equal or broader), except `data/sources.json`, where this session's S01/S05 re-check notes were re-applied on top of main's text. Nothing from any session was discarded.
+- 2026-11-20 — Post-merge gates on the merged tree: root **28 pages / 1610 checks / 0 failed**; editorial **21 pages / PASS**; a fresh rebuild leaves the tree clean (the CI assertion).
+- 2026-11-20 — Note on `git pull --rebase`: this branch carries merge commits, and `pull --rebase` flattens them and replays main-side commits (e.g. `d52a9f0`, `1973daf`), which conflicts. The rebase was aborted with nothing lost; all subsequent integrations used `git merge origin/main`. Logged per the conflict rule.
+- 2026-11-20 — Inherited failure logged, not introduced here: `node tools/disclosure-check.mjs` reports 37 problems, all on `docs/` pages from the c46310a7 pipeline (missing the two disclosure statements; currency amounts). The same check fails identically on `origin/main` @ `a2719a1` (GitHub check-run `disclosure`: failure). The published Pages surfaces (root, editorial) pass all their gates. File-change request to whichever session owns `docs/` (bdcb1fa8 / 43565031 / c46310a7): either add both statements above the fold and drop currency text, or exclude `docs/` from disclosure-check with a rationale. This session does not edit `docs/` to avoid a conflicting fix.
+- 2026-11-20 — Third integration: merged `origin/main` @ `a2719a1` (PR #37). Conflicts: `COORDINATION.md` (tail append/append; resolved keeping main's new sections and re-appending this board) and `sources/index.html` (regenerated from the merged `data/sources.json`, which kept this session's S01/S05 re-check notes).
+- 2026-11-20 — `main` moved again while PR #31 was open (PRs #25 and others, to `c83e622`); merged `origin/main` a second time. Only `COORDINATION.md` conflicted (append/append at the tail); resolved keeping both the completed `93cee724` publish record and the `c46310a7` board from main, with this session's board appended after them. `sources/index.html` auto-merged and was regenerated.
+
+## Publish log (this session)
+
+- PR: https://github.com/karagemop466-tech/Affil3/pull/31
+- Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+
+## Session `arena/0a417943-affil3` — reader-facing publication pass + independent verification (third reconcile)
 
 | Field | Value |
 |---|---|
 | Branch | `arena/0a417943-affil3` (cut from `main` @ `847ae37`, still the empty initial commit at session start; worked fully in parallel with the sessions above) |
-| Outcome | Reconciled twice with a fast-moving `main` (first `4d33db8`, then `a2719a1`; 18 add/add conflicts the first round, `COORDINATION.md`+`README.md` the second). Main's tree adopted wholesale each time — nothing discarded. This session's work ships as the self-contained `/kitchen-edit/` surface (README table updated) |
-| Surface | `/kitchen-edit/`: shop-first front page, 4 guides (FAQ JSON-LD), 5 product profiles with full intent/observation records, source register, flags, decision questions, suggestion board, compliance gate, analytics/ledger, dashboard. Outbound CTAs follow the canonical register's tagged `/dp/<observed-ASIN>?tag=shopnow047c-20` destinations; submitted short links appear as evidence only; no price/rating/spec text anywhere |
-| Gates | `tools/validate_kitchen_edit.py` (G-A1..G-A7, 24 pages) + freshness, via `.github/workflows/kitchen-edit-gates.yml` scoped to `kitchen-edit/**`. Passes the repo-wide `disclosure-check.mjs` with **zero kitchen-edit findings** (exact FTC sentence + exact Associates statement above `<main>`; no currency/rating text — fragments live in `kitchen-edit/src/`, which that gate's SKIP list already covers) |
+| Outcome | Reconciled three times with a fast-moving `main` (`4d33db8` → 18 add/add conflicts; `a2719a1` → board+README; `6376b46` → board). Main's tree adopted wholesale each time — nothing discarded. Work ships as the self-contained `/kitchen-edit/` surface (README table row) |
+| Surface | `/kitchen-edit/`: shop-first front page, 4 guides (FAQ JSON-LD), 5 product profiles with full intent/observation records, source register, flags, decision questions, suggestion board, compliance gate, analytics/ledger, dashboard. Outbound CTAs follow the canonical register's tagged `/dp/<observed-ASIN>?tag=shopnow047c-20` destinations; submitted short links appear as evidence only; no price/rating/spec text |
+| Gates | `tools/validate_kitchen_edit.py` (G-A1..G-A7, 24 pages) + freshness via `.github/workflows/kitchen-edit-gates.yml` (scoped to `kitchen-edit/**`). Zero kitchen-edit findings in the repo-wide `disclosure-check.mjs` (exact FTC sentence + exact Associates statement above `<main>`; fragments live under `kitchen-edit/src/`, covered by that gate's SKIP list). Root `verify.mjs` and the whole-tree freshness gate unaffected (outputs committed) |
 
 ### Verified this session that no other register had (all fetched 2026-11-20)
 
 1. **Official Amazon ASIN definition** — [sell.amazon.com/blog/what-is-an-asin](https://sell.amazon.com/blog/what-is-an-asin): "a unique 10-character alphanumeric code assigned to every product listed in the Amazon store"; ASIN appears after `/dp/`.
 2. **PA-API 5.0 deprecated → Creators API** — [deprecation notice](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation) · [introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction). Prerequisites: Associates enrollment + **≥10 qualifying sales in the past 30 days**; `GetItems` by ASIN. Automation plans should target the Creators API, not PA-API 5.
 3. **IANA root database: `.amazon` gTLD** — [iana.org/domains/root/db/amazon.html](https://www.iana.org/domains/root/db/amazon.html): manager Amazon Registry Services, Inc.; delegated 2020-06-02 (context for the submitted `link.amazon` URLs — no verdict).
-4. **FTC Endorsement Guides FAQ** — [ftc.gov](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking) (complements the registered Disclosures 101).
+4. **FTC Endorsement Guides FAQ** — [ftc.gov](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking).
 5. **Independent observation pass** — [`data/observations/2026-11-20-arena0a417943.json`](data/observations/2026-11-20-arena0a417943.json): `B00hJ57DV → B08DKYBTPH` observed directly (independently confirms the retest); `B0c8moW59` hit a checkpoint interstitial in this pass while the canonical register resolved it to `B0DHZTCNR5` — both dated observations kept; canonical governs. All landings again carried no `tag=` parameter.
 
 ### Merge-conflict resolution log (protocol item 6)
 
-- **Round 1** (`4d33db8`): 18 add/add conflicts → `git checkout origin/main -- .` (main's tree adopted), pipeline relocated under `kitchen-edit/`, my generated root pages removed (regenerated in the subtree), one additive `Sitemap:` line in root `robots.txt`.
-- **Round 2** (`a2719a1`): `COORDINATION.md` + `README.md` add/add → main's versions kept, this section re-appended, README table row re-added.
+- **Round 1** (`4d33db8`): 18 add/add conflicts → main's tree adopted via `git checkout origin/main -- .`; pipeline relocated under `kitchen-edit/`; my generated root pages removed (regenerated in the subtree); one additive `Sitemap:` line in root `robots.txt`.
+- **Round 2** (`a2719a1`): `COORDINATION.md` + `README.md` add/add → main's versions kept; this section re-appended; README table row re-added.
+- **Round 3** (`6376b46`): `COORDINATION.md` add/add → main's version kept; this section re-appended.
 - No file owned by another session was modified beyond these logged additive edits (README table row + build section, robots.txt sitemap line, this board section).
 
 ### Observations for the register owners (requests, not self-applied edits)
 
-1. Pre-existing, independent of this branch: `tools/disclosure-check.mjs` currently reports **37 failures, all in `docs/`** (session `arena/c46310a7-affil3`'s surface — missing both statements on several pages, currency amounts on the products page). Root `/` pages pass. Worth a fix on that surface before its next publish.
+1. Inherited (also logged by session `2e0c91d0`): `tools/disclosure-check.mjs` reports failures inside `docs/` (session `arena/c46310a7-affil3`'s surface — missing statements + currency text). `/` and `/kitchen-edit/` pass. Fix belongs to that surface's owner.
 2. Consider adopting the two official sources above into the root `data/sources.json` (requires adding `sell.amazon.com` and `www.iana.org` to that gate's `ALLOWED_SOURCE_HOSTS`).
 3. `SG-13` (one register, one generator) remains the consolidation goal; `/kitchen-edit/` is a candidate base for the reader-facing generator.

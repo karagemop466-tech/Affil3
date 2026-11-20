@@ -34,7 +34,7 @@ def fail(gate, msg):
 def html_files():
     out = []
     for dirpath, dirnames, filenames in os.walk(ROOT):
-        dirnames[:] = [d for d in dirnames if d not in (".git", "node_modules", "content", "tools", "data", "assets")]
+        dirnames[:] = [d for d in dirnames if d not in (".git", "node_modules", "src", "tools", "data", "assets")]
         for fn in filenames:
             if fn.endswith(".html"):
                 out.append(os.path.join(dirpath, fn))
