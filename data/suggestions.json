@@ -945,72 +945,67 @@
     },
     {
       "id": "S-29",
-      "topic": "The seasonal deal guide's afterlife",
-      "current": "Published 2026-11-20 as a checklist, not a deal post",
+      "topic": "December content direction",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Take it down the day the event ends",
-          "tradeoff": "The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check."
+          "label": "Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).",
+          "tradeoff": "Matches the seasonal questions readers actually have in December; heavily thermometer-weighted."
         },
         {
           "id": "B",
-          "label": "Keep it, and drop the event name from the title after the sale window",
-          "tradeoff": "Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended."
+          "label": "Gift-guide cluster: small appliances as gifts, what to check before gifting.",
+          "tradeoff": "Wide appeal; a crowded field with big publishers owning most search results."
         },
         {
           "id": "C",
-          "label": "Re-date and re-promote it each November",
-          "tradeoff": "Turns one honest page into an annual promise, and the takedown obligation with it."
+          "label": "Deal-week follow-ups: price-check method posts and post-holiday clearance guides.",
+          "tradeoff": "Timely and linkable; ages quickly and must be date-stamped."
         }
       ],
-      "recommendation": "B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause."
+      "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
     },
     {
       "id": "S-30",
-      "topic": "Which marketplace the buy buttons belong to",
-      "current": "One marketplace, amazon.com, for every link",
+      "topic": "Target reader",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Stay US-only and say so",
-          "tradeoff": "Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation."
+          "label": "Small-household weeknight cooks: one to three people, limited counter, limited time (current).",
+          "tradeoff": "Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally."
         },
         {
           "id": "B",
-          "label": "Add amazon.nl links for the same products",
-          "tradeoff": "Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified."
+          "label": "Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.",
+          "tradeoff": "Matches the seasonal spikes; thin the rest of the year."
         },
         {
           "id": "C",
-          "label": "Split the site by marketplace, one publication each",
-          "tradeoff": "Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions."
+          "label": "Gadget-first early adopters: smart features, apps, wireless probes.",
+          "tradeoff": "High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item."
         }
       ],
-      "recommendation": "A, today, as a one-line clarification; B only after Q-23 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
+      "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
     },
     {
       "id": "S-31",
-      "topic": "Whether the fit check is measured",
-      "current": "Runs entirely in the browser. Nothing is sent",
+      "topic": "Order of operations: measurement or content first",
+      "current": "B",
       "options": [
         {
           "id": "A",
-          "label": "Keep it unmeasured forever",
-          "tradeoff": "The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread."
+          "label": "Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.",
+          "tradeoff": "Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login."
         },
         {
           "id": "B",
-          "label": "Add one aggregate event when the collector exists",
-          "tradeoff": "Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people."
-        },
-        {
-          "id": "C",
-          "label": "Measure the outcome instead: outbound clicks from /find/ results",
-          "tradeoff": "Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all."
+          "label": "Keep publishing on editorial judgement until traffic exists, then measure (current).",
+          "tradeoff": "No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break."
         }
       ],
-      "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
+      "recommendation": "A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it."
     },
     {
       "id": "S-32",
@@ -1057,6 +1052,75 @@
         }
       ],
       "recommendation": "A for now. The site has {guide} guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already)."
+    },
+    {
+      "id": "S-34",
+      "topic": "The seasonal deal guide's afterlife",
+      "current": "Published 2026-11-20 as a checklist, not a deal post",
+      "options": [
+        {
+          "id": "A",
+          "label": "Take it down the day the event ends",
+          "tradeoff": "The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check."
+        },
+        {
+          "id": "B",
+          "label": "Keep it, and drop the event name from the title after the sale window",
+          "tradeoff": "Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended."
+        },
+        {
+          "id": "C",
+          "label": "Re-date and re-promote it each November",
+          "tradeoff": "Turns one honest page into an annual promise, and the takedown obligation with it."
+        }
+      ],
+      "recommendation": "B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause."
+    },
+    {
+      "id": "S-35",
+      "topic": "Which marketplace the buy buttons belong to",
+      "current": "One marketplace, amazon.com, for every link",
+      "options": [
+        {
+          "id": "A",
+          "label": "Stay US-only and say so",
+          "tradeoff": "Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation."
+        },
+        {
+          "id": "B",
+          "label": "Add amazon.nl links for the same products",
+          "tradeoff": "Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified."
+        },
+        {
+          "id": "C",
+          "label": "Split the site by marketplace, one publication each",
+          "tradeoff": "Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions."
+        }
+      ],
+      "recommendation": "A, today, as a one-line clarification; B only after Q-23 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
+    },
+    {
+      "id": "S-36",
+      "topic": "Whether the fit check is measured",
+      "current": "Runs entirely in the browser. Nothing is sent",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep it unmeasured forever",
+          "tradeoff": "The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread."
+        },
+        {
+          "id": "B",
+          "label": "Add one aggregate event when the collector exists",
+          "tradeoff": "Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people."
+        },
+        {
+          "id": "C",
+          "label": "Measure the outcome instead: outbound clicks from /find/ results",
+          "tradeoff": "Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all."
+        }
+      ],
+      "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured.",
@@ -1156,17 +1220,17 @@
     },
     {
       "order": 13,
-      "id": "S-30",
+      "id": "S-35",
       "why": "One line of copy, and the only question on the board that sits underneath every buy button."
     },
     {
       "order": 14,
-      "id": "S-29",
+      "id": "S-34",
       "why": "A dated takedown, recorded rather than remembered."
     },
     {
       "order": 15,
-      "id": "S-31",
+      "id": "S-36",
       "why": "Free to check once a link can earn; decides whether B is worth the privacy work."
     },
     {

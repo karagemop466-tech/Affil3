@@ -21,6 +21,7 @@ Disallow: /EXECUTIVE_SUMMARY-77e4ac42.md
 Disallow: /EXECUTIVE_SUMMARY-93cee724.md
 Disallow: /EXECUTIVE_SUMMARY-991c8230.md
 Disallow: /EXECUTIVE_SUMMARY-arena63534e5d.md
+Disallow: /EXECUTIVE_SUMMARY-f0300606.md
 Disallow: /EXECUTIVE_SUMMARY.md
 Disallow: /QA-BRIEF.md
 Disallow: /README.md

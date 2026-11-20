@@ -420,20 +420,17 @@
     },
     {
       "id": "Q-22",
-      "question": "Do the buy links aim at the marketplace the owner can actually be paid on?",
-      "why_it_matters": "Every published link goes to www.amazon.com with tracking ID shopnow047c-20, whose -20 suffix matches the US convention. An owner reading this from the Netherlands may intend amazon.nl, which is a separate Associates program with its own IDs, its own agreement and its own listings, none of which this sandbox can fetch. The answer decides the domain of every buy button, the disclosure wording and which listings are even legal to link.",
-      "how_to_close": "Answer with S-30. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
-      "sources": [
-        "S02",
-        "S01"
-      ],
-      "blocking": true
+      "question": "Where will reader email capture run, and under what consent wording?",
+      "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
+      "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
+      "sources": [],
+      "blocking": false
     },
     {
       "id": "Q-23",
       "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
       "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
-      "how_to_close": "Answer with S-31 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
+      "how_to_close": "Answer with S-36 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
       "sources": [
         "S07",
         "S08"
@@ -444,12 +441,23 @@
       "id": "Q-24",
       "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
       "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
-      "how_to_close": "Pick S-29. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
+      "how_to_close": "Pick S-34. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
       "sources": [
         "S02",
         "S01"
       ],
       "blocking": false
+    },
+    {
+      "id": "Q-25",
+      "question": "Do the buy links aim at the marketplace the owner can actually be paid on?",
+      "why_it_matters": "Every published link goes to www.amazon.com with tracking ID shopnow047c-20, whose -20 suffix matches the US convention. An owner reading this from the Netherlands may intend amazon.nl, which is a separate Associates program with its own IDs, its own agreement and its own listings, none of which this sandbox can fetch. The answer decides the domain of every buy button, the disclosure wording and which listings are even legal to link.",
+      "how_to_close": "Answer with S-35. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": true
     }
   ],
   "discovery": [
@@ -544,9 +552,9 @@
     },
     {
       "id": "D-15",
-      "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
+      "suggestion": "Name one reader persona from S-30 and write it at the top of the December commission list before any new guide is drafted.",
       "closes": [
-        "Q-23"
+        "Q-13"
       ]
     },
     {
@@ -582,7 +590,14 @@
       "closes": [
         "Q-15"
       ]
+    },
+    {
+      "id": "D-21",
+      "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
+      "closes": [
+        "Q-23"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Two sessions opened rows on 2026-11-20 that wanted the same ids; session 0e102530 kept K-22, Q-20, Q-21, D-16, D-17 and D-18 as written, and this session's rows were renumbered around them to K-23 to K-26, Q-22 to Q-24 and D-15, D-19 and D-20. Q-22 is marked blocking because a marketplace choice sits underneath every buy button on the site."
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Two sessions opened rows on 2026-11-20 that wanted the same ids; the ids that reached main first kept them, so this session's rows are K-23 to K-26, Q-23, Q-24 and Q-25, and D-19, D-20 and D-21. Q-25 is marked blocking because a marketplace choice sits underneath every buy button on the site, and Q-17 plus Q-22 are the short-link and content questions other sessions opened."
 }

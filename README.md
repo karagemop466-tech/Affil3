@@ -79,7 +79,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` runs **7,102 checks** at this commit over the 52 published root pages (FLG-039, FLG-043 and FLG-044 corrected stale figures; the count is whatever the run prints, and a merge that adds a page or a guide changes it, so treat the number as a log line rather than a claim). `tools/build.mjs` and `tools/verify.mjs` both import their page list from `tools/site-scope.mjs`, so the gate cannot walk a shorter list than the builder writes (FLG-043). It stops the build on:
+`node tools/verify.mjs` runs **7,552 checks** at this commit over the 55 published root pages (FLG-039, FLG-043 and FLG-044 corrected stale figures; the count is whatever the run prints, and a merge that adds a page or a guide changes it, so treat the number as a log line rather than a claim). `tools/build.mjs` and `tools/verify.mjs` both import their page list from `tools/site-scope.mjs`, so the gate cannot walk a shorter list than the builder writes (FLG-043). It stops the build on:
 
 - a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
 - an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;

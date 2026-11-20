@@ -276,28 +276,43 @@ table.checklist { min-width: 560px; }
   overflow-x: auto; font: 0.82rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   white-space: pre-wrap; word-break: break-word; }
 
-/* The fit check (/find/) and its front-page teaser — added 2026-11-20 by session ca51f5b3.
-   A question stack, not a quiz skin: one column under 900px, the same paper and rule weights the
-   rest of the publication uses, and no new colour beyond the palette already defined above. */
-.finder { display: grid; gap: 22px; max-width: 880px; margin: 0 0 8px; }
-.finder-q { border: 1px solid var(--line); border-radius: 14px; background: var(--card); padding: 14px 18px 16px; box-shadow: var(--shadow); }
-.finder-q legend { font-weight: 700; padding: 0 8px; }
-.finder-opt { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; padding: 10px 0; border-top: 1px solid var(--line); align-items: start; cursor: pointer; }
-.finder-q .finder-opt:first-of-type { border-top: 0; }
-.finder-opt input { margin-top: 5px; accent-color: var(--accent); }
-.fo-label { font-weight: 600; }
-.fo-hint { grid-column: 2; font-size: 13.5px; color: var(--muted); }
-.finder-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0; }
-.finder-out { display: grid; gap: 14px; border: 1px dashed var(--line-strong); border-radius: 14px; padding: 16px 18px; background: var(--paper); }
-.fit-card { border: 1px solid var(--line); border-radius: 12px; background: var(--paper-deep); padding: 14px 16px 16px; }
-.fit-card h3 { margin: 0 0 4px; }
-.fit-tag { font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; color: var(--accent-deep); margin: 0 0 6px; }
-.fit-cat { font-size: 13px; color: var(--muted); margin-left: 6px; font-weight: 500; }
-.fit-why { margin: 10px 0 0; padding-left: 18px; font-size: 14.5px; }
-.fit-miss { margin: 8px 0 10px; padding-left: 18px; font-size: 14px; color: var(--muted); list-style: square; }
-.fit-miss.is-hidden { display: none; }
-.fit-link { margin: 12px 0 0; }
-.finder-tease { display: grid; grid-template-columns: 1.45fr 1fr; gap: 26px; align-items: center; }
-.finder-preview { margin: 0; padding-left: 20px; font-weight: 600; }
-.finder-preview li { margin: 9px 0; }
-@media (max-width: 900px) { .finder-tease { grid-template-columns: 1fr; } }
+/* ---- publication polish (session arena/f0300606-affil3): shop front components ---- */
+/* nav: one quiet link group for the dashboards */
+.nav-desk { border: 1px solid var(--line-strong); margin-left: 6px; }
+.nav-desk:hover, .nav-desk:focus { border-color: var(--accent); }
+
+/* hero trust chips */
+.trust-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 10px; padding: 0; margin: 18px 0 0; }
+.trust-chips li { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; font-size: 13px; color: var(--muted); }
+.trust-chips li::before { content: "\2713"; color: var(--olive); font-weight: 800; margin-right: 6px; }
+.trust-chips a { color: var(--accent-deep); }
+
+/* need tiles: shop by the job */
+.need-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 6px 0 12px; }
+.need-tile { display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; color: inherit; text-decoration: none; box-shadow: var(--shadow); transition: box-shadow .15s ease, transform .15s ease, border-color .15s ease; }
+.need-tile:hover { box-shadow: var(--shadow-lift); transform: translateY(-2px); border-color: var(--accent); text-decoration: none; }
+.need-tile h3 { margin: 2px 0 6px; font-size: 19px; }
+.need-tile p { margin: 0 0 6px; }
+.need-tile .read-more { padding-top: 6px; }
+a.need-tile:hover h3 { color: var(--accent-deep); }
+
+/* follow band: RSS live, email capture gated */
+.follow { margin-top: 26px; }
+.follow-inner { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 28px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow); }
+.follow h2 { margin: 0 0 8px; }
+.follow p { margin: 0 0 8px; }
+.follow-actions { display: flex; flex-direction: column; gap: 10px; }
+
+/* buyer comparison table */
+table.buyer-table { min-width: 940px; }
+table.buyer-table th:first-child, table.buyer-table td:first-child { position: sticky; left: 0; background: var(--card); border-right: 1px solid var(--line); }
+table.buyer-table tbody tr:nth-child(even) td:first-child { background: #fdfbf7; }
+table.buyer-table .btn { padding: 7px 14px; font-size: 13px; }
+
+/* research desk hub */
+.desk-hub h2 { margin-top: 8px; }
+.desk-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 12px 0 8px; }
+.desk-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-weight: 650; font-size: 14.5px; color: var(--ink); text-decoration: none; box-shadow: var(--shadow); }
+.desk-card:hover { border-color: var(--accent); color: var(--accent-deep); text-decoration: none; }
+
+@media (max-width: 900px) { .follow-inner { grid-template-columns: 1fr; } }

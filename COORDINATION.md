@@ -2445,6 +2445,188 @@ already published better ones on the same two questions. Their illustrations (`g
 `guide-watts-and-degrees`, ~784 KB) are still in `src/assets/img/` and wired to nothing. Delete them or
 use them for a question the site does not yet answer.
 
+
+---
+
+> **Integration note (merge of `arena/f0300606-affil3`).** Everything above this line is
+> kept verbatim from `origin/main` at merge time. The board below was written on this
+> session's branch; its integration adjustments are recorded in its own merge log sections.
+
+# Session `arena/f0300606-affil3` board (publication polish pass; appended, nothing above edited)
+
+Publisher of the **publication polish pass** on the root site (the single indexed publication).
+Brief for this session: *"Make it read like a shop, not an audit"* — turn the careful source
+register into pages a buyer can act on, keep the dashboards reachable from the footer and one
+navigation group, add the suggestions/decision section, the questions register, question-shaped
+guides, the seasonal and cluster layers (SG-27..SG-30), and keep disclosure, sponsored links,
+the five measured events and the compliance gate exactly as they are.
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena/f0300606-affil3` | `arena/f0300606-affil3` (branched from `main` @ `67cfe2f`) | active | `tools/build.mjs`, `src/assets/style.css`, `data/guides.json`, `data/products.json` (P04 reason text only), `data/flags.json`, `data/suggestions.json`, `data/questions.json`, `data/config.json`, `EXECUTIVE_SUMMARY-f0300606.md`, generated root pages via rebuild |
+
+## Claim (2026-11-20, committed before any scoped file was written)
+
+- Tasks claimed: publication-polish pass T-01…T-10 below. No other session's branch is touched.
+- Read-only review before claiming: `main` tree at `67cfe2f`, all prior boards in this file,
+  the root generator (`tools/build.mjs`, `tools/verify.mjs`), the registers (`data/*.json`),
+  and the sub-editions (`editorial/`, `crisp-index/`, `counter/`, `counterwise/`, `legacy/`).
+- Overlap check at claim time: the working tree is clean on this branch and no other active
+  claim in this checkout covers the files above. Requests for files owned elsewhere are logged
+  in this board rather than edited.
+
+## Task board
+
+| ID | Task | Status | Files |
+| --- | --- | --- | --- |
+| T-01 | Claim + repo review log | done | `COORDINATION.md` |
+| T-02 | Fix P04 stale no-buy-button reason (contradicted its own row); FLG-031; FLG-007 count | done | `data/products.json`, `data/flags.json` |
+| T-03 | Three question-shaped guides (Black Friday checklist, air-fryer shape decision map, smart thermometer buying guide) | done | `data/guides.json` |
+| T-04 | Front page rebuilt as shop front: products lead, need-tiles, seasonal module, follow band, compact trust copy | done | `tools/build.mjs` |
+| T-05 | `/shop/` becomes a buyer-actionable page: buyer table first, full findings register below | done | `tools/build.mjs` |
+| T-06 | SG-27 nav labels + one "The desk" navigation group; SG-28 RSS follow band; SG-29 Search Console hook (emitted only with a token); SG-30 reader capture, gated on S-06 | done | `tools/build.mjs`, `data/config.json` |
+| T-07 | One indexed site: `robots.txt` excludes `/counter/` and `/counterwise/` alongside the earlier sub-editions | done | `tools/build.mjs` |
+| T-08 | Decision surfaces: suggestions S-11…S-14, questions Q-14 + discovery D-09/D-10 | done | `data/suggestions.json`, `data/questions.json` |
+| T-09 | Design polish (typography, shelf, tiles, seasonal, follow band, tables) | done | `src/assets/style.css` |
+| T-10 | Executive summary, gates green, PR, merge, Pages | done | `EXECUTIVE_SUMMARY-f0300606.md`, this file |
+
+## Verification log (2026-11-20, this session)
+
+| Check | Method | Result |
+| --- | --- | --- |
+| Baseline before changes | `node tools/build.mjs && node tools/verify.mjs` on `67cfe2f` | 30 pages, 3212 checks, 0 failed |
+| Full gate after each change batch | `npm run check` (root build + verify + editorial build + editorial check) | 33 pages, 8 feed items, 32 sitemap URLs; **3776 checks, 0 failed**; editorial 21 pages PASS |
+| Second gate | `node tools/disclosure-check.mjs` | PASS — both statements above the fold on every page, no price or rating text |
+| Archive integrity | `node tools/archive-check.mjs` | PASS — archived editions resolve |
+| Negative test: strip `sponsored` from a buy link | edited generated `index.html`, ran `tools/verify.mjs` | **FAIL as expected** ("Amazon link is sponsored"); restored; clean again |
+| Negative test: add a currency amount | edited generated `index.html`, ran `tools/disclosure-check.mjs` | **FAIL as expected** ("currency amount in page text ($49)"); restored; clean again |
+| New guides claim-sourcing | every factual sentence traced to register sources S03/S04/S10/S12/S13/S14/S20 or self-referential site facts; no price, rating, popularity or hands-on claim introduced | reviewed line by line; gate phrase rules pass |
+| P04 correction | row mapping B0c8moW59 → B0DHZTCNR5 cross-checked against the dated retest and three independent fetch passes recorded in earlier boards | reason text now derives from FLG-025, the actual cause |
+| Title lengths, one h1, canonical, images with alt, internal links, sitemap/feed coverage | `tools/verify.mjs` (all automated) | included in the 3776 passing checks |
+| Guide ordering bug found and fixed | equal-date comparator returned -1 both ways; front page and RSS showed oldest first | fixed (`latestFirst`), rebuilt, re-verified |
+
+## Sources used this session
+
+No new external facts were introduced beyond the existing register (S01–S20). Two illustrations
+were generated (`src/assets/img/guide-shapes.png`, `src/assets/img/season-deal-week.png`) and
+are labelled as AI-generated editorial illustration at the point of use. The Black Friday guide
+cites S03 (the price/availability clause) for why the site shows no prices and makes no other
+external factual claim.
+
+## Completion record — session `arena/f0300606-affil3`
+
+- Pull request: _recorded below after opening_
+- Merge result: _recorded below after merge_
+- GitHub Pages: _recorded below after deploy check_
+
+## Integration log — merge of `origin/main` into this branch (2026-11-20)
+
+`main` had advanced past `67cfe2f` with merged sessions `478e6577`, `259402a3`, `3b45b513`,
+`66f2548a`, `197d4f9e` and others, which had independently rebuilt the product register and
+published parallel guides, suggestions and flags. **Nothing from `origin/main` was discarded or
+altered.** Conflicts and their resolutions:
+
+1. **`data/products.json` — took `origin/main` wholesale.** Their rebuild is strictly more
+   researched: it located the ThermoMaven manufacturer family page (S21), re-specced P03 against
+   the correct Chefman page (RJ38-SQSS-8T), and gave P04 sourced family-page figures and a buy
+   button. My P04 `no_buy_link_reason` fix (T-02) is **superseded**: the stale text no longer
+   exists because the whole field is gone with the rebuild. My finding (a reason string that
+   contradicted its own row) is kept here as the record; it did not warrant a published flag
+   against text that is no longer on the site.
+2. **`data/flags.json` — took `origin/main` wholesale (FLG-001…FLG-039).** My draft FLG-031 was
+   **dropped as superseded** (see 1); their FLG-031 (a same-day re-fetch returning the Amazon
+   home page) keeps the id. Only my FLG-007 edit was re-applied on top: guide count updated to
+   the merged 16 and the stale cross-ref pointed at S-05.
+3. **`data/guides.json` — union.** Their 13 guides (5 original + 8 published while this branch
+   was open) plus my 3 (deal-week checklist, air-fryer shape map, smart thermometer buyer guide),
+   slug-deduplicated: **16 guides**. Editorial note for the owner: their *dual-basket or single
+   basket* and *instant-read or leave-in* guides and my *which air-fryer shape fits your week*
+   and *smart meat thermometers: what actually matters* cover adjacent questions from different
+   angles (household trade-off vs shape map; tool type vs buying checklist). They can be merged
+   later at the owner's call; neither side's text was cut.
+4. **`data/questions.json` — union with renumbering.** Their Q-14…Q-17 and D-09…D-12 keep their
+   ids; my Q-14 became **Q-18**, my D-09/D-10 became **D-13/D-14** (D-14's suggestion reference
+   moved to S-22). Their K-07/K-09 re-verified texts replace mine (all five links resolved in at
+   least one dated fetch; transposition corrected).
+5. **`data/suggestions.json` — union with renumbering.** Their S-11…S-20 keep their ids. My
+   S-11 (sub-editions) was **dropped as superseded** by their S-11 "Four editions on one domain"
+   (same decision). My December-content, target-reader and measurement-order items became
+   **S-21, S-22, S-23**.
+6. **`tools/build.mjs` — merged, both directions.** Kept all of `origin/main`'s additions
+   (the `/compare/` side-by-side page, `/design-brief/` + `DESIGN-BRIEF.md` writer, `specLine`,
+   `quickPick` front decision strip, `matchNote`, the rewritten conflict table with agree/differs
+   badges, their executive-summary additions) and re-applied this session's deltas (the
+   `latestFirst` ordering used by the front page, footer and RSS feed; "The desk" nav group;
+   the Search Console meta hook; the shop-front hero with trust chips; the deal-week seasonal
+   module; the tightened How-we-check strip; the Follow-the-shelf band with S-06-gated email
+   capture; the `/shop/` buyer table above the findings register; the research-desk hub on the
+   executive summary; the two extra `robots.txt` exclusions). **My need-tiles section was
+   dropped as superseded** by their `quickPick` strip — same job, and theirs carries buy buttons
+   and guide links.
+7. **`src/assets/style.css` — union** of their quick-pick/design-brief styles and this session's
+   shop-front component styles (both appended after the shared base).
+8. **Generated pages** — all conflicted HTML was **regenerated** by `node tools/build.mjs` from
+   the merged sources rather than hand-merged: 43 pages, 16 feed items, 42 sitemap URLs,
+   **5,248 gate checks, 0 failed** on the merged tree (their gate adds `www.thermomaven.com` to
+   the allowed source hosts, a zero-third-party-requests rule, and footer checks for
+   `/privacy/` and `/design-brief/`; all pass).
+9. **Cross-surface courtesy note.** Their suggestion **S-13 (a side-by-side comparison page)**
+   is now served twice over: their `/compare/` spec sheet and this session's `/shop/` buyer
+   table, cross-linked from each other. Their S-14 (derive every count from the rows it counts)
+   is honoured by the derived counts on `/shop/` and by this session's dynamic guide counts.
+10. **Fluke fixed in passing:** the equal-date comparator in the shared guide sort returned -1
+    both ways; it now returns 0 for equal dates so later-published guides lead the front page
+    and the RSS feed deterministically.
+
+## Integration log 2 — second merge of `origin/main` (2026-11-20, PRs #75–#80)
+
+`main` advanced again while the first integration was being pushed. **Nothing from
+`origin/main` was discarded or altered.** New on their side: a **Journal** of seven
+trend-shaped articles (`/articles/`), a `/decisions/` front door for the decision board,
+suggestions S-21…S-25, questions Q-18/Q-19, discovery D-13/D-14, and FLG-040. Resolutions:
+
+1. **ID collisions renumbered again (mine moved twice).** My December-content, target-reader
+   and measurement-order suggestions are now **S-26, S-27, S-28** (their S-21…S-25 keep their
+   ids; their S-21/S-23 cover adjacent ground to mine — measured-query topic choice vs
+   measurement-first sequencing, seasonal hooks vs December cluster choice — kept distinct).
+   My email-capture question is now **Q-20**. My Search-console-to-topic discovery step was
+   **dropped as superseded** by their more specific D-13 (export the Performance report's
+   query rows); my persona step is now **D-15** and points at S-27.
+2. **`data/flags.json`** — theirs wholesale (through FLG-040); the FLG-007 guide-count and
+   cross-ref edit re-applied (16 guides, suggestion S-05).
+3. **`tools/build.mjs`** — four-way union kept both sides: their Journal band on the front page
+   and "The Journal" footer link, my `latestFirst` ordering (also applied to their combined
+   guides+articles feed with the equal-date comparator fixed to return 0), the executive-summary
+   bullet now derives its counts from the data (`${guides.length}`, `${articles.length}`).
+4. **Generated pages** — all conflicts regenerated from the merged sources: **52 pages,
+   23 feed items (16 guides + 7 articles), 51 sitemap URLs, 6,739 gate checks, 0 failed**.
+5. **Editors' note for the owner.** This branch and `main` independently answered the same
+   brief ("catchy trendy articles", "decision board", "shop not audit"). Both answers are now
+   live side by side: `main`'s Journal + `/decisions/` and this session's guide set, `/shop/`
+   buyer table and S-26…S-28. Nothing is lost; a later tidy-up can merge near-duplicate guides
+   and fold S-26…S-28 into the Journal's editorial calendar if that is preferred.
+
+## Integration log 3 — third merge of `origin/main` (2026-11-20, PRs #81–#82)
+
+Same discipline: **nothing from `origin/main` discarded or altered.** Their side added
+S-26 "Where the analytics collector actually runs", S-27 "Image weight, and the intrinsic size
+nobody was checking", Q-21, D-16…D-18, and a `dims()` intrinsic-image helper used across the
+generator. Resolutions:
+
+1. **Renumbering (mine moved a third time):** my December-content, target-reader and
+   measurement-order suggestions are now **S-29, S-30, S-31** (their S-26/S-27 keep their ids —
+   the id collision was in title only). My email-capture question is now **Q-22**; my persona
+   discovery step is **D-15** and points at S-30. Ids are labels; gaps are never renumbered.
+2. **`tools/build.mjs`** — one hunk: their S-27 `dims()` fix reached the old seasonal band's
+   art, which this session's deal-week module had replaced. Resolved by dropping the stray img
+   and pointing **this session's** seasonal art at `dims()` instead, so their fix applies to the
+   current art. All other `dims()` uses merged cleanly.
+3. **Generated pages** regenerated from merged sources: **52 pages, 23 feed items, 6,937 gate
+   checks, 0 failed**. The suggestions/questions pages now render both sessions' entries sorted
+   by id.
+
 # Session `ca51f5b3` — reader polish, findability fix and content expansion
 
 Registry: session `ca51f5b3`, branch `arena/ca51f5b3-affil3`, cut from `main` @ `7fac552d`. Status: active (claimed 2026-11-20T06:55Z).
@@ -2585,3 +2767,25 @@ from `tools/site-scope.mjs` and also keeps the image-size helper `0e102530` adde
 every page the builder writes and still checks declared image dimensions.
 
 Gates on this merge commit are recorded in the next section.
+
+## Fourth `main` move in one day, resolved by `ca51f5b3` (2026-11-20)
+
+PR #70 (session `f0300606`) landed while this PR's CI was running, and it had taken `S-29` to `S-31`,
+`Q-22` and `D-15` — the ids this session had moved into an hour earlier. Their rows kept their ids;
+this session's moved again: `S-29/S-30/S-31` to `S-34/S-35/S-36`, `Q-22` to `Q-25`, `D-15` to `D-21`.
+`FLG-007` had been edited on both sides, so the two edits were unioned rather than chosen: their
+content note stays, this session's citation correction (`S11` is Chefman's product page, the rule of
+thumb comes from `S19`) is appended, `S19` joins its sources, and `FLG-046` records the correction.
+
+Reader-facing placement decision, stated so it can be reversed: `f0300606` added a fifth and sixth
+masthead link (`About`, `The desk`) while this session was trimming the masthead to the four reader
+items the design brief asks for. Both links survive; they live in the footer's dashboard group
+(`Executive summary` is already the desk, `About and editorial policy` sits beside it), so the masthead
+reads `Shop · Journal · Guides · Find yours` and nothing became unreachable.
+
+`robots.txt`: their hand-typed exclusion list already named `/counter/` and `/counterwise/`, which is
+the gap `FLG-047` was about; the generated list covers those plus `counter-desk/` and every root-level
+session record, and the gate keeps it in step with the tree.
+
+Gates on this merge: build 55 pages, 25 feed items, 54 sitemap URLs; `verify` 7,552 checks passed, 0
+failed; editorial, disclosure, archive, link-report, docs-site and sitemap gates all green.

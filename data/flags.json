@@ -74,10 +74,10 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "An earlier revision of this flag cited S11 for the 'at least 10 posts' rule of thumb; S11 is Chefman's product page, and the Associates application-review help page that the sentence came from is S19, so the citation is corrected here (FLG-046) and in the publishing workflow. The count is now filled by the builder from the rows that exist: this build has {guide} guides, {product} product rows and {article} Journal articles, which reaches the rule of thumb as it was read from S19. The flag stays open because nobody has read that help page in full from a signed-in account, and because it does not say whether guides count as posts. Adding content remains a decision for the owner (suggestions S-05 and S-07).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 16 question-shaped guides and 5 product rows after the 2026-11-20 parallel sessions. Adding content is a decision for the user (see suggestion S-05). Update (ca51f5b3, 2026-11-20): the 'at least 10 posts' sentence is read from S19, the Associates application-review help page, and not from S11, which is Chefman's product page for the dual-basket unit; the citation is corrected here and recorded as FLG-046. The count is filled by the builder from the rows that exist: this build has {guide} guides, {product} product rows and {article} Journal articles.",
       "sources": [
-        "S19",
-        "S02"
+        "S11",
+        "S19"
       ],
       "manual_step": "Read the application-review help page (S19) in a signed-in Associates account, confirm what it asks for, then decide the content plan (S-05) before submitting the site for review."
     },
