@@ -118,6 +118,7 @@ function page({ title, description, path: p, body, type = 'page', attrs = '', og
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImg)}">
 <meta name="analytics-endpoint" content="${esc(cfg.analyticsEndpoint || '')}">
+<meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="${esc(href('/assets/img/favicon.svg'))}">
 <link rel="stylesheet" href="${esc(href('/assets/style.css'))}">
 <link rel="alternate" type="application/rss+xml" title="${esc(cfg.siteName)} guides" href="${esc(abs('/feed.xml'))}">
@@ -357,7 +358,7 @@ const add = (p) => pages.push(p);
     <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -380,8 +381,9 @@ const add = (p) => pages.push(p);
   <div class="seasonal-copy">
     <p class="kicker">Late November, in the kitchen</p>
     <h2>The month of the big roast</h2>
-    <p>Holiday cooking season is thermometer season. If one appliance earns counter space this month, it is the one that tells you whether the bird is done, and the one that frees up oven space. Our guides keep working all year; the timing is yours.</p>
+    <p>Holiday cooking season is thermometer season. Before the bird goes anywhere, the two questions are what fits and when it is done - so start with the countertop-capacity plan, then the temperatures that do not bend. Our guides keep working all year; the timing is yours.</p>
     <div class="hero-ctas">
+      <a class="btn btn-primary" href="${esc(href('/guides/holiday-cooking-what-one-countertop-oven-holds/'))}">Plan a holiday around one oven</a>
       <a class="btn btn-ghost" href="${esc(href('/guides/is-your-meat-thermometer-telling-you-the-right-number/'))}">Thermometer questions, answered</a>
       <a class="btn btn-ghost" href="${esc(href('/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/'))}">Is a combo appliance worth it?</a>
     </div>
@@ -525,8 +527,8 @@ ${gl.length ? `<ul class="guide-list">${gl.map((g) => `<li class="guide-item"><a
 add({
   path: '/guides/', title: 'Guides',
   description: 'Question-led buying guides for air fryers, air fryer ovens and cooking thermometers.',
-  body: `<section class="page-head"><p class="kicker">Guides</p><h1>Buying guides, by question</h1>
-<p class="deck">Each guide starts with a question buyers ask. Working titles are editorial hypotheses, not claims about popularity or search volume.</p></section>
+  body: `<section class="page-head"><p class="kicker">Guides · ${guides.length}</p><h1>Buying guides, by question</h1>
+<p class="deck">Each guide starts with a question a buyer asks and ends with the pages that answer it. Working titles are editorial hypotheses, not claims about popularity or search volume. Nothing on this page was produced by running a test: each guide states what its sources say and what they leave open.</p></section>
 <div class="guide-grid">${guides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
@@ -534,12 +536,33 @@ add({
 });
 for (const g of guides) {
   const productsHere = products.filter((p) => tagged(p) && (p.category === g.category || (g.cluster_links || []).includes(p.category)));
-  const jsonld = `<script type="application/ld+json">${JSON.stringify({
+  // Reading stats are computed from the guide's own text at build time. Nothing is estimated about the
+  // reader; the word count is the word count, and the minute figure is that count over 225 words a minute.
+  const gwords = g.body.map((b) => [b.text, b.caption, ...(b.items || []), ...(b.headers || []), ...(b.rows || []).flat()].filter(Boolean).join(' ')).join(' ');
+  const wc = (gwords.match(/[A-Za-z0-9\u00b0\u00b1\u2109\u2103\u2014\u2026'.\/-]+/g) || []).length;
+  const mins = Math.max(1, Math.round(wc / 225));
+  const related = guides.filter((x) => x.slug !== g.slug && (x.category === g.category || (x.cluster_links || []).includes(g.category) || (g.cluster_links || []).includes(x.category))).slice(0, 3);
+  const faqBlock = g.body.find((b) => b.type === 'faq');
+  // Article + BreadcrumbList, plus FAQPage when the guide carries questions with answers on the page.
+  const graph = [{
     '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description,
-    image: abs(g.image),
+    image: abs(g.image), articleSection: catName(g.category), inLanguage: cfg.language,
     datePublished: g.date, dateModified: cfg.lastReviewed, author: { '@type': 'Organization', name: cfg.author },
     publisher: { '@type': 'Organization', name: cfg.siteName }, mainEntityOfPage: abs(`/guides/${g.slug}/`),
-  })}</script>`;
+    wordCount: wc, keywords: [catName(g.category), ...(g.sources || [])].join(', '),
+  }, {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: abs('/guides/') },
+      { '@type': 'ListItem', position: 3, name: catName(g.category), item: abs(`/categories/${g.category}/`) },
+      { '@type': 'ListItem', position: 4, name: g.title, item: abs(`/guides/${g.slug}/`) },
+    ],
+  }];
+  if (faqBlock) graph.push({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqBlock.items.map((i) => ({ '@type': 'Question', name: i.q, acceptedAnswer: { '@type': 'Answer', text: i.a } })),
+  });
+  const jsonld = `<script type="application/ld+json">${JSON.stringify(graph.length > 1 ? { '@context': 'https://schema.org', '@graph': graph } : graph[0])}</script>`;
   add({
     path: `/guides/${g.slug}/`, title: g.title, description: g.description, type: 'guide', ogType: 'article', jsonld,
     attrs: `data-guide="${esc(g.slug)}"`,
@@ -549,11 +572,13 @@ for (const g of guides) {
     <p class="kicker">${esc(catName(g.category))} · Guide</p>
     <h1>${esc(g.title)}</h1>
     <p class="deck">${esc(g.deck)}</p>
-    <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(g.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
+    <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(g.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))} · ${wc} words, about a ${mins} minute read</p>
   </header>
+  ${g.summary ? `<aside class="quick-answer" id="quick-answer"><p class="qa-label">The short answer</p><p>${esc(g.summary)}</p></aside>` : ''}
   <figure class="article-hero"><img src="${esc(href(g.image))}" alt="${esc(g.image_alt || 'Editorial illustration for this guide; not the reviewed unit')}" width="1536" height="1024"><figcaption>${esc(g.image_alt || 'Editorial illustration')} — editorial illustration, not the reviewed unit.</figcaption></figure>
   <div class="prose">${g.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, g.slug)).join('\n')}</div>
   ${productsHere.length ? `<aside class="band"><h2>Products in this cluster</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${productsHere.map((p) => productCard(p, 'guide-box')).join('')}</div></aside>` : ''}
+  ${related.length ? `<nav class="related" aria-label="Related guides"><h2>Keep reading</h2><ul>${related.map((r) => `<li><a href="${esc(href('/guides/' + r.slug + '/'))}">${esc(r.title)}</a><p>${esc(r.deck)}</p></li>`).join('\n')}</ul></nav>` : ''}
   <section class="band sources"><h2>Sources for this guide</h2>
     ${g.sources.length ? `<ul>${g.sources.map((id) => `<li>${guideSource(id)}</li>`).join('')}</ul>` : '<p>This guide makes no factual claim that needs an external source. It refers only to the observed listing data on the Shop page.</p>'}
     <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a></p>
@@ -687,7 +712,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap. Guide and page counts on this site are computed from the registers at build time, so this sentence cannot go stale.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -849,7 +874,7 @@ add({
   body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
 <div class="prose">
 <h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-02 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has five original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S11, FLG-007).</p>
+<p>Current proposal: one new guide every two weeks (suggestion S-05, option A). A weekly cadence or a pre-review batch are the other options on the board; nothing changes until you choose. The site now publishes ${guides.length} guides and ${products.length} product rows, which meets the “at least 10 posts” rule of thumb by page count (S19, FLG-007). Meeting a count is not a pass: the rule of thumb was read from an excerpt of the help page, and “robust” is decided by a person reviewing the submission.</p>
 <h2>From question to page</h2>
 <ol>
 <li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
@@ -1036,7 +1061,14 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+// These lines manage crawling, not indexing: Google states that robots.txt 'is not a mechanism for
+// keeping a web page out of Google' and that a Disallow line can leave the URL in results without a
+// description (S24), and that noindex in robots.txt is not supported at all (S25). They are here to keep
+// crawlers from spending budget on the superseded editions in this repository, and to stop the secondary
+// editions' own sitemap lines from being treated as an index request. Keeping those pages out of the
+// index needs a noindex tag in each edition, which is why the root build does not also hide these paths
+// from a crawler that has to read the tag. See FLG-036.
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `# Root publication only: /Affil3/ is the site this repository maintains for readers.\n# Superseded editions live in the directories disallowed below; they are kept, not deleted.\nUser-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\nDisallow: /counter/\nDisallow: /counterwise/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 // DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
 // file and the published page cannot disagree. That is the principle behind S-14 applied to itself.

@@ -1,5 +1,5 @@
 {
-  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, ul, ol, table, faq, cta.",
+  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, note, ul, ol, table, faq, cta. Five guides were added 2026-11-20 by session b7320829-affil3, written only from official pages that session fetched or attempted to fetch; the attempts are recorded in data/observations/2026-11-20-b7320829.json. 'summary' is the answer-first block published above the fold on every guide page.",
   "guides": [
     {
       "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
@@ -128,7 +128,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": "Choose from the meal, not from the box. A basket drawer is one shakeable layer that suits frozen and crisp foods for a small household; an oven-style unit buys rack positions and a door at the cost of counter depth and more pieces to wash. Four questions settle it in about a minute."
     },
     {
       "slug": "no-hype-checklist-comparing-air-fryer-capacity",
@@ -260,7 +261,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": "Quarts are not comparable across shapes: one 6-quart figure can be two 3-quart baskets or one 6-quart drawer, and a maker's quart count says nothing about the food you can actually fit. Read the chamber shape, the maker's own serving line and the outside dimensions, and treat a capacity claim with no source as a marketing number."
     },
     {
       "slug": "how-to-assess-cleanup-and-counter-space-tradeoffs",
@@ -384,7 +386,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": "The two daily costs of an air fryer are the pieces you wash and the counter it occupies. Count the accessories before you fall for the capacity, measure the outside box rather than the advertised volume, and check which part of the washing claim the maker actually states."
     },
     {
       "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
@@ -480,7 +483,8 @@
             }
           ]
         }
-      ]
+      ],
+      "summary": "A multi-function appliance pays for itself only if you use more than one of its functions. Ask which modes carry a stated temperature range, which ones you would have used last month, and whether the panel lets you set time and heat by hand - that decides whether it replaces two appliances or adds one more."
     },
     {
       "slug": "is-your-meat-thermometer-telling-you-the-right-number",
@@ -608,6 +612,628 @@
               "a": "Per USDA guidance: check the thickest part of the breast, the thigh, and the wing, avoiding bone. The lowest of those readings is the number to cook to."
             }
           ]
+        }
+      ],
+      "summary": "A thermometer is only as good as where you put it. USDA's guidance is to place it in the thickest part away from bone, fat and gristle, to check a large roast in several places, and to cook to the minimum internal temperature: 165 °F for all poultry, 160 °F for ground meats, 145 °F with a three-minute rest for whole-muscle beef, pork, veal and lamb."
+    },
+    {
+      "slug": "which-air-fryer-parts-are-dishwasher-safe",
+      "title": "Which air fryer parts are actually dishwasher-safe?",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens",
+        "cooking-thermometers"
+      ],
+      "image": "/assets/img/guide-dishwasher-safe.png",
+      "image_alt": "Illustration of two dark nonstick air fryer baskets sitting on the upper rack of an open dishwasher, with a folded towel beside it",
+      "date": "2026-11-20",
+      "deck": "Cleanup is the cost you pay every day, and it is the specification most listings treat as a footnote. Here is what each maker states, in their own words, and where they stop.",
+      "description": "What the five products we track say about dishwasher-safe parts: which component each claim covers, which pages stay silent, and what to check in the manual before you load anything.",
+      "summary": "Only two of the three air fryers here publish a dishwasher claim, and both are narrow: the Chefman dual-basket listing calls its baskets nonstick and dishwasher safe, and the 8 qt Chefman page says basket and rack are top-rack dishwasher safe. The Emeril oven page states nothing about washing in the text this site reads, and ThermoMaven calls its probe 100% waterproof without mentioning a dishwasher, while CHEF iQ does state dishwasher-safe probes. A missing claim is not a permission: the parts nobody names are the parts to check in the manual.",
+      "sources": [
+        "S04",
+        "S11",
+        "S13",
+        "S21",
+        "S23",
+        "S14"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Every buying guide tells you the capacity. Almost none of them tells you what you will be doing at 8pm with a greasy basket in your hand. So we took the one line that decides that - what the maker says may go in a dishwasher - and wrote down exactly what each official page states, including the pages that state nothing."
+        },
+        {
+          "type": "h2",
+          "text": "What each page says, stated narrowly"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Product",
+            "What the official page states",
+            "Whose words those are"
+          ],
+          "rows": [
+            [
+              "CHEFMAN 6 Qt Dual Basket",
+              "The listing title itself carries the phrase “2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets”. The claim covers the two baskets. The register also records the maker’s own page stating the same for its nonstick baskets.",
+              "Amazon listing title, read 2026-11-20; manufacturer page for the same model"
+            ],
+            [
+              "Chefman TurboFry 8 Qt (RJ38-SQSS-8T)",
+              "The manufacturer page states the basket and rack are top-rack dishwasher safe. “Top-rack” is part of the claim, not a detail.",
+              "Chefman product page for that model"
+            ],
+            [
+              "Emeril Lagasse 26 QT French Door",
+              "The parts of the manufacturer page this site reads - the specification strip and the product description - make no washing statement at all: capacity, presets, fan, dimensions and voltage, and nothing about cleaning.",
+              "Emeril Everyday product page, read 2026-11-20"
+            ],
+            [
+              "ThermoMaven 1 Sec probe",
+              "“Featuring a 100% waterproof design, this device easily withstands spills and scrubbing.” Waterproof, yes. Dishwasher, not stated.",
+              "ThermoMaven product page"
+            ],
+            [
+              "CHEF iQ Sense probes",
+              "The manufacturer product page states the probes are waterproof and dishwasher safe. Being rated for sustained heat inside a cooker is a separate claim and is not the same permission.",
+              "CHEF iQ product page"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "A missing claim is not permission"
+        },
+        {
+          "type": "p",
+          "text": "It is tempting to read the Emeril row above as “the accessories are hand-wash only”. It does not say that either. What it says is that the pages we read do not answer the question - and on a product whose pitch includes a stack of accessories that come in the box, that gap is worth asking about before the first dinner, not after. Where a page is silent, this site publishes silence."
+        },
+        {
+          "type": "p",
+          "text": "The same applies to the parts no page mentions: the housing, the heating element, the crumb tray, the door glass. None of the pages we read states whether those can be wet, so none of them is described here. The manual is the only document that speaks for the machine you will actually receive."
+        },
+        {
+          "type": "h2",
+          "text": "Three questions worth answering from the manual"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Which component does the claim cover? “Basket” and “basket and rack” are different claims, and neither one includes the body of the machine.",
+            "Is there a rack position? The 8 qt Chefman page says top rack. That qualifier is the manufacturer limiting its own claim, so treat it as part of the claim.",
+            "Does the nonstick coating get its own sentence? All three air fryers here describe nonstick surfaces, and a coating can survive a dishwasher while the maker still recommends hand-washing to keep it. Those are two different statements."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The one number to double-check while you are there"
+        },
+        {
+          "type": "p",
+          "text": "Accessory count. The Emeril listing title says six cooking accessories are included, while the same listing's product summary mentions seven, and the manufacturer page states no count in the text we read. Neither number is published as a fact here; the disagreement is recorded and dated as FLG-024. It is a fair illustration of why this site reads pages instead of trusting a marketing line."
+        },
+        {
+          "type": "note",
+          "text": "Nobody in this session put a basket in a dishwasher. Nothing on this page is a test result; it is a record of what five official pages state, with the date each was read. Two of them - the 8 qt Chefman page and the CHEF iQ page - were read in an earlier dated pass and are cited by their register ids; the other three were re-read on 2026-11-20 and say so in the source register."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is dishwasher-safe the same as waterproof?",
+              "a": "No. A waterproofing statement is about water reaching the device; a dishwasher claim is about heat, detergent and spray specifically. ThermoMaven states the first and not the second, which is why its row reads the way it does."
+            },
+            {
+              "q": "Why does this site not just say “yes, all of them are fine”?",
+              "a": "Because the pages do not say that, and a wrong answer here costs you a coating or a warranty. Every claim on the site has to point at an official page, and where the official page is silent the site has to be silent too."
+            },
+            {
+              "q": "What about baked-on grease?",
+              "a": "That is not a manufacturer claim on any of these pages, so it is not answered here. This page answers one question - what the maker permits - not what a particular soaking routine can survive."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "The specification grid on every product page carries the washing row, with “not stated” where a maker does not state it.",
+          "label": "Open the shop table",
+          "href": "/shop/"
+        }
+      ]
+    },
+    {
+      "slug": "what-nist-certified-means-on-a-thermometer",
+      "title": "What “NIST certified” means on a thermometer",
+      "category": "cooking-thermometers",
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "image": "/assets/img/guide-thermometer-labels.png",
+      "image_alt": "Illustration of a folding instant-read thermometer beside a magnifying glass hovering over a blank specification label",
+      "date": "2026-11-20",
+      "deck": "An accuracy figure, a certification acronym and an ingress rating tell three different stories. Only one of them is about your dinner.",
+      "description": "A plain-English read of the claims on a thermometer listing - NIST certification, plus or minus half a degree, an IP rating - set against what USDA FSIS says about typical accuracy and about where to put the probe.",
+      "summary": "The ThermoMaven page we read claims NIST-certified accuracy of ±0.5 °F on a thermocouple sensor with a one-second read; its Amazon listing title adds “NSF Certified” and “IP67 waterproof”, which the maker's own page does not state in those words. USDA's guidance, meanwhile, says most food thermometers read accurately within 2 to 4 °F. Those numbers are not rivals: one is a certified lab figure for an instrument, the other is what to expect in a kitchen.",
+      "sources": [
+        "S04",
+        "S21",
+        "S10",
+        "S20"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "A thermometer listing is a wall of acronyms, and each one quietly means something different. Here is the difference between the claims that appear on the two thermometer products we track, and what each of them can and cannot tell you."
+        },
+        {
+          "type": "h2",
+          "text": "“NIST certified ±0.5 °F” - what that sentence is about"
+        },
+        {
+          "type": "p",
+          "text": "The ThermoMaven product page states “NIST-certified precision, with an accuracy of ±0.5℉/±0.3℃” and describes a one-second instant read on a thermocouple sensor. Read carefully, that is a statement about the instrument measured against a reference. It is not a promise about the number you get at 6pm with the grill lid half open, because nothing in that sentence covers your technique, your placement or your meat."
+        },
+        {
+          "type": "h2",
+          "text": "USDA's number is the kitchen number"
+        },
+        {
+          "type": "p",
+          "text": "The Food Safety and Inspection Service's food thermometer factsheet says something refreshingly unglamorous: “Most food thermometers will give an accurate reading within 2 to 4 degrees F”, and “the reading will only be correct if the thermometer is placed in the proper location of the food”. That gap - half a degree on a certificate, two to four degrees at the stove - is the reason an accuracy figure should not decide your purchase on its own. Placement decides it."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Claim on the page",
+            "Where it appears",
+            "What it actually covers"
+          ],
+          "rows": [
+            [
+              "NIST-certified, ±0.5 °F / ±0.3 °C",
+              "Manufacturer product page",
+              "The instrument's certified accuracy against a reference. Not technique."
+            ],
+            [
+              "1 second, thermocouple",
+              "Manufacturer product page",
+              "Response time and sensor type: how fast a number appears."
+            ],
+            [
+              "100% waterproof",
+              "Manufacturer product page",
+              "Spills and scrubbing, in the maker's own words."
+            ],
+            [
+              "IP67",
+              "Amazon listing title; not in the maker's page text we read",
+              "An ingress-protection rating whose meaning is set by a standard outside our allowed source list, so it is left untranslated here."
+            ],
+            [
+              "NSF Certified",
+              "Amazon listing title; the maker's page shows certification marks as images",
+              "Which NSF programme, unconfirmed."
+            ],
+            [
+              "Lifetime warranty",
+              "Manufacturer product page, with an activation window of 30 days after purchase",
+              "A service promise with a condition attached, not an unconditional one."
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Why nobody here translates “IP67” for you"
+        },
+        {
+          "type": "p",
+          "text": "There is a temptation to fill that cell with a confident sentence. We did not, for a boring reason: the rating's meaning is defined by a standard we do not hold in our source list, and the maker's own page describes a “100% waterproof design” without invoking the code. So the site publishes both statements and no interpretation of its own. If a number has to be inferred, it does not get published - that is the rule this whole project runs on, and it is the rule that keeps a specification grid honest."
+        },
+        {
+          "type": "h2",
+          "text": "The warranty sentence worth noticing"
+        },
+        {
+          "type": "p",
+          "text": "From the same manufacturer page: the lifetime warranty has to be “activated within 30 days after purchase”. A warranty with an activation window is not one you can discover in year two. If after-sales cover matters to you, check for an activation, a registration or a receipt requirement before the box goes into the loft."
+        },
+        {
+          "type": "h2",
+          "text": "Where to put the probe - the part with a source"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Place it in the thickest part of the food, away from bone, fat or gristle (FSIS).",
+            "For thin foods, insert it through the side until it reaches the centre (FSIS).",
+            "Read the manufacturer's instructions for how far the probe must go in; if they are gone, look for the dimple on the stem that marks the end of the sensing area (FSIS).",
+            "Check every piece, and check a large or irregularly shaped roast in several places - size, quantity and how the food is stacked mean pieces reach temperature at different times (FSIS)."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "And the number to cook to does not come from a thermometer brand. It comes from the USDA chart: 165 °F for all poultry, 160 °F for ground meats, 145 °F with a three-minute rest for beef, pork, veal and lamb steaks, chops and roasts. That chart is worth reading once and keeping; every device recommendation is secondary to it."
+        },
+        {
+          "type": "note",
+          "text": "Nothing here is a bench test. Every sentence traces to a manufacturer page, the observed Amazon listing, or USDA FSIS guidance, each listed below with the date it was read."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does ±0.5 °F make a thermometer better than one rated ±2 °F?",
+              "a": "It means the manufacturer's certified figure is tighter. In use, the FSIS range of 2 to 4 °F describes typical accuracy for the category, and a placement error is larger than the difference between those two numbers. Judge a thermometer on response time, probe length, how legible the readout is and what the warranty asks of you - then on the tolerance figure."
+            },
+            {
+              "q": "Is an inexpensive instant-read probe useless?",
+              "a": "No. USDA's position is that using a food thermometer at all, correctly, is the only reliable way to confirm food has reached a safe minimum internal temperature. That sentence is about thermometers, not about expensive ones."
+            },
+            {
+              "q": "Why does the listing say NSF and the maker's page not say it in words?",
+              "a": "Because two different pages, written by different people at different times, carry different copy. We record the difference instead of resolving it. That is what the flagged register is for."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Both thermometer rows carry their specification grids, the page that states each figure, and the fields where the maker stays silent.",
+          "label": "See the thermometers we track",
+          "href": "/categories/cooking-thermometers/"
+        }
+      ]
+    },
+    {
+      "slug": "sync-finish-and-hi-fry-what-the-buttons-do",
+      "title": "Sync Finish and Hi-Fry: what the buttons do",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-dual-basket-controls.png",
+      "image_alt": "Illustration of a dual-basket air fryer control panel with two blank displays and a row of round touch controls",
+      "date": "2026-11-20",
+      "deck": "Dual-basket machines sell themselves on three named features. Two are about timing, one is about temperature, and none of them is about how well food cooks.",
+      "description": "What Sync Finish, Hi-Fry and independent baskets mean on the Chefman dual-basket air fryer, read from the manufacturer page and the Amazon listing, including the disputed temperature ceiling on the 8 qt model.",
+      "summary": "The manufacturer page describes the 6 qt Chefman as two air fryers in one, 3 quarts each, with Sync Finish so both baskets land at the same time and a Hi-Fry function whose maximum it states as 450 °F (235 °C). Independent baskets buy you two temperatures and two timers; they do not buy you one 6-quart chamber. And read the ceilings per model: the same brand's 8 qt page states 200-400 °F while its listing title advertises a 450 °F Hi-Fry burst, so this site publishes the lower figure for that unit and flags the disagreement.",
+      "sources": [
+        "S04",
+        "S11",
+        "S23",
+        "S16"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Feature names on an appliance panel are marketing sentences compressed into two words. Unpack them and you get a much better idea of whether a machine suits how you actually cook. Three names carry almost all the weight on the dual-basket unit we track."
+        },
+        {
+          "type": "h2",
+          "text": "Two baskets: what “independent” buys, and what it costs"
+        },
+        {
+          "type": "p",
+          "text": "The Chefman page for this model describes a 6-quart air fryer that “combines two powerful air fryers in one, allowing you to cook different dishes simultaneously or easily switch between baskets”. The Amazon listing title is more specific: two independent 3-quart baskets. Independent means two temperatures and two timers. It also means each chamber is 3 quarts, so a batch that would lie flat in one 6-quart drawer now has to be split. Two small baskets and one big basket are different tools that happen to share a word."
+        },
+        {
+          "type": "h2",
+          "text": "Sync Finish is a timing feature, not a cooking feature"
+        },
+        {
+          "type": "p",
+          "text": "The manufacturer describes a Sync Finish feature “to ensure both baskets finish cooking simultaneously”. That is the whole promise: the machine manages when one side starts so two foods land on the table together. It does not equalise temperature between the sides, it does not make a chicken thigh and a tray of fries cook alike, and it will not rescue a dish that needed a different technique. If your Tuesday problem is two things, one plug, same table, it is aimed squarely at that. If your problem is even browning across one large batch, it is not."
+        },
+        {
+          "type": "h2",
+          "text": "Hi-Fry is a number, and the number is disputed"
+        },
+        {
+          "type": "p",
+          "text": "On the dual-basket page the manufacturer states a maximum of 450 °F (235 °C) with the Hi-Fry function, and the listing title lists Hi-Fry among the features. On the 8 qt single-basket Chefman the two official pages disagree: the manufacturer page states a 200-400 °F range for the model, while the Amazon title advertises a 450 °F Hi-Fry option that no page of ours explains. This site publishes the 400 °F figure for that unit and leaves the 450 °F claim named but unadopted, with the disagreement recorded on the Flagged for review page (FLG-027). When two official sources conflict, the conservative figure goes on the page and the conflict goes in the register."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Feature",
+            "Who states it",
+            "What it changes about your cooking",
+            "What it does not change"
+          ],
+          "rows": [
+            [
+              "Sync Finish",
+              "Manufacturer page and listing title",
+              "Whether two foods land at the same time",
+              "Whether both foods are cooked the same way"
+            ],
+            [
+              "Two independent 3 qt baskets",
+              "Listing title; the maker's page states the 6 qt total",
+              "Whether you can run two temperatures at once",
+              "Total capacity: 3 + 3 is not one 6 qt chamber"
+            ],
+            [
+              "Hi-Fry to 450 °F",
+              "Manufacturer page for the dual-basket model",
+              "The upper temperature ceiling on that model",
+              "Nothing on the 8 qt model, whose page states 200-400 °F (FLG-027)"
+            ],
+            [
+              "Easy-view windows",
+              "Listing title",
+              "Whether you check food by looking instead of by opening",
+              "Crispiness, which still comes from air flow, temperature and time"
+            ],
+            [
+              "Auto shutoff",
+              "Listing title",
+              "What happens if you forget it is running",
+              "The need to check doneness with a thermometer"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Three questions to ask of any dual-basket listing"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "What is the capacity of one basket, not of the pair? Compare a single batch against a single chamber, not against a total.",
+            "Which page states the temperature ceiling - the maker's specification or the listing title? If they differ, the difference belongs in your decision, not in a footnote.",
+            "Is there a care statement about the baskets - nonstick, dishwasher-safe, top rack only? Washing is part of the daily cost of owning this shape, and it is a separate claim from the cooking one."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "No appliance was operated to write this guide. Every feature sentence above is a statement from a manufacturer page or from the observed Amazon listing, and the two are attributed separately because they are not always the same sentence."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do I need Sync Finish if I can set a timer myself?",
+              "a": "You can do the same arithmetic by hand. The feature saves you starting one side late and watching two countdowns, which on a busy evening is most of its value."
+            },
+            {
+              "q": "Is Hi-Fry worth paying for?",
+              "a": "That cannot be answered from these pages, because they state what the function is - a higher temperature ceiling - and not how it performs. We do not publish a performance opinion we cannot source."
+            },
+            {
+              "q": "Can a dual-basket unit replace a single big drawer for a family?",
+              "a": "Only if your batches fit in 3 quarts each. For one large single item, the 8 qt single-basket shape exists for exactly that reason, which is why both shapes stay on our shelf."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "The two Chefman rows sit side by side in the comparison table, with each figure traced to the page that states it.",
+          "label": "Compare them in one table",
+          "href": "/compare/"
+        }
+      ]
+    },
+    {
+      "slug": "how-to-read-an-air-fryer-preset-list",
+      "title": "24 presets or 25? How to read a preset list",
+      "category": "air-fryer-ovens",
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "image": "/assets/img/guide-preset-buttons.png",
+      "image_alt": "Illustration of a countertop oven control panel with a row of blank preset buttons under a blank display",
+      "date": "2026-11-20",
+      "deck": "The preset count is the one number on the box that cannot be compared between brands. Here is what to check instead, worked through one machine we actually track.",
+      "description": "Why preset counts and function counts are not comparable between air fryers, worked through the Emeril Lagasse 26 QT French Door oven, whose own pages state 24 and 25 presets and 10-in-1 and 11-in-1.",
+      "summary": "The Emeril 26 QT oven states its own preset count two ways: the manufacturer page's specification strip reads 25 cooking pre-sets while that same page's description, and the Amazon listing title, read 24 one-touch presets; the function count appears as 10-in-1 in prose and 11-in-1 in a page image. This site publishes the disagreement rather than a number. The comparable fields are capacity, the maker's own serving line, fan behaviour, outside dimensions, voltage and the accessories actually named.",
+      "sources": [
+        "S04",
+        "S13"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "A preset count looks like a spec and behaves like a slogan. The number is real - somebody counted buttons - but the unit is arbitrary, because nothing standardises what a preset is. It is the one figure on a box on which two brands cannot be compared, and it is usually the first number a listing leads with."
+        },
+        {
+          "type": "h2",
+          "text": "A worked example, from a machine we actually track"
+        },
+        {
+          "type": "p",
+          "text": "The Emeril Lagasse 26 QT French Door oven states its own preset count two different ways on the same manufacturer page. Its specification strip reads “25 Cooking Pre-sets”. The description on that same page opens “This endlessly versatile 10-in-1 air fry convection oven…”. The Amazon listing title reads “24 One-Touch Preset Options”. And the manufacturer page carries an image whose file name and on-page note record an eleven-function count. Four figures from two official pages about one machine, each of them published somewhere the brand controls."
+        },
+        {
+          "type": "p",
+          "text": "So what went on the product page? None of them, as a fact. The disagreement is recorded, sourced and dated (FLG-024), and the fields a shopper can act on are the ones both pages agree on. That is this site's whole editorial method in miniature: no reconciliation, no averaging, no quietly picking the friendlier number."
+        },
+        {
+          "type": "h2",
+          "text": "What to read instead of the preset count"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Field on the page",
+            "What this machine states",
+            "Why it compares better than a preset count"
+          ],
+          "rows": [
+            [
+              "Capacity",
+              "26 quarts, restated on the same page as 24.6 litres",
+              "A volume in a shared unit. Two makers' quarts mean the same thing."
+            ],
+            [
+              "Who it is stated to feed",
+              "The manufacturer's own strip pairs the 26-quart capacity with “preparing food for 4-6 people”",
+              "A household-size claim is more usable than a cubic measure, and it is the maker's words, not ours."
+            ],
+            [
+              "Fan",
+              "Listed as a dual-speed fan “for golden fried crisping”",
+              "Fan behaviour is what changes a result; a preset is a stored combination of it."
+            ],
+            [
+              "Outside size",
+              "16.9 in deep x 15.8 in wide x 14.8 in high",
+              "This decides whether it lives on your counter, and it is comparable across any two boxes."
+            ],
+            [
+              "Electrical",
+              "120 volts",
+              "The figure you need before deciding where it may be plugged in."
+            ],
+            [
+              "Included accessories",
+              "The listing title says six; the description on the same listing mentions seven",
+              "Named pieces are checkable; a count is not, when the count disagrees with itself."
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "If you still want to judge the presets"
+        },
+        {
+          "type": "p",
+          "text": "Then judge them on the three things that make a preset usable, none of which a count expresses: what temperature and time each preset applies; whether the presets cover the foods you actually cook (wings and roasted vegetables are common, a genuine dehydrate step and a bake step are not universal); and whether you can leave a preset and set time and temperature by hand in two presses. That last one decides whether the panel helps you or gets in your way once you stop cooking from buttons."
+        },
+        {
+          "type": "note",
+          "text": "No timing, browning or doneness claim appears on this page, because no source we hold supports one. This is a guide to reading a specification sheet, not a review of the appliance."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is 25 presets better than 24?",
+              "a": "Neither. There is no common definition of a preset, and here the same manufacturer's page gives both answers depending on which part of it you read. A count can only tell you roughly how much of the panel is shortcuts."
+            },
+            {
+              "q": "Should I trust the listing title or the manufacturer page?",
+              "a": "Trust whichever one states the claim you can corroborate elsewhere on the same page, and treat the disagreement as information. Where a claim sits on one page only, this site publishes it as that page's claim - “the maker states…” - and not as a fact about the product."
+            },
+            {
+              "q": "What about 10-in-1 versus 11-in-1?",
+              "a": "The same problem one level up: it depends what a company counts as a function. If a specific mode matters to you - dehydrate, proof, rotisserie - look for that mode named with a temperature range, not for a total."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Every specification on our product pages is shown with the page that states it, and every disagreement between two official pages has its own row in the flag register.",
+          "label": "Read the source register",
+          "href": "/sources/"
+        }
+      ]
+    },
+    {
+      "slug": "holiday-cooking-what-one-countertop-oven-holds",
+      "title": "Holiday cooking: what one countertop oven holds",
+      "category": "air-fryer-ovens",
+      "cluster_links": [
+        "cooking-thermometers",
+        "air-fryers"
+      ],
+      "image": "/assets/img/guide-holiday-countertop.png",
+      "image_alt": "Illustration of a countertop air fryer oven with its french doors open beside a roasting pan of vegetables, a cutting board and an open notebook",
+      "date": "2026-11-20",
+      "deck": "Before you plan a holiday around a countertop oven, get four numbers straight: who it says it feeds, what it measures outside, what safety requires, and which thermometer you will use.",
+      "description": "A planning checklist for running a holiday meal through a 26-quart countertop air fryer oven: the manufacturer's capacity and serving statements, outside dimensions, the USDA temperatures that do not bend, and instant-read versus leave-in probes.",
+      "summary": "The 26-quart Emeril French Door oven we track states its capacity as food for 4-6 people, in 24.6 litres, inside an outside box of 16.9 x 15.8 x 14.8 inches on 120 volts. No page we read states the largest bird that fits inside, so this guide does not estimate one. What it sets out instead: the USDA minimum temperatures that apply whatever heats the food (all poultry 165 °F), checking a large irregular roast in several places, and which of the two probes we track suits the day itself.",
+      "sources": [
+        "S04",
+        "S13",
+        "S10",
+        "S20",
+        "S14",
+        "S21"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Every November the same advice circulates: put the bird in the air fryer and free up your oven. It can work. It also has three failure points that have nothing to do with technique - fit, food safety and timing - and two of the three can be settled from a specification sheet before you buy anything."
+        },
+        {
+          "type": "h2",
+          "text": "1. Fit: read the maker's serving number, not the quart number"
+        },
+        {
+          "type": "p",
+          "text": "Quarts are hard to picture, so use the manufacturer's own translation. The page for the 26 QT French Door oven we track states “26-Quart Capacity” with the line “preparing food for 4-6 people”, 24.6 litres, and outside dimensions of 16.9 in deep by 15.8 in wide by 14.8 in high. That is a household-size claim from the maker rather than a guess by us, and it is the honest limit of what can be said: none of the official pages we read states the largest bird that fits inside. If a listing tells you a specific weight of poultry fits, ask which page says so."
+        },
+        {
+          "type": "p",
+          "text": "Then measure the counter, twice. The outside box is what competes with the coffee maker, and clearance is what decides whether the doors can open. A french-door oven is deeper than a basket fryer by design - that is the price of having rack positions."
+        },
+        {
+          "type": "h2",
+          "text": "2. Safety: target temperatures do not change with the appliance"
+        },
+        {
+          "type": "p",
+          "text": "A countertop oven does not get its own food-safety rules. From the USDA chart, the numbers that matter on a holiday: all poultry - breasts, whole bird, legs, thighs, wings, ground poultry, giblets and stuffing - at 165 °F; ground meats 160 °F; beef, pork, veal and lamb steaks, chops and roasts at 145 °F with at least a three-minute rest; leftovers and casseroles reheated to 165 °F. And the measurement is the part people skip: those temperatures are stated “as measured with a food thermometer”."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Do not judge by colour. USDA's factsheet is blunt that colour and grill marks are not indicators that food is safe, and cites its own study in which 21% of participants relied on visual cues for hamburger patties.",
+            "Check a large or irregularly shaped roast in several places, and check each piece separately - size, quantity and how food is stacked mean pieces reach temperature at different times (FSIS).",
+            "Put the probe in the thickest part, away from bone, fat and gristle (FSIS).",
+            "Keep perishable food out of the 40-140 °F range for more than two hours (FSIS). On a buffet day that is a serving decision, not a cooking one."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "3. Timing: which thermometer earns a place at the table"
+        },
+        {
+          "type": "p",
+          "text": "Two shapes of thermometer, two different jobs on the day. A folding instant-read probe - the ThermoMaven row we track states a one-second read on a thermocouple sensor, a 100% waterproof body and a built-in magnet - is a spot check: you walk to the food. A leave-in wireless probe - the CHEF iQ Sense row is described by its maker with four internal sensors plus one ambient sensor and a Wi-Fi hub - watches the food while you are in another room. One person can carry the first through an entire meal. The second earns its keep when something is cooking for hours, or when the appliance sits in a room you keep leaving."
+        },
+        {
+          "type": "h2",
+          "text": "4. The plan, in the order that actually works"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Write the menu, then write the appliances: what runs in the countertop oven, what runs in the main oven, what only needs reheating.",
+            "Give the countertop oven the shortest, least-attended job first. Sides and reheating are where a second chamber pays; the main roast is where an unexpected door opening costs the most.",
+            "Decide where the thermometer sits before you start. An ambient probe in a small chamber that gets opened every few minutes will chase its own tail.",
+            "Leave one rack position empty. A chamber that is 26 quarts with nothing in it is smaller with three pans and foil in it, and no page states a loaded capacity.",
+            "Check temperature in more than one place, rest the meat for the time the chart asks for, and write the numbers down if you are cooking for people you are responsible for."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "This is a planning guide, not a results guide. Nobody on this site cooked a holiday dinner in these machines, so there are no cook times, no crispiness claims and no brining advice. What is here comes from a manufacturer page, the observed listing and USDA FSIS guidance, each listed below."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Can I cook a whole turkey in a 26-quart countertop oven?",
+              "a": "No page we hold answers that, so neither do we. What we can tell you is what the maker states for that model - food for 4-6 people in 26 quarts - and that the fit question should be answered from a document that names a size or a weight, not from a volume figure."
+            },
+            {
+              "q": "Does the air fry function change the safe temperature?",
+              "a": "No. Minimum internal temperatures are the same whatever heats the food, which is why this guide spends its space on measurement rather than on method."
+            },
+            {
+              "q": "Do I need a wireless probe for a holiday?",
+              "a": "You need a thermometer. The wireless one buys you the option to leave the room and to watch the ambient temperature as well; an instant-read probe used on every piece does the safety job for a fraction of the price and with no app to open."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Both thermometers we track, with the maker's own specification claims and the fields where the maker stays silent.",
+          "label": "See the thermometer shelf",
+          "href": "/categories/cooking-thermometers/"
         }
       ]
     }

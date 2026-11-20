@@ -234,6 +234,64 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
 }
 
+// ---------- 3. citation integrity (added 2026-11-20 by session b7320829-affil3) ----------
+// Registers and prose cross-reference rows by id: S01.. for sources, FLG-001.. for flags, S-01.. for
+// suggestions, Q-/K-/D-.. for the questions board. Nothing else in this file can see a broken reference,
+// and three of them shipped before this check existed (FLG-038, FLG-040, FLG-041): a flag citing a
+// manufacturer page for an Associates rule, a workflow paragraph citing the wrong suggestion, and a
+// byline sentence naming a team the config had already renamed. A dangling id is a citation that sends a
+// reviewer to the wrong document, so it fails the build.
+{
+  const questionsDoc = read('data/questions.json');
+  const resolves = {
+    src: new Set(sources.map((x) => x.id)),
+    flag: new Set(flags.map((x) => x.id)),
+    sug: new Set(read('data/suggestions.json').suggestions.map((x) => x.id)),
+    q: new Set(questionsDoc.unknown.map((x) => x.id)),
+    k: new Set(questionsDoc.known.map((x) => x.id)),
+    d: new Set(questionsDoc.discovery.map((x) => x.id)),
+  };
+  const PAT = /\b(S\d{2}|FLG-\d{3}|S-\d{2}|Q-\d{2}|K-\d{2}|D-\d{2})\b/g;
+  const setFor = (tok) => (tok.startsWith('FLG-') ? resolves.flag
+    : tok.startsWith('S-') ? resolves.sug
+    : tok[0] === 'S' ? resolves.src
+    : tok[0] === 'Q' ? resolves.q : tok[0] === 'K' ? resolves.k : resolves.d);
+  const stringsIn = (o, out = []) => {
+    if (typeof o === 'string') out.push(o);
+    else if (Array.isArray(o)) o.forEach((v) => stringsIn(v, out));
+    else if (o && typeof o === 'object') Object.values(o).forEach((v) => stringsIn(v, out));
+    return out;
+  };
+  const REGISTERS = ['data/products.json', 'data/sources.json', 'data/flags.json', 'data/questions.json',
+    'data/suggestions.json', 'data/guides.json', 'data/events.json', 'data/ledger.json', 'data/config.json', 'data/design-brief.json'];
+  for (const f of REGISTERS) {
+    if (!fs.existsSync(path.join(ROOT, f))) continue;
+    const strs = stringsIn(JSON.parse(fs.readFileSync(path.join(ROOT, f), 'utf8')));
+    const seen = new Set();
+    for (const str of strs) for (const m of str.matchAll(PAT)) {
+      const key = f + '|' + m[1];
+      if (seen.has(key)) continue;
+      seen.add(key);
+      check(`${f}: reference ${m[1]} resolves to a real row`, setFor(m[1]).has(m[1]), str.slice(Math.max(0, m.index - 40), m.index + 40).replace(/\s+/g, ' '));
+    }
+  }
+  // The same rule over the rendered pages: a sentence in a template is as much a citation as one in a register.
+  if (fs.existsSync(path.join(DOCS, 'index.html'))) {
+    const htmlFiles2 = [];
+    const walk2 = (d) => { for (const f of fs.readdirSync(d)) { const p2 = path.join(d, f); if (fs.statSync(p2).isDirectory()) walk2(p2); else if (f.endsWith('.html')) htmlFiles2.push(p2); } };
+    for (const o of OWNED) { const p2 = path.join(DOCS, o); if (!fs.existsSync(p2)) continue; if (fs.statSync(p2).isDirectory()) walk2(p2); else htmlFiles2.push(p2); }
+    for (const f of htmlFiles2) {
+      const text = fs.readFileSync(f, 'utf8').replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ');
+      const seen = new Set();
+      for (const m of text.matchAll(PAT)) {
+        if (seen.has(m[1])) continue;
+        seen.add(m[1]);
+        check(`${path.relative(DOCS, f).split(path.sep).join('/')}: rendered reference ${m[1]} resolves`, setFor(m[1]).has(m[1]), text.slice(Math.max(0, m.index - 45), m.index + 30).replace(/\s+/g, ' '));
+      }
+    }
+  }
+}
+
 // ---------- report ----------
 console.log(`verify: ${passes.length} checks passed, ${failures.length} failed`);
 if (failures.length) {

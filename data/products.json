@@ -1,5 +1,5 @@
 {
-  "checked": "2026-11-20",
+  "checked": "2026-11-20 (third dated round; see data/observations/)",
   "tracking_id": "shopnow047c-20",
   "rule": "Two kinds of facts live here and they are never merged. INTENDED fields (intended_asin, official_listing_url, confirmation_date, confirmation_source) are filled only when the owner or an official Associates record confirms the product. OBSERVED fields (observed_*) are what an Amazon page showed on a dated fetch, and are kept separate on purpose. A blank cell means 'not confirmed', never 'guessed'. Specs come from the manufacturer page named in 'spec_sources'; where two official pages disagree, the value is left blank and a flag explains why.",
   "products": [
@@ -48,7 +48,7 @@
       "dimensions_in": "13.38 × 11.81 × 10.63",
       "dimensions_order": "depth x width x height, as the manufacturer lists them",
       "weight_lb": "13.3",
-      "functions": "Air fry, bake, reheat, dehydrate, frozen; Sync °Finish; Hi-Fry to 450 °F",
+      "functions": "Air fry, bake, reheat, dehydrate, frozen; Sync Finish; Hi-Fry to 450 °F",
       "dishwasher_safe": "Baskets: yes (manufacturer states nonstick, dishwasher-safe baskets)",
       "certification": "cETL approved (manufacturer)",
       "warranty": "1-year Chefman assurance",
@@ -57,7 +57,8 @@
       "fit_line": "Two different foods, two different timings, one compact footprint.",
       "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
       "guide_title": "Basket or oven-style air fryer: what should you compare?",
-      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare"
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3) against the manufacturer page: model RJ38-SQPF-3TDB-2W, 'Max temp: 450ºF/ 235ºC with Hi-Fry function' and the Sync Finish wording match this row. The stray degree sign in 'Sync Finish' was removed (FLG-037). The listing itself could not be fetched in that round (FLG-039)."
     },
     {
       "id": "P02",
