@@ -81,7 +81,7 @@ const dateLong = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US
 const rfc822 = (iso) => new Date(iso + 'T00:00:00Z').toUTCString();
 const slugId = (t = '') => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 // Newest first; within the same date, later-published entries lead.
-const latestFirst = (list) => [...list].reverse().sort((a, b) => (a.date < b.date ? 1 : -1));
+const latestFirst = (list) => [...list].reverse().sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
 // An editorial illustration block. Every image on the site is AI-generated artwork and is
 // labeled as such at the point of use; the credit line comes from data/config.json.
