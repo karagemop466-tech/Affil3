@@ -286,6 +286,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="small"><strong>Manual step:</strong> Review the shipped /privacy/ page against §3(e) and decide whether counsel should read it before any endpoint is configured (Q-16).</p>
 </section>
+<section class="flag-card" id="FLG-036">
+  <p class="flag-head"><span class="badge flag">FLG-036</span> <span class="badge sev-medium">medium</span> <strong>Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link</strong></p>
+  <p>Source note S05 said that B0c8moW59 &#39;did not resolve to a product listing&#39;. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register&#39;s observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
