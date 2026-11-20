@@ -3,65 +3,78 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Campaign ledger | Affil3</title>
-<meta name="description" content="Campaign ledger: empty until authorized first-party reports are imported.">
+<title>Campaign ledger — Affil3</title>
+<meta name="description" content="An empty ledger with a defined schema and a provenance rule. Rows are added only from authorized first-party reports.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/ledger/">
 <meta property="og:title" content="Campaign ledger">
-<meta property="og:description" content="Campaign ledger: empty until authorized first-party reports are imported.">
+<meta property="og:description" content="An empty ledger with a defined schema and a provenance rule. Rows are added only from authorized first-party reports.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/ledger/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Affil3">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-counter.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="analytics-endpoint" content="">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Affil3 — buying guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
 
 </head>
-<body data-page="page" >
+<body data-page="ledger" >
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
-  <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+  <div class="wrap">
+    <div class="masthead-top">
+      <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span><small>Kitchen buying guides</small></a>
+      <p class="masthead-issue"><b>Independent</b> · checked November 20, 2026</p>
+    </div>
     <nav class="nav" aria-label="Main">
-      <a href="/Affil3/shop/">Shop</a>
-      <a href="/Affil3/guides/">Guides</a>
+      <a href="/Affil3/shop/">The picks</a>
+      <a href="/Affil3/guides/">Buying guides</a>
       <a href="/Affil3/categories/">Categories</a>
-      <a href="/Affil3/about/">About</a>
+      <a href="/Affil3/about/">How we choose</a>
     </nav>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
-  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
+  <div class="wrap"><strong>Disclosure.</strong> <span>Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</span> <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
-<main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Campaign ledger</p><h1>Campaign ledger</h1><p class="deck">Empty. No authorized first-party report has been imported.</p></section>
-<div class="prose"><p>Add a row only from an authorized first-party report (for example an Associates report exported by the account owner). Each row needs its timestamp, source, provenance URL or file reference, and the report date range. No conversion score or revenue forecast is shown.</p></div>
+<main id="main">
+<div class="wrap">
+<section class="page-head"><p class="kicker">Campaign ledger</p><h1>Starting from nothing, on purpose</h1>
+<p class="deck">Empty. No authorized first-party report has been imported.</p></section>
+<div class="status-box">Add a row only from an authorized first-party report (for example an Associates report exported by the account owner). Each row needs its timestamp, source, provenance URL or file reference, and the report date range. No conversion score or revenue forecast is shown.</div>
 <div class="table-wrap"><table class="wide"><thead><tr><th scope="col">timestamp_imported</th><th scope="col">report_date_range</th><th scope="col">source</th><th scope="col">provenance</th><th scope="col">channel</th><th scope="col">eligible_sessions</th><th scope="col">clicks</th><th scope="col">reported_orders</th></tr></thead><tbody><tr><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td></tr></tbody></table></div>
-<p class="small muted">Rows: 0. No conversion score, revenue forecast or optimization is presented.</p>
+<p class="small muted">Rows: 0. No conversion score, revenue forecast or optimization is presented anywhere on this site.</p>
 <h2>Column meanings</h2>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Column</th><th scope="col">Meaning</th></tr></thead><tbody><tr><td><code>timestamp_imported</code></td><td>When the row was added (UTC).</td></tr><tr><td><code>report_date_range</code></td><td>The period the report covers.</td></tr><tr><td><code>source</code></td><td>Name of the authorized first-party report or export.</td></tr><tr><td><code>provenance</code></td><td>File name or URL of the report, kept with the row.</td></tr><tr><td><code>channel</code></td><td>Site section or tracking ID (for example shopnow047c-20).</td></tr><tr><td><code>eligible_sessions</code></td><td>Sessions reported as eligible in the source report. Left blank if not reported.</td></tr><tr><td><code>clicks</code></td><td>Clicks as reported in the source. Left blank if not reported.</td></tr><tr><td><code>reported_orders</code></td><td>Orders as reported in the source. Left blank if not reported.</td></tr></tbody></table></div>
+<div class="table-wrap"><table class=""><thead><tr><th scope="col">Column</th><th scope="col">What goes in it</th></tr></thead><tbody><tr><td><code>timestamp_imported</code></td><td>When the row was added (UTC).</td></tr><tr><td><code>report_date_range</code></td><td>The period the report covers.</td></tr><tr><td><code>source</code></td><td>Name of the authorized first-party report or export.</td></tr><tr><td><code>provenance</code></td><td>File name or URL of the report, kept with the row.</td></tr><tr><td><code>channel</code></td><td>Site section or tracking ID (for example shopnow047c-20).</td></tr><tr><td><code>eligible_sessions</code></td><td>Sessions reported as eligible in the source report. Left blank if not reported.</td></tr><tr><td><code>clicks</code></td><td>Clicks as reported in the source. Left blank if not reported.</td></tr><tr><td><code>reported_orders</code></td><td>Orders as reported in the source. Left blank if not reported.</td></tr></tbody></table></div>
+</div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <h2 class="foot-h">Dashboards and records</h2>
-    <ul class="foot-links">
-      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
-      <li><a href="/Affil3/categories/">Categories</a></li>
-      <li><a href="/Affil3/sources/">Source register</a></li>
-      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
-      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
-      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
-      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
-      <li><a href="/Affil3/measurement/">Measurement</a></li>
-      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-      <li><a href="/Affil3/about/">About and editorial policy</a></li>
-      <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
-      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
-      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
-    </ul>
-    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span></a>
+        <p class="foot-blurb">An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/shop/">The full comparison table</a></li>
+          <li><a href="/Affil3/sources/">Source register</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/suggestions/">Suggestions to review</a></li>
+          <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
+          <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Some links here are affiliate links and are marked sponsored. Photography on this site is editorial illustration, not the reviewed units.</p>
+    <p class="fine">Affil3 is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown here. Product photography is editorial illustration, not the reviewed unit. Last checked November 20, 2026. Source links appear on every claim, and the full register is in the footer.</p>
   </div>
 </footer>
 <script src="/Affil3/assets/analytics.js" defer></script>
