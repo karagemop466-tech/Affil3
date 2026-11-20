@@ -20,7 +20,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DOCS = ROOT / "docs"
-DATA = ROOT / "data"
+DATA = ROOT / "data" / "register"
 TRACKING_ID = "shopnow047c-20"
 STATEMENT = "As an Amazon Associate I earn from qualifying purchases."
 
@@ -54,19 +54,20 @@ def main() -> int:
         rel = page.relative_to(DOCS).as_posix()
         text = page.read_text(encoding="utf-8")
 
-        for href in re.findall(r'href="(/[^"#?]*)"', text):
-            if href.startswith("//"):
+        base = page.parent
+        for href in re.findall(r'(?:href|src)="([^"#?:]+)"', text):
+            if href.startswith(("//", "http", "mailto:", "data:")):
                 continue
-            target = DOCS / href.lstrip("/")
-            if href.endswith("/"):
-                target = target / "index.html"
-            if not target.exists():
+            candidate = (base / href).resolve()
+            if href.endswith("/") or candidate.is_dir():
+                candidate = candidate / "index.html"
+            try:
+                candidate.relative_to(DOCS.resolve())
+            except ValueError:
+                err(f"link escapes the site root: {rel} -> {href}")
+                continue
+            if not candidate.exists():
                 err(f"broken internal link: {rel} -> {href}")
-
-        for src in re.findall(r'href="(/(?:assets|sitemap\.xml|feed\.xml|robots\.txt)[^"]*)"', text):
-            target = DOCS / src.lstrip("/")
-            if not target.exists():
-                err(f"missing asset: {rel} -> {src}")
 
         # 5. required statement on every page
         if STATEMENT not in text:

@@ -14,12 +14,13 @@ from __future__ import annotations
 import html
 import json
 import os
+import re
 import pathlib
 import shutil
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
+DATA = ROOT / "data" / "register"
 DOCS = ROOT / "docs"
 SITE = "https://karagemop466-tech.github.io/Affil3"
 TRACKING_ID = "shopnow047c-20"
@@ -1123,12 +1124,35 @@ def feed() -> str:
             f"<language>en-us</language>{items}</channel></rss>\n")
 
 
+def relativise(text: str, depth: int) -> str:
+    """Rewrite root-absolute hrefs/srcs into depth-relative ones.
+
+    The site is published under a project subpath (github.io/Affil3/), so a
+    leading slash would escape the project. Every internal reference is made
+    relative instead, which also means the site works from any mount point.
+    """
+    prefix = "" if depth == 0 else "../" * depth
+
+    def href_sub(m):
+        target = m.group(2)
+        if target == "/":
+            return f'{m.group(1)}="{prefix or "./"}"'
+        return f'{m.group(1)}="{prefix}{target.lstrip("/")}"'
+
+    text = re.sub(r'(href|src)="(/[^"]*)"', href_sub, text)
+    # keep canonical/og/feed absolute where they already point at SITE
+    return text
+
+
 def write(rel: str, text: str) -> None:
     cleaned = rel.lstrip("/")
     if cleaned in ("", "/"):
         cleaned = "index.html"
     path = DOCS / cleaned
     path.parent.mkdir(parents=True, exist_ok=True)
+    if cleaned.endswith(".html"):
+        depth = len(pathlib.PurePosixPath(cleaned).parts) - 1
+        text = relativise(text, depth)
     path.write_text(text, encoding="utf-8")
 
 
