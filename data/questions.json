@@ -196,9 +196,41 @@
         "S05",
         "S04"
       ]
+    },
+    {
+      "id": "K-27",
+      "statement": "Google states that a BreadcrumbList trail may help users understand and explore a site, that the feature is available on desktop in all regions and languages where Google Search is available, and that the current page is the last item and needs no URL. The site emits that trail on every guide and every product page, mirroring the navigation a reader actually used.",
+      "sources": [
+        "S27"
+      ]
+    },
+    {
+      "id": "K-28",
+      "statement": "The USDA FSIS chart was re-read on 2026-11-20 and carries the date Last Updated: Apr 14, 2025. Its figures, unchanged from the ones the register holds, are 165 °F for all poultry and for leftovers and casseroles, 160 °F for ground meats and eggs, and 145 °F with a three-minute rest for whole cuts of beef, pork, veal and lamb, and 145 °F for fish and shellfish.",
+      "sources": [
+        "S10"
+      ]
+    },
+    {
+      "id": "K-29",
+      "statement": "Every count printed in the site's prose is now computed at build time from the rows the page renders: guide and product totals, flag totals, and the numbers inside flag text, which carry tokens the builder fills. A count that cannot drift cannot mislead a reader about how much of this site is verified.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "K-30",
+      "statement": "A third independent verification round on 2026-11-20 (session ca51f5b3) re-fetched the observed listings for P01 (B0CDY277D3), P02 (B09B7SB46R) and P05 (B0DZFD6R9Z) and the manufacturer pages for P01, P03 and P04, plus the USDA safe-temperature chart and Google's breadcrumb documentation. Every title and every specification figure matched the register. The raw dated record is data/observations/2026-11-20-session-ca51f5b3.json. The listings for P03 and P04 were not re-fetched in that round.",
+      "sources": [
+        "S04",
+        "S10",
+        "S11",
+        "S21",
+        "S23",
+        "S27"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-23 to Q-25, K-23 to K-26 and D-19 to D-22 were added by session b7320829-affil3 on 2026-11-20, after a round that read seven official pages first-hand and merged this branch with main; two of the three new questions close in one sitting in Associates Central.",
   "unknown": [
     {
       "id": "Q-01",
@@ -466,6 +498,39 @@
         "S04",
         "S03"
       ]
+    },
+    {
+      "id": "Q-26",
+      "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
+      "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
+      "how_to_close": "Answer with S-41 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
+      "sources": [
+        "S07",
+        "S08"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-27",
+      "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
+      "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
+      "how_to_close": "Pick S-39. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-28",
+      "question": "Do the buy links aim at the marketplace the owner can actually be paid on?",
+      "why_it_matters": "Every published link goes to www.amazon.com with tracking ID shopnow047c-20, whose -20 suffix matches the US convention. An owner reading this from the Netherlands may intend amazon.nl, which is a separate Associates program with its own IDs, its own agreement and its own listings, none of which this sandbox can fetch. The answer decides the domain of every buy button, the disclosure wording and which listings are even legal to link.",
+      "how_to_close": "Answer with S-40. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": true
     }
   ],
   "discovery": [
@@ -618,6 +683,31 @@
         "Q-12",
         "Q-20"
       ]
+    },
+    {
+      "id": "D-23",
+      "suggestion": "Re-run the two negative tests the gate now ships before trusting a green build: delete one robots exclusion and strip one sponsored attribute. A gate that cannot fail is decoration. Both were run on 2026-11-20 and recorded in the merge log.",
+      "closes": []
+    },
+    {
+      "id": "D-24",
+      "suggestion": "After any session merges a new root directory, read /robots.txt once and confirm the generated exclusion list picked it up. The list is derived from the tree, so the only way to get it wrong is to publish a second edition and a build that never ran.",
+      "closes": [
+        "Q-15"
+      ]
+    },
+    {
+      "id": "D-25",
+      "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
+      "closes": [
+        "Q-26"
+      ]
+    },
+    {
+      "id": "D-26",
+      "suggestion": "Before trusting a green gate, run it on the runtime CI actually uses: package.json declares node >=18, the sandbox may be two majors ahead, and an API that exists there can throw on the floor. A gate that only works on one machine is not a gate.",
+      "closes": []
     }
-  ]
+  ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site."
 }

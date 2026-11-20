@@ -1,5 +1,5 @@
 {
-  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, note, ul, ol, table, faq, cta. 'summary' is the answer-first box rendered under the byline on every guide, and the word count in the byline is computed from the guide's own text at build time. Merge notes, 2026-11-20: session b7320829-affil3 drafted five guides against 7fac552; four duplicated pages that had landed on main, so they were withdrawn and their first-hand material was merged into the existing cleanup, preset and listing-reading pages instead - see each row's 'amended' field and FLG-045. One row is new: Sync Finish and Hi-Fry.",
+  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, ul, ol, table, faq, cta, note. Session ca51f5b3 drafted two more guides on 2026-11-20; its deal-season checklist was dropped because main had already published black-friday-kitchen-deals-a-shoppers-checklist on the same decision, and three of its earlier drafts were dropped for the same reason when c252594d landed the basket, probe and preset questions. Two near-identical answers on one site is the pattern Google's spam policy calls scaled content abuse (S09), so the shelf keeps one guide per question. What survives from that session is the whole-chicken fit question, which nothing else answers: every figure in it is repeated from a manufacturer page or an observed Amazon listing, and nothing in it is a measurement this site took.",
   "guides": [
     {
       "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
@@ -2258,6 +2258,139 @@
         }
       ],
       "verification": "Written 2026-11-20 from the manufacturer pages fetched that day and the listing wording recorded in the dated register."
+    },
+    {
+      "slug": "can-you-cook-a-whole-chicken-in-an-air-fryer",
+      "title": "Can you cook a whole chicken in it? Check the sheet first",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens",
+        "cooking-thermometers"
+      ],
+      "image": "/assets/img/guide-whole-chicken-fit.png",
+      "image_alt": "Editorial illustration of an open oven-style air fryer with french doors, a tape measure across its opening and a whole chicken on a plate beside it; artwork, not the reviewed units",
+      "date": "2026-11-20",
+      "deck": "Quarts are a volume and a chicken is a shape. Here is what the makers publish, and the one measurement only you can take.",
+      "description": "Whether a whole chicken fits, worked out from the capacity and case size makers publish, plus the USDA poultry temperature that decides doneness.",
+      "sources": [
+        "S04",
+        "S11",
+        "S23",
+        "S13",
+        "S10",
+        "S20"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "No manufacturer page in this set states a maximum bird weight, and the phrase whole chicken does not appear on the pages this site cites for these models. So the honest answer is a method rather than a number, and the method starts with what is actually printed."
+        },
+        {
+          "type": "h2",
+          "text": "What the makers do publish"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Appliance",
+            "Capacity as stated",
+            "Case size as stated",
+            "Not stated by either official page"
+          ],
+          "rows": [
+            [
+              "CHEFMAN 6 Qt Dual Basket",
+              "Two independent 3 qt baskets",
+              "13.38 x 11.81 x 10.63 in",
+              "A rack, an internal height, a bird weight"
+            ],
+            [
+              "Chefman TurboFry Touch 8 Qt",
+              "8 qt / 7.57 L",
+              "15.4 x 12.6 x 13.5 in",
+              "Which of those three numbers is the height, and a bird weight"
+            ],
+            [
+              "Emeril Lagasse 26 QT French Door",
+              "26 qt / 24.6 L, which the manufacturer describes as food for 4-6 people",
+              "16.9 x 15.8 x 14.8 in",
+              "Interior dimensions and a maximum temperature"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Read the first two rows as drawers and the third as a small oven. A 3 qt basket is shallow and split down the middle. The 8 qt basket is one chamber with more floor. The 26 qt cooker is the only one of the three with a vertical dimension to plan around, and it is the only one whose maker states who it feeds."
+        },
+        {
+          "type": "img",
+          "src": "/assets/img/guide-airfryer-size-test.png",
+          "alt": "Editorial illustration of an air fryer basket pulled out on a counter with a tape measure, a paper grocery bag and a notebook beside it",
+          "caption": "The chamber is the measurement that decides. The box is not."
+        },
+        {
+          "type": "h2",
+          "text": "The two measurements only you can take"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Measure the bird as you intend to cook it: the widest circumference around the breast and drumsticks, and the height it sits at once trussed. Write both down before you look at a product page.",
+            "Measure the chamber, not the carton: the largest flat area inside the basket or on the rack, and the distance from that floor to the element housing or the inner ridge of the door."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Then compare the two pairs, and subtract the walls from the maker's numbers. A case listed at 10.63 in tall is not 10.63 in of clearance, and neither Chefman page states an internal height for these models."
+        },
+        {
+          "type": "h2",
+          "text": "Why the temperature line outranks the size question"
+        },
+        {
+          "type": "p",
+          "text": "A bird that fits is not a bird that is cooked. The USDA Food Safety and Inspection Service chart sets 165 °F (73.9 °C) for all poultry, and it names breasts, whole bird, legs, thighs, wings, ground poultry, giblets and stuffing in the same row. The chart asks for that reading to come from a food thermometer, not from a colour judgement or a timer. It is the one number in this guide that does not depend on which appliance you buy."
+        },
+        {
+          "type": "note",
+          "text": "The same chart lists 160 °F for ground meats, 145 °F with a three-minute rest for whole cuts of beef, pork, veal and lamb, and 145 °F for fish and shellfish. It was last updated by FSIS on Apr 14, 2025 and is linked as S10."
+        },
+        {
+          "type": "h2",
+          "text": "What this page is not saying"
+        },
+        {
+          "type": "p",
+          "text": "Nothing above claims that any machine cooks a whole chicken well. A buying guide that invents a capacity claim is worse than an empty cell, and the empty cells are the point of this site: where a maker is silent, the number is missing here too, and the gap is written down rather than averaged away."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does a rotisserie function change the answer?",
+              "a": "Not on the pages cited here. The Amazon listing for the 26 QT French Door names cooking accessories in its title, and neither that title nor the maker's page states a maximum rotisserie weight for this model, so the two measurements still apply."
+            },
+            {
+              "q": "Is spatchcocking cheating?",
+              "a": "It is the usual way to solve a chamber that is too short rather than too narrow, because butterflying removes height instead of floor space. It does not change what the spec sheet says, which is why this page tells you to measure both."
+            },
+            {
+              "q": "How many rack levels does the 26 QT have?",
+              "a": "No rack count is stated on either official page recorded for that model, so this site publishes none. Check the quick-start guide in the box before you plan a two-level dinner."
+            },
+            {
+              "q": "What if the chicken fits but the skin touches the element?",
+              "a": "Then you have a clearance problem, not a capacity problem, and no page in this register states a minimum gap for these models. That is a reason to prefer the cooker with the taller published interior and to keep a thermometer handy for the last ten minutes."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "All five appliances, side by side, with the disagreement rows kept in.",
+          "href": "/compare/",
+          "label": "Compare the shelf"
+        }
+      ]
     }
   ]
 }

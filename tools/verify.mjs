@@ -8,10 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-// Kept in step with OWNED in tools/build.mjs. It omitted compare, workflow, privacy and design-brief, so
-// every per-page rule below silently skipped four published directories.
-const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
-  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief', '404.html'];
+import { OWNED, extraEditions, rootMarkdown } from './site-scope.mjs';
+// One list for the builder and the gate. The version this replaced was a copy that had fallen behind
+// tools/build.mjs: it omitted compare, workflow, privacy and design-brief, so every per-page rule below
+// silently skipped four published directories, and it had no idea /find/ existed (FLG-049).
 // Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
 function imageSize(file) {
   try {
@@ -55,6 +55,7 @@ const ALLOWED_SOURCE_HOSTS = new Set([
   'www.thermomaven.com',
 ]);
 const TAG = cfg.trackingId;
+const d0 = (o, list) => `${o} excluded by ${list.join(' ') || 'nothing'}`;
 const failures = [];
 const passes = [];
 const check = (name, ok, detail = '') => (ok ? passes : failures).push(detail ? `${name}: ${detail}` : name);
@@ -295,6 +296,38 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   for (const l of feedArticleLinks) check(`feed article in sitemap: ${l}`, sitemapUrls.includes(l));
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
+  // One site to index. Every superseded edition that publishes a page of its own, and every session
+  // record left at the repository root, has to be out of the index; the list is generated from the
+  // tree, so a build that falls behind it fails here (FLG-047).
+  const robotsTxt = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
+  // Spread first, then map: the helpers on the iterator that matchAll returns are an ES2025
+  // addition, and package.json declares node >=18. Written the other way round this line runs on a
+  // newer sandbox and throws on CI's 20 (FLG-048), which is the worst kind of green build.
+  const disallowed = [...robotsTxt.matchAll(/^Disallow:\s*(\/[^\s]+)/gm)].map((m) => m[1]);
+  for (const e of extraEditions(ROOT)) check(`robots.txt excludes superseded edition /${e}/`, disallowed.includes(`/${e}/`), e);
+  for (const doc of rootMarkdown(ROOT).map((n) => `/${n}`)) check(`robots.txt excludes the session record ${doc}`, disallowed.includes(doc), doc);
+  for (const o of OWNED) {
+    if (!o.endsWith('.html') && !o.includes('.')) check(`robots.txt does not exclude this build's /${o}/`, !disallowed.includes(`/${o}/`), d0(o, disallowed));
+  }
+  // Counts in prose come from the rows, so an unrendered token means the data grew past the builder.
+  check('no unrendered count token reaches a reader', !/\{(guide|product|article|suggestion|question|flag|openflag)\}/.test(allHtml), (allHtml.match(/\{(guide|product|article|suggestion|question|flag|openflag)\}/) || [''])[0]);
+  // Structured data must parse, and a trail must not point at the page it sits on.
+  const ldBlocks = [...allHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+  check('every JSON-LD block parses', ldBlocks.length > 0 && ldBlocks.every((b) => { try { JSON.parse(b); return true; } catch { return false; } }), `${ldBlocks.length} blocks`);
+  // A page may carry one object or an @graph array; both are valid JSON-LD, so the check normalises
+  // before counting, rather than pushing the builder toward one shape.
+  const ldNodes = ldBlocks.map((bl) => {
+    try { const o = JSON.parse(bl); return Array.isArray(o) ? o : (o && Array.isArray(o['@graph']) ? o['@graph'] : [o]); }
+    catch { return []; }
+  }).flat().filter(Boolean);
+  const crumbs = ldNodes.filter((o) => o['@type'] === 'BreadcrumbList');
+  check('breadcrumb trails exist on guides and product pages', crumbs.length >= guides.length + products.length, `${crumbs.length} trails for ${guides.length + products.length} pages`);
+  // What a trail must never do: send a crawler to another origin, or number itself out of order.
+  // Whether the last item repeats the current page's URL is a style choice Google allows both ways.
+  const origin = cfg.siteUrl;
+  const trailOk = (c) => c.itemListElement.every((it, i) => it.position === i + 1
+    && (!it.item || it.item === origin || it.item.startsWith(origin + '/')));
+  check('every breadcrumb item URL is this site and each trail is numbered from 1', crumbs.every(trailOk), `${crumbs.length} trails`);
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
 }
 

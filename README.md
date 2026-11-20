@@ -79,9 +79,13 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` prints its own tally; at this commit it runs **8,717 checks** over the published root
+<<<<<<< HEAD
+`node tools/verify.mjs` runs **8,831 checks** at this commit over the 55 published root pages (FLG-039, FLG-043 and FLG-044 corrected stale figures; the count is whatever the run prints, and a merge that adds a page or a guide changes it, so treat the number as a log line rather than a claim). `tools/build.mjs` and `tools/verify.mjs` both import their page list from `tools/site-scope.mjs`, so the gate cannot walk a shorter list than the builder writes (FLG-043). It stops the build on:
+=======
+`node tools/verify.mjs` prints its own tally; at this commit it runs **8,831 checks** over the published root
 pages (the figure grew because the gate's page list was synced with the build's, which had been skipping
 `compare/`, `workflow/`, `privacy/` and `design-brief/`, and because of the citation rules below). It stops the build on:
+>>>>>>> origin/main
 
 - a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
 - an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
@@ -90,12 +94,19 @@ pages (the figure grew because the gate's page list was synced with the build's,
 - an image that is missing, remote, or without `alt` text;
 - a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
 - a broken internal link, a missing anchor, or a page missing from the sitemap;
+<<<<<<< HEAD
+- a source ID that does not exist, or a spec row citing one.
+- a superseded edition or a root-level session record that the generated `robots.txt` does not exclude (FLG-047);
+- an unrendered count token such as `{guide}`, which means prose was hand-typed instead of computed;
+- a JSON-LD block that does not parse, or a breadcrumb trail that points at its own page.
+=======
 - a source ID that does not exist, or a spec row citing one;
 - a cross-reference in a register or a rendered page that does not resolve to a row — every `S01`-style source id, `FLG-nnn`,
   `S-nn`, `Q-nn`, `K-nn` and `D-nn` (added 2026-11-20 after a first batch of stale references shipped; FLG-044);
 - an inline citation in a guide that the guide does not declare in its own source list, and a sentence carrying a measurement
   (`1700 W`, `450 °F`, `8 qt`, `25 presets`) that cites a policy, disclosure or developer page instead of a maker, retailer or
   food-safety source — the rule that caught five guides citing the FTC page for Chefman wattage figures (S-35, FLG-044).
+>>>>>>> origin/main
 
 The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
 cannot bypass them, and by the gate, so a hand-edited page cannot either.
@@ -184,7 +195,7 @@ ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
 Fourth sync (2026-11-20): merged PRs #31/#37/#25 — outbound link-policy enforcement
 (short links shown as non-clickable code; auto-tagging of retail Amazon links), robots
 policy for parallel publications, and the committed thermometer product image now carried
-in the ShopNow Kitchen build. Gate: 3212 checks passed, 0 failed.
+in the ShopNow Kitchen build. Gate: the run before this line was written reported 3,212 checks passed, 0 failed; the current figure is the one above.
 
 
 ## Crisp & Counter — session edition at `/counter/` (`arena/0a90f62c-affil3`)

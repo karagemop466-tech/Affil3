@@ -545,6 +545,71 @@
       "sources": [
         "S09"
       ]
+    },
+    {
+      "id": "FLG-049",
+      "severity": "medium",
+      "status": "open",
+      "area": "crawl and indexing",
+      "title": "Crawl control at a project path: robots.txt is not read from /Affil3/, and the other editions are not all noindexed",
+      "detail": "tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder's list grew to cover /compare/, /workflow/, /privacy/, /design-brief/, /articles/, /decisions/ and now /find/; the gate's copy did not follow, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.",
+      "impact": "Near-duplicate copies of the same guides can compete with the root publication in search results. The sitemap is not discovered at the project path, so it must be submitted by hand.",
+      "manual_step": "None. Two negative tests were run on 2026-11-20 and are recorded in COORDINATION.md: stripping one rel=\\\"sponsored\\\" attribute and deleting one robots exclusion each make the build fail.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-050",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
+      "sources": [
+        "S09",
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-051",
+      "severity": "low",
+      "status": "resolved",
+      "area": "documentation",
+      "title": "README stated a stale check count and listed a /docs/ publication that is not in the tree (corrected)",
+      "detail": "README.md said that node tools/verify.mjs runs 2,808 checks. The run on 1f65f70 reports 4,588 passed checks. The README also listed a /docs/ publication built from scripts/ and server/, but git ls-files shows no docs/ path at 1f65f70. The count is now stated as a figure from the current run, and the /docs/ row says the directory is not present. scripts/ and server/ exist and were not changed.",
+      "impact": "A reader could follow a link or a command that does not match the repository. No published page was wrong.",
+      "manual_step": "None. Re-check the count after any change to tools/verify.mjs.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-052",
+      "severity": "medium",
+      "status": "open",
+      "area": "sitemap / generator",
+      "title": "crisp-index/sitemap.xml had two writers and malformed URLs on main; the sitemap gate passed only by substring match",
+      "detail": "On main, crisp-index/sitemap.xml was written by scripts/build_sitemap.py. That script (1) collapsed https:// to https:/ in every <loc>, and (2) omitted the crisp-index/ path segment, so every entry pointed at a path that does not exist on the site (for example https:/…/about/index.html). The gate in the same script (check.yml runs --check) compared with a substring test, so the malformed entries still counted as present. The Crisp Index generator (tools/build_site.py) writes the same file with the correct URLs. Session 4c8c7811 changed scripts/build_sitemap.py so that it refuses to write, excludes noindex pages (the 404 page), and checks exact <loc> values against files on disk. The sitemap was regenerated by tools/build_site.py.",
+      "impact": "Before this fix the Crisp Index sitemap gave search engines no usable URL for any of its pages. The surface is disallowed in robots.txt, so this affects that surface only, not the root site that GitHub Pages indexes.",
+      "manual_step": "Choose S-28: move them under legacy/session-records/ in one commit, or keep them where they are with the generated exclusion in place.",
+      "sources": []
+    },
+    {
+      "id": "FLG-053",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "toolchain",
+      "title": "The gate passed in the sandbox and threw on CI, because a newer JavaScript runtime accepted an API the declared floor does not have",
+      "detail": "publish-gate failed on 2026-11-20 with `TypeError: robotsTxt.matchAll.map is not a function or its return value is not iterable` at tools/verify.mjs:300, while the same commit passed 7,552 checks in the working sandbox and in a fresh clone of it. Cause: the line read `[...str.matchAll(re).map(f)]`, which asks the iterator matchAll returns for `.map`. Iterator helpers are ES2025; the sandbox runs node 22.22.3, which has them, and CI runs node 20, which does not, while package.json declares `engines.node >=18`. So the gate's own code broke the floor it is meant to protect, and nothing in the local loop could see it. The line is fixed to spread first and then map, and every other matchAll site in tools/ was read and already spreads first.",
+      "impact": "Every push to this branch was red for the wrong reason, which teaches people to ignore a red gate. The build content was never affected: the generator itself avoided the API.",
+      "manual_step": "None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate's output tail as check annotations, so a red run can be read from the API without the Actions log.",
+      "resolution": "Fixed in tools/verify.mjs, and publish-gate now prints the runtime version and annotates the failure output.",
+      "sources": [
+        "S09"
+      ]
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass.",

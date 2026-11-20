@@ -16,3 +16,6 @@ __pycache__/
 
 # Local preview scaffolding (symlink so the site can be served under its /Affil3 base path)
 .preview/
+
+# A pristine clone used to reproduce CI locally; never part of the site or the record.
+/.freshci/

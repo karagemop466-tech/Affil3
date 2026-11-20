@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "observed_on": "2026-11-20",
+  "observer": "session ca51f5b3 (Arena agent, branch arena/ca51f5b3-affil3)",
+  "method": "Each page below was fetched in full and read in this round. Fields are transcribed from the fetched text only. Nothing is inferred, and nothing in this file changes a published claim on its own: it is the dated evidence trail the register points at.",
+  "environment_note": "Fetches come from a sandbox with no Amazon login and no Product Advertising API access. A home page or checkpoint returned in place of a product page is recorded as a fetch outcome, not as a verdict about a link.",
+  "pages": [
+    {
+      "id": "OBS-C1",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "role": "S04 / observed listing for P01",
+      "page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "matches_register": true,
+      "note": "Title matches data/products.json P01 observed_title character for character, including the ASIN in the URL. Prices and star ratings were visible on the page for this and other products; none is transcribed here or published by this site."
+    },
+    {
+      "id": "OBS-C2",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "role": "S04 / observed listing for P02",
+      "page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "matches_register": true,
+      "note": "Confirms the listing-side statements the register carries for P02: 24 one-touch preset options and six cooking accessories, both in the title. FLG-024 stays open because the manufacturer page states a different count."
+    },
+    {
+      "id": "OBS-C3",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "role": "S04 / observed listing for P05",
+      "page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "matches_register": true,
+      "note": "Confirms the feature set published on the product page for P05 and the thermometer breadcrumb. No battery figure appears in the listing text read here; the maker-page disagreement in FLG-023 is untouched."
+    },
+    {
+      "id": "OBS-C4",
+      "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "role": "S11 / manufacturer page for P01",
+      "page_title": "Chefman® TurboFry® Touch Dual-Window Air Fryer",
+      "model_string_seen": "RJ38-SQPF-3TDB-2W",
+      "spec_lines_seen": ["Max temp: 450ºF/ 235ºC with Hi-Fry function", "Sync Function so both baskets"],
+      "matches_register": true,
+      "note": "Model string and the 450 °F Hi-Fry figure agree with the register for P01."
+    },
+    {
+      "id": "OBS-C5",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "role": "S23 / manufacturer page for P03",
+      "page_title": "CHEFMAN® 8 Qt. TurboFry® Touch Air Fryer – Chefman",
+      "spec_lines_seen": [
+        "Max temp: 400ºF/ 205ºC",
+        "4 cooking presets",
+        "Capacity: 5 Qt or 8 Qt / 4.73 L or 7.57 L",
+        "200–400°F / 95º-205ºC temperature range",
+        "Power: 1700W/120V",
+        "Dimensions: (8 Qt Model) 15.4 in x 12.6 in x 13.5 in",
+        "Weight: (8 Qt Model) 12.8 lbs / 5.8 kg",
+        "Model Number: RJ38-SQSS-8T (8 Qt model)",
+        "cETL approved with 1-year Chefman® assurance",
+        "Top-rack dishwasher-safe basket"
+      ],
+      "matches_register": true,
+      "note": "Every figure the site publishes for P03 was re-read from this page, including the 4 cooking presets quoted in the presets guide. The page states dimensions for the 8 Qt model without labelling which number is depth, width or height, which is why the product page says so."
+    },
+    {
+      "id": "OBS-C6",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "role": "S21 / manufacturer page for P04",
+      "page_title": "ThermoMaven F1 Ace Digital Cooking Thermometer - Red",
+      "spec_lines_seen": [
+        "NIST-certified precision, with an accuracy of ±0.5℉/±0.3℃",
+        "1 Second Instant Reading",
+        "powered by a thermocouple sensor",
+        "Featuring a 100% waterproof design",
+        "Built-in magnet for easy retrieval and storage",
+        "Motion-sensing wake/sleep helps to cook",
+        "Activate your Lifetime Warranty within 30 days after purchase"
+      ],
+      "matches_register": true,
+      "note": "Family-page figures for P04 re-read and unchanged. The listing still does not name the F1 Ace, so FLG-025 and Q-14 stay open and the specifications stay labelled as family-page figures."
+    },
+    {
+      "id": "OBS-C7",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "role": "S10 / federal food-safety chart",
+      "page_title": "Safe Minimum Internal Temperature Chart | Food Safety and Inspection Service",
+      "page_date": "Last Updated: Apr 14, 2025",
+      "chart_rows_seen": [
+        "Beef, Pork, Veal and Lamb Steaks, Chops and Roasts: 145 degrees F (62.8 degrees C) and allow to rest for at least 3 minutes",
+        "Ground Meats: 160 degrees F (71.1 degrees C)",
+        "Ground Poultry: 165 degrees F",
+        "Ham, Fresh or Smoked (Uncooked): 145 degrees F and rest 3 minutes",
+        "Fully Cooked Ham (to Reheat): 140 degrees F for hams packaged in USDA-inspected plants, 165 degrees F for all others",
+        "All Poultry: 165 degrees F (73.9 degrees C)",
+        "Eggs: 160 degrees F (71.1 degrees C)",
+        "Fish & Shellfish: 145 degrees F (62.8 degrees C)",
+        "Leftovers: 165 degrees F (73.9 degrees C)",
+        "Casseroles: 165 degrees F (73.9 degrees C)"
+      ],
+      "matches_register": true,
+      "note": "The figures cited by the thermometer and whole-chicken guides. The page still carries the Apr 14, 2025 update date the register recorded."
+    },
+    {
+      "id": "OBS-C8",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/breadcrumb",
+      "role": "S24 / added in this round",
+      "page_title": "How To Add Breadcrumb (BreadcrumbList) Markup | Google Search Central | Documentation",
+      "lines_seen": [
+        "A breadcrumb trail on a page indicates the page's position in the site hierarchy, and it may help users understand and explore a site effectively.",
+        "Feature availability: This feature is available on desktop in all regions and languages where Google Search is available.",
+        "How to add structured data: 1. Add the required properties. 2. Follow the guidelines. 3. Validate your code using the Rich Results Test."
+      ],
+      "matches_register": true,
+      "note": "Used as the shape of the BreadcrumbList this build emits on guide and product pages. No claim is made here that a breadcrumb markup changes ranking; the documentation says it helps users understand and explore a site."
+    },
+    {
+      "id": "OBS-C9",
+      "url": "https://link.amazon/B04G1MEwY",
+      "role": "S05 / submitted short link for P01",
+      "fetch_outcome": "Amazon home page",
+      "page_title": "Amazon.com. Spend less. Smile more.",
+      "product_observed": false,
+      "matches_register": false,
+      "note": "The fetch landed on amazon.com's home page, not on a product detail page, so no ASIN could be read from this fetch and nothing in the register is changed by it. This is the same behaviour recorded on 2026-11-20 by an earlier session (FLG-031) and intermittently before that (FLG-004). It is evidence that a sandbox fetch cannot test these links, which is why validation is an owner step behind gate G-02, and it is not evidence that the link is dead or non-compliant (FLG-003 stays unresolved)."
+    }
+  ],
+  "not_re_fetched_in_this_round": {
+    "listings": ["P03 https://www.amazon.com/dp/B08DKYBTPH", "P04 https://www.amazon.com/dp/B0DHZTCNR5"],
+    "manufacturer_pages": ["S12", "S13", "S14", "S15", "S16"],
+    "policy_pages": ["S01", "S02", "S03", "S06", "S07", "S08", "S09", "S17", "S18", "S19", "S20", "S22"],
+    "reason": "Recorded so that this file cannot be read as a clean bill of health for rows it did not touch. Those rows keep the dated observations of the sessions that fetched them."
+  },
+  "policy_compliance_of_this_round": [
+    "No price, availability, star rating or review count from any fetched page is transcribed into this file or published by the site.",
+    "Fetched manufacturer pages were read for the specification lines this site cites, not for their marketing copy.",
+    "No Amazon trademark term was used as a keyword or bidding target in anything written in this round."
+  ]
+}
