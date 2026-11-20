@@ -252,3 +252,8 @@ blockquote { margin: 8px 0 0; padding-left: 14px; border-left: 2px solid var(--l
   .navlink { font-size: .78rem; }
 }
 @media print { .masthead, .footer, .btn, .btn-blocked { display: none; } }
+
+/* Resolved flags: shown with their resolution rather than silently dropped. */
+.badge.resolved { background: var(--good-soft, #eaf3ec); border-color: #bfd8c9; color: var(--good, #2f5c3d); font-weight: 700; }
+.flag-card.is-resolved { border-left: 3px solid #bfd8c9; }
+.flag-card.is-resolved .resolution { background: var(--paper-2, #f7f4ee); border: 1px solid var(--line-2, #e2dcd0); padding: 8px 10px; font-size: .9em; }
