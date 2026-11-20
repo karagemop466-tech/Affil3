@@ -585,7 +585,7 @@ const add = (p) => pages.push(p);
     <p>${esc(cap(num(PRODUCT_COUNT)))} kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all ${esc(num(PRODUCT_COUNT))} in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
+  <p class="shelf-note">${specialLinksReady ? `Every buy button opens Amazon with our tracking ID in the link and is marked sponsored.` : `Purchase links are held until G-02 evidence exists for each product, so no buy button renders yet.`} We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all ${esc(num(PRODUCT_COUNT))} in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
 </section>
 <section class="band band-alt">
   <div class="band-head">

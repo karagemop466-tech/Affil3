@@ -1526,11 +1526,11 @@ a merge conflicts, the resolution keeps both sides' content and is logged here.
 | ID | Task | Status | Owner | Files touched |
 | --- | --- | --- | --- | --- |
 | I-01 | Claim board, push claim before touching other files | done | arena-78c96140-affil3 | COORDINATION.md (this section only) |
-| I-02 | Full repo review: read the tree line by line, flag irregularities | unclaimed → claimed | arena-78c96140-affil3 | this section (findings only) |
-| I-03 | Live-site verification: fetch every root page, check disclosure, sponsored links, sources on every table row | unclaimed → claimed | arena-78c96140-affil3 | this section (findings only) |
-| I-04 | Build + gate run on the merged tree; fix failures if found | unclaimed → claimed | arena-78c96140-affil3 | tooling only if a gate fails |
-| I-05 | Review the 11 open PRs; integrate what is mergeable without discarding others' work | unclaimed → claimed | arena-78c96140-affil3 | per-PR, logged below |
-| I-06 | Final integration PR to `main`, merge, confirm GitHub Pages deploy | unclaimed → claimed | arena-78c96140-affil3 | COORDINATION.md |
+| I-02 | Full repo review: read the tree line by line, flag irregularities | done | arena-78c96140-affil3 | this section (findings only) |
+| I-03 | Live-site verification: fetch every root page, check disclosure, sponsored links, sources on every table row | done | arena-78c96140-affil3 | this section (findings only); live fetch after PR #88 deploy |
+| I-04 | Build + gate run on the merged tree; fix failures if found | done | arena-78c96140-affil3 | verify 9,750 checks + every surface gate green; fixes: check_site link-escape rule, disclosure SKIP for build inputs, shopnow CI exclude path |
+| I-05 | Review the 11 open PRs; integrate what is mergeable without discarding others' work | done | arena-78c96140-affil3 | 9 merged, PR #39 extracted, PR #3 closed — table below |
+| I-06 | Final integration PR to `main`, merge, confirm GitHub Pages deploy | done | arena-78c96140-affil3 | PR #88 merged as `14dea9d` (2026-11-20T07:51:08Z); see completion record below |
 
 Claim pushed first, before any other file change, per the coordination rules.
 
@@ -1567,6 +1567,16 @@ newer `tools/build.mjs` rather than overwritten.
 
 Gate count after every step is recorded in the commit messages; last full run on this branch:
 **`verify.mjs` 7,132 checks, 0 failed**, disclosure PASS, archive PASS, every surface gate PASS.
+
+### I-06 completion record (session arena-78c96140)
+
+- **PR:** [#88](https://github.com/karagemop466-tech/Affil3/pull/88) — *Final integration: 9 of 11 open PRs, PR #39 extracted, PR #3 closed; G-02 gate + archive noindex adopted on main's current tree*.
+- **Merge:** completed without review, per the standing instruction, after **all 10 required checks passed** on the head (publish-gate, disclosure/archive integrity, verify, site-checks, check-site, build, kitchen-edit-gates, site-gates, build-and-gate/shopnow, Countertop Notes build+verify). Merge commit **`14dea9d`** at 2026-11-20T07:51:08Z (`gh pr merge 88 --merge`).
+- **Post-merge CI on `main`:** all runs for `14dea9d` completed **success** (publish-gate, disclosure, kitchen-edit, counterwise, site-gates, verify, site-checks, build-and-gate, Countertop Notes, Site checks).
+- **GitHub Pages:** build for `14dea9d` finished **built / ok** (started 07:51:10Z). Live verification by fetch of `https://karagemop466-tech.github.io/Affil3/` after deploy: disclosure strip above the fold carrying both required sentences, all five product cards show the G-02 hold ("Purchase link held for validation… no claim is made that the supplied short link is invalid") with `FLG-005` links, no price or rating text, sources/compare/flagged links resolve, illustration labelling present.
+- **One stale sentence found on the live deploy and fixed in this follow-up:** the shelf note still said "Buttons open Amazon…" while every button is held; the sentence is now generated from `specialLinksReady` (held vs. published wording).
+- **One CI defect found on the merged head and fixed in this follow-up:** PR #33's `build-and-gate` workflow excluded `shop/build-info.json` — a path from before the surface was relocated — so the timestamped `shopnow/build-info.json` failed the drift check on every run; the exclude now names `shopnow/build-info.json`.
+- Final gate numbers on the follow-up head: `npm run check` → verify **9,750 checks, 0 failed**, editorial PASS 21, disclosure PASS, archive PASS, all surface gates PASS, tree clean after a full rebuild.
 Session `771fbf79`: resolved second concurrent append conflict by retaining both records.
 - Merge result: **merged 2026-11-20T05:46:12Z** as merge commit `1075a62cbf38fc73fe481d5e3b892497f5a707e2`
   (`gh pr merge 22 --merge`). CI “Gate the published Pages site” (`npm run check`) passed on
