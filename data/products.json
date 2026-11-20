@@ -161,7 +161,7 @@
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
-      "model": "RJ38-8T-BLACK (Chefman product page); RJ38-SQSS-8T (stated in the Amazon listing's own copy)",
+      "model": "RJ38-8T-BLACK",
       "capacity_qt": "8",
       "capacity_note": "8 qt / 7.57 L per the Chefman page; the Amazon listing also states 8 quarts.",
       "temp_min_f": "",
@@ -198,12 +198,13 @@
         "note": "Stated in the 'About this item' copy of the Amazon listing on 2026-11-20. Kept separate from the manufacturer column because the two describe different models.",
         "model": "RJ38-SQSS-8T",
         "power": "1000 W / 120 V",
-        "temperature": "200-400 °F (200-400°F)",
-        "dimensions": "12.75 x 13.5 x 10 in (depth x width x height)",
+        "temperature": "200–400 °F",
+        "dimensions": "12.75 × 13.5 × 10 in",
         "capacity": "8 quarts",
         "material": "Stainless steel",
         "source": "S16"
-      }
+      },
+      "model_note": "The Amazon listing's own copy names a different model, RJ38-SQSS-8T (FLG-026)."
     },
     {
       "id": "P04",
