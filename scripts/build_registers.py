@@ -319,7 +319,7 @@ def build_suggestions() -> str:
   </section>
 
   <section>
-    <h2>Every rule quoted above, in full</h2>
+    <h2 id="claim-ledger">Every rule quoted above, in full</h2>
     <p class="small">Anchors below are what the policy boxes link to. Quotations are verbatim from
     the source named, retrieved {e(load('claims.json')['retrieved_at_utc'])}.</p>
 {chr(10).join(
@@ -422,7 +422,7 @@ def build_shop() -> str:
         written on the listing. Nothing here was tested by hand.</p>
         <p class="warnline">The intended product for this link is not yet confirmed &mdash; see
         <a href="questions.html#Q-03">Q-03</a>. Do not buy from this card on our say-so.</p>
-        <a class="outbound" href="{e(r['review_link'])}" rel="sponsored noopener" target="_blank">Check current price on Amazon &rarr;</a>
+        <a class="outbound" href="{e(r['review_link'])}" rel="sponsored nofollow noopener" target="_blank">Check current price on Amazon &rarr;</a>
       </article>""")
 
     clusters = []

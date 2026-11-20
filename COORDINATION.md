@@ -86,3 +86,65 @@ Status values: `unclaimed` · `in progress` · `done` · `needs review`.
 | 19 | Data-driven page build + compliance gate in CI | done | arena-43565031-affil3 | `scripts/build_registers.py`, `scripts/validate_site.py`, `.github/workflows/ci.yml` | — | Pages are generated from the JSON registers; the validator fails the build on an unsourced row, an unflagged blank, a missing disclosure strip, or a product link lacking `rel="sponsored"`. |
 | 20 | Executive summary refresh with verified findings | done | arena-43565031-affil3 | `EXECUTIVE_SUMMARY.md` | as above | |
 | 21 | Re-verify `3 qualifying sales in 180 days` and commission-rate claims | needs review | unowned | — | NOT confirmed in the policy text retrieved 2026-11-20 | Widely repeated by third-party blogs; absent from the retrieved Program Policies. Do not publish as fact until confirmed in Associates Central. |
+
+---
+
+## Completion record — session 43565031 (2026-11-20)
+
+### Scope actually touched
+`shop.html`, `verification.html`, `suggestions.html`, `questions.html` (new, generated) ·
+`data/{link-verification,claims,suggestions,open-questions,topics}.json` (new) ·
+`scripts/{build_registers,validate_site,check_markup,add_nav_entries}.py` (new) ·
+`docs/OFFICIAL-SOURCES.md` (new) · `.github/workflows/ci.yml` (new) ·
+`EXECUTIVE_SUMMARY.md` (rewritten) · `README.md` (rewritten from the one-line stub — **scope
+addition, logged** because it was not in the claim above) ·
+`index.html` (front-page `<main>` rewritten + nav) · `flagged.html` (FLG-002/FLG-003 corrected,
+8 rows appended) · `assets/css/main.css` (appended only) · all pages' nav + `sitemap.xml`
+via `scripts/add_nav_entries.py` (idempotent, marker-guarded, body copy untouched) ·
+`products.html` / `flagged.html` rel normalisation to `sponsored nofollow noopener`.
+**Not touched:** `assets/js/app.js`, `disclosure.html`, `privacy.html`, `about.html`, `feed.xml`,
+guide body copy, anything under `analytics/`.
+
+### Sources verified (all fetched this session, all listed in docs/OFFICIAL-SOURCES.md)
+- Associates Program Operating Agreement, updated 2025-10-15 — §1 Special Links and Program Content
+  definitions, §2 cease-payment-for-violation clause.
+- Associates Program Policies, updated 2026-04-14 — Commission Income Statement §1 (24-hour session,
+  **89-day** cart path, 180-day ship-and-pay), §6 payment timing/minimums; Participation Requirements
+  §1 (originality, public site in the application, unsuitable-site list incl. Amazon trademark in a
+  domain/tag/handle) and §2(b) (tag parameter, price display restriction, product-list originality,
+  misleading-claims ban, promotion expiry, sub-tag/end-user prohibition).
+- FTC Endorsement Guides: What People Are Asking — clear-and-conspicuous standard, 2023 revision,
+  "doesn't provide a safe harbor".
+- Live: all five `link.amazon/*` URLs, three controls, and four resulting Amazon product pages
+  (ASINs B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DZFD6R9Z).
+
+### Verification performed
+- Each submitted link requested once, anonymously; observed values recorded in fields separate from
+  the intended ones; the intended fields left blank because nobody has confirmed them.
+- Prices/ratings inside fetched page chunks were **rejected as evidence** — they belonged to
+  "customers who viewed this item also viewed" carousels, not to the landing listing.
+- The cached-response control is published as inconclusive rather than dropped.
+- Site-wide mechanical checks added and passing: 15 pages balanced markup, all internal links and
+  in-page anchors resolve, sitemap rows exist, disclosure present in header and footer of every page,
+  no displayed price anywhere, no unsupported superlative, every policy sentence traceable to a row in
+  `data/claims.json`.
+
+### Irregularities found (published on `flagged.html`, none blocking)
+1. **Two board rows were wrong and are corrected in place**: the short links *were* dereferenceable;
+   FLG-002's "observed redirect target blank" and FLG-003's "could not be dereferenced here" are
+   superseded with a dated explanation rather than deleted.
+2. All five tokens are 9 characters where listings use 10 — likely truncation.
+3. Four destinations carry `plpRedirect=mhFallback` and none match the submitted token.
+4. One destination (B0f3GKalj → B0DZFD6R9Z) is in a **different browse node** from the other three, so
+   the air-fryer editorial premise covers 3 of 4.
+5. No destination URL carries an Associates `tag` parameter, which Participation Requirements §2(b)
+   requires on every link placed on the site. Compliance is Amazon's call; not asserted.
+6. The widely repeated "3 qualifying sales / 180 days" rule is **absent** from the retrieved policy
+   text (UNV-01). Anyone planning a launch schedule around it should confirm in-account first.
+7. Twelve branches, two divergent site builds (main vs open PR #2), several overlapping COORDINATION
+   claims. Needs one integration decision — see Q-15.
+8. `assets/js/app.js` still POSTs to a non-existent `/analytics/collect` on static hosting, so clicks
+   are instrumented and collected nowhere. Left as-is (not my scope); tracked by SUG-11/Q-09.
+
+### PR / merge record
+- PR: filled in below at integration.

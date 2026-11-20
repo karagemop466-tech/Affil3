@@ -1,0 +1,29 @@
+name: site-gate
+
+# The compliance gate the brief asks for, wired into the workflow instead of left as a habit:
+# pages must be generated from the registers, and every register row must carry its source.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: registers are valid JSON
+        run: python3 -c "import json,glob;[json.load(open(f)) for f in glob.glob('data/*.json')];print('json ok')"
+      - name: generated pages match the registers
+        run: python3 scripts/build_registers.py --check
+      - name: publishing gate (sources, blanks, disclosure, sponsored, no prices, anchors)
+        run: python3 scripts/validate_site.py
+      - name: XML well-formed
+        run: python3 -c "import xml.dom.minidom as m;[m.parse(f) for f in ['sitemap.xml','feed.xml']];print('xml ok')"
+      - name: no unbalanced markup
+        run: python3 scripts/check_markup.py

@@ -179,11 +179,14 @@ SUPERLATIVE_RE = re.compile(
     r"proven to (be|increase)|#1|the best on the market|editor'?s choice)\b",
     re.I,
 )
-PRODUCT_LINK_RE = re.compile(
-    r"<a\b[^>]*href=\"https?://(?:www\.)?(?:amazon\.[a-z.]+|amzn\.to|link\.amazon)[^\"]*"
-    r"(?:/dp/|/product-reviews/|/gp/product|link\.amazon)[^\"]*\"[^>]*>",
-    re.I,
-)
+# Any anchor to a shopping host is a product link and must be labelled. Documentation pages that
+# happen to live on the same domain (associates help, customer Q&A) are exempt by path, because a
+# policy citation is not something you can buy through. Matched in two steps on purpose: an earlier
+# single regex anchored on /dp/, which let a bare `link.amazon/<token>` short link slip through the
+# gate entirely.
+SHOP_HOST_RE = re.compile(r"^https?://(?:www\.)?(?:amazon\.[a-z.]+|amzn\.to|link\.amazon)(?:/|$)", re.I)
+DOC_PATH_RE = re.compile(r"/(help|gp/help|ask|dp/non-affiliate)", re.I)
+A_WITH_HREF_RE = re.compile(r"<a\b[^>]*href=\"([^\"]+)\"[^>]*>", re.I)
 NEGATION_RE = re.compile(
     r"\b(no|not|never|unless|without|avoid|forbid|refuse|may not|must not|disallow|omit)\b", re.I)
 
@@ -217,11 +220,16 @@ for p in ALL:
         fail("R07", f"{rel} contains an unsupported claim: '{m.group(0)}'")
 
     # R05 product links marked sponsored
-    for tag in PRODUCT_LINK_RE.findall(txt):
+    for m in A_WITH_HREF_RE.finditer(txt):
+        href, tag = m.group(1), m.group(0)
+        if not SHOP_HOST_RE.match(href) or DOC_PATH_RE.search(href):
+            continue
         rel_m = re.search(r'rel="([^"]*)"', tag)
-        if not rel_m or "sponsored" not in rel_m.group(1):
-            href = re.search(r'href="([^"]*)"', tag).group(1)
+        rels = set(rel_m.group(1).split()) if rel_m else set()
+        if "sponsored" not in rels:
             fail("R05", f"{rel} product link lacks rel=sponsored: {href}")
+        if "nofollow" not in rels:
+            fail("R05", f"{rel} product link lacks rel=nofollow: {href}")
 
     # R13 in-page anchors resolve, so a cross-link never lands on the top of a long page
     ids = set(re.findall(r'\sid="([^"]+)"', txt))
