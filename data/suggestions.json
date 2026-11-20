@@ -549,6 +549,105 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-20",
+      "track": "measurement",
+      "topic": "Where the analytics collector actually runs",
+      "problem": "The counter is built, reviewed and tested, and it is switched off, because GitHub Pages cannot run a server. Every option below needs something the repository cannot provide on its own: a host, a service, or a decision about what is worth collecting at all.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the endpoint unset. The site publishes no traffic figures and no revenue figures, and the /measurement/ page says so in plain words.",
+          "tradeoff": "Nothing to deploy, nothing to disclose, nothing to get wrong. It also means the next guide topic is chosen by instinct rather than by measured queries, which is the gap the publishing cadence was supposed to close.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a small always-on host and point analyticsEndpoint at it.",
+          "tradeoff": "Turns measurement on the same day it is deployed. It also means the host, its logs, its uptime and its backups become part of what this site promises a reader, and the privacy notice has to describe a real company rather than a generic process.",
+          "effort": "an afternoon",
+          "risk": "medium"
+        },
+        {
+          "id": "C",
+          "label": "Publish daily aggregate counts to a public JSON file in this repository, written by a scheduled GitHub Actions workflow, and let the browser POST to a queue instead of the collector.",
+          "tradeoff": "No separate host and no server to pay for, and the counts stay in the repository history. It needs a write path for the browser that does not accept arbitrary POSTs, so the workflow is the part that has to be designed and reviewed carefully.",
+          "effort": "two to three days",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Measure only outbound clicks, with no page-view events at all.",
+          "tradeoff": "The smallest possible data set, and the only number that is actually tied to revenue. It cannot answer which guide brought the reader, which is the question the cadence decision needs.",
+          "effort": "one day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B if there is a host available and the privacy notice can be settled first (Q-16). D if the goal is strictly to count revenue-bearing clicks. The collector itself is ready: it was run end to end on 2026-11-20 and accepted all five defined events while rejecting malformed input, so the remaining work is hosting and disclosure, not code.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      "depends_on": [
+        "S-03",
+        "S-16"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-21",
+      "track": "platform",
+      "topic": "Image weight on a site whose job is to be found and read",
+      "problem": "Every guide page loaded an illustration of 3.3 to 4.0 MB. The artwork itself is fine and the file format was a poor fit for it: these are flat, grainy, mid-tone illustrations, which are exactly the images that compress well into a small palette. Six files were re-encoded to a 256-colour palette on 2026-11-20, which cut each from 3.3-4.0 MB to 0.9-1.1 MB with no visible change (measured pixel RMSE 0.012). The remaining weight is still real: an image that is the largest thing on the page slows the page down on the connections a reader is actually using.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the images as they are.",
+          "tradeoff": "Free, and the pages still render. It leaves the heaviest element on the page untouched for a site whose stated goal is organic traffic, where time-to-first-byte on mobile connections is a ranking input rather than a detail.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Re-encode the remaining illustrations to the same small palette and keep going (current state).",
+          "tradeoff": "No file path or artwork changes, so no page reference moves and no gate rule has to be written. The pages are now roughly a third of their previous weight.",
+          "effort": "half an hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Move every illustration to JPEG, delete the PNGs, and add a gate rule that no image over 300 KB may be committed.",
+          "tradeoff": "The smallest files and the smallest ongoing cost, because a rule stops the problem returning. It also means the illustration pages are no longer lossless, and the rule needs an exception path for a genuinely detailed image.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "D",
+          "label": "Keep the illustrations but load them lazily, and reserve their space with the width and height already in the markup.",
+          "tradeoff": "The markup already carries width and height, so the layout does not shift, and lazy loading is already on for the figures below the fold. The hero image on each guide page is above the fold and would still load eagerly, which is where most of the weight is.",
+          "effort": "one hour",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B now, C when the next illustration is added. The re-encode was done with the same file names and the same pixels, so it is safe to do without a decision, and a weight rule in the gate would stop it coming back.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "B",
+      "decided_on": "2026-11-20",
+      "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
