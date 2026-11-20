@@ -530,3 +530,56 @@ the front-page rebuild.
 - **2026-11-20 — no-network finding.** `curl` in this sandbox resolves only to the allowed host list
   (`github.com`, `registry.npmjs.org`, `pypi.org`). Direct `curl` to `amazon.com`/`ftc.gov` returns `000`. The
   page-reading tool used below (`fetch_page`) *does* read those hosts, and was used for every claim added here.
+
+## Session `b1c9cb53` — work log (continued)
+
+### What changed
+
+- **New data.** `data/catalog.json`: one record per product carrying brand, model, shape, "best for",
+  "not for", a three-step decision, a specification list and a buyer FAQ. Every specification names the
+  source it was read from; every blank specification says why it is blank.
+- **New pages.** `/products/<slug>/` ×5 (with Product, FAQPage and BreadcrumbList JSON-LD), `/compare/`, `/search/`.
+- **Rebuilt pages.** `/` (shop front), `/shop/` (product grid first, full record below), `/suggestions/`
+  (effort, expected impact, blocking dependency and basis per option, plus a decision log),
+  `/questions/` (grouped blocking / design / content), `/guides/` ×5 (sourced tables, 2–3 min reads),
+  `/executive-summary/`.
+- **Gate.** `tools/verify.mjs` grew from 1,317 to 2,225 checks. New: catalog field requirements, "a value
+  must cite a source and a blank must explain itself", product-page requirements, product-page sitemap
+  coverage, and WCAG AA contrast computed from the stylesheet's own tokens.
+
+### Verification performed in this session
+
+| Source | Check | Result |
+| --- | --- | --- |
+| S14 Chefman dual-window 6 Qt page | fetched 2026-11-20, specifications read directly | verified |
+| S15 Chefman 8 Qt page | fetched 2026-11-20, specifications read directly | verified |
+| S16 Emeril Everyday French Door 360 page | fetched 2026-11-20, specification tiles and description read | verified; page contradicts itself on preset count |
+| S17 ThermoMaven F1 Ace page | fetched 2026-11-20, features and FAQ read | verified |
+| S18 CHEF iQ Sense page | fetched 2026-11-20, specifications and FAQ read | verified |
+| S19 NIST FAQ | search excerpt of the official nist.gov page | excerpt verified; exact wording needs a manual re-read before quoting elsewhere |
+| S09 FSIS temperature chart | full page fetched 2026-11-20 (last updated April 14, 2025) | verified; upgraded from excerpt |
+| S20 Amazon listing B08DKYBTPH | page title read 2026-11-20 | observed |
+| Amazon listings B0CDY277D3, B09B7SB46R | page titles read 2026-11-20 | observed |
+
+**No-network note.** `curl` reaches only the allowlisted hosts in this sandbox; every source above was
+read with the page-fetch tool, which does reach them. Anything that tool could not read is left blank.
+
+### Irregularities opened this session
+
+FLG-023 (P01 listed as an oven, maker says basket) · FLG-024 (P02 preset and accessory counts disagree on
+the maker's own page) · FLG-025 (P05's 1,000 °F is ambient, not internal) · FLG-026 (P03 450 °F listing
+against 400 °F maker) · FLG-027 (no IP rating published for P04) · FLG-028 ("NIST-certified" unsupported
+by a certificate; NIST's own FAQ says it does not endorse products) · FLG-029 (the five analytics events
+were chosen by this build) · FLG-030 (no imagery) · FLG-031 (prices exist but are deliberately not shown)
+· FLG-032 (listing matched to maker page by name, not barcode) · FLG-033 (no product has been tested)
+· FLG-034 (guide topics are hypotheses, not keyword research).
+
+All are published on `/flagged/` with their sources and the manual step that would close each.
+
+### Gate demonstrations
+
+- Removing `rel="sponsored"` from an Amazon link → build fails.
+- Setting `--muted` to `#a8a49b` → two contrast checks fail at 2.36:1 and 2.49:1; restored, green.
+- Blanking a catalog specification without a note → the sourcing check fails.
+- The search index was executed against its own data: "thermometer" returns 4 entries, "8 qt" returns 1,
+  "zzz" returns 0.

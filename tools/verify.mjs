@@ -104,6 +104,35 @@ const colAllowed = (colSrc.match(/const EVENTS = \{([\s\S]*?)\n\};/)[1].match(/\
 check('five analytics events agree across events.json, browser script and collector', EVENT_NAMES === jsAllowed && jsAllowed === colAllowed, `${EVENT_NAMES} | ${jsAllowed} | ${colAllowed}`);
 check('browser script sets no cookies or storage', !/document\.cookie|localStorage|sessionStorage/.test(jsSrc));
 
+// ---------- 1c. design: WCAG AA contrast on every colour pair the site uses ----------
+// Computed here rather than asserted in prose, so a palette change cannot silently drop below AA.
+const css = fs.readFileSync(path.join(ROOT, 'src/assets/style.css'), 'utf8');
+const cssVar = (name) => {
+  const m = css.match(new RegExp('--' + name + ':\\s*(#[0-9a-fA-F]{6})'));
+  return m ? m[1] : null;
+};
+const hexLum = (h) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255)
+    .map((c) => (c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4)));
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+const contrast = (a, b) => {
+  const [l1, l2] = [hexLum(a), hexLum(b)].sort((x, y) => y - x);
+  return (l1 + 0.05) / (l2 + 0.05);
+};
+const PAIRS = [
+  ['ink', 'paper'], ['muted', 'paper'], ['muted', 'card'], ['accent', 'paper'], ['accent', 'card'],
+  ['accent', 'accent-soft'], ['ink', 'strip'], ['warn', 'warn-bg'], ['bad', '#f7dedc'], ['good', '#e2efe6'],
+];
+for (const [fg, bg] of PAIRS) {
+  const f = cssVar(fg), b = bg.startsWith('#') ? bg : cssVar(bg);
+  check(`contrast ${fg} on ${bg} reaches WCAG AA (4.5:1)`, !!f && !!b && contrast(f, b) >= 4.5, f && b ? `${f} on ${b} = ${contrast(f, b).toFixed(2)}:1` : 'token missing');
+}
+// Fixed pairs that do not come from a token.
+for (const [label, fg, bg] of [['button label', '#ffffff', '#7a3b1d'], ['footer body', '#e9e4d8', '#26241f'], ['footer fine print', '#bdb6a6', '#26241f']]) {
+  check(`contrast ${label} reaches WCAG AA (4.5:1)`, contrast(fg, bg) >= 4.5, `${contrast(fg, bg).toFixed(2)}:1`);
+}
+
 // ---------- 2. generated site ----------
 if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   failures.push('generated site missing: run node tools/build.mjs first');

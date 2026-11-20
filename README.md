@@ -7,11 +7,30 @@ Amazon Associates publications built from a verified source register. Tracking I
 GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
 Nothing was deleted to make room; each session's output is kept and reachable.
 
+## The shop
+
+The root site is a shop front, not an audit trail. A visitor lands on five kitchen appliances, each
+with a reason to pick it, the one number that decides it, and a way to buy. The registers are all
+still there, behind the footer.
+
+| Path | What a visitor finds |
+|---|---|
+| `/` | Front page: a hero, four "start here if" lanes, the five-product grid, category tiles |
+| `/products/<slug>/` | One page per product: best for, not for, how to decide in a minute, every spec cited to the maker, buyer FAQ, buy link |
+| `/compare/` | Basket versus oven-style, decided on published facts only |
+| `/guides/` | Five question-shaped guides, each with a sourced table |
+| `/search/` | Client-side search over products, guides and categories |
+| `/categories/` | Three category clusters |
+
+Everything below the shop is unchanged and still reachable from the footer of every page: the shop
+table, source register, open questions, suggestions board, flagged items, ledger, measurement and
+compliance pages.
+
 ## What is published
 
 | Path | Owner | What it is |
 |---|---|---|
-| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, product pages, compare, search, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
@@ -47,6 +66,15 @@ python3 tools/check_site.py  # gates
 ```
 
 Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
+
+## What the root-site gate refuses to let through
+
+Every figure on a product page must cite a manufacturer or observed source; a published value with no
+source fails the build, and so does a blank value with no explanation next to it. On top of that:
+no price-like amount anywhere, no star rating, a tagged link on every product page, `rel="sponsored"`
+on every Amazon link, the Associates statement on every page, a product page for every product, sitemap
+coverage, working internal links, and WCAG AA (4.5:1) contrast on every colour pair in the stylesheet.
+That is 2,225 checks on the current tree.
 
 ## What the editorial gate refuses to let through
 
