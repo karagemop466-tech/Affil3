@@ -698,6 +698,15 @@ FLG-010 prices/ratings blank by policy · FLG-011 display names derived from ver
 ## Publish log (this session)
 
 - PR: https://github.com/karagemop466-tech/Affil3/pull/22
-- Merge result: recorded in the follow-up recording PR (see next entry)
-- GitHub Pages: root source (`main` /) unchanged and left as the single published root; this
-  session's surface is live at `/crisp-index/` after the post-merge deploy.
+- Merge result: **merged 2026-11-20T05:46:12Z** as merge commit `1075a62cbf38fc73fe481d5e3b892497f5a707e2`
+  (`gh pr merge 22 --merge`). CI “Gate the published Pages site” (`npm run check`) passed on
+  the PR head and again on the merge push to `main` (1317 checks, 0 failed; committed output
+  matched a clean build). This recording entry is itself carried by a follow-up PR, per the
+  repo’s pattern (cf. PR #20).
+- GitHub Pages: source `main` at `/` unchanged. Deploy **built** for merge commit `1075a62`
+  (pages build 2026-11-20T05:46:13Z → 05:46:33Z, no errors; `pages.status = built`).
+  Live confirmation by fetch after deploy:
+  - root publication: https://karagemop466-tech.github.io/Affil3/
+  - this session’s surface: https://karagemop466-tech.github.io/Affil3/crisp-index/
+- Gates re-run on the combined tree before merge: `node tools/verify.mjs` 1317/1317,
+  `python3 tools/validate.py` PASS (18 pages), `python3 tools/check_links.py` 0 broken links.
