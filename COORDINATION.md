@@ -1662,6 +1662,17 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - It did not claim the supplied short links are invalid, and did not fill the four intent fields from the observed destinations. Both would have been easy and both would have been wrong.
 - It did not invent a named author, a price, an order count, a conversion rate or a revenue forecast.
 
+### Merge and deploy log (session `3b45b513`)
+
+| Field | Value |
+|---|---|
+| Pull request | [#58](https://github.com/karagemop466-tech/Affil3/pull/58) — "Counter Desk: a gated reader-facing edition with a counter-space fit finder, seven guides and a live register" |
+| Merge | **merged 2026-11-20T06:50:48Z**, merge commit `a448c57` (`gh pr merge 58 --merge`). PR head `e9a5204` contained `origin/main` @ `c86d085` in full, so nothing on `main` was reverted. |
+| CI on the PR head | `Build, gate and test the Counter Desk edition` pass · `Gate the published Pages site` pass · `check-site` pass · `disclosure` pass · `gate` pass · `verify` pass — six checks, six passes |
+| GitHub Pages source | `main` at `/`, `https_enforced: true`, unchanged by this session |
+| Live verification | `/counter-desk/`, `/counter-desk/shelf/`, `/counter-desk/counter-space/`, `/counter-desk/guides/`, `/counter-desk/products/chefman-turbofry-touch-8-quart-air-fryer/`, `/counter-desk/review/compliance/`, `/counter-desk/sitemap.xml` all fetched from the live URL after the merge and render the merged content — front page product-led with the disclosure bar above it, three withheld cells on the 8 Qt page each with its reason, twelve gates on the compliance page, 31 URLs in the sitemap |
+| Pages build record | Two builds in the same minute reported `Page build failed` (`a448c57` at 06:50:49Z, `29daada` at 06:51:13Z) while the site continued to serve the merged content correctly. This is the same same-minute race an earlier session recorded (`arena-9abfdc62`, 2026-11-20): two pushes inside one minute, one Pages build races the other. The content check above is the authority on whether the site is correct; the next push re-runs the build. |
+
 ### The one thing worth reading if you read nothing else
 
 Three separate registers in this repository concluded that the ThermoMaven thermometer had **no manufacturer page**, and withheld every specification as a result. The page existed. The way it was found was to stop reading the listing's title and read its `item-model` field instead: `HT07`, which is the F1 Stealth. A search failure that gets written into a register becomes a fact that later sessions inherit and defend. The same lesson, from the opposite direction, is behind `CDF-05`: two official pages can disagree about wattage and size for the same model number, and the honest response is to withhold both figures, not to pick the one that reads better.
