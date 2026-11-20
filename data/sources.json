@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.0.0",
+  "verified_on": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "tier": {
+    "official": "Publisher's own site (amazon.com, manufacturer domain). Usable as a citation.",
+    "official_help": "Amazon or government help/policy page. Usable as a citation.",
+    "listing": "Retailer product detail page. Usable for identity, marked listing-only for specs.",
+    "not_used": "Third-party review sites, aggregators, affiliate blogs. Never cited for a value."
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "tier": "official_help",
+      "org": "Amazon",
+      "title": "Associates Program Operating Agreement (updated 2025-10-15)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "supports": "Section 5 requires the exact statement 'As an Amazon Associate I earn from qualifying purchases.' Section 1 requires tagged Special Links.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S02",
+      "tier": "official_help",
+      "org": "Amazon",
+      "title": "Associates Program Policies (updated 2026-04-14)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "supports": "Price/availability display limited to Amazon-served links or Creators API/PA API; star ratings and reviews only via PA API; Associates ID must appear as a URL parameter; 24-hour session definition.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S03",
+      "tier": "official_help",
+      "org": "Amazon Associates Central",
+      "title": "Why do I have to identify myself as an Associate?",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98",
+      "supports": "Link-level disclosure must be clear and conspicuous; '(paid link)', '#ad', '#CommissionsEarned' given as examples.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S04",
+      "tier": "official_help",
+      "org": "U.S. Federal Trade Commission",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "supports": "Affiliate relationship must be disclosed near the link and in the content itself; disclosure placement must be where readers will see it.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S05",
+      "tier": "official_help",
+      "org": "U.S. Federal Trade Commission",
+      "title": "16 CFR Part 255 — Guides Concerning Use of Endorsements and Testimonials in Advertising",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
+      "supports": "Definition of 'clear and conspicuous'; material connection disclosure duty.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S06",
+      "tier": "official",
+      "org": "CHEFMAN",
+      "title": "TurboFry Touch 6 Qt. Dual-Window Air Fryer — RJ38-SQPF-3TDB-2W",
+      "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "supports": "Capacity, temperature range, dimensions, weight, power, model number, certification, warranty for product P1.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S07",
+      "tier": "official",
+      "org": "CHEFMAN",
+      "title": "TurboFry Touch Stainless-Steel Air Fryer — RJ38-SQSS-8T",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "supports": "Capacity, temperature range, dimensions, weight, power, model number, warranty for product P3.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S08",
+      "tier": "official",
+      "org": "Emeril Everyday",
+      "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT — 4-00675-02A-VN",
+      "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "supports": "Capacity, dimensions, voltage, preset count (spec tiles), warranty for product P2.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S09",
+      "tier": "official",
+      "org": "Emeril Everyday",
+      "title": "French Door AirFryer 360 — Grill Plate accessory page",
+      "url": "https://www.emerileveryday.com/products/parts_and_accesories_airfryers_ovens_french_door_fafo_series_french_door_airfryer_360_grill_plate__fafo-001",
+      "supports": "Manufacturer states the grill plate is now an optional accessory and is not included with the oven.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S10",
+      "tier": "official",
+      "org": "CHEF iQ",
+      "title": "iQ Sense — product page",
+      "url": "https://chefiq.com/products/iq-sense",
+      "supports": "Five sensors (4 internal + 1 ambient), 1000°F ambient rating, probe dimensions, connectivity, USB-C, dishwasher-safe claim for product P5.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S11",
+      "tier": "official",
+      "org": "CHEF iQ",
+      "title": "iQ Sense FAQ",
+      "url": "https://chefiq.com/pages/new-iq-sense-faq",
+      "supports": "Inserted probe max 212°F, ambient sensor limits, Gen 3 probe runtime, device compatibility, probe pairing limits.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S12",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven — B0CDY277D3",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "supports": "Observed destination of supplied link 1; listing identity. No price or rating is republished.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S13",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven — B09B7SB46R",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "supports": "Observed destination of supplied link 2; listing identity.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S14",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "Chefman Air Fryer 8 Qt TurboFry 4-in-1 — B08DKYBTPH",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "supports": "Observed destination of supplied link 3; listing spec table and 'newer model' callout.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S15",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "CHEF iQ Sense Smart Wireless Meat Thermometer, 3 Probes, Gen3 — B0DZFD6R9Z",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "supports": "Observed destination of supplied link 5; listing identity.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S16",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "Amazon search — query 'B0C8MOW59' returns no results",
+      "url": "https://www.amazon.com/s?k=B0C8MOW59",
+      "supports": "Negative evidence for product P4: no catalog match for the supplied code.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S17",
+      "tier": "official_help",
+      "org": "Google",
+      "title": "Search Console — getting started",
+      "url": "https://support.google.com/webmasters/answer/9128668",
+      "supports": "Process for verifying site ownership and submitting a sitemap.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S18",
+      "tier": "official_help",
+      "org": "Google",
+      "title": "Build and submit a sitemap",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "supports": "Sitemap format and submission requirements used by tools/build.py.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S19",
+      "tier": "official_help",
+      "org": "schema.org",
+      "title": "Product structured data (schema.org/Product)",
+      "url": "https://schema.org/Product",
+      "supports": "Fields used in the JSON-LD product markup emitted for each review page.",
+      "accessed": "2026-11-20"
+    }
+  ]
+}
