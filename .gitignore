@@ -1,0 +1,6 @@
+# runtime event log — produced by tools/analytics_sink.py, never committed
+data/events.ndjson
+data/research/
+__pycache__/
+*.pyc
+.venv/

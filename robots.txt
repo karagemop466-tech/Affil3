@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml

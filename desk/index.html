@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open questions — Counter &amp; Crumb</title>
+<meta name="description" content="Every question that has to be answered before the next real decision, with what is known, what is missing and how to close it.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/desk/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Counter &amp; Crumb">
+<meta property="og:title" content="Open questions — Counter &amp; Crumb">
+<meta property="og:description" content="Every question that has to be answered before the next real decision, with what is known, what is missing and how to close it.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/desk/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Open questions — Counter &amp; Crumb">
+<meta name="twitter:description" content="Every question that has to be answered before the next real decision, with what is known, what is missing and how to close it.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta name="author" content="Counter &amp; Crumb desk">
+<link rel="alternate" type="application/rss+xml" title="Counter &amp; Crumb" href="/feed.xml">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<header class="masthead">
+  <div class="wrap masthead__inner">
+    <a class="brand" href="/">
+      <svg class="brand__mark" viewBox="0 0 40 40" role="img" aria-label="Counter and Crumb" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="1.5" width="37" height="37" rx="10" fill="#b23c12"/>
+        <path d="M13 25c0-4.4 3.1-8 7-8s7 3.6 7 8" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M11 27.5h18" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M16 17.5c0-2 1.8-3.6 4-3.6s4 1.6 4 3.6" stroke="#fdeee6" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Counter &amp; Crumb</span>
+        <span class="brand__tag">A buyer's desk</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/">Home</a><a href="/guides/">Guides</a><a href="/products/">Products</a><a href="/compare/">Compare</a>
+    </nav>
+  </div>
+</header>
+
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap">
+    <p><span class="disclosure__label">Disclosure</span>As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+  </div>
+</div>
+<main id="main">
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>Open questions</h1>
+    <p class="lede">What has to be answered before the next real decision can be made. Each row says what we already know and where it came from, what is missing, and the specific step that would close the gap.</p>
+    <p class="table-note">A question is closed when the evidence column has a value that can be re-checked at the source. A question stays open while the answer would only be a guess.</p>
+  </div>
+  
+    <h2>The affiliate account itself</h2>
+    <p class="lede" style="margin-bottom:1rem">Almost every downstream decision depends on whether the tracking ID is the real one and whether the account can actually reach the API.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th data-col="id" aria-sort="none" scope="col">ID</th>
+            <th data-col="priority" aria-sort="none" scope="col">Priority</th>
+            <th data-col="question" aria-sort="none" scope="col">Question</th>
+            <th data-col="known" scope="col">What we already know</th>
+            <th data-col="missing" scope="col">What is missing</th>
+            <th data-col="close" scope="col">How to close it</th>
+            <th data-col="status" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-01"><span class="mono">Q-01</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Is shopnow047c-20 the live Store ID for this site&#x27;s Associates account?">
+            <strong>Is shopnow047c-20 the live Store ID for this site&#x27;s Associates account?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Which tag every outbound link on this site carries
+            </div>
+          </td>
+          <td data-col="known" data-sort="Amazon publishes the tag shape as an Associates ID or &quot;tag&quot; (appearing as XXXXX-##, or such other format as we may designate). The submitted value matches that shape.">Amazon publishes the tag shape as an Associates ID or &quot;tag&quot; (appearing as XXXXX-##, or such other format as we may designate). The submitted value matches that shape.</td>
+          <td data-col="missing" data-sort="Any public confirmation that this specific tag was issued, is active, or belongs to this account.">Any public confirmation that this specific tag was issued, is active, or belongs to this account.</td>
+          <td data-col="close" data-sort="Read the Store ID from the account header in Associates Central and set affiliate.tracking_id in data/config.json.">Read the Store ID from the account header in Associates Central and set affiliate.tracking_id in data/config.json.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-02"><span class="mono">Q-02</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Is the site enrolled in the Associates Program, and is its URL on the approved Site list?">
+            <strong>Is the site enrolled in the Associates Program, and is its URL on the approved Site list?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the site can be published as an affiliate site at all
+            </div>
+          </td>
+          <td data-col="known" data-sort="The Operating Agreement requires that a Site contain original content and be publicly available at the address given in the application, and it states that Amazon may review, monitor and crawl the Site to verify compliance.">The Operating Agreement requires that a Site contain original content and be publicly available at the address given in the application, and it states that Amazon may review, monitor and crawl the Site to verify compliance.</td>
+          <td data-col="missing" data-sort="Enrolment state and approved Site URLs, both of which sit behind a login.">Enrolment state and approved Site URLs, both of which sit behind a login.</td>
+          <td data-col="close" data-sort="Check the account&#x27;s Site list and add the live GitHub Pages URL before the next review cycle.">Check the account&#x27;s Site list and add the live GitHub Pages URL before the next review cycle.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-03"><span class="mono">Q-03</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Are the five submitted link.amazon URLs enrolled in the owner&#x27;s Associates workflow, and do they report clicks and orders?">
+            <strong>Are the five submitted link.amazon URLs enrolled in the owner&#x27;s Associates workflow, and do they report clicks and orders?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the five submitted links are usable at all
+            </div>
+          </td>
+          <td data-col="known" data-sort="All five resolve to an amazon.com/dp page today, and each destination was read directly. Amazon&#x27;s policies require Special Links to be accessed directly from your Site, restrict Redirecting Links, and restrict shorteners that make the Amazon destination unclear.">All five resolve to an amazon.com/dp page today, and each destination was read directly. Amazon&#x27;s policies require Special Links to be accessed directly from your Site, restrict Redirecting Links, and restrict shorteners that make the Amazon destination unclear.</td>
+          <td data-col="missing" data-sort="Whether these specific short links carry the owner&#x27;s tag and appear in their tracking report. This is private account data and cannot be read from any public page.">Whether these specific short links carry the owner&#x27;s tag and appear in their tracking report. This is private account data and cannot be read from any public page.</td>
+          <td data-col="close" data-sort="Open one link in the enrolled workflow and check the destination and the tracking report before touching the other four.">Open one link in the enrolled workflow and check the destination and the tracking report before touching the other four.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-04"><span class="mono">Q-04</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="For each of the five submitted links, what product was the owner actually trying to promote?">
+            <strong>For each of the five submitted links, what product was the owner actually trying to promote?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Which ASIN each guide should link to
+            </div>
+          </td>
+          <td data-col="known" data-sort="Where each link goes today, confirmed on 2026-11-20. Three tokens are 9 characters and so cannot be ASINs; two are 10 characters but neither was confirmed as an issued ASIN.">Where each link goes today, confirmed on 2026-11-20. Three tokens are 9 characters and so cannot be ASINs; two are 10 characters but neither was confirmed as an issued ASIN.</td>
+          <td data-col="missing" data-sort="The intended ASIN, official listing URL, confirmation date and source for each of the five.">The intended ASIN, official listing URL, confirmation date and source for each of the five.</td>
+          <td data-col="close" data-sort="Owner confirms each intent. Until then the intended fields in the register stay blank.">Owner confirms each intent. Until then the intended fields in the register stay blank.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-05"><span class="mono">Q-05</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="What commission rate applies to Kitchen and Dining and to Kitchen Utensils and Gadgets?">
+            <strong>What commission rate applies to Kitchen and Dining and to Kitchen Utensils and Gadgets?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Any pricing, ranking or revenue claim
+            </div>
+          </td>
+          <td data-col="known" data-sort="Amazon states Standard Commission Income is described in the Appendix, and that the rate card sits behind sign-in. The Operating Agreement states Amazon makes no representation about expected traffic or commission income.">Amazon states Standard Commission Income is described in the Appendix, and that the rate card sits behind sign-in. The Operating Agreement states Amazon makes no representation about expected traffic or commission income.</td>
+          <td data-col="missing" data-sort="The actual percentage for each category, and therefore any earnings model.">The actual percentage for each category, and therefore any earnings model.</td>
+          <td data-col="close" data-sort="Read the rate card while signed in and record it with the date it was read.">Read the rate card while signed in and record it with the date it was read.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr></tbody>
+      </table>
+    </div>
+    <h2>The data we can and cannot publish</h2>
+    <p class="lede" style="margin-bottom:1rem">Amazon&#x27;s rules decide what may appear on a page at all. Getting this wrong is what gets an account closed.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th data-col="id" aria-sort="none" scope="col">ID</th>
+            <th data-col="priority" aria-sort="none" scope="col">Priority</th>
+            <th data-col="question" aria-sort="none" scope="col">Question</th>
+            <th data-col="known" scope="col">What we already know</th>
+            <th data-col="missing" scope="col">What is missing</th>
+            <th data-col="close" scope="col">How to close it</th>
+            <th data-col="status" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-06"><span class="mono">Q-06</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="May this site display a price, and if so, how does it get one?">
+            <strong>May this site display a price, and if so, how does it get one?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether price and availability can be shown on product pages
+            </div>
+          </td>
+          <td data-col="known" data-sort="Program Policies 2(b) allows prices and availability on your Site only if Amazon serves the link that displays them, or if you obtain pricing through Creators API or PA API. The GetItems reference exposes prices only through the offersV2.listings.price resource.">Program Policies 2(b) allows prices and availability on your Site only if Amazon serves the link that displays them, or if you obtain pricing through Creators API or PA API. The GetItems reference exposes prices only through the offersV2.listings.price resource.</td>
+          <td data-col="missing" data-sort="Live API credentials, so no price can be fetched yet.">Live API credentials, so no price can be fetched yet.</td>
+          <td data-col="close" data-sort="Register for Creators API and wire the price lookup to the self-hosted endpoint. Until then the widget stays blank and links out.">Register for Creators API and wire the price lookup to the self-hosted endpoint. Until then the widget stays blank and links out.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-07"><span class="mono">Q-07</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="May this site show Amazon star ratings or customer review counts?">
+            <strong>May this site show Amazon star ratings or customer review counts?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether ratings and review counts can appear in comparison tables
+            </div>
+          </td>
+          <td data-col="known" data-sort="Program Policies 5(t) bars displaying Amazon customer reviews or star ratings on your Site unless they are obtained through Creators API or PA API. They were seen while reading the listing pages, and they are deliberately absent from every table on this site.">Program Policies 5(t) bars displaying Amazon customer reviews or star ratings on your Site unless they are obtained through Creators API or PA API. They were seen while reading the listing pages, and they are deliberately absent from every table on this site.</td>
+          <td data-col="missing" data-sort="API access, which would make a rating display compliant.">API access, which would make a rating display compliant.</td>
+          <td data-col="close" data-sort="Same as Q-06. Until then the comparison tables compare only what the official titles state.">Same as Q-06. Until then the comparison tables compare only what the official titles state.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-08"><span class="mono">Q-08</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="Which API should the platform call, and what happens if it is called with old credentials?">
+            <strong>Which API should the platform call, and what happens if it is called with old credentials?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: How the research tooling talks to Amazon
+            </div>
+          </td>
+          <td data-col="known" data-sort="PA-API 5 is deprecated. Calls to it now return HTTP 403 with an AccessDeniedException. The Creators API is the supported path, with the host https://creatorsapi.amazon, a regional token endpoint and the scope creatorsapi::default.">PA-API 5 is deprecated. Calls to it now return HTTP 403 with an AccessDeniedException. The Creators API is the supported path, with the host https://creatorsapi.amazon, a regional token endpoint and the scope creatorsapi::default.</td>
+          <td data-col="missing" data-sort="Client credentials for the Creators API.">Client credentials for the Creators API.</td>
+          <td data-col="close" data-sort="Register in Associates Central and set the credentials in the server environment, never in the repository.">Register in Associates Central and set the credentials in the server environment, never in the repository.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P3">
+          <td data-col="id" data-sort="Q-09"><span class="mono">Q-09</span></td>
+          <td data-col="priority" data-sort="P3"><span class="badge badge--med">P3</span></td>
+          <td data-col="question" data-sort="Which specifications can be repeated on this site without an API call?">
+            <strong>Which specifications can be repeated on this site without an API call?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Which product attributes are safe to restate
+            </div>
+          </td>
+          <td data-col="known" data-sort="Program Policies 2(b) forbids inaccurate, overbroad or misleading claims about any Product, and separately restricts prices and availability. The safe reading is that descriptive attributes taken from the official listing title can be restated as long as they stay accurate.">Program Policies 2(b) forbids inaccurate, overbroad or misleading claims about any Product, and separately restricts prices and availability. The safe reading is that descriptive attributes taken from the official listing title can be restated as long as they stay accurate.</td>
+          <td data-col="missing" data-sort="A published Amazon ruling on exactly which attribute classes are restricted. The line drawn on this site is conservative.">A published Amazon ruling on exactly which attribute classes are restricted. The line drawn on this site is conservative.</td>
+          <td data-col="close" data-sort="Review the first season of published copy with the account owner&#x27;s compliance reviewer.">Review the first season of published copy with the account owner&#x27;s compliance reviewer.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-10"><span class="mono">Q-10</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="Does a comparison page need extra original content to host Special Links?">
+            <strong>Does a comparison page need extra original content to host Special Links?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the comparison pages are allowed to exist as product lists
+            </div>
+          </td>
+          <td data-col="known" data-sort="Program Policies 2(b) says that when linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link, and defines product lists to include search results, events and department homepages.">Program Policies 2(b) says that when linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link, and defines product lists to include search results, events and department homepages.</td>
+          <td data-col="missing" data-sort="Nothing. Each comparison page on this site carries original written analysis alongside the links.">Nothing. Each comparison page on this site carries original written analysis alongside the links.</td>
+          <td data-col="close" data-sort="Already handled. Listed so the review can confirm the analysis is genuinely original and not a rewritten manufacturer blurb.">Already handled. Listed so the review can confirm the analysis is genuinely original and not a rewritten manufacturer blurb.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="closed">
+            <span class="badge badge--done">closed</span>
+          </td>
+        </tr></tbody>
+      </table>
+    </div>
+    <h2>Editorial and traffic</h2>
+    <p class="lede" style="margin-bottom:1rem">The site needs to earn its traffic from questions people actually ask, not from guesses about what ranks.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th data-col="id" aria-sort="none" scope="col">ID</th>
+            <th data-col="priority" aria-sort="none" scope="col">Priority</th>
+            <th data-col="question" aria-sort="none" scope="col">Question</th>
+            <th data-col="known" scope="col">What we already know</th>
+            <th data-col="missing" scope="col">What is missing</th>
+            <th data-col="close" scope="col">How to close it</th>
+            <th data-col="status" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-11"><span class="mono">Q-11</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Which question do readers in this niche actually type into a search box?">
+            <strong>Which question do readers in this niche actually type into a search box?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Which guide gets written next
+            </div>
+          </td>
+          <td data-col="known" data-sort="Four candidate topics exist as working titles. They are hypotheses, not claims about popularity, search volume or product superiority.">Four candidate topics exist as working titles. They are hypotheses, not claims about popularity, search volume or product superiority.</td>
+          <td data-col="missing" data-sort="Real query data. There is no Search Console property and no analytics history.">Real query data. There is no Search Console property and no analytics history.</td>
+          <td data-col="close" data-sort="Verify the site in Search Console, let the analytics endpoint collect for a season, then pick from measured queries.">Verify the site in Search Console, let the analytics endpoint collect for a season, then pick from measured queries.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-12"><span class="mono">Q-12</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="How much of the traffic converts, and does the site&#x27;s own counter agree with Amazon&#x27;s report?">
+            <strong>How much of the traffic converts, and does the site&#x27;s own counter agree with Amazon&#x27;s report?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the first-party click counter is worth trusting
+            </div>
+          </td>
+          <td data-col="known" data-sort="The site records five defined events and posts them to a self-hosted endpoint. The campaign ledger is defined with the exact columns Amazon&#x27;s own reporting can fill.">The site records five defined events and posts them to a self-hosted endpoint. The campaign ledger is defined with the exact columns Amazon&#x27;s own reporting can fill.</td>
+          <td data-col="missing" data-sort="An enrolled account with a working tracking report to reconcile against, and enough traffic for the numbers to mean anything.">An enrolled account with a working tracking report to reconcile against, and enough traffic for the numbers to mean anything.</td>
+          <td data-col="close" data-sort="After one full reporting month, reconcile the ledger&#x27;s reported_orders column against the Amazon report for the same period.">After one full reporting month, reconcile the ledger&#x27;s reported_orders column against the Amazon report for the same period.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P3">
+          <td data-col="id" data-sort="Q-13"><span class="mono">Q-13</span></td>
+          <td data-col="priority" data-sort="P3"><span class="badge badge--med">P3</span></td>
+          <td data-col="question" data-sort="Should the register stay at five products or grow into a wider catalogue?">
+            <strong>Should the register stay at five products or grow into a wider catalogue?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether to add more products to the register
+            </div>
+          </td>
+          <td data-col="known" data-sort="Five products across two categories. The register and the site structure both handle more without a redesign.">Five products across two categories. The register and the site structure both handle more without a redesign.</td>
+          <td data-col="missing" data-sort="A niche decision, which depends on the path chosen in the Suggestions section, and on real traffic data.">A niche decision, which depends on the path chosen in the Suggestions section, and on real traffic data.</td>
+          <td data-col="close" data-sort="Pick a path in the Suggestions section, then grow the register along the chosen path.">Pick a path in the Suggestions section, then grow the register along the chosen path.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-14"><span class="mono">Q-14</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="Do air fryers and meat thermometers belong on one site?">
+            <strong>Do air fryers and meat thermometers belong on one site?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the two categories should share a site
+            </div>
+          </td>
+          <td data-col="known" data-sort="Both are countertop cooking tools, both are in Home and Kitchen on Amazon, and both of the supplied links land there. One of the supplied thermometers is even listed for air fryer use.">Both are countertop cooking tools, both are in Home and Kitchen on Amazon, and both of the supplied links land there. One of the supplied thermometers is even listed for air fryer use.</td>
+          <td data-col="missing" data-sort="Measured search behaviour for each category separately, and any evidence about how a reader moves between the two.">Measured search behaviour for each category separately, and any evidence about how a reader moves between the two.</td>
+          <td data-col="close" data-sort="Use the path chooser in the Suggestions section, then let the analytics settle it.">Use the path chooser in the Suggestions section, then let the analytics settle it.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a class="spon" href="https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20&amp;linkCode=ogi&amp;th=1&amp;psc=1&amp;language=en_US" rel="sponsored nofollow" target="_blank" data-sponsored="1" data-product="B0DZFD6R9Z" data-asin="B0DZFD6R9Z" data-placement="source" aria-label="Sponsored link to Amazon: www.amazon.com" > <span>www.amazon.com</span> <span class="spon__mark">Sponsored</span> </a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P3">
+          <td data-col="id" data-sort="Q-15"><span class="mono">Q-15</span></td>
+          <td data-col="priority" data-sort="P3"><span class="badge badge--med">P3</span></td>
+          <td data-col="question" data-sort="Will readers give an email address, and what happens to it?">
+            <strong>Will readers give an email address, and what happens to it?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the newsletter capture is worth running
+            </div>
+          </td>
+          <td data-col="known" data-sort="The site has a reader_signup event defined and a capture form in the footer of every page. No list provider has been chosen or connected.">The site has a reader_signup event defined and a capture form in the footer of every page. No list provider has been chosen or connected.</td>
+          <td data-col="missing" data-sort="A list provider, a consent flow, and a place to store the addresses.">A list provider, a consent flow, and a place to store the addresses.</td>
+          <td data-col="close" data-sort="Choose a provider, wire it to the reader_signup event, and document the consent text before the form goes live for real traffic.">Choose a provider, wire it to the reader_signup event, and document the consent text before the form goes live for real traffic.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener" target="_blank" aria-label="Source: www.ftc.gov">www.ftc.gov</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr></tbody>
+      </table>
+    </div>
+    <h2>Trust, disclosure and site machinery</h2>
+    <p class="lede" style="margin-bottom:1rem">The site has to read like a publication and still survive a compliance review.</p>
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr>
+            <th data-col="id" aria-sort="none" scope="col">ID</th>
+            <th data-col="priority" aria-sort="none" scope="col">Priority</th>
+            <th data-col="question" aria-sort="none" scope="col">Question</th>
+            <th data-col="known" scope="col">What we already know</th>
+            <th data-col="missing" scope="col">What is missing</th>
+            <th data-col="close" scope="col">How to close it</th>
+            <th data-col="status" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-16"><span class="mono">Q-16</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Does the disclosure clear both Amazon&#x27;s standard and the FTC&#x27;s guidance on placement?">
+            <strong>Does the disclosure clear both Amazon&#x27;s standard and the FTC&#x27;s guidance on placement?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the disclosure strip is prominent enough
+            </div>
+          </td>
+          <td data-col="known" data-sort="Amazon requires the statement to be clearly and prominently stated where Program Content appears. The FTC says disclosures are likely to be missed if they appear only on an About page, at the end of a post, or behind a click. This site puts the statement directly under the masthead on every page and repeats it in the footer.">Amazon requires the statement to be clearly and prominently stated where Program Content appears. The FTC says disclosures are likely to be missed if they appear only on an About page, at the end of a post, or behind a click. This site puts the statement directly under the masthead on every page and repeats it in the footer.</td>
+          <td data-col="missing" data-sort="A human compliance read of the final rendered pages.">A human compliance read of the final rendered pages.</td>
+          <td data-col="close" data-sort="Open the live site on a phone and confirm the strip is above the fold and legible at every width.">Open the live site on a phone and confirm the strip is above the fold and legible at every width.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener" target="_blank" aria-label="Source: www.ftc.gov">www.ftc.gov</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P1">
+          <td data-col="id" data-sort="Q-17"><span class="mono">Q-17</span></td>
+          <td data-col="priority" data-sort="P1"><span class="badge badge--med">P1</span></td>
+          <td data-col="question" data-sort="Is every outbound product link marked as sponsored and pointing directly at Amazon?">
+            <strong>Is every outbound product link marked as sponsored and pointing directly at Amazon?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether outbound links are correctly marked
+            </div>
+          </td>
+          <td data-col="known" data-sort="Google&#x27;s documentation states that paid placements should be marked with rel=&quot;sponsored&quot;, and that multiple rel values may be combined. Amazon requires that Special Links carry the Associates tag and be accessed directly from your Site.">Google&#x27;s documentation states that paid placements should be marked with rel=&quot;sponsored&quot;, and that multiple rel values may be combined. Amazon requires that Special Links carry the Associates tag and be accessed directly from your Site.</td>
+          <td data-col="missing" data-sort="Nothing for the build. The build gate fails if a product link lacks the sponsored rel or a direct amazon.com destination.">Nothing for the build. The build gate fails if a product link lacks the sponsored rel or a direct amazon.com destination.</td>
+          <td data-col="close" data-sort="Already automated in the check step. Listed so the review knows the gate exists and can be re-run.">Already automated in the check step. Listed so the review knows the gate exists and can be re-run.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener" target="_blank" aria-label="Source: developers.google.com">developers.google.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="closed">
+            <span class="badge badge--done">closed</span>
+          </td>
+        </tr>
+        <tr data-priority="P2">
+          <td data-col="id" data-sort="Q-18"><span class="mono">Q-18</span></td>
+          <td data-col="priority" data-sort="P2"><span class="badge badge--med">P2</span></td>
+          <td data-col="question" data-sort="Does the click counter collect anything it should not?">
+            <strong>Does the click counter collect anything it should not?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the analytics collector is legally usable
+            </div>
+          </td>
+          <td data-col="known" data-sort="The collector stores no IP address, no user agent, no cookie, no advertising identifier and no email address. It uses a rotating per-visitor pseudonymous id, honours Do Not Track, and sends nothing when no endpoint is configured. GitHub Pages separately logs visitor IP addresses for security, which the privacy note states.">The collector stores no IP address, no user agent, no cookie, no advertising identifier and no email address. It uses a rotating per-visitor pseudonymous id, honours Do Not Track, and sends nothing when no endpoint is configured. GitHub Pages separately logs visitor IP addresses for security, which the privacy note states.</td>
+          <td data-col="missing" data-sort="A jurisdiction-specific privacy assessment, which depends on where the audience is.">A jurisdiction-specific privacy assessment, which depends on where the audience is.</td>
+          <td data-col="close" data-sort="Have the privacy note reviewed against the audience&#x27;s location before scaling up traffic.">Have the privacy note reviewed against the audience&#x27;s location before scaling up traffic.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener" target="_blank" aria-label="Source: docs.github.com">docs.github.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P3">
+          <td data-col="id" data-sort="Q-19"><span class="mono">Q-19</span></td>
+          <td data-col="priority" data-sort="P3"><span class="badge badge--med">P3</span></td>
+          <td data-col="question" data-sort="Who is the byline on a page, and does it need to be a person?">
+            <strong>Who is the byline on a page, and does it need to be a person?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: Whether the site needs a formal authorship policy
+            </div>
+          </td>
+          <td data-col="known" data-sort="The Operating Agreement requires original content with significant commentary, analysis or transformation of any third-party material. Amazon&#x27;s own Endorsement Guides note that a disclosure must come from the endorser, not from someone else.">The Operating Agreement requires original content with significant commentary, analysis or transformation of any third-party material. Amazon&#x27;s own Endorsement Guides note that a disclosure must come from the endorser, not from someone else.</td>
+          <td data-col="missing" data-sort="A decision about whether the desk is presented as a named editorial team or a single named reviewer.">A decision about whether the desk is presented as a named editorial team or a single named reviewer.</td>
+          <td data-col="close" data-sort="Pick a byline model in the Suggestions section before the first season of publishing.">Pick a byline model in the Suggestions section before the first season of publishing.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr>
+        <tr data-priority="P3">
+          <td data-col="id" data-sort="Q-20"><span class="mono">Q-20</span></td>
+          <td data-col="priority" data-sort="P3"><span class="badge badge--med">P3</span></td>
+          <td data-col="question" data-sort="How often should the register be re-read, and who owns that job?">
+            <strong>How often should the register be re-read, and who owns that job?</strong>
+            <div class="muted" style="font-size:.82rem;margin-top:.25rem">
+              Blocks: How the register stays accurate
+            </div>
+          </td>
+          <td data-col="known" data-sort="Every row carries an observed_on date. Listings change; the Operating Agreement says service offerings may change at any time.">Every row carries an observed_on date. Listings change; the Operating Agreement says service offerings may change at any time.</td>
+          <td data-col="missing" data-sort="An owner for the refresh and a schedule.">An owner for the refresh and a schedule.</td>
+          <td data-col="close" data-sort="Schedule a monthly re-read, or wire the refresh through the Creators API once access exists.">Schedule a monthly re-read, or wire the refresh through the Creators API once access exists.
+            <div class="muted" style="font-size:.8rem;margin-top:.25rem">
+              Source: <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: affiliate-program.amazon.com">affiliate-program.amazon.com</a>
+            </div>
+          </td>
+          <td data-col="status" data-sort="open">
+            <span class="badge badge--next">open</span>
+          </td>
+        </tr></tbody>
+      </table>
+    </div>
+  <div class="callout" style="margin-top:2rem">
+    <span class="callout__title">Not a to-do list for you</span>
+    <p>Most of these close inside the site owner's own Amazon account and take minutes.
+      The rest close with a season of traffic. None of them block the site being live.</p>
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid"><div><h2>Read</h2><ul><li><a href="/guides/">All guides</a></li><li><a href="/compare/">Comparisons</a></li><li><a href="/categories/air-fryers/">Air fryers</a></li><li><a href="/categories/thermometers/">Meat thermometers</a></li></ul></div><div><h2>The desk</h2><ul><li><a href="/desk/">Open questions</a></li><li><a href="/desk/suggestions/">Suggestions</a></li><li><a href="/desk/flags/">Flagged for review</a></li><li><a href="/executive-summary/">Executive summary</a></li></ul></div><div><h2>The method</h2><ul><li><a href="/methods/sources/">Source register</a></li><li><a href="/methods/verification/">How we verify</a></li><li><a href="/compliance/">Compliance</a></li><li><a href="/measurement/">Measurement</a></li><li><a href="/ledger/">Campaign ledger</a></li></ul></div><div><h2>About</h2><ul><li><a href="/about/">About this desk</a></li><li><a href="/about/#editorial-standards">Editorial standards</a></li></ul></div></div>
+    <div class="footer__bottom">
+      <p class="footer__disclosure"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+      <p>© <span data-year>2026</span> Counter &amp; Crumb · <a href="/feed.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/methods/sources/">Sources</a></p>
+    </div>
+  </div>
+</footer>
+<button class="to-top" data-to-top type="button" aria-label="Back to top">↑</button>
+<script src="/assets/js/site-config.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

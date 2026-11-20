@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "title": "Flagged for review",
+    "subtitle": "Items this desk could not settle from an official source. None of them block the site going live. Each one has the source that was checked, what is missing, and the exact step that would close it.",
+    "policy": "Nothing on this page is a claim about a product. Everything here is a statement about our own verification, and every one of them links to the official page that was read.",
+    "checked_on": "2026-11-20"
+  },
+  "flags": [
+    {
+      "id": "FLG-001",
+      "severity": "high",
+      "title": "The tracking ID shopnow047c-20 could not be confirmed as issued",
+      "what_we_checked": "Amazon publishes the shape of an Associates tag: an Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate). The submitted value shopnow047c-20 matches that shape.",
+      "what_is_missing": "No public Amazon page confirms that the tag shopnow047c-20 was issued to this account, that it is active, or that it is the store ID that the site's Special Links should carry.",
+      "source": "https://affiliate-program.amazon.com/help/operating/policies",
+      "impact": "If the tag is wrong, clicks still reach Amazon but the sale may not be attributed, and every Special Link on the site needs to change.",
+      "how_to_close": "Open Associates Central, copy the Store ID from the account header, and paste it into data/config.json as affiliate.tracking_id. Re-run the build.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-002",
+      "severity": "high",
+      "title": "The intended ASIN for each submitted link is unconfirmed",
+      "what_we_checked": "Amazon defines an ASIN as a 10-character alphanumeric unique identifier. Three of the five submitted tokens are 9 characters, so they cannot be ASINs. Two are 10 characters but neither was confirmed as an issued ASIN.",
+      "what_is_missing": "Nothing in the public record binds a short link token to a specific product, so the intent behind each link cannot be read from any public source.",
+      "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+      "impact": "The register can state where each link goes today. It cannot state what was meant. Both facts are kept in separate fields and neither is merged into the other.",
+      "how_to_close": "The owner confirms the intended ASIN and listing URL for each of the five links. Until then the intended fields stay blank by design.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-003",
+      "severity": "high",
+      "title": "The submitted short links are not the format this site publishes",
+      "what_we_checked": "Amazon's Program Policies require that Special Links be accessed directly from your Site, restrict Redirecting Links and restrict link shorteners that make it unclear that you are linking to an Amazon Site.",
+      "what_is_missing": "Nothing is missing in the rules; the point is that the five submitted link.amazon URLs are Amazon-hosted redirects rather than direct Special Links carrying the Associates tag. Whether each short link is enrolled in the owner's Associates workflow is a private fact that cannot be read from a public page, so no compliance verdict is stated here.",
+      "source": "https://affiliate-program.amazon.com/help/operating/policies",
+      "impact": "If the short links are not already enrolled, replacing them with direct Special Links is what makes the click attributable.",
+      "how_to_close": "Open one submitted link in the enrolled Associates workflow, confirm the destination and the tracking report, then publish direct Special Links for the rest. Do not scale until one link has been confirmed end to end.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-004",
+      "severity": "medium",
+      "title": "Two submitted tokens are ASIN-shaped but were not confirmed live",
+      "what_we_checked": "B0c8moW59 and B0f3GKalj are each 10 characters, which matches Amazon's ASIN definition. A direct fetch of www.amazon.com/dp/B0c8moW59 and www.amazon.com/dp/B0f3GKalj did not return a retrievable product listing on 2026-11-20. The link quoted here is the confirmed destination of the B0c8moW59 submission, so it is the evidence for the observation rather than for the token itself.",
+      "what_is_missing": "Whether these two tokens are issued ASINs that point at a different product, or are simply unused codes.",
+      "source": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "impact": "If a token is itself a live ASIN, the submitted link and the intended product may be two different things, which would change the editorial plan.",
+      "how_to_close": "Run a Creators API GetItems call with itemIds set to the two tokens and itemIdType ASIN, and read what comes back.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-005",
+      "severity": "medium",
+      "title": "The Associates account behind this site is not publicly verifiable",
+      "what_we_checked": "The GitHub Pages configuration for this repository is public. The Associates enrolment that would let a reader confirm the site's own account is not.",
+      "what_is_missing": "Public evidence that the site operator holds an active Associates account and which store ID it uses.",
+      "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "impact": "Enrolment, approved Site URLs and payment details all sit behind a login.",
+      "how_to_close": "Add the live site URL to the approved Site list in Associates Central once the domain is settled.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-006",
+      "severity": "medium",
+      "title": "Commission rates for these two categories were not verified",
+      "what_we_checked": "Amazon states that Standard Commission Income is described in the Appendix of the Program Policies, and that the rate card and payment charts sit behind sign-in.",
+      "what_is_missing": "The actual percentage for Kitchen and Dining products and for Kitchen Utensils and Gadgets products.",
+      "source": "https://affiliate-program.amazon.com/help/operating/policies",
+      "impact": "No revenue estimate, ranking or 'highest commission' claim appears anywhere on this site, because none of that could be verified.",
+      "how_to_close": "Read the rate card in the Program Policies Appendix while signed in, and record it in data/products.json with the date it was read.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-007",
+      "severity": "medium",
+      "title": "Creators API access needs 10 qualifying sales in the past 30 days",
+      "what_we_checked": "Amazon lists the prerequisites for Creators API access, including at least 10 qualifying sales within the past 30 days.",
+      "what_is_missing": "An API-enabled account, so the live price and availability lookup cannot be exercised yet.",
+      "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
+      "impact": "The price and rating widgets on this site stay blank and link out to Amazon instead of showing a figure.",
+      "how_to_close": "Register for Creators API in Associates Central, then set the API credentials in the server environment rather than in the repository.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-008",
+      "severity": "low",
+      "title": "PA-API 5 no longer works",
+      "what_we_checked": "Amazon's deprecation notice states that PA-API 5 has been deprecated and that calls now receive an HTTP 403 with an AccessDeniedException.",
+      "what_is_missing": "Nothing. This is a confirmed change, not an open question.",
+      "source": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
+      "impact": "Any research tooling built against PA-API 5 endpoints would fail silently or loudly. The tooling in this repository targets the Creators API instead.",
+      "how_to_close": "Already handled. Kept here because it is the single most likely thing to trip up inherited code.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-009",
+      "severity": "medium",
+      "title": "No measured search data yet, so no topic ranking is claimed",
+      "what_we_checked": "Nothing to check yet. The site has been live for less than a day and no search console or analytics property is connected.",
+      "what_is_missing": "Real query data, impressions, click-through rates and the outbound click and reader capture events this site records.",
+      "source": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "impact": "The publishing plan lists candidate guide topics as hypotheses. None of them is described as popular, high-volume or trending.",
+      "how_to_close": "Verify the site in Google Search Console, connect the analytics endpoint, publish for a season, then pick the next topic from the measured queries rather than from instinct.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-010",
+      "severity": "low",
+      "title": "Listing contents drift over time",
+      "what_we_checked": "Amazon's own policies state that prices and availability change, and the Operating Agreement states that the service offerings are provided as is and may change at any time.",
+      "what_is_missing": "A way to pin the exact text of a listing permanently.",
+      "source": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "impact": "Every title and spec on this site is a snapshot with a date attached, not a live feed.",
+      "how_to_close": "The register already carries an observed_on date on every row. A scheduled refresh through the Creators API would keep it current.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-011",
+      "severity": "low",
+      "title": "A near-identical ThermoMaven listing exists under a different ASIN",
+      "what_we_checked": "On the B0DHZTCNR5 listing page read 2026-11-20, Amazon's own 'Customers who viewed this item also viewed' module showed B0GL7Z4KP4 with the title 'ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Orange'.",
+      "what_is_missing": "Which of the two ASINs is the listing the owner wants promoted, and whether they are colour variants of one product or separate listings.",
+      "source": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "impact": "Publishing the wrong variant sends readers to a page with different options than the one described.",
+      "how_to_close": "Check both ASINs in a Creators API GetItems call and confirm the intended colour and variant before publishing a product page for that slot.",
+      "status": "needs review"
+    },
+    {
+      "id": "FLG-012",
+      "severity": "low",
+      "title": "GitHub Pages logs visitor IP addresses",
+      "what_we_checked": "GitHub's documentation states that when a GitHub Pages site is visited, the visitor's IP address is logged and stored for security purposes regardless of consent.",
+      "what_is_missing": "Nothing. This is a published platform behaviour and is recorded so the privacy note is accurate.",
+      "source": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+      "impact": "The site's own analytics never collects an IP address, but the hosting platform does. The privacy note says so rather than claiming the site is IP-free.",
+      "how_to_close": "Already disclosed on the site. Listed here so the review is complete.",
+      "status": "needs review"
+    }
+  ]
+}
