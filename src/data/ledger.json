@@ -1,5 +1,0 @@
-{
-  "description": "Campaign ledger. Intentionally empty. Rows are added only from authorised first-party reports (for example, an Associates Commission Income Statement or the owner's own analytics). No conversion score or revenue forecast is shown.",
-  "columns": ["timestamp_utc", "source", "channel", "eligible_sessions", "clicks", "reported_orders", "report_name", "provenance_url", "recorded_by"],
-  "rows": []
-}

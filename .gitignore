@@ -1,2 +1,6 @@
-_site/
+# Generated analytics data (aggregate counts; never commit)
+analytics-data/
+# Local tooling
 node_modules/
+.DS_Store
+*.tmp
