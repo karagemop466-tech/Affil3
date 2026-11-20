@@ -1,18 +1,4 @@
-name: Publication gate
-
-# This repository has carried two build pipelines across sessions. Only one of them
-# still matches the published site:
-#
-#   tools/build.mjs + tools/verify.mjs  -> generates the site at the repository root,
-#                                          which is what GitHub Pages serves from main /.
-#   tools/build.py  + tools/check_site.py -> writes into docs/, which GitHub Pages
-#                                          does not serve (the Pages source could not be
-#                                          changed from a session; see FLG-020/FLG-021).
-#
-# The docs/ pipeline was failing on every push because its output directory is not part
-# of the published tree, so a green check said nothing about the live site. It is kept in
-# the repository for history and is no longer run by CI. If the Pages source ever moves
-# to docs/, this comment is the thing to read first.
+name: Verify site
 
 on:
   push:
@@ -25,24 +11,15 @@ permissions:
 
 jobs:
   verify:
-    name: Rebuild from data and gate the result
+    name: Gate the published Pages site
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-
-      - name: Rebuild the published site from data
-        run: node tools/build.mjs
-
-      - name: Assert the committed site matches a fresh build
+          node-version: '22'
+      - run: npm run check
+      - name: Require committed output to match a clean build
         run: |
-          if ! git diff --quiet; then
-            echo "::error::The committed site is out of date with data/. Run 'node tools/build.mjs' and commit."
-            git --no-pager diff --stat
-            exit 1
-          fi
-
-      - name: Gate - disclosures, sponsored links, tags, prices, sources, links, sitemap
-        run: node tools/verify.mjs
+          git status --short
+          test -z "$(git status --porcelain)"
