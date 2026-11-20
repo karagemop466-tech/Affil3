@@ -540,8 +540,16 @@ generator."* That is now what the repository has. The root site is generated fro
 `/editorial/` publication and `data/register/` remain in the tree, untouched and still served, but
 they are no longer the source of the root site, so they cannot silently drift away from it again.
 
-Their two published source conflicts are also carried forward rather than dropped: the Emeril preset
-count (24 vs 25) is `FLG-024` here, and the Chefman 8 Qt model-number mismatch is `FLG-004`. Their
-Chefman wattage conflict does not reproduce against the pages fetched for this build — `chefman.com`
-states 1700W/120V on both Chefman product pages — so the site publishes 1700 W with that source and
-the discrepancy is noted on `FLG-004` rather than presented as an open conflict.
+Their published source conflicts are carried forward, and **two of them were right and I was wrong.**
+I first wrote here that their Chefman 8 Qt wattage conflict "does not reproduce". It does. Re-fetching
+the listing showed why: `chefman.com` describes RJ38-8T-BLACK at 1700 W and up to 450 °F, while the
+Amazon listing for B08DKYBTPH says in its own copy that the unit is 1000 W, model RJ38-SQSS-8T, with a
+200-400 °F range and different dimensions. These are two different machines sharing one listing. My
+earlier comparison had matched the Amazon title against the manufacturer page and never read the
+listing's own specification copy.
+
+That is now `FLG-026` and `FLG-027`, the highest-severity data finding on the site, and it cost four
+specifications on the 8 Qt product page: wattage, temperature, dimensions and finish are all withheld
+with the reason shown. Their Emeril preset conflict is `FLG-024`. The lesson worth keeping: the
+marketplace's own copy is a source in its own right, and reading only the title of a listing is how a
+wrong number gets published with a clean conscience.

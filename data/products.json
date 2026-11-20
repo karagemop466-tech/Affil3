@@ -126,7 +126,7 @@
     {
       "id": "P03",
       "slug": "chefman-turbofry-8-qt-air-fryer",
-      "name": "Chefman TurboFry 8 Qt Air Fryer with Hi-Fry",
+      "name": "Chefman TurboFry 8 Qt air fryer",
       "short_name": "Chefman TurboFry 8 Qt",
       "brand": "Chefman",
       "category": "air-fryers",
@@ -141,7 +141,9 @@
       "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "FLG-004",
+        "FLG-026"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "observed_asin": "B08DKYBTPH",
@@ -159,29 +161,30 @@
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
-      "model": "RJ38-8T-BLACK",
+      "model": "RJ38-8T-BLACK (Chefman product page); RJ38-SQSS-8T (stated in the Amazon listing's own copy)",
       "capacity_qt": "8",
-      "capacity_note": "8 qt / 7.57 L in one basket",
+      "capacity_note": "8 qt / 7.57 L per the Chefman page; the Amazon listing also states 8 quarts.",
       "temp_min_f": "",
-      "temp_max_f": "450",
-      "power_w": "1700",
+      "temp_max_f": "",
+      "power_w": "",
       "voltage": "120V",
       "dimensions_in": "",
       "dimensions_order": "",
       "weight_lb": "",
-      "functions": "Air fry, bake, dehydrate, frozen; Hi-Fry raises heat to 450 °F for the last two minutes",
+      "functions": "Air fry, bake, dehydrate, frozen (Chefman page for RJ38-8T-BLACK). The Amazon listing describes four presets and a 200-400 °F range.",
       "dishwasher_safe": "Basket and rack: yes (manufacturer states top-rack dishwasher safe)",
       "certification": "cETL approved (manufacturer)",
       "warranty": "1-year Chefman assurance",
       "best_for": "One big batch in one basket, with no divider to work around.",
-      "tradeoff": "No window and no second basket, so checking food means opening the drawer and losing heat.",
+      "tradeoff": "No window and no second basket, so checking food means opening the drawer and losing heat. Confirm which 8 Qt model you are buying before you order.",
       "fit_line": "One big batch, one basket, no dividers to work around.",
-      "lede": "Eight quarts in a single basket, with a Hi-Fry burst at the end for a crispier finish. The straightforward family-portion pick.",
+      "lede": "Eight quarts in a single basket. Before you buy, read the model-number conflict below: the Amazon listing and Chefman's own page describe two different 8 Qt machines.",
       "guide_title": "A no-hype checklist for comparing air fryer capacity",
       "guide_slug": "no-hype-checklist-comparing-air-fryer-capacity",
       "blank_reason": {
-        "dimensions_in": "The manufacturer page does not list overall dimensions, so none are shown rather than quoting a retailer field.",
-        "temp_min_f": "The manufacturer page does not state a minimum temperature."
+        "power_w": "Chefman's page for RJ38-8T-BLACK states 1700 W; the Amazon listing for B08DKYBTPH states 1000 W and names a different model (FLG-026). Neither figure is published.",
+        "temp_max_f": "Chefman's page states up to 450 °F on Hi-Fry; the Amazon listing states a 200-400 °F range (FLG-026). Neither figure is published.",
+        "dimensions_in": "The Chefman page does not state dimensions; the Amazon listing states 12.75 x 13.5 x 10 in for a different model number, so it is shown in the listing column instead."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -190,6 +193,16 @@
         "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
         "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
+      },
+      "observed_specs": {
+        "note": "Stated in the 'About this item' copy of the Amazon listing on 2026-11-20. Kept separate from the manufacturer column because the two describe different models.",
+        "model": "RJ38-SQSS-8T",
+        "power": "1000 W / 120 V",
+        "temperature": "200-400 °F (200-400°F)",
+        "dimensions": "12.75 x 13.5 x 10 in (depth x width x height)",
+        "capacity": "8 quarts",
+        "material": "Stainless steel",
+        "source": "S16"
       }
     },
     {

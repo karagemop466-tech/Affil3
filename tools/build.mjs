@@ -477,6 +477,17 @@ for (const p of products) {
   <p>From <a href="${esc((SOURCES[(p.spec_sources || [])[0]] || {}).url || '#')}" rel="noopener external">${esc((SOURCES[(p.spec_sources || [])[0]] || {}).publisher || 'the manufacturer')}</a>, fetched ${esc(dateLong(p.observed_date))}. Where the page is silent, the cell reads “not stated”.</p>
   ${specGrid(p)}
   <p class="small muted">${esc(p.capacity_note || '')} ${p.dimensions_order ? `Dimensions are shown as ${esc(p.dimensions_order)}.` : ''}</p>
+  ${p.observed_specs ? `<h3 style="margin-top:34px">What the Amazon listing states</h3>
+  <p>These figures come from the listing's own copy, not from the manufacturer. They are kept in a separate column on purpose, because on this listing they describe a different model from the manufacturer page. Read them as evidence of the conflict, not as specifications of the product.</p>
+  ${table(['Field', 'Listing states', 'Manufacturer states'], [
+    ['Model', esc(p.observed_specs.model), esc((p.model || '').split(';')[0] || '')],
+    ['Power', esc(p.observed_specs.power), '<span class="muted">1700 W / 120 V (S12)</span>'],
+    ['Temperature', esc(p.observed_specs.temperature), '<span class="muted">up to 450 °F on Hi-Fry (S12)</span>'],
+    ['Size', esc(p.observed_specs.dimensions), '<span class="muted">not stated (S12)</span>'],
+    ['Capacity', esc(p.observed_specs.capacity), '<span class="muted">8 qt / 7.57 L</span>'],
+    ['Material', esc(p.observed_specs.material), '<span class="muted">matte black (S12)</span>'],
+  ])}
+  <p class="small">${flagLinks(p.flags.filter((f) => ['FLG-026', 'FLG-027'].includes(f)))}</p>` : ''}
 </section>
 
 <section class="band">

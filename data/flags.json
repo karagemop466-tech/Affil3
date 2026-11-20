@@ -265,6 +265,33 @@
       "sources": [
         "S04"
       ]
+    },
+    {
+      "id": "FLG-026",
+      "severity": "high",
+      "status": "open",
+      "area": "product data",
+      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
+      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
+      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
+      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "sources": [
+        "S16",
+        "S12"
+      ]
+    },
+    {
+      "id": "FLG-027",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The same listing carries two different temperature ranges in two places",
+      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
+      "impact": "Temperature is withheld on one product.",
+      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "sources": [
+        "S16"
+      ]
     }
   ],
   "checked": "2026-11-20"
