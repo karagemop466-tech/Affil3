@@ -55,7 +55,7 @@
 </section>
 <section class="flag-card" id="FLG-004">
   <p class="flag-head"><span class="badge flag">FLG-004</span> <span class="badge sev-high">high</span> <strong>One submitted link (B00hJ57DV) did not resolve to a product</strong></p>
-  <p>The link landed on an Amazon &#39;Continue shopping&#39; checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published.</p>
+  <p>The link landed on an Amazon &#39;Continue shopping&#39; checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   <p class="small"><strong>Manual step:</strong> Open the link in a signed-in browser. Supply the intended product URL if it can be identified.</p>
 </section>
@@ -159,6 +159,12 @@
   <p class="flag-head"><span class="badge flag">FLG-021</span> <span class="badge sev-low">low</span> <strong>Thermometer guide omitted the FSIS ground-meat row; corrected</strong></p>
   <p>The guide &#39;Is your meat thermometer telling you the right number?&#39; listed beef, poultry and ham minimums but omitted the FSIS row &#39;Ground Meats: 160 degrees F&#39;. Corrected on 2026-11-20 by adding &#39;Ground meats: 160 °F.&#39; to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" rel="noopener external">S09</a>, <a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers" rel="noopener external">S10</a></p>
+  <p class="small"><strong>Manual step:</strong> </p>
+</section>
+<section class="flag-card" id="FLG-022">
+  <p class="flag-head"><span class="badge flag">FLG-022</span> <span class="badge sev-high">high</span> <strong>Two product destinations were transposed in the root-site register (corrected)</strong></p>
+  <p>data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a &quot;reverification&quot; block preserving the earlier value, so the fix is auditable rather than silent.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   <p class="small"><strong>Manual step:</strong> </p>
 </section>
 </main>
