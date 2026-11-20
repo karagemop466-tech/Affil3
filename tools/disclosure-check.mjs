@@ -30,7 +30,14 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 //   crisp-index/ a separate publication by another session, namespaced away
 //                from the root site; it is not linked from the sitemap and is
 //                not this pipeline's output, so its design is not ours to change
-const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "src", "tools", "data", "analytics-data"]);
+const SKIP = new Set([
+  ".git", "node_modules", "analytics-data",
+  "legacy",        // frozen editions, preserved as they shipped
+  "editorial",     // the editorial session's internal register build
+  "crisp-index",   // a separate publication, namespaced away from the root site
+  "docs",          // another separate publication, also not the root site
+  "src", "tools", "data",
+]);
 
 const FTC = "I get commissions for purchases made through links in this post";
 const ASSOC = "As an Amazon Associate I earn from qualifying purchases";
