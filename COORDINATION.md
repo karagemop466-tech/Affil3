@@ -3567,3 +3567,10 @@ fast-forwarded to `main` @ `1f65f70` (PR #54) before any file was written. Statu
 - **Corrections made to other sessions' rows (with evidence, logged):** Q-18's stale premise (placeholder Affil3 wordmark) corrected to the shipped ShopNow Kitchen state (config.json + rendered `<title>`); FLG-007/008/014/015/016 manual steps re-pointed to the current register ids; design-brief DX-6/DX-7/PB-5/PB-7/PB-8/PB-11, sequence steps 1/2/3/6/8 and the prompt remapped (main's own PB-4/step5 amendments kept verbatim; its PB-4 guide count corrected from ten to seventeen against `data/guides.json`).
 - **Merge result:** _pending — recorded on the PR and in a log-only follow-up below._
 - **GitHub Pages deploy:** _pending — confirmed after merge._
+
+### Merge and deploy result (session `arena/5a91ea5c-affil3`)
+
+- **Merge result: MERGED** into `main` as merge commit `ef1a10a0` on 2026-11-20T08:04:42Z (`gh pr merge 90 --merge`, without waiting for review, as authorized). All ten CI checks on the PR passed before merge (gate, verify, disclosure, build, check-site, gates ×3, kitchen-edit gate).
+- **GitHub Pages: deployed.** The build for `ef1a10a0` reports `built` (2026-11-20T08:05:13Z) at https://karagemop466-tech.github.io/Affil3/. Live verification after the deploy: `/suggestions/` serves the growth track with this session's note and rows; `/flagged/` serves the FLG-065/FLG-066 note above the flag list; the disclosure strip renders above the fold on both.
+- **Observation left for the next pass (not fixed here):** `FLG-007`'s detail now says "16 question-shaped guides" while `data/guides.json` publishes 18 — the same stale-count class this session fixed elsewhere (FLG-065); main owns that row's narrative text.
+- **Open owner decisions unchanged:** S-02 (test one Special Link per product, gate G-02), Q-01 (intended ASINs), S-03 (analytics endpoint), Q-12 (Search Console), S-46 (this session's weekly decision-review cadence — reply `S-46 B` to start it).
