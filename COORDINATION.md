@@ -2084,3 +2084,64 @@ Single session is working this branch; no other session holds an active claim in
 - `legacy/`, `counter/`, `counterwise/`, `crisp-index/`, `editorial/` editions: **not edited**. This session changes only the root publication (`OWNED` in `tools/build.mjs`) and `data/*.json`.
 - `data/products.json` is **not** edited: no product row changes, so no re-derivation of specification claims is needed.
 - Requests logged here rather than edited elsewhere: `legacy/archive/index.html` undercounts the editions in the repository (it names three; five extra editions exist: `editorial/`, `counter/`, `counterwise/`, `crisp-index/`, `legacy/` itself). An archive page is not in `OWNED`, so this session records the discrepancy and fixes it only through the root publication's flag and question surfaces.
+
+## Verification performed by session `ca51f5b3` (2026-11-20)
+
+Every line below was read from the page named, in this session, and the raw record is
+`data/observations/2026-11-20-session-ca51f5b3.json`.
+
+| Checked against | What was compared | Result |
+|---|---|---|
+| [B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | P01 observed title and breadcrumb | matches the register |
+| [B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | P02 observed title, the 24 presets and six accessories in it | matches; FLG-024 stays open |
+| [B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) | P05 observed title, probe and sensor counts | matches the register |
+| [Chefman RJ38-SQPF-3TDB-2W](https://chefman.com/products/turbofry-touch-dual-window-air-fryer) | P01 model string, 450 °F Hi-Fry ceiling | matches |
+| [Chefman 8 Qt TurboFry Touch](https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1) | P03 model, 8 qt / 7.57 L, 200–400 °F, 1700 W / 120 V, 15.4 × 12.6 × 13.5 in, 12.8 lb, 4 cooking presets, cETL + 1 year | every figure the new guides cite matches |
+| [ThermoMaven F1 Ace](https://www.thermomaven.com/products/f1-ace) | ±0.5 °F NIST, 1-second read, 100 % waterproof, magnet, lifetime warranty within 30 days | matches; the listing still does not name the model, so FLG-025 and Q-14 stay open |
+| [USDA FSIS safe-temperature chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart) | the temperatures quoted in the two new guides; page dated Last Updated Apr 14, 2025 | matches, recorded as K-24 |
+| [Google breadcrumb documentation](https://developers.google.com/search/docs/appearance/structured-data/breadcrumb) | the shape of the `BreadcrumbList` now emitted on guides and product pages | added as S24; no ranking claim made |
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | whether the submitted short link still resolves to a product | returned the Amazon home page in this sandbox; recorded as FLG-044 alongside the earlier rounds, not as a dead link |
+
+Not re-fetched in this round, and recorded as such in the observation file so it cannot be read as a
+clean bill of health: the P03 and P04 listings, and sources S12 to S16 and S18 to S23.
+
+## Irregularities found and what happened to each
+
+| Finding | Outcome |
+|---|---|
+| `robots.txt` left `/counter/` and `/counterwise/` crawlable while claiming the opposite | Fixed: the exclusion list is generated from the tree; FLG-042 |
+| Google reads `robots.txt` only from the host root, so a project-path site cannot control crawlers that way | Recorded honestly in FLG-042 as a limit of the fix, consistent with d19dff2c's FLG-038 and S25; the in-scope part (removing the site-wide footer link into `/editorial/`) was done, and the rest is S-20 option B or C |
+| The builder and the gate kept two different `OWNED` lists, so `/compare/`, `/workflow/`, `/privacy/` and `/design-brief/` were never gated | Fixed: one shared `tools/site-scope.mjs`, imported by both; FLG-043 |
+| `FLG-007` cited S11 (a Chefman page) for the "at least 10 posts" rule of thumb | Corrected to S19; FLG-041 records the correction |
+| Hand-written counts in prose (guides, products, flags) went stale on every merge | Fixed: `{guide}`, `{product}`, `{flag}`, `{openflag}` tokens filled by the builder, plus a gate check that no unrendered token reaches a reader |
+| Session records at the repository root are served as plain text | Not moved (they belong to other sessions); excluded from the index by the same generated file and offered as S-22; FLG-045 |
+| `publish.yml`'s drift check omitted `compare/`, `design-brief/` and `find/` | Fixed in this merge |
+| Three of this session's five new guides duplicated guides merged by c252594d while this session was working | Removed before publication; the note in `data/guides.json` says which three and why |
+
+## Merge log (session `ca51f5b3`)
+
+- Merged `origin/main` (`9732c4c`, which had moved through PRs #61, #71 and #73 while this branch was
+  open). Conflicts: `COORDINATION.md` and the generated dashboard pages plus four registers.
+- Resolutions: the other sessions' rows were kept verbatim. This session's five flags were renumbered
+  `FLG-041`…`FLG-045`, its three questions `Q-18`…`Q-20` and its suggestions `S-21`…`S-26`, because
+  `d19dff2c` had already taken `FLG-036`…`FLG-040`, `Q-17` and `S-20`. Their `K-13`, `S05` and `S25`
+  revisions are kept as written. No row from any session was deleted by the merge itself.
+- Generated pages were resolved by taking main's copy and re-running the builder over the merged
+  registers, so the HTML cannot disagree with the data.
+- One `git pull --rebase` during this session was started while a commit was being prepared and
+  paused on the `COORDINATION.md` conflict; it was aborted (`git rebase --abort`) and redone as an
+  explicit merge, because a replay of two commits over eleven incoming merges makes the same conflict
+  harder to see. Nothing was lost and no other session's commit was rewritten.
+
+## Completion record (session `ca51f5b3`)
+
+- Pull request: _to be filled by the push step below_
+- Gates on the merged tree: `node tools/build.mjs` 43 pages, 15 feed items, 42 sitemap URLs;
+  `node tools/verify.mjs` **5,427 checks passed, 0 failed**; editorial build + `check_site.py` PASS
+  (23 pages); `disclosure-check.mjs` and `archive-check.mjs` PASS; `tools/check_all_links.py` 0 broken;
+  `scripts/check_links.py --no-external` no broken; `tools/link_report.py --strict` OK; the
+  `counter-desk` edition's own build, gate and unit tests all clear.
+- Negative tests run this session, so the green build means something: deleting a `robots.txt`
+  exclusion fails the gate (`FAIL robots.txt excludes superseded edition /counterwise/`), and
+  stripping one `rel="sponsored"` from a buy button fails it too. Both were reverted and the clean
+  build re-passed.
