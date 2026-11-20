@@ -280,6 +280,14 @@
       "why_it_matters": "tools/build.mjs writes the root site from data/*.json and tools/build.py writes editorial/ from data/register/*.json, and the two hold overlapping product, question and suggestion rows. Readers get one site or two competing ones depending on which builder was run last, and indexation splits accordingly.",
       "how_to_close": "Name one publisher for reader-facing pages, or generate both from a single register root and cross-link.",
       "sources": []
+    },
+    {
+      "id": "Q-18",
+      "question": "Which AI model/provider, approved product-data source, trend or keyword source, and human reviewer are available before research or drafts are automated?",
+      "why_it_matters": "No model, Amazon product-data API, trend/query feed, or publishing integration is configured. Without authorized inputs and a named editor, automation could produce unsupported product claims or fabricated demand signals.",
+      "how_to_close": "Choose an approved provider and authorized data sources; document costs and data terms; run a source-cited draft-only pilot with a human reviewer before considering automated publishing.",
+      "sources": [],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -359,6 +367,13 @@
       "id": "D-12",
       "suggestion": "Grep the repo for “90 days” and for any percentage sign: both are claims the retrieved policy text contradicts (89 days) or does not support (rates sit behind a login).",
       "closes": []
+    },
+    {
+      "id": "D-13",
+      "suggestion": "Inventory available Associates/Product Advertising API access, Search Console query data, AI-provider terms, budget and a human reviewer; run a citation-only draft pilot before considering automated publishing.",
+      "closes": [
+        "Q-14"
+      ]
     }
   ]
 }

@@ -26,6 +26,12 @@ const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
+const specialLinksReady = products.length > 0 && products.every((p) => {
+  const v = p.special_link_validation || {};
+  return v.status === 'validated' && !!v.validated_url && !!v.confirmed_destination &&
+    !!v.tracking_report_reference && !!v.confirmation_date && !!v.confirmation_source;
+});
+const validatedSpecialLink = (p) => p.special_link_validation?.validated_url || '';
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
@@ -57,7 +63,7 @@ const DASHBOARDS = [
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
-  ['/editorial/', 'Editorial register (second publication)'],
+  ['/editorial/', 'Editorial record (noindex archive)'],
 ];
 
 // ---------- helpers ----------
@@ -179,7 +185,7 @@ function productCard(p, placement) {
   const cat = catName(p.category);
   const note = p.lede || p.editorial_note || '';
   const fit = p.best_for && p.tradeoff ? `<p class="fit-line"><strong>Best for:</strong> ${esc(p.best_for)}<br><strong>Trade-off:</strong> ${esc(p.tradeoff)}</p>` : '';
-  if (tagged(p)) {
+  if (specialLinksReady && validatedSpecialLink(p) && !p.no_buy_link) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
   ${cardArt(p)}
   <div class="card-body">
@@ -188,8 +194,19 @@ function productCard(p, placement) {
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
     ${placement === 'front-shelf' ? '' : fit}
     ${placement === 'front-shelf' ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
-    <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
+    <p><a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
     ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
+  </div>
+</article>`;
+  }
+  if ((tagged(p) || p.observed_asin) && !p.no_buy_link) {
+    return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
+  ${cardArt(p)}
+  <div class="card-body">
+    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <h3>${esc(title)}</h3>
+    ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
+    <p class="status"><strong>Purchase link held for validation.</strong> This product's Associates Central destination and tracking-report check have not been recorded yet, so no buy button is published. No claim is made that the supplied short link is invalid. <a href="${esc(href('/products/' + p.slug + '/'))}">Specifications, trade-offs and sources →</a> ${flagLinks(['FLG-005'])}</p>
   </div>
 </article>`;
   }
@@ -258,8 +275,14 @@ function buyBox(p, placement = 'product-page') {
     <p class="small">The listing this unit was observed on is recorded on the <a href="${esc(href('/shop/'))}">comparison table</a> with its source link.</p>
   </div>`;
   }
+  if (!specialLinksReady || !validatedSpecialLink(p)) {
+    return `<div class="buybox hidden-link">
+    <p><strong>Purchase link held for validation.</strong> This product's Associates Central destination and tracking-report check have not been recorded yet.</p>
+    <p class="small">The product remains in the comparison; no claim is made that the supplied short link is invalid. See <a href="${esc(href('/flagged/'))}#FLG-005">G-02 / FLG-005</a>.</p>
+  </div>`;
+  }
   return `<div class="buybox">
-    <a class="btn btn-primary" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">Check it on Amazon</a>
+    <a class="btn btn-primary" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a>
     <span class="btn-note">Affiliate link, marked sponsored. Opens the ${esc(p.brand || 'manufacturer')} listing on Amazon.com. We do not display prices because they change and we do not use Amazon price data.</span>
   </div>`;
 }
@@ -389,7 +412,7 @@ const add = (p) => pages.push(p);
     cellText(p.official_listing_url),
     cellText(p.confirmation_date),
     cellText(p.confirmation_source),
-    `${esc(p.outbound_status)}${tagged(p) ? `<br>${ext(tagged(p), 'tagged link', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)}` : ''}`,
+    `${esc(p.outbound_status)}${specialLinksReady && tagged(p) ? `<br>${ext(tagged(p), 'tagged link', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)}` : '<br><span class="small muted">withheld pending G-02</span>'}`,
     `${esc(p.confirmation_status)}<br>${flagLinks(p.flags)}`,
     `${rowSources(p)} <span class="small muted">observed ${esc(dateLong(p.observed_date))}</span>`,
   ]);
@@ -405,13 +428,14 @@ const add = (p) => pages.push(p);
 <section>
   ${table(['ID', 'Category', 'Observed title and breadcrumb', 'Observed ASIN and page', 'Submitted link', 'Intended ASIN', 'Official listing URL', 'Confirmation date', 'Confirmation source', 'Buy link status', 'Confirmation status', 'Sources (official)'], rows, 'wide')}
 </section>
+<div class="prose"><div class="note">All five submitted links have dated observed destinations, but none is treated as the product the owner intended until confirmed. The ThermoMaven has no manufacturer specification page, so no product CTA is planned for it. Affiliate purchase links for the other products remain held until Associates Central destination and tracking-report evidence is recorded (G-02). See <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</div></div>
 <section class="band">
   <h2>What the table shows</h2>
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
     <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
     <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-028'])}</li>
-    <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
+    <li>${specialLinksReady ? `${taggedCount} validated ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}.` : `No purchase CTA is published while gate G-02 is pending; ${taggedCount} draft tagged ${taggedCount === 1 ? 'destination is' : 'destinations are'} recorded but withheld until Associates Central evidence exists.`} ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
   </ul>
@@ -558,7 +582,7 @@ for (const p of products) {
     <h1>${esc(p.name)}</h1>
     <p class="deck">${esc(p.lede || '')}</p>
     ${buyBox(p)}
-    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-005'])}), so treat it as provisional.` : 'No outbound link is published for this product.'}</p>
+    <p class="small muted">${p.no_buy_link ? `No product purchase link is published. ${esc(p.note || '')}` : specialLinksReady && validatedSpecialLink(p) ? 'The tested Special Link and its tracking-report evidence are recorded.' : `The draft tagged destination is not published as a purchase link until its Associates Central destination and tracking report are verified (${flagLinks(['FLG-005'])}).`}</p>
   </div>
 </section>
 <section class="band">
@@ -630,13 +654,18 @@ add({
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
-<h2>Evidence needed before expanding</h2>
+<h2>Six decisions only the owner can make</h2>
 <ol>
-<li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
+<li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site.</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
-<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
-<li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nothing there is implemented until you choose.</li>
+<li>Test one Special Link per product in Associates Central, then confirm the destination and tracking-report row (Q-04).</li>
+<li>Deploy the analytics collector, or decide to run with no measurement for now.</li>
+<li>Pick a publishing cadence and nominate the reader the guides are written for.</li>
+<li>Choose whether to pilot AI-assisted research/drafting, and name the authorized data sources, provider, budget, and human editor (Q-18).</li>
 </ol>
+<p>Each of those is written up with its trade-offs on the <a href="${esc(href('/suggestions/'))}">suggestions page</a>.</p>
+<h2>What this build cannot do yet</h2>
+<p>This is a sourced static publication, not an AI-powered research or publishing platform. No AI provider, Amazon product-data API, trend/keyword feed, Search Console property, or analytics endpoint is connected. Product research, query-led topic selection and publication are not automated; no popularity, conversion, commission, or revenue claims are made. It cannot read Amazon prices, sales, or Associates reports without authorized access, and it does not scrape Amazon. See <a href="${esc(href('/questions/'))}">Q-18</a> and <a href="${esc(href('/suggestions/'))}">S-15</a>.</p>
 <h2>Measure before expanding</h2>
 <p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener external">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (${srcLink('S02')}) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
 <h2>Limits</h2>
@@ -671,7 +700,7 @@ ${table(['ID', 'Suggestion', 'Closes'], questions.discovery.map((d) => [esc(d.id
 // Suggestions (decision board: review, then choose)
 add({
   path: '/suggestions/', title: 'Suggestions: choose a path',
-  description: 'Options for the next decisions. Nothing is implemented until the owner chooses.',
+  description: 'Owner decisions with trade-offs. Safety gates remain in force until their validation evidence is recorded.',
   body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">${esc(suggestionsDoc.note)}</p></section>
 <div class="choice-grid">
 ${suggestionsDoc.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
@@ -747,9 +776,9 @@ add({
 </div>
 ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-01', 'Disclosure strip above the fold on every page and repeated in the footer', 'Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)', 'Passed (automated)'],
-    ['G-02', 'One Special Link per product tested in Associates Central, with destination and tracking report confirmed', 'Manual, requires Associates login', '<strong>Pending</strong> (FLG-005)'],
+    ['G-02', 'One Special Link per product tested in Associates Central, with destination and tracking-report evidence recorded', 'Manual, requires Associates login', specialLinksReady ? 'Passed' : '<strong>Pending; purchase CTAs withheld</strong> (FLG-005)'],
     ['G-03', 'Every Amazon-hosted link carries rel="sponsored"', 'Automated', 'Passed (automated)'],
-    ['G-04', 'Every outbound product link uses tag shopnow047c-20', 'Automated', 'Passed (automated)'],
+    ['G-04', 'Every published product CTA uses a validated link tagged shopnow047c-20', 'Automated + G-02 evidence', specialLinksReady ? 'Passed (automated)' : 'No product CTAs published'],
     ['G-05', 'No redirect or cloaking pages generated', 'Automated', 'Passed (automated)'],
     ['G-06', 'No prices, ratings or availability displayed', 'Automated', 'Passed (automated)'],
     ['G-07', 'Every product row has at least one official source link', 'Automated', 'Passed (automated)'],
@@ -914,6 +943,40 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// Keep historical publication surfaces reachable but out of search. Do not disallow
+// these paths in robots.txt: crawlers must fetch each page to read its noindex directive.
+const markArchiveNoindex = (dir) => {
+  const full = path.join(OUT, dir);
+  if (!fs.existsSync(full)) return;
+  const walk = (folder) => {
+    for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
+      const file = path.join(folder, entry.name);
+      if (entry.isDirectory()) walk(file);
+      else if (entry.isFile() && entry.name.endsWith('.html')) {
+        let html = fs.readFileSync(file, 'utf8');
+        // Old archive builds may still contain provisional product buttons. Retain their copy,
+        // but never leave an unvalidated affiliate destination clickable in an archive.
+        html = html.replace(/<a\b(?=[^>]*\bdata-product=)(?=[^>]*\btag=shopnow047c-20)[^>]*>([\s\S]*?)<\/a>/gi,
+          '<span class="archive-link-held">$1 <span class="small">(purchase link held pending G-02)</span></span>');
+        if (!/<meta\s+name=["']robots["']\s+content=["']noindex,follow["']/.test(html)) {
+          html = html.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,follow">');
+        }
+        const homeHref = path.relative(path.dirname(file), path.join(OUT, 'index.html')).split(path.sep).join('/');
+        if (!/class=["'][^"']*archive-notice/.test(html)) {
+          const notice = `<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="${esc(homeHref)}">Visit the current publication</a>.</aside>\n`;
+          html = html.replace(/<main\b/i, `${notice}<main`);
+        } else {
+          html = html.replace(/(<aside class="archive-notice"[^>]*>[\s\S]*?<a href=")[^"]+("[^>]*>Visit the current publication<\/a>)/i, `$1${esc(homeHref)}$2`);
+        }
+        html = html.replace(/[ \t]+$/gm, '');
+        fs.writeFileSync(file, html);
+      }
+    }
+  };
+  walk(full);
+};
+for (const archive of ['editorial', 'crisp-index', 'legacy', 'docs']) markArchiveNoindex(archive);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

@@ -100,10 +100,10 @@ def head(title: str, desc: str, rel: str, extra: str = "") -> str:
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex,follow">
 <!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="alternate" type="application/rss+xml" title="{BRAND}" href="/feed.xml">
+<!-- No feed discovery: this retained editorial archive is noindex. -->
 {extra}
 </head>
 <body>
@@ -174,6 +174,8 @@ def footer(rel: str) -> str:
     <p class="colophon small">Verified against official sources on {ACCESSED}. Specifications carry a
     source and an access date because they change. No prices and no star ratings appear on this site;
     see <a href="/disclosure/">why</a>.</p>
+    <p class="small">Archive note: this editorial subtree is marked noindex; the root site is the canonical publication. Google Search Central describes the <code>noindex</code> robots meta directive in its
+    <a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag" rel="noopener external">robots meta tag guidance</a>.</p>
   </div>
 </footer>
 <script src="/assets/analytics.js" defer></script>
@@ -1140,18 +1142,9 @@ def page_404() -> str:
 # --------------------------------------------------------------------------
 
 def sitemap() -> str:
-    urls = ["/", "/air-fryers/", "/air-fryer-ovens/", "/thermometers/", "/guides/", "/sources/",
-            "/flagged/", "/questions/", "/suggestions/", "/dashboard/", "/disclosure/"]
-    urls += [f"/products/{p}/" for p in ("p1", "p2", "p3", "p4", "p5")]
-    urls += [f"/guides/{g['slug']}/" for g in GUIDES]
-    body = "".join(
-        f"<url><loc>{SITE}{u}</loc><lastmod>{ACCESSED}</lastmod>"
-        f"<changefreq>{'weekly' if u in ('/', '/guides/') else 'monthly'}</changefreq>"
-        f"<priority>{'1.0' if u == '/' else '0.7' if u.startswith('/guides/') else '0.5'}</priority></url>"
-        for u in urls
-    )
+    # This retained editorial archive is noindex and must not compete with the root publication.
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + body + "</urlset>\n")
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>\n')
 
 
 def feed() -> str:
@@ -1243,8 +1236,7 @@ def main() -> int:
     write("/sitemap.xml", sitemap())
     write("/feed.xml", feed())
     # robots.txt and .nojekyll are owned by the root-site session. Do not write them.
-    # Request logged in COORDINATION.md: point the root robots.txt sitemap line at
-    # /editorial/sitemap.xml so this subtree is discoverable.
+    # The editorial archive is noindex; the root robots.txt and canonical sitemap are authoritative.
 
     for asset in ("site.css", "analytics.js"):
         shutil.copyfile(ROOT / "tools" / "assets" / asset, DOCS / "assets" / asset)

@@ -1,23 +1,18 @@
-# Executive summary
+# Executive summary — Affil3
 
-**Prepared:** 2026-11-20 · **Tracking ID:** `shopnow047c-20` · **Site:** https://karagemop466-tech.github.io/Affil3/
-**Branch merged from:** `arena/4578ad4b-affil3`
+**Prepared:** 2026-11-20 · **Tracking ID supplied:** `shopnow047c-20` · **Canonical publication:** https://karagemop466-tech.github.io/Affil3/
 
----
+## Bottom line
 
-## The one-paragraph version
+The repository contains a static, question-led kitchen-products publication with a sourced product register, category pages, five buyer guides, RSS, a sitemap, compliance and decision dashboards. It is **not yet an AI-powered research or publishing platform**: no AI provider, Amazon product-data API, trend/keyword source, Search Console property, analytics collector endpoint, or Associates report is connected. No popularity, conversion, commission, revenue, or trend claims are made.
 
-Five Amazon links were supplied. Four resolve to real products in one coherent niche — countertop
-cooking appliances. The fifth resolves to nothing and is published as nothing. None of the five carries
-your tracking ID, which is the single thing standing between this site and earning a cent. The site is
-built, verified, and live; the measurement it collects is honest and currently zero, because there is
-nothing honest to report yet.
+Product identity observations are kept separate from product intent. The supplied short-link tokens and the observed Amazon destinations are not treated as proof of the products the owner intended. Intended ASIN, official listing URL, confirmation date, and confirmation source remain blank for all five rows. Product purchase CTAs are withheld until every product has a Special Link test, confirmed destination, tracking-report reference, date, and source recorded in Associates Central (G-02). The supplied short links are **not described as invalid**; their precise compliance status remains unresolved (FLG-003).
 
----
+## Product register — observed redirect destinations only
 
-## What the five links actually are
+Observations below reflect the register dated 2026-11-20. They describe what the submitted link was observed to resolve to, not the owner's intended item. Follow the official Amazon listing for manual review; status is not a product recommendation or test result.
 
-| Slot | Supplied link | Resolves to | Product | Identity |
+| ID | Submitted link | Observed Amazon destination | Observed listing title | Intended identity |
 |---|---|---|---|---|
 | 1 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | CHEFMAN TurboFry Touch 6 Qt. Dual-Window Air Fryer (RJ38-SQPF-3TDB-2W) | resolved |
 | 2 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT (4-00675-02A-VN) | resolved |
@@ -31,52 +26,49 @@ counter space**, plus the two thermometers you use with them. All five now carry
 specification page, and on two of them the maker and the Amazon listing disagree about the same
 model number.
 
-## The finding that matters most
+## What is implemented
 
-Every supplied link resolves to an `amazon.com/dp/<ASIN>` URL with **no `tag=` parameter**. Amazon's
-Program Policies require the Associates ID to appear as a URL parameter on every link placed on a site,
-and the Operating Agreement requires links to use the tagged formats Amazon provides. As supplied,
-these links would not attribute a sale.
+- Product-led landing page, categories, the full five-row shop table, source register, and five question-shaped guides. Guide topics are editorial hypotheses, not claims about search demand.
+- RSS feed and root sitemap. The root publication is the sole search-index target; the retained `/editorial/` review archive is marked `noindex` and omitted from both sitemap discovery paths.
+- Associates disclosure strip beneath the masthead on every page, with the required statement repeated in the footer.
+- A privacy-conscious browser event counter and self-hostable Node collector. **Live collection is inactive** until an endpoint is deployed and configured; no live click or conversion results exist.
+- An empty campaign ledger with provenance fields; no score, forecast, or revenue estimate.
+- Suggestions, open questions, and a Flagged for Review page so recommendations and unresolved facts are visible instead of silently filled in.
 
-The correct response is not to rewrite the links by hand. It is to re-issue them from Associates
-Central, click one, and confirm the click shows up in the report before touching the other four —
-one link tested, then scale. That is `SG-08` on the suggestions page, and it is the only thing on this
-site that is blocked rather than done.
+## Key release gates and unknowns
 
 Note precisely what is and is not being claimed: the short links are **untagged, and their compliance
 status is unresolved** — which is a different claim from 'broken', and none of them is broken. No
 official document reviewed says `link.amazon` short URLs are invalid. Their exact compliance status is
 not addressed in the documents read.
 
-## What was built
+| Question or gate | Current state | How to resolve |
+|---|---|---|
+| Intended product and intended ASIN for each short link | Unconfirmed; fields blank | Confirm each item in Associates Central or with the intended official listing URL (Q-01). |
+| Is `shopnow047c-20` active and is the site declared in the account? | Unknown to this repository | Check the Associates Central account and declared-site list (Q-03, FLG-006, FLG-011). |
+| Are the product links valid Special Links with correct destinations and report rows? | G-02 pending; purchase buttons withheld | Generate one link per product in Associates Central, click and verify destination and report, then record the proof in the product validation record (Q-04, FLG-005). |
+| Are analytics and search-query measurements active? | No. Search Console is unconnected and analytics endpoint is unset | Verify the site in Search Console; select, deploy, and test a collector endpoint (Q-06, Q-12; FLG-009, FLG-013). |
+| What AI/data workflow is authorized? | Not configured | Choose an AI provider, product/query sources, budget/data terms, and human reviewer. Start with source-cited drafts only (Q-18, S-15). |
+| Who is the named editor/author? | Team byline; no person or credentials supplied | Supply a real author/reviewer and accurate bio, or keep the team byline (Q-08, FLG-014). |
 
-| Surface | What it does |
-|---|---|
-| Front page | Leads with three shape-based picks. No verification talk above the fold. |
-| Category pages | Air fryers, oven-style, thermometers. Comparison table plus cards. |
-| Product pages | Source-cited spec table, gains/costs, fit statement, product-intent record. |
-| Four guides | Question-shaped, answered from the register. RSS + sitemap included. |
-| Source register | 19 sources, tiered, each with what it supports and when it was read. |
-| Flagged for review | 7 irregularities, published with source links. Does not block publication. |
-| Open questions | 24 questions, each with an owner and the step that closes it. |
-| Suggestions queue | 14 proposals with problem, cost, and the decision needed. 3 shipped, 1 blocked. |
-| Dashboard | Entry status, campaign ledger schema (empty), 12 compliance rules, 5 events. |
-| Disclosure & method | Rule-by-rule record with the quoted policy basis for each. |
+## Verification and publication
 
-Every dashboard surface is reachable from **one** footer group. There is one navigation group.
+Build checks run from the checked-in sources:
 
-## What is enforced by the build, not by good intentions
+```sh
+node tools/build.mjs && node tools/verify.mjs
+python3 tools/build.py && python3 tools/check_site.py
+```
 
-`tools/check_site.py` fails the build if:
+The root check validates product fields, citations, disclosure presence, sponsored link attributes, the G-02 CTA gate, analytics event consistency, internal links, sitemap/feed coverage, and that the archival `/editorial/` pages are noindex. The editorial check validates that the archive pages are noindex and omitted from its sitemap. These automated checks do not replace Associates Central, Search Console, mobile disclosure review, or a live-host link check.
 
-- any internal link breaks,
-- a currency amount appears anywhere in the HTML,
-- a star rating or review count appears,
-- a product call-to-action lacks `tag=shopnow047c-20`,
-- an Amazon citation is not marked `rel="nofollow"`,
-- the Associates statement is missing from any page,
-- a cited source ID does not exist,
-- the sitemap does not cover every page.
+## Official sources and review paths
+
+- [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+- [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies)
+- [FTC disclosures guidance](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers)
+- [Google Search Central: robots meta tag and noindex](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
+- [Google Search Central: qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
 
 This is why **no buy button renders today**. Rendering one would mean shipping a link that cannot pay
 you. The product pages say so in plain language where the button would be.
@@ -134,8 +126,4 @@ built to avoid.
 
 ## Read next
 
-- `COORDINATION.md` — task board, claims, verification log
-- `docs/flagged/` — the seven irregularities
-- `docs/questions/` — 24 questions with owners
-- `docs/suggestions/` — 14 proposals awaiting a decision
-- `docs/disclosure/` — the rule-by-rule compliance record
+For the decision queue and evidence gaps, see the live [Suggestions](https://karagemop466-tech.github.io/Affil3/suggestions/), [Questions](https://karagemop466-tech.github.io/Affil3/questions/), and [Flagged for Review](https://karagemop466-tech.github.io/Affil3/flagged/) pages.

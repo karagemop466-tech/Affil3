@@ -1484,3 +1484,23 @@ breaking an id on purpose and confirming the build fails.
   `RJ38-SQSS-8T` (`FLG-026`), battery runtime for Gen 3 (`FLG-023`), IP67/NSF for the F1 Ace
   (`FLG-008`), and the Emeril preset and accessory counts (`FLG-001`, `FLG-006`).
 - **Analytics and Search Console** (`FLG-009`, `FLG-013`). Both need an owner account.
+# Session `f5136b4e` — publication/index and link-validation safety pass
+
+Registry: session `f5136b4e`, branch `arena/f5136b4e-affil3`, status active. Scope: `COORDINATION.md`, product/question/suggestion/source evidence, root and archive generators, verification scripts, generated pages, and robots/sitemap output. This scope keeps the root publication as the sole indexable surface and withholds product CTAs until Associates Central validation.
+
+| Task | Status | Files | Notes |
+|---|---|---|---|
+| One indexable canonical publication | done | `tools/build.py`, generated `editorial/`, `robots.txt`, `tools/build.mjs`, `README.md` | Root publication remains indexable and is the only surface listed in root robots.txt's sitemap; all HTML pages under `/editorial/`, `/crisp-index/`, and `/legacy/` carry `noindex,follow`, show an archive notice, and have no clickable product purchase CTA. The editorial sitemap is empty. Root robots.txt leaves these paths crawlable so search engines can read the directive. Source S18 is Google Search Central robots-meta guidance: https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag. |
+| Special Link G-02 rendering gate | done | `data/products.json`, `data/flags.json`, `data/suggestions.json`, `tools/build.mjs`, `tools/verify.mjs`, generated root pages | All five records have separate pending validation evidence fields. No product CTA renders until all five have a validated Associates URL, matching confirmed destination, tracking-report reference, date, and source. The submitted short links are not called invalid; FLG-003 stays unresolved. |
+| Buyer-facing front page and decision queue | done | `tools/build.mjs`, generated pages, `data/questions.json`, `data/suggestions.json`, executive-summary files, `README.md` | Front page uses buyer-guide navigation and product cards rather than ASIN/status labels. Added Q-14/S-11 for an AI/data-provider and human-review gate. Old executive snapshots clearly marked superseded. |
+| Verify, rebuild and record findings | done | root + archive generated files, this board | `npm run check`: 28 root pages, 5 feed items, 27 root sitemap URLs, 2,258 checks passed, 0 failed; all 139 HTML pages across the three historical archive directories carry noindex and an archive notice, have no product CTA, and contain no merge markers. The editorial generator/check passed 21 archive pages, with no prices/ratings, broken internal links, or sitemap entries. |
+
+**Sources checked for this scope:** Google Search Central robots-meta guidance (S18) fetched and read, including the page-specific meta directive and meaning of `noindex`. Existing site citations/policies were not rewritten; product identity values and observed destinations were left unchanged.
+
+**Limits/irregularities still open:** G-02 needs an Associates Central session; intended ASINs and confirmation fields remain blank; Search Console and analytics collector are inactive; AI/provider, authorized data sources, and a human reviewer are unselected (Q-14/S-11). These require account/owner access and are published in the Questions/Flagged pages.
+
+Claim recorded before implementation. The existing PR/merge history above is historical and does not change the current branch assignment.
+
+## Rebase / integration note — 2026-11-20
+
+Integration update (2026-11-20): `origin/main` advanced to `82332c3` while PR #36 was open and GitHub reported it conflicting. Merged that mainline into this branch, keeping its additions and preserving the root generator's newer footer link, disclosure work, and archived publications. The resolution marks every HTML page under `/editorial/`, `/crisp-index/`, and `/legacy/` noindex, adds a clear archive notice, withholds old archive purchase CTAs, and leaves paths crawlable so crawlers can read the directives. Verification passes 2,258 root checks and 21 editorial-archive checks. PR #36 and deployment status still need refresh/verification after pushing the integration merge.

@@ -57,7 +57,15 @@
       "fit_line": "Two different foods, two different timings, one compact footprint.",
       "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
       "guide_title": "Basket or oven-style air fryer: what should you compare?",
-      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare"
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P02",
@@ -121,6 +129,14 @@
         "power_w": "The manufacturer page does not state wattage; no figure is published.",
         "weight_lb": "The manufacturer page does not state unit weight; no figure is published.",
         "presets": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch presets' (FLG-005), so no preset count is published."
+      },
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
       }
     },
     {
@@ -204,7 +220,15 @@
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes at chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing (see FLG-026)."
+      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes at chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing (see FLG-026).",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P04",
@@ -292,6 +316,14 @@
         "waterproof": "IP67 Waterproof (listing) vs '100% waterproof design', no IP code (manufacturer)",
         "certification": "NIST & NSF Certified (listing) vs NIST-certified +/-0.5 F (manufacturer)",
         "newer_model": "A 'newer model of this item' callout points at B0GL7Z4KP4 (listing)"
+      },
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
       }
     },
     {
@@ -354,6 +386,14 @@
       "blank_reason": {
         "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
         "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
+      },
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
       }
     }
   ]

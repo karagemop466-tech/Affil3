@@ -1,113 +1,62 @@
-# Affil3 — executive summary
+# Historical executive-summary snapshot — superseded
 
-**Updated:** 2026-11-20 by session `arena-43565031-affil3` (reconciled with `main`'s generated-site architecture)
-**Live site:** https://karagemop466-tech.github.io/Affil3/ — root publication, with `/editorial/` as the register appendix
-**Sources, quoted with retrieval dates:** [`docs/OFFICIAL-SOURCES.md`](docs/OFFICIAL-SOURCES.md)
+> **Do not use this snapshot for current product or release status.** It describes an earlier site version and contains findings that were later corrected. The current summary is [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) and the current site page is https://karagemop466-tech.github.io/Affil3/executive-summary/.
 
-> Two other executive summaries exist in the repo (`EXECUTIVE-SUMMARY.md`, `EXECUTIVE_SUMMARY-6249757a.md`)
-> from other sessions. They are left untouched here on purpose; consolidating them into one page is logged
-> in `COORDINATION.md` and raised as an open question (`Q-17`) rather than settled unilaterally.
+# Affil3 — Executive summary (historical)
 
----
+**Repository:** `karagemop466-tech/Affil3`
+**Branch:** `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
+**Selected Associates tracking ID:** `shopnow047c-20` — **unverified** (not confirmed against the Amazon Associates dashboard in this environment; see flagged item FLG-001)
 
-## 1. The finding that governs everything else
+## What was built
 
-**The five product links supplied for this project do not identify five products.**
+A static Amazon-affiliate publication site, designed to read like a shop/publication rather than an audit, hosted on GitHub Pages:
 
-| Submitted | Reached on 2026-11-20 |
-|---|---|
-| `link.amazon/B04G1MEwY` | ASIN **B0CDY277D3** — not the submitted token |
-| `link.amazon/B02NbDxp3` | ASIN **B09B7SB46R** — not the submitted token |
-| `link.amazon/B00hJ57DV` | ASIN **B08DKYBTPH** — not the submitted token |
-| `link.amazon/B0c8moW59` | Amazon **checkpoint page**, no product |
-| `link.amazon/B0f3GKalj` | ASIN **B0DZFD6R9Z**, in a **different browse node** (meat thermometers, not air fryers) |
+- **`index.html`** — Publication front page. Leads with the five submitted Amazon product listings (products first, not the verification process), followed by question-shaped buyer guides. Disclosure strip under the masthead (above the fold); disclosure repeated in the footer.
+- **`products.html`** — Product-intent confirmation register: one table row per submitted link with separate fields for intended ASIN, official listing URL, confirmation date, source, and observed redirect target (redirect targets kept in a separate field, never merged). All five rows are blank/unverified; no value was inferred or filled in.
+- **`guides/`** — Four question-shaped guides as working titles (editorial hypotheses only, not performance claims):
+  1. Basket or oven-style air fryer: what should you compare?
+  2. A no-hype checklist for comparing air fryer capacity
+  3. How to assess cleanup and counter-space trade-offs
+  4. Questions to ask before buying a multi-function kitchen appliance
+- **`disclosure.html`, `privacy.html`, `about.html`, `flagged.html`** — Full disclosure statement, privacy statement, methodology/measurement plan, and the public flagged-for-review register.
+- **`sitemap.xml`** — One site for search engines to index (all 11 pages).
+- **`feed.xml`** — RSS feed carrying the four guides.
+- **`assets/js/app.js`** — Privacy-preserving outbound-click counter recording the five defined events (session_start, disclosure_impression, guide_view, outbound_click, product_impression). No cookies, no personal data. Beacon target `/analytics/collect` is not self-hosted on GitHub Pages (flagged FLG-004).
+- **`assets/css/main.css`** — Self-authored design system; no external frameworks, fonts, or resources.
 
-Three properties of that evidence, each independently checkable:
+## Compliance posture
 
-1. **Every token is 9 characters**; every real ASIN reached in the same session is 10. A dropped
-   character during a copy-paste is the simplest explanation, and it is an input error, not a campaign
-   failure.
-2. **Every resolved URL carried `plpRedirect=mhFallback`** — a router saying *I did not find that item*.
-   The register marks these rows `identity_status: resolved` on the strength of title and manufacturer
-   agreement, which identifies the page reached but cannot prove it is the page intended. Raised as
-   `FLG-023`.
-3. **Two sessions got different answers for the same links.** An earlier record has `B00hJ57DV` hitting
-   the checkpoint; on this retrieval `B00hJ57DV` resolved and `B0c8moW59` hit the checkpoint. Both stand.
-   That is direct evidence the destination varies by session or timing, so re-verification must append
-   attempts rather than overwrite rows (`FLG-024`).
+- Amazon Associates statement visible on every page (above the fold + footer).
+- Every outbound product link marked `rel="sponsored"`.
+- Submitted short links kept exactly as submitted; none claimed invalid (compliance status unresolved — FLG-003).
+- Disclosure placement and endorsement context to be reviewed against the Amazon Associates Operating Agreement and FTC guidance before any guide recommends a specific product (S01 · S07 · S24).
+- One link per product to be tested in the enrolled Associates workflow before scaling (S02).
 
-What is **not** claimed anywhere: that the short links are invalid or non-compliant. Verified facts only —
-no `tag` parameter present, destination ≠ token. Compliance is Amazon's determination, per the standing
-instruction in the brief.
+## What is NOT verified (flagged for review)
 
-## 2. Rules that settle design questions outright
+| ID | Item | Status |
+|----|------|--------|
+| FLG-001 | Tracking ID `shopnow047c-20` confirmed in Associates dashboard | Unverified |
+| FLG-002 | ASIN / official listing URL / date / source for all 5 links | Unverified |
+| FLG-003 | Short-link (`link.amazon/...`) compliance status | Unresolved; links not claimed invalid |
+| FLG-004 | Self-hosted `/analytics/collect` endpoint | Not deployed |
+| FLG-005 | Google Search Console enabled + sitemap submitted | Not enabled (owner action) |
+| FLG-006 | Product-category alignment vs. guide hypotheses | Unverified |
+| FLG-007 | Disclosure workflow gate for future pages | Pending review |
 
-Read verbatim from the Associates Program Operating Agreement (updated 2025-10-15), the Associates
-Program Policies (updated 2026-04-14), and the FTC's Endorsement Guides page. Each is now a row in the
-compliance register with its quote (`R13`–`R18`) and, where it is unenforced, a flag:
+Full detail with source links: `/flagged.html` (published on the live site).
 
-| Rule | Consequence for this site |
-|---|---|
-| §2(b): a site may show price/availability only if Amazon serves it or Creators/PA API supplies it | **No prices or star ratings anywhere**, enforced by `tools/check_site.py`. "Check current price" links instead |
-| §2(b): tag must appear as `XXXXX-##` in every outbound link | Until the account is confirmed, the site publishes **no buy links**; the assertion passes on an empty set and is recorded as `blocked`, not `met` |
-| §2(b): product lists require additional original content relevant to the link | A links-only category page is not allowed to be the product; hubs carry editorial body copy |
-| §2(b): "Under no circumstances may you associate any sub-tag … with a specific end user" | The shipped collector must stay aggregate. Event fields (path, referrer_host, product_id, destination_host) comply today; the constraint on future joins is flagged (`FLG-025`, `Q-14`) |
-| §2(b): remove promotion references as soon as a promotion ends | Currently satisfied by publishing no offers at all. Needs an `expires_on` mechanism before any deal page ships (`R16` open, `S-14`) |
-| §1: "no representation … regarding the amount of traffic or commission income you can expect" | The site publishes **no** revenue forecast, conversion score, or rate. The ledger ships empty by design |
-| Participation Requirements §1: original content, public at the address in the application, "significant commentary, analysis, or transformation" | Thin aggregation is an **eligibility** failure, not a style preference — the formal answer to "make it not read like AI slop" |
-| Statement is Agreement **§5**, and §6 deems its violation a material breach | Citation verified against the text rather than trusted; recorded as a resolved flag (`FLG-029`) |
-| Session = 24 hours; cart path = **89 days** | Any attribution figure must use these, not the "90 days" repeated online (`FLG-027`) |
+## Next steps (gated, owner action)
 
-## 3. What this branch changed
+1. Confirm tracking ID `shopnow047c-20` in Amazon Associates (FLG-001).
+2. Confirm each product's intended ASIN and official listing URL; test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling (FLG-002, S02).
+3. Deploy self-hosted receiver at `/analytics/collect` so the five defined events flow to first-party reports (FLG-004).
+4. Enable Google Search Console, submit `sitemap.xml`, then choose future guide topics from measured queries (FLG-005).
+5. Add campaign-ledger entries (timestamp, source, channel, eligible sessions, clicks, reported orders) only from authorized first-party reports, with dated provenance (Priority 4).
 
-- **Folded evidence into the live registers**, not into a parallel site: `data/flags.json` (7 new flags,
-  `FLG-023`…`FLG-029`, each with sources, a manual step, and a dated observation),
-  `data/questions.json` (+4 known, +4 unknown, +4 discovery routes), `data/suggestions.json`
-  (`S-13`…`S-16`), `data/register/compliance.json` (`R13`…`R18` with verbatim quotes).
-- **Rebuilt both publications** from that data (`tools/build.mjs` for the root site, `tools/build.py` for
-  `/editorial/`), which also corrected a stale generated stylesheet (`editorial/assets/site.css`).
-- **`docs/OFFICIAL-SOURCES.md`** — every source with the exact wording relied on, document version dates,
-  retrieval dates, the live-evidence table with reproduction links, and a section for what could not be
-  verified. This is the manual-review layer the brief asks for.
-- **`evidence/43565031/`** — this session's raw registers (link verification with control tests, a claims
-  ledger, an open-questions register, an editorial-cluster plan). Kept as evidence and as the source the
-  flags trace back to, deliberately outside `data/` so it is never mistaken for build input.
-- **Removed this session's duplicate root pages** (`shop.html`, `suggestions.html`, `questions.html`,
-  `verification.html`) and this session's competing validator/builder scripts and CI workflow, because
-  `main` already publishes those surfaces. Publishing a second shape of the same site is the one change
-  that would actively hurt indexation.
+## Verification notes
 
-## 4. What is still missing, and only the owner can supply it
-
-1. **Product identity** — ten characters per product, from the listing while signed in (`Q-01`, `Q-15`).
-2. **Associates account state** — does `shopnow047c-20` exist, is this Pages URL declared in the
-   application, is the account accepted (`Q-01`, `FLG-006`).
-3. **API access** — without Creators/PA API, no lawful price, image, or automated product data, which
-   caps the "AI-powered platform" half of the brief (`Q-04`).
-4. **A measurement receiver** — GitHub Pages is static, so clicks are instrumented and collected nowhere
-   today; and one collector rule is a hard constraint, not an option (`Q-14`).
-5. **Search Console** — no verification record exists, so topic selection is still unmeasured (`Q-08`).
-6. **An integration decision** — two publishers, two exec summaries, twelve session branches. This is the
-   structural risk to the site, not a cosmetic one (`Q-17`, `FLG-028`).
-
-## 5. Recommended path
-
-Take **one** verified correction first: resolve the five products and regenerate the tagged links, because
-every other improvement inherits its honesty from that step. Then, in order: `S-16` (make the CI assertion
-point at `editorial/` so the site cannot silently ship stale output), `S-15` (quote + version date on every
-compliance source, so the site remains auditable after Amazon edits a page), `S-13` (assert the aggregate
-measurement boundary before a receiver goes live), `S-14` (an `expires_on` field before any deal content).
-
-Deliberately **not** recommended now: scraping product data (the Commission Income Statement disqualifies
-events generated by "bots or automated software", and the fallback behaviour observed above shows why
-scraped fields rot quietly), and publishing price or rating numbers for the same reason.
-
-## 6. Manual review index
-
-| To check | Where |
-|---|---|
-| Verbatim policy wording, section numbers, retrieval dates | [`docs/OFFICIAL-SOURCES.md`](docs/OFFICIAL-SOURCES.md) §A–§B |
-| The five links, controls, and reproduction URLs | `docs/OFFICIAL-SOURCES.md` §C, then [`/flagged/`](https://karagemop466-tech.github.io/Affil3/flagged/) |
-| Rules the site meets, blocks on, or merely avoids | `/editorial/dashboard/` (rule-by-rule status) and `/editorial/disclosure/` (the quotes beside the wording they govern) |
-| Every unresolved item with its closing step | [`/questions/`](https://karagemop466-tech.github.io/Affil3/questions/), [`/suggestions/`](https://karagemop466-tech.github.io/Affil3/suggestions/) |
-| Session claims, conflicts, handoffs | [`COORDINATION.md`](COORDINATION.md) |
+- No value in any table was inferred or filled in; blanks mean "not confirmed."
+- Amazon short links could not be dereferenced in this environment (no outbound access to amazon.com); their compliance status is explicitly not asserted.
+- Outbound Amazon links in documentation are provided as manual-review links (affiliate-program.amazon.com, ftc.gov, search.google.com); live cross-checks were not possible in this sandbox.

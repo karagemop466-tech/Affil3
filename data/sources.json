@@ -208,6 +208,16 @@
       "method": "observed 2026-11-20 (full listing fetched, 'About this item' block read)",
       "used_for": "Listing-only claims for P04 that the maker does not repeat: 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof', 'NIST&NSF Certified', 1x AAA battery included, and a 'newer model of this item' callout for B0GL7Z4KP4 (FLG-008).",
       "status": "observed"
+    },
+    {
+      "id": "S23",
+      "title": "Robots meta tag, data-nosnippet, and X-Robots-Tag specifications",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "updated": "not stated",
+      "method": "fetched; read the robots meta tag and noindex sections",
+      "used_for": "Google documents the robots meta tag as a page-specific indexing control and says noindex means do not show that page in search results. Used to mark the retained editorial archive noindex.",
+      "status": "verified"
     }
   ]
 }

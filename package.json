@@ -7,7 +7,7 @@
   "scripts": {
     "build": "node tools/build.mjs",
     "verify": "node tools/verify.mjs",
-    "check": "node tools/build.mjs && node tools/verify.mjs && python3 tools/build.py && python3 tools/check_site.py",
+    "check": "python3 tools/build.py && node tools/build.mjs && node tools/verify.mjs && python3 tools/check_site.py",
     "collector": "node tools/collector.mjs",
     "editorial:build": "python3 tools/build.py",
     "editorial:check": "python3 tools/build.py && python3 tools/check_site.py"
