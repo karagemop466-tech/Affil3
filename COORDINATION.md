@@ -1296,3 +1296,131 @@ sessions that left `OPEN` pull requests (PRs #28, #32, #33, #36, #39, #40, #44) 
 their own merged PRs and are not blocking. Nothing in this session edits a file owned by another
 live session, because there is no other live session.
 
+
+---
+
+## I-03 complete — consolidation (commit `bbf1b42`)
+
+Exactly one live, indexable publication at the repository root. The four parallel editions were
+**moved, not deleted**, to `legacy/editions/{editorial,counter,counterwise,crisp-index}/`; each keeps
+its own builder, data and tests. `legacy/archive/index.html` catalogs all four and root `robots.txt`
+disallows `/legacy/` only.
+
+Verification at the time of the commit:
+
+| Check | Result |
+| --- | --- |
+| Root build | 30 pages, 5 feed items, 29 sitemap URLs |
+| Root publishing gate (`tools/verify.mjs`) | 3,156 assertions, 0 failed |
+| Editorial archive (`tools/build.py`, `tools/check_site.py`) | 21 pages, all gates pass |
+| Counter archive (`scripts/build_site.py`, `scripts/check_site.py`) | 23 pages, all gates pass |
+| Counterwise archive (own `tools/gate.py`) | 30 pages, 12 rules, 0 findings |
+| Counterwise tests | 31 tests, OK |
+| Archive link integrity (`tools/archive-check.mjs`) | 192 pages, 6,253 internal refs, all resolve |
+
+Two real failures were found and fixed on the way, both recorded rather than papered over:
+`scripts/check_site.py` still expected the pre-move Counter sitemap prefix, and the generated Counter
+suggestion page linked a relative `COORDINATION.md` that no longer resolved. `tools/archive-check.mjs`
+was also resolving `/Affil3/...` as a filesystem-root path, which produced 1,028 false failures against
+otherwise-valid links; it now resolves that mount prefix against the repository root, matching GitHub
+Pages.
+
+## I-04 / I-05 complete — the shop reads like a shop (commits `f9ebe1c`, `0bb8d06`, `aaedbf5`, `4f4f0a2`, `49ee46c`)
+
+The front page and shop page led with the verification trail. Both now lead with the decision:
+
+- **`data/decision-paths.json`** — five situation-to-row shortcuts (DP-01…DP-05). Each is written only
+  from a field that already existed in the product register, each states the trade-off as plainly as
+  the benefit, and each cites the manufacturer or listing source that supplied its figures.
+- **At-a-glance grid** on `/shop/` — capacity, heat, power, footprint, best-for, trade-off, buy button,
+  sources. The full register is still one section below it.
+- **`data/cadence.json`** — the publishing plan as a register: cadence, the measured trigger that would
+  change it, five queued topics with shape/reason/sources/blocker, and what the publication will not do.
+- **Guides** went from 342–546 words of general advice to 689–1,070 words each, all of it from the
+  makers' pages read in this session. The distinctive material is the conflicts: the split between a
+  probe's 212 °F food-contact limit and its 752 °F ambient rating, the tracked oven's own page
+  disagreeing with itself three ways on presets, the 8-quart listing and maker page naming two
+  different machines.
+
+New gates, so none of this can regress silently:
+
+| Gate | What it refuses |
+| --- | --- |
+| Decision paths | a path pointing at a non-existent row or source, a path with no stated trade-off, a path containing a rank/score/popularity/best-seller claim, a path not rendered on both pages |
+| Cadence register | a queued topic with no shape or no reason, a topic citing a source that does not exist, any search-volume / ranking / low-competition / high-converting claim |
+| Source freshness | any source with no `last_checked`, a `last_checked` that is not the publishing date, or no stated method |
+| No currency | any published page containing a currency amount (prices rendered on four of five listing fetches and none was recorded) |
+| Spec fidelity | a stated capacity/wattage/weight that does not render on its product page, or a wattage appearing for a product whose wattage is blank |
+
+## I-02 complete — the evidence, re-checked line by line (commits `e2e4c15`, `0bb8d06`, `2d8712b`)
+
+**Finding that changed the register's confidence (FLG-031).** The five short links were re-checked. The
+*listing* side corroborated completely: all five observed ASINs were fetched directly, and each page's
+own title matches the register word for word. The *short-link* side did not reproduce: `B04G1MEwY` and
+`B02NbDxp3` both landed on the Amazon home page with no product, and the other three were unreachable
+from the sandbox (TLS handshake refused). Three sessions have now recorded three different outcomes for
+the same links — product pages, an intermittent checkpoint, and the home page. The mapping therefore
+depends on session, region or bot state and **cannot be certified from an unauthenticated fetch**. No
+published field changed, because no buy link points through the short links, and every intended-ASIN
+field was already blank. Full record: `data/observations/2026-11-20-final-integration.json`.
+
+**Two open questions were settled by fetching the official pages rather than by reasoning:**
+
+- **FLG-012 resolved.** Associates Central help states: *"ASIN is the 10-digit code that Amazon uses to
+  denote specific products"* and documents the format `amazon.com/dp/ASIN/ref=nosim?tag=YOURASSOCIATEID`
+  → added as **S18**. This makes FLG-001 a settled fact about the tokens (9 characters, therefore not
+  ASINs) rather than an inference from secondary sources. It says nothing about the tokens being invalid;
+  **FLG-003 is untouched.**
+- **New FLG-032, added honestly.** The same help system's application-review page says *"All Sites must
+  have robust original content (even when advertising is removed) - a good rule of thumb is at least 10
+  posts"* and *"we require at least three within the first 180 days"* qualified sales → **S19**. This site
+  publishes five guides. The compliance page now quotes the bar and states the count rather than
+  implying the site meets it.
+
+**Nine sources had only ever been a search excerpt.** The new freshness gate caught them (`S15`, `S18`,
+`S19`, `S20` with no method at all; `S09`, `S11`, `S12`, `S13`, `S14`, `S16`, `S17` with no check date).
+All were fetched in full. What that reading produced:
+
+- `S13` (Emeril) contradicts itself on one page: 25 presets in the spec strip, 24 in the description,
+  11-in-1 on an image. FLG-024 confirmed firsthand rather than inherited.
+- `S12` (Chefman 8 Qt) states 1700 W / 120 V and Hi-Fry to 450 °F for RJ38-8T-BLACK. **P03's wattage and
+  maximum temperature were blank only because the listing names a different model**; they are now
+  published from the maker's page, while the listing's conflicting 1000 W / 200–400 °F figures stay in
+  the separate comparison table on that product page.
+- `S15` (CHEF iQ FAQ) settles the probe/ambient split and the battery disagreement behind FLG-023.
+- `S20` (USDA FSIS) supplies the 2–4 °F tolerance and the colour-is-not-safety finding.
+
+**One wrong cross-reference fixed:** P05's battery note pointed at `FLG-003` (short-link compliance); the
+correct flag is `FLG-023` (battery figures disagree).
+
+## Gate results at this commit
+
+| Check | Result |
+| --- | --- |
+| `node tools/build.mjs` | 30 pages, 5 feed items, 29 sitemap URLs |
+| `node tools/verify.mjs` | **3,724 assertions, 0 failed** |
+| `npm run check` (root + editorial archive) | pass |
+| `scripts/build_site.py` + `scripts/check_site.py` (counter archive) | 23 pages, pass |
+| Counterwise `tools/gate.py` | 12 rules, 0 findings |
+| Counterwise `python3 -m unittest discover -s tests` | 31 tests, OK |
+| `tools/disclosure-check.mjs` | 30 pages, both statements above the fold, no price or rating text |
+| `tools/archive-check.mjs` | 192 pages, 6,253 refs, all resolve |
+| `tools/check_all_links.py` | 0 broken internal links |
+| `tools/link_report.py --strict` | every table row has an official source |
+| `scripts/build_site.py --check` | no build drift |
+| `scripts/build_sitemap.py --check`, `scripts/check_links.py` | pass |
+| Collector exercised locally | defined event 204 and stored; undefined event 400; unsafe value 400; data file held one counter and nothing else |
+
+## Open pull requests — reviewed, deliberately not merged
+
+Eleven PRs are open (#3, #21, #23, #28, #32, #33, #36, #38, #39, #40, #44). Each contains a *parallel
+publication* — `counterwise/`, `kitchen-edit/`, `docs/`, `archive/session-*/`, or its own
+`EXECUTIVE-SUMMARY`. Merging any of them would reintroduce exactly the problem I-03 just fixed: two or
+more indexable publications competing for one site, several of them generating into `docs/` which GitHub
+Pages does not serve for this repository (Pages serves `main:/`). They are also mutually conflicting, so
+a single merge would break the others. Their work is not discarded: the four editions that had generated
+output in this tree are archived under `legacy/editions/`, and the boards and registers that the merged
+sessions produced are preserved at their existing paths.
+
+They are left open with their content intact for the owner to decide, rather than merged and then
+unpicked. Nothing in this branch depends on them.
