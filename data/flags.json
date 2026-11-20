@@ -224,6 +224,51 @@
         "S05"
       ],
       "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+    },
+    {
+      "id": "FLG-023",
+      "title": "The publishing gate did not check images, canonical URLs or page titles",
+      "severity": "medium",
+      "detail": "tools/verify.mjs checked disclosure, sponsored attributes, tags, prices, links and sitemaps, but nothing looked at images, canonical tags, heading counts or title and description lengths. A page could have shipped a broken illustration or no canonical URL and still passed.",
+      "sources": [
+        "S06"
+      ],
+      "manual_step": "None. Fixed in this pass: the gate now checks every image (present, local, alt text, width and height), the canonical URL, a single h1, title length and description length.",
+      "status": "resolved",
+      "resolution": "Gate extended on 2026-11-20; 2,877 checks pass. A deliberately broken image reference and a removed canonical were both confirmed to fail the gate."
+    },
+    {
+      "id": "FLG-024",
+      "title": "Continuous integration verified a directory that does not exist",
+      "severity": "medium",
+      "detail": "The workflow ran the Python build and then asserted that docs/ matched a fresh build. The Python build writes to editorial/, and docs/ has never existed, so the assertion passed without comparing anything. The claim in README that CI verifies both builds was therefore false for both.",
+      "sources": [],
+      "manual_step": "None. Fixed: CI now builds and gates both publications, asserts that the whole committed tree matches a fresh build, and fails if an archive page loses its noindex tag.",
+      "status": "resolved",
+      "resolution": "Workflow rewritten on 2026-11-20. A generated-file drift test (editing a built page without rebuilding) fails the new assertion."
+    },
+    {
+      "id": "FLG-025",
+      "title": "Two repository documents carried stale product claims",
+      "severity": "medium",
+      "detail": "EXECUTIVE-SUMMARY.md said four of five links resolved and that link 4 resolved to nothing. QA-BRIEF.md repeated that, and additionally cited manufacturer model numbers that were not re-read in this pass. Both contradicted the register, which had already been corrected in FLG-022.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "None. Fixed: the summary was rewritten against the register, and the brief carries a correction banner that quotes the superseded rows verbatim and points to the register as authoritative.",
+      "status": "resolved",
+      "resolution": "Both documents updated on 2026-11-20. The superseded text was kept in the brief rather than deleted, so the change stays auditable."
+    },
+    {
+      "id": "FLG-026",
+      "title": "The archive publication was indexable next to the root publication",
+      "severity": "medium",
+      "detail": "GitHub Pages serves the repository root, so /editorial/ and /legacy/ were live and indexable with the same topics, the same five products and their own sitemaps. That splits search signal and reads as duplicate content. Search engines were being offered three sites that say the same thing.",
+      "sources": [
+        "S06"
+      ],
+      "manual_step": "Owner confirms that one indexable site is the intended arrangement. If a custom domain is chosen later (Q-16), the same rule has to be carried over."
     }
   ],
   "checked": "2026-11-20"

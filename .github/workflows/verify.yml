@@ -11,21 +11,40 @@ permissions:
 
 jobs:
   verify:
-    name: Rebuild from data and run the gates
+    name: Rebuild both publications and run the gates
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Rebuild the site from the registers
-        run: python3 tools/build.py
-      - name: Assert committed output matches a fresh build
+
+      - name: Build the root publication and run its gate
         run: |
-          if ! git diff --quiet -- docs; then
-            echo "::error::docs/ is out of date with data/. Run tools/build.py and commit."
-            git diff --stat -- docs
+          node tools/build.mjs
+          node tools/verify.mjs
+
+      - name: Build the archive publication and run its gate
+        run: |
+          python3 tools/build.py
+          python3 tools/check_site.py
+
+      - name: Assert the committed output matches a fresh build
+        run: |
+          if ! git diff --quiet; then
+            echo "::error::Generated files are out of date with data/. Rebuild and commit."
+            git diff --stat
             exit 1
           fi
-      - name: Gate - links, prices, ratings, tracking tags, disclosures, sitemap
-        run: python3 tools/check_site.py
+
+      - name: Assert the archive stays out of the index
+        run: |
+          if grep -rL 'name="robots" content="noindex' --include='*.html' editorial | grep -q .; then
+            echo "::error::An archive page is missing its noindex tag."
+            exit 1
+          fi
+          grep -q 'Disallow: /editorial/' robots.txt
+          grep -q 'Disallow: /legacy/' robots.txt

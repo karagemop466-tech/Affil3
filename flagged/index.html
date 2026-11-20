@@ -196,6 +196,34 @@
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
   
 </section>
+<section class="flag-card is-resolved" id="FLG-023">
+  <p class="flag-head"><span class="badge flag">FLG-023</span> <span class="badge sev-medium">medium</span> <strong>The publishing gate did not check images, canonical URLs or page titles</strong> <span class="badge resolved">resolved</span></p>
+  <p>tools/verify.mjs checked disclosure, sponsored attributes, tags, prices, links and sitemaps, but nothing looked at images, canonical tags, heading counts or title and description lengths. A page could have shipped a broken illustration or no canonical URL and still passed.</p>
+  <p class="resolution"><strong>Resolution:</strong> Gate extended on 2026-11-20; 2,877 checks pass. A deliberately broken image reference and a removed canonical were both confirmed to fail the gate.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a></p>
+  <p class="small"><strong>Manual step:</strong> None. Fixed in this pass: the gate now checks every image (present, local, alt text, width and height), the canonical URL, a single h1, title length and description length.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-024">
+  <p class="flag-head"><span class="badge flag">FLG-024</span> <span class="badge sev-medium">medium</span> <strong>Continuous integration verified a directory that does not exist</strong> <span class="badge resolved">resolved</span></p>
+  <p>The workflow ran the Python build and then asserted that docs/ matched a fresh build. The Python build writes to editorial/, and docs/ has never existed, so the assertion passed without comparing anything. The claim in README that CI verifies both builds was therefore false for both.</p>
+  <p class="resolution"><strong>Resolution:</strong> Workflow rewritten on 2026-11-20. A generated-file drift test (editing a built page without rebuilding) fails the new assertion.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> None. Fixed: CI now builds and gates both publications, asserts that the whole committed tree matches a fresh build, and fails if an archive page loses its noindex tag.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-025">
+  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>Two repository documents carried stale product claims</strong> <span class="badge resolved">resolved</span></p>
+  <p>EXECUTIVE-SUMMARY.md said four of five links resolved and that link 4 resolved to nothing. QA-BRIEF.md repeated that, and additionally cited manufacturer model numbers that were not re-read in this pass. Both contradicted the register, which had already been corrected in FLG-022.</p>
+  <p class="resolution"><strong>Resolution:</strong> Both documents updated on 2026-11-20. The superseded text was kept in the brief rather than deleted, so the change stays auditable.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
+  <p class="small"><strong>Manual step:</strong> None. Fixed: the summary was rewritten against the register, and the brief carries a correction banner that quotes the superseded rows verbatim and points to the register as authoritative.</p>
+</section>
+<section class="flag-card" id="FLG-026">
+  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-medium">medium</span> <strong>The archive publication was indexable next to the root publication</strong></p>
+  <p>GitHub Pages serves the repository root, so /editorial/ and /legacy/ were live and indexable with the same topics, the same five products and their own sitemaps. That splits search signal and reads as duplicate content. Search engines were being offered three sites that say the same thing.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a></p>
+  <p class="small"><strong>Manual step:</strong> Owner confirms that one indexable site is the intended arrangement. If a custom domain is chosen later (Q-16), the same rule has to be carried over.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap">
