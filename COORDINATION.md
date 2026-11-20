@@ -485,3 +485,48 @@ Parallel proposals remain untouched. Root publication is already the Pages sourc
 
 - Resolved the concurrent append from PR #17 by retaining both session records. The root gate passed 1,317 checks after correcting the Amazon policy source link.
 - Reviewed the [Associates Agreement](https://affiliate-program.amazon.com/help/operating/agreement), [Program Policies](https://affiliate-program.amazon.com/help/operating/policies), and [Search Console documentation](https://developers.google.com/search/docs/monitor-debug/search-console-start). Historical product rows were not freshly reverified. The live collector, Search Console ownership, and authenticated Special Link validation remain unconfirmed (see Flagged for Review).
+
+---
+
+# Session `b1c9cb53` board (front-page rebuild; appended, nothing above edited)
+
+Shared board for `karagemop466-tech/Affil3`. Claim a task by writing the session ID and file scope here;
+never start a task another session has claimed; log requests for files owned elsewhere instead of editing them.
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `b1c9cb53` | `arena/b1c9cb53-affil3` | active | Root publication only (`index.html`, `shop/`, `products/`, `categories/`, `guides/`, `compare/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `about/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`), and their inputs (`data/*.json`, `src/*`, `tools/build.mjs`, `tools/verify.mjs`) |
+
+**Read-only for this session (never edited):** `editorial/**` (owned by the Python build, `tools/build.py`), `legacy/**`
+(preserved), `data/register/**`, `tools/build.py`, `tools/check_site.py`.
+
+**Overlap notice (FLG-017, re-checked 2026-11-20).** `origin` holds 20+ `arena/*` session branches and several open
+PRs (`#3`, `#9`, `#18`, `#20`, `#21`) that all target the same root files. They were read only; nothing on them was
+modified. This branch was rebased onto `origin/main` at `679e6df` before work started, so the tree below is main's
+tree plus this session's changes. Merging several of them will conflict; this session's PR is the one that carries
+the front-page rebuild.
+
+## Task board
+
+| ID | Task | Status | Owner | Files |
+| --- | --- | --- | --- | --- |
+| B1 | Rebase on main; read every root-site file; record irregularities | done | `b1c9cb53` | this file |
+| B2 | Product detail pages (`/products/<asin>/`) with decision structure, verified-spec table, FAQ, buy link | in progress | `b1c9cb53` | `data/catalog.json`, `tools/build.mjs` |
+| B3 | Front page rebuilt as a shop front: hero, top picks, category tiles, guide rail, no audit voice above the fold | in progress | `b1c9cb53` | `tools/build.mjs`, `src/assets/style.css` |
+| B4 | Compare page: basket vs oven-style, decided on listing facts only | in progress | `b1c9cb53` | `tools/build.mjs` |
+| B5 | Suggestions board with effort/impact/recommendation and a choose-a-path record | in progress | `b1c9cb53` | `data/suggestions.json` |
+| B6 | Questions page: blocking vs design vs content, plus discovery plan | in progress | `b1c9cb53` | `data/questions.json` |
+| B7 | SEO: per-page JSON-LD, breadcrumbs, canonical, sitemap/feed coverage, robots | in progress | `b1c9cb53` | `tools/build.mjs` |
+| B8 | Gate: extend `tools/verify.mjs` for the new surfaces; both builds green; links checked | pending | `b1c9cb53` | `tools/verify.mjs` |
+| B9 | PR to `main`, merge, confirm Pages deploy, record result here | pending | `b1c9cb53` | this file |
+
+## Work log
+
+- **2026-11-20 — rebase.** Branch was 1 commit behind main; rebased onto `679e6df`. A stale build artifact
+  (`editorial/assets/site.css` regeneration from `tools/build.py`) was discarded before rebasing — it was output of a
+  build, not a source edit, and regenerating it reproduces it.
+- **2026-11-20 — no-network finding.** `curl` in this sandbox resolves only to the allowed host list
+  (`github.com`, `registry.npmjs.org`, `pypi.org`). Direct `curl` to `amazon.com`/`ftc.gov` returns `000`. The
+  page-reading tool used below (`fetch_page`) *does* read those hosts, and was used for every claim added here.
