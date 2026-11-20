@@ -152,3 +152,71 @@ are not factual claims — that is stated on the page.
 None added. Every Journal and decision-board link is either an internal page or an already-registered
 source. The article product boxes resolve to the same tagged Amazon listing URLs already published on
 the Shop and product pages.
+
+# Session `c252594d` — primary-source re-verification (2026-11-20)
+
+**Rule, unchanged:** every published value points at a dated fetch of the page named in the source
+register. Where two official pages disagree, the cell is left blank and the disagreement is
+published as a flag. Nothing is inferred.
+
+## A · Sources read in full by this session
+
+| ID | Page | Read | Used for |
+|---|---|---|---|
+| [S21](https://www.thermomaven.com/products/f1-ace) | ThermoMaven F1 Ace Instant Read Thermometer | 2026-11-20 | P04 specifications; the page FLG-025 said did not exist |
+| [S22](https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1) | Chefman TurboFry Touch Stainless-Steel Air Fryer, 8 qt (RJ38-SQSS-8T) | 2026-11-20 | P03 temperature range, weight, presets, certification |
+| [S23](https://advertising.amazon.com/library/guides/asins-introduction) | Amazon Ads — "Understanding ASINs" | 2026-11-20 | The Amazon-owned ASIN definition; closes FLG-012 |
+| [S11](https://chefman.com/products/turbofry-touch-dual-window-air-fryer) | Chefman TurboFry Touch 6 Qt Dual-Window | 2026-11-20, re-read in full | P01 re-check: capacity, range, watts, size, weight, model — all unchanged |
+| [S12](https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry) | Chefman TurboFry 8 Qt w/ High Fry (RJ38-8T-BLACK) | 2026-11-20, re-read in full | The second 8 qt machine; sharpens FLG-026 |
+| [S13](https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360) | Emeril Lagasse French Door AirFryer 360, 26 QT | 2026-11-20, re-read in full | P02 re-check: 26 qt / 24.6 L, 16.9 × 15.8 × 14.8 in, 120 V, 25 pre-sets, model 4-00675-02A-VN |
+| [S14](https://chefiq.com/products/iq-sense) | CHEF iQ Sense | 2026-11-20, re-read in full | P05 internal 32–212 °F, ambient 32–1,000 °F, heat resistance to 1,000 °F, probe 0.19 in × 4.75 in, materials stainless steel and zirconia |
+| [S04](https://www.amazon.com/dp/B0DHZTCNR5) | Amazon listing for the ThermoMaven row | 2026-11-20 | Confirms the observed destination is live and is a ThermoMaven 1 Sec Professional Digital Meat Thermometer |
+| [S05](https://link.amazon/B0c8moW59) | The submitted short link for the ThermoMaven row | 2026-11-20, three attempts | Two attempts in earlier sessions resolved to the listing; a third attempt on this date landed on the Amazon home page. The destination varies by attempt — FLG-003 |
+
+Also read on 2026-11-20 and unchanged: the Associates Program Operating Agreement and Program
+Policies (S01, S02), Google `rel="sponsored"` guidance (S06), 16 CFR Part 255 (S07, S08), and the
+USDA temperature and thermometer-placement pages (S09, S10, S20).
+
+## B · Line-by-line result for every published specification
+
+Blank means the maker's page does not state it. "Not stated" cells are counted by the gate and
+must match the data exactly.
+
+| Row | Field | Was published | Now published | Evidence |
+|---|---|---|---|---|
+| P01 | model / capacity / range / power / size / weight / certification / warranty | RJ38-SQPF-3TDB-2W, 6 qt, 200–450 °F, 1700 W, 13.38 × 11.81 × 10.63 in, 13.3 lb, cETL, 1-year | **unchanged** | S11 re-read in full |
+| P02 | capacity / size / voltage / model | 26 qt / 24.6 L, 16.9 × 15.8 × 14.8 in, 120 V, 4-00675-02A-VN | **unchanged** | S13 re-read in full |
+| P02 | wattage / weight / temperature range | blank | **still blank** — the maker states none of them | S13 |
+| P02 | preset count | blank | **still blank** — maker says 25 pre-sets, listing says 24 one-touch options (FLG-024) | S13, S04 |
+| P03 | model | RJ38-8T-BLACK | **RJ38-SQSS-8T** — the model the Amazon listing itself names, and which the maker publishes | S22, S16 |
+| P03 | temperature range | blank | **200–400 °F** | S22 |
+| P03 | weight | blank | **12.8 lb** | S22 |
+| P03 | wattage | blank | **still blank** — maker says 1700 W, listing says 1000 W (FLG-026) | S22, S04 |
+| P03 | size | blank | **still blank** — maker says 15.4 × 12.6 × 13.5 in, listing says 12.75 × 13.5 × 10 in (FLG-026) | S22, S04 |
+| P04 | every field | blank, no buy button, flagged FLG-025 | **model, functions, cleaning, certification wording, warranty populated; tagged outbound link enabled** | S21, S04 |
+| P04 | temperature range / power / size / weight | blank | **still blank** — the maker states none of them | S21 |
+| P05 | temperature range | 32–1,000 °F | **32–212 °F** internal, with 32–1,000 °F published as the ambient range on its own row | S14 |
+| P05 | probe size / cleaning / functions | 0.19 in × 4.75 in, waterproof, sensors | **unchanged**, plus the sensor-count conflict recorded (FLG-033) | S14 |
+| P05 | model / battery | blank | **still blank** — the maker shows one variant of a family and the two pages disagree on battery life (FLG-023) | S14, S15 |
+
+## C · Flags opened, closed and sharpened by this pass
+
+| Flag | Action |
+|---|---|
+| FLG-012 | **Closed.** Amazon's own page defines the ASIN as 10 letters and numbers (S23). |
+| FLG-025 | **Closed.** A ThermoMaven manufacturer page exists (S21); the specifications are published and the buy link is enabled. |
+| FLG-026 | **Sharpened.** Chefman publishes two 8 qt machines; the maker's page for the model the listing names agrees on the range, and still disagrees on wattage and size. |
+| FLG-031 | **Opened.** The maker's page and the listing carry different model names for the instant-read thermometer. |
+| FLG-032 | **Opened.** The listing states NSF certification and an IP67 rating that the maker's page does not. |
+| FLG-033 | **Opened.** The maker's own page contradicts itself on the wireless thermometer's sensor count. |
+
+## D · What was deliberately not done
+
+- No intended ASIN, official listing URL, confirmation date or confirmation source was filled in.
+  The submitted tokens are nine characters and the observed destinations differ from them; the
+  intended product stays blank until it is confirmed in a signed-in session.
+- No price, rating, review count, commission rate, conversion score or revenue forecast was
+  published. None can be sourced from an official page without authorised access.
+- No claim was made that any supplied short link is invalid. Their compliance status is unresolved
+  (FLG-003), and the destination varies by attempt.
+- Nothing was published about hands-on use. The site is specification-led and says so.

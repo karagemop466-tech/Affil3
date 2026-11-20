@@ -1,76 +1,91 @@
 #!/usr/bin/env python3
-"""Build docs/sitemap.xml from the checked-in site tree.
+"""Gate the Crisp Index sitemap (crisp-index/sitemap.xml).
 
-Walks crisp-index/ for *.html, converts each to a site URL, and writes a sitemap.
-Run --check to verify every live page is present in the sitemap (exit 1 on violation).
+The sitemap is written by tools/build_site.py (the Crisp Index generator). This script does
+NOT write it: an earlier version of this script overwrote the file with malformed URLs
+(`https:/...`) that pointed at paths outside crisp-index/. Run without --check, it now refuses.
+
+--check verifies, by exact <loc> comparison:
+  * every indexable page under crisp-index/ (noindex pages excluded) has its exact URL listed;
+  * every listed <loc> is a well-formed https URL under the site base and points at a file that exists.
+Exit 0 on success, 1 on violation, 2 when run without --check.
 Standard library only.
 """
 import argparse
 import os
+import re
 import sys
-from datetime import date, datetime, timezone
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
-DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "crisp-index")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DOCS = os.path.join(ROOT, "crisp-index")
+BASE = "https://karagemop466-tech.github.io/Affil3"
+PREFIX = "crisp-index"
 
 
-def html_pages():
+def is_noindex(full):
+    # A page that asks not to be indexed (e.g. the 404 page) does not belong in a sitemap.
+    with open(full, encoding="utf-8", errors="replace") as fh:
+        head = fh.read(20000).lower()
+    return 'name="robots" content="noindex' in head.replace("'", '"')
+
+
+def indexable_pages():
     pages = []
     for root, _dirs, files in os.walk(DOCS):
         for f in files:
             if f.endswith(".html"):
                 full = os.path.join(root, f)
+                if is_noindex(full):
+                    continue
                 rel = os.path.relpath(full, DOCS).replace(os.sep, "/")
                 pages.append(rel)
     return sorted(pages)
 
 
-def to_url(rel, base):
-    url = base.rstrip("/") + "/" + quote(rel)
-    # clean double slashes inside path segments (base may end with /)
-    url = url.replace("//", "/")
-    return url
+def expected_url(rel):
+    return f"{BASE}/{PREFIX}/{quote(rel)}"
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--base-url", default="https://karagemop466-tech.github.io/Affil3")
     ap.add_argument("--check", action="store_true")
     args = ap.parse_args()
 
-    pages = html_pages()
-    today = date.today().isoformat()
+    if not args.check:
+        print("Refusing to write crisp-index/sitemap.xml here. Regenerate it with tools/build_site.py.",
+              file=sys.stderr)
+        return 2
 
-    if args.check:
-        sitemap = os.path.join(DOCS, "sitemap.xml")
-        if not os.path.exists(sitemap):
-            print("sitemap.xml missing")
-            return 1
-        with open(sitemap, encoding="utf-8") as fh:
-            content = fh.read()
-        missing = [p for p in pages if to_url(p, args.base_url) not in content and quote(p) not in content]
-        if missing:
-            for m in missing:
-                print("MISSING from sitemap:", m)
-            return 1
-        print(f"OK: {len(pages)} pages all present in sitemap.xml")
-        return 0
+    sitemap = os.path.join(DOCS, "sitemap.xml")
+    if not os.path.exists(sitemap):
+        print("sitemap.xml missing")
+        return 1
+    with open(sitemap, encoding="utf-8") as fh:
+        locs = re.findall(r"<loc>(.*?)</loc>", fh.read())
+    listed = set(locs)
 
-    lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for rel in pages:
-        lines.append("  <url>")
-        lines.append(f"    <loc>{to_url(rel, args.base_url)}</loc>")
-        lines.append(f"    <lastmod>{today}</lastmod>")
-        lines.append("    <changefreq>weekly</changefreq>")
-        lines.append("    <priority>0.8</priority>")
-        lines.append("  </url>")
-    lines.append("</urlset>")
-
-    out = os.path.join(DOCS, "sitemap.xml")
-    with open(out, "w", encoding="utf-8") as fh:
-        fh.write("\n".join(lines) + "\n")
-    print(f"Wrote {out} with {len(pages)} URLs")
+    problems = []
+    for rel in indexable_pages():
+        if expected_url(rel) not in listed:
+            problems.append(f"MISSING from sitemap: {rel}")
+    for loc in locs:
+        parts = urlsplit(loc)
+        if parts.scheme != "https" or parts.netloc != "karagemop466-tech.github.io" or not loc.startswith(BASE + "/"):
+            problems.append(f"MALFORMED or foreign <loc>: {loc}")
+            continue
+        path = parts.path[len(urlsplit(BASE).path) + 1:]
+        if not path.startswith(PREFIX + "/"):
+            problems.append(f"<loc> outside {PREFIX}/: {loc}")
+            continue
+        target = os.path.join(ROOT, path)
+        if not os.path.isfile(target) and not os.path.isfile(os.path.join(target, "index.html")):
+            problems.append(f"<loc> points at no file: {loc}")
+    if problems:
+        for p in problems:
+            print(p)
+        return 1
+    print(f"OK: {len(indexable_pages())} indexable pages, {len(locs)} <loc> entries, all exact and resolvable")
     return 0
 
 
