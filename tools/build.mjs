@@ -9,7 +9,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
+const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
   'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
   '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
@@ -25,6 +25,9 @@ const FLAGS = Object.fromEntries(flagsDoc.flags.map((f) => [f.id, f]));
 const questions = read('data/questions.json');
 const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
+const articlesDoc = read('data/articles.json');
+const articles = articlesDoc.articles;
+const decisions = read('data/decisions.json');
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
 
@@ -51,6 +54,7 @@ const DASHBOARDS = [
   ['/sources/', 'Source register'],
   ['/questions/', 'Questions and gaps'],
   ['/suggestions/', 'Suggestions (choose a path)'],
+  ['/decisions/', 'Decision board (this session)'],
   ['/flagged/', 'Flagged for review'],
   ['/ledger/', 'Campaign ledger'],
   ['/measurement/', 'Measurement'],
@@ -132,6 +136,7 @@ ${jsonld}
     <p class="tagline">${esc(cfg.tagline)}</p>
     <nav class="nav" aria-label="Main">
       <a href="${esc(href('/shop/'))}">Shop</a>
+      <a href="${esc(href('/articles/'))}">Journal</a>
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/categories/'))}">Categories</a>
       <a href="${esc(href('/about/'))}">About</a>
@@ -152,9 +157,10 @@ ${body}
       <p class="small muted"><a href="${esc(href('/feed.xml'))}">RSS feed</a> · <a href="${esc(href('/legacy/archive/'))}">Archived editions</a> · <a href="${esc(href('/sitemap.xml'))}">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="${esc(href('/guides/'))}">All guides</a></li>
+        <li><a href="${esc(href('/articles/'))}">The Journal</a></li>
         ${guides.slice(0, 3).map((g) => `<li><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a></li>`).join('\n        ')}
       </ul>
     </div>
@@ -302,6 +308,18 @@ const guideSource = (id) => (id === 'S04'
   ? `<a href="${esc(href('/shop/'))}">S04</a> · observed Amazon product pages, one per row on the Shop table`
   : `${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}`);
 
+// Article card for the Journal index and home band. Reuses the guide-card look but is
+// labelled as a Journal piece, and carries the topic so a reader sees what it is about.
+function articleCard(a) {
+  return `<a class="card guide-card" href="${esc(href('/articles/' + a.slug + '/'))}">
+  <div class="guide-card-art"><img src="${esc(href(a.image))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="card-body"><p class="kicker">${esc(catName(a.category))} · ${esc(a.topic)} · ${esc(dateLong(a.date))} · ${esc(a.read_minutes)} min read</p><h3>${esc(a.title)}</h3><p class="muted small">${esc(a.deck)}</p><p class="read-more">Read the article →</p></div>
+</a>`;
+}
+const articleSource = (id) => (id === 'S04'
+  ? `<a href="${esc(href('/shop/'))}">S04</a> · observed Amazon product pages, one per row on the Shop table`
+  : `${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}`);
+
 const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label="blank: unverified">&nbsp;</span>' : esc(v));
 
 // ---------- pages ----------
@@ -311,13 +329,17 @@ const add = (p) => pages.push(p);
 // Home (publication front page: products first)
 {
   const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
-  // A rail of four, not the first three rows: the newest guide plus one per cluster, so the front page
-  // shows the shape of the shelf rather than the order the data file happens to be in.
+  const quickPick = products.map((p) => `<div class="qp-item">
+  <p class="qp-product">${esc(p.short_name)}</p>
+  <p class="qp-fit">${esc(p.fit_line)}</p>
+  <p class="qp-links"><a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a> · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
+</div>`).join('\n');
+  // A rail of four, derived rather than sliced: the newest guide plus one per cluster, so the front page
+  // shows the shape of the shelf instead of the order the data file happens to be in.
   const byNewest = [...guides].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
   const newestGuides = [];
   for (const g of byNewest) {
-    const key = g.category;
-    if (newestGuides.some((x) => x.category === key)) continue;
+    if (newestGuides.some((x) => x.category === g.category)) continue;
     newestGuides.push(g);
   }
   for (const g of byNewest) { if (newestGuides.length >= 4) break; if (!newestGuides.includes(g)) newestGuides.push(g); }
@@ -364,11 +386,26 @@ const add = (p) => pages.push(p);
 </section>
 <section class="band band-alt">
   <div class="band-head">
+    <h2>Not sure which one? Pick by how you cook</h2>
+    <p>One line per product, and the guide that matches your kitchen.</p>
+  </div>
+  <div class="quick-pick">${quickPick}</div>
+</section>
+<section class="band band-alt">
+  <div class="band-head">
     <h2>Start with a question, not a product</h2>
     <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
   <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
+</section>
+<section class="band">
+  <div class="band-head">
+    <h2>The Journal</h2>
+    <p>Catchy, trend-shaped reads on the appliances we track — the questions people actually type, answered in plain English, with a source on every claim and a disclosed link when a product is mentioned.</p>
+  </div>
+  <div class="guide-grid">${articles.slice(0, 4).map((a) => articleCard(a)).join('\n')}</div>
+  <p><a class="text-link" href="${esc(href('/articles/'))}">All ${articles.length} articles →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -391,9 +428,8 @@ const add = (p) => pages.push(p);
   <div class="seasonal-copy">
     <p class="kicker">Late November, in the kitchen</p>
     <h2>The month of the big roast</h2>
-    <p>Holiday cooking season is thermometer season. Before the bird goes anywhere, the two questions are what fits and when it is done - so start with the countertop-capacity plan, then the temperatures that do not bend. Our guides keep working all year; the timing is yours.</p>
+    <p>Holiday cooking season is thermometer season. If one appliance earns counter space this month, it is the one that tells you whether the bird is done, and the one that frees up oven space. Our guides keep working all year; the timing is yours.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="${esc(href('/guides/holiday-cooking-what-one-countertop-oven-holds/'))}">Plan a holiday around one oven</a>
       <a class="btn btn-ghost" href="${esc(href('/guides/is-your-meat-thermometer-telling-you-the-right-number/'))}">Thermometer questions, answered</a>
       <a class="btn btn-ghost" href="${esc(href('/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/'))}">Is a combo appliance worth it?</a>
     </div>
@@ -511,7 +547,7 @@ const add = (p) => pages.push(p);
 add({
   path: '/categories/', title: 'Categories',
   description: 'Product categories and the guides that cover each one.',
-  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">Three clusters. Each cluster lists its products and the guides that cover them.</p></section>
+  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} clusters. Each cluster lists its products and the guides that cover them.</p></section>
 <div class="cat-grid">${CATEGORIES.map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><p class="small muted">${products.filter((p) => p.category === c.slug).length} product row(s) · ${guides.filter((g) => g.category === c.slug || (g.cluster_links || []).includes(c.slug)).length} guide(s)</p></a>`).join('')}</div>`,
 });
 for (const c of CATEGORIES) {
@@ -537,8 +573,8 @@ ${gl.length ? `<ul class="guide-list">${gl.map((g) => `<li class="guide-item"><a
 add({
   path: '/guides/', title: 'Guides',
   description: 'Question-led buying guides for air fryers, air fryer ovens and cooking thermometers.',
-  body: `<section class="page-head"><p class="kicker">Guides · ${guides.length}</p><h1>Buying guides, by question</h1>
-<p class="deck">Each guide starts with a question a buyer asks and ends with the pages that answer it. Working titles are editorial hypotheses, not claims about popularity or search volume. Nothing on this page was produced by running a test: each guide states what its sources say and what they leave open.</p></section>
+  body: `<section class="page-head"><p class="kicker">Guides</p><h1>Buying guides, by question</h1>
+<p class="deck">Each guide starts with a question buyers ask. Working titles are editorial hypotheses, not claims about popularity or search volume.</p></section>
 <div class="guide-grid">${guides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
@@ -547,13 +583,13 @@ add({
 for (const g of guides) {
   const productsHere = products.filter((p) => tagged(p) && (p.category === g.category || (g.cluster_links || []).includes(p.category)));
   // Reading stats are computed from the guide's own text at build time. Nothing is estimated about the
-  // reader; the word count is the word count, and the minute figure is that count over 225 words a minute.
+  // reader: the word count is the word count, and the minute figure is that count over 225 words a minute.
   const gwords = g.body.map((b) => [b.text, b.caption, ...(b.items || []), ...(b.headers || []), ...(b.rows || []).flat()].filter(Boolean).join(' ')).join(' ');
   const wc = (gwords.match(/[A-Za-z0-9\u00b0\u00b1\u2109\u2103\u2014\u2026'.\/-]+/g) || []).length;
   const mins = Math.max(1, Math.round(wc / 225));
   const related = guides.filter((x) => x.slug !== g.slug && (x.category === g.category || (x.cluster_links || []).includes(g.category) || (g.cluster_links || []).includes(x.category))).slice(0, 3);
   const faqBlock = g.body.find((b) => b.type === 'faq');
-  // Article + BreadcrumbList, plus FAQPage when the guide carries questions with answers on the page.
+  // Article + BreadcrumbList, plus FAQPage when the guide carries questions and answers on the page.
   const graph = [{
     '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description,
     image: abs(g.image), articleSection: catName(g.category), inLanguage: cfg.language,
@@ -589,6 +625,7 @@ for (const g of guides) {
   <div class="prose">${g.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, g.slug)).join('\n')}</div>
   ${productsHere.length ? `<aside class="band"><h2>Products in this cluster</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${productsHere.map((p) => productCard(p, 'guide-box')).join('')}</div></aside>` : ''}
   ${related.length ? `<nav class="related" aria-label="Related guides"><h2>Keep reading</h2><ul>${related.map((r) => `<li><a href="${esc(href('/guides/' + r.slug + '/'))}">${esc(r.title)}</a><p>${esc(r.deck)}</p></li>`).join('\n')}</ul></nav>` : ''}
+  ${g.amended ? `<p class="small muted page-note">Page history: ${esc(g.amended)}</p>` : ''}
   <section class="band sources"><h2>Sources for this guide</h2>
     ${g.sources.length ? `<ul>${g.sources.map((id) => `<li>${guideSource(id)}</li>`).join('')}</ul>` : '<p>This guide makes no factual claim that needs an external source. It refers only to the observed listing data on the Shop page.</p>'}
     <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a></p>
@@ -597,10 +634,78 @@ for (const g of guides) {
   });
 }
 
+
+// ---------- The Journal: articles index + article pages ----------
+add({
+  path: '/articles/', title: 'The Journal',
+  description: 'Catchy, trend-shaped articles on the kitchen appliances we track, with a source on every claim and a disclosed link when a product is mentioned.',
+  body: `<section class="page-head"><p class="kicker">The Journal</p><h1>Trend-shaped reads, sourced like everything else</h1>
+<p class="deck">${esc(articlesDoc.framing)} Article titles are editorial working titles, not claims about popularity, search volume or product superiority.</p></section>
+<div class="guide-grid">${articles.map((a) => articleCard(a)).join('\n')}</div>
+<section class="band"><h2>How the Journal works</h2>
+<p>Each article is written to answer a question or cover a trend a real buyer searches for, and to send the reader to a product page when the article is about a product we track. Every factual claim carries its source, and every product link is a disclosed, tagged Amazon affiliate link marked sponsored. No price, rating or review count is republished, and no hands-on test is claimed.</p>
+<p>The verification record behind these articles lives on the <a href="${esc(href('/shop/'))}">Shop table</a>, the <a href="${esc(href('/sources/'))}">source register</a>, and the <a href="${esc(href('/flagged/'))}">Flagged for review</a> page.</p></section>`,
+});
+for (const a of articles) {
+  const related = (a.related || []).map((id) => products.find((p) => p.id === id)).filter(Boolean);
+  const jsonld = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'Article', headline: a.title, description: a.description,
+    image: abs(a.image), datePublished: a.date, dateModified: cfg.lastReviewed,
+    author: { '@type': 'Organization', name: cfg.author },
+    publisher: { '@type': 'Organization', name: cfg.siteName }, mainEntityOfPage: abs(`/articles/${a.slug}/`),
+  })}</script>`;
+  add({
+    path: `/articles/${a.slug}/`, title: a.title, description: a.description, type: 'article', ogType: 'article', jsonld,
+    attrs: `data-article="${esc(a.slug)}"`,
+    ogImage: a.image,
+    body: `<article class="article">
+  <header class="page-head">
+    <p class="kicker">${esc(catName(a.category))} · Journal · ${esc(a.topic)} · ${esc(dateLong(a.date))} · ${esc(a.read_minutes)} min read</p>
+    <h1>${esc(a.title)}</h1>
+    <p class="deck">${esc(a.deck)}</p>
+    <p class="byline">By ${esc(cfg.author)} · Published ${esc(dateLong(a.date))} · Last reviewed ${esc(dateLong(cfg.lastReviewed))}</p>
+  </header>
+  <figure class="article-hero"><img src="${esc(href(a.image))}" alt="${esc(a.image_alt)}" width="1536" height="1024"><figcaption>${esc(a.image_alt)} — editorial illustration, not the reviewed unit.</figcaption></figure>
+  <div class="prose">${a.body.filter((b, i) => !(b.type === 'img' && i === 0)).map((b) => renderBlock(b, a.slug)).join('\n')}</div>
+  ${related.length ? `<aside class="band"><h2>Products in this article</h2><p class="small muted">The buttons below are Amazon affiliate links with our tracking ID. Links are marked sponsored.</p><div class="shelf">${related.map((p) => productCard(p, 'article-box')).join('')}</div></aside>` : ''}
+  <section class="band sources"><h2>Sources for this article</h2>
+    ${a.sources.length ? `<ul>${a.sources.map((id) => `<li>${articleSource(id)}</li>`).join('')}</ul>` : '<p>This article makes no factual claim that needs an external source. It refers only to the observed listing data on the Shop page.</p>'}
+    <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · <a href="${esc(href('/articles/'))}">All Journal articles</a></p>
+  </section>
+</article>`,
+  });
+}
+
+// ---------- Decision board (this session's suggestions & questions) ----------
+add({
+  path: '/decisions/', title: 'Decision board',
+  description: 'A reviewable board of suggestions and the questions that must be answered before any decision is made. Nothing is implemented until a choice is made.',
+  body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions and the questions before them</h1>
+<p class="deck">${esc(decisions.note)}</p></section>
+<p class="deck small">${esc(decisions.how_to_use)}</p>
+<h2>Questions to answer before deciding</h2>
+${table(['ID', 'Question', 'What we have', 'What is missing', 'Who closes it', 'How to close it', 'Blocks?', 'Sources'], decisions.questions.map((q) => [
+    `<strong id="${esc(q.id)}">${esc(q.id)}</strong>`, esc(q.question), esc(q.have), esc(q.missing), esc(q.who), esc(q.closes),
+    q.blocking ? '<strong>Yes</strong>' : 'No', q.sources.length ? q.sources.map(srcLink).join(', ') : '<span class="muted">none</span>',
+  ]), 'wide')}
+<h2>Suggestions: choose a path</h2>
+<div class="choice-grid">
+${decisions.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
+  <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
+  <p class="muted small">${esc(s.problem)}</p>
+  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
+</section>`).join('\n')}
+</div>
+<section class="band"><h2>The prompt to hand the next design session</h2>
+<p class="small muted">The assembled design brief below is the same text stored in <code>data/decisions.json</code>. It is the prompt this session's suggestions feed into.</p>
+<pre class="prompt-block">${esc(decisions.prompt)}</pre></section>`,
+});
+
 // Product detail pages (specifications from the manufacturer page, gaps as labelled "not stated")
 // Which guides are relevant to a product row: its own companion guide first, then any guide whose
-// published text names the brand. A brand mention is the weakest link in this list, so the section says
-// exactly that rather than claiming the guide is about this product.
+// published text names the brand. A brand mention is the weakest link in the list, so the section says
+// which kind of link it is rather than implying the guide was written about this product.
 const guideText = (g) => [g.title, g.deck, g.description, g.summary || '', ...g.body.map((b) => [b.text, b.caption, ...(b.items || []), ...(b.headers || []), ...(b.rows || []).flat()].filter(Boolean).join(' '))].join(' ');
 const guidesFor = (p) => {
   const brand = (p.brand || '').toLowerCase();
@@ -609,8 +714,7 @@ const guidesFor = (p) => {
   for (const g of guides) {
     const t = guideText(g).toLowerCase();
     const own = p.guide_slug === g.slug;
-    const names = brand && t.includes(brand);
-    if (!own && !names) continue;
+    if (!own && !(brand && t.includes(brand))) continue;
     if (seen.has(g.slug)) continue;
     seen.add(g.slug);
     out.push({ g, own });
@@ -748,10 +852,10 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap. Guide and page counts on this site are computed from the registers at build time, so this sentence cannot go stale.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of seven catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
-<li>Three dated verification rounds are on file (data/observations/). The most recent, 2026-11-20, re-read seven official pages first-hand, recorded the fetches it could not complete as failures rather than as agreement, corrected four citation defects in the registers, and added a gate check so a dangling citation fails the build. The same round corrected a findability claim this site had been making about itself: a robots.txt file manages crawling and does not exclude a page from Google's index, which is stated in Google's own words and recorded as FLG-036.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>
@@ -911,10 +1015,10 @@ add({
   body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
 <div class="prose">
 <h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-05, option A). A weekly cadence or a pre-review batch are the other options on the board; nothing changes until you choose. The site now publishes ${guides.length} guides and ${products.length} product rows, which meets the “at least 10 posts” rule of thumb by page count (S19, FLG-007). Meeting a count is not a pass: the rule of thumb was read from an excerpt of the help page, and “robust” is decided by a person reviewing the submission.</p>
+<p>Current default: one new guide every two weeks (suggestion S-05, marked current, not yet chosen by the owner). A faster cadence or a pre-review batch of eight guides are on the decision board; nothing changes until you choose. At the current count, the site has ${guides.length} guides. Amazon's application-review help page gives “at least 10 posts” as a rule of thumb (S19; the row cited here was S11, a Chefman product page, until 2026-11-20 - see FLG-042). That help page does not say whether guides count as posts, so FLG-007 stays open.</p>
 <h2>From question to page</h2>
 <ol>
-<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
+<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the questions buyers ask, checked against the sources the guides cite. The decision board tracks this (S-03 and Q-07).</li>
 <li><strong>Answer it honestly.</strong> Facts come from official sources only (the observed listings on the Shop table, USDA food-safety pages, Amazon's own help pages). Opinion and reasoning are labeled as such.</li>
 <li><strong>Link every claim.</strong> Each guide's Sources section lists the exact source IDs used; the <a href="${esc(href('/sources/'))}">source register</a> records how each one was checked.</li>
 <li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="${esc(href('/compliance/'))}">Compliance</a>).</li>
@@ -1076,12 +1180,15 @@ ${sitemapPages.map((w) => `  <url><loc>${esc(abs(w.path))}</loc><lastmod>${cfg.l
 </urlset>
 `);
 
-// Feed (guides only, newest first)
-const feedItems = [...guides].sort((a, b) => (a.date < b.date ? 1 : -1));
+// Feed (guides and Journal articles, newest first). Each item is an article-shaped page.
+const feedItems = [
+  ...guides.map((g) => ({ kind: 'guide', slug: g.slug, title: g.title, date: g.date, description: g.description })),
+  ...articles.map((a) => ({ kind: 'article', slug: a.slug, title: a.title, date: a.date, description: a.description })),
+].sort((a, b) => (a.date < b.date ? 1 : -1));
 fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>${esc(cfg.siteName)} guides</title>
+  <title>${esc(cfg.siteName)} guides and Journal</title>
   <link>${esc(abs('/'))}</link>
   <description>${esc(cfg.tagline)}</description>
   <language>${cfg.language}</language>
@@ -1089,8 +1196,8 @@ fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-
   <atom:link href="${esc(abs('/feed.xml'))}" rel="self" type="application/rss+xml"/>
 ${feedItems.map((g) => `  <item>
     <title>${esc(g.title)}</title>
-    <link>${esc(abs(`/guides/${g.slug}/`))}</link>
-    <guid isPermaLink="true">${esc(abs(`/guides/${g.slug}/`))}</guid>
+    <link>${esc(abs(`/${g.kind === 'guide' ? 'guides' : 'articles'}/${g.slug}/`))}</link>
+    <guid isPermaLink="true">${esc(abs(`/${g.kind === 'guide' ? 'guides' : 'articles'}/${g.slug}/`))}</guid>
     <pubDate>${rfc822(g.date)}</pubDate>
     <description>${esc(g.description)}</description>
   </item>`).join('\n')}
@@ -1098,14 +1205,13 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-// These lines manage crawling, not indexing: Google states that robots.txt 'is not a mechanism for
-// keeping a web page out of Google' and that a Disallow line can leave the URL in results without a
-// description (S24), and that noindex in robots.txt is not supported at all (S25). They are here to keep
-// crawlers from spending budget on the superseded editions in this repository, and to stop the secondary
-// editions' own sitemap lines from being treated as an index request. Keeping those pages out of the
-// index needs a noindex tag in each edition, which is why the root build does not also hide these paths
-// from a crawler that has to read the tag. See FLG-036.
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `# Root publication only: /Affil3/ is the site this repository maintains for readers.\n# Superseded editions live in the directories disallowed below; they are kept, not deleted.\nUser-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\nDisallow: /counter/\nDisallow: /counterwise/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+// Crawl management, not de-indexing, and it is written at a project path Google does not consult
+// (FLG-038). Google states that robots.txt 'is not a mechanism for keeping a web page out of Google', that a
+// disallowed URL can still appear in results without a description (S24), and that noindex cannot be declared
+// in robots.txt at all (S26). These lines keep crawlers that do read path-scoped robots.txt off the superseded
+// editions and stop those editions' own sitemap lines from reading as an index request. The change that would
+// actually de-index them is a noindex meta tag in each edition, per S-20 option B - see FLG-041.
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `# Root publication only: /Affil3/ is the site this repository maintains for readers.\n# Superseded editions live in the directories disallowed below; they are kept, not deleted.\nUser-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\nDisallow: /counter/\nDisallow: /counterwise/\nDisallow: /counter-desk/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 // DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
 // file and the published page cannot disagree. That is the principle behind S-14 applied to itself.

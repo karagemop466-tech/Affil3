@@ -8,8 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources',
-  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+// Kept in step with OWNED in tools/build.mjs. It previously omitted compare, workflow, privacy and
+// design-brief, so every per-page rule below silently skipped four published directories.
+const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
+  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief', '404.html'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -17,6 +19,8 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const articles = read('data/articles.json').articles;
+const decisions = read('data/decisions.json');
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
@@ -75,6 +79,18 @@ for (const p of products) {
 check('five submitted product rows present', products.length === 5, String(products.length));
 for (const g of guides) {
   for (const sid of g.sources) check(`guide ${g.slug} source ${sid} exists`, SRC.has(sid), sid);
+}
+for (const a of articles) {
+  for (const sid of a.sources) check(`article ${a.slug} source ${sid} exists`, SRC.has(sid), sid);
+  check(`article ${a.slug} has a topic and read time`, !!a.topic && a.read_minutes > 0, a.topic);
+  check(`article ${a.slug} title within 90 characters`, a.title.length > 0 && a.title.length <= 74, String(a.title.length));
+  check(`article ${a.slug} has image alt text`, !!a.image_alt, a.image);
+}
+for (const s of decisions.suggestions) {
+  check(`decision ${s.id} has options and a recommendation`, s.options.length >= 2 && !!s.recommendation, s.id);
+}
+for (const q of decisions.questions) {
+  check(`decision ${q.id} has the four fields`, !!q.question && !!q.have && !!q.missing && !!q.who && !!q.closes, q.id);
 }
 for (const f of flags) for (const sid of f.sources) check(`flag ${f.id} source ${sid} exists`, SRC.has(sid), sid);
 
@@ -148,7 +164,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
     // Kept in step with DASHBOARDS in tools/build.mjs; /privacy/ and /design-brief/ were added by
     // session 66f2548a so the two new pages cannot silently lose their footer entry.
-    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
+    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/decisions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
       check(`${name}: footer links ${d}`, footer.includes(`${base}${d}`));
     }
     // links
@@ -217,6 +233,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`guide ${g.slug} lists its sources`, /Sources for this guide/.test(h));
     check(`guide ${g.slug} states it is not a test`, !/we tested|our test kitchen|we cooked/i.test(h));
   }
+  for (const a of articles) {
+    const f = path.join(DOCS, 'articles', a.slug, 'index.html');
+    check(`article page exists for ${a.slug}`, fs.existsSync(f), a.slug);
+    if (!fs.existsSync(f)) continue;
+    const h = fs.readFileSync(f, 'utf8');
+    check(`article ${a.slug} has a hero image`, /class="article-hero"/.test(h) && /<img [^>]*alt="[^"]+"/.test(h));
+    check(`article ${a.slug} lists its sources`, /Sources for this article/.test(h));
+    check(`article ${a.slug} has a data-article attribute`, /data-article="/.test(h));
+    check(`article ${a.slug} is labelled as illustration`, /editorial illustration, not the reviewed unit/i.test(h));
+    check(`article ${a.slug} names its source ids`, a.sources.every((id) => h.includes(id)));
+    check(`article ${a.slug} makes no hands-on test claim`, !/we tested|our test kitchen|we cooked/i.test(h));
+  }
+  check('Journal index exists', fs.existsSync(path.join(DOCS, 'articles', 'index.html')));
+  check('decision board exists', fs.existsSync(path.join(DOCS, 'decisions', 'index.html')));
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
   check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
@@ -229,6 +259,9 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
+  const feedArticleLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/articles/'));
+  check('feed has one item per Journal article', feedArticleLinks.length === articles.length, `${feedArticleLinks.length} vs ${articles.length}`);
+  for (const l of feedArticleLinks) check(`feed article in sitemap: ${l}`, sitemapUrls.includes(l));
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
@@ -288,6 +321,49 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
         seen.add(m[1]);
         check(`${path.relative(DOCS, f).split(path.sep).join('/')}: rendered reference ${m[1]} resolves`, setFor(m[1]).has(m[1]), text.slice(Math.max(0, m.index - 45), m.index + 30).replace(/\s+/g, ' '));
       }
+    }
+  }
+}
+
+// ---------- 3b. citation meaning, not just citation existence ----------
+// Existence checks cannot catch a reference to a row that exists and says something else, which is the
+// defect class this repository keeps producing: four guides cited the FTC endorsement page (S22) for Chefman
+// wattage figures, and two flags credited a Chefman product page (S11) with Amazon's application-review text
+// (FLG-042). Two rules follow, both about prose rather than bookkeeping.
+{
+  const SRC2 = new Map(sources.map((x) => [x.id, x]));
+  // A source that can carry a product measurement: the maker, the observed retailer page, or the food-safety
+  // authority whose temperatures are quoted on the shelf. A policy, disclosure or developer page cannot.
+  const SPEC_HOSTS = new Set(['chefman.com', 'www.emerileveryday.com', 'chefiq.com', 'www.thermomaven.com',
+    'www.amazon.com', 'link.amazon', 'www.fsis.usda.gov']);
+  const hostOf2 = (u) => { try { return new URL(u).hostname; } catch { return ''; } };
+  const stringsOf = (o, out = []) => {
+    if (typeof o === 'string') out.push(o);
+    else if (Array.isArray(o)) o.forEach((v) => stringsOf(v, out));
+    else if (o && typeof o === 'object') Object.values(o).forEach((v) => stringsOf(v, out));
+    return out;
+  };
+  const MEASURE = /\d+(?:[.,]\d+)?\s*(?:°f|ºf|℉|\bw\b|\bkw\b|\bqt\b|\blb\b|\bv\b|\bin\b|litre|liter|presets?|pre-sets?)/i;
+  for (const g of guides) {
+    const strs = stringsOf(g.body).concat([g.deck, g.description, g.summary || '', g.amended || '']);
+    for (const str of strs) {
+      for (const m of str.matchAll(/\((S\d{2})\)/g)) {
+        const id = m[1];
+        check(`guide ${g.slug}: inline citation ${id} is also declared in its source list`, (g.sources || []).includes(id), str.slice(0, 70));
+        const row = SRC2.get(id);
+        if (!row || !row.url || !MEASURE.test(str)) continue;
+        check(`guide ${g.slug}: a sentence carrying a measurement cites a maker, retailer or food-safety page, not ${id}`,
+          SPEC_HOSTS.has(hostOf2(row.url)), `${hostOf2(row.url)} :: ${str.slice(Math.max(0, m.index - 70), m.index + 12).replace(/\s+/g, ' ')}`);
+      }
+    }
+  }
+  for (const p of products) {
+    const strs = stringsOf({ f: p.functions, c: p.capacity_note, d: p.dimensions_in, w: p.weight_lb, pw: p.power_w, t: p.temp_max_f, n: p.verification_note, b: p.blank_reason });
+    for (const str of strs) for (const m of str.matchAll(/\((S\d{2})\)/g)) {
+      const row = SRC2.get(m[1]);
+      if (!row || !row.url || !MEASURE.test(str)) continue;
+      check(`product ${p.id}: a sentence carrying a measurement cites a maker, retailer or food-safety page, not ${m[1]}`,
+        SPEC_HOSTS.has(hostOf2(row.url)), `${hostOf2(row.url)} :: ${str.slice(0, 70)}`);
     }
   }
 }

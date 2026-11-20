@@ -1,25 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>ShopNow Kitchen guides</title>
+  <title>ShopNow Kitchen guides and Journal</title>
   <link>https://karagemop466-tech.github.io/Affil3/</link>
   <description>Kitchen gear, explained like a friend would. Every claim traced to its source.</description>
   <language>en-US</language>
   <lastBuildDate>Fri, 20 Nov 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://karagemop466-tech.github.io/Affil3/feed.xml" rel="self" type="application/rss+xml"/>
   <item>
-    <title>Holiday cooking: what one countertop oven holds</title>
-    <link>https://karagemop466-tech.github.io/Affil3/guides/holiday-cooking-what-one-countertop-oven-holds/</link>
-    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/holiday-cooking-what-one-countertop-oven-holds/</guid>
+    <title>The big roast: what temperature actually means</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/the-big-roast-what-temperature-actually-means/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/the-big-roast-what-temperature-actually-means/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>A planning checklist for running a holiday meal through a 26-quart countertop air fryer oven: the manufacturer&#39;s capacity and serving statements, outside dimensions, the USDA temperatures that do not bend, and instant-read versus leave-in probes.</description>
+    <description>A seasonal plain-English guide to the internal-temperature targets that decide when a roast is done, straight from the USDA.</description>
   </item>
   <item>
-    <title>24 presets or 25? How to read a preset list</title>
-    <link>https://karagemop466-tech.github.io/Affil3/guides/how-to-read-an-air-fryer-preset-list/</link>
-    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/how-to-read-an-air-fryer-preset-list/</guid>
+    <title>Instant-read vs leave-in: two thermometers, two jobs</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/instant-read-vs-leave-in-two-thermometers-two-jobs/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/instant-read-vs-leave-in-two-thermometers-two-jobs/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>Why preset counts and function counts are not comparable between air fryers, worked through the Emeril Lagasse 26 QT French Door oven, whose own pages state 24 and 25 presets and 10-in-1 and 11-in-1.</description>
+    <description>What an instant-read probe and a wireless leave-in probe each do, and how to choose between them by the job.</description>
+  </item>
+  <item>
+    <title>The number that decides when to pull it: thermometer basics</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/the-number-that-decides-when-to-pull-it-thermometer-basics/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/the-number-that-decides-when-to-pull-it-thermometer-basics/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Why an internal-temperature target matters more than time, the safe minimums to aim for, and where to put the probe.</description>
+  </item>
+  <item>
+    <title>Counter space is the real spec: measure before you buy</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/counter-space-is-the-real-spec-measure-before-you-buy/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/counter-space-is-the-real-spec-measure-before-you-buy/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>How to compare the real-world space three countertop appliances need, using the manufacturers&#39; own case dimensions.</description>
+  </item>
+  <item>
+    <title>Eight quarts, one basket: the big-batch air fryer</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/eight-quarts-one-basket-the-big-batch-air-fryer/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/eight-quarts-one-basket-the-big-batch-air-fryer/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>What an 8-quart single-basket air fryer is good at, and the wattage figure to read carefully before ordering.</description>
+  </item>
+  <item>
+    <title>When a basket isn&#39;t enough: the case for a 26-quart oven</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/when-a-basket-isnt-enough-the-case-for-a-26-quart-oven/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/when-a-basket-isnt-enough-the-case-for-a-26-quart-oven/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Why oven-style air fryers exist, what they trade away, and the one figure to compare before you choose one.</description>
+  </item>
+  <item>
+    <title>Two baskets, one machine: what dual-basket air fryers change</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/two-baskets-one-machine-what-dual-basket-air-fryers-change/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/two-baskets-one-machine-what-dual-basket-air-fryers-change/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>What a dual-basket air fryer does differently from a single-drawer model, and the one number to check before you buy one.</description>
+  </item>
+  <item>
+    <title>Air fryer chicken breast: how do you know it is done?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-chicken-breast-how-do-you-know-it-is-done/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/air-fryer-chicken-breast-how-do-you-know-it-is-done/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Cooking chicken breast in an air fryer: the safe internal temperature, where to place the probe, why colour and texture mislead, and which tracked appliance suits which job.</description>
+  </item>
+  <item>
+    <title>Air fryer presets: how many do you actually need?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-presets-how-many-do-you-need/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/air-fryer-presets-how-many-do-you-need/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Preset counts are a marketing number. What matters is how many presets match the food you already cook, and how the tracked appliances differ on this.</description>
+  </item>
+  <item>
+    <title>Holiday hosting on a small counter: a plan for the big meal</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/holiday-hosting-on-a-small-counter-a-plan-for-the-big-meal/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/holiday-hosting-on-a-small-counter-a-plan-for-the-big-meal/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>A seasonal plan for cooking a big meal on limited counter space: what to cook where, the counter space each appliance needs, and the temperatures to aim for.</description>
+  </item>
+  <item>
+    <title>How to read an Amazon listing before you buy a kitchen appliance</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/how-to-read-an-amazon-listing-before-you-buy-a-kitchen-appliance/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/how-to-read-an-amazon-listing-before-you-buy-a-kitchen-appliance/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>A practical method for checking a marketplace listing against the manufacturer&#39;s own page: model numbers, temperature ranges, wattage, dimensions and certification claims, with a worked example from our own shelf.</description>
+  </item>
+  <item>
+    <title>Instant-read or leave-in probe: which one do you need?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/instant-read-or-leave-in-probe-which-thermometer-do-you-need/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/instant-read-or-leave-in-probe-which-thermometer-do-you-need/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Instant-read and leave-in wireless thermometers do completely different jobs. How to choose between them, what their published specifications actually promise, and where the numbers come from.</description>
+  </item>
+  <item>
+    <title>Air fryer, toaster oven or microwave: which earns the space?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-toaster-oven-or-microwave-which-one-earns-counter-space/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/air-fryer-toaster-oven-or-microwave-which-one-earns-counter-space/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Air fryer, toaster oven and microwave each solve a different problem. How to work out which one you actually need, what each shape costs you, and what to give up if you pick it.</description>
+  </item>
+  <item>
+    <title>Dual basket or single basket: which one for four people?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/dual-basket-or-single-basket-air-fryer/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/dual-basket-or-single-basket-air-fryer/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Dual-basket and single-basket air fryers trade against each other in ways the product pages do not spell out: batch size, cooking time, cleanup and counter footprint, for a household of four.</description>
+  </item>
+  <item>
+    <title>How much counter space does an air fryer really need?</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/how-much-counter-space-does-an-air-fryer-really-need/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/how-much-counter-space-does-an-air-fryer-really-need/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Counter space is the constraint that decides most kitchen purchases. How to measure it properly, what to add for an open drawer and a swinging door, and the real footprints of the three countertop appliances we track.</description>
   </item>
   <item>
     <title>Sync Finish and Hi-Fry: what the buttons do</title>
@@ -27,20 +118,6 @@
     <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/</guid>
     <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
     <description>What Sync Finish, Hi-Fry and independent baskets mean on the Chefman dual-basket air fryer, read from the manufacturer page and the Amazon listing, including the disputed temperature ceiling on the 8 qt model.</description>
-  </item>
-  <item>
-    <title>What “NIST certified” means on a thermometer</title>
-    <link>https://karagemop466-tech.github.io/Affil3/guides/what-nist-certified-means-on-a-thermometer/</link>
-    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/what-nist-certified-means-on-a-thermometer/</guid>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>A plain-English read of the claims on a thermometer listing - NIST certification, plus or minus half a degree, an IP rating - set against what USDA FSIS says about typical accuracy and about where to put the probe.</description>
-  </item>
-  <item>
-    <title>Which air fryer parts are actually dishwasher-safe?</title>
-    <link>https://karagemop466-tech.github.io/Affil3/guides/which-air-fryer-parts-are-dishwasher-safe/</link>
-    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/guides/which-air-fryer-parts-are-dishwasher-safe/</guid>
-    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
-    <description>What the five products we track say about dishwasher-safe parts: which component each claim covers, which pages stay silent, and what to check in the manual before you load anything.</description>
   </item>
   <item>
     <title>Is your meat thermometer telling you the right number?</title>

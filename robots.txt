@@ -7,5 +7,6 @@ Disallow: /legacy/
 Disallow: /crisp-index/
 Disallow: /counter/
 Disallow: /counterwise/
+Disallow: /counter-desk/
 
 Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml

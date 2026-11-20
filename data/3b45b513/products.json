@@ -1,0 +1,623 @@
+{
+  "rule": "Two kinds of fact, never merged. INTENT fields (intended_asin, official_listing_url, confirmation_date, confirmation_source) are filled only from an owner confirmation or an official Associates record; all four are blank here because none was supplied. OBSERVED fields (observed.*) are what an Amazon page served on a dated fetch. A blank intent field means 'not confirmed', never 'guessed'. Specs come from the manufacturer page named per field; where two official pages disagree the value is withheld and the flag says why.",
+  "checked": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "products": [
+    {
+      "id": "P1",
+      "slug": "chefman-6-quart-dual-basket-air-fryer",
+      "brand": "Chefman",
+      "name": "TurboFry Touch 6 Qt. Dual-Window Air Fryer",
+      "listing_name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+      "short_name": "Chefman 6 Qt dual basket",
+      "category": "air-fryers",
+      "shape": "Dual basket",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "official_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed": {
+        "date": "2026-11-20",
+        "asin": "B0CDY277D3",
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+        "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "source": "S09",
+        "carried_forward_from": "Earlier passes on 2026-11-20 resolved this link to this listing. This pass resolved the same link to the Amazon homepage, so the value is kept as a dated observation and the instability is flagged CDF-02."
+      },
+      "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
+      "link_status": "Provisional tagged link. Not yet validated in Associates Central (CDF-04).",
+      "model": "RJ38-SQPF-3TDB-2W",
+      "fit_line": "Two foods on two timers, in the footprint of one basket fryer.",
+      "lede": "Two independent 3-quart baskets with a window on each, and a setting that lands both baskets at the same moment. The trade is that six quarts are two small drawers rather than one wide one.",
+      "best_for": "Cooking two different foods that want different times, without heating the whole oven.",
+      "tradeoff": "Each basket is 3 quarts, so a single big batch is split in two and a long item may not fit at all.",
+      "specs": {
+        "capacity": {
+          "label": "Capacity",
+          "value": "6 qt / 5.67 L total",
+          "note": "Two independent 3 qt baskets",
+          "source": "S10"
+        },
+        "temperature": {
+          "label": "Temperature range",
+          "value": "200–450 °F",
+          "note": "450 °F is the Hi-Fry ceiling",
+          "source": "S10"
+        },
+        "power": {
+          "label": "Power",
+          "value": "1700 W / 120 V",
+          "source": "S10"
+        },
+        "dimensions": {
+          "label": "Footprint (D × W × H)",
+          "value": "13.38 × 11.81 × 10.63 in",
+          "note": "Manufacturer's own order of dimensions",
+          "source": "S10"
+        },
+        "weight": {
+          "label": "Weight",
+          "value": "13.3 lb / 6.03 kg",
+          "source": "S10"
+        },
+        "controls": {
+          "label": "Controls and functions",
+          "value": "Touch panel; air fry, bake, reheat, dehydrate, frozen; Sync Finish; Hi-Fry; interior light; dual viewing windows",
+          "source": "S10"
+        },
+        "presets": {
+          "label": "Preset count",
+          "value": "",
+          "note": "The manufacturer lists named functions but no preset count, and the listing states none either. Left blank rather than counted by us.",
+          "source": ""
+        },
+        "cleanup": {
+          "label": "Cleanup",
+          "value": "Nonstick baskets stated dishwasher-safe; wipe the housing",
+          "source": "S10"
+        },
+        "warranty": {
+          "label": "Warranty and certification",
+          "value": "1-year Chefman assurance; cETL approved",
+          "source": "S10"
+        }
+      },
+      "spec_sources": [
+        "S10"
+      ],
+      "sources": [
+        "S09",
+        "S10",
+        "S22"
+      ],
+      "flags": [
+        "CDF-01",
+        "CDF-02",
+        "CDF-03",
+        "CDF-04"
+      ],
+      "questions": [
+        [
+          "Will both baskets really finish together?",
+          "Sync Finish is the manufacturer's own claim; there is no independent test of how close the two baskets land."
+        ],
+        [
+          "Can I see the food without opening it?",
+          "Yes — each basket has a viewing window, and the interior light is stated on the manufacturer page."
+        ],
+        [
+          "Does it fit under a cabinet?",
+          "10.63 in tall before the lid opens. Measure your clearance rather than trusting a photo."
+        ]
+      ],
+      "fit": {
+        "depth_in": 13.38,
+        "width_in": 11.81,
+        "height_in": 10.63,
+        "kind": "countertop appliance"
+      },
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "image": "basket-drawer.jpg",
+      "image_alt": "A stainless air fryer drawer pulled open, golden potatoes and rosemary visible in the perforated basket, a linen cloth beside it."
+    },
+    {
+      "id": "P2",
+      "slug": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+      "brand": "Emeril Lagasse",
+      "name": "French Door AirFryer 360 Toaster Oven Combo, 26 QT",
+      "listing_name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+      "short_name": "Emeril Lagasse 26 QT French Door",
+      "category": "air-fryer-ovens",
+      "shape": "Oven-style, french doors",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "official_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed": {
+        "date": "2026-11-20",
+        "asin": "B09B7SB46R",
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+        "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "source": "S11"
+      },
+      "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
+      "link_status": "Provisional tagged link. Not yet validated in Associates Central (CDF-04).",
+      "model": "4-00675-02A-VN",
+      "fit_line": "A whole meal at once, if your counter is deep enough.",
+      "lede": "A 26-quart countertop oven with french doors, a rotisserie and a fan. It replaces a toaster oven and an air fryer only if you have the depth for it — 16.9 inches before the door swings.",
+      "best_for": "Cooking several things at once for four to six people, and freeing the main oven during a holiday week.",
+      "tradeoff": "It is the largest footprint in this set: 16.9 in deep and 14.8 in tall. On a shallow counter it will hang over the edge.",
+      "specs": {
+        "capacity": {
+          "label": "Capacity",
+          "value": "26 qt / 24.6 L",
+          "note": "Manufacturer states food for 4–6 people",
+          "source": "S12"
+        },
+        "temperature": {
+          "label": "Temperature range",
+          "value": "",
+          "note": "No numeric range is stated on the manufacturer product page, so none is published.",
+          "source": ""
+        },
+        "power": {
+          "label": "Power",
+          "value": "",
+          "note": "Wattage is not stated on the manufacturer product page; third-party listings disagree, so nothing is published.",
+          "source": ""
+        },
+        "dimensions": {
+          "label": "Footprint (D × W × H)",
+          "value": "16.9 × 15.8 × 14.8 in",
+          "source": "S12"
+        },
+        "weight": {
+          "label": "Weight",
+          "value": "",
+          "note": "Not stated by the manufacturer.",
+          "source": ""
+        },
+        "controls": {
+          "label": "Controls and functions",
+          "value": "Touch controls; air fry, bake, broil, dehydrate, roast and rotisserie described by the manufacturer; dual-speed fan; 360° circulation",
+          "source": "S12"
+        },
+        "presets": {
+          "label": "Preset count",
+          "value": "",
+          "note": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch cooking presets'; the listing says 24. Withheld (CDF-06).",
+          "source": ""
+        },
+        "cleanup": {
+          "label": "Cleanup",
+          "value": "",
+          "note": "The manufacturer product page does not state dishwasher safety for the racks or pans.",
+          "source": ""
+        },
+        "warranty": {
+          "label": "Warranty and certification",
+          "value": "1-year warranty (manufacturer); certification not stated",
+          "source": "S12"
+        }
+      },
+      "spec_sources": [
+        "S12"
+      ],
+      "sources": [
+        "S11",
+        "S12",
+        "S22"
+      ],
+      "flags": [
+        "CDF-01",
+        "CDF-02",
+        "CDF-03",
+        "CDF-04",
+        "CDF-06"
+      ],
+      "questions": [
+        [
+          "Does it replace a toaster oven and an air fryer?",
+          "Functionally yes by the manufacturer's own list; whether it toasts as evenly as a dedicated toaster oven is not something a specification sheet can answer."
+        ],
+        [
+          "Will a 12-inch pizza fit?",
+          "The manufacturer's description says it fits a 12-inch pizza; the interior dimensions to check that yourself are not published."
+        ],
+        [
+          "What is actually in the box?",
+          "The manufacturer's description says seven accessories; the listing title says six; the grill plate is sold separately on the manufacturer's own site. Ask the seller before ordering (CDF-06)."
+        ]
+      ],
+      "fit": {
+        "depth_in": 16.9,
+        "width_in": 15.8,
+        "height_in": 14.8,
+        "kind": "countertop appliance"
+      },
+      "guide_slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
+      "image": "oven-doors.jpg",
+      "image_alt": "A compact stainless countertop oven with glass french doors open, a small chicken on a rack above a tray of roasted vegetables."
+    },
+    {
+      "id": "P3",
+      "slug": "chefman-turbofry-touch-8-quart-air-fryer",
+      "brand": "Chefman",
+      "name": "TurboFry Touch Stainless-Steel Air Fryer, 8 Qt",
+      "listing_name": "Chefman Air Fryer 8 Qt, TurboFry 4-in-1",
+      "short_name": "Chefman 8 Qt single basket",
+      "category": "air-fryers",
+      "shape": "Single basket",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "official_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed": {
+        "date": "2026-11-20",
+        "asin": "B08DKYBTPH",
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+        "breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "source": "S13"
+      },
+      "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+      "link_status": "Provisional tagged link. Not yet validated in Associates Central (CDF-04).",
+      "model": "RJ38-SQSS-8T",
+      "fit_line": "One big batch, one basket, no divider in the way.",
+      "lede": "Eight quarts in a single stainless basket with four presets and a 400 °F ceiling. It is the simplest machine here, and the one whose published numbers disagree between the marketplace and the maker.",
+      "best_for": "One large batch of one thing, and a drawer wide enough for a long item.",
+      "tradeoff": "No second basket and no window, so checking the food means opening the drawer and losing heat. Wattage is stated differently in two official places, so it is withheld (CDF-05).",
+      "specs": {
+        "capacity": {
+          "label": "Capacity",
+          "value": "8 qt / 7.57 L",
+          "note": "Both the manufacturer page and the listing state 8 quarts",
+          "source": "S14"
+        },
+        "temperature": {
+          "label": "Temperature range",
+          "value": "200–400 °F",
+          "note": "Both the manufacturer page and the listing state this range. The listing title separately advertises a 450 °F Hi-Fry option that its own bullets do not explain.",
+          "source": "S14"
+        },
+        "power": {
+          "label": "Power",
+          "value": "",
+          "note": "The manufacturer page for this model states 1700 W / 120 V; the listing's own copy states 1000 W / 120 V for the same model number. Withheld (CDF-05).",
+          "source": ""
+        },
+        "dimensions": {
+          "label": "Footprint (D × W × H)",
+          "value": "",
+          "note": "The manufacturer page states 15.4 × 12.6 × 13.5 in for this model; the listing states 12.75 × 13.5 × 10 in. Withheld (CDF-05).",
+          "source": ""
+        },
+        "weight": {
+          "label": "Weight",
+          "value": "12.8 lb / 5.8 kg",
+          "note": "Manufacturer page, 8 Qt model",
+          "source": "S14"
+        },
+        "controls": {
+          "label": "Controls and functions",
+          "value": "Digital touch controls; four cooking presets (fries, chicken, fish, meat); air fry, bake, dehydrate, frozen; LED shake reminder; auto shutoff",
+          "source": "S14"
+        },
+        "presets": {
+          "label": "Preset count",
+          "value": "4",
+          "source": "S14"
+        },
+        "cleanup": {
+          "label": "Cleanup",
+          "value": "Nonstick basket and rack stated top-rack dishwasher-safe",
+          "source": "S14"
+        },
+        "warranty": {
+          "label": "Warranty and certification",
+          "value": "1-year Chefman assurance; cETL approved",
+          "source": "S14"
+        }
+      },
+      "spec_sources": [
+        "S14"
+      ],
+      "sources": [
+        "S13",
+        "S14",
+        "S15",
+        "S22"
+      ],
+      "flags": [
+        "CDF-01",
+        "CDF-02",
+        "CDF-03",
+        "CDF-04",
+        "CDF-05"
+      ],
+      "questions": [
+        [
+          "Will a long item fit without cutting it?",
+          "The basket is single and undivided, which helps. Published dimensions conflict, so measure the drawer of the unit you receive before planning a long roast."
+        ],
+        [
+          "How much counter depth does it need?",
+          "Two official pages give 15.4 in and 12.75 in of depth for the same model number. Treat the larger figure as the safe planning number (CDF-05)."
+        ],
+        [
+          "Do I have to learn a menu system?",
+          "No. Four presets plus manual time and temperature."
+        ]
+      ],
+      "fit": {
+        "depth_in": 15.4,
+        "width_in": 12.6,
+        "height_in": 13.5,
+        "kind": "countertop appliance",
+        "fit_note": "Uses the manufacturer's larger dimension where the listing states a smaller one, so the fit check does not under-state the space needed."
+      },
+      "guide_slug": "air-fryer-capacity-checklist",
+      "image": "basket-drawer.jpg",
+      "image_alt": "A single stainless air fryer drawer with a crisping basket, photographed as an illustration on a pale wood counter."
+    },
+    {
+      "id": "P4",
+      "slug": "thermomaven-instant-read-thermometer",
+      "brand": "ThermoMaven",
+      "name": "F1 Stealth Instant Read Thermometer (HT07)",
+      "listing_name": "ThermoMaven 1 Sec Professional Digital Meat Thermometer",
+      "short_name": "ThermoMaven instant-read",
+      "category": "cooking-thermometers",
+      "shape": "Instant-read probe",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "official_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed": {
+        "date": "2026-11-20",
+        "asin": "B0DHZTCNR5",
+        "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
+        "breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+        "source": "S19",
+        "carried_forward_from": "Earlier passes on 2026-11-20 resolved this link to this listing. This pass resolved the same link to the Amazon homepage, so the value is kept as a dated observation and the instability is flagged CDF-02."
+      },
+      "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+      "link_status": "Provisional tagged link. Not yet validated in Associates Central (CDF-04).",
+      "model": "HT07",
+      "fit_line": "A one-second spot check you keep on the fridge door.",
+      "lede": "A folding instant-read with a thermocouple at the tip, a rotating LED screen and a magnet on the back. It answers one question — is this piece done yet — and it answers it fast.",
+      "best_for": "Checking several pieces of meat at the grill in a few seconds each.",
+      "tradeoff": "It is a spot-check tool. The manufacturer's own manual says not to leave it in the oven, the microwave or the dishwasher, so it is not a leave-in probe.",
+      "specs": {
+        "range": {
+          "label": "Measured range",
+          "value": "-58 to 572 °F (-50 to 300 °C)",
+          "source": "S21"
+        },
+        "read_time": {
+          "label": "Read time",
+          "value": "1 second (thermocouple)",
+          "source": "S20"
+        },
+        "accuracy": {
+          "label": "Stated accuracy",
+          "value": "±0.5 °F / ±0.3 °C, NIST-certified per the manufacturer",
+          "source": "S20"
+        },
+        "probe": {
+          "label": "Probe",
+          "value": "4.3 in long × 0.14 in at the base, tapering to 0.06 in",
+          "source": "S21"
+        },
+        "display": {
+          "label": "Display",
+          "value": "0.83 × 1.61 in LED, rotates 180°",
+          "source": "S21"
+        },
+        "battery": {
+          "label": "Power",
+          "value": "One AAA cell; 30-second sleep; wake by movement",
+          "source": "S21"
+        },
+        "water": {
+          "label": "Water resistance",
+          "value": "Manufacturer states a '100% waterproof design'",
+          "note": "The manufacturer page states no IP number; the listing's IP67 is a marketplace claim and is not published here.",
+          "source": "S20"
+        },
+        "leave_in": {
+          "label": "Leave-in use",
+          "value": "",
+          "note": "The manual explicitly says not to leave it in food while cooking, so no leave-in rating is published.",
+          "source": "S21"
+        },
+        "warranty": {
+          "label": "Warranty",
+          "value": "Lifetime warranty, activated by registration within 30 days",
+          "source": "S20"
+        }
+      },
+      "spec_sources": [
+        "S20",
+        "S21"
+      ],
+      "sources": [
+        "S19",
+        "S20",
+        "S21",
+        "S22"
+      ],
+      "flags": [
+        "CDF-01",
+        "CDF-02",
+        "CDF-03",
+        "CDF-04",
+        "CDF-08"
+      ],
+      "questions": [
+        [
+          "How fast is a reading?",
+          "About one second, per the manufacturer, using a thermocouple rather than a thermistor."
+        ],
+        [
+          "Can I wash it under the tap?",
+          "The manufacturer says the design is waterproof but publishes no IP number. Wash and wipe; the manual says not to put it in a dishwasher."
+        ],
+        [
+          "Will it live in the drawer or on the fridge?",
+          "Either. The manual describes a magnet on the body and a fold-shut probe that puts the unit to sleep."
+        ]
+      ],
+      "fit": {
+        "depth_in": null,
+        "width_in": null,
+        "height_in": null,
+        "kind": "handheld tool",
+        "fit_note": "A drawer-sized handheld tool, so it is out of scope for the counter-space check."
+      },
+      "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
+      "image": "thermometer-craft.jpg",
+      "image_alt": "A thin stainless instant-read probe lying on a folded linen napkin beside a roast chicken in a cast-iron skillet."
+    },
+    {
+      "id": "P5",
+      "slug": "chef-iq-sense-wireless-thermometer",
+      "brand": "CHEF iQ",
+      "name": "iQ Sense Smart Wireless Meat Thermometer, 3 Probes (Gen3)",
+      "listing_name": "CHEF iQ Sense Smart Wireless Meat Thermometer, 3 Probes, Gen3",
+      "short_name": "CHEF iQ Sense, 3 probes",
+      "category": "cooking-thermometers",
+      "shape": "Wireless leave-in probe",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "official_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed": {
+        "date": "2026-11-20",
+        "asin": "B0DZFD6R9Z",
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+        "breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+        "source": "S16"
+      },
+      "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
+      "link_status": "Provisional tagged link. Not yet validated in Associates Central (CDF-04).",
+      "model": "",
+      "fit_line": "Reports from inside three pieces of meat while the lid stays shut.",
+      "lede": "Three slim probes, a hub that charges them and relays them over Wi-Fi, and an ambient sensor that watches the heat around the food as well as the food itself.",
+      "best_for": "A long cook where you would rather not stand next to the grill, and where more than one piece of meat matters.",
+      "tradeoff": "The inserted portion of the probe tops out at 212 °F. The 1,000 °F figure is the ambient sensor, not something you can put in hot oil. It also needs the app and the hub in the loop.",
+      "specs": {
+        "probes": {
+          "label": "Probes included",
+          "value": "3",
+          "note": "The manufacturer sells one to four probes; this is the three-probe bundle",
+          "source": "S17"
+        },
+        "sensors": {
+          "label": "Sensors",
+          "value": "4 internal + 1 ambient, per the manufacturer page",
+          "note": "The page also says 'Five Temperature Sensors' and the listing says '5 Sensors'; the split is stated in the feature list.",
+          "source": "S17"
+        },
+        "internal_range": {
+          "label": "Inserted probe range",
+          "value": "32–212 °F",
+          "source": "S17"
+        },
+        "ambient_range": {
+          "label": "Ambient range",
+          "value": "32–1,000 °F",
+          "note": "Gen 3 limit; the FAQ gives 752 °F for the earlier ambient sensor",
+          "source": "S18"
+        },
+        "probe_size": {
+          "label": "Probe size",
+          "value": "0.19 in diameter × 4.75 in long",
+          "source": "S17"
+        },
+        "connectivity": {
+          "label": "Connectivity",
+          "value": "Bluetooth probe-to-hub, Wi-Fi hub-to-app; USB-C charging; hub speaker",
+          "source": "S17"
+        },
+        "battery": {
+          "label": "Battery life",
+          "value": "",
+          "note": "The product page says '70+ hours'; the same brand's FAQ says up to 60 hours for Gen 3. Withheld (CDF-07).",
+          "source": ""
+        },
+        "cleanup": {
+          "label": "Cleanup",
+          "value": "Probe stated waterproof and dishwasher safe; the hub is not waterproof and should be wiped",
+          "source": "S18"
+        },
+        "warranty": {
+          "label": "Warranty",
+          "value": "",
+          "note": "Not stated on the manufacturer product page or FAQ.",
+          "source": ""
+        }
+      },
+      "spec_sources": [
+        "S17",
+        "S18"
+      ],
+      "sources": [
+        "S16",
+        "S17",
+        "S18",
+        "S22"
+      ],
+      "flags": [
+        "CDF-01",
+        "CDF-02",
+        "CDF-03",
+        "CDF-04",
+        "CDF-07"
+      ],
+      "questions": [
+        [
+          "Can I monitor from inside the house?",
+          "Yes. The hub relays over Wi-Fi rather than Bluetooth alone, which is what the unlimited-range claim rests on."
+        ],
+        [
+          "How many pieces of meat can I track at once?",
+          "Three with this bundle. The hub accepts up to four Gen 3 probes."
+        ],
+        [
+          "Will it survive a hot grill lid?",
+          "The ambient sensor is rated to 1,000 °F. The inserted portion is rated to 212 °F, which is a doneness range, not an oil-temperature range."
+        ]
+      ],
+      "fit": {
+        "depth_in": null,
+        "width_in": null,
+        "height_in": null,
+        "kind": "handheld tool",
+        "fit_note": "Probes and a hub that lives in a drawer or on a shelf, so it is out of scope for the counter-space check."
+      },
+      "guide_slug": "probe-or-instant-read-which-thermometer-do-you-need",
+      "image": "thermometer-craft.jpg",
+      "image_alt": "A cast-iron skillet with a roast chicken and a fine temperature probe resting on the board beside it."
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "note": "Every product fact in this edition points at one of these rows. 'full' means the whole page was retrieved and read on 2026-11-20 during this pass. 'observed' means a value was read off a live Amazon page on a dated fetch and can change. No blog, review site, reseller or aggregator is cited for any value.",
+  "accessed": "2026-11-20",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Associates Program Operating Agreement",
+      "publisher": "Amazon.com Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "method": "full (page states: Updated October 15, 2025)",
+      "status": "verified",
+      "supports": "Section 1 defines Special Links as links that 'must properly use the special tagged link formats we provide'. Section 5 requires the exact sentence used in the disclosure bar on every page.",
+      "quote": "You must clearly and prominently state the following ... on your Site ...: \"As an Amazon Associate I earn from qualifying purchases.\""
+    },
+    {
+      "id": "S02",
+      "title": "Associates Program Policies — Participation Requirements",
+      "publisher": "Amazon.com Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "method": "full (page states: Updated April 14, 2026)",
+      "status": "verified",
+      "supports": "2(b): the Associates ID must appear as a URL parameter in every link to an Amazon Site, and all Special Links must be accessed directly from the site. 2(b) also restricts price and availability display to Amazon-served data or the Creators/PA API. 6(t) restricts customer reviews and star ratings to API-supplied data. 6(u) bars buying through your own links. 6(v) bars cloaking or Redirecting Links. 6(w) bars link shortening that obscures the Amazon destination. 6(y) bars price tracking.",
+      "quote": "All Special Links must be accessed directly from your Site. ... you must include your Associates ID or \"tag\" ... as a parameter in the URL of each link you place on your Site to an Amazon Site."
+    },
+    {
+      "id": "S03",
+      "title": "Associates Program Commission Income Statement",
+      "publisher": "Amazon.com Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "method": "full (section of the Program Policies page)",
+      "status": "verified",
+      "supports": "How a click becomes a qualifying purchase: a session lasts 24 hours from the click, or up to 89 days if the item is added to the cart first. Section 2(g) disqualifies purchases that are 'not correctly tracked or reported because the links from your site' are not properly formatted — the policy reason this edition tests link formatting before scaling.",
+      "quote": "during a single session, which is measured as beginning when a customer clicks through that Special Link and ending upon the first to occur of the following: (x) 24 hours elapse from that click"
+    },
+    {
+      "id": "S04",
+      "title": "Qualify your outbound links to Google",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "method": "full (page last updated 2025-12-10)",
+      "status": "verified",
+      "supports": "The rel=\"sponsored\" attribute applied to every Amazon link on this site.",
+      "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value."
+    },
+    {
+      "id": "S05",
+      "title": "FTC's Endorsement Guides: What People Are Asking — the affiliate-marketing section",
+      "publisher": "U.S. Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "method": "full (affiliate Q&A read in place)",
+      "status": "verified",
+      "supports": "Supplies the first sentence of the disclosure bar verbatim as the FTC's own example for affiliate links, and says the disclosure belongs close to the recommendation. Also states that 'affiliate link' alone and a 'buy now' button are not adequate, while 'paid link' next to the link can be.",
+      "quote": "You could say something like, \"I get commissions for purchases made through links in this post.\""
+    },
+    {
+      "id": "S06",
+      "title": "16 CFR 255.5 — Disclosure of material connections",
+      "publisher": "U.S. Federal Trade Commission / eCFR",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5",
+      "method": "full",
+      "status": "verified",
+      "supports": "The legal rule behind the disclosure bar: a material connection must be disclosed clearly and conspicuously, in a way a reader can evaluate.",
+      "quote": "such connection must be disclosed clearly and conspicuously"
+    },
+    {
+      "id": "S07",
+      "title": "Safe Minimum Internal Temperature Chart",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "method": "full (page last updated April 14, 2025)",
+      "status": "verified",
+      "supports": "Every temperature in the thermometer guide, row by row: 145 °F with a 3-minute rest for steaks, chops and roasts; 160 °F ground meats and eggs; 165 °F ground poultry, all poultry, leftovers and casseroles; 145 °F fish and shellfish.",
+      "quote": "Ground Meats | 160 degrees F (71.1 degrees C)"
+    },
+    {
+      "id": "S08",
+      "title": "Food Thermometers",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "method": "full",
+      "status": "verified",
+      "supports": "Where to place a probe (whole poultry: thigh, wing, thickest breast, avoiding bone), the 2–4 °F accuracy expectation for consumer thermometers, and that a thermometer should not be left in food unless the manufacturer says it is built for that.",
+      "quote": "Most food thermometers will give an accurate reading within 2 to 4 degrees F"
+    },
+    {
+      "id": "S09",
+      "title": "Observed Amazon listing — B0CDY277D3 (CHEFMAN 6 Quart Dual Basket Air Fryer Oven)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "method": "observed 2026-11-20",
+      "status": "observed",
+      "supports": "Identity of the listing behind product 1: title, breadcrumb (Home & Kitchen > Small Appliances > Fryers > Air Fryers) and the 10-character ASIN. No price, rating or availability is republished.",
+      "quote": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black"
+    },
+    {
+      "id": "S10",
+      "title": "Chefman TurboFry Touch 6 Qt. Dual-Window Air Fryer — RJ38-SQPF-3TDB-2W",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "method": "full",
+      "status": "verified",
+      "supports": "Every published specification for product 1: 6 qt / 5.67 L in two baskets, 200–450 °F, 1700 W / 120 V, 13.38 × 11.81 × 10.63 in, 13.3 lb, cETL, one-year assurance. The page lists functions but no preset count, which is why none is published.",
+      "quote": "Capacity: 6 Qt / 5.67 L ... 200–450°F ... Dimensions: 13.38 in x 11.81 in x 10.63 in ... Weight: 13.3 lbs ... Power: 1700W/120V ... Model Number: RJ38-SQPF-3TDB-2W"
+    },
+    {
+      "id": "S11",
+      "title": "Observed Amazon listing — B09B7SB46R (Emeril Lagasse 26QT French Door Air Fryer Toaster Oven)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "method": "observed 2026-11-20",
+      "status": "observed",
+      "supports": "Identity of the listing behind product 2, and the listing's own claims of '24 One-Touch Preset Options' and 'Six Cooking Accessories Included', both of which conflict with the manufacturer page.",
+      "quote": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included"
+    },
+    {
+      "id": "S12",
+      "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT — 4-00675-02A-VN",
+      "publisher": "Emeril Everyday",
+      "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "method": "full",
+      "status": "verified",
+      "supports": "Published specs for product 2: 26 qt / 24.6 L, 16.9 D × 15.8 W × 14.8 H in, 120 V, one-year warranty, food for 4–6. Also the source of two conflicts: the spec tile reads '25 Cooking Pre-sets' while the description reads '24 one-touch cooking presets', and the description says seven accessories while the listing title says six.",
+      "quote": "25 Cooking Pre-sets ... Equipped with 24 one-touch cooking presets ... Included are 7 premium accessories"
+    },
+    {
+      "id": "S13",
+      "title": "Observed Amazon listing — B08DKYBTPH (Chefman Air Fryer 8 Qt, TurboFry 4-in-1)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "method": "observed 2026-11-20",
+      "status": "observed",
+      "supports": "Identity of the listing behind product 3, its item-model field (RJ38-SQSS-8T), and the listing's own claims of 1000 W, 200–400 °F and 12.75 × 13.5 × 10 in — which disagree with the manufacturer page for the same model number.",
+      "quote": "1000 Watts/120 Volts – RJ38-SQSS-8T"
+    },
+    {
+      "id": "S14",
+      "title": "Chefman TurboFry Touch Stainless-Steel Air Fryer — RJ38-SQSS-8T (8 Qt)",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "method": "full",
+      "status": "verified",
+      "supports": "The manufacturer page for the model number the listing names: 8 qt / 7.57 L, 200–400 °F, 1700 W / 120 V, 15.4 × 12.6 × 13.5 in, 12.8 lb, four presets, top-rack dishwasher-safe basket, stainless finish, cETL, one-year assurance. This page is the reason a published claim that the listing describes 'a different machine' had to be corrected.",
+      "quote": "Model Number: RJ38-SQSS-8T (8 Qt model) ... Power: 1700W/120V ... 200–400°F"
+    },
+    {
+      "id": "S15",
+      "title": "Chefman TurboFry 8 Qt. Air Fryer w/ High Fry — RJ38-8T-BLACK",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry",
+      "method": "full",
+      "status": "verified",
+      "supports": "A second, genuinely different 8 Qt Chefman product with a 450 °F Hi-Fry burst, 1700 W / 120 V and a matte-black finish. Naming it separately is what keeps it out of product 3's specification table.",
+      "quote": "Hi-Fry Temperature: 450°F / 232°C ... Power: 1700W/120V ... Model Number: RJ38-8T-BLACK"
+    },
+    {
+      "id": "S16",
+      "title": "Observed Amazon listing — B0DZFD6R9Z (CHEF iQ Sense, 3 probes, Gen3)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "method": "observed 2026-11-20",
+      "status": "observed",
+      "supports": "Identity of the listing behind product 5, and its '5 Sensors' and '1000°F Heat Safe' wording, which the manufacturer page and FAQ explain differently.",
+      "quote": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors"
+    },
+    {
+      "id": "S17",
+      "title": "iQ Sense — product page",
+      "publisher": "CHEF iQ",
+      "url": "https://chefiq.com/products/iq-sense",
+      "method": "full",
+      "status": "verified",
+      "supports": "Product 5 specs: probe 0.19 in thin × 4.75 in long, internal range 32–212 °F, ambient range up to 1,000 °F, Wi-Fi plus Bluetooth, USB-C charging hub, dishwasher-safe probe, one to four probe configurations. Also the source of the sensor-count contradiction inside one page and the '70+ hours' battery claim.",
+      "quote": "Probe: 0.19\" thin, 4.75\" long ... Internal temp range of 32ºF to 212ºF ... Ambient temp range of 32ºF to 1,000ºF"
+    },
+    {
+      "id": "S18",
+      "title": "iQ Sense FAQ",
+      "publisher": "CHEF iQ",
+      "url": "https://chefiq.com/pages/new-iq-sense-faq",
+      "method": "full",
+      "status": "verified",
+      "supports": "The probe's inserted-portion limit (212 °F), the Gen 3 ambient limit (1,000 °F), the 60-hour Gen 3 battery figure that contradicts the product page, and the warning that the probe keeps drawing power outside the hub.",
+      "quote": "The max temperature for the portion of the probe inserted into the food is 212˚F. ... Gen 3 probes will hold their charge for up to 60 hours."
+    },
+    {
+      "id": "S19",
+      "title": "Observed Amazon listing — B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "method": "observed 2026-11-20",
+      "status": "observed",
+      "supports": "Identity of the listing behind product 4, and its item-model field HT07 — the number that let a manufacturer page be matched to it for the first time.",
+      "quote": "Model Name: HT07 | Model: HT07 | UPC: 850057819342 | Manufacturer: ThermoMaven"
+    },
+    {
+      "id": "S20",
+      "title": "ThermoMaven F1 Stealth Instant Read Thermometer — HT07",
+      "publisher": "ThermoMaven",
+      "url": "https://www.thermomaven.com/products/f1-stealth",
+      "method": "full",
+      "status": "verified",
+      "supports": "The manufacturer page for product 4, located on 2026-11-20 by matching the listing's model number HT07 to the F1 Stealth's user guide. States NIST-certified ±0.5 °F, one-second thermocouple read, LED screen, waterproof design, magnet, lifetime warranty on registration. Earlier passes recorded that no manufacturer page existed for this product; that finding was wrong.",
+      "quote": "NIST certified accurate to ±0.5℉/±0.3℃. ... Truly instant read in 1 second, thanks to Thermocouple sensor!"
+    },
+    {
+      "id": "S21",
+      "title": "ThermoMaven F1 Stealth user manual (PDF, v1.0)",
+      "publisher": "ThermoMaven",
+      "url": "https://cdn.shopify.com/s/files/1/0828/4726/9152/files/HT07_user_manual.pdf",
+      "method": "full",
+      "status": "verified",
+      "supports": "The measured range and hardware of product 4, stated by the manufacturer's own manual: -58 to 572 °F, probe 4.3 in × 0.14 in, one AAA cell, 0.83 × 1.61 in rotating LED display, 30-second sleep, model HT07, and the explicit instruction not to leave the unit in the oven or dishwasher.",
+      "quote": "Temperature Range | -58 to 572 °F ... Battery | (1) × 1.5 volt AAA ... DO NOT leave the device in the oven, microwave, or dishwasher."
+    },
+    {
+      "id": "S22",
+      "title": "Submitted link.amazon short links (all five, as supplied)",
+      "publisher": "link.amazon",
+      "url": "https://link.amazon/B04G1MEwY",
+      "method": "observed 2026-11-20, this pass; the per-row URL is on the shelf table",
+      "status": "observed",
+      "supports": "What each supplied link did on this date. Three resolved to a product detail page and two resolved to the Amazon homepage. This pass did not reproduce two destinations recorded earlier the same day, which is why the observed column is dated and the intent column is the owner's to fill.",
+      "quote": "B02NbDxp3 → /dp/B09B7SB46R; B00hJ57DV → /dp/B08DKYBTPH; B0f3GKalj → /dp/B0DZFD6R9Z; B04G1MEwY and B0c8moW59 → amazon.com homepage, no product page",
+      "url_note": "Five short links, not one; a single reference URL would misrepresent them. Each is named row by row in products.json."
+    },
+    {
+      "id": "S23",
+      "title": "Understanding ASINs",
+      "publisher": "Sell on Amazon (Amazon.com, Inc.)",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "method": "full (published June 4, 2025)",
+      "status": "verified",
+      "supports": "The Amazon-owned definition that earlier sessions recorded as unfindable: an ASIN is a 10-character alphanumeric code and appears after /dp/ in a product URL. This is why a 9-character supplied token is recorded as a format mismatch rather than read as an ASIN.",
+      "quote": "It's a unique 10-character alphanumeric code assigned to every product listed in the Amazon store."
+    }
+  ]
+}

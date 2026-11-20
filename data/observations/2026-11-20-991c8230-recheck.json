@@ -1,0 +1,115 @@
+{
+  "_about": "Dated first-hand re-check of the five submitted short links and of the five Amazon product pages, by session 991c8230-affil3 on 2026-11-20. Observed values only. Nothing here sets an intended ASIN, a confirmation date or an official listing URL; those fields stay blank in data/products.json until the owner confirms intent (FLG-002). No link is claimed dead or invalid, and no price, rating or review count seen during these fetches is recorded or published anywhere on the site.",
+  "check_date": "2026-11-20",
+  "short_links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://link.amazon/B04G1MEwY",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same behaviour as FLG-004 / FLG-031)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://link.amazon/B02NbDxp3",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same behaviour as FLG-004 / FLG-031)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B00hJ57DV",
+      "row": "P03",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://link.amazon/B00hJ57DV",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same behaviour as FLG-004 / FLG-031)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B0c8moW59",
+      "row": "P04",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://link.amazon/B0c8moW59",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same behaviour as FLG-004 / FLG-031)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B0f3GKalj",
+      "row": "P05",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://link.amazon/B0f3GKalj",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "result": "Amazon home page, not a product page (same behaviour as FLG-004 / FLG-031)",
+      "agrees_with_register_asin": "not testable from this round"
+    }
+  ],
+  "product_pages": [
+    {
+      "row": "P01",
+      "asin_fetched": "B0CDY277D3",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://www.amazon.com/dp/B0CDY277D3",
+      "observed_page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "title_matches_register_observed_title": true,
+      "page_variant": "Amazon served the 'Product summary presents key product information' variant (URL parameters lv=shuf&channelId=500&plpRedirect=mhFallback). The title still matched the register character for character.",
+      "notes": "The 'customers who viewed this item also viewed' carousel showed a different Chefman dual-basket listing (B0B7C327LK); that is Amazon merchandising, not a change of destination. The ASIN in the served URL remains B0CDY277D3, matching data/products.json."
+    },
+    {
+      "row": "P02",
+      "asin_fetched": "B09B7SB46R",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://www.amazon.com/dp/B09B7SB46R",
+      "observed_page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "title_matches_register_observed_title": true,
+      "page_variant": "Same 'product summary' variant as P01.",
+      "notes": "Title again shows '24 One-Touch Preset Options', the same figure the register declines to publish as a specification because the manufacturer page says both 25 and 24 (FLG-024, FLG-005). The register's handling is unchanged."
+    },
+    {
+      "row": "P03",
+      "asin_fetched": "B08DKYBTPH",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry\u00ae 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "title_matches_register_observed_title": true,
+      "page_variant": "Same 'product summary' variant as P01.",
+      "notes": "Title still advertises the 450\u00b0F Hi-Fry burst that the maker's own page for RJ38-SQSS-8T does not explain (FLG-026/FLG-027 unchanged)."
+    },
+    {
+      "row": "P04",
+      "asin_fetched": "B0DHZTCNR5",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_page_title": "Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, \u00b10.5\u2109 Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black : Home & Kitchen",
+      "title_matches_register_observed_title": true,
+      "page_variant": "Same 'product summary' variant as P01.",
+      "notes": "The 'newer model of this item' callout (B0GL7Z4KP4) recorded in observed_specs_extra was still visible in the page carousel. The listing still does not name the F1 Ace, so FLG-025 stays open at the register's level."
+    },
+    {
+      "row": "P05",
+      "asin_fetched": "B0DZFD6R9Z",
+      "fetch_date": "2026-11-20",
+      "method": "fetch_page (unauthenticated) on https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000\u00b0F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "title_matches_register_observed_title": true,
+      "page_variant": "Same 'product summary' variant as P01.",
+      "notes": "The carousel also showed a two-probe Sense variant (B0FXBQ3KX1) and a limited-edition colourway (B0H2JP9YDM); Amazon merchandising only. The register's sensor-count contradiction record (FLG-033) is unchanged."
+    }
+  ],
+  "round_summary": "A further same-day dated round on these URLs (the observation files in this directory now record several rounds; this file adds one of them). All five short links returned the Amazon home page in this round, so the short-link-to-product mappings in data/products.json are still carried from earlier dated rounds and are not re-derived here (extends FLG-031; see FLG-037 and FLG-040). All five /dp/ pages were fetched directly by ASIN and every page title contained the register's observed_title, five of five. Titles carry the 'Amazon.com: ' prefix and ' : Home & Kitchen' suffix the register omits; formatting difference only, as recorded by session dd2ad3dc. Nothing was promoted into intended_* fields and no observed value was changed.",
+  "session": "991c8230-affil3"
+}

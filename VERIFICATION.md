@@ -94,3 +94,129 @@ Run before publish (all green on 2026-11-20):
 - https://www.amazon.com/dp/B0CDY277D3 · /dp/B09B7SB46R · /dp/B08DKYBTPH · /dp/B0DZFD6R9Z
 - https://link.amazon/B04G1MEwY · /B02NbDxp3 · /B00hJ57DV · /B0c8moW59 · /B0f3GKalj
 - https://www.sitemaps.org/protocol.html · https://www.rssboard.org/rss-specification
+
+---
+
+# VERIFICATION — session `arena/77e4ac42-affil3` (Journal + decision board)
+
+Verification date **2026-11-20** · rule unchanged: **every table row has a source link to an official
+site; if a value can't be confirmed from an official source it is left blank and flagged as
+unverified. Nothing is inferred or filled in.** This session added a reader-facing Journal and a
+decision board. It did not change any product, spec, flag or source value.
+
+## 6 · The Journal articles (sourced; no new facts invented)
+
+Each article's factual claims are drawn only from source IDs already in the register and cited on the
+article. Article titles are editorial working titles, not popularity, search-volume or superiority
+claims. No price, rating, review count or hands-on test claim appears.
+
+| # | Article | Factual claims | Source IDs | Status |
+|---|---------|----------------|-----------|--------|
+| 1 | Two baskets, one machine: what dual-basket air fryers change | 6 qt in two 3 qt baskets; Sync Finish; 200–450 °F; 1700 W; dishwasher-safe baskets; case size; 1-yr warranty | S11, S04 | sourced |
+| 2 | When a basket isn't enough: the case for a 26-quart oven | 26 qt / 24.6 L; french doors; food for 4–6; case size 16.9×15.8×14.8 in; 1-yr warranty; preset-count discrepancy named | S13, S04 | sourced |
+| 3 | Eight quarts, one basket: the big-batch air fryer | 8 qt / 7.57 L; 200–400 °F; maker 1700 W vs listing wattage conflict; RJ38-SQSS-8T vs RJ38-8T-BLACK | S12, S16, S04 | sourced |
+| 4 | Counter space is the real spec: measure before you buy | Case dimensions for P01/P02/P03, reproduced in the makers' own order | S11, S12, S13, S04 | sourced |
+| 5 | The number that decides when to pull it: thermometer basics | USDA safe minimum internal temperatures; probe placement | S10, S20, S21, S14 | sourced |
+| 6 | Instant-read vs leave-in: two thermometers, two jobs | ThermoMaven 1-sec read, ±0.5 °F NIST; CHEF iQ leave-in, up to 1000 °F | S21, S14, S15, S10 | sourced |
+| 7 | The big roast: what temperature actually means | USDA temperature targets and rest times; probe placement | S10, S20 | sourced |
+
+**Values deliberately not claimed:** no price, rating, review count, availability, traffic, conversion
+or revenue figure appears in any article. The wattage conflict in article 3 is named, not resolved.
+
+## 7 · Decision board (no factual claims; questions carry their own sources)
+
+| # | Board item | Type | Sources | Status |
+|---|-----------|------|---------|--------|
+| D-01…D-08 | Suggestions (house style, Journal, topic selection, reader capture, brand/imagery, navigation, revenue unblock, cadence) | each has options + recommendation | none (design proposals, not factual claims) | proposal |
+| DQ-01…DQ-04 | Blocking questions (marketplace, tracking ID live, Special Link test, intended product) | owner-access | S01, S02, S04, S05 | open |
+| DQ-05…DQ-10 | Non-blocking questions (reader, cadence, analytics endpoint, prices, byline, edition) | owner decision | S01, S02 where factual | open |
+
+Questions that rest on a factual policy point cite the official source (S01 Associates Operating
+Agreement, S02 Program Policies). Questions that are pure owner decisions carry no source, because they
+are not factual claims — that is stated on the page.
+
+## 8 · Build and gate results (2026-11-20)
+
+| Check | Tool | Result |
+|-------|------|--------|
+| Root build | `node tools/build.mjs` | 41 pages, 12 feed items, 40 sitemap URLs |
+| Publishing gate | `node tools/verify.mjs` | 4,876 checks passed, 0 failed |
+| Full check (root + editorial) | `npm run check` | pass; editorial output did not drift |
+| Table source coverage (strict) | `python3 tools/link_report.py --strict` | OK — every checked table 100% sourced |
+| Internal link integrity | `python3 tools/check_all_links.py` | 0 broken internal links |
+| Docs sitemap + links | `scripts/build_sitemap.py --check`, `scripts/check_links.py --no-external` | pass |
+| Editorial gate | `python3 tools/check_site.py` | PASS — 21 pages |
+
+## 9 · New external links for manual review
+
+None added. Every Journal and decision-board link is either an internal page or an already-registered
+source. The article product boxes resolve to the same tagged Amazon listing URLs already published on
+the Shop and product pages.
+
+# Session `c252594d` — primary-source re-verification (2026-11-20)
+
+**Rule, unchanged:** every published value points at a dated fetch of the page named in the source
+register. Where two official pages disagree, the cell is left blank and the disagreement is
+published as a flag. Nothing is inferred.
+
+## A · Sources read in full by this session
+
+| ID | Page | Read | Used for |
+|---|---|---|---|
+| [S21](https://www.thermomaven.com/products/f1-ace) | ThermoMaven F1 Ace Instant Read Thermometer | 2026-11-20 | P04 specifications; the page FLG-025 said did not exist |
+| [S22](https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1) | Chefman TurboFry Touch Stainless-Steel Air Fryer, 8 qt (RJ38-SQSS-8T) | 2026-11-20 | P03 temperature range, weight, presets, certification |
+| [S23](https://advertising.amazon.com/library/guides/asins-introduction) | Amazon Ads — "Understanding ASINs" | 2026-11-20 | The Amazon-owned ASIN definition; closes FLG-012 |
+| [S11](https://chefman.com/products/turbofry-touch-dual-window-air-fryer) | Chefman TurboFry Touch 6 Qt Dual-Window | 2026-11-20, re-read in full | P01 re-check: capacity, range, watts, size, weight, model — all unchanged |
+| [S12](https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry) | Chefman TurboFry 8 Qt w/ High Fry (RJ38-8T-BLACK) | 2026-11-20, re-read in full | The second 8 qt machine; sharpens FLG-026 |
+| [S13](https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360) | Emeril Lagasse French Door AirFryer 360, 26 QT | 2026-11-20, re-read in full | P02 re-check: 26 qt / 24.6 L, 16.9 × 15.8 × 14.8 in, 120 V, 25 pre-sets, model 4-00675-02A-VN |
+| [S14](https://chefiq.com/products/iq-sense) | CHEF iQ Sense | 2026-11-20, re-read in full | P05 internal 32–212 °F, ambient 32–1,000 °F, heat resistance to 1,000 °F, probe 0.19 in × 4.75 in, materials stainless steel and zirconia |
+| [S04](https://www.amazon.com/dp/B0DHZTCNR5) | Amazon listing for the ThermoMaven row | 2026-11-20 | Confirms the observed destination is live and is a ThermoMaven 1 Sec Professional Digital Meat Thermometer |
+| [S05](https://link.amazon/B0c8moW59) | The submitted short link for the ThermoMaven row | 2026-11-20, three attempts | Two attempts in earlier sessions resolved to the listing; a third attempt on this date landed on the Amazon home page. The destination varies by attempt — FLG-003 |
+
+Also read on 2026-11-20 and unchanged: the Associates Program Operating Agreement and Program
+Policies (S01, S02), Google `rel="sponsored"` guidance (S06), 16 CFR Part 255 (S07, S08), and the
+USDA temperature and thermometer-placement pages (S09, S10, S20).
+
+## B · Line-by-line result for every published specification
+
+Blank means the maker's page does not state it. "Not stated" cells are counted by the gate and
+must match the data exactly.
+
+| Row | Field | Was published | Now published | Evidence |
+|---|---|---|---|---|
+| P01 | model / capacity / range / power / size / weight / certification / warranty | RJ38-SQPF-3TDB-2W, 6 qt, 200–450 °F, 1700 W, 13.38 × 11.81 × 10.63 in, 13.3 lb, cETL, 1-year | **unchanged** | S11 re-read in full |
+| P02 | capacity / size / voltage / model | 26 qt / 24.6 L, 16.9 × 15.8 × 14.8 in, 120 V, 4-00675-02A-VN | **unchanged** | S13 re-read in full |
+| P02 | wattage / weight / temperature range | blank | **still blank** — the maker states none of them | S13 |
+| P02 | preset count | blank | **still blank** — maker says 25 pre-sets, listing says 24 one-touch options (FLG-024) | S13, S04 |
+| P03 | model | RJ38-8T-BLACK | **RJ38-SQSS-8T** — the model the Amazon listing itself names, and which the maker publishes | S22, S16 |
+| P03 | temperature range | blank | **200–400 °F** | S22 |
+| P03 | weight | blank | **12.8 lb** | S22 |
+| P03 | wattage | blank | **still blank** — maker says 1700 W, listing says 1000 W (FLG-026) | S22, S04 |
+| P03 | size | blank | **still blank** — maker says 15.4 × 12.6 × 13.5 in, listing says 12.75 × 13.5 × 10 in (FLG-026) | S22, S04 |
+| P04 | every field | blank, no buy button, flagged FLG-025 | **model, functions, cleaning, certification wording, warranty populated; tagged outbound link enabled** | S21, S04 |
+| P04 | temperature range / power / size / weight | blank | **still blank** — the maker states none of them | S21 |
+| P05 | temperature range | 32–1,000 °F | **32–212 °F** internal, with 32–1,000 °F published as the ambient range on its own row | S14 |
+| P05 | probe size / cleaning / functions | 0.19 in × 4.75 in, waterproof, sensors | **unchanged**, plus the sensor-count conflict recorded (FLG-033) | S14 |
+| P05 | model / battery | blank | **still blank** — the maker shows one variant of a family and the two pages disagree on battery life (FLG-023) | S14, S15 |
+
+## C · Flags opened, closed and sharpened by this pass
+
+| Flag | Action |
+|---|---|
+| FLG-012 | **Closed.** Amazon's own page defines the ASIN as 10 letters and numbers (S23). |
+| FLG-025 | **Closed.** A ThermoMaven manufacturer page exists (S21); the specifications are published and the buy link is enabled. |
+| FLG-026 | **Sharpened.** Chefman publishes two 8 qt machines; the maker's page for the model the listing names agrees on the range, and still disagrees on wattage and size. |
+| FLG-031 | **Opened.** The maker's page and the listing carry different model names for the instant-read thermometer. |
+| FLG-032 | **Opened.** The listing states NSF certification and an IP67 rating that the maker's page does not. |
+| FLG-033 | **Opened.** The maker's own page contradicts itself on the wireless thermometer's sensor count. |
+
+## D · What was deliberately not done
+
+- No intended ASIN, official listing URL, confirmation date or confirmation source was filled in.
+  The submitted tokens are nine characters and the observed destinations differ from them; the
+  intended product stays blank until it is confirmed in a signed-in session.
+- No price, rating, review count, commission rate, conversion score or revenue forecast was
+  published. None can be sourced from an official page without authorised access.
+- No claim was made that any supplied short link is invalid. Their compliance status is unresolved
+  (FLG-003), and the destination varies by attempt.
+- Nothing was published about hands-on use. The site is specification-led and says so.
