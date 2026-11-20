@@ -2414,3 +2414,33 @@ so a new guide can never produce a `srcset` that 404s.
 
 **Gates after the merge:** `node tools/build.mjs` 40 pages, 13 feed items, 39 sitemap URLs;
 `node tools/verify.mjs` **4795 checks passed, 0 failed**; working tree clean after a rebuild (no drift).
+
+## V-07 · PR, merge and deploy — done
+
+- **PR #81** — https://github.com/karagemop466-tech/Affil3/pull/81 —
+  "Verify all five product rows, fix the CHEF iQ temperature range, test the collector, and cut page
+  weight by two thirds".
+- **Merged without waiting for approval**, as the brief directs: `gh pr merge 81 --merge` at
+  2026-11-20T07:13:18Z, merge commit `6bdce71ea85af0323ffe839288d8ac898724e828`. All five required CI
+  workflows were green before the merge: `Gate the published Pages site`, `gate` (publish-gate,
+  including the drift check), `check-site`, `disclosure`, `verify`.
+- **GitHub Pages:** source `main` at `/`; build for `6bdce71` reported `built` (23.0 s). Six workflows
+  succeeded on the merge commit, including `pages build and deployment`.
+- **Deployed content confirmed** by reading the tree Pages built: the CHEF iQ product page serves
+  `Temperature 32–212 °F`; `/flagged/` serves FLG-041 and FLG-042; `/suggestions/` serves S-26 and S-27.
+
+**What this session changed on the live site:** one corrected specification, two new flags, two new
+suggestions, three new questions, three new discovery steps, one dated observation record from a
+field-by-field re-verification of all five product rows, an end-to-end test of the analytics collector,
+and roughly a two-thirds reduction in page weight with a new gate rule that checks every declared image
+dimension against its file.
+
+**What it did not change, and why:** no intended ASIN, official listing URL, confirmation date or
+confirmation source (owner only — FLG-002); no verdict on the supplied short links (FLG-003, Q-21); no
+Special Link tested in Associates Central (no login in the sandbox — G-02); no analytics endpoint set
+(GitHub Pages cannot run a server — S-26); no price, rating or review count anywhere (no authorized API).
+
+**One thing to decide:** the two guides written this session were withdrawn at merge time because main
+already published better ones on the same two questions. Their illustrations (`guide-dual-vs-single-basket`,
+`guide-watts-and-degrees`, ~784 KB) are still in `src/assets/img/` and wired to nothing. Delete them or
+use them for a question the site does not yet answer.
