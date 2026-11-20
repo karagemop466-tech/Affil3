@@ -1,0 +1,158 @@
+{
+ "session": "b7320829-affil3",
+ "performed": "2026-11-20",
+ "method": "Every value below was read from a page fetched in this session with the fetch_page tool, one URL per call, redirects followed, unauthenticated. Where a fetch failed, the failure itself is recorded instead of a value. No value in this file was recalled from memory or copied from another register without re-reading the page.",
+ "sandbox_note": "The sandbox shell has no general outbound network, so all page reads went through fetch_page. During this pass fetch_page intermittently returned 'Failed to fetch page' for amazon.com and for one chefman.com sub-page; each success and each failure is recorded verbatim below rather than smoothed over.",
+ "submitted_short_links": [
+  {
+   "slot": "P01",
+   "url": "https://link.amazon/B04G1MEwY",
+   "result": "redirected to https://www.amazon.com/ (Amazon home page); page title reported 'Amazon.com. Spend less. Smile more.'; no product detail page in the returned content",
+   "product_observed": false,
+   "tag_parameter_present": null,
+   "note": "The earlier rounds (data/observations/2026-11-20-reverify-66f2548a.json) recorded this link landing on /dp/B0CDY277D3 with plpRedirect=mhFallback in the final URL. This pass landed on the home page. Consistent with FLG-004/FLG-031: the destination of a submitted short link is not reproducible from an unauthenticated fetch."
+  },
+  {
+   "slot": "P02",
+   "url": "https://link.amazon/B02NbDxp3",
+   "result": "redirected to https://www.amazon.com/ (home page)",
+   "product_observed": false
+  },
+  {
+   "slot": "P04",
+   "url": "https://link.amazon/B0c8moW59",
+   "result": "redirected to https://www.amazon.com/ (home page), 36 chunks of home-page content",
+   "product_observed": false
+  },
+  {
+   "slot": "P05",
+   "url": "https://link.amazon/B0f3GKalj",
+   "result": "redirected to https://www.amazon.com/ (home page)",
+   "product_observed": false
+  },
+  {
+   "slot": "P03",
+   "url": "https://link.amazon/B00hJ57DV",
+   "result": "fetch error in this pass ('Failed to fetch page'); retried once, same result",
+   "product_observed": null
+  }
+ ],
+ "listing_pages": [
+  {
+   "url": "https://www.amazon.com/dp/B0CDY277D3",
+   "result": "fetch error in this pass (three attempts)",
+   "fallback": "Corroborated instead by a search-result excerpt of the amazon.com page for this ASIN, which shows the same title string held in data/products.json for P01 and the same headline specification line '120 Volts/1700 Watts - RJ38-SQPF-3TDB-2W ... Temperature range from 200-450 F ... Sync Finish ... + 2 minutes button option ... Shake reminder'. Recorded as an EXCERPT, not a page read, per the register's own convention."
+  },
+  {
+   "url": "https://www.amazon.com/dp/B09B7SB46R|B08DKYBTPH|B0DHZTCNR5|B0DZFD6R9Z",
+   "result": "not reachable by direct fetch in this pass",
+   "note": "Their observed values are carried from the dated rounds recorded in data/observations/ and in S04's method field. Nothing was restated as freshly verified here."
+  }
+ ],
+ "official_pages_read_in_full_this_pass": [
+  {
+   "id": "S11",
+   "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+   "read": [
+    "model code RJ38-SQPF-3TDB-2W shown above the product title",
+    "'Max temp: 450\u00baF/ 235\u00baC with Hi-Fry function'",
+    "'Sync Function so both baskets' (feature list, continued on the next page section, which this pass could not fetch)",
+    "description: 'This 6-quart air fryer combines two powerful air fryers in one, allowing you to cook different dishes simultaneously or easily switch between baskets. With a wide temperature range and Sync Finish feature to ensure both baskets finish cooking simultaneously'",
+    "page shows prices and a review count; neither is transcribed, per S03"
+   ],
+   "agrees_with_register": "P01 model, 6 qt / two 3 qt baskets, 450 F Hi-Fry maximum, Sync Finish - all agree."
+  },
+  {
+   "id": "S13",
+   "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+   "read": [
+    "title 'EMERIL LAGASSE FRENCH DOOR AIRFRYER 360(TM) TOASTER OVEN COMBO, 26 QT'",
+    "model '4-00675-02A-VN'",
+    "specification strip: '26-Quart Capacity / preparing food for 4-6 people'",
+    "'24.6 Liters'",
+    "'25 Cooking Pre-sets'",
+    "'16.9\"D x 15.8\"W x 14.8\"H'",
+    "'120 volts'",
+    "'Dual-Speed Fan for golden fried crisping'",
+    "description: 'This endlessly versatile 10-in-1 air fry convection oven opens up to a spacious 26-quart extra-large capacity'",
+    "page shows a price and a star rating; neither is transcribed, per S03"
+   ],
+   "agrees_with_register": "P02 model, 26 qt / 24.6 L, 'food for 4-6 people', dimensions and 120 V all agree. The preset disagreement recorded in FLG-024 is confirmed again first-hand: this page's own specification strip says 25 pre-sets while its description and the Amazon title say 24 one-touch presets, and the description says 10-in-1 while an image file on the same page is named 11-in-1."
+  },
+  {
+   "id": "S21",
+   "url": "https://www.thermomaven.com/products/f1-ace",
+   "read": [
+    "'NIST-certified precision, with an accuracy of +/-0.5F/+/-0.3C.'",
+    "'1 Second Instant Reading'",
+    "'powered by a thermocouple sensor'",
+    "'Featuring a 100% waterproof design'",
+    "'Built-in magnet for easy retrieval and storage'",
+    "'Lifetime Warranty - Note: Activate your Lifetime Warranty within 30 days after purchase'",
+    "certification logos shown as images: CE, RoHS, BPA, NSF",
+    "page shows a price and '4.8 (50 reviews)'; neither is transcribed, per S03"
+   ],
+   "agrees_with_register": "P04 accuracy, 1-second read, thermocouple, waterproof claim, magnet and warranty-with-activation all agree. The listing's 'IP67' and 'NSF' wording and the model name remain unconfirmed against this page, so FLG-025 stays open."
+  },
+  {
+   "id": "S10",
+   "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+   "read": [
+    "full chart: Beef, Pork, Veal and Lamb steaks/chops/roasts 145 F + 3 min rest; Ground Meats 160 F; Ground Poultry 165 F; Ham fresh or smoked (uncooked) 145 F + 3 min rest; Fully cooked ham to reheat 140 F (USDA-inspected) or 165 F (all others); All Poultry 165 F; Eggs 160 F; Fish and Shellfish 145 F; Leftovers 165 F; Casseroles 165 F",
+    "'Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source.'",
+    "page footer: 'Last Updated: Apr 14, 2025'"
+   ],
+   "agrees_with_register": "Every temperature published in the thermometer guide matches the chart."
+  },
+  {
+   "id": "S20",
+   "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+   "read": [
+    "'Using a food thermometer is the only reliable way to ensure that foods have been cooked to a safe minimum internal temperature'",
+    "'Most food thermometers will give an accurate reading within 2 to 4 degrees F (see Calibration)'",
+    "'The food thermometer should be placed in the thickest part of the food, away from bone, fat or gristle. For thin foods, the food thermometer should be inserted through the side until it reaches the center of the food.'",
+    "'Always check each piece of food to ensure they have reached the safe internal temperature.'",
+    "'When the food being cooked is large or irregularly shaped, such as with a beef roast, check the temperature in several places.'",
+    "'Before using a food thermometer, read the manufacturer's instructions.'",
+    "'Most pathogens are destroyed between 140 degrees F and 165 degrees F'",
+    "'Color and grill marks are not indicators that food is safe to eat' and the cited USDA study figure '21% of participants relied on visual cues'"
+   ],
+   "agrees_with_register": "Confirms the accuracy, placement and 'several places' guidance used in the guides. The per-meat placement list further down the page was not re-read in this pass, so S20 keeps its partial re-check note."
+  },
+  {
+   "id": "S24",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+   "read": [
+    "'A robots.txt file tells search engine crawlers which URLs the crawler can access on your site. This is used mainly to avoid overloading your site with requests; it is not a mechanism for keeping a web page out of Google. To keep a web page out of Google, block indexing with noindex or password-protect the page.'",
+    "'If your web page is blocked with a robots.txt file, its URL can still appear in search results, but the search result won't have a description.'"
+   ],
+   "used_for": "FLG-036 and the accuracy of the findability claims on /flagged/."
+  },
+  {
+   "id": "S25",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+   "read": [
+    "'noindex is a rule set with either a <meta> tag or HTTP response header and is used to prevent indexing content by search engines that support the noindex rule'",
+    "'Specifying the noindex rule in the robots.txt file is not supported by Google.'",
+    "'Another reason could also be that the robots.txt file is blocking the URL from Google web crawlers, so they can't see the tag.'",
+    "page footer: 'Last updated 2025-12-10 UTC'"
+   ],
+   "used_for": "FLG-036 and suggestion S-20."
+  }
+ ],
+ "data_defects_found_in_the_registers_and_fixed": [
+  "P01.functions read 'Sync \u00b0Finish' - a stray degree sign inside a feature name. The Amazon title and the manufacturer page both write 'Sync Finish'. Corrected; logged as FLG-037.",
+  "FLG-007 cited S11 for the 'at least 10 posts' rule of thumb. In this register S11 is the Chefman dual-window product page; the rule of thumb is recorded in S19 (Associates application help). Citation corrected to S19; logged as FLG-038.",
+  "FLG-032 and the /flagged/ copy stated that the non-root editions are 'excluded from the index through robots.txt and noindex metadata'. Two of them (/counter/ and /counterwise/) carry no noindex metadata in the shipped files, and robots.txt does not exclude anything from the index per S24/S25. Wording corrected; logged as FLG-036.",
+  "FLG-031 recorded two short links falling back to the Amazon home page. This pass saw the same fallback on four of four submitted links that resolved at all. Detail extended; the flag stays open and its severity is unchanged, because the finding is about reproducibility, not about a dead link."
+ ],
+ "merge_with_main": {
+  "merged_from": "origin/main at f41ef98 (PRs #76 and #77 merged while this branch was open)",
+  "how_conflicts_were_resolved": "Nothing from main was discarded. main's registers, guides, Journal and decision board are kept as shipped; this session's rows were renumbered into main's id space (sources S24 and S26, flags FLG-041 to FLG-043, suggestions S-26 to S-29, questions Q-20 to Q-22, facts K-22 to K-25, discovery D-15 to D-18). Two of this session's proposals were folded into main's existing rows instead of duplicated: de-indexing into S-20, and the Special-Link field into option D of S-02.",
+  "guides": "This session drafted five guides. Four duplicated pages that had landed on main in the meantime (cleanup/dishwasher, thermometer labels versus how-to-read-a-listing, presets, holiday planning), so they were withdrawn and their first-hand material was merged into main's pages as new sections with their own sources and 'amended' notes; one guide, Sync Finish and Hi-Fry, is new. Shelf: 14 guides. Recorded as FLG-043.",
+  "convergence": "Three findings of this session turned out to be already fixed on main when the merge ran: the stray degree sign in P01's function list, the stale 'fifth link resolves to nothing' executive summary, and the unreproducible short-link fetches (main's FLG-036 and FLG-037). They are recorded here rather than re-filed as new flags.",
+  "new_findings_after_merging": "Cross-checking main's guides against its own source register found five more mis-citations of the same class this session had found on its base: four guides cite S22 (the FTC Endorsement Guides page) for Chefman specification figures, where the maker's page for RJ38-SQSS-8T is S23 and the matte-black High-Fry unit is S12; and the chicken-breast guide cites S11 and S23 inline without declaring them. Fixed, and the two new gate rules in section 3b of tools/verify.mjs are what catch this class from here on (FLG-042, S-29).",
+  "counts_after_merge": "50 pages built, 21 feed items, 49 sitemap URLs, gate 7,757 checks / 0 failures; editorial edition unchanged at 21 pages PASS.",
+  "note_3": "Third merge with origin/main (head d174471, PRs #70 and #79-#82) on the same day. main had meanwhile taken the id numbers this session's second pass used, so the rows were renumbered a final time: flags FLG-043/044/045, suggestions S-32..S-35, questions Q-23..Q-25, known facts K-23..K-26, discovery D-19..D-22; sources S24 and S26 survived unchanged because main left both free. main's own register kept every row it published, including its FLG-036 to FLG-042, its S-20..S-31, its dims() image-size gate and its 16 guides. This session's guide count is therefore one new page (Sync Finish and Hi-Fry, with its basket-shape paragraph cut to a cross-reference because main's dual-basket guide owns that argument) plus three enriched pages, on a shelf that is now 17 guides. main's README already listed /counter-desk/ as a published surface, so the duplicate row this session had added was dropped; the robots Disallow list this session extended to include /counter-desk/ sits on top of main's /counter/ and /counterwise/ lines."
+ }
+}

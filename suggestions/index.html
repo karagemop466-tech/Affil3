@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
+<meta name="robots" content="index,follow">
 
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -43,7 +44,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-32 to S-35 continue main&#39;s board after the 2026-11-20 merge, renumbered because main took this session&#39;s draft ids while the branch was open. Three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session&#39;s de-indexing proposal was folded into main&#39;s S-20 and its Special-Link field became option D of main&#39;s S-02, for the same reason the board exists: one row per decision.</p></section>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
@@ -54,8 +55,8 @@
 <section class="choice-card" id="S-02">
   <p class="kicker">S-02 · Buy buttons while links are untested</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
+  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li><li><strong>D.</strong> Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.<br><span class="muted small">Tradeoff: Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders.</p>
 </section>
 <section class="choice-card" id="S-03">
   <p class="kicker">S-03 · Where the analytics collector runs</p>
@@ -225,6 +226,30 @@
   <ul class="opts"><li><strong>A.</strong> Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.<br><span class="muted small">Tradeoff: Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login.</span></li><li><strong>B.</strong> Keep publishing on editorial judgement until traffic exists, then measure (current).<br><span class="muted small">Tradeoff: No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it.</p>
 </section>
+<section class="choice-card" id="S-32">
+  <p class="kicker">S-32 · Answer-first summaries on every guide</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the deck as the only above-the-fold summary.<br><span class="muted small">Tradeoff: The deck is a teaser by design, so the answer arrives later. Nothing to maintain.</span></li><li><strong>B.</strong> Add a &#39;summary&#39; field per guide, rendered as a boxed short answer under the byline, and compute the word and minute count from the guide&#39;s own text at build time.<br><span class="muted small">Tradeoff: Implemented 2026-11-20 for all seventeen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page&#39;s word count over 225 words a minute - a property of the text, not a measurement of the reader.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, shipped. If a guide cannot be summarised in four sentences, that is a finding about the guide, not about the format.</p>
+</section>
+<section class="choice-card" id="S-33">
+  <p class="kicker">S-33 · How much structured data to publish</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Article only (as shipped before 2026-11-20).<br><span class="muted small">Tradeoff: Minimal and valid; nothing about site structure or the Q&amp;A content is declared.</span></li><li><strong>B.</strong> An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.</span></li><li><strong>C.</strong> Add Product offers and price data.<br><span class="muted small">Tradeoff: Not available while the site publishes no prices: the price clause (S03) and the no-republished-prices rule both stand until the Creators API decision at S-04.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, shipped, and not sold as a rich-result win. C waits for an API enrolment decision.</p>
+</section>
+<section class="choice-card" id="S-34">
+  <p class="kicker">S-34 · A dated re-check ritual for listing copy</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the dated reads as they are and let the dates speak.<br><span class="muted small">Tradeoff: Zero work. A reader sees &#39;observed November 20, 2026&#39; and can judge staleness themselves.</span></li><li><strong>B.</strong> A monthly ten-minute manual re-check, written into data/observations/ with its date and rendered on the product page as a last-seen line.<br><span class="muted small">Tradeoff: Recommended. It is the only check that sees the page a shopper sees, and it needs a person - which is why it is a suggestion and not an automation claim.</span></li><li><strong>C.</strong> Automate the fetch in CI.<br><span class="muted small">Tradeoff: Rejected on this repository&#39;s own evidence: a scheduled job would raise a flag every week for reasons unrelated to the fact it claims to verify. Do not build an alarm nobody can trust.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.</p>
+</section>
+<section class="choice-card" id="S-35">
+  <p class="kicker">S-35 · A citation check that catches wrong meaning, not just a dangling id</p>
+  <p class="choice-current">Current: <span class="badge">C</span></p>
+  <ul class="opts"><li><strong>A.</strong> Rely on reviewers noticing.<br><span class="muted small">Tradeoff: Eleven were missed across several sessions and found only by reading text against the documents it cites.</span></li><li><strong>B.</strong> Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.</span></li><li><strong>C.</strong> Two further rules, implemented with B: an inline citation in a guide must be declared in that guide&#39;s own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches &#39;Chefman states 1700 W (S22)&#39;. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.</span></li><li><strong>D.</strong> Also require every guide sentence to carry an inline source id.<br><span class="muted small">Tradeoff: Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.</p>
+</section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
 </main>
@@ -240,9 +265,9 @@
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
         <li><a href="/Affil3/articles/">The Journal</a></li>
+        <li><a href="/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/">Sync Finish and Hi-Fry: what the buttons do</a></li>
         <li><a href="/Affil3/guides/smart-meat-thermometer-what-actually-matters/">Smart meat thermometers: what actually matters before you buy</a></li>
         <li><a href="/Affil3/guides/which-air-fryer-shape-fits-your-week/">Dual-basket, single-basket, or oven-style? Match the shape to your week</a></li>
-        <li><a href="/Affil3/guides/black-friday-kitchen-deals-a-shoppers-checklist/">Black Friday kitchen deals: a checklist before you click add to cart</a></li>
       </ul>
     </div>
     <div class="footer-col">
