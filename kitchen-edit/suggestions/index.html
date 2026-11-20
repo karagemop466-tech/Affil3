@@ -54,7 +54,7 @@
     </nav>
   </div>
 </header>
-<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> I get commissions for purchases made through links in this post. <em>As an Amazon Associate I earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
 <main>
 <div class="page-head">
   <p class="breadcrumb"><a href="../index.html">Home</a> / Suggestion review board</p>
@@ -136,7 +136,7 @@
     <div class="sugg-card">
       <h3>SG-08 · DECISION — analytics endpoint hosting <span class="status-pill proposed">proposed</span></h3>
       <dl>
-        <dt>What</dt><dd>Choose where events POST to. A. Serverless worker + KV (self-hosted code, ~free) · B. Self-hosted analytics app on a small VPS (full control, ~$5/mo + ops) · C. Local queue + manual exports (zero infra, no live measurement).</dd>
+        <dt>What</dt><dd>Choose where events POST to. A. Serverless worker + KV (self-hosted code, ~free) · B. Self-hosted analytics app on a small VPS (full control, ~5 USD a month + ops) · C. Local queue + manual exports (zero infra, no live measurement).</dd>
         <dt>Evidence</dt><dd>FLG-002: static hosting can't run the endpoint [S10]; the brief requires a self-hosted endpoint.</dd>
         <dt>Impact / effort / risk</dt><dd>High impact · effort B &gt; A &gt; C · risk: A/B add a privacy contact point; C delays conversion measurement indefinitely.</dd>
         <dt>Decision needed</dt><dd><strong>Pick A, B, or C</strong>; then set <code>analyticsEndpoint</code> and record the choice here.</dd>

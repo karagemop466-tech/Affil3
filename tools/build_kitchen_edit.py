@@ -98,8 +98,8 @@ DASHBOARD_LINKS = [
 
 DISCLOSURE_TEMPLATE = (
     '<div class="disclosure" data-disclosure-strip><div class="wrap">'
-    '<span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn '
-    'an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> '
+    '<span><strong>Reader-supported:</strong> I get commissions for purchases made through links in this post. '
+    '<em>As an Amazon Associate I earn from qualifying purchases.</em> '
     'Every pick carries its sourcing — see <a href="{p}sourcing/index.html">how we research</a> and our '
     '<a href="{p}compliance/index.html">compliance gate</a>.</span>'
     '</div></div>'
@@ -262,7 +262,7 @@ def jsonld_for(out_path, title, desc, kind):
 
 
 def build(outdir):
-    frag_root = os.path.join(ROOT, "content")
+    frag_root = os.path.join(ROOT, "src")
     for out_path, (frag_key, title, desc, kind) in PAGES.items():
         frag_path = os.path.join(frag_root, frag_key + ".html")
         if not os.path.exists(frag_path):

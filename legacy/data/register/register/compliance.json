@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0.0",
+  "verified_on": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "rules": [
+    {
+      "id": "R01",
+      "requirement": "The exact Associates statement appears on the site.",
+      "quote": "\"As an Amazon Associate I earn from qualifying purchases.\"",
+      "source": "S01",
+      "where_enforced": "docs/_partials/disclosure.html — rendered under the masthead of every page and repeated in every footer.",
+      "status": "met"
+    },
+    {
+      "id": "R02",
+      "requirement": "Disclosure is clear and conspicuous near affiliate links.",
+      "quote": "A clear disclosure could be as simple as \"(paid link)\", \"#ad\", or \"#CommissionsEarned\" ... placed near any affiliate link or product review in a location that customers will notice easily.",
+      "source": "S03",
+      "where_enforced": "Every product card and review page carries a '(paid link)' label on the button itself, plus the disclosure strip above it.",
+      "status": "met"
+    },
+    {
+      "id": "R03",
+      "requirement": "Disclose the affiliate relationship near the link and in the content.",
+      "quote": "You should disclose the affiliate relationship both in the videos and in the description near the links.",
+      "source": "S04",
+      "where_enforced": "Disclosure strip at the top of each page, inline '(paid link)' on every outbound button, and a full disclosure section in the footer.",
+      "status": "met"
+    },
+    {
+      "id": "R04",
+      "requirement": "Do not display prices or availability unless Amazon serves the link or the data comes from Creators API / PA API.",
+      "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API",
+      "source": "S02",
+      "where_enforced": "No price appears anywhere on the site. Every buy button says 'Check current price at Amazon'. tools/check_site.py fails the build if a currency pattern appears in generated HTML.",
+      "status": "met"
+    },
+    {
+      "id": "R05",
+      "requirement": "Do not display star ratings or customer reviews without a PA API link.",
+      "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through the PA API",
+      "source": "S02",
+      "where_enforced": "No star rating or review count appears on the site. build.py refuses to render a rating field if one is ever added to the data.",
+      "status": "met"
+    },
+    {
+      "id": "R06",
+      "requirement": "Associates tag must appear as a URL parameter on every outbound Amazon link.",
+      "quote": "you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "source": "S02",
+      "where_enforced": "Partially. build.py refuses to emit an outbound link that lacks tag=shopnow047c-20, so today the site renders zero buy buttons and explains why on each product page. See FLG-003.",
+      "status": "blocked"
+    },
+    {
+      "id": "R07",
+      "requirement": "Site must contain original content, not a copy of Amazon copy.",
+      "quote": "Your Site(s) must contain original content ... Original content utilizing third-party materials must contain significant commentary, analysis, or transformation",
+      "source": "S02",
+      "where_enforced": "Every guide is written for this site; specification tables cite the manufacturer and are presented with a decision framing. No Amazon copy is republished.",
+      "status": "met"
+    },
+    {
+      "id": "R08",
+      "requirement": "No price tracking or price alerting functionality.",
+      "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+      "source": "S02",
+      "where_enforced": "No price is stored, tracked, charted, or alerted. The data schema has no price field.",
+      "status": "met"
+    },
+    {
+      "id": "R09",
+      "requirement": "Do not make inaccurate or misleading claims about a product.",
+      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product",
+      "source": "S02",
+      "where_enforced": "Each spec carries a source ID and an access date. Fields with conflicting sources are blank and listed on the Flagged for Review page.",
+      "status": "met"
+    },
+    {
+      "id": "R10",
+      "requirement": "Do not imply Amazon sponsors or endorses the site.",
+      "quote": "You will not misrepresent or embellish our relationship with you (including by expressing or implying that we support, sponsor, or endorse you)",
+      "source": "S01",
+      "where_enforced": "The footer states the site is independent and not endorsed by Amazon, next to the required statement.",
+      "status": "met"
+    },
+    {
+      "id": "R11",
+      "requirement": "Do not put Special Links in client-side software or offline material.",
+      "quote": "You will not engage in any Promotional Activities in any offline manner ... or any Special Link in connection with any printed material, ebook, mailing, or any oral solicitation.",
+      "source": "S02",
+      "where_enforced": "The site is web-only. The RSS feed carries guide links, not affiliate links.",
+      "status": "met"
+    },
+    {
+      "id": "R12",
+      "requirement": "Disclosure must be unavoidable and placed where readers will see it.",
+      "quote": "if your disclosure is only at the beginning, you and the brand that paid you shouldn't provide consumers with a link to your review that bypasses the beginning and skips over the disclosure",
+      "source": "S04",
+      "where_enforced": "The strip sits immediately under the masthead, before any product content, on every page including the disclosure page itself. There are no anchor shortcuts that skip it.",
+      "status": "met"
+    }
+  ],
+  "events": [
+    { "name": "page_view", "when": "Every page load excluding bot user agents", "fields": ["path", "referrer_host"] },
+    { "name": "outbound_product_click", "when": "A reader activates a product link or 'check price' button", "fields": ["path", "product_id", "destination_host"] },
+    { "name": "guide_read", "when": "A guide stays in view for 30 seconds", "fields": ["path", "slug"] },
+    { "name": "suggestion_vote", "when": "A reader records a preference in the suggestions queue", "fields": ["suggestion_id", "choice"] },
+    { "name": "disclosure_view", "when": "The disclosure strip enters the viewport", "fields": ["path"] }
+  ],
+  "event_notes": "These five events are the entire measurement surface. No identifiers, cookies, fingerprinting, or cross-site data. destination_host is recorded as a hostname only, never a full URL with parameters, so no Amazon session data is stored."
+}

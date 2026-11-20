@@ -1,5 +1,5 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -224,6 +224,98 @@
         "S05"
       ],
       "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "CHEF iQ battery life: the manufacturer's own pages disagree",
+      "detail": "The CHEF iQ Sense product page states '70+ Hours of Battery'. The CHEF iQ Sense FAQ on the same domain states that Gen 3 probes hold a charge for 'up to 60 hours'. Both are official CHEF iQ pages, so this site publishes no battery figure at all rather than choosing the friendlier one. The ambient temperature range, sensor count and probe dimensions on the product page are not in dispute and are published.",
+      "impact": "One marketing figure is unusable. No other specification is affected.",
+      "manual_step": "Ask CHEF iQ support which figure applies to the Gen 3 unit sold under B0DZFD6R9Z, or leave the battery field blank.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
+    },
+    {
+      "id": "FLG-024",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "Emeril Lagasse 26 QT: preset and accessory counts differ across official pages",
+      "detail": "The Emeril Everyday product page shows '25 Cooking Pre-sets' in its specification strip and '24 one-touch cooking presets' in its own description, and an image on the same page reads '11-in-1'. The Amazon listing title says '24 One-Touch Preset Options' and 'Six Cooking Accessories Included', while the manufacturer description mentions seven. Because the official sources conflict, this site publishes no preset count and no accessory count.",
+      "impact": "Two secondary specifications are withheld. Capacity, dimensions and form factor are unaffected.",
+      "manual_step": "Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.",
+      "sources": [
+        "S13",
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-025",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
+      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
+      "impact": "One of five products is present but not recommended, and carries no outbound link.",
+      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "sources": [
+        "S04"
+      ]
+    },
+    {
+      "id": "FLG-026",
+      "severity": "high",
+      "status": "open",
+      "area": "product data",
+      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
+      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
+      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
+      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "sources": [
+        "S16",
+        "S12"
+      ]
+    },
+    {
+      "id": "FLG-027",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The same listing carries two different temperature ranges in two places",
+      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
+      "impact": "Temperature is withheld on one product.",
+      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "sources": [
+        "S16"
+      ]
+    },
+    {
+      "id": "FLG-028",
+      "severity": "high",
+      "status": "resolved",
+      "area": "compliance",
+      "title": "Amazon links were published without the tracking tag, including the citations",
+      "detail": "Program Policies 2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. The site linked the observed Amazon page in the source column of the shop table and on product pages, and published the supplied link.amazon short links as clickable links, none of which carried tag=shopnow047c-20.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "None. The build now enforces the rule on every page: any link to an Amazon retail host gets the tag and rel=sponsored, and a link.amazon short link is rendered as text because it cannot carry the tag.",
+      "resolution": "Build-level link policy added and asserted by the gate on every page (retail Amazon link must carry the tag; no short link may be published as a link). Check count rose from 1,610 to 2,805."
+    },
+    {
+      "id": "FLG-029",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "site build",
+      "title": "Every thermometer page referenced an image that was never committed",
+      "detail": "Fourteen references pointed at /assets/img/hero-thermometer.jpg, which did not exist in the repository. The category page, both thermometer product pages, the guides index and the thermometer guide would have shown a broken image on the live site.",
+      "sources": [],
+      "manual_step": "None. The image was created in the same photographic style as the other hero images and committed; the gate now checks that every referenced image exists, is served locally, and has alt text.",
+      "resolution": "Image added on 2026-11-20. The image check was added to the gate, so a missing image fails the build from now on."
     }
   ],
   "checked": "2026-11-20"
