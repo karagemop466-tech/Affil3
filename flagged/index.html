@@ -40,7 +40,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main&#39;s FLG-030 because this branch&#39;s earlier allocations were dropped in two merges rather than renumbered over main&#39;s. FLG-035 is recorded as resolved by main&#39;s own /privacy/ page, which shipped independently of this session. Flags do not block publication.</p></section>
+<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main&#39;s FLG-030 because this branch&#39;s earlier allocations were dropped in two merges rather than renumbered over main&#39;s. FLG-035 is recorded as resolved by main&#39;s own /privacy/ page, which shipped independently of this session. FLG-043 and FLG-044 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references, and a work-log claim not carried by its merged PR); FLG-007 was refreshed with a dated recount and marked resolved. Flags do not block publication.</p></section>
 <section class="flag-card" id="FLG-001">
   <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
   <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.</p>
@@ -83,19 +83,19 @@
   <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a></p>
   <p class="small"><strong>Manual step:</strong> Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active.</p>
 </section>
-<section class="flag-card" id="FLG-007">
-  <p class="flag-head"><span class="badge flag">FLG-007</span> <span class="badge sev-medium">medium</span> <strong>Content depth is below the official &#39;robust content&#39; rule of thumb</strong></p>
-  <p>The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).</p>
-  
+<section class="flag-card is-resolved" id="FLG-007">
+  <p class="flag-head"><span class="badge flag">FLG-007</span> <span class="badge sev-medium">medium</span> <strong>Content depth is below the official &#39;robust content&#39; rule of thumb</strong> <span class="badge resolved">resolved</span></p>
+  <p>The Associates help text says a rule of thumb is at least 10 posts (S11, re-read in full on 2026-11-20 by session arena/5a91ea5c-affil3). At the time this flag was written the site had 5 guides. Counted from data/guides.json on 2026-11-20, the site publishes 13 guides — at or above the rule of thumb. Whether the content meets Amazon&#39;s &#39;robust original content&#39; bar is Amazon&#39;s judgement at application review; this flag only tracked the count.</p>
+  <p class="resolution"><strong>Resolution:</strong> 13 guides as of 2026-11-20, at or above the 10-post rule of thumb (S11). Reopen if the guide count ever drops below 10.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a></p>
-  <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-07) before submitting the site for Associates review.</p>
+  <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-05) before submitting the site for Associates review.</p>
 </section>
 <section class="flag-card" id="FLG-008">
   <p class="flag-head"><span class="badge flag">FLG-008</span> <span class="badge sev-medium">medium</span> <strong>Measurement events were not defined in the brief</strong></p>
   <p>The brief asks to &#39;record the five defined events&#39; but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.</p>
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
-  <p class="small"><strong>Manual step:</strong> Confirm or replace the five events (question Q-05).</p>
+  <p class="small"><strong>Manual step:</strong> Confirm or replace the five events, together with the analytics decision (suggestion S-03).</p>
 </section>
 <section class="flag-card" id="FLG-009">
   <p class="flag-head"><span class="badge flag">FLG-009</span> <span class="badge sev-high">high</span> <strong>Analytics endpoint is not deployed; analytics is inactive on the live site</strong></p>
@@ -137,21 +137,21 @@
   <p>No named author, credential or biography is supplied, so the site uses &#39;Affil3 editorial team&#39;. Inventing a person would be a fabrication.</p>
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
-  <p class="small"><strong>Manual step:</strong> Decide on a named author and bio (suggestion S-06).</p>
+  <p class="small"><strong>Manual step:</strong> Decide on a named author and bio (suggestion S-08).</p>
 </section>
 <section class="flag-card" id="FLG-015">
   <p class="flag-head"><span class="badge flag">FLG-015</span> <span class="badge sev-medium">medium</span> <strong>No product imagery is used</strong></p>
-  <p>Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).</p>
+  <p>Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-07).</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
-  <p class="small"><strong>Manual step:</strong> Decide the imagery approach (suggestion S-05).</p>
+  <p class="small"><strong>Manual step:</strong> Decide the imagery approach (suggestion S-07).</p>
 </section>
 <section class="flag-card" id="FLG-016">
   <p class="flag-head"><span class="badge flag">FLG-016</span> <span class="badge sev-medium">medium</span> <strong>Prices, ratings and availability are not recorded</strong></p>
   <p>Prices and ratings were visible only in carousel items on the fetched pages, not as confirmed values for the observed product. They change over time. Nothing is recorded or displayed, so no unverified number appears on the site.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
-  <p class="small"><strong>Manual step:</strong> If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source.</p>
+  <p class="small"><strong>Manual step:</strong> If prices are wanted, decide the approach (suggestion S-04) and capture them only with a dated observation from an authorized source.</p>
 </section>
 <section class="flag-card" id="FLG-017">
   <p class="flag-head"><span class="badge flag">FLG-017</span> <span class="badge sev-medium">medium</span> <strong>Parallel sessions claim the same task on separate branches</strong></p>
@@ -292,6 +292,20 @@
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   <p class="small"><strong>Manual step:</strong> Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-043">
+  <p class="flag-head"><span class="badge flag">FLG-043</span> <span class="badge sev-medium">medium</span> <strong>Decision cross-references pointed at renumbered rows</strong> <span class="badge resolved">resolved</span></p>
+  <p>Reader-facing copy and the design brief referenced suggestion and question ids that no longer match the registers. The workflow page cited S-02 for cadence (now S-05), Q-09 for topic choice, Q-04 for the Associates link test (now Q-02), and SG-29, which exists in no register. The design brief&#39;s sequence, prescriptions and prompt cited S-04 (name), S-05 (imagery), S-06 (byline), S-13 (navigation), S-15/S-16 (acquisition), S-18 (publications), S-20 (house style) and Q-08 (byline question) under a numbering that was dropped in an earlier merge. Five flags&#39; manual steps cited the same stale ids (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016). Anyone following those references would open the wrong decision.</p>
+  <p class="resolution"><strong>Resolution:</strong> Remapped to the current registers on 2026-11-20 by session arena/5a91ea5c-affil3: workflow copy now cites S-05, S-32, Q-02, Q-12 and Q-13; the design brief&#39;s sequence, prescriptions and prompt now cite S-06, S-07, S-08, S-11, S-16, S-19, S-36, S-37, Q-06, Q-13 and Q-25; the five flags&#39; manual steps re-pointed; the stale guide counts in the same copy are now derived from data/guides.json.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Adopt suggestion S-14&#39;s gate rule so hand-written counts and stale decision ids cannot be reintroduced.</p>
+</section>
+<section class="flag-card" id="FLG-044">
+  <p class="flag-head"><span class="badge flag">FLG-044</span> <span class="badge sev-medium">medium</span> <strong>Session c252594d&#39;s work log claims register changes that its merged PR did not ship</strong></p>
+  <p>PR #54 (&#39;Expand to 13 guides, add decision boards and deterministic artwork&#39;, merged 2026-11-20 as 1f65f70) contains data/guides.json and the eight new guides, but no data/suggestions.json, data/questions.json, data/flags.json, data/products.json, data/sources.json, tools/build.mjs or tools/verify.mjs. The session&#39;s work log in COORDINATION.md nevertheless records &#39;Suggestions S-11 to S-18 added&#39;, &#39;Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added&#39;, product-row corrections, FLG-012 closed, and build/gate changes. None of that is on main; main&#39;s registers were carried by other sessions. The session&#39;s scripts are preserved at tools/sessions/c252594d/: running add-decision-boards.py now would write rows with ids S-11 to S-18 that collide with ids already taken.</p>
+  
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Session c252594d (or the owner) re-lands its decision-board rows with fresh ids, or the work log entry is corrected to say the scripts were written but not applied. Do not run the scripts as-is against the current registers.</p>
 </section>
 </main>
 <footer class="site-footer">

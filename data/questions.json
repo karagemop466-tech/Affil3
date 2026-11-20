@@ -158,7 +158,7 @@
       ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-24, Q-25, D-13 and D-14 were added by session arena/5a91ea5c-affil3 on 2026-11-20 to close two gaps the register did not carry: which acquisition channels the owner will actually run, and whether the reader-facing name ShopNow Kitchen is confirmed.",
   "unknown": [
     {
       "id": "Q-01",
@@ -315,6 +315,25 @@
         "S02"
       ],
       "blocking": false
+    },
+    {
+      "id": "Q-24",
+      "question": "Which acquisition channels will the owner actually run?",
+      "why_it_matters": "Design brief prescription PB-11 lists the channels the policies permit (organic search, an opted-in email list, the RSS feed) and the ones they bar (paid search on Amazon trademarks as a Prohibited Paid Search Placement, any reward or incentive for using Special Links, unsolicited outreach containing Special Links). Without a chosen set, every growth suggestion on the board assumes a channel that may never exist.",
+      "how_to_close": "Pick the channels on the decision board (S-06 covers the reader-capture half) and record the allowed set on /compliance/ after checking it against Participation Requirements 6(e)-(g) and Operating Agreement section 4. Refused channels are recorded with the clause that refuses them.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-25",
+      "question": "Is 'ShopNow Kitchen' the final reader-facing name, or a working name awaiting confirmation?",
+      "why_it_matters": "The rebrand shipped (data/config.json: siteName 'ShopNow Kitchen', priorName 'Affil3', disclosed on /about/), but no owner decision is recorded — decision_log is empty. The name touches every template and every piece of copy; replacing it later is a full-site pass, so confirming it now is cheaper than any other time.",
+      "how_to_close": "One line in the decision log confirming or replacing the name. Until then the site keeps ShopNow Kitchen and design-brief row DX-6 records the confirmation as open.",
+      "sources": [],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -395,6 +414,20 @@
       "suggestion": "Re-fetch each submitted link whenever a product row is edited, and keep the raw record in data/observations/ with the date. Two transposition errors and one false 'dead link' in this repository's history all came from a single fetch being trusted on its own.",
       "closes": [
         "Q-01"
+      ]
+    },
+    {
+      "id": "D-13",
+      "suggestion": "List each candidate acquisition channel, check it against Participation Requirements 6(e)-(g) and Operating Agreement section 4, and write the allowed set down before running any of them; refused channels are recorded with the clause that refuses them.",
+      "closes": [
+        "Q-24"
+      ]
+    },
+    {
+      "id": "D-14",
+      "suggestion": "Owner replies with the confirmed name (or 'keep ShopNow Kitchen') in the decision log; the reply is copied to data/config.json only if it changes, and design-brief row DX-6 is updated the same day.",
+      "closes": [
+        "Q-25"
       ]
     }
   ]

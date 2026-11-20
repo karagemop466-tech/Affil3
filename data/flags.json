@@ -74,11 +74,13 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11, re-read in full on 2026-11-20 by session arena/5a91ea5c-affil3). At the time this flag was written the site had 5 guides. Counted from data/guides.json on 2026-11-20, the site publishes 13 guides — at or above the rule of thumb. Whether the content meets Amazon's 'robust original content' bar is Amazon's judgement at application review; this flag only tracked the count.",
       "sources": [
         "S11"
       ],
-      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
+      "manual_step": "Decide the content plan (suggestion S-05) before submitting the site for Associates review.",
+      "status": "resolved",
+      "resolution": "13 guides as of 2026-11-20, at or above the 10-post rule of thumb (S11). Reopen if the guide count ever drops below 10."
     },
     {
       "id": "FLG-008",
@@ -86,7 +88,7 @@
       "title": "Measurement events were not defined in the brief",
       "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
       "sources": [],
-      "manual_step": "Confirm or replace the five events (question Q-05)."
+      "manual_step": "Confirm or replace the five events, together with the analytics decision (suggestion S-03)."
     },
     {
       "id": "FLG-009",
@@ -145,17 +147,17 @@
       "title": "Author is a team byline, not a named person",
       "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
       "sources": [],
-      "manual_step": "Decide on a named author and bio (suggestion S-06)."
+      "manual_step": "Decide on a named author and bio (suggestion S-08)."
     },
     {
       "id": "FLG-015",
       "severity": "medium",
       "title": "No product imagery is used",
-      "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).",
+      "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-07).",
       "sources": [
         "S02"
       ],
-      "manual_step": "Decide the imagery approach (suggestion S-05)."
+      "manual_step": "Decide the imagery approach (suggestion S-07)."
     },
     {
       "id": "FLG-016",
@@ -165,7 +167,7 @@
       "sources": [
         "S04"
       ],
-      "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source."
+      "manual_step": "If prices are wanted, decide the approach (suggestion S-04) and capture them only with a dated observation from an authorized source."
     },
     {
       "id": "FLG-017",
@@ -411,8 +413,27 @@
         "S04",
         "S05"
       ]
+    },
+    {
+      "id": "FLG-043",
+      "severity": "medium",
+      "title": "Decision cross-references pointed at renumbered rows",
+      "detail": "Reader-facing copy and the design brief referenced suggestion and question ids that no longer match the registers. The workflow page cited S-02 for cadence (now S-05), Q-09 for topic choice, Q-04 for the Associates link test (now Q-02), and SG-29, which exists in no register. The design brief's sequence, prescriptions and prompt cited S-04 (name), S-05 (imagery), S-06 (byline), S-13 (navigation), S-15/S-16 (acquisition), S-18 (publications), S-20 (house style) and Q-08 (byline question) under a numbering that was dropped in an earlier merge. Five flags' manual steps cited the same stale ids (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016). Anyone following those references would open the wrong decision.",
+      "sources": [],
+      "status": "resolved",
+      "resolution": "Remapped to the current registers on 2026-11-20 by session arena/5a91ea5c-affil3: workflow copy now cites S-05, S-32, Q-02, Q-12 and Q-13; the design brief's sequence, prescriptions and prompt now cite S-06, S-07, S-08, S-11, S-16, S-19, S-36, S-37, Q-06, Q-13 and Q-25; the five flags' manual steps re-pointed; the stale guide counts in the same copy are now derived from data/guides.json.",
+      "manual_step": "Adopt suggestion S-14's gate rule so hand-written counts and stale decision ids cannot be reintroduced."
+    },
+    {
+      "id": "FLG-044",
+      "severity": "medium",
+      "title": "Session c252594d's work log claims register changes that its merged PR did not ship",
+      "detail": "PR #54 ('Expand to 13 guides, add decision boards and deterministic artwork', merged 2026-11-20 as 1f65f70) contains data/guides.json and the eight new guides, but no data/suggestions.json, data/questions.json, data/flags.json, data/products.json, data/sources.json, tools/build.mjs or tools/verify.mjs. The session's work log in COORDINATION.md nevertheless records 'Suggestions S-11 to S-18 added', 'Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added', product-row corrections, FLG-012 closed, and build/gate changes. None of that is on main; main's registers were carried by other sessions. The session's scripts are preserved at tools/sessions/c252594d/: running add-decision-boards.py now would write rows with ids S-11 to S-18 that collide with ids already taken.",
+      "sources": [],
+      "status": "open",
+      "manual_step": "Session c252594d (or the owner) re-lands its decision-board rows with fresh ids, or the work log entry is corrected to say the scripts were written but not applied. Do not run the scripts as-is against the current registers."
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 and FLG-044 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references, and a work-log claim not carried by its merged PR); FLG-007 was refreshed with a dated recount and marked resolved.",
   "checked": "2026-11-20"
 }

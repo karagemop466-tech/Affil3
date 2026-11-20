@@ -549,9 +549,308 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-20",
+      "track": "growth",
+      "topic": "The design prompt of record",
+      "problem": "The brief asks for suggestions that feed the prompt used to design the site. /design-brief/ already carries a diagnosis with evidence, invariants, prescriptions and a ready-to-use prompt, but its decision cross-references pointed at renumbered rows (S-04, S-05, S-06, S-13, S-15, S-16, S-18, S-20, Q-08), so a designer following it would open the wrong decisions. Those references are remapped in this session (FLG-043); what is still open is whether the brief binds anyone.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Treat /design-brief/ as background reading only.",
+          "tradeoff": "No obligations, and the next redesign re-derives everything from a fresh opinion — which is how the stale references got there in the first place.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Treat data/design-brief.json and its prompt field as the design prompt of record: any redesign session reads it first, may not relax its invariants, and must state in its output which open decisions it had to assume. Cross-references remapped to the current registers this session.",
+          "tradeoff": "One file to maintain, and a redesign still has to pass tools/verify.mjs — the gate, not the brief, is the real enforcement.",
+          "effort": "none (done this session)",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Rewrite the brief from scratch against the current site.",
+          "tradeoff": "Cleanest in theory, two days of work, and it would re-diagnose problems the current brief already documents with evidence.",
+          "effort": "two days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. The brief is written, evidenced and gate-aligned; only its cross-references had drifted and they are remapped as of this session. Make it binding so the next redesign starts from a checked document.",
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-31",
+      "track": "growth",
+      "topic": "A timely article lane beside the evergreen guides",
+      "problem": "All thirteen guides are evergreen questions. Seasonal moments are the cheapest honest reason for a reader to arrive in a given month — a holiday-cooking guide already exists — but a seasonal lane needs a takedown rule: Participation Requirements 2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Evergreen only; the existing holiday guide stays as it is.",
+          "tradeoff": "Simplest, zero maintenance, and it leaves the calendar unused.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "A dated seasonal lane: up to two working-title drafts per quarter (holiday counter-space, January reset, spring cleanup), each published only with an expires field and a build check that fails the build after the expiry — prescription PB-8, machinery at S-36.",
+          "tradeoff": "A few hours per quarter plus the expiry field; every seasonal claim still has to be sourced or cut, and no title may claim popularity or search demand.",
+          "effort": "a few hours per quarter",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Chase trending topics continuously as they appear.",
+          "tradeoff": "Fastest to go stale, hardest to verify against official sources, and it optimises for volume this repository has explicitly chosen not to publish.",
+          "effort": "continuous",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B. The takedown obligation is a policy requirement, not a preference, so the expiry machinery (S-36) comes with the lane rather than after it.",
+      "depends_on": [
+        "S-36"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": "",
+      "evidence": {
+        "sources": [
+          "S02"
+        ]
+      }
+    },
+    {
+      "id": "S-32",
+      "track": "growth",
+      "topic": "Choosing the next topic from measured queries",
+      "problem": "Topics are currently chosen from buyer questions in the register. That is defensible, but the brief asks for the next topic to come from measured queries once measurement exists — otherwise instinct is the only input and there is no way to tell which registered questions anyone actually asks a search engine.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep choosing from the register's buyer questions.",
+          "tradeoff": "Works with zero tooling; it cannot say which of those questions anyone searches for.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Close Q-12 (Search Console ownership) and S-03 (analytics endpoint) first, read the Performance report after two weeks, then pick the next four topics from queries that already show impressions.",
+          "tradeoff": "Two owner steps plus a two-week wait; after that every topic choice has evidence behind it and costs nothing.",
+          "effort": "an hour, then two weeks",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Buy a keyword-research tool subscription.",
+          "tradeoff": "Third-party volume estimates are exactly the unverifiable numbers this site's rules ban, and they cost money before any traffic exists.",
+          "effort": "subscription",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B. Measurement first, then topics; the wait is two weeks and the only cost is the two owner steps already on the questions page.",
+      "depends_on": [
+        "S-03",
+        "Q-12"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-33",
+      "track": "growth",
+      "topic": "Cluster pillars and related-guide linking (PB-9)",
+      "problem": "Guides link to products and categories link to guides, but guides do not link to each other, so each guide is a dead end for a reader and for a crawler. Prescription PB-9 specifies the fix and the data (cluster_links) already exists in the register.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the link graph as it is.",
+          "tradeoff": "No work; every guide keeps earning nothing for the rest of the site.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a related block to every guide (two siblings from cluster_links plus the pillar link up to its category) and a gate rule asserting each guide page carries at least two internal links to other guides.",
+          "tradeoff": "About two hours in the generator using data that already exists; the gate rule stops it regressing.",
+          "effort": "two hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Redo the information architecture from scratch.",
+          "tradeoff": "Days of work over a five-product site; PB-9 needs a related block, not a new hierarchy.",
+          "effort": "days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. The data is already in the register; this is the cheapest structural traffic win on the board.",
+      "depends_on": [
+        "S-19"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-34",
+      "track": "growth",
+      "topic": "Reader-shaped titles, descriptions, and a length check",
+      "problem": "Titles are process-first ('Kitchen picks, traced to their listings') and no gate checks title or description length, so a redesign can silently ship a title nobody would type into a search box. This is prescription PB-10 with its mechanical half unimplemented.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep titles as they are.",
+          "tradeoff": "No work; process-first titles are a documented diagnosis item in the design brief.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Editorial pass over titles and meta descriptions — each states what the page decides, under about 60 and 155 characters — plus gate rules asserting both lengths.",
+          "tradeoff": "Half a day; the lengths are mechanical, the wording stays editorial.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Automate title rewriting.",
+          "tradeoff": "A template produces the uniform voice the design brief's forbidden list exists to stop.",
+          "effort": "a day",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B. It is PB-10 with the checkable half moved into the gate, which is how every other rule on this site is kept.",
+      "depends_on": [
+        "S-20"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-35",
+      "track": "growth",
+      "topic": "A decision-review cadence for this board",
+      "problem": "The suggestions page exists so someone can review options and choose a path before anything is implemented, but the decision log is empty: no cadence exists for actually working the board, so rows wait indefinitely. The board is built; what is missing is the calendar.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Review whenever you get to it.",
+          "tradeoff": "Zero cost; the empty decision log is the observable result.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Fifteen minutes a week: read the sequence, reply with one ID and option letter (for example 'S-32 B'), and the implementing session records it in decision_log with the date.",
+          "tradeoff": "One recurring quarter-hour; it converts the board from a list into a queue.",
+          "effort": "15 minutes a week",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Batch decisions monthly.",
+          "tradeoff": "Cheaper on attention; several rows (S-02, S-03) gate work that is otherwise ready to start, and a month of delay compounds.",
+          "effort": "monthly",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B, starting with the two rows that gate everything else: S-02 (buy buttons) and S-03 (analytics endpoint).",
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-36",
+      "track": "growth",
+      "topic": "Seasonality expiry machinery (PB-8)",
+      "problem": "Prescription PB-8 says any page referencing a limited-time promotion needs an expiry date and a build check that fails after it — Participation Requirements 2(b) requires removing links and references to a promotion as soon as it ends. No field and no gate rule exist yet, which is what blocks the seasonal lane at S-31.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "No expiry tracking; avoid promotion-referencing copy entirely.",
+          "tradeoff": "Compliant by avoidance; it also forbids the seasonal lane and any future deal coverage.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Add an optional expires field to guide data plus a build assertion that fails the build once a dated page's expiry has passed.",
+          "tradeoff": "Two hours and fully checkable — the rare prescription a build can enforce completely.",
+          "effort": "two hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Track expiries by hand in the campaign ledger.",
+          "tradeoff": "Hand tracking is the failure mode this repository has already shipped four times (design brief DX-7).",
+          "effort": "continuous",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B. Build it together with the first seasonal page from S-31, not after it.",
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": "",
+      "evidence": {
+        "sources": [
+          "S02"
+        ]
+      }
+    },
+    {
+      "id": "S-37",
+      "track": "trust",
+      "topic": "Navigation labels and a footer gloss (PB-6)",
+      "problem": "The masthead is reader-shaped already, but the footer's dashboard list uses internal vocabulary ('Flagged for review', 'Campaign ledger') with no gloss, so a reader arriving from a search result cannot tell what those links are. Prescription PB-6 names the fix.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the flat dashboard list as it is.",
+          "tradeoff": "Nothing breaks; the design brief's own diagnosis says the terms only make sense to us.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "One plain-English gloss under each dashboard link, or a second footer heading separating 'For readers' from 'Records'; gate asserts both groups exist.",
+          "tradeoff": "An hour of copy; every gloss is a sentence a reader could not misread.",
+          "effort": "an hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Hide the dashboards behind a single /about/ index.",
+          "tradeoff": "Cleaner footer; the gate requires every dashboard reachable from the footer today, so this changes the rule, not just the copy.",
+          "effort": "two hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. It is the remaining half of PB-6 and costs an hour.",
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-20 and S-31 to S-37 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (organic-traffic and design-prompt rows); S-21 to S-30 are deliberately unused because open PR #51 already claims those ids — if that PR merges first, renumber on merge and log it in COORDINATION.md rather than editing silently.",
   "tracks": [
     {
       "id": "revenue",
@@ -582,6 +881,11 @@
       "id": "platform",
       "name": "6. Platform and repo machinery",
       "why": "Registers, gates and the failure modes that produced real errors in this repository's own history. Cheap to fix, and they are what stops the same mistake recurring."
+    },
+    {
+      "id": "growth",
+      "name": "7. Organic traffic and editorial growth",
+      "why": "Rows that feed the design and editorial prompt: what gets written next, how topics are chosen, how guides link to each other, how this board itself gets worked. No row here claims popularity, search volume or product superiority; titles stay labelled as editorial hypotheses until measured queries say otherwise."
     }
   ],
   "how_to_use": "Read the tracks in order. Track 1 is owner-access work measured in minutes and it gates everything else: until one tagged link has been tested against a tracking report, the site cannot earn and no amount of design work changes that. Track 2 is the answer to 'it should not read like AI slop' and is deliberately concrete. Tracks 3 and 4 are findability and measurement. Track 5 records clauses found in this session's verbatim re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository's own repeated bugs came from.",
