@@ -106,3 +106,94 @@ FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003
 - Pull request: _pending_
 - Merge result: _pending_
 - GitHub Pages deploy: _pending_ (source `main` at `/`; deploy confirmed after the follow-up merge)
+
+
+---
+
+# Session `7e5808de` board and integration record
+
+This session was the third to work on this repository and the one that produced the
+final integration. The two earlier boards above are kept verbatim and nothing in them
+was edited. This session's executive summary for the record is `EXECUTIVE_SUMMARY-7e5808de.md`.
+
+## Session registry (this session)
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `7e5808de` | `arena/7e5808de-affil3`, integration branch `integration/7e5808de` | active | Data register, platform tooling, static site, guides, measurement, compliance gate, decision board, final integration |
+
+## Task board (this session)
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| T1 | Source register + product-intent confirmation record (5 links) | done | `7e5808de` | `data/products.json`, `data/sources.json` |
+| T2 | Platform tooling: Special-Link builder, Creators API research, ledger, checks | done | `7e5808de` | `tools/affiliate.py`, `tools/research.py`, `tools/sitekit.py` |
+| T3 | Static site build: templates, CSS, layout, nav, disclosure strip | done | `7e5808de` | `tools/build_site.py`, `assets/css/site.css`, `assets/js/site.js` |
+| T4 | Editorial: question-shaped guides + comparisons | done | `7e5808de` | `data/guides.json`, `guides/*`, `compare/*`, `categories/*` |
+| T5 | Measurement: privacy-preserving click counter + self-hosted endpoint | done | `7e5808de` | `assets/js/analytics.js`, `tools/analytics_sink.py`, `data/config.json` |
+| T6 | Decision board: suggestions, open questions, flagged-for-review | done | `7e5808de` | `data/suggestions.json`, `data/questions.json`, `data/flags.json` |
+| T7 | Integration: sitemap, feed, robots, link check, PR + merge + Pages deploy | done | `7e5808de` | `sitemap.xml`, `feed.xml`, `robots.txt`, `tools/check_site.py`, `legacy/arena-6249757a/` (move only) |
+
+## Verification performed by this session
+
+| Check | How | Result |
+| --- | --- | --- |
+| Five submitted links resolve | Fetched each link, followed the redirect chain | 5/5 reached an `amazon.com/dp/<ASIN>` page |
+| Destination titles | Read the page title on the destination | Captured verbatim for all five, each with its URL and date |
+| Browse path | Read the breadcrumb on the destination | 3 under Air Fryers (`17659096011`), 2 under Meat thermometers (`289810`) |
+| Token length vs the ASIN definition | Measured each token against Amazon's own definition | **All five tokens are 9 characters.** None can be an ASIN. Every observed destination is 10 characters. |
+| Price publication | Read Program Policies 2(b) | No price may be published without Amazon serving the link or Creators API / PA API |
+| Rating publication | Read Program Policies 5(t) | No rating or review count may be published without Creators API / PA API |
+| Link format | Read Program Policies 2(b), 5(v), 5(w) | Submitted short links are redirects; published links are direct tagged Special Links |
+| Disclosure | Read Operating Agreement 5 and FTC Disclosures 101 | Strip under the masthead on every page, repeated in the footer |
+| Outbound link marking | Read Google's outbound-link guidance | `rel="sponsored nofollow"` plus a visible marker and an aria-label |
+| API status | Read the PA-API 5 deprecation notice | PA-API 5 returns HTTP 403 `AccessDeniedException`; the tooling targets the Creators API |
+| Release gate | `python3 tools/check_site.py` | 0 violations, 0 warnings across 44 generated pages |
+| Collector | Live POST against `tools/analytics_sink.py` | Valid events stored with a server-salted id; unknown events and unexpected fields rejected with 400 |
+
+## Integration record (2026-11-20)
+
+- **`main` had already moved.** Pull request #6 merged session `6249757a`'s site to
+  `main` (commit `dd2c4e7`) while this session was working. Nothing was overwritten.
+- **The earlier root site was archived, not discarded.** Session `6249757a`'s published
+  surface (`index.html`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt` and the
+  `about/`, `assets/`, `categories/`, `compliance/`, `executive-summary/`, `flagged/`,
+  `guides/`, `ledger/`, `measurement/`, `questions/`, `shop/`, `sources/`,
+  `suggestions/` directories, plus its `data/`, `src/`, `tools/`, `package.json` and
+  `README.md`) was moved with `git mv` to `legacy/arena-6249757a/`, unchanged. That
+  follows the convention session `6249757a` set when it archived
+  `legacy/arena-83a43a96/`. `legacy/` is excluded from crawling by `robots.txt`.
+- **The old URLs now land somewhere.** Fourteen paths published by the earlier session
+  (`/shop/`, `/categories/`, `/categories/air-fryer-ovens/`,
+  `/categories/cooking-thermometers/`, `/categories/unresolved/`, `/sources/`,
+  `/questions/`, `/suggestions/`, `/flagged/` and five earlier guide slugs) now serve a
+  redirect page with a canonical pointing at the current home for that content.
+- **One discrepancy was found between the sessions and it was resolved by re-checking
+  the source.** This session's first draft recorded that two of the five submitted
+  tokens were 10 characters long, and therefore ASIN-shaped. Re-measuring showed all
+  five are 9 characters. The register, the flags, the questions, the source log and the
+  page copy were corrected. The earlier board's FLG-001 already had this right.
+- **One link-to-product mapping differed between the sessions.** The earlier session's
+  log records `B0c8moW59` as resolving to `B08DKYBTPH` (Chefman Air Fryer 8 Qt) and
+  `B00hJ57DV` as hitting an Amazon checkpoint page. This session observed
+  `B0c8moW59` -> `B0DHZTCNR5` (ThermoMaven 1 Sec) and `B00hJ57DV` -> `B08DKYBTPH`
+  (Chefman Air Fryer 8 Qt). Both were re-fetched during integration on 2026-11-20 with
+  a fresh query string, and the mapping this session records was confirmed both times.
+  The earlier session appears to have attributed the `B00hJ57DV` destination to the
+  `B0c8moW59` link when the checkpoint interstitial interrupted it. The register now
+  carries the re-confirmed mapping, and the checkpoint behaviour is itself noted.
+- **All five observations were re-confirmed during integration.** The register's
+  `verification_log` and `verification_note` record the re-check.
+
+## Irregularities published on the Flagged for Review page
+
+FLG-001 none of the five tokens can be an ASIN · FLG-002 the intended ASIN is
+unconfirmed · FLG-003 the submitted links are redirects, not Special Links · FLG-004
+the tokens are not live ASINs either · FLG-005 the Associates account is not publicly
+verifiable · FLG-006 commission rates are unverified · FLG-007 Creators API needs 10
+qualifying sales in 30 days · FLG-008 PA-API 5 is deprecated · FLG-009 there is no
+measured search data yet · FLG-010 listings drift over time · FLG-011 a near-identical
+ThermoMaven listing exists under a different ASIN · FLG-012 GitHub Pages logs visitor
+IP addresses.
+
+None of these block the site going live.
