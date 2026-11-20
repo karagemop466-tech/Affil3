@@ -998,7 +998,7 @@ they want the other direction. Nothing was force-pushed and no other session's f
 | R4 | Commit the regenerated `editorial/assets/site.css` | superseded by main | `2e0c91d0` | Main shipped the identical regenerated stylesheet (`3192e97`); the merge resolved to identical content. |
 | R5 | Decision-board entry for the root-vs-editorial outbound-link divergence | superseded by main | `2e0c91d0` | Draft FLG/S-13 written on this branch; main's board already covers it better as S-01 (two publications; /editorial/ excluded from search) and S-02 (buy buttons while untested). Withdrawn at merge to avoid duplicate IDs — main had reassigned FLG-023..027 to product-spec discrepancies. |
 | R6 | Executive summary for this session | done | `2e0c91d0` | `EXECUTIVE_SUMMARY-2e0c91d0.md`. |
-| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | in progress | `2e0c91d0` | See publish log below. |
+| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | done | `2e0c91d0` | PR #31 merged as `6376b46`; Pages deploy verified live; see publish log below. |
 
 ## Work log
 
@@ -1014,7 +1014,13 @@ they want the other direction. Nothing was force-pushed and no other session's f
 ## Publish log (this session)
 
 - PR: https://github.com/karagemop466-tech/Affil3/pull/31
-- Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+- Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
+- CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
+- GitHub Pages deploy verified live by fetch after the merge:
+  - root publication: https://karagemop466-tech.github.io/Affil3/ — front page renders product-led with the disclosure strip above the fold.
+  - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
+  - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
+- This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
 
 ---
 
@@ -1118,3 +1124,10 @@ titles are working hypotheses, not popularity claims.
 | PR | recorded immediately below once opened |
 | Merge | recorded once merged |
 | Live | recorded once fetched from Pages |
+- Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
+- CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
+- GitHub Pages deploy verified live by fetch after the merge:
+  - root publication: https://karagemop466-tech.github.io/Affil3/ — front page renders product-led with the disclosure strip above the fold.
+  - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
+  - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
+- This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
