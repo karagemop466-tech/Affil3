@@ -21,7 +21,7 @@ Repo: `karagemop466-tech/Affil3` · Base: `main @ 847ae37` · Working branch: `a
 | T07 | Editorial: question-led guides, sitemap, RSS feed | done | arena-6ca11b63 | `data/guides.json`, `docs/guides/**`, `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt` |
 | T08 | Questions, suggestions (decision board), executive summary, Flagged for Review page | done | arena-6ca11b63 | `data/questions.json`, `data/suggestions.json`, `docs/questions.html`, `docs/suggestions.html`, `docs/executive-summary.html`, `docs/flagged.html` |
 | T09 | Validation gate (`check_site.py`): row-level source links, disclosure presence, sponsored rel, internal links | done | arena-6ca11b63 | `scripts/check_site.py` |
-| T10 | Integration: rebuild, re-verify combined data, gate, PR to `main`, merge, enable/confirm GitHub Pages | in progress | arena-6ca11b63 | all shared outputs |
+| T10 | Integration: rebuild, re-verify combined data, gate, PR to `main`, merge, enable/confirm GitHub Pages | in progress (build and gate pass locally) | arena-6ca11b63 | all shared outputs |
 
 ## Claim log
 
@@ -32,7 +32,8 @@ Repo: `karagemop466-tech/Affil3` · Base: `main @ 847ae37` · Working branch: `a
 All checks were performed on 2026-11-20 (UTC). Full source list: `data/sources.json`. Irregularities: `data/flags.json` (published at `docs/flagged.html`).
 
 - Short links fetched via the verification fetch tool (`fetch_page`). Observed final URL, title, and category breadcrumb recorded per link. See T02 in `data/products.json`.
-- Direct `/dp/` fetches for the **intended** ASINs returned errors (also `/gp/product/` for B04G1MEwY). Recorded as unverified, not as nonexistent.
+- Direct `/dp/` fetches for the **intended** ASINs returned errors (also `/gp/product/` for B04G1MEwY). Recorded as unverified, not as nonexistent. The identifiers also fail the 10-character format (9 characters), which is the more likely explanation; not confirmed.
+- Validation gate (`scripts/check_site.py`) was negatively tested: a copy with a stripped `rel="sponsored"`, a removed disclosure, a broken internal link and an unsourced table row fails with all four reported.
 - Official policy text read from `affiliate-program.amazon.com` (Operating Agreement §2, §3, §5; Participation Requirements §1–§6; Commission Income Statement §2). Commission rate schedule requires Associates sign-in: **not verified**.
 - FTC "Disclosures 101 for Social Media Influencers" (ftc.gov) read in full.
 - Google Search Central "Qualify your outbound links" read (rel="sponsored").
@@ -40,6 +41,7 @@ All checks were performed on 2026-11-20 (UTC). Full source list: `data/sources.j
 
 ## Irregularities (summary; full detail in `data/flags.json`)
 
+0. All five identifiers in the submitted links are **9 characters** with lowercase letters. The ASIN format in SRC-12 is 10 characters, typically starting "B0". Length checked with a script, not by eye. Flag FLG-01. Nothing was corrected.
 1. Four of five submitted short links resolve to a product whose ASIN differs from the ASIN in the link path. One resolves to an Amazon interstitial page.
 2. Observed redirect targets contain no `tag=` parameter; the tracking ID `shopnow047c-20` is not visible in them.
 3. Product prices and rating counts for the main listing were not captured in a verifiable way and are left blank.
