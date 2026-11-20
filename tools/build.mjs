@@ -28,9 +28,9 @@ const events = read('data/events.json');
 const ledger = read('data/ledger.json');
 
 const CATEGORIES = [
-  { slug: 'air-fryers', name: 'Air fryers', blurb: 'Basket-style air fryers, observed on Amazon listings on 2026-11-20.' },
-  { slug: 'air-fryer-ovens', name: 'Air fryer ovens', blurb: 'Oven-style air fryers and toaster ovens with a door and racks.' },
-  { slug: 'cooking-thermometers', name: 'Cooking thermometers', blurb: 'Wireless meat thermometers, with the USDA temperature reference.' },
+  { slug: 'air-fryers', name: 'Air fryers', blurb: 'Basket-style: a pull-out drawer and a basket. The shape most people mean when they say "air fryer".' },
+  { slug: 'air-fryer-ovens', name: 'Air fryer ovens', blurb: 'Oven-style: a door, racks and a larger cavity — the shape that also does toaster-oven work.' },
+  { slug: 'cooking-thermometers', name: 'Cooking thermometers', blurb: 'Getting a number out of the food: instant-read spot checks and leave-in wireless probes, with the USDA safe-temperature reference.' },
   { slug: 'unresolved', name: 'Unresolved links', blurb: 'Submitted links that did not resolve to a product page. No buy link is published here.' },
 ];
 const catName = (slug) => (CATEGORIES.find((c) => c.slug === slug) || { name: slug }).name;
@@ -296,7 +296,8 @@ for (const c of LIVE_CATEGORIES) {
     description: `${c.name}: ${c.blurb}`,
     attrs: `data-category="${esc(c.slug)}"`,
     type: 'category',
-    body: `<section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.blurb)}</p></section>
+    body: `<section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.blurb)}</p>
+<p class="small muted">Listings observed ${esc(dateLong(cfg.lastReviewed))}. Every row below cites the Amazon page it was read from, and anything not stated there is left out rather than filled in.</p></section>
 <section class="shelf">${cards || '<p>No product rows in this category.</p>'}</section>
 <section class="band"><h2>What actually differs</h2>
 <p class="small muted">The middle column quotes the listing's own title, word for word, so you can see what Amazon states rather than what we inferred. Where a specification is not stated, or where the listing contradicts itself, it is left out and flagged rather than filled in.</p>
