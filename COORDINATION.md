@@ -465,7 +465,7 @@ still served.
 | R-07 | Collector tested end to end | done | valid events 204, unknown event 400, bad value 400, CORS scoped |
 | R-08 | Reconcile with concurrent sessions | done | merged, remapped flags, no work discarded |
 | R-09 | CI pointed at the pipeline that actually publishes | done | docs/ pipeline retained but no longer run |
-| R-10 | Pull request, merge, confirm Pages | done | see *Integration record* |
+| R-10 | Pull request, merge, confirm Pages | done | PR #27 and #29, both merged; see *Integration record* |
 | R-11 | Search Console verification | **blocked: owner action** | needs the owner's Google account; FLG-013 |
 | R-12 | Confirm one Special Link per product in Associates Central | **blocked: owner action** | gate G-02; FLG-005 |
 
@@ -596,3 +596,38 @@ Parallel proposals remain untouched. Root publication is already the Pages sourc
 checkpoint. It was never dead. That single over-cautious observation cost a product row, put a meat
 thermometer under the wrong submitted link, and was carried into the published page. **A checkpoint
 is not evidence a link is dead** — retry before recording a negative.
+
+## Integration record (`arena-9abfdc62`)
+
+| Field | Value |
+| --- | --- |
+| PR #27 | Rebuild the site as one publication — **merged** 2026-11-20T05:40:50Z, merge commit `b0ce813` |
+| PR #29 | Polish: own 8 Qt imagery, cleaner listing strings — **merged** 2026-11-20T05:43:20Z, merge commit `0b27e0d` |
+| Gate at merge | `node tools/build.mjs && node tools/verify.mjs` → 28 pages, 27 sitemap URLs, 5 feed items, **1,610 checks, 0 failed** |
+| CI | `Gate the published Pages site` — pass on both PRs |
+| GitHub Pages | source `main` at `/`, status `built`; verified by fetching `/` and two product pages from the live URL |
+
+### Deploy notes worth keeping
+
+- One Pages build reported `errored` at 05:40:47Z. It was the build for the intermediate commit
+  `63b0c93`, raced by two pushes inside the same minute; the build for the merge commit succeeded
+  immediately after. Nothing was broken on the live site.
+- **GitHub Pages serves cached HTML for roughly ten minutes after a deploy.** A fetch taken during
+  that window returns the previous revision, which is why an early check appeared to show the old
+  front page even though `main` already had the new one. When checking a deploy, confirm the commit
+  on `main` first, then re-fetch after the cache window rather than "fixing" something that is not
+  broken.
+- `curl` cannot complete TLS to `*.github.io` from this sandbox, so live checks were done by fetching
+  the URL directly and by reading the branch through `git show origin/main:<path>`.
+
+### What is left for the owner
+
+1. Confirm which product each supplied short link was meant to reach (`FLG-001`).
+2. Test one Special Link per product in Associates Central (`FLG-005`, gate G-02).
+3. Deploy the collector and set `analyticsEndpoint` if measurement is wanted (`FLG-009`).
+4. Verify the property in Search Console (`FLG-013`).
+5. Decide the ten open items on `/suggestions/`, starting with whether the earlier `/editorial/`
+   edition should be retired (`S-01`).
+
+None of these can be done from this sandbox; all five need credentials or a decision that only the
+owner holds.
