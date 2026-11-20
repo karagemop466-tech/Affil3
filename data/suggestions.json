@@ -553,6 +553,61 @@
     {
       "id": "S-20",
       "track": "findability",
+      "topic": "Crawl control for a site served at a project path",
+      "problem": "robots.txt is generated at /Affil3/, but search engines read it only from the host root (FLG-038). The 'one site to index' goal therefore depends on noindex tags and on how the other editions are handled, not on robots.txt. The surfaces that now compete with the root are /editorial/, /counter/, /counterwise/, /crisp-index/, /legacy/ and /counter-desk/ (added on main after this branch was cut).",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).",
+          "tradeoff": "No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.",
+          "effort": "minutes",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.",
+          "tradeoff": "Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.",
+          "effort": "about 2 hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.",
+          "tradeoff": "Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.",
+          "effort": "about 1 hour",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Serve the root publication from a repository named for the owner's GitHub Pages host, so robots.txt is read from the host root.",
+          "tradeoff": "Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.",
+          "effort": "about half a day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the 'one site to index' goal, and this suggestion does not claim that it does.",
+      "evidence": {
+        "sources": [
+          "S25"
+        ],
+        "flags": [
+          "FLG-038",
+          "FLG-013"
+        ]
+      },
+      "depends_on": [
+        "S-11",
+        "Q-10",
+        "FLG-013"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-21",
+      "track": "findability",
       "topic": "Choose the next guide from measured queries, not instinct",
       "problem": "The brief asks the site to generate organic traffic, but no evidence loop feeds the next-topic decision: no Search Console property is verified (FLG-013) and the analytics endpoint is unset (FLG-009), so every new title is a hypothesis that nothing can later confirm or retire. Operating Agreement 4 (K-19) means borrowed traffic estimates cannot fill the gap either - the measurement has to come from this site's own first-party reports.",
       "current": "A",
@@ -567,13 +622,13 @@
         {
           "id": "B",
           "label": "Pause new guides until query evidence exists: verify Search Console (D-05), read two Performance-report cycles, then write against measured queries.",
-          "tradeoff": "Topic choice becomes evidence-based. The site sits still for weeks, right through the season when a seasonal guide (S-22) has its best chance of being useful to a reader.",
+          "tradeoff": "Topic choice becomes evidence-based. The site sits still for weeks, right through the season when a seasonal guide (S-23) has its best chance of being useful to a reader.",
           "effort": "2 weeks of waiting",
           "risk": "low"
         },
         {
           "id": "C",
-          "label": "Run both tracks: keep a small seasonal calendar (S-22) moving while the measurement is set up, and switch topic selection to measured queries once the Performance report has real rows.",
+          "label": "Run both tracks: keep a small seasonal calendar (S-23) moving while the measurement is set up, and switch topic selection to measured queries once the Performance report has real rows.",
           "tradeoff": "A little bookkeeping now. Calendar entries that earned no arrivals get retired on evidence instead of opinion, and nothing is written against a number that does not exist yet.",
           "effort": "1 hour to set up the review loop",
           "risk": "low"
@@ -591,7 +646,7 @@
         ]
       },
       "depends_on": [
-        "S-22",
+        "S-23",
         "S-05"
       ],
       "decision": "undecided",
@@ -599,7 +654,7 @@
       "decided_by": ""
     },
     {
-      "id": "S-21",
+      "id": "S-22",
       "track": "trust",
       "topic": "A name the reader can remember",
       "problem": "The wordmark, og:site_name, page titles and footer all say 'Affil3', which is the repository directory name (DESIGN-BRIEF DX-6). Nobody names a publication after its folder: it cannot be spelled from hearing, it says nothing about kitchens or shopping, and it is the one string on the site that exists for the machine's convenience. A polished, shop-like site needs a masthead a reader could type from memory.",
@@ -621,7 +676,7 @@
         },
         {
           "id": "C",
-          "label": "Defer naming until analytics show which pages earn traffic (needs S-20 C and S-03 live).",
+          "label": "Defer naming until analytics show which pages earn traffic (needs S-21 C and S-03 live).",
           "tradeoff": "Naming with evidence in hand. The name touches every page, so every week of delay makes the rename marginally bigger, and the current name keeps shipping into search results and share cards meanwhile.",
           "effort": "deferred",
           "risk": "medium"
@@ -640,7 +695,7 @@
       "decided_by": ""
     },
     {
-      "id": "S-22",
+      "id": "S-23",
       "track": "trust",
       "topic": "Seasonal hooks, published as honest checklists",
       "problem": "The brief asks for catchy, timely articles. The constraint is compliance: Participation Requirements 2(b) (K-21) requires references to limited-time promotions to be removed promptly after they end, and the house style (S-19) bans hype vocabulary - so seasonal content has to be a checklist for shopping carefully, not a deals feed. The indexed root publication currently ships one seasonal guide (holiday hosting); a Black Friday deal-checklist exists only on a secondary surface that robots.txt excludes, so the root site has no reason for a reader to visit in any specific week.",
@@ -680,14 +735,14 @@
       "depends_on": [
         "S-19",
         "S-05",
-        "S-20"
+        "S-21"
       ],
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
     },
     {
-      "id": "S-23",
+      "id": "S-24",
       "track": "findability",
       "topic": "Grow the done-temperature cluster the sources already support",
       "problem": "The strongest source-backed content asset available to this site is the USDA safe-minimum-temperature table (K-11, S10): it is official, stable, and answers the exact questions a reader asks mid-cook. One guide ('Air fryer chicken breast: how do you know it is done?') already ships, but it stands alone - no cluster hub links the related questions together, so a reader who lands on it is never offered the next related answer, and a crawler never sees the topic covered in depth.",
@@ -715,7 +770,7 @@
           "risk": "low"
         }
       ],
-      "recommendation": "B, but only after S-20 C is chosen - write the cluster pieces against measured queries when the data exists, and only where the USDA table covers the food.",
+      "recommendation": "B, but only after S-21 C is chosen - write the cluster pieces against measured queries when the data exists, and only where the USDA table covers the food.",
       "evidence": {
         "sources": [
           "S10",
@@ -727,7 +782,7 @@
         ]
       },
       "depends_on": [
-        "S-20",
+        "S-21",
         "S-05"
       ],
       "decision": "undecided",
@@ -735,10 +790,10 @@
       "decided_by": ""
     },
     {
-      "id": "S-24",
+      "id": "S-25",
       "track": "measurement",
       "topic": "Make the decision board the front door for decisions",
-      "problem": "The brief asks for a dedicated suggestions section that someone reviews before anything changes. The page exists (/suggestions/, now 24 rows) and the reply format works, but it is organised for reading top to bottom rather than for deciding: the 'decide next' sequence is stored in the data but rendered nowhere prominent, the decision log exists as an empty array that nothing populates, and nothing on the page says when the board was last reviewed.",
+      "problem": "The brief asks for a dedicated suggestions section that someone reviews before anything changes. The page exists (/suggestions/, now 25 rows) and the reply format works, but it is organised for reading top to bottom rather than for deciding: the 'decide next' sequence is stored in the data but rendered nowhere prominent, the decision log exists as an empty array that nothing populates, and nothing on the page says when the board was last reviewed.",
       "current": "A",
       "options": [
         {

@@ -16,7 +16,7 @@ sources, a GitHub Pages site, the coordination protocol, and a merged PR with a 
 
 The repository is not a blank page. Thirteen prior sessions built a publication front page, a shop,
 13 question-shaped guides, three category clusters, a compare table, a source register, a questions
-register (21 known / 16 open / 12 discovery), a 19-row decision board, 36 flagged items, a build
+register (21 known / 19 open / 14 discovery), a 25-row decision board, 40 flagged items, a build
 gate with thousands of checks, a privacy-preserving click counter, an RSS feed and a sitemap, all
 enforced by CI. Rebuilding any of that would have been duplicate work, so this session did not.
 
@@ -34,28 +34,28 @@ enforced by CI. Rebuilding any of that would have been duplicate work, so this s
    rounds. All five `/dp/` pages fetched directly by ASIN resolved, and every page title contained
    the register's `observed_title` (five of five). Amazon served its "product summary" page variant
    on these fetches; titles and destinations were unaffected. Recorded verbatim in
-   `data/observations/2026-11-20-991c8230-recheck.json`; summarised as new flag **FLG-037** (low,
+   `data/observations/2026-11-20-991c8230-recheck.json`; summarised as new flag **FLG-040** (low,
    open). No link is claimed dead or invalid; short-link compliance status stays unresolved
    (FLG-003) until the owner's Associates Central test (gate G-02). No price, rating or review
    count seen during these fetches is recorded or published anywhere.
 4. **Five new suggestions for owner review, before any implementation (M-01).** On
    [`/suggestions/`](https://karagemop466-tech.github.io/Affil3/suggestions/), appended rows
-   S-20…S-24 in the established schema (options, trade-offs, effort, risk, recommendation,
+   S-21…S-25 in the established schema (options, trade-offs, effort, risk, recommendation,
    evidence, dependencies), with `decision` fields left undecided:
-   - **S-20** — choose the next guide from *measured* queries (Search Console) instead of instinct,
+   - **S-21** — choose the next guide from *measured* queries (Search Console) instead of instinct,
      with a dual-track option so the site keeps publishing while measurement is set up.
-   - **S-21** — a name the reader can remember (the wordmark is the repository name; design-brief
+   - **S-22** — a name the reader can remember (the wordmark is the repository name; design-brief
      DX-6), with a naming checklist and a mandatory trademark / Associates trademark-guideline check.
-   - **S-22** — seasonal hooks published as honest checklists (starting with Black Friday week,
+   - **S-23** — seasonal hooks published as honest checklists (starting with Black Friday week,
      which is the current week), each re-read for staleness per Participation Requirements §2(b);
      the deals-feed/price-watch option is recorded and rejected as unavailable under §6(y)/§2(b).
-   - **S-23** — grow the done-temperature cluster on the USDA safe-minimum-temperature table
+   - **S-24** — grow the done-temperature cluster on the USDA safe-minimum-temperature table
      (already cited as S10/S20), kept small and hand-written against Google's scaled-content rule.
-   - **S-24** — make the decision board the front door for decisions: a rendered "decide next"
+   - **S-25** — make the decision board the front door for decisions: a rendered "decide next"
      shortlist from the stored sequence, a decision log that populates on first choice, and a
      "last reviewed" stamp.
-5. **Two open questions and two discovery actions (M-02).** Q-17 (what is the publication called? —
-   what we have, what we lack, who closes it), Q-18 (which guide is written next, on what
+5. **Two open questions and two discovery actions (M-02).** Q-18 (what is the publication called? —
+   what we have, what we lack, who closes it), Q-19 (which guide is written next, on what
    evidence?), D-13 (map Search Console query rows to guides on a schedule), D-14 (draft the
    seasonal calendar, entries labelled hypotheses). On
    [`/questions/`](https://karagemop466-tech.github.io/Affil3/questions/).
@@ -90,10 +90,22 @@ sessions' dated rounds recorded in `COORDINATION.md`.
 ## What should happen next (owner choices, in order)
 
 1. `S-02`/gate G-02 — test one Special Link per product in Associates Central (minutes, unblocks revenue).
-2. `S-21 B` with a chosen name (one commit) — cheapest high-leverage polish.
-3. `S-24 B` — render the decision board's shortlist and log.
-4. `S-20 C` + `S-22 B` — keep publishing from the seasonal calendar while Search Console data accumulates.
-5. `S-23 B` — grow the USDA-cited cluster once measured queries exist.
+2. `S-22 B` with a chosen name (one commit) — cheapest high-leverage polish.
+3. `S-25 B` — render the decision board's shortlist and log.
+4. `S-21 C` + `S-23 B` — keep publishing from the seasonal calendar while Search Console data accumulates.
+5. `S-24 B` — grow the USDA-cited cluster once measured queries exist.
 
 Reply format on the suggestions page is unchanged: answer with the suggestion ID and option letter,
-for example "S-21 B".
+for example "S-22 B".
+
+## Note on identifiers during this session's merge
+
+While this session worked, session `478e6577` landed additions to the same registers on `main`
+(their FLG-037/038/039, suggestion S-20 and question Q-17), which collided with the identifiers
+this session had pushed. To keep both sessions' rows without renumbering what is already on
+`main`, this session's rows were renumbered to the next free identifiers at merge time:
+FLG-037 → **FLG-040**, S-20…S-24 → **S-21…S-25**, Q-17/Q-18 → **Q-18/Q-19**. The discovery rows
+D-13/D-14 did not collide and kept their numbers. No row from either session was dropped, and all
+cross-references inside this session's rows, observation file, coordination entry and this summary
+were updated to the final identifiers. Verify the mapping against the git history of this branch if
+you need the original numbers.

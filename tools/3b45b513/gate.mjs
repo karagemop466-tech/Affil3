@@ -267,6 +267,10 @@ if (!fs.existsSync(path.join(OUT, 'index.html'))) {
       check(`${name}: a caption says the image is not the product`, /illustration|not (the|a) (reviewed unit|photograph)/i.test(html));
     }
 
+    // 2.6b No unresolved template token or build artefact may reach a page.
+    check(`${name}: no unresolved template token`, !/\{\{[^}]+\}\}/.test(html), (html.match(/\{\{[^}]+\}\}/) || [''])[0]);
+    check(`${name}: no build-era HTML comment`, !/<!--\s*stripped currency/.test(html));
+
     // 2.7 SEO basics.
     check(`${name}: has a canonical URL`, /<link rel="canonical" href="https:\/\/karagemop466-tech\.github\.io\/Affil3\/counter-desk\//.test(html));
     check(`${name}: canonical is not double-prefixed`, !/Affil3\/Affil3\//.test(html));
