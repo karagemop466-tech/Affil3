@@ -20,7 +20,7 @@
         {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
         {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
       ],
-      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
+      "recommendation": "A after measurement is live. Review Search Console query and page performance monthly; choose the next question from reader intent and keep unmeasured ideas labeled as hypotheses."
     },
     {
       "id": "S-03",
@@ -32,7 +32,7 @@
         {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
         {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
       ],
-      "recommendation": "A or B if you want measured queries before choosing the next topic."
+      "recommendation": "A or B for on-site events. Use the verified Google Search Console Performance report for search queries and authorized Associates reporting for orders. Those are three different sources."
     },
     {
       "id": "S-04",
