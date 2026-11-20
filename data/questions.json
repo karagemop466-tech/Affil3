@@ -167,27 +167,59 @@
     },
     {
       "id": "K-23",
-      "statement": "Google states that a BreadcrumbList trail may help users understand and explore a site, that the feature is available on desktop in all regions and languages where Google Search is available, and that the current page is the last item and needs no URL. The site emits that trail on every guide and every product page, mirroring the navigation a reader actually used.",
+      "statement": "Four dated rounds have read the five observed listings. Each round that reached the pages matched the register's titles; the most recent (2026-11-20, session b7320829-affil3) could not reach amazon.com at all and re-derived nothing, and is recorded as a failed round rather than as agreement.",
       "sources": [
-        "S24"
+        "S04",
+        "S05"
       ]
     },
     {
       "id": "K-24",
+      "statement": "robots.txt is not an exclusion mechanism, and noindex cannot live in robots.txt: both sentences are read verbatim from Google's documentation, held here as S24 and S26; and Google reads robots.txt from the host root, which FLG-038 established for this project path.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26"
+      ]
+    },
+    {
+      "id": "K-25",
+      "statement": "The shelf publishes 17 guides, 7 Journal articles and 5 product rows across 3 clusters, so the 'at least 10 posts' rule of thumb is met on page count alone. Whether a reviewer calls the content robust is not something a count can answer.",
+      "sources": [
+        "S19"
+      ]
+    },
+    {
+      "id": "K-26",
+      "statement": "The submitted short links are not usable as the site's outbound route: in the latest round four of four that resolved at all landed on the Amazon home page. The site publishes its own tagged /dp/ links for that reason, and not because the short links were declared invalid.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
+    },
+    {
+      "id": "K-27",
+      "statement": "Google states that a BreadcrumbList trail may help users understand and explore a site, that the feature is available on desktop in all regions and languages where Google Search is available, and that the current page is the last item and needs no URL. The site emits that trail on every guide and every product page, mirroring the navigation a reader actually used.",
+      "sources": [
+        "S27"
+      ]
+    },
+    {
+      "id": "K-28",
       "statement": "The USDA FSIS chart was re-read on 2026-11-20 and carries the date Last Updated: Apr 14, 2025. Its figures, unchanged from the ones the register holds, are 165 °F for all poultry and for leftovers and casseroles, 160 °F for ground meats and eggs, and 145 °F with a three-minute rest for whole cuts of beef, pork, veal and lamb, and 145 °F for fish and shellfish.",
       "sources": [
         "S10"
       ]
     },
     {
-      "id": "K-25",
+      "id": "K-29",
       "statement": "Every count printed in the site's prose is now computed at build time from the rows the page renders: guide and product totals, flag totals, and the numbers inside flag text, which carry tokens the builder fills. A count that cannot drift cannot mislead a reader about how much of this site is verified.",
       "sources": [
         "S09"
       ]
     },
     {
-      "id": "K-26",
+      "id": "K-30",
       "statement": "A third independent verification round on 2026-11-20 (session ca51f5b3) re-fetched the observed listings for P01 (B0CDY277D3), P02 (B09B7SB46R) and P05 (B0DZFD6R9Z) and the manufacturer pages for P01, P03 and P04, plus the USDA safe-temperature chart and Google's breadcrumb documentation. Every title and every specification figure matched the register. The raw dated record is data/observations/2026-11-20-session-ca51f5b3.json. The listings for P03 and P04 were not re-fetched in that round.",
       "sources": [
         "S04",
@@ -195,7 +227,7 @@
         "S11",
         "S21",
         "S23",
-        "S24"
+        "S27"
       ]
     }
   ],
@@ -428,9 +460,50 @@
     },
     {
       "id": "Q-23",
+      "question": "What counts as a page for the 10-post threshold, and who decides the site is ready to submit?",
+      "have": "17 guides, 7 Journal articles and 5 product rows; S19's wording, read from an excerpt; FLG-007 open since the first pass.",
+      "lack": "Amazon's answer, and a decision to submit.",
+      "who": "The owner, in a signed-in Associates session.",
+      "why_it_matters": "A count is not a pass and page count is not content quality; submitting early with thin pages risks the account review for no gain.",
+      "how_to_close": "Read S19 signed-in, decide, submit, and record the outcome with its date. That closes FLG-007.",
+      "blocking": true,
+      "sources": [
+        "S19"
+      ]
+    },
+    {
+      "id": "Q-24",
+      "question": "Will each buy link be replaced by a Special Link generated in Associates Central, and when?",
+      "have": "Five constructed tagged links (observed ASIN + tag), the Program Policies clause they satisfy (S02), and gate G-02 saying none has been tested.",
+      "lack": "A link issued by Amazon for each product, and one confirmation that the click lands in the tracking report.",
+      "who": "The owner, in Associates Central. No agent can do this from the repository.",
+      "why_it_matters": "This is the difference between a site built to earn and a site that looks ready to. Everything else is presentation.",
+      "how_to_close": "S-02 option D: generate one link per product, paste it into the row's special_link field with its date, re-run the gate.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-25",
+      "question": "Who re-checks listing copy, and where is that record kept?",
+      "have": "A per-product observed date, four dated rounds, and one round that failed to reach the source at all.",
+      "lack": "An owner and a cadence for a ten-minute check, and a field on the product row for its result.",
+      "who": "The owner, or the editorial team once one exists (Q-06).",
+      "why_it_matters": "Titles, included accessories and prices change without notice on the retailer's side; the site publishes the wording it saw with a date on it, so the date has to stay near the truth.",
+      "how_to_close": "S-34 option B: one short monthly pass into data/observations/ with its date, rendered as a last-seen line on the product page.",
+      "blocking": false,
+      "sources": [
+        "S04",
+        "S03"
+      ]
+    },
+    {
+      "id": "Q-26",
       "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
       "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
-      "how_to_close": "Answer with S-36 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
+      "how_to_close": "Answer with S-41 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
       "sources": [
         "S07",
         "S08"
@@ -438,10 +511,10 @@
       "blocking": false
     },
     {
-      "id": "Q-24",
+      "id": "Q-27",
       "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
       "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
-      "how_to_close": "Pick S-34. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
+      "how_to_close": "Pick S-39. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
       "sources": [
         "S02",
         "S01"
@@ -449,10 +522,10 @@
       "blocking": false
     },
     {
-      "id": "Q-25",
+      "id": "Q-28",
       "question": "Do the buy links aim at the marketplace the owner can actually be paid on?",
       "why_it_matters": "Every published link goes to www.amazon.com with tracking ID shopnow047c-20, whose -20 suffix matches the US convention. An owner reading this from the Netherlands may intend amazon.nl, which is a separate Associates program with its own IDs, its own agreement and its own listings, none of which this sandbox can fetch. The answer decides the domain of every buy button, the disclosure wording and which listings are even legal to link.",
-      "how_to_close": "Answer with S-35. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
+      "how_to_close": "Answer with S-40. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
       "sources": [
         "S02",
         "S01"
@@ -581,28 +654,60 @@
     },
     {
       "id": "D-19",
+      "suggestion": "Fetch each published edition's index.html once and write down whether it carries a noindex meta tag, then compare what you find with what FLG-032 claims. Two minutes, and it turns a findability argument into a checked fact.",
+      "closes": [
+        "Q-17"
+      ]
+    },
+    {
+      "id": "D-20",
+      "suggestion": "In Associates Central, generate one Special Link per product, paste it into the product row with its generation date, then click it once and confirm the click in the tracking report. That sequence closes Q-01, Q-02 and Q-24 together.",
+      "closes": [
+        "Q-01",
+        "Q-02",
+        "Q-24"
+      ]
+    },
+    {
+      "id": "D-21",
+      "suggestion": "Run a ten-minute monthly listing re-check: open each tagged link in a signed-in browser, compare the title and the included-accessory wording with the row, and write the outcome into data/observations/ with its date.",
+      "closes": [
+        "Q-25"
+      ]
+    },
+    {
+      "id": "D-22",
+      "suggestion": "Write to manufacturer support for the disputed figures (P03 wattage and case size, P02 preset and accessory counts, P05 battery hours and probe working temperature). A one-line reply from the brand is an official source; a forum post is not and will not be used.",
+      "closes": [
+        "Q-11",
+        "Q-12",
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-23",
       "suggestion": "Re-run the two negative tests the gate now ships before trusting a green build: delete one robots exclusion and strip one sponsored attribute. A gate that cannot fail is decoration. Both were run on 2026-11-20 and recorded in the merge log.",
       "closes": []
     },
     {
-      "id": "D-20",
+      "id": "D-24",
       "suggestion": "After any session merges a new root directory, read /robots.txt once and confirm the generated exclusion list picked it up. The list is derived from the tree, so the only way to get it wrong is to publish a second edition and a build that never ran.",
       "closes": [
         "Q-15"
       ]
     },
     {
-      "id": "D-21",
+      "id": "D-25",
       "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
       "closes": [
-        "Q-23"
+        "Q-26"
       ]
     },
     {
-      "id": "D-22",
+      "id": "D-26",
       "suggestion": "Before trusting a green gate, run it on the runtime CI actually uses: package.json declares node >=18, the sandbox may be two majors ahead, and an API that exists there can throw on the floor. A gate that only works on one machine is not a gate.",
       "closes": []
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Two sessions opened rows on 2026-11-20 that wanted the same ids; the ids that reached main first kept them, so this session's rows are K-23 to K-26, Q-23, Q-24 and Q-25, and D-19, D-20 and D-21. Q-25 is marked blocking because a marketplace choice sits underneath every buy button on the site, and Q-17 plus Q-22 are the short-link and content questions other sessions opened."
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site."
 }

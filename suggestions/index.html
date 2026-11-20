@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
+<meta name="robots" content="index,follow">
 
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -52,8 +53,8 @@
 <section class="choice-card" id="S-02">
   <p class="kicker">S-02 · Buy buttons while links are untested</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
+  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li><li><strong>D.</strong> Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.<br><span class="muted small">Tradeoff: Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders.</p>
 </section>
 <section class="choice-card" id="S-03">
   <p class="kicker">S-03 · Where the analytics collector runs</p>
@@ -230,31 +231,55 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it.</p>
 </section>
 <section class="choice-card" id="S-32">
-  <p class="kicker">S-32 · What the front page shows first</p>
+  <p class="kicker">S-32 · Answer-first summaries on every guide</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the deck as the only above-the-fold summary.<br><span class="muted small">Tradeoff: The deck is a teaser by design, so the answer arrives later. Nothing to maintain.</span></li><li><strong>B.</strong> Add a &#39;summary&#39; field per guide, rendered as a boxed short answer under the byline, and compute the word and minute count from the guide&#39;s own text at build time.<br><span class="muted small">Tradeoff: Implemented 2026-11-20 for all seventeen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page&#39;s word count over 225 words a minute - a property of the text, not a measurement of the reader.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, shipped. If a guide cannot be summarised in four sentences, that is a finding about the guide, not about the format.</p>
+</section>
+<section class="choice-card" id="S-33">
+  <p class="kicker">S-33 · How much structured data to publish</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Article only (as shipped before 2026-11-20).<br><span class="muted small">Tradeoff: Minimal and valid; nothing about site structure or the Q&amp;A content is declared.</span></li><li><strong>B.</strong> An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.</span></li><li><strong>C.</strong> Add Product offers and price data.<br><span class="muted small">Tradeoff: Not available while the site publishes no prices: the price clause (S03) and the no-republished-prices rule both stand until the Creators API decision at S-04.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, shipped, and not sold as a rich-result win. C waits for an API enrolment decision.</p>
+</section>
+<section class="choice-card" id="S-34">
+  <p class="kicker">S-34 · A dated re-check ritual for listing copy</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the dated reads as they are and let the dates speak.<br><span class="muted small">Tradeoff: Zero work. A reader sees &#39;observed November 20, 2026&#39; and can judge staleness themselves.</span></li><li><strong>B.</strong> A monthly ten-minute manual re-check, written into data/observations/ with its date and rendered on the product page as a last-seen line.<br><span class="muted small">Tradeoff: Recommended. It is the only check that sees the page a shopper sees, and it needs a person - which is why it is a suggestion and not an automation claim.</span></li><li><strong>C.</strong> Automate the fetch in CI.<br><span class="muted small">Tradeoff: Rejected on this repository&#39;s own evidence: a scheduled job would raise a flag every week for reasons unrelated to the fact it claims to verify. Do not build an alarm nobody can trust.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.</p>
+</section>
+<section class="choice-card" id="S-35">
+  <p class="kicker">S-35 · A citation check that catches wrong meaning, not just a dangling id</p>
+  <p class="choice-current">Current: <span class="badge">C</span></p>
+  <ul class="opts"><li><strong>A.</strong> Rely on reviewers noticing.<br><span class="muted small">Tradeoff: Eleven were missed across several sessions and found only by reading text against the documents it cites.</span></li><li><strong>B.</strong> Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.</span></li><li><strong>C.</strong> Two further rules, implemented with B: an inline citation in a guide must be declared in that guide&#39;s own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches &#39;Chefman states 1700 W (S22)&#39;. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.</span></li><li><strong>D.</strong> Also require every guide sentence to carry an inline source id.<br><span class="muted small">Tradeoff: Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.</p>
+</section>
+<section class="choice-card" id="S-37">
+  <p class="kicker">S-37 · What the front page shows first</p>
   <p class="choice-current">Current: <span class="badge">Implemented in this session (option B), reversible in one commit</span></p>
   <ul class="opts"><li><strong>A.</strong> Leave the order alone<br><span class="muted small">Tradeoff: The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled.</span></li><li><strong>B.</strong> Lead with the three highest-intent decisions<br><span class="muted small">Tradeoff: Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order.</span></li><li><strong>C.</strong> Rotate the three cards weekly<br><span class="muted small">Tradeoff: Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the &#39;reads like a shop&#39; complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change.</p>
 </section>
-<section class="choice-card" id="S-33">
-  <p class="kicker">S-33 · Reader capture, without a third-party form</p>
+<section class="choice-card" id="S-38">
+  <p class="kicker">S-38 · Reader capture, without a third-party form</p>
   <p class="choice-current">Current: <span class="badge">Not implemented. RSS only</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep RSS and an email address as the only return paths<br><span class="muted small">Tradeoff: No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds.</span></li><li><strong>B.</strong> Add a hosted form provider<br><span class="muted small">Tradeoff: Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done.</span></li><li><strong>C.</strong> Self-host a form endpoint next to the collector<br><span class="muted small">Tradeoff: Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A for now. The site has 18 guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already).</p>
 </section>
-<section class="choice-card" id="S-34">
-  <p class="kicker">S-34 · The seasonal deal guide&#39;s afterlife</p>
-  <p class="choice-current">Current: <span class="badge">Published 2026-11-20 as a checklist, not a deal post</span></p>
+<section class="choice-card" id="S-39">
+  <p class="kicker">S-39 · What happens to the deal guide after the sale</p>
+  <p class="choice-current">Current: <span class="badge">Main published black-friday-kitchen-deals-a-shoppers-checklist on 2026-11-20; this session&#39;s draft of the same question was dropped in favour of it</span></p>
   <ul class="opts"><li><strong>A.</strong> Take it down the day the event ends<br><span class="muted small">Tradeoff: The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check.</span></li><li><strong>B.</strong> Keep it, and drop the event name from the title after the sale window<br><span class="muted small">Tradeoff: Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended.</span></li><li><strong>C.</strong> Re-date and re-promote it each November<br><span class="muted small">Tradeoff: Turns one honest page into an annual promise, and the takedown obligation with it.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause.</p>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the date for the edit recorded next to the flag so it is not remembered by a person. Whichever session owns the page when the sale window closes makes the one-line title change; the facts inside it are manufacturer figures and policy clauses, so only the headline ages.</p>
 </section>
-<section class="choice-card" id="S-35">
-  <p class="kicker">S-35 · Which marketplace the buy buttons belong to</p>
+<section class="choice-card" id="S-40">
+  <p class="kicker">S-40 · Which marketplace the buy buttons belong to</p>
   <p class="choice-current">Current: <span class="badge">One marketplace, amazon.com, for every link</span></p>
   <ul class="opts"><li><strong>A.</strong> Stay US-only and say so<br><span class="muted small">Tradeoff: Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation.</span></li><li><strong>B.</strong> Add amazon.nl links for the same products<br><span class="muted small">Tradeoff: Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified.</span></li><li><strong>C.</strong> Split the site by marketplace, one publication each<br><span class="muted small">Tradeoff: Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-23 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-26 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
 </section>
-<section class="choice-card" id="S-36">
-  <p class="kicker">S-36 · Whether the fit check is measured</p>
+<section class="choice-card" id="S-41">
+  <p class="kicker">S-41 · Whether the fit check is measured</p>
   <p class="choice-current">Current: <span class="badge">Runs entirely in the browser. Nothing is sent</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep it unmeasured forever<br><span class="muted small">Tradeoff: The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread.</span></li><li><strong>B.</strong> Add one aggregate event when the collector exists<br><span class="muted small">Tradeoff: Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people.</span></li><li><strong>C.</strong> Measure the outcome instead: outbound clicks from /find/ results<br><span class="muted small">Tradeoff: Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists.</p>
@@ -274,9 +299,9 @@
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
         <li><a href="/Affil3/articles/">The Journal</a></li>
+        <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
+        <li><a href="/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/">Sync Finish and Hi-Fry: what the buttons do</a></li>
         <li><a href="/Affil3/guides/smart-meat-thermometer-what-actually-matters/">Smart meat thermometers: what actually matters before you buy</a></li>
-        <li><a href="/Affil3/guides/which-air-fryer-shape-fits-your-week/">Dual-basket, single-basket, or oven-style? Match the shape to your week</a></li>
-        <li><a href="/Affil3/guides/black-friday-kitchen-deals-a-shoppers-checklist/">Black Friday kitchen deals: a checklist before you click add to cart</a></li>
       </ul>
     </div>
     <div class="footer-col">

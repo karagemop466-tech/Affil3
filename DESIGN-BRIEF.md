@@ -119,7 +119,7 @@ direction, it is a failed build.
 
 - **Before.** 'Capacity is one of the first numbers you see and one of the easiest to misread.' - this one is already good; much of the surrounding copy is not.
 - **After.** 'A 6 Qt dual basket is two 3 Qt baskets. That is a chicken thigh and a tray of fries each, not a whole chicken and a side. If you cook for four, 8 Qt in one basket beats 6 Qt split in two.'
-- **Effort.** A house style file plus a rewrite pass over five guides. Blocked on S-20.
+- **Effort.** A house style file plus a rewrite pass over the guides (five when this was written, ten now). Blocked on S-19, the house style row on the decision board.
 - **Checkable?** Banned opener phrases and uniform list-item length are both mechanically checkable. Whether the copy is any good is not.
 
 ### PB-5. Byline
@@ -217,7 +217,7 @@ Patterns that make copy read as machine-written. The last one is the test that m
 | 2 | Settle S-04 (name) and S-06 / Q-08 (byline). These two change every template and every piece of copy. | S-18 |
 | 3 | PB-7 typography and colour. Highest visible impact, no dependencies once the name exists. | S-04 |
 | 4 | PB-1, PB-2 front page and card anatomy. Partly done; finish once the name and palette exist. | PB-7 |
-| 5 | PB-4 voice pass over the five guides, against the house style file from S-20. | PB-1 |
+| 5 | PB-4 voice pass over the published guides, against the house style file from S-19. | PB-1 |
 | 6 | PB-3 imagery, after S-05 decides the source. | S-05 |
 | 7 | PB-9 cluster linking and PB-10 on-page SEO baseline. | PB-5 |
 | 8 | PB-11 acquisition, after S-15 and S-16. | S-15, S-16 |

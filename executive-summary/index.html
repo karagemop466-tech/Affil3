@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Executive summary: what is built, what is verified, what is blocked, and the decisions needed.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
+<meta name="robots" content="index,follow">
 
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -53,7 +54,8 @@
 <li>A publication-style site with a products-first front page, a buyer-actionable shop table, a side-by-side comparison page, 3 category clusters, 18 question-led guides, a Journal of 7 articles tied to the products, a three-question fit check at <code>/find/</code>, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
-<li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
+<li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5, and an explicit <code>index,follow</code> robots meta tag on every root page.</li>
+<li>Four dated verification rounds are on file in <code>data/observations/</code>. The most recent re-read seven official pages first-hand, recorded the fetches it could not complete as failures rather than as agreement, corrected eleven mis-citations, and added the gate rules that catch that class (FLG-044). The same round corrected a findability claim this site had been making about itself: a robots.txt file manages crawling and neither excludes a page from Google's index nor carries a noindex rule - Google's own wording (S24, S26), recorded as FLG-043.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>
@@ -98,9 +100,9 @@
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
         <li><a href="/Affil3/articles/">The Journal</a></li>
+        <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
+        <li><a href="/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/">Sync Finish and Hi-Fry: what the buttons do</a></li>
         <li><a href="/Affil3/guides/smart-meat-thermometer-what-actually-matters/">Smart meat thermometers: what actually matters before you buy</a></li>
-        <li><a href="/Affil3/guides/which-air-fryer-shape-fits-your-week/">Dual-basket, single-basket, or oven-style? Match the shape to your week</a></li>
-        <li><a href="/Affil3/guides/black-friday-kitchen-deals-a-shoppers-checklist/">Black Friday kitchen deals: a checklist before you click add to cart</a></li>
       </ul>
     </div>
     <div class="footer-col">

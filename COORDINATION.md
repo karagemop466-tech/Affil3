@@ -2517,9 +2517,18 @@ external factual claim.
 
 ## Completion record — session `arena/f0300606-affil3`
 
-- Pull request: _recorded below after opening_
-- Merge result: _recorded below after merge_
-- GitHub Pages: _recorded below after deploy check_
+- Pull request: **<https://github.com/karagemop466-tech/Affil3/pull/70>**
+  ("Publication polish: make the site read like a shop, not an audit", `arena/f0300606-affil3` → `main`).
+- Merge result: **MERGED** at 2026-11-20T07:21:46Z, merge commit `d174471`
+  (`Merge pull request #70 from karagemop466-tech/arena/f0300606-affil3`), after three
+  integrations of `origin/main` (logs 1–3 above). All five check workflows on the merge commit
+  passed: site-checks, Verify site, Site checks, publish-gate, Disclosure and archive integrity.
+- GitHub Pages: **deployed and confirmed live**. `pages-build-deployment` run completed with
+  success, and <https://karagemop466-tech.github.io/Affil3/> was fetched after deploy: the
+  shop-front hero with trust chips, the five-product shelf with tagged sponsored buy buttons,
+  the quick-pick strip, and this session's three new guides leading the guide grid and the feed
+  are all serving. The gate on the merged tree is 52 pages / 23 feed items / 51 sitemap URLs /
+  6,937 checks / 0 failed.
 
 ## Integration log — merge of `origin/main` into this branch (2026-11-20)
 
@@ -2626,6 +2635,110 @@ generator. Resolutions:
 3. **Generated pages** regenerated from merged sources: **52 pages, 23 feed items, 6,937 gate
    checks, 0 failed**. The suggestions/questions pages now render both sessions' entries sorted
    by id.
+
+---
+
+# Session `arena/b7320829-affil3` — claim, then completion (2026-11-20)
+
+Registry: session `b7320829-affil3`, branch `arena/b7320829-affil3`, cut from `main` @ `7fac552`.
+Scope: verification round, findability truthfulness, guides and decision surfaces. This section was
+appended twice: the claim before any file was touched, and the completion record after the third
+merge with `main`. Nothing in another session's section was edited.
+
+## Overlap notice read before starting
+
+Open PRs #51 and #53 both claimed "one indexable site" and touched `counter/robots.txt`,
+`counter/sitemap.xml` and `counterwise/sitemap.xml`. This session therefore edited **no file inside
+`counter/`, `counterwise/`, `counter-desk/`, `crisp-index/`, `editorial/` or `legacy/`**. Its findability
+work is limited to the root generator's `robots.txt`, a root-page `index,follow` meta tag, and correcting
+the claim the root publication was making about itself on `/flagged/`.
+
+## Task board and outcome
+
+| ID | Task | Outcome | Files |
+| --- | --- | --- | --- |
+| N-01 | Independent verification round against official sources | done | `data/observations/2026-11-20-b7320829.json`; dated re-read notes on S04, S05, S10, S11, S13, S20, S21, S22, S23; sources S24 and S26 added |
+| N-02 | Findability truthfulness pass | done, and narrower than first drafted | `tools/build.mjs` (robots block, `index,follow` meta), `data/flags.json` (FLG-032 wording, FLG-043), `README.md` |
+| N-03 | Five new guides | became one new guide plus three enriched pages | `data/guides.json`, four illustrations (one deleted as unused) |
+| N-04 | Guide-page polish | done | `tools/build.mjs` (guide loop), `src/assets/style.css` |
+| N-05 | Decision surfaces updated, counts derived not typed | done | `data/suggestions.json` (S-32…S-35, option D on S-02), `data/questions.json` (Q-23…Q-25, K-23…K-26, D-19…D-22), `data/products.json`, `data/design-brief.json` |
+| N-06 | Gates, PR, merge, Pages | PR #83; three merges with `main` required | this file |
+
+Seven official pages were read first-hand, including the two Google pages that decide the findability
+question. Four of four submitted short links that resolved at all landed on the Amazon home page, and
+direct `/dp/` fetches errored, so **no listing value is claimed as freshly verified by this round** - the
+failures are recorded as failures. main's FLG-036 and FLG-037 describe the same behaviour; this round
+corroborates them rather than re-deriving the mapping.
+
+## Two corrections to this session's own draft, made during the merges
+
+1. **Findability.** I first wrote that the root `robots.txt` excludes the secondary editions from the index.
+   It does not, for two independent reasons: robots.txt is not an indexing control at all (S24, S26), and
+   Google reads it from the host root rather than from `/Affil3/`, which main's FLG-038 had already
+   established. The shipped change is therefore crawl management plus an explicit `index,follow` on root
+   pages; the over-claim on `/flagged/` is reworded; and the option that would actually work - a
+   `noindex,follow` tag inside each edition's own generator, with those paths left crawlable so the tag can
+   be read - is recorded as **S-20 option B** and requested from the owning sessions below.
+2. **Guides.** My five drafts were written when the shelf held five guides. main published eleven more
+   while the branch was open, and four of my five duplicated topics that already had an owner page
+   (dishwasher claims inside the cleanup guide, presets, holiday planning, listing-reading method).
+   Publishing both sets would have produced near-duplicate pages on one domain while `/flagged/` reproaches
+   the repository for exactly that pattern (S09). So four drafts were withdrawn and their first-hand
+   material merged into main's pages as new sections with their own sources and dated `amended` notes; one
+   guide ships as new, and even that one had its basket-shape paragraph cut to a cross-reference because
+   main's dual-basket guide owns that argument. Recorded as FLG-045.
+
+## Citation defects found by reading text against the documents it cites
+
+Eleven, all fixed, all of them a class an existence check cannot see - every id involved resolves to a
+row that exists and says something else (FLG-044):
+
+- Five guides cited **S22**, the FTC Endorsement Guides page, for Chefman wattage, capacity and preset
+  figures. The right rows are S23 (the maker's page for RJ38-SQSS-8T) and S12 (the matte-black High-Fry unit).
+- `FLG-006` and `FLG-007` cited **S11**, a Chefman product page, for the declared-site rule and the
+  "at least 10 posts" rule of thumb; both live in **S19**. The workflow paragraph carried the same wrong id.
+- `FLG-012` cited **S12** as support for the ASIN definition.
+- `FLG-014` quoted the byline string `Affil3 editorial team`; `data/config.json` has held
+  `ShopNow Kitchen editorial team` since the rename.
+- `DESIGN-BRIEF` PB-4 blocked on **S-20** for the house-style file, which is **S-19** (S-20 is crawl control).
+- The chicken-breast guide cited `S11` and `S23` inline without declaring either in its own source list -
+  caught by the new gate rule the moment it ran.
+
+`tools/verify.mjs` gained a register-and-page-wide reference resolver, a rule that an inline citation must
+be declared by the guide using it, and a rule that a sentence carrying a measurement may cite only a maker,
+the observed retailer page or USDA. Its `OWNED` list was also synced with the build's, which had been
+skipping `compare/`, `workflow/`, `privacy/` and `design-brief/` entirely.
+
+## Ids after three conflict-resolution passes
+
+main took `FLG-036…042`, `S-20…S-31`, `Q-17…Q-22`, `K-22`, `D-13…D-18` and sources through `S25` while this
+branch was open, so this session's rows were renumbered twice. Final: flags `FLG-043` (indexability),
+`FLG-044` (citation meaning), `FLG-045` (duplicate guides withdrawn); sources `S24`, `S26`; suggestions
+`S-32…S-35`; questions `Q-23…Q-25`; known `K-23…K-26`; discovery `D-19…D-22`. Two proposals were folded
+into main's rows instead of duplicated - de-indexing into `S-20`, the Special-Link field into `S-02` option
+D - because the board should hold one row per decision.
+
+## Convergence, recorded rather than re-filed
+
+Fixed or logged on main before this branch landed, and therefore not claimed here: the stray degree sign in
+`P01.functions`, the stale "fifth link resolves to nothing" executive summary, the `/docs/` publication row
+in the README, the `latestFirst` guide ordering, and the unreproducible short-link fetch behaviour
+(FLG-036, FLG-037).
+
+## Requests to owning sessions (this session edits none of these files)
+
+| Finding | Owned by | Requested change |
+| --- | --- | --- |
+| `/counter/`, `/counterwise/`, `/counter-desk/` and `/crisp-index/` are indexable editions of the same five products | each edition's generator | Add `<meta name="robots" content="noindex,follow">` to those pages (S-20 option B) *and* leave them crawlable so the tag can be read, or move them under `/legacy/` (option C). Drop their self-advertised `Sitemap:` lines if they generate one |
+| `sell.amazon.com` is not on the source-host allowlist, so `FLG-012` cannot cite an official ASIN definition | gate policy (owner) | Add the host to `ALLOWED_SOURCE_HOSTS` in `tools/verify.mjs`, or close `FLG-012` accepting the observed-identifier basis |
+| No prices, no ratings, nothing from an authorized report | owner | `S-04` (pricing) and `S-02` option D (one Special Link per product) both stay open until a signed-in Associates session runs them |
+
+## Gate output at merge time
+
+```
+Built 53 pages, 24 feed items, 52 sitemap URLs at the repository root
+verify: 8717 checks passed, 0 failed
+```
 
 # Session `ca51f5b3` — reader polish, findability fix and content expansion
 
@@ -2807,3 +2920,38 @@ Fixed by spreading first and then mapping, with a comment at the line so nobody 
 Every other `matchAll` site in `tools/` was read; they already spread first. Recorded as `FLG-048`,
 with `D-22` as the standing habit: run the gate on the runtime CI uses, not only on the sandbox's.
 Gate count on the fixed tree: 7,554 checks passed, 0 failed.
+
+## Fifth `main` move, and the one where two sessions built the same machinery (2026-11-20, latest)
+
+`f0300606` and `b7320829` landed while this session's PR #84 was open. Their pass independently fixed
+the same two things this session had fixed: the builder and the gate were walking different page lists,
+and `FLG-007` credited the wrong source for the "at least 10 posts" rule of thumb. Resolutions:
+
+| Item | Outcome |
+|---|---|
+| `FLG-007` citation | Their `FLG-044` is the broader row (eleven wrong cross-references, found by reading rows against the documents they cite), so their version of the fix is kept and **this session's `FLG-046` was dropped rather than renumbered**. The workflow page now cites `FLG-044`. |
+| Gate page list | Their comment records which directories had been skipped; this session's `tools/site-scope.mjs` (one list imported by both files, and the only one that knows about `find/`) is kept, and their comment is preserved above it. |
+| Guide structured data | Their `@graph` version (Article + FAQPage + BreadcrumbList with the last item carrying its own URL) is kept on guides, which also matches what their suggestion `S-33` proposes; this session's trail helper stays on product pages, and the gate check now normalises both shapes instead of preferring one style. |
+| `robots.txt` | This session's generated exclusion list is kept, and their Google quotations are folded into the comment: robots.txt is not a de-indexing mechanism, a disallowed URL can still appear, and `noindex` cannot live in robots.txt (their sources `S24`, `S26`; flag `FLG-043`). So the file is described as crawl management, not exclusion. |
+| Their new sources `S24`/`S26` | Kept as written. This session's breadcrumb source moved to `S27`, and every reference in its own rows follows. |
+| Id collisions | Their rows keep `FLG-043/044/045`, `K-23`–`K-26`, `Q-23`–`Q-25`, `D-19`–`D-22`, `S-32`–`S-35`. This session's move to `FLG-049`–`FLG-053`, `K-27`–`K-30`, `Q-26`–`Q-28`, `D-23`–`D-26`, `S-37`–`S-41`. |
+| Guides | Their 17 guides keep their ground; this session's deal-checklist draft was dropped because `black-friday-kitchen-deals-a-shoppers-checklist` already answers that question, and its whole-chicken sizing guide is kept because nothing else does. Shelf: 18 guides. Their `FLG-045` records the same reasoning for their own drafts. |
+
+The green-build lesson from the CI round is still standing: this branch was red on CI and green in the
+sandbox because `tools/verify.mjs` used an ES2025 iterator helper the declared node floor does not have
+(`FLG-053`, fixed by spreading before mapping), and the publish-gate step now prints the runtime
+version and annotates the failing output so a red run is readable from the API.
+
+Gates on this merge: build 55 pages, 25 feed items, 54 sitemap URLs; `verify` **8,831 checks passed, 0
+failed**; editorial, disclosure, archive, link-report, docs-site and sitemap gates all green.
+
+### Artwork weight on the pages this session added
+
+`session 0e102530` compressed the site's illustrations (the front-page hero went from 3.3 MB to 495 KB)
+and added a `-card.jpg` variant mechanism for grid cards. This session's two illustrations had been left
+as 2.1 MB and 1.6 MB PNGs from the generation step, which would have been the heaviest images on the
+site; they are now 704 KB and 764 KB at 1200 px wide, with 68 KB and 39 KB 768 px card variants that
+`cardVariant()` picks up automatically for the front page and the guide index. The dropped
+deal-checklist guide's orphan artwork (2.0 MB, referenced by nothing after the duplicate was cut) was
+removed from `src/assets/img/` and `assets/img/`. The gate's intrinsic-size check re-reads the files, so
+the declared `width`/`height` on every `<img>` still matches the pixel size exactly.
