@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flagged for review — ShopNow Labs</title>
+<meta name="description" content="Every irregularity found during verification: the unresolved product link, untagged redirects, unconfirmed enrollment, and the fields intentionally left blank, each with a source and a fix.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/review/flagged-for-review/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow Labs">
+<meta property="og:title" content="Flagged for review — ShopNow Labs">
+<meta property="og:description" content="Every irregularity found during verification: the unresolved product link, untagged redirects, unconfirmed enrollment, and the fields intentionally left blank, each with a source and a fix.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/review/flagged-for-review/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fbf8f3">
+<meta name="generator" content="ShopNow Labs static desk v1">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Labs — new guides" href="/Affil3/feed.xml">
+<link rel="stylesheet" href="/Affil3/assets/css/site.css">
+<link rel="icon" href="/Affil3/assets/img/favicon.svg" type="image/svg+xml">
+<script defer src="/Affil3/assets/js/analytics-config.js"></script>
+<script defer src="/Affil3/assets/js/shop.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <a class="brand" href="/Affil3/">
+      <span class="brand__mark">ShopNow<em>.</em>Labs</span>
+      <span class="brand__tag">Countertop buying desk</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="/Affil3/buying-guides/">Guides</a><a href="/Affil3/air-fryers/">Air fryers</a><a href="/Affil3/thermometers/">Thermometers</a><a href="/Affil3/how-we-pick/">How we pick</a>
+      <a class="nav__cta" href="/Affil3/buying-guides/">Start with a guide</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap">
+    <span class="disclosure__tag">Disclosure</span>
+    <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links are marked <strong>paid</strong> and open Amazon in a new tab. <a href="/Affil3/disclosure/">How this works</a></span>
+  </div>
+</div>
+<main id="main">
+<div class="reviewbar"><div class="wrap">
+  <strong>Review room</strong>
+  <span>Known gaps · published, not hidden</span>
+  <span style="margin-left:auto"><a href="/Affil3/review/suggestions/">Suggestion register</a> · <a href="/Affil3/review/questions/">Open questions</a> · <a href="/Affil3/review/flagged-for-review/">Known gaps</a></span>
+</div></div>
+
+<section class="article-head wrap">
+  <p class="kicker">Flagged for review</p>
+  <h1>Everything that did not check out</h1>
+  <p class="lede">This page is the reason to trust the rest of it. Each item below is a real problem found during verification, with what it affects and how to close it. None of them block the site being useful; all of them block the site being finished.</p>
+  <div class="article-head__meta"><span>10 items</span><span>5 high severity</span><span>Updated 2026-11-20</span></div>
+</section>
+<section class="section wrap">
+  <div class="callout callout--warn" style="margin-bottom:1.5rem"><span class="callout__label">For the reviewer</span><p class="small" style="margin:0">Nothing on this page prevents the site from going live, and nothing here was quietly dropped. Where a value could not be confirmed from an official source it was left blank in the data and recorded here — no estimate was substituted.</p></div>
+  <h2 style="margin-bottom:1rem">The list, worst first</h2>
+  <article class="flag" id="FLG-001">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-001</span>
+      <span class="chip chip--stop">high severity</span>
+    </div>
+    <h3>The fifth submitted link does not resolve to a product</h3>
+    <p>https://link.amazon/B0c8moW59 was requested twice on 2026-11-20. Both requests returned Amazon's interstitial page headed "To continue, please click the Continue shopping button below" at https://www.amazon.com/checkpoint/continue, with no product title or ASIN. The fifth product therefore has no verified identity.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> One of five submitted products is absent from the catalogue. No row was invented to fill the gap.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Kept out of the product grid. Listed as unresolved on the product register with the exact status and date.</p>
+    <div class="flag__fix"><b>How to close it</b>Open the link on a normal browser session and send the resulting amazon.com/dp/ URL.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://www.amazon.com/checkpoint/continue" target="_blank" rel="noopener">www.amazon.com/checkpoint/continue</a></p>
+  </article><article class="flag" id="FLG-002">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-002</span>
+      <span class="chip chip--stop">high severity</span>
+    </div>
+    <h3>Submitted short links carry no visible Associates tag in the redirect</h3>
+    <p>The four links that resolved produced redirect targets on amazon.com with tracking parameters such as btn_ref and channelId, but none of the four observed targets contained a tag parameter. Amazon's policies state that the Associates ID or tag must appear as a parameter in the URL of each link placed on the site.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> It cannot be shown from outside the account that a click through these links attributes to tag shopnow047c-20. This is the single largest commercial risk in the project.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Every outbound product link on this site is a canonical amazon.com/dp/ URL with the tag appended, and the observed redirect is recorded separately in the register rather than being trusted.</p>
+    <div class="flag__fix"><b>How to close it</b>Generate one link in SiteStripe, compare, then click one supplied link and confirm the click appears in the Associates report before scaling.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/policies</a></p>
+  </article><article class="flag" id="FLG-003">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-003</span>
+      <span class="chip chip--stop">high severity</span>
+    </div>
+    <h3>Associates enrollment and tag ownership are unconfirmed</h3>
+    <p>The tracking ID shopnow047c-20 matches the documented XXXXX-## format and is used throughout the site, but nothing in this environment can confirm that the account is approved, that the tag is active, or that this site is registered against it. Amazon permits Special Links only after applying, and prohibits using a tag assigned to anyone else.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> If the tag is not active for this site, no commission accrues and the disclosure statement would describe a relationship that does not exist.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Stated plainly on the disclosure page as an item awaiting confirmation rather than asserted as fact.</p>
+    <div class="flag__fix"><b>How to close it</b>Sign in to the Associates dashboard, confirm approval status, confirm the tag, and confirm the registered site URL.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/agreement</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/policies</a></p>
+  </article><article class="flag" id="FLG-006">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-006</span>
+      <span class="chip chip--stop">high severity</span>
+    </div>
+    <h3>The analytics endpoint is not live, so no data is being collected</h3>
+    <p>The site emits five defined, non-identifying events to a documented interface. No collector is configured because no host or privacy decision was supplied. Nothing is currently recorded.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> No click, view, or product-engagement data exists yet. Any future optimisation claims will need to cite the date collection began.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> The measurement page describes the events and states clearly that collection is not yet active.</p>
+    <div class="flag__fix"><b>How to close it</b>Supply an endpoint URL and a retention policy, then set ANALYTICS_ENDPOINT in assets/js/analytics-config.js.</div>
+    <p class="tiny muted" style="margin-top:.7rem">No external source applies; this is a state of the project, not a claim.</p>
+  </article><article class="flag" id="FLG-007">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-007</span>
+      <span class="chip chip--stop">high severity</span>
+    </div>
+    <h3>Search Console verification and sitemap submission were not possible</h3>
+    <p>The sitemap, robots.txt and feed are generated and valid, but the property cannot be verified from this environment, so no submission was made and no query data exists.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> The content plan cannot be validated against real search demand until this is done.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Documented on the discoverability and open-questions pages as a pending step rather than reported as complete.</p>
+    <div class="flag__fix"><b>How to close it</b>Verify the property with a DNS or file method, submit /Affil3/sitemap.xml, and check coverage after a week.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noopener">developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap</a></p>
+  </article><article class="flag" id="FLG-004">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-004</span>
+      <span class="chip chip--flag">medium severity</span>
+    </div>
+    <h3>No prices or ratings are published anywhere on the site</h3>
+    <p>Amazon permits price and availability display only where Amazon serves the link containing the data or where the data is obtained through the Creators API or PA API. This site has no API credentials. Prices also change hourly, and Amazon states it cannot confirm a price until an order is placed.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> Readers must click through to see a price. This is a deliberate limitation, not an oversight.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Every product card links to the live listing. No price, star average or review count is printed.</p>
+    <div class="flag__fix"><b>How to close it</b>Apply for Creators API access; if granted, add a price module that renders API-sourced data and never caches it beyond the permitted window.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/policies</a> · <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=508088" target="_blank" rel="noopener">www.amazon.com/gp/help/customer/display.html</a></p>
+  </article><article class="flag" id="FLG-005">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-005</span>
+      <span class="chip chip--flag">medium severity</span>
+    </div>
+    <h3>No Amazon product imagery is used</h3>
+    <p>Program Content may not be altered, and image caching is restricted under the IP License. Republishing listing photography without the licensed tools is a common breach. The site therefore uses typographic product cards and no third-party images.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> The design is text-forward. A photo-led design would need either licensed API images or original photography.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Monogram tiles only. No external asset requests in the page.</p>
+    <div class="flag__fix"><b>How to close it</b>If visual richness is wanted, commission original photography or use the Creators API image endpoint once approved.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/policies</a></p>
+  </article><article class="flag" id="FLG-008">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-008</span>
+      <span class="chip chip--flag">medium severity</span>
+    </div>
+    <h3>No product was physically tested, and two listings have no narrative review summary captured</h3>
+    <p>Every product statement on this site is drawn from the listing as retrieved on 2026-11-20. No unit was purchased or tested. For the Chefman dual basket and the CHEF iQ Sense probe, Amazon's AI-generated review summary text was not captured during retrieval and is therefore left blank rather than characterised.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> The site can report specifications with confidence and user sentiment only where it was actually displayed.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Stated in the editorial standards and in each guide's verification note.</p>
+    <div class="flag__fix"><b>How to close it</b>Either capture the summaries on a second pass with the retrieval date recorded, or fund a test unit and publish measured results.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="noopener">www.amazon.com/dp/B0CDY277D3</a> · <a href="https://www.amazon.com/dp/B0DZFD6R9Z" target="_blank" rel="noopener">www.amazon.com/dp/B0DZFD6R9Z</a></p>
+  </article><article class="flag" id="FLG-009">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-009</span>
+      <span class="chip chip--flag">medium severity</span>
+    </div>
+    <h3>The 'AI generates the articles' requirement conflicts with Amazon policy</h3>
+    <p>The brief asks for an AI-powered engine that generates product articles. The Program Policies prohibit using Program Content or Special Links to develop or improve machine learning models without prior written approval. Generating articles from scraped listing text would sit inside that prohibition.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> Automation was therefore limited to checks, generation of the sitemap and feed, and link validation. Prose was written, not generated from listing text.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Described on the automation page as a deliberate boundary rather than a missing feature.</p>
+    <div class="flag__fix"><b>How to close it</b>Scope any future model use to our own notes and non-Amazon sources, with a human editor signing each page.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="noopener">affiliate-program.amazon.com/help/operating/policies</a></p>
+  </article><article class="flag" id="FLG-010">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-010</span>
+      <span class="chip chip--muted">low severity</span>
+    </div>
+    <h3>Internal navigation uses relative links from the CNAME-free Pages root</h3>
+    <p>The site is served from a project path (/Affil3/) rather than a custom domain. Some relative-link forms resolve differently at the root than in a subdirectory, which can produce broken links on a project page if absolute paths are not used consistently.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> Handled by prefixing every internal link with the base path. Any future move to a custom domain requires changing one constant.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> The link checker runs on every build and fails on a broken internal link.</p>
+    <div class="flag__fix"><b>How to close it</b>If a custom domain is added, set the base path to empty and re-run the checks.</div>
+    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://docs.github.com/en/pages" target="_blank" rel="noopener">docs.github.com/en/pages</a></p>
+  </article>
+
+  <h2 style="margin-top:2.5rem">How to request a change</h2>
+  <p>Pick any item above, read the fix, and either apply it or tell the desk which path to take. The <a href="/Affil3/review/suggestions/">suggestion register</a> already contains the decision that corresponds to most of these, with the alternatives and their trade-offs. The route for a correction is the <a href="https://github.com/karagemop466-tech/Affil3/issues" target="_blank" rel="noopener">repository issue tracker</a>.</p>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="/Affil3/"><span class="brand__mark">ShopNow<em>.</em>Labs</span></a>
+        <p style="margin-top:.7rem">A small buying desk for countertop cooking appliances. We publish the reasoning, not just the ranking.</p>
+        <p class="tiny" style="margin-top:.7rem">Tracking ID <code>shopnow047c-20</code> · Amazon.com</p>
+      </div>
+      <div>
+      <h3>The desk</h3>
+      <ul><li><a href="/Affil3/buying-guides/">All buying guides</a></li><li><a href="/Affil3/air-fryers/">Air fryers</a></li><li><a href="/Affil3/thermometers/">Thermometers</a></li><li><a href="/Affil3/how-we-pick/">How we pick</a></li><li><a href="/Affil3/collections/">Seasonal collections</a></li></ul>
+    </div><div>
+      <h3>Review room</h3>
+      <ul><li><a href="/Affil3/review/executive-summary/">Executive summary</a></li><li><a href="/Affil3/review/flagged-for-review/">Flagged for review</a></li><li><a href="/Affil3/review/suggestions/">Suggestion register</a></li><li><a href="/Affil3/review/questions/">Open questions</a></li><li><a href="/Affil3/review/product-register/">Product register</a></li></ul>
+    </div><div>
+      <h3>Operations</h3>
+      <ul><li><a href="/Affil3/operations/automation/">Automation & gates</a></li><li><a href="/Affil3/operations/measurement/">Measurement plan</a></li><li><a href="/Affil3/review/campaign-ledger/">Campaign ledger</a></li><li><a href="/Affil3/review/sources/">Source register</a></li></ul>
+    </div><div>
+      <h3>The fine print</h3>
+      <ul><li><a href="/Affil3/disclosure/">Disclosure</a></li><li><a href="/Affil3/privacy/">Privacy</a></li><li><a href="/Affil3/editorial-standards/">Editorial standards</a></li><li><a href="/Affil3/contact/">Contact</a></li></ul>
+    </div>
+    </div>
+    <div class="footer__legal">
+      <p class="assoc"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> I get commissions for purchases made through links in this post.</p>
+      <p>Prices and availability are shown on Amazon and can change at any time. We do not publish prices on this site. Product names, logos and brands are the property of their respective owners and are used for identification only. This site is not endorsed by or affiliated with any brand mentioned.</p>
+      <p>© 2026 ShopNow Labs. Editorial content published 2026-11-20. <a href="/Affil3/privacy/">Privacy</a> · <a href="/Affil3/disclosure/">Disclosure</a> · <a href="/Affil3/review/flagged-for-review/">Known gaps</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

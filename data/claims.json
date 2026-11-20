@@ -1,0 +1,319 @@
+{
+  "meta": {
+    "purpose": "Every public statement on this site that carries a compliance, commercial or factual obligation is registered here with the official source it was checked against.",
+    "retrieved": "2026-11-20",
+    "status_values": {
+      "verified": "Read directly from the official source listed, on the retrieval date.",
+      "verified-excerpt": "The official page was retrieved but the specific sentence came from the page's indexed excerpt rather than the rendered text. Flagged for a second read.",
+      "unverified": "Not confirmed from an official source. Nothing is published as fact on this site from an unverified row.",
+      "blocked": "The source could not be reached from this environment."
+    },
+    "sources": {
+      "S1": { "title": "Amazon Associates Program Operating Agreement", "url": "https://affiliate-program.amazon.com/help/operating/agreement", "publisher": "Amazon.com Associates Central" },
+      "S2": { "title": "Amazon Associates Program Policies (Participation Requirements, IP License, Commission Income Statement)", "url": "https://affiliate-program.amazon.com/help/operating/policies", "publisher": "Amazon.com Associates Central" },
+      "S3": { "title": "FTC's Endorsement Guides: What People Are Asking", "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking", "publisher": "U.S. Federal Trade Commission" },
+      "S4": { "title": "16 CFR 255.5 — Disclosure of material connections", "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5", "publisher": "eCFR / Federal Trade Commission" },
+      "S5": { "title": "16 CFR Part 255 — Guides Concerning Use of Endorsements and Testimonials in Advertising (source: 88 FR 48102, July 26, 2023)", "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255", "publisher": "eCFR / Federal Trade Commission" },
+      "S6": { "title": "PA-API 5 Deprecation Notice", "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation", "publisher": "Amazon.com Associates Central — Creators API documentation" },
+      "S7": { "title": "Understanding ASIN numbers", "url": "https://sell.amazon.com/blog/what-is-an-asin", "publisher": "Sell on Amazon (Amazon.com)" },
+      "S8": { "title": "How to specify a canonical URL with rel=canonical and other methods", "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls", "publisher": "Google Search Central" },
+      "S9": { "title": "Build and submit a sitemap", "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap", "publisher": "Google Search Central" },
+      "S10": { "title": "Sitemaps XML format protocol", "url": "https://www.sitemaps.org/protocol.html", "publisher": "sitemaps.org" },
+      "S11": { "title": "Amazon Conditions of Use", "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=508088", "publisher": "Amazon.com" }
+    }
+  },
+  "claims": [
+    {
+      "id": "C-01",
+      "topic": "What a Special Link is",
+      "statement": "Links to an Amazon site must properly use the special 'tagged' link formats Amazon provides and comply with the Operating Agreement; those links are 'Special Links'.",
+      "source": "S1",
+      "section": "§1 Description of the Associates Program",
+      "quote": "The links must properly use the special \u201ctagged\u201d link formats we provide and comply with this Agreement (\u201cSpecial Links\u201d).",
+      "status": "verified",
+      "used_on": ["/disclosure/", "/operations/automation/"]
+    },
+    {
+      "id": "C-02",
+      "topic": "Tag format",
+      "statement": "Each link to an Amazon site on the site must include the Associates ID or 'tag' as a parameter in the URL.",
+      "source": "S2",
+      "section": "Participation Requirements §2(b)",
+      "quote": "you must include your Associates ID or \u201ctag\u201d (appearing as XXXXX-##, ... ) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "status": "verified",
+      "note": "Our tag shopnow047c-20 fits the XXXXX-## shape described.",
+      "used_on": ["/disclosure/", "/operations/automation/", "/review/product-register/"]
+    },
+    {
+      "id": "C-03",
+      "topic": "Required identification statement",
+      "statement": "The exact statement 'As an Amazon Associate I earn from qualifying purchases.' must appear clearly and prominently on the site.",
+      "source": "S1",
+      "section": "§5 Identifying Yourself as an Associate",
+      "quote": "You must clearly and prominently state the following ... on your Site ...: \u201cAs an Amazon Associate I earn from qualifying purchases.\u201d",
+      "status": "verified",
+      "used_on": ["every page — masthead strip, product footers, footer legal block"]
+    },
+    {
+      "id": "C-04",
+      "topic": "No embellished relationship",
+      "statement": "The site must not express or imply that Amazon supports, sponsors or endorses it.",
+      "source": "S1",
+      "section": "§5",
+      "quote": "You will not misrepresent or embellish our relationship with you (including by expressing or implying that we support, sponsor, or endorse you) ...",
+      "status": "verified",
+      "used_on": ["/disclosure/", "/editorial-standards/"]
+    },
+    {
+      "id": "C-05",
+      "topic": "Material connection must be disclosed",
+      "statement": "A connection between an endorser and a seller that might materially affect the weight of the endorsement, and that the audience would not reasonably expect, must be disclosed clearly and conspicuously. Monetary payment is a material connection.",
+      "source": "S4",
+      "section": "16 CFR 255.5(a)",
+      "quote": "When there exists a connection between the endorser and the seller ... and that connection is not reasonably expected by the audience, such connection must be disclosed clearly and conspicuously. Material connections can include ... monetary payment ...",
+      "status": "verified",
+      "used_on": ["/disclosure/", "every page — disclosure strip"]
+    },
+    {
+      "id": "C-06",
+      "topic": "FTC's own example wording for affiliate sites",
+      "statement": "The FTC gives 'I get commissions for purchases made through links in this post.' as example wording for an affiliate marketer, and says a single disclosure may be adequate when the link and the review are seen together.",
+      "source": "S3",
+      "section": "What about affiliate or network marketing?",
+      "quote": "You could say something like, \u201cI get commissions for purchases made through links in this post.\u201d In some instances ... a single disclosure may be adequate.",
+      "status": "verified",
+      "used_on": ["every page — disclosure strip", "/disclosure/"]
+    },
+    {
+      "id": "C-07",
+      "topic": "Wording the FTC says is inadequate",
+      "statement": "'Affiliate link' alone may not be understood; a 'buy now' button is not an adequate disclosure; 'commissionable link' is probably not clear; 'paid link' next to the link should be adequate.",
+      "source": "S3",
+      "section": "What about affiliate or network marketing?",
+      "quote": "\u201cPaid link\u201d right next to an affiliate link should be an adequate disclosure of the nature of the link. ... \u201cCommissionable link\u201d is probably not a clear disclosure.",
+      "status": "verified",
+      "used_on": ["/disclosure/", "/editorial-standards/"],
+      "note": "This is why every outbound product link on this site carries the literal words 'Paid link' beside it."
+    },
+    {
+      "id": "C-08",
+      "topic": "Disclosure placement",
+      "statement": "The closer the disclosure is to the recommendation, the better; a disclosure at the very top of the page outside the article, or at the bottom, is easier to miss.",
+      "source": "S3",
+      "section": "Where in my blog should I disclose ...",
+      "quote": "The closer the disclosure is to your recommendation, the better. ... Readers might overlook a disclosure at the very top of the page, outside of the blog.",
+      "status": "verified",
+      "used_on": ["/disclosure/"],
+      "note": "Applied as: disclosure above the fold on every page AND repeated beside each paid link, so neither placement carries the whole burden."
+    },
+    {
+      "id": "C-09",
+      "topic": "Showing prices",
+      "statement": "The site may show prices and availability only if Amazon serves the link containing that data, or if the data comes from the Creators API / PA API under the IP License.",
+      "source": "S2",
+      "section": "Participation Requirements §2(b)",
+      "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API ...",
+      "status": "verified",
+      "used_on": ["/disclosure/", "/review/product-register/", "/operations/automation/"],
+      "note": "Decisive design constraint: this site holds no API credentials, so it publishes no prices. See FLG-004."
+    },
+    {
+      "id": "C-10",
+      "topic": "Comparison pricing",
+      "statement": "If prices are shown in a comparison format against other retailers, both the lowest new price and (if provided) the lowest used price must be shown.",
+      "source": "S2",
+      "section": "Participation Requirements §2(b)",
+      "quote": "you must display both the lowest \u201cnew\u201d price and, if we provide it to you, the lowest \u201cused\u201d price at which the Product is available on the Amazon Site.",
+      "status": "verified",
+      "used_on": ["/review/product-register/"],
+      "note": "Another reason no comparison price table exists on this site."
+    },
+    {
+      "id": "C-11",
+      "topic": "Altering Program Content",
+      "statement": "Program Content may not be altered in any way, including by adding information, except resizing an image while preserving proportions.",
+      "source": "S2",
+      "section": "Content on your Site §6(a)",
+      "quote": "You will not add to, delete from, or otherwise alter any Program Content in any way, including by adding additional information, except that you may resize Program Content consisting of a graphic image in a manner that maintains the original proportions of the image ...",
+      "status": "verified",
+      "used_on": ["/editorial-standards/", "/review/flagged-for-review/"]
+    },
+    {
+      "id": "C-12",
+      "topic": "How images may be obtained",
+      "statement": "Product Advertising Content is obtained by calling the Creators API or PA API; caching of image content is restricted, and a link to image content may be stored for no more than 24 hours.",
+      "source": "S2",
+      "section": "IP License §2(b) Obtaining Product Advertising Content; §2(h)",
+      "quote": "(h) You will not store or cache Product Advertising Content consisting of an image, but you may store a link to Product Advertising Content consisting of an image for up to 24 hours.",
+      "status": "verified-excerpt",
+      "used_on": ["/editorial-standards/", "/review/flagged-for-review/"],
+      "note": "The §2(h) sentence came from the indexed excerpt of source S2 rather than the rendered chunk; the surrounding §2(b) text was read directly. Consequence applied anyway: no Amazon imagery is republished here. See FLG-005."
+    },
+    {
+      "id": "C-13",
+      "topic": "PA-API 5 status",
+      "statement": "PA-API 5 is deprecated and is being replaced by the Creators API; continued calls return HTTP 403 with AccessDeniedException.",
+      "source": "S6",
+      "section": "Deprecation notice",
+      "quote": "The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.",
+      "status": "verified",
+      "used_on": ["/operations/automation/", "/review/suggestions/"],
+      "note": "Any 'automate product data' plan must target the Creators API, not PA-API 5. Most third-party guides still say otherwise."
+    },
+    {
+      "id": "C-14",
+      "topic": "Who may use the API",
+      "statement": "API use requires an Account Identifier key pair plus the Associates tag, and the associate must not use a tag assigned to anyone else.",
+      "source": "S2",
+      "section": "IP License §2(b)",
+      "quote": "You may not use any Associates tag parameter or Account Identifier assigned to anyone other than you or that we did not specifically assign to you.",
+      "status": "verified",
+      "used_on": ["/operations/automation/"]
+    },
+    {
+      "id": "C-15",
+      "topic": "Site suitability and originality",
+      "statement": "A site must contain original content and be publicly available; sites with false, deceptive or defamatory material are unsuitable.",
+      "source": "S2",
+      "section": "Participation Requirements §1",
+      "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application.",
+      "status": "verified",
+      "used_on": ["/editorial-standards/"]
+    },
+    {
+      "id": "C-16",
+      "topic": "Accuracy of product claims",
+      "statement": "Associates must not make inaccurate, overbroad, deceptive or misleading claims about a product, price or policy.",
+      "source": "S2",
+      "section": "Participation Requirements §2(b)",
+      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.",
+      "status": "verified",
+      "used_on": ["/editorial-standards/", "every guide"]
+    },
+    {
+      "id": "C-17",
+      "topic": "FTC compliance is contractually required",
+      "statement": "Associates are responsible for compliance with disclosure law, including where applicable the FTC Guides.",
+      "source": "S2",
+      "section": "Participation Requirements §3(b)",
+      "quote": "\u2026 including those related to disclosures (for example, if applicable, the U.S. FTC Guides Concerning the Use of Endorsement and Testimonials in Advertising) ...",
+      "status": "verified",
+      "used_on": ["/disclosure/", "/operations/automation/"]
+    },
+    {
+      "id": "C-18",
+      "topic": "Attribution window",
+      "statement": "A session runs from the click until 24 hours elapse, an order is placed, or another Special Link is clicked; cart purchases within 89 days of the click can qualify.",
+      "source": "S2",
+      "section": "Commission Income Statement §1(a)-(c)",
+      "quote": "(x) 24 hours elapse from that click, (y) the customer places an order ... (i) the customer purchases a Product by adding a Product to his or her shopping cart and completing the order for that Product no later than 89 days after their initial click-through ...",
+      "status": "verified",
+      "used_on": ["/operations/measurement/", "/review/campaign-ledger/"]
+    },
+    {
+      "id": "C-19",
+      "topic": "ASIN definition",
+      "statement": "An ASIN is a unique 10-character alphanumeric identifier Amazon assigns to a product in its catalog.",
+      "source": "S7",
+      "section": "What is an ASIN",
+      "quote": "\u201cASIN\u201d stands for \u201cAmazon Standard Identification Number.\u201d It's a unique 10-character alphanumeric code assigned to every product listed in the Amazon store.",
+      "status": "verified",
+      "used_on": ["/review/product-register/"],
+      "note": "Justifies using the ASIN, not the price or the rank, as the durable identity of a product."
+    },
+    {
+      "id": "C-20",
+      "topic": "Canonical and sitemap signals",
+      "statement": "Redirects and rel=canonical are strong canonicalization signals; sitemap inclusion is a weak signal; none are required.",
+      "source": "S8",
+      "section": "How to specify a canonical URL",
+      "quote": "Sitemap inclusion: A weak signal that helps the URLs that are included in a sitemap become canonical.",
+      "status": "verified",
+      "used_on": ["/operations/discoverability/"]
+    },
+    {
+      "id": "C-21",
+      "topic": "Sitemap rules",
+      "statement": "URLs in a sitemap must use the same protocol and host as the sitemap; a sitemap may list up to 50,000 URLs and be no larger than 50MB; RSS, Atom and text formats are also supported.",
+      "source": "S10",
+      "section": "Sitemap file location / Using Sitemap index files",
+      "quote": "all URLs listed in the Sitemap must use the same protocol (http, in this example) and reside on the same host as the Sitemap ... no more than 50,000 URLs and no larger than 50MB",
+      "status": "verified",
+      "used_on": ["/operations/discoverability/"]
+    },
+    {
+      "id": "C-22",
+      "topic": "Feed as a discovery format",
+      "statement": "Google supports RSS 2.0, mRSS and Atom 1.0 sitemap formats in addition to XML and text sitemaps.",
+      "source": "S9",
+      "section": "RSS, mRSS, and Atom 1.0",
+      "quote": "Google supports the sitemap formats defined by the sitemaps protocol ... RSS, mRSS, and Atom 1.0",
+      "status": "verified",
+      "used_on": ["/operations/discoverability/", "/feed.xml"]
+    },
+    {
+      "id": "C-23",
+      "topic": "Incentives for clicks are prohibited",
+      "statement": "Associates may not offer consideration, reward or incentive in exchange for using Special Links.",
+      "source": "S2",
+      "section": "Content on your Site §6(g)",
+      "quote": "You will not offer any person or entity any consideration, reward, or incentive (including any money, rebate, discount, points, donation to charity or other organization, or other benefit) for using Special Links.",
+      "status": "verified-excerpt",
+      "used_on": ["/operations/measurement/", "/review/suggestions/"],
+      "note": "Directly constrains any 'email capture for a discount' idea. Logged as a blocked suggestion with this citation."
+    },
+    {
+      "id": "C-24",
+      "topic": "No machine-learning use of Program Content",
+      "statement": "Program Content and Special Links may not be used, without prior written approval, to develop or improve machine learning or large language models.",
+      "source": "S2",
+      "section": "IP License",
+      "quote": "You will not, without express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.",
+      "status": "verified",
+      "used_on": ["/operations/automation/", "/review/suggestions/"],
+      "note": "Constrains the 'AI generates articles' ambition: no Program Content may be fed to a model. See SUG-06 and FLG-009."
+    },
+    {
+      "id": "C-25",
+      "topic": "Payment timing",
+      "statement": "Commission income is paid approximately 60 days after the end of the calendar month in which it was earned.",
+      "source": "S2",
+      "section": "Commission Income Statement §6",
+      "quote": "We will pay Standard Commission Income ... approximately 60 days following the end of each calendar month in which they were earned ...",
+      "status": "verified",
+      "used_on": ["/review/campaign-ledger/"]
+    },
+    {
+      "id": "C-26",
+      "topic": "Price accuracy disclaimer on Amazon",
+      "statement": "Amazon states it cannot confirm the price of an item until an order is placed, and that catalog items can be mispriced.",
+      "source": "S11",
+      "section": "Pricing",
+      "quote": "With respect to items sold by Amazon, we cannot confirm the price of an item until you order.",
+      "status": "verified",
+      "used_on": ["/disclosure/", "every product card"]
+    },
+    {
+      "id": "C-27",
+      "topic": "Third-party claims about API eligibility",
+      "statement": "Common advice that API access requires three qualifying sales within 180 days.",
+      "source": "",
+      "section": "",
+      "quote": "",
+      "status": "unverified",
+      "used_on": [],
+      "note": "Found only in secondary commentary, not in a document retrieved from Amazon in this session. Not published as fact on the site; it appears as an open question (Q-07) instead."
+    },
+    {
+      "id": "C-28",
+      "topic": "Search volume for the guide topics",
+      "statement": "Any statement about how many people search for these questions.",
+      "source": "",
+      "section": "",
+      "quote": "",
+      "status": "unverified",
+      "used_on": [],
+      "note": "No keyword tool was consulted. No volume, difficulty or trend figure is published anywhere on this site. See Q-05 and SUG-11."
+    }
+  ]
+}
