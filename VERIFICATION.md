@@ -94,3 +94,61 @@ Run before publish (all green on 2026-11-20):
 - https://www.amazon.com/dp/B0CDY277D3 · /dp/B09B7SB46R · /dp/B08DKYBTPH · /dp/B0DZFD6R9Z
 - https://link.amazon/B04G1MEwY · /B02NbDxp3 · /B00hJ57DV · /B0c8moW59 · /B0f3GKalj
 - https://www.sitemaps.org/protocol.html · https://www.rssboard.org/rss-specification
+
+---
+
+# VERIFICATION — session `arena/77e4ac42-affil3` (Journal + decision board)
+
+Verification date **2026-11-20** · rule unchanged: **every table row has a source link to an official
+site; if a value can't be confirmed from an official source it is left blank and flagged as
+unverified. Nothing is inferred or filled in.** This session added a reader-facing Journal and a
+decision board. It did not change any product, spec, flag or source value.
+
+## 6 · The Journal articles (sourced; no new facts invented)
+
+Each article's factual claims are drawn only from source IDs already in the register and cited on the
+article. Article titles are editorial working titles, not popularity, search-volume or superiority
+claims. No price, rating, review count or hands-on test claim appears.
+
+| # | Article | Factual claims | Source IDs | Status |
+|---|---------|----------------|-----------|--------|
+| 1 | Two baskets, one machine: what dual-basket air fryers change | 6 qt in two 3 qt baskets; Sync Finish; 200–450 °F; 1700 W; dishwasher-safe baskets; case size; 1-yr warranty | S11, S04 | sourced |
+| 2 | When a basket isn't enough: the case for a 26-quart oven | 26 qt / 24.6 L; french doors; food for 4–6; case size 16.9×15.8×14.8 in; 1-yr warranty; preset-count discrepancy named | S13, S04 | sourced |
+| 3 | Eight quarts, one basket: the big-batch air fryer | 8 qt / 7.57 L; 200–400 °F; maker 1700 W vs listing wattage conflict; RJ38-SQSS-8T vs RJ38-8T-BLACK | S12, S16, S04 | sourced |
+| 4 | Counter space is the real spec: measure before you buy | Case dimensions for P01/P02/P03, reproduced in the makers' own order | S11, S12, S13, S04 | sourced |
+| 5 | The number that decides when to pull it: thermometer basics | USDA safe minimum internal temperatures; probe placement | S10, S20, S21, S14 | sourced |
+| 6 | Instant-read vs leave-in: two thermometers, two jobs | ThermoMaven 1-sec read, ±0.5 °F NIST; CHEF iQ leave-in, up to 1000 °F | S21, S14, S15, S10 | sourced |
+| 7 | The big roast: what temperature actually means | USDA temperature targets and rest times; probe placement | S10, S20 | sourced |
+
+**Values deliberately not claimed:** no price, rating, review count, availability, traffic, conversion
+or revenue figure appears in any article. The wattage conflict in article 3 is named, not resolved.
+
+## 7 · Decision board (no factual claims; questions carry their own sources)
+
+| # | Board item | Type | Sources | Status |
+|---|-----------|------|---------|--------|
+| D-01…D-08 | Suggestions (house style, Journal, topic selection, reader capture, brand/imagery, navigation, revenue unblock, cadence) | each has options + recommendation | none (design proposals, not factual claims) | proposal |
+| DQ-01…DQ-04 | Blocking questions (marketplace, tracking ID live, Special Link test, intended product) | owner-access | S01, S02, S04, S05 | open |
+| DQ-05…DQ-10 | Non-blocking questions (reader, cadence, analytics endpoint, prices, byline, edition) | owner decision | S01, S02 where factual | open |
+
+Questions that rest on a factual policy point cite the official source (S01 Associates Operating
+Agreement, S02 Program Policies). Questions that are pure owner decisions carry no source, because they
+are not factual claims — that is stated on the page.
+
+## 8 · Build and gate results (2026-11-20)
+
+| Check | Tool | Result |
+|-------|------|--------|
+| Root build | `node tools/build.mjs` | 41 pages, 12 feed items, 40 sitemap URLs |
+| Publishing gate | `node tools/verify.mjs` | 4,876 checks passed, 0 failed |
+| Full check (root + editorial) | `npm run check` | pass; editorial output did not drift |
+| Table source coverage (strict) | `python3 tools/link_report.py --strict` | OK — every checked table 100% sourced |
+| Internal link integrity | `python3 tools/check_all_links.py` | 0 broken internal links |
+| Docs sitemap + links | `scripts/build_sitemap.py --check`, `scripts/check_links.py --no-external` | pass |
+| Editorial gate | `python3 tools/check_site.py` | PASS — 21 pages |
+
+## 9 · New external links for manual review
+
+None added. Every Journal and decision-board link is either an internal page or an already-registered
+source. The article product boxes resolve to the same tagged Amazon listing URLs already published on
+the Shop and product pages.
