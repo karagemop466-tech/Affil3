@@ -434,3 +434,101 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+---
+
+# Session `arena/01b24e2e-affil3` — publication pass
+
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `main` at
+`ac89023`, status **active**. This board is appended; nothing above it was edited.
+
+## Claim
+
+| Field | Value |
+|---|---|
+| Session ID | `arena/01b24e2e-affil3` |
+| Branch | `arena/01b24e2e-affil3` (session rule; the brief's `session-<id>/<task>` naming is not available here — see FLG-019) |
+| Scope | The root publication only: `src/`, `tools/build.mjs`, `tools/verify.mjs`, `data/*.json`, generated root HTML, `.github/workflows/verify.yml`, `README.md`, `EXECUTIVE-SUMMARY.md`, `QA-BRIEF.md`, `COORDINATION.md` |
+| Out of scope | `data/register/*` and `editorial/` content (another session's register). Two exceptions are logged below |
+| Overlapping sessions | None active. `git branch -r` shows only `origin/main`; every earlier session branch was merged and deleted |
+
+## Task board
+
+| # | Task | Status | Files touched |
+|---|---|---|---|
+| T01 | Re-verify the five submitted links, line by line | done | `data/products.json` (observations unchanged; re-confirmed) |
+| T02 | Re-read the policy and safety sources cited on the site | done | `data/sources.json` |
+| T03 | Fix stale or broken source rows | done | `data/sources.json` |
+| T04 | Publication front page: products first, records in the footer | done | `tools/build.mjs`, generated root site |
+| T05 | Product pages and a comparison page | done | `tools/build.mjs`, generated `products/`, `compare/` |
+| T06 | Design system, illustrations, responsive layout, single navigation group | done | `src/assets/style.css`, `src/assets/img/`, `assets/` |
+| T07 | Three cluster-closing guides; short version, limits and buyer questions on every guide | done | `data/guides.json`, generated `guides/` |
+| T08 | Decision board with paths; questions page with blocked/open/discoverable gaps | done | `data/suggestions.json`, `data/questions.json`, generated `suggestions/`, `questions/` |
+| T09 | One indexable site: archive excluded from the index | done | `robots.txt`, `tools/build.py` (one meta tag), regenerated `editorial/` |
+| T10 | Extend the publishing gate: images, canonical, h1 count, title and description length, decision register | done | `tools/verify.mjs` |
+| T11 | Fix continuous integration so it verifies what it claims to verify | done | `.github/workflows/verify.yml` |
+| T12 | Correct the repository documents that contradicted the register | done | `EXECUTIVE-SUMMARY.md`, `QA-BRIEF.md`, `README.md` |
+| T13 | Pull request, merge, Pages deploy, live check | in progress | this file |
+
+## Verification performed in this pass
+
+Every row was read on 2026-11-20, in this session, from the page itself.
+
+| Source | What was read | Result |
+|---|---|---|
+| [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §1 (Special Links must use the tagged formats Amazon provides), §5 (the required statement, and the ban on implying endorsement), §6 (violating §5 is a material breach) | Confirmed; wording quoted on `/compliance/` |
+| [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | §2(a)-(b) tag as a URL parameter; §3 responsibility for site content; §4 promotional limits; §6(t) reviews and ratings; §6(v) cloaking; §6(w) shorteners; §6(y) no price tracking; §6(s), (u), (g), (l) | Confirmed in full text. The earlier "excerpt" caveat for §2 is now removed |
+| [Google: qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | `rel="sponsored"` for paid placements; `nofollow` as the fallback | Confirmed (page dated 2025-12-10) |
+| [USDA FSIS temperature chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart) | 145/160/165 °F rows, rest times | Confirmed; values quoted verbatim in the thermometer guide |
+| [USDA FSIS food thermometers](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers) | Probe placement, 2–4 °F tolerance, colour is not an indicator | Confirmed |
+| Submitted links | `B04G1MEwY`, `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59`, `B0f3GKalj`, each followed once, redirects resolved | All five reached `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z`. Titles match the register. No `tag=` parameter on any destination |
+
+### Build and gate
+
+```
+node tools/build.mjs      32 pages, 8 feed items, 31 sitemap URLs
+node tools/verify.mjs     2884 checks passed, 0 failed
+python3 tools/build.py    21 pages into editorial/
+python3 tools/check_site.py  PASS
+```
+
+### Negative tests (a gate that cannot fail is not a gate)
+
+| Test | Expected | Observed |
+|---|---|---|
+| Delete a referenced illustration | fail | `FAIL … image file exists …` , exit 1 |
+| Remove the canonical link from a built page | fail | `FAIL /404.html: has a canonical URL`, exit 1 |
+| (earlier passes) remove `sponsored`, break an internal link, add a currency amount | fail | fail |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-023 | The gate checked links and disclosure but not images, canonical URLs, heading counts or title lengths | resolved |
+| FLG-024 | CI asserted that `docs/` matched a fresh build; `docs/` does not exist, so the check was vacuous | resolved |
+| FLG-025 | `EXECUTIVE-SUMMARY.md` and `QA-BRIEF.md` said four of five links resolved, contradicting the register | resolved |
+| FLG-026 | `/editorial/` and `/legacy/` were indexable next to the root publication | mitigated, owner confirmation pending |
+
+## Cross-scope edits (logged, not silent)
+
+1. **`tools/build.py` — one meta tag.** The archive publication's `<head>` now emits
+   `noindex,nofollow` instead of `index,follow`, with a one-line comment pointing at decision S-16.
+   No archive content, register or layout was changed. Regenerating the archive was required to make
+   CI's drift assertion meaningful.
+2. **`editorial/assets/site.css`.** Regenerated output of an earlier commit that had never been
+   committed with its build. Committing it removes a guaranteed CI failure. No rules were edited.
+
+## Decisions implemented without waiting (all reversible, no policy exposure)
+
+S-13 front page and design system · S-14 comparison page · S-15 product pages · S-16 one indexable site ·
+S-17 guide clusters. Each is documented on `/suggestions/` with what it cost.
+
+Nothing about pricing, testing claims, authors, imagery rights, analytics or the Associates account was
+decided here. Those stay open, and the decision board says so.
+
+## Completion record
+
+- Pull request: **filled in after the merge** (see below).
+- Merge result: see below.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`, status `built` before this pass.
+- Live check: see below.

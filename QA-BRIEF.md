@@ -1,5 +1,24 @@
 # Questions, answers, and the gaps between them
 
+> **Correction banner, added 2026-11-20 by session `arena/01b24e2e-affil3`. Read this before Part 1.**
+>
+> Two statements below no longer match the register, and one class of source does not meet the site's
+> own citation rule. Nothing was deleted; the original text is kept so the change is auditable.
+>
+> | Statement in this file | Current position | Evidence |
+> |---|---|---|
+> | Row 5: link 4 "goes to an interstitial; catalog search for the code returns no results" | **Superseded.** `link.amazon/B0c8moW59` resolved to `amazon.com/dp/B0DHZTCNR5`, a ThermoMaven thermometer, on two separate fetches on 2026-11-20 | [observed listing](https://www.amazon.com/dp/B0DHZTCNR5) · FLG-022 |
+> | "Four of five resolve" anywhere in this file | **Superseded.** All five resolve | [shop register](https://karagemop466-tech.github.io/Affil3/shop/) |
+> | Rows 1-4: manufacturer model numbers (RJ38-SQPF-3TDB-2W, 4-00675-02A-VN, RJ38-SQSS-8T) | **Not re-verified in this pass.** They are carried forward from earlier sessions and are not used anywhere on the published site. Treat them as unverified until the manufacturer page is read and linked | — |
+>
+> The claim that the supplied links carry no `tag=` parameter remains correct and was confirmed again
+> today on all five destinations.
+>
+> The authoritative version of every product row is
+> [`data/products.json`](data/products.json) and [`data/register/products.json`](data/register/products.json);
+> where this brief and a register disagree, the register wins.
+
+
 A decision brief. Read this before changing anything on the site.
 
 **Rule for this document:** if a question has no official source behind it, the answer is
