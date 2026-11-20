@@ -4,7 +4,7 @@
 
 ## What was delivered
 
-- A static, publication-style site (23 pages): front page led by the five submitted products, a shop table with every row and its sources, four category clusters, five question-led guides, RSS feed, sitemap and robots.txt. Source: `docs/`, built from `data/`.
+- A static, publication-style site (23 pages): front page led by the five submitted products, a shop table with every row and its sources, four category clusters, five question-led guides, RSS feed, sitemap and robots.txt. Built from `data/` into the repository root (GitHub Pages serves `main` at `/`).
 - Dashboards linked from the footer: executive summary, shop table, categories, source register, questions and gaps, suggestions (choose a path), flagged for review, campaign ledger (empty), measurement, compliance and gates, about.
 - Disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Associates Operating Agreement §5 ([S01](https://affiliate-program.amazon.com/help/operating/agreement)).
 - Automated publishing gate (`tools/verify.mjs`, 1,265 checks) and a privacy-preserving click counter with a self-hostable collector.

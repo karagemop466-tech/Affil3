@@ -133,7 +133,7 @@
 </section>
 <section class="flag-card" id="FLG-017">
   <p class="flag-head"><span class="badge flag">FLG-017</span> <span class="badge sev-medium">medium</span> <strong>Parallel sessions claim the same task on separate branches</strong></p>
-  <p>Five other arena/*-affil3 branches on origin each claim the same overall task and each has its own COORDINATION.md. They were read (not modified) to check for overlap. Merging them to main will conflict. This branch builds in docs/ and uses its own file names to limit collisions, but a single integration branch should be chosen by the user.</p>
+  <p>Five other arena/*-affil3 branches on origin each claim the same overall task and each has its own COORDINATION.md. They were read (not modified) to check for overlap. Merging them to main will conflict. This branch builds at the repository root and uses its own file names to limit collisions, but a single integration branch should be chosen by the user. The other session&#39;s site (PR #1) is preserved unchanged at legacy/arena-83a43a96/ and is not linked from this site.</p>
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
   <p class="small"><strong>Manual step:</strong> Choose which branch becomes the integration branch, or close the others.</p>
 </section>
@@ -148,6 +148,12 @@
   <p>The brief asks for session-&lt;id&gt;/&lt;task&gt; branches. This session may only work on its assigned branch, arena/6249757a-affil3, so all work is committed there and the PR is opened from it.</p>
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
   <p class="small"><strong>Manual step:</strong> None unless you want a different naming policy.</p>
+</section>
+<section class="flag-card" id="FLG-020">
+  <p class="flag-head"><span class="badge flag">FLG-020</span> <span class="badge sev-high">high</span> <strong>GitHub Pages source could not be changed from this session</strong></p>
+  <p>The sandbox token returned HTTP 403 (&#39;Resource not accessible by integration&#39;) when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings &gt; Pages.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Optional: if you prefer the site under /docs, change Settings &gt; Pages &gt; Source to main /docs, then remove the root copies.</p>
 </section>
 </main>
 <footer class="site-footer">

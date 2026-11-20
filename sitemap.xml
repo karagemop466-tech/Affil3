@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://karagemop466-tech.github.io/Affil3/index.html</loc><lastmod>2026-11-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/products.html</loc><lastmod>2026-11-20</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/index.html</loc><lastmod>2026-11-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-basket-oven.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-capacity-checklist.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-cleanup-counter-space.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/multi-function-appliance-questions.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/disclosure.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/privacy.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/about.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://karagemop466-tech.github.io/Affil3/flagged.html</loc><lastmod>2026-11-20</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/shop/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/categories/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/categories/air-fryers/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/categories/air-fryer-ovens/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/categories/cooking-thermometers/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/categories/unresolved/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/guides/is-your-meat-thermometer-telling-you-the-right-number/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/executive-summary/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/sources/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/questions/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/suggestions/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/flagged/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/ledger/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/measurement/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/compliance/</loc><lastmod>2026-11-20</lastmod></url>
+  <url><loc>https://karagemop466-tech.github.io/Affil3/about/</loc><lastmod>2026-11-20</lastmod></url>
 </urlset>

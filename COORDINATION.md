@@ -56,11 +56,11 @@ Shared board for work on `karagemop466-tech/Affil3`. Claim a task by writing the
 | --- | --- | --- | --- | --- |
 | T1 | Source register and product-intent confirmation record (5 submitted links) | done (verified checks logged below) | `6249757a` | `data/products.json`, `data/sources.json`, `data/flags.json` |
 | T2 | Platform tooling: build, verification gate, collector | done | `6249757a` | `tools/build.mjs`, `tools/verify.mjs`, `tools/collector.mjs`, `package.json`, `.gitignore` |
-| T3 | Site design, templates, disclosure strip, nav, footer dashboards | done | `6249757a` | `assets/style.css`, `tools/build.mjs`, `docs/` |
-| T4 | Question-led guides and category clusters | done | `6249757a` | `data/guides.json`, `docs/guides/`, `docs/categories/` |
-| T5 | Measurement: click counter, five events, self-hosted endpoint | done (inactive on live site until endpoint set; FLG-009) | `6249757a` | `assets/analytics.js`, `tools/collector.mjs`, `data/events.json`, `data/config.json` |
+| T3 | Site design, templates, disclosure strip, nav, footer dashboards | done | `6249757a` | `src/assets/style.css`, `tools/build.mjs`, generated site at root |
+| T4 | Question-led guides and category clusters | done | `6249757a` | `data/guides.json`, generated `guides/`, `categories/` |
+| T5 | Measurement: click counter, five events, self-hosted endpoint | done (inactive on live site until endpoint set; FLG-009) | `6249757a` | `src/assets/analytics.js`, `tools/collector.mjs`, `data/events.json`, `data/config.json` |
 | T6 | Decision board: suggestions, questions, flagged-for-review, ledger | done | `6249757a` | `data/suggestions.json`, `data/questions.json`, `data/flags.json`, `data/ledger.json` |
-| T7 | Integration: sitemap, feed, robots, verification, PR, merge, Pages deploy | in progress (merge conflict resolved; see merge log) | `6249757a` | `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt`, `EXECUTIVE_SUMMARY.md`, `README.md`, this file |
+| T7 | Integration: sitemap, feed, robots, verification, PR, merge, Pages deploy | in progress (see merge log) | `6249757a` | `sitemap.xml`, `feed.xml`, `robots.txt`, `EXECUTIVE_SUMMARY-6249757a.md`, `README.md`, `legacy/` (move only), this file |
 
 ## Work log
 
@@ -91,17 +91,18 @@ Third-party pages were consulted only to check that the ASIN and affiliate-link 
 
 ## Irregularities (all published on `/flagged/`)
 
-FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003 short-link compliance unresolved · FLG-004 checkpoint page · FLG-005 Special Links not validated in Associates Central (gate G-02) · FLG-006 account and declared site unknown · FLG-007 below the 10-post rule of thumb · FLG-008 five events not defined in the brief · FLG-009 analytics endpoint not deployed · FLG-010 disclosure visibility on phones needs manual check · FLG-011 tracking-ID ownership unconfirmed · FLG-012 no Amazon ASIN definition located · FLG-013 Search Console not connected · FLG-014 no named author · FLG-015 no product imagery · FLG-016 no prices or ratings recorded · FLG-017 overlapping session branches · FLG-018 starting repo had only a README · FLG-019 branch naming differs from brief.
+FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003 short-link compliance unresolved · FLG-004 checkpoint page · FLG-005 Special Links not validated in Associates Central (gate G-02) · FLG-006 account and declared site unknown · FLG-007 below the 10-post rule of thumb · FLG-008 five events not defined in the brief · FLG-009 analytics endpoint not deployed · FLG-010 disclosure visibility on phones needs manual check · FLG-011 tracking-ID ownership unconfirmed · FLG-012 no Amazon ASIN definition located · FLG-013 Search Console not connected · FLG-014 no named author · FLG-015 no product imagery · FLG-016 no prices or ratings recorded · FLG-017 overlapping session branches · FLG-020 Pages source change refused, site generated at root · FLG-018 starting repo had only a README · FLG-019 branch naming differs from brief.
 
 ## Merge log (2026-11-20)
 
 - Pull request #4 (`arena/6249757a-affil3` → `main`) was first refused: `main` had moved. Commit `db77ec4` (PR #1 from `arena/83a43a96-affil3`) added a root-level site (`index.html`, `products.html`, `guides/`, `about.html`, `privacy.html`, `disclosure.html`, `flagged.html`, `assets/css`, `assets/js`, `feed.xml`, `sitemap.xml`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md`).
 - Conflicts: `COORDINATION.md` and `EXECUTIVE_SUMMARY.md` (both added, add/add). Resolution: nothing from the other session was discarded. Their `COORDINATION.md` is kept verbatim with this session's board appended below it; their `EXECUTIVE_SUMMARY.md` is kept unchanged, and this session's summary is `EXECUTIVE_SUMMARY-6249757a.md`.
 - Their root-level site files are kept in the tree and history, unchanged.
-- Integration decision: GitHub Pages is switched from `main` at `/` to `main` at `/docs`, so the live site is this session's integrated build (one site, one navigation, one set of dashboards). The root-level site from PR #1 is no longer what Pages serves. To restore it, change the Pages source back to `main` at `/`. This decision is listed under FLG-017.
+- **Pages source change refused (HTTP 403).** Switching Pages to `main` at `/docs` failed with "Resource not accessible by integration". Pages stays on `main` at `/`, so the integrated site is generated at the repository root.
+- **Integration decision.** The PR #1 root site was moved, unchanged and with its relative links, to `legacy/arena-83a43a96/` with `git mv`. Nothing was deleted. This session's build now owns the root paths listed in `tools/build.mjs` (`OWNED`) and replaces only those. Other files, including both COORDINATION and EXECUTIVE_SUMMARY files, are left alone. See FLG-017 and FLG-020.
 
 ## Completion record
 
 - Pull request: _pending_
 - Merge result: _pending_
-- GitHub Pages deploy: _pending_ (Pages source is currently `main` at `/`; it must be switched to `main` at `/docs` after merge so the live site serves `docs/`)
+- GitHub Pages deploy: _pending_ (source `main` at `/`; deploy confirmed after the follow-up merge)
