@@ -1,0 +1,34 @@
+[
+  {
+    "id": "G-01",
+    "working_title": "Basket or oven-style air fryer: what should you compare?",
+    "status": "Planned. Not drafted. Hypothesis only (FLG-011).",
+    "buyer_question": "Which format fits how I cook?",
+    "needs_before_drafting": ["Verified format and size for each listing (FLG-012)", "Demand data (SUG-04)"],
+    "data_available": "Listing titles name the format: 'Dual Basket' (P01), 'French Door Multi-Function Air Fryer Toaster Oven' (P02), '8 Qt' air fryer (P04)."
+  },
+  {
+    "id": "G-02",
+    "working_title": "A no-hype checklist for comparing air fryer capacity",
+    "status": "Planned. Not drafted. Hypothesis only (FLG-011).",
+    "buyer_question": "Is the capacity figure on the listing the one I need?",
+    "needs_before_drafting": ["Verified capacity from each product information table", "Owner choice on data source (SUG-05)"],
+    "data_available": "Capacity as stated in titles: 6 Quart (P01), 26QT (P02), 8 Qt (P04)."
+  },
+  {
+    "id": "G-03",
+    "working_title": "How to assess cleanup and counter-space trade-offs",
+    "status": "Planned. Not drafted. Hypothesis only (FLG-011).",
+    "buyer_question": "What will I have to clean, and where will it sit?",
+    "needs_before_drafting": ["Verified dimensions and dishwasher-safe statements per listing (FLG-012)"],
+    "data_available": "Titles state 'Dishwasher Safe' or 'Dishwasher-Safe' for P01 and P04 baskets; no dimensions observed."
+  },
+  {
+    "id": "G-04",
+    "working_title": "Questions to ask before buying a multi-function kitchen appliance",
+    "status": "Planned. Not drafted. Hypothesis only (FLG-011).",
+    "buyer_question": "What should I check before I buy?",
+    "needs_before_drafting": ["Owner review of the checklist approach", "Verified function lists per listing"],
+    "data_available": "Titles state these functions (as stated in title, FLG-012): '24 One-Touch Preset Options' (P02), '4-in-1' TurboFry (P04), 'Hi-Fry' (P01, P04)."
+  }
+]

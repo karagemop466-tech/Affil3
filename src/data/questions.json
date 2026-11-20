@@ -1,0 +1,74 @@
+[
+  {
+    "id": "Q-01",
+    "question": "Is each supplied short link the product the owner intended?",
+    "known": "The five supplied codes are 9 characters. Each short link resolved to a different Amazon listing (four product pages, one checkpoint).",
+    "missing": "The intended ASIN or product for each link.",
+    "how_to_obtain": "Owner confirms each product. Record it in src/data/products.json as intended_asin with a source.",
+    "blocks": "Intended ASIN fields; FLG-002, FLG-004, FLG-005"
+  },
+  {
+    "id": "Q-02",
+    "question": "Are the supplied short links acceptable outbound links for an Associates site, or must they be replaced by Special Links?",
+    "known": "The Operating Agreement requires links to use Amazon's tagged 'Special Link' formats (SRC-OA, Section 1). None of the observed redirect URLs includes tag=shopnow047c-20.",
+    "missing": "The result of an Associates test: destination, and whether the click appears in the tracking report under the Tracking ID.",
+    "how_to_obtain": "Owner runs the test for one link per product in the enrolled Associates account (the workflow the brief describes). Record the result and date in COORDINATION.md.",
+    "blocks": "All outbound links (FLG-003)"
+  },
+  {
+    "id": "Q-03",
+    "question": "Is the Tracking ID shopnow047c-20 active on an Associates account, and which site is registered to it?",
+    "known": "The Tracking ID was supplied in the brief. It has not been checked.",
+    "missing": "Confirmation from the Associates account, and the registered site URL.",
+    "how_to_obtain": "Owner checks the Associates account settings.",
+    "blocks": "Commission attribution (FLG-009)"
+  },
+  {
+    "id": "Q-04",
+    "question": "What are the current price, rating and availability for each listing?",
+    "known": "The listing pages were reached, but these fields were not present in the extracted page text.",
+    "missing": "Price, rating and availability per ASIN, with date.",
+    "how_to_obtain": "Manual check of each listing, or an authorised data source approved by the owner. Do not infer from carousels (FLG-006).",
+    "blocks": "Price columns; any pricing analysis"
+  },
+  {
+    "id": "Q-05",
+    "question": "Which register of sources does the brief refer to (S01, S07, S24, SG-27 to SG-30, FLG-003)?",
+    "known": "These IDs are not in the repository.",
+    "missing": "The register file, or confirmation that this site's source register replaces it.",
+    "how_to_obtain": "Owner provides the file or confirms (FLG-001).",
+    "blocks": "Mapping of brief-referenced sources"
+  },
+  {
+    "id": "Q-06",
+    "question": "What are the five analytics events the brief refers to, and where may analytics data be stored?",
+    "known": "The brief asks for a privacy-preserving click counter, a self-hosted endpoint and five events. None are defined in the repo.",
+    "missing": "Event names and definitions; hosting for an endpoint; privacy policy requirements.",
+    "how_to_obtain": "Owner decides on SUG-03 and provides the event list.",
+    "blocks": "Click and conversion measurement (FLG-007)"
+  },
+  {
+    "id": "Q-07",
+    "question": "Who signs off the disclosure and endorsement wording before publication?",
+    "known": "The Operating Agreement requires the exact statement 'As an Amazon Associate I earn from qualifying purchases.' (SRC-OA, Section 5). 16 CFR 255.5 covers disclosure of material connections (SRC-ECFR-255-5).",
+    "missing": "A named reviewer, and a decision on link-level wording (for example 'Sponsored link').",
+    "how_to_obtain": "Owner names a reviewer. The site currently uses the exact statement and 'Sponsored link' labels.",
+    "blocks": "Compliance gate sign-off"
+  },
+  {
+    "id": "Q-08",
+    "question": "What is the publishing cadence for guides?",
+    "known": "No cadence is set. The brief asks for one.",
+    "missing": "Frequency and reviewer capacity.",
+    "how_to_obtain": "Owner chooses an option in SUG-04.",
+    "blocks": "Content calendar"
+  },
+  {
+    "id": "Q-09",
+    "question": "Which product categories and niches should the site cover next?",
+    "known": "The five supplied products are three air fryers, one thermometer, and one unclassified link.",
+    "missing": "Niche selection criteria and the niche list. No demand, competition or commission data has been collected.",
+    "how_to_obtain": "Owner sets criteria; data needs an authorised source (see SUG-06).",
+    "blocks": "Niche selection and any ranking of products"
+  }
+]

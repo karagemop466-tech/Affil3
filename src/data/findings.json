@@ -1,0 +1,65 @@
+[
+  {
+    "id": "F-01",
+    "finding": "None of the five supplied codes is a 10-character ASIN. All are 9 characters.",
+    "evidence": "Code length check on the supplied links; official Amazon product URLs use 10-character ASINs.",
+    "sources": ["SRC-LINK-01", "SRC-AMZ-01", "SRC-ASIN-NAME"],
+    "flag": "FLG-002"
+  },
+  {
+    "id": "F-02",
+    "finding": "Four of five short links resolved to Amazon product pages. One (P03) reached a checkpoint page.",
+    "evidence": "Fetch results for each link.amazon short link.",
+    "sources": ["SRC-LINK-01", "SRC-LINK-02", "SRC-LINK-03", "SRC-LINK-04", "SRC-LINK-05"],
+    "flag": "FLG-005"
+  },
+  {
+    "id": "F-03",
+    "finding": "None of the four observed product redirect URLs contains tag=shopnow047c-20.",
+    "evidence": "Full observed URLs contain only Amazon tracking parameters (lv, btn_ref, channelId, plpRedirect).",
+    "sources": ["SRC-AMZ-01", "SRC-AMZ-02", "SRC-AMZ-04", "SRC-AMZ-05"],
+    "flag": "FLG-003"
+  },
+  {
+    "id": "F-04",
+    "finding": "The Associates Operating Agreement requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to appear clearly and prominently on the site.",
+    "evidence": "Section 5 of the agreement, read in full.",
+    "sources": ["SRC-OA"],
+    "flag": ""
+  },
+  {
+    "id": "F-05",
+    "finding": "Google recommends rel=\"sponsored\" for advertisements and paid placements, which include affiliate links. Several values may be combined.",
+    "evidence": "Google Search Central, 'Qualify your outbound links to Google'.",
+    "sources": ["SRC-GOOG-QOL"],
+    "flag": ""
+  },
+  {
+    "id": "F-06",
+    "finding": "16 CFR 255.5 covers disclosure of material connections between advertisers and endorsers.",
+    "evidence": "eCFR section title, current as of 11/18/2026.",
+    "sources": ["SRC-ECFR-255-5"],
+    "flag": ""
+  },
+  {
+    "id": "F-07",
+    "finding": "No price, rating or availability could be confirmed from the listing pages reached.",
+    "evidence": "Fields absent from the extracted text of each product page.",
+    "sources": ["SRC-AMZ-01", "SRC-AMZ-02", "SRC-AMZ-04", "SRC-AMZ-05"],
+    "flag": "FLG-006"
+  },
+  {
+    "id": "F-08",
+    "finding": "The repository was empty at the start (README only). No register, board or data existed.",
+    "evidence": "git ls-files at commit 847ae37.",
+    "sources": [],
+    "flag": "FLG-010"
+  },
+  {
+    "id": "F-09",
+    "finding": "GitHub Pages can be published from a GitHub Actions workflow.",
+    "evidence": "GitHub Docs: 'Publishing with a custom GitHub Actions workflow'.",
+    "sources": ["SRC-GHP-PUBLISH"],
+    "flag": ""
+  }
+]

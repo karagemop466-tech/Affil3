@@ -1,0 +1,146 @@
+[
+  {
+    "id": "SRC-LINK-01",
+    "title": "Supplied short link P01 (link.amazon/B04G1MEwY)",
+    "publisher": "Amazon (link.amazon short-link domain)",
+    "url": "https://link.amazon/B04G1MEwY",
+    "accessed": "2026-11-20",
+    "method": "Fetched; redirect followed to amazon.com",
+    "used_for": "Confirmation that the supplied link resolves to an Amazon listing; observed redirect target"
+  },
+  {
+    "id": "SRC-LINK-02",
+    "title": "Supplied short link P02 (link.amazon/B02NbDxp3)",
+    "publisher": "Amazon (link.amazon short-link domain)",
+    "url": "https://link.amazon/B02NbDxp3",
+    "accessed": "2026-11-20",
+    "method": "Fetched; redirect followed to amazon.com",
+    "used_for": "Observed redirect target"
+  },
+  {
+    "id": "SRC-LINK-03",
+    "title": "Supplied short link P03 (link.amazon/B00hJ57DV)",
+    "publisher": "Amazon (link.amazon short-link domain)",
+    "url": "https://link.amazon/B00hJ57DV",
+    "accessed": "2026-11-20",
+    "method": "Fetched twice; both times redirected to an Amazon checkpoint page ('To continue, please click the Continue shopping button'). No product page reached.",
+    "used_for": "Unresolved; flagged FLG-005"
+  },
+  {
+    "id": "SRC-LINK-04",
+    "title": "Supplied short link P04 (link.amazon/B0c8moW59)",
+    "publisher": "Amazon (link.amazon short-link domain)",
+    "url": "https://link.amazon/B0c8moW59",
+    "accessed": "2026-11-20",
+    "method": "Fetched; redirect followed to amazon.com",
+    "used_for": "Observed redirect target"
+  },
+  {
+    "id": "SRC-LINK-05",
+    "title": "Supplied short link P05 (link.amazon/B0f3GKalj)",
+    "publisher": "Amazon (link.amazon short-link domain)",
+    "url": "https://link.amazon/B0f3GKalj",
+    "accessed": "2026-11-20",
+    "method": "Fetched; redirect followed to amazon.com",
+    "used_for": "Observed redirect target"
+  },
+  {
+    "id": "SRC-AMZ-01",
+    "title": "Amazon.com product page B0CDY277D3 (observed as P01 redirect target)",
+    "publisher": "Amazon.com",
+    "url": "https://www.amazon.com/dp/B0CDY277D3",
+    "accessed": "2026-11-20",
+    "method": "Fetched (page title, breadcrumb, ASIN in URL). Price, rating and availability not present in extracted text.",
+    "used_for": "Title, breadcrumb, observed ASIN"
+  },
+  {
+    "id": "SRC-AMZ-02",
+    "title": "Amazon.com product page B09B7SB46R (observed as P02 redirect target)",
+    "publisher": "Amazon.com",
+    "url": "https://www.amazon.com/dp/B09B7SB46R",
+    "accessed": "2026-11-20",
+    "method": "Fetched (page title, breadcrumb, ASIN in URL). Price, rating and availability not present in extracted text.",
+    "used_for": "Title, breadcrumb, observed ASIN"
+  },
+  {
+    "id": "SRC-AMZ-04",
+    "title": "Amazon.com product page B08DKYBTPH (observed as P04 redirect target)",
+    "publisher": "Amazon.com",
+    "url": "https://www.amazon.com/dp/B08DKYBTPH",
+    "accessed": "2026-11-20",
+    "method": "Fetched (page title, breadcrumb, ASIN in URL). Price, rating and availability not present in extracted text.",
+    "used_for": "Title, breadcrumb, observed ASIN"
+  },
+  {
+    "id": "SRC-AMZ-05",
+    "title": "Amazon.com product page B0DZFD6R9Z (observed as P05 redirect target)",
+    "publisher": "Amazon.com",
+    "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+    "accessed": "2026-11-20",
+    "method": "Fetched (page title, breadcrumb, ASIN in URL). Price, rating and availability not present in extracted text.",
+    "used_for": "Title, breadcrumb, observed ASIN"
+  },
+  {
+    "id": "SRC-OA",
+    "title": "Associates Program Operating Agreement (Updated October 15, 2025)",
+    "publisher": "Amazon Associates (Amazon.com Associates Central)",
+    "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+    "accessed": "2026-11-20",
+    "method": "Fetched chunks 0-1 of 4. Section 1 (Special Links), Section 2, Section 5 (Identifying Yourself as an Associate) read in full; remaining sections not yet reviewed.",
+    "used_for": "Required Associates statement; Special Links definition"
+  },
+  {
+    "id": "SRC-PP",
+    "title": "Associates Program Policies (Updated April 14, 2026)",
+    "publisher": "Amazon Associates (Amazon.com Associates Central)",
+    "url": "https://affiliate-program.amazon.com/help/operating/policies",
+    "accessed": "2026-11-20",
+    "method": "Fetched chunk 0 of 11 only. Commission Income Statement section 1 (qualifying purchases) read; remaining chunks NOT yet reviewed.",
+    "used_for": "Partial. Link-format and commission rules still need manual review (FLG-008)."
+  },
+  {
+    "id": "SRC-GOOG-QOL",
+    "title": "Qualify your outbound links to Google (Google Search Central)",
+    "publisher": "Google for Developers",
+    "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+    "accessed": "2026-11-20",
+    "method": "Fetched. Page 'Last updated 2025-12-10 UTC'.",
+    "used_for": "rel=\"sponsored\" for affiliate and paid links; multiple values allowed"
+  },
+  {
+    "id": "SRC-ECFR-255-5",
+    "title": "16 CFR 255.5 — Disclosure of material connections",
+    "publisher": "U.S. Federal Trade Commission, via eCFR (authoritative but unofficial)",
+    "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5",
+    "accessed": "2026-11-20",
+    "method": "Fetched. Section title and citation confirmed; eCFR states 'up to date as of 11/18/2026'. Full section text not extracted.",
+    "used_for": "Requirement to disclose material connections between advertiser and endorser"
+  },
+  {
+    "id": "SRC-ECFR-PART-255",
+    "title": "16 CFR Part 255 — Guides Concerning Use of Endorsements and Testimonials in Advertising",
+    "publisher": "U.S. Federal Trade Commission, via eCFR",
+    "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
+    "accessed": "2026-11-20",
+    "method": "Seen in search results (eCFR section pages); section 255.0 and 255.1 snippets reviewed. Not fetched in full.",
+    "used_for": "Endorsement context; consumer endorsement substantiation"
+  },
+  {
+    "id": "SRC-GHP-PUBLISH",
+    "title": "Configuring a publishing source for your GitHub Pages site",
+    "publisher": "GitHub Docs",
+    "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site",
+    "accessed": "2026-11-20",
+    "method": "Fetched. Describes 'GitHub Actions' publishing source and workflow-based deployment.",
+    "used_for": "Hosting method for this site"
+  },
+  {
+    "id": "SRC-ASIN-NAME",
+    "title": "Amazon Seller Central — Prepare to sell (references ASIN as 'Amazon Standard Identification Number')",
+    "publisher": "Amazon Seller Central (sell.amazon.com)",
+    "url": "https://sell.amazon.com/learn/prepare-to-sell",
+    "accessed": "2026-11-20",
+    "method": "Seen in search results only (snippet). Not fetched. Confirms the ASIN term and expansion.",
+    "used_for": "Expansion of 'ASIN'. 10-character format not stated in this snippet (FLG-013)."
+  }
+]

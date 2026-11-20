@@ -1,0 +1,90 @@
+[
+  {
+    "id": "SUG-01",
+    "title": "Design direction: publication front page (not a catalogue or a report)",
+    "recommendation": "Lead with the products, then guides. Keep the verification process one click away. Use editorial type, a clear grid, and no generated-looking filler.",
+    "rationale": "The brief asks the site to read as a polished affiliate publication. Process and audit content should sit behind the product listings.",
+    "options": [
+      {"id": "A", "label": "Publication front page (current build)", "pros": "Products first; verification in the nav", "cons": "Needs real photography later (licensing not reviewed)"},
+      {"id": "B", "label": "Shop catalogue with filters", "pros": "Good for price and filter-based browsing", "cons": "Needs verified price data first (Q-04)"},
+      {"id": "C", "label": "Audit-first dashboard (current pages as-is)", "pros": "Transparent", "cons": "Reads as an audit, not a shop; the brief rejects this"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-02",
+    "title": "Outbound link strategy",
+    "recommendation": "Keep the supplied short links, marked sponsored, until the Associates test (Q-02) is complete. Then replace each one with a validated Special Link, product by product.",
+    "rationale": "Changing links before the test risks breaking attribution. The current short links are not declared invalid (FLG-003).",
+    "options": [
+      {"id": "A", "label": "Keep supplied short links now; test and replace later (current build)", "pros": "No change before the test", "cons": "Attribution unconfirmed for now"},
+      {"id": "B", "label": "Replace now with listing URLs plus the Tracking ID", "pros": "Explicit tag", "cons": "Uses ASINs not confirmed by the owner (Q-01); not a tested Special Link"},
+      {"id": "C", "label": "Drop products without a confirmed ASIN until Q-01 is answered", "pros": "Only confirmed products are shown", "cons": "Leaves P03 out and reduces the catalogue to four items"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-03",
+    "title": "Analytics and click measurement",
+    "recommendation": "Choose a hosting method for an endpoint before adding any tracking. A static site cannot run a self-hosted endpoint.",
+    "rationale": "Without measurement, guide topics cannot be chosen from data (SUG-04). Privacy rules depend on the tool chosen.",
+    "options": [
+      {"id": "A", "label": "No tracking yet (current build)", "pros": "No consent or privacy work needed", "cons": "No click or conversion data"},
+      {"id": "B", "label": "Self-hosted endpoint on a separate server", "pros": "Full control of data", "cons": "Requires hosting outside GitHub Pages and a privacy policy"},
+      {"id": "C", "label": "Privacy-focused hosted analytics", "pros": "Quick setup", "cons": "Third-party processing; check its terms and disclosure needs"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-04",
+    "title": "Publishing cadence and topic selection",
+    "recommendation": "Publish one guide every two weeks for the first eight weeks. Choose each next topic from measured clicks and searches, not instinct.",
+    "rationale": "The four working titles are hypotheses (FLG-011). Choosing topics from data is what the brief asks for.",
+    "options": [
+      {"id": "A", "label": "Weekly", "pros": "Faster learning", "cons": "Needs more reviewer time"},
+      {"id": "B", "label": "Every two weeks (suggested)", "pros": "Time to check each claim", "cons": "Slower learning"},
+      {"id": "C", "label": "Monthly", "pros": "Lowest review load", "cons": "Little signal in a short period"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-05",
+    "title": "Product data source",
+    "recommendation": "Record price, rating and availability from an authorised source with a date, for each ASIN, before any comparison.",
+    "rationale": "These fields are currently blank (FLG-006). A comparison without them would be a guess.",
+    "options": [
+      {"id": "A", "label": "Manual check, dated, per listing", "pros": "No new access needed", "cons": "Slow; limited to five listings"},
+      {"id": "B", "label": "Official Associates product data access, if the account qualifies", "pros": "Machine-readable, official", "cons": "Eligibility and terms must be checked first (not verified in this session)"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-06",
+    "title": "Niche and product expansion",
+    "recommendation": "Set written selection criteria (for example: source-verified specifications, a clear buyer question, a relevant Associates category) before adding products.",
+    "rationale": "The brief asks for niche research, but no demand, competition or commission data exists yet.",
+    "options": [
+      {"id": "A", "label": "Stay with the five supplied products", "pros": "No new research", "cons": "Narrow catalogue"},
+      {"id": "B", "label": "Add a small set of kitchen products after criteria are agreed", "pros": "Builds on the air fryer theme", "cons": "Needs data (Q-09)"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  },
+  {
+    "id": "SUG-07",
+    "title": "Imagery",
+    "recommendation": "Use owner-licensed photography or the product images allowed by the Associates program, after a licensing check. Until then, use typographic cards.",
+    "rationale": "Stock or scraped images are a rights risk. The rights terms for Amazon-supplied images must be checked in the Program Policies (SRC-PP, not fully reviewed).",
+    "options": [
+      {"id": "A", "label": "Typographic cards (current build)", "pros": "No rights risk", "cons": "Less visual"},
+      {"id": "B", "label": "Program-supplied images after review", "pros": "Product-accurate", "cons": "Terms review pending (FLG-008)"}
+    ],
+    "status": "Awaiting owner choice",
+    "decision": null
+  }
+]
