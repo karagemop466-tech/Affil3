@@ -1583,4 +1583,8 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 
 ## Completion record
 
-- PR and merge result: recorded below after the PR is created and merged in this session.
+- **PR #55** — https://github.com/karagemop466-tech/Affil3/pull/55 — "First-hand re-check of short links and product pages; stale S05 note corrected; FLG-036"
+- **Merge result: MERGED** into `main` as merge commit `bb09d259f4c58b87fa68b77ba1f39b9168872a8c` on 2026-11-20T06:44:18Z (`gh pr merge 55 --merge`; all nine CI checks SUCCESS before merge).
+- **GitHub Pages:** source `main` at `/`; build for `bb09d25` reported `built`. Live check via fetch: https://karagemop466-tech.github.io/Affil3/flagged/ serves FLG-036 and the disclosure strip above the fold.
+- **Follow-up:** this log entry was added in a separate log-only PR (see the next PR number in the commit message); no content changed.
+- **Not done in this session:** no claim that any short link is valid or invalid; no intended ASIN set; Associates Central test (G-02) still pending the owner.
