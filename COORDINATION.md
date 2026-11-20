@@ -1649,3 +1649,15 @@ Not claimed or done in this session (no owner confirmation, login, or measured d
 Associates Central Special Link test (gate G-02), intended-ASIN confirmation per row (FLG-002),
 Search Console verification (FLG-013), named author (FLG-014), site-name decision (DX-6), analytics deployment
 (GitHub Pages cannot run the collector; FLG-009). These stay flagged and do not block publication.
+
+### Scope extension (session `0e102530-affil3`, 2026-11-20)
+
+The original claim did not list `src/assets/img/`. It is now in scope, and the reason is recorded here
+rather than assumed: `assets/img/` at the repository root is **generated** — `tools/build.mjs` deletes it
+and re-copies it from `src/assets/img/` on every build — so `src/assets/img/` is the only place an image
+can actually be changed. Files added or changed in that folder: the two new guide illustrations
+(`guide-dual-vs-single-basket.jpg`, `guide-watts-and-degrees.jpg`) and six existing PNGs re-encoded to a
+256-colour palette, which cut each from 3.3–4.0 MB to 0.9–1.1 MB with no visible change to the artwork
+(pixel RMSE 0.012 on the measured file). No image path, file name or artwork was changed, so no page
+reference moved. The generated `assets/img/` copy is refreshed by the build, not hand-edited.
+
