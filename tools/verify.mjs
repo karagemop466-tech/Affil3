@@ -17,11 +17,13 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const questions = read('data/questions.json');
+const suggestionsDoc = read('data/suggestions.json');
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
 const ALLOWED_SOURCE_HOSTS = new Set([
-  'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
+  'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'advertising.amazon.com', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
   'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
   // Added 2026-11-20 (session 197d4f9e-affil3): ThermoMaven is the maker of a submitted
@@ -109,7 +111,11 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   };
   const sitemap = fs.readFileSync(path.join(DOCS, 'sitemap.xml'), 'utf8');
   const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  const pageUrls = htmlFiles.filter((f) => path.basename(f) !== '404.html').map((f) => cfg.siteUrl + rel(f).replace(/index\.html$/, ''));
+  // Pages that carry noindex are deliberately excluded from the public sitemap; everything else must be in it.
+  const pageUrls = htmlFiles
+    .filter((f) => path.basename(f) !== '404.html')
+    .filter((f) => !/name="robots"[^>]*noindex/.test(fs.readFileSync(f, 'utf8')))
+    .map((f) => cfg.siteUrl + rel(f).replace(/index\.html$/, ''));
 
   for (const f of htmlFiles) {
     const html = fs.readFileSync(f, 'utf8');
@@ -188,8 +194,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   }
   // ---- editorial requirements unique to this build ----
   const home = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
-  check('home page leads with products, not the audit trail', /class="picks"/.test(home) && home.indexOf('class="picks"') < home.indexOf('What this site is'));
-  check('home page carries a hero image with alt text', /class="hero-figure"[\s\S]*?<img [^>]*alt="[^"]+"/.test(home));
+  // Only links inside the reader-facing body count; the masthead and footer are navigation.
+  const homeMain = (home.match(/<main id="main"[\s\S]*?<\/main>/) || [''])[0];
+  // The front page must sell before it explains itself: the first buy button and the product
+  // grid both have to appear before the first link to any process, flag or register page.
+  const firstShop = homeMain.indexOf('class="shop-grid"');
+  const firstBuy = homeMain.indexOf('data-outbound');
+  const firstProcess = Math.min(...['/flagged/', '/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/compliance/', '/workflow/']
+    .map((u) => { const i = homeMain.indexOf(base + u); return i < 0 ? Infinity : i; }));
+  check('home page puts the products before any process or register link', firstShop > 0 && firstBuy > 0 && firstShop < firstProcess && firstBuy < firstProcess,
+    `shop@${firstShop} buy@${firstBuy} process@${firstProcess}`);
+  check('home page opens with the five products in one grid', (home.match(/<article class="product-card/g) || []).length === products.length);
+  check('home page carries a hero image with alt text', /class="hero-shop-art"[\s\S]*?<img [^>]*alt="[^"]+"/.test(home));
+  check('home page names a live-price policy instead of printing a price', /Check price on Amazon/.test(home));
+
   for (const p of products) {
     const f = path.join(DOCS, 'products', p.slug, 'index.html');
     check(`product page exists for ${p.id}`, fs.existsSync(f), p.slug);
@@ -229,6 +247,50 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
+  // ---- one indexable site, and a decision board that is actually answerable ----
+  const robotsTxt = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
+  for (const d of ['/editorial/', '/legacy/', '/crisp-index/', '/counter/', '/counterwise/']) {
+    check(`robots.txt keeps archive ${d} out of the crawl`, robotsTxt.includes(`Disallow: ${d}`), d);
+  }
+  // Every archived edition on this domain must carry noindex in the page itself: robots.txt alone
+  // does not remove a URL from results (Google, S25).
+  for (const dir of ['crisp-index', 'counter', 'editorial']) {
+    const base2 = path.join(DOCS, dir);
+    if (!fs.existsSync(base2)) continue;
+    const files = [];
+    const walkA = (d) => { for (const f of fs.readdirSync(d)) { const q = path.join(d, f); if (fs.statSync(q).isDirectory()) walkA(q); else if (f.endsWith('.html')) files.push(q); } };
+    walkA(base2);
+    const missing = files.filter((f) => !/name="robots"[^>]*noindex/.test(fs.readFileSync(f, 'utf8')));
+    check(`${dir}/: every page carries noindex (${files.length} pages)`, missing.length === 0, missing.slice(0, 3).join(', '));
+  }
+  // A reader must be able to compare from more than one page.
+  const comparePage = path.join(DOCS, 'compare', 'index.html');
+  check('a compare page exists and is in the sitemap', fs.existsSync(comparePage) && sitemapUrls.includes(cfg.siteUrl + '/compare/'), '/compare/');
+  if (fs.existsSync(comparePage)) {
+    const cmp = fs.readFileSync(comparePage, 'utf8');
+    check('compare page carries a buy link per shoppable product', (cmp.match(/data-outbound/g) || []).length === products.filter((pr) => pr.tagged_outbound_url && !pr.no_buy_link).length);
+    check('compare page marks every unknown value instead of filling it', /not stated/.test(cmp));
+  }
+  // Decision board: every entry this pass authored must be answerable — options, a recommendation,
+  // a named current option, a confidence level, an effort estimate and a reply template.
+  for (const sug of suggestionsDoc.suggestions) {
+    check(`suggestion ${sug.id} has at least two options`, sug.options && sug.options.length >= 2, String(sug.options && sug.options.length));
+    check(`suggestion ${sug.id} states a recommendation`, !!sug.recommendation);
+    check(`suggestion ${sug.id} names the option currently in place`, !!(sug.options || []).find((o) => o.id === sug.current));
+    if (sug.plain_question) {
+      check(`suggestion ${sug.id} gives the owner something to reply with`, !!sug.prompt);
+      check(`suggestion ${sug.id} states how much work it is`, !!sug.effort);
+      check(`suggestion ${sug.id} states a confidence level`, ['high', 'medium', 'low'].includes(sug.confidence));
+    } else {
+      check(`suggestion ${sug.id} at least explains itself`, !!(sug.recommendation || sug.note));
+    }
+  }
+  // Open questions: each must say how it is closed; blocking ones must offer an answer template.
+  for (const q of questions.unknown) {
+    check(`question ${q.id} says how to close it`, !!q.how_to_close);
+    check(`question ${q.id} explains why it matters`, !!q.why_it_matters);
+    if (q.blocking) check(`blocking question ${q.id} gives an answer template`, !!q.answer_template);
+  }
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));

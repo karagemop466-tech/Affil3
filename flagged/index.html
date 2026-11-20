@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Irregularities and unverified items, with the sources and the manual step that would close each one.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="analytics-endpoint" content="">
+
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
@@ -30,6 +31,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/compare/">Compare</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -286,6 +288,48 @@
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="small"><strong>Manual step:</strong> Review the shipped /privacy/ page against §3(e) and decide whether counsel should read it before any endpoint is configured (Q-16).</p>
 </section>
+<section class="flag-card" id="FLG-036">
+  <p class="flag-head"><span class="badge flag">FLG-036</span> <span class="badge sev-high">high</span> <strong>Four of the five submitted short links returned the Amazon homepage on re-test</strong></p>
+  <p>A fresh unauthenticated fetch of each link.amazon URL on 2026-11-20 (session arena/acb0bd16-affil3) returned https://www.amazon.com/ — the homepage, with no product — for B04G1MEwY, B02NbDxp3, B00hJ57DV and B0c8moW59. Only B0f3GKalj returned a product detail page (B0DZFD6R9Z). Earlier the same day, four separate session registers recorded product destinations for those same four tokens. Both readings are kept: the record now shows that the destination observed from outside an Associates session is not stable, which is consistent with link.amazon short links being resolved per-session rather than as fixed permanent targets. This does not show that a link is dead, and it does not show that the owner&#39;s links are wrong. It does show that the tagged /dp/ links on this site are the only destinations this project has been able to confirm repeatedly.</p>
+  
+  <p class="small"><strong>Sources:</strong> <code>link.amazon/B04G1MEwY</code>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Open each of the five short links while signed in to the Associates account and record the product each one was created for. That is the only way to confirm intent (Q-01).</p>
+</section>
+<section class="flag-card" id="FLG-037">
+  <p class="flag-head"><span class="badge flag">FLG-037</span> <span class="badge sev-medium">medium</span> <strong>Five parallel publications sit on one domain and four of them are readable by search engines</strong></p>
+  <p>The repository publishes six separate site designs on one GitHub Pages domain: the root publication, /editorial/, /crisp-index/, /counter/, /counterwise/ and the frozen /legacy/ archive. Only the root is listed in the root sitemap, but a sitemap is a hint, not a gate: /counter/ and /counterwise/ carry no noindex directive and their own sitemaps, and each edition repeats the same five products. For a search engine, that reads as one small topic covered six times by six differently branded sites, which is the pattern the brief asked to avoid.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" rel="noopener external">S25</a>, <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
+  <p class="small"><strong>Manual step:</strong> Owner decides which single edition is the public shop. The other editions are kept online as archives and marked noindex, which is the only reliable way to keep a page out of search results (S22).</p>
+</section>
+<section class="flag-card" id="FLG-038">
+  <p class="flag-head"><span class="badge flag">FLG-038</span> <span class="badge sev-medium">medium</span> <strong>Commission rates, category rates and the affiliate revenue model are recorded nowhere in this repository</strong></p>
+  <p>The brief asks the build to &#39;analyze commission potential&#39;. No official, current Amazon commission-rate table was retrieved for any of the three categories tracked here (air fryers, countertop ovens, meat thermometers), and the rate schedule is published inside the Associates account rather than on a public page this session could verify. No rate is therefore stated anywhere on the site, and no revenue or conversion figure is modelled. Anything that appears to estimate earnings would be an invention.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S26</a></p>
+  <p class="small"><strong>Manual step:</strong> From the Associates account, export the current Commission Income Statement rate table and the Fee Statement for the three categories. Any earnings model must cite that export.</p>
+</section>
+<section class="flag-card" id="FLG-039">
+  <p class="flag-head"><span class="badge flag">FLG-039</span> <span class="badge sev-high">high</span> <strong>Affiliate links cannot be confirmed as Associates-generated Special Links from outside the account</strong></p>
+  <p>The tagged links published here were built by appending ?tag=shopnow047c-20 to the observed product URLs. The Operating Agreement defines Special Links as the links generated through the Associates account, and reports are keyed to those links. A hand-built tagged URL is not evidence that the account recognises it. Until one link per product is generated in the account and opened from the site, click and order attribution is unproven — and the site&#39;s own counter cannot show it either, because it counts clicks made on this site, not orders reported by Amazon.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S26</a>, <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> In Associates Central, use SiteStripe on each of the five listings, copy the generated link, compare it to the link on the site, then open one and confirm the click appears in the tracking report (gate G-02).</p>
+</section>
+<section class="flag-card" id="FLG-040">
+  <p class="flag-head"><span class="badge flag">FLG-040</span> <span class="badge sev-low">low</span> <strong>No server may host the analytics collector without the owner&#39;s credentials, so measurement stays off</strong></p>
+  <p>The five-event counter is present in every page&#39;s script and inert: the endpoint is blank, so nothing is sent (see the measurement page). Turning it on needs a host the owner controls, a deploy token and a domain. This session has none of those and will not ask for them in chat. The consequence is stated plainly: no click on this site has ever been recorded, so no page can currently claim to be performing.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S26</a></p>
+  <p class="small"><strong>Manual step:</strong> Deploy tools/analytics-endpoint/worker.js (or server.py) to a host you control, then set analyticsEndpoint in data/config.json and rebuild.</p>
+</section>
+<section class="flag-card" id="FLG-041">
+  <p class="flag-head"><span class="badge flag">FLG-041</span> <span class="badge sev-low">low</span> <strong>Search Console and sitemap submission are owner steps and have not been done</strong></p>
+  <p>The sitemap and feed are generated and valid, but nothing has been submitted to Google, and no verification token exists in this repository. Indexing therefore depends on discovery alone. This is a repeat of FLG-013 in concrete form: the files are ready, the account step is not.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a></p>
+  <p class="small"><strong>Manual step:</strong> Verify the domain in Search Console, submit sitemap.xml, and expect a multi-week delay before query data exists.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -308,6 +352,7 @@
       <ul class="foot-links">
         <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
         <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
+        <li><a href="/Affil3/compare/">Compare specifications</a></li>
         <li><a href="/Affil3/categories/">Categories</a></li>
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>

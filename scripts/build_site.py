@@ -98,6 +98,9 @@ def head(title, desc, canonical_path, prefix, extra_ld="", body_attrs=""):
 <title>{title} · {SITE_NAME_PLAIN}</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{canonical}">
+<!-- Archive edition. The root publication at /Affil3/ is the only indexed site; robots.txt blocks
+     crawling and this directive keeps the URLs out of results without relying on it. -->
+<meta name="robots" content="noindex, follow">
 <meta property="og:title" content="{title} · {SITE_NAME_PLAIN}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">

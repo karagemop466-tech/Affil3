@@ -1531,3 +1531,56 @@ unresolved, not invalid (FLG-003/031).
 - **What this session changed:** only `COORDINATION.md` (this claim and this completion record). All content surfaces were left unchanged and were verified on the combined tree before PR #48 was merged.
 - **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030.
 - **Open owner decisions:** G-02 Associates validation, Q-01 intended products per link, Q-04 analytics host, Q-06 named editor, Q-07 publishing cadence, suggestion S-02 buy buttons while untested, suggestion S-03 collector hosting.
+
+
+---
+
+# Session `arena/acb0bd16-affil3` — root publication pass (appended last; nothing above edited)
+
+Claimed before any edit and pushed as `018bf2d`. Work is confined to the root publication.
+
+## What this session did
+
+| Area | Change |
+|---|---|
+| Front page | Rebuilt as a storefront: hero promise → five-product grid with **good if / skip if** and a buy button → guides → categories → trust → seasonal. The buy button and the product grid must both appear before any link to a process page; `tools/verify.mjs` fails the build if that order regresses. |
+| Compare | `/compare/` — brand-stated specifications side by side, unknowns printed as *not stated*. |
+| Product pages | Two new buyer sections generated only from verified fields: **what the numbers mean in a real kitchen** (capacity, counter fit including the open door/drawer, cleaning, safety listing, warranty) and **buy it if / skip it if / the honest catch**. Product pages went from ~300 to 400–800 words without inventing a single figure. |
+| Decision board | Suggestions 19 → 29; the ten added (S-21…S-30) each carry the plain question, the trade-off, a recommendation **with a confidence level**, an effort estimate and a **copy-ready prompt**. A third track, "Make it read as a shop and be findable", groups them. |
+| Open questions | 16 → 23; the seven added (Q-17…Q-23) carry a plain restatement, how to close the gap, and a copy-paste **answer template**. Blocking questions without a template now fail the build. |
+| Findability | `robots.txt` excludes all five archive editions; every archived page in `crisp-index/`, `counter/` and `editorial/` carries `noindex, follow`, emitted at source by `tools/build_core.py` and `scripts/build_site.py` so a rebuild cannot lose it. `/questions/` and `/suggestions/` are owner desks: `noindex`, kept out of the sitemap. |
+| Gates | **3,873 checks**, including storefront order, archive noindex coverage, a buy link per shoppable product on `/compare/`, and the completeness of every decision card and blocking question. |
+
+## Verification performed this session (first-hand, 2026-11-20)
+
+| Claim | Source | Result |
+|---|---|---|
+| ASIN = "a unique combination of 10 letters and numbers" | [Amazon Ads ASIN guide](https://advertising.amazon.com/library/guides/asins-introduction) (**S24**) | Fetched in full; the five supplied tokens are 9 characters, so none is an ASIN |
+| robots.txt does not remove a URL from results | [Google robots.txt introduction](https://developers.google.com/search/docs/crawling-indexing/robots/intro) (**S25**) | Fetched in full — the basis for adding `noindex`, not just `Disallow` |
+| Disclosure and Special Link obligations | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (**S26**) | Fetched in full |
+| The five submitted short links | Dereferenced with no Associates session | **4 of 5 returned `https://www.amazon.com/` (homepage)**; `B0f3GKalj` → `B0DZFD6R9Z`. Recorded verbatim in `data/observations/2026-11-20-session-acb0bd16.json`; earlier same-day registers are kept, not overwritten. |
+| Three observed listings | `B0CDY277D3`, `B0DHZTCNR5`, `B0DZFD6R9Z` | 200, product pages, titles match the register |
+
+## New flags (published at `/flagged/`)
+
+**FLG-036** four of five short links returned the homepage on re-test · **FLG-037** five parallel
+publications on one domain were crawlable · **FLG-038** no commission-rate table verifiable, so no
+earnings figure appears anywhere · **FLG-039** tagged links are not provably Associates-generated
+Special Links · **FLG-040** the collector needs owner-hosted infrastructure · **FLG-041** Search
+Console submission is an owner step.
+
+## Collision handling (main advanced four times mid-branch)
+
+`origin/main` received PRs #45, #46, #48 and #50 while this branch was open, and parallel sessions
+used the same ID ranges and even the same source IDs. Nothing was reverted and nothing was
+overwritten:
+
+- Where main had already recorded **the same finding** (a re-fetch of two short links returning the
+  Amazon home page; four editions under one domain), main's flag is kept and this session's
+  duplicate was dropped.
+- This session's additions were renumbered to **FLG-036…FLG-041**, **Q-17…Q-23**, **S-21…S-30**,
+  **K-22…K-24** and **S24…S26** (main had already taken S21, S22 and S23 for the ThermoMaven page,
+  the FTC endorsement FAQ and the Chefman stainless page).
+- Main's newer front page was kept as the base and this session's storefront layer re-applied on
+  top of it, rather than reverting their work to reinstate an older rewrite.
+- `COORDINATION.md` conflicts were resolved by keeping **both** boards, main's first.

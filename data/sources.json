@@ -219,6 +219,33 @@
       "used_for": "The specifications published for P03: model RJ38-SQSS-8T, 8 qt / 7.57 L, 200-400 °F, 1700W/120V, 15.4 x 12.6 x 13.5 in, 12.8 lb, four presets, top-rack dishwasher-safe basket, cETL, 1-year assurance.",
       "status": "verified",
       "quote": "Max temp: 400ºF/ 205ºC. 4 cooking presets. Top-rack dishwasher-safe basket. Capacity: 5 Qt or 8 Qt / 4.73 L or 7.57 L. 200–400°F / 95º-205ºC temperature range. Power: 1700W/120V. Dimensions: (8 Qt Model) 15.4 in x 12.6 in x 13.5 in. Weight: (8 Qt Model) 12.8 lbs. Model Number: RJ38-SQSS-8T (8 Qt model). cETL approved with a 1-year Chefman® assurance"
+    },
+    {
+      "id": "S24",
+      "title": "Understanding ASINs — Amazon Ads guide",
+      "publisher": "Amazon (advertising.amazon.com)",
+      "url": "https://advertising.amazon.com/library/guides/asins-introduction",
+      "method": "Fetched in full 2026-11-20 by session arena/acb0bd16-affil3; definition quoted verbatim.",
+      "used_for": "Amazon-owned definition of an ASIN: 'a unique combination of 10 letters and numbers that Amazon assigns to a product'. Cites FLG-012.",
+      "status": "verified (fetched in full)"
+    },
+    {
+      "id": "S25",
+      "title": "Introduction to robots.txt — Google Search Central",
+      "publisher": "Google",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+      "method": "Fetched 2026-11-20 by session arena/acb0bd16-affil3.",
+      "used_for": "States that robots.txt 'is not a mechanism for keeping a web page out of Google' and that a blocked URL can still appear in results. Basis for adding noindex to the archived editions instead of relying on Disallow alone.",
+      "status": "verified (fetched in full)"
+    },
+    {
+      "id": "S26",
+      "title": "Amazon Associates Program Operating Agreement",
+      "publisher": "Amazon (affiliate-program.amazon.com)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "method": "Fetched 2026-11-20 by session arena/acb0bd16-affil3.",
+      "used_for": "Section 5 disclosure obligation and the requirement that Special Links be the ones generated in the Associates account; cited on the compliance page and in flag FLG-005.",
+      "status": "verified (fetched in full)"
     }
   ],
   "note": "Every product fact on this site points at one of these sources. 'fetched' means the full page text was retrieved and read in this session (2026-11-20). 'excerpt' means only a search-result excerpt of the official page was available; the wording should be re-checked by hand before it is relied on. 'observed' means a value read off an Amazon page on a dated fetch; observations can change without notice. Nothing in this register is a third-party blog or review site.",
