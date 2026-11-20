@@ -400,6 +400,20 @@
     },
     {
       "id": "FLG-036",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link",
+      "detail": "Source note S05 said that B0c8moW59 'did not resolve to a product listing'. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register's observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.",
+      "impact": "The observed destination of each short link rests on the earlier dated rounds only. The S05 note now agrees with the register, so a reader cannot take the stale sentence as evidence against P04.",
+      "manual_step": "Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "FLG-037",
       "severity": "high",
       "status": "open",
       "title": "Four of the five submitted short links returned the Amazon homepage on re-test",
@@ -411,7 +425,7 @@
       "manual_step": "Open each of the five short links while signed in to the Associates account and record the product each one was created for. That is the only way to confirm intent (Q-01)."
     },
     {
-      "id": "FLG-037",
+      "id": "FLG-038",
       "severity": "medium",
       "status": "open",
       "title": "Five parallel publications sit on one domain and four of them are readable by search engines",
@@ -423,7 +437,7 @@
       "manual_step": "Owner decides which single edition is the public shop. The other editions are kept online as archives and marked noindex, which is the only reliable way to keep a page out of search results (S22)."
     },
     {
-      "id": "FLG-038",
+      "id": "FLG-039",
       "severity": "medium",
       "status": "open",
       "title": "Commission rates, category rates and the affiliate revenue model are recorded nowhere in this repository",
@@ -435,7 +449,7 @@
       "manual_step": "From the Associates account, export the current Commission Income Statement rate table and the Fee Statement for the three categories. Any earnings model must cite that export."
     },
     {
-      "id": "FLG-039",
+      "id": "FLG-040",
       "severity": "high",
       "status": "open",
       "title": "Affiliate links cannot be confirmed as Associates-generated Special Links from outside the account",
@@ -448,7 +462,7 @@
       "manual_step": "In Associates Central, use SiteStripe on each of the five listings, copy the generated link, compare it to the link on the site, then open one and confirm the click appears in the tracking report (gate G-02)."
     },
     {
-      "id": "FLG-040",
+      "id": "FLG-041",
       "severity": "low",
       "status": "open",
       "title": "No server may host the analytics collector without the owner's credentials, so measurement stays off",
@@ -459,7 +473,7 @@
       "manual_step": "Deploy tools/analytics-endpoint/worker.js (or server.py) to a host you control, then set analyticsEndpoint in data/config.json and rebuild."
     },
     {
-      "id": "FLG-041",
+      "id": "FLG-042",
       "severity": "low",
       "status": "open",
       "title": "Search Console and sitemap submission are owner steps and have not been done",
