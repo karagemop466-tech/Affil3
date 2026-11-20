@@ -1,5 +1,12 @@
 # Affil3 — Executive summary
 
+> **Status note, 2026-11-20 (session `b7320829-affil3`).** This file is the record one session wrote on
+> one date; it is kept unchanged below. Two of its statements no longer describe the shipped repository: the link it records as
+> unresolved has since been observed on a product page and is published with a tagged buy link, and its closing links point at a
+> `docs/` tree that is gitignored and was never deployed. The canonical summary is the published page
+> [**/executive-summary/**](https://karagemop466-tech.github.io/Affil3/executive-summary/), which is generated from the registers at
+> build time and therefore cannot drift the way this file did. Full context: `FLG-042`, `FLG-043`, `COORDINATION.md`.
+
 **Repository:** `karagemop466-tech/Affil3`
 **Branch:** `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
 **Selected Associates tracking ID:** `shopnow047c-20` — **unverified** (not confirmed against the Amazon Associates dashboard in this environment; see flagged item FLG-001)

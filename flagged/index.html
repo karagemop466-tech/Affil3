@@ -336,6 +336,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="small"><strong>Manual step:</strong> If the /docs/ publication is wanted live, its output must be generated into a tracked path (or published from a workflow); the alternative is to treat scripts/ and server/ as tooling for the root site and say so.</p>
 </section>
+<section class="flag-card is-resolved" id="FLG-043">
+  <p class="flag-head"><span class="badge flag">FLG-043</span> <span class="badge sev-low">low</span> <strong>The executive summary the README recommends first still described a product as unresolved</strong> <span class="badge resolved">resolved</span></p>
+  <p>EXECUTIVE-SUMMARY.md, which README lists under &#39;Read these first&#39;, opens with &#39;The fifth resolves to nothing and is published as nothing&#39; and marks slot 4 as unresolved in its table. That was true of the round that wrote it. It has not been true since: link 4 (B0c8moW59) was observed landing on amazon.com/dp/B0DHZTCNR5, the ThermoMaven 1 Sec listing, and it is published on the site with a tagged buy link; the link that once returned an Amazon checkpoint was link 3 (B00hJ57DV), which has since been observed on B08DKYBTPH (see FLG-004, FLG-022, FLG-030). The same file also closes with &#39;Read next&#39; links to docs/flagged/, docs/questions/ and docs/suggestions/, paths that are gitignored and were never deployed (FLG-042). Both root summaries are now labelled at the top as session records, and the current-state section appended to EXECUTIVE-SUMMARY.md carries this round&#39;s findings. The published /executive-summary/ page is derived from the registers at build time, which is why it cannot go stale the way a hand-written summary did.</p>
+  <p class="resolution"><strong>Resolution:</strong> Dated correction block and top-of-file labels added by session b7320829-affil3 on 2026-11-20; no original wording was removed.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Decide whether the root summaries should stay as per-session records or be replaced by a pointer to the published page. Either is defensible; silently letting a stale summary be the entry point is not.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">

@@ -1,5 +1,12 @@
 # Executive summary
 
+> **Status note, 2026-11-20 (session `b7320829-affil3`).** This file is the record one session wrote on
+> one date; it is kept unchanged below. Two of its statements no longer describe the shipped repository: the link it records as
+> unresolved has since been observed on a product page and is published with a tagged buy link, and its closing links point at a
+> `docs/` tree that is gitignored and was never deployed. The canonical summary is the published page
+> [**/executive-summary/**](https://karagemop466-tech.github.io/Affil3/executive-summary/), which is generated from the registers at
+> build time and therefore cannot drift the way this file did. Full context: `FLG-042`, `FLG-043`, `COORDINATION.md`.
+
 **Prepared:** 2026-11-20 · **Tracking ID:** `shopnow047c-20` · **Site:** https://karagemop466-tech.github.io/Affil3/
 **Branch merged from:** `arena/4578ad4b-affil3`
 
@@ -126,3 +133,40 @@ built to avoid.
 - `docs/questions/` — 24 questions with owners
 - `docs/suggestions/` — 14 proposals awaiting a decision
 - `docs/disclosure/` — the rule-by-rule compliance record
+
+---
+
+## Current state, appended 2026-11-20 by session `b7320829-affil3`
+
+Everything above this line is preserved as written. This is the correction and the increment.
+
+**The five links, as they now stand.** All five tokens are 9 characters; four of the five have been observed landing on a
+product page across three dated rounds, and the mapping is recorded in `data/products.json` with observed fields kept separate
+from intended ones. The intended ASIN, official listing URL and confirmation date are still blank for all five, because only an
+owner or an Associates record can fill them (Q-01). The latest round (2026-11-20) could not reach `amazon.com` at all: four of
+four submitted short links that resolved fell back to the Amazon home page, and direct `/dp/` fetches errored. Those failures are
+recorded as failures in `data/observations/2026-11-20-b7320829.json`, and no value is claimed as freshly verified by that round
+(FLG-031, FLG-039).
+
+**What is published.** 37 pages at the root: a products-first front page, a shop table, a side-by-side compare page, three
+category clusters, **ten** question-led guides (five added this round: dishwasher-safe parts, how to read thermometer labels,
+what Sync Finish and Hi-Fry do, how to read a preset list, and planning a holiday around one countertop oven), the sources,
+questions, suggestions, flagged, ledger, measurement, compliance, workflow, privacy, about and design-brief surfaces, an RSS
+feed with ten items and a sitemap of 36 URLs. Every guide now opens with an answer-first summary and its own source list; the
+word count in the byline is computed from the page's own text, not asserted.
+
+**What the round found in the registers.** Four citation defects, all real and all fixed: a stray degree sign inside
+`Sync Finish`; a flag crediting the at-least-10-posts rule of thumb to a Chefman product page instead of the Associates help
+topic; a workflow paragraph crediting the cadence to the wrong suggestion; and two flags plus a byline sentence citing stale ids.
+None of them could be caught by any existing check, so the gate gained one: every id reference in a register or a rendered page
+must resolve to a row that exists (`S-25`).
+
+**What was wrong about the site's own findability claim.** The site stated that the secondary editions were excluded from the
+index by `robots.txt`. Google states that `robots.txt` is not an indexing control and that `noindex` cannot be specified in it.
+The claim is corrected in the flag register and the README, the root `robots.txt` now covers all five secondary trees, and the
+option that actually works is on the board at `S-20` (FLG-036).
+
+**What still blocks earning.** One thing, and it is owner work: gate **G-02**. Generate one Special Link per product in
+Associates Central, click it, confirm the click in the tracking report, then paste the link into the register (`S-23`). Until
+then every button on the site is an honest constructed URL that has never been proven to credit a sale, and the campaign ledger
+stays empty by design.
