@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Executive summary">
 <meta name="twitter:description" content="Executive summary: what is built, what is verified, what is blocked, and the decisions needed.">
-<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -30,6 +30,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/articles/">Journal</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -44,7 +45,8 @@
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, 3 category clusters, 13 question-led guides, a Journal of seven catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -56,26 +58,23 @@
 <li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
 <li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14); its purchase link is withheld pending G-02.</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest, and one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added FLG-023 to FLG-027. Two of those were themselves corrected in a later pass: the ThermoMaven unit does have a maker page, which had been missed (FLG-025, resolved), and the Chefman 8 Qt conflict had been measured against the wrong Chefman page and is really a wattage and case-size difference (FLG-026). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
+<li>Two destinations were transposed in an earlier register revision and corrected after a retest, and one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added FLG-023 to FLG-027. Two of those were themselves corrected in a later pass: the ThermoMaven unit does have a maker page, which had been missed (FLG-025), and the Chefman 8 Qt conflict had been measured against the wrong Chefman page and is really a wattage and case-size difference (FLG-026). A 2026-11-20 re-fetch of two short links returned the Amazon home page rather than a product page, which is the same intermittent behaviour and does not establish that any link is dead (FLG-031). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
+<li>Several reader-facing editions of this project are published under one domain. Only this root publication is in the sitemap; the others are excluded from the index and listed on the archive page (FLG-032, Q-15, S-11).</li>
 </ul>
-<h2>Six decisions only the owner can make</h2>
+<h2>Evidence needed before expanding</h2>
 <ol>
-<li>Confirm which product each supplied short link was meant to reach. This closes the largest gap on the site.</li>
+<li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
-<li>Test one Special Link per product in Associates Central, then confirm the destination and tracking-report row (Q-04).</li>
-<li>Deploy the analytics collector, or decide to run with no measurement for now.</li>
-<li>Pick a publishing cadence and nominate the reader the guides are written for.</li>
-<li>Choose whether to pilot AI-assisted research/drafting, and name the authorized data sources, provider, budget, and human editor (Q-18).</li>
+<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
+<li>Choose options on the <a href="/Affil3/suggestions/">Suggestions</a> page. Nothing there is implemented until you choose.</li>
 </ol>
-<p>Each of those is written up with its trade-offs on the <a href="/Affil3/suggestions/">suggestions page</a>.</p>
-<h2>What this build cannot do yet</h2>
-<p>This is a sourced static publication, not an AI-powered research or publishing platform. No AI provider, Amazon product-data API, trend/keyword feed, Search Console property, or analytics endpoint is connected. Product research, query-led topic selection and publication are not automated; no popularity, conversion, commission, or revenue claims are made. It cannot read Amazon prices, sales, or Associates reports without authorized access, and it does not scrape Amazon. See <a href="/Affil3/questions/">Q-18</a> and <a href="/Affil3/suggestions/">S-15</a>.</p>
 <h2>Measure before expanding</h2>
 <p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener external">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (<a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
 <h2>Limits</h2>
@@ -90,9 +89,10 @@
       <p class="small muted"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/legacy/archive/">Archived editions</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
+        <li><a href="/Affil3/articles/">The Journal</a></li>
         <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
         <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
         <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
@@ -107,6 +107,7 @@
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>
         <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+        <li><a href="/Affil3/decisions/">Decision board (this session)</a></li>
         <li><a href="/Affil3/flagged/">Flagged for review</a></li>
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
@@ -114,6 +115,7 @@
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
+        <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
         <li><a href="/Affil3/editorial/">Editorial record (noindex archive)</a></li>
       </ul>
     </div>

@@ -4,6 +4,9 @@
 
 # Affil3 — Executive summary (historical)
 
+> **Current state (2026-11-20, branch `arena/c252594d-affil3`):** this is the first session's summary and describes the earlier four-guide shape. The current publication has **13 guides**, **18 suggestions**, **17 known facts**, **17 open questions**, and **12 discovery actions**. See [`EXECUTIVE-SUMMARY-c252594d.md`](EXECUTIVE-SUMMARY-c252594d.md) for the current summary.
+
+
 **Repository:** `karagemop466-tech/Affil3`
 **Branch:** `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
 **Selected Associates tracking ID:** `shopnow047c-20` — **unverified** (not confirmed against the Amazon Associates dashboard in this environment; see flagged item FLG-001)

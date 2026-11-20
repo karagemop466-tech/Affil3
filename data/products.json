@@ -87,7 +87,8 @@
         "FLG-001",
         "FLG-002",
         "FLG-005",
-        "FLG-024"
+        "FLG-024",
+        "FLG-042"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
@@ -159,7 +160,8 @@
         "FLG-001",
         "FLG-002",
         "FLG-004",
-        "FLG-026"
+        "FLG-026",
+        "FLG-027"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "observed_asin": "B08DKYBTPH",
@@ -173,7 +175,7 @@
         "S16"
       ],
       "spec_sources": [
-        "S12"
+        "S23"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
@@ -185,14 +187,14 @@
       "power_w": "1700",
       "voltage": "120V",
       "dimensions_in": "15.4 x 12.6 x 13.5",
-      "dimensions_order": "depth x width x height, as the maker lists them",
+      "dimensions_order": "in the order the maker lists them; the maker does not label which is depth, width or height",
       "weight_lb": "12.8",
-      "functions": "Air fry, bake, dehydrate and frozen; four presets. The maker states a 200-400 F range for RJ38-SQSS-8T; the listing title advertises a 450 F Hi-Fry burst that no page explains (FLG-027).",
+      "functions": "Air fry, bake, dehydrate and frozen; four presets. The maker states a 200-400 °F range for RJ38-SQSS-8T; the listing title advertises a 450 °F Hi-Fry burst that no page explains (FLG-027).",
       "dishwasher_safe": "Basket and rack: yes (maker states top-rack dishwasher safe)",
       "certification": "cETL approved (maker)",
       "warranty": "1-year Chefman assurance (maker)",
       "best_for": "One big batch in one basket, with no divider to work around.",
-      "tradeoff": "400 F in the specification, one chamber at one temperature, and no viewing window stated by either official page.",
+      "tradeoff": "400 °F in the specification, one chamber at one temperature, and no viewing window stated by either official page.",
       "fit_line": "One big batch, one basket, no dividers to work around.",
       "lede": "Eight quarts in a single basket, for the batch that does not fit in two small drawers. Read the wattage difference below before you order: the maker and the listing disagree.",
       "guide_title": "A no-hype checklist for comparing air fryer capacity",
@@ -200,7 +202,8 @@
       "blank_reason": {
         "viewing_window": "Neither the maker's page for RJ38-SQSS-8T nor the Amazon listing states a viewing window, so none is claimed.",
         "watts": "The maker states 1700 W for RJ38-SQSS-8T; the listing states 1000 W for the same model number. The maker's figure is published and the difference is flagged (FLG-026).",
-        "temp_max_f": "The maker and the listing's own bullet both state 200-400 F; the listing title advertises 450 F. The 400 F figure is published and the title claim is flagged (FLG-027)."
+        "temp_max_f": "The maker and the listing's own bullet both state 200-400 °F; the listing title advertises 450 °F. The 400 °F figure is published and the title claim is flagged (FLG-027).",
+        "dimensions_in": "The maker states 15.4 x 12.6 x 13.5 in for the 8 Qt model; the listing states 12.75 x 13.5 x 10 in. The maker's figure is published and the difference is flagged (FLG-026)."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -211,7 +214,7 @@
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
       },
       "observed_specs": {
-        "note": "From the 'About this item' block of the Amazon listing on 2026-11-20. It names the same model number as the maker's page and disagrees with it on power and case size.",
+        "note": "From the \"About this item\" block of the Amazon listing on 2026-11-20. It names the same model number as the maker's page and disagrees with it on power and case size.",
         "model": "RJ38-SQSS-8T",
         "power": "1000 W / 120 V",
         "temperature": "200-400 °F",
@@ -220,7 +223,7 @@
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes at chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing (see FLG-026).",
+      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes for this unit. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing. That conclusion was wrong and is corrected here (see FLG-026).",
       "special_link_validation": {
         "status": "pending",
         "validated_url": "",
@@ -233,8 +236,8 @@
     {
       "id": "P04",
       "slug": "thermomaven-instant-read-thermometer",
-      "name": "ThermoMaven F1 Ace instant-read meat thermometer",
-      "short_name": "ThermoMaven F1 Ace",
+      "name": "ThermoMaven 1 Sec Professional thermometer",
+      "short_name": "ThermoMaven 1 Sec Professional",
       "brand": "ThermoMaven",
       "category": "cooking-thermometers",
       "shape": "Instant-read probe",
@@ -245,11 +248,11 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified; no manufacturer source found",
+      "confirmation_status": "Unverified; observation only, with a manufacturer family page (FLG-025)",
       "flags": [
         "FLG-001",
-        "FLG-004",
-        "FLG-008"
+        "FLG-002",
+        "FLG-025"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
       "observed_asin": "B0DHZTCNR5",
@@ -259,17 +262,16 @@
       "sources": [
         "S05",
         "S04",
-        "S21",
-        "S22"
+        "S21"
       ],
       "spec_sources": [
         "S21"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
-      "model": "",
+      "model": "Not stated on the listing (family page: F1 Ace)",
       "capacity_qt": "",
-      "capacity_note": "Not a capacity product: this is a handheld probe.",
+      "capacity_note": "Not a capacity product: it is a handheld probe.",
       "temp_min_f": "",
       "temp_max_f": "",
       "power_w": "",
@@ -277,21 +279,24 @@
       "dimensions_in": "",
       "dimensions_order": "",
       "weight_lb": "",
-      "functions": "1-second thermocouple spot check; motion-sensing wake/sleep; auto-rotating display; built-in magnet. No leave-in oven rating is published.",
-      "dishwasher_safe": "Not stated as dishwasher-safe. The maker says '100% waterproof design' and 'rinse under water'; that is not the same claim.",
-      "certification": "NIST-certified +/-0.5 F accuracy (manufacturer). The listing also claims NSF certification.",
-      "warranty": "Lifetime warranty with registration within 30 days (manufacturer); no fixed period is stated.",
-      "best_for": "A quick spot check at the grill, not an unattended cook.",
-      "tradeoff": "It reads one spot at a time, so it cannot watch a long smoke the way a leave-in probe can. The maker publishes no leave-in or IP rating.",
+      "functions": "Instant read in 1 second; thermocouple sensor; folding probe with a built-in magnet; bright auto-rotating LCD (manufacturer F1 Ace page)",
+      "dishwasher_safe": "100% waterproof design, easy to clean (manufacturer F1 Ace page). No dishwasher statement.",
+      "certification": "NIST-certified ±0.5 °F accuracy (manufacturer F1 Ace page); the listing title also states NIST & NSF certified",
+      "warranty": "Lifetime warranty, to be activated within 30 days of purchase (manufacturer F1 Ace page)",
+      "best_for": "A quick spot check at the grill, not a leave-in monitor.",
+      "tradeoff": "It reads one spot at a time, so it cannot watch a long smoke the way a leave-in probe can.",
       "fit_line": "A quick spot check at the grill, not a leave-in monitor.",
-      "lede": "A folding one-second thermocouple for the moment before you pull the meat off the heat. A different job from a leave-in probe, and the maker publishes no oven-stay rating.",
+      "lede": "A folding instant-read probe: a number in about a second, a magnet on the side of the fridge, and no app to open.",
       "guide_title": "Is your meat thermometer telling you the right number?",
       "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
       "blank_reason": {
-        "model": "The maker states no model number. 'F1 Ace' is the product name; treating it as a model number would be an inference.",
-        "temp_max_f": "No maximum ambient or leave-in temperature is stated, so whether the unit can stay in an oven is left blank rather than assumed.",
-        "waterproof": "The maker says '100% waterproof design' with no IP code. 'IP67' appears only on the Amazon listing (S22) and is recorded as a listing claim.",
-        "dimensions_in": "The maker states probe dimensions only in prose, without a case size, so no case size is published."
+        "model": "The Amazon listing does not state a model number. The manufacturer page that matches its stated features is the F1 Ace page (S21); the listing calls the unit \"1 Sec Professional\", so the model correspondence is not confirmed (FLG-025).",
+        "all_specs": "Every figure on this row comes from the manufacturer F1 Ace page (S21) and matches the headline features the listing states (1-second read, ±0.5 °F, NIST-certified, auto-rotating LCD, waterproof). The listing does not name the F1 Ace, so nothing here is published as a confirmed specification of the listed unit.",
+        "power_w": "The manufacturer F1 Ace page states no wattage.",
+        "temp_min_f": "The manufacturer F1 Ace page states no minimum temperature.",
+        "temp_max_f": "The manufacturer F1 Ace page states no maximum temperature and no leave-in rating. Do not assume it can stay in a hot oven.",
+        "dimensions_in": "The manufacturer F1 Ace page states no dimensions.",
+        "weight_lb": "The manufacturer F1 Ace page states no weight."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -301,21 +306,23 @@
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
       },
+      "model_note": "The figures above are the manufacturer's published figures for the F1 Ace. The observed Amazon listing does not name that model, so they are shown as the family-page figures, not as confirmed specifications of this unit.",
+      "model_match_note": "The observed listing is titled \"ThermoMaven 1 Sec Professional Digital Meat Thermometer\". The manufacturer page located for this family is the F1 Ace (S21), which states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a thermocouple sensor, an auto-rotating LCD, a 100% waterproof design and a lifetime warranty. Those features match the listing title, but the listing never says \"F1 Ace\", so the two are recorded as matching on features, not confirmed as the same model.",
+      "observed_specs_extra": {
+        "display": "Auto-Rotate Bright LED Screen (listing) vs bright, ultra-clear LCD (manufacturer)",
+        "waterproof": "IP67 Waterproof (listing) vs 100% waterproof design, no IP code (manufacturer)",
+        "certification": "NIST & NSF Certified (listing) vs NIST-certified ±0.5 °F (manufacturer)",
+        "newer_model": "A 'newer model of this item' callout points at B0GL7Z4KP4 (listing)"
+      },
       "observed_specs": {
-        "note": "From the 'About this item' block of the Amazon listing on 2026-11-20. It goes further than the maker on four points, so each is shown next to the maker's wording rather than adopted.",
+        "note": "From the \"About this item\" block of the Amazon listing on 2026-11-20. It goes further than the maker on four points, so each is shown next to the maker's wording rather than adopted.",
         "model": "Not stated",
         "power": "1x AAA battery (included)",
         "temperature": "Not stated",
         "dimensions": "Not stated",
         "capacity": "n/a",
         "material": "Plastic housing, black",
-        "source": "S22"
-      },
-      "observed_specs_extra": {
-        "display": "Auto-Rotate Bright LED Screen (listing) vs 'bright, ultra-clear LCD' (manufacturer)",
-        "waterproof": "IP67 Waterproof (listing) vs '100% waterproof design', no IP code (manufacturer)",
-        "certification": "NIST & NSF Certified (listing) vs NIST-certified +/-0.5 F (manufacturer)",
-        "newer_model": "A 'newer model of this item' callout points at B0GL7Z4KP4 (listing)"
+        "source": "S04"
       },
       "special_link_validation": {
         "status": "pending",
@@ -345,7 +352,9 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-023"
+        "FLG-023",
+        "FLG-041",
+        "FLG-042"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",
@@ -367,7 +376,7 @@
       "capacity_qt": "",
       "capacity_note": "",
       "temp_min_f": "32",
-      "temp_max_f": "1000",
+      "temp_max_f": "212",
       "power_w": "",
       "voltage": "",
       "dimensions_in": "0.19 dia. × 4.75 probe length",
@@ -380,12 +389,22 @@
       "best_for": "Knowing when to pull the meat without standing next to the grill.",
       "tradeoff": "It depends on an app and a hub, so a flat battery or a dropped connection is a cooking problem.",
       "fit_line": "Knowing when to pull the meat without standing next to the grill.",
-      "lede": "A leave-in wireless probe with an ambient sensor, so the app can track both the meat and the heat around it.",
+      "lede": "A leave-in wireless probe with an ambient sensor rated to 1,000 °F, so the app can track both the meat and the heat around it.",
       "guide_title": "Is your meat thermometer telling you the right number?",
       "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
       "blank_reason": {
-        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
-        "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
+        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003)."
+      },
+      "correction": {
+        "date": "2026-11-20",
+        "field": "temp_max_f",
+        "previous_value": "1000",
+        "new_value": "212",
+        "reason": "The manufacturer publishes two ranges: 32-212 F for the part inserted into food and 32-1,000 F for the ambient sensor (S14 Specifications; S15 FAQ: inserted max 212 F, Gen 3 ambient max 1,000 F). The table previously showed the ambient range as the probe temperature. It now shows the food range; the ambient rating is stated in the lede.",
+        "sources": [
+          "S14",
+          "S15"
+        ]
       },
       "special_link_validation": {
         "status": "pending",

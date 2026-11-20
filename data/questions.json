@@ -1,5 +1,4 @@
 {
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at.",
   "known": [
     {
       "id": "K-01",
@@ -46,7 +45,7 @@
     },
     {
       "id": "K-07",
-      "statement": "Four of the five supplied short links resolved to a product page across three fetch rounds; one did not resolve to a product at all.",
+      "statement": "All five supplied short links have resolved to a product page in at least one dated fetch. One of them (B00hJ57DV) first landed on an intermittent Amazon checkpoint before resolving, which is why earlier rounds recorded four.",
       "sources": [
         "S05",
         "S04"
@@ -62,9 +61,10 @@
     },
     {
       "id": "K-09",
-      "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.",
+      "statement": "Two destinations were transposed in an earlier register revision and were corrected after a retest. The corrected mapping was corroborated by an independent fetch, and the five product pages were re-read directly by their /dp/ identifier on 2026-11-20 with every title matching the register character for character.",
       "sources": [
-        "S05"
+        "S05",
+        "S04"
       ]
     },
     {
@@ -93,36 +93,80 @@
     },
     {
       "id": "K-13",
-      "statement": "All four submitted links that reached a product page did so through a URL carrying plpRedirect=mhFallback, and none carried an Associates tag parameter.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
       "sources": [
-        "S02",
+        "S05",
         "S04",
-        "S05"
+        "S02"
       ]
     },
     {
       "id": "K-14",
-      "statement": "One retrieval on 2026-11-20 reached an Amazon checkpoint page for B0c8moW59 while resolving B00hJ57DV normally; an earlier record in this repo has it the other way round. The checkpoint outcome is not tied to a single token.",
+      "statement": "Participation Requirements §5 bars using Special Links or Program Content \"to develop machine learning models or related technology\" without Amazon's express prior written approval. Read verbatim 2026-11-20.",
       "sources": [
-        "S04",
-        "S05"
+        "S02"
       ]
     },
     {
       "id": "K-15",
-      "statement": "The required Associates statement is Operating Agreement Section 5, verified verbatim against the 2025-10-15 text; Section 6 deems its violation a material breach, and Section 4 disclaims any representation about expected traffic or commission income.",
+      "statement": "Participation Requirements §6(y) bars price tracking and price alerting functionality on the Site unless Amazon agrees. Read verbatim 2026-11-20.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-16",
+      "statement": "Participation Requirements §6(u) bars purchasing through your own Special Links and bars permitting, requesting or encouraging friends, relatives, employees or contractors to do so. Gate G-02 must therefore be tested by checking the destination and the tracking report, never by placing an order.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-17",
+      "statement": "Participation Requirements §6(g) bars offering any consideration, reward or incentive for using Special Links, and §4 permits Special Links in email, SMS and direct messages only where the communication was solicited. Together these constrain any reader-capture offer: opt-in only, and no reward for clicking.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-18",
+      "statement": "A violation of the Participation Requirements, the IP License or Operating Agreement §5 is deemed a material breach of the Agreement, and Operating Agreement §6 permits immediate termination on a material breach. The compliance rules this site enforces in its build gate are termination-grade, not stylistic.",
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-19",
+      "statement": "Operating Agreement §4 states Amazon makes \"no representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time\". That is the official basis for the empty campaign ledger and for publishing no revenue forecast, conversion score or traffic estimate anywhere in this repository.",
       "sources": [
         "S01"
       ]
     },
     {
-      "id": "K-16",
-      "statement": "Eligibility depends on original content that is publicly available at the address given in the application, with significant commentary, analysis or transformation where third-party material is reused, so thin aggregation is an eligibility problem rather than a style problem.",
+      "id": "K-20",
+      "statement": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID has an eleven-character prefix, which the clause permits; the shape neither confirms nor refutes the ID. §1(g) separately bars any Amazon trademark or variant in a tag, and the supplied ID contains none.",
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "K-21",
+      "statement": "Participation Requirements §2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends. Seasonal content therefore carries a takedown obligation, and any seasonal page needs an expiry date rather than just a publish date.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-22",
+      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the same brand's FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The product page and the comparison table previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
     }
   ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "unknown": [
     {
       "id": "Q-01",
@@ -248,41 +292,102 @@
     },
     {
       "id": "Q-14",
-      "question": "Does the analytics receiver, as designed, keep any identifier that could later be joined to a sub-tag or to a visitor?",
-      "why_it_matters": "The programme forbids associating a sub-tag or program reporting with a specific end user. Aggregate counters are fine; a persistent id meeting a per-page sub-tag is not, and that is the feature an analytics upgrade tends to add unnoticed.",
-      "how_to_close": "Read the collector's stored record shape against Participation Requirements 2(b) before enabling it, and assert in the build that no sub-tag value derives from browser storage.",
+      "question": "Is the ThermoMaven listing the F1 Ace?",
+      "why_it_matters": "The manufacturer page for the F1 Ace (S21) matches the listing title feature for feature, but the listing never says 'F1 Ace'. Until the model is confirmed, the specification grid on that row shows the manufacturer family-page figures rather than confirmed specifications of the listed unit.",
+      "how_to_close": "Open https://www.amazon.com/dp/B0DHZTCNR5 in a signed-in browser, read the model or product-details field, and record what it says with the date. If it names the F1 Ace, the figures can be promoted and FLG-025 can close.",
       "sources": [
-        "S02"
-      ]
+        "S04",
+        "S21"
+      ],
+      "blocking": false
     },
     {
       "id": "Q-15",
-      "question": "Do the pages the submitted links reached carry the products the owner meant to promote?",
-      "why_it_matters": "The fallback marker and two sessions' differing outcomes both say the destination is not a reliable statement of intent. Specs and comparisons written against a fallback destination produce a page that is wrong in a way the publisher owns.",
-      "how_to_close": "Owner supplies the intended ASIN or product URL per link, or confirms the observed listing is the intended one.",
+      "question": "Which of the published editions is the product?",
+      "why_it_matters": "Several reader-facing editions are published under one domain and the same tracking ID. Only the root edition is in the sitemap; the rest are excluded from the index but still reachable. One indexed site is the clearest signal to a search engine and the cleanest attribution for a click.",
+      "how_to_close": "Name one edition as the product and decide whether the others stay on this domain at all. Suggestion S-11 lists the options with the trade-off for each.",
       "sources": [
-        "S04",
-        "S05"
-      ]
+        "S09"
+      ],
+      "blocking": false
     },
     {
       "id": "Q-16",
-      "question": "What attribution window does the campaign ledger use, and where is it written down?",
-      "why_it_matters": "The policy defines a 24-hour session and an 89-day cart path; guides online say 90 days. A report built on the wrong window misstates every conversion figure while looking internally consistent.",
-      "how_to_close": "Record 24 hours and 89 days, linked to the policy line, in the ledger header when the first row is added.",
+      "question": "Is the draft privacy notice adequate, and does it need legal review before the analytics endpoint is switched on?",
+      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-035).",
+      "lack": "A review by anyone qualified to give one. The draft was written by a build session from the code and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
+      "who": "Site owner / counsel",
+      "why_it_matters": "§3(e) is an Associates obligation and a violation of the Participation Requirements is a material breach. Switching the endpoint on before the notice is settled would collect data under an unreviewed disclosure.",
+      "how_to_close": "Read the page, correct anything that overstates or understates what the code does, and decide whether counsel should review it before Q-04 is answered.",
       "sources": [
         "S02"
-      ]
+      ],
+      "blocking": false
     },
     {
       "id": "Q-17",
-      "question": "Which generator owns which published page, and what happens to the two register roots?",
-      "why_it_matters": "tools/build.mjs writes the root site from data/*.json and tools/build.py writes editorial/ from data/register/*.json, and the two hold overlapping product, question and suggestion rows. Readers get one site or two competing ones depending on which builder was run last, and indexation splits accordingly.",
-      "how_to_close": "Name one publisher for reader-facing pages, or generate both from a single register root and cross-link.",
-      "sources": []
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
+      "sources": [
+        "S05"
+      ],
+      "blocking": false
     },
     {
       "id": "Q-18",
+      "question": "What is this publication called?",
+      "have": "A placeholder wordmark ('Affil3') that is the repository directory name, shipped in every title tag, og:site_name and footer; a design-brief row (DX-6) that names this as an open owner decision; a naming checklist drafted in suggestion S-22.",
+      "lack": "A chosen name, and the trademark and Associates trademark-guideline checks that make the choice safe to ship.",
+      "who": "Site owner",
+      "why_it_matters": "Every polished detail on the site sits behind one generic string a reader cannot remember, spell from hearing, or associate with kitchens. The rename touches every template, so it gets more expensive every week it is deferred.",
+      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-19",
+      "question": "Which guide gets written next, and on what evidence?",
+      "have": "Thirteen published question-shaped guides with a house style that can be checked (S-19); a seasonal calendar proposal (S-23); a source-backed cluster proposal (S-24); an empty measurement loop (no Search Console property, no analytics endpoint).",
+      "lack": "Any first-party evidence of what queries reach the site, and any record of what visitors click.",
+      "who": "Site owner (with whichever session holds the publishing cadence, S-05)",
+      "why_it_matters": "Until something measures arrivals, every new title is an uncheckable hypothesis and 'measure whether anyone arrives' remains a plan rather than a loop. Operating Agreement 4 bars substituting anyone else's traffic estimates for that measurement (K-19).",
+      "how_to_close": "Verify the Search Console property (D-05) and read two Performance-report cycles, then answer S-21; until then, choose topics only from the seasonal calendar (S-23 B) and mark each entry a hypothesis.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-20",
+      "question": "Which of the two published temperature ranges should a reader treat as the probe's working limit in a given cooking method?",
+      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line.",
+      "lack": "Manufacturer guidance on which figure applies to the probe as a whole in each cooking method. A 1,000 F ambient figure invites the reading that the probe may be left in a 1,000 F oven, and no manufacturer page addresses that reading directly.",
+      "who": "Manufacturer support, or the owner after reading the product manual",
+      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The site currently publishes both numbers, which is accurate, but not the instruction that would make them safe to act on.",
+      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance beside the table.",
+      "sources": [
+        "S14",
+        "S15"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-21",
+      "question": "What does the repeated Amazon-home-page result for the five short links mean?",
+      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is recorded on earlier dated rounds (FLG-004, FLG-031, FLG-037). In the same session, the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs.",
+      "lack": "A fetch from a signed-in browser, which the sandbox cannot do. Without one the observation stays an observation and no conclusion about the links is available.",
+      "who": "Site owner",
+      "why_it_matters": "Several sessions have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on the links (FLG-003) depends on which is true.",
+      "how_to_close": "Open each of the five links in a signed-in Amazon session and record the product name and the ten-character ASIN from the resulting URL. One pass, five minutes, and it closes Q-01 as well.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-22",
       "question": "Which AI model/provider, approved product-data source, trend or keyword source, and human reviewer are available before research or drafts are automated?",
       "why_it_matters": "No model, Amazon product-data API, trend/query feed, or publishing integration is configured. Without authorized inputs and a named editor, automation could produce unsupported product claims or fabricated demand signals.",
       "how_to_close": "Choose an approved provider and authorized data sources; document costs and data terms; run a source-cited draft-only pilot with a human reviewer before considering automated publishing.",
@@ -348,28 +453,62 @@
     },
     {
       "id": "D-09",
-      "suggestion": "Request each submitted link twice from a private, signed-out window and write down the address bar after every redirect. Two different answers for one link is itself the finding, and it costs about four minutes.",
+      "suggestion": "Open the ThermoMaven listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the manufacturer figures can be promoted from family figures to confirmed specifications.",
+      "closes": [
+        "Q-14"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Negative-test the gate before trusting it. Introduce a page whose hand-written sentence contradicts its own table, remove a sponsored attribute, and change a tracking tag; confirm the build fails each time. A gate that has never been seen to fail is not evidence of anything. Session 66f2548a ran three of these.",
+      "closes": []
+    },
+    {
+      "id": "D-11",
+      "suggestion": "Re-read the Operating Agreement and Program Policies on a schedule and record the date each time. Both pages state an \"Updated\" date that changes, and a clause read once is a clause that can quietly stop being true.",
+      "closes": []
+    },
+    {
+      "id": "D-12",
+      "suggestion": "Re-fetch each submitted link whenever a product row is edited, and keep the raw record in data/observations/ with the date. Two transposition errors and one false 'dead link' in this repository's history all came from a single fetch being trusted on its own.",
       "closes": [
         "Q-01"
       ]
     },
     {
-      "id": "D-10",
-      "suggestion": "Read Participation Requirements Section 2(b) in a logged-in session and diff it against the site's own link builder clause by clause: tag parameter, no bookmarking prompts, no posting links on Amazon, price display, promotion expiry, sub-tags.",
-      "closes": []
-    },
-    {
-      "id": "D-11",
-      "suggestion": "Inventory the publishers before adding any page: root site versus editorial/, data/*.json versus data/register/*.json. Anything published twice should become one page with a cross-link, which is also what keeps indexation in one place.",
-      "closes": []
-    },
-    {
-      "id": "D-12",
-      "suggestion": "Grep the repo for “90 days” and for any percentage sign: both are claims the retrieved policy text contradicts (89 days) or does not support (rates sit behind a login).",
-      "closes": []
-    },
-    {
       "id": "D-13",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": []
+    },
+    {
+      "id": "D-14",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
+      "closes": []
+    },
+    {
+      "id": "D-16",
+      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
+      "closes": [
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-17",
+      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, with the date. This has now failed to resolve from several separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "closes": [
+        "Q-01",
+        "Q-21"
+      ]
+    },
+    {
+      "id": "D-18",
+      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with itself - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
+      "closes": [
+        "Q-02"
+      ]
+    },
+    {
+      "id": "D-19",
       "suggestion": "Inventory available Associates/Product Advertising API access, Search Console query data, AI-provider terms, budget and a human reviewer; run a citation-only draft pilot before considering automated publishing.",
       "closes": [
         "Q-14"

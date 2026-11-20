@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF7F0"/>
+      <stop offset="1" stop-color="#F2EADC"/>
+    </linearGradient>
+    <pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.9" fill="#2a241c" opacity="0.05"/>
+      <circle cx="6.5" cy="7" r="0.7" fill="#2a241c" opacity="0.04"/>
+    </pattern>
+    <pattern id="tile" width="112" height="56" patternUnits="userSpaceOnUse">
+      <rect width="112" height="56" fill="#F1E7D6"/>
+      <rect width="56" height="56" fill="#E9DCC4"/>
+      <rect x="56" y="0" width="56" height="28" fill="#E4D8BF"/>
+      <rect x="0" y="28" width="56" height="28" fill="#E4D8BF"/>
+      <rect width="112" height="56" fill="none" stroke="#DCCDB0" stroke-width="2"/>
+    </pattern>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#wall)"/>
+  <rect width="1536" height="1024" fill="url(#grain)"/>
+  <rect x="0" y="250" width="1536" height="380" fill="url(#tile)" opacity="0.85"/>
+  <rect x="0" y="246" width="1536" height="6" fill="#C9B795"/>
+
+  <!-- counter -->
+  <rect x="0" y="770" width="1536" height="34" fill="#B4532A"/>
+  <rect x="0" y="804" width="1536" height="220" fill="#E7DCC7"/>
+
+  <!-- control panel close-up -->
+  <g transform="translate(0 0)">
+    <rect x="180" y="150" width="1176" height="600" rx="40" fill="#3A342D"/>
+    <rect x="200" y="170" width="1136" height="560" rx="28" fill="#F7F1E6"/>
+
+    <!-- display -->
+    <rect x="240" y="212" width="300" height="120" rx="14" fill="#2A241C"/>
+    <rect x="268" y="242" width="140" height="20" rx="10" fill="#7C8B5E" opacity="0.85"/>
+    <rect x="268" y="278" width="96" height="18" rx="9" fill="#C89A3D" opacity="0.8"/>
+
+    <!-- big dial -->
+    <g transform="translate(430 470)">
+      <circle cx="0" cy="0" r="130" fill="#E4D8BF"/>
+      <circle cx="0" cy="0" r="104" fill="#5F6F48"/>
+      <circle cx="0" cy="0" r="104" fill="none" stroke="#7C8B5E" stroke-width="6"/>
+      <g stroke="#EADFCB" stroke-width="6" stroke-linecap="round">
+        <line x1="0" y1="-100" x2="0" y2="-78"/>
+        <line x1="0" y1="100" x2="0" y2="78"/>
+        <line x1="-100" y1="0" x2="-78" y2="0"/>
+        <line x1="100" y1="0" x2="78" y2="0"/>
+        <line x1="-71" y1="-71" x2="-55" y2="-55"/>
+        <line x1="71" y1="-71" x2="55" y2="-55"/>
+        <line x1="-71" y1="71" x2="-55" y2="55"/>
+        <line x1="71" y1="71" x2="55" y2="55"/>
+      </g>
+      <path d="M0 0 L0 -66" stroke="#B4532A" stroke-width="14" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="24" fill="#F7F1E6"/>
+    </g>
+
+    <!-- preset buttons: 12 of them, only 4 filled -->
+    <g transform="translate(760 300)">
+      <g>
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#5F6F48"/>
+        <path d="M-16 -8 C-16 -22 16 -22 16 -8 C16 6 0 18 0 18 C0 18 -16 6 -16 -8 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(120 0)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#B4532A"/>
+        <path d="M-16 -8 C-16 -22 16 -22 16 -8 C16 6 0 18 0 18 C0 18 -16 6 -16 -8 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(240 0)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#5F6F48"/>
+        <circle cx="0" cy="0" r="15" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(360 0)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#C89A3D"/>
+        <rect x="-16" y="-14" width="32" height="28" rx="6" fill="#F7F1E6"/>
+      </g>
+
+      <g transform="translate(0 110)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#C89A3D"/>
+        <path d="M-18 4 C-8 -14 12 -14 18 4 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(120 110)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#5F6F48"/>
+        <path d="M-16 -8 C-16 -22 16 -22 16 -8 C16 6 0 18 0 18 C0 18 -16 6 -16 -8 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(240 110)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#E4D8BF"/>
+        <path d="M-16 -8 C-16 -22 16 -22 16 -8 C16 6 0 18 0 18 C0 18 -16 6 -16 -8 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(360 110)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#5F6F48"/>
+        <circle cx="0" cy="0" r="15" fill="#F7F1E6"/>
+      </g>
+
+      <g transform="translate(0 220)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#E4D8BF"/>
+        <rect x="-16" y="-14" width="32" height="28" rx="6" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(120 220)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#B4532A"/>
+        <circle cx="0" cy="0" r="15" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(240 220)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#E4D8BF"/>
+        <path d="M-18 4 C-8 -14 12 -14 18 4 Z" fill="#F7F1E6"/>
+      </g>
+      <g transform="translate(360 220)">
+        <circle cx="0" cy="0" r="44" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="34" fill="#E4D8BF"/>
+        <circle cx="0" cy="0" r="15" fill="#F7F1E6"/>
+      </g>
+    </g>
+
+    <!-- small labels under the grid -->
+    <g font-family="Georgia, 'Times New Roman', serif" fill="#A08A6A" font-size="24" text-anchor="middle">
+      <text x="900" y="672">twelve buttons, four you will actually use</text>
+    </g>
+  </g>
+
+  <!-- caption -->
+  <g font-family="Georgia, 'Times New Roman', serif" text-anchor="middle">
+    <text x="768" y="906" font-size="36" fill="#7A5B34">a preset is only worth the button you press most</text>
+    <text x="768" y="952" font-size="26" fill="#A08A6A">count the settings you will use, not the ones on the panel</text>
+  </g>
+</svg>

@@ -12,8 +12,9 @@ GitHub Pages serves `main` at `/`. The root publication is the only search-index
 |---|---|---|
 | `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | Noindex archive of the independent editorial register and its review pages; not in the root sitemap or robots sitemap declarations |
-| `/docs/` | retired | The earlier third publication was removed for showing prices and ratings it could not keep accurate; a single noindex redirect page remains at `/docs/index.html` (FLG-031, FLG-039) |
+| `/docs/` | retired | The earlier third publication was removed for showing prices and ratings it could not keep accurate; a single noindex redirect page remains at `/docs/index.html` (FLG-043; history in FLG-039) |
 | `/counterwise/` | session `arena/c7a56e3d-affil3` | A fourth, independently generated publication: 5 question-shaped guides, 4 verified listings with product-intent records, comparison table, source register with retrieval grades, gate report, suggestions board, open questions, flagged-for-review, executive summary. Built and policed by `counterwise/tools/build.py` + `gate.py` (12 rules), 31 tests, self-hosted event collector shipped unarmed |
+| `/counter-desk/` | session `arena/3b45b513-affil3` | A reader-facing publication generated from its own register: front page, 5 product pages with withheld-value reasoning, 3 clusters, 7 question-led guides, an interactive counter-space & fit finder, an RSS feed and a sitemap. Gated by `tools/3b45b513/gate.mjs` (4,330 checks, 0 failed) with 19 gate tests; CI in `.github/workflows/counter-desk.yml` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
 `/editorial/` remains reachable because its build uses a separate data model and captures an independent
@@ -26,10 +27,16 @@ be read.
 
 | File | What it is |
 |---|---|
-| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
-| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | Historical snapshot from an earlier integration; superseded by `EXECUTIVE-SUMMARY.md` and the live `/executive-summary/` page |
-| [`QA-BRIEF.md`](QA-BRIEF.md) | Historical 30-question snapshot; the live `/questions/` page is the current decision register |
-| [`COORDINATION.md`](COORDINATION.md) | Session claims, scopes, verification logs, merge history, and current integration notes |
+| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | Integrated summary: observed product register, the G-02 purchase-link hold, verification standard, and what is still missing |
+| [`EXECUTIVE-SUMMARY-478e6577.md`](EXECUTIVE-SUMMARY-478e6577.md) | **The current summary (2026-11-20, session `478e6577`)**: what this pass re-checked, what changed, the open conflicts (FLG-037, FLG-038), and the decisions waiting |
+| [`EXECUTIVE_SUMMARY-4c8c7811.md`](EXECUTIVE_SUMMARY-4c8c7811.md) | Session 4c8c7811: sitemap gate fix (FLG-040), dated short-link re-check, what is still open |
+| [`EXECUTIVE-SUMMARY-c252594d.md`](EXECUTIVE-SUMMARY-c252594d.md) | The previous session's summary: the five products, what was corrected on 2026-11-20, what is verified and from where, what is still open, and the decisions waiting |
+| [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md) | The first session's summary, kept for the record (describes an earlier, smaller shape of the site) |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's earlier summary |
+| [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
+| [`EXECUTIVE_SUMMARY-3b45b513.md`](EXECUTIVE_SUMMARY-3b45b513.md) | The Counter Desk edition: what is verified, what is withheld and why, and the two corrections it made to earlier findings |
+| [`VERIFICATION-3b45b513.md`](VERIFICATION-3b45b513.md) | Line-by-line verification log for that edition, with every official URL |
+| [`COORDINATION.md`](COORDINATION.md) | All session boards, claims, verification logs, merge logs |
 | [`data/`](data/) | Register for the root site |
 | [`data/c46310a7-affil3/`](data/c46310a7-affil3/) | Register for the `/docs/` site (session-scoped copy; identical content to the session's committed records) |
 | [`data/register/`](data/register/) | Register for `/editorial/` |
@@ -41,6 +48,14 @@ be read.
 ```bash
 node tools/build.mjs     # data/*.json  -> repository root
 node tools/verify.mjs    # gates
+```
+
+**Counter Desk edition** (Node, no dependencies):
+
+```bash
+node tools/3b45b513/build.mjs      # data/3b45b513/*.json -> counter-desk/
+node tools/3b45b513/gate.mjs       # 4,330 publishing checks
+node --test tools/3b45b513/gate.test.mjs   # 19 tests, 7 of which break a page on purpose
 ```
 
 **Editorial site** (Python, no dependencies):
@@ -66,7 +81,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` runs **2,808 checks** over the 28 published pages. It stops the build on:
+`node tools/verify.mjs` runs **4,607 checks** at this commit over the published root pages (FLG-039 corrected a stale figure; each run prints its own count). It stops the build on:
 
 - a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
 - an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
@@ -100,11 +115,11 @@ to search engines; the other surfaces stay online and reachable for the people w
 This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
 See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
 
-## The finding both sessions independently agree on
+## The tag rule, and the short-link conflict
 
-Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
-Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
-The links are untagged — that is a different claim from *invalid*, and only the first is made here.
+Amazon's Program Policies, Participation Requirements §2(b), require the Associates ID as a URL parameter on every link placed on a site. The buy buttons on this site are `/dp/<ASIN>` URLs that carry `tag=shopnow047c-20`. The submitted short links (`link.amazon/…`) carry no tag of their own, so the site does not publish them as clickable links.
+
+What the short links resolve to is **not settled**. On 2026-11-20, three sandbox rounds recorded product pages and two recorded the Amazon home page for the same five links (FLG-037). None of the five is called valid or invalid here. The owner's signed-in check and gate G-02 are the way to settle it.
 
 ## Disclosure
 

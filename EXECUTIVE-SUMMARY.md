@@ -1,4 +1,4 @@
-# Executive summary — Affil3
+# Executive summary — ShopNow Kitchen
 
 **Prepared:** 2026-11-20 · **Tracking ID supplied:** `shopnow047c-20` · **Canonical publication:** https://karagemop466-tech.github.io/Affil3/
 
@@ -48,7 +48,7 @@ not addressed in the documents read.
 | Is `shopnow047c-20` active and is the site declared in the account? | Unknown to this repository | Check the Associates Central account and declared-site list (Q-03, FLG-006, FLG-011). |
 | Are the product links valid Special Links with correct destinations and report rows? | G-02 pending; purchase buttons withheld | Generate one link per product in Associates Central, click and verify destination and report, then record the proof in the product validation record (Q-04, FLG-005). |
 | Are analytics and search-query measurements active? | No. Search Console is unconnected and analytics endpoint is unset | Verify the site in Search Console; select, deploy, and test a collector endpoint (Q-06, Q-12; FLG-009, FLG-013). |
-| What AI/data workflow is authorized? | Not configured | Choose an AI provider, product/query sources, budget/data terms, and human reviewer. Start with source-cited drafts only (Q-18, S-15). |
+| What AI/data workflow is authorized? | Not configured | Choose an AI provider, product/query sources, budget/data terms, and human reviewer. Start with source-cited drafts only (Q-22, S-28). |
 | Who is the named editor/author? | Team byline; no person or credentials supplied | Supply a real author/reviewer and accurate bio, or keep the team byline (Q-08, FLG-014). |
 
 ## Verification and publication

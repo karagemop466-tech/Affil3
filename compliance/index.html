@@ -11,11 +11,11 @@
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Compliance and gates">
 <meta name="twitter:description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
-<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -30,6 +30,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/articles/">Journal</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -55,7 +56,7 @@
 </ul>
 <h2>Gates before scaling</h2>
 </div>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure strip above the fold on every page and repeated in the footer</td><td>Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)</td><td>Passed (automated)</td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, with destination and tracking-report evidence recorded</td><td>Manual, requires Associates login</td><td><strong>Pending; purchase CTAs withheld</strong> (FLG-005)</td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-04</td><td>Every published product CTA uses a validated link tagged shopnow047c-20</td><td>Automated + G-02 evidence</td><td>No product CTAs published</td></tr><tr><td>G-05</td><td>No redirect or cloaking pages generated</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-06</td><td>No prices, ratings or availability displayed</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td>Not applicable (ledger empty)</td></tr><tr><td>G-09</td><td>Analytics: only the five listed events; no cookies</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-11</td><td>Generated files match the registers (no hand-edited HTML drift)</td><td>Automated (CI re-runs build and compares)</td><td>Passed (automated)</td></tr><tr><td>G-12</td><td>Observed product destinations cross-checked by an independent retest</td><td>Retest register + independent fetch; corrections logged</td><td>Passed (FLG-022 corrected, FLG-028 corroborated)</td></tr><tr><td>G-13</td><td>Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over</td><td>Manufacturer-page register (S11–S16) + retest</td><td>Passed — conflicts published (FLG-023…FLG-027)</td></tr></tbody></table></div>
+<div class="table-wrap"><table class=""><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure strip above the fold on every page and repeated in the footer</td><td>Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)</td><td>Passed (automated)</td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, with destination and tracking report confirmed</td><td>Manual, requires Associates login</td><td><strong>Pending</strong> (FLG-005)</td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-04</td><td>Every outbound product link uses tag shopnow047c-20</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-05</td><td>No redirect or cloaking pages generated</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-06</td><td>No prices, ratings or availability displayed</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td>Not applicable (ledger empty)</td></tr><tr><td>G-09</td><td>Analytics: only the five listed events; no cookies</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-11</td><td>Generated files match the registers (no hand-edited HTML drift)</td><td>Automated (CI re-runs build and compares)</td><td>Passed (automated)</td></tr><tr><td>G-12</td><td>Observed product destinations cross-checked by an independent retest</td><td>Retest register + independent fetch; corrections logged</td><td>Passed (FLG-022 corrected, FLG-028 corroborated)</td></tr><tr><td>G-13</td><td>Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over</td><td>Manufacturer-page register (S11–S16) + retest</td><td>Passed — conflicts published (FLG-023…FLG-027)</td></tr></tbody></table></div>
 <div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>
 </main>
 <footer class="site-footer">
@@ -66,9 +67,10 @@
       <p class="small muted"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/legacy/archive/">Archived editions</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
+        <li><a href="/Affil3/articles/">The Journal</a></li>
         <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
         <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
         <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
@@ -83,6 +85,7 @@
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>
         <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+        <li><a href="/Affil3/decisions/">Decision board (this session)</a></li>
         <li><a href="/Affil3/flagged/">Flagged for review</a></li>
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
@@ -90,6 +93,7 @@
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
+        <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
         <li><a href="/Affil3/editorial/">Editorial record (noindex archive)</a></li>
       </ul>
     </div>

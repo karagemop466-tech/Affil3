@@ -19,3 +19,6 @@ __pycache__/
 /docs/*
 !/docs/index.html
 /editorial-legacy/
+
+# Local preview scaffolding (symlink so the site can be served under its /Affil3 base path)
+.preview/

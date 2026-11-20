@@ -1,0 +1,37 @@
+{
+  "status": "The schema is defined and the client code ships. Nothing is being collected on the live site, because no endpoint is configured.",
+  "principles": [
+    "No cookies, no local storage, no device identifiers, no IP address stored.",
+    "Five named events, and nothing else. The browser refuses to send an event outside the allowlist.",
+    "A click is not an order. This measures interest, not revenue.",
+    "If the endpoint is unset, the code fails open and sends nothing — the page must never depend on the network.",
+    "Outbound links are never routed through a redirect, because Program Policies 6(v) treats a Redirecting Link as cloaking and 6(w) bars a shortener that obscures the Amazon destination."
+  ],
+  "events": [
+    { "name": "page_view", "fires": "Once per page load, after the page is interactive.", "properties": ["page_path", "page_type"] },
+    { "name": "category_view", "fires": "When a category or cluster page is viewed.", "properties": ["category"] },
+    { "name": "product_view", "fires": "When a product page is viewed.", "properties": ["product_id", "category"] },
+    { "name": "outbound_click", "fires": "On click of an Amazon link, before the browser follows it.", "properties": ["product_id", "placement"] },
+    { "name": "guide_read_75", "fires": "Once per guide, when the reader has scrolled past 75% of the article.", "properties": ["guide_slug"] }
+  ],
+  "not_collected": [
+    "IP addresses",
+    "User agent strings",
+    "Cookies or any persistent identifier",
+    "Precise location",
+    "Referrer URLs with query strings",
+    "Amazon order, commission or customer data of any kind"
+  ],
+  "endpoint_contract": {
+    "method": "POST",
+    "content_type": "application/json",
+    "body": "{ event, properties, ts }",
+    "allowed_events": "exactly the five names above",
+    "response": "204 on accept, 400 on an unknown event or an unexpected property"
+  },
+  "collector": {
+    "reference_implementations": ["tools/collector.mjs (Node, no dependencies)", "tools/analytics-endpoint/server.py and worker.js in the repository root"],
+    "storage": "One append-only JSONL file per day, aggregate counts only; no identifier that could re-link a visitor across days.",
+    "deployment": "GitHub Pages cannot run any of these. The endpoint must be deployed elsewhere and its URL set in the build configuration before a single event is sent."
+  }
+}

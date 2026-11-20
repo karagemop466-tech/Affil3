@@ -130,6 +130,15 @@ a.cat-card { padding: 20px; }
 .seasonal p { color: #46503a; }
 .seasonal-art img { border-radius: 14px; display: block; }
 
+/* quick pick: shopper decision helper on the front shelf */
+.quick-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin: 14px 0 4px; }
+.qp-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; background: var(--card); box-shadow: var(--shadow); }
+.qp-product { font-weight: 800; font-size: 15.5px; margin: 0 0 4px; color: var(--ink); }
+.qp-fit { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; line-height: 1.45; }
+.qp-links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.qp-links a.btn { font-size: 13px; padding: 7px 14px; margin: 0; }
+.qp-links a + a::before { content: "·"; color: var(--muted); padding: 0 4px; }
+
 /* figures in guides */
 .figure { margin: 22px 0 26px; max-width: 760px; }
 .figure img { width: 100%; box-shadow: var(--shadow); }
@@ -251,3 +260,18 @@ table.checklist { min-width: 560px; }
 .hero-figure img { border-radius: 18px; box-shadow: var(--shadow-lift); display: block; }
 .picks { position: relative; }
 @media (max-width: 900px) { .pd-hero { grid-template-columns: 1fr; } }
+
+/* Design brief (/design-brief/), re-added 2026-11-20 by session 66f2548a after the second merge
+   dropped the earlier append. Uses the palette variables already defined above so the page
+   inherits the publication's look rather than introducing a second one. */
+.invariants { padding-left: 1.4em; max-width: 78ch; }
+.invariants li { margin: 0.55em 0; }
+.forbidden { padding-left: 1.3em; max-width: 78ch; }
+.forbidden li { margin: 0.4em 0; }
+.beforeafter { margin: 0.4em 0; max-width: 78ch; font-size: 0.92em; }
+.ba-label { display: inline-block; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+  font-weight: 700; color: var(--muted); background: var(--paper-deep); border-radius: 4px;
+  padding: 1px 6px; margin-right: 0.5em; vertical-align: 1px; }
+.prompt-block { background: var(--ink); color: var(--paper); padding: 1.1em 1.3em; border-radius: 12px;
+  overflow-x: auto; font: 0.82rem/1.65 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: pre-wrap; word-break: break-word; }

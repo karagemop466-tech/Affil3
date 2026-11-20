@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Suggestions: choose a path | ShopNow Kitchen</title>
-<meta name="description" content="Owner decisions with trade-offs. Safety gates remain in force until their validation evidence is recorded.">
+<meta name="description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/suggestions/">
 <meta property="og:title" content="Suggestions: choose a path">
-<meta property="og:description" content="Owner decisions with trade-offs. Safety gates remain in force until their validation evidence is recorded.">
+<meta property="og:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/suggestions/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Suggestions: choose a path">
-<meta name="twitter:description" content="Owner decisions with trade-offs. Safety gates remain in force until their validation evidence is recorded.">
-<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.jpg">
 <meta name="analytics-endpoint" content="">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
@@ -30,6 +30,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/articles/">Journal</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -40,7 +41,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Decision queue: &#39;Current&#39; describes the live setting; recommendations are proposals, not owner approvals. Optional changes remain unimplemented until chosen. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation. Reply with a suggestion ID and option letter (for example &#39;S-03 B&#39;).</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation.</p></section>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
@@ -103,31 +104,109 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
 </section>
 <section class="choice-card" id="S-11">
-  <p class="kicker">S-11 · Measurement scope</p>
-  <p class="choice-current">Current: <span class="badge">Event fields are path, referrer_host, product_id and destination_host; a collector exists under tools/analytics-endpoint but no endpoint is configured, so nothing is collected.</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep events aggregate-only and forbid any browser-persisted identifier.<br><span class="muted small">Tradeoff: No per-visitor funnels and no per-visitor A/B attribution. Nearly every decision the site needs survives at page and product level.</span></li><li><strong>B.</strong> Add a first-party id so sessions can be stitched into funnels.<br><span class="muted small">Tradeoff: Reads like ordinary analytics, and becomes a breach the moment it is joined with a tag or sub-tag.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, and assert it in the build so B cannot be re-added by accident.</p>
+  <p class="kicker">S-11 · Four editions on one domain</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current).<br><span class="muted small">Tradeoff: One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain.</span></li><li><strong>B.</strong> Publish the other editions on separate domains, each with its own tracking ID.<br><span class="muted small">Tradeoff: Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain.</span></li><li><strong>C.</strong> Unpublish the other editions and keep only their pages in the repository history.<br><span class="muted small">Tradeoff: The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build.</p>
 </section>
 <section class="choice-card" id="S-12">
-  <p class="kicker">S-12 · Seasonal and deal content</p>
-  <p class="choice-current">Current: <span class="badge">No promotional or seasonal claim is published, so the removal-on-expiry rule is met by avoidance.</span></p>
-  <ul class="opts"><li><strong>A.</strong> Leave it: no deal content, no expiry obligation.<br><span class="muted small">Tradeoff: Gives up the highest-intent seasonal traffic the niche has.</span></li><li><strong>B.</strong> Add expires_on to page front matter and have the builder drop expired pages to an archive without the offer text.<br><span class="muted small">Tradeoff: One build change plus an archive page to maintain, then seasonal content becomes safe to publish.</span></li><li><strong>C.</strong> Publish seasonal framing that makes no price or discount claim.<br><span class="muted small">Tradeoff: Weaker hook than B, but no expiry mechanism required.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> C now, B before the first real deal page. Do not publish deals while relying on A and claiming otherwise.</p>
+  <p class="kicker">S-12 · Publishing the ThermoMaven buy button</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current).<br><span class="muted small">Tradeoff: The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away.</span></li><li><strong>B.</strong> Keep the button hidden until the listing model field confirms the F1 Ace.<br><span class="muted small">Tradeoff: The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken.</span></li><li><strong>C.</strong> Point the button at the manufacturer F1 Ace page instead of the Amazon listing.<br><span class="muted small">Tradeoff: Breaks the affiliate link and the tracking the site exists for.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question.</p>
 </section>
 <section class="choice-card" id="S-13">
-  <p class="kicker">S-13 · Evidence quality</p>
-  <p class="choice-current">Current: <span class="badge">Compliance rules in data/register/compliance.json carry quotes; the root site&#39;s data/sources.json carries a used_for summary with no quoted text.</span></p>
-  <ul class="opts"><li><strong>A.</strong> Leave root sources as summaries.<br><span class="muted small">Tradeoff: A reviewer has to open Amazon&#39;s policy page and hunt for the clause to check any row.</span></li><li><strong>B.</strong> Require a verbatim quote plus the document&#39;s own version date and a retrieval date on every source that supports a compliance claim.<br><span class="muted small">Tradeoff: Slower to edit, and quotes need re-verification when Amazon revises a document, which is the point.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B. The two governing documents are dated 2025-10-15 and 2026-04-14, so a quote without its version date stops being checkable inside a quarter.</p>
+  <p class="kicker">S-13 · A side-by-side comparison page</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current).<br><span class="muted small">Tradeoff: It is the page a buyer actually wants and the strongest internal link target for every guide.</span></li><li><strong>B.</strong> Keep the comparison inside the shop table and the category pages only.<br><span class="muted small">Tradeoff: Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table.</span></li><li><strong>C.</strong> Add comparison products beyond the five submitted rows so the table has more than one option per category.<br><span class="muted small">Tradeoff: More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research.</p>
 </section>
 <section class="choice-card" id="S-14">
-  <p class="kicker">S-14 · Build integrity</p>
-  <p class="choice-current">Current: <span class="badge">verify.yml asserts git diff --quiet -- docs while tools/build.py writes editorial/, and the root generator is not run by CI at all, so stale committed output merges green.</span></p>
-  <ul class="opts"><li><strong>A.</strong> Point the assertion at editorial/ and add a build.mjs step with its own diff assertion.<br><span class="muted small">Tradeoff: Two lines. It will fail the first change that edits data without rebuilding, which is the intended effect.</span></li><li><strong>B.</strong> Publish only from a build artefact rather than committing generated HTML.<br><span class="muted small">Tradeoff: Cleanest source/output split, but it changes the Pages source and every live URL&#39;s provenance.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> The first option now; revisit the second only when the two publishers are consolidated.</p>
+  <p class="kicker">S-14 · Derive every count on a page from the rows that page counts</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Fix each instance when it is found, which is what has happened so far.<br><span class="muted small">Tradeoff: Works until the next one. Nothing prevents recurrence, and the instances have been found by later sessions rather than by the build.</span></li><li><strong>B.</strong> Add a gate rule banning hand-written count phrases in templates, and require the computed form instead.<br><span class="muted small">Tradeoff: A few hours. Catches the class rather than the instance.</span></li><li><strong>C.</strong> Add a build assertion that no rendered section has a non-empty heading over an empty body, and that every collection rendered on a page is non-empty unless the page says so.<br><span class="muted small">Tradeoff: Cheaper than B and it also catches the empty-page case.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.</p>
 </section>
 <section class="choice-card" id="S-15">
-  <p class="kicker">S-15 · AI research and publishing automation</p>
+  <p class="kicker">S-15 · Record the two policy clauses that constrain the AI half of the brief</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Treat the automation in the brief as unqualified and build it.<br><span class="muted small">Tradeoff: The fastest path to what the brief describes and the likeliest path to a material breach, which permits immediate termination under Operating Agreement §6.</span></li><li><strong>B.</strong> Build only automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, and drafts written from manufacturer pages with citations. Keep pricing analysis off the Site. Ask Amazon about §5 before going further.<br><span class="muted small">Tradeoff: Slower, and part of the brief stays unbuilt. Everything already in this repository is inside it.</span></li><li><strong>C.</strong> Request PA API / Creators API access and Amazon&#39;s written approval, then build the full pipeline.<br><span class="muted small">Tradeoff: The only route to prices, ratings and the automated research the brief describes. Needs an approved account and a qualifying site, so it depends on S-02 and Q-03.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B now and C as the destination. Published on the compliance page in this session so the boundary is visible to whoever builds next rather than rediscovered later.</p>
+</section>
+<section class="choice-card" id="S-16">
+  <p class="kicker">S-16 · A privacy notice for the click counter</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Ship no notice.<br><span class="muted small">Tradeoff: The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.</span></li><li><strong>B.</strong> Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted.<br><span class="muted small">Tradeoff: An hour, and done in this session for review. It is a draft of a legal-adjacent page and should be read rather than trusted.</span></li><li><strong>C.</strong> Adopt a hosted consent and privacy service.<br><span class="muted small">Tradeoff: Proportionate for a site with a real audience and third-party processors. Overkill now, and it adds a processor of its own.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, implemented in this session as a draft. It closes Q-11 and answers part of Q-16; whether the wording is adequate where the site is operated from is a question for counsel, not something a build session should settle.</p>
+</section>
+<section class="choice-card" id="S-17">
+  <p class="kicker">S-17 · One product register or two</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep both and re-check them against each other each session (current).<br><span class="muted small">Tradeoff: No migration risk. The check is manual, and manual checks here have a documented record of being missed.</span></li><li><strong>B.</strong> Add a gate rule that fails the build when the two registers disagree on any shared field for any product.<br><span class="muted small">Tradeoff: About an hour. It does not remove the duplication but it makes disagreement impossible to ship, which is the failure that actually happened.</span></li><li><strong>C.</strong> Merge into one register with per-publication views.<br><span class="muted small">Tradeoff: Removes the duplication permanently. The largest data change available here, and it touches files two earlier sessions built.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B now, and C if S-01 chooses to consolidate the publications. B is a few dozen lines and converts a class of silent error into a build failure.</p>
+</section>
+<section class="choice-card" id="S-18">
+  <p class="kicker">S-18 · Should the gate tell a product link apart from a citation?</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the blanket rule and cite Amazon help pages as plain text rather than linking them (what /privacy/ does now).<br><span class="muted small">Tradeoff: Impossible to ship an unmarked product link, which is the failure that matters. It costs a few convenience links, and a plain-text URL is worse on a phone.</span></li><li><strong>B.</strong> Make the rule precise and fail-closed: a link is product-intent if it targets /dp/, carries tag= or carries data-outbound, and must then be both sponsored and tagged; any other amazon.com link must not be sponsored. Anything that cannot be classified fails the build.<br><span class="muted small">Tradeoff: Semantically correct against Google&#39;s guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test written first and should not be made by a build session on its own authority.</span></li><li><strong>C.</strong> Keep the blanket rule for product links and allow a short explicit allowlist of informational Amazon paths, checked literally.<br><span class="muted small">Tradeoff: Narrower than B and easier to audit, because the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the negative test written first: break a product link&#39;s tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently one of the things standing between this site and an untagged outbound link.</p>
+</section>
+<section class="choice-card" id="S-19">
+  <p class="kicker">S-19 · A house style rule that can be checked</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Rely on editorial judgement per page.<br><span class="muted small">Tradeoff: Free, and it is how the current copy was produced - which is good enough that the diagnosis is worth writing down rather than repeating.</span></li><li><strong>B.</strong> Publish a house style file with do/don&#39;t rules and real before-and-after examples from this site, and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.<br><span class="muted small">Tradeoff: Half a day. The gate catches the mechanical failures; the rest stays editorial. Publishing the standard does more for reader trust than any badge.</span></li><li><strong>C.</strong> Add a readability-score threshold per page to the gate.<br><span class="muted small">Tradeoff: Objective and easy to implement, and it optimises for the wrong thing: it pushes copy toward short dumb sentences, which is its own kind of slop.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.</p>
+</section>
+<section class="choice-card" id="S-20">
+  <p class="kicker">S-20 · Crawl control for a site served at a project path</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).<br><span class="muted small">Tradeoff: No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.</span></li><li><strong>B.</strong> Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.<br><span class="muted small">Tradeoff: Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.</span></li><li><strong>C.</strong> Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.<br><span class="muted small">Tradeoff: Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.</span></li><li><strong>D.</strong> Serve the root publication from a repository named for the owner&#39;s GitHub Pages host, so robots.txt is read from the host root.<br><span class="muted small">Tradeoff: Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
+</section>
+<section class="choice-card" id="S-21">
+  <p class="kicker">S-21 · Choose the next guide from measured queries, not instinct</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep writing hypothesis-led guides on editorial judgement (current).<br><span class="muted small">Tradeoff: Fast, and the house style (S-19) keeps the quality bar up. Topic choice stays guesswork, and the &#39;then measure whether anyone arrives&#39; half of the plan never happens.</span></li><li><strong>B.</strong> Pause new guides until query evidence exists: verify Search Console (D-05), read two Performance-report cycles, then write against measured queries.<br><span class="muted small">Tradeoff: Topic choice becomes evidence-based. The site sits still for weeks, right through the season when a seasonal guide (S-23) has its best chance of being useful to a reader.</span></li><li><strong>C.</strong> Run both tracks: keep a small seasonal calendar (S-23) moving while the measurement is set up, and switch topic selection to measured queries once the Performance report has real rows.<br><span class="muted small">Tradeoff: A little bookkeeping now. Calendar entries that earned no arrivals get retired on evidence instead of opinion, and nothing is written against a number that does not exist yet.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> C. It is the only option that keeps the site alive this week and closes the measurement gap this month; B alone misses the season, A alone never measures.</p>
+</section>
+<section class="choice-card" id="S-22">
+  <p class="kicker">S-22 · A name the reader can remember</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep &#39;Affil3&#39; everywhere (current).<br><span class="muted small">Tradeoff: Zero work. Every title tag, share card and search snippet stays generic, and the repository name keeps leaking into the brand.</span></li><li><strong>B.</strong> Choose a descriptive house name now against a written checklist (spellable from hearing; no conflict with an existing trademark - check the USPTO search and re-read the Associates trademark guidelines before committing; no product brand we do not own; no jargon), then rename templates, titles, og:site_name and the design brief in one commit.<br><span class="muted small">Tradeoff: An hour of naming work and one rename commit; every future page inherits a real masthead. The trademark and Associates trademark-guideline check is a hard precondition, not a footnote.</span></li><li><strong>C.</strong> Defer naming until analytics show which pages earn traffic (needs S-21 C and S-03 live).<br><span class="muted small">Tradeoff: Naming with evidence in hand. The name touches every page, so every week of delay makes the rename marginally bigger, and the current name keeps shipping into search results and share cards meanwhile.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, executed the week the owner is available: it is the cheapest high-leverage polish item left, and the checklist keeps it honest.</p>
+</section>
+<section class="choice-card" id="S-23">
+  <p class="kicker">S-23 · Seasonal hooks, published as honest checklists</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> No seasonal content on the root publication (current).<br><span class="muted small">Tradeoff: Nothing goes stale. The site also never gives a reader a reason to arrive in a specific week, which is the weakest possible organic-traffic posture.</span></li><li><strong>B.</strong> One seasonal guide per major buying moment (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), each a question-shaped checklist with cited sources, each re-read for staleness in the week after the moment passes (K-21).<br><span class="muted small">Tradeoff: Roughly one extra guide per month at peak seasons, plus a staleness review that cannot be skipped - a forgotten deals checklist is worse than none.</span></li><li><strong>C.</strong> A dated deals feed or price-watch page.<br><span class="muted small">Tradeoff: Matches what many affiliate sites do; it is not available here. Price tracking is barred by 6(y) (K-15) and prices may not be displayed unless Amazon serves the data (K-04). This option is recorded so it is visibly rejected, not silently ignored.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, starting with a Black Friday week checklist published while the week is still current, and the staleness review owned by whoever holds the cadence (S-05).</p>
+</section>
+<section class="choice-card" id="S-24">
+  <p class="kicker">S-24 · Grow the done-temperature cluster the sources already support</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the single done-temperature guide (current).<br><span class="muted small">Tradeoff: Nothing new to maintain. The cluster never accumulates the internal links that tell both a reader and a crawler the topic is covered properly.</span></li><li><strong>B.</strong> Grow it into a small cluster (three to four guides: whole chicken, ground meat, reheated leftovers), every temperature cited to the same USDA table (S10) and probe-placement note (S20), a short hub paragraph linking the members, and product links only where the reader actually needs a thermometer.<br><span class="muted small">Tradeoff: Three more guides to the house standard. Each is short, each is checkable against one official source, and none repeats another&#39;s wording - the scaled-content rule Google publishes (S09) is the reason the cluster stays small and hand-written.</span></li><li><strong>C.</strong> Skip recipe-adjacent content entirely and stay a pure buying-guide site.<br><span class="muted small">Tradeoff: Sharper focus. The site forfeits the one content family where an official government source can back every number published.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, but only after S-21 C is chosen - write the cluster pieces against measured queries when the data exists, and only where the USDA table covers the food.</p>
+</section>
+<section class="choice-card" id="S-25">
+  <p class="kicker">S-25 · Make the decision board the front door for decisions</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the board as it is (current).<br><span class="muted small">Tradeoff: It works. Decisions still have to be hunted across six tracks, and a choice made outside the board leaves no trace in the repository.</span></li><li><strong>B.</strong> Render the decision support the data already implies: a &#39;decide next&#39; shortlist derived from the sequence, a decision-log section that populates when the first choice is recorded, and a &#39;last reviewed&#39; stamp the owner updates when they have read the board.<br><span class="muted small">Tradeoff: One build change to one page. After that the owner answers rows instead of searching them, and every decision lands in versioned history.</span></li><li><strong>C.</strong> Move decision tracking out of the repository into a spreadsheet or task tool.<br><span class="muted small">Tradeoff: Comfortable editing. The decisions leave the versioned history, the site stops being self-describing, and the review trail the brief asks for now depends on an external tool nobody has chosen.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. The suggestions page is already the review gate the brief asks for; this change makes it obviously usable instead of merely present.</p>
+</section>
+<section class="choice-card" id="S-26">
+  <p class="kicker">S-26 · Where the analytics collector actually runs</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the endpoint unset. The site publishes no traffic figures and no revenue figures, and the /measurement/ page says so in plain words.<br><span class="muted small">Tradeoff: Nothing to deploy, nothing to disclose, nothing to get wrong. It also means the next guide topic is chosen by instinct rather than by measured queries, which is the gap S-21 was written to close.</span></li><li><strong>B.</strong> Run the collector on a small always-on host and point analyticsEndpoint at it.<br><span class="muted small">Tradeoff: Turns measurement on the day it is deployed. It also makes the host, its logs, its uptime and its backups part of what this site promises a reader, and the privacy notice has to describe a real company rather than a generic process.</span></li><li><strong>C.</strong> Write daily aggregate counts to a public JSON file in this repository from a scheduled GitHub Actions workflow, and let the browser POST to a queue instead of to the collector.<br><span class="muted small">Tradeoff: No separate host, no server to pay for, and the counts stay in the repository history. It needs a browser write path that does not accept arbitrary POSTs, so the workflow is the part that has to be designed and reviewed carefully.</span></li><li><strong>D.</strong> Measure only outbound clicks, with no page-view events at all.<br><span class="muted small">Tradeoff: The smallest possible data set, and the only number actually tied to revenue. It cannot answer which guide brought the reader, which is the question the cadence decision needs.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B if a host is available and the privacy notice can be settled first (Q-16). D if the only thing worth counting is revenue-bearing clicks. The collector is ready; the remaining work is hosting and disclosure, not code.</p>
+</section>
+<section class="choice-card" id="S-27">
+  <p class="kicker">S-27 · Image weight, and the intrinsic size nobody was checking</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the images as they were.<br><span class="muted small">Tradeoff: Free, and the pages render. It leaves the heaviest element on the page untouched on a site whose whole purpose is organic traffic, where page experience on a phone is a ranking input rather than a detail.</span></li><li><strong>B.</strong> Re-encode the illustrations to a 256-colour palette at 1200 px, derive a 768 px card variant for grid cards and serve it through srcset, take the hero to JPEG, read every declared width and height from the file, and gate all of it (done 2026-11-20).<br><span class="muted small">Tradeoff: No artwork changed and no file path moved, so no page reference moved. Front page images fell from 3,947 KB to 1,176 KB and the guides index from 3,568 KB to 442 KB (measured pixel RMSE 0.012 against the originals). The gate now fails if a declared size ever disagrees with its file again.</span></li><li><strong>C.</strong> Go further: move every illustration to JPEG, delete the PNGs, and add a weight ceiling to the gate so no image over 300 KB may be committed.<br><span class="muted small">Tradeoff: The smallest files and a rule that stops the problem returning. It also means the illustration pages are no longer lossless, and a ceiling needs an exception path for a genuinely detailed image.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B is done and was safe to do without a decision, because it changed no path and no pixel. C is the version that stops it coming back, and is worth doing the next time an illustration is added.</p>
+</section>
+<section class="choice-card" id="S-28">
+  <p class="kicker">S-28 · AI research and publishing automation</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep research and publishing manual for now; use explicit source, validation, and disclosure gates (current).<br><span class="muted small">Tradeoff: No provider cost or generated claims, but no automated research or drafts.</span></li><li><strong>B.</strong> Pilot AI-assisted drafts using only approved product/query data, with citations and mandatory human approval.<br><span class="muted small">Tradeoff: Can speed research and first drafts; requires an authorized source, model/provider, data terms, budget, and named editor.</span></li><li><strong>C.</strong> Automatically publish AI-generated product pages and links.<br><span class="muted small">Tradeoff: Highest automation and risk; requires validated source data, policy checks, working analytics, and rollback owner. Not recommended now.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B only after Q-14 and D-09 are answered; do not automate publication before evidence and review gates exist.</p>
@@ -167,9 +246,10 @@
       <p class="small muted"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/legacy/archive/">Archived editions</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
+        <li><a href="/Affil3/articles/">The Journal</a></li>
         <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
         <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
         <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
@@ -184,6 +264,7 @@
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>
         <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+        <li><a href="/Affil3/decisions/">Decision board (this session)</a></li>
         <li><a href="/Affil3/flagged/">Flagged for review</a></li>
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
@@ -191,6 +272,7 @@
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
+        <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
         <li><a href="/Affil3/editorial/">Editorial record (noindex archive)</a></li>
       </ul>
     </div>
