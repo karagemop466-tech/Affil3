@@ -8,7 +8,7 @@
       "origin": "Operating Agreement s.5",
       "source_id": "S01",
       "implementation": "Disclosure strip rendered under the masthead on every page, plus the same sentence in the footer of every page, plus the /disclosure/ page as the long form.",
-      "gate": "every HTML file in docs/ must contain the exact sentence; a page without it fails the build",
+      "gate": "every HTML file in shop/ must contain the exact sentence; a page without it fails the build",
       "status": "passing"
     },
     {
@@ -62,7 +62,7 @@
       "origin": "Program Policies as described by secondary sources (S02) - wording unresolved, so the site takes the strict path",
       "source_id": "S02",
       "implementation": "No price, no availability, no star rating, no review count, anywhere. Product pages carry a 'what we did not verify' panel that explains the blank instead of filling it.",
-      "gate": "regular expression over docs/ for a currency pattern ([$]\\d) and for star-rating phrasing; any hit fails the build",
+      "gate": "regular expression over shopnow/ for a currency pattern ([$]\\d) and for star-rating phrasing; any hit fails the build",
       "status": "passing"
     },
     {

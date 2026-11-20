@@ -14,7 +14,7 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 | `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
-| `/shop/` | session `59aebafb` (`scripts/build.mjs`) | Third independent publication: 6 buyer guides, 4 product records, 4 shape clusters, a comparison table, and the full review board (22 suggestions, 22 open questions, 10 flags) — with an 11-gate compliance checker |
+| `/shopnow/` | session `59aebafb` (`scripts/build.mjs`) | Third independent publication: 6 buyer guides, 4 product records, 4 shape clusters, a comparison table, and the full review board (22 suggestions, 22 open questions, 10 flags) — with an 11-gate compliance checker |
 
 `/editorial/` exists because its build was written against a different data model and its verification
 found things the other register did not. Keeping both builds preserves both verification passes rather
@@ -27,7 +27,7 @@ than merging them into one file whose provenance nobody can reconstruct.
 | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
 | [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
-| [`report/EXECUTIVE-SUMMARY.md`](report/EXECUTIVE-SUMMARY.md) | The `/shop/` session's summary: what the links resolve to, what was verified, what is blocked |
+| [`report/EXECUTIVE-SUMMARY.md`](report/EXECUTIVE-SUMMARY.md) | The `/shopnow/` session's summary: what the links resolve to, what was verified, what is blocked |
 | [`report/DECISION-BRIEF.md`](report/DECISION-BRIEF.md) | The six answers that gate everything else, plus the discovery steps that obtain them |
 | [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
 | [`data/`](data/) | Register for the root site |
@@ -53,12 +53,12 @@ Both builds are deterministic. CI rebuilds both and fails if the committed outpu
 
 ## Build
 
-**Shop site** (Node, no dependencies) — output is committed to `shop/`:
+**x:
 
 ```bash
 node scripts/build.mjs     # register/*.json + content/*.md  ->  shop/
 node scripts/checks.mjs     # 11 gates; exit 1 blocks the merge
-node scripts/serve.mjs      # http://localhost:8080/Affil3/shop/
+node scripts/serve.mjs      # http://localhost:8080/Affil3/shopnow/
 node scripts/collect.mjs    # optional self-hosted event collector on :8788
 ```
 
@@ -80,7 +80,7 @@ pointed at the root site so nothing that already calls them breaks.
 This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
 See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
 
-`/shop/` reaches the same conclusion from the other direction: it publishes no price and no rating
+`/shopnow/` reaches the same conclusion from the other direction: it publishes no price and no rating
 either, but it *does* render a buy button, built as a tagged `/dp/<ASIN>?tag=shopnow047c-20`
 Special Link derived from the resolved ASIN rather than from the supplied short link. The two
 surfaces differ on whether an untagged supplied link should be used at all — that disagreement is
@@ -91,9 +91,18 @@ recorded rather than averaged away, in `FLG-003` and in `register/links.json`.
 Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
 Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
 The links are untagged — that is a different claim from *invalid*, and only the first is made here.
-The `/shop/` register records the same four resolved ASINs (`B0CDY277D3`, `B09B7SB46R`,
+The `/shopnow/` register records the same four resolved ASINs (`B0CDY277D3`, `B09B7SB46R`,
 `B08DKYBTPH`, `B0DZFD6R9Z`), the same `redirect_had_tag: false`, and the same blank *intended* ASIN
 on every row — two independent resolution passes agreeing is stronger evidence than either alone.
+
+## Path collisions between sessions
+
+`/shop/` is another session's surface (a single hub page at `shop/index.html`). This session's first
+relocation attempt picked that path and overwrote it during a local rebuild; the file was restored
+byte-for-byte and this surface moved to the free path `/shopnow/`. The rule that would have prevented
+it: before choosing a mount point, `git ls-tree origin/main -- <path>`, and treat any non-empty
+result as claimed. `scripts/checks.mjs` only ever walks `shopnow/`, so a rebuild cannot reach into a
+neighbour's tree.
 
 ## Licence and attribution
 

@@ -56,7 +56,8 @@
   "what_was_added": {
     "data": ["register/sources.json", "register/products.json", "register/flags.json", "register/questions.json", "register/suggestions.json", "register/compliance.json", "register/links.json", "register/ledger.json", "register/measurement.json", "register/repo_review.json", "register/site.json", "register/schema/research_snapshot.schema.json"],
     "content": ["content/home.md", "content/about.md", "content/methodology.md", "content/disclosure.md", "content/privacy.md", "content/guides/*.md (6)"],
-    "code": ["scripts/build.mjs", "scripts/checks.mjs", "scripts/collect.mjs", "docs/assets/style.css", "docs/assets/app.js", "docs/assets/search.js", "docs/assets/track.js", ".github/workflows/ci.yml"],
-    "docs": ["docs/EXECUTIVE-SUMMARY.md", "docs/DECISION-BRIEF.md", "COORDINATION.md", "README.md"]
+    "code": ["scripts/build.mjs", "scripts/checks.mjs", "scripts/collect.mjs", "scripts/links.mjs", "scripts/new-guide.mjs", "scripts/serve.mjs", "content/assets/style.css", "content/assets/app.js", "content/assets/search.js", "content/assets/track.js", ".github/workflows/ci.yml"],
+    "docs": ["report/EXECUTIVE-SUMMARY.md", "report/DECISION-BRIEF.md", "COORDINATION.md", "README.md"],
+    "published_at": "shopnow/ (mounted under /shop/ because Pages publishes main:/ and the root and /editorial/ surfaces were already owned by sibling sessions)"
   }
 }

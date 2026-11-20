@@ -152,8 +152,10 @@
         "final_url": "https://www.amazon.com/checkpoint/continue?token=v1.rJwhW5U-…",
         "asin": null,
         "listing_title_observed": null,
-        "attempts": 3,
-        "outcome": "Amazon anti-bot interstitial ('To continue, please click the Continue shopping button'). No listing title obtained."
+        "attempts": 6,
+        "outcome": "Amazon anti-bot interstitial ('To continue, please click the Continue shopping button'). No listing title obtained.",
+        "attempt_log": "2026-11-20, six attempts across two windows: 3 returned the amazon.com/checkpoint/continue interstitial, 3 returned a fetcher transport error. No listing was reached.",
+        "retry_note": "Retried after a sibling session's coordination log recorded that a checkpoint is not evidence a link is dead (B00hJ57DV was wrongly called dead on one failed fetch). The retry was made; the outcome for this token did not change."
       },
       "confirmation": {
         "confirmed_date": null,
@@ -173,7 +175,7 @@
         "specifications": null
       },
       "unverified_fields_reason": "The submitted link could not be resolved to a listing in this environment on three attempts. Nothing about this product is known to this project. No placeholder, category guess, or brand guess is published.",
-      "status": "UNRESOLVED - withheld from the shop floor",
+      "status": "UNRESOLVED after 6 attempts - withheld from the shop floor",
       "flag_ids": [
         "FLG-004",
         "FLG-001",
@@ -231,6 +233,6 @@
     "resolved_urls_carrying_a_tag_parameter": 0,
     "products_with_owner_confirmed_identity": 0,
     "products_with_published_price": 0,
-    "note": "Four of five tokens resolve, but none of the five strings supplied in the brief is an ASIN, and none of the observed final URLs carried a tracking tag. The set is a coherent kitchen cluster (3 air fryers across basket/dual-basket/oven-style, 1 probe thermometer, 1 unknown), which matches the brief's air-fryer editorial hypotheses - but that coherence is an observation, not confirmation of owner intent."
+    "note": "Four of five tokens resolve, but none of the five strings supplied in the brief is an ASIN, and none of the observed final URLs carried a tag parameter. The set is a coherent kitchen cluster (3 air fryers across basket / dual-basket / oven-style, 1 probe thermometer, 1 unknown), which matches the brief's air-fryer editorial hypotheses - but that coherence is an observation, not confirmation of owner intent. Cross-checked against a sibling session's independent register on main (data/register/products.json), which recorded the same three resolved ASINs and the same redirect_had_tag=false - two separate resolution passes agreeing is stronger evidence than either alone."
   }
 }

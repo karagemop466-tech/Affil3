@@ -2,7 +2,7 @@
 /*
  * ShopNow 047 - static site builder.
  *
- * One rule matters more than the rest: no page is written by hand. Every URL in docs/ is
+ * One rule matters more than the rest: no page is written by hand. Every URL in shop/ is
  * generated from register/*.json + content/*.md, so a claim cannot exist on the site without
  * first existing in the register. The companion gate (scripts/checks.mjs) fails the build when
  * that invariant is violated - a missing disclosure, a currency figure, an untagged Amazon
@@ -16,7 +16,7 @@ import path from "node:path";
 import url from "node:url";
 
 const ROOT = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "..");
-const OUT = path.join(ROOT, "docs");
+const OUT = path.join(ROOT, "shopnow");
 const READ = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), "utf8"));
 
 const site = READ("register/site.json");
@@ -45,7 +45,8 @@ function amazonTagged(href) {
 const TODAY = "2026-11-20";
 
 /* ------------------------------------------------------- deterministic clean
-   The build owns everything in docs/ except assets/ and the authored .md reports. Stale
+   The build owns everything in shop/. Authored assets live in content/assets/ and authored
+   reports in report/, so a clean step can never destroy a hand-written file. A stale
    pages must not survive a rename (a moved slug otherwise leaves an orphaned, unregistered
    URL that still 200s and still gets crawled), so generated output is cleared before writing. */
 const GENERATED_DIRS = ["guides", "products", "clusters", "search", "dashboard", "sources", "suggestions", "decisions", "flagged-for-review", "executive-summary", "about", "methodology", "disclosure", "privacy", "compare"];
@@ -53,6 +54,12 @@ const GENERATED_FILES = ["index.html", "404.html", "sitemap.xml", "feed.xml", "r
 fs.mkdirSync(OUT, { recursive: true });
 for (const d of GENERATED_DIRS) fs.rmSync(path.join(OUT, d), { recursive: true, force: true });
 for (const f of GENERATED_FILES) fs.rmSync(path.join(OUT, f), { force: true });
+/* Assets are authored in content/assets/ and *copied* into the output tree, never stored inside it:
+   the clean step below deletes generated files, and a hand-written file that lives in the output
+   directory is a file one rebuild away from being destroyed. That is not a hypothetical - it happened
+   during the /docs -> /shop move, which is why the copy is explicit and ordered before any page writes. */
+fs.cpSync(path.join(ROOT, "content", "assets"), path.join(OUT, "assets"), { recursive: true, force: true });
+
 
 /* ------------------------------------------------------------------ utils */
 const esc = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -753,7 +760,7 @@ ${flagsDoc.flags.map((f) => `<section class="flag">
 
 /* --------------------------------------------------- executive summary page */
 {
-  const exec = loadMd("docs/EXECUTIVE-SUMMARY.md");
+  const exec = loadMd("report/EXECUTIVE-SUMMARY.md");
   const r = md(exec.body);
   write("executive-summary/index.html", layout({ href: "/executive-summary/", title: "Executive summary — " + site.brand, desc: "What was asked for, what exists, what was verified, what could not be, and the four decisions that gate everything else.", body: `<article class="article"><div class="prose">${r.html}</div></article>`, crumbs: [{ label: "Inside the project" }, { label: "Executive summary" }], ogType: "article" }));
   record("executive-summary/index.html", { title: "Executive summary", desc: "Executive summary", date: TODAY, section: "summary" });
@@ -829,6 +836,7 @@ ${items}
 </channel>
 </rss>
 `.replace("</url></image>", "</image>"));
+  for (const f of ["EXECUTIVE-SUMMARY.md", "DECISION-BRIEF.md"]) fs.copyFileSync(path.join(ROOT, "report", f), path.join(OUT, f));
   fs.writeFileSync(path.join(OUT, "build-info.json"), JSON.stringify({ generated: new Date().toISOString(), pages: pages.length + 1, written: [...written].sort(), base_url: BASE, tracking_id: TRACK }, null, 1));
 }
 

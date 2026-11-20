@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Preview server for local review. It serves docs/ under the same path prefix GitHub Pages uses
+ * Preview server for the /shop/ surface. It serves shop/ under the same path prefix GitHub Pages uses
  * (/Affil3), because every generated link is absolute-from-the-root with that prefix - so what you
  * see here is byte-for-byte what Pages will serve, with no "works locally, broken in production".
  *
@@ -12,11 +12,11 @@ import path from "node:path";
 import url from "node:url";
 
 const HERE = path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "..");
-const DOCROOT = path.join(HERE, "docs");
+const DOCROOT = path.join(HERE, "shopnow");
 const argv = process.argv.slice(2);
 const arg = (k, d) => { const i = argv.indexOf("--" + k); return i === -1 ? d : argv[i + 1]; };
 const PORT = Number(arg("port", 8080));
-const PREFIX = arg("prefix", "/Affil3");
+const PREFIX = arg("prefix", "/Affil3/shopnow");
 
 const TYPES = { ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript", ".json": "application/json", ".xml": "application/xml", ".svg": "image/svg+xml", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png", ".txt": "text/plain; charset=utf-8", ".md": "text/markdown; charset=utf-8", ".ico": "image/x-icon" };
 

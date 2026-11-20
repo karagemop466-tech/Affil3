@@ -750,6 +750,16 @@ Rules that keep parallel sessions from destroying each other's work:
   and both images. They were restored from git, and assets now live in `content/assets/` and are
   *copied into* the output by the builder before any page is written — a hand-written file that
   lives in a generated directory is one clean step from destruction.
+- **SECOND COLLISION, CAUGHT AND REVERSED (worth reading).** The first relocation target, `shop/`, was
+  itself already claimed: `main` carries `shop/index.html`, a sibling session's hub page. The move was
+  made before that was checked, and a local rebuild overwrote it. Detected on the post-merge
+  determinism diff (their page's title appearing as the pre-image of `shop/index.html`), then
+  `git checkout -- shop && git clean -fdq shop` restored their file **byte-for-byte** (`diff` against
+  `origin/main:shop/index.html` → identical, 0 tracked changes in `shop/`), and this surface moved to
+  the free path `shopnow/` (`base_url` → `.../Affil3/shopnow`). No sibling file is modified in the
+  final commit. **Rule for later sessions: check `git ls-tree origin/main -- <path>` before picking a
+  mount point, and treat a non-empty result as claimed.** A generated tree that walks only its own
+  output directory is what made the reversal clean.
 - **Re-verification after integration.** `node scripts/build.mjs` → 35 files, 29 pages.
   `node scripts/checks.mjs` → **0 failures** across 30 pages / 44 files / 1,449 assertions
   (disclosure above fold + footer, `tag=` + `rel=sponsored nofollow` on every Amazon anchor, zero
