@@ -1695,9 +1695,24 @@ established add/add resolution (keep every session's section).
 
 ## Completion record
 
-- Pull request: _pending_ (to be opened from `arena/77e4ac42-affil3` to `main`)
-- Merge result: _pending_
-- GitHub Pages deploy: _pending_ (source `main` at `/`; to be confirmed after merge)
+- **Pull request:** https://github.com/karagemop466-tech/Affil3/pull/76 — "Journal + decision board: a
+  reader-facing marketing pass for the ShopNow Kitchen site" (`arena/77e4ac42-affil3` → `main`).
+- **Merge result: MERGED** as merge commit `f41ef98a518a7a10c1cf92d0849b9bd2974fc789` on
+  2026-11-20T07:06:05Z (`gh pr merge 76 --merge`). CI gates `gate`, `verify`, `disclosure` all SUCCESS.
+- **Merge conflict resolved (not discarding other work):** while the PR was open, `main` advanced via
+  PRs #73/#74 (8 more guides, new images, dynamic counts in the executive summary, a changed
+  `tools/build.mjs` and `src/assets/style.css`). Merged `origin/main` into this branch, combined the
+  executive-summary bullet (main's dynamic counts + this session's Journal/decision-board bullets),
+  union-resolved the append-only `COORDINATION.md` and `VERIFICATION.md` boards, and regenerated the
+  root site from the merged generator (`node tools/build.mjs` → 49 pages). Re-verified after the merge:
+  `node tools/verify.mjs` 6,090 checks, 0 failed; `npm run check` pass; `link_report --strict` OK;
+  `check_all_links` 0 broken.
+- **GitHub Pages deploy: confirmed.** Source `main` at `/`; build status `built`. Live checks via fetch:
+  `/articles/` (The Journal, 7 articles), `/decisions/` (decision board), and the home page serve with
+  the disclosure strip above the fold. Site: https://karagemop466-tech.github.io/Affil3/
+- **Not done in this session:** no revenue figure, conversion score or forecast is presented; revenue
+  still gates on the owner-access items (a tested tagged Special Link, a live tracking ID, the intended
+  product per short link). No submitted short link is claimed invalid (FLG-003).
 
 ## Session `4c8c7811` — claim, verification and irregularities (branch `arena/4c8c7811-affil3`, base `main` @ `16ee89f`)
 
