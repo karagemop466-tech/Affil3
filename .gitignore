@@ -1,6 +1,21 @@
-# Generated analytics data (aggregate counts; never commit)
-analytics-data/
 # Local tooling
 node_modules/
 .DS_Store
 *.tmp
+
+# Generated analytics data (aggregate counts; never commit)
+analytics-data/
+
+# The runtime event log, produced by tools/analytics_sink.py. It holds
+# salted session hashes and nothing else, but it is a local artefact and
+# is never published.
+data/events.ndjson
+
+# Creators API research snapshots. They carry the request that was made
+# and the response that came back, so they are kept out of the repository
+# unless a specific snapshot is worth recording.
+data/research/
+
+__pycache__/
+*.pyc
+.venv/
