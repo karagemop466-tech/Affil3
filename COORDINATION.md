@@ -434,3 +434,11 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+## Session `arena/822d5c60-affil3` — publication integration
+
+| Task | Status | Owner | Scope |
+|---|---|---|---|
+| Gate the published root build, improve buyer-facing copy, and document measurement-first decisions | in progress | arena/822d5c60-affil3 | `.github/workflows/verify.yml`, `tools/build.mjs`, root-generated HTML, `data/suggestions.json` |
+
+Parallel proposals remain untouched. Root publication is already the Pages source; no second deployment is planned.
