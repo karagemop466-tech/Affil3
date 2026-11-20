@@ -1620,3 +1620,32 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - **GitHub Pages:** source `main` at `/`; build for `bb09d25` reported `built`. Live check via fetch: https://karagemop466-tech.github.io/Affil3/flagged/ serves FLG-036 and the disclosure strip above the fold.
 - **Follow-up:** this log entry was added in a separate log-only PR (see the next PR number in the commit message); no content changed.
 - **Not done in this session:** no claim that any short link is valid or invalid; no intended ASIN set; Associates Central test (G-02) still pending the owner.
+
+---
+
+# Session `arena/0e102530-affil3` — line-by-line re-verification, measurement test, two new guides (2026-11-20)
+
+Registry: session `0e102530-affil3`, branch `arena/0e102530-affil3`, cut from `main` @ `16ee89f` (PR #56 merge).
+Scope claimed: `COORDINATION.md` (this board, append-only), `data/observations/2026-11-20-0e102530-verification.json` (new),
+`data/products.json` (only if verification finds drift), `data/guides.json` (append 2 guides), `data/suggestions.json` (append),
+`data/questions.json` (append), `data/flags.json` (append only if a new irregularity is found),
+`assets/img/guide-*.png` (new illustrations), `tools/build.mjs` (guide-count strings only: "All five guides", "five question-led guides"),
+generated pages via `node tools/build.mjs` (`guides/`, `feed.xml`, `sitemap.xml`, `index.html`, etc.),
+`EXECUTIVE-SUMMARY-0e102530.md` (new). Nothing outside that scope will be edited. No other session's claim is touched.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| V-01 | Claim board, baseline build + gates on this branch before changing anything | done | `0e102530-affil3` | `COORDINATION.md` (this board) |
+| V-02 | Line-by-line re-verification: all 5 products vs official manufacturer pages + Amazon detail pages; dated observation recorded | in progress | `0e102530-affil3` | `data/observations/2026-11-20-0e102530-verification.json`, `data/products.json` (only on drift) |
+| V-03 | Collector end-to-end test: start `tools/collector.mjs`, send the five defined events, confirm aggregates; record turn-on status | in progress | `0e102530-affil3` | `data/observations/2026-11-20-0e102530-verification.json` |
+| V-04 | Two new question-shaped guides from sourced data only (Chefman 6 Qt vs 8 Qt comparison; manufacturer buzzword decoder), illustrations, sitemap/feed via build | in progress | `0e102530-affil3` | `data/guides.json`, `assets/img/guide-*.png`, `tools/build.mjs` (count strings), generated pages |
+| V-05 | Append suggestions + questions discovered during verification | in progress | `0e102530-affil3` | `data/suggestions.json`, `data/questions.json` |
+| V-06 | Session executive summary | in progress | `0e102530-affil3` | `EXECUTIVE-SUMMARY-0e102530.md` |
+| V-07 | Rebuild, re-run every gate, confirm no broken links, open PR, merge, confirm Pages | in progress | `0e102530-affil3` | generated pages, this file |
+
+Not claimed or done in this session (no owner confirmation, login, or measured data available in the sandbox):
+Associates Central Special Link test (gate G-02), intended-ASIN confirmation per row (FLG-002),
+Search Console verification (FLG-013), named author (FLG-014), site-name decision (DX-6), analytics deployment
+(GitHub Pages cannot run the collector; FLG-009). These stay flagged and do not block publication.
