@@ -20,8 +20,8 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
-DATA = os.path.join(ROOT, "data")
+DOCS = os.path.join(ROOT, "crisp-index")
+DATA = os.path.join(ROOT, "data", "93cee724")
 
 ERRORS = []
 WARNS = []

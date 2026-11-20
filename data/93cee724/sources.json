@@ -119,6 +119,15 @@
       "accessed": "2026-11-20"
     },
     {
+      "id": "S-15",
+      "type": "cross-session record",
+      "org": "Project record (session f761b123)",
+      "title": "Dated retest of the five submitted short links (data/observations/2026-11-20-retest.json on main)",
+      "url": "https://github.com/karagemop466-tech/Affil3/blob/main/data/observations/2026-11-20-retest.json",
+      "supports": "Corroborating observations for P-01/02/03/05 (agrees with this session's fetches) and a resolved destination for P-04 (B0DHZTCNR5) where this session hit a checkpoint. Observer and date recorded; intent fields unaffected.",
+      "accessed": "2026-11-20"
+    },
+    {
       "id": "S-14",
       "type": "internal",
       "org": "Project record",

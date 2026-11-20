@@ -152,7 +152,11 @@
         "category_breadcrumb_verbatim": null,
         "price": null,
         "rating": null,
-        "note": "Amazon's 'Continue shopping' checkpoint interstitial returned on both attempts; no product page observed. Requires a manual browser check (FLG-004)."
+        "note": "Amazon's 'Continue shopping' checkpoint interstitial returned on both attempts in this session; no product page observed here. Requires a manual browser check (FLG-004)."
+      },
+      "cross_session": {
+        "note": "A later independent retest by session f761b123 (recorded on main in data/observations/2026-11-20-retest.json) resolved this same link to https://www.amazon.com/dp/B0DHZTCNR5 — 'ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5F Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black'. That observation is theirs, not ours: it is recorded here as corroborating evidence with attribution, and this session's own observed.* fields stay as observed. Intent is still unconfirmed (FLG-003).",
+        "source_ref": "S-15"
       },
       "listing_claims_verbatim": [],
       "listing_claims_note": "No observed listing — no claims recorded.",

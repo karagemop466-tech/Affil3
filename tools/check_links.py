@@ -12,7 +12,7 @@ import sys
 from urllib.parse import urlparse, unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
+DOCS = os.path.join(ROOT, "crisp-index")
 
 BROKEN = []
 EXTERNAL = set()

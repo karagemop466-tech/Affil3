@@ -4,7 +4,7 @@ Session `arena-93cee724` · verification date **2026-11-20** · rule: **every ta
 source link to an official site; if a value can't be confirmed from an official source it is
 left blank and flagged as unverified. Nothing is inferred or filled in.**
 
-Source registry with full URLs: `data/sources.json` (IDs S-01…S-14). All sources were
+Source registry with full URLs: `data/93cee724/sources.json` (IDs S-01…S-15). All sources were
 fetched and read on 2026-11-20 unless noted.
 
 ## 1 · Compliance references (verified)
@@ -27,12 +27,18 @@ fields, never merged:** `intended.*` = what the submitted link states; `observed
 the fetch saw. (Per the brief, no claim is made that any submitted link is invalid;
 compliance status is unresolved — FLG-003.)
 
+**Cross-session note:** this session’s independent fetches (4 resolved, 1 checkpoint) agree
+exactly with the corrected register and dated retest already on `main`
+(`data/products.json`, `data/observations/2026-11-20-retest.json`, PR #10 correction),
+which additionally resolved the checkpointed link to `B0DHZTCNR5`. Three independent
+observation passes now agree on P-01, P-02, P-03, P-05.
+
 | Item | Submitted (S-14) | Intended token (9 chars) | Observed redirect target | Observed listing title (verbatim) | Source | Status |
 |------|------------------|--------------------------|--------------------------|-----------------------------------|--------|--------|
 | P-01 | [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | B04G1MEwY | [amazon.com/dp/B0CDY277D3](https://www.amazon.com/dp/B0CDY277D3) | “CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black” | S-06 | observed |
 | P-02 | [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | B02NbDxp3 | [amazon.com/dp/B09B7SB46R](https://www.amazon.com/dp/B09B7SB46R) | “Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven \| Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included” | S-07 | observed |
 | P-03 | [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | B00hJ57DV | [amazon.com/dp/B08DKYBTPH](https://www.amazon.com/dp/B08DKYBTPH) | “Chefman Air Fryer 8 Qt \| TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results \| Bake, Dehydrate, Frozen \| XL Nonstick Dishwasher-Safe Basket \| Stainless Steel” | S-08 | observed |
-| P-04 | [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | B0c8moW59 | — **blank** | — **blank** | S-10 | **unverified (FLG-004)** — Amazon “Continue shopping” checkpoint interstitial on 2 fetch attempts; no product page observed |
+| P-04 | [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | B0c8moW59 | — **blank (this session)** | — **blank (this session)** | S-10, S-15 | **unverified here (FLG-004)** — Amazon “Continue shopping” checkpoint interstitial on 2 fetch attempts by this session. A later independent retest (S-15, session f761b123) resolved the same link to [amazon.com/dp/B0DHZTCNR5](https://www.amazon.com/dp/B0DHZTCNR5) (“ThermoMaven 1 Sec Professional Digital Meat Thermometer…”). Cross-session observation recorded with attribution; not merged into this session’s observed fields; intent still unconfirmed (FLG-003) |
 | P-05 | [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | B0f3GKalj | [amazon.com/dp/B0DZFD6R9Z](https://www.amazon.com/dp/B0DZFD6R9Z) | “CHEF iQ Sense \| Smart Wireless Meat Thermometer \| 3 Ultra-Thin Probes \| WiFi Unlimited Range \| 1000F Heat Safe \| 5 Sensors \| BBQ, Grill, Oven, Smoker, Air Fryer \| Gen3” | S-09 | observed |
 
 ### Token format check (checkable fact, not a validity claim)

@@ -26,13 +26,16 @@ def product_card(ctx, p, note=None):
         )
         state = f'{ctx.chip("Listing observed " + obs["date"], "chip-ok")}'
     else:
-        name = "Submitted link 4 — listing not yet confirmed"
+        name = "Submitted link 4 — identity pending your confirmation"
         kicker = "Verification in progress"
         title_line = (
-            f'<p class="fine">Destination unconfirmed — Amazon returned a checkpoint page on '
-            f'{esc(obs["date"])}. Nothing about this product is assumed. {ctx.src(p["sources"][0])}</p>'
+            f'<p class="fine">Our own fetches of this link returned an Amazon checkpoint page on '
+            f'{esc(obs["date"])} {ctx.src(p["sources"][0])}. A separate dated retest later resolved it '
+            f'to a ThermoMaven instant-read meat thermometer {ctx.src("S-15", "cross-session retest")} — '
+            f'recorded as corroboration, not merged into our observation. Nothing about the intended '
+            f'product is assumed.</p>'
         )
-        state = f'{ctx.chip("Awaiting destination check", "chip-flag")}'
+        state = f'{ctx.chip("Destination resolved elsewhere", "chip-flag")}'
     chips = "".join(ctx.chip(c) for c in p["listing_claims_verbatim"][:5])
     img_html = ""
     if p.get("card_image"):

@@ -16,10 +16,12 @@ from one footer group (“The Workshop”), keeping the reader experience shop-f
 - Five submitted links recorded **as submitted** (intended tokens B04G1MEwY, B02NbDxp3,
   B00hJ57DV, B0c8moW59, B0f3GKalj) with confirmation date and source. Observed redirect
   targets are stored in **separate fields and never merged** with intent.
-- **4 of 5 resolved** on 2026-11-20 to Amazon listings (three air fryers — a 6-qt dual
-  basket, a 26QT French-door oven-style, an 8-qt basket; one wireless probe thermometer).
-  **1 of 5 (B0c8moW59)** hit Amazon’s checkpoint interstitial twice and is **unverified**
-  (FLG-004) — left blank, not guessed.
+- **4 of 5 resolved** by this session on 2026-11-20 to Amazon listings (three air fryers —
+  a 6-qt dual basket, a 26QT French-door oven-style, an 8-qt basket; one wireless probe
+  thermometer). **1 of 5 (B0c8moW59)** hit Amazon’s checkpoint interstitial twice here and
+  was left blank (FLG-004); a dated cross-session retest on `main` later resolved it to a
+  ThermoMaven instant-read thermometer (`B0DHZTCNR5`) — recorded as corroboration, intent
+  still unconfirmed. Three independent fetch passes now agree on the other four.
 - All five tokens are 9 characters vs the documented 10-character ASIN format (Amazon’s own
   ASIN guide) → recorded as a format mismatch (FLG-001) **without** claiming invalidity —
   compliance status remains unresolved exactly as the brief directs (FLG-003).

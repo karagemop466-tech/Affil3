@@ -11,8 +11,8 @@ import re
 from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DOCS = os.path.join(ROOT, "docs")
-DATA = os.path.join(ROOT, "data")
+DOCS = os.path.join(ROOT, "crisp-index")
+DATA = os.path.join(ROOT, "data", "93cee724")
 
 BUILD_TS = "2026-11-20T09:00:00Z"
 FEED_DATE = "Thu, 20 Nov 2026 09:00:00 GMT"
