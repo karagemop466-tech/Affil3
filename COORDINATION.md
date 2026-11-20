@@ -359,3 +359,42 @@ Merge resolution for this merge: the two registers (`data/products.json`, `data/
 taken from `main` because PR #10 had just verified them independently, and every conflicted HTML
 page was **regenerated** by `node tools/build.mjs` rather than hand-merged. Root gates: 1317 checks,
 0 failed.
+
+---
+
+# Session `f761b123` board (integration check on `arena/f761b123-affil3`)
+
+Registry: session `f761b123`, branch `arena/f761b123-affil3`, status active. Scope on this branch: reconcile with `main`, retest the submitted links, and record the result. Nothing outside `data/observations/` and this board is changed.
+
+## What happened (2026-11-20, UTC)
+
+1. **Claimed and pushed** a full rebuild (T1–T14) on this branch at 8ca5782. That board is superseded by this section.
+2. **Built a parallel pipeline** (`docs/`, `tools/build_site.py`, `tools/check_site.py`, `analytics/collect_server.py`) on a second commit (9a97c19). It duplicated what `main` already publishes and was not served by GitHub Pages, so it was **not shipped**. It remains in history on this branch.
+3. **Opened PR #11** from this branch to `main`. It conflicted, because `main` had moved (PRs #5, #7, #10 merged in the meantime).
+4. **Reconciled** with `origin/main` by keeping `main`'s tree as the single publisher. The merge commit keeps both histories, and the tree matches `main` exactly (no force-push).
+5. **Retested all five short links** (fresh, unauthenticated, redirects followed). Results are in `data/observations/2026-11-20-retest.json`.
+6. **Checked the Pages source.** It is `main` at `/` (root). The `/docs` switch planned earlier is not needed, so T13 is closed without a change.
+
+## Retest result (summary)
+
+| Token | Retest final URL | Matches `main` register? |
+|---|---|---|
+| B04G1MEwY (P01) | amazon.com/dp/B0CDY277D3 | yes |
+| B02NbDxp3 (P02) | amazon.com/dp/B09B7SB46R | yes |
+| B00hJ57DV (P03) | amazon.com/dp/B08DKYBTPH | yes (corrected in PR #10; earlier checkpoint treated as intermittent) |
+| B0c8moW59 (P04) | amazon.com/dp/B0DHZTCNR5 | yes (corrected in PR #10; B08DKYBTPH was a transposition) |
+| B0f3GKalj (P05) | amazon.com/dp/B0DZFD6R9Z | yes |
+
+Observed redirect targets are not intended ASINs. All intended ASINs remain blank, and the owner step to confirm intent is unchanged (FLG-002).
+
+## Decisions
+
+- No product field, outbound link or intended ASIN was changed by this session. The register on `main` is the source of truth.
+- The tag question stays open (FLG-009). Test one Special Link per product in Associates Central before scaling.
+- The duplicate pipeline is not merged. Its content (5 guides, dashboards, checker, receiver) stays in branch history at 9a97c19 and can be recovered if the owner wants a second publication.
+
+## Completion record
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/11
+- Merge result: recorded on the PR (merge commit on `main`).
+- GitHub Pages: source `main` at `/`, status built. Root site unchanged by this PR except for the observations file, which the build does not read.
