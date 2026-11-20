@@ -2517,9 +2517,18 @@ external factual claim.
 
 ## Completion record — session `arena/f0300606-affil3`
 
-- Pull request: _recorded below after opening_
-- Merge result: _recorded below after merge_
-- GitHub Pages: _recorded below after deploy check_
+- Pull request: **<https://github.com/karagemop466-tech/Affil3/pull/70>**
+  ("Publication polish: make the site read like a shop, not an audit", `arena/f0300606-affil3` → `main`).
+- Merge result: **MERGED** at 2026-11-20T07:21:46Z, merge commit `d174471`
+  (`Merge pull request #70 from karagemop466-tech/arena/f0300606-affil3`), after three
+  integrations of `origin/main` (logs 1–3 above). All five check workflows on the merge commit
+  passed: site-checks, Verify site, Site checks, publish-gate, Disclosure and archive integrity.
+- GitHub Pages: **deployed and confirmed live**. `pages-build-deployment` run completed with
+  success, and <https://karagemop466-tech.github.io/Affil3/> was fetched after deploy: the
+  shop-front hero with trust chips, the five-product shelf with tagged sponsored buy buttons,
+  the quick-pick strip, and this session's three new guides leading the guide grid and the feed
+  are all serving. The gate on the merged tree is 52 pages / 23 feed items / 51 sitemap URLs /
+  6,937 checks / 0 failed.
 
 ## Integration log — merge of `origin/main` into this branch (2026-11-20)
 
