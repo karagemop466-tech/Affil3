@@ -1531,3 +1531,31 @@ unresolved, not invalid (FLG-003/031).
 - **What this session changed:** only `COORDINATION.md` (this claim and this completion record). All content surfaces were left unchanged and were verified on the combined tree before PR #48 was merged.
 - **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030.
 - **Open owner decisions:** G-02 Associates validation, Q-01 intended products per link, Q-04 analytics host, Q-06 named editor, Q-07 publishing cadence, suggestion S-02 buy buttons while untested, suggestion S-03 collector hosting.
+
+---
+
+# Session `ca51f5b3` — reader polish, findability fix and content expansion
+
+Registry: session `ca51f5b3`, branch `arena/ca51f5b3-affil3`, cut from `main` @ `7fac552d`. Status: active (claimed 2026-11-20T06:55Z).
+Single session is working this branch; no other session holds an active claim in `COORDINATION.md` at the time of this claim (latest prior records are completion entries for sessions `197d4f9e`, `533ac993`, `66f2548a`).
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+|---|---|---|---|---|
+| C-01 | Repo review, line by line, against the live tree | in progress | `ca51f5b3` | `COORDINATION.md` |
+| C-02 | Independent dated re-verification of the five published buy links + maker pages | in progress | `ca51f5b3` | `data/observations/2026-11-20-session-ca51f5b3.json`, `data/flags.json` |
+| C-03 | Findability defect: `robots.txt` leaves two duplicate editions crawlable; make the exclusion list derived, and gate it | pending | `ca51f5b3` | `tools/build.mjs`, `tools/verify.mjs`, `robots.txt` |
+| C-04 | Five new question-shaped buyer guides (5 → 10 guides), each cited to existing official sources | pending | `ca51f5b3` | `data/guides.json`, `src/assets/img/*`, `content/guides/*.md` |
+| C-05 | Reader-facing decision helper `/find/` (fit-finder from published specs only) | pending | `ca51f5b3` | `tools/build.mjs`, `src/assets/style.css`, `index.html` |
+| C-06 | BreadcrumbList structured data on guides and product pages (Google Search Central, new source S24) | pending | `ca51f5b3` | `tools/build.mjs`, `data/sources.json` |
+| C-07 | Derive every printed guide/product count from the rows it counts | pending | `ca51f5b3` | `tools/build.mjs` |
+| C-08 | Decision surfaces: new suggestions, new questions, new discovery steps, executive-summary refresh | pending | `ca51f5b3` | `data/suggestions.json`, `data/questions.json`, `data/flags.json`, `tools/build.mjs` |
+| C-09 | Run all gates, open PR to `main`, merge, confirm Pages deploy | pending | `ca51f5b3` | CI, this file |
+
+## Scope notes for other sessions
+
+- `COORDINATION.md`: append-only below this line.
+- `legacy/`, `counter/`, `counterwise/`, `crisp-index/`, `editorial/` editions: **not edited**. This session changes only the root publication (`OWNED` in `tools/build.mjs`) and `data/*.json`.
+- `data/products.json` is **not** edited: no product row changes, so no re-derivation of specification claims is needed.
+- Requests logged here rather than edited elsewhere: `legacy/archive/index.html` undercounts the editions in the repository (it names three; five extra editions exist: `editorial/`, `counter/`, `counterwise/`, `crisp-index/`, `legacy/` itself). An archive page is not in `OWNED`, so this session records the discrepancy and fixes it only through the root publication's flag and question surfaces.
