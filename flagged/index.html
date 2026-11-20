@@ -293,6 +293,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   <p class="small"><strong>Manual step:</strong> Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.</p>
 </section>
+<section class="flag-card" id="FLG-037">
+  <p class="flag-head"><span class="badge flag">FLG-037</span> <span class="badge sev-low">low</span> <strong>A 2026-11-20 fifth-round re-fetch returned the Amazon home page for all five short links</strong></p>
+  <p>In the 991c8230 re-check (data/observations/2026-11-20-991c8230-recheck.json) all five submitted short links returned the Amazon home page, title &#39;Amazon.com. Spend less. Smile more.&#39;, in unauthenticated fetches. This is the third dated round in which the full set showed this behaviour (dd2ad3dc observed the same), so the short-link-to-product mappings in data/products.json continue to rest on earlier dated rounds and are not re-derived in this round. All five /dp/ pages were fetched directly by ASIN and every page title contained the register&#39;s observed_title, five of five; Amazon also served the &#39;Product summary presents key product information&#39; page variant on those fetches, which did not change any title or destination. This remains an observation about automated fetches, not evidence that a link is dead or re-mapped, and the compliance status of the submitted short links is unchanged and unresolved (FLG-003).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> None required from the build side. The owner&#39;s Associates Central Special Link test (gate G-02, D-02) is the step that closes the underlying question; a signed-in browser check (D-01) would also resolve what an automated fetch cannot.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
