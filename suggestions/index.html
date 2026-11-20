@@ -41,6 +41,23 @@
 </div>
 <main id="main" class="wrap">
 <section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.</p></section>
+<section class="band"><h2>How to read this board</h2><p>Read the tracks in order. Track 1 is owner-access work measured in minutes and it gates everything else: until one tagged link has been tested against a tracking report, the site cannot earn and no amount of design work changes that. Track 2 is the answer to &#39;it should not read like AI slop&#39; and is deliberately concrete. Tracks 3 and 4 are findability and measurement. Track 5 records clauses found in this session&#39;s verbatim re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository&#39;s own repeated bugs came from.</p></section>
+<section class="band"><h2>The tracks</h2>
+<p class="muted small">These are the groups the rows fall into, in the order they unblock each other. Each card below names the track it belongs to.</p>
+<div class="findings">
+<li><strong>1. Unblock revenue</strong> — Nothing here earns until a tagged Special Link exists and has been tested once against the tracking report. These rows come first and are owner-access work measured in minutes, not build work.</li>
+<li><strong>2. Reader trust and publication polish</strong> — The rows that decide whether this reads as something a person published: a byline, pictures, navigation in reader vocabulary, and a house style that can be checked rather than hoped for.</li>
+<li><strong>3. Findability</strong> — One publication for a crawler to index, a sitemap and feed that grow with each guide, and a way to see which queries actually arrive. Without the last of those, the next topic is chosen by instinct.</li>
+<li><strong>4. Measurement</strong> — Click and conversion counting, the ledger, and reader capture. Deliberately after findability: measuring a page nobody can find produces zeros, and zeros are not a signal.</li>
+<li><strong>5. Compliance gates</strong> — Rules enforced by the build rather than remembered by an editor. Three clauses read verbatim in this session&#39;s re-fetch had never been recorded, and two of them change what may be built at all.</li>
+<li><strong>6. Platform and repo machinery</strong> — Registers, gates and the failure modes that produced real errors in this repository&#39;s own history. Cheap to fix, and they are what stops the same mistake recurring.</li>
+</div>
+</section>
+<section class="band"><h2>The order to decide them in</h2>
+<p class="muted small">This is the sequence the register proposes, with the reason each step comes before the next.</p>
+<div class="table-wrap"><table class="wide"><thead><tr><th scope="col">Order</th><th scope="col">Decision</th><th scope="col">Why it comes here</th></tr></thead><tbody><tr><td>1</td><td><a href="#S-02"><strong>S-02</strong></a></td><td>Gate G-02. One tagged link tested once against the tracking report, before anything scales. Minutes of owner time; unblocks all revenue. §6(u) rules out testing it by purchase.</td></tr><tr><td>2</td><td><a href="#S-15"><strong>S-15</strong></a></td><td>Decide the automation boundary before building more automation, not after. Two clauses constrain it and neither was recorded until now.</td></tr><tr><td>3</td><td><a href="#S-01"><strong>S-01</strong></a></td><td>Settle how many publications exist before verifying Search Console, or you submit a sitemap for pages you may then retire. robots.txt already disallows the secondary ones.</td></tr><tr><td>4</td><td><a href="#S-08"><strong>S-08</strong></a></td><td>A named byline changes every template and every piece of copy, and §2(b) means any credential stated has to be true.</td></tr><tr><td>5</td><td><a href="#S-19"><strong>S-19</strong></a></td><td>A checkable house style is what stops the next page regressing. The prescriptions already exist at /design-brief/.</td></tr><tr><td>6</td><td><a href="#S-07"><strong>S-07</strong></a></td><td>Imagery, once the byline and style exist to hang it on.</td></tr><tr><td>7</td><td><a href="#S-11"><strong>S-11</strong></a></td><td>Navigation labels, after the name and byline, so the words match the publication.</td></tr><tr><td>8</td><td><a href="#S-13"><strong>S-13</strong></a></td><td>Search Console, after S-01, so the next topic is chosen from measured queries rather than instinct.</td></tr><tr><td>9</td><td><a href="#S-03"><strong>S-03</strong></a></td><td>An analytics endpoint with an owner. Meaningless before there is traffic to measure, and S-16 should be settled first.</td></tr><tr><td>10</td><td><a href="#S-06"><strong>S-06</strong></a></td><td>Reader capture, after S-12 and after the privacy notice is reviewed. §4 requires opt-in and §6(g) bars rewarding a click.</td></tr><tr><td>11</td><td><a href="#S-05"><strong>S-05</strong></a></td><td>Cadence, once S-13 can say what to write next.</td></tr><tr><td>12</td><td><a href="#S-14"><strong>S-14</strong></a></td><td>Do this first instead if you would rather stop the drift bugs than improve the look. It is the cheapest row here.</td></tr></tbody></table></div>
+</section>
+<div data-decision-board>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
@@ -121,37 +138,37 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research.</p>
 </section>
 <section class="choice-card" id="S-14">
-  <p class="kicker">S-14 · Derive every count on a page from the rows that page counts</p>
+  <p class="kicker">S-14 · Derive every count on a page from the rows that page counts · 6. Platform and repo machinery</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Fix each instance when it is found, which is what has happened so far.<br><span class="muted small">Tradeoff: Works until the next one. Nothing prevents recurrence, and the instances have been found by later sessions rather than by the build.</span></li><li><strong>B.</strong> Add a gate rule banning hand-written count phrases in templates, and require the computed form instead.<br><span class="muted small">Tradeoff: A few hours. Catches the class rather than the instance.</span></li><li><strong>C.</strong> Add a build assertion that no rendered section has a non-empty heading over an empty body, and that every collection rendered on a page is non-empty unless the page says so.<br><span class="muted small">Tradeoff: Cheaper than B and it also catches the empty-page case.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.</p>
 </section>
 <section class="choice-card" id="S-15">
-  <p class="kicker">S-15 · Record the two policy clauses that constrain the AI half of the brief</p>
+  <p class="kicker">S-15 · Record the two policy clauses that constrain the AI half of the brief · 5. Compliance gates</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Treat the automation in the brief as unqualified and build it.<br><span class="muted small">Tradeoff: The fastest path to what the brief describes and the likeliest path to a material breach, which permits immediate termination under Operating Agreement §6.</span></li><li><strong>B.</strong> Build only automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, and drafts written from manufacturer pages with citations. Keep pricing analysis off the Site. Ask Amazon about §5 before going further.<br><span class="muted small">Tradeoff: Slower, and part of the brief stays unbuilt. Everything already in this repository is inside it.</span></li><li><strong>C.</strong> Request PA API / Creators API access and Amazon&#39;s written approval, then build the full pipeline.<br><span class="muted small">Tradeoff: The only route to prices, ratings and the automated research the brief describes. Needs an approved account and a qualifying site, so it depends on S-02 and Q-03.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B now and C as the destination. Published on the compliance page in this session so the boundary is visible to whoever builds next rather than rediscovered later.</p>
 </section>
 <section class="choice-card" id="S-16">
-  <p class="kicker">S-16 · A privacy notice for the click counter</p>
+  <p class="kicker">S-16 · A privacy notice for the click counter · 5. Compliance gates</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Ship no notice.<br><span class="muted small">Tradeoff: The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.</span></li><li><strong>B.</strong> Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted.<br><span class="muted small">Tradeoff: An hour, and done in this session for review. It is a draft of a legal-adjacent page and should be read rather than trusted.</span></li><li><strong>C.</strong> Adopt a hosted consent and privacy service.<br><span class="muted small">Tradeoff: Proportionate for a site with a real audience and third-party processors. Overkill now, and it adds a processor of its own.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, implemented in this session as a draft. It closes Q-11 and answers part of Q-16; whether the wording is adequate where the site is operated from is a question for counsel, not something a build session should settle.</p>
 </section>
 <section class="choice-card" id="S-17">
-  <p class="kicker">S-17 · One product register or two</p>
+  <p class="kicker">S-17 · One product register or two · 6. Platform and repo machinery</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep both and re-check them against each other each session (current).<br><span class="muted small">Tradeoff: No migration risk. The check is manual, and manual checks here have a documented record of being missed.</span></li><li><strong>B.</strong> Add a gate rule that fails the build when the two registers disagree on any shared field for any product.<br><span class="muted small">Tradeoff: About an hour. It does not remove the duplication but it makes disagreement impossible to ship, which is the failure that actually happened.</span></li><li><strong>C.</strong> Merge into one register with per-publication views.<br><span class="muted small">Tradeoff: Removes the duplication permanently. The largest data change available here, and it touches files two earlier sessions built.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B now, and C if S-01 chooses to consolidate the publications. B is a few dozen lines and converts a class of silent error into a build failure.</p>
 </section>
 <section class="choice-card" id="S-18">
-  <p class="kicker">S-18 · Should the gate tell a product link apart from a citation?</p>
+  <p class="kicker">S-18 · Should the gate tell a product link apart from a citation? · 5. Compliance gates</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep the blanket rule and cite Amazon help pages as plain text rather than linking them (what /privacy/ does now).<br><span class="muted small">Tradeoff: Impossible to ship an unmarked product link, which is the failure that matters. It costs a few convenience links, and a plain-text URL is worse on a phone.</span></li><li><strong>B.</strong> Make the rule precise and fail-closed: a link is product-intent if it targets /dp/, carries tag= or carries data-outbound, and must then be both sponsored and tagged; any other amazon.com link must not be sponsored. Anything that cannot be classified fails the build.<br><span class="muted small">Tradeoff: Semantically correct against Google&#39;s guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test written first and should not be made by a build session on its own authority.</span></li><li><strong>C.</strong> Keep the blanket rule for product links and allow a short explicit allowlist of informational Amazon paths, checked literally.<br><span class="muted small">Tradeoff: Narrower than B and easier to audit, because the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, with the negative test written first: break a product link&#39;s tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently one of the things standing between this site and an untagged outbound link.</p>
 </section>
 <section class="choice-card" id="S-19">
-  <p class="kicker">S-19 · A house style rule that can be checked</p>
+  <p class="kicker">S-19 · A house style rule that can be checked · 2. Reader trust and publication polish</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Rely on editorial judgement per page.<br><span class="muted small">Tradeoff: Free, and it is how the current copy was produced - which is good enough that the diagnosis is worth writing down rather than repeating.</span></li><li><strong>B.</strong> Publish a house style file with do/don&#39;t rules and real before-and-after examples from this site, and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.<br><span class="muted small">Tradeoff: Half a day. The gate catches the mechanical failures; the rest stays editorial. Publishing the standard does more for reader trust than any badge.</span></li><li><strong>C.</strong> Add a readability-score threshold per page to the gate.<br><span class="muted small">Tradeoff: Objective and easy to implement, and it optimises for the wrong thing: it pushes copy toward short dumb sentences, which is its own kind of slop.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.</p>
@@ -163,6 +180,13 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
 </section>
 </div>
+</div>
+<section class="band"><h2>Your decision draft</h2>
+<p>Pick an option on each card you want to change and the draft below updates. It is a note for you to paste elsewhere — nothing is sent, stored or implemented by this page.</p>
+<p class="small muted" data-decision-status>Updated from your selections above.</p>
+<textarea data-decision-output rows="12" readonly aria-label="Decision draft"></textarea>
+<p><button class="btn btn-ghost" type="button" data-decision-copy>Copy the draft</button></p>
+</section>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
 </main>
 <footer class="site-footer">
@@ -208,5 +232,6 @@
   </div>
 </footer>
 <script src="/Affil3/assets/analytics.js" defer></script>
+<script src="/Affil3/assets/decision.js" defer></script>
 </body>
 </html>

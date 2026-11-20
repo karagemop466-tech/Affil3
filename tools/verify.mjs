@@ -86,6 +86,11 @@ const jsAllowed = (jsSrc.match(/var ALLOWED = \{([^}]*)\}/)[1].match(/\w+(?=\s*:
 const colAllowed = (colSrc.match(/const EVENTS = \{([\s\S]*?)\n\};/)[1].match(/\w+(?=\s*:\s*\[)/g) || []).sort().join(',');
 check('five analytics events agree across events.json, browser script and collector', EVENT_NAMES === jsAllowed && jsAllowed === colAllowed, `${EVENT_NAMES} | ${jsAllowed} | ${colAllowed}`);
 check('browser script sets no cookies or storage', !/document\.cookie|localStorage|sessionStorage/.test(jsSrc));
+// The decision worksheet must stay in the reader's browser: no storage, no network calls.
+const decSrc = fs.readFileSync(path.join(ROOT, 'src/assets/decision.js'), 'utf8');
+check('decision worksheet stores nothing', !/localStorage|sessionStorage|document\.cookie|indexedDB/.test(decSrc));
+check('decision worksheet sends nothing', !/fetch\(|XMLHttpRequest|navigator\.sendBeacon|new WebSocket/.test(decSrc));
+check('decision worksheet only reads and writes the draft area', /data-decision-output/.test(decSrc) && /data-decision-copy/.test(decSrc));
 
 // ---------- 2. generated site ----------
 if (!fs.existsSync(path.join(DOCS, 'index.html'))) {

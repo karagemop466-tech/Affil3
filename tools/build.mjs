@@ -76,6 +76,10 @@ const srcLink = (id) => {
   return s.url ? `<a href="${esc(s.url)}" rel="${relFor(s.url)}">${esc(id)}</a>` : `<span>${esc(id)}</span>`;
 };
 const flagLinks = (ids = []) => ids.map((f) => `<a class="badge flag" href="${href('/flagged/')}#${esc(f)}">${esc(f)}</a>`).join(' ');
+const trackName = (id) => {
+  const t = (suggestionsDoc.tracks || []).find((x) => x.id === id);
+  return t ? t.name : id;
+};
 const shortName = (t = '') => t.split(/[|,]/)[0].trim();
 const displayName = (p) => (p.observed_title ? shortName(p.observed_title) : 'Not observed');
 const tagged = (p) => p.tagged_outbound_url || '';
@@ -96,7 +100,7 @@ function cardArt(p) {
   return `<div class="card-art"><img src="${esc(href(src))}" alt="Editorial illustration for ${esc(p.name || p.id)}; not the reviewed unit" loading="lazy" width="768" height="512"><span class="art-tag">Illustration</span></div>`;
 }
 
-function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png' }) {
+function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png', scripts = '' }) {
   const canonical = abs(p);
   const ogImg = abs(ogImage);
   return `<!doctype html>
@@ -170,6 +174,7 @@ ${body}
   </div>
 </footer>
 <script src="${esc(href('/assets/analytics.js'))}" defer></script>
+${scripts}
 </body>
 </html>
 `;
@@ -788,15 +793,39 @@ add({
   path: '/suggestions/', title: 'Suggestions: choose a path',
   description: 'Options for the next decisions. Nothing is implemented until the owner chooses.',
   body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">${esc(suggestionsDoc.note)}</p></section>
+${suggestionsDoc.how_to_use ? `<section class="band"><h2>How to read this board</h2><p>${esc(suggestionsDoc.how_to_use)}</p></section>` : ''}
+${suggestionsDoc.tracks && suggestionsDoc.tracks.length ? `<section class="band"><h2>The tracks</h2>
+<p class="muted small">These are the groups the rows fall into, in the order they unblock each other. Each card below names the track it belongs to.</p>
+<div class="findings">
+${suggestionsDoc.tracks.map((t) => `<li><strong>${esc(t.name)}</strong> — ${esc(t.why)}</li>`).join('\n')}
+</div>
+</section>` : ''}
+${suggestionsDoc.sequence && suggestionsDoc.sequence.length ? `<section class="band"><h2>The order to decide them in</h2>
+<p class="muted small">This is the sequence the register proposes, with the reason each step comes before the next.</p>
+${table(['Order', 'Decision', 'Why it comes here'], suggestionsDoc.sequence.map((st) => [
+  String(st.order),
+  `<a href="#${esc(st.id)}"><strong>${esc(st.id)}</strong></a>`,
+  esc(st.why),
+]), 'wide')}
+</section>` : ''}
+<div data-decision-board>
 <div class="choice-grid">
 ${suggestionsDoc.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
-  <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
+  <p class="kicker">${esc(s.id)} · ${esc(s.topic)}${s.track ? ` · ${esc(trackName(s.track))}` : ''}</p>
   <p class="choice-current">Current: <span class="badge">${esc(s.current)}</span></p>
   <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
 </section>`).join('\n')}
 </div>
+</div>
+<section class="band"><h2>Your decision draft</h2>
+<p>Pick an option on each card you want to change and the draft below updates. It is a note for you to paste elsewhere — nothing is sent, stored or implemented by this page.</p>
+<p class="small muted" data-decision-status>Updated from your selections above.</p>
+<textarea data-decision-output rows="12" readonly aria-label="Decision draft"></textarea>
+<p><button class="btn btn-ghost" type="button" data-decision-copy>Copy the draft</button></p>
+</section>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="${esc(href('/questions/'))}">questions page</a>.</p></section>`,
+  scripts: '<script src="' + href('/assets/decision.js') + '" defer></script>',
 });
 
 // Flagged for review
@@ -1039,6 +1068,7 @@ for (const p of pages) {
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
 fs.copyFileSync(path.join(ROOT, 'src/assets/style.css'), path.join(OUT, 'assets/style.css'));
 fs.copyFileSync(path.join(ROOT, 'src/assets/analytics.js'), path.join(OUT, 'assets/analytics.js'));
+fs.copyFileSync(path.join(ROOT, 'src/assets/decision.js'), path.join(OUT, 'assets/decision.js'));
 fs.cpSync(path.join(ROOT, 'src/assets/img'), path.join(OUT, 'assets/img'), { recursive: true });
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
