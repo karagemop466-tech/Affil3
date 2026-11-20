@@ -1,18 +1,21 @@
 name: Counterwise surface gate
 
-# The check that keeps this surface honest. It regenerates counterwise/ from its own register and
-# requires the committed output to match, then runs the 12-rule compliance gate and the tests that
-# prove the gate still catches a wrong claim. Scope-limited so it never runs for other surfaces.
+# The check that keeps the archived Counterwise edition honest. It regenerates the edition from
+# its own register and requires the committed output to match, then runs the 12-rule compliance gate
+# and the tests that prove the gate still catches a wrong claim. Scope-limited so it never runs for
+# other surfaces. The edition was moved to legacy/editions/counterwise/ by the final integration
+# session so that exactly one publication is live and indexable; it is kept frozen and still gated,
+# because an archive nobody checks decays.
 
 on:
   push:
     branches: ["**"]
     paths:
-      - "counterwise/**"
+      - "legacy/editions/counterwise/**"
       - ".github/workflows/counterwise.yml"
   pull_request:
     paths:
-      - "counterwise/**"
+      - "legacy/editions/counterwise/**"
       - ".github/workflows/counterwise.yml"
   workflow_dispatch:
 
@@ -24,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: counterwise
+        working-directory: legacy/editions/counterwise
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,7 +40,7 @@ jobs:
       - name: Require the committed output to match the register
         run: |
           git -c core.safecrlf=false diff --exit-code -- . \
-            || { echo "::error::counterwise/ is not what tools/build.py produces from counterwise/data + counterwise/content. Run: python3 counterwise/tools/build.py"; exit 1; }
+            || { echo "::error::legacy/editions/counterwise/ is not what tools/build.py produces from its data/ + content/. Run: python3 legacy/editions/counterwise/tools/build.py"; exit 1; }
 
       - name: Compliance gate (disclosure placement, tagged links, citations, voice, ledger)
         run: python3 tools/gate.py

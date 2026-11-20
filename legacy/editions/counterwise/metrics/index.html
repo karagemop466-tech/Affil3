@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement — five events, a collector, no invented rows</title>
+<meta name="description" content="The click and conversion measurement schema this affiliate site ships with, its privacy rules, its current unarmed state, and the one-line change that….">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/legacy/editions/counterwise/metrics/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counterwise">
+<meta property="og:title" content="Measurement — five events, a collector, no invented rows">
+<meta property="og:description" content="The click and conversion measurement schema this affiliate site ships with, its privacy rules, its current unarmed state, and the one-line change that enables it.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/legacy/editions/counterwise/metrics/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/legacy/editions/counterwise/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="alternate" type="application/atom+xml" title="Counterwise — new guides" href="/Affil3/legacy/editions/counterwise/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 aria-hidden=%22true%22 focusable=%22false%22%3E%3Crect x=%221%22 y=%223%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Cpath d=%22M1 8h18%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Ccircle cx=%2215.4%22 cy=%225.5%22 r=%221.1%22 fill=%22currentColor%22/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="/Affil3/legacy/editions/counterwise/assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Counterwise", "item": "https://karagemop466-tech.github.io/Affil3/legacy/editions/counterwise/"}, {"@type": "ListItem", "position": 2, "name": "Metrics", "item": "https://karagemop466-tech.github.io/Affil3/legacy/editions/counterwise/metrics"}]}</script>
+</head>
+<body data-page="/metrics/index.html" data-page-kind="paperwork" data-allowed-events="page_view,product_link_click,comparison_started,checklist_item_toggled,email_signup_submitted" data-analytics-endpoint="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/Affil3/legacy/editions/counterwise/"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise<small>Countertop cooking, measured</small></span></a>
+    <nav class="nav" aria-label="Main"><a href="/Affil3/legacy/editions/counterwise/guides/">Guides</a><a href="/Affil3/legacy/editions/counterwise/gear/">Gear we track</a><a href="/Affil3/legacy/editions/counterwise/compare/">Compare</a><a href="/Affil3/legacy/editions/counterwise/summary/">Summary</a><a href="/Affil3/legacy/editions/counterwise/suggestions/">Suggestions</a></nav>
+    <span class="issue-tag">Issue 01 · November 2026</span>
+  </div>
+</header>
+<div class="disclosure">
+  <div class="wrap">
+    <span class="tag">Disclosure</span>
+    <span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> And in the plain words the FTC uses as its example:
+    <strong>“I get commissions for purchases made through links in this post.”</strong> We are not paid to call anything better; we are paid if you buy
+    through a link. <a href="/Affil3/legacy/editions/counterwise/disclosure/">How this works</a>.</span>
+  </div>
+</div>
+<main id="main">
+
+<section class="sec">
+  <div class="wrap">
+    <div class="page-head">
+      <span class="kicker">Measurement</span>
+      <h1>Click and conversion measurement, built and deliberately unarmed</h1>
+      <p class="deck">Five events, one collector, one ledger and no numbers — because a static host is not running
+      the collector yet and inventing a dashboard would be the worst possible first act. This page is the honest
+      version of "analytics is set up".</p>
+    </div>
+    <div class="notice notice--info"><p><strong>State:</strong> endpoint
+    <code>(unset)</code> · status <code>not-deployed</code>
+    · ledger rows <strong>0</strong>. While the endpoint is empty the page queues events in this browser's
+    <code>localStorage</code> and sends nothing anywhere. Setting one value in
+    <code>data/config.json</code> and rebuilding turns collection on; the queue then flushes once.</p></div>
+    <h2>The five events</h2>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Event</th><th>Fires on</th><th>Decision it serves</th></tr></thead>
+      <tbody><tr><td><code>EV-01</code></td><td><code>page_view</code></td><td>a guide, gear, cluster or summary page finishes loading</td><td>which entry pages bring strangers in, which decides where internal links and the next topic go</td></tr><tr><td><code>EV-02</code></td><td><code>product_link_click</code></td><td>a click on any link carrying data-outbound, i.e. every tagged Amazon link</td><td>the only signal that says a page made someone want to look at a listing; separates a read page from a useful one</td></tr><tr><td><code>EV-03</code></td><td><code>comparison_started</code></td><td>two products selected in the comparison filter form</td><td>which pairings readers actually want side by side, which is what decides the next comparison page</td></tr><tr><td><code>EV-04</code></td><td><code>checklist_item_toggled</code></td><td>a buyer checks a line in a decision checklist</td><td>which criteria people actually use, which is how a guide earns its next revision without guessing</td></tr><tr><td><code>EV-05</code></td><td><code>email_signup_submitted</code></td><td>the reader-capture form is submitted, whether or not capture is enabled</td><td>demand for a list before we take on storing addresses; today it measures interest in something we cannot yet deliver, which is exactly the number we need</td></tr></tbody></table></div>
+    <h2 style="margin-top:26px">Payloads</h2>
+    <div class="table-wrap"><table><thead><tr><th>Event</th><th>Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>page: string, path only · kind: guide | gear | cluster | summary | other · referring_path: string, same-site only, empty for unknown</td></tr><tr><td><code>product_link_click</code></td><td>page: string, path only · product_id: P-xx · link_state: pending-test | in-account-confirmed · placement: rail | gear-page | guide-cta | table | footer</td></tr><tr><td><code>comparison_started</code></td><td>page: string · product_ids: array of two P-xx · cluster: string</td></tr><tr><td><code>checklist_item_toggled</code></td><td>page: string · checklist: string id · item: string id · checked: boolean</td></tr><tr><td><code>email_signup_submitted</code></td><td>page: string · capture_enabled: boolean · outcome: queued | disabled-noop</td></tr></tbody></table></div>
+    <h2 style="margin-top:26px">Privacy posture</h2>
+    <ul><li>no IP address is stored, read or logged</li><li>no cookie and no local identifier beyond the browser&#x27;s own session queue</li><li>no third-party endpoint receives a request</li><li>navigator.doNotTrack or the global privacy control signal stops collection before the first event</li><li>the page path is stored, never the query string, so a tagged outbound URL cannot leak a session token into the log</li><li>retention is the append-only file; there is no user-level profile to delete</li></ul>
+    <h2 style="margin-top:26px">Turning it on</h2>
+    <pre><code>python3 tools/collector.py serve --port 8099      # or any host that can run one process
+# data/config.json → measurement.endpoint = "https://metrics.example.org"
+python3 tools/build.py && python3 tools/gate.py</code></pre>
+    <p class="paid-note">The Amazon side of the ledger — orders, commission, product category — may only be written
+    from an authorized first-party report, with the report named on the row. That part has a human gate on purpose:
+    <code>python3 tools/ledger.py append --help</code>.</p>
+    <h2 style="margin-top:26px">What will not appear here</h2>
+    <p>No conversion score, no revenue forecast, no modelled earnings, and no percentage attributed to a page that
+    has been visited by nobody but a build script.</p>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/Affil3/legacy/editions/counterwise/" style="color:#fff">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise</span>
+        </a>
+        <p class="foot-lead" style="margin-top:10px">Countertop cooking, measured. Independent buyer research for
+        countertop cooking gear, assembled from listings we loaded and policies we read.</p>
+      </div>
+      <div>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/Affil3/legacy/editions/counterwise/guides/">All guides</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/gear/">Gear we track</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/compare/">Compare two machines</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/clusters/doneness/">Knowing when it's done</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/summary/">Executive summary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Verification</h4>
+        <ul>
+          <li><a href="/Affil3/legacy/editions/counterwise/transparency/">Transparency hub</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/transparency/sources/">Source register (16)</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/transparency/verification/">Link &amp; product evidence</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/transparency/method/">How this is built</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/transparency/gate-report/">Gate report</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/metrics/">Measurement &amp; events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Decisions</h4>
+        <ul>
+          <li><a href="/Affil3/legacy/editions/counterwise/suggestions/">Suggestions board</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/questions/">Open questions</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/review/" >Flagged for review (17)</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/about/">Editorial policy</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/disclosure/">Disclosure statement</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/privacy/">Privacy</a></li>
+          <li><a href="/Affil3/legacy/editions/counterwise/feed.xml">Atom feed</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-disclosure" data-disclosure="footer"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+      It applies to every product link on this site, on this page, including this footer.
+      <a href="/Affil3/legacy/editions/counterwise/disclosure/">What that means, in full</a>.</p>
+    <p class="colophon">Built by <code>tools/build.py</code> from <code>data/</code> + <code>content/</code> ·
+      inputs <code>85074d8963a3010c</code> · 30 pages ·
+      no cookies, no webfonts, no third-party requests ·
+      repository: <a href="https://github.com/karagemop466-tech/Affil3">github.com/karagemop466-tech/Affil3</a></p>
+  </div>
+</footer>
+<script src="/Affil3/legacy/editions/counterwise/assets/track.js" defer></script>
+</body>
+</html>

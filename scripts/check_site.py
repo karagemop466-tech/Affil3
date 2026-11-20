@@ -29,7 +29,7 @@ def pages():
     with tempfile.TemporaryDirectory() as td:
         rels = list(bs.build(td).keys())
     for rel in sorted(rels):
-        yield ROOT / "counter" / rel
+        yield ROOT / "legacy" / "editions" / "counter" / rel
 
 def check(cond, msg):
     if not cond:
@@ -42,7 +42,7 @@ html_files = list(pages())
 check(len(html_files) >= 18, f"expected >= 18 published pages, found {len(html_files)}")
 
 for f in html_files:
-    rel = f.relative_to(ROOT / "counter")
+    rel = f.relative_to(ROOT / "legacy" / "editions" / "counter")
     html = f.read_text()
     check(DISCLOSURE_MARK in html, f"{rel}: missing disclosure strip under masthead")
     check(ASSOCIATE_MARK in html, f"{rel}: missing Amazon Associate statement in footer")
@@ -75,7 +75,7 @@ for p in prod_data:
           f"{p['id']}: intent fields must stay blank until owner confirmation (FLG-001)")
     if not p.get("observed_asin"):
         check(p.get("affiliate_url", "") == "", f"{p['id']}: unresolved product must not carry an affiliate URL")
-shop = (ROOT / "counter" / "shop" / "index.html")
+shop = (ROOT / "legacy" / "editions" / "counter" / "shop" / "index.html")
 if shop.exists():
     s = shop.read_text()
     for p in prod_data:
@@ -87,22 +87,22 @@ if shop.exists():
           "shop/index.html: unresolved products must show the pending-verification state")
 
 # 6 — sitemap + feed coverage
-sm = ROOT / "counter" / "sitemap.xml"
+sm = ROOT / "legacy" / "editions" / "counter" / "sitemap.xml"
 check(sm.exists(), "sitemap.xml missing")
 if sm.exists():
     sitemap = sm.read_text()
     for f in html_files:
-        rel = f.relative_to(ROOT / "counter")
+        rel = f.relative_to(ROOT / "legacy" / "editions" / "counter")
         if rel.name == "404.html":
             continue
         path = "/" + str(rel.parent).replace("\\", "/") + "/"
         path = path.replace("/./", "/")
         if rel == pathlib.Path("index.html"):
             path = "/"
-        check(f"<loc>https://karagemop466-tech.github.io/Affil3/counter{path}</loc>" in sitemap,
+        check(f"<loc>https://karagemop466-tech.github.io/Affil3/legacy/editions/counter{path}</loc>" in sitemap,
               f"sitemap.xml missing {path}")
 
-feed = ROOT / "counter" / "feed.xml"
+feed = ROOT / "legacy" / "editions" / "counter" / "feed.xml"
 check(feed.exists(), "feed.xml missing")
 if feed.exists():
     fx = feed.read_text()

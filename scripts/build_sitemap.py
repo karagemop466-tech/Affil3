@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build docs/sitemap.xml from the checked-in site tree.
+"""Build the archived crisp-index edition's sitemap.xml from the checked-in site tree.
 
-Walks crisp-index/ for *.html, converts each to a site URL, and writes a sitemap.
+Walks legacy/editions/crisp-index/ for *.html, converts each to a site URL, and writes a sitemap.
 Run --check to verify every live page is present in the sitemap (exit 1 on violation).
 Standard library only.
 """
@@ -11,7 +11,7 @@ import sys
 from datetime import date, datetime, timezone
 from urllib.parse import quote
 
-DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "crisp-index")
+DOCS = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "legacy", "editions", "crisp-index")
 
 
 def html_pages():

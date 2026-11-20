@@ -47,7 +47,17 @@ for (const f of pages) {
     if (!clean) continue;
     checked++;
 
-    let target = normalize(join(from, clean));
+    // Site-root-absolute references are resolved against the repository root, because GitHub
+    // Pages serves this repository at /Affil3/ — the same mount point the deployed URLs use.
+    // Without this the archive check would report every "/Affil3/..." link in an archived
+    // edition as broken, even though it resolves correctly in production.
+    let target;
+    if (clean.startsWith("/")) {
+      const rooted = clean.startsWith("/Affil3/") ? clean.slice("/Affil3".length) : clean;
+      target = normalize(join(ROOT, rooted));
+    } else {
+      target = normalize(join(from, clean));
+    }
     if (clean.endsWith("/") || existsSync(target) && statSync(target).isDirectory()) {
       target = join(target, "index.html");
     }

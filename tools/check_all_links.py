@@ -31,7 +31,7 @@ spec.loader.exec_module(bs)
 with tempfile.TemporaryDirectory() as td:
     PAGE_SET = sorted(bs.build(td).keys())
 for rel in PAGE_SET:
-    f = ROOT / "counter" / rel
+    f = ROOT / "legacy" / "editions" / "counter" / rel
     html = f.read_text()
     for attr in ("href", "src"):
         for m in re.finditer(attr + r'="([^"]+)"', html):

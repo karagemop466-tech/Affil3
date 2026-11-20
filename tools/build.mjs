@@ -57,7 +57,6 @@ const DASHBOARDS = [
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
-  ['/editorial/', 'Editorial register (second publication)'],
 ];
 
 // ---------- helpers ----------
@@ -887,6 +886,6 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /legacy/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

@@ -19,7 +19,7 @@ import re
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DOCS = ROOT / "editorial"
+DOCS = ROOT / "legacy" / "editions" / "editorial"
 DATA = ROOT / "data" / "register"
 TRACKING_ID = "shopnow047c-20"
 STATEMENT = "As an Amazon Associate I earn from qualifying purchases."
@@ -37,7 +37,7 @@ def html_files() -> list[pathlib.Path]:
 
 def main() -> int:
     if not DOCS.exists():
-        print("FAIL: editorial/ has not been built. Run tools/build.py first.")
+        print("FAIL: the archived editorial edition has not been built. Run tools/build.py first.")
         return 1
 
     source_ids = {s["id"] for s in json.load(open(DATA / "sources.json"))["sources"]}

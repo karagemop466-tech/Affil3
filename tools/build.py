@@ -21,8 +21,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "register"
-DOCS = ROOT / "editorial"
-SITE = "https://karagemop466-tech.github.io/Affil3/editorial"
+DOCS = ROOT / "legacy" / "editions" / "editorial"
+SITE = "https://karagemop466-tech.github.io/Affil3/legacy/editions/editorial"
 TRACKING_ID = "shopnow047c-20"
 BRAND = "Countertop & Co."
 LEDGER = "https://github.com/karagemop466-tech/Affil3"
@@ -1244,7 +1244,7 @@ def main() -> int:
     write("/feed.xml", feed())
     # robots.txt and .nojekyll are owned by the root-site session. Do not write them.
     # Request logged in COORDINATION.md: point the root robots.txt sitemap line at
-    # /editorial/sitemap.xml so this subtree is discoverable.
+    # /legacy/editions/editorial/sitemap.xml so this archived subtree stays discoverable.
 
     for asset in ("site.css", "analytics.js"):
         shutil.copyfile(ROOT / "tools" / "assets" / asset, DOCS / "assets" / asset)
@@ -1254,7 +1254,7 @@ def main() -> int:
         (DOCS / "assets" / "analytics.js").write_text(
             js.replace('var ENDPOINT = "";', f'var ENDPOINT = "{ANALYTICS_ENDPOINT}";'), encoding="utf-8")
 
-    print(f"built {len(list(DOCS.rglob('*.html')))} html files into editorial/")
+    print(f"built {len(list(DOCS.rglob('*.html')))} html files into legacy/editions/editorial/")
     print(f"analytics endpoint: {ANALYTICS_ENDPOINT or '(unset - records nothing)'}")
     return 0
 

@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://karagemop466-tech.github.io/Affil3/counterwise/sitemap.xml
-Feed: https://karagemop466-tech.github.io/Affil3/counterwise/feed.xml
-# Static publication. No cookies, no webfonts, no third-party requests, and no analytics
-# endpoint configured in this build. See /privacy/ and /metrics/.

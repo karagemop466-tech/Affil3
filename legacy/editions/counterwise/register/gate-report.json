@@ -1,0 +1,89 @@
+{
+  "rules": [
+    {
+      "id": "R01",
+      "claim": "source register is complete and honest about how much was read",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R02",
+      "claim": "product-intent records keep confirmation and observation apart, and never fill a blank with an inference",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R03",
+      "claim": "link register states exactly what was followed, including the absence of a tag",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R04",
+      "claim": "every cross-reference resolves: flags, sources, products, clusters, events",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R05",
+      "claim": "recorded tallies match the data they describe",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R06",
+      "claim": "docs/ was generated from the current data/ and content/",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R07",
+      "claim": "every page: head furniture, disclosure above the fold and in the footer, tagged and marked outbound links, registered citations, no banned voice, no broken links",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R08",
+      "claim": "structured data parses and never claims more than the site can support",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R09",
+      "claim": "sitemap, feed and robots are consistent with the files on disk",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R10",
+      "claim": "measurement state in the markup agrees with config; opt-out is honoured",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R11",
+      "claim": "the campaign ledger has its schema and no unprovenanced numbers",
+      "findings": 0,
+      "ok": true
+    },
+    {
+      "id": "R12",
+      "claim": "no conversion score or revenue forecast appears anywhere",
+      "findings": 0,
+      "ok": true
+    }
+  ],
+  "failures": [],
+  "generated_from": "85074d8963a3010c",
+  "stats": {
+    "pages": 30,
+    "html_bytes": 523140,
+    "data_files": 13,
+    "guides": 5,
+    "products": 5,
+    "sources": 16,
+    "flags": 17,
+    "suggestions": 23,
+    "questions": 14
+  }
+}
