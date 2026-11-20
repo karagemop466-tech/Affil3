@@ -38,8 +38,9 @@ jobs:
           # register without rebuilding, or hand-edits a page, this fails: the only supported way
           # to change a page is to change the data and rebuild.
           # build-info.json and feed.xml are excluded because both carry the build timestamp.
-          if ! git diff --exit-code --quiet -- shopnow ':(exclude)shop/build-info.json' ':(exclude)shopnow/feed.xml'; then
-            echo "::error::shop/ is stale or hand-edited. Run 'node scripts/build.mjs' and commit the result."
+          # (The exclude path was shop/build-info.json before this surface was relocated to shopnow/.)
+          if ! git diff --exit-code --quiet -- shopnow ':(exclude)shopnow/build-info.json' ':(exclude)shopnow/feed.xml'; then
+            echo "::error::shopnow/ is stale or hand-edited. Run 'node scripts/build.mjs' and commit the result."
             git diff --stat -- shopnow | head -40
             exit 1
           fi
