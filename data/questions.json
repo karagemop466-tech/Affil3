@@ -159,14 +159,10 @@
     },
     {
       "id": "K-22",
-      "statement": "A third independent verification round on 2026-11-20 (session ca51f5b3) re-fetched the observed listings for P01 (B0CDY277D3), P02 (B09B7SB46R) and P05 (B0DZFD6R9Z) and the manufacturer pages for P01, P03 and P04, plus the USDA safe-temperature chart and Google's breadcrumb documentation. Every title and every specification figure matched the register. The raw dated record is data/observations/2026-11-20-session-ca51f5b3.json. The listings for P03 and P04 were not re-fetched in that round.",
+      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the same brand's FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The product page and the comparison table previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
       "sources": [
-        "S04",
-        "S10",
-        "S11",
-        "S21",
-        "S23",
-        "S24"
+        "S14",
+        "S15"
       ]
     },
     {
@@ -189,9 +185,20 @@
       "sources": [
         "S09"
       ]
+    },
+    {
+      "id": "K-26",
+      "statement": "A third independent verification round on 2026-11-20 (session ca51f5b3) re-fetched the observed listings for P01 (B0CDY277D3), P02 (B09B7SB46R) and P05 (B0DZFD6R9Z) and the manufacturer pages for P01, P03 and P04, plus the USDA safe-temperature chart and Google's breadcrumb documentation. Every title and every specification figure matched the register. The raw dated record is data/observations/2026-11-20-session-ca51f5b3.json. The listings for P03 and P04 were not re-fetched in that round.",
+      "sources": [
+        "S04",
+        "S10",
+        "S11",
+        "S21",
+        "S23",
+        "S24"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. K-22 to K-25, Q-20 to Q-22 and D-15 to D-17 were added on 2026-11-20 by session ca51f5b3, after a fresh fetch round and the findability review; the short-link question opened the same day by session d19dff2c is Q-17. Q-22 is marked blocking because a marketplace choice sits underneath every buy button on the site.",
   "unknown": [
     {
       "id": "Q-01",
@@ -385,25 +392,31 @@
     },
     {
       "id": "Q-20",
-      "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
-      "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
-      "how_to_close": "Answer with S-31 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
+      "question": "Which of the two published temperature ranges should a reader treat as the probe's working limit in a given cooking method?",
+      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line.",
+      "lack": "Manufacturer guidance on which figure applies to the probe as a whole in each cooking method. A 1,000 F ambient figure invites the reading that the probe may be left in a 1,000 F oven, and no manufacturer page addresses that reading directly.",
+      "who": "Manufacturer support, or the owner after reading the product manual",
+      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The site currently publishes both numbers, which is accurate, but not the instruction that would make them safe to act on.",
+      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance beside the table.",
       "sources": [
-        "S07",
-        "S08"
+        "S14",
+        "S15"
       ],
       "blocking": false
     },
     {
       "id": "Q-21",
-      "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
-      "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
-      "how_to_close": "Pick S-29. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
+      "question": "What does the repeated Amazon-home-page result for the five short links mean?",
+      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is recorded on earlier dated rounds (FLG-004, FLG-031, FLG-037). In the same session, the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs.",
+      "lack": "A fetch from a signed-in browser, which the sandbox cannot do. Without one the observation stays an observation and no conclusion about the links is available.",
+      "who": "Site owner",
+      "why_it_matters": "Several sessions have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on the links (FLG-003) depends on which is true.",
+      "how_to_close": "Open each of the five links in a signed-in Amazon session and record the product name and the ten-character ASIN from the resulting URL. One pass, five minutes, and it closes Q-01 as well.",
       "sources": [
-        "S02",
-        "S01"
+        "S05",
+        "S04"
       ],
-      "blocking": false
+      "blocking": true
     },
     {
       "id": "Q-22",
@@ -415,6 +428,28 @@
         "S01"
       ],
       "blocking": true
+    },
+    {
+      "id": "Q-23",
+      "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
+      "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
+      "how_to_close": "Answer with S-31 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
+      "sources": [
+        "S07",
+        "S08"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-24",
+      "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
+      "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
+      "how_to_close": "Pick S-29. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -511,20 +546,43 @@
       "id": "D-15",
       "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
       "closes": [
-        "Q-20"
+        "Q-23"
       ]
     },
     {
       "id": "D-16",
+      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
+      "closes": [
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-17",
+      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, with the date. This has now failed to resolve from several separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "closes": [
+        "Q-01",
+        "Q-21"
+      ]
+    },
+    {
+      "id": "D-18",
+      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with itself - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
+      "closes": [
+        "Q-02"
+      ]
+    },
+    {
+      "id": "D-19",
       "suggestion": "Re-run the two negative tests the gate now ships before trusting a green build: delete one robots exclusion and strip one sponsored attribute. A gate that cannot fail is decoration. Both were run on 2026-11-20 and recorded in the merge log.",
       "closes": []
     },
     {
-      "id": "D-17",
+      "id": "D-20",
       "suggestion": "After any session merges a new root directory, read /robots.txt once and confirm the generated exclusion list picked it up. The list is derived from the tree, so the only way to get it wrong is to publish a second edition and a build that never ran.",
       "closes": [
         "Q-15"
       ]
     }
-  ]
+  ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Two sessions opened rows on 2026-11-20 that wanted the same ids; session 0e102530 kept K-22, Q-20, Q-21, D-16, D-17 and D-18 as written, and this session's rows were renumbered around them to K-23 to K-26, Q-22 to Q-24 and D-15, D-19 and D-20. Q-22 is marked blocking because a marketplace choice sits underneath every buy button on the site."
 }

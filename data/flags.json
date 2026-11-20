@@ -74,7 +74,7 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "An earlier revision of this flag cited S11 for the 'at least 10 posts' rule of thumb; S11 is Chefman's product page, and the Associates application-review help page that the sentence came from is S19, so the citation is corrected here (FLG-041) and in the publishing workflow. The count is now filled by the builder from the rows that exist: this build has {guide} guides, {product} product rows and {article} Journal articles, which reaches the rule of thumb as it was read from S19. The flag stays open because nobody has read that help page in full from a signed-in account, and because it does not say whether guides count as posts. Adding content remains a decision for the owner (suggestions S-05 and S-07).",
+      "detail": "An earlier revision of this flag cited S11 for the 'at least 10 posts' rule of thumb; S11 is Chefman's product page, and the Associates application-review help page that the sentence came from is S19, so the citation is corrected here (FLG-046) and in the publishing workflow. The count is now filled by the builder from the rows that exist: this build has {guide} guides, {product} product rows and {article} Journal articles, which reaches the rule of thumb as it was read from S19. The flag stays open because nobody has read that help page in full from a signed-in account, and because it does not say whether guides count as posts. Adding content remains a decision for the owner (suggestions S-05 and S-07).",
       "sources": [
         "S19",
         "S02"
@@ -470,29 +470,34 @@
       "id": "FLG-041",
       "severity": "medium",
       "status": "open",
-      "area": "link resolution",
-      "title": "Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link",
-      "detail": "Source note S05 said that B0c8moW59 'did not resolve to a product listing'. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register's observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.",
-      "impact": "The observed destination of each short link rests on the earlier dated rounds only. The S05 note now agrees with the register, so a reader cannot take the stale sentence as evidence against P04.",
-      "manual_step": "Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.",
+      "area": "product data",
+      "title": "The CHEF iQ Sense specification table showed the ambient sensor range as the probe's temperature",
+      "detail": "The CHEF iQ specification page (S14) publishes two ranges: 'Internal temp range of 32ºF to 212ºF' and 'Ambient temp range of 32ºF to 1,000ºF'. The brand's own FAQ (S15) repeats the distinction: 'The max temperature for the portion of the probe inserted into the food is 212˚F... iQ Sense® Gen 3's maximum ambient temperature limit is 1,000ºF.' The register carried 32-1000 °F in temp_min_f/temp_max_f, so the product page and the side-by-side comparison table both rendered the ambient range as though it were the probe's food-temperature range. Corrected on 2026-11-20 to 32-212 °F, with the 1,000 °F ambient rating moved into the product's summary line, because a 1,000 °F figure sitting in a specification row invites the reading that the probe may be left in a 1,000 °F oven. The correction is recorded in the P05 record and in data/observations/2026-11-20-0e102530-verification.json.",
+      "impact": "A reader could reasonably have concluded the probe may be left in a 1,000 °F oven. The distinction between a sensor's surroundings and a probe's working limit is the difference between a safe instruction and a dangerous one. Both the product page and the comparison table now show the food range.",
+      "action": "Published 32-212 °F as the probe's food range and stated the 1,000 °F ambient rating separately in the summary line. Recorded as K-22 and opened as Q-20 with discovery step D-16.",
+      "manual_step": "Ask CHEF iQ in writing which range applies to which part of the probe in each cooking method, and publish the answer as a line of guidance beside the table rather than leaving a reader to infer it from two numbers.",
       "sources": [
-        "S04",
-        "S05"
-      ]
+        "S14",
+        "S15"
+      ],
+      "detected_by": "0e102530-affil3, 2026-11-20"
     },
     {
       "id": "FLG-042",
-      "severity": "medium",
+      "severity": "low",
       "status": "open",
-      "area": "link resolution",
-      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
-      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
-      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
-      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
+      "area": "publishing",
+      "title": "Two manufacturer pages disagree with themselves, and the site publishes no figure where that happens",
+      "detail": "The Emeril Lagasse page (S13) shows '25 Cooking Pre-sets' in its specification block, describes the appliance as '10-in-1' in its own product description, and carries an image whose alt text on the same page reads '11-in-1'. The Amazon listing title for the same product says '24 One-Touch Preset Options'. Separately, the CHEF iQ page (S14) says 'Five internal sensors' in its introduction while its specification list enumerates '4 internal temperature sensors' plus '1 ambient temperature sensor' - five in total, but not five internal ones. In both cases the site publishes no count: no preset count and no in-1 count for the oven, and the sensor count only as the specification list states it. Choosing between four official statements would be inference rather than verification.",
+      "impact": "Two of the products a reader is most likely to compare on features are the two whose feature counts cannot be published. The blank cells are correct and explained on each product page, but they make the comparison table less useful than a reader might expect.",
+      "action": "Published no preset count and no in-1 count for the Emeril oven, and followed the CHEF iQ specification list rather than its introduction. Both readings are kept dated rather than resolved by preference.",
+      "manual_step": "Ask each manufacturer which figure is current. Until then, treat any preset or in-1 count in a listing title as a claim, not a specification.",
       "sources": [
-        "S09",
-        "S25"
-      ]
+        "S13",
+        "S14",
+        "S04"
+      ],
+      "detected_by": "0e102530-affil3, 2026-11-20"
     },
     {
       "id": "FLG-043",
@@ -530,6 +535,34 @@
       "impact": "Before this fix the Crisp Index sitemap gave search engines no usable URL for any of its pages. The surface is disallowed in robots.txt, so this affects that surface only, not the root site that GitHub Pages indexes.",
       "manual_step": "Choose S-28: move them under legacy/session-records/ in one commit, or keep them where they are with the generated exclusion in place.",
       "sources": []
+    },
+    {
+      "id": "FLG-046",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link",
+      "detail": "Source note S05 said that B0c8moW59 'did not resolve to a product listing'. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register's observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.",
+      "impact": "The observed destination of each short link rests on the earlier dated rounds only. The S05 note now agrees with the register, so a reader cannot take the stale sentence as evidence against P04.",
+      "manual_step": "Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "FLG-047",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
+      "sources": [
+        "S09",
+        "S25"
+      ]
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",

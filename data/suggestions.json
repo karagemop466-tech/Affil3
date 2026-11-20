@@ -830,49 +830,95 @@
     },
     {
       "id": "S-26",
-      "topic": "What the front page shows first",
-      "current": "Implemented in this session (option B), reversible in one commit",
+      "track": "measurement",
+      "topic": "Where the analytics collector actually runs",
+      "problem": "The counter is built, reviewed and tested, and it is switched off, because GitHub Pages cannot run a server. Until 2026-11-20 nobody had demonstrated that it works. It now has been: tools/collector.mjs was started locally and driven with one request per defined event, all five were accepted and aggregated, and four kinds of malformed request were rejected and counted for nothing. What is left is not code. It is a host, and a decision about what is worth collecting at all.",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Leave the order alone",
-          "tradeoff": "The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled."
+          "label": "Leave the endpoint unset. The site publishes no traffic figures and no revenue figures, and the /measurement/ page says so in plain words.",
+          "tradeoff": "Nothing to deploy, nothing to disclose, nothing to get wrong. It also means the next guide topic is chosen by instinct rather than by measured queries, which is the gap S-21 was written to close.",
+          "effort": "none",
+          "risk": "low"
         },
         {
           "id": "B",
-          "label": "Lead with the three highest-intent decisions",
-          "tradeoff": "Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order."
+          "label": "Run the collector on a small always-on host and point analyticsEndpoint at it.",
+          "tradeoff": "Turns measurement on the day it is deployed. It also makes the host, its logs, its uptime and its backups part of what this site promises a reader, and the privacy notice has to describe a real company rather than a generic process.",
+          "effort": "an afternoon",
+          "risk": "medium"
         },
         {
           "id": "C",
-          "label": "Rotate the three cards weekly",
-          "tradeoff": "Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity."
+          "label": "Write daily aggregate counts to a public JSON file in this repository from a scheduled GitHub Actions workflow, and let the browser POST to a queue instead of to the collector.",
+          "tradeoff": "No separate host, no server to pay for, and the counts stay in the repository history. It needs a browser write path that does not accept arbitrary POSTs, so the workflow is the part that has to be designed and reviewed carefully.",
+          "effort": "two to three days",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Measure only outbound clicks, with no page-view events at all.",
+          "tradeoff": "The smallest possible data set, and the only number actually tied to revenue. It cannot answer which guide brought the reader, which is the question the cadence decision needs.",
+          "effort": "one day",
+          "risk": "medium"
         }
       ],
-      "recommendation": "B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the 'reads like a shop' complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change."
+      "recommendation": "B if a host is available and the privacy notice can be settled first (Q-16). D if the only thing worth counting is revenue-bearing clicks. The collector is ready; the remaining work is hosting and disclosure, not code.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      "depends_on": [
+        "S-03",
+        "S-21"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-27",
-      "topic": "Reader capture, without a third-party form",
-      "current": "Not implemented. RSS only",
+      "track": "platform",
+      "topic": "Image weight, and the intrinsic size nobody was checking",
+      "problem": "Every illustration on the site was a 3.3 to 4.0 MB PNG, and the front page loaded ten images before a line of text was read. The artwork is flat, grainy and mid-tone, which is exactly what a small palette compresses well, and it had been saved as a full-colour PNG. Separately, every <img> carried a hand-typed width and height and four of them no longer matched their files, so the browser reserved the wrong box and the page jumped as images arrived.",
+      "current": "B",
       "options": [
         {
           "id": "A",
-          "label": "Keep RSS and an email address as the only return paths",
-          "tradeoff": "No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds."
+          "label": "Leave the images as they were.",
+          "tradeoff": "Free, and the pages render. It leaves the heaviest element on the page untouched on a site whose whole purpose is organic traffic, where page experience on a phone is a ranking input rather than a detail.",
+          "effort": "none",
+          "risk": "medium"
         },
         {
           "id": "B",
-          "label": "Add a hosted form provider",
-          "tradeoff": "Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done."
+          "label": "Re-encode the illustrations to a 256-colour palette at 1200 px, derive a 768 px card variant for grid cards and serve it through srcset, take the hero to JPEG, read every declared width and height from the file, and gate all of it (done 2026-11-20).",
+          "tradeoff": "No artwork changed and no file path moved, so no page reference moved. Front page images fell from 3,947 KB to 1,176 KB and the guides index from 3,568 KB to 442 KB (measured pixel RMSE 0.012 against the originals). The gate now fails if a declared size ever disagrees with its file again.",
+          "effort": "one hour",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Self-host a form endpoint next to the collector",
-          "tradeoff": "Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long."
+          "label": "Go further: move every illustration to JPEG, delete the PNGs, and add a weight ceiling to the gate so no image over 300 KB may be committed.",
+          "tradeoff": "The smallest files and a rule that stops the problem returning. It also means the illustration pages are no longer lossless, and a ceiling needs an exception path for a genuinely detailed image.",
+          "effort": "half a day",
+          "risk": "low"
         }
       ],
-      "recommendation": "A for now. The site has {guide} guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already)."
+      "recommendation": "B is done and was safe to do without a decision, because it changed no path and no pixel. C is the version that stops it coming back, and is worth doing the next time an illustration is added.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "B",
+      "decided_on": "2026-11-20",
+      "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
     },
     {
       "id": "S-28",
@@ -941,7 +987,7 @@
           "tradeoff": "Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions."
         }
       ],
-      "recommendation": "A, today, as a one-line clarification; B only after Q-20 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
+      "recommendation": "A, today, as a one-line clarification; B only after Q-23 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
     },
     {
       "id": "S-31",
@@ -965,6 +1011,52 @@
         }
       ],
       "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
+    },
+    {
+      "id": "S-32",
+      "topic": "What the front page shows first",
+      "current": "Implemented in this session (option B), reversible in one commit",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the order alone",
+          "tradeoff": "The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled."
+        },
+        {
+          "id": "B",
+          "label": "Lead with the three highest-intent decisions",
+          "tradeoff": "Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order."
+        },
+        {
+          "id": "C",
+          "label": "Rotate the three cards weekly",
+          "tradeoff": "Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity."
+        }
+      ],
+      "recommendation": "B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the 'reads like a shop' complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change."
+    },
+    {
+      "id": "S-33",
+      "topic": "Reader capture, without a third-party form",
+      "current": "Not implemented. RSS only",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep RSS and an email address as the only return paths",
+          "tradeoff": "No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds."
+        },
+        {
+          "id": "B",
+          "label": "Add a hosted form provider",
+          "tradeoff": "Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done."
+        },
+        {
+          "id": "C",
+          "label": "Self-host a form endpoint next to the collector",
+          "tradeoff": "Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long."
+        }
+      ],
+      "recommendation": "A for now. The site has {guide} guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already)."
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured.",
@@ -1084,12 +1176,12 @@
     },
     {
       "order": 17,
-      "id": "S-26",
+      "id": "S-32",
       "why": "Already taken in this session; listed so the choice is on the record and reversible in one commit."
     },
     {
       "order": 18,
-      "id": "S-27",
+      "id": "S-33",
       "why": "Decide it with S-03, when the collector host exists. Until then RSS is the honest answer."
     }
   ],

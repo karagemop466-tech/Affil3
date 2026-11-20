@@ -9,6 +9,7 @@ Disallow: /legacy/
 Disallow: /COORDINATION.md
 Disallow: /DECISION-REVIEW-771fbf79.md
 Disallow: /DESIGN-BRIEF.md
+Disallow: /EXECUTIVE-SUMMARY-0e102530.md
 Disallow: /EXECUTIVE-SUMMARY-478e6577.md
 Disallow: /EXECUTIVE-SUMMARY-c252594d.md
 Disallow: /EXECUTIVE-SUMMARY.md

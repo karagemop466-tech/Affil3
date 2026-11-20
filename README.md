@@ -79,7 +79,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` runs **6,907 checks** at this commit over the 52 published root pages (FLG-039, FLG-043 and FLG-044 corrected stale figures; the count is whatever the run prints, and a merge that adds a page or a guide changes it, so treat the number as a log line rather than a claim). `tools/build.mjs` and `tools/verify.mjs` both import their page list from `tools/site-scope.mjs`, so the gate cannot walk a shorter list than the builder writes (FLG-043). It stops the build on:
+`node tools/verify.mjs` runs **7,102 checks** at this commit over the 52 published root pages (FLG-039, FLG-043 and FLG-044 corrected stale figures; the count is whatever the run prints, and a merge that adds a page or a guide changes it, so treat the number as a log line rather than a claim). `tools/build.mjs` and `tools/verify.mjs` both import their page list from `tools/site-scope.mjs`, so the gate cannot walk a shorter list than the builder writes (FLG-043). It stops the build on:
 
 - a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
 - an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
@@ -89,7 +89,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 - a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
 - a broken internal link, a missing anchor, or a page missing from the sitemap;
 - a source ID that does not exist, or a spec row citing one.
-- a superseded edition or a root-level session record that the generated `robots.txt` does not exclude (FLG-042);
+- a superseded edition or a root-level session record that the generated `robots.txt` does not exclude (FLG-047);
 - an unrendered count token such as `{guide}`, which means prose was hand-typed instead of computed;
 - a JSON-LD block that does not parse, or a breadcrumb trail that points at its own page.
 

@@ -79,7 +79,8 @@
         "FLG-001",
         "FLG-002",
         "FLG-005",
-        "FLG-024"
+        "FLG-024",
+        "FLG-042"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
@@ -319,7 +320,9 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-023"
+        "FLG-023",
+        "FLG-041",
+        "FLG-042"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",
@@ -341,7 +344,7 @@
       "capacity_qt": "",
       "capacity_note": "",
       "temp_min_f": "32",
-      "temp_max_f": "1000",
+      "temp_max_f": "212",
       "power_w": "",
       "voltage": "",
       "dimensions_in": "0.19 dia. × 4.75 probe length",
@@ -354,12 +357,22 @@
       "best_for": "Knowing when to pull the meat without standing next to the grill.",
       "tradeoff": "It depends on an app and a hub, so a flat battery or a dropped connection is a cooking problem.",
       "fit_line": "Knowing when to pull the meat without standing next to the grill.",
-      "lede": "A leave-in wireless probe with an ambient sensor, so the app can track both the meat and the heat around it.",
+      "lede": "A leave-in wireless probe with an ambient sensor rated to 1,000 °F, so the app can track both the meat and the heat around it.",
       "guide_title": "Is your meat thermometer telling you the right number?",
       "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
       "blank_reason": {
-        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
-        "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
+        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003)."
+      },
+      "correction": {
+        "date": "2026-11-20",
+        "field": "temp_max_f",
+        "previous_value": "1000",
+        "new_value": "212",
+        "reason": "The manufacturer publishes two ranges: 32-212 F for the part inserted into food and 32-1,000 F for the ambient sensor (S14 Specifications; S15 FAQ: inserted max 212 F, Gen 3 ambient max 1,000 F). The table previously showed the ambient range as the probe temperature. It now shows the food range; the ambient rating is stated in the lede.",
+        "sources": [
+          "S14",
+          "S15"
+        ]
       }
     }
   ]
