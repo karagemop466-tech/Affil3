@@ -15,10 +15,10 @@
         {"type": "p", "text": "A basket fryer moves hot air over food sitting in a single perforated drawer. You pull the drawer, shake, and push it back. An oven-style unit puts food on a rack or tray inside a box with a door, so you can use more than one level and you can put a pan in it. That single difference drives everything else: how much fits, how evenly it browns, how much counter it eats, and how much of it you can put in a dishwasher."},
         {"type": "table", "caption": "Three units, manufacturer specifications only. A dash means the manufacturer page did not state it.", "headers": ["", "CHEFMAN 6 Qt dual basket", "Chefman TurboFry 8 Qt", "Emeril Lagasse 26 Qt oven"], "rows": [
           ["Shape", "Two pull-out baskets", "One pull-out basket", "Oven with french doors and racks"],
-          ["Capacity", "6 qt total (2 x 3 qt)", "8 qt", "26 qt (24.6 L)"],
-          ["Temperature", "200-450 F", "Up to 450 F on Hi-Fry", "not stated on manufacturer page"],
+          ["Capacity", "6 qt total (2 × 3 qt)", "8 qt", "26 qt (24.6 L)"],
+          ["Temperature", "200–450 °F", "Up to 450 F on Hi-Fry", "not stated on manufacturer page"],
           ["Power", "1700W / 120V", "1700W / 120V", "not stated on manufacturer page"],
-          ["Footprint", "13.38 x 11.81 x 10.63 in", "not stated on manufacturer page", "16.9 x 15.8 x 14.8 in"],
+          ["Footprint", "13.38 × 11.81 × 10.63 in", "not stated on manufacturer page", "16.9 × 15.8 × 14.8 in"],
           ["Window", "Yes, one per basket", "No", "Yes, interior light and glass doors"],
           ["Dishwasher", "Baskets: yes", "Basket and rack: yes", "not stated on manufacturer page"],
           ["Source", "S11", "S12", "S13"]
@@ -29,7 +29,7 @@
         {"type": "p", "text": "If dinner is usually a main and a side that need different temperatures, a dual basket is the smallest thing that solves it. The CHEFMAN 6 Qt gives you two independent 3-quart drawers, and its Sync Finish setting runs both timers so they land together (S11). That is a real convenience, and it is the reason this shape exists."},
         {"type": "p", "text": "The catch is arithmetic. Two 3-quart baskets are each half the size of one 6-quart drawer, so a single big batch of fries gets split across two drawers and you still end up shaking both. If your cooking is mostly one big pile of one thing, the extra basket buys you nothing."},
         {"type": "h2", "text": "Question two: how much of the counter can you give up?"},
-        {"type": "p", "text": "This is where the oven shape loses. The Emeril Lagasse 26 Qt measures 16.9 inches deep, 15.8 wide and 14.8 tall by the manufacturer's own figures (S13). That is not a small appliance, and it needs clearance for a door that swings toward you. A basket unit at 13.38 x 11.81 x 10.63 inches (S11) sits in a corner and gets pushed back when you are done."},
+        {"type": "p", "text": "This is where the oven shape loses. The Emeril Lagasse 26 Qt measures 16.9 inches deep, 15.8 wide and 14.8 tall by the manufacturer's own figures (S13). That is not a small appliance, and it needs clearance for a door that swings toward you. A basket unit at 13.38 × 11.81 × 10.63 inches (S11) sits in a corner and gets pushed back when you are done."},
         {"type": "p", "text": "If you have a small kitchen, measure the depth of your counter before anything else. A deep oven-style unit that has to live on the dining table will annoy you every day, and no amount of capacity makes up for that."},
         {"type": "product", "id": "P03"},
         {"type": "h2", "text": "Question three: do you want to see the food, or open the drawer?"},
@@ -170,19 +170,19 @@
         {"type": "h2", "text": "Start with the number you are aiming for"},
         {"type": "p", "text": "The USDA Food Safety and Inspection Service publishes safe minimum internal temperatures, measured with a food thermometer before the food leaves the heat source. The ones that matter most for home cooking are below, quoted from the FSIS chart (S10)."},
         {"type": "table", "caption": "Safe minimum internal temperatures, quoted from the FSIS chart. Rest times are part of the instruction, not a suggestion.", "headers": ["Food", "Minimum internal temperature", "Rest"], "rows": [
-          ["Beef, pork, veal, lamb steaks, chops, roasts", "145 F (62.8 C)", "3 minutes"],
-          ["Ground meats", "160 F (71.1 C)", "none stated"],
-          ["All poultry, including ground poultry", "165 F (73.9 C)", "none stated"],
-          ["Fish and shellfish", "145 F (62.8 C)", "none stated"],
-          ["Leftovers and casseroles", "165 F (73.9 C)", "none stated"],
-          ["Eggs", "160 F (71.1 C)", "none stated"]
+          ["Beef, pork, veal, lamb steaks, chops, roasts", "145 °F (62.8 °C)", "3 minutes"],
+          ["Ground meats", "160 °F (71.1 °C)", "none stated"],
+          ["All poultry, including ground poultry", "165 °F (73.9 °C)", "none stated"],
+          ["Fish and shellfish", "145 °F (62.8 °C)", "none stated"],
+          ["Leftovers and casseroles", "165 °F (73.9 °C)", "none stated"],
+          ["Eggs", "160 °F (71.1 °C)", "none stated"]
         ]},
         {"type": "note", "text": "FSIS notes that these are minimums and that personal preference may lead you to cook higher. It also says to measure with a food thermometer, not by colour or by time."},
         {"type": "h2", "text": "Where to put the probe"},
         {"type": "p", "text": "For a whole bird, the thickest part of the thigh is a reliable spot, along with the thickest part of the breast, staying away from bone and from the cavity. Bone conducts heat differently and will give you a reading that is not the meat. For a roast, go into the centre of the thickest part, not the end."},
         {"type": "h2", "text": "Two kinds of thermometer, two different jobs"},
         {"type": "product", "id": "P05"},
-        {"type": "p", "text": "A leave-in probe stays in the meat and reports continuously. The CHEF iQ Sense uses four internal sensors and one ambient sensor, with an ambient range up to 1000 F, and relays readings through a Wi-Fi hub (S14). That ambient sensor is the part people skip: it tells you the temperature around the food, which is what actually drives cooking time and what catches a flare-up before it ruins the cook."},
+        {"type": "p", "text": "A leave-in probe stays in the meat and reports continuously. The CHEF iQ Sense uses four internal sensors and one ambient sensor, with an ambient range up to 1000 °F, and relays readings through a Wi-Fi hub (S14). That ambient sensor is the part people skip: it tells you the temperature around the food, which is what actually drives cooking time and what catches a flare-up before it ruins the cook."},
         {"type": "p", "text": "An instant-read probe is a spot check. You open the lid, stab, read, and close. It is faster to set up, it needs no app, and it cannot tell you anything while the lid is closed. Neither kind is better; they answer different questions."},
         {"type": "product", "id": "P04"},
         {"type": "h2", "text": "The claims worth being sceptical about"},
@@ -192,7 +192,7 @@
         {"type": "ol", "items": [
           "Fill a glass with crushed ice and water, stir, and wait a minute.",
           "Insert the probe without touching the glass.",
-          "It should read close to 32 F. If it is far off, the probe is the problem, not your cooking.",
+          "It should read close to 32 °F. If it is far off, the probe is the problem, not your cooking.",
           "Repeat at the start of the season, not the middle of a dinner party."
         ]}
       ],

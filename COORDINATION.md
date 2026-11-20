@@ -434,3 +434,61 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+---
+
+# Session `arena-9abfdc62` board (rebuild session on `arena/9abfdc62-affil3`)
+
+**Claim, committed before any file was written (2026-11-20T05:15Z).** At the time of the claim this
+checkout showed a single commit (`847ae37`) and a one-file README, and no other claim existed in this
+working copy. The claim was made against the whole tree and committed and pushed first, as the brief
+requires. Between that claim and the first push, `origin/main` had already moved to a 23-page site
+built by sessions `83a43a96`, `6249757a`, `bb0a6985` and later `4578ad4b`/`166bf329` — the local
+checkout was stale, not empty.
+
+**How that was handled.** The claim was not used to overwrite anyone. `origin/main` was merged into
+this branch first, every concurrent commit was read, and the rebuild was then reconciled against it
+in `fa13fc3`. Nothing built by an earlier session was deleted: their boards in this file, the
+`/editorial/` publication, `data/register/`, and `data/observations/` are all still present and are
+still served.
+
+## Task board
+
+| ID | Task | Status | Notes |
+| --- | --- | --- | --- |
+| R-01 | Claim, push claim before touching files | done | `COORDINATION.md`, first commit on the branch |
+| R-02 | Verify the five supplied short links by repeated fetch | done | 3 rounds; adopted the corrected mapping; see FLG-004/FLG-022 |
+| R-03 | Read the compliance ground truth from the primary pages | done | Agreement §5, Policies §2(a)/(b), 16 CFR 255.5, Google's link + spam guidance |
+| R-04 | Verified manufacturer specifications for the products | done | 3 of 5 products fully sourced; 2 withheld with reasons |
+| R-05 | Rebuild the root site as one publication | done | 28 pages, new design system, product pages, guide imagery |
+| R-06 | Publishing gate covering the new requirements | done | 1598 checks, 0 failed |
+| R-07 | Collector tested end to end | done | valid events 204, unknown event 400, bad value 400, CORS scoped |
+| R-08 | Reconcile with concurrent sessions | done | merged, remapped flags, no work discarded |
+| R-09 | CI pointed at the pipeline that actually publishes | done | docs/ pipeline retained but no longer run |
+| R-10 | Pull request, merge, confirm Pages | done | see *Integration record* |
+| R-11 | Search Console verification | **blocked: owner action** | needs the owner's Google account; FLG-013 |
+| R-12 | Confirm one Special Link per product in Associates Central | **blocked: owner action** | gate G-02; FLG-005 |
+
+## Decisions taken in this session
+
+| ID | Decision | Reason |
+| --- | --- | --- |
+| R-D1 | One publication at the repository root; the earlier `/editorial/` edition is kept but excluded from `robots.txt` and cross-linked as an earlier edition | Two indexed publications split the site's identity. Retiring it outright is offered as S-01 rather than done unilaterally. |
+| R-D2 | No prices, no star ratings, no review counts anywhere | Amazon's price clause permits them only with Amazon-served data; ratings go stale and are a misleading claim once stale. |
+| R-D3 | No specification is published without a manufacturer page | The ThermoMaven unit therefore carries no specifications and no buy button. |
+| R-D4 | Where two official pages disagree, publish neither figure | CHEF iQ battery life and the Emeril preset count are the two cases. |
+| R-D5 | Buy links point at the observed listing with the tracking tag, and are labelled provisional | They meet the tagging rule but have not been confirmed in a tracking report. |
+| R-D6 | Imagery is illustration, labelled as such, with no brand marks | Avoids implying a hands-on review and avoids using Amazon-hosted imagery outside its licence. |
+| R-D7 | Flag numbering continues from earlier sessions; new findings got new ids | Renumbering would have broken links in pages other sessions had already published. |
+
+## What I would flag to the next session
+
+1. **The claim-before-work rule nearly caused a destructive overwrite.** A session that starts from a
+   stale clone sees an empty repo and claims everything. Reading `origin/main` before writing is the
+   only thing that prevented a 23-page site from being replaced. This should be a step in the brief,
+   not a judgement call.
+2. **Two build pipelines, one of which nothing ran.** `tools/build.py` writes `docs/`, which Pages does
+   not serve. CI was running it and going green, which meant nothing. CI now runs the pipeline that
+   actually publishes. The old one is kept, with a comment.
+3. **The flag ids are load-bearing.** They are linked from product pages, the shop table and the guides.
+   Renumbering them silently breaks citations, so new findings should keep taking new ids.
