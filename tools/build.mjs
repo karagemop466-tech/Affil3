@@ -493,26 +493,53 @@ for (const p of products) {
     ['Best for', p.best_for],
     ['The trade-off', p.tradeoff],
     ['Cleanup', p.dishwasher_safe || 'Not stated by the manufacturer. Check the manual before assuming a part is washable.'],
-    ['What we could not verify', p.no_buy_link ? 'Everything: no manufacturer page exists for this model, so no specification is published.' : (Object.keys(p.blank_reason || {}).length ? Object.values(p.blank_reason).join(' ') : 'No gaps in the table above: every field came from the manufacturer page or is labelled not stated.')],
+    ['What we could not verify', (Object.keys(p.blank_reason || {}).length ? Object.values(p.blank_reason).join(' ') : 'No gaps in the table above: every field came from the manufacturer page or is labelled not stated.')],
   ];
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: { '@type': 'Brand', name: p.brand },
     description: p.lede, url: abs('/products/' + p.slug + '/'),
   })}</script>`;
-  const conflictTable = p.observed_specs ? `
+  const conflictTable = (() => {
+    if (!p.observed_specs) return '';
+    // Only rows a reader can compare. A row where one column is silent is an absence,
+    // not a disagreement, and the spec grid above already shows it. Units are normalised
+    // before comparing so "8 quarts" and "8 qt" are not reported as a conflict.
+    const sais = (v) => !!v && !/^(?:not stated|n\/a|—|-)$/i.test(String(v).trim());
+    const norm = (v) => String(v).toLowerCase()
+      .replace(/\bquarts?\b/g, 'qt').replace(/\binches?\b/g, 'in')
+      .replace(/\s+/g, '').replace(/(\d)(in|qt|w|v|°f)\b/g, '$1 $2');
+    const LABEL = { model: 'Model', power: 'Power', temperature: 'Temperature', dimensions: 'Case size', capacity: 'Capacity', material: 'Finish' };
+    const mine = {
+      model: p.model,
+      power: p.power_w ? `${p.power_w} W / ${p.voltage || ''}`.trim() : '',
+      temperature: p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}-${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : ''),
+      dimensions: p.dimensions_in ? `${p.dimensions_in} in` : '',
+      capacity: p.capacity_qt ? `${p.capacity_qt} qt` : '',
+      material: p.material || '',
+    };
+    const rows = ['model', 'power', 'temperature', 'dimensions', 'capacity', 'material']
+      .filter((k) => sais(p.observed_specs[k]) && sais(mine[k]))
+      .map((k) => [LABEL[k], esc(p.observed_specs[k]), `<span class="muted">${esc(mine[k])}</span>`,
+        norm(p.observed_specs[k]) === norm(mine[k]) ? '<span class="badge good">agrees</span>' : '<span class="badge flag">differs</span>']);
+    const extras = Object.entries(p.observed_specs_extra || {}).map(([k, v]) => {
+      const label = ({ display: 'Display', waterproof: 'Water resistance', certification: 'Certification', newer_model: 'Newer model' })[k] || k;
+      const [listingSays, makerSays] = String(v).split(' vs ');
+      return [label, esc(listingSays),
+        makerSays ? `<span class="muted">${esc(makerSays).replace(/ \(listing\)$| \(manufacturer\)$/, '')}</span>`
+                  : '<span class="muted">the maker publishes no successor notice</span>',
+        k === 'newer_model' ? '<span class="badge flag">check before buying</span>' : '<span class="badge flag">differs</span>'];
+    });
+    if (!rows.length && !extras.length) return '';
+    return `
 <section class="band">
-  <h2>The listing and the maker disagree</h2>
-  <p>These figures come from the listing's own copy, not from the manufacturer. They are kept in a separate table on purpose, because on this listing they describe a different model from the manufacturer page. Read them as evidence of the conflict, not as specifications of the product.</p>
-  ${table(['Field', 'Listing states', 'Manufacturer states'], [
-    ['Model', esc(p.observed_specs.model || ''), esc(p.model || '')],
-    ['Power', esc(p.observed_specs.power || ''), p.power_w ? esc(p.power_w + ' W') : '<span class="muted">not stated</span>'],
-    ['Temperature', esc(p.observed_specs.temperature || ''), p.temp_max_f ? esc('up to ' + p.temp_max_f + ' °F') : '<span class="muted">not stated</span>'],
-    ['Size', esc(p.observed_specs.dimensions || ''), p.dimensions_in ? esc(p.dimensions_in + ' in') : '<span class="muted">not stated</span>'],
-    ['Capacity', esc(p.observed_specs.capacity || ''), p.capacity_qt ? esc(p.capacity_qt + ' qt') : '<span class="muted">not stated</span>'],
-    ['Material', esc(p.observed_specs.material || ''), '<span class="muted">not stated</span>'],
-  ])}
-  <p class="small">${flagLinks((p.flags || []).filter((f) => ['FLG-026', 'FLG-027'].includes(f)))}</p>
-</section>` : '';
+  <h2>Where the listing and the maker disagree</h2>
+  <p>Both columns describe the same product. A retailer listing and a manufacturer page are two different
+  claims about one object, so where they part company the gap is shown rather than averaged away. Nothing
+  in the right-hand column came from the listing.</p>
+  ${table(['Field', 'The listing states', 'The maker states', ''], [...rows, ...extras])}
+  <p class="small">${flagLinks((p.flags || []).filter((f) => !['FLG-001', 'FLG-002', 'FLG-022', 'FLG-028', 'FLG-029'].includes(f)))}</p>
+</section>`;
+  })();
   add({
     path: `/products/${p.slug}/`, type: 'product', ogType: 'article', jsonld,
     ogImage: PRODUCT_IMAGE[p.id] || '/assets/img/hero.png',
@@ -599,7 +626,7 @@ add({
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li>Two destinations were transposed in an earlier register revision and corrected after a retest, and one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added FLG-023 to FLG-027. Two of those were themselves corrected in a later pass: the ThermoMaven unit does have a maker page, which had been missed (FLG-025, resolved), and the Chefman 8 Qt conflict had been measured against the wrong Chefman page and is really a wattage and case-size difference (FLG-026). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>

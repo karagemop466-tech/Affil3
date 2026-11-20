@@ -23,7 +23,7 @@ const guides = read('data/guides.json').guides;
 const ALLOWED_SOURCE_HOSTS = new Set([
   'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
-  'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
+  'chefman.com', 'www.emerileveryday.com', 'chefiq.com', 'www.thermomaven.com',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
@@ -161,7 +161,16 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       }
       if (href.startsWith(base) || href.startsWith('/')) {
         const target = fileFor(href.startsWith('/') && !href.startsWith(base) ? base + href : href);
-        if (target) check(`${name}: internal link resolves ${href.split('#')[0]}`, fs.existsSync(target) && fs.statSync(target).isFile() || fs.existsSync(target), href);
+        if (target) {
+          const exists = fs.existsSync(target) && fs.statSync(target).isFile();
+          check(`${name}: internal link resolves ${href.split('#')[0]}`, exists, href);
+          // A fragment must exist on the page it points at. Without this a citation can
+          // resolve to a real file and still land the reader at the top of it.
+          const frag = href.split('#')[1];
+          if (exists && frag && target.endsWith('.html') && frag !== 'main') {
+            check(`${name}: cross-page anchor ${href} exists`, fs.readFileSync(target, 'utf8').includes(`id="${frag}"`), href);
+          }
+        }
       }
       if (href.startsWith('#')) {
         const id = href.slice(1);

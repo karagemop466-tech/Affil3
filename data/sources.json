@@ -190,6 +190,24 @@
       "method": "excerpt",
       "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Renumbered from this session's draft S10 after the merged register took S09/S10 for the spam-policies and temperature-chart sources.",
       "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S21",
+      "title": "ThermoMaven F1 Ace Instant Read Thermometer - product page",
+      "publisher": "ThermoMaven",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "method": "fetched 2026-11-20 (full page read in this session)",
+      "used_for": "The manufacturer page for the ThermoMaven unit, which an earlier pass reported as missing: 1-second thermocouple read, NIST-certified +/-0.5 F / +/-0.3 C accuracy, 'bright, ultra-clear LCD' display, motion-sensing wake/sleep, '100% waterproof design' with no IP code, built-in magnet, lifetime warranty on registration within 30 days. No model number stated. Resolves FLG-025.",
+      "status": "verified"
+    },
+    {
+      "id": "S22",
+      "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer - B0DHZTCNR5 listing",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "method": "observed 2026-11-20 (full listing fetched, 'About this item' block read)",
+      "used_for": "Listing-only claims for P04 that the maker does not repeat: 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof', 'NIST&NSF Certified', 1x AAA battery included, and a 'newer model of this item' callout for B0GL7Z4KP4 (FLG-008).",
+      "status": "observed"
     }
   ]
 }
