@@ -1,0 +1,288 @@
+{
+  "$comment": "Everything this project could not settle, published rather than buried. `severity: blocker` means the site will not pretend otherwise; it does not stop the build, because an empty cell with a reason is more useful to a buyer than a guess.",
+  "flags": [
+    {
+      "id": "FLG-001",
+      "title": "All five supplied link tokens are nine characters; the listings they resolved to carry ten-character identifiers",
+      "kind": "irregularity",
+      "severity": "blocker",
+      "detail": "B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59 and B0f3GKalj are each nine characters long — countable from the strings themselves. The four pages they landed on sit at /dp/B0CDY277D3, /dp/B09B7SB46R, /dp/B08DKYBTPH and /dp/B0DZFD6R9Z, all ten characters, and none of those ten characters matches the nine in the link. So the token in the link path behaves like a redirect code, not like the catalog identifier of the product. No `intended_asin` is recorded for any row until the program owner confirms one.",
+      "evidence": [
+        "data/links.json rows LNK-01 … LNK-05",
+        "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA"
+      ],
+      "buyer_impact": "None. Readers are sent to a listing page this project actually loaded, not to a guessed identifier.",
+      "action": "Owner confirms the intended listing per link; the gate then allows the ASIN into `intent` and unlocks Product structured data.",
+      "status": "needs review",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-002",
+      "title": "No observed destination carried a tracking tag",
+      "kind": "revenue-risk",
+      "severity": "blocker",
+      "detail": "The four resolved destination URLs carry lv, btn_type, gaOptInStatus, btn_ref, channelId, plpRedirect and (in two cases) th and sbo. None carries `tag=`. Amazon's Special Links rule quoted in the register requires the Associates tag as a URL parameter on every link placed on the site. A link with no tag earns nothing, however good the traffic is.",
+      "evidence": [
+        "https://affiliate-program.amazon.com/help/operating/policies",
+        "data/links.json → observed_query_params per row"
+      ],
+      "buyer_impact": "None for the reader; the reader lands on the right listing.",
+      "action": "This site does not publish the supplied links. Every outbound link it does publish is rebuilt as https://www.amazon.com/dp/<observed-id>?tag=shopnow047c-20 and the gate refuses to build if the tag is missing. Then test one link per product in-account before scaling.",
+      "status": "mitigated in build, needs in-account proof",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-003",
+      "title": "Compliance status of link.amazon short links is unresolved",
+      "kind": "open-question",
+      "severity": "open",
+      "detail": "The program owner's brief names this as unresolved and forbids declaring the links invalid. This register does neither. What is established: link.amazon is an Amazon-owned short form that redirects to a listing; whether Amazon will honour a tag carried through that form, and whether using it from a review site satisfies the Special Links clause, are two separate questions that need the agreement text plus one tracked click in the reports.",
+      "evidence": [
+        "https://affiliate-program.amazon.com/help/operating/policies",
+        "https://www.amazon.com/dp/B0CDY277D3"
+      ],
+      "buyer_impact": "None.",
+      "action": "Q-03 and RUNBOOK §2 resolve it empirically: click your own tagged link from a fresh device and read the click report.",
+      "status": "open",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-004",
+      "title": "The fourth link never produced a product page from this environment",
+      "kind": "unverified",
+      "severity": "open",
+      "detail": "https://link.amazon/B0c8moW59 returned Amazon's 'To continue, please click the Continue shopping button' checkpoint, and a retry minutes later returned a fetch error. No title, no identifier, no category. The row is blank because the observation is missing, not because the product does not exist.",
+      "evidence": [
+        "data/links.json row LNK-04"
+      ],
+      "buyer_impact": "The gear table shows four products, not five, and says so.",
+      "action": "Open the link in a normal browser or run `python3 tools/resolve_links.py` from a machine with ordinary residential egress, then fill LNK-04's observation block.",
+      "status": "needs review",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-005",
+      "title": "Which commission rate applies to an air fryer is not stated on the rate page",
+      "kind": "commercial",
+      "severity": "open",
+      "detail": "Table A lists 'Furniture, Home, Home Improvement, Lawn & Garden, Pets Products' at 3.00% and '… Sports, Kitchen, Automotive' at 1.25%. Air fryers sit under a Home & Kitchen breadcrumb that leads to Kitchen & Dining. Amazon assigns the category; we do not get to pick the better row. Anything resembling a revenue forecast built on either number would be fiction, so none is published.",
+      "evidence": [
+        "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA"
+      ],
+      "buyer_impact": "None. Readers see no commission language at all beyond the required disclosure.",
+      "action": "After the first attributed sale, read Reports → the category column, and record the row here. Until then, model both rates side by side in private notes only.",
+      "status": "open",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-006",
+      "title": "The US Associates Program Policies page was not readable from here",
+      "kind": "capability-gap",
+      "severity": "open",
+      "detail": "affiliate-program.amazon.com/help/operating/policies renders inside a signed-in session. The Special Links clause used by the gate was taken from the official Amazon.sa copy of the same document and cross-checked against an archived copy of the US URL. A policy text can differ by marketplace; the US wording must be read in-account.",
+      "evidence": [
+        "https://affiliate-program.amazon.sa/help/operating/policies",
+        "https://web.archive.org/web/20170221062640/https:/affiliate-program.amazon.com/help/operating/policies"
+      ],
+      "buyer_impact": "None.",
+      "action": "Read the US agreement and policies in the enrolled account; paste the version date into SG-02/SG-03 and re-run the gate.",
+      "status": "needs review",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-007",
+      "title": "No authorized product-data source, so no live price, availability or rating on this site",
+      "kind": "capability-gap",
+      "severity": "blocker",
+      "detail": "Product Advertising API access could not be confirmed, and its access conditions were only ever seen restated by third parties. Without an authorized feed, any price or rating we publish is a screenshot from a day in the past pretending to be current. The register therefore leaves those columns empty on purpose.",
+      "evidence": [
+        "https://docs.aws.amazon.com/paapi5/",
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ],
+      "buyer_impact": "A reader who wants a price clicks through and sees Amazon's live one, which is always more accurate than ours would be.",
+      "action": "Confirm API access in-account; until then the gate keeps prices and ratings out of the build.",
+      "status": "open by design",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-008",
+      "title": "Every product attribute on this site is seller listing copy",
+      "kind": "editorial",
+      "severity": "open",
+      "detail": "Capacity, preset counts, 'dishwasher safe', 'Hi-Fry' and the rest were taken verbatim from the listing titles captured 2026-11-20. A listing title is marketing written to rank, not a specification sheet, and titles change. Each attribute is labelled 'as titled' and links back to the page it came from. Nothing on the site claims a hands-on measurement.",
+      "evidence": [
+        "https://www.amazon.com/dp/B0CDY277D3",
+        "https://www.amazon.com/dp/B09B7SB46R",
+        "https://www.amazon.com/dp/B08DKYBTPH",
+        "https://www.amazon.com/dp/B0DZFD6R9Z"
+      ],
+      "buyer_impact": "The reader is told which sentences are the seller's and which are ours.",
+      "action": "Re-capture before each republication; treat any attribute older than 90 days as stale (S-18).",
+      "status": "published with labels",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-009",
+      "title": "The tracking ID is syntactically right and nothing more",
+      "kind": "unverified",
+      "severity": "open",
+      "detail": "'shopnow047c-20' matches the XXXXX-20 shape named in the Special Links clause, and the -20 suffix is the US marketplace convention. Whether that ID exists and is active on the enrolled account is only visible inside it. Program-generated linkCode and linkId values were not invented either; the links here carry the tag parameter only.",
+      "evidence": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ],
+      "buyer_impact": "None.",
+      "action": "Tools → Tracking IDs in Associates Central, then one real click and one report check (Q-03).",
+      "status": "needs review",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-010",
+      "title": "The measurement loop is built but not closed",
+      "kind": "capability-gap",
+      "severity": "blocker",
+      "detail": "GitHub Pages serves static files. The click beacon ships, the collector ships as a stdlib server, and the campaign ledger ships with its schema and no rows — but no endpoint is configured, no Search Console property is verified, and reader capture is disabled. The site says so on the metrics page instead of showing a dashboard full of zeros.",
+      "evidence": [
+        "https://api.github.com/repos/karagemop466-tech/Affil3/pages",
+        "https://search.google.com/search-console/about"
+      ],
+      "buyer_impact": "None.",
+      "action": "S-09 and S-08: point config.measurement.endpoint at a host that runs tools/collector.py, then the ledger starts filling from real traffic.",
+      "status": "open by design",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-011",
+      "title": "No Product or Review structured data in this build",
+      "kind": "editorial",
+      "severity": "open",
+      "detail": "Google's Product documentation says rich presentation can surface price, availability and review ratings. We publish none of those, and we will not emit a Review markup for a machine nobody at this project has cooked with. The build emits WebSite, Organization, Article and BreadcrumbList only — those describe claims we can actually support.",
+      "evidence": [
+        "https://developers.google.com/search/docs/appearance/structured-data/product"
+      ],
+      "buyer_impact": "None; readers get the page, not a rich result promise.",
+      "action": "Revisit with S-04 once an authorized offer feed and a real review process exist.",
+      "status": "deferred deliberately",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-012",
+      "title": "The USDA temperature chart was captured, not cleanly fetched",
+      "kind": "source-quality",
+      "severity": "low",
+      "detail": "Two fetches of fsis.usda.gov were refused by its protection layer in this sandbox. The temperature table was read from the official-domain result twice over, from two different FSIS pages, and both captures agree. It is recorded as snippet-level evidence, not as a full read.",
+      "evidence": [
+        "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+        "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe"
+      ],
+      "buyer_impact": "Low: 165 °F for poultry is not in dispute and the guide cites the chart directly.",
+      "action": "One clean read of the chart page, then mark SG-11 as read.",
+      "status": "needs review",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-013",
+      "title": "No official Amazon source for the ten-character ASIN definition was retrieved",
+      "kind": "source-quality",
+      "severity": "low",
+      "detail": "Every hit for the definition was a third-party seller blog. Rather than cite one, the register makes its point without the definition: nine characters in the link versus ten in the path of the page the link opened, both measured from the strings themselves.",
+      "evidence": [
+        "data/links.json"
+      ],
+      "buyer_impact": "None.",
+      "action": "Optional: attach an official catalog-documentation citation if one is ever found, or drop the length argument once intent is confirmed.",
+      "status": "open",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-014",
+      "title": "There is no human reviewer of record",
+      "kind": "compliance",
+      "severity": "blocker",
+      "detail": "Pages are signed 'Counterwise Editorial Desk', an automation with a gate, and the About page says exactly that. No persona, no invented credential, no 'our experts'. Amazon and the FTC both care about who is speaking: a byline that implies a person we do not have would be the most damaging fiction on the site.",
+      "evidence": [
+        "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
+        "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98"
+      ],
+      "buyer_impact": "The reader is not being flattered with a fake authority.",
+      "action": "S-11: name a reviewer, real credentials, real photo, then the site may add 'reviewed by' and nothing before.",
+      "status": "needs decision",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-015",
+      "title": "Source IDs named in the brief do not exist in this repository",
+      "kind": "irregularity",
+      "severity": "low",
+      "detail": "The brief cites rows S01, S02, S07, S24, SG-27 to SG-30 and flag FLG-003 as if a register were already in the repo. At 05:07 UTC this repository held one 9-byte README. Nothing was mapped by guesswork; this file's FLG-003 and the SG-* register below are newly created, and the brief's referenced items are recorded in the mapping table on the review page with what was found for each.",
+      "evidence": [
+        "git log: 847ae376e15d0bba14809ebce17ddaea317f79b6 'Initial commit' is the only ancestor of main",
+        "data/flags.json → brief_id_mapping"
+      ],
+      "buyer_impact": "None.",
+      "action": "If those IDs live in another project, import them; otherwise treat this register as revision 1.",
+      "status": "logged",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-016",
+      "title": "Pages publishing path changed from main:/ to main:/docs",
+      "kind": "infrastructure",
+      "severity": "info",
+      "detail": "The site is generated static HTML committed under docs/. Serving it from the repository root would have put data/, tools/ and tests/ into the Jekyll build path for no benefit. The Pages source path was switched through the GitHub API by the integration session and docs/.nojekyll was added so nothing post-processes the output.",
+      "evidence": [
+        "https://api.github.com/repos/karagemop466-tech/Affil3/pages"
+      ],
+      "buyer_impact": "None.",
+      "action": "Other sessions: do not push an index.html to the repository root; it will not be served.",
+      "status": "recorded",
+      "raised": "2026-11-20"
+    },
+    {
+      "id": "FLG-017",
+      "title": "Six other sessions claimed the same whole-project scope",
+      "kind": "process",
+      "severity": "info",
+      "detail": "At claim time the remote held six arena/* branches, each with a claim-only commit and no implementation files. Full collision notes, the merge protocol and the audit trail are in COORDINATION.md. No other session's work was overwritten, and no other session's files were merged by this one.",
+      "evidence": [
+        "COORDINATION.md → Board state at claim time",
+        "https://github.com/karagemop466-tech/Affil3/branches/all"
+      ],
+      "buyer_impact": "None.",
+      "action": "Bring competing work as data rows under the protocol in COORDINATION.md; the site regenerates from it.",
+      "status": "recorded",
+      "raised": "2026-11-20"
+    }
+  ],
+  "brief_id_mapping": [
+    {
+      "brief_id": "FLG-003",
+      "brief_said": "compliance status of the supplied short links is unresolved",
+      "found_here": "no register existed; recreated as FLG-003 with the same meaning and no claim of invalidity"
+    },
+    {
+      "brief_id": "S01 / S07 / S24",
+      "brief_said": "cited as sources behind disclosure and API-policy checks",
+      "found_here": "no such rows existed; the equivalent official sources are SG-01, SG-02, SG-03 and SG-04"
+    },
+    {
+      "brief_id": "S02",
+      "brief_said": "cited next to the Special Links replacement task",
+      "found_here": "no such row existed; the Special Links clause is now SG-02"
+    },
+    {
+      "brief_id": "SG-27 … SG-30",
+      "brief_said": "reader-pass rows: nav labels, shipped RSS feed, Search Console, reader capture",
+      "found_here": "did not exist. Nav labels and the feed are shipped (S-01, A10); Search Console and reader capture are not, and are tracked as S-08, S-10 and FLG-010"
+    },
+    {
+      "brief_id": "the five defined events",
+      "brief_said": "record the five defined events",
+      "found_here": "no definition existed anywhere in the materials. Five are proposed in data/events.json and marked proposed, not quoted from a source"
+    },
+    {
+      "brief_id": "Tracking ID shopnow047c-20",
+      "brief_said": "selected tracking ID",
+      "found_here": "used as the tag on every outbound link and as the gate's required value; existence in-account is unverified (FLG-009)"
+    }
+  ]
+}

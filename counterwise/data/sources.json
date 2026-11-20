@@ -1,0 +1,247 @@
+{
+  "$comment": "Source register. `verification` says how much this project actually read: 'read' = page content retrieved and quoted/paraphrased in this session; 'snippet' = text seen on the official domain via a search result because the page itself refused our fetch; 'link-verified' = the URL is named by another official page we read; 'not-read' = required reading that no one has done yet. Nothing in this file is inferred.",
+  "accessed_default": "2026-11-20",
+  "sources": [
+    {
+      "id": "SG-01",
+      "org": "Amazon — Associates Central Help",
+      "title": "Why do I have to identify myself as an Associate? How should I do this on social media?",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98",
+      "kind": "program-policy",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Page retrieved in full during this session (single chunk, no pagination).",
+      "what_it_supports": [
+        "the exact site statement used in the disclosure strip and footer",
+        "link-level disclosure wording and placement",
+        "the requirement that disclosure live in the same medium as the recommendation"
+      ],
+      "notes": "Amazon's help page states that to comply with FTC regulations a link-level disclosure must be Clear (a clear disclosure could be as simple as \"(paid link)\", \"#ad\", or \"#CommissionsEarned\") and Conspicuous (placed near any affiliate link or product review in a location customers will notice easily; they shouldn't have to hunt for it). It further states that the Operating Agreement requires the statement \"As an Amazon Associate I earn from qualifying purchases.\" to appear clearly and conspicuously on the Site."
+    },
+    {
+      "id": "SG-02",
+      "org": "Amazon — Associates Program Policies",
+      "title": "Associates Program Policies — Links on Your Site → (a) Special Links",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "kind": "program-policy",
+      "verification": "snippet",
+      "accessed": "2026-11-20",
+      "method": "The US copy renders only inside a signed-in Associates session. Text retrieved on 2026-11-20 from the official Amazon.sa copy of the same policy document and cross-checked against a 2017 archived copy of the US URL on web.archive.org.",
+      "what_it_supports": [
+        "the tag parameter in every outbound link",
+        "Special Links must point at Products",
+        "product-list pages need additional original content",
+        "no bookmark-bait, no obscuring of the source site"
+      ],
+      "notes": "Wording relied on: \"you must include your Associates ID or 'tag' (appearing as XXXXX-20, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site\"; \"Special Links must link to Products\"; \"When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.\" Re-read the US copy inside the enrolled account before scale: FLG-006."
+    },
+    {
+      "id": "SG-03",
+      "org": "Amazon — Associates Program Operating Agreement",
+      "title": "Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "kind": "contract",
+      "verification": "not-read",
+      "accessed": "2026-11-20",
+      "method": "Login-gated. Not retrieved in this session; no clause from it is quoted or relied on anywhere on the site.",
+      "what_it_supports": [
+        "nothing yet — it is the document a human must read before the compliance gate can be called complete"
+      ],
+      "notes": "Listed so the gate can prove the gap instead of hiding it. The site's disclosure text comes from SG-01, which is Amazon's own restatement of the agreement's requirement, so the site is compliant on that point without claiming to have audited the contract. See Q-02."
+    },
+    {
+      "id": "SG-04",
+      "org": "Amazon — Associates Central Help",
+      "title": "Onsite Associates Program Commission Income Statement (Table A, fixed rates)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G4ARBJC7Z2NK48CA",
+      "kind": "commercial-terms",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Retrieved during this session; Table A read in full, Table B partially (first rows).",
+      "what_it_supports": [
+        "the two commission rows an air fryer could land on",
+        "why the page links to one exact detail page rather than a search results page",
+        "the statement that no revenue forecast is possible from this register"
+      ],
+      "notes": "Table A as read: \"Furniture, Home, Home Improvement, Lawn & Garden, Pets Products — 3.00%\" and \"Digital Music, Physical Music, Handmade, Digital Videos, Health & Personal Care, Sports, Kitchen, Automotive — 1.25%\". A Direct Qualifying Purchase is defined as a Qualifying Purchase of a Product of the same ASIN variant as the Product detail page a customer linked to from the content. Which Table A row an air fryer falls under is not stated on the page: FLG-005."
+    },
+    {
+      "id": "SG-05",
+      "org": "Google — Search Central documentation",
+      "title": "Qualify your outbound links to Google",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "kind": "search-guidance",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Page retrieved in full during this session; last updated 2025-12-10 UTC per the page footer.",
+      "what_it_supports": [
+        "rel=\"sponsored\" on every product link, enforced by the build gate",
+        "the note that links so marked are generally not followed"
+      ],
+      "notes": "Wording relied on: \"Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.\" Multiple rel values may be given as a space- or comma-separated list, which is why the build emits rel=\"sponsored nofollow\"."
+    },
+    {
+      "id": "SG-06",
+      "org": "Google — Search Central blog",
+      "title": "What web creators should know about our March 2024 core update and new spam policies — Scaled content abuse",
+      "url": "https://developers.google.com/search/blog/2024/03/core-update-spam-policies",
+      "kind": "search-guidance",
+      "verification": "snippet",
+      "accessed": "2026-11-20",
+      "method": "Text retrieved from the official developers.google.com result on 2026-11-20; the page itself was not opened to the anchor.",
+      "what_it_supports": [
+        "why this project publishes 5 guides and a gate instead of 500 generated pages",
+        "why automation is pointed at research, formatting and measurement rather than page volume"
+      ],
+      "notes": "Wording relied on: \"Scaled content abuse is when many pages are generated for the primary purpose of manipulating Search rankings and not helping users … no matter how it's created.\" This is the single most important constraint on an AI-powered affiliate platform: volume is the risk, not the asset."
+    },
+    {
+      "id": "SG-07",
+      "org": "Google — Search Central documentation",
+      "title": "Introduction to Product structured data",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/product",
+      "kind": "search-guidance",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Page retrieved during this session.",
+      "what_it_supports": [
+        "the decision to ship Article/Breadcrumb markup now and hold Product markup until verified offer data exists",
+        "the distinction between product snippets and merchant listings"
+      ],
+      "notes": "As read: product structured data has two main classes — Product snippets \"for product pages where people can't directly purchase the product\", and merchant listings \"for pages where customers can purchase products from you\". It also says rich presentation can surface price, availability and review ratings, which is data this site deliberately does not publish. Hence no Product or Review JSON-LD on this build: see S-11 and FLG-011."
+    },
+    {
+      "id": "SG-08",
+      "org": "US Government — eCFR",
+      "title": "16 CFR Part 255 — Guides Concerning Use of Endorsements and Testimonials in Advertising",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
+      "kind": "regulation",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Part table of contents and source note retrieved; the page states it is authoritative but unofficial, current to 11/18/2026.",
+      "what_it_supports": [
+        "that material-connection disclosure is a legal duty, not a courtesy",
+        "the section that governs it (255.5) and the sections that govern consumer and expert endorsements (255.2, 255.3)"
+      ],
+      "notes": "Sections as listed: 255.0 Purpose and definitions · 255.1 General considerations · 255.2 Consumer endorsements · 255.3 Expert endorsements · 255.4 Endorsements by organizations · 255.5 Disclosure of material connections · 255.6 Endorsements directed to children. Source note: 88 FR 48102, July 26, 2023. Section text was not read line by line in this session; no regulatory sentence is quoted on the site, only the structure above."
+    },
+    {
+      "id": "SG-09",
+      "org": "US FTC — business guidance",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/tips-advice/business-center/guidance/disclosures-101-social-media-influencers",
+      "kind": "regulation-guidance",
+      "verification": "link-verified",
+      "accessed": "2026-11-20",
+      "method": "URL taken from the Amazon help page read as SG-01, which points readers to it. Not opened in this session.",
+      "what_it_supports": [
+        "the pointer Amazon itself gives Associates for FTC disclosure practice"
+      ],
+      "notes": "Read before making any claim about what the FTC expects beyond the disclosure that is already on every page: Q-09."
+    },
+    {
+      "id": "SG-10",
+      "org": "US FTC — business guidance",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "url": "https://www.ftc.gov/tips-advice/business-center/guidance/ftcs-endorsement-guides-what-people-are-asking",
+      "kind": "regulation-guidance",
+      "verification": "link-verified",
+      "accessed": "2026-11-20",
+      "method": "URL taken from SG-01, which links it with an #affiliate anchor. Not opened in this session.",
+      "what_it_supports": [
+        "Amazon's own signpost for the affiliate-disclosure question"
+      ],
+      "notes": "Same caveat as SG-09."
+    },
+    {
+      "id": "SG-11",
+      "org": "USDA FSIS",
+      "title": "Safe Minimum Internal Temperature Chart",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "kind": "public-health",
+      "verification": "snippet",
+      "accessed": "2026-11-20",
+      "method": "Two direct fetches of fsis.usda.gov were refused by the site's protection layer in this sandbox. The chart table was read from the official-domain result on 2026-11-20 and confirmed against SG-12.",
+      "what_it_supports": [
+        "every temperature stated in the doneness guide",
+        "the reason a probe matters more than a timer"
+      ],
+      "notes": "Values relied on: all poultry 165 °F (73.9 °C) · ground meats 160 °F (71.1 °C) · beef, pork, veal and lamb steaks, chops and roasts 145 °F (62.8 °C) with at least a 3-minute rest · fish and shellfish 145 °F (62.8 °C) · eggs 160 °F (71.1 °C) · leftovers and casseroles 165 °F (73.9 °C). Two independent official-domain captures showed the same figures; the page itself still needs one clean read: FLG-012."
+    },
+    {
+      "id": "SG-12",
+      "org": "USDA FSIS",
+      "title": "Keep Food Safe! Food Safety Basics — Cooking Temperatures",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe",
+      "kind": "public-health",
+      "verification": "snippet",
+      "accessed": "2026-11-20",
+      "method": "Official-domain capture on 2026-11-20, used as the second witness for SG-11.",
+      "what_it_supports": [
+        "cross-check of the same temperature table",
+        "the four-step framing (clean, separate, cook, chill) used in the doneness guide"
+      ],
+      "notes": "No conflict between the two captures."
+    },
+    {
+      "id": "SG-13",
+      "org": "Amazon Web Services — Product Advertising API",
+      "title": "Product Advertising API 5.0 — access requirements and operations",
+      "url": "https://docs.aws.amazon.com/paapi5/",
+      "kind": "api",
+      "verification": "not-read",
+      "accessed": "2026-11-20",
+      "method": "Not retrieved. The eligibility rule quoted around the web (three qualifying sales in 180 days) was only seen restated by third parties, so this project does not state it as fact.",
+      "what_it_supports": [
+        "the automation layer that is currently blocked: no authorized product-data source",
+        "which fields could be filled automatically once access exists (title, brand, breadcrumb, images, availability)"
+      ],
+      "notes": "Until credentials exist, price, availability, rating and review content are not publishable here at all. That is the reason the gear table has empty cells: FLG-007."
+    },
+    {
+      "id": "SG-14",
+      "org": "GitHub — repository settings for this project",
+      "title": "Pages configuration for karagemop466-tech/Affil3",
+      "url": "https://api.github.com/repos/karagemop466-tech/Affil3/pages",
+      "kind": "infrastructure",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Live API response read in this session: build_type legacy, source branch main, source path /, public true, https_enforced true, html_url https://karagemop466-tech.github.io/Affil3/.",
+      "what_it_supports": [
+        "where the site is published and what the publishing source path had to be changed to",
+        "why docs/.nojekyll exists"
+      ],
+      "notes": "The publishing path was switched to main:/docs during integration so that the generated static output is served verbatim, with no Jekyll processing. Recorded in COORDINATION.md."
+    },
+    {
+      "id": "SG-15",
+      "org": "Amazon.com listing pages (primary evidence for observation fields)",
+      "title": "The four resolved product detail pages captured on 2026-11-20",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "kind": "listing-page",
+      "verification": "read",
+      "accessed": "2026-11-20",
+      "method": "Each supplied link was followed and the landed page's final URL, title and breadcrumb captured. Individual URLs per row are in data/links.json; this row is the register entry for the evidence class.",
+      "what_it_supports": [
+        "brand, titled capacity and titled feature strings",
+        "the category breadcrumb quoted on gear pages",
+        "the finding that no tag parameter was present in the destination URL"
+      ],
+      "notes": "Listing titles are seller-authored marketing copy. Anything this site takes from a title is labelled \"as titled\" and flagged (FLG-008). Titles, prices and ratings drift; a capture is a snapshot with a date, not a specification."
+    },
+    {
+      "id": "SG-16",
+      "org": "Google — Search Console",
+      "title": "Sitemaps report and URL inspection (required for the measurement loop)",
+      "url": "https://search.google.com/search-console/about",
+      "kind": "tooling",
+      "verification": "queued",
+      "accessed": "2026-11-20",
+      "method": "Not used yet: no property is verified for this site.",
+      "what_it_supports": [
+        "the only source of real query data that should decide the next four topics"
+      ],
+      "notes": "This row exists so the site can show what is missing rather than implying the loop is closed. Steps in RUNBOOK.md §5; tracked as S-08 and Q-08."
+    }
+  ]
+}
