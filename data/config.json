@@ -16,5 +16,6 @@
   "brandNote": "ShopNow Kitchen is the reader-facing name for this publication. The repository and internal dashboards keep the working name Affil3.",
   "priorName": "Affil3",
   "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
-  "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units."
+  "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units.",
+  "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer."
 }

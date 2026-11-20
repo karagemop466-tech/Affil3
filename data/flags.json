@@ -295,10 +295,34 @@
     },
     {
       "id": "FLG-028",
+      "severity": "high",
+      "status": "resolved",
+      "area": "compliance",
+      "title": "Amazon links were published without the tracking tag, including the citations",
+      "detail": "Program Policies 2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. The site linked the observed Amazon page in the source column of the shop table and on product pages, and published the supplied link.amazon short links as clickable links, none of which carried tag=shopnow047c-20.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "None. The build now enforces the rule on every page: any link to an Amazon retail host gets the tag and rel=sponsored, and a link.amazon short link is rendered as text because it cannot carry the tag.",
+      "resolution": "Build-level link policy added and asserted by the gate on every page (retail Amazon link must carry the tag; no short link may be published as a link). Check count rose from 1,610 to 2,805."
+    },
+    {
+      "id": "FLG-029",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "site build",
+      "title": "Every thermometer page referenced an image that was never committed",
+      "detail": "Fourteen references pointed at /assets/img/hero-thermometer.jpg, which did not exist in the repository. The category page, both thermometer product pages, the guides index and the thermometer guide would have shown a broken image on the live site.",
+      "sources": [],
+      "manual_step": "None. The image was created in the same photographic style as the other hero images and committed; the gate now checks that every referenced image exists, is served locally, and has alt text.",
+      "resolution": "Image added on 2026-11-20. The image check was added to the gate, so a missing image fails the build from now on."
+    },
+    {
+      "id": "FLG-030",
       "severity": "low",
       "status": "open",
       "title": "Independent fetch by session arena63534e5d corroborated the corrected P03/P04 mapping",
-      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. An earlier draft of this flag (temporarily numbered FLG-021, then FLG-023 on this session's branch; those numbers belong to other sessions' findings) is kept as dated corroborating evidence.",
+      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. Draft numbers this flag previously held on the session branch (FLG-021, FLG-023, FLG-028) all belong to other sessions' published findings, so it is recorded here as FLG-028's successor number FLG-030.",
       "sources": [
         "S04",
         "S05"

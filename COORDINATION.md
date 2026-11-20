@@ -704,50 +704,326 @@ FLG-010 prices/ratings blank by policy · FLG-011 display names derived from ver
 
 ---
 
-# Session `arena63534e5d-affil3` — third integration (publication polish pass)
+# Session `arena/01b24e2e-affil3` — compliance and gate pass (appended after PR #22)
 
-Appended below all boards above; nothing above was edited. This session executes the
-reader-facing polish brief. It has merged `main` three times as parallel sessions landed.
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `ac89023`.
+Status **active**. This section is appended; nothing above it was edited.
+
+## What happened, honestly
+
+This session began a full redesign of the root publication (front page, product pages, comparison page,
+three extra guides, four illustrations, its own gate and a decision board). While it was working, `main`
+moved twelve commits ahead: another session had already rebuilt the root publication as a single
+editorial site with manufacturer specifications, product slugs, guide images and a 1,610-check gate.
+
+Rather than publish two competing redesigns, the merge resolved in favour of `main` for everything it
+owned — generator, data, CSS, generated pages — and this session re-applied only what `main` did not have:
+
+| Contribution | File | Why it was kept |
+|---|---|---|
+| Link policy: tag every retail Amazon link, never publish a short link | `tools/build.mjs` (`linkPolicy`) | Program Policies 2(b) was being broken by citations and short links |
+| Gate rules: tag on every retail link, no short-link anchors, images, canonical, one `h1`, title length | `tools/verify.mjs` | The gate could not see any of these |
+| `/legacy/` and `/crisp-index/` added to `robots.txt`; `noindex` meta on `/editorial/` | `tools/build.mjs`, `tools/build.py` | One site for search engines, enforced in two places |
+| Missing `hero-thermometer.jpg` created and committed | `assets/img/` | 14 references pointed at a file that never existed |
+| FLG-028, FLG-029 | `data/flags.json` | Recorded publicly, with the fix |
+
+The redesign this session had built stays in this branch's history (commits `a311ddc`..`8dd2b1b`). It is
+**superseded, not merged**: one generator owns the output paths, and the owner can compare the two if
+they want the other direction. Nothing was force-pushed and no other session's file was deleted.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| All five submitted links re-followed on 2026-11-20 | Destinations unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z` |
+| Operating Agreement §1, §5, §6 read in full | Confirmed; wording quoted on `/compliance/` |
+| Program Policies §2(a)-(b), §6(t),(v),(w),(y) read in full | Confirmed: tag as a URL parameter; no cloaking; no obscuring shortener; ratings and prices only via Amazon-served content or the API |
+| Google outbound-link guidance read | Confirmed (`rel="sponsored"`), page dated 2025-12-10 |
+| USDA FSIS temperature chart and thermometer page read | Confirmed: 145/160/165 °F rows, probe placement, 2–4 °F tolerance |
+| `npm run check` | 28 pages, **2,808 checks, 0 failed**; archive gate PASS |
+| Negative test: retail Amazon link without the tag | fails (`retail Amazon link carries the tag`) |
+| Negative test: hero image removed | fails (11 image checks) |
+| CI drift assertion | tree clean after a full rebuild of both publications |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-028 | Amazon links published without the tag, including the observation citations and the `link.amazon` short links | resolved (build-level policy + gate rule) |
+| FLG-029 | `hero-thermometer.jpg` referenced 14 times and never committed | resolved (image added, image check added) |
+| — | `robots.txt` excluded `/editorial/` but not `/legacy/` or `/crisp-index/` | fixed |
+| — | `/editorial/` relied on `robots.txt` alone to stay out of the index | fixed (`noindex` meta as well) |
+
+## Still open (unchanged by this session)
+
+- Intended ASIN for all five products: blank, owner-only (FLG-002, Q-01).
+- Gate G-02: no Special Link has been tested in Associates Central (FLG-005, FLG-009).
+- Analytics: no endpoint deployed, so the live site records nothing (FLG-009).
+- Search Console: not connected (FLG-013).
+- Named author, product photography, prices and ratings: decisions, not omissions.
+
+## Publish log
+
+- Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
+- Merge result: pending at the time of writing.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
+
+---
+
+# Session `arena/01b24e2e-affil3` — compliance and gate pass (appended after PR #22)
+
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `ac89023`.
+Status **active**. This section is appended; nothing above it was edited.
+
+## What happened, honestly
+
+This session began a full redesign of the root publication (front page, product pages, comparison page,
+three extra guides, four illustrations, its own gate and a decision board). While it was working, `main`
+moved twelve commits ahead: another session had already rebuilt the root publication as a single
+editorial site with manufacturer specifications, product slugs, guide images and a 1,610-check gate.
+
+Rather than publish two competing redesigns, the merge resolved in favour of `main` for everything it
+owned — generator, data, CSS, generated pages — and this session re-applied only what `main` did not have:
+
+| Contribution | File | Why it was kept |
+|---|---|---|
+| Link policy: tag every retail Amazon link, never publish a short link | `tools/build.mjs` (`linkPolicy`) | Program Policies 2(b) was being broken by citations and short links |
+| Gate rules: tag on every retail link, no short-link anchors, images, canonical, one `h1`, title length | `tools/verify.mjs` | The gate could not see any of these |
+| `/legacy/` and `/crisp-index/` added to `robots.txt`; `noindex` meta on `/editorial/` | `tools/build.mjs`, `tools/build.py` | One site for search engines, enforced in two places |
+| Missing `hero-thermometer.jpg` created and committed | `assets/img/` | 14 references pointed at a file that never existed |
+| FLG-028, FLG-029 | `data/flags.json` | Recorded publicly, with the fix |
+
+The redesign this session had built stays in this branch's history (commits `a311ddc`..`8dd2b1b`). It is
+**superseded, not merged**: one generator owns the output paths, and the owner can compare the two if
+they want the other direction. Nothing was force-pushed and no other session's file was deleted.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| All five submitted links re-followed on 2026-11-20 | Destinations unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z` |
+| Operating Agreement §1, §5, §6 read in full | Confirmed; wording quoted on `/compliance/` |
+| Program Policies §2(a)-(b), §6(t),(v),(w),(y) read in full | Confirmed: tag as a URL parameter; no cloaking; no obscuring shortener; ratings and prices only via Amazon-served content or the API |
+| Google outbound-link guidance read | Confirmed (`rel="sponsored"`), page dated 2025-12-10 |
+| USDA FSIS temperature chart and thermometer page read | Confirmed: 145/160/165 °F rows, probe placement, 2–4 °F tolerance |
+| `npm run check` | 28 pages, **2,808 checks, 0 failed**; archive gate PASS |
+| Negative test: retail Amazon link without the tag | fails (`retail Amazon link carries the tag`) |
+| Negative test: hero image removed | fails (11 image checks) |
+| CI drift assertion | tree clean after a full rebuild of both publications |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-028 | Amazon links published without the tag, including the observation citations and the `link.amazon` short links | resolved (build-level policy + gate rule) |
+| FLG-029 | `hero-thermometer.jpg` referenced 14 times and never committed | resolved (image added, image check added) |
+| — | `robots.txt` excluded `/editorial/` but not `/legacy/` or `/crisp-index/` | fixed |
+| — | `/editorial/` relied on `robots.txt` alone to stay out of the index | fixed (`noindex` meta as well) |
+
+## Still open (unchanged by this session)
+
+- Intended ASIN for all five products: blank, owner-only (FLG-002, Q-01).
+- Gate G-02: no Special Link has been tested in Associates Central (FLG-005, FLG-009).
+- Analytics: no endpoint deployed, so the live site records nothing (FLG-009).
+- Search Console: not connected (FLG-013).
+- Named author, product photography, prices and ratings: decisions, not omissions.
+
+## Publish log
+
+- Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
+- Merge result: pending at the time of writing.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
+
+---
+
+# Session `arena/01b24e2e-affil3` — compliance and gate pass (appended after PR #22)
+
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `ac89023`.
+Status **active**. This section is appended; nothing above it was edited.
+
+## What happened, honestly
+
+This session began a full redesign of the root publication (front page, product pages, comparison page,
+three extra guides, four illustrations, its own gate and a decision board). While it was working, `main`
+moved twelve commits ahead: another session had already rebuilt the root publication as a single
+editorial site with manufacturer specifications, product slugs, guide images and a 1,610-check gate.
+
+Rather than publish two competing redesigns, the merge resolved in favour of `main` for everything it
+owned — generator, data, CSS, generated pages — and this session re-applied only what `main` did not have:
+
+| Contribution | File | Why it was kept |
+|---|---|---|
+| Link policy: tag every retail Amazon link, never publish a short link | `tools/build.mjs` (`linkPolicy`) | Program Policies 2(b) was being broken by citations and short links |
+| Gate rules: tag on every retail link, no short-link anchors, images, canonical, one `h1`, title length | `tools/verify.mjs` | The gate could not see any of these |
+| `/legacy/` and `/crisp-index/` added to `robots.txt`; `noindex` meta on `/editorial/` | `tools/build.mjs`, `tools/build.py` | One site for search engines, enforced in two places |
+| Missing `hero-thermometer.jpg` created and committed | `assets/img/` | 14 references pointed at a file that never existed |
+| FLG-028, FLG-029 | `data/flags.json` | Recorded publicly, with the fix |
+
+The redesign this session had built stays in this branch's history (commits `a311ddc`..`8dd2b1b`). It is
+**superseded, not merged**: one generator owns the output paths, and the owner can compare the two if
+they want the other direction. Nothing was force-pushed and no other session's file was deleted.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| All five submitted links re-followed on 2026-11-20 | Destinations unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z` |
+| Operating Agreement §1, §5, §6 read in full | Confirmed; wording quoted on `/compliance/` |
+| Program Policies §2(a)-(b), §6(t),(v),(w),(y) read in full | Confirmed: tag as a URL parameter; no cloaking; no obscuring shortener; ratings and prices only via Amazon-served content or the API |
+| Google outbound-link guidance read | Confirmed (`rel="sponsored"`), page dated 2025-12-10 |
+| USDA FSIS temperature chart and thermometer page read | Confirmed: 145/160/165 °F rows, probe placement, 2–4 °F tolerance |
+| `npm run check` | 28 pages, **2,808 checks, 0 failed**; archive gate PASS |
+| Negative test: retail Amazon link without the tag | fails (`retail Amazon link carries the tag`) |
+| Negative test: hero image removed | fails (11 image checks) |
+| CI drift assertion | tree clean after a full rebuild of both publications |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-028 | Amazon links published without the tag, including the observation citations and the `link.amazon` short links | resolved (build-level policy + gate rule) |
+| FLG-029 | `hero-thermometer.jpg` referenced 14 times and never committed | resolved (image added, image check added) |
+| — | `robots.txt` excluded `/editorial/` but not `/legacy/` or `/crisp-index/` | fixed |
+| — | `/editorial/` relied on `robots.txt` alone to stay out of the index | fixed (`noindex` meta as well) |
+
+## Still open (unchanged by this session)
+
+- Intended ASIN for all five products: blank, owner-only (FLG-002, Q-01).
+- Gate G-02: no Special Link has been tested in Associates Central (FLG-005, FLG-009).
+- Analytics: no endpoint deployed, so the live site records nothing (FLG-009).
+- Search Console: not connected (FLG-013).
+- Named author, product photography, prices and ratings: decisions, not omissions.
+
+## Publish log
+
+- Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
+- Merge result: pending at the time of writing.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
+
+---
+
+# Session `arena/01b24e2e-affil3` — compliance and gate pass (appended after PR #22)
+
+Registry: session `arena/01b24e2e-affil3`, branch `arena/01b24e2e-affil3`, branched from `ac89023`.
+Status **active**. This section is appended; nothing above it was edited.
+
+## What happened, honestly
+
+This session began a full redesign of the root publication (front page, product pages, comparison page,
+three extra guides, four illustrations, its own gate and a decision board). While it was working, `main`
+moved twelve commits ahead: another session had already rebuilt the root publication as a single
+editorial site with manufacturer specifications, product slugs, guide images and a 1,610-check gate.
+
+Rather than publish two competing redesigns, the merge resolved in favour of `main` for everything it
+owned — generator, data, CSS, generated pages — and this session re-applied only what `main` did not have:
+
+| Contribution | File | Why it was kept |
+|---|---|---|
+| Link policy: tag every retail Amazon link, never publish a short link | `tools/build.mjs` (`linkPolicy`) | Program Policies 2(b) was being broken by citations and short links |
+| Gate rules: tag on every retail link, no short-link anchors, images, canonical, one `h1`, title length | `tools/verify.mjs` | The gate could not see any of these |
+| `/legacy/` and `/crisp-index/` added to `robots.txt`; `noindex` meta on `/editorial/` | `tools/build.mjs`, `tools/build.py` | One site for search engines, enforced in two places |
+| Missing `hero-thermometer.jpg` created and committed | `assets/img/` | 14 references pointed at a file that never existed |
+| FLG-028, FLG-029 | `data/flags.json` | Recorded publicly, with the fix |
+
+The redesign this session had built stays in this branch's history (commits `a311ddc`..`8dd2b1b`). It is
+**superseded, not merged**: one generator owns the output paths, and the owner can compare the two if
+they want the other direction. Nothing was force-pushed and no other session's file was deleted.
+
+## Verification performed
+
+| Check | Result |
+|---|---|
+| All five submitted links re-followed on 2026-11-20 | Destinations unchanged: `B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DHZTCNR5`, `B0DZFD6R9Z` |
+| Operating Agreement §1, §5, §6 read in full | Confirmed; wording quoted on `/compliance/` |
+| Program Policies §2(a)-(b), §6(t),(v),(w),(y) read in full | Confirmed: tag as a URL parameter; no cloaking; no obscuring shortener; ratings and prices only via Amazon-served content or the API |
+| Google outbound-link guidance read | Confirmed (`rel="sponsored"`), page dated 2025-12-10 |
+| USDA FSIS temperature chart and thermometer page read | Confirmed: 145/160/165 °F rows, probe placement, 2–4 °F tolerance |
+| `npm run check` | 28 pages, **2,808 checks, 0 failed**; archive gate PASS |
+| Negative test: retail Amazon link without the tag | fails (`retail Amazon link carries the tag`) |
+| Negative test: hero image removed | fails (11 image checks) |
+| CI drift assertion | tree clean after a full rebuild of both publications |
+
+## Irregularities found in this pass
+
+| ID | What was wrong | Status |
+|---|---|---|
+| FLG-028 | Amazon links published without the tag, including the observation citations and the `link.amazon` short links | resolved (build-level policy + gate rule) |
+| FLG-029 | `hero-thermometer.jpg` referenced 14 times and never committed | resolved (image added, image check added) |
+| — | `robots.txt` excluded `/editorial/` but not `/legacy/` or `/crisp-index/` | fixed |
+| — | `/editorial/` relied on `robots.txt` alone to stay out of the index | fixed (`noindex` meta as well) |
+
+## Still open (unchanged by this session)
+
+- Intended ASIN for all five products: blank, owner-only (FLG-002, Q-01).
+- Gate G-02: no Special Link has been tested in Associates Central (FLG-005, FLG-009).
+- Analytics: no endpoint deployed, so the live site records nothing (FLG-009).
+- Search Console: not connected (FLG-013).
+- Named author, product photography, prices and ratings: decisions, not omissions.
+
+## Publish log
+
+- Pull request: **see the PR opened from this branch against `main`** (filled in below after the merge).
+- Merge result: pending at the time of writing.
+- GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
+
+---
+
+- Combined data re-verified line by line against the official listing pages (2026-11-20).
+- `python3 scripts/check_links.py`: **0 broken internal links** (471 links across 15 pages;
+  external hosts unreachable from the sandbox are warnings, not failures).
+- `python3 scripts/build_sitemap.py --check`: **OK — 15 pages all present**.
+- Compliance audit: every page carries the disclosure strip above the fold and the footer
+  disclosure; every outbound product-listing link carries `rel="sponsored"` and a visible
+  "Sponsored" label.
+- Local render check: all 10 docs/ routes return HTTP 200.
+- Root-site gate re-run after integration: `npm run check` — 23 pages built, gate passed.
+
+---
+
+# Session `2e0c91d0` board (appended after merging `origin/main` @ `1075a62`, `c83e622` and `a2719a1`; nothing above was edited)
 
 ## Session registry
 
 | Session ID | Branch | Status | Scope |
 | --- | --- | --- | --- |
-| `arena63534e5d` | `arena/63534e5d-affil3` | active | Design system, front page, guide copy, imagery, workflow/privacy pages, decision surfaces, CI drift gate, product pages, on this branch only |
+| `arena-2e0c91d0-affil3` | `arena/2e0c91d0-affil3` (branched from `main` @ `9287de5`; merged with `main` @ `1075a62` and again @ `c83e622`) | active | Review + corroboration: `data/sources.json` (S01/S05 re-check notes only), `data/observations/2026-11-20-session-2e0c91d0.json`, `EXECUTIVE_SUMMARY-2e0c91d0.md`, regenerated `sources/index.html`, this file |
 
-## Integration decisions (logged per the coordination rules)
+## Task board
 
-1. **Design systems.** Two parallel sessions rebuilt the presentation layer (this one and
-   session `arena/9abfdc62-affil3`). One presentation layer can win; this session's
-   (warm editorial design system, `src/assets/style.css` at HEAD of this branch) is primary,
-   and their stylesheet/templates are superseded — preserved in git history and in their
-   PRs #27/#29, nothing deleted. Their **content and contract advances are fully carried**:
-   the spec-sheet product data schema, product pages `/products/<slug>/` with exact
-   "not stated" cell accounting, the buy-box rules (including P04's deliberate link
-   withholding), the how-we-choose page, the illustration-labeling requirement, the
-   renamed categories, their verify.mjs gate (now the shared contract this build passes),
-   and their verify.yml CI workflow.
-2. **Data layer.** Their registers win (products.json with manufacturer cross-checks and
-   reverification blocks; flags FLG-021…FLG-027; sources S09–S17 remapped to their
-   numbering). This session's additions were renumbered rather than colliding:
-   corroboration flag → **FLG-028**; ASIN text-link help source → **S18**; application-review
-   source → **S19**; USDA thermometer-placement source → **S20**. Guide source citations were
-   remapped accordingly (USDA chart = S10; USDA thermometers = S20).
-3. **Guide copy.** This session's guide voice is primary; their factual findings are merged
-   as editorial notes in the guides (8 Qt listing/maker conflict FLG-026/027, Emeril count
-   discrepancies FLG-024, CHEF iQ battery disagreement FLG-023, ThermoMaven withheld specs
-   FLG-025) and the FSIS ground-meat row (S10).
-4. **Brand.** Reader-facing name "ShopNow Kitchen" (this session's rebrand, disclosed on
-   About); their footerBlurb and imageDisclosure copy adopted into config.
+| ID | Task | Status | Owner | Notes |
+| --- | --- | --- | --- | --- |
+| R1 | Repo review line by line; run both builders and both gates | done | `2e0c91d0` | On `9287de5`: root 23 pages / 1316 checks / 0 failed; editorial 21 pages / PASS, but rebuild diffed `editorial/assets/site.css` (stale committed output). |
+| R2 | Re-verify official sources reachable today and record the re-check | done | `2e0c91d0` | S01 re-fetched in full ("Updated: October 15, 2025"; §1 tagged-link wording confirmed). Short links re-fetched: B04G1MEwY→B0CDY277D3, B02NbDxp3→B09B7SB46R (one transient 502, retry OK; neither final URL carried `tag=`). Recorded in `data/observations/2026-11-20-session-2e0c91d0.json`. Intended ASINs untouched (blank). |
+| R3 | Fix the CI freshness gate that diffed `docs/` (a directory that does not exist) | superseded by main | `2e0c91d0` | Independently found and fixed on this branch; while in flight, main landed the equivalent fix via PR #29 (`74d539c` "Gate both generators in CI so output cannot drift from source"; log line R-09). At merge this branch adopted main's workflow. The duplicate fix is kept here as corroboration only. |
+| R4 | Commit the regenerated `editorial/assets/site.css` | superseded by main | `2e0c91d0` | Main shipped the identical regenerated stylesheet (`3192e97`); the merge resolved to identical content. |
+| R5 | Decision-board entry for the root-vs-editorial outbound-link divergence | superseded by main | `2e0c91d0` | Draft FLG/S-13 written on this branch; main's board already covers it better as S-01 (two publications; /editorial/ excluded from search) and S-02 (buy buttons while untested). Withdrawn at merge to avoid duplicate IDs — main had reassigned FLG-023..027 to product-spec discrepancies. |
+| R6 | Executive summary for this session | done | `2e0c91d0` | `EXECUTIVE_SUMMARY-2e0c91d0.md`. |
+| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | in progress | `2e0c91d0` | See publish log below. |
 
-## Work log (third integration)
+## Work log
 
-- **2026-11-20 — PR #26 merge refused twice** as `main` moved (PRs #17/#19/#20, then PRs #22/#24/#27/#29/#30). Merged `origin/main` at `1075a62` each time, resolving conflicts without discarding work (see decisions above).
-- **2026-11-20 — surface port.** Product pages (spec grid, conflict table for FLG-026/027, facts, sources) and how-we-choose built into this session's design; home carries the required picks/hero-figure/what-this-site-is structure; guides carry article-hero and "Sources for this guide"; all illustrations labeled "not the reviewed unit" (both sessions' imagery retained: this session's flat illustrations for hero/guides/categories, their photographic-style editorial images for product cards).
-- **2026-11-20 — final gate.** Build: 30 pages, 5 feed items, 29 sitemap URLs. Verify: **1834 checks passed, 0 failed** (their verify.mjs contract, satisfied by this build).
+- 2026-11-20 — Claimed R1–R7 and pushed the claim (`5aa6f10`) before touching any other file.
+- 2026-11-20 — R1/R2 on `9287de5` as per the task board. Committed fixes as `8f68f55` (workflow, regenerated CSS, draft FLG-023/FLG-024, draft S-13, re-check notes, observation file, regenerated root pages). Gates: root 1322 checks / 0 failed; editorial PASS.
+- 2026-11-20 — Opened PR #31. While checks were pending, `main` advanced to `1075a62` (PRs #27/#29/#30/#22 from sessions `9abfdc62`, `4578ad4b`, `93cee724`). Merged `origin/main` into this branch: conflicts in `verify.yml`, `data/flags.json`, `data/suggestions.json`, `data/sources.json`, `COORDINATION.md` and three generated pages resolved in favour of **main** (their registers were restructured and their fixes equal or broader), except `data/sources.json`, where this session's S01/S05 re-check notes were re-applied on top of main's text. Nothing from any session was discarded.
+- 2026-11-20 — Post-merge gates on the merged tree: root **28 pages / 1610 checks / 0 failed**; editorial **21 pages / PASS**; a fresh rebuild leaves the tree clean (the CI assertion).
+- 2026-11-20 — Note on `git pull --rebase`: this branch carries merge commits, and `pull --rebase` flattens them and replays main-side commits (e.g. `d52a9f0`, `1973daf`), which conflicts. The rebase was aborted with nothing lost; all subsequent integrations used `git merge origin/main`. Logged per the conflict rule.
+- 2026-11-20 — Inherited failure logged, not introduced here: `node tools/disclosure-check.mjs` reports 37 problems, all on `docs/` pages from the c46310a7 pipeline (missing the two disclosure statements; currency amounts). The same check fails identically on `origin/main` @ `a2719a1` (GitHub check-run `disclosure`: failure). The published Pages surfaces (root, editorial) pass all their gates. File-change request to whichever session owns `docs/` (bdcb1fa8 / 43565031 / c46310a7): either add both statements above the fold and drop currency text, or exclude `docs/` from disclosure-check with a rationale. This session does not edit `docs/` to avoid a conflicting fix.
+- 2026-11-20 — Third integration: merged `origin/main` @ `a2719a1` (PR #37). Conflicts: `COORDINATION.md` (tail append/append; resolved keeping main's new sections and re-appending this board) and `sources/index.html` (regenerated from the merged `data/sources.json`, which kept this session's S01/S05 re-check notes).
+- 2026-11-20 — `main` moved again while PR #31 was open (PRs #25 and others, to `c83e622`); merged `origin/main` a second time. Only `COORDINATION.md` conflicted (append/append at the tail); resolved keeping both the completed `93cee724` publish record and the `c46310a7` board from main, with this session's board appended after them. `sources/index.html` auto-merged and was regenerated.
 
-## Completion record (this session)
+## Publish log (this session)
 
-- Pull request: [#26](https://github.com/karagemop466-tech/Affil3/pull/26) — publication polish pass (three integration syncs included).
-- Merge result: merged after the final sync (see merge log below).
-- GitHub Pages deploy: from `main` at `/`; confirmed after merge.
+- PR: https://github.com/karagemop466-tech/Affil3/pull/31
+- Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+
+## Fourth sync note (session `arena63534e5d`, 2026-11-20)
+
+Merged `origin/main` at `6376b46` (PRs #31/#37/#25: sessions 2e0c91d0, 01b24e2e, c46310a7).
+Carried into the polish-pass build: their outbound link-policy layer (short links rendered as
+non-clickable code per Policies 6(v)/(w); auto-tagging of every retail Amazon link), their
+robots policy for parallel publications, their "Archived editions" footer link, their new
+flags FLG-028/FLG-029, their re-verified S01–S04 register rows, and their committed
+hero-thermometer.jpg (closes the missing-image flag FLG-029 for the wireless thermometer's
+product card). ID collisions resolved again without touching published IDs: this session's
+corroboration flag renumbered FLG-021→FLG-023→FLG-028→**FLG-030**. Gate after sync:
+**3212 checks passed, 0 failed**.

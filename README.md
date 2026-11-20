@@ -13,11 +13,12 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 |---|---|---|
 | `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/docs/` | session `arena/c46310a7-affil3` | A third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
-`/editorial/` exists because its build was written against a different data model and its verification
-found things the other register did not. Keeping both builds preserves both verification passes rather
-than merging them into one file whose provenance nobody can reconstruct.
+`/editorial/` and `/docs/` exist because their builds were written against different data models and
+each verification pass found things the other register did not. Keeping all builds preserves every
+verification pass rather than merging them into one file whose provenance nobody can reconstruct.
 
 ## Read these first
 
@@ -26,8 +27,9 @@ than merging them into one file whose provenance nobody can reconstruct.
 | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
 | [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
-| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`COORDINATION.md`](COORDINATION.md) | All session boards, claims, verification logs, merge logs |
 | [`data/`](data/) | Register for the root site |
+| [`data/c46310a7-affil3/`](data/c46310a7-affil3/) | Register for the `/docs/` site (session-scoped copy; identical content to the session's committed records) |
 | [`data/register/`](data/register/) | Register for `/editorial/` |
 
 ## Build
@@ -46,7 +48,41 @@ python3 tools/build.py       # data/register/*.json -> editorial/
 python3 tools/check_site.py  # gates
 ```
 
-Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
+**Docs site** (Python, standard library only):
+
+```bash
+python3 scripts/build_sitemap.py --check   # docs/sitemap.xml covers every live page
+python3 scripts/check_links.py            # no broken internal links in docs/
+python3 scripts/build_feed.py             # keep docs/rss.xml in sync
+python3 scripts/amazon_intake.py --link 'https://link.amazon/B04G1MEwY' --validate-only
+python3 scripts/verify_sources.py         # re-check recorded official listing URLs
+python3 server/analytics_server.py --port 8080   # self-hosted analytics endpoint (no IPs stored)
+```
+
+All builds are deterministic. CI rebuilds the root and editorial sites and fails if the committed
+output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the docs-site gates.
+
+## What the root gate refuses to let through
+
+`node tools/verify.mjs` runs **2,808 checks** over the 28 published pages. It stops the build on:
+
+- a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
+- an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
+- a `link.amazon` short link published as a clickable link (it cannot carry the tag, so it renders as text);
+- a currency amount anywhere in the HTML, a star rating or a review count;
+- an image that is missing, remote, or without `alt` text;
+- a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
+- a broken internal link, a missing anchor, or a page missing from the sitemap;
+- a source ID that does not exist, or a spec row citing one.
+
+The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
+cannot bypass them, and by the gate, so a hand-edited page cannot either.
+
+## One indexable site
+
+`robots.txt` disallows `/editorial/`, `/legacy/` and `/crisp-index/`, and every `/editorial/` page also
+carries `<meta name="robots" content="noindex,nofollow">`. The root publication is the one site offered
+to search engines; the other surfaces stay online and reachable for the people who need their evidence.
 
 ## What the editorial gate refuses to let through
 
@@ -67,6 +103,16 @@ See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/e
 Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
 Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
 The links are untagged — that is a different claim from *invalid*, and only the first is made here.
+
+## Disclosure
+
+This site participates in the Amazon Associates Program and earns from qualifying purchases.
+Every outbound product link is marked as sponsored. Sources:
+
+- [Associates Program Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+- [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies)
+- [FTC endorsements guidance](https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews)
+- [Google rel="sponsored" guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
 
 ## Licence and attribution
 
@@ -101,18 +147,7 @@ python3 tools/check_links.py  # internal links + anchors
 "not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
 ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
 
----
-
-## Session addendum — `arena63534e5d` (publication polish pass, 2026-11-20, third integration)
-
-This session merged `main` three times (after PR #6; after PRs #17/#19/#20; after PRs
-#22/#24/#27/#29/#30) without discarding anything, and owns the reader-facing layer now
-served: the ShopNow Kitchen design system, the products-first front page, human-voice
-guides (with the manufacturer-conflict findings merged in), labeled editorial imagery from
-both sessions, `/products/<slug>/` spec pages, `/how-we-choose/`, `/workflow/`, `/privacy/`,
-and the card-based decision board. The data layer (manufacturer cross-checks, flags
-FLG-021…FLG-027, sources S09–S17) comes from the parallel sessions' registers and is kept
-verbatim; this session's additions are renumbered (FLG-028, S18–S20). Both CI workflows
-(`verify.yml` from session `9abfdc62`, `publish.yml` from this session) gate every push.
-Session details in [`COORDINATION.md`](COORDINATION.md); PR
-[#26](https://github.com/karagemop466-tech/Affil3/pull/26).
+Fourth sync (2026-11-20): merged PRs #31/#37/#25 — outbound link-policy enforcement
+(short links shown as non-clickable code; auto-tagging of retail Amazon links), robots
+policy for parallel publications, and the committed thermometer product image now carried
+in the ShopNow Kitchen build. Gate: 3212 checks passed, 0 failed.

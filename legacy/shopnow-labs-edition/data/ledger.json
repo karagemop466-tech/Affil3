@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "purpose": "An empty but strictly defined campaign ledger. Rows are added only from authorised first-party reports, never from estimates, benchmarks or projections.",
+    "started": "2026-11-20",
+    "rows": "none",
+    "note": "Zero rows is the correct starting state. No traffic, click, order or revenue figure has been observed for this site, so none is recorded or implied.",
+    "schema": [
+      { "field": "date", "type": "ISO date", "rule": "The date the report covers, not the date it was read." },
+      { "field": "source", "type": "string", "rule": "The report the number came from. Must be an authorised first-party system: Associates dashboard, Creators API, or the self-hosted collector. No third-party estimates." },
+      { "field": "channel", "type": "string", "rule": "Where the traffic came from: organic search, direct, referral, email. Must be reported by the system, not inferred." },
+      { "field": "landing_page", "type": "path", "rule": "The page the session started on. Use the path, not a tracking URL." },
+      { "field": "eligible_sessions", "type": "integer", "rule": "Only sessions that could have produced a qualifying purchase. Leave blank if the report does not distinguish them." },
+      { "field": "outbound_clicks", "type": "integer", "rule": "Clicks recorded by our own collector. Do not substitute Amazon's click report here; it measures something else." },
+      { "field": "reported_orders", "type": "integer", "rule": "Ordered items as reported by Amazon, with the report date. Not a conversion rate until both sides are measured over the same window." },
+      { "field": "reported_earnings", "type": "decimal", "rule": "Commission income as reported, in USD, with the month it was earned. Payments arrive about 60 days later; record the earning month, not the payment date." },
+      { "field": "provenance", "type": "string", "rule": "Who pulled the number, from which system, and when. A row without this field is invalid and must be deleted." }
+    ]
+  },
+  "rows": []
+}
