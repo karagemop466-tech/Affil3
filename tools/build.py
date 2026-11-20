@@ -229,6 +229,14 @@ LABELS = {
     "connectivity": "Connectivity",
     "charging": "Charging",
     "probe_battery_hours": "Probe battery (hours)",
+    "read_time_sec": "Read time (seconds)",
+    "accuracy_f": "Accuracy",
+    "nist_certified": "NIST certified",
+    "waterproof": "Water resistance",
+    "sensor_type": "Sensor type",
+    "display": "Display",
+    "magnet": "Magnet",
+    "leave_in_rated": "Can be left in the oven",
 }
 
 
@@ -513,6 +521,7 @@ returns no results. No product is named here, because naming one would mean inve
             + footer(rel)
         )
 
+    model_line = f"Model {e(product['model'])}" if product["model"] else "Model number not stated by the manufacturer"
     pros = "".join(f"<li>{e(x)}</li>" for x in product["tradeoffs"]["pros"])
     cons = "".join(f"<li>{e(x)}</li>" for x in product["tradeoffs"]["cons"])
     questions = "".join(f"<li>{e(q)}</li>" for q in product["questions_answered"])
@@ -539,7 +548,7 @@ returns no results. No product is named here, because naming one would mean inve
     <span>/</span> {e(product['brand'])}</p>
   <h1>{e(product['brand'])} {e(product['name'])}</h1>
   <p class="sub">{e(product['one_liner'])}</p>
-  <p class="metaline">Model {e(product['model'] or 'not stated')} &middot; specifications verified {ACCESSED} &middot;
+  <p class="metaline">{model_line} &middot; specifications verified {ACCESSED} &middot;
   sourced from the manufacturer and the Amazon listing</p>
   {link_button(product)}
 
