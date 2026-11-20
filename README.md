@@ -14,6 +14,7 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 | `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
 | `/docs/` | session `arena/c46310a7-affil3` | A third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
+| `/counterwise/` | session `arena/c7a56e3d-affil3` | A fourth, independently generated publication: 5 question-shaped guides, 4 verified listings with product-intent records, comparison table, source register with retrieval grades, gate report, suggestions board, open questions, flagged-for-review, executive summary. Built and policed by `counterwise/tools/build.py` + `gate.py` (12 rules), 31 tests, self-hosted event collector shipped unarmed |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
 `/editorial/` and `/docs/` exist because their builds were written against different data models and

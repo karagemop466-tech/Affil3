@@ -1,0 +1,283 @@
+{
+  "$comment": "Editorial index. Bodies live in content/guides/<slug>.md as plain markdown; metadata lives here so the build, the feed and the sitemap read one source. Reading time is computed from the body at build time, never stored. Five guides for four verified listings is a deliberate ratio: see S-17.",
+  "guides": [
+    {
+      "id": "G-01",
+      "slug": "basket-or-oven",
+      "title": "Basket or oven-style air fryer: what should you compare?",
+      "deck": "Two machines that both say air fryer are often answering different questions. Here is the short list of things worth writing down before you decide.",
+      "clusters": [
+        "dual-basket",
+        "oven-style"
+      ],
+      "products": [
+        "P-01",
+        "P-02",
+        "P-03"
+      ],
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "question_answered": "Should I buy a basket air fryer or an oven-style countertop air fryer?",
+      "sources": [
+        "SG-15",
+        "SG-06",
+        "SG-11"
+      ],
+      "checklist": {
+        "id": "fit",
+        "label": "The four-line measurement sheet",
+        "items": [
+          {
+            "id": "counter",
+            "text": "Measure the counter strip in centimetres, including the wall behind it"
+          },
+          {
+            "id": "height",
+            "text": "Measure the underside of the cabinet above that strip"
+          },
+          {
+            "id": "swing",
+            "text": "Decide which way a door or basket handle can swing with the machine in place"
+          },
+          {
+            "id": "sink",
+            "text": "Check whether the largest basket fits in the sink basin, not just the dishwasher"
+          }
+        ]
+      },
+      "cta": {
+        "product": "P-03",
+        "label": "See the single-basket listing we track"
+      },
+      "next_step": "Take the measurement sheet to the store or write it in the notes of the order, then open the gear page for whichever shape you chose.",
+      "tone": "practical",
+      "status": "published",
+      "seo_title": "Basket or oven-style air fryer: what to compare",
+      "seo_description": "A twin-basket, an 8-quart single basket and a 26-quart countertop oven all claim the word air fryer. Four measurements settle which one is yours."
+    },
+    {
+      "id": "G-02",
+      "slug": "capacity-checklist",
+      "title": "A no-hype checklist for comparing air fryer capacity",
+      "deck": "Quarts are the one number every listing leads with and the one most often quoted in a way that flatters the machine. Four checks turn a big number into a usable one.",
+      "clusters": [
+        "dual-basket",
+        "oven-style"
+      ],
+      "products": [
+        "P-01",
+        "P-02",
+        "P-03"
+      ],
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "question_answered": "How do I compare air fryer capacity between listings without being misled by the headline number?",
+      "sources": [
+        "SG-15",
+        "SG-06"
+      ],
+      "checklist": {
+        "id": "capacity",
+        "label": "Capacity reality check",
+        "items": [
+          {
+            "id": "single",
+            "text": "Find the largest single thing you cook and ask whether it fits in one basket, not the total"
+          },
+          {
+            "id": "divide",
+            "text": "If the capacity is a sum of baskets, divide it and check the halves against your portions"
+          },
+          {
+            "id": "airgap",
+            "text": "Assume you will cook in a single layer for anything you want crisp, and price the machine at that capacity"
+          },
+          {
+            "id": "rack",
+            "text": "For oven-style, count usable rack positions rather than cavity quarts"
+          }
+        ]
+      },
+      "cta": {
+        "product": "P-02",
+        "label": "See the 26-quart oven-style listing"
+      },
+      "next_step": "Write down your largest regular item and its rough size, then compare it to the basket dimensions on the listing rather than the quart figure.",
+      "tone": "practical",
+      "status": "published",
+      "seo_title": "Air fryer capacity: a no-hype checklist",
+      "seo_description": "Quarts are the number every listing leads with. Four checks turn a headline capacity figure into something you can actually cook with."
+    },
+    {
+      "id": "G-03",
+      "slug": "cleanup-and-counter-space",
+      "title": "Cleanup and counter space: the trade-offs nobody puts in the headline",
+      "deck": "The machine you keep out is the machine you use. Both halves of that sentence are about dimensions and washing-up, not about cooking.",
+      "clusters": [
+        "oven-style",
+        "dual-basket"
+      ],
+      "products": [
+        "P-01",
+        "P-02",
+        "P-03"
+      ],
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "question_answered": "What are the cleanup and counter-space trade-offs between air fryer styles?",
+      "sources": [
+        "SG-15"
+      ],
+      "checklist": {
+        "id": "cleanup",
+        "label": "Six-month livability check",
+        "items": [
+          {
+            "id": "basket-fit",
+            "text": "Does the basket fit flat in the sink, or does it float at an angle and stay greasy"
+          },
+          {
+            "id": "dishwasher",
+            "text": "Treat dishwasher-safe as a seller's claim and check the rack you actually have"
+          },
+          {
+            "id": "coating",
+            "text": "Find out what the coating is before you buy a metal spatula for it"
+          },
+          {
+            "id": "cabnet",
+            "text": "Decide now where it lives; a machine that lives in a cupboard gets used on Tuesdays"
+          },
+          {
+            "id": "vent",
+            "text": "Leave the rear clearance the listing asks for, or the machine throttles and your counter yellows"
+          }
+        ]
+      },
+      "cta": {
+        "product": "P-01",
+        "label": "See the twin-basket listing we track"
+      },
+      "next_step": "Photograph your intended spot with a tape measure in frame; it settles more arguments than any spec sheet.",
+      "tone": "practical",
+      "status": "published",
+      "seo_title": "Air fryer cleanup and counter space trade-offs",
+      "seo_description": "The machine you keep out is the machine you use. Basket shape, rack clearance, coating claims and the five measurements that matter."
+    },
+    {
+      "id": "G-04",
+      "slug": "before-a-multi-function-appliance",
+      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "deck": "Twenty-four presets is a claim about the control panel. Six questions get you to the parts that decide whether it replaces anything.",
+      "clusters": [
+        "oven-style"
+      ],
+      "products": [
+        "P-02",
+        "P-03"
+      ],
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "question_answered": "What should I ask before buying a multi-function countertop appliance?",
+      "sources": [
+        "SG-15",
+        "SG-07"
+      ],
+      "checklist": {
+        "id": "multifunction",
+        "label": "The six questions",
+        "items": [
+          {
+            "id": "replace",
+            "text": "Which appliance at home would genuinely leave, and which one will still be there in a year"
+          },
+          {
+            "id": "worst-case",
+            "text": "What is the machine's worst function, and how often do you use it"
+          },
+          {
+            "id": "control",
+            "text": "Can you set time and temperature independently, or only pick a preset"
+          },
+          {
+            "id": "accessories",
+            "text": "Which accessories are in the box, and what does the missing one cost"
+          },
+          {
+            "id": "support",
+            "text": "Where do you send it when it fails, and who pays for shipping"
+          },
+          {
+            "id": "extended",
+            "text": "Read the terms of any protection plan offer on the listing before treating it as a warranty"
+          }
+        ]
+      },
+      "cta": {
+        "product": "P-02",
+        "label": "See the multi-function listing with 24 presets"
+      },
+      "next_step": "Ask the seller's support line one real question before you order — the answer is data no review will give you.",
+      "tone": "practical",
+      "status": "published",
+      "seo_title": "Before you buy a multi-function kitchen appliance",
+      "seo_description": "Twenty-four presets is a claim about the control panel. Six questions get to the parts that decide whether it replaces anything you own."
+    },
+    {
+      "id": "G-05",
+      "slug": "is-a-probe-thermometer-worth-it",
+      "title": "Is a probe thermometer worth it for air-fryer and countertop-oven cooking?",
+      "deck": "A small appliance is a fast, uneven heat source. This is the case for buying the boring instrument that settles it, and the numbers that make it worth something.",
+      "clusters": [
+        "doneness"
+      ],
+      "products": [
+        "P-05",
+        "P-02"
+      ],
+      "published": "2026-11-20",
+      "updated": "2026-11-20",
+      "question_answered": "Do I need a wireless probe thermometer for countertop cooking?",
+      "sources": [
+        "SG-11",
+        "SG-12",
+        "SG-15"
+      ],
+      "checklist": {
+        "id": "probe",
+        "label": "Before you buy a probe",
+        "items": [
+          {
+            "id": "thickest",
+            "text": "Know where the thickest part of what you cook actually is"
+          },
+          {
+            "id": "targets",
+            "text": "Learn three numbers: 165 °F for poultry, 160 °F for ground meat, 145 °F plus a rest for whole cuts"
+          },
+          {
+            "id": "heat-path",
+            "text": "Check which parts of the cable may sit in the heat path and which may not"
+          },
+          {
+            "id": "app",
+            "text": "Decide whether you want an app at all, because it is a thing you will also have to charge"
+          },
+          {
+            "id": "backup",
+            "text": "Keep an instant-read thermometer for the things a probe cannot reach"
+          }
+        ]
+      },
+      "cta": {
+        "product": "P-05",
+        "label": "See the multi-probe listing we track"
+      },
+      "next_step": "If you cook for more than four people more than twice a month, the arithmetic favours the multi-probe; otherwise buy the simple one and put the difference in groceries.",
+      "tone": "practical",
+      "status": "published",
+      "seo_title": "Is a probe thermometer worth it for countertop cooking",
+      "seo_description": "A small hot cavity cooks unevenly. The USDA temperatures that matter, where to put a probe in a basket, and when the tool pays for itself."
+    }
+  ]
+}
