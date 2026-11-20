@@ -1269,3 +1269,45 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+---
+
+# Session `arena/f0300606-affil3` board (publication polish pass; appended, nothing above edited)
+
+Publisher of the **publication polish pass** on the root site (the single indexed publication).
+Brief for this session: *"Make it read like a shop, not an audit"* — turn the careful source
+register into pages a buyer can act on, keep the dashboards reachable from the footer and one
+navigation group, add the suggestions/decision section, the questions register, question-shaped
+guides, the seasonal and cluster layers (SG-27..SG-30), and keep disclosure, sponsored links,
+the five measured events and the compliance gate exactly as they are.
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena/f0300606-affil3` | `arena/f0300606-affil3` (branched from `main` @ `67cfe2f`) | active | `tools/build.mjs`, `src/assets/style.css`, `data/guides.json`, `data/products.json` (P04 reason text only), `data/flags.json`, `data/suggestions.json`, `data/questions.json`, `data/config.json`, `EXECUTIVE_SUMMARY-f0300606.md`, generated root pages via rebuild |
+
+## Claim (2026-11-20, committed before any scoped file was written)
+
+- Tasks claimed: publication-polish pass T-01…T-10 below. No other session's branch is touched.
+- Read-only review before claiming: `main` tree at `67cfe2f`, all prior boards in this file,
+  the root generator (`tools/build.mjs`, `tools/verify.mjs`), the registers (`data/*.json`),
+  and the sub-editions (`editorial/`, `crisp-index/`, `counter/`, `counterwise/`, `legacy/`).
+- Overlap check at claim time: the working tree is clean on this branch and no other active
+  claim in this checkout covers the files above. Requests for files owned elsewhere are logged
+  in this board rather than edited.
+
+## Task board
+
+| ID | Task | Status | Files |
+| --- | --- | --- | --- |
+| T-01 | Claim + repo review log | done | `COORDINATION.md` |
+| T-02 | Fix P04 stale no-buy-button reason (contradicted its own row); FLG-031; FLG-007 count | done | `data/products.json`, `data/flags.json` |
+| T-03 | Three question-shaped guides (Black Friday checklist, air-fryer shape decision map, smart thermometer buying guide) | done | `data/guides.json` |
+| T-04 | Front page rebuilt as shop front: products lead, need-tiles, seasonal module, follow band, compact trust copy | done | `tools/build.mjs` |
+| T-05 | `/shop/` becomes a buyer-actionable page: buyer table first, full findings register below | done | `tools/build.mjs` |
+| T-06 | SG-27 nav labels + one "The desk" navigation group; SG-28 RSS follow band; SG-29 Search Console hook (emitted only with a token); SG-30 reader capture, gated on S-06 | done | `tools/build.mjs`, `data/config.json` |
+| T-07 | One indexed site: `robots.txt` excludes `/counter/` and `/counterwise/` alongside the earlier sub-editions | done | `tools/build.mjs` |
+| T-08 | Decision surfaces: suggestions S-11…S-14, questions Q-14 + discovery D-09/D-10 | done | `data/suggestions.json`, `data/questions.json` |
+| T-09 | Design polish (typography, shelf, tiles, seasonal, follow band, tables) | done | `src/assets/style.css` |
+| T-10 | Executive summary, gates green, PR, merge, Pages | done | `EXECUTIVE_SUMMARY-f0300606.md`, this file |
