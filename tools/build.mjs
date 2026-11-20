@@ -1,12 +1,17 @@
 #!/usr/bin/env node
-// Static site generator for Affil3. No dependencies. Reads data/*.json and writes docs/.
+// Static site generator for Affil3. No dependencies. Reads data/*.json and src/assets, writes the site at the repo root.
 // Run: node tools/build.mjs   (then node tools/verify.mjs)
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = path.join(ROOT, 'docs');
+// Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
+// replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
+const OUT = ROOT;
+const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
+  'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
+  'assets/style.css', 'assets/analytics.js', '.nojekyll'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 
 const cfg = read('data/config.json');
@@ -474,7 +479,7 @@ add({ path: '/404.html', title: 'Page not found', description: 'This page does n
   body: `<section class="page-head"><h1>Page not found</h1><p class="deck">Try the <a href="${esc(href('/'))}">front page</a> or the <a href="${esc(href('/shop/'))}">shop table</a>.</p></section>` });
 
 // ---------- write ----------
-fs.rmSync(OUT, { recursive: true, force: true });
+for (const o of OWNED) fs.rmSync(path.join(OUT, o), { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 const written = [];
 for (const p of pages) {
@@ -486,8 +491,8 @@ for (const p of pages) {
 
 // Assets
 fs.mkdirSync(path.join(OUT, 'assets'), { recursive: true });
-fs.copyFileSync(path.join(ROOT, 'assets/style.css'), path.join(OUT, 'assets/style.css'));
-fs.copyFileSync(path.join(ROOT, 'assets/analytics.js'), path.join(OUT, 'assets/analytics.js'));
+fs.copyFileSync(path.join(ROOT, 'src/assets/style.css'), path.join(OUT, 'assets/style.css'));
+fs.copyFileSync(path.join(ROOT, 'src/assets/analytics.js'), path.join(OUT, 'assets/analytics.js'));
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');
 
 // Sitemap
@@ -523,4 +528,4 @@ ${feedItems.map((g) => `  <item>
 // robots
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
-console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs into docs/`);
+console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

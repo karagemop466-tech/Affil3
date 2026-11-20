@@ -16,19 +16,19 @@ Live site (GitHub Pages): https://karagemop466-tech.github.io/Affil3/
 | `data/config.json` | Site name, tracking ID, disclosure text, analytics endpoint (empty by default) |
 | `data/events.json` | The five proposed analytics events and privacy rules |
 | `data/ledger.json` | Empty campaign ledger (filled only from authorized first-party reports) |
-| `tools/build.mjs` | Generates the site into `docs/` (no dependencies) |
+| `tools/build.mjs` | Generates the site at the repository root (no dependencies). Replaces only its own paths |
 | `tools/verify.mjs` | Publishing gate: data and HTML checks; exits non-zero on failure |
 | `tools/collector.mjs` | Optional self-hosted analytics collector (aggregate counts only) |
-| `assets/` | Stylesheet and browser measurement script (source; copied into `docs/`) |
-| `docs/` | Generated site served by GitHub Pages |
+| `src/assets/` | Stylesheet and browser measurement script (source; copied to `assets/`) |
+| `index.html`, `shop/`, `guides/`, `categories/`, … | Generated site served by GitHub Pages from the repository root |
+| `legacy/arena-83a43a96/` | Earlier root-level site from session `arena-83a43a96-affil3` (PR #1), moved here unchanged |
 | `EXECUTIVE_SUMMARY-6249757a.md` | Executive summary for this session (the root `EXECUTIVE_SUMMARY.md` belongs to session `arena-83a43a96-affil3` and is unchanged) |
 | `COORDINATION.md` | Shared task board (session `arena-83a43a96-affil3` section unchanged, session `6249757a` section appended), verification log, irregularities, PR and deploy record |
-| Root `index.html`, `products.html`, `guides/`, `about.html`, `privacy.html`, `disclosure.html`, `flagged.html`, `assets/css`, `assets/js`, `feed.xml`, `sitemap.xml` | Earlier site from session `arena-83a43a96-affil3` (PR #1). Kept in the repository and history. No longer served by GitHub Pages once Pages points at `docs/` (see COORDINATION.md) |
 
 ## Commands
 
 ```sh
-npm run build     # regenerate docs/
+npm run build     # regenerate the site at the repository root
 npm run verify    # run the publishing gate
 npm run check     # build, then verify
 npm run collector # optional: start the analytics collector on :8787
@@ -52,7 +52,7 @@ GitHub Pages cannot run the collector. To measure clicks:
 
 1. Run `tools/collector.mjs` on a host you control, behind HTTPS, with `SITE_ORIGIN=https://karagemop466-tech.github.io`.
 2. Set `analyticsEndpoint` in `data/config.json` to `https://<your-host>/collect`.
-3. Run `npm run check` and publish.
+3. Run `npm run check` and push.
 
 See suggestion S-03 and flag FLG-009.
 

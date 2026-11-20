@@ -7,7 +7,9 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const DOCS = path.join(ROOT, 'docs');
+const DOCS = ROOT; // generated site lives at the repository root
+const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
+  'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -68,7 +70,7 @@ for (const f of flags) for (const sid of f.sources) check(`flag ${f.id} source $
 
 // analytics allowlist: events.json, the browser script and the collector must agree
 const EVENT_NAMES = events.map((e) => e.name).sort().join(',');
-const jsSrc = fs.readFileSync(path.join(ROOT, 'assets/analytics.js'), 'utf8');
+const jsSrc = fs.readFileSync(path.join(ROOT, 'src/assets/analytics.js'), 'utf8');
 const colSrc = fs.readFileSync(path.join(ROOT, 'tools/collector.mjs'), 'utf8');
 const jsAllowed = (jsSrc.match(/var ALLOWED = \{([^}]*)\}/)[1].match(/\w+(?=\s*:)/g) || []).sort().join(',');
 const colAllowed = (colSrc.match(/const EVENTS = \{([\s\S]*?)\n\};/)[1].match(/\w+(?=\s*:\s*\[)/g) || []).sort().join(',');
@@ -76,12 +78,16 @@ check('five analytics events agree across events.json, browser script and collec
 check('browser script sets no cookies or storage', !/document\.cookie|localStorage|sessionStorage/.test(jsSrc));
 
 // ---------- 2. generated site ----------
-if (!fs.existsSync(DOCS)) {
-  failures.push('docs/ missing: run node tools/build.mjs first');
+if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
+  failures.push('generated site missing: run node tools/build.mjs first');
 } else {
   const htmlFiles = [];
   const walk = (d) => { for (const f of fs.readdirSync(d)) { const p = path.join(d, f); if (fs.statSync(p).isDirectory()) walk(p); else if (f.endsWith('.html')) htmlFiles.push(p); } };
-  walk(DOCS);
+  for (const o of OWNED) {
+    const p = path.join(DOCS, o);
+    if (!fs.existsSync(p)) continue;
+    if (fs.statSync(p).isDirectory()) walk(p); else if (p.endsWith('.html')) htmlFiles.push(p);
+  }
   const rel = (f) => '/' + path.relative(DOCS, f).split(path.sep).join('/');
   const base = cfg.basePath;
   const fileFor = (urlPath) => {
@@ -145,6 +151,7 @@ if (!fs.existsSync(DOCS)) {
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
+  check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
 }
 
 // ---------- report ----------
