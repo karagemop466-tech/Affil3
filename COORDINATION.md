@@ -1,4 +1,37 @@
-# COORDINATION.md — shared task board
+# Coordination — Affil3
+
+Shared task board for the Affil3 Amazon affiliate site. Single active session in this checkout.
+
+## Session
+- Session ID: `arena-83a43a96-affil3`
+- Branch: `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
+- Owner: this session claims every task below (single-session coordination; no overlapping scopes)
+
+## Task board
+
+| # | Task | Status | Owner | Files touched | Sources verified | Notes |
+|---|------|--------|-------|---------------|------------------|-------|
+| 1 | Repo review: read every file, flag irregularities | done | arena-83a43a96-affil3 | COORDINATION.md, README.md | none (repo had only README) | Repo contained only `README.md` ("# Affil3"). No source data, no existing links to verify. |
+| 2 | Product-intent confirmation record (5 submitted Amazon links) | done | arena-83a43a96-affil3 | products.html, flagged.html, EXECUTIVE_SUMMARY.md | Amazon Associates Program policies (docs), link.amazon short links NOT resolvable in this sandbox (no outbound access to amazon.com) | All ASIN / listing-URL / date / source / redirect-target fields left blank and flagged UNVERIFIED. Never inferred. Short-link compliance status unresolved (see FLG-003 note); links are NOT claimed invalid. |
+| 3 | Site design system (CSS) + assets | done | arena-83a43a96-affil3 | assets/css/main.css | none | Self-authored CSS; no external frameworks or fonts (zero external dependencies). |
+| 4 | Landing page — publication front page, products lead, disclosure above fold | done | arena-83a43a96-affil3 | index.html | none | Editorial hypotheses used as working titles only; no popularity/search-volume claims. |
+| 5 | Category subpages + entries table with sources + findings/analysis | done | arena-83a43a96-affil3 | products.html | Amazon Associates Program Operating Agreement; FTC disclosure guidance (ftc.gov) | Every table row carries a source link or is left blank + flagged unverified. |
+| 6 | Question-shaped buyer guides (4 working titles) | done | arena-83a43a96-affil3 | guides/*.html | none | Working titles only; presented as hypotheses, not performance claims. Added to sitemap.xml and feed.xml. |
+| 7 | Disclosure strip (above fold, every page) + footer repeat + `rel="sponsored"` on outbound links | done | arena-83a43a96-affil3 | all HTML pages | FTC "clear and conspicuous" guidance; Amazon Associates disclosure requirement | Disclosure strip under masthead on every page; repeated in footer. |
+| 8 | Sitemap + RSS feed | done | arena-83a43a96-affil3 | sitemap.xml, feed.xml | none | Feed includes the 4 guides; sitemap lists all pages. |
+| 9 | Click & conversion measurement instrumentation (5 events) | done | arena-83a43a96-affil3 | assets/js/app.js | none | Privacy-preserving client-side outbound click counter; beacon POST to `/analytics/collect`. Endpoint is NOT self-hosted on GitHub Pages (static hosting) — flagged, requires separate self-hosted receiver before it is operational. |
+| 10 | Search Console / real analytics documentation | done | arena-83a43a96-affil3 | about.html, flagged.html | none | Cannot enable Search Console without a Google account; setup steps documented, flagged as not yet enabled. |
+| 11 | Link check + build verification (no broken links) | done | arena-83a43a96-affil3 | all HTML | none | Internal links checked by script; outbound Amazon short links cannot be dereferenced in this sandbox. |
+| 12 | GitHub Pages enable + deploy verification | in progress | arena-83a43a96-affil3 | repo settings via GitHub API | none | Pages source: `main` branch, `/ (root)`. To be enabled after merge to main. |
+| 13 | Pull request + merge to main; record PR link and merge result | in progress | arena-83a43a96-affil3 | COORDINATION.md | none | PR from `arena/83a43a96-affil3` to `main`. Flagged/unverified items published on `flagged.html` and do not block merge. |
+
+## Ground rules followed
+- Work only on the current branch (`arena/83a43a96-affil3`); push only to this branch; PR opened from this branch to `main`.
+- Small, frequent commits; `git pull --rebase` before every push.
+- No values inferred or filled in. Anything not confirmed against an official source is left blank and flagged "unverified" with a source link where one exists.
+- Outbound Amazon links kept as submitted; `rel="sponsored"` added; no claim made that short links are invalid (compliance status unresolved, see FLG-003).
+
+# Session arena-6ca11b63 board (this session)
 
 Repo: `karagemop466-tech/Affil3` · Base: `main @ 847ae37` · Working branch: `arena/6ca11b63-affil3`
 
@@ -48,3 +81,29 @@ All checks were performed on 2026-11-20 (UTC). Full source list: `data/sources.j
 4. Source-register IDs `S01…S30` and `FLG-003` referenced in the brief are **not present in this repository**. They are not mapped or assumed here.
 5. The "five defined events" for measurement are referenced in the brief but not defined anywhere in the materials. A proposed list is marked as proposed.
 6. GitHub Pages is static hosting. A "self-hosted analytics endpoint" and an outbound-click counter that stores data cannot run on it. Built as a gated hook; see Questions Q07.
+
+
+---
+
+# Integration record (session arena-6ca11b63)
+
+Written when this session merged `origin/main` (PR #1, session arena-83a43a96) into its branch. Both records are kept in full above and below; neither was edited.
+
+## What was found on `main` at merge time
+
+- `main` contained PR #1 (merged) from `arena/83a43a96-affil3`: a root-level site (`index.html`, `products.html`, `guides/`, `feed.xml`, `sitemap.xml`, `assets/`, `EXECUTIVE_SUMMARY.md`, and others). GitHub Pages was enabled from `main` `/` and was live from that site.
+- PR #2 from `arena/114f47c4-affil3` was open and untouched by this session.
+- The remote also holds branches for other sessions: `arena/0a417943`, `114f47c4`, `238c8ddb`, `35d0727e`, `59aebafb`, `6249757a`, `772f3220`, `7e5808de`, `83a43a96`, `93cee724`, `bdcb1fa8`, `be9ed869`. This session has not read, merged, or changed any of them.
+
+## What this session did about it
+
+1. **Did not overwrite or delete** the root-level site from PR #1. It is moved, with `git mv`, to `archive/session-83a43a96/` so its history follows the files. Its internal relative links are unchanged.
+2. **Integrated** the generated site in `docs/` (this session's build). `docs/` is the single GitHub Pages source, so the public URL stays the same: https://karagemop466-tech.github.io/Affil3/
+3. **Pages source** is changed from `main` `/` to `main` `/docs` after the PR merges.
+4. **Merge conflict:** `COORDINATION.md` existed on both sides. Resolved by keeping the PR #1 board verbatim and appending this record. Nothing was dropped.
+5. **Overlap on verified facts:** PR #1's `products.html` says the intended ASIN should be checked and the short links were not resolvable from its sandbox. This session resolved the four observed short links and recorded their destinations (see `data/products.json`). Its claims that the short links are not resolvable are superseded by the observed results. Its no-claim-of-invalid-links position is kept.
+6. **Analytics:** PR #1's `assets/js/app.js` posts to `/analytics/collect`, which GitHub Pages cannot serve (it notes this itself). The new site's `docs/assets/analytics.js` is inactive until an endpoint is set. The archived script is not live.
+
+## Status of the other sessions
+
+No other session's branch has been merged or changed by this session. Sessions whose branches are not merged are not represented in `main`. Each would need its own integration to be included, and any of them that opens a PR into `main` should be reconciled against this record.

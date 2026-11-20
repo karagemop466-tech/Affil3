@@ -23,6 +23,7 @@ scripts/
   build_site.py        generates every page in docs/ from data/ (stdlib only)
   check_site.py        validation gate; exits 1 on any failure
 docs/            GitHub Pages source (generated HTML + assets/style.css + assets/analytics.js)
+archive/         previous site from session arena-83a43a96 (PR #1), preserved and not published
 ```
 
 Rebuild and verify:
