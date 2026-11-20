@@ -119,13 +119,22 @@ assumed:
 | Link | Their register said | Re-verification on 2026-11-20 | Outcome |
 |---|---|---|---|
 | `link.amazon/B00hJ57DV` | unresolved (checkpoint) | resolves to `B08DKYBTPH` (Chefman TurboFry) | their row was wrong; ours confirmed |
-| `link.amazon/B0c8moW59` | resolves to `B08DKYBTPH` | 3 different destinations in 4 requests: checkpoint, `B08DKYBTPH`, **`B0DHZTCNR5`** (a ThermoMaven thermometer nobody submitted) | neither register is safely right |
+| `link.amazon/B0c8moW59` | resolves to `B08DKYBTPH` | checkpoint ×3, then `B0DHZTCNR5` | **this session's first reading was wrong** — see below |
 
-The second finding is new and is the more serious one: this short link can open a product
-that was never submitted, which is a buyer-facing risk, not just a data problem. Logged as
-**FLG-011**, and FLG-001 was rewritten from "does not resolve" to "does not resolve to one
-stable product". The product register now prints every observation instead of collapsing
-them into a single value.
+**This session then made an error of its own, and it was caught by the other sessions.** A
+first pass concluded that `B0c8moW59` returned three *different products*. That was wrong: re-reading
+the fetch log shows no request of `B0c8moW59` ever returned `B08DKYBTPH`. That ASIN belongs to
+`B00hJ57DV` and entered the wrong row by transposition. A dated retest committed by another
+session (`data/observations/2026-11-20-retest.json`) agreed with the corrected reading, and all
+five links now have two independent observations behind them.
+
+The real, narrower finding: `B0c8moW59` is **intermittently intercepted** by Amazon's checkpoint
+page (3 of 4 requests from this environment), and the product behind it — a ThermoMaven
+thermometer — was never submitted by the owner. Logged as **FLG-001** (interception) and
+**FLG-012** (this session's own transcription error, published rather than quietly fixed).
+
+Both registers were partly right: theirs had the correct final destination, and this one had
+correctly identified that `B00hJ57DV` resolves. Neither was right about both.
 
 Three of the five links agreed across both sessions. The two that disagreed were settled by
 re-requesting them.

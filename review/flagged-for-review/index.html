@@ -54,23 +54,12 @@
   <p class="kicker">Flagged for review</p>
   <h1>Everything that did not check out</h1>
   <p class="lede">This page is the reason to trust the rest of it. Each item below is a real problem found during verification, with what it affects and how to close it. None of them block the site being useful; all of them block the site being finished.</p>
-  <div class="article-head__meta"><span>11 items</span><span>6 high severity</span><span>Updated 2026-11-20</span></div>
+  <div class="article-head__meta"><span>11 items</span><span>5 high severity</span><span>Updated 2026-11-20</span></div>
 </section>
 <section class="section wrap">
   <div class="callout callout--warn" style="margin-bottom:1.5rem"><span class="callout__label">For the reviewer</span><p class="small" style="margin:0">Nothing on this page prevents the site from going live, and nothing here was quietly dropped. Where a value could not be confirmed from an official source it was left blank in the data and recorded here — no estimate was substituted.</p></div>
   <h2 style="margin-bottom:1rem">The list, worst first</h2>
-  <article class="flag" id="FLG-001">
-    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
-      <span class="flag__id">FLG-001</span>
-      <span class="chip chip--stop">high severity</span>
-    </div>
-    <h3>The fifth submitted link does not resolve to one stable product</h3>
-    <p>https://link.amazon/B0c8moW59 was requested four times on 2026-11-20 and the destination did not agree between requests. Observation A returned Amazon's interstitial page at /checkpoint/continue with no product. Observation B redirected to amazon.com/dp/B08DKYBTPH, the Chefman TurboFry 8 Qt air fryer. Observation C redirected to amazon.com/dp/B0DHZTCNR5, a ThermoMaven digital meat thermometer. A short link whose destination changes between requests cannot be assigned to a product, because any page written for it would describe whichever product happened to appear.</p>
-    <p><strong style="font-size:.8rem">What it affects:</strong> One of five submitted products has no reliable identity. Worse, one of the observed destinations is a product never submitted, which means the link may open the wrong item for a buyer.</p>
-    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Kept out of the product grid and out of the catalogue. The product register shows all three observations with their dates rather than picking one. Every other link on the site is a canonical tagged amazon.com/dp/ URL, which is immune to this class of failure.</p>
-    <div class="flag__fix"><b>How to close it</b>Send the full amazon.com/dp/ URL for the intended product. Do not publish the short link anywhere, and consider removing it from any channel where it is already in use.</div>
-    <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://www.amazon.com/checkpoint/continue" target="_blank" rel="noopener">www.amazon.com/checkpoint/continue</a> · <a href="https://www.amazon.com/dp/B0DHZTCNR5" target="_blank" rel="noopener">www.amazon.com/dp/B0DHZTCNR5</a></p>
-  </article><article class="flag" id="FLG-002">
+  <article class="flag" id="FLG-002">
     <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
       <span class="flag__id">FLG-002</span>
       <span class="chip chip--stop">high severity</span>
@@ -114,16 +103,27 @@
     <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Documented on the discoverability and open-questions pages as a pending step rather than reported as complete.</p>
     <div class="flag__fix"><b>How to close it</b>Verify the property with a DNS or file method, submit /Affil3/sitemap.xml, and check coverage after a week.</div>
     <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="noopener">developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap</a></p>
-  </article><article class="flag" id="FLG-011">
+  </article><article class="flag" id="FLG-012">
     <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
-      <span class="flag__id">FLG-011</span>
+      <span class="flag__id">FLG-012</span>
       <span class="chip chip--stop">high severity</span>
     </div>
-    <h3>A short link returned a product that was never submitted</h3>
-    <p>Observation C for link.amazon/B0c8moW59 resolved to ASIN B0DHZTCNR5, a ThermoMaven digital meat thermometer. That product is not among the five submitted links, is not in any brief, and was never requested. The other observations of the same link returned a checkpoint page and the Chefman TurboFry. A link that can open an unrelated product is a buyer-facing risk, not merely a data-quality problem: a reader who clicks it may land on an item the article does not describe.</p>
-    <p><strong style="font-size:.8rem">What it affects:</strong> If this link is ever published, a reader could be sent to the wrong product, which would breach the requirement not to make misleading claims about a product and would misrepresent what the page is recommending.</p>
-    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> The link is not published anywhere on the site. The observation is recorded in the product register with its date so the pattern is visible.</p>
-    <div class="flag__fix"><b>How to close it</b>Retire the short link. Use canonical tagged product URLs, which point to one ASIN and cannot drift.</div>
+    <h3>This session's own register contained a transcription error, now corrected</h3>
+    <p>An earlier version of data/products.json recorded that link B0c8moW59 resolved to amazon.com/dp/B08DKYBTPH. That was wrong. B08DKYBTPH is the destination of B00hJ57DV; no request of B0c8moW59 ever returned it. An independent retest by another session (data/observations/2026-11-20-retest.json) surfaced the discrepancy, and the original fetch log confirms the error.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> Had it stood, the register would have attributed one product's destination to another link, and a reader comparing registers would have seen two sessions disagree with no way to tell which was right. It is the exact class of error the intended/observed split exists to catch.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> Corrected in the data file with a correction notice retained in data/products.json meta, and logged here rather than quietly overwritten. The public register now shows the real observation sequence.</p>
+    <div class="flag__fix"><b>How to close it</b>Two independent observations now agree on all five links. Keep the dated-retest file as the tiebreaker for any future disagreement, and never merge two observations into one field.</div>
+    <p class="tiny muted" style="margin-top:.7rem">No external source applies; this is a state of the project, not a claim.</p>
+  </article><article class="flag" id="FLG-001">
+    <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+      <span class="flag__id">FLG-001</span>
+      <span class="chip chip--flag">medium severity</span>
+    </div>
+    <h3>The fifth submitted link is intercepted non-deterministically</h3>
+    <p>https://link.amazon/B0c8moW59 returned Amazon's interstitial checkpoint page on three of four requests from this environment and a product page on the fourth. An independent dated retest by another session in this repository observed the product page. The product behind the link is therefore known, but the link is not reliable from an automated or datacenter network.</p>
+    <p><strong style="font-size:.8rem">What it affects:</strong> A reader on a normal browser will most likely reach the product. An automated check, monitoring job or preview crawler will frequently see a checkpoint page instead, which makes the link impossible to monitor automatically and makes 'is this link live?' unanswerable by script.</p>
+    <p><strong style="font-size:.8rem">How it is handled on the site:</strong> The product is identified on the register as the ThermoMaven digital thermometer with the observation count shown, but it is NOT added to the catalogue: the owner never submitted it, so recommending it would go beyond the brief.</p>
+    <div class="flag__fix"><b>How to close it</b>Confirm with the owner whether this link was meant to be submitted. If it was, send the intended product and it can be evaluated on its merits.</div>
     <p class="tiny" style="margin-top:.7rem">Sources: <a href="https://www.amazon.com/dp/B0DHZTCNR5" target="_blank" rel="noopener">www.amazon.com/dp/B0DHZTCNR5</a></p>
   </article><article class="flag" id="FLG-004">
     <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">

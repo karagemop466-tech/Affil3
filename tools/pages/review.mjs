@@ -176,11 +176,11 @@ ${head(
 
   ${
     DATA.products.products.some((p) => p.observed_targets_log && p.observed_targets_log.length)
-      ? `<h2 style="margin-top:2.5rem">Every observation of the disputed link</h2>
-  <p class="small">The fifth link was requested four times. The destinations did not agree, so they are listed in full rather than reduced to a single "observed" value. No observation is treated as the true one.</p>
+      ? `<h2 style="margin-top:2.5rem">Every observation of the fifth link</h2>
+  <p class="small">The fifth link was requested four times from this environment, plus once by an independent dated retest recorded by another session in this repository. The product page was reached twice and an Amazon checkpoint page three times. Every observation is listed rather than reduced to one "observed" value, because the interception rate is the finding.</p>
   <div class="tablewrap">
     <table class="data">
-      <thead><tr><th>Run</th><th>Result</th><th>Final URL</th><th>Page title observed</th><th>Date</th></tr></thead>
+      <thead><tr><th>Observation</th><th>Result</th><th>Final URL</th><th>Page title observed</th><th>Date</th></tr></thead>
       <tbody>
         ${DATA.products.products
           .filter((p) => p.observed_targets_log)
@@ -193,7 +193,9 @@ ${head(
       </tbody>
     </table>
   </div>
-  <p class="small" style="margin-top:.8rem">One of these destinations is a product that was never submitted by the owner. That is recorded as <a href="${SITE.base}/review/flagged-for-review/#FLG-011">FLG-011</a>.</p>`
+  <p class="small" style="margin-top:.8rem">The product behind this link was never submitted by the owner and is not a countertop appliance of the same kind as the other four, so it is identified but not added to the catalogue. Logged as <a href="${SITE.base}/review/flagged-for-review/#FLG-001">FLG-001</a>.</p>
+  <div class="callout callout--warn" style="margin-top:1rem"><span class="callout__label">Correction, published rather than hidden</span>
+  <p class="small" style="margin:0">An earlier version of this register said this link resolved to the Chefman TurboFry. It does not. That was a transcription error in this session's own notes, found by comparing against another session's independent retest. The correction and its cause are logged as <a href="${SITE.base}/review/flagged-for-review/#FLG-012">FLG-012</a>.</p></div>`
       : ""
   }
 

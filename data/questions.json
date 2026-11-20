@@ -11,14 +11,14 @@
   "questions": [
     {
       "id": "Q-01",
-      "question": "Which product is behind the fifth submitted link, and why does its destination change?",
+      "question": "Was the fifth link meant to be submitted, and which product is it?",
       "blocks": "Any page, table row or recommendation for that product. Also any claim about the 'five products'.",
-      "known": "https://link.amazon/B0c8moW59 was requested four times. It returned a checkpoint page once, the Chefman TurboFry (B08DKYBTPH) once, and a ThermoMaven thermometer (B0DHZTCNR5) once. The destination is not stable. One of those products was never submitted by the owner.",
-      "unknown": "Which product was intended. Whether the link is mistyped, expired, reassigned, or being served A/B variants by Amazon. Nothing is inferred from the three observations.",
-      "to_close": "The owner sends the full amazon.com/dp/ URL of the intended product, in writing.",
+      "known": "The link resolves to a ThermoMaven digital meat thermometer (B0DHZTCNR5) when it is not intercepted, confirmed by two independent observations including a dated cross-session retest. Three of four requests from this environment were intercepted by an Amazon checkpoint page.",
+      "unknown": "Whether the owner intended this product at all. It is not a countertop cooking appliance in the same sense as the other four, and it was never mentioned in the brief. Nothing is inferred from that.",
+      "to_close": "The owner confirms the intended product, or sends the correct amazon.com/dp/ URL.",
       "priority": "blocker",
       "owner": "site owner",
-      "flag": "FLG-001, FLG-011"
+      "flag": "FLG-001"
     },
     {
       "id": "Q-02",

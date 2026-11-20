@@ -441,17 +441,6 @@
       "note": "No keyword tool was consulted. No volume, difficulty or trend figure is published anywhere on this site. See Q-05 and SUG-11."
     },
     {
-      "id": "C-29",
-      "topic": "Short-link destination stability",
-      "statement": "One submitted short link resolved to three different destinations across four requests, including a product that was never submitted.",
-      "source": "",
-      "section": "",
-      "quote": "",
-      "status": "unverified",
-      "used_on": [],
-      "note": "This is a first-party observation, not a sourced policy claim, so it is recorded here as unverified-by-source and published only as an observation on the product register and in FLG-001/FLG-011, labelled with the observation count and date. It is deliberately not stated as a general fact about link.amazon."
-    },
-    {
       "id": "C-30",
       "topic": "rel=sponsored marks paid links",
       "statement": "Links that are advertisements or paid placements (paid links) should be marked with rel=\"sponsored\".",

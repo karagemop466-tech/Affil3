@@ -7,7 +7,8 @@
     "fields_policy": "intended_* fields are what the operator says the link should point to. observed_* fields are what the request actually returned. A row is only publishable when intended_asin === observed_asin.",
     "price_policy": "No price is published on this site. See claim C-09: Amazon permits display of price and availability only when Amazon serves the link or when the data comes from the Creators API / PA API.",
     "image_policy": "No Amazon product photography is republished. See claim C-11 and C-12.",
-    "cross_session_reconciliation": "Another session's register on main recorded B00hJ57DV as unresolved and B0c8moW59 as resolving to B08DKYBTPH. Re-verification on 2026-11-20 shows the reverse for B00hJ57DV (it resolves to B08DKYBTPH) and that B0c8moW59 is non-deterministic. Three of five links agree across both sessions; the two disputed ones were resolved by re-requesting them. See FLG-011."
+    "cross_session_reconciliation": "Another session's register on main recorded B00hJ57DV as unresolved and B0c8moW59 as resolving to B08DKYBTPH. Re-verification on 2026-11-20 shows the reverse for B00hJ57DV (it resolves to B08DKYBTPH) and that B0c8moW59 is non-deterministic. Three of five links agree across both sessions; the two disputed ones were resolved by re-requesting them. See FLG-011.",
+    "correction_notice": "CORRECTION 2026-11-20: an earlier version of this file recorded observation B for link B0c8moW59 as amazon.com/dp/B08DKYBTPH. That was a transcription error: B08DKYBTPH was the result for B00hJ57DV, not this link. No request of B0c8moW59 ever returned B08DKYBTPH. The row is corrected here and the correction is logged rather than silently overwritten."
   },
   "products": [
     {
@@ -255,9 +256,9 @@
       "intended_listing_url": "",
       "tagged_url": "",
       "confirmation_date": "",
-      "confirmation_source": "Requested three times on 2026-11-20 and once more during re-verification. Requests did not agree. Observation A: Amazon interstitial 'To continue, please click the Continue shopping button below' at /checkpoint/continue, no product. Observation B: redirected to amazon.com/dp/B08DKYBTPH (Chefman TurboFry 8 Qt). Observation C: redirected to amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer). Because the destination is not stable, no product can be confidently assigned to this link.",
-      "observed_redirect_target": "https://www.amazon.com/checkpoint/continue (A) | https://www.amazon.com/dp/B08DKYBTPH (B) | https://www.amazon.com/dp/B0DHZTCNR5 (C)",
-      "observed_resolution_status": "non_deterministic",
+      "confirmation_source": "https://link.amazon/B0c8moW59 requested four times on 2026-11-20. Three requests returned Amazon's interstitial page at /checkpoint/continue with no product; one returned a product page. An independent dated retest by another session in this repository (data/observations/2026-11-20-retest.json) observed the product page. See FLG-012.",
+      "observed_redirect_target": "https://www.amazon.com/dp/B0DHZTCNR5 (when not intercepted)",
+      "observed_resolution_status": "intermittent_checkpoint",
       "observed_tag_parameter": "",
       "title_as_observed": "",
       "attributes_from_listing": [],
@@ -269,29 +270,43 @@
       "consider_before_buying": "",
       "collection": "",
       "published": false,
-      "flag": "FLG-001, FLG-011",
+      "flag": "FLG-012",
       "observed_targets_log": [
         {
-          "run": "A",
+          "run": "1",
           "result": "checkpoint",
           "final_url": "https://www.amazon.com/checkpoint/continue",
           "date": "2026-11-20"
         },
         {
-          "run": "B",
-          "result": "product",
-          "final_url": "https://www.amazon.com/dp/B08DKYBTPH",
-          "title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1",
+          "run": "2",
+          "result": "checkpoint",
+          "final_url": "https://www.amazon.com/checkpoint/continue",
           "date": "2026-11-20"
         },
         {
-          "run": "C",
+          "run": "3",
+          "result": "checkpoint",
+          "final_url": "https://www.amazon.com/checkpoint/continue",
+          "date": "2026-11-20"
+        },
+        {
+          "run": "4",
+          "result": "product",
+          "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+          "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer",
+          "date": "2026-11-20"
+        },
+        {
+          "run": "cross-session retest",
           "result": "product",
           "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
           "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer",
           "date": "2026-11-20"
         }
-      ]
+      ],
+      "observed_asin_when_visible": "B0DHZTCNR5",
+      "observed_title_when_visible": "ThermoMaven 1 Sec Professional Digital Meat Thermometer | NIST&NSF Certified | IP67 Waterproof"
     }
   ]
 }

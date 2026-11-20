@@ -101,10 +101,10 @@
       <thead><tr><th>Item</th><th>Status</th><th>Consequence</th><th>Closes when</th></tr></thead>
       <tbody>
         <tr>
-          <td><a href="/Affil3/review/flagged-for-review/#FLG-001">FLG-001</a> The fifth submitted link does not resolve to one stable product</td>
-          <td><span class="chip chip--stop">high</span></td>
-          <td>One of five submitted products has no reliable identity. Worse, one of the observed destinations is a product never submitted, which means the link may open the wrong item for a buyer.</td>
-          <td>Send the full amazon.com/dp/ URL for the intended product. Do not publish the short link anywhere, and consider removing it from any channel where it is already in use.</td>
+          <td><a href="/Affil3/review/flagged-for-review/#FLG-001">FLG-001</a> The fifth submitted link is intercepted non-deterministically</td>
+          <td><span class="chip chip--flag">medium</span></td>
+          <td>A reader on a normal browser will most likely reach the product. An automated check, monitoring job or preview crawler will frequently see a checkpoint page instead, which makes the link impossible to monitor automatically and makes 'is this link live?' unanswerable by script.</td>
+          <td>Confirm with the owner whether this link was meant to be submitted. If it was, send the intended product and it can be evaluated on its merits.</td>
         </tr><tr>
           <td><a href="/Affil3/review/flagged-for-review/#FLG-002">FLG-002</a> Submitted short links carry no visible Associates tag in the redirect</td>
           <td><span class="chip chip--stop">high</span></td>
@@ -151,10 +151,10 @@
           <td>Handled by prefixing every internal link with the base path. Any future move to a custom domain requires changing one constant.</td>
           <td>If a custom domain is added, set the base path to empty and re-run the checks.</td>
         </tr><tr>
-          <td><a href="/Affil3/review/flagged-for-review/#FLG-011">FLG-011</a> A short link returned a product that was never submitted</td>
+          <td><a href="/Affil3/review/flagged-for-review/#FLG-012">FLG-012</a> This session's own register contained a transcription error, now corrected</td>
           <td><span class="chip chip--stop">high</span></td>
-          <td>If this link is ever published, a reader could be sent to the wrong product, which would breach the requirement not to make misleading claims about a product and would misrepresent what the page is recommending.</td>
-          <td>Retire the short link. Use canonical tagged product URLs, which point to one ASIN and cannot drift.</td>
+          <td>Had it stood, the register would have attributed one product's destination to another link, and a reader comparing registers would have seen two sessions disagree with no way to tell which was right. It is the exact class of error the intended/observed split exists to catch.</td>
+          <td>Two independent observations now agree on all five links. Keep the dated-retest file as the tiebreaker for any future disagreement, and never merge two observations into one field.</td>
         </tr>
       </tbody>
     </table>
@@ -177,7 +177,7 @@
   <ol>
     <li><a href="/Affil3/review/flagged-for-review/">Known gaps</a> — the eight things that are not settled, worst first.</li>
     <li><a href="/Affil3/review/suggestions/">Suggestion register</a> — 15 ideas with the paths not taken, including two that are blocked by policy.</li>
-    <li><a href="/Affil3/review/sources/">Source register</a> — 31 claims and the exact document each came from.</li>
+    <li><a href="/Affil3/review/sources/">Source register</a> — 30 claims and the exact document each came from.</li>
     <li><a href="/Affil3/review/questions/">Open questions</a> — what a decision is waiting on.</li>
     <li>The site itself, starting at the <a href="/Affil3/">front page</a>.</li>
   </ol>
