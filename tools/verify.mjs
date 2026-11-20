@@ -214,6 +214,23 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
   check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
+  // Prices were visible on four of the five listing fetches and none may reach a page. Check the
+  // rendered HTML, not only the data, so a stray figure in prose or a table cell is caught too.
+  const pricedFiles = htmlFiles.filter((f) => /\$\s?\d/.test(fs.readFileSync(f, 'utf8')) && !f.includes(path.join('legacy', '')));
+  check('no published page shows a currency amount', pricedFiles.length === 0, pricedFiles.slice(0, 3).join(', '));
+  // Every spec figure that the register holds must actually render on its product page.
+  for (const p of products) {
+    const f = path.join(DOCS, 'products', p.slug, 'index.html');
+    if (!fs.existsSync(f)) continue;
+    const h = fs.readFileSync(f, 'utf8');
+    for (const [field, unit] of [['capacity_qt', 'qt'], ['power_w', 'W'], ['weight_lb', 'lb']]) {
+      const v = p[field];
+      if (v === '' || v == null) continue;
+      check(`${p.id} renders its stated ${field}`, h.includes(`${v} ${unit}`), `${v} ${unit}`);
+    }
+    // A blank the register explains must stay blank on the page rather than being filled in.
+    if (p.power_w === '' || p.power_w == null) check(`${p.id} does not invent a wattage`, !/\d+\s?W\b/.test((h.match(/<dl class="spec-grid">[\s\S]*?<\/dl>/) || [''])[0]));
+  }
   check('every product image is labelled as illustration', /not the reviewed unit|Editorial illustration|editorial illustration/i.test(home));
 
   // decision paths: every path must point at real product rows, cite real sources, and be
