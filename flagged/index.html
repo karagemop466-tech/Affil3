@@ -251,6 +251,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   
 </section>
+<section class="flag-card is-resolved" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-high">high</span> <strong>A second publication at /docs/ publishes Amazon prices and star ratings</strong> <span class="badge resolved">resolved</span></p>
+  <p>This domain serves two separate sites. The root site is generated from data/*.json and shows no prices or ratings. A second, older publication at /docs/ is still live and puts a current Amazon price (for example a four-figure-cent price for the 6 Qt basket) next to star ratings and review counts on its front page and product pages. Amazon&#39;s Program Policies allow a site to display price and availability only if Amazon serves that data or it comes through the Creators or PA API. That page does neither, and the figures it shows are now stale, which also makes them a misleading claim. The /docs/ build is git-ignored, is not produced by any current pipeline, and is a leftover from an earlier session&#39;s generator.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Retired in this session: the directory was removed and a redirect page now stands in its place, so the URL keeps working while showing no prices. If the earlier edition is ever wanted back, it must be regenerated without price or rating fields first.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
