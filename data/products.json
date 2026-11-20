@@ -6,7 +6,8 @@
     "resolution_method": "Each submitted short link was requested; the final page title and the ASIN in the final URL were recorded. Intended and observed values are stored in separate fields and are never merged.",
     "fields_policy": "intended_* fields are what the operator says the link should point to. observed_* fields are what the request actually returned. A row is only publishable when intended_asin === observed_asin.",
     "price_policy": "No price is published on this site. See claim C-09: Amazon permits display of price and availability only when Amazon serves the link or when the data comes from the Creators API / PA API.",
-    "image_policy": "No Amazon product photography is republished. See claim C-11 and C-12."
+    "image_policy": "No Amazon product photography is republished. See claim C-11 and C-12.",
+    "cross_session_reconciliation": "Another session's register on main recorded B00hJ57DV as unresolved and B0c8moW59 as resolving to B08DKYBTPH. Re-verification on 2026-11-20 shows the reverse for B00hJ57DV (it resolves to B08DKYBTPH) and that B0c8moW59 is non-deterministic. Three of five links agree across both sessions; the two disputed ones were resolved by re-requesting them. See FLG-011."
   },
   "products": [
     {
@@ -28,15 +29,43 @@
       "observed_tag_parameter": "none present in the observed redirect target",
       "title_as_observed": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "attributes_from_listing": [
-        { "name": "Total stated capacity", "value": "6 quart", "note": "Two independent baskets, 3 quart each" },
-        { "name": "Basket count", "value": "2", "note": "" },
-        { "name": "Browning/finish mode named in title", "value": "Hi-Fry", "note": "" },
-        { "name": "Basket coating", "value": "Nonstick, dishwasher-safe", "note": "" },
-        { "name": "Shutoff", "value": "Auto Shutoff", "note": "" }
+        {
+          "name": "Total stated capacity",
+          "value": "6 quart",
+          "note": "Two independent baskets, 3 quart each"
+        },
+        {
+          "name": "Basket count",
+          "value": "2",
+          "note": ""
+        },
+        {
+          "name": "Browning/finish mode named in title",
+          "value": "Hi-Fry",
+          "note": ""
+        },
+        {
+          "name": "Basket coating",
+          "value": "Nonstick, dishwasher-safe",
+          "note": ""
+        },
+        {
+          "name": "Shutoff",
+          "value": "Auto Shutoff",
+          "note": ""
+        }
       ],
       "listing_observations": [
-        { "label": "Certification displayed on listing", "value": "Global Recycled Standard", "detail": "Certification body GCL International Ltd., certification number TE-00357353, as displayed on the product detail page." },
-        { "label": "Climate Pledge Friendly badge", "value": "Present", "detail": "Listing displayed the Climate Pledge Friendly programme link." }
+        {
+          "label": "Certification displayed on listing",
+          "value": "Global Recycled Standard",
+          "detail": "Certification body GCL International Ltd., certification number TE-00357353, as displayed on the product detail page."
+        },
+        {
+          "label": "Climate Pledge Friendly badge",
+          "value": "Present",
+          "detail": "Listing displayed the Climate Pledge Friendly programme link."
+        }
       ],
       "amazon_review_summary_observed": "",
       "amazon_review_summary_note": "Not captured for this listing during retrieval. Left blank rather than inferred. See FLG-008.",
@@ -44,7 +73,8 @@
       "best_for": "Someone cooking a protein and a side that need different times.",
       "consider_before_buying": "Two 3-quart baskets are smaller than one 6-quart basket in practice. A whole chicken or a large batch of fries will not fit in one side.",
       "collection": "Countertop season",
-      "published": true
+      "published": true,
+      "cross_check": "Independently observed by another session in this repository with the same final ASIN/dp URL. Agreement recorded 2026-11-20."
     },
     {
       "id": "emeril-26qt-french-door",
@@ -65,13 +95,33 @@
       "observed_tag_parameter": "none present in the observed redirect target",
       "title_as_observed": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
       "attributes_from_listing": [
-        { "name": "Stated capacity", "value": "26 quart", "note": "" },
-        { "name": "Form factor", "value": "French-door toaster oven", "note": "Doors open outward; racks slide out from the front" },
-        { "name": "Preset count named in title", "value": "24 one-touch presets", "note": "" },
-        { "name": "Accessories included", "value": "Six", "note": "As stated in the listing title" }
+        {
+          "name": "Stated capacity",
+          "value": "26 quart",
+          "note": ""
+        },
+        {
+          "name": "Form factor",
+          "value": "French-door toaster oven",
+          "note": "Doors open outward; racks slide out from the front"
+        },
+        {
+          "name": "Preset count named in title",
+          "value": "24 one-touch presets",
+          "note": ""
+        },
+        {
+          "name": "Accessories included",
+          "value": "Six",
+          "note": "As stated in the listing title"
+        }
       ],
       "listing_observations": [
-        { "label": "Category path observed", "value": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers", "detail": "" }
+        {
+          "label": "Category path observed",
+          "value": "Home & Kitchen \u203a Kitchen & Dining \u203a Small Appliances \u203a Fryers \u203a Air Fryers",
+          "detail": ""
+        }
       ],
       "amazon_review_summary_observed": "Amazon's own AI-generated review summary displayed at retrieval reported that size and ease of use are liked, that opinions on size are mixed, and that durability is a concern with some customers reporting the heating element failing within 9-14 months.",
       "amazon_review_summary_note": "This is a description of what Amazon's summary widget displayed, not an independent test by this publication. Individual reviews behind it were not read.",
@@ -79,7 +129,8 @@
       "best_for": "A household that wants one appliance to replace a toaster oven and add air frying.",
       "consider_before_buying": "It is a large object. Measure the counter depth and the clearance above it before ordering, and read the durability comments in the listing rather than relying on the star average.",
       "collection": "Countertop season",
-      "published": true
+      "published": true,
+      "cross_check": "Independently observed by another session in this repository with the same final ASIN/dp URL. Agreement recorded 2026-11-20."
     },
     {
       "id": "chefman-turbofry-8qt",
@@ -98,13 +149,33 @@
       "observed_redirect_target": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
       "observed_resolution_status": "resolved",
       "observed_tag_parameter": "none present in the observed redirect target",
-      "title_as_observed": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "title_as_observed": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "attributes_from_listing": [
-        { "name": "Stated capacity", "value": "8 quart", "note": "" },
-        { "name": "Basket count", "value": "1", "note": "Single XL basket" },
-        { "name": "Stated maximum temperature", "value": "450°F", "note": "As named in the listing title (Hi-Fry option)" },
-        { "name": "Functions named in title", "value": "Bake, Dehydrate, Frozen", "note": "Listed as a 4-in-1" },
-        { "name": "Basket coating", "value": "Nonstick, dishwasher-safe", "note": "" }
+        {
+          "name": "Stated capacity",
+          "value": "8 quart",
+          "note": ""
+        },
+        {
+          "name": "Basket count",
+          "value": "1",
+          "note": "Single XL basket"
+        },
+        {
+          "name": "Stated maximum temperature",
+          "value": "450\u00b0F",
+          "note": "As named in the listing title (Hi-Fry option)"
+        },
+        {
+          "name": "Functions named in title",
+          "value": "Bake, Dehydrate, Frozen",
+          "note": "Listed as a 4-in-1"
+        },
+        {
+          "name": "Basket coating",
+          "value": "Nonstick, dishwasher-safe",
+          "note": ""
+        }
       ],
       "listing_observations": [],
       "amazon_review_summary_observed": "Amazon's own AI-generated review summary displayed at retrieval reported that performance, ease of use, ease of cleaning, enjoyment and size are received positively, while reliability and value feedback is mixed and some customers report the unit stopped working after about a year.",
@@ -113,7 +184,8 @@
       "best_for": "A family that wants volume and does not want to manage two zones.",
       "consider_before_buying": "A single basket means sequential cooking. If your meals involve a protein and a side finishing together, a dual-zone design suits that better.",
       "collection": "Countertop season",
-      "published": true
+      "published": true,
+      "cross_check": "Independently observed by another session in this repository with the same final ASIN/dp URL. Agreement recorded 2026-11-20."
     },
     {
       "id": "chef-iq-sense-thermometer",
@@ -132,13 +204,33 @@
       "observed_redirect_target": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
       "observed_resolution_status": "resolved",
       "observed_tag_parameter": "none present in the observed redirect target",
-      "title_as_observed": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "title_as_observed": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000\u00b0F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "attributes_from_listing": [
-        { "name": "Probe count", "value": "3", "note": "Ultra-thin probes as described in the title" },
-        { "name": "Stated heat rating", "value": "1000°F", "note": "As stated in the listing title" },
-        { "name": "Sensor count", "value": "5", "note": "" },
-        { "name": "Connectivity named in title", "value": "WiFi", "note": "Stated range described as unlimited" },
-        { "name": "Generation", "value": "Gen3", "note": "" }
+        {
+          "name": "Probe count",
+          "value": "3",
+          "note": "Ultra-thin probes as described in the title"
+        },
+        {
+          "name": "Stated heat rating",
+          "value": "1000\u00b0F",
+          "note": "As stated in the listing title"
+        },
+        {
+          "name": "Sensor count",
+          "value": "5",
+          "note": ""
+        },
+        {
+          "name": "Connectivity named in title",
+          "value": "WiFi",
+          "note": "Stated range described as unlimited"
+        },
+        {
+          "name": "Generation",
+          "value": "Gen3",
+          "note": ""
+        }
       ],
       "listing_observations": [],
       "amazon_review_summary_observed": "",
@@ -147,7 +239,8 @@
       "best_for": "Anyone already cooking in an air fryer, oven or smoker who wants a number instead of a guess.",
       "consider_before_buying": "A wireless probe is only useful if you will actually use the app or display it pairs with. Check how the reading reaches you before buying.",
       "collection": "Cook and check",
-      "published": true
+      "published": true,
+      "cross_check": "Independently observed by another session in this repository with the same final ASIN/dp URL. Agreement recorded 2026-11-20."
     },
     {
       "id": "unresolved-fifth-link",
@@ -162,21 +255,43 @@
       "intended_listing_url": "",
       "tagged_url": "",
       "confirmation_date": "",
-      "confirmation_source": "Requested twice on 2026-11-20. Both requests returned Amazon's interstitial page headed \"To continue, please click the Continue shopping button below\", at https://www.amazon.com/checkpoint/continue. No product page, title or ASIN was returned.",
-      "observed_redirect_target": "https://www.amazon.com/checkpoint/continue?token=…",
-      "observed_resolution_status": "blocked_by_checkpoint",
+      "confirmation_source": "Requested three times on 2026-11-20 and once more during re-verification. Requests did not agree. Observation A: Amazon interstitial 'To continue, please click the Continue shopping button below' at /checkpoint/continue, no product. Observation B: redirected to amazon.com/dp/B08DKYBTPH (Chefman TurboFry 8 Qt). Observation C: redirected to amazon.com/dp/B0DHZTCNR5 (ThermoMaven 1 Sec Professional Digital Meat Thermometer). Because the destination is not stable, no product can be confidently assigned to this link.",
+      "observed_redirect_target": "https://www.amazon.com/checkpoint/continue (A) | https://www.amazon.com/dp/B08DKYBTPH (B) | https://www.amazon.com/dp/B0DHZTCNR5 (C)",
+      "observed_resolution_status": "non_deterministic",
       "observed_tag_parameter": "",
       "title_as_observed": "",
       "attributes_from_listing": [],
       "listing_observations": [],
       "amazon_review_summary_observed": "",
-      "amazon_review_summary_note": "No listing was reached, so nothing can be reported.",
+      "amazon_review_summary_note": "No single listing can be attributed to this link, so no review summary is reported.",
       "editorial_angle": "",
       "best_for": "",
       "consider_before_buying": "",
       "collection": "",
       "published": false,
-      "flag": "FLG-001"
+      "flag": "FLG-001, FLG-011",
+      "observed_targets_log": [
+        {
+          "run": "A",
+          "result": "checkpoint",
+          "final_url": "https://www.amazon.com/checkpoint/continue",
+          "date": "2026-11-20"
+        },
+        {
+          "run": "B",
+          "result": "product",
+          "final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+          "title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1",
+          "date": "2026-11-20"
+        },
+        {
+          "run": "C",
+          "result": "product",
+          "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+          "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer",
+          "date": "2026-11-20"
+        }
+      ]
     }
   ]
 }

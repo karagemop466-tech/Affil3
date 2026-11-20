@@ -7,12 +7,15 @@
     {
       "id": "FLG-001",
       "severity": "high",
-      "title": "The fifth submitted link does not resolve to a product",
-      "detail": "https://link.amazon/B0c8moW59 was requested twice on 2026-11-20. Both requests returned Amazon's interstitial page headed \"To continue, please click the Continue shopping button below\" at https://www.amazon.com/checkpoint/continue, with no product title or ASIN. The fifth product therefore has no verified identity.",
-      "impact": "One of five submitted products is absent from the catalogue. No row was invented to fill the gap.",
-      "published_handling": "Kept out of the product grid. Listed as unresolved on the product register with the exact status and date.",
-      "fix": "Open the link on a normal browser session and send the resulting amazon.com/dp/ URL.",
-      "sources": ["https://www.amazon.com/checkpoint/continue"]
+      "title": "The fifth submitted link does not resolve to one stable product",
+      "detail": "https://link.amazon/B0c8moW59 was requested four times on 2026-11-20 and the destination did not agree between requests. Observation A returned Amazon's interstitial page at /checkpoint/continue with no product. Observation B redirected to amazon.com/dp/B08DKYBTPH, the Chefman TurboFry 8 Qt air fryer. Observation C redirected to amazon.com/dp/B0DHZTCNR5, a ThermoMaven digital meat thermometer. A short link whose destination changes between requests cannot be assigned to a product, because any page written for it would describe whichever product happened to appear.",
+      "impact": "One of five submitted products has no reliable identity. Worse, one of the observed destinations is a product never submitted, which means the link may open the wrong item for a buyer.",
+      "published_handling": "Kept out of the product grid and out of the catalogue. The product register shows all three observations with their dates rather than picking one. Every other link on the site is a canonical tagged amazon.com/dp/ URL, which is immune to this class of failure.",
+      "fix": "Send the full amazon.com/dp/ URL for the intended product. Do not publish the short link anywhere, and consider removing it from any channel where it is already in use.",
+      "sources": [
+        "https://www.amazon.com/checkpoint/continue",
+        "https://www.amazon.com/dp/B0DHZTCNR5"
+      ]
     },
     {
       "id": "FLG-002",
@@ -22,7 +25,9 @@
       "impact": "It cannot be shown from outside the account that a click through these links attributes to tag shopnow047c-20. This is the single largest commercial risk in the project.",
       "published_handling": "Every outbound product link on this site is a canonical amazon.com/dp/ URL with the tag appended, and the observed redirect is recorded separately in the register rather than being trusted.",
       "fix": "Generate one link in SiteStripe, compare, then click one supplied link and confirm the click appears in the Associates report before scaling.",
-      "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
     },
     {
       "id": "FLG-003",
@@ -58,7 +63,9 @@
       "impact": "The design is text-forward. A photo-led design would need either licensed API images or original photography.",
       "published_handling": "Monogram tiles only. No external asset requests in the page.",
       "fix": "If visual richness is wanted, commission original photography or use the Creators API image endpoint once approved.",
-      "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
     },
     {
       "id": "FLG-006",
@@ -78,7 +85,9 @@
       "impact": "The content plan cannot be validated against real search demand until this is done.",
       "published_handling": "Documented on the discoverability and open-questions pages as a pending step rather than reported as complete.",
       "fix": "Verify the property with a DNS or file method, submit /Affil3/sitemap.xml, and check coverage after a week.",
-      "sources": ["https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"]
+      "sources": [
+        "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+      ]
     },
     {
       "id": "FLG-008",
@@ -88,7 +97,10 @@
       "impact": "The site can report specifications with confidence and user sentiment only where it was actually displayed.",
       "published_handling": "Stated in the editorial standards and in each guide's verification note.",
       "fix": "Either capture the summaries on a second pass with the retrieval date recorded, or fund a test unit and publish measured results.",
-      "sources": ["https://www.amazon.com/dp/B0CDY277D3", "https://www.amazon.com/dp/B0DZFD6R9Z"]
+      "sources": [
+        "https://www.amazon.com/dp/B0CDY277D3",
+        "https://www.amazon.com/dp/B0DZFD6R9Z"
+      ]
     },
     {
       "id": "FLG-009",
@@ -98,7 +110,9 @@
       "impact": "Automation was therefore limited to checks, generation of the sitemap and feed, and link validation. Prose was written, not generated from listing text.",
       "published_handling": "Described on the automation page as a deliberate boundary rather than a missing feature.",
       "fix": "Scope any future model use to our own notes and non-Amazon sources, with a human editor signing each page.",
-      "sources": ["https://affiliate-program.amazon.com/help/operating/policies"]
+      "sources": [
+        "https://affiliate-program.amazon.com/help/operating/policies"
+      ]
     },
     {
       "id": "FLG-010",
@@ -108,7 +122,21 @@
       "impact": "Handled by prefixing every internal link with the base path. Any future move to a custom domain requires changing one constant.",
       "published_handling": "The link checker runs on every build and fails on a broken internal link.",
       "fix": "If a custom domain is added, set the base path to empty and re-run the checks.",
-      "sources": ["https://docs.github.com/en/pages"]
+      "sources": [
+        "https://docs.github.com/en/pages"
+      ]
+    },
+    {
+      "id": "FLG-011",
+      "severity": "high",
+      "title": "A short link returned a product that was never submitted",
+      "detail": "Observation C for link.amazon/B0c8moW59 resolved to ASIN B0DHZTCNR5, a ThermoMaven digital meat thermometer. That product is not among the five submitted links, is not in any brief, and was never requested. The other observations of the same link returned a checkpoint page and the Chefman TurboFry. A link that can open an unrelated product is a buyer-facing risk, not merely a data-quality problem: a reader who clicks it may land on an item the article does not describe.",
+      "impact": "If this link is ever published, a reader could be sent to the wrong product, which would breach the requirement not to make misleading claims about a product and would misrepresent what the page is recommending.",
+      "published_handling": "The link is not published anywhere on the site. The observation is recorded in the product register with its date so the pattern is visible.",
+      "fix": "Retire the short link. Use canonical tagged product URLs, which point to one ASIN and cannot drift.",
+      "sources": [
+        "https://www.amazon.com/dp/B0DHZTCNR5"
+      ]
     }
   ]
 }

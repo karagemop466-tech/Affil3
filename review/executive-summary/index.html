@@ -60,8 +60,8 @@
 
   <div class="stat-grid" style="margin-bottom:2rem">
     <div class="stat"><div class="stat__n">4<span style="font-size:1rem;color:var(--ink-3)">/5</span></div><div class="stat__l">Submitted links resolved</div></div>
-    <div class="stat"><div class="stat__n">26</div><div class="stat__l">Claims sourced</div></div>
-    <div class="stat"><div class="stat__n">10</div><div class="stat__l">Irregularities published</div></div>
+    <div class="stat"><div class="stat__n">28</div><div class="stat__l">Claims sourced</div></div>
+    <div class="stat"><div class="stat__n">11</div><div class="stat__l">Irregularities published</div></div>
     <div class="stat"><div class="stat__n">3</div><div class="stat__l">Decisions awaiting you</div></div>
   </div>
 
@@ -79,7 +79,7 @@
         <tr><td><a href="/Affil3/products/chefman-6qt-dual-basket-air-fryer/">Product pages</a></td><td>One page per verified product, specs as stated, objections included</td><td>Spec traceability plus the honest objection, which is the part buyers actually need.</td></tr>
         <tr><td><a href="/Affil3/review/suggestions/">Suggestion register</a></td><td>15 suggestions, each with paths and a recommended one</td><td>The decision room you asked for. Choose a path before anything is implemented.</td></tr>
         <tr><td><a href="/Affil3/review/questions/">Open questions</a></td><td>12 questions, each with what we know, what we don't, and how to close it</td><td>Separates missing information from settled fact.</td></tr>
-        <tr><td><a href="/Affil3/review/flagged-for-review/">Known gaps</a></td><td>10 irregularities with sources and a fix</td><td>Nothing is hidden to make the site look finished.</td></tr>
+        <tr><td><a href="/Affil3/review/flagged-for-review/">Known gaps</a></td><td>11 irregularities with sources and a fix</td><td>Nothing is hidden to make the site look finished.</td></tr>
         <tr><td><a href="/Affil3/operations/automation/">Automation and gates</a></td><td>What is automated, what is gated, what is deliberately refused</td><td>Automation you can audit, and a build that fails rather than publishing something wrong.</td></tr>
         <tr><td><a href="/Affil3/operations/measurement/">Measurement plan</a></td><td>Five defined events, privacy-preserving, no collector yet</td><td>Instrument shipped before optimisation, as instructed.</td></tr>
       </tbody>
@@ -101,10 +101,10 @@
       <thead><tr><th>Item</th><th>Status</th><th>Consequence</th><th>Closes when</th></tr></thead>
       <tbody>
         <tr>
-          <td><a href="/Affil3/review/flagged-for-review/#FLG-001">FLG-001</a> The fifth submitted link does not resolve to a product</td>
+          <td><a href="/Affil3/review/flagged-for-review/#FLG-001">FLG-001</a> The fifth submitted link does not resolve to one stable product</td>
           <td><span class="chip chip--stop">high</span></td>
-          <td>One of five submitted products is absent from the catalogue. No row was invented to fill the gap.</td>
-          <td>Open the link on a normal browser session and send the resulting amazon.com/dp/ URL.</td>
+          <td>One of five submitted products has no reliable identity. Worse, one of the observed destinations is a product never submitted, which means the link may open the wrong item for a buyer.</td>
+          <td>Send the full amazon.com/dp/ URL for the intended product. Do not publish the short link anywhere, and consider removing it from any channel where it is already in use.</td>
         </tr><tr>
           <td><a href="/Affil3/review/flagged-for-review/#FLG-002">FLG-002</a> Submitted short links carry no visible Associates tag in the redirect</td>
           <td><span class="chip chip--stop">high</span></td>
@@ -150,6 +150,11 @@
           <td><span class="chip chip--muted">low</span></td>
           <td>Handled by prefixing every internal link with the base path. Any future move to a custom domain requires changing one constant.</td>
           <td>If a custom domain is added, set the base path to empty and re-run the checks.</td>
+        </tr><tr>
+          <td><a href="/Affil3/review/flagged-for-review/#FLG-011">FLG-011</a> A short link returned a product that was never submitted</td>
+          <td><span class="chip chip--stop">high</span></td>
+          <td>If this link is ever published, a reader could be sent to the wrong product, which would breach the requirement not to make misleading claims about a product and would misrepresent what the page is recommending.</td>
+          <td>Retire the short link. Use canonical tagged product URLs, which point to one ASIN and cannot drift.</td>
         </tr>
       </tbody>
     </table>
@@ -172,7 +177,7 @@
   <ol>
     <li><a href="/Affil3/review/flagged-for-review/">Known gaps</a> — the eight things that are not settled, worst first.</li>
     <li><a href="/Affil3/review/suggestions/">Suggestion register</a> — 15 ideas with the paths not taken, including two that are blocked by policy.</li>
-    <li><a href="/Affil3/review/sources/">Source register</a> — 28 claims and the exact document each came from.</li>
+    <li><a href="/Affil3/review/sources/">Source register</a> — 31 claims and the exact document each came from.</li>
     <li><a href="/Affil3/review/questions/">Open questions</a> — what a decision is waiting on.</li>
     <li>The site itself, starting at the <a href="/Affil3/">front page</a>.</li>
   </ol>

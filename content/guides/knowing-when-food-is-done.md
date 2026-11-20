@@ -56,7 +56,20 @@ The useful habit is small: pick a target internal temperature for the food, inse
 - Leave it in through any resting period if you want to see the carry-over rise.
 - Use one probe per piece of food rather than moving one probe between pieces, which is what a three-probe design is for.
 
-We are not publishing a temperature chart here. Safe-cooking temperatures are a food-safety matter and belong to an authoritative source rather than a buying desk; the general guidance in the United States comes from the USDA. Check the current guidance there, and check the appliance listing's own instructions.
+### Minimum internal temperatures, from the USDA
+
+These are the US Department of Agriculture's Food Safety and Inspection Service figures, taken from its Safe Minimum Internal Temperature Chart. They are a food-safety standard, not a preference, and they are higher priority than any recipe time.
+
+| Food | Minimum internal temperature | Rest |
+|---|---|---|
+| Beef, pork, veal and lamb steaks, chops and roasts | 145°F (62.8°C) | 3 minutes |
+| Ground meats | 160°F (71.1°C) | none stated |
+| All poultry, including ground poultry | 165°F (73.9°C) | none stated |
+| Fish and shellfish | 145°F (62.8°C) | none stated |
+| Leftovers and casseroles | 165°F (73.9°C) | none stated |
+| Eggs | 160°F (71.1°C) | none stated |
+
+Source: [USDA FSIS, Safe Minimum Internal Temperature Chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart), read 2026-11-20. The chart also notes that consumers may choose to cook to higher temperatures for personal preference. For anything not listed, check the chart directly rather than relying on this table.
 
 ## Where a probe does not help
 

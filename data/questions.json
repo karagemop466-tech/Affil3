@@ -11,14 +11,14 @@
   "questions": [
     {
       "id": "Q-01",
-      "question": "Which product is behind the fifth submitted link?",
+      "question": "Which product is behind the fifth submitted link, and why does its destination change?",
       "blocks": "Any page, table row or recommendation for that product. Also any claim about the 'five products'.",
-      "known": "The link https://link.amazon/B0c8moW59 returns Amazon's interstitial 'Continue shopping' page at /checkpoint/continue. It was requested twice on 2026-11-20 with the same result.",
-      "unknown": "The product name, ASIN, category and any attribute. Nothing is inferred.",
-      "to_close": "Open the link in a browser on the owner's own network, or send the full amazon.com/dp/ URL. Either produces the ASIN as a stated fact.",
+      "known": "https://link.amazon/B0c8moW59 was requested four times. It returned a checkpoint page once, the Chefman TurboFry (B08DKYBTPH) once, and a ThermoMaven thermometer (B0DHZTCNR5) once. The destination is not stable. One of those products was never submitted by the owner.",
+      "unknown": "Which product was intended. Whether the link is mistyped, expired, reassigned, or being served A/B variants by Amazon. Nothing is inferred from the three observations.",
+      "to_close": "The owner sends the full amazon.com/dp/ URL of the intended product, in writing.",
       "priority": "blocker",
       "owner": "site owner",
-      "flag": "FLG-001"
+      "flag": "FLG-001, FLG-011"
     },
     {
       "id": "Q-02",

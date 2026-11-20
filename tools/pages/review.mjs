@@ -135,7 +135,17 @@ function register({ DATA }) {
       <td>${p.published ? `<a href="${SITE.base}/products/${p.slug}/">${p.short_name}</a>` : `<strong>${p.working_name}</strong>`}<br><span class="id">${p.intended_asin || "no ASIN"}</span></td>
       <td><a href="${p.submitted_link}" target="_blank" rel="nofollow noopener"><code>${p.submitted_link}</code></a></td>
       <td>${p.intended_asin || "—"}<br><span class="tiny muted">${p.confirmation_date || "unconfirmed"}</span></td>
-      <td>${p.observed_resolution_status === "resolved" ? `<a href="${p.observed_redirect_target}" target="_blank" rel="nofollow noopener" class="tiny"><code>${p.observed_redirect_target.split("?")[0]}</code></a>` : `<span class="tiny muted">checkpoint page, no product</span>`}</td>
+      <td>${
+        p.observed_resolution_status === "resolved"
+          ? `<a href="${p.observed_redirect_target}" target="_blank" rel="nofollow noopener" class="tiny"><code>${p.observed_redirect_target.split("?")[0]}</code></a>`
+          : p.observed_targets_log && p.observed_targets_log.length
+            ? `<span class="tiny"><strong>${p.observed_targets_log.length} observations, no agreement:</strong><br>` +
+              p.observed_targets_log
+                .map((o) => `(${o.run}) ${o.result === "product" ? `<a href="${o.final_url}" target="_blank" rel="nofollow noopener"><code>${o.final_url.split("/").pop()}</code></a>` : `<span class="muted">checkpoint, no product</span>`}`)
+                .join("<br>") +
+              `</span>`
+            : `<span class="tiny muted">checkpoint page, no product</span>`
+      }</td>
       <td>${p.observed_tag_parameter && p.observed_tag_parameter !== "none present in the observed redirect target" ? chip("ok", "tag present") : chip("stop", "no tag seen")}</td>
       <td>${resolved ? chip("ok", "resolved") : chip("stop", "blocked")}</td>
       <td>${p.published ? chip("info", "live") : chip("flag", p.flag)}</td>
@@ -163,6 +173,29 @@ ${head(
       <tbody>${rows}</tbody>
     </table>
   </div>
+
+  ${
+    DATA.products.products.some((p) => p.observed_targets_log && p.observed_targets_log.length)
+      ? `<h2 style="margin-top:2.5rem">Every observation of the disputed link</h2>
+  <p class="small">The fifth link was requested four times. The destinations did not agree, so they are listed in full rather than reduced to a single "observed" value. No observation is treated as the true one.</p>
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Run</th><th>Result</th><th>Final URL</th><th>Page title observed</th><th>Date</th></tr></thead>
+      <tbody>
+        ${DATA.products.products
+          .filter((p) => p.observed_targets_log)
+          .flatMap((p) =>
+            p.observed_targets_log.map(
+              (o) => `<tr><td>${o.run}</td><td>${o.result === "product" ? chip("flag", "product page") : chip("stop", "checkpoint")}</td><td>${o.final_url ? `<a href="${o.final_url}" target="_blank" rel="nofollow noopener" class="tiny"><code>${o.final_url}</code></a>` : "—"}</td><td class="tiny">${o.title || "no product title returned"}</td><td>${o.date}</td></tr>`
+            )
+          )
+          .join("")}
+      </tbody>
+    </table>
+  </div>
+  <p class="small" style="margin-top:.8rem">One of these destinations is a product that was never submitted by the owner. That is recorded as <a href="${SITE.base}/review/flagged-for-review/#FLG-011">FLG-011</a>.</p>`
+      : ""
+  }
 
   <h2 style="margin-top:2.5rem">Link construction used on the site</h2>
   <p class="small">Every published product link is built as a canonical Amazon address plus the Associates tag, rather than by reusing the supplied short link. The reason is in <a href="${SITE.base}/review/suggestions/#SUG-09">SUG-09</a>: the short links did not show a tag in the redirect, so their attribution cannot be confirmed from outside the account. This is a risk-averse choice, not a claim that the supplied links are invalid.</p>
