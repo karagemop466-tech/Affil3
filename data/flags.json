@@ -4,11 +4,11 @@
       "id": "FLG-001",
       "severity": "high",
       "title": "Submitted tokens are 9 characters, not 10",
-      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.",
+      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and Amazon's own Associates help page describes the ASIN as a 10-digit code (S18, read as an excerpt; see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.",
       "sources": [
         "S04",
         "S05",
-        "S12"
+        "S18"
       ],
       "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
     },
@@ -74,11 +74,11 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S19). The site has 13 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-05).",
       "sources": [
-        "S11"
+        "S19"
       ],
-      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
+      "manual_step": "Decide the content plan (suggestion S-05) before submitting the site for Associates review."
     },
     {
       "id": "FLG-008",
@@ -121,13 +121,13 @@
     {
       "id": "FLG-012",
       "severity": "medium",
-      "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
+      "title": "The Amazon-owned ASIN definition is still read only as a search excerpt",
+      "detail": "An Amazon-owned definition has since been located: the Associates Central help page 'How do I build a simple text link to a specific item on Amazon?' (S18) states that the ASIN is the 10-digit code Amazon uses to denote a product. It was read as a search excerpt rather than as a full page, so the 10-character rule that FLG-001 rests on is supported by an excerpt, and a manual full-page re-check is still open. Until that is done the rule is treated as excerpt-supported, not fully re-verified.",
       "sources": [
-        "S04",
-        "S12"
+        "S18",
+        "S04"
       ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+      "manual_step": "Open S18 in a browser and read the full page, then update the source status from 'verified (excerpt; re-check manually)' to a full-page verification."
     },
     {
       "id": "FLG-013",
@@ -205,8 +205,8 @@
       "title": "Thermometer guide omitted the FSIS ground-meat row; corrected",
       "detail": "The guide 'Is your meat thermometer telling you the right number?' listed beef, poultry and ham minimums but omitted the FSIS row 'Ground Meats: 160 degrees F'. Corrected on 2026-11-20 by adding 'Ground meats: 160 °F.' to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.",
       "sources": [
-        "S09",
-        "S10"
+        "S10",
+        "S20"
       ],
       "action": "None. Recorded for transparency."
     },

@@ -557,7 +557,7 @@ const add = (p) => pages.push(p);
 add({
   path: '/categories/', title: 'Categories',
   description: 'Product categories and the guides that cover each one.',
-  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">Three clusters. Each cluster lists its products and the guides that cover them.</p></section>
+  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">${CATEGORIES.length} clusters. Each cluster lists its products and the guides that cover them.</p></section>
 <div class="cat-grid">${CATEGORIES.map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><p class="small muted">${products.filter((p) => p.category === c.slug).length} product row(s) · ${guides.filter((g) => g.category === c.slug || (g.cluster_links || []).includes(c.slug)).length} guide(s)</p></a>`).join('')}</div>`,
 });
 for (const c of CATEGORIES) {
@@ -745,7 +745,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -754,9 +754,9 @@ add({
 <h2>What is verified</h2>
 <ul>
 <li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
-<li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
+<li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S10, S20) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
-<li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li>An Amazon-owned ASIN definition has been located in Associates Central help (S18, excerpt; manual re-check pending, FLG-012).</li>
 <li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a buy button and a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14).</li>
 </ul>
 <h2>What is not verified, and why</h2>
@@ -919,7 +919,7 @@ ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-10', 'Sitemap and feed cover every guide; no broken internal links', 'Automated', 'Passed (automated)'],
     ['G-11', 'Generated files match the registers (no hand-edited HTML drift)', 'Automated (CI re-runs build and compares)', 'Passed (automated)'],
     ['G-12', 'Observed product destinations cross-checked by an independent retest', 'Retest register + independent fetch; corrections logged', 'Passed (FLG-022 corrected, FLG-028 corroborated)'],
-    ['G-13', "Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over", 'Manufacturer-page register (S11–S16) + retest', 'Passed — conflicts published (FLG-023…FLG-027)'],
+    ['G-13', "Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over", 'Manufacturer-page register (S11–S15, S21, S23) + retest', 'Passed — conflicts published (FLG-023…FLG-027)'],
   ])}
 <div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>`,
 });
@@ -931,7 +931,7 @@ add({
   body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
 <div class="prose">
 <h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-02 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has five original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S11, FLG-007).</p>
+<p>Current proposal: one new guide every two weeks (suggestion S-05 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has ${guides.length} original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S19, FLG-007). Guide count alone does not establish approval.</p>
 <h2>From question to page</h2>
 <ol>
 <li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
