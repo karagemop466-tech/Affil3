@@ -1,123 +1,57 @@
-# Executive summary
+# Executive summary — ShopNow Kitchen
 
-**Prepared:** 2026-11-20 · **Tracking ID:** `shopnow047c-20` · **Site:** https://karagemop466-tech.github.io/Affil3/
-**Branch merged from:** `arena/4578ad4b-affil3`
+**Reviewed:** 2026-11-20 · **Tracking ID configured:** `shopnow047c-20` · **Site:** [ShopNow Kitchen](https://karagemop466-tech.github.io/Affil3/)
 
----
+## Executive view
 
-## The one-paragraph version
+The repository contains a publication-style kitchen buying-guide site, a product/source register, a decision board, question register, flagged-items page, RSS feed and sitemap. The content is deliberately limited to facts recorded with sources. It does not claim product popularity, search volume, conversion performance or revenue. Product intent is not yet confirmed for any of the five supplied short links: intended ASIN and confirmation fields remain blank. The latest recorded observed ASINs are observations, not owner confirmation or validation of Associates tracking.
 
-Five Amazon links were supplied. Four resolve to real products in one coherent niche — countertop
-cooking appliances. The fifth resolves to nothing and is published as nothing. None of the five carries
-your tracking ID, which is the single thing standing between this site and earning a cent. The site is
-built, verified, and live; the measurement it collects is honest and currently zero, because there is
-nothing honest to report yet.
+The site should be treated as an editorial prototype—not as a proven revenue system. The measurement endpoint is unset; therefore the browser instrumentation cannot report to a live collector. The campaign ledger is empty by design. No authorized first-party orders or revenue figures have been entered.
 
----
+## What is in the repository
 
-## What the five links actually are
+- **Shop front page and product/category pages:** product-led presentation, with disclosure immediately below the masthead and repeated in the footer.
+- **Five submitted links:** preserved separately from observed targets in `data/products.json`. All intended ASIN/confirmation fields are blank; observed targets must not be substituted for intent.
+- **Four question-led guide drafts:** buyer-oriented hypotheses about basket vs. oven formats, capacity, cleanup/counter space, and multi-function appliances. They are not assertions of search demand.
+- **Decision board:** `/suggestions/` presents options and trade-offs before implementation.
+- **Questions and discovery paths:** `/questions/` lists information gaps and ways to resolve them.
+- **Flagged for Review:** `/flagged/` keeps unresolved identity, link, policy and operational issues visible.
+- **Measurement and campaign ledger:** event definitions and a ledger schema exist, but no live analytics endpoint or reported campaign data is configured.
+- **Build gate:** `npm run check` completed successfully on this checkout (32 generated pages; 3,484 verification checks; editorial check passed 21 pages). This is a local build result, not proof of a successful current GitHub Pages deployment.
 
-| Slot | Supplied link | Resolves to | Product | Identity |
-|---|---|---|---|---|
-| 1 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | CHEFMAN TurboFry Touch 6 Qt. Dual-Window Air Fryer (RJ38-SQPF-3TDB-2W) | resolved |
-| 2 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT (4-00675-02A-VN) | resolved |
-| 3 | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` | CHEFMAN TurboFry Touch Stainless-Steel Air Fryer, 8 Qt (RJ38-SQSS-8T) | resolved |
-| 4 | `link.amazon/B0c8moW59` | Amazon "Continue shopping" interstitial; catalog search returns no results | — | **unresolved** |
-| 5 | `link.amazon/B0f3GKalj` | `amazon.com/dp/B0DZFD6R9Z` | CHEF iQ Sense Smart Wireless Meat Thermometer, 3 Probes (Gen3) | resolved |
+## Important limitations and irregularities
 
-Four of five are air fryers or air fryer ovens. The niche chose itself: **countertop cooking appliances
-for kitchens with limited counter space.** The thermometer is the natural adjacency, not a detour.
+1. **Product identity is not confirmed.** The register records observed destinations separately from intended ASINs. Confirm each product from the owner's Associates workflow before treating the link or product match as approved.
+2. **Special Link tracking is untested.** The configured tracking ID is present in generated product links, but the account's enrollment status and the click/reporting outcome have not been validated in Associates Central. Do not describe conversions as tracked until a test is visible in an authorized report.
+3. **No live analytics / no campaign data.** GitHub Pages is static and cannot itself host the collector. `analyticsEndpoint` is unset; the campaign ledger has no measured values. There are no conversion scores, revenue forecasts or optimization conclusions.
+4. **Some evidence and site history conflict.** The repository retains multiple historical editions, generated surfaces and differing snapshots. The root is the intended reader-facing edition; legacy material should not be confused with the current product. Review the current `/flagged/` page and source register before relying on historical summary prose.
+5. **The site is not an autonomous product-research agent.** It does not currently establish high-converting products, scrape Amazon, use the Creators API, or automatically publish optimized content. Those capabilities require authorized data access, policy review and human editorial approval.
 
-## The finding that matters most
+## Recommended decision order
 
-Every supplied link resolves to an `amazon.com/dp/<ASIN>` URL with **no `tag=` parameter**. Amazon's
-Program Policies require the Associates ID to appear as a URL parameter on every link placed on a site,
-and the Operating Agreement requires links to use the tagged formats Amazon provides. As supplied,
-these links would not attribute a sale.
+1. **Confirm the five product intents** from the Amazon listing and the account holder's records; record intended ASIN, official listing URL, date and source independently from observed redirects.
+2. **Test one Special Link per product** inside Associates Central and check that the destination and report attribution match before wider rollout. Amazon source: [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) and [Program Policies](https://affiliate-program.amazon.com/help/operating/policies).
+3. **Choose the publication's reader and cadence** on `/suggestions/`; prioritize useful, firsthand buyer questions over trend claims that have not been measured.
+4. **Only then enable measurement:** select and secure a host for the collector, review the privacy notice, configure the endpoint, and verify the five event types using test traffic.
+5. **Verify Search Console** and submit the sitemap; use actual query and landing-page data to choose later topics, without treating early or sparse data as proof of demand.
+6. **Keep the compliance gate:** disclosures and `rel="sponsored"` on product-intent links; review current Amazon rules and FTC endorsement disclosure guidance before changing monetization or automation.
 
-The correct response is not to rewrite the links by hand. It is to re-issue them from Associates
-Central, click one, and confirm the click shows up in the report before touching the other four —
-one link tested, then scale. That is `SG-08` on the suggestions page, and it is the only thing on this
-site that is blocked rather than done.
+## Questions that prevent a sound business decision
 
-Note precisely what is and is not being claimed: the short links are **untagged and unresolved**. No
-official document reviewed says `link.amazon` short URLs are invalid. Their exact compliance status is
-not addressed in the documents read.
+| Question | Information currently missing | How to discover it |
+|---|---|---|
+| Which exact product does each supplied short link represent? | Owner-confirmed intended ASIN and listing | Open the listing in a signed-in browser; preserve the destination, date and official page as an intent-confirmation record. |
+| Do the links earn attribution for this account? | Associates Central test result and report evidence | Generate a Special Link in the enrolled account, click a controlled test link and confirm its reporting outcome. |
+| Who is the reader? | A defined buyer, cooking situation, budget and kitchen constraint | Choose a primary reader profile based on actual household/customer evidence, not assumed demographics. |
+| Which product comparisons are defensible? | Directly verified model-specific specs and firsthand testing | Use manufacturer documentation and, where a field is absent or conflicting, leave it blank until confirmed. |
+| Which topics attract qualified readers? | Search queries, impressions, visits and buyer questions | Verify Search Console; review query data over a meaningful period and document dates and provenance. |
+| Do visits lead to clicks or orders? | Live collector and authorized Associates reports | Deploy and test the collector; use only authorized first-party reports for clicks/orders and keep dated provenance. |
+| Is product-data automation permitted and available? | Account eligibility, API access and current policy interpretation | Confirm program eligibility and API terms in official Amazon documentation before building ingestion or price/review features. |
 
-## What was built
+## Source review links
 
-| Surface | What it does |
-|---|---|
-| Front page | Leads with three shape-based picks. No verification talk above the fold. |
-| Category pages | Air fryers, oven-style, thermometers. Comparison table plus cards. |
-| Product pages | Source-cited spec table, gains/costs, fit statement, product-intent record. |
-| Four guides | Question-shaped, answered from the register. RSS + sitemap included. |
-| Source register | 19 sources, tiered, each with what it supports and when it was read. |
-| Flagged for review | 7 irregularities, published with source links. Does not block publication. |
-| Open questions | 24 questions, each with an owner and the step that closes it. |
-| Suggestions queue | 14 proposals with problem, cost, and the decision needed. 3 shipped, 1 blocked. |
-| Dashboard | Entry status, campaign ledger schema (empty), 12 compliance rules, 5 events. |
-| Disclosure & method | Rule-by-rule record with the quoted policy basis for each. |
-
-Every dashboard surface is reachable from **one** footer group. There is one navigation group.
-
-## What is enforced by the build, not by good intentions
-
-`tools/check_site.py` fails the build if:
-
-- any internal link breaks,
-- a currency amount appears anywhere in the HTML,
-- a star rating or review count appears,
-- a product call-to-action lacks `tag=shopnow047c-20`,
-- an Amazon citation is not marked `rel="nofollow"`,
-- the Associates statement is missing from any page,
-- a cited source ID does not exist,
-- the sitemap does not cover every page.
-
-This is why **no buy button renders today**. Rendering one would mean shipping a link that cannot pay
-you. The product pages say so in plain language where the button would be.
-
-## Verification standard applied
-
-- Specs come from the **manufacturer's own product page** wherever one exists. Amazon listings were
-  used for identity.
-- **Two official pages contradicted each other twice**: preset count on the Emeril oven (`FLG-001`) and
-  wattage on the Chefman 8 Qt (`FLG-002`). Both fields are blank on the site and both conflicts are
-  published.
-- **Secondhand review sites were read while orienting and are never cited.** No value on the site
-  traces to one.
-- A value with no official source is **blank and marked unverified**. Nothing is inferred.
-- No price, no star rating, no review count appears anywhere — that is a policy requirement, and it is
-  also why the site cannot be tempted into stale numbers.
-
-## What is still missing, and who closes it
-
-| Missing | Blocks | Owner | Closes in |
-|---|---|---|---|
-| A tagged link, tested once | All revenue | Account holder | minutes |
-| Whether `shopnow047c-20` is live on the account | Confidence in every URL | Account holder | minutes |
-| What link 4 points to | Slot 4 existing at all | Account holder | minutes |
-| API access yes/no | Any price ever appearing | Account holder | minutes |
-| Search Console verification | Choosing the next topic from data | Site owner | an hour |
-| An analytics endpoint and an owner for it | Any measurement at all | Site owner | an hour |
-| Author name and credentials | Reader trust, ranking | Site owner | a day |
-| Confirmation of two disputed specs | Two blank table rows | Editor | an email |
-
-Nine of these are access problems, not research problems. That is the useful thing to know: the site is
-not waiting on more work, it is waiting on credentials.
-
-## The honest position on revenue
-
-The site earns **nothing today** and will earn nothing until a tagged link exists. Once it does, the
-first month of data will be small, and the right response is to read it rather than to scale content
-against it. No conversion rate, revenue forecast, or traffic estimate appears anywhere in this
-repository, because none exists and inventing one would be the exact failure mode this project was
-built to avoid.
-
-## Read next
-
-- `COORDINATION.md` — task board, claims, verification log
-- `docs/flagged/` — the seven irregularities
-- `docs/questions/` — 24 questions with owners
-- `docs/suggestions/` — 14 proposals awaiting a decision
-- `docs/disclosure/` — the rule-by-rule compliance record
+- [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+- [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies)
+- [FTC Endorsement Guides: What People Are Asking](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking)
+- [Google guidance on qualifying outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
+- Product and manufacturer sources are indexed by ID in [`data/sources.json`](data/sources.json); unverified issues are linked from the live [Flagged for Review](https://karagemop466-tech.github.io/Affil3/flagged/) page.

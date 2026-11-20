@@ -1,0 +1,67 @@
+name: counter-desk
+
+# Gates the /counter-desk/ edition only. It rebuilds from data/3b45b513/, fails if the
+# committed output differs from a clean build, runs the publishing gate, and runs the
+# gate's own unit tests so the gate cannot quietly stop working.
+#
+# It does not touch, rebuild or gate any other surface in this repository: the root
+# publication, /editorial/, /crisp-index/, /counterwise/, /counter/ and /legacy/ belong
+# to other sessions and have their own workflows.
+
+on:
+  push:
+    paths:
+      - 'counter-desk/**'
+      - 'data/3b45b513/**'
+      - 'tools/3b45b513/**'
+      - '.github/workflows/counter-desk.yml'
+  pull_request:
+    paths:
+      - 'counter-desk/**'
+      - 'data/3b45b513/**'
+      - 'tools/3b45b513/**'
+      - '.github/workflows/counter-desk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    name: Build, gate and test the Counter Desk edition
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Rebuild from the register
+        run: node tools/3b45b513/build.mjs
+
+      - name: Fail on drift between the register and the committed site
+        run: |
+          git status --short -- counter-desk
+          if [ -n "$(git status --porcelain -- counter-desk)" ]; then
+            echo "::error::Committed /counter-desk/ output does not match a clean build. Run node tools/3b45b513/build.mjs and commit the result."
+            git --no-pager diff --stat -- counter-desk
+            exit 1
+          fi
+
+      - name: Publishing gate
+        run: node tools/3b45b513/gate.mjs
+
+      - name: Gate unit tests
+        run: node --test tools/3b45b513/gate.test.mjs
+
+      - name: Confirm the edition did not modify another session's surface
+        run: |
+          changed="$(git status --porcelain -- . ':!counter-desk' ':!data/3b45b513' ':!tools/3b45b513' || true)"
+          if [ -n "$changed" ]; then
+            echo "::error::This job's build touched paths outside the claimed scope:"
+            echo "$changed"
+            exit 1
+          fi

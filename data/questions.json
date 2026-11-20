@@ -1,5 +1,4 @@
 {
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at.",
   "known": [
     {
       "id": "K-01",
@@ -46,7 +45,7 @@
     },
     {
       "id": "K-07",
-      "statement": "Four of the five supplied short links resolved to a product page across three fetch rounds; one did not resolve to a product at all.",
+      "statement": "All five supplied short links have resolved to a product page in at least one dated fetch. One of them (B00hJ57DV) first landed on an intermittent Amazon checkpoint before resolving, which is why earlier rounds recorded four.",
       "sources": [
         "S05",
         "S04"
@@ -62,9 +61,10 @@
     },
     {
       "id": "K-09",
-      "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.",
+      "statement": "Two destinations were transposed in an earlier register revision and were corrected after a retest. The corrected mapping was corroborated by an independent fetch, and the five product pages were re-read directly by their /dp/ identifier on 2026-11-20 with every title matching the register character for character.",
       "sources": [
-        "S05"
+        "S05",
+        "S04"
       ]
     },
     {
@@ -90,8 +90,75 @@
       "sources": [
         "S17"
       ]
+    },
+    {
+      "id": "K-13",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
+      "sources": [
+        "S05",
+        "S04",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-14",
+      "statement": "Participation Requirements §5 bars using Special Links or Program Content \"to develop machine learning models or related technology\" without Amazon's express prior written approval. Read verbatim 2026-11-20.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-15",
+      "statement": "Participation Requirements §6(y) bars price tracking and price alerting functionality on the Site unless Amazon agrees. Read verbatim 2026-11-20.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-16",
+      "statement": "Participation Requirements §6(u) bars purchasing through your own Special Links and bars permitting, requesting or encouraging friends, relatives, employees or contractors to do so. Gate G-02 must therefore be tested by checking the destination and the tracking report, never by placing an order.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-17",
+      "statement": "Participation Requirements §6(g) bars offering any consideration, reward or incentive for using Special Links, and §4 permits Special Links in email, SMS and direct messages only where the communication was solicited. Together these constrain any reader-capture offer: opt-in only, and no reward for clicking.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-18",
+      "statement": "A violation of the Participation Requirements, the IP License or Operating Agreement §5 is deemed a material breach of the Agreement, and Operating Agreement §6 permits immediate termination on a material breach. The compliance rules this site enforces in its build gate are termination-grade, not stylistic.",
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-19",
+      "statement": "Operating Agreement §4 states Amazon makes \"no representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time\". That is the official basis for the empty campaign ledger and for publishing no revenue forecast, conversion score or traffic estimate anywhere in this repository.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-20",
+      "statement": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID has an eleven-character prefix, which the clause permits; the shape neither confirms nor refutes the ID. §1(g) separately bars any Amazon trademark or variant in a tag, and the supplied ID contains none.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-21",
+      "statement": "Participation Requirements §2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends. Seasonal content therefore carries a takedown obligation, and any seasonal page needs an expiry date rather than just a publish date.",
+      "sources": [
+        "S02"
+      ]
     }
   ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "unknown": [
     {
       "id": "Q-01",
@@ -217,6 +284,50 @@
     },
     {
       "id": "Q-14",
+      "question": "Is the ThermoMaven listing the F1 Ace?",
+      "why_it_matters": "The manufacturer page for the F1 Ace (S21) matches the listing title feature for feature, but the listing never says 'F1 Ace'. Until the model is confirmed, the specification grid on that row shows the manufacturer family-page figures rather than confirmed specifications of the listed unit.",
+      "how_to_close": "Open https://www.amazon.com/dp/B0DHZTCNR5 in a signed-in browser, read the model or product-details field, and record what it says with the date. If it names the F1 Ace, the figures can be promoted and FLG-025 can close.",
+      "sources": [
+        "S04",
+        "S21"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-15",
+      "question": "Which of the published editions is the product?",
+      "why_it_matters": "Several reader-facing editions are published under one domain and the same tracking ID. Only the root edition is in the sitemap; the rest are excluded from the index but still reachable. One indexed site is the clearest signal to a search engine and the cleanest attribution for a click.",
+      "how_to_close": "Name one edition as the product and decide whether the others stay on this domain at all. Suggestion S-11 lists the options with the trade-off for each.",
+      "sources": [
+        "S09"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-16",
+      "question": "Is the draft privacy notice adequate, and does it need legal review before the analytics endpoint is switched on?",
+      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-035).",
+      "lack": "A review by anyone qualified to give one. The draft was written by a build session from the code and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
+      "who": "Site owner / counsel",
+      "why_it_matters": "§3(e) is an Associates obligation and a violation of the Participation Requirements is a material breach. Switching the endpoint on before the notice is settled would collect data under an unreviewed disclosure.",
+      "how_to_close": "Read the page, correct anything that overstates or understates what the code does, and decide whether counsel should review it before Q-04 is answered.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-17",
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
+      "sources": [
+        "S05"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-18",
       "question": "Where will reader email capture run, and under what consent wording?",
       "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
       "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
@@ -282,6 +393,30 @@
     },
     {
       "id": "D-09",
+      "suggestion": "Open the ThermoMaven listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the manufacturer figures can be promoted from family figures to confirmed specifications.",
+      "closes": [
+        "Q-14"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Negative-test the gate before trusting it. Introduce a page whose hand-written sentence contradicts its own table, remove a sponsored attribute, and change a tracking tag; confirm the build fails each time. A gate that has never been seen to fail is not evidence of anything. Session 66f2548a ran three of these.",
+      "closes": []
+    },
+    {
+      "id": "D-11",
+      "suggestion": "Re-read the Operating Agreement and Program Policies on a schedule and record the date each time. Both pages state an \"Updated\" date that changes, and a clause read once is a clause that can quietly stop being true.",
+      "closes": []
+    },
+    {
+      "id": "D-12",
+      "suggestion": "Re-fetch each submitted link whenever a product row is edited, and keep the raw record in data/observations/ with the date. Two transposition errors and one false 'dead link' in this repository's history all came from a single fetch being trusted on its own.",
+      "closes": [
+        "Q-01"
+      ]
+    },
+    {
+      "id": "D-13",
       "suggestion": "After Search Console is verified, read the Performance report two weeks later and pick the next guide from the top unanswered query.",
       "closes": [
         "Q-12",
@@ -289,8 +424,8 @@
       ]
     },
     {
-      "id": "D-10",
-      "suggestion": "Name one reader persona from S-13 and write it at the top of the December commission list before any new guide is drafted.",
+      "id": "D-14",
+      "suggestion": "Name one reader persona from S-22 and write it at the top of the December commission list before any new guide is drafted.",
       "closes": [
         "Q-13"
       ]

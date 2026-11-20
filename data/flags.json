@@ -1,5 +1,4 @@
 {
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -75,7 +74,7 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 8 question-shaped guides and 5 product rows after the 2026-11-20 polish pass. Adding content is a decision for the user (see suggestion S-05).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 16 question-shaped guides and 5 product rows after the 2026-11-20 parallel sessions. Adding content is a decision for the user (see suggestion S-05).",
       "sources": [
         "S11"
       ],
@@ -258,24 +257,27 @@
       "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
-      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
-      "impact": "One of five products is present but not recommended, and carries no outbound link.",
-      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "title": "ThermoMaven: a manufacturer page exists for the F1 Ace family, but the listing does not name the model",
+      "detail": "The register previously recorded that no manufacturer page could be located for this thermometer. That was wrong, and it is corrected here: a ThermoMaven product page for the F1 Ace instant-read thermometer exists at the URL in S21 and was read on 2026-11-20. It states a 1-second instant read on a thermocouple sensor, NIST-certified +/-0.5 °F accuracy, a 100% waterproof design, a built-in magnet and a lifetime warranty activated within 30 days. Those features match the headline claims on the observed Amazon listing (\"1 Sec Professional Digital Meat Thermometer, +/-0.5℃ Accuracy, NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof\"). What is still unconfirmed is the model correspondence: the listing never says \"F1 Ace\", it says \"1 Sec Professional\". The site therefore publishes the F1 Ace figures as the manufacturer figures for this family and states on the product page that they are not confirmed as the specifications of the listed unit. The buy button is now published, because the product identity (an instant-read ThermoMaven thermometer) and the observed listing agree.",
+      "impact": "The row now carries a buy button and a sourced specification set, but the model name on the page is the family page, not a confirmed designation for the listed unit.",
+      "manual_step": "Open the Amazon listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the specification grid can be promoted from family figures to confirmed specifications and this flag can close.",
       "sources": [
-        "S04"
+        "S04",
+        "S05",
+        "S21"
       ]
     },
     {
       "id": "FLG-026",
-      "severity": "high",
+      "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
-      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
-      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
-      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "title": "The 8 Qt air fryer conflict was measured against the wrong model page (corrected)",
+      "detail": "The Amazon listing for B08DKYBTPH states 1000 W/120 V, model RJ38-SQSS-8T, 200-400 °F, 12.75 x 13.5 x 10 in and a stainless-steel finish. An earlier pass compared that listing against Chefman's page for RJ38-8T-BLACK (1700 W, 450 °F Hi-Fry, matte black) and concluded that two different machines shared one listing. That was the wrong comparison: Chefman also publishes a page for RJ38-SQSS-8T itself (S23), which states 8 qt / 7.57 L, 200-400 °F, 1700 W/120 V, 15.4 x 12.6 x 13.5 in and 12.8 lb. Against the correct page the two agree on capacity, model number and the 200-400 °F range, and disagree on wattage (1000 W vs 1700 W) and case size (12.75 x 13.5 x 10 vs 15.4 x 12.6 x 13.5). The manufacturer figures are published for this model and both differences are named. The RJ38-8T-BLACK page (S12) is retained in the register so the wrong comparison stays visible.",
+      "impact": "Wattage and case size stay contested; capacity, model number and the temperature range are published because the correct maker page was located.",
+      "manual_step": "Confirm the wattage and case dimensions for RJ38-SQSS-8T with Chefman support in writing, and confirm whether the listing ships this model or a successor.",
       "sources": [
+        "S23",
         "S16",
         "S12"
       ]
@@ -285,11 +287,12 @@
       "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "The same listing carries two different temperature ranges in two places",
-      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
-      "impact": "Temperature is withheld on one product.",
-      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "title": "One Amazon listing states two different temperature ceilings",
+      "detail": "The Amazon listing for B08DKYBTPH advertises a \"450 °F Hi-Fry option\" in its title while its own \"About this item\" bullet and the maker's page for the same model number (S23) both state a 200-400 °F range. A short Hi-Fry burst above the normal ceiling is plausible and common, but neither page explains how it works, so the 450 °F figure is not adopted. The site publishes the 400 °F range that both the maker and the listing's own bullet state, and records the title's claim here.",
+      "impact": "The temperature ceiling is published with the title claim named rather than silently dropped.",
+      "manual_step": "The user guide linked from the listing should settle whether Hi-Fry is a separate short-lived mode. Read it and record the page reference.",
       "sources": [
+        "S23",
         "S16"
       ]
     },
@@ -332,15 +335,126 @@
     {
       "id": "FLG-031",
       "severity": "low",
-      "status": "resolved",
-      "title": "P04's no-buy-button reason contradicted its own row (fixed)",
-      "detail": "The P04 card text said 'No submitted link resolved to this listing', while the same row records its submitted token resolving to its own observed listing (B0c8moW59 -> B0DHZTCNR5, corroborated by the dated retest and by three independent fetch passes). The prose predated the PR #10 transposition fix and was never re-derived from the corrected row. The actual reason the buy button is withheld is FLG-025: no manufacturer specification page was located for this model. P04's blank_reason also cited FLG-007 (content depth) for the NIST and NSF claims; that is FLG-025 as well.",
-      "resolution": "Reason text rewritten to the actual cause (FLG-025) and the stale flag cross-references corrected on 2026-11-20. Same failure mode as the shop summary counts fixed earlier: prose derived from row state must be re-derived when the row changes.",
+      "status": "open",
+      "area": "link resolution",
+      "title": "A 2026-11-20 re-fetch of two short links returned the Amazon home page, not a product page",
+      "detail": "During the 2026-11-20 verification round the two submitted short links that were fetched directly (B04G1MEwY and B02NbDxp3) returned the Amazon home page instead of a product detail page. That is the same intermittent behaviour already recorded in FLG-004, which is why the register treats a checkpoint or a home page as a fetch artefact rather than as evidence that a link is dead. It does mean the observed mapping in data/products.json is carried from the earlier dated rounds that observed it, not re-derived in this round; the five product pages themselves were fetched directly by their /dp/ identifier and every title matched the register character for character (S04). No link is claimed to be invalid, and FLG-003 stays open: the compliance status of the supplied short links is still unresolved.",
+      "impact": "The observed destination of each submitted link is carried forward rather than re-derived, and the unresolved status of the short links is unchanged.",
+      "manual_step": "Open each short link in a signed-in browser and record the product name and the 10-character ASIN from the address bar. That also closes Q-01.",
       "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "status": "open",
+      "area": "site structure",
+      "title": "Four editions of this publication are published under one domain; only the root one is in the sitemap",
+      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml; the others are excluded from the index through robots.txt and noindex metadata, and they are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
+      "impact": "Five near-identical editions on one domain split the search signals and the tracking data. The fix applied here is one indexed site plus a labelled archive; the owner can reverse it for any edition.",
+      "manual_step": "Decide which single edition is the product, and whether the other three should stay on this domain at all. Suggestion S-11 records the options; each edition keeps its own generator and gate, so republishing one is a one-line change.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-033",
+      "severity": "low",
+      "status": "open",
+      "title": "The tracking ID's shape does not match the example format in the policy, which is not the same as being wrong",
+      "detail": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID shopnow047c-20 has an eleven-character prefix rather than five, and a two-digit suffix that does match. Because the clause expressly allows other designated formats, the shape proves nothing either way: it cannot confirm the ID is valid and it cannot show it is invalid. Recorded so nobody later reads the eleven-character prefix as evidence of a problem, and so the weaker argument - an Associates help page saying IDs end in -20 - is not mistaken for the policy text. Separately §1(g) bars any Amazon trademark or variant in a tag or Associates ID; shopnow047c contains none, which is a genuine pass.",
+      "impact": "None on its own. It narrows what may be concluded from the ID's appearance and leaves ownership unconfirmed.",
+      "manual_step": "Export the tracking-ID list from Associates Central and confirm shopnow047c-20 appears on it; that closes this flag and FLG-011 together.",
+      "sources": [
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "id": "FLG-034",
+      "severity": "medium",
+      "status": "open",
+      "title": "Amazon presents the product behind submitted link 4 as superseded",
+      "detail": "The official page for B0DHZTCNR5 (ThermoMaven 1 Sec instant-read, Black) carries a \"Newer Version Available\" block linking to a different ASIN, B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh unauthenticated fetch 2026-11-20 and recorded in data/observations/2026-11-20-reverify-66f2548a.json. The submitted link therefore points at a variant Amazon itself flags as superseded. The successor ASIN is recorded as an observation only and is not published as a product row: it was not submitted and its intended status cannot be confirmed. A price and a star rating were visible inside that block and neither was transcribed or published, per §6(t) and §2(b).",
+      "impact": "A reader who clicks through lands on a variant the seller presents as superseded, and the product already has no manufacturer page to verify against (FLG-025).",
+      "manual_step": "Decide whether slot 4 should promote B0GL7Z4KP4. If so, supply it as the intended product so the intended fields can be filled from an official source, then issue a tagged Special Link for it in Associates Central.",
+      "sources": [
+        "S02",
+        "S05"
+      ]
+    },
+    {
+      "id": "FLG-035",
+      "severity": "medium",
+      "status": "resolved",
+      "title": "The published site carried no privacy notice while loading a click counter on every page",
+      "detail": "Participation Requirements §3(e) makes the Associate responsible for disclosing \"either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors\". For most of this repository's history the site loaded assets/analytics.js on every page with no notice anywhere on the live surface; privacy pages existed only under legacy/, belonging to superseded editions.",
+      "impact": "A disclosure obligation under the Associates policies that was unmet, and a reader-facing gap: nobody could tell what a page they were reading was doing.",
+      "resolution": "RESOLVED 2026-11-20 by main, independently of this session: a /privacy/ page now ships and states that nothing is collected while the endpoint is unset. This session's separately written draft was dropped in the merge rather than kept as a second privacy page. What remains open is Q-16: whether the shipped wording is adequate where the site is operated from, which is a question for the owner or counsel rather than a build session.",
+      "manual_step": "Review the shipped /privacy/ page against §3(e) and decide whether counsel should read it before any endpoint is configured (Q-16).",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "FLG-036",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link",
+      "detail": "Source note S05 said that B0c8moW59 'did not resolve to a product listing'. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register's observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.",
+      "impact": "The observed destination of each short link rests on the earlier dated rounds only. The S05 note now agrees with the register, so a reader cannot take the stale sentence as evidence against P04.",
+      "manual_step": "Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "FLG-037",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "On 2026-11-20 three rounds recorded product destinations for the five submitted short links: data/observations/2026-11-20-session-2e0c91d0.json, 2026-11-20-retest.json and 2026-11-20-reverify-66f2548a.json. Two rounds recorded the Amazon home page for all five: 2026-11-20-dd2ad3dc-recheck.json and 2026-11-20-478e6577-recheck.json (this session). The register entry K-13 says all five resolve to a product page; a note now points here. The cause is not known from the sandbox. Possible causes include a fetcher difference, content that varies by region, session or time, or links that changed after the earlier rounds. None of these has been tested. Nothing here shows a link to be dead, invalid or re-mapped.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Open each of the five submitted short links in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Then run gate G-02 (one tagged Special Link per product). Record both in the observation log.",
+      "sources": [
+        "S04",
         "S05",
-        "S04"
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "FLG-038",
+      "severity": "medium",
+      "status": "open",
+      "area": "crawl and indexing",
+      "title": "Crawl control at a project path: robots.txt is not read from /Affil3/, and the other editions are not all noindexed",
+      "detail": "The root publication is served at https://karagemop466-tech.github.io/Affil3/. Search engines read robots.txt only from the host root (S25). The file generated by tools/build.mjs sits at /Affil3/robots.txt, so its Disallow lines for /editorial/, /legacy/ and /crisp-index/, and its Sitemap line, are not read from that path. https://karagemop466-tech.github.io/robots.txt returned an error on fetch. Only /editorial/ carries noindex on every page (21 of 21 html files). /counter/ has 0 of 23 files with noindex, /counterwise/ has 1 of 30, /crisp-index/ has 1 of 18, and /legacy/ has 4 of 100. The /docs/ publication named in the README is not in the working tree. A further edition, /counter-desk/, was merged to main after this branch was cut (commit 627ddfb). It has 32 html files, one of which carries noindex, its own sitemap and robots file, and it is not linked from the root publication or listed in the root sitemap. Rewriting robots.txt in this pass was not done, because it would look like a control without being one.",
+      "impact": "Near-duplicate copies of the same guides can compete with the root publication in search results. The sitemap is not discovered at the project path, so it must be submitted by hand.",
+      "manual_step": "Owner: add the site as a URL-prefix property in Search Console at https://karagemop466-tech.github.io/Affil3/, verify it, and submit sitemap.xml (FLG-013). Then choose an option on S-20 (noindex on the other surfaces, or removal from the Pages site, or a host-root repository).",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-039",
+      "severity": "low",
+      "status": "resolved",
+      "area": "documentation",
+      "title": "README stated a stale check count and listed a /docs/ publication that is not in the tree (corrected)",
+      "detail": "README.md said that node tools/verify.mjs runs 2,808 checks. The run on 1f65f70 reports 4,588 passed checks. The README also listed a /docs/ publication built from scripts/ and server/, but git ls-files shows no docs/ path at 1f65f70. The count is now stated as a figure from the current run, and the /docs/ row says the directory is not present. scripts/ and server/ exist and were not changed.",
+      "impact": "A reader could follow a link or a command that does not match the repository. No published page was wrong.",
+      "manual_step": "None. Re-check the count after any change to tools/verify.mjs.",
+      "sources": [
+        "S25"
       ]
     }
   ],
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
   "checked": "2026-11-20"
 }

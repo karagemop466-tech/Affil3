@@ -23,7 +23,7 @@ sponsored links, measurement and the compliance gate exactly as verified.
 | P01 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | CHEFMAN 6 Qt Dual Basket Air Fryer | Air fryers | yes (tagged, provisional) |
 | P02 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | Emeril Lagasse 26 QT French Door Air Fryer Toaster Oven | Countertop ovens | yes (tagged, provisional) |
 | P03 | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` | Chefman TurboFry 8 Qt air fryer | Air fryers | yes (tagged, provisional) |
-| P04 | `link.amazon/B0c8moW59` | `amazon.com/dp/B0DHZTCNR5` | ThermoMaven instant-read thermometer | Thermometers | **no** — withheld (FLG-025) |
+| P04 | `link.amazon/B0c8moW59` | `amazon.com/dp/B0DHZTCNR5` | ThermoMaven instant-read thermometer | Thermometers | yes (tagged; specs labelled family-page figures, FLG-025/Q-14) |
 | P05 | `link.amazon/B0f3GKalj` | `amazon.com/dp/B0DZFD6R9Z` | CHEF iQ Sense wireless thermometer | Thermometers | yes (tagged, provisional) |
 
 Per the brief's product-intent rule, **intended** fields (intended ASIN, official listing URL,
@@ -40,7 +40,8 @@ recorded verbatim; their compliance status is **unresolved, not invalid** (FLG-0
 2. **`/shop/` is now a buyer-actionable page** — a side-by-side comparison table first (shape,
    capacity, temperatures, power, best-for, trade-off, where to check it, sources), with the
    full findings register (intended vs observed, flags, sources) kept below it, clearly labelled.
-3. **Three new question-shaped guides** (8 total, all in the sitemap and RSS feed):
+3. **Three new question-shaped guides** (16 total after the merge with the parallel sessions'
+   own eight, all in the sitemap and RSS feed):
    *Black Friday kitchen deals: a checklist before you click add to cart*,
    *Dual-basket, single-basket, or oven-style? Match the shape to your week*, and
    *Smart meat thermometers: what actually matters before you buy*. Working titles only —
@@ -57,11 +58,13 @@ recorded verbatim; their compliance status is **unresolved, not invalid** (FLG-0
    direction, target reader, measurement-vs-content order); Q-14 (email capture endpoint and
    consent wording) and discovery steps D-09/D-10 added. Nothing on the decision board is
    implemented until the owner names an option.
-7. **Data correction (FLG-031, resolved).** P04's "no buy button" reason contradicted its own
-   row ("no submitted link resolved to this listing" while the row records B0c8moW59 →
-   B0DHZTCNR5). The reason text now states the real cause (FLG-025: no manufacturer page), and
-   two stale flag cross-references were corrected. Prose derived from row state must be
-   re-derived when the row changes.
+7. **Data correction (found pre-merge, superseded at merge).** P04's "no buy button" reason
+   contradicted its own row ("no submitted link resolved to this listing" while the row records
+   B0c8moW59 → B0DHZTCNR5). Before the fix could ship, the merge brought in `origin/main`'s
+   deeper rebuild: a ThermoMaven manufacturer family page (S21) had been found and P04 rebuilt
+   with sourced figures and a buy button, so the stale text no longer exists. The finding is
+   recorded in `COORDINATION.md`; the merged register keeps `main`'s rebuild wholesale. Only the
+   FLG-007 guide-count/cross-ref edit was re-applied on top.
 
 ## What is verified (official sources only)
 
@@ -85,7 +88,9 @@ recorded verbatim; their compliance status is **unresolved, not invalid** (FLG-0
   declared site (FLG-006).
 * Analytics endpoint: shipped but idle on GitHub Pages (FLG-009, S-03); Search Console not
   connected (FLG-013). No prices, ratings or availability are shown anywhere, by policy.
-* P04 specifications: withheld entirely — no manufacturer page located (FLG-025).
+* P04 model identity: the listing names no model; its figures are the manufacturer's F1 Ace
+   family-page figures, labelled as such and not adopted as confirmed specifications of the
+   listed unit (FLG-025, Q-14).
 
 ## Compliance posture (gates before scaling)
 
@@ -95,7 +100,7 @@ recorded verbatim; their compliance status is **unresolved, not invalid** (FLG-0
 * G-02 one Special Link per product tested in Associates Central — **owner action required
   before scaling** (FLG-005). Do not scale traffic before this is done.
 * The publishing gate (`tools/verify.mjs`) is enforced in CI on every push; a failing check
-  blocks publication. This session: **33 pages, 3,776 checks, 0 failed**.
+  blocks publication. This session pre-merge: 33 pages, 3,776 checks; **merged tree: 43 pages, 5,248 checks, 0 failed**.
 
 ## Evidence-based iteration (Priority 4)
 
@@ -111,13 +116,16 @@ anti-cloaking). Collection activates when the owner deploys `tools/collector.mjs
 
 Reply with the ID and option letter, e.g. `S-14 A`:
 
-* **S-11** sub-editions: keep one indexed site (current A) / index `/counter/` / retire subs.
-* **S-12** December content: holiday hosting (current A) / gift guides / deal follow-ups.
-* **S-13** target reader: weeknight small households (current A) / hosts / gadget-first.
-* **S-14** order of operations: **A — deploy measurement before the next guide batch** (rec.)
+* **S-21** December content: holiday hosting (current A) / gift guides / deal follow-ups.
+* **S-22** target reader: weeknight small households (current A) / hosts / gadget-first.
+* **S-23** order of operations: **A — deploy measurement before the next guide batch** (rec.)
   or B — publish first (current).
-* Existing: S-01..S-10 (sub-editions, buy buttons, analytics host, pricing, cadence, reader
-  capture, imagery, byline, product scope, disclosure prominence).
+* From the parallel sessions (kept unchanged): **S-11** four editions on one domain,
+  **S-12** the ThermoMaven buy button, **S-13** a side-by-side comparison page (served twice
+  over now: their `/compare/` spec sheet and this session's `/shop/` buyer table),
+  **S-14** derive every count from its rows, and S-01..S-10 plus S-15..S-20. (My draft S-11
+  duplicated their S-11 and was dropped at merge; my drafts S-12..S-14 were renumbered
+  S-21..S-23.)
 
 Blocking questions (with how-to-close steps on `/questions/`): **Q-01** confirm intended
 products from the enrolled link-generation record; **Q-02** run gate G-02 in Associates
@@ -139,5 +147,6 @@ FLG-022, FLG-028, FLG-029.
 * Buyer comparison: `/shop/` · Guides: `/guides/` · Decisions: `/suggestions/`, `/questions/`
 * Registers: `/sources/`, `/flagged/`, `/shop/#full-findings-register` (intended vs observed)
 * Compliance: `/compliance/`, `/workflow/`, `/privacy/`, `/measurement/`, `/ledger/`
+* Comparison: `/compare/` (spec sheet) · Next-redesign brief: `/design-brief/` (+ `DESIGN-BRIEF.md`)
 * Tooling: `tools/build.mjs` (generator), `tools/verify.mjs` (gate), `tools/collector.mjs`
   (self-hosted analytics endpoint, deployment pending)

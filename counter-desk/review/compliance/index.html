@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disclosure, link rules and the publishing gates — Counter Desk</title>
+<meta name="description" content="The rule-by-rule compliance record: the clause, what it requires, and what in this build enforces it.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/counter-desk/review/compliance/">
+<meta property="og:title" content="Disclosure, link rules and the publishing gates">
+<meta property="og:description" content="The rule-by-rule compliance record: the clause, what it requires, and what in this build enforces it.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/counter-desk/review/compliance/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Counter Desk">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/counter-desk/assets/img/hero-desk.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Disclosure, link rules and the publishing gates">
+<meta name="twitter:description" content="The rule-by-rule compliance record: the clause, what it requires, and what in this build enforces it.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/counter-desk/assets/img/hero-desk.jpg">
+<meta name="analytics-endpoint" content="">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="alternate" type="application/rss+xml" title="Counter Desk — buying guides" href="https://karagemop466-tech.github.io/Affil3/counter-desk/feed.xml">
+<link rel="stylesheet" href="/Affil3/counter-desk/assets/style.css">
+
+</head>
+<body data-page="review">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="/Affil3/counter-desk/">Counter Desk<span class="dot">.</span><small>Kitchen buying guides</small></a>
+    <p class="issue"><b>Independent</b> · checked November 20, 2026</p>
+    <nav class="nav" aria-label="Main">
+        <a href="/Affil3/counter-desk/shelf/">The shelf</a>
+        <a href="/Affil3/counter-desk/guides/">Buying guides</a>
+        <a href="/Affil3/counter-desk/counter-space/">Counter space</a>
+        <a href="/Affil3/counter-desk/about/">About</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Paid links</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored. <a href="/Affil3/counter-desk/review/compliance/">How we disclose</a></div>
+</div>
+<main id="main">
+<div class="wrap">
+<section class="page-head">
+  <p class="kicker">Compliance</p>
+  <h1>Disclosure, links and the gates before scaling</h1>
+  <p class="deck">Every rule below cites the clause it comes from and names the thing in the build that enforces it. A rule with no enforcement mechanism is a wish, so none of them are listed without one.</p>
+</section>
+
+<h2>The two statements and where they sit</h2>
+<div class="prose">
+<p>Amazon's Operating Agreement §5 requires the site to state, clearly and prominently: <strong>“As an Amazon Associate I earn from qualifying purchases.”</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener" title="Associates Program Operating Agreement">S01</a></p>
+<p>The FTC's affiliate-marketing guidance gives its own example wording — <strong>“I get commissions for purchases made through links in this post.”</strong> — and says the disclosure should sit as close to the recommendation as it can <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener external" title="FTC&#39;s Endorsement Guides: What People Are Asking — the affiliate-marketing section">S05</a>, which is what 16 CFR 255.5 means by clearly and conspicuously <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5" rel="noopener external" title="16 CFR 255.5 — Disclosure of material connections">S06</a>.</p>
+<p>Both sentences appear in the disclosure bar directly under the masthead on every page of this site, and both are repeated in the footer. The bar is above the first product on the front page and above the first buy button on every product page, so no reader reaches a paid link without having passed it.</p>
+</div>
+
+<h2>Link rules, and what enforces them</h2>
+<div class="table-wrap">
+  <table class="data wide">
+    <thead><tr><th scope="col">Rule</th><th scope="col">Source</th><th scope="col">How this build complies</th><th scope="col">Enforced by</th></tr></thead>
+    <tbody>
+      <tr><td>Every link to an Amazon site must carry the Associates ID as a URL parameter</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>Every outbound product link is generated as <code>amazon.com/dp/&lt;asin&gt;?tag=shopnow047c-20</code> by a single function; no hand-written Amazon href exists anywhere</td><td>Gate: any Amazon retail link without the exact tag fails the build</td></tr>
+      <tr><td>Paid and affiliate links should be qualified for search</td><td><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external" title="Qualify your outbound links to Google">S04</a></td><td><code>rel="sponsored noopener"</code> on every Amazon link</td><td>Gate: an Amazon link without <code>sponsored</code> fails</td></tr>
+      <tr><td>Special Links must be accessed directly; no cloaking or redirecting link</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>No redirect endpoint exists in this build. The click counter is client-side only</td><td>Gate: a meta refresh or <code>window.location</code> assignment fails; no <code>/go/</code> path is generated</td></tr>
+      <tr><td>No link shortening that makes it unclear the link goes to Amazon</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>The supplied <code>link.amazon</code> short links are shown as plain text evidence in the register, never as clickable links</td><td>Gate: a <code>link.amazon</code> anchor fails</td></tr>
+      <tr><td>Price and availability only from Amazon-served data or the API</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>No price, availability or currency amount is published anywhere</td><td>Gate: a currency pattern in any rendered page fails</td></tr>
+      <tr><td>Customer reviews and star ratings only from the API</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>No rating, review count or review text is republished</td><td>Gate: a rating pattern fails</td></tr>
+      <tr><td>No price tracking or alerting</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener" title="Associates Program Policies — Participation Requirements">S02</a></td><td>The site stores no price and no history</td><td>Structural: there is no price field in the data model</td></tr>
+      <tr><td>Disclosure must be clear and conspicuous</td><td><a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5" rel="noopener external" title="16 CFR 255.5 — Disclosure of material connections">S06</a></td><td>The bar sits above the fold on every page and is repeated in the footer</td><td>Gate: a page whose disclosure appears after <code>&lt;main&gt;</code> fails</td></tr>
+      <tr><td>One coherent site for search engines</td><td><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external" title="Qualify your outbound links to Google">S04</a></td><td>This edition has its own sitemap and feed, is namespaced under <code>/counter-desk/</code>, and declares a canonical URL on every page</td><td>Gate: a page missing from the sitemap fails; the feed must match the guide register</td></tr>
+      <tr><td>No claim of hands-on testing</td><td>Editorial policy</td><td>Every image is captioned as illustration; the front page, About page and every product page say the appliances were not tested</td><td>Gate: a testing claim pattern fails</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>Gates before this scales</h2>
+<div class="table-wrap">
+  <table class="data wide">
+    <thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead>
+    <tbody>
+      <tr><td>G-01</td><td>Both disclosures above the fold on every page, repeated in the footer</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-02</td><td>One Special Link per product tested in Associates Central, destination and tracking report confirmed</td><td>Manual — needs an Associates login</td><td><span class="badge high">pending</span> <a class="badge high" href="/Affil3/counter-desk/review/flagged/#CDF-04">CDF-04</a></td></tr>
+      <tr><td>G-03</td><td>Every Amazon link carries <code>rel="sponsored"</code></td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-04</td><td>Every outbound product link carries <code>tag=shopnow047c-20</code></td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-05</td><td>No redirect, cloaking page or shortener anchor</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-06</td><td>No price, rating or availability displayed</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-07</td><td>Every published specification carries a source id that exists</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-08</td><td>Ledger rows only from authorised first-party reports</td><td>Manual</td><td><span class="badge low">no rows yet</span></td></tr>
+      <tr><td>G-09</td><td>Only the five defined events; no cookies, no storage</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-10</td><td>Sitemap and feed cover every page and guide; no broken internal links; every image exists with alt text</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-11</td><td>Every image is captioned as an illustration</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+      <tr><td>G-12</td><td>One canonical URL per page, one <code>h1</code>, a title under 90 characters</td><td>Automated</td><td><span class="badge resolved">passing</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="fine">Gate G-02 is the only one this build cannot pass, and it cannot pass it by writing better code: it needs a signed-in Associates session. Everything else is enforced by <code>node tools/3b45b513/gate.mjs</code>, which runs in CI on every push and fails the build rather than warning.</p>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/counter-desk/">Counter Desk<span class="dot">.</span></a>
+        <p class="foot-blurb">Five countertop cooking appliances, compared the boring way — capacity, footprint, temperature, cleanup — from the makers' own specification pages, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">The publication</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/counter-desk/shelf/">The five picks</a></li>
+          <li><a href="/Affil3/counter-desk/guides/">Buying guides</a></li>
+          <li><a href="/Affil3/counter-desk/categories/">Categories</a></li>
+          <li><a href="/Affil3/counter-desk/counter-space/">Counter-space &amp; fit finder</a></li>
+          <li><a href="/Affil3/counter-desk/about/">About and corrections</a></li>
+          <li><a href="/Affil3/counter-desk/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/counter-desk/sitemap.xml">Sitemap</a></li>
+        </ul>
+        <h2 class="foot-h" style="margin-top:22px">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/counter-desk/review/">Operator index</a></li>
+          <li><a href="/Affil3/counter-desk/review/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/counter-desk/review/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/counter-desk/review/questions/">Open questions</a></li>
+          <li><a href="/Affil3/counter-desk/review/suggestions/">Suggestions and decisions</a></li>
+          <li><a href="/Affil3/counter-desk/review/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/counter-desk/review/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/counter-desk/review/compliance/">Disclosure and gates</a></li>
+          <li><a href="/Affil3/counter-desk/review/sources/">Source register</a></li>
+          <li><a href="/Affil3/counter-desk/review/register/">Product-intent register</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</p>
+    <p class="foot-fine">Counter Desk is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown, because Amazon's program rules only permit a site to display price data that Amazon serves. Photographs are editorial illustrations, not the reviewed units. Published under a desk byline; no named editor has been supplied. Last checked November 20, 2026. As an Amazon Associate I earn from qualifying purchases.</p>
+  </div>
+</footer>
+<script src="/Affil3/counter-desk/assets/analytics.js" defer></script>
+
+</body>
+</html>
