@@ -1,0 +1,47 @@
+{
+  "name": "Countertop Journal",
+  "name_status": "Working brand. Not confirmed by owner (see SUG-04). Contains no Amazon trademark (Associates policy on Amazon names).",
+  "tagline": "Buyer questions for the kitchen counter, with every link checked.",
+  "base_url": "https://karagemop466-tech.github.io/Affil3/",
+  "repo_url": "https://github.com/karagemop466-tech/Affil3",
+  "build_date": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "tracking_id_status": "Format matches the XXXXX-## pattern described in the Associates policies (SRC-02). Account ownership and attribution not yet confirmed in Associates Central (FLG-001).",
+  "associates_statement": "As an Amazon Associate I earn from qualifying purchases.",
+  "associates_statement_source": "https://affiliate-program.amazon.com/help/operating/agreement",
+  "analytics_endpoint": "",
+  "analytics_endpoint_status": "Not configured. The receiver in analytics/collect_server.py is built but not hosted (FLG-004). While this is empty the site sends nothing.",
+  "cadence": {
+    "guides_per_period": 1,
+    "period_days": 14,
+    "rule": "One new question-shaped guide every 14 days, each added to sitemap.xml and feed.xml on publication.",
+    "status": "Proposed default. Awaiting your choice (SUG-03).",
+    "last_published": "2026-11-20",
+    "next_planned": "2026-12-04"
+  },
+  "categories": [
+    {
+      "id": "air-fryers",
+      "name": "Air fryers & ovens",
+      "blurb": "Countertop air fryers and multi-function ovens. Every listing in this group sits under Amazon's Air Fryers browse path (see breadcrumb column).",
+      "kicker": "Category 1 of 3"
+    },
+    {
+      "id": "thermometers",
+      "name": "Kitchen thermometers",
+      "blurb": "Wireless meat thermometers. The listing sits under Amazon's Meat thermometers browse path.",
+      "kicker": "Category 2 of 3"
+    },
+    {
+      "id": "awaiting-verification",
+      "name": "Awaiting verification",
+      "blurb": "Submitted link that did not open to a product listing when checked on 20 Nov 2026. Shown for transparency; not recommended until confirmed.",
+      "kicker": "Category 3 of 3"
+    }
+  ],
+  "clusters": [
+    {"id": "air-fryers", "name": "Air fryers", "blurb": "Basket and oven-style countertop cookers."},
+    {"id": "appliances", "name": "Multi-function appliances", "blurb": "Questions to ask before buying one appliance that does several jobs."},
+    {"id": "thermometers", "name": "Thermometers", "blurb": "Food-safety temperatures and what to ask a wireless probe."}
+  ]
+}
