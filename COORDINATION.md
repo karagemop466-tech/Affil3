@@ -1765,3 +1765,15 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
   internal one, a sensor count); guide count and cluster count on the front page and the categories
   page are now read from the register instead of being written by hand.
+
+---
+
+# Session `478e6577` board — current-state review, crawl and link re-check, executive summary (2026-11-20)
+
+- Registry: session `478e6577`, branch `arena/478e6577-affil3`, cut from `main` @ `1f65f70` (after PR #54). Status: active.
+- Scope claimed on this branch only: `COORDINATION.md` (this section), `data/observations/2026-11-20-478e6577-recheck.json` (new),
+  `data/sources.json` (append S25 only), `data/flags.json` (append FLG-037 to FLG-039 only), `data/questions.json` (K-13 note and Q-17 only),
+  `data/suggestions.json` (append S-20 only), `README.md` (stale-claim fixes and one link), `EXECUTIVE-SUMMARY-478e6577.md` (new),
+  and the generated root pages that `tools/build.mjs` owns.
+- Not claimed and not touched: every other session's directory (`editorial/`, `counter/`, `counterwise/`, `crisp-index/`, `legacy/`, `docs/`,
+  `server/`, `scripts/`), `tools/*` other than the generator's output, `.github/workflows/*`.
