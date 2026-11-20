@@ -1,5 +1,5 @@
 {
-  "inputs_hash": "967dd5c6f957b1c8",
+  "inputs_hash": "c5653f0fe894af8c",
   "builder": "tools/build.py",
   "reproducible": "no wall-clock stamp in the manifest, so two builds of the same register produce byte-identical output and CI can require the committed site to match it",
   "pages": [
