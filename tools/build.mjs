@@ -759,14 +759,21 @@ add({
   description: 'Options for the next decisions. Nothing is implemented until the owner chooses.',
   body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">${esc(suggestionsDoc.note)}</p></section>
 <div class="choice-grid">
-${suggestionsDoc.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
+${suggestionsDoc.suggestions.map((s) => `<section class="choice-card${s.status === 'implemented' ? ' is-done' : ''}" id="${esc(s.id)}">
   <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
-  <p class="choice-current">Current: <span class="badge">${esc(s.current)}</span></p>
-  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
+  <p class="choice-current">Decided: <span class="badge ${s.status === 'implemented' ? 'good' : ''}">${esc(s.current)}</span>${s.status === 'implemented' ? ' <span class="badge good">implemented</span>' : ' <span class="badge">open — awaiting your call</span>'}</p>
+  ${s.status === 'implemented' && s.implemented_in ? `<p class="small muted">Landed in ${esc(s.implemented_in)}.</p>` : ''}
+  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span>${o.cost ? `<br><span class="muted small">Cost to do it: ${esc(o.cost)}</span>` : ''}${o.reversible ? `<br><span class="muted small">Reversible: ${esc(o.reversible)}</span>` : ''}</li>`).join('')}</ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
+  <dl class="choice-meta">
+    ${s.blocking ? `<div><dt>What it holds up</dt><dd>${esc(s.blocking)}</dd></div>` : ''}
+    ${s.meas ? `<div><dt>How you would know it worked</dt><dd>${esc(s.meas)}</dd></div>` : ''}
+    ${s.cost ? `<div><dt>Cost of the recommended path</dt><dd>${esc(s.cost)}</dd></div>` : ''}
+    ${s.evidence ? `<div><dt>Why it is settled</dt><dd>${esc(s.evidence)}</dd></div>` : ''}
+  </dl>
 </section>`).join('\n')}
 </div>
-<section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="${esc(href('/questions/'))}">questions page</a>.</p></section>`,
+<section class="band"><h2>How to choose</h2><p>Nine decisions are open. Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="${esc(href('/questions/'))}">questions page</a>, and every irregularity found so far is on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p></section>`,
 });
 
 // Flagged for review

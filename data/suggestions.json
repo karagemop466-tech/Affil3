@@ -1,28 +1,44 @@
 {
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B'.",
+  "note": "Every item here is a decision waiting on the owner, with one exception: S-01 was closed by this integration session because it had already been implemented. Unimplemented options keep the site working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B', and the selected option is implemented in a later pass. Each card now also carries what the change would cost, whether it can be reversed, and what it would take to measure whether it worked, so a choice can be made without reading the code.",
   "suggestions": [
     {
       "id": "S-01",
       "topic": "Two publications in one repository",
-      "current": "A",
+      "current": "D",
       "options": [
         {
           "id": "A",
-          "label": "Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).",
-          "tradeoff": "Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL."
+          "label": "Keep the earlier /editorial/ edition live but excluded from search, and index only the root site.",
+          "tradeoff": "Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.",
+          "cost": "No build work. The old edition keeps its own generators and has to be re-verified whenever shared assets change.",
+          "reversible": "Yes. Remove one disallow rule and the edition is discoverable again."
         },
         {
           "id": "B",
-          "label": "Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.",
-          "tradeoff": "Cleanest signal for search engines; a redirect map has to be written and tested first."
+          "label": "Retire the old edition entirely and redirect its URLs to the equivalent root pages.",
+          "tradeoff": "Cleanest signal for search engines; a redirect map has to be written and tested first.",
+          "cost": "A redirect map per old URL, tested in the link checker.",
+          "reversible": "Partly. Deleting generated pages without keeping sources would not be reversible."
         },
         {
           "id": "C",
           "label": "Merge the better parts of the old edition into the root site and remove the duplicate pages.",
-          "tradeoff": "Best content outcome, most work, and the old edition's data conflicts with the root data and must be reconciled."
+          "tradeoff": "Best content outcome, most work, and the old edition’s data conflicts with the root data and must be reconciled.",
+          "cost": "Editorial reconciliation plus a data merge.",
+          "reversible": "No, once the sources are deleted."
+        },
+        {
+          "id": "D",
+          "label": "Archive every parallel edition under legacy/editions/, keep one live publication at the root, and disallow /legacy/ in robots.txt (implemented).",
+          "tradeoff": "One indexable publication, and all four earlier editions preserved with their generators, data and tests intact for provenance. The archived editions are no longer maintained as public publications.",
+          "cost": "Done in this session: four directory moves, nine path repoints, and a root robots.txt rule.",
+          "reversible": "Yes. Moving a directory back and restoring its robots rule is enough; nothing was deleted."
         }
       ],
-      "recommendation": "B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies."
+      "recommendation": "D, and it is now implemented. Two live editions of a five-page site was more surface than the content justified, while deleting the parallel work would have thrown away provenance. Archiving keeps both properties. The remaining choice is whether to publish redirects from the archived URLs; that is tracked as Q-10.",
+      "status": "implemented",
+      "implemented_in": "commit bbf1b42 (Consolidate: archive the four parallel editions under legacy/editions/)",
+      "evidence": "legacy/archive/index.html lists all four editions; root robots.txt disallows only /legacy/; tools/check_all_links.py and tools/archive-check.mjs both pass against the archived paths."
     },
     {
       "id": "S-02",
@@ -40,7 +56,12 @@
           "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure.",
+      "cost": "Zero build work either way. Hiding the buttons is one flag per row.",
+      "revers": "Yes, flipping the flag back restores the buttons.",
+      "meas": "Associates Central click and order reports, once link testing exists.",
+      "blocking": "Every buy click on the site. G-02 has not passed.",
+      "status": "open"
     },
     {
       "id": "S-03",
@@ -68,7 +89,12 @@
           "tradeoff": "Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid."
         }
       ],
-      "recommendation": "B. It removes the server maintenance objection without handing the data away."
+      "recommendation": "B. It removes the server maintenance objection without handing the data away.",
+      "cost": "A small Node process and a TLS certificate on a host the owner controls.",
+      "revers": "Yes. The collector is a single file and the site degrades quietly if the endpoint is absent.",
+      "meas": "Counts of the five defined events in the collector log.",
+      "blocking": "Nothing visible; without it the measurement page stays empty.",
+      "status": "open"
     },
     {
       "id": "S-04",
@@ -91,7 +117,12 @@
           "tradeoff": "Useful and stable; still a claim that needs checking, and it ages badly."
         }
       ],
-      "recommendation": "A until traffic justifies the Creators API work. Then B."
+      "recommendation": "A until traffic justifies the Creators API work. Then B.",
+      "cost": "Creators API enrollment and a server-side call per price shown.",
+      "revers": "Yes, but the timestamped price becomes a claim the site has to keep true.",
+      "meas": "Not measurable until the API account exists.",
+      "blocking": "Pricing display only.",
+      "status": "open"
     },
     {
       "id": "S-05",
@@ -114,7 +145,12 @@
           "tradeoff": "Reaches a useful site size quickly; risks thin pages if the batch is rushed."
         }
       ],
-      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones."
+      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.",
+      "cost": "One guide of roughly 900 words plus one illustration per cycle.",
+      "revers": "Yes, cadence is a schedule not a commitment.",
+      "meas": "Referrals and outbound clicks per guide in the collector, once live.",
+      "blocking": "Nothing.",
+      "status": "open"
     },
     {
       "id": "S-06",
@@ -137,7 +173,12 @@
           "tradeoff": "Zero infrastructure and honest; very low conversion."
         }
       ],
-      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send."
+      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.",
+      "cost": "A double opt-in list, a privacy notice update and a sender.",
+      "revers": "Hard to reverse once addresses exist: deleting a list is the only undo.",
+      "meas": "Subscriber count and open rate, if the provider reports them.",
+      "blocking": "Nothing; the RSS feed already carries new guides.",
+      "status": "open"
     },
     {
       "id": "S-07",
@@ -160,7 +201,12 @@
           "tradeoff": "Highest trust and highest cost; needs physical units."
         }
       ],
-      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying."
+      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.",
+      "cost": "An approved Amazon image source, or a photographer.",
+      "revers": "Yes for illustrations; photography is money spent.",
+      "meas": "Not measurable without traffic.",
+      "blocking": "Nothing. The current illustrations are labelled, not passed off as product photos.",
+      "status": "open"
     },
     {
       "id": "S-08",
@@ -178,7 +224,12 @@
           "tradeoff": "Strongest trust signal; a person has to be accountable for the corrections."
         }
       ],
-      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available."
+      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available.",
+      "cost": "A real person willing to be named, briefed and contacted.",
+      "revers": "Yes.",
+      "meas": "Not directly measurable; it is a trust signal, not a funnel step.",
+      "blocking": "Nothing, but it is the largest credibility gap on the site.",
+      "status": "open"
     },
     {
       "id": "S-09",
@@ -201,7 +252,12 @@
           "tradeoff": "Scales the model; splits attention before anything is proven."
         }
       ],
-      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against."
+      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against.",
+      "cost": "A manufacturer page and a listing observation per added row.",
+      "revers": "Yes.",
+      "meas": "Outbound clicks per product in the collector.",
+      "blocking": "Nothing.",
+      "status": "open"
     },
     {
       "id": "S-10",
@@ -219,7 +275,12 @@
           "tradeoff": "Prettier; risks being read as decoration rather than disclosure."
         }
       ],
-      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is.",
+      "cost": "None; it is already built.",
+      "revers": "Yes, but a less prominent disclosure would weaken the FTC position.",
+      "meas": "Not measurable. This is a compliance control, not an optimisation.",
+      "blocking": "Nothing. It is already satisfied on every page.",
+      "status": "open"
     }
   ]
 }

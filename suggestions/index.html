@@ -40,70 +40,140 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example &#39;S-03 B&#39;.</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner, with one exception: S-01 was closed by this integration session because it had already been implemented. Unimplemented options keep the site working with whichever option is marked current. Reply with the suggestion ID and the letter, for example &#39;S-03 B&#39;, and the selected option is implemented in a later pass. Each card now also carries what the change would cost, whether it can be reversed, and what it would take to measure whether it worked, so a choice can be made without reading the code.</p></section>
 <div class="choice-grid">
-<section class="choice-card" id="S-01">
+<section class="choice-card is-done" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).<br><span class="muted small">Tradeoff: Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</span></li><li><strong>B.</strong> Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.<br><span class="muted small">Tradeoff: Cleanest signal for search engines; a redirect map has to be written and tested first.</span></li><li><strong>C.</strong> Merge the better parts of the old edition into the root site and remove the duplicate pages.<br><span class="muted small">Tradeoff: Best content outcome, most work, and the old edition&#39;s data conflicts with the root data and must be reconciled.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.</p>
+  <p class="choice-current">Decided: <span class="badge good">D</span> <span class="badge good">implemented</span></p>
+  <p class="small muted">Landed in commit bbf1b42 (Consolidate: archive the four parallel editions under legacy/editions/).</p>
+  <ul class="opts"><li><strong>A.</strong> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site.<br><span class="muted small">Tradeoff: Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</span><br><span class="muted small">Cost to do it: No build work. The old edition keeps its own generators and has to be re-verified whenever shared assets change.</span><br><span class="muted small">Reversible: Yes. Remove one disallow rule and the edition is discoverable again.</span></li><li><strong>B.</strong> Retire the old edition entirely and redirect its URLs to the equivalent root pages.<br><span class="muted small">Tradeoff: Cleanest signal for search engines; a redirect map has to be written and tested first.</span><br><span class="muted small">Cost to do it: A redirect map per old URL, tested in the link checker.</span><br><span class="muted small">Reversible: Partly. Deleting generated pages without keeping sources would not be reversible.</span></li><li><strong>C.</strong> Merge the better parts of the old edition into the root site and remove the duplicate pages.<br><span class="muted small">Tradeoff: Best content outcome, most work, and the old edition’s data conflicts with the root data and must be reconciled.</span><br><span class="muted small">Cost to do it: Editorial reconciliation plus a data merge.</span><br><span class="muted small">Reversible: No, once the sources are deleted.</span></li><li><strong>D.</strong> Archive every parallel edition under legacy/editions/, keep one live publication at the root, and disallow /legacy/ in robots.txt (implemented).<br><span class="muted small">Tradeoff: One indexable publication, and all four earlier editions preserved with their generators, data and tests intact for provenance. The archived editions are no longer maintained as public publications.</span><br><span class="muted small">Cost to do it: Done in this session: four directory moves, nine path repoints, and a root robots.txt rule.</span><br><span class="muted small">Reversible: Yes. Moving a directory back and restoring its robots rule is enough; nothing was deleted.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> D, and it is now implemented. Two live editions of a five-page site was more surface than the content justified, while deleting the parallel work would have thrown away provenance. Archiving keeps both properties. The remaining choice is whether to publish redirects from the archived URLs; that is tracked as Q-10.</p>
+  <dl class="choice-meta">
+    
+    
+    
+    <div><dt>Why it is settled</dt><dd>legacy/archive/index.html lists all four editions; root robots.txt disallows only /legacy/; tools/check_all_links.py and tools/archive-check.mjs both pass against the archived paths.</dd></div>
+  </dl>
 </section>
 <section class="choice-card" id="S-02">
   <p class="kicker">S-02 · Buy buttons while links are untested</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Every buy click on the site. G-02 has not passed.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Associates Central click and order reports, once link testing exists.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>Zero build work either way. Hiding the buttons is one flag per row.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-03">
   <p class="kicker">S-03 · Where the analytics collector runs</p>
-  <p class="choice-current">Current: <span class="badge">D</span></p>
+  <p class="choice-current">Decided: <span class="badge ">D</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS.<br><span class="muted small">Tradeoff: Full control of raw data; the owner runs a server and patches it.</span></li><li><strong>B.</strong> Run it as a serverless function on a platform that supports Node.<br><span class="muted small">Tradeoff: No server to patch; cold starts and platform limits on storage.</span></li><li><strong>C.</strong> Skip self-hosting and use a privacy-focused hosted analytics service.<br><span class="muted small">Tradeoff: Fastest to start; one more third party, and the data leaves your control.</span></li><li><strong>D.</strong> Stay inactive until there is traffic worth measuring (current).<br><span class="muted small">Tradeoff: Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B. It removes the server maintenance objection without handing the data away.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing visible; without it the measurement page stays empty.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Counts of the five defined events in the collector log.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>A small Node process and a TLS certificate on a host the owner controls.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-04">
   <p class="kicker">S-04 · Pricing display</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Show no prices; every button reads &#39;Check the current price on Amazon&#39; (current).<br><span class="muted small">Tradeoff: Always accurate, and compliant with the price clause; readers have to click to know a budget.</span></li><li><strong>B.</strong> Enroll in the Creators API and display Amazon-served prices with a timestamp.<br><span class="muted small">Tradeoff: Better for budget-led shoppers; more engineering, and a stale price is a compliance risk.</span></li><li><strong>C.</strong> Show a coarse price band instead of a figure.<br><span class="muted small">Tradeoff: Useful and stable; still a claim that needs checking, and it ages badly.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A until traffic justifies the Creators API work. Then B.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Pricing display only.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Not measurable until the API account exists.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>Creators API enrollment and a server-side call per price shown.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-05">
   <p class="kicker">S-05 · Publishing cadence</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> One new guide every two weeks (current).<br><span class="muted small">Tradeoff: Sustainable; slow to build a topic cluster.</span></li><li><strong>B.</strong> One new guide per week.<br><span class="muted small">Tradeoff: Faster topical coverage; needs a real writing slot weekly.</span></li><li><strong>C.</strong> A batch of eight guides before launch, then monthly.<br><span class="muted small">Tradeoff: Reaches a useful site size quickly; risks thin pages if the batch is rushed.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Referrals and outbound clicks per guide in the collector, once live.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>One guide of roughly 900 words plus one illustration per cycle.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-06">
   <p class="kicker">S-06 · Reader capture</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> No email capture yet; the RSS feed is the only subscription route (current).<br><span class="muted small">Tradeoff: Nothing to maintain and no consent obligations; no direct channel to readers.</span></li><li><strong>B.</strong> Add a single-field email capture with double opt-in on guide pages.<br><span class="muted small">Tradeoff: Owns the audience instead of renting it from search; adds a privacy notice and a provider.</span></li><li><strong>C.</strong> Publish a &#39;notify me when a new guide ships&#39; link that opens a mail draft.<br><span class="muted small">Tradeoff: Zero infrastructure and honest; very low conversion.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing; the RSS feed already carries new guides.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Subscriber count and open rate, if the provider reports them.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>A double opt-in list, a privacy notice update and a sender.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-07">
   <p class="kicker">S-07 · Imagery</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Keep editorial illustration, clearly labelled as not the reviewed unit (current).<br><span class="muted small">Tradeoff: Consistent look, no licensing exposure, no misleading product photography.</span></li><li><strong>B.</strong> Use Amazon-hosted product images through the approved image service.<br><span class="muted small">Tradeoff: Shows the actual product; images must be served by Amazon&#39;s tools and can change without notice.</span></li><li><strong>C.</strong> Commission real photography of the units.<br><span class="muted small">Tradeoff: Highest trust and highest cost; needs physical units.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing. The current illustrations are labelled, not passed off as product photos.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Not measurable without traffic.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>An approved Amazon image source, or a photographer.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-08">
   <p class="kicker">S-08 · The byline</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Keep the team byline, flagged as a weakness (current).<br><span class="muted small">Tradeoff: Honest and unchanging; weaker trust signal than a person.</span></li><li><strong>B.</strong> Add a named editor with a short bio and a contact address.<br><span class="muted small">Tradeoff: Strongest trust signal; a person has to be accountable for the corrections.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B as soon as a real person will take the byline. This is one of the cheapest trust wins available.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing, but it is the largest credibility gap on the site.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Not directly measurable; it is a trust signal, not a funnel step.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>A real person willing to be named, briefed and contacted.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-09">
   <p class="kicker">S-09 · Product scope</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Stay at five submitted products and go deep on them (current).<br><span class="muted small">Tradeoff: Focused and honest; a thin catalogue for a shopping site.</span></li><li><strong>B.</strong> Add three to five comparison products per category, researched the same way.<br><span class="muted small">Tradeoff: Makes the categories credible; each added product needs its own source page and verification.</span></li><li><strong>C.</strong> Expand into a second niche once the first converts.<br><span class="muted small">Tradeoff: Scales the model; splits attention before anything is proven.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, one category at a time, and only where a manufacturer page exists to verify against.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Outbound clicks per product in the collector.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>A manufacturer page and a listing observation per added row.</dd></div>
+    
+  </dl>
 </section>
 <section class="choice-card" id="S-10">
   <p class="kicker">S-10 · Disclosure prominence</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <p class="choice-current">Decided: <span class="badge ">A</span> <span class="badge">open — awaiting your call</span></p>
+  
   <ul class="opts"><li><strong>A.</strong> Dark disclosure bar directly under the masthead, repeated in the footer (current).<br><span class="muted small">Tradeoff: Impossible to miss, and slightly heavy visually.</span></li><li><strong>B.</strong> A lighter inline notice above the first product, plus the footer repeat.<br><span class="muted small">Tradeoff: Prettier; risks being read as decoration rather than disclosure.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
+  <dl class="choice-meta">
+    <div><dt>What it holds up</dt><dd>Nothing. It is already satisfied on every page.</dd></div>
+    <div><dt>How you would know it worked</dt><dd>Not measurable. This is a compliance control, not an optimisation.</dd></div>
+    <div><dt>Cost of the recommended path</dt><dd>None; it is already built.</dd></div>
+    
+  </dl>
 </section>
 </div>
-<section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
+<section class="band"><h2>How to choose</h2><p>Nine decisions are open. Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>, and every irregularity found so far is on <a href="/Affil3/flagged/">Flagged for review</a>.</p></section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
