@@ -1895,9 +1895,13 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 
 ## Completion record (session 478e6577)
 
-- Pull request: https://github.com/karagemop466-tech/Affil3/pull/65
-- Merge result: recorded in the follow-up log entry below, after the merge.
-- GitHub Pages deploy: recorded in the follow-up log entry below, after the merge.
+- **Pull request:** https://github.com/karagemop466-tech/Affil3/pull/65 (`arena/478e6577-affil3` → `main`)
+- **Checks before merge:** `disclosure`, `gate`, `verify`, `check-site`, `Gate the published Pages site`, and `Build, gate and test the Counter Desk edition`: all SUCCESS on the final head.
+- **Merge result: MERGED** into `main` as merge commit `c0bee1ed3aedd566114bc3b979259da65630b417` at 2026-11-20T06:55:51Z (`gh pr merge 65 --merge`). Post-merge workflows on `main` (Verify site, Site checks, Disclosure and archive integrity) all completed with success.
+- **GitHub Pages deploy:** `gh api repos/karagemop466-tech/Affil3/pages/builds/latest` reports status `built` for commit `c0bee1e…`, source `main` at `/`.
+- **Live check:** https://karagemop466-tech.github.io/Affil3/flagged/?v=478e6577 serves FLG-037 to FLG-039. The same URL without the query string returned a cached copy without FLG-037 at the time of the first check.
+- **Not done, and owner-only:** Associates Central test of one Special Link per product (G-02); signed-in check of the five short links (Q-17); Search Console verification and sitemap submission (FLG-013, FLG-038); analytics endpoint host (FLG-009); named editor (FLG-014, Q-06); publishing-cadence and crawl-control decisions (S-05, S-20).
+- **Follow-up:** this log-only entry was merged through a second PR from the same branch, because `main` cannot be written to directly. No content outside this file changed in that PR.
 
 ---
 
