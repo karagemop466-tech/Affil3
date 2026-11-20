@@ -28,7 +28,20 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "title_facts": {
+        "style": "Dual-basket air fryer oven",
+        "capacity": "6 Quart",
+        "notable": [
+          "Easy View Windows",
+          "Sync Finish",
+          "Hi-Fry",
+          "Auto Shutoff",
+          "2 independent 3Qt baskets"
+        ],
+        "use_for": "Cooking two things at once in separate drawers"
+      },
+      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
     },
     {
       "id": "P02",
@@ -55,7 +68,18 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "title_facts": {
+        "style": "French-door air fryer toaster oven",
+        "capacity": "26QT",
+        "notable": [
+          "24 one-touch preset options",
+          "six cooking accessories included",
+          "extra large interior"
+        ],
+        "use_for": "Trays, racks and oven-style cooking in one box"
+      },
+      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
     },
     {
       "id": "P03",
@@ -91,7 +115,19 @@
         "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
         "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
-      }
+      },
+      "title_facts": {
+        "style": "Single-basket air fryer",
+        "capacity": "8 Qt",
+        "notable": [
+          "4-in-1",
+          "450°F Hi-Fry option",
+          "bake, dehydrate, frozen",
+          "XL nonstick dishwasher-safe basket"
+        ],
+        "use_for": "Batch cooking in one large drawer"
+      },
+      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
     },
     {
       "id": "P04",
@@ -127,7 +163,19 @@
         "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
-      }
+      },
+      "title_facts": {
+        "style": "Instant-read digital thermometer",
+        "capacity": "",
+        "notable": [
+          "stated ±0.5 °F accuracy",
+          "NIST and NSF certified (as stated)",
+          "auto-rotate LED screen",
+          "IP67 waterproof"
+        ],
+        "use_for": "Quick spot checks across several pieces"
+      },
+      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
     },
     {
       "id": "P05",
@@ -154,8 +202,21 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "title_facts": {
+        "style": "Wireless leave-in probe thermometer",
+        "capacity": "",
+        "notable": [
+          "3 ultra-thin probes",
+          "stated WiFi unlimited range",
+          "1000 °F heat safe (as stated)",
+          "5 sensors"
+        ],
+        "use_for": "Watching a roast or a whole bird over time"
+      },
+      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
     }
   ],
-  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022."
+  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022.",
+  "note": "Product-intent register. Intended ASIN, official listing URL, confirmation date and confirmation source are filled only from an official source. Observed redirect destinations are kept in separate fields and are never copied into the intended fields. Blank means not confirmed."
 }

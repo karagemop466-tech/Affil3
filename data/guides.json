@@ -8,23 +8,72 @@
       "category": "air-fryers",
       "deck": "Start with the food you cook most, then pick the shape that fits it.",
       "body": [
-        {"type": "note", "text": "Working title. This is an editorial hypothesis about the questions buyers ask. It is not a claim about popularity, search volume, or whether either style is better."},
-        {"type": "h2", "text": "Start with the food you cook most"},
-        {"type": "p", "text": "A basket air fryer cooks in a removable drawer with a fan above it. An oven-style unit is a countertop oven with a door and racks or a tray. The food you cook most often usually decides which shape fits your counter and your routine."},
-        {"type": "h2", "text": "Questions to answer before you compare listings"},
-        {"type": "ul", "items": [
-          "How many people do you usually cook for, and what is the biggest single item you cook (a whole chicken, a sheet pan, a rack of ribs)?",
-          "Do you need to cook two different foods at the same time? Dual-basket and dual-zone designs do this in different ways, so read the listing and the manual rather than the title alone.",
-          "Which functions do you need in practice: air fry, bake, broil, toast, dehydrate, reheat? Check the manual's list of functions, not only the marketing headline.",
-          "Would you rather shake a basket halfway through, or turn food on a rack or tray?",
-          "Will the unit fit under your cabinets with the door or lid open? Measure the footprint and the height."
-        ]},
-        {"type": "h2", "text": "What we tracked, and what we did not do"},
-        {"type": "p", "text": "The Shop lists five products we tracked on 2026-11-20. Two observed listings are basket-style air fryers, and one observed listing is an air fryer and toaster oven with a door. We have not tested any of them, and this guide does not rank them. Read each listing and its manual before you decide."},
-        {"type": "p", "text": "Listings referenced here are observed titles and categories from Amazon pages on 2026-11-20. Titles and categories can change."}
+        {
+          "type": "note",
+          "text": "Working title. This is an editorial hypothesis about the questions buyers ask. It is not a claim about popularity, search volume, or whether either style is better."
+        },
+        {
+          "type": "h2",
+          "text": "Start with the food you cook most"
+        },
+        {
+          "type": "p",
+          "text": "A basket air fryer cooks in a removable drawer with a fan above it. An oven-style unit is a countertop oven with a door and racks or a tray. The food you cook most often usually decides which shape fits your counter and your routine."
+        },
+        {
+          "type": "h2",
+          "text": "Questions to answer before you compare listings"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "How many people do you usually cook for, and what is the biggest single item you cook (a whole chicken, a sheet pan, a rack of ribs)?",
+            "Do you need to cook two different foods at the same time? Dual-basket and dual-zone designs do this in different ways, so read the listing and the manual rather than the title alone.",
+            "Which functions do you need in practice: air fry, bake, broil, toast, dehydrate, reheat? Check the manual's list of functions, not only the marketing headline.",
+            "Would you rather shake a basket halfway through, or turn food on a rack or tray?",
+            "Will the unit fit under your cabinets with the door or lid open? Measure the footprint and the height."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What we tracked, and what we did not do"
+        },
+        {
+          "type": "p",
+          "text": "The Shop lists five products we tracked on 2026-11-20. Two observed listings are basket-style air fryers, and one observed listing is an air fryer and toaster oven with a door. We have not tested any of them, and this guide does not rank them. Read each listing and its manual before you decide."
+        },
+        {
+          "type": "p",
+          "text": "Listings referenced here are observed titles and categories from Amazon pages on 2026-11-20. Titles and categories can change."
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S04"
+      ],
+      "takeaways": [
+        "Decide the shape before the features: a drawer you shake, or a door and racks you turn.",
+        "The food you cook most and the space you have decide more than any spec sheet line.",
+        "Read the manual for the function list, not the product title."
+      ],
+      "limits": [
+        "We have not cooked in, measured or tested any of the products on this site.",
+        "The two styles are described from how they are built, not from a head-to-head test.",
+        "Footprint and height are not recorded for these listings, so measure your own counter."
+      ],
+      "faq": [
+        {
+          "q": "Is a dual-basket air fryer the same as an oven-style air fryer?",
+          "a": "No. A dual-basket unit gives you two drawers. An oven-style unit gives you a door and racks or a tray. Both cook with fast-moving hot air, but you load and turn food differently."
+        },
+        {
+          "q": "Can I cook a whole chicken in a basket air fryer?",
+          "a": "That depends on the basket dimensions and the weight the manual allows. Check the manual before buying rather than the listing photo."
+        }
+      ]
     },
     {
       "slug": "no-hype-checklist-comparing-air-fryer-capacity",
@@ -34,24 +83,81 @@
       "category": "air-fryers",
       "deck": "Capacity is one of the first numbers you see and one of the easiest to misread.",
       "body": [
-        {"type": "note", "text": "Working title. This checklist does not claim that any capacity is better or that any size will cook faster."},
-        {"type": "h2", "text": "1. Check whether the number is total or per basket"},
-        {"type": "p", "text": "Some listings give a total for the unit and a separate figure for each basket. The observed title for one dual-basket Chefman listing gives '6 Quart' for the unit and '2 Independent 3Qt' baskets. Those numbers measure different things, so write down which one you are comparing."},
-        {"type": "h2", "text": "2. Measure the food you actually cook"},
-        {"type": "ul", "items": [
-          "Measure your largest regular item and the number of pieces you cook at once.",
-          "Use the inside dimensions of the basket or rack from the manual. Outside dimensions include the handle and the housing.",
-          "Note whether the manual gives a recommended maximum load."
-        ]},
-        {"type": "h2", "text": "3. Compare time and temperature, not only size"},
-        {"type": "p", "text": "A larger basket is not automatically faster. For the same food, compare the time and temperature charts in each manual. If a manual has no chart for your food, record that as a gap."},
-        {"type": "h2", "text": "4. Test a load before you rely on it"},
-        {"type": "p", "text": "If the manual gives no maximum load, cook in batches first and note how evenly the food browns. Keep your notes with the date and the food, so you can repeat the test on another unit."},
-        {"type": "h2", "text": "5. Write down what you could not confirm"},
-        {"type": "p", "text": "If the listing does not state a capacity in both total and per-basket terms, mark the row as unconfirmed. Do not fill the gap from a different listing."}
+        {
+          "type": "note",
+          "text": "Working title. This checklist does not claim that any capacity is better or that any size will cook faster."
+        },
+        {
+          "type": "h2",
+          "text": "1. Check whether the number is total or per basket"
+        },
+        {
+          "type": "p",
+          "text": "Some listings give a total for the unit and a separate figure for each basket. The observed title for one dual-basket Chefman listing gives '6 Quart' for the unit and '2 Independent 3Qt' baskets. Those numbers measure different things, so write down which one you are comparing."
+        },
+        {
+          "type": "h2",
+          "text": "2. Measure the food you actually cook"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Measure your largest regular item and the number of pieces you cook at once.",
+            "Use the inside dimensions of the basket or rack from the manual. Outside dimensions include the handle and the housing.",
+            "Note whether the manual gives a recommended maximum load."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "3. Compare time and temperature, not only size"
+        },
+        {
+          "type": "p",
+          "text": "A larger basket is not automatically faster. For the same food, compare the time and temperature charts in each manual. If a manual has no chart for your food, record that as a gap."
+        },
+        {
+          "type": "h2",
+          "text": "4. Test a load before you rely on it"
+        },
+        {
+          "type": "p",
+          "text": "If the manual gives no maximum load, cook in batches first and note how evenly the food browns. Keep your notes with the date and the food, so you can repeat the test on another unit."
+        },
+        {
+          "type": "h2",
+          "text": "5. Write down what you could not confirm"
+        },
+        {
+          "type": "p",
+          "text": "If the listing does not state a capacity in both total and per-basket terms, mark the row as unconfirmed. Do not fill the gap from a different listing."
+        }
       ],
-      "cluster_links": ["air-fryers"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "sources": [
+        "S04"
+      ],
+      "takeaways": [
+        "Capacity is quoted differently on different listings: total, per basket, or usable cooking area.",
+        "Compare the number you will actually use, then check the manual for the maximum fill line.",
+        "A bigger basket needs more counter space and more clearance under the cabinets."
+      ],
+      "limits": [
+        "No capacity figure on this site has been verified beyond the wording of the listing title.",
+        "We do not publish measured basket dimensions, because we have not measured them.",
+        "Cooking results depend on food shape and the recipe, not on litres alone."
+      ],
+      "faq": [
+        {
+          "q": "Is a bigger air fryer always better?",
+          "a": "No. A larger basket takes more counter space, can be harder to clean, and heats up more slowly when it is nearly empty. Match the size to what you cook most weeks."
+        },
+        {
+          "q": "Why does the listing say 8 Qt while the drawer looks smaller?",
+          "a": "Listings often quote total capacity, and some quote capacity across two baskets. Read the manual for the usable fill level before you rely on the number."
+        }
+      ]
     },
     {
       "slug": "how-to-assess-cleanup-and-counter-space-tradeoffs",
@@ -61,26 +167,69 @@
       "category": "air-fryers",
       "deck": "The best-looking appliance is the one you will actually clean and have room for.",
       "body": [
-        {"type": "note", "text": "Working title. Cleanup claims such as 'dishwasher-safe' come from the manufacturer; check the manual's care section before you rely on them."},
-        {"type": "h2", "text": "Cleanup questions"},
-        {"type": "ul", "items": [
-          "How many removable parts are there, and do they all come out without tools?",
-          "What does the manufacturer's care section say about washing each part? Write down the exact wording.",
-          "Is the non-stick surface described with cleaning instructions, such as avoiding metal utensils or abrasive pads? Follow the manufacturer's text.",
-          "Where will the parts dry?"
-        ]},
-        {"type": "h2", "text": "Counter-space test"},
-        {"type": "ol", "items": [
-          "Tape the footprint on your counter with painter's tape.",
-          "Measure the height with the lid or door fully open, and check the clearance under the cabinets.",
-          "Measure how far the door or basket pulls out, and whether anything else on the counter would block it.",
-          "Find an outlet and check that the cord reaches without a strain."
-        ]},
-        {"type": "h2", "text": "Trade-offs to write down"},
-        {"type": "p", "text": "Write a one-line trade-off for each option: for example, 'faster cleanup, less capacity' or 'more functions, more parts to wash'. Writing it down makes the comparison concrete and keeps it honest."}
+        {
+          "type": "note",
+          "text": "Working title. Cleanup claims such as 'dishwasher-safe' come from the manufacturer; check the manual's care section before you rely on them."
+        },
+        {
+          "type": "h2",
+          "text": "Cleanup questions"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "How many removable parts are there, and do they all come out without tools?",
+            "What does the manufacturer's care section say about washing each part? Write down the exact wording.",
+            "Is the non-stick surface described with cleaning instructions, such as avoiding metal utensils or abrasive pads? Follow the manufacturer's text.",
+            "Where will the parts dry?"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Counter-space test"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Tape the footprint on your counter with painter's tape.",
+            "Measure the height with the lid or door fully open, and check the clearance under the cabinets.",
+            "Measure how far the door or basket pulls out, and whether anything else on the counter would block it.",
+            "Find an outlet and check that the cord reaches without a strain."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Trade-offs to write down"
+        },
+        {
+          "type": "p",
+          "text": "Write a one-line trade-off for each option: for example, 'faster cleanup, less capacity' or 'more functions, more parts to wash'. Writing it down makes the comparison concrete and keeps it honest."
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": []
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "sources": [],
+      "takeaways": [
+        "Measure the footprint and the open-door height before you buy, not after.",
+        "Check whether the basket, tray, racks and crumb tray are dishwasher safe in the manual.",
+        "The appliance you keep using is the one that is easy to clean where you actually store it."
+      ],
+      "limits": [
+        "We have not measured cleaning time or counter footprint for these products.",
+        "Dishwasher guidance comes from the manual, which we have not read for every listing here."
+      ],
+      "faq": [
+        {
+          "q": "Are air fryer baskets dishwasher safe?",
+          "a": "Many are, but not all, and some manuals specify the top rack only. Check the manual for the exact model before assuming."
+        },
+        {
+          "q": "How much clearance does an air fryer need?",
+          "a": "It varies by model and is stated in the manual, usually as clearance at the back and above. Measure the space with the lid or door open."
+        }
+      ]
     },
     {
       "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
@@ -90,23 +239,62 @@
       "category": "air-fryer-ovens",
       "deck": "Multi-function appliances promise a lot. Ask which functions you will actually use.",
       "body": [
-        {"type": "h2", "text": "Eight questions"},
-        {"type": "ol", "items": [
-          "Which three functions will you use every week? Ignore the rest when comparing.",
-          "Do the presets match the food you cook, or will you set time and temperature yourself?",
-          "Can you see the temperature and time while the appliance runs?",
-          "Does the manual include time and temperature charts for your foods?",
-          "What does the warranty cover, and who services it? Read the warranty text rather than the summary.",
-          "Are replacement baskets, racks or trays sold separately? Check the listing and the manufacturer's site.",
-          "How loud is it? If the manufacturer gives no figure, note that you could not confirm it.",
-          "Where will it live, and how often will you move it?"
-        ]},
-        {"type": "h2", "text": "Why these questions"},
-        {"type": "p", "text": "A list of functions is not the same as a list of things you will use. These questions tie the purchase to your routine and to the documents the manufacturer provides."},
-        {"type": "p", "text": "The Shop lists one multi-function air fryer and toaster oven we observed on 2026-11-20. We have not tested it."}
+        {
+          "type": "h2",
+          "text": "Eight questions"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Which three functions will you use every week? Ignore the rest when comparing.",
+            "Do the presets match the food you cook, or will you set time and temperature yourself?",
+            "Can you see the temperature and time while the appliance runs?",
+            "Does the manual include time and temperature charts for your foods?",
+            "What does the warranty cover, and who services it? Read the warranty text rather than the summary.",
+            "Are replacement baskets, racks or trays sold separately? Check the listing and the manufacturer's site.",
+            "How loud is it? If the manufacturer gives no figure, note that you could not confirm it.",
+            "Where will it live, and how often will you move it?"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Why these questions"
+        },
+        {
+          "type": "p",
+          "text": "A list of functions is not the same as a list of things you will use. These questions tie the purchase to your routine and to the documents the manufacturer provides."
+        },
+        {
+          "type": "p",
+          "text": "The Shop lists one multi-function air fryer and toaster oven we observed on 2026-11-20. We have not tested it."
+        }
       ],
-      "cluster_links": ["air-fryer-ovens"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S04"
+      ],
+      "takeaways": [
+        "Multi-function appliances trade specialisation for counter space; decide which trade you want.",
+        "Count the functions you will use weekly, not the number printed on the box.",
+        "Check preheat time and the manual's function list before you commit."
+      ],
+      "limits": [
+        "We have not tested any multi-function appliance on this site.",
+        "Preheat times, noise levels and power draw are not recorded here.",
+        "A function existing on the panel does not tell you how well it performs."
+      ],
+      "faq": [
+        {
+          "q": "Do more presets mean better cooking?",
+          "a": "Not necessarily. Presets are starting points. The manual and your own thermometer tell you more than the preset count."
+        },
+        {
+          "q": "Is a French-door oven easier to load than a drawer?",
+          "a": "It depends on what you cook. Doors and racks suit trays and long items; a drawer suits shaking and tossing."
+        }
+      ]
     },
     {
       "slug": "is-your-meat-thermometer-telling-you-the-right-number",
@@ -116,30 +304,372 @@
       "category": "cooking-thermometers",
       "deck": "A thermometer is only as useful as the number you compare it with.",
       "body": [
-        {"type": "note", "text": "Working title. The temperatures below are the USDA's published minimums. This guide does not test the accuracy of any thermometer."},
-        {"type": "h2", "text": "The minimum internal temperatures"},
-        {"type": "ul", "items": [
-          "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, then rest for at least 3 minutes.",
-          "Ground meats: 160 °F.",
-          "Ground poultry: 165 °F.",
-          "All poultry, including breasts, whole birds, legs, thighs and wings: 165 °F.",
-          "Fresh or smoked ham that is uncooked: 145 °F, then rest for at least 3 minutes."
-        ]},
-        {"type": "p", "text": "Source: USDA Food Safety and Inspection Service, Safe Minimum Internal Temperature Chart."},
-        {"type": "h2", "text": "Where to put the probe"},
-        {"type": "p", "text": "For a whole bird, the USDA says to check the innermost part of the thigh, the innermost part of the wing and the thickest part of the breast, avoiding bone. For poultry parts, insert the probe into the thickest area, avoiding bone."},
-        {"type": "h2", "text": "Questions to ask about a wireless thermometer"},
-        {"type": "ul", "items": [
-          "What temperature range and probe count does the manufacturer state?",
-          "Does the manufacturer describe how accuracy was tested? If it does not, write that down.",
-          "Does the app need an account, and what does the privacy policy say it collects?",
-          "Is the probe rated for the temperature you will cook at? Check the manufacturer's stated limit."
-        ]},
-        {"type": "h2", "text": "What the Shop shows"},
-        {"type": "p", "text": "The Shop lists one wireless thermometer in this cluster, observed on 2026-11-20. We have not tested it. The temperatures above come from the USDA, not from the product maker."}
+        {
+          "type": "note",
+          "text": "Working title. The temperatures below are the USDA's published minimums. This guide does not test the accuracy of any thermometer."
+        },
+        {
+          "type": "h2",
+          "text": "The minimum internal temperatures"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, then rest for at least 3 minutes.",
+            "Ground meats: 160 °F.",
+            "Ground poultry: 165 °F.",
+            "All poultry, including breasts, whole birds, legs, thighs and wings: 165 °F.",
+            "Fresh or smoked ham that is uncooked: 145 °F, then rest for at least 3 minutes."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Source: USDA Food Safety and Inspection Service, Safe Minimum Internal Temperature Chart."
+        },
+        {
+          "type": "h2",
+          "text": "Where to put the probe"
+        },
+        {
+          "type": "p",
+          "text": "For a whole bird, the USDA says to check the innermost part of the thigh, the innermost part of the wing and the thickest part of the breast, avoiding bone. For poultry parts, insert the probe into the thickest area, avoiding bone."
+        },
+        {
+          "type": "h2",
+          "text": "Questions to ask about a wireless thermometer"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "What temperature range and probe count does the manufacturer state?",
+            "Does the manufacturer describe how accuracy was tested? If it does not, write that down.",
+            "Does the app need an account, and what does the privacy policy say it collects?",
+            "Is the probe rated for the temperature you will cook at? Check the manufacturer's stated limit."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What the Shop shows"
+        },
+        {
+          "type": "p",
+          "text": "The Shop lists one wireless thermometer in this cluster, observed on 2026-11-20. We have not tested it. The temperatures above come from the USDA, not from the product maker."
+        }
       ],
-      "cluster_links": ["cooking-thermometers"],
-      "sources": ["S09", "S10", "S04"]
+      "cluster_links": [
+        "cooking-thermometers"
+      ],
+      "sources": [
+        "S09",
+        "S10",
+        "S04"
+      ],
+      "takeaways": [
+        "A thermometer is only useful if it is placed correctly and reads within a known tolerance.",
+        "The USDA chart gives safe minimum internal temperatures: 145 °F for steaks, chops and roasts with a 3-minute rest; 160 °F for ground meats; 165 °F for all poultry.",
+        "Colour is not a reliable indicator that food is safe."
+      ],
+      "limits": [
+        "We have not tested the accuracy of any thermometer listed on this site.",
+        "The tolerance quoted in a listing title is the manufacturer's claim, not a measurement we made.",
+        "This site does not give food-safety advice beyond quoting the USDA chart; follow the chart and the manual."
+      ],
+      "faq": [
+        {
+          "q": "How accurate should a meat thermometer be?",
+          "a": "USDA notes that most food thermometers read within 2 to 4 °F and that the reading is only correct if the probe is placed properly. Check the manufacturer's stated tolerance and instructions."
+        },
+        {
+          "q": "Where do I put the probe?",
+          "a": "In the thickest part, away from bone, fat and gristle. For thin foods, insert through the side to the centre. For large or irregular cuts, check several places."
+        },
+        {
+          "q": "Does a wireless probe replace an instant-read thermometer?",
+          "a": "They do different jobs. A probe left in the food monitors it over time; an instant-read checks a spot quickly and works across several pieces. Many cooks keep both."
+        }
+      ]
+    },
+    {
+      "slug": "dual-basket-air-fryer-when-two-baskets-earn-the-space",
+      "title": "Dual-basket air fryer: when two baskets earn the counter space",
+      "description": "A buyer's guide to deciding whether a dual-basket air fryer fits how you cook, without claiming which product is better.",
+      "date": "2026-11-20",
+      "category": "air-fryers",
+      "deck": "Two drawers, two timers, one decision: do you actually cook two things at once?",
+      "body": [
+        {
+          "type": "note",
+          "text": "Editorial guide. It describes how the design works and what to check. It does not rank the products on this site, and we have not cooked with them."
+        },
+        {
+          "type": "h2",
+          "text": "What a dual-basket design actually changes"
+        },
+        {
+          "type": "p",
+          "text": "A dual-basket air fryer gives you two independent drawers, usually with separate time and temperature settings. That is the whole idea: one drawer for the thing that wants high heat and a short blast, the other for something slower. The cost is counter space and, often, two baskets to wash."
+        },
+        {
+          "type": "p",
+          "text": "Some units add a synchronise setting so both drawers finish together. Whether that matters to you depends on whether you already cook two components at once."
+        },
+        {
+          "type": "h2",
+          "text": "Three questions that settle it"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "What do you cook most weeks? If most meals are one protein plus a side that can wait, a single basket does the job with less to clean.",
+            "Do you have the counter width for two drawers side by side, with room for the drawers to pull out? Measure the footprint and the open-drawer depth.",
+            "Will you wash two baskets, or will you stop using one? A second basket you avoid is worse than no second basket."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Where a single basket still wins"
+        },
+        {
+          "type": "p",
+          "text": "A single larger basket gives you one big cooking surface for a whole batch of fries, wings or vegetables. If you cook in batches for a family, that may matter more than two smaller zones. Both patterns appear in the listings we track: one observed dual-basket unit and one observed single-basket 8 Qt unit, from their titles alone."
+        },
+        {
+          "type": "h2",
+          "text": "What to read before you choose"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "The manual's capacity statement: total capacity and per-basket capacity are not the same number.",
+            "The maximum fill line, printed inside the basket or in the manual.",
+            "Whether both baskets are dishwasher safe, and whether that means top rack only.",
+            "The clearance the manual requires at the back and above the unit."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What we did not do"
+        },
+        {
+          "type": "p",
+          "text": "We did not test cooking times, evenness or noise on any unit. Nothing on this page is a claim that a dual-basket design cooks better. It is a checklist for the decision, and the listing title is the only product detail we have verified."
+        }
+      ],
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "sources": [
+        "S04"
+      ],
+      "takeaways": [
+        "A dual-basket unit is two independent cooking zones; the benefit only shows up if you cook two things at once.",
+        "Two baskets mean two things to wash and more counter space.",
+        "Total capacity and per-basket capacity are different numbers. Read the manual."
+      ],
+      "limits": [
+        "We have not cooked with, measured or timed any product on this site.",
+        "No capacity, footprint or clearance figure has been verified beyond the listing title.",
+        "Nothing here is a recommendation of one product over another."
+      ],
+      "faq": [
+        {
+          "q": "Do I need two baskets to cook a main and a side?",
+          "a": "Not necessarily. You can cook in sequence in one basket: the main first, then the side while the main rests. Two baskets save time, not necessarily quality."
+        },
+        {
+          "q": "Is a dual-basket air fryer harder to clean?",
+          "a": "It has two baskets and often two crisper plates, so there is more to wash. Whether that is a problem depends on whether both are dishwasher safe. Check the manual for the exact model."
+        }
+      ]
+    },
+    {
+      "slug": "air-fryer-or-toaster-oven-which-replaces-the-other",
+      "title": "Air fryer or toaster oven: which one actually replaces the other?",
+      "description": "How to decide whether a basket air fryer, an oven-style air fryer, or both belong on your counter.",
+      "date": "2026-11-20",
+      "category": "air-fryer-ovens",
+      "deck": "One appliance or two? Start with what you already cook, then with what you can reach.",
+      "body": [
+        {
+          "type": "note",
+          "text": "Editorial guide. It compares two appliance shapes, not two products. We have not tested the products listed on this site."
+        },
+        {
+          "type": "h2",
+          "text": "The shapes, in plain terms"
+        },
+        {
+          "type": "p",
+          "text": "A basket air fryer is a drawer with a fan above it. You pull the drawer out, shake or turn the food, and push it back. An oven-style air fryer is a small countertop oven with a door, racks or a tray, and often several functions beyond air frying."
+        },
+        {
+          "type": "p",
+          "text": "The difference is not just size. It is how you reach the food and how much of the counter the thing occupies when the door is open."
+        },
+        {
+          "type": "h2",
+          "text": "What an oven-style unit buys you"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Racks and trays that take flat or long food: a small pizza, toast, a tray of vegetables.",
+            "Several functions in one box, which can replace a toaster as well.",
+            "A door you can open and reach into, instead of a drawer you shake."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What it costs you"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Depth. A door that opens forward needs clearance in front, and the unit is usually deeper than a drawer.",
+            "Preheat time. A larger cavity generally takes longer to come up to temperature, as the manual will state.",
+            "One more surface to clean: the door glass, the racks, the crumb tray."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "A decision rule that works"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "List the five meals you cook most. If they are all one-pan or one-tray, an oven-style unit fits.",
+            "If they need shaking and tossing, a basket fits better.",
+            "If you want toast and air frying from one box, count how much counter space you have with the door open.",
+            "If you cannot decide, buy neither yet: cook for a week and note which one you missed."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What we did not verify"
+        },
+        {
+          "type": "p",
+          "text": "We have not measured preheat times or cavity dimensions for the products on this site, and we do not publish a winner. The listing titles are the only product detail we have verified."
+        }
+      ],
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S04"
+      ],
+      "takeaways": [
+        "Basket units are for shaking and tossing; oven-style units are for trays, racks and flat food.",
+        "An oven-style air fryer needs clearance in front for the door, not just width on the counter.",
+        "If you cannot decide, wait a week and note which shape you missed."
+      ],
+      "limits": [
+        "No preheat time, cavity size or footprint has been verified for these products.",
+        "We have not tested either shape side by side.",
+        "This is a decision checklist, not a product ranking."
+      ],
+      "faq": [
+        {
+          "q": "Can an oven-style air fryer replace a toaster?",
+          "a": "Its listing and manual may name a toast function. Whether it replaces your toaster depends on the slot or rack size and how you like your toast, so read the manual rather than the title."
+        },
+        {
+          "q": "Does an air fryer replace a microwave?",
+          "a": "Generally no. They heat food in different ways and at different speeds. Nothing on this site supports a claim that one replaces the other."
+        }
+      ]
+    },
+    {
+      "slug": "wireless-probe-or-instant-read-thermometer",
+      "title": "Wireless probe or instant-read thermometer: which do you actually need?",
+      "description": "The difference between a probe left in the food and an instant-read check, with the USDA safe minimum temperatures cited to source.",
+      "date": "2026-11-20",
+      "category": "cooking-thermometers",
+      "deck": "One watches. One checks. Most kitchens need the second one first.",
+      "body": [
+        {
+          "type": "note",
+          "text": "Editorial guide. Product details come from listing titles. Safe minimum temperatures are quoted from the USDA Food Safety and Inspection Service chart, dated in the source register."
+        },
+        {
+          "type": "h2",
+          "text": "Two different jobs"
+        },
+        {
+          "type": "p",
+          "text": "An instant-read thermometer is a hand-held probe you push into the food, read, and remove. A wireless probe stays in the food while it cooks and sends the reading to a base or a phone. One is a spot check; the other is a watch."
+        },
+        {
+          "type": "p",
+          "text": "If you cook a roast or a whole bird and want to know the moment it reaches temperature, the leave-in probe is the useful one. If you cook several thin pieces and need to check each, the instant-read is faster."
+        },
+        {
+          "type": "h2",
+          "text": "What USDA says, and why it matters here"
+        },
+        {
+          "type": "p",
+          "text": "USDA states that using a food thermometer is the only reliable way to be sure food has reached a safe minimum internal temperature, and that colour and firmness are not reliable indicators. The chart gives 145 °F with a 3-minute rest for steaks, chops and roasts; 160 °F for ground meats; and 165 °F for all poultry."
+        },
+        {
+          "type": "p",
+          "text": "USDA also notes that most food thermometers read within 2 to 4 °F, and that a reading is only correct if the probe is placed properly: thickest part, away from bone, fat and gristle, and several checks for large or irregular cuts. That tolerance matters more than the number of decimal places on the display."
+        },
+        {
+          "type": "h2",
+          "text": "Questions to ask before you buy"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Will the probe stay in the food, or will you want to check several pieces quickly?",
+            "What does the manual say about the probe's heat limit and about using it in an air fryer or a closed oven?",
+            "Can you calibrate it, and how?",
+            "Does the app or base require an account, and what happens to the reading if the connection drops?"
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What this site does not claim"
+        },
+        {
+          "type": "p",
+          "text": "We have not tested the accuracy of any thermometer listed here. A tolerance quoted in a listing title is the manufacturer's claim. We do not publish a 'most accurate' pick."
+        }
+      ],
+      "cluster_links": [
+        "cooking-thermometers"
+      ],
+      "sources": [
+        "S09",
+        "S10",
+        "S04"
+      ],
+      "takeaways": [
+        "An instant-read checks several pieces quickly; a leave-in probe watches one piece over time.",
+        "USDA: 145 °F plus a 3-minute rest for steaks, chops and roasts; 160 °F for ground meats; 165 °F for all poultry.",
+        "Placement matters as much as accuracy: thickest part, away from bone."
+      ],
+      "limits": [
+        "No thermometer on this site has been accuracy-tested by us.",
+        "We have not read every product manual; heat limits and calibration steps are for you to confirm.",
+        "Food-safety values are quoted from USDA; follow the chart and the manual, not this page."
+      ],
+      "faq": [
+        {
+          "q": "Do I need both kinds of thermometer?",
+          "a": "Many cooks keep both: an instant-read for quick checks across several pieces and a leave-in probe for long cooks. If you only buy one, decide based on whether you cook single large items or several thin ones."
+        },
+        {
+          "q": "Can I leave an instant-read in the oven?",
+          "a": "Only if the manufacturer says so. Most instant-read thermometers have a maximum ambient temperature well below oven heat. Check the manual."
+        },
+        {
+          "q": "Is a wireless probe as accurate as an instant-read?",
+          "a": "That depends on the model and on placement. We have not tested either, so we do not make that comparison. Check the stated tolerance and the calibration instructions."
+        }
+      ]
     }
   ]
 }

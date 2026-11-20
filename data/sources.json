@@ -1,6 +1,6 @@
 {
   "accessed": "2026-11-20",
-  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read in this session. 'excerpt' = text retrieved from a search-result excerpt of the official page; re-check the exact wording manually before relying on it. 'observed' = a value read from an Amazon page during this session; observations are dated and can change.",
+  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read; 'excerpt' = text taken from a search-result excerpt of the official page, so the exact wording must be re-checked manually before relying on it; 'observed' = a value read from an Amazon page, dated, and subject to change. 'rechecked' records the most recent pass in which the page itself was fetched and read.",
   "sources": [
     {
       "id": "S01",
@@ -8,9 +8,10 @@
       "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
       "updated": "October 15, 2025 (as stated on the page)",
-      "method": "fetched",
+      "method": "fetched 2026-11-20 (full agreement page, §1 and §5 read in full)",
       "used_for": "§1 defines 'Special Links' as tagged links in the formats Amazon provides; §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site; §5 also bars misrepresenting or embellishing the Amazon relationship.",
-      "status": "verified"
+      "status": "verified",
+      "rechecked": "2026-11-20"
     },
     {
       "id": "S02",
@@ -18,9 +19,10 @@
       "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
       "updated": "April 14, 2026 (as stated on the page)",
-      "method": "fetched (Commission Income Statement §1, Participation Requirements (g), (q), (s), (u), (v), (w), Trademark Guidelines 3(iv)); excerpt (Participation Requirements §2(a)-(b) tag requirement)",
-      "used_for": "Special Links must carry the Associates tag as a URL parameter (§2(a)-(b), excerpt). Cloaking and redirect-based hiding of the URL are prohibited (v). Link shorteners that make it unclear that the link goes to Amazon are restricted (w). No artificial clicks (s). Amazon Marks may not be used in email or offline material (Trademark Guidelines 3(iv)).",
-      "status": "verified (2 clauses by excerpt; re-check §2 wording)"
+      "method": "fetched 2026-11-20 (Participation Requirements §2(a)-(b), §3, §4, §5, §6(a)-(z) read directly on the page; Commission Income Statement §1)",
+      "used_for": "Special Links must carry the Associates tag as a URL parameter on every link placed on the Site (§2(b)). Prices and availability may be shown only when Amazon serves them or when obtained through the Creators/PA API (§2(b)); price tracking and alerting is not allowed (§6(y)); customer reviews and star ratings may not be displayed without an API link (§6(t)). Cloaking or obscuring the Site URL, including by redirects, is prohibited (§6(v)). A link shortening service may not be used in a way that makes it unclear the link goes to an Amazon Site (§6(w)). No artificial clicks or Sessions (§6(s)); no purchasing through your own Special Links (§6(u)); no incentives for using Special Links (§6(g)); no customer confusion about the Amazon relationship (§6(l)).",
+      "status": "verified",
+      "rechecked": "2026-11-20"
     },
     {
       "id": "S03",
@@ -58,9 +60,10 @@
       "publisher": "Google Search Central",
       "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
       "updated": "2025-12-10 (as stated on the page)",
-      "method": "fetched",
-      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links). nofollow is an accepted alternative. Google's guidance is that these attributes are hints.",
-      "status": "verified"
+      "method": "fetched 2026-11-20 (page states last updated 2025-12-10)",
+      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links); rel=\"nofollow\" is the fallback when other values do not apply. Links carrying these values will generally not be followed, but the pages may still be discovered another way.",
+      "status": "verified",
+      "rechecked": "2026-11-20"
     },
     {
       "id": "S07",
@@ -87,20 +90,22 @@
       "title": "Safe Minimum Internal Temperature Chart",
       "publisher": "USDA Food Safety and Inspection Service",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
-      "updated": "not stated on the excerpt",
-      "method": "excerpt",
-      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
-      "status": "verified (excerpt; re-check manually)"
+      "updated": "Last Updated: Apr 14, 2025 (as stated on the page)",
+      "method": "fetched 2026-11-20 (full chart read)",
+      "used_for": "Safe minimum internal temperatures as published: beef, pork, veal and lamb steaks, chops and roasts 145 °F with a 3-minute rest; ground meats 160 °F; all poultry including ground poultry 165 °F; fish and shellfish 145 °F; leftovers and casseroles 165 °F; eggs 160 °F.",
+      "status": "verified",
+      "rechecked": "2026-11-20"
     },
     {
       "id": "S10",
       "title": "Food Thermometers",
       "publisher": "USDA Food Safety and Inspection Service",
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
-      "updated": "July 9, 2026 (as indicated in the search index)",
-      "method": "excerpt",
-      "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Poultry parts: insert into the thickest area, avoiding bone.",
-      "status": "verified (excerpt; re-check manually)"
+      "updated": "not stated on the page",
+      "method": "fetched 2026-11-20 (page read; calibration, placement and care sections)",
+      "used_for": "Placement: thickest part of the food, away from bone, fat or gristle; for thin foods insert through the side to the centre; check large or irregular cuts in several places. Most food thermometers read within 2 to 4 °F; read the manufacturer instructions. Colour is not a reliable indicator that food is safe.",
+      "status": "verified",
+      "rechecked": "2026-11-20"
     },
     {
       "id": "S11",
