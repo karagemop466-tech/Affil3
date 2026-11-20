@@ -118,12 +118,12 @@
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a></p>
   <p class="small"><strong>Manual step:</strong> In Associates Central, confirm that shopnow047c-20 is listed as a tracking ID on the account.</p>
 </section>
-<section class="flag-card" id="FLG-012">
-  <p class="flag-head"><span class="badge flag">FLG-012</span> <span class="badge sev-medium">medium</span> <strong>No Amazon-owned ASIN definition was retrieved</strong></p>
-  <p>Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.</p>
+<section class="flag-card is-resolved" id="FLG-012">
+  <p class="flag-head"><span class="badge flag">FLG-012</span> <span class="badge sev-low">low</span> <strong>Amazon&#39;s own definition of the ASIN has now been retrieved (resolved)</strong> <span class="badge resolved">resolved</span></p>
+  <p>Amazon Ads publishes the definition on its own site: an ASIN is &#39;a unique combination of 10 letters and numbers that Amazon assigns to a product&#39;. This is an Amazon-owned page, so the 10-character rule that FLG-001 depends on no longer rests on third-party descriptions or on inference from observed identifiers.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
-  <p class="small"><strong>Manual step:</strong> Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://advertising.amazon.com/library/guides/asins-introduction" rel="sponsored noopener">S23</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Closed by session c252594d-affil3 on 2026-11-20 with source S23. No further action needed; re-check only if Amazon moves the page.</p>
 </section>
 <section class="flag-card" id="FLG-013">
   <p class="flag-head"><span class="badge flag">FLG-013</span> <span class="badge sev-medium">medium</span> <strong>Google Search Console is not connected</strong></p>
@@ -209,19 +209,19 @@
   <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="small"><strong>Manual step:</strong> Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.</p>
 </section>
-<section class="flag-card" id="FLG-025">
-  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: no manufacturer page, so every specification is withheld</strong></p>
-  <p>No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.</p>
+<section class="flag-card is-resolved" id="FLG-025">
+  <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-low">low</span> <strong>ThermoMaven: a manufacturer page exists (resolved)</strong> <span class="badge resolved">resolved</span></p>
+  <p>A ThermoMaven product page for this line does exist: thermomaven.com/products/f1-ace, fetched in full on 2026-11-20 (S21). It states a one-second instant read on a thermocouple sensor, a stated accuracy of +/-0.5 F, a bright auto-rotating LCD, a 100% waterproof design, a built-in magnet and a lifetime warranty activated within 30 days. Those values are now published on the product page, attributed to the manufacturer. Values the page does not state - temperature range, power source, dimensions, weight - remain blank and render as &#39;not stated&#39;. Two new flags record what is still open: FLG-031 (the maker&#39;s page is titled F1 Ace, the observed listing is titled 1 Sec Professional) and FLG-032 (the listing states NSF certification and an IP67 rating that the manufacturer&#39;s page does not state).</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
-  <p class="small"><strong>Manual step:</strong> If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Closed by session c252594d-affil3 on 2026-11-20 with source S21. To close FLG-031 as well, confirm in a signed-in Amazon session that listing B0DHZTCNR5 is the F1 Ace.</p>
 </section>
 <section class="flag-card" id="FLG-026">
-  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>The 8 Qt air fryer listing and the manufacturer page describe two different machines</strong></p>
-  <p>The Amazon listing for B08DKYBTPH states, in its own &#39;About this item&#39; copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman&#39;s own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing&#39;s figures are shown in a separate column so a reader can see both without either being presented as verified.</p>
+  <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>The 8 qt air fryer listing and the manufacturer&#39;s catalogue describe two different machines</strong></p>
+  <p>Chefman publishes at least two 8 qt air fryers. The page for RJ38-8T-BLACK (S12) states a 450 F Hi-Fry finish, 1700W/120V and no dimensions. The page for RJ38-SQSS-8T (S22) states a 200-400 F range, 1700W/120V, 15.4 x 12.6 x 13.5 in and 12.8 lb. The Amazon listing for B08DKYBTPH names RJ38-SQSS-8T in its own copy and states 1000 W / 120 V, a 200-400 F range and 12.75 x 13.5 x 10 in. So the temperature range and the model number now agree across the listing and the maker&#39;s own page for RJ38-SQSS-8T, and the row publishes that range. Wattage and size still disagree between two official pages, so both stay blank. The listing&#39;s title also advertises a 450 F Hi-Fry option that the manufacturer&#39;s page for the model the listing names does not list, which is FLG-027.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
-  <p class="small"><strong>Manual step:</strong> Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a>, <a href="https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1" rel="noopener external">S22</a>, <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a></p>
+  <p class="small"><strong>Manual step:</strong> Open the B08DKYBTPH listing in a signed-in session and read the model number in the &#39;About this item&#39; block and the size chart. If the listing sells the matte-black RJ38-8T-BLACK, the published 200-400 F range should move to the listing column instead.</p>
 </section>
 <section class="flag-card" id="FLG-027">
   <p class="flag-head"><span class="badge flag">FLG-027</span> <span class="badge sev-medium">medium</span> <strong>The same listing carries two different temperature ranges in two places</strong></p>
@@ -250,6 +250,27 @@
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   
+</section>
+<section class="flag-card" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: the maker&#39;s page and the observed listing carry different model names</strong></p>
+  <p>The manufacturer&#39;s page used for P04&#39;s specifications is titled ThermoMaven F1 Ace Instant Read Thermometer. The observed marketplace listing for that row is titled ThermoMaven 1 Sec Professional Digital Meat Thermometer. The maker&#39;s own line-up includes a 1-second model and a 0.5-second model, and the F1 Ace page describes a one-second instant read, a bright auto-rotating display and a waterproof design - the same defining features the listing states. That makes the two consistent, but the maker does not publish the marketplace identifier on its page, so identity is consistent rather than confirmed. The P04 row says so on the page itself.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> In a signed-in Amazon session, open the listing for the ThermoMaven 1 Sec Professional thermometer and look for a model number on the product page or in the manufacturer&#39;s own storefront listing. If it reads F1 Ace, close this flag; if it reads HT04 or another code, the P04 specification row must be re-sourced.</p>
+</section>
+<section class="flag-card" id="FLG-032">
+  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: the marketplace listing states NSF certification and an IP67 rating that the manufacturer&#39;s page does not</strong></p>
+  <p>The observed listing title for P04 reads &#39;NIST&amp;NSF Certified ... IP67 Waterproof&#39;. The manufacturer&#39;s own page states a +/-0.5 F accuracy and describes the unit as NIST-certified, and it displays an NSF mark, but it does not state NSF certification in words and it does not state an IP rating - it says 100% waterproof design. The site therefore publishes the manufacturer&#39;s wording and records the extra listing claims as claims of the listing.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask ThermoMaven, through the contact form on its product page, whether the F1 Ace carries NSF certification and an IP67 rating, and whether the 1 Sec Professional listing is the same product. One email closes FLG-031 and FLG-032 together.</p>
+</section>
+<section class="flag-card" id="FLG-033">
+  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-low">low</span> <strong>CHEF iQ Sense: the manufacturer&#39;s own page disagrees with itself on the sensor count</strong></p>
+  <p>On https://chefiq.com/products/iq-sense the opening paragraph says &#39;Five internal sensors&#39; and a section heading reads &#39;Five Temperature Sensors&#39;, while the features list on the same page says &#39;4 internal temperature sensors for accuracy within 1 F&#39; plus &#39;1 ambient temperature sensor&#39; - four internal and one ambient, which is five in total. The published P05 row follows the features list and says so on the page.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefiq.com/products/iq-sense" rel="noopener external">S14</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask CHEF iQ which reading is current for the generation being sold, or read the user guide PDF linked on the product page, which is the manufacturer&#39;s own document.</p>
 </section>
 </main>
 <footer class="site-footer">

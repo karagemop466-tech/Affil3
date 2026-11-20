@@ -245,6 +245,10 @@ function specGrid(p) {
     ['Certified', p.certification],
     ['Warranty', p.warranty],
   ];
+  // Extra rows a maker states that do not fit the fixed grid (an ambient range beside an
+  // internal one, a sensor count, a variant note). They are stated facts, so they render
+  // as values and never as "not stated".
+  for (const [k, v] of (p.spec_notes || [])) rows.push([k, v]);
   const cells = rows.map(([k, v]) => `<div class="spec"><dt>${esc(k)}</dt>${v
     ? `<dd>${esc(v)}</dd>`
     : `<dd class="na" title="Not stated on the manufacturer page">not stated</dd>`}</div>`).join('\n    ');
@@ -334,7 +338,7 @@ const add = (p) => pages.push(p);
     <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -423,7 +427,7 @@ const add = (p) => pages.push(p);
 add({
   path: '/categories/', title: 'Categories',
   description: 'Product categories and the guides that cover each one.',
-  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">Four clusters. Each cluster lists its products and the guides that cover them.</p></section>
+  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">${CATEGORIES.length} clusters. Each cluster lists its products and the guides that cover them.</p></section>
 <div class="cat-grid">${CATEGORIES.map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><p class="small muted">${products.filter((p) => p.category === c.slug).length} product row(s) · ${guides.filter((g) => g.category === c.slug || (g.cluster_links || []).includes(c.slug)).length} guide(s)</p></a>`).join('')}</div>`,
 });
 for (const c of CATEGORIES) {

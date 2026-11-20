@@ -111,8 +111,8 @@
       "title": "Chefman TurboFry 8 Qt. Air Fryer w/ High Fry - product page",
       "publisher": "Chefman",
       "url": "https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry",
-      "method": "fetched 2026-11-20",
-      "used_for": "P03 model number RJ38-8T-BLACK, 8 qt / 7.57 L, 450 F Hi-Fry finish, 1700W/120V, four functions, top-rack dishwasher-safe basket, cETL. The page does not state overall dimensions, so none are shown.",
+      "method": "fetched 2026-11-20; re-fetched in full 2026-11-20 by session c252594d-affil3 (specifications block re-read: capacity 8 qt / 7.57 L, Hi-Fry 450 °F, 1700W/120V, model RJ38-8T-BLACK, cETL approved with a 1-year Chefman assurance)",
+      "used_for": "P03 comparison column: the manufacturer's own page for the matte-black RJ38-8T-BLACK, kept separate from the listing's copy. The page does not state overall dimensions, so none are shown.",
       "status": "verified"
     },
     {
@@ -120,7 +120,7 @@
       "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT - product page",
       "publisher": "Emeril Everyday",
       "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
-      "method": "fetched 2026-11-20",
+      "method": "fetched 2026-11-20; re-fetched in full 2026-11-20 by session c252594d-affil3 (specification panel re-read: 26-quart capacity, 24.6 litres, 16.9\"D x 15.8\"W x 14.8\"H, 120 volts, 25 cooking pre-sets, model 4-00675-02A-VN)",
       "used_for": "P02 26 qt / 24.6 L capacity, dimensions 16.9 x 15.8 x 14.8 in, 120 V, 26 qt french-door form. The page states both '25 Cooking Pre-sets' and '24 one-touch presets', so no preset count is published here (FLG-024).",
       "status": "verified"
     },
@@ -129,8 +129,8 @@
       "title": "CHEF iQ Sense - product page",
       "publisher": "CHEF iQ",
       "url": "https://chefiq.com/products/iq-sense",
-      "method": "fetched 2026-11-20",
-      "used_for": "P05 five temperature sensors, ambient range to 1000 F, probe 0.19 in x 4.75 in, internal temperature range 32-212 F, Wi-Fi hub, USB-C, dishwasher-safe probe.",
+      "method": "fetched 2026-11-20; re-fetched in full 2026-11-20 by session c252594d-affil3 (specifications block re-read: probe 0.19 in thin x 4.75 in long, internal temperature range 32-212 F, ambient temperature range 32-1,000 F, probe materials stainless steel and zirconia)",
+      "used_for": "P05 internal temperature range 32-212 F, ambient sensor range 32-1,000 F, heat resistance to 1,000 F, probe dimensions, Wi-Fi hub and USB-C charging, waterproof and dishwasher-safe probe.",
       "status": "verified"
     },
     {
@@ -190,6 +190,34 @@
       "method": "excerpt",
       "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Renumbered from this session's draft S10 after the merged register took S09/S10 for the spam-policies and temperature-chart sources.",
       "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S21",
+      "title": "ThermoMaven F1 Ace Instant Read Thermometer - product page",
+      "publisher": "ThermoMaven",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "method": "fetched in full 2026-11-20 by session c252594d-affil3",
+      "used_for": "P04: the manufacturer's own page for its 1-second instant-read thermometer: one-second instant read, thermocouple sensor, stated accuracy of +/-0.5 F, bright auto-rotating LCD, 100% waterproof design, built-in magnet, lifetime warranty activated within 30 days. The page does not state a temperature range, a power source, dimensions or a weight, so those cells stay blank.",
+      "status": "verified"
+    },
+    {
+      "id": "S22",
+      "title": "Chefman TurboFry Touch Stainless-Steel Air Fryer, 8 qt (RJ38-SQSS-8T) - product page",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "method": "fetched in full 2026-11-20 by session c252594d-affil3",
+      "used_for": "P03: the manufacturer's own page for the 8 qt stainless-steel model whose model number (RJ38-SQSS-8T) is the one the Amazon listing itself names. States a 200-400 F range, 8 qt / 7.57 L, 1700W/120V, dimensions 15.4 x 12.6 x 13.5 in, weight 12.8 lb, 4 cooking presets, top-rack dishwasher-safe basket, cETL approved, 1-year assurance.",
+      "status": "verified"
+    },
+    {
+      "id": "S23",
+      "title": "Understanding ASINs to create successful advertising campaigns",
+      "publisher": "Amazon Ads (Amazon.com, Inc.)",
+      "url": "https://advertising.amazon.com/library/guides/asins-introduction",
+      "method": "fetched in full 2026-11-20 by session c252594d-affil3",
+      "used_for": "The Amazon-owned definition of the ASIN, closing FLG-012: an ASIN is 'a unique combination of 10 letters and numbers that Amazon assigns to a product'.",
+      "status": "verified",
+      "quote": "Short for \"Amazon Standard Identification Number,\" an ASIN is a unique combination of 10 letters and numbers that Amazon assigns to a product—including product variations and product versions—in the Amazon store."
     }
   ]
 }

@@ -21,9 +21,10 @@ const guides = read('data/guides.json').guides;
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
 const ALLOWED_SOURCE_HOSTS = new Set([
-  'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
+  'affiliate-program.amazon.com', 'advertising.amazon.com', 'www.amazon.com', 'link.amazon',
+  'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
-  'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
+  'chefman.com', 'www.emerileveryday.com', 'chefiq.com', 'www.thermomaven.com',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
@@ -187,6 +188,11 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const expectedNa = stated.filter((v) => !v).length;
     const actualNa = (h.match(/class="na"/g) || []).length;
     check(`product page ${p.id} shows exactly ${expectedNa} "not stated" cells`, actualNa === expectedNa, `${actualNa} rendered`);
+    // Extra stated rows (an ambient range beside an internal one, a sensor count) must reach the page.
+    for (const [label, value] of (p.spec_notes || [])) {
+      const escaped = String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      check(`product page ${p.id} shows the extra specification row "${label}"`, h.includes(escaped), label);
+    }
     if (p.no_buy_link) {
       check(`product page ${p.id} publishes no buy button`, !/data-outbound/.test(h));
       check(`product page ${p.id} explains why`, /No buy button on this page/.test(h));
