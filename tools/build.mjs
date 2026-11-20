@@ -310,6 +310,11 @@ const add = (p) => pages.push(p);
 // Home (publication front page: products first)
 {
   const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
+  const quickPick = products.map((p) => `<div class="qp-item">
+  <p class="qp-product">${esc(p.short_name)}</p>
+  <p class="qp-fit">${esc(p.fit_line)}</p>
+  <p class="qp-links"><a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a> · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
+</div>`).join('\n');
   const newestGuides = [...guides].slice(0, 3);
   const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
@@ -350,6 +355,13 @@ const add = (p) => pages.push(p);
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
   <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all five in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
+</section>
+<section class="band band-alt">
+  <div class="band-head">
+    <h2>Not sure which one? Pick by how you cook</h2>
+    <p>One line per product, and the guide that matches your kitchen.</p>
+  </div>
+  <div class="quick-pick">${quickPick}</div>
 </section>
 <section class="band band-alt">
   <div class="band-head">
