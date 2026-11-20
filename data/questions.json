@@ -184,7 +184,7 @@
     },
     {
       "id": "K-25",
-      "statement": "The shelf publishes 14 guides, 7 Journal articles and 5 product rows across 3 clusters, so the 'at least 10 posts' rule of thumb is met on page count alone. Whether a reviewer calls the content robust is not something a count can answer.",
+      "statement": "The shelf publishes 17 guides, 7 Journal articles and 5 product rows across 3 clusters, so the 'at least 10 posts' rule of thumb is met on page count alone. Whether a reviewer calls the content robust is not something a count can answer.",
       "sources": [
         "S19"
       ]
@@ -198,7 +198,7 @@
       ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-22 to Q-24, K-23 to K-26 and D-19 to D-22 were added by session b7320829-affil3 on 2026-11-20, after a round that read seven official pages first-hand and merged this branch with main; two of the three new questions close in one sitting in Associates Central.",
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-23 to Q-25, K-23 to K-26 and D-19 to D-22 were added by session b7320829-affil3 on 2026-11-20, after a round that read seven official pages first-hand and merged this branch with main; two of the three new questions close in one sitting in Associates Central.",
   "unknown": [
     {
       "id": "Q-01",
@@ -420,8 +420,16 @@
     },
     {
       "id": "Q-22",
+      "question": "Where will reader email capture run, and under what consent wording?",
+      "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
+      "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-23",
       "question": "What counts as a page for the 10-post threshold, and who decides the site is ready to submit?",
-      "have": "14 guides, 7 Journal articles and 5 product rows; S19's wording, read from an excerpt; FLG-007 open since the first pass.",
+      "have": "17 guides, 7 Journal articles and 5 product rows; S19's wording, read from an excerpt; FLG-007 open since the first pass.",
       "lack": "Amazon's answer, and a decision to submit.",
       "who": "The owner, in a signed-in Associates session.",
       "why_it_matters": "A count is not a pass and page count is not content quality; submitting early with thin pages risks the account review for no gain.",
@@ -432,7 +440,7 @@
       ]
     },
     {
-      "id": "Q-23",
+      "id": "Q-24",
       "question": "Will each buy link be replaced by a Special Link generated in Associates Central, and when?",
       "have": "Five constructed tagged links (observed ASIN + tag), the Program Policies clause they satisfy (S02), and gate G-02 saying none has been tested.",
       "lack": "A link issued by Amazon for each product, and one confirmation that the click lands in the tracking report.",
@@ -446,13 +454,13 @@
       ]
     },
     {
-      "id": "Q-24",
+      "id": "Q-25",
       "question": "Who re-checks listing copy, and where is that record kept?",
       "have": "A per-product observed date, four dated rounds, and one round that failed to reach the source at all.",
       "lack": "An owner and a cadence for a ten-minute check, and a field on the product row for its result.",
       "who": "The owner, or the editorial team once one exists (Q-06).",
       "why_it_matters": "Titles, included accessories and prices change without notice on the retailer's side; the site publishes the wording it saw with a date on it, so the date has to stay near the truth.",
-      "how_to_close": "S-30 option B: one short monthly pass into data/observations/ with its date, rendered as a last-seen line on the product page.",
+      "how_to_close": "S-34 option B: one short monthly pass into data/observations/ with its date, rendered as a last-seen line on the product page.",
       "blocking": false,
       "sources": [
         "S04",
@@ -551,6 +559,13 @@
       "closes": []
     },
     {
+      "id": "D-15",
+      "suggestion": "Name one reader persona from S-30 and write it at the top of the December commission list before any new guide is drafted.",
+      "closes": [
+        "Q-13"
+      ]
+    },
+    {
       "id": "D-16",
       "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
       "closes": [
@@ -581,18 +596,18 @@
     },
     {
       "id": "D-20",
-      "suggestion": "In Associates Central, generate one Special Link per product, paste it into the product row with its generation date, then click it once and confirm the click in the tracking report. That sequence closes Q-01, Q-02 and Q-23 together.",
+      "suggestion": "In Associates Central, generate one Special Link per product, paste it into the product row with its generation date, then click it once and confirm the click in the tracking report. That sequence closes Q-01, Q-02 and Q-24 together.",
       "closes": [
         "Q-01",
         "Q-02",
-        "Q-23"
+        "Q-24"
       ]
     },
     {
       "id": "D-21",
       "suggestion": "Run a ten-minute monthly listing re-check: open each tagged link in a signed-in browser, compare the title and the included-accessory wording with the row, and write the outcome into data/observations/ with its date.",
       "closes": [
-        "Q-24"
+        "Q-25"
       ]
     },
     {

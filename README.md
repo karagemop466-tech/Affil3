@@ -79,7 +79,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` prints its own tally; at this commit it runs **7,990 checks** over the published root
+`node tools/verify.mjs` prints its own tally; at this commit it runs **8,717 checks** over the published root
 pages (the figure grew because the gate's page list was synced with the build's, which had been skipping
 `compare/`, `workflow/`, `privacy/` and `design-brief/`, and because of the citation rules below). It stops the build on:
 
@@ -92,10 +92,10 @@ pages (the figure grew because the gate's page list was synced with the build's,
 - a broken internal link, a missing anchor, or a page missing from the sitemap;
 - a source ID that does not exist, or a spec row citing one;
 - a cross-reference in a register or a rendered page that does not resolve to a row — every `S01`-style source id, `FLG-nnn`,
-  `S-nn`, `Q-nn`, `K-nn` and `D-nn` (added 2026-11-20 after a first batch of stale references shipped; FLG-042);
+  `S-nn`, `Q-nn`, `K-nn` and `D-nn` (added 2026-11-20 after a first batch of stale references shipped; FLG-044);
 - an inline citation in a guide that the guide does not declare in its own source list, and a sentence carrying a measurement
   (`1700 W`, `450 °F`, `8 qt`, `25 presets`) that cites a policy, disclosure or developer page instead of a maker, retailer or
-  food-safety source — the rule that caught four guides citing the FTC page for Chefman wattage figures (S-29, FLG-042).
+  food-safety source — the rule that caught five guides citing the FTC page for Chefman wattage figures (S-35, FLG-044).
 
 The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
 cannot bypass them, and by the gate, so a hand-edited page cannot either.
@@ -111,7 +111,7 @@ neither. Google reads `robots.txt` from the host root, not from a project path, 
 not consulted for these URLs at all (**FLG-038**). And even where it is read, Google states that
 `robots.txt` "is not a mechanism for keeping a web page out of Google", that a disallowed URL can still
 appear in results without a description, and that `noindex` cannot be declared in `robots.txt` — while a
-page that *is* disallowed cannot have its `noindex` tag seen (sources S24, S25, S26; **FLG-041**). Only one
+page that *is* disallowed cannot have its `noindex` tag seen (sources S24, S25, S26; **FLG-043**). Only one
 of the secondary editions ships a `noindex` tag today. What actually de-indexes an edition is a
 `<meta name="robots" content="noindex,follow">` in that edition's own generator, without a Disallow line,
 or moving it under `/legacy/` — options **B** and **C** of **S-20**, which is an owner decision because each

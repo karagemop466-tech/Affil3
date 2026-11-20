@@ -928,7 +928,71 @@
       "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
     },
     {
-      "id": "S-28",
+      "id": "S-29",
+      "topic": "December content direction",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).",
+          "tradeoff": "Matches the seasonal questions readers actually have in December; heavily thermometer-weighted."
+        },
+        {
+          "id": "B",
+          "label": "Gift-guide cluster: small appliances as gifts, what to check before gifting.",
+          "tradeoff": "Wide appeal; a crowded field with big publishers owning most search results."
+        },
+        {
+          "id": "C",
+          "label": "Deal-week follow-ups: price-check method posts and post-holiday clearance guides.",
+          "tradeoff": "Timely and linkable; ages quickly and must be date-stamped."
+        }
+      ],
+      "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
+    },
+    {
+      "id": "S-30",
+      "topic": "Target reader",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Small-household weeknight cooks: one to three people, limited counter, limited time (current).",
+          "tradeoff": "Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally."
+        },
+        {
+          "id": "B",
+          "label": "Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.",
+          "tradeoff": "Matches the seasonal spikes; thin the rest of the year."
+        },
+        {
+          "id": "C",
+          "label": "Gadget-first early adopters: smart features, apps, wireless probes.",
+          "tradeoff": "High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item."
+        }
+      ],
+      "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
+    },
+    {
+      "id": "S-31",
+      "topic": "Order of operations: measurement or content first",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.",
+          "tradeoff": "Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login."
+        },
+        {
+          "id": "B",
+          "label": "Keep publishing on editorial judgement until traffic exists, then measure (current).",
+          "tradeoff": "No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break."
+        }
+      ],
+      "recommendation": "A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it."
+    },
+    {
+      "id": "S-32",
       "track": "trust",
       "topic": "Answer-first summaries on every guide",
       "problem": "A guide that buries its answer under four headings is a guide a reader leaves, and a page a reader leaves is a page a search engine discounts. The brief's 'not AI slop' instruction is answered by giving the answer plainly, with its sources, before the argument - not by decoration.",
@@ -944,7 +1008,7 @@
         {
           "id": "B",
           "label": "Add a 'summary' field per guide, rendered as a boxed short answer under the byline, and compute the word and minute count from the guide's own text at build time.",
-          "tradeoff": "Implemented 2026-11-20 for all fourteen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page's word count over 225 words a minute - a property of the text, not a measurement of the reader.",
+          "tradeoff": "Implemented 2026-11-20 for all seventeen guides. Each guide needs a short honest answer written for it, which also catches a guide that has no answer to give. The reading figure is the page's word count over 225 words a minute - a property of the text, not a measurement of the reader.",
           "effort": "done",
           "risk": "low"
         }
@@ -955,7 +1019,7 @@
       ]
     },
     {
-      "id": "S-29",
+      "id": "S-33",
       "track": "findability",
       "topic": "How much structured data to publish",
       "problem": "The shelf emits Article on guides and Product on product pages. Question-shaped guides with questions and answers on the page, and a hierarchy under one root, are both describable in machine-readable form - the cheapest findability lever available that needs no owner action and no host access, unlike the robots.txt problem in S-20.",
@@ -990,7 +1054,7 @@
       ]
     },
     {
-      "id": "S-30",
+      "id": "S-34",
       "track": "trust",
       "topic": "A dated re-check ritual for listing copy",
       "problem": "Four rounds have read the five listings; three matched, and the fourth could not reach the site at all. Listing titles, accessories and prices change without notice, and this site publishes the wording it saw with a date on it. That is honest, but it quietly ages - and an automated check cannot do the job, because unauthenticated fetches of Amazon fail or land on the home page (FLG-036, FLG-037).",
@@ -1025,10 +1089,10 @@
       ]
     },
     {
-      "id": "S-31",
+      "id": "S-35",
       "track": "platform",
       "topic": "A citation check that catches wrong meaning, not just a dangling id",
-      "problem": "Eleven cross-reference defects shipped in this repository before anyone noticed, because every id involved resolved: four guides cited the FTC endorsement page for Chefman wattage figures, two flags credited a Chefman product page with Amazon's application-review text, a byline sentence named a team the config had already renamed, a design-brief row blocked on the wrong suggestion, and one guide used source ids it never declared. None of these can be caught by an existence check, and traceability is the entire claim this site makes about itself.",
+      "problem": "Eleven cross-reference defects shipped in this repository before anyone noticed, because every id involved resolved: five guides cited the FTC endorsement page for Chefman wattage figures, two flags credited a Chefman product page with Amazon's application-review text, a byline sentence named a team the config had already renamed, a design-brief row blocked on the wrong suggestion, and one guide used source ids it never declared. None of that is catchable by an existence check, and traceability is the whole claim this site makes about itself.",
       "current": "C",
       "options": [
         {
@@ -1048,7 +1112,7 @@
         {
           "id": "C",
           "label": "Two further rules, implemented with B: an inline citation in a guide must be declared in that guide's own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.",
-          "tradeoff": "Implemented 2026-11-20 in tools/verify.mjs section 3b; this is the pair that catches 'Chefman states 1700 W (S22)'. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.",
+          "tradeoff": "Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches 'Chefman states 1700 W (S22)'. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.",
           "effort": "done",
           "risk": "low"
         },
@@ -1067,7 +1131,7 @@
       ]
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-28 to S-31 continue main's board after the 2026-11-20 merge (renumbered from this session's draft ids, which collided with main's S-20 to S-27). Three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session's de-indexing proposal was folded into main's S-20 and its Special-Link field became option D of main's S-02, for the same reason: the board should hold one row per decision.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. S-32 to S-35 continue main's board after the 2026-11-20 merge, renumbered because main took this session's draft ids while the branch was open. Three were implemented by session b7320829-affil3 in that merge and are listed here for reversal as well as approval. This session's de-indexing proposal was folded into main's S-20 and its Special-Link field became option D of main's S-02, for the same reason the board exists: one row per decision.",
   "tracks": [
     {
       "id": "revenue",
@@ -1164,22 +1228,22 @@
     },
     {
       "order": 13,
-      "id": "S-28",
-      "why": "Shipped with this merge: answer-first summaries and computed reading stats on all fourteen guides."
+      "id": "S-32",
+      "why": "Shipped with this merge: answer-first summaries and computed reading stats on all seventeen guides."
     },
     {
       "order": 14,
-      "id": "S-29",
+      "id": "S-33",
       "why": "Shipped: Article + BreadcrumbList + FAQPage graph. Do not expect rich results from it."
     },
     {
       "order": 15,
-      "id": "S-30",
+      "id": "S-34",
       "why": "The only check that sees what a shopper sees, and deliberately manual (FLG-036, FLG-037)."
     },
     {
       "order": 16,
-      "id": "S-31",
+      "id": "S-35",
       "why": "Shipped: eleven mis-citations was the evidence; the gate now tests meaning, not just existence."
     }
   ],

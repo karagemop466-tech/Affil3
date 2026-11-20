@@ -1,5 +1,5 @@
 {
-  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, note, ul, ol, table, faq, cta. 'summary' is the answer-first box rendered under the byline on every guide, and the word count in the byline is computed from the guide's own text at build time. Merge note, 2026-11-20: session b7320829-affil3 drafted five guides against the tree at 7fac552, which had five. Four of the five duplicated pages that had meanwhile landed on main, so those four were withdrawn and their first-hand material merged into the existing pages instead - see the 'amended' field on those rows and FLG-043. One guide is new to the shelf: Sync Finish and Hi-Fry. The shelf is 14 guides, up from five at the branch point.",
+  "note": "Question-shaped guides. Working titles are editorial hypotheses, not claims about search volume or product superiority. Block types: img, h2, h3, p, note, ul, ol, table, faq, cta. 'summary' is the answer-first box rendered under the byline on every guide, and the word count in the byline is computed from the guide's own text at build time. Merge notes, 2026-11-20: session b7320829-affil3 drafted five guides against 7fac552; four duplicated pages that had landed on main, so they were withdrawn and their first-hand material was merged into the existing cleanup, preset and listing-reading pages instead - see each row's 'amended' field and FLG-045. One row is new: Sync Finish and Hi-Fry.",
   "guides": [
     {
       "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
@@ -279,9 +279,9 @@
         "S04",
         "S11",
         "S13",
+        "S14",
         "S21",
-        "S23",
-        "S14"
+        "S23"
       ],
       "body": [
         {
@@ -328,7 +328,7 @@
         },
         {
           "type": "p",
-          "text": "The paragraph above paraphrases. Here is the same evidence in the pages' own words, because the difference between “baskets” and “basket and rack, top rack” is the whole point of reading carefully. Re-read 2026-11-20."
+          "text": "The paragraph above paraphrases. Here is the same evidence in the pages' own words, because the difference between “baskets” and “basket and rack, top rack” is the whole point of reading carefully. Manufacturer pages re-read 2026-11-20."
         },
         {
           "type": "table",
@@ -350,7 +350,7 @@
             ],
             [
               "Emeril Lagasse 26 QT French Door",
-              "No washing statement at all in the parts of the manufacturer page this site reads: capacity, presets, fan, dimensions and voltage, and silence about cleaning.",
+              "No washing statement at all in the parts of the manufacturer page this site reads: capacity, presets, fan, dimensions and voltage, nothing about cleaning.",
               "Emeril Everyday product page"
             ],
             [
@@ -367,7 +367,7 @@
         },
         {
           "type": "p",
-          "text": "Two of these rows are the same shape of sentence doing different work: “waterproof” describes water reaching the device, “dishwasher safe” describes heat, detergent and spray. A maker that states the first has not stated the second, and a reader who conflates them is the one left with a fogged display after one cycle. Where a page is silent, this site publishes silence rather than an inference."
+          "text": "Two of these rows are the same shape of sentence doing different work: “waterproof” describes water reaching the device, “dishwasher safe” describes heat, detergent and spray. A maker that states the first has not stated the second, and the reader who conflates them is the one left with a fogged display after one cycle. Where a page is silent, this site publishes silence rather than an inference."
         },
         {
           "type": "img",
@@ -445,8 +445,8 @@
           ]
         }
       ],
-      "summary": "The two daily costs of an air fryer are the pieces you wash and the counter it occupies. Count the parts that touch grease before you fall for the capacity, measure the outside box rather than the advertised volume, and read a dishwasher claim narrowly: it names the parts it covers and says nothing about the rest.",
-      "amended": "Statement grid added 2026-11-20 by session b7320829-affil3 from that session's first-hand re-reads of the Chefman, Emeril and ThermoMaven pages. It replaces a standalone guide this session drafted on the same question, withdrawn as a duplicate (FLG-043)."
+      "amended": "Statement grid added 2026-11-20 by session b7320829-affil3 from that session's first-hand re-reads of the Chefman, Emeril and ThermoMaven pages; it replaces a standalone guide drafted on the same question, withdrawn as a duplicate (FLG-045).",
+      "summary": "The two daily costs of an air fryer are the pieces you wash and the counter it occupies. Count the parts that touch grease before you fall for the capacity, measure the outside box rather than the advertised volume, and read a dishwasher claim narrowly: it names the parts it covers and says nothing about the rest."
     },
     {
       "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
@@ -676,137 +676,6 @@
       "summary": "A thermometer is only as good as where you put it. USDA's guidance is to place it in the thickest part away from bone, fat and gristle, to check a large roast in several places, and to cook to the minimum internal temperature: 165 °F for all poultry, 160 °F for ground meats, 145 °F with a three-minute rest for whole-muscle beef, pork, veal and lamb."
     },
     {
-      "slug": "sync-finish-and-hi-fry-what-the-buttons-do",
-      "title": "Sync Finish and Hi-Fry: what the buttons do",
-      "category": "air-fryers",
-      "cluster_links": [
-        "air-fryer-ovens"
-      ],
-      "image": "/assets/img/guide-dual-basket-controls.png",
-      "image_alt": "Illustration of a dual-basket air fryer control panel with two blank displays and a row of round touch controls",
-      "date": "2026-11-20",
-      "deck": "Dual-basket machines sell themselves on three named features. Two are about timing, one is about temperature, and none of them is about how well food cooks.",
-      "description": "What Sync Finish, Hi-Fry and independent baskets mean on the Chefman dual-basket air fryer, read from the manufacturer page and the Amazon listing, including the disputed temperature ceiling on the 8 qt model.",
-      "summary": "Sync Finish is a timing feature - the machine starts one basket later so two foods land together - and it does not equalise temperature or method between the sides. Independent baskets buy two temperatures and two timers, but each chamber stays 3 quarts. And the 450 °F Hi-Fry ceiling is stated for the dual-basket model only: the same brand's 8 qt page states 200-400 °F, so the higher claim is named and flagged rather than adopted.",
-      "sources": [
-        "S04",
-        "S11",
-        "S23",
-        "S16",
-        "S12"
-      ],
-      "body": [
-        {
-          "type": "p",
-          "text": "Feature names on an appliance panel are marketing sentences compressed into two words. Unpack them and you get a much better idea of whether a machine suits how you actually cook. Three names carry almost all the weight on the dual-basket unit we track."
-        },
-        {
-          "type": "h2",
-          "text": "Two baskets: what “independent” buys, and what it costs"
-        },
-        {
-          "type": "p",
-          "text": "The Chefman page for this model describes a 6-quart air fryer that “combines two powerful air fryers in one, allowing you to cook different dishes simultaneously or easily switch between baskets”. The Amazon listing title is more specific: two independent 3-quart baskets. Independent means two temperatures and two timers. It also means each chamber is 3 quarts, so a batch that would lie flat in one 6-quart drawer now has to be split. Two small baskets and one big basket are different tools that happen to share a word."
-        },
-        {
-          "type": "h2",
-          "text": "Sync Finish is a timing feature, not a cooking feature"
-        },
-        {
-          "type": "p",
-          "text": "The manufacturer describes a Sync Finish feature “to ensure both baskets finish cooking simultaneously”. That is the whole promise: the machine manages when one side starts so two foods land on the table together. It does not equalise temperature between the sides, it does not make a chicken thigh and a tray of fries cook alike, and it will not rescue a dish that needed a different technique. If your Tuesday problem is two things, one plug, same table, it is aimed squarely at that. If your problem is even browning across one large batch, it is not."
-        },
-        {
-          "type": "h2",
-          "text": "Hi-Fry is a number, and the number is disputed"
-        },
-        {
-          "type": "p",
-          "text": "On the dual-basket page the manufacturer states a maximum of 450 °F (235 °C) with the Hi-Fry function, and the listing title lists Hi-Fry among the features. On the 8 qt single-basket Chefman the two documents part company: the maker's page for the model the listing names (RJ38-SQSS-8T) states 200-400 °F, while the Amazon title advertises a 450 °F Hi-Fry option - and 450 °F is what the maker states for a different 8 qt unit, the TurboFry Touch with High Fry. A headline can be a promise about a product family; a specification block is a claim about one unit. This site publishes the 400 °F figure for that model and leaves the title's 450 °F claim named but unadopted (FLG-027). When two official pages conflict, the conservative figure goes on the page and the conflict goes in the register."
-        },
-        {
-          "type": "table",
-          "headers": [
-            "Feature",
-            "Who states it",
-            "What it changes about your cooking",
-            "What it does not change"
-          ],
-          "rows": [
-            [
-              "Sync Finish",
-              "Manufacturer page and listing title",
-              "Whether two foods land at the same time",
-              "Whether both foods are cooked the same way"
-            ],
-            [
-              "Two independent 3 qt baskets",
-              "Listing title; the maker's page states the 6 qt total",
-              "Whether you can run two temperatures at once",
-              "Total capacity: 3 + 3 is not one 6 qt chamber"
-            ],
-            [
-              "Hi-Fry to 450 °F",
-              "Manufacturer page for the dual-basket model",
-              "The upper temperature ceiling on that model",
-              "Nothing on the 8 qt model, whose page states 200-400 °F (FLG-027)"
-            ],
-            [
-              "Easy-view windows",
-              "Listing title",
-              "Whether you check food by looking instead of by opening",
-              "Crispiness, which still comes from air flow, temperature and time"
-            ],
-            [
-              "Auto shutoff",
-              "Listing title",
-              "What happens if you forget it is running",
-              "The need to check doneness with a thermometer"
-            ]
-          ]
-        },
-        {
-          "type": "h2",
-          "text": "Three questions to ask of any dual-basket listing"
-        },
-        {
-          "type": "ol",
-          "items": [
-            "What is the capacity of one basket, not of the pair? Compare a single batch against a single chamber, not against a total.",
-            "Which page states the temperature ceiling - the maker's specification or the listing title? If they differ, the difference belongs in your decision, not in a footnote.",
-            "Is there a care statement about the baskets - nonstick, dishwasher-safe, top rack only? Washing is part of the daily cost of owning this shape, and it is a separate claim from the cooking one."
-          ]
-        },
-        {
-          "type": "note",
-          "text": "No appliance was operated to write this guide. Every feature sentence above is a statement from a manufacturer page or from the observed Amazon listing, and the two are attributed separately because they are not always the same sentence."
-        },
-        {
-          "type": "faq",
-          "items": [
-            {
-              "q": "Do I need Sync Finish if I can set a timer myself?",
-              "a": "You can do the same arithmetic by hand. The feature saves you starting one side late and watching two countdowns, which on a busy evening is most of its value."
-            },
-            {
-              "q": "Is Hi-Fry worth paying for?",
-              "a": "That cannot be answered from these pages, because they state what the function is - a higher temperature ceiling - and not how it performs. We do not publish a performance opinion we cannot source."
-            },
-            {
-              "q": "Can a dual-basket unit replace a single big drawer for a family?",
-              "a": "Only if your batches fit in 3 quarts each. For one large single item, the 8 qt single-basket shape exists for exactly that reason, which is why both shapes stay on our shelf."
-            }
-          ]
-        },
-        {
-          "type": "cta",
-          "text": "The two Chefman rows sit side by side in the comparison table, with each figure traced to the page that states it.",
-          "label": "Compare them in one table",
-          "href": "/compare/"
-        }
-      ]
-    },
-    {
       "slug": "how-much-counter-space-does-an-air-fryer-really-need",
       "title": "How much counter space does an air fryer really need?",
       "category": "air-fryers",
@@ -951,7 +820,7 @@
           "text": "Every row links to the observed Amazon listing, and each product page carries the size the manufacturer states."
         }
       ],
-      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S23 for Chefman specifications, but S23 in this register is the FTC Endorsement Guides page. The figures come from S23, the maker's page for RJ38-SQSS-8T (the matte-black High-Fry unit remains S12). See FLG-042.",
+      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S22 for Chefman specifications, but S22 in this register is the FTC Endorsement Guides page; the figures come from S23, and the matte-black High-Fry unit stays S12 (FLG-044).",
       "summary": "The number that decides the purchase is not the capacity on the box but the outside footprint plus the clearance the maker asks for. Measure the space, add the room a drawer takes when it is open or a door takes when it swings, and check it against the footprints published for the three countertop appliances on this shelf."
     },
     {
@@ -1089,7 +958,7 @@
           "text": "The shop table shows every tracked appliance side by side, with the listing we observed and the sources we read."
         }
       ],
-      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S23 for Chefman specifications, but S23 in this register is the FTC Endorsement Guides page. The figures come from S23, the maker's page for RJ38-SQSS-8T (the matte-black High-Fry unit remains S12). See FLG-042.",
+      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S22 for Chefman specifications, but S22 in this register is the FTC Endorsement Guides page; the figures come from S23, and the matte-black High-Fry unit stays S12 (FLG-044).",
       "summary": "Two baskets buy you two temperatures and two timers, and cost you batch size: two 3-quart chambers are not one 6-quart chamber. If your problem is two foods landing at the same time, dual wins; if it is one large single item, a big drawer is the right shape."
     },
     {
@@ -1337,9 +1206,9 @@
         "S12",
         "S23",
         "S04",
-        "S21",
         "S10",
-        "S20"
+        "S20",
+        "S21"
       ],
       "body": [
         {
@@ -1505,7 +1374,7 @@
           "text": "Every fact on this site points at a dated, linked source. Where two official pages disagree, the disagreement is published rather than smoothed over."
         }
       ],
-      "amended": "Certification sidebar added 2026-11-20 by session b7320829-affil3 from the ThermoMaven page and the two USDA FSIS pages, all re-read in that session; it replaces a standalone thermometer-label guide drafted the same day, withdrawn as a duplicate (FLG-043).",
+      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S22 for Chefman specifications, but S22 in this register is the FTC Endorsement Guides page; the figures come from S23, and the matte-black High-Fry unit stays S12 (FLG-044). Certification sidebar added 2026-11-20 by session b7320829-affil3 from the ThermoMaven page and the two USDA FSIS pages, all re-read in that session; it replaces a standalone thermometer-label guide drafted the same day, withdrawn as a duplicate (FLG-045).",
       "summary": "A listing title is written to sell and the specification block is written to describe, so open the maker's page first and compare the four numbers that change the purchase: model, temperature range, power and dimensions. Where the two documents disagree, the disagreement is the finding - this site publishes both readings rather than a reconciled one."
     },
     {
@@ -1696,7 +1565,7 @@
         },
         {
           "type": "p",
-          "text": "The table above takes the Emeril oven's figure from its specification strip: 25 cooking pre-sets. The description on that same manufacturer page calls the machine a 10-in-1 air fry convection oven, and the Amazon listing title for the oven reads “24 One-Touch Preset Options”, while an image on the manufacturer page records an eleven-function count. Four figures, one machine, all of them published somewhere the brand controls - which is why a preset total is a number to read with the source named, and why nothing on our product page states an accessory or preset count as a settled fact. The disagreement is recorded and dated as FLG-024."
+          "text": "The table above takes the Emeril oven's figure from its specification strip: 25 cooking pre-sets. The description on that same manufacturer page calls the machine a 10-in-1 air fry convection oven, and the Amazon listing title reads “24 One-Touch Preset Options”, while an image on the manufacturer page records an eleven-function count. Four figures from two official pages about one machine, each published somewhere the brand controls - which is why a preset total is a number to read with its source named, and why nothing on our product page states a preset or accessory count as settled fact. The disagreement is recorded and dated as FLG-024."
         },
         {
           "type": "img",
@@ -1757,7 +1626,7 @@
           "text": "The shop table shows each appliance with the listing we observed and the sources we read for its specifications."
         }
       ],
-      "amended": "Worked example added 2026-11-20 by session b7320829-affil3 from a first-hand re-read of the Emeril manufacturer page in that session; it replaces a standalone guide drafted on the same question, withdrawn as a duplicate (FLG-043).",
+      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S22 for Chefman specifications, but S22 in this register is the FTC Endorsement Guides page; the figures come from S23, and the matte-black High-Fry unit stays S12 (FLG-044). Worked example added 2026-11-20 by session b7320829-affil3 from a first-hand re-read of the Emeril manufacturer page; it replaces a standalone guide drafted on the same question, withdrawn as a duplicate (FLG-045).",
       "summary": "A preset count is a marketing number: nothing standardises what counts as a preset, and one machine on this shelf states its own count four different ways across two official pages. Compare capacity, the maker's serving line, fan behaviour, outside size and named accessories instead, then check whether you can set time and temperature by hand in two presses."
     },
     {
@@ -1875,8 +1744,520 @@
           "text": "Both styles, with every specification attributed to the page it was read from."
         }
       ],
-      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S23 for Chefman specifications, but S23 in this register is the FTC Endorsement Guides page. The figures come from S23, the maker's page for RJ38-SQSS-8T (the matte-black High-Fry unit remains S12). See FLG-042. S11 and S23 were cited in the appliance table but missing from this guide's source list; added 2026-11-20 by session b7320829-affil3, whose new gate rule is what found it (FLG-042).",
+      "amended": "Inline citation corrected 2026-11-20 by session b7320829-affil3: this page cited S22 for Chefman specifications, but S22 in this register is the FTC Endorsement Guides page; the figures come from S23, and the matte-black High-Fry unit stays S12 (FLG-044).",
       "summary": "Colour tells you it looks right; only a thermometer tells you it is safe. Cook chicken to 165 °F as measured with a food thermometer, in the thickest part, and read why opacity and juices mislead on this cut in particular before you trust the eye test."
+    },
+    {
+      "slug": "black-friday-kitchen-deals-a-shoppers-checklist",
+      "title": "Black Friday kitchen deals: a checklist before you click add to cart",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens",
+        "cooking-thermometers"
+      ],
+      "image": "/assets/img/season-deal-week.png",
+      "image_alt": "Editorial illustration: a notepad with a blank checklist, a pencil and a cup of coffee on a kitchen counter, an air fryer softly blurred behind",
+      "date": "2026-11-20",
+      "deck": "Deal week runs on urgency. Your decision should not. A short, reusable checklist for judging a kitchen discount before the countdown timer starts.",
+      "description": "A no-hype Black Friday checklist for kitchen appliances: decide your number first, read which offer a price belongs to, price the accessories, and check the return window before the banners start blinking.",
+      "sources": [
+        "S03"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/season-deal-week.png",
+          "alt": "Editorial illustration: a notepad with a blank checklist, a pencil and a cup of coffee on a kitchen counter, an air fryer softly blurred behind",
+          "caption": "Illustration: AI-generated for this site. A planning scene, not a product photo."
+        },
+        {
+          "type": "p",
+          "text": "Deal week is loud on purpose. Every appliance on every site wears a percentage-off badge, and the banners blink in the exact rhythm that makes deciding feel like running out of time. Here is the checklist we keep taped to the inside of a cupboard door. It works in November and it works in any other month."
+        },
+        {
+          "type": "h2",
+          "text": "Decide your number first"
+        },
+        {
+          "type": "p",
+          "text": "A deal is only good relative to the price you would actually pay. Before you open a single listing, decide what this thing is worth to you. A discount off a number you would never have paid is not a saving; it is arithmetic. Write your number down, then shop against it."
+        },
+        {
+          "type": "h2",
+          "text": "Read which offer the price belongs to"
+        },
+        {
+          "type": "p",
+          "text": "A listing can carry several offers at once: new from the brand, new from a reseller, used, warehouse. A lower number attached to a used or warehouse offer is not a discount on the new one, and the headline badge rarely makes the distinction for you. Look inside the offer box before you believe the banner."
+        },
+        {
+          "type": "h2",
+          "text": "Price the whole ownership, not just the box"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Replacement parts. A unit whose baskets or trays are sold separately has a running cost; the listing or the manual usually says what is available.",
+            "Accessories you will actually use. Bundles change the unit math, and the per-unit figure is usually printed right on the listing if you look for it.",
+            "Counter space. The best-priced appliance is a bad deal if it lives on the floor because it does not fit under the cabinet. The dimensions are on each product page on this site, in the specification grid.",
+            "Your time. Two small baskets finish dinner differently than one big one; so does an oven with three rack levels. The cheapest shape is the one that matches how you actually cook."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Check the return window before the deal, not after"
+        },
+        {
+          "type": "p",
+          "text": "Return policies stretch and shrink with the season, and they vary by item and by seller. Read the return window on the listing before you buy, while you can still walk away. Impulse buys are safer with a generous window, but only if the item actually qualifies for it."
+        },
+        {
+          "type": "h2",
+          "text": "Ignore the countdown"
+        },
+        {
+          "type": "p",
+          "text": "A timer is merchandising, not information. It tells you what the seller wants you to feel, not what the item is worth. If the deal disappears while you are thinking, the honest question is not whether you missed out, but whether you would have bought it at your number in the first place."
+        },
+        {
+          "type": "h2",
+          "text": "Why this site never shows you a price"
+        },
+        {
+          "type": "p",
+          "text": "Prices change hourly, and Amazon's own rules say a site may display price and availability only from data Amazon serves or supplies through its authorized tools. This site does neither, so it shows no prices anywhere. Every button on this site goes straight to the live listing, where the current number always is, with the day's date on it rather than a stale one in our copy."
+        },
+        {
+          "type": "note",
+          "text": "Seasonal note: this guide will age; the checklist will not. We will date-stamp it again at the next deal window rather than pretend it is evergreen."
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Write down your number before you browse.",
+            "Check which offer the price belongs to.",
+            "Price the parts, the accessories and the counter space.",
+            "Read the return window while you can still walk away.",
+            "Treat every countdown timer as decoration."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is a percentage-off badge proof of a real discount?",
+              "a": "No. It is a merchandising label. Only comparison against the recent price tells you whether the number moved, and only your own budget tells you whether it matters."
+            },
+            {
+              "q": "Should I wait for the next deal day instead?",
+              "a": "If waiting costs you nothing and you would buy at your number either way, waiting is free. If the item is for a specific meal or a gift with a date, a smaller honest discount beats a hypothetical bigger one."
+            },
+            {
+              "q": "Do your buy buttons change during deal week?",
+              "a": "No. They always go to the live listing on Amazon with our tracking ID, deal week or not. Whatever price is showing there when you click is the real one."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Five appliances, each checked against the maker's own specification page where one exists.",
+          "label": "Browse the shelf",
+          "href": "/shop/"
+        }
+      ],
+      "summary": "A discount does not change what a machine is. Decide your number before the countdown - the capacity you actually need, the counter space you actually have, the parts you will actually wash - then check which offer the price belongs to and what the return window says. This site publishes no prices, so the checklist is the whole advice."
+    },
+    {
+      "slug": "which-air-fryer-shape-fits-your-week",
+      "title": "Dual-basket, single-basket, or oven-style? Match the shape to your week",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-shapes.png",
+      "image_alt": "Editorial illustration: a dual-basket air fryer, a large single-basket air fryer and a countertop oven with glass french doors lined up on a wooden kitchen counter",
+      "date": "2026-11-20",
+      "deck": "Three shapes, three kinds of weeknights. Find your cooking pattern on the map and the shortlist narrows without a single editor's-choice badge.",
+      "description": "Dual-basket vs single-basket vs oven-style air fryers: a decision map based on household size, meal patterns and cleanup tolerance, with the product rows on this site matched to each shape.",
+      "sources": [
+        "S04",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-shapes.png",
+          "alt": "Editorial illustration: a dual-basket air fryer, a large single-basket air fryer and a countertop oven with glass french doors lined up on a wooden kitchen counter",
+          "caption": "Illustration: AI-generated for this site. It shows the three shapes, not the specific products we track."
+        },
+        {
+          "type": "p",
+          "text": "Ignore the model names for a minute. Every air fryer on the market is one of three shapes, and each shape is a bet about how your household eats. Find your pattern below and the shortlist narrows on its own, with no badges and no points out of ten."
+        },
+        {
+          "type": "h2",
+          "text": "Shape one: the single basket"
+        },
+        {
+          "type": "p",
+          "text": "The bet: one food, done well, with the fewest parts to clean. It suits households of one to three, snacks and sides, and anyone upgrading from a microwave for reheating."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: the fastest path from cold to eating, the smallest footprint, one basket and a rack in the sink.",
+            "Limits: one temperature at a time. A main and a side means two batches, which means the second one waits."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the Chefman TurboFry 8 Qt (P03) is the single-basket row, with one 8 qt basket and a dishwasher-safe basket and rack stated by the maker. One caution before you order it: the Amazon listing and Chefman's own page describe two different 8 Qt machines, so read the model-number note on its product page first."
+        },
+        {
+          "type": "h2",
+          "text": "Shape two: the dual basket"
+        },
+        {
+          "type": "p",
+          "text": "The bet: two foods, two timings, one finish. It suits households that always cook a main and a side, and anyone tired of keeping one thing warm while the other crisps."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: two independent drawers with their own times and temperatures, and many dual units can finish both at the same moment.",
+            "Limits: two small baskets are not one big one. A large single batch has to be split, and there are two drawers to wash."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the CHEFMAN 6 Qt Dual Basket (P01) is the dual row. The maker states two independent 3 qt baskets, windows in the drawers, and a finish-together mode, all on its own product page."
+        },
+        {
+          "type": "h2",
+          "text": "Shape three: the oven-style"
+        },
+        {
+          "type": "p",
+          "text": "The bet: a whole meal at once, on more than one level. It suits people who cook for a crowd, who want a rack and a tray rather than a drawer, and who have the counter depth for a small oven."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: multiple rack levels, room for a tray or a small roast, and doors instead of a drawer you have to shake.",
+            "Limits: it is the largest footprint of the three, it heats more slowly than a basket, and it wants real counter depth."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the Emeril Lagasse 26 QT French Door (P02) is the oven-style row, with 26 qt of room stated by the maker and french doors over the racks. The maker's own pages disagree on its preset count, so do not shop this row by preset totals."
+        },
+        {
+          "type": "h2",
+          "text": "Find your week on the map"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Your week",
+            "Shape that fits",
+            "The row on our shelf"
+          ],
+          "rows": [
+            [
+              "Two different foods, one dinner, same finish",
+              "Dual basket",
+              "P01 - CHEFMAN 6 Qt Dual Basket"
+            ],
+            [
+              "One big batch of one thing",
+              "Single basket",
+              "P03 - Chefman TurboFry 8 Qt"
+            ],
+            [
+              "Snacks, sides and reheating for one to three",
+              "Single basket",
+              "P03 - Chefman TurboFry 8 Qt"
+            ],
+            [
+              "A whole meal at once, more than one level",
+              "Oven-style",
+              "P02 - Emeril Lagasse 26 QT"
+            ],
+            [
+              "A holiday crowd and a roast to fit",
+              "Oven-style, plus a thermometer",
+              "P02 with P04 or P05"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What all three have in common"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "They move hot air fast, so they outperform a toaster oven at crisping and lose to a pan at searing.",
+            "They all need counter space. Measure the spot, including the clearance to open a drawer or a door; the dimensions are in each product page's specification grid.",
+            "They all punish guessing. Whatever shape you pick, a thermometer is the cheapest upgrade to any of them."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Can an air fryer replace my full-size oven?",
+              "a": "For weeknight meals for a few people, often yes. For a holiday bird or three trays at once, no. The oven-style shape narrows the gap; it does not close it."
+            },
+            {
+              "q": "Do I need two baskets if I cook for one?",
+              "a": "Usually not. Two baskets are about timing two foods, not about volume. A single basket is simpler to live with and to clean."
+            },
+            {
+              "q": "What is the first spec to check?",
+              "a": "Footprint before capacity. Decide where it will live and what has to move when a drawer opens, then pick the largest capacity that fits that space."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Every row, every specification, every source link, in one table.",
+          "label": "Open the full comparison",
+          "href": "/shop/"
+        }
+      ],
+      "summary": "Three shapes cover almost every kitchen: a single basket for one shakeable batch, a dual basket for two foods at two temperatures landing together, and an oven-style unit for racks and a whole tray. Find the week you actually cook and the shortlist narrows itself, with no editor's-choice badge involved."
+    },
+    {
+      "slug": "smart-meat-thermometer-what-actually-matters",
+      "title": "Smart meat thermometers: what actually matters before you buy",
+      "category": "cooking-thermometers",
+      "cluster_links": [],
+      "image": "/assets/img/guide-questions.jpg",
+      "image_alt": "Editorial illustration: a raw chicken on a wooden cutting board beside an open notebook, a pencil and a cup of coffee on a table by a window",
+      "date": "2026-11-20",
+      "deck": "WiFi range, probe counts, app promises. The small set of facts that separates a useful probe from a gadget-drawer item, and how to read a listing without the marketing.",
+      "description": "A buying guide to smart and wireless meat thermometers: probe accuracy statements, heat limits, connectivity, and the difference between instant-read and leave-in probes.",
+      "sources": [
+        "S10",
+        "S20",
+        "S14",
+        "S15",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-questions.jpg",
+          "alt": "Editorial illustration: a raw chicken on a wooden cutting board beside an open notebook, a pencil and a cup of coffee on a table by a window",
+          "caption": "Illustration: AI-generated for this site. Planning a roast, not reviewing a product."
+        },
+        {
+          "type": "p",
+          "text": "A wireless meat thermometer is a genuinely useful tool: you can watch the roast from the sofa instead of opening the oven every ten minutes. It is also a category full of app promises. Here is what is worth checking before you buy, including the question nobody asks first: whether you need smart at all."
+        },
+        {
+          "type": "h2",
+          "text": "First question: instant-read or leave-in?"
+        },
+        {
+          "type": "p",
+          "text": "These are two different tools. An instant-read probe is a spot check: you touch it to the meat for a second or two at the moment you think dinner is done. A leave-in probe stays in the cook from raw to rested and reports continuously. Both are on our shelf, and they are not competitors."
+        },
+        {
+          "type": "p",
+          "text": "The ThermoMaven row (P04) is the instant-read shape: a handheld probe for the final check at the grill. The CHEF iQ Sense (P05) is the leave-in shape: a wireless probe with an app, for the long cook where you want to know the number without going outside."
+        },
+        {
+          "type": "h2",
+          "text": "The specs that actually matter"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "A stated accuracy, with a number in it. A maker who states an accuracy range is making a checkable claim. A maker who states none is making none, and we treat a listing-only accuracy claim as unverified rather than repeating it.",
+            "Heat limits, stated as numbers. The CHEF iQ Sense maker rates the probe heat-safe to 1000 degrees Fahrenheit and states the probe is waterproof and dishwasher safe, on its own product page. A number on the maker's page beats an adjective in an ad.",
+            "Probe count and sensors. The CHEF iQ Sense carries four internal sensors plus one ambient sensor, so its app tracks the meat and the air around it at the same time. That is the difference between the chicken is done and the whole chicken is done.",
+            "What the connectivity depends on. A hub and an app mean battery life and a Wi-Fi connection become part of dinner. The CHEF iQ maker's own pages disagree on battery life for this generation, so treat any battery figure in that family as soft.",
+            "Cleanup, stated by the maker. Probes live in hot, greasy places. Waterproof and dishwasher-safe claims are worth having, but only when the maker states them, not the seller copy."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What a thermometer is actually for"
+        },
+        {
+          "type": "p",
+          "text": "Whatever the app looks like, the job is one number: the internal temperature that makes the food safe and the timing right. The USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles, and it publishes where to place the probe so the reading means something. Both are official, both are free, and both are summarized in our thermometer accuracy guide."
+        },
+        {
+          "type": "h2",
+          "text": "How to read a listing like a skeptic"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Ask who is making each claim. Maker pages are checkable commitments; seller copy is marketing. Where the two disagree, we publish the disagreement instead of picking a winner.",
+            "Check the model number against the maker's own page. On one row in our register, the listing and the maker describe two different machines with different power figures. The model number is the thread that unravels that.",
+            "Ignore ratings as a spec. Star averages say what a crowd felt, not what a probe measures. This site republishes no ratings at all, and links to the live listing instead.",
+            "Prefer numbers to adjectives. Heat-safe to a stated temperature, accuracy to a stated range, a stated probe diameter. Anything else is atmosphere."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do I need a smart thermometer to hit safe temperatures?",
+              "a": "No. Any reliable probe gets you there. Smart features buy convenience: watching a long cook from another room, tracking a whole chicken in more than one place, and getting an alert instead of hovering."
+            },
+            {
+              "q": "How many probes do I actually need?",
+              "a": "One is enough for a weeknight. Two or more make sense for a whole bird or a long smoke, where the question is not is it done but is all of it done."
+            },
+            {
+              "q": "Why does this site withhold some thermometer specs?",
+              "a": "Because we found no manufacturer page to check them against, and listing copy is not a source. Where that happens, the specification grid says not stated and the flag page explains what would close the gap."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Both thermometer rows, side by side, with what we could and could not confirm.",
+          "label": "See the thermometer rows",
+          "href": "/categories/cooking-thermometers/"
+        }
+      ],
+      "summary": "Wireless range, probe count and app promises are specs that matter only if the cook is long enough to need them. The short list is whether the probe is rated for the heat it sits in, what the maker states about the ambient sensor, and whether you can read the number at all - the rest is a gadget drawer."
+    },
+    {
+      "slug": "sync-finish-and-hi-fry-what-the-buttons-do",
+      "title": "Sync Finish and Hi-Fry: what the buttons do",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-dual-basket-controls.png",
+      "image_alt": "Illustration of a dual-basket air fryer control panel with two blank displays and a row of round touch controls",
+      "date": "2026-11-20",
+      "deck": "Dual-basket machines sell themselves on three named features. Two are about timing, one is about temperature, and none of them is about how well food cooks.",
+      "description": "What Sync Finish, Hi-Fry and independent baskets mean on the Chefman dual-basket air fryer, read from the manufacturer page and the Amazon listing, including the disputed temperature ceiling on the 8 qt model.",
+      "summary": "Sync Finish is a timing feature - the machine starts one basket later so two foods land together - and it does not equalise temperature or method between the sides. Independent baskets buy two temperatures and two timers, but each chamber stays 3 quarts. And the 450 °F Hi-Fry ceiling is stated for the dual-basket model only: the same brand's 8 qt page states 200-400 °F, so the higher claim is named and flagged rather than adopted.",
+      "sources": [
+        "S04",
+        "S11",
+        "S12",
+        "S16",
+        "S23"
+      ],
+      "body": [
+        {
+          "type": "p",
+          "text": "Feature names on an appliance panel are marketing sentences compressed into two words. Unpack them and you get a much better idea of whether a machine suits how you actually cook. Three names carry almost all the weight on the dual-basket unit we track, and each one means less than the button suggests."
+        },
+        {
+          "type": "p",
+          "text": "The Chefman page for this model describes a 6-quart air fryer that “combines two powerful air fryers in one, allowing you to cook different dishes simultaneously or easily switch between baskets”. The Amazon listing title is more specific: two independent 3-quart baskets. Whether that shape suits your week at all is a separate question, answered on its own page; this one is about what the named buttons actually do."
+        },
+        {
+          "type": "h2",
+          "text": "Sync Finish is a timing feature, not a cooking feature"
+        },
+        {
+          "type": "p",
+          "text": "The manufacturer describes a Sync Finish feature “to ensure both baskets finish cooking simultaneously”. That is the whole promise: the machine manages when one side starts so two foods land on the table together. It does not equalise temperature between the sides, it does not make a chicken thigh and a tray of fries cook alike, and it will not rescue a dish that needed a different technique. If your Tuesday problem is two things, one plug, same table, it is aimed squarely at that. If your problem is even browning across one large batch, it is not."
+        },
+        {
+          "type": "h2",
+          "text": "Hi-Fry is a number, and the number is disputed"
+        },
+        {
+          "type": "p",
+          "text": "On the dual-basket page the manufacturer states a maximum of 450 °F (235 °C) with the Hi-Fry function, and the listing title lists Hi-Fry among the features. On the 8 qt single-basket Chefman the two documents part company: the maker's page for the model the listing names (RJ38-SQSS-8T) states 200-400 °F, while the Amazon title advertises a 450 °F Hi-Fry option - and 450 °F is what the maker states for a different 8 qt unit, the TurboFry Touch with High Fry. A headline can be a promise about a product family; a specification block is a claim about one unit. This site publishes the 400 °F figure for that model and leaves the title's 450 °F claim named but unadopted (FLG-027). When two official pages conflict, the conservative figure goes on the page and the conflict goes in the register."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Feature",
+            "Who states it",
+            "What it changes about your cooking",
+            "What it does not change"
+          ],
+          "rows": [
+            [
+              "Sync Finish",
+              "Manufacturer page and listing title",
+              "Whether two foods land at the same time",
+              "Whether both foods are cooked the same way"
+            ],
+            [
+              "Two independent 3 qt baskets",
+              "Listing title; the maker's page states the 6 qt total",
+              "Whether you can run two temperatures at once",
+              "Total capacity: 3 + 3 is not one 6 qt chamber"
+            ],
+            [
+              "Hi-Fry to 450 °F",
+              "Manufacturer page for the dual-basket model",
+              "The upper temperature ceiling on that model",
+              "Nothing on the 8 qt model, whose page states 200-400 °F (FLG-027)"
+            ],
+            [
+              "Easy-view windows",
+              "Listing title",
+              "Whether you check food by looking instead of by opening",
+              "Crispiness, which still comes from air flow, temperature and time"
+            ],
+            [
+              "Auto shutoff",
+              "Listing title",
+              "What happens if you forget it is running",
+              "The need to check doneness with a thermometer"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Three questions to ask of any dual-basket listing"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "What is the capacity of one basket, not of the pair? Compare a single batch against a single chamber, not against a total.",
+            "Which page states the temperature ceiling - the maker's specification or the listing title? If they differ, the difference belongs in your decision, not in a footnote.",
+            "Is there a care statement about the baskets - nonstick, dishwasher-safe, top rack only? Washing is part of the daily cost of owning this shape, and it is a separate claim from the cooking one."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "No appliance was operated to write this guide. Every feature sentence above is a statement from a manufacturer page or from the observed Amazon listing, and the two are attributed separately because they are not always the same sentence."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do I need Sync Finish if I can set a timer myself?",
+              "a": "You can do the same arithmetic by hand. The feature saves you starting one side late and watching two countdowns, which on a busy evening is most of its value."
+            },
+            {
+              "q": "Is Hi-Fry worth paying for?",
+              "a": "That cannot be answered from these pages, because they state what the function is - a higher temperature ceiling - and not how it performs. We do not publish a performance opinion we cannot source."
+            },
+            {
+              "q": "Can a dual-basket unit replace a single big drawer for a family?",
+              "a": "Only if your batches fit in 3 quarts each. For one large single item, the 8 qt single-basket shape exists for exactly that reason, which is why both shapes stay on our shelf."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "The two Chefman rows sit side by side in the comparison table, with each figure traced to the page that states it.",
+          "label": "Compare them in one table",
+          "href": "/compare/"
+        }
+      ],
+      "verification": "Written 2026-11-20 from the manufacturer pages fetched that day and the listing wording recorded in the dated register."
     }
   ]
 }

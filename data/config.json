@@ -18,5 +18,9 @@
   "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
   "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units.",
   "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer.",
-  "ftcDisclosure": "I get commissions for purchases made through links in this post."
+  "ftcDisclosure": "I get commissions for purchases made through links in this post.",
+  "searchConsoleToken": "",
+  "searchConsoleNote": "Google Search Console verification token. Empty by design: the meta tag is emitted only when this is set (SG-29). Verifying the property is an owner step with a signed-in Google account (FLG-013, Q-12).",
+  "readerCaptureEndpoint": "",
+  "readerCaptureNote": "Reader email capture (SG-30) ships only when this is set to a form endpoint the owner controls. Until then the front page advertises RSS alone, per suggestion S-06. Update the privacy notice before enabling."
 }
