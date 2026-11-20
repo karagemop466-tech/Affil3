@@ -1646,7 +1646,7 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 | Branch | `arena/3b45b513-affil3` |
 | Pull request | [#58](https://github.com/karagemop466-tech/Affil3/pull/58) |
 | Scope built | `counter-desk/**` (32 generated pages), `data/3b45b513/**` (9 registers), `tools/3b45b513/**` (generator, gate, 19 tests, collector, assets), `.github/workflows/counter-desk.yml`, `EXECUTIVE_SUMMARY-3b45b513.md`, `VERIFICATION-3b45b513.md`, one appended `README.md` row and this section |
-| Gates at PR time | counter-desk **4,266 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
+| Gates at PR time | counter-desk **4,330 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
 | CI on the PR | `gate` (counter-desk) pass, `verify` pass, `disclosure` pass, `site-checks` pass, `publish-gate` pass |
 
 ### What this session added that no earlier session had

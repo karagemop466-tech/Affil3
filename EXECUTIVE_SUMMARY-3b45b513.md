@@ -11,7 +11,7 @@ A publication now exists that a stranger can read without being told it is a com
 exercise: a front page led by five appliances, seven question-led guides, a counter-space
 checker that answers the question people actually have before they buy, and one footer
 group where the working papers live. It is generated from its own register and gated by
-4,266 checks that fail the build rather than warn. What it cannot do is earn: none of the
+4,330 checks that fail the build rather than warn. What it cannot do is earn: none of the
 five supplied links carries the tracking tag, and no tagged link has been confirmed in an
 Associates report. That gap is not a code problem and it is not hidden.
 
@@ -52,7 +52,7 @@ Their compliance status is unresolved (`CDF-03`), which is a different sentence.
 | Product pages | Specification table where every withheld cell carries its reason and every published value carries a source id. |
 | Counter space | Fit finder: three measurements, two inches of clearance, a no-JavaScript fallback, and the dimension table printed beside it. |
 | Guides | Seven, question-shaped, four of them explicitly working titles. None ranks a brand. |
-| Records | Operator index, executive summary, 15 flags, 14 questions with owners, 12 suggestions with trade-offs, an empty ledger, a five-event measurement schema, a rule-by-rule compliance record, a 23-row source register, and the product-intent register. |
+| Records | Operator index, executive summary, 14 flags (3 resolved and kept), 14 questions with owners, 12 suggestions with trade-offs, an empty ledger, a five-event measurement schema, a rule-by-rule compliance record, a 23-row source register, and the product-intent register. |
 | Machine surfaces | Sitemap (31 URLs), RSS feed (7 items, one per guide), robots.txt, canonical URLs, JSON-LD for the site, each product and each guide. |
 
 One navigation group for readers, one footer group for records, and an operator index that
@@ -114,7 +114,7 @@ response is to read it — not to scale content against it.
 ## Read next
 
 - `VERIFICATION-3b45b513.md` — the line-by-line verification log, with every URL
-- `/counter-desk/review/flagged/` — 15 flags, 2 resolved, each with what closes it
+- `/counter-desk/review/flagged/` — 14 flags, 3 resolved and kept, each with what closes it
 - `/counter-desk/review/suggestions/` — 12 decisions, each with its trade-offs
 - `/counter-desk/review/compliance/` — the rule-by-rule record and the 12 gates
 
