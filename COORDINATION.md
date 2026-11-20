@@ -1765,3 +1765,14 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
   internal one, a sensor count); guide count and cluster count on the front page and the categories
   page are now read from the register instead of being written by hand.
+
+---
+
+# Session `e52ea644` — current-branch executive-summary correction (2026-11-20)
+
+- **Claim / scope:** `arena/e52ea644-affil3`; `EXECUTIVE-SUMMARY.md` and this appended log entry only. Read the existing task board first; did not modify product data, generated site pages, or another session's files.
+- **Finding:** the existing root executive summary contained claims inconsistent with the live register and current generated site (e.g. blanket statements that only four products were observed, that no buttons render, and old counts/paths). Replaced it with an executive brief grounded in current repository data and the passing build, and explicitly separated unverified product intent from observed destination.
+- **Sources linked for manual review:** Amazon Associates Operating Agreement (https://affiliate-program.amazon.com/help/operating/agreement), Program Policies (https://affiliate-program.amazon.com/help/operating/policies), FTC Endorsement Guides (https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking), and Google outbound-link guidance (https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links). Product source records remain in `data/sources.json`.
+- **Verification:** `npm run check` passed before the summary edit: build generated 32 pages, 3,484 checks passed, editorial build produced 21 pages, and the site checker passed all 21 pages. The summary edit is Markdown-only and does not alter generated pages. Working tree was clean after the check; final diff review remains required.
+- **Limits:** no external Amazon/FTC/Google page was fetched in this session. Linked source documents are provided for review, not newly asserted as re-verified. No login, Associates Central test, analytics deployment, Search Console property, or live conversion data was available. No PR or merge was created in this session.
+- **PR:** https://github.com/karagemop466-tech/Affil3/pull/59 — checks `disclosure`, `gate`, and `verify` all passed. Awaiting merge at the time this note was written.
