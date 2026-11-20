@@ -17,6 +17,22 @@
       "seasonal": "evergreen"
     },
     {
+      "id": "single-basket",
+      "name": "One big basket",
+      "short_name": "Single basket",
+      "question": "Does a single tall basket beat two shallow ones?",
+      "products": [
+        "P-03"
+      ],
+      "guides": [
+        "G-02",
+        "G-03",
+        "G-04"
+      ],
+      "description": "The shape most people actually live with: one deep basket, one dial, one thing to wash. Quarts are easy to compare and easy to misread, so this cluster is about the single cooking layer, the height a tall unit needs, and which of the four named functions you will use twice a week.",
+      "seasonal": "evergreen"
+    },
+    {
       "id": "oven-style",
       "name": "Oven-style and multi-function",
       "short_name": "Oven-style",
