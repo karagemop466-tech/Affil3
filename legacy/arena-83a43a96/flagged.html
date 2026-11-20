@@ -21,10 +21,6 @@
   <nav class="navgroup" aria-label="Main navigation">
     <a href="index.html">Home</a>
     <a href="products.html">Products</a>
-    <a href="shop.html">Shop</a><!-- nav:43565031 -->
-    <a href="verification.html">Link evidence</a><!-- nav:43565031 -->
-    <a href="suggestions.html">Decision room</a><!-- nav:43565031 -->
-    <a href="questions.html">Open questions</a><!-- nav:43565031 -->
     <a href="guides/index.html">Guides</a>
     <a href="disclosure.html">Disclosure</a>
     <a href="privacy.html">Privacy</a>
@@ -58,13 +54,13 @@
           <tr>
             <td>FLG-002</td>
             <td>Product identity (all 5 links)</td>
-            <td>Intended ASIN, official listing URL, confirmation date and source remain blank for all five links, because the owner has not yet confirmed which listing each token was meant to reach; nothing was inferred. <strong>Observed redirect targets are no longer blank</strong> &mdash; they were retrieved on 2026-11-20 and are recorded, dated and separated from the intended fields on <a href="verification.html">the link evidence register</a>.</td>
+            <td>Intended ASIN, official listing URL, confirmation date, source, and observed redirect target are blank and unverified for all five submitted links. No value was inferred or filled in.</td>
             <td class="blank">&#8212; confirmation requires Amazon Associates / Product Advertising API access</td>
           </tr>
           <tr>
             <td>FLG-003</td>
             <td>Short-link compliance status</td>
-            <td>Corrected 2026-11-20: an earlier note in this register said the links could not be dereferenced from this environment. That was wrong &mdash; they were dereferenced. Four of five return a live product page and one returns an Amazon checkpoint page. The links are still kept exactly as submitted, still marked <code>rel="sponsored"</code>, and are still <strong>not claimed invalid</strong>: compliance is Amazon&rsquo;s determination. What is now documented is that the page reached is not the page named by the token.</td>
+            <td>Submitted <code>link.amazon/...</code> links could not be dereferenced here. They are kept as submitted, marked <code>rel="sponsored"</code>, and <strong>not claimed invalid</strong>; exact compliance status is unresolved.</td>
             <td><a href="https://affiliate-program.amazon.com/" rel="nofollow noopener" target="_blank">Amazon Associates program</a> (policy review)</td>
           </tr>
           <tr>
@@ -91,54 +87,6 @@
             <td>Disclosure strip present above the fold and in the footer on every page built so far; any future page template must include both. Review endorsement context against the Amazon Associates Operating Agreement and FTC guidance (S01 &middot; S07 &middot; S24).</td>
             <td><a href="https://www.ftc.gov/business-guidance/resources/ftc-endorsement-guides" rel="nofollow noopener" target="_blank">FTC endorsement guides</a> &bull; <a href="https://affiliate-program.amazon.com/help/node/topic/GBX9PDZKVJ6Q7QU3" rel="nofollow noopener" target="_blank">Amazon Associates help</a></td>
           </tr>
-          <tr>
-            <td>FLG-43565031-01</td>
-            <td>Submitted token does not match the product reached</td>
-            <td>All four links that resolved landed on an ASIN different from the token in the URL, and every one of those destination URLs carried the query parameter <code>plpRedirect=mhFallback</code>. Read as: the destination is a fallback surface, not a resolved deep link. Do not publish product identity from these until confirmed.</td>
-            <td><a href="verification.html">Link evidence register</a> (records LINK-01 to LINK-05), retrieved 2026-11-20</td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-02</td>
-            <td>Every submitted token is 9 characters</td>
-            <td>All five tokens are 9 characters; every ASIN observed on a real product page in the same session was 10. Amazon&rsquo;s catalogue glossary, quoted on an Amazon-hosted customer Q&amp;A, describes an ASIN as a unique block of 10 letters and/or numbers. The authoritative Seller Central definition page was not reachable here, so the length rule is corroborated but <strong>not officially cited</strong>. A single dropped character is the most likely explanation.</td>
-            <td><a href="https://www.amazon.com/ask/questions/TxJGX2UK4WITXE/" rel="nofollow noopener" target="_blank">Amazon Q&amp;A quoting the catalogue glossary</a></td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-03</td>
-            <td>One link resolves to no product at all</td>
-            <td><code>https://link.amazon/B0c8moW59</code> returned an Amazon &ldquo;Continue shopping&rdquo; checkpoint page rather than a listing. No product identity, category or price could be recorded for it, so it is excluded from the shelf and kept only in the register.</td>
-            <td><a href="https://link.amazon/B0c8moW59" rel="nofollow noopener sponsored" target="_blank">reproduce it yourself</a></td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-04</td>
-            <td>Redirect stability is unproven</td>
-            <td>A second request of LINK-01 returned a byte-identical response including an identical Amazon session identifier, so it was served from cache. This does <strong>not</strong> show the target is stable, and does not show it rotates. Must be checked by hand in a normal browser.</td>
-            <td>Control CTRL-C on <a href="verification.html">the register</a></td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-05</td>
-            <td>The product set is not one category</td>
-            <td>Three resolved listings sit in Home &amp; Kitchen &gt; Small Appliances &gt; Fryers &gt; Air Fryers (node 17659096011); one sits in Kitchen Utensils &amp; Gadgets &gt; Thermometers &amp; Timers &gt; Meat (node 289810). The air-fryer editorial premise therefore does not cover the whole submitted set, and the outlier should not be folded in silently.</td>
-            <td>Observed breadcrumb paths, <a href="verification.html">register</a>, 2026-11-20</td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-06</td>
-            <td>No submitted link carries an Associates tag</td>
-            <td>Program Policies require the Associates ID or tag as a URL parameter on every link placed on the site. None of the five observed destinations carried one. That is a factual observation about the URL, not a ruling: an untagged link may simply be untracked rather than non-compliant.</td>
-            <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="nofollow noopener" target="_blank">Associates Program Policies, section 2(b)</a> (CLM-02)</td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-07</td>
-            <td>&ldquo;Three qualifying sales in 180 days&rdquo; could not be confirmed</td>
-            <td>Repeated across third-party guides and used by several plans as the programme&rsquo;s survival condition. It does <strong>not</strong> appear in the Operating Agreement or Program Policies text retrieved on 2026-11-20. Do not build a launch schedule or an account-risk assumption on it until it is read in-account.</td>
-            <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="nofollow noopener" target="_blank">Program Policies</a>; see UNV-01 in <a href="suggestions.html">the claims ledger</a></td>
-          </tr>
-          <tr>
-            <td>FLG-43565031-08</td>
-            <td>Two different site builds are in flight</td>
-            <td><code>main</code> publishes one build (merged as PR #1) while an open pull request publishes a differently-named build with its own homepage, data files and analytics receiver. Twelve branches hold competing copies of the coordination board. Publishing both shapes would split indexation, which is the opposite of the project&rsquo;s findability goal. Needs one integration decision.</td>
-            <td>Repo state: <a href="https://github.com/karagemop466-tech/Affil3/pulls" rel="nofollow noopener" target="_blank">open pull requests</a>; <a href="COORDINATION.md">COORDINATION.md</a></td>
-          </tr>
         </tbody>
       </table>
 
@@ -159,10 +107,6 @@
     <nav class="navgroup" aria-label="Site navigation (footer)">
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
-    <a href="shop.html">Shop</a><!-- nav:43565031 -->
-    <a href="verification.html">Link evidence</a><!-- nav:43565031 -->
-    <a href="suggestions.html">Decision room</a><!-- nav:43565031 -->
-    <a href="questions.html">Open questions</a><!-- nav:43565031 -->
       <a href="guides/index.html">Guides</a>
       <a href="disclosure.html">Disclosure</a>
       <a href="privacy.html">Privacy</a>
