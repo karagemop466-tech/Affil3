@@ -411,6 +411,39 @@
         "S04",
         "S05"
       ]
+    },
+    {
+      "id": "FLG-037",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The CHEF iQ Sense specification table showed the ambient sensor range as the probe's temperature",
+      "detail": "The CHEF iQ specification page (S14) publishes two ranges: 'Internal temp range of 32ºF to 212ºF' and 'Ambient temp range of 32ºF to 1,000ºF'. The brand's own FAQ (S15) repeats the distinction: 'The max temperature for the portion of the probe inserted into the food is 212˚F... iQ Sense® Gen 3's maximum ambient temperature limit is 1,000ºF.' The register carried 32-1000 °F in temp_min_f/temp_max_f, so the product page and the comparison table both rendered the ambient range as though it were the probe's food-temperature range. Corrected on 2026-11-20 to 32-212 °F, with the 1,000 °F ambient rating moved into the product's summary line. The correction is recorded in the P05 record and in data/observations/2026-11-20-0e102530-verification.json.",
+      "impact": "A reader could reasonably have concluded the probe may be left in a 1,000 °F oven. The distinction between a sensor's surroundings and a probe's working limit is the difference between a safe instruction and a dangerous one. The corrected figure is now on both the product page and the comparison table.",
+      "action": "Published 32-212 °F for the probe's food range and stated the 1,000 °F ambient rating separately in the summary line. Recorded as K-22 and opened as Q-17 with discovery step D-13.",
+      "manual_step": "Ask CHEF iQ in writing which range applies to which part of the probe in each cooking method, and publish the answer as a line of guidance beside the table rather than leaving a reader to infer it from two numbers.",
+      "sources": [
+        "S14",
+        "S15"
+      ],
+      "detected_by": "0e102530-affil3, 2026-11-20"
+    },
+    {
+      "id": "FLG-038",
+      "severity": "low",
+      "status": "open",
+      "area": "publishing",
+      "title": "Two manufacturer pages disagree with themselves, and the site publishes no figure where that happens",
+      "detail": "The Emeril Lagasse page (S13) shows '25 Cooking Pre-sets' in its specification block, describes the appliance as '10-in-1' in its own product description, and carries an image whose alt text on the same page reads '11-in-1'. The Amazon listing title for the same product says '24 One-Touch Preset Options'. The CHEF iQ page (S14) says 'Five internal sensors' in its introduction while its specification list enumerates '4 internal temperature sensors' plus '1 ambient temperature sensor', which is five in total but not five internal ones. In both cases the site publishes no count - no preset count for the oven, and the sensor count only as the specification list states it - because choosing between four official statements would be inference rather than verification.",
+      "impact": "Two products a reader is most likely to compare on features are the two whose feature counts cannot be published. The blank cells are correct and are explained on each product page, but they make the comparison table less useful than a reader might expect.",
+      "action": "Published no preset count and no in-1 count for the Emeril oven, and followed the CHEF iQ specification list rather than its introduction. Both readings are kept dated rather than resolved by preference.",
+      "manual_step": "Ask each manufacturer which figure is current. Until then, treat any preset or in-1 count in a listing title as a claim, not a specification.",
+      "sources": [
+        "S13",
+        "S14",
+        "S04"
+      ],
+      "detected_by": "0e102530-affil3, 2026-11-20"
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",

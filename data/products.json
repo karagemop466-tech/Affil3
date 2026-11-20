@@ -79,7 +79,8 @@
         "FLG-001",
         "FLG-002",
         "FLG-005",
-        "FLG-024"
+        "FLG-024",
+        "FLG-038"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
@@ -319,7 +320,9 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-023"
+        "FLG-023",
+        "FLG-037",
+        "FLG-038"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",

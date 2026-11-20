@@ -607,7 +607,7 @@
       "id": "S-21",
       "track": "platform",
       "topic": "Image weight on a site whose job is to be found and read",
-      "problem": "Every guide page loaded an illustration of 3.3 to 4.0 MB. The artwork itself is fine and the file format was a poor fit for it: these are flat, grainy, mid-tone illustrations, which are exactly the images that compress well into a small palette. Six files were re-encoded to a 256-colour palette on 2026-11-20, which cut each from 3.3-4.0 MB to 0.9-1.1 MB with no visible change (measured pixel RMSE 0.012). The remaining weight is still real: an image that is the largest thing on the page slows the page down on the connections a reader is actually using.",
+      "problem": "Every guide page loaded an illustration of 3.3 to 4.0 MB, and the front page loaded ten of them, close to 4 MB before a line of text was read. The artwork itself is fine and the file format was a poor fit for it: these are flat, grainy, mid-tone illustrations, which are exactly the images that compress well into a small palette. Three things were done on 2026-11-20. The illustrations were re-encoded to a 256-colour palette and scaled to 1200 px, cutting each from 3.3-4.0 MB to roughly 0.5 MB with no visible change (measured pixel RMSE 0.012). A 768 px card variant was derived from each one and the grid cards now offer it through srcset, so the front page falls from about 3.9 MB to about 1.2 MB. The declared width and height on every image are now read from the file itself rather than typed, and the gate checks that they agree, because a wrong intrinsic size makes the page jump when the image arrives.",
       "current": "B",
       "options": [
         {
@@ -619,8 +619,8 @@
         },
         {
           "id": "B",
-          "label": "Re-encode the remaining illustrations to the same small palette and keep going (current state).",
-          "tradeoff": "No file path or artwork changes, so no page reference moves and no gate rule has to be written. The pages are now roughly a third of their previous weight.",
+          "label": "Re-encode the illustrations to a small palette, serve a card-sized variant through srcset, and take the intrinsic size from the file (current state).",
+          "tradeoff": "No artwork changed and no file path moved, so no page reference moved. The front page is now roughly a third of its previous weight and the guide index roughly an eighth. The one page still carrying a full-size image is the one with a full-width hero, which is the point of a hero.",
           "effort": "half an hour",
           "risk": "low"
         },
@@ -639,7 +639,7 @@
           "risk": "low"
         }
       ],
-      "recommendation": "B now, C when the next illustration is added. The re-encode was done with the same file names and the same pixels, so it is safe to do without a decision, and a weight rule in the gate would stop it coming back.",
+      "recommendation": "B, and it is done. The remaining option worth keeping on the board is a weight ceiling in the gate: no image over 300 KB may be committed, so the problem cannot come back the next time an illustration is added.",
       "evidence": {
         "sources": [],
         "flags": []
