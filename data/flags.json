@@ -1,5 +1,5 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/. FLG-023 to FLG-034 were added by session 66f2548a on 2026-11-20 after an independent re-verification pass; FLG-003's detail was corrected in the same pass (a stale count of four resolved links, now five, plus the verbatim 6(w) and 2(b) text).",
   "flags": [
     {
       "id": "FLG-001",
@@ -28,7 +28,7 @@
       "id": "FLG-003",
       "severity": "high",
       "title": "Compliance status of the supplied short links is unresolved",
-      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.",
+      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the five observed product redirects contains a tag parameter; the count in this field said \"four\" until session 66f2548a corrected it on 2026-11-20, after PR #10 established that all five links resolve (see products and data/observations/2026-11-20-reverify-66f2548a.json, which enumerates every query parameter seen on each resolved URL). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open. Sharpened 2026-11-20 with the verbatim policy text, now read in full rather than from an excerpt: Participation Requirements 6(w) reads \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\" That clause turns on whether the Amazon destination is unclear, and it does not ban shorteners as such - which is why this flag records the links as unresolved rather than as a violation. The clause they are observed to fail is 2(b): \"you must include your Associates ID or 'tag' ... as a parameter in the URL of each link you place on your Site to an Amazon Site.\" (S02)",
       "sources": [
         "S02",
         "S05",
@@ -224,6 +224,137 @@
         "S05"
       ],
       "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "high",
+      "title": "The CI workflow checks a directory that does not exist, and never runs the root site's gate",
+      "detail": ".github/workflows/verify.yml runs only `python3 tools/build.py` (which writes `editorial/`, see DOCS at tools/build.py:24) and then asserts `git diff --quiet -- docs`. There is no `docs/` directory in the repository, so that assertion can never fail: the step is vacuous and reports success on every run. The workflow never runs `node tools/build.mjs` or `node tools/verify.mjs`, so the 23-page root site at `/` - the surface GitHub Pages actually serves - is not gated in CI at all. The 1316-check gate exists and passes locally, but nothing enforces it on push or pull request. Verified by reading the workflow file, `ls docs` (absent), tools/build.py line 24 and tools/check_site.py line 22.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Review the corrected workflow in this PR. It now rebuilds both sites, diffs the paths each actually writes, and runs both gates. Confirm on the Actions tab that the `Verify site` run is green after merge."
+    },
+    {
+      "id": "FLG-024",
+      "severity": "medium",
+      "title": "Category pages published product rows with no source link",
+      "detail": "The brief requires that every table row carry a source link to an official site. The Shop table did: `rowSources()` in tools/build.mjs re-points S04 and S05 at each row's own observed page and submitted link. The four category pages did not - a grep of the committed categories/air-fryers/index.html and categories/cooking-thermometers/index.html returns zero source links, while both publish outbound product links. Category pages also rendered cards only, with no table. Corrected in this session: each category page now carries a comparison table whose rows cite their own official sources.",
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ],
+      "manual_step": "Spot-check any category page against the Shop table; the source links should now be identical per product."
+    },
+    {
+      "id": "FLG-025",
+      "severity": "medium",
+      "title": "Amazon presents the product behind submitted link 4 as superseded",
+      "detail": "The official page for B0DHZTCNR5 (ThermoMaven 1 Sec, Black) carries a \"Newer Version Available\" block linking to a different ASIN, B0GL7Z4KP4 (same product name, Orange). The submitted link therefore points at a variant Amazon itself flags as superseded. Observed 2026-11-20. The newer ASIN is recorded as an observation only and is NOT published as a product row: it was not submitted, and its intended status cannot be confirmed (FLG-002). A price and a star rating are visible inside that block; neither was transcribed here nor published anywhere, per Participation Requirements 6(t) and 2(b).",
+      "sources": [
+        "S17",
+        "S02"
+      ],
+      "manual_step": "Decide whether slot 4 should promote the successor ASIN. If it should, supply B0GL7Z4KP4 as the intended product so the intended fields can be filled from an official source, then re-issue a tagged Special Link for it in Associates Central."
+    },
+    {
+      "id": "FLG-026",
+      "severity": "medium",
+      "title": "One official Amazon page states the accessory count two different ways",
+      "detail": "The page for B09B7SB46R (Emeril Lagasse 26QT French Door AirFryer 360) says \"Six Cooking Accessories Included\" in its product title and \"Included are 7 premium accessories to maximize versatility - air fry basket, rotisserie spit, bake pan, and more\" in the on-page product summary. Both statements are on the same official page, fetched 2026-11-20. No accessory count is published for this product, because the source contradicts itself and picking either number would be a guess. The editorial register recorded the same problem independently as its FLG-006; this is the root-register row for it, with the two conflicting strings quoted.",
+      "sources": [
+        "S15"
+      ],
+      "manual_step": "Confirm the in-box accessory list from the manufacturer's own page or the product manual (the Amazon page links a User Manual PDF) and record the count with that source. Until then the field stays blank."
+    },
+    {
+      "id": "FLG-027",
+      "severity": "high",
+      "title": "Program Policies bar using Special Links or Program Content to develop machine learning models without Amazon's prior written approval",
+      "detail": "Participation Requirements §5, read verbatim 2026-11-20: \"You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.\" (S02) The brief for this project asks for an AI-powered platform that automates product research and generates content. That is not prohibited outright - the clause is about using Special Links or Program Content as model input - but it puts a hard boundary on the automation the brief describes, and no earlier session recorded it. Everything built so far stays inside it: no Amazon content was used to train or fine-tune anything, product facts were read from manufacturer and Amazon pages by a human-directed process and cited, and outbound links are constructed from an observed ASIN plus the tracking ID rather than harvested programmatically at scale.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "manual_step": "Before adding any automated scraping, model training or bulk link generation, confirm with Amazon Associates support whether it needs prior written approval under §5. Record the answer here. Do not build the automated product-research pipeline in the brief until that answer exists."
+    },
+    {
+      "id": "FLG-028",
+      "severity": "high",
+      "title": "The Site may not have price tracking or price alerting functionality unless Amazon agrees",
+      "detail": "Participation Requirements §6(y), read verbatim 2026-11-20: \"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\" (S02) The brief asks the platform to \"analyze pricing\" and to track conversions. Recording prices for internal analysis is a different act from shipping a price-tracking feature to readers, and only the second is barred by 6(y) - but the distinction has to be deliberate, not accidental. Related and stricter: §2(b) allows the Site to show prices and availability only where Amazon serves the link or the data comes from the Creators API or PA API. Neither is in place, which is why the build gate fails on any currency amount in the HTML and why FLG-016 stands.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Decide explicitly: no price feature on the site (current, and the safe reading), or apply for PA API / Creators API access and get Amazon's agreement before building one. Any suggestion on the Suggestions page that would surface a price is marked as needing this decision first."
+    },
+    {
+      "id": "FLG-029",
+      "severity": "medium",
+      "title": "The root site ships a click counter and no privacy notice",
+      "detail": "Participation Requirements §3(e) makes the Associate responsible for \"disclosing on your Site accurately and adequately and otherwise satisfying applicable legal requirements, either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors\" (S02). The root site loads assets/analytics.js on every page and posts outbound-click events to a configurable endpoint. The script is genuinely privacy-preserving - the gate asserts it sets no cookies, no localStorage and no sessionStorage - and the endpoint is empty by default so nothing is sent. But there is no page telling a reader any of that. The only privacy notice in the repository is legacy/arena-83a43a96/privacy.html, which belongs to a superseded site and is not linked from the current one.",
+      "sources": [
+        "S02",
+        "S07"
+      ],
+      "manual_step": "Review the new /privacy/ page added by this session. It states what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted instead (S-03). Confirm the wording, and get legal review if the operation is in a jurisdiction with its own notice rules (Q-13)."
+    },
+    {
+      "id": "FLG-030",
+      "severity": "low",
+      "title": "The suggestion rows the brief names as SG-27 to SG-30 do not exist in either register",
+      "detail": "The brief says the publication-polish pass \"carries the parallel passes rows too (SG-27..SG-30: nav labels, the shipped RSS feed, Search Console, reader capture)\". Neither register contains those IDs. The root register has S-01 to S-12; the editorial register has SG-01 to SG-14. Two of the four named topics do exist under different IDs - reader capture is S-11 and Search Console is S-12 in the root register - and two had no row anywhere: navigation labels and the shipped RSS feed, both of which had in fact been built without ever being recorded as a reviewed decision. Verified by enumerating every id in data/suggestions.json and data/register/suggestions.json.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Review the four rows added by this session at their real IDs, S-13 to S-16, on the Suggestions page. They are numbered to continue the root register rather than to invent the SG-27..SG-30 range, because two numbering schemes in one register is what produced this gap. If you would rather see them as SG-27..SG-30 to match the brief, say so and they will be renumbered."
+    },
+    {
+      "id": "FLG-031",
+      "severity": "low",
+      "title": "The tracking ID's shape does not match the example format in the policy, which is not the same as being wrong",
+      "detail": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\" (S02). The supplied ID `shopnow047c-20` has an eleven-character prefix, not five, and a two-digit suffix that does match. Because the clause expressly allows other designated formats, the shape proves nothing either way: it cannot confirm the ID is valid and it cannot show it is invalid. FLG-011 previously rested on an Associates help page (S03) that IDs end in -20, which is a weaker basis than the policy text and still only a format observation. Recorded so nobody later reads the eleven-character prefix as evidence of a problem. Separately, §1(g) bars any Amazon trademark or variant in a tag or Associates ID; `shopnow047c` contains none, which is a genuine pass.",
+      "sources": [
+        "S02",
+        "S03"
+      ],
+      "manual_step": "Export the tracking-ID list from Associates Central and confirm `shopnow047c-20` appears on it. That closes FLG-011 and this flag together."
+    },
+    {
+      "id": "FLG-032",
+      "severity": "low",
+      "title": "An empty 'Unresolved links' cluster still ships as a reader-facing category",
+      "detail": "The category list includes an `unresolved` cluster for submitted links that did not resolve to a product. Since the PR #10 correction all five links resolve, so the cluster has no rows. The page still renders, still appears in the category index, and still carries a heading \"Why this cluster is empty\" above a paragraph that evaluates to an empty string, because the copy is gated on a product row that no longer exists. The category index also says \"Four clusters\" while three have products. A reader following that link lands on a blank page, which is exactly the generated-not-published feel the brief asks to remove.",
+      "sources": [
+        "S05"
+      ],
+      "manual_step": "Review the change in this session: empty clusters are dropped from the reader-facing category index and navigation, and the record of the checkpoint-page episode stays where it belongs, on /flagged/ under FLG-004 and FLG-022. Confirm you would rather not keep an empty public page."
+    },
+    {
+      "id": "FLG-033",
+      "severity": "low",
+      "title": "A source register row still described the pre-correction state of the data",
+      "detail": "S04's `method` field said the fetch \"returned pages for B09B7SB46R, B08DKYBTPH and B0DZFD6R9Z\" - three ASINs, omitting B0DHZTCNR5. That wording was accurate before PR #10 and stale after it: P04's destination changed in the fix and the source row was never re-read. A register whose citation text describes superseded data is worse than no register, because it looks checked. Corrected 2026-11-20 to enumerate all five pages, and S14-S18 were added so each product row has its own register-level source link rather than sharing one row.",
+      "sources": [
+        "S04",
+        "S05",
+        "S17"
+      ],
+      "manual_step": "None needed; recorded so the correction is visible. The general rule it argues for is in the Suggestions page as S-17."
+    },
+    {
+      "id": "FLG-034",
+      "severity": "high",
+      "title": "Three copies of the same five products are crawlable, and robots.txt advertises two of them",
+      "detail": "The brief asks for one site to index. The repository publishes three surfaces covering the same five products: the root site at `/` (23 pages, tools/build.mjs), a second publication at `/editorial/` (tools/build.py), and the first session's preserved site at `/legacy/arena-83a43a96/` (11 URLs in its own sitemap). robots.txt declares two Sitemap lines - the root one and the editorial one - so crawlers are pointed at both publications deliberately. `/legacy/` is not declared but is not disallowed either, so it is crawlable and can be found through any link to it. Near-duplicate coverage of the same products across three paths splits whatever ranking signal the site earns and gives a crawler no reason to prefer one. All three also carry outbound links, so the same reader intent is served from three templates. Keeping the earlier sessions' work was the right call for provenance; serving all of it to a search engine is a separate decision that has not been made. Verified by reading robots.txt, sitemap.xml, editorial/sitemap.xml and legacy/arena-83a43a96/sitemap.xml.",
+      "sources": [
+        "S06",
+        "S02"
+      ],
+      "manual_step": "Choose one of the three options at S-18 on the Suggestions page: consolidate to one publication, keep two but noindex the second, or keep all three and accept the split. Nothing was changed unilaterally, because retiring another session's published surface is an owner decision, not a build fix."
     }
   ],
   "checked": "2026-11-20"
