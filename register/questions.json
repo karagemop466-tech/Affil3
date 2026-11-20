@@ -1,0 +1,263 @@
+{
+  "$comment": "The decision gate. Every question states what is already known, what is missing, and the cheapest action that would close it - so a decision can be made on information rather than instinct. 'answer' is left null wherever this session could not obtain it from an official source; those are not oversights, they are the gaps.",
+  "date": "2026-11-20",
+  "how_to_use": "Answer inline (or on the Decisions page) top to bottom. A question with an answer moves the rows in its 'blocks' list from 'awaiting input' to 'decidable'.",
+  "sections": [
+    {
+      "id": "A",
+      "title": "Inventory - what are we even promoting?",
+      "why_first": "Four of five product identities are inferred from a redirect, and none is confirmed by the owner. Every downstream choice - categories, clusters, keywords, comparison criteria - depends on this block.",
+      "questions": [
+        {
+          "id": "Q-01",
+          "question": "Are the four listings our short links currently resolve to the products you intend us to promote?",
+          "known": "link.amazon/B04G1MEwY -> amazon.com/dp/B0CDY277D3 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven'; B02NbDxp3 -> B09B7SB46R 'Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven'; B00hJ57DV -> B08DKYBTPH 'Chefman Air Fryer 8 Qt TurboFry 4-in-1'; B0f3GKalj -> B0DZFD6R9Z 'CHEF iQ Sense Smart Wireless Meat Thermometer'. Observed 2026-11-20.",
+          "unknown": "Whether that is owner intent or a redirect that drifted. Amazon short links can be retargeted; a token is not a stable identifier.",
+          "how_to_close": "Copy each ASIN out of Associates Central (Links > Special Links) and paste it into register/products.json:intended_asin.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["product page copy", "SG-01", "SG-02", "category pages"]
+        },
+        {
+          "id": "Q-02",
+          "question": "What is the product behind B0c8moW59? It did not resolve.",
+          "known": "Three fetch attempts returned an Amazon checkpoint interstitial. Nothing else is known.",
+          "unknown": "Brand, model, category, price band, even whether it is a kitchen product.",
+          "how_to_close": "Open the link in your own browser and paste the final URL. Or replace it.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["P04 product page", "SG-05", "cluster 'accessories'"]
+        },
+        {
+          "id": "Q-03",
+          "question": "Is the thermometer a fourth air fryer in disguise, or a deliberate accessory attach?",
+          "known": "It resolved to CHEF iQ Sense, a wireless probe thermometer. The brief's editorial hypotheses are all air-fryer shaped.",
+          "unknown": "Whether the strategy is one category (air fryers) or two (air fryers + cooking instruments), which changes the site's topical authority plan and the cluster structure.",
+          "how_to_close": "One sentence from you: 'category = air fryers only' or 'category = air fryers + instruments'.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["navigation labels", "SG-06", "SG-07"]
+        },
+        {
+          "id": "Q-04",
+          "question": "Are there products beyond these five that should be in the first publish batch?",
+          "known": "Five links were supplied. The brief says 'test one link per product ... then scale', implying more are coming.",
+          "unknown": "The size and shape of the intended catalog, and therefore whether the site needs a real index/search now or later.",
+          "how_to_close": "Give a count and a category list, even approximate. The register already scales; the question is how much navigation to build now.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["SG-08", "search build-out", "sitemap size"]
+        },
+        {
+          "id": "Q-05",
+          "question": "Are any of these listings out of stock, discontinued, or region-restricted?",
+          "known": "Not determinable here. The listing bodies that would show it were not captured in a form we can stand behind.",
+          "unknown": "Availability - and a page promoting an unavailable product earns nothing and reads badly.",
+          "how_to_close": "Check each listing's Buy Box in a normal browser, or let the API do it once SG-13 is funded.",
+          "who": "Owner, or API",
+          "answer": null,
+          "blocks": ["publish gate for P02-P05", "SG-12"]
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Account and eligibility - can this legally earn?",
+      "why_first": "The whole model requires an approved Associates account with this site registered and this tracking ID live. Nothing on the site can be monetised until block B is green.",
+      "questions": [
+        {
+          "id": "Q-06",
+          "question": "Is tracking ID shopnow047c-20 actually created on the account?",
+          "known": "The brief states it as the selected tracking ID. Its format (-20 suffix, lowercase alphanumerics) is consistent with the convention.",
+          "unknown": "Existence, and whether it is attached to a registered site. Unverifiable without login.",
+          "how_to_close": "Associates Central > Account Settings > Tracking IDs. Screenshot the row; paste the URL into register/links.json.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["every outbound link on the site", "SG-16"]
+        },
+        {
+          "id": "Q-07",
+          "question": "Is the production domain registered as a Site on the account?",
+          "known": "The live site is currently a github.io subpath. Associates approval is per URL.",
+          "unknown": "Whether a custom domain is owned or intended, and whether the account is approved or still in the qualifying-sales window.",
+          "how_to_close": "Account Settings > Site Settings. Add the exact URL, including subpath.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["domain choice", "SG-17", "FLG-005"]
+        },
+        {
+          "id": "Q-08",
+          "question": "Are you inside the first-180-days qualifying-sales window, and does the account already have API access?",
+          "known": "New Associates accounts are expected to produce qualifying sales early or are closed and must re-apply - widely reported, and consistent with the Participation Requirements referenced by the Operating Agreement, which we could not fetch (S02).",
+          "unknown": "Your account age, sales count, API status, and the exact threshold. Reports > Earnings would answer all four.",
+          "how_to_close": "One look at Associates Central home page and Reports. Record the date and the numbers in register/ledger.json provenance.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["urgency of publishing cadence", "SG-13", "SG-14"]
+        },
+        {
+          "id": "Q-09",
+          "question": "Which API should the pipeline target: PA-API 5.0 or the Creators API?",
+          "known": "Secondary sources report PA-API 5.0 being superseded by a Creators API with OAuth and re-registration. Sources conflict on the sales threshold (3 vs 10 qualifying sales in a trailing window). Official pages were unreachable in-session.",
+          "unknown": "The current official threshold and endpoint. Deliberately unresolved - see S07.",
+          "how_to_close": "Associates Central > Tools, look for the API access control, and read the eligibility sentence on screen. That one line resolves three rows.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["SG-13", "automated product refresh", "price display decision"]
+        },
+        {
+          "id": "Q-10",
+          "question": "Do you accept that no prices appear on the site until API access exists?",
+          "known": "This session adopted strict suppression, and the build fails on any currency pattern. It costs the site some 'shop feel' and removes all stale-price risk.",
+          "unknown": "Whether you prefer the looser 'update manually and date-stamp it' approach used by most affiliate sites, which carries contract risk.",
+          "how_to_close": "Choose a path in SG-14. No further information needed - it is a preference about risk appetite.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["product card design", "comparison table columns", "SG-14"]
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Editorial direction - what makes it a shop and not an audit",
+      "why_first": "The brief's central instruction is tone: buyer-facing, not compliance-facing. The register already exists as data; this block decides how the reading experience behaves.",
+      "questions": [
+        {
+          "id": "Q-11",
+          "question": "What is the shop's promise in one line?",
+          "known": "This build uses: 'we do not test, we tell you what to check'. It is honest, differentiated, and survives having no lab and no API. It also concedes the 'best X' search intents to competitors.",
+          "unknown": "Whether you want that positioning, or a conventional 'we tested the best' shop that this project cannot honestly produce today.",
+          "how_to_close": "Pick a path in SG-19. If you want tested reviews, the missing ingredient is physical product access - answer Q-12 with yes/no and we size that plan.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["masthead tagline", "guide titles", "home page hero", "SG-19"]
+        },
+        {
+          "id": "Q-12",
+          "question": "Can anyone on your side buy or borrow the five products for real testing?",
+          "known": "No product is held by this project. Nothing that reads like a test result exists, and none was fabricated.",
+          "unknown": "Whether hands-on content is on the table at all, and at what unit cost.",
+          "how_to_close": "Yes/no plus a rough budget per product. If yes, the roadmap gains a 'protocol + photos + honest notes' track that is worth more than any on-page SEO tweak.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["SG-20", "SG-21", "authorship model", "photography"]
+        },
+        {
+          "id": "Q-13",
+          "question": "Who signs off before a guide goes live - a named human, the desk byline, or nobody?",
+          "known": "Today: an automated pass plus a build gate, disclosed on the page as AI-assisted. A named byline with invented credentials is not an option this project will take.",
+          "unknown": "Whether a human editor exists, and whether you want their name on it. This is an E-E-A-T lever and a legal exposure question at the same time.",
+          "how_to_close": "Name a person and an email, or say 'keep the desk byline'. Then set the publish gate to require their approval or not.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["about page", "bylines", "SG-22", "FLG-006"]
+        },
+        {
+          "id": "Q-14",
+          "question": "Which audience are we writing for - first-time buyer, upgrader, or household-scale shopper?",
+          "known": "The brief's hypotheses (capacity checklist, cleanup and counter space, multi-function questions) point at first and second-time buyers with small kitchens.",
+          "unknown": "Whether that is your commercial preference too, since it changes price band, tone and which products are worth adding.",
+          "how_to_close": "Pick one for the first six guides. Narrow beats accurate here.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["guide slugs", "SG-23", "cluster naming"]
+        },
+        {
+          "id": "Q-15",
+          "question": "Seasonal angle for the next batch: back-to-school dorm kitchens, or holiday cooking?",
+          "known": "The brief lists 'seasons and clusters' as part of the reader-facing polish path. Today is 2026-11-20 - holiday cooking is live now, dorm kitchens is a January-August play.",
+          "unknown": "Whether you want to chase a live season with thin content or build the evergreen set first and schedule the season. This is a timing judgement, not a fact.",
+          "how_to_close": "Choose a path in SG-24.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["publishing cadence", "SG-24", "next 2 guide topics"]
+        },
+        {
+          "id": "Q-16",
+          "question": "How much brand identity is already owned - name, logo, domain, social handles?",
+          "known": "This build derived the brand (ShopNow 047) from the supplied tracking ID 'shopnow047c-20' because the repo had no brand asset and no name. It is a placeholder with a rationale, not a decision by you.",
+          "unknown": "Whether you own or prefer a different name, and whether a domain is available.",
+          "how_to_close": "Say 'keep' or give the real brand string. One string changes the masthead, footer, feed title, and JSON-LD publisher.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["site.json", "SG-25", "JSON-LD publisher", "feed title"]
+        }
+      ]
+    },
+    {
+      "id": "D",
+      "title": "Measurement - what would tell us any of this worked",
+      "why_first": "The brief says measure before automating optimisation. Without these answers, the campaign ledger stays empty forever and every topic choice stays a guess.",
+      "questions": [
+        {
+          "id": "Q-17",
+          "question": "Is Search Console verified for the production domain?",
+          "known": "The brief's parallel pass SG-29 lists Search Console as a tracked row. This environment cannot verify a domain it does not own.",
+          "unknown": "Verification status, and therefore whether we can ever see the queries people actually arrive on.",
+          "how_to_close": "Add a DNS TXT record or HTML file at the production domain, verify, then export queries for the first 28 days.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["topic selection from measured queries", "SG-26", "SG-29"]
+        },
+        {
+          "id": "Q-18",
+          "question": "Where do you want click data to live, given the static host?",
+          "known": "GitHub Pages serves no backend. The click counter ships in two halves: a browser-side recorder with no cookies and no IP, and a 90-line Node collector that writes NDJSON and can run on any box you own.",
+          "unknown": "Whether you will run the collector, prefer a self-hosted analytics product (Plausible/Umami), or accept 'no click data at all' for launch.",
+          "how_to_close": "Choose a path in SG-27. Deploying the collector is a single command on a VPS.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["event capture", "five-event schema activation", "SG-30"]
+        },
+        {
+          "id": "Q-19",
+          "question": "Do you have a privacy policy decision to make about analytics?",
+          "known": "The shipped counter uses no cookies, no fingerprinting, and no persistent identifier; the session id lives in sessionStorage and dies with the tab. That keeps it outside most consent regimes, but 'most' is not 'all' if you later target the EU.",
+          "unknown": "Whether the audience is US-only, and whether any consent tooling is wanted.",
+          "how_to_close": "Answer the jurisdiction question in SG-28. US-only means the current design stands as-is.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["privacy page", "SG-28", "cookie banner decision"]
+        },
+        {
+          "id": "Q-20",
+          "question": "What is the first success number, and by when?",
+          "known": "There is no baseline. Any target set now would be invented. The register defines what to count; it does not guess what 'good' is.",
+          "unknown": "Your tolerance: is '200 organic sessions in month two' a pass or a fail? Different answers change whether we invest in cadence or in one big pillar page.",
+          "how_to_close": "Set it after 28 days of Search Console data, not before. This question is on the list so it is not forgotten.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["SG-26", "cadence decision", "budget"]
+        }
+      ]
+    },
+    {
+      "id": "E",
+      "title": "Mechanics and money - what the pipeline may touch",
+      "questions": [
+        {
+          "id": "Q-21",
+          "question": "May the automation publish without a human in the loop?",
+          "known": "The brief asks for automation but also for 'a gate in front of the parts that cannot [be automated]'. Current build: fully automated generation, hard compliance gate at build time, no auto-publish to a monetised domain.",
+          "unknown": "Whether you want an overnight publish job on the live domain once the site is approved - which changes the risk profile of a bad row.",
+          "how_to_close": "Choose a path in SG-31 (gate at commit vs gate at publish vs no gate).",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["CI behaviour", "SG-31", "autopilot scope"]
+        },
+        {
+          "id": "Q-22",
+          "question": "What is the monthly budget for data and hosting?",
+          "known": "Everything shipped here runs on free tiers: GitHub Pages, stdlib Node, no npm dependencies, no paid data.",
+          "unknown": "Whether a domain, a VPS for the collector, or an SEO dataset is in budget. That determines if SG-13, SG-20 and SG-32 are live options or paper options.",
+          "how_to_close": "A number, even a range. Below 20/month the current build is the right build.",
+          "who": "Owner",
+          "answer": null,
+          "blocks": ["SG-13", "SG-20", "SG-32", "collector hosting"]
+        }
+      ]
+    }
+  ],
+  "answers_required_before_first_decision": ["Q-01", "Q-02", "Q-06", "Q-07", "Q-11", "Q-13"],
+  "numbering_note": "IDs Q-01..Q-22 are contiguous. Nothing was dropped from this register; two rows that an earlier outline contemplated (search-volume and paid-traffic targets) were never created, because no source for either exists in this repository and an invented figure would have looked like a measurement."
+}

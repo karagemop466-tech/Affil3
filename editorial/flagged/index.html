@@ -9,10 +9,10 @@
 <meta property="og:title" content="Flagged for review">
 <meta property="og:description" content="Seven irregularities found during verification, published with their source links.">
 <meta property="og:type" content="website">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex,follow">
 <!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="../assets/site.css">
-<link rel="alternate" type="application/rss+xml" title="Countertop & Co." href="../feed.xml">
+<!-- No feed discovery: this retained editorial archive is noindex. -->
 
 </head>
 <body>
@@ -28,6 +28,7 @@
     <strong>Paid links.</strong> As an Amazon Associate I earn from qualifying purchases. Every product link on this site is an affiliate link.
   </div>
 </div>
+<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="../../index.html">Visit the current publication</a>.</aside>
 <main id="main">
 <div class="wrap section">
 <h1>Flagged for review</h1>
@@ -44,17 +45,17 @@ a site that hides its gaps cannot be audited.</p>
 <h3>Preset count contradicts itself on the manufacturer&#x27;s own page</h3>
 <p>The Emeril Everyday product page shows a spec tile reading &#x27;25 Cooking Pre-sets&#x27; while the product body copy on the same page says &#x27;24 one-touch cooking presets&#x27;. The Amazon listing title says &#x27;24 One-Touch Preset Options&#x27;. No official page resolves the discrepancy, so the field is blank on the site and no preset count is claimed anywhere in the copy.</p>
 <p class="small"><strong>What closes it:</strong> Ask the manufacturer which figure is current; then publish that number with the source date.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S08">S08</a>, <a href="#S13">S13</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S08">S08</a>, <a href="../sources/#S13">S13</a></p>
 </article><article class="flag" id="FLG-002">
 <div class="flag-head">
   <span class="flagid">FLG-002</span>
   <span class="sev sev-medium">medium</span>
   <span class="small muted">CHEFMAN TurboFry Touch Stainless-Steel Air Fryer, 8 Qt</span>
 </div>
-<h3>Amazon listing names a different model number than the manufacturer page</h3>
-<p>The Amazon &#x27;About this item&#x27; block for B08DKYBTPH ends with &#x27;1000 Watts/120 Volts – RJ38-SQSS-8T&#x27;, while the CHEFMAN product page for RJ38-SQSS-8T states 1700W/120V and 400 F. The wattage figure contradicts itself between the two official pages. The site publishes the manufacturer&#x27;s 1700 W and flags the conflict; the wattage should not be used in ad copy until confirmed.</p>
-<p class="small"><strong>What closes it:</strong> Confirm wattage with CHEFMAN support in writing before any paid or comparison claim.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S07">S07</a>, <a href="#S14">S14</a></p>
+<h3>The maker page and the Amazon listing disagree on wattage, ceiling temperature and dimensions (RJ38-SQSS-8T)</h3>
+<p>Both the CHEFMAN product page (S07) and the Amazon &#x27;About this item&#x27; block (S14) name the same model number, RJ38-SQSS-8T, so this is not a model-number mismatch. They disagree on three specifications. Power: S07 states 1700 W / 120 V; S14 states &#x27;1000 Watts/120 Volts – RJ38-SQSS-8T&#x27;. Ceiling: S07 and the S14 bullet state 200-400 °F, while the S14 title advertises a &#x27;450°F Hi-Fry option&#x27;. Size: S07 states 15.4 x 12.6 x 13.5 in; S14 states 12.75 x 13.5 x 10 in. The site publishes the maker&#x27;s figures with the conflicts named, rather than averaging them or picking the better-sounding number.</p>
+<p class="small"><strong>What closes it:</strong> Confirm wattage, ceiling temperature and case dimensions with CHEFMAN support in writing before making a comparison or advertising claim.</p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S07">S07</a>, <a href="../sources/#S14">S14</a></p>
 </article><article class="flag" id="FLG-003">
 <div class="flag-head">
   <span class="flagid">FLG-003</span>
@@ -64,7 +65,7 @@ a site that hides its gaps cannot be audited.</p>
 <h3>None of the five supplied links carries the tracking ID</h3>
 <p>Each supplied link is a link.amazon short URL with a 9-character code. Resolving them yields amazon.com/dp/&lt;ASIN&gt; URLs with no tag= parameter. Under Program Policies section 2(b), the Associates ID must appear as a parameter in the URL of each link placed on a site, and under the Agreement section 1 links must use the tagged link formats Amazon provides. As supplied, these links would not attribute commission to shopnow047c-20. The exact compliance status of link.amazon short links is not addressed in the documents reviewed — do not describe them as invalid; describe them as untagged and unresolved.</p>
 <p class="small"><strong>What closes it:</strong> Re-issue all five links from Associates Central SiteStripe with tag=shopnow047c-20, or enroll them in the Associates workflow and confirm the tracking report before scaling.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S01">S01</a>, <a href="#S02">S02</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S01">S01</a>, <a href="../sources/#S02">S02</a></p>
 </article><article class="flag" id="FLG-004">
 <div class="flag-head">
   <span class="flagid">FLG-004</span>
@@ -74,17 +75,17 @@ a site that hides its gaps cannot be audited.</p>
 <h3>Link 4 is time-dependent: an interstitial on first fetch, a product on the second</h3>
 <p>The first fetch of https://link.amazon/B0c8moW59 returned an Amazon &#x27;Continue shopping&#x27; interstitial (checkpoint page) rather than a product. A second fetch on the same day resolved to amazon.com/dp/B0DHZTCNR5, the ThermoMaven instant-read thermometer. A catalog search for the bare code B0C8MOW59 returns no results, which is expected: the code is a short-link token, not an ASIN. The earlier &#x27;unresolved&#x27; conclusion in this register was wrong and is corrected here with both observations retained.</p>
 <p class="small"><strong>What closes it:</strong> Re-confirm the link in a signed-in browser before relying on it; checkpoint pages are served to some clients intermittently.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S16">S16</a>, <a href="#S20">S20</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S16">S16</a>, <a href="../sources/#S20">S20</a></p>
 </article><article class="flag" id="FLG-005">
 <div class="flag-head">
   <span class="flagid">FLG-005</span>
   <span class="sev sev-low">low</span>
   <span class="small muted">CHEF iQ iQ Sense Smart Wireless Meat Thermometer, 3 Probes (Gen3)</span>
 </div>
-<h3>Battery life differs between two CHEF iQ pages</h3>
-<p>The iQ Sense product page advertises &#x27;70+ Hours of Battery&#x27;. The iQ Sense FAQ states Gen 3 probes hold a charge for up to 60 hours. Both are on chefiq.com. The product register records the marketing figure and this note; no single number is asserted in buyer-facing copy.</p>
+<h3>Battery life differs across three CHEF iQ pages (70+ vs 60 vs 50 hours)</h3>
+<p>The iQ Sense product page (S10) advertises &#x27;70+ Hours of Battery&#x27;. The FAQ on the same domain (S11) states that Gen 3 probes hold a charge for &#x27;up to 60 hours&#x27;. The Amazon listing for B0DZFD6R9Z (S15) states &#x27;up to 50 hours&#x27;. All three describe the same Gen 3 product. No battery figure is published; the field is blank and this note stands in its place.</p>
 <p class="small"><strong>What closes it:</strong> Ask CHEF iQ which figure applies to the 3-probe Gen 3 bundle.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S10">S10</a>, <a href="#S11">S11</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S10">S10</a>, <a href="../sources/#S11">S11</a>, <a href="../sources/#S15">S15</a></p>
 </article><article class="flag" id="FLG-006">
 <div class="flag-head">
   <span class="flagid">FLG-006</span>
@@ -94,7 +95,7 @@ a site that hides its gaps cannot be audited.</p>
 <h3>Accessory set in the box is not identical across channels</h3>
 <p>The Emeril Everyday product page states 7 accessories are included. The manufacturer&#x27;s own accessory page states the grill plate &#x27;is now an optional accessory and is no longer included&#x27;. Retail listings still describe a set including a grill plate. Nothing on the site claims a specific accessory list; the copy says to check the current box contents.</p>
 <p class="small"><strong>What closes it:</strong> Ask the manufacturer for the current in-box list for 4-00675-02A-VN.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S08">S08</a>, <a href="#S09">S09</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S08">S08</a>, <a href="../sources/#S09">S09</a></p>
 </article><article class="flag" id="FLG-007">
 <div class="flag-head">
   <span class="flagid">FLG-007</span>
@@ -104,7 +105,17 @@ a site that hides its gaps cannot be audited.</p>
 <h3>No first-party traffic or conversion data exists yet</h3>
 <p>The repository began as a single-line README. There is no analytics history, no Associates report export, and no campaign ledger. Every performance statement on this site is therefore absent rather than estimated. The dashboard shows zeroes with &#x27;no data&#x27; provenance, not projections.</p>
 <p class="small"><strong>What closes it:</strong> Turn on the self-hosted endpoint, accumulate 30 days, then populate data/campaign-ledger.json from an Associates report export.</p>
-<p class="small"><strong>Sources:</strong> <a href="#S02">S02</a></p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S02">S02</a></p>
+</article><article class="flag" id="FLG-008">
+<div class="flag-head">
+  <span class="flagid">FLG-008</span>
+  <span class="sev sev-low">low</span>
+  <span class="small muted">ThermoMaven 1 Sec Professional Digital Meat Thermometer</span>
+</div>
+<h3>ThermoMaven: the maker&#x27;s page and the listing make different claims about one thermometer</h3>
+<p>The maker&#x27;s page (S20) states a &#x27;bright, ultra-clear LCD&#x27; and a &#x27;100% waterproof design&#x27; with no IP code. The Amazon listing (S21) states an &#x27;Auto-Rotate Bright LED Screen&#x27;, &#x27;IP67 Waterproof&#x27; and &#x27;NIST&amp;NSF Certified&#x27;, and carries a &#x27;newer model of this item&#x27; callout for B0GL7Z4KP4. The site publishes the maker&#x27;s wording, records the listing&#x27;s stronger claims as listing claims, and does not upgrade &#x27;waterproof design&#x27; to IP67 on a retailer&#x27;s word.</p>
+<p class="small"><strong>What closes it:</strong> Ask ThermoMaven whether the F1 Ace is IP67 and NSF certified as the listing states, and whether B0GL7Z4KP4 supersedes B0DHZTCNR5.</p>
+<p class="small"><strong>Sources:</strong> <a href="../sources/#S20">S20</a>, <a href="../sources/#S21">S21</a></p>
 </article></div>
 </div></main>
 <footer class="footer">
@@ -148,6 +159,8 @@ a site that hides its gaps cannot be audited.</p>
     <p class="colophon small">Verified against official sources on 2026-11-20. Specifications carry a
     source and an access date because they change. No prices and no star ratings appear on this site;
     see <a href="../disclosure/">why</a>.</p>
+    <p class="small">Archive note: this editorial subtree is marked noindex; the root site is the canonical publication. Google Search Central describes the <code>noindex</code> robots meta directive in its
+    <a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag" rel="noopener external">robots meta tag guidance</a>.</p>
   </div>
 </footer>
 <script src="../assets/analytics.js" defer></script>

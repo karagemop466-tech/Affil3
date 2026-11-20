@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19332d">
+  <meta name="site-root" content="../">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Proposed privacy-preserving event schema, endpoint status, and an empty provenance-first campaign ledger.">
+  
+  
+  <title>Measurement and campaign ledger — Countertop Notes</title>
+  <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/countertop-notes/desk/measurement.html">
+  <link rel="alternate" type="application/rss+xml" title="Countertop Notes RSS" href="../feed.xml">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Countertop Notes">
+  <meta property="og:title" content="Measurement and campaign ledger — Countertop Notes">
+  <meta property="og:description" content="Proposed privacy-preserving event schema, endpoint status, and an empty provenance-first campaign ledger.">
+  <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/countertop-notes/desk/measurement.html">
+  <meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/countertop-notes/assets/hero.svg">
+</head>
+<body data-page="desk/measurement.html" data-page-type="website">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="../" aria-label="Countertop Notes home"><span class="brand-mark" aria-hidden="true">CN</span><span class="brand-copy"><span class="brand-name">Countertop Notes</span><span class="brand-line">Kitchen choices, made clearer</span></span></a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="../shop/">Shop</a>
+        <a href="../guides/">Buying guides</a>
+        <a href="../about/">Our approach</a>
+        <details class="nav-details"><summary>Research desk</summary><div class="nav-panel">
+          <span class="nav-panel-label">Research & decisions</span>
+          <a href="../desk/">Executive summary</a>
+          <a href="../desk/products.html">Product-intent register</a>
+          <a href="../desk/suggestions.html">Suggestions & paths</a>
+          <a href="../desk/questions.html">Open questions</a>
+          <a href="../desk/requirements.html">Requirements & status</a>
+          <span class="nav-panel-label">Measurement & review</span>
+          <a href="../desk/measurement.html">Analytics & campaign ledger</a>
+          <a href="../desk/workflow.html">Automation & compliance gate</a>
+          <a href="../desk/sources.html">Source register</a>
+          <a href="../flagged/">Flagged for Review</a>
+        </div></details>
+      </nav>
+    </div>
+    <div class="disclosure-strip"><div class="disclosure-inner"><p><strong>Affiliate disclosure</strong> “I get commissions for purchases made through links in this post.” As an Amazon Associate I earn from qualifying purchases.</p><a href="../about/#affiliate">How this works</a></div></div>
+  </header>
+  <main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="../">Home</a><span aria-hidden="true">/</span><a href="../desk/">Research desk</a><span aria-hidden="true">/</span> Measurement</p>
+    <p class="eyebrow">Measurement · count only what the source can support</p>
+    <h1>Clicks and conversions need two different ledgers.</h1>
+    <p class="lede">The request asks for five defined events but does not list them. The five names below are an explicit privacy-preserving proposal—not an approved event contract. Amazon-reported orders stay separate and can be added only from authorized first-party reports with provenance.</p>
+  </section>
+  <section class="section">
+    <div class="stat-grid">
+      <div class="stat"><strong>5</strong><span>proposed event names · confirmation pending</span></div>
+      <div class="stat"><strong>Disabled</strong><span>public event collection state on GitHub Pages</span></div>
+      <div class="stat"><strong>0</strong><span>campaign report rows</span></div>
+      <div class="stat"><strong>—</strong><span>conversion forecast (not calculated)</span></div>
+    </div>
+    <div class="note-box warning-box"><strong>Endpoint status: no public runtime; event names are still a proposal.</strong><p data-measure-status aria-live="polite">GitHub Pages and the default preview both serve a disabled runtime. The optional Node API requires explicit configuration in a separate, isolated local environment; it is not a public Pages service. Do not treat local test events as production traffic.</p></div>
+    <div class="card" aria-live="polite" data-measure-summary><p class="table-note">No public aggregate event totals are available while the Pages endpoint is disabled.</p></div>
+    <div class="table-wrap">
+      <table>
+        <caption>Proposed five-event schema · event names and triggers not yet confirmed</caption>
+        <thead><tr><th scope="col">Event</th><th scope="col">Purpose</th><th scope="col">Allowed payload</th><th scope="col">Privacy rule</th><th scope="col">Source / implementation</th></tr></thead>
+        <tbody><tr>
+      <td><code>page_view</code></td>
+      <td>Count a page load by path and UTC day.</td>
+      <td><code>page</code></td>
+      <td>Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.</td>
+      <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+    </tr>
+<tr>
+      <td><code>guide_open</code></td>
+      <td>Count a guide page open by guide path and UTC day.</td>
+      <td><code>page</code></td>
+      <td>Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.</td>
+      <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+    </tr>
+<tr>
+      <td><code>site_search</code></td>
+      <td>Count a local search submission and its result count; never send the entered query.</td>
+      <td><code>page</code><br><code>result_count</code></td>
+      <td>Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.</td>
+      <td><div class="source-links"><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" target="_blank" rel="nofollow noopener noreferrer">SRC-09 · Google Search Central</a><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+    </tr>
+<tr>
+      <td><code>outbound_click</code></td>
+      <td>Count an outbound product-link click by internal record ID, page, and UTC day.</td>
+      <td><code>page</code><br><code>product_id</code></td>
+      <td>Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.</td>
+      <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a><a href="https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR" target="_blank" rel="nofollow noopener noreferrer">SRC-12 · Amazon Associates Central Help</a></div></td>
+    </tr>
+<tr>
+      <td><code>reader_signup</code></td>
+      <td>Count a confirmed opt-in only after a consented reader-capture service is configured. The request must include confirmed=true; the server validates then discards that flag before aggregation. This build has no signup form and emits no signup event.</td>
+      <td><code>page</code><br><code>confirmed (required gate; not persisted)</code></td>
+      <td>Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.</td>
+      <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a><a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" target="_blank" rel="nofollow noopener noreferrer">SRC-11 · Federal Trade Commission</a></div></td>
+    </tr></tbody>
+      </table>
+    </div>
+    <h2>Campaign ledger</h2>
+    <p class="section-intro">One campaign row must record a timestamp, source report, channel, eligible sessions, clicks, reported orders, and provenance. No authorized Associates report was supplied, so the ledger is intentionally empty.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>First-party report ledger · no observations entered</caption>
+        <thead><tr><th scope="col">Timestamp (UTC)</th><th scope="col">Source report</th><th scope="col">Channel</th><th scope="col">Eligible sessions</th><th scope="col">Clicks</th><th scope="col">Reported orders</th><th scope="col">Provenance</th></tr></thead>
+        <tbody><tr><td colspan="7">No authorized first-party report rows. The ledger is intentionally empty. No metric is inferred. <a href="https://affiliate-program.amazon.com/help/node/topic/GMWAK55DQX8JEK7C" target="_blank" rel="nofollow noopener noreferrer">Amazon report documentation</a></td></tr></tbody>
+      </table>
+    </div>
+    <p class="table-note">Amazon Associates describes its own reports as the source for clicks, ordered items, shipped items, and conversion reporting. The site-side event counter does not see an Amazon order and must never be presented as an order count.</p>
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">CN</span><span class="brand-copy"><span class="brand-name">Countertop Notes</span><span class="brand-line">Kitchen choices, made clearer</span></span></a><p>A publication-style guide to thoughtful kitchen purchases. Clear questions, careful sources, and no invented product claims.</p></div>
+        <div class="footer-groups">
+          <section class="footer-group" aria-labelledby="footer-read"><h2 id="footer-read">Read</h2><ul><li><a href="../shop/">Shop queue</a></li><li><a href="../guides/">Buying guides</a></li><li><a href="../about/">About the publication</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../feed.xml">RSS feed</a></li></ul></section>
+          <section class="footer-group" aria-labelledby="footer-desk-one"><h2 id="footer-desk-one">Research desk</h2><ul><li><a href="../desk/">Executive summary</a></li><li><a href="../desk/products.html">Product register</a></li><li><a href="../desk/suggestions.html">Suggestions</a></li><li><a href="../desk/questions.html">Open questions</a></li><li><a href="../desk/requirements.html">Requirements</a></li></ul></section>
+          <section class="footer-group" aria-labelledby="footer-desk-two"><h2 id="footer-desk-two">Measurement & checks</h2><ul><li><a href="../desk/measurement.html">Measurement ledger</a></li><li><a href="../desk/workflow.html">Automation gate</a></li><li><a href="../desk/sources.html">Source register</a></li><li><a href="../flagged/">Flagged for Review</a></li><li><a href="../sitemap.xml">Sitemap</a></li></ul></section>
+        </div>
+      </div>
+      <div class="footer-disclosure"><strong>Affiliate disclosure:</strong> “I get commissions for purchases made through links in this post.” As an Amazon Associate I earn from qualifying purchases.</div>
+      <div class="footer-bottom"><span>© 2026 Countertop Notes · Editorial frameworks, not product tests.</span><span><a href="../privacy/">Privacy</a> · <a href="../feed.xml">RSS</a> · <a href="../flagged/">Open review flags</a></span></div>
+    </div>
+  </footer>
+  <script src="../assets/analytics.js" defer></script>
+  <script src="../assets/site.js" defer></script>
+  
+  <script src="../assets/measurement.js" defer></script>
+</body>
+</html>

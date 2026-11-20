@@ -1,0 +1,51 @@
+{
+  "recommendedPath": "path-a",
+  "paths": [
+    {
+      "id": "path-a",
+      "title": "Proof-first shopping launch",
+      "label": "Recommended next gate",
+      "description": "Resolve each product's intended ASIN and official listing URL, generate the Special Link inside Associates Central, test one per product, and verify destination plus report attribution before showing purchase buttons.",
+      "tradeoff": "Slower to activate, but it avoids guessing product intent or implying tracking has been verified.",
+      "status": "Proposed; not yet authorized or completed",
+      "sourceIds": ["SRC-02", "SRC-03", "SRC-05", "SRC-12"]
+    },
+    {
+      "id": "path-b",
+      "title": "Publish the buyer-guide cluster while products remain gated",
+      "label": "Safe content path",
+      "description": "Keep the four neutral decision guides live, publish no unsupported product ranking, and add product-specific comparisons only after their source records are complete.",
+      "tradeoff": "Creates useful editorial pages now; it does not immediately send buyers through affiliate links.",
+      "status": "Guides prepared; further guides should follow real query evidence",
+      "sourceIds": ["SRC-04", "SRC-08", "SRC-09"]
+    },
+    {
+      "id": "path-c",
+      "title": "Host analytics before optimizing content",
+      "label": "Measurement path",
+      "description": "Confirm the event contract first; then consider the included Node aggregate-count endpoint on a separately reviewed host with a same-origin route. Test only the accepted schema and compare site counts with authorized Associates reports.",
+      "tradeoff": "Requires a separate backend because GitHub Pages is static; both Pages and the default preview remain disabled until the specification and hosting are approved.",
+      "status": "Event specification and hosting are open; endpoint disabled by default",
+      "sourceIds": ["SRC-05", "SRC-06", "SRC-10"]
+    },
+    {
+      "id": "path-d",
+      "title": "Human-gated product research automation",
+      "label": "Automation path",
+      "description": "Connect only an authorized Amazon API/report source, attach provenance and freshness to every field, draft content with citations, and require an editor to approve each disclosure, link, and product claim before publication.",
+      "tradeoff": "Less autonomous than the original ambition; it prevents absent data from turning into invented scores, prices, or claims.",
+      "status": "Workflow scaffold only; no API account or model connection supplied",
+      "sourceIds": ["SRC-02", "SRC-07"]
+    },
+    {
+      "id": "path-e",
+      "title": "Add reader capture only after a working privacy path exists",
+      "label": "Defer collection",
+      "description": "Choose a service or endpoint, publish a privacy notice and retention policy, test a working unsubscribe mechanism, and only then add a clearly optional signup form.",
+      "tradeoff": "No email list starts at launch; readers are not asked to submit an address to a nonfunctional static form.",
+      "status": "Blocked on service, privacy, and unsubscribe decisions",
+      "sourceIds": ["SRC-10", "SRC-11"]
+    }
+  ],
+  "localChoiceNotice": "Selecting a path on the Suggestions page saves a preference in this browser only. It does not publish content, change product links, deploy the site, or contact an external service."
+}

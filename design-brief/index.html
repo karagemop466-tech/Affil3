@@ -36,6 +36,11 @@
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/find/">Find yours</a>
     </nav>
+    <form class="nav-search" role="search" action="/Affil3/search/" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -81,13 +86,13 @@
 <article class="flag-card" id="DX-6">
 <p class="flag-head"><span class="badge">DX-6</span> <strong>The site name is a directory name.</strong> <span class="badge good">addressed</span></p>
 <p><strong>Evidence.</strong> Before the rebrand, &#39;Affil3&#39; appeared as the wordmark, the title suffix, the og:site_name and the footer. It was the repository name.</p>
-<p class="small muted"><strong>Where it stands now.</strong> Addressed in practice; confirmation open. The wordmark, title and footer now read &#39;ShopNow Kitchen&#39; (data/config.json, reader-facing name; priorName &#39;Affil3&#39; is disclosed on /about/ and in the repository). Whether that name is the owner&#39;s confirmed final choice is open at question Q-18 (main&#39;s name row). This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-054).</p>
+<p class="small muted"><strong>Where it stands now.</strong> Addressed in practice; confirmation open. The wordmark, title and footer now read &#39;ShopNow Kitchen&#39; (data/config.json, reader-facing name; priorName &#39;Affil3&#39; is disclosed on /about/ and in the repository). Whether that name is the owner&#39;s confirmed final choice is open at question Q-18 (main&#39;s name row). This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-065).</p>
 <p class="small muted"><strong>Why it reads as generated.</strong> It is the one string on the site that exists for the machine&#39;s convenience rather than a reader&#39;s.</p>
 </article>
 <article class="flag-card" id="DX-7">
 <p class="flag-head"><span class="badge">DX-7</span> <strong>Copy drifted from the data it described.</strong> <span class="badge good">addressed</span></p>
 <p><strong>Evidence.</strong> Four shipped instances: a shop page saying &#39;four short links resolved&#39; above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five; an empty category page under a heading that promised an explanation. Two further instances were found live in November 2026: the executive-summary tile labelled &#39;open flags&#39; rendered the total flag count including resolved ones, and a category card rendered &#39;1 picks&#39;.</p>
-<p class="small muted"><strong>Where it stands now.</strong> Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. A third wave was found on 2026-11-20 by session arena/5a91ea5c-affil3: &#39;All five guides&#39; as link text above the published guides, &#39;five question-led guides&#39; in the executive summary, &#39;five original guides - below the 10-post rule&#39; in the workflow page, and decision cross-references pointing at renumbered rows across the workflow copy, this brief and five flags. The counts are now derived from the register and the references remapped; recorded as FLG-054. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.</p>
+<p class="small muted"><strong>Where it stands now.</strong> Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. A third wave was found on 2026-11-20 by session arena/5a91ea5c-affil3: &#39;All five guides&#39; as link text above the published guides, &#39;five question-led guides&#39; in the executive summary, &#39;five original guides - below the 10-post rule&#39; in the workflow page, and decision cross-references pointing at renumbered rows across the workflow copy, this brief and five flags. The counts are now derived from the register and the references remapped; recorded as FLG-065. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.</p>
 <p class="small muted"><strong>Why it reads as generated.</strong> Hand-written sentences about generated tables go stale silently, and stale correctness is worse than a visible gap: it makes good data look wrong.</p>
 </article></section>
 <section class="band"><h2>Invariants: what no redesign may change</h2>
@@ -151,7 +156,7 @@
 <p class="small muted"><strong>Checkable?</strong> Partly: the gate already asserts no external stylesheet, script or font origin, so any font change is automatically checked for the third-party property. Type scale and measure are not mechanically checkable.</p>
 </article>
 <article class="flag-card" id="PB-8">
-<p class="flag-head"><span class="badge">PB-8</span> <strong>Seasonality</strong> <span class="badge">Two hours for the field and the rule. Blocked on S-46 (the seasonality decision; added 2026-11-20 because no row existed under any numbering).</span></p>
+<p class="flag-head"><span class="badge">PB-8</span> <strong>Seasonality</strong> <span class="badge">Two hours for the field and the rule. Blocked on S-47 (the seasonality decision; added 2026-11-20 because no row existed under any numbering).</span></p>
 <p><strong>Rule.</strong> Seasonal angles are permitted but carry a takedown obligation. Participation Requirements 2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends, so any seasonal page needs an expiry date in its data and a gate rule that fails the build after that date.</p>
 <p class="beforeafter"><span class="ba-label">Before</span> One guide mentions holiday gift framing informally; nothing has an expiry.</p>
 <p class="beforeafter"><span class="ba-label">After</span> A &#39;expires&#39; field on any guide that references a promotion, and a build assertion that fails once the date passes. Evergreen seasonal framing - &#39;air fryers sell hardest in January&#39; - is a claim about the market and needs a source, or it should be cut.</p>
@@ -207,7 +212,7 @@ Hard constraints, enforced by tools/verify.mjs. Do not relax them and do not edi
 
 Already decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.
 
-Still open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-46), reader capture (S-06), navigation labels and footer gloss (S-47), and which assembled design prompt binds the next redesign (S-42); the reader-facing name confirmation is question Q-18. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
+Still open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-47), reader capture (S-06), navigation labels and footer gloss (S-48), and which assembled design prompt binds the next redesign (S-43); the reader-facing name confirmation is question Q-18. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
 
 Your job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.
 
@@ -246,6 +251,7 @@ Write copy against the forbidden list in this brief. Read your own output aloud 
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
         <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+        <li><a href="/Affil3/search/">Search the shop</a></li>
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>

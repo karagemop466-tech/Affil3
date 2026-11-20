@@ -1,6 +1,10 @@
+# Historical executive-summary snapshot — superseded
+
+> **Do not use this snapshot for current product or release status.** Its product/link and integration findings predate subsequent corrections. The current summary is [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) and the current site page is https://karagemop466-tech.github.io/Affil3/executive-summary/.
+
 # Executive summary: Affil3 Amazon affiliate buying-guide site
 
-**Date:** 2026-11-20 · **Branch:** `arena/6249757a-affil3` · **Tracking ID:** `shopnow047c-20`
+**Historical date:** 2026-11-20 · **Original branch:** `arena/6249757a-affil3` · **Tracking ID:** `shopnow047c-20`
 
 ## What was delivered
 

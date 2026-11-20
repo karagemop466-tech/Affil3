@@ -534,6 +534,14 @@
     },
     {
       "id": "Q-29",
+      "question": "Which AI model/provider, approved product-data source, trend or keyword source, and human reviewer are available before research or drafts are automated?",
+      "why_it_matters": "No model, Amazon product-data API, trend/query feed, or publishing integration is configured. Without authorized inputs and a named editor, automation could produce unsupported product claims or fabricated demand signals.",
+      "how_to_close": "Choose an approved provider and authorized data sources; document costs and data terms; run a source-cited draft-only pilot with a human reviewer before considering automated publishing.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-30",
       "question": "Will each buy link be replaced by a Special Link generated in Associates Central, and when?",
       "have": "Five constructed tagged links (observed ASIN + tag), the Program Policies clause they satisfy (S02), and gate G-02 saying none has been tested.",
       "lack": "A link issued by Amazon for each product, and one confirmation that the click lands in the tracking report.",
@@ -724,18 +732,25 @@
     },
     {
       "id": "D-27",
-      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "suggestion": "Inventory available Associates/Product Advertising API access, Search Console query data, AI-provider terms, budget and a human reviewer; run a citation-only draft pilot before considering automated publishing.",
       "closes": [
-        "Q-29"
+        "Q-14"
       ]
     },
     {
       "id": "D-28",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": [
+        "Q-30"
+      ]
+    },
+    {
+      "id": "D-29",
       "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
       "closes": [
         "Q-18"
       ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site. Q-29, D-27 and D-28 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping); renumbered twice at merge from Q-24/D-19/D-20 because main took those ids. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3. This session's original Q-25 had already been dropped as a duplicate of main's Q-18."
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site. Q-30, D-28 and D-29 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping) and renumbered three times at merge as main took Q-24/D-19/D-20 then Q-29/D-27. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3; the session's original Q-25 had been dropped as a duplicate of Q-18."
 }

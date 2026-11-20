@@ -257,6 +257,26 @@
       "used_for": "The trail shape used on guide and product pages: absolute item URLs for every level except the last, which is the current page. The page states the feature is available on desktop in all regions and languages where Google Search is available, and lists 'Follow the guidelines' and validation in the Rich Results Test as steps.",
       "status": "verified",
       "quote": "A breadcrumb trail on a page indicates the page's position in the site hierarchy, and it may help users understand and explore a site effectively."
+    },
+    {
+      "id": "S28",
+      "title": "Robots meta tag, data-nosnippet, and X-Robots-Tag specifications",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "updated": "not stated",
+      "method": "fetched; read the robots meta tag and noindex sections",
+      "used_for": "Google documents the robots meta tag as a page-specific indexing control and says noindex means do not show that page in search results. Used to mark the retained editorial archive noindex.",
+      "status": "verified"
+    },
+    {
+      "id": "S29",
+      "title": "NIST FAQs: traceability, certification and endorsement of commercial equipment",
+      "publisher": "National Institute of Standards and Technology (nist.gov)",
+      "url": "https://www.nist.gov/pml/sensor-science/optical-radiation/faqs-spectral-responsivity-calibrations",
+      "updated": "January 20, 2022 (page age shown in the search index)",
+      "method": "excerpt (search-result text of the official nist.gov page); the page text was not re-read in full",
+      "used_for": "Quote used at FLG-052: NIST is a government laboratory and 'as part of our policy NIST does not recommend or endorse commercial equipment, instruments, or materials'. Also: 'NIST does not define, specify, assure, or certify traceability of the results of measurements'. Used only to explain why the phrase 'NIST-certified' on a retail product page needs a certificate behind it.",
+      "status": "excerpt verified; re-check the exact wording on the page before quoting it in any other context"
     }
   ],
   "note": "Every product fact on this site points at one of these sources. 'fetched' means the full page text was retrieved and read in this session (2026-11-20). 'excerpt' means only a search-result excerpt of the official page was available; the wording should be re-checked by hand before it is relied on. 'observed' means a value read off an Amazon page on a dated fetch; observations can change without notice. Nothing in this register is a third-party blog or review site. S24 and S26 were added by session b7320829-affil3 on 2026-11-20, both fetched in that session (main had already taken S25 for the crawl-docs robots.txt page, so the numbering continues after it). Rows whose method field carries a dated session note were re-read in that session; rows without one keep the status their fetching session recorded.",

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static site into docs/ from the verified JSON registers.
+"""Build the static site into editorial/ from the verified JSON registers.
 
 Design constraints enforced here, not by convention:
   * No price text is ever emitted. Checked again by tools/check_site.py.
@@ -100,10 +100,10 @@ def head(title: str, desc: str, rel: str, extra: str = "") -> str:
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex,follow">
 <!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="alternate" type="application/rss+xml" title="{BRAND}" href="/feed.xml">
+<!-- No feed discovery: this retained editorial archive is noindex. -->
 {extra}
 </head>
 <body>
@@ -174,6 +174,8 @@ def footer(rel: str) -> str:
     <p class="colophon small">Verified against official sources on {ACCESSED}. Specifications carry a
     source and an access date because they change. No prices and no star ratings appear on this site;
     see <a href="/disclosure/">why</a>.</p>
+    <p class="small">Archive note: this editorial subtree is marked noindex; the root site is the canonical publication. Google Search Central describes the <code>noindex</code> robots meta directive in its
+    <a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag" rel="noopener external">robots meta tag guidance</a>.</p>
   </div>
 </footer>
 <script src="/assets/analytics.js" defer></script>
@@ -427,7 +429,7 @@ def page_home(products, sources, suggestions, flags) -> str:
     return (
         head(
             f"{BRAND} — air fryers and thermometers, compared by specification",
-            "Five submitted products, four resolved to real listings. Compare air fryer shapes, "
+            "Five submitted products, all five resolved to Amazon listings. Compare air fryer shapes, "
             "capacities, and counter footprints using manufacturer specifications, with every value sourced and dated.",
             "/",
         )
@@ -829,7 +831,7 @@ def page_guides_index(products) -> str:
         + masthead("/guides/", "/guides/")
         + f"""<div class="wrap section">
 <h1>Guides</h1>
-<p class="sub">Four guides, each answering a question you can settle before you buy. Every claim traces
+<p class="sub">{len(GUIDES)} guides, each answering a question you can settle before you buy. Every claim traces
 to a manufacturer page, and every gap is left visible.</p>
 <div class="guide-list">{cards}</div>
 <h2>The cadence</h2>
@@ -843,7 +845,7 @@ That is a proposal, not a fact &mdash; see <a href="/suggestions/#SG-11">SG-11</
 
 def page_sources(sources) -> str:
     rows = "".join(
-        f"""<tr>
+        f"""<tr id="{e(s['id'])}">
 <td><span class="sid">{e(s['id'])}</span></td>
 <td><a class="cite" href="{e(s['url'])}" rel="nofollow noopener" target="_blank">{e(s['title'])}</a>
 <div class="note">{e(s.get('supports',''))}</div></td>
@@ -857,7 +859,7 @@ def page_sources(sources) -> str:
         + masthead("/sources/", "")
         + f"""<div class="wrap section">
 <h1>Source register</h1>
-<p class="sub">Nineteen sources. Each one was opened on {ACCESSED}. Third-party review sites were read
+<p class="sub">{len(sources)} sources. Each one was opened on {ACCESSED}. Third-party review sites were read
 while orienting but are never cited for a value &mdash; if a number is not on a manufacturer page, an
 Amazon listing, or a government site, it does not appear on this site.</p>
 <table class="table sources">
@@ -882,7 +884,7 @@ def page_flags(flags, products) -> str:
     for f in flags:
         p = by_id.get(f["product"])
         thing = f"{p['brand']} {p['name']}" if p and p.get("name") else ("All products" if f["product"] == "all" else "Unresolved entry")
-        srcs = ", ".join(f'<a href="#{e(x)}">{e(x)}</a>' for x in f["sources"])
+        srcs = ", ".join(f'<a href="/sources/#{e(x)}">{e(x)}</a>' for x in f["sources"])
         items.append(f"""<article class="flag" id="{e(f['id'])}">
 <div class="flag-head">
   <span class="flagid">{e(f['id'])}</span>
@@ -920,7 +922,7 @@ def page_questions(qs) -> str:
                 f'<p>{e(q["answer"])}</p>' if q["answer"]
                 else '<p class="unverified">No official source answers this yet. Nothing is asserted here.</p>'
             )
-            src = f' <a class="srclink" href="#{e(q["source"])}">{e(q["source"])}</a>' if q["source"] else ""
+            src = f' <a class="srclink" href="/sources/#{e(q["source"])}">{e(q["source"])}</a>' if q["source"] else ""
             out.append(f"""<article class="q">
 <div class="q-head"><span class="qid">{e(q['id'])}</span>
 <span class="badge badge-{'have' if q['status']=='have' else 'dont'}">{'have' if q['status']=='have' else "don't have"}</span></div>
@@ -987,7 +989,7 @@ labelled as such; the rest do nothing until you choose.</p>
 <div class="callout">
 <p><strong>How to decide.</strong> Read impact and effort together. A high-impact, low-effort item that
 you disagree with is still worth rejecting explicitly, because an unanswered proposal becomes a
-default. Write the decision into <code>data/suggestions.json</code> under <code>decided</code> and the
+default. Write the decision into <code>data/register/suggestions.json</code> under <code>decided</code> and the
 next build renders it as an outcome.</p>
 </div>
 <div class="shipped">
@@ -1014,7 +1016,7 @@ def page_dashboard(products, ledger, compliance, flags) -> str:
     rule_rows = "".join(
         f"""<tr><th scope="row">{e(r['id'])}</th><td>{e(r['requirement'])}</td>
 <td><span class="pill st-{'shipped' if r['status']=='met' else 'blocked'}">{e(r['status'])}</span></td>
-<td class="small">{e(r['where_enforced'])}</td><td><a class="srclink" href="#{e(r['source'])}">{e(r['source'])}</a></td></tr>"""
+<td class="small">{e(r['where_enforced'])}</td><td><a class="srclink" href="/sources/#{e(r['source'])}">{e(r['source'])}</a></td></tr>"""
         for r in compliance["rules"]
     )
     event_rows = "".join(
@@ -1068,7 +1070,7 @@ def page_disclosure(compliance, sources) -> str:
     quote_rows = "".join(
         f"""<tr><th scope="row">{e(r['id'])}</th><td>{e(r['requirement'])}
 <blockquote>{e(r['quote'])}</blockquote></td>
-<td><a class="srclink" href="#{e(r['source'])}">{e(r['source'])}</a></td>
+<td><a class="srclink" href="/sources/#{e(r['source'])}">{e(r['source'])}</a></td>
 <td><span class="pill st-{'shipped' if r['status']=='met' else 'blocked'}">{e(r['status'])}</span></td></tr>"""
         for r in compliance["rules"]
     )
@@ -1140,18 +1142,9 @@ def page_404() -> str:
 # --------------------------------------------------------------------------
 
 def sitemap() -> str:
-    urls = ["/", "/air-fryers/", "/air-fryer-ovens/", "/thermometers/", "/guides/", "/sources/",
-            "/flagged/", "/questions/", "/suggestions/", "/dashboard/", "/disclosure/"]
-    urls += [f"/products/{p}/" for p in ("p1", "p2", "p3", "p4", "p5")]
-    urls += [f"/guides/{g['slug']}/" for g in GUIDES]
-    body = "".join(
-        f"<url><loc>{SITE}{u}</loc><lastmod>{ACCESSED}</lastmod>"
-        f"<changefreq>{'weekly' if u in ('/', '/guides/') else 'monthly'}</changefreq>"
-        f"<priority>{'1.0' if u == '/' else '0.7' if u.startswith('/guides/') else '0.5'}</priority></url>"
-        for u in urls
-    )
+    # This retained editorial archive is noindex and must not compete with the root publication.
     return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + body + "</urlset>\n")
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>\n')
 
 
 def feed() -> str:
@@ -1243,8 +1236,7 @@ def main() -> int:
     write("/sitemap.xml", sitemap())
     write("/feed.xml", feed())
     # robots.txt and .nojekyll are owned by the root-site session. Do not write them.
-    # Request logged in COORDINATION.md: point the root robots.txt sitemap line at
-    # /editorial/sitemap.xml so this subtree is discoverable.
+    # The editorial archive is noindex; the root robots.txt and canonical sitemap are authoritative.
 
     for asset in ("site.css", "analytics.js"):
         shutil.copyfile(ROOT / "tools" / "assets" / asset, DOCS / "assets" / asset)

@@ -36,13 +36,18 @@
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/find/">Find yours</a>
     </nav>
+    <form class="nav-search" role="search" action="/Affil3/search/" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured. S-42 and S-43 to S-47 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (design prompt of record, cluster linking, reader-shaped titles, decision-review cadence, seasonality expiry machinery, footer gloss) in the growth track; renumbered twice at merge from S-20 and S-33 to S-37 because main took those ids (S-28 and S-37 to S-41 in main&#39;s later waves). Its original S-31 and S-32 were dropped rather than renumbered: main already carries the seasonal-lane row (S-23) and the measured-queries row (S-21).</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation. Added by session arena/5a91ea5c-affil3 on 2026-11-20 and renumbered three times at merge as main&#39;s integration waves took each id in turn; the final ids are the ones above. Duplicates of main&#39;s rows (seasonal lane S-23, measured queries S-21, name Q-18) were dropped rather than renumbered over the top. Final ids: S-43 (design prompt of record), S-44 to S-47 (growth track), S-48 (footer gloss).</p></section>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
@@ -52,9 +57,9 @@
 </section>
 <section class="choice-card" id="S-02">
   <p class="kicker">S-02 · Buy buttons while links are untested</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li><li><strong>D.</strong> Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.<br><span class="muted small">Tradeoff: Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders.</p>
+  <p class="choice-current">Current: <span class="badge">B</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep buy buttons while the Associates test is pending (not selected).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes (current).<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B until every product has a recorded Associates Central test, confirmed destination, and tracking-report evidence.</p>
 </section>
 <section class="choice-card" id="S-03">
   <p class="kicker">S-03 · Where the analytics collector runs</p>
@@ -285,40 +290,70 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists.</p>
 </section>
 <section class="choice-card" id="S-42">
-  <p class="kicker">S-42 · The design prompt of record (two prompts now exist)</p>
+  <p class="kicker">S-42 · AI research and publishing automation</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep research and publishing manual for now; use explicit source, validation, and disclosure gates (current).<br><span class="muted small">Tradeoff: No provider cost or generated claims, but no automated research or drafts.</span></li><li><strong>B.</strong> Pilot AI-assisted drafts using only approved product/query data, with citations and mandatory human approval.<br><span class="muted small">Tradeoff: Can speed research and first drafts; requires an authorized source, model/provider, data terms, budget, and named editor.</span></li><li><strong>C.</strong> Automatically publish AI-generated product pages and links.<br><span class="muted small">Tradeoff: Highest automation and risk; requires validated source data, policy checks, working analytics, and rollback owner. Not recommended now.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B only after Q-14 and D-09 are answered; do not automate publication before evidence and review gates exist.</p>
+</section>
+<section class="choice-card" id="S-43">
+  <p class="kicker">S-43 · The design prompt of record (two prompts now exist)</p>
   <p class="choice-current">Current: <span class="badge">B</span></p>
   <ul class="opts"><li><strong>A.</strong> Treat both prompts as background reading only.<br><span class="muted small">Tradeoff: No obligations, and the next redesign re-derives everything from a fresh opinion — which is how the stale references got there.</span></li><li><strong>B.</strong> Pick one prompt of record (either /design-brief/ or the /decisions/ assembly), require any redesign session to read it first, to not relax its invariants, and to state which open decisions it had to assume. Keep the other as an archive.<br><span class="muted small">Tradeoff: One file to maintain; a redesign still has to pass tools/verify.mjs — the gate, not the prompt, is the real enforcement.</span></li><li><strong>C.</strong> Merge the two prompts into one document.<br><span class="muted small">Tradeoff: Cleanest end state, a day of reconciling two diagnoses written by different sessions, and it can wait until one of them is chosen at B.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, choosing /design-brief/ as the record: it carries the evidence, the invariants and the gate alignment, and its references were just remapped. The /decisions/ assembly keeps serving its own rows.</p>
 </section>
-<section class="choice-card" id="S-43">
-  <p class="kicker">S-43 · How much structured data to publish</p>
+<section class="choice-card" id="S-44">
+  <p class="kicker">S-44 · How much structured data to publish</p>
   <p class="choice-current">Current: <span class="badge">B</span></p>
   <ul class="opts"><li><strong>A.</strong> Article only (as shipped before 2026-11-20).<br><span class="muted small">Tradeoff: Minimal and valid; nothing about site structure or the Q&amp;A content is declared.</span></li><li><strong>B.</strong> An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.</span></li><li><strong>C.</strong> Add Product offers and price data.<br><span class="muted small">Tradeoff: Not available while the site publishes no prices: the price clause (S03) and the no-republished-prices rule both stand until the Creators API decision at S-04.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, shipped, and not sold as a rich-result win. C waits for an API enrolment decision.</p>
 </section>
-<section class="choice-card" id="S-44">
-  <p class="kicker">S-44 · A dated re-check ritual for listing copy</p>
+<section class="choice-card" id="S-45">
+  <p class="kicker">S-45 · A dated re-check ritual for listing copy</p>
   <p class="choice-current">Current: <span class="badge">B</span></p>
   <ul class="opts"><li><strong>A.</strong> Leave the dated reads as they are and let the dates speak.<br><span class="muted small">Tradeoff: Zero work. A reader sees &#39;observed November 20, 2026&#39; and can judge staleness themselves.</span></li><li><strong>B.</strong> A monthly ten-minute manual re-check, written into data/observations/ with its date and rendered on the product page as a last-seen line.<br><span class="muted small">Tradeoff: Recommended. It is the only check that sees the page a shopper sees, and it needs a person - which is why it is a suggestion and not an automation claim.</span></li><li><strong>C.</strong> Automate the fetch in CI.<br><span class="muted small">Tradeoff: Rejected on this repository&#39;s own evidence: a scheduled job would raise a flag every week for reasons unrelated to the fact it claims to verify. Do not build an alarm nobody can trust.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.</p>
 </section>
-<section class="choice-card" id="S-45">
-  <p class="kicker">S-45 · A citation check that catches wrong meaning, not just a dangling id</p>
+<section class="choice-card" id="S-46">
+  <p class="kicker">S-46 · A citation check that catches wrong meaning, not just a dangling id</p>
   <p class="choice-current">Current: <span class="badge">C</span></p>
   <ul class="opts"><li><strong>A.</strong> Rely on reviewers noticing.<br><span class="muted small">Tradeoff: Eleven were missed across several sessions and found only by reading text against the documents it cites.</span></li><li><strong>B.</strong> Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.<br><span class="muted small">Tradeoff: Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.</span></li><li><strong>C.</strong> Two further rules, implemented with B: an inline citation in a guide must be declared in that guide&#39;s own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.<br><span class="muted small">Tradeoff: Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches &#39;Chefman states 1700 W (S22)&#39;. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.</span></li><li><strong>D.</strong> Also require every guide sentence to carry an inline source id.<br><span class="muted small">Tradeoff: Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.</p>
 </section>
-<section class="choice-card" id="S-46">
-  <p class="kicker">S-46 · Cluster pillars and related-guide linking (PB-9)</p>
+<section class="choice-card" id="S-47">
+  <p class="kicker">S-47 · Cluster pillars and related-guide linking (PB-9)</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Leave the link graph as it is.<br><span class="muted small">Tradeoff: No work; every guide keeps earning nothing for the rest of the site.</span></li><li><strong>B.</strong> Add a related block to every guide (two siblings from cluster_links plus the pillar link up to its category) and a gate rule asserting each guide page carries at least two internal links to other guides.<br><span class="muted small">Tradeoff: About two hours in the generator using data that already exists; the gate rule stops it regressing.</span></li><li><strong>C.</strong> Redo the information architecture from scratch.<br><span class="muted small">Tradeoff: Days of work over a five-product site; PB-9 needs a related block, not a new hierarchy.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B. The data is already in the register; this is the cheapest structural traffic win on the board.</p>
 </section>
-<section class="choice-card" id="S-47">
-  <p class="kicker">S-47 · Reader-shaped titles, descriptions, and a length check</p>
+<section class="choice-card" id="S-48">
+  <p class="kicker">S-48 · Reader-shaped titles, descriptions, and a length check</p>
   <p class="choice-current">Current: <span class="badge">A</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep titles as they are.<br><span class="muted small">Tradeoff: No work; process-first titles are a documented diagnosis item in the design brief.</span></li><li><strong>B.</strong> Editorial pass over titles and meta descriptions — each states what the page decides, under about 60 and 155 characters — plus gate rules asserting both lengths.<br><span class="muted small">Tradeoff: Half a day; the lengths are mechanical, the wording stays editorial.</span></li><li><strong>C.</strong> Automate title rewriting.<br><span class="muted small">Tradeoff: A template produces the uniform voice the design brief&#39;s forbidden list exists to stop.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B. It is PB-10 with the checkable half moved into the gate, which is how every other rule on this site is kept.</p>
+</section>
+<section class="choice-card" id="SG-27">
+  <p class="kicker">SG-27 · Reader-facing identity: one brand, imagery that is what it says it is</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the two working names and keep editorial illustrations labelled as illustrations (current).<br><span class="muted small">Tradeoff: Nothing is misrepresented; a reader moving between surfaces sees two names.</span></li><li><strong>B.</strong> Pick one consumer name and domain, and commission original photography of the units you own.<br><span class="muted small">Tradeoff: Stronger recall and trust; needs a domain and physical units. Marketplace images remain Program Content and cannot simply be reused.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B once a name and units exist. Until then A is the only honest option, because the illustrations are labelled as illustrations.</p>
+</section>
+<section class="choice-card" id="SG-28">
+  <p class="kicker">SG-28 · Reader-facing authorship: a name and a check date</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Team byline with a visible specification-check date on every guide and product page (current).<br><span class="muted small">Tradeoff: No invented person; a team byline is a weaker trust signal than a name.</span></li><li><strong>B.</strong> Named editor with a short bio, a contact address and a stated review cadence.<br><span class="muted small">Tradeoff: The cheapest trust win available, but a real person has to answer for corrections.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B as soon as a real person will take the byline. The check dates already exist, so this is a change of name, not of method.</p>
+</section>
+<section class="choice-card" id="SG-29">
+  <p class="kicker">SG-29 · Reader-facing findability: Search Console, topic clusters, RSS</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Ship canonical URLs, JSON-LD, sitemap, robots.txt and the RSS feed, and leave Search Console unverified (current).<br><span class="muted small">Tradeoff: Everything a crawler needs is present, but nobody can see which guides are being found.</span></li><li><strong>B.</strong> Verify the Search Console property, submit the sitemap, and choose the next guide from the query report.<br><span class="muted small">Tradeoff: Turns topic choice from instinct into evidence; needs an owner Google account.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. Cheapest remaining decision, and the only one that shows whether the guides are read at all.</p>
+</section>
+<section class="choice-card" id="SG-30">
+  <p class="kicker">SG-30 · Reader-facing capture: RSS now, email only when there is something to send</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> RSS only; no email capture and no seasonal hub until query data justifies one (current).<br><span class="muted small">Tradeoff: Nothing to maintain, no consent or retention obligations, and no direct channel to readers.</span></li><li><strong>B.</strong> Add a double opt-in list and a seasonal hub once demand is measured, after reading the Amazon Trademark Guidelines on email.<br><span class="muted small">Tradeoff: Owns the audience instead of renting it from search; adds a privacy notice, a provider and an email-rules review.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A until there are at least three guides worth returning for and the email rules have been read.</p>
 </section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
@@ -354,6 +389,7 @@
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
         <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+        <li><a href="/Affil3/search/">Search the shop</a></li>
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>

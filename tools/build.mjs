@@ -32,6 +32,12 @@ const articles = articlesDoc.articles;
 const decisions = read('data/decisions.json');
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
+const specialLinksReady = products.length > 0 && products.every((p) => {
+  const v = p.special_link_validation || {};
+  return v.status === 'validated' && !!v.validated_url && !!v.confirmed_destination &&
+    !!v.tracking_report_reference && !!v.confirmation_date && !!v.confirmation_source;
+});
+const validatedSpecialLink = (p) => p.special_link_validation?.validated_url || '';
 
 // Counts inside data/*.json prose are written as tokens, so a register can stay a plain text file
 // and still never print a stale number. tools/verify.mjs fails if an unrendered token escapes.
@@ -73,6 +79,7 @@ const DASHBOARDS = [
   ['/ledger/', 'Campaign ledger'],
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Compliance and gates'],
+  ['/search/', 'Search the shop'],
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
@@ -207,6 +214,11 @@ ${jsonld}
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/find/'))}">Find yours</a>
     </nav>
+    <form class="nav-search" role="search" action="${esc(href('/search/'))}" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -368,7 +380,7 @@ function productCard(p, placement) {
   // the product's own summary. The internal row code stays on the Shop table and the product page.
   const readerCard = placement === 'front-shelf';
   const kicker = readerCard ? (specLine(p) || cat) : `${cat} · ${p.id}`;
-  if (tagged(p)) {
+  if (specialLinksReady && validatedSpecialLink(p) && !p.no_buy_link) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
   ${cardArt(p)}
   <div class="card-body">
@@ -377,8 +389,19 @@ function productCard(p, placement) {
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
     ${readerCard ? (p.fit_line ? `<p class="fit-line">${esc(p.fit_line)}</p>` : '') : fit}
     ${readerCard ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
-    <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
+    <p><a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
     ${readerCard ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
+  </div>
+</article>`;
+  }
+  if ((tagged(p) || p.observed_asin) && !p.no_buy_link) {
+    return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
+  ${cardArt(p)}
+  <div class="card-body">
+    <p class="kicker">${esc(kicker)}</p>
+    <h3>${esc(title)}</h3>
+    ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
+    <p class="status"><strong>Purchase link held for validation.</strong> This product's Associates Central destination and tracking-report check have not been recorded yet, so no buy button is published. No claim is made that the supplied short link is invalid. <a href="${esc(href('/products/' + p.slug + '/'))}">Specifications, trade-offs and sources →</a> ${flagLinks(['FLG-005'])}</p>
   </div>
 </article>`;
   }
@@ -455,8 +478,14 @@ function buyBox(p, placement = 'product-page') {
     <p class="small">The listing this unit was observed on is recorded on the <a href="${esc(href('/shop/'))}">comparison table</a> with its source link.</p>
   </div>`;
   }
+  if (!specialLinksReady || !validatedSpecialLink(p)) {
+    return `<div class="buybox hidden-link">
+    <p><strong>Purchase link held for validation.</strong> This product's Associates Central destination and tracking-report check have not been recorded yet.</p>
+    <p class="small">The product remains in the comparison; no claim is made that the supplied short link is invalid. See <a href="${esc(href('/flagged/'))}#FLG-005">G-02 / FLG-005</a>.</p>
+  </div>`;
+  }
   return `<div class="buybox">
-    <a class="btn btn-primary" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">Check it on Amazon</a>
+    <a class="btn btn-primary" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a>
     <span class="btn-note">Affiliate link, marked sponsored. Opens the ${esc(p.brand || 'manufacturer')} listing on Amazon.com. We do not display prices because they change and we do not use Amazon price data.</span>
   </div>`;
 }
@@ -499,7 +528,7 @@ const add = (p) => pages.push(p);
   const quickPick = products.map((p) => `<div class="qp-item">
   <p class="qp-product">${esc(p.short_name)}</p>
   <p class="qp-fit">${esc(p.fit_line)}</p>
-  <p class="qp-links"><a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a> · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
+  <p class="qp-links">${specialLinksReady && validatedSpecialLink(p) && !p.no_buy_link ? `<a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a>` : '<span class="small muted">Purchase link held pending G-02</span>'} · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
 </div>`).join('\n');
   // Four cards, chosen for the shape of the shelf rather than for file order: newest first, but at most
   // one guide per cluster until each cluster has one, so the front page never shows four air-fryer guides.
@@ -647,6 +676,63 @@ const add = (p) => pages.push(p);
   });
 }
 
+// Search: a client-side index over the products and guides. No server, no tracking.
+{
+  const index = [
+    ...products.filter((p) => p.observed_asin).map((p) => ({
+      t: `${p.brand} ${p.short_name || p.name}`, u: `/products/${p.slug}/`, k: `${catName(p.category)} product`,
+      d: p.fit_line || p.lede || '',
+      x: [p.brand, p.name, p.short_name, p.model, p.shape, p.best_for, p.tradeoff, catName(p.category),
+        p.capacity_qt ? p.capacity_qt + ' qt' : '', p.temp_max_f ? p.temp_max_f + ' F' : '',
+        p.observed_title, p.lede].filter(Boolean).join(' ').toLowerCase()
+    })),
+    ...guides.map((g) => ({ t: g.title, u: `/guides/${g.slug}/`, k: `${catName(g.category)} guide`, d: g.deck || '',
+      x: [g.title, g.deck, g.description || '', catName(g.category)].join(' ').toLowerCase() })),
+    ...CATEGORIES.filter((c) => c.slug !== 'unresolved').map((c) => ({ t: c.name, u: `/categories/${c.slug}/`, k: 'Category', d: c.blurb, x: (c.name + ' ' + c.blurb).toLowerCase() })),
+    { t: 'Compare all five side by side', u: '/compare/', k: 'Comparison', d: 'The shape decision in one table.', x: 'compare basket oven style shape capacity' },
+  ];
+  add({
+    path: '/search/', title: 'Search the shop',
+    description: 'Search the five tracked products and the buying guides, in the browser.',
+    type: 'search',
+    body: `<section class="page-head">
+  <p class="kicker">Search</p>
+  <h1>Find a product or a guide</h1>
+  <p class="deck">Type what you cook, or the shape you are after. The results come from this site only: five products, five guides and three categories. Nothing is sent anywhere.</p>
+</section>
+<form class="searchbox" role="search" onsubmit="return false">
+  <label class="sr" for="sq">Search</label>
+  <input type="search" id="sq" placeholder="e.g. basket, thermometer, two foods, 8 qt" autocomplete="off" autofocus>
+</form>
+<p class="small muted" id="scount"></p>
+<ul class="results" id="results"></ul>
+<script type="application/json" id="search-index">${JSON.stringify(index).replace(/</g, '\\u003c')}</script>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById('search-index').textContent);
+  var input = document.getElementById('sq');
+  var out = document.getElementById('results');
+  var count = document.getElementById('scount');
+  function render() {
+    var q = input.value.trim().toLowerCase();
+    var hits = q ? data.filter(function (r) { return r.x.indexOf(q) !== -1; })
+                 : data.filter(function (r) { return r.k.indexOf('product') !== -1; });
+    hits = hits.slice(0, 20);
+    out.innerHTML = hits.map(function (r) {
+      return '<li><a href="' + r.u + '"><span class="k">' + r.k + '</span><strong>' + r.t + '</strong><span class="d">' + r.d + '</span></a></li>';
+    }).join('');
+    count.textContent = q ? hits.length + ' result' + (hits.length === 1 ? '' : 's') + ' for \"' + input.value + '\"'
+                          : 'Showing all ' + hits.length + ' products. Type to narrow.';
+    if (!hits.length) count.textContent = 'Nothing matched. Try "air fryer", "thermometer", "two foods" or "capacity".';
+  }
+  input.addEventListener('input', render);
+  render();
+})();
+</script>`,
+  });
+}
+
+// Shop table
 // Shop table — a page a buyer can act on first; the full findings register stays below it.
 {
   const resolvedCount = products.filter((p) => p.observed_asin).length;
@@ -660,7 +746,10 @@ const add = (p) => pages.push(p);
     cellText(p.power_w ? `${p.power_w} W` : ''),
     esc(p.best_for || ''),
     esc(p.tradeoff || ''),
-    tagged(p) ? `<a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="shop-buyer-table">Check it on Amazon</a>` : (p.no_buy_link ? '<span class="muted small">Details page only for now</span>' : '<span class="muted small">no link published</span>'),
+    p.no_buy_link ? '<span class="muted small">Details page only for now</span>'
+      : specialLinksReady && validatedSpecialLink(p)
+        ? `<a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="shop-buyer-table">View on Amazon</a>`
+        : '<span class="muted small">withheld pending G-02</span>',
     `${rowSources(p)}`,
   ]);
   const rows = products.map((p) => [
@@ -673,7 +762,7 @@ const add = (p) => pages.push(p);
     cellText(p.official_listing_url),
     cellText(p.confirmation_date),
     cellText(p.confirmation_source),
-    `${esc(p.outbound_status)}${tagged(p) ? `<br>${ext(tagged(p), 'tagged link', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)}` : ''}`,
+    `${esc(p.outbound_status)}${specialLinksReady && tagged(p) ? `<br>${ext(tagged(p), 'tagged link', ` data-outbound data-product="${p.id}" data-placement="shop-table"`)}` : '<br><span class="small muted">withheld pending G-02</span>'}`,
     `${esc(p.confirmation_status)}<br>${flagLinks(p.flags)}`,
     `${rowSources(p)} <span class="small muted">observed ${esc(dateLong(p.observed_date))}</span>`,
   ]);
@@ -700,7 +789,7 @@ const add = (p) => pages.push(p);
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
     <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
     <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-028'])}</li>
-    <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
+    <li>${specialLinksReady ? `${taggedCount} validated ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}.` : `No purchase CTA is published while gate G-02 is pending; ${taggedCount} draft tagged ${taggedCount === 1 ? 'destination is' : 'destinations are'} recorded but withheld until Associates Central evidence exists.`} ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
   </ul>
@@ -731,9 +820,11 @@ const add = (p) => pages.push(p);
   ];
   const header = ['Specification', ...products.map((p) =>
     `<a href="${esc(href('/products/' + p.slug + '/'))}">${esc(p.short_name || p.name)}</a>`)];
-  const buyRow = ['Buy', ...products.map((p) => tagged(p)
-    ? `<a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="compare">View on Amazon</a>`
-    : '<span class="muted small">No buy link published</span>')];
+  const buyRow = ['Buy', ...products.map((p) => p.no_buy_link
+    ? '<span class="muted small">No buy link published</span>'
+    : specialLinksReady && validatedSpecialLink(p)
+      ? `<a class="btn" href="${esc(validatedSpecialLink(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="compare">View on Amazon</a>`
+      : '<span class="muted small">Withheld pending G-02</span>')];
   add({
     path: '/compare/', title: 'Compare the five products side by side',
     description: 'The five submitted products on published specifications only. Blank cells mean the maker does not publish that figure.',
@@ -1015,7 +1106,7 @@ for (const p of products) {
     <h1>${esc(p.name)}</h1>
     <p class="deck">${esc(p.lede || '')}</p>
     ${buyBox(p)}
-    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-005'])}), so treat it as provisional.` : 'No outbound link is published for this product.'}</p>
+    <p class="small muted">${p.no_buy_link ? `No product purchase link is published. ${esc(p.note || '')}` : specialLinksReady && validatedSpecialLink(p) ? 'The tested Special Link and its tracking-report evidence are recorded.' : `The draft tagged destination is not published as a purchase link until its Associates Central destination and tracking report are verified (${flagLinks(['FLG-005'])}).`}</p>
   </div>
 </section>
 <section class="band">
@@ -1093,7 +1184,7 @@ add({
 <li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
 <li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
-<li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a buy button and a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14).</li>
+<li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14); its purchase link is withheld pending G-02.</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
@@ -1515,6 +1606,40 @@ ${feedItems.map((g) => `  <item>
 const EXTRA_EDITIONS = extraEditions(ROOT);
 const LOOSE_DOCS = rootMarkdown(ROOT).map((n) => `/${n}`);
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n${EXTRA_EDITIONS.map((n) => `Disallow: /${n}/`).join('\n')}\n${LOOSE_DOCS.map((n) => `Disallow: ${n}`).join('\n')}\n\n# Generated by tools/build.mjs from the repository tree. The root publication is the indexed\n# site; the directories above are superseded editions kept on the domain for provenance and linked\n# from /legacy/archive/, and the files are session records kept at the repository root.\n# None of them is in the sitemap.\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// Keep historical publication surfaces reachable but out of search. Do not disallow
+// these paths in robots.txt: crawlers must fetch each page to read its noindex directive.
+const markArchiveNoindex = (dir) => {
+  const full = path.join(OUT, dir);
+  if (!fs.existsSync(full)) return;
+  const walk = (folder) => {
+    for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
+      const file = path.join(folder, entry.name);
+      if (entry.isDirectory()) walk(file);
+      else if (entry.isFile() && entry.name.endsWith('.html')) {
+        let html = fs.readFileSync(file, 'utf8');
+        // Old archive builds may still contain provisional product buttons. Retain their copy,
+        // but never leave an unvalidated affiliate destination clickable in an archive.
+        html = html.replace(/<a\b(?=[^>]*\bdata-product=)(?=[^>]*\btag=shopnow047c-20)[^>]*>([\s\S]*?)<\/a>/gi,
+          '<span class="archive-link-held">$1 <span class="small">(purchase link held pending G-02)</span></span>');
+        if (!/<meta\s+name=["']robots["']\s+content=["']noindex,follow["']/.test(html)) {
+          html = html.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,follow">');
+        }
+        const homeHref = path.relative(path.dirname(file), path.join(OUT, 'index.html')).split(path.sep).join('/');
+        if (!/class=["'][^"']*archive-notice/.test(html)) {
+          const notice = `<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="${esc(homeHref)}">Visit the current publication</a>.</aside>\n`;
+          html = html.replace(/<main\b/i, `${notice}<main`);
+        } else {
+          html = html.replace(/(<aside class="archive-notice"[^>]*>[\s\S]*?<a href=")[^"]+("[^>]*>Visit the current publication<\/a>)/i, `$1${esc(homeHref)}$2`);
+        }
+        html = html.replace(/[ \t]+$/gm, '');
+        fs.writeFileSync(file, html);
+      }
+    }
+  };
+  walk(full);
+};
+for (const archive of ['editorial', 'crisp-index', 'legacy', 'docs']) markArchiveNoindex(archive);
 
 // DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
 // file and the published page cannot disagree. That is the principle behind S-14 applied to itself.

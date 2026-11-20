@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "privacyModel": "Proposed anonymous aggregate counts only. Do not send or persist IP addresses, cookies, raw referrers, email addresses, full search terms, Amazon account data, or user identifiers.",
+  "events": [
+    {
+      "name": "page_view",
+      "purpose": "Count a page load by path and UTC day.",
+      "allowedFields": [
+        "page"
+      ]
+    },
+    {
+      "name": "guide_open",
+      "purpose": "Count a guide page open by guide path and UTC day.",
+      "allowedFields": [
+        "page"
+      ]
+    },
+    {
+      "name": "site_search",
+      "purpose": "Count a local search submission and its result count; never send the entered query.",
+      "allowedFields": [
+        "page",
+        "result_count"
+      ]
+    },
+    {
+      "name": "outbound_click",
+      "purpose": "Count an outbound product-link click by internal record ID, page, and UTC day.",
+      "allowedFields": [
+        "page",
+        "product_id"
+      ]
+    },
+    {
+      "name": "reader_signup",
+      "purpose": "Count a confirmed opt-in only after a consented reader-capture service is configured. The request must include confirmed=true; the server validates then discards that flag before aggregation. This build has no signup form and emits no signup event.",
+      "allowedFields": [
+        "page",
+        "confirmed (required gate; not persisted)"
+      ]
+    }
+  ],
+  "conversionMeasurement": "Amazon-reported orders are not inferred from client events. Import only from an authorized first-party Associates report and record its export date and provenance in campaign-ledger.json.",
+  "specificationStatus": "Proposal only: the request mentions five events but does not specify names, triggers, payloads, consent gates, or retention. Confirm before treating this schema as accepted or enabling a production endpoint."
+}

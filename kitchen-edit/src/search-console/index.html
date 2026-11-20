@@ -1,0 +1,53 @@
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Search Console readiness</p>
+  <h1>Search Console readiness</h1>
+  <p class="lede">Everything the site-side of Google Search Console verification needs is already in
+  place. The only remaining step requires a Google account you control — verification cannot be
+  completed by the site itself. Method reference: Google's ownership-verification guide
+  <a href="https://support.google.com/webmasters/answer/9008080" target="_blank" rel="noopener">[S11]</a>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Site-side: done</h2>
+    <ul>
+      <li><strong>One canonical host:</strong> every page declares
+      <code>https://karagemop466-tech.github.io/Affil3/&lt;path&gt;</code> as its canonical URL — one
+      site for search engines to index, no duplicate-host ambiguity.</li>
+      <li><strong>Sitemap:</strong> <code><a href="../sitemap.xml">sitemap.xml</a></code> lists every
+      page with last-modified dates; <code><a href="../../robots.txt">robots.txt</a></code> declares it.</li>
+      <li><strong>Feed:</strong> <code><a href="../feed.xml">feed.xml</a></code> carries every guide for
+      readers and aggregators.</li>
+      <li><strong>Structured data:</strong> JSON-LD Article/Breadcrumb/Organization blocks on every
+      relevant page, generated with the layout.</li>
+      <li><strong>HTML-tag placeholder:</strong> the head template carries a marked comment line
+      (<code>Google Search Console HTML-tag verification</code>) — paste the generated meta tag there.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Your-side: the 10-minute checklist</h2>
+    <ol>
+      <li>Open <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>
+      and add a <strong>URL-prefix property</strong>:
+      <code>https://karagemop466-tech.github.io/Affil3/</code>.</li>
+      <li>Choose the <strong>HTML tag</strong> method [S11]. Google gives you a
+      <code>&lt;meta name="google-site-verification" content="…"&gt;</code> tag.</li>
+      <li>Paste that tag into the site head at the marked placeholder (edit
+      <code>tools/build_pages.py</code>, run <code>python3 tools/build_pages.py</code>, commit, push;
+      CI regenerates all pages with it).</li>
+      <li>Wait for the Pages deploy, then click <strong>Verify</strong> in Search Console.</li>
+      <li>Submit <code>https://karagemop466-tech.github.io/Affil3/sitemap.xml</code> under Sitemaps.</li>
+      <li>Optionally add the HTML-file method as a backup [S11 recommends multiple methods].</li>
+    </ol>
+    <div class="callout">
+      <strong>Why this matters for the editorial plan:</strong> once verified, Search Console's query
+      data is what picks the next guide's topic (Q-09/Q-10) — measured impressions and queries instead
+      of instinct. That's ~30 days away from being useful, so verify early.
+    </div>
+    <p class="note">Status: <span class="chip blank">verification pending — needs your Google account</span>
+    (tracked as Q-10 in <code>data/questions.json</code>).</p>
+  </div>
+</section>

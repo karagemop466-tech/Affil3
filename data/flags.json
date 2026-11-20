@@ -613,6 +613,124 @@
     },
     {
       "id": "FLG-054",
+      "severity": "high",
+      "status": "resolved",
+      "area": "site scope",
+      "title": "A second publication at /docs/ publishes Amazon prices and star ratings",
+      "detail": "This domain serves two separate sites. The root site is generated from data/*.json and shows no prices or ratings. A second, older publication at /docs/ is still live and puts a current Amazon price (for example a four-figure-cent price for the 6 Qt basket) next to star ratings and review counts on its front page and product pages. Amazon's Program Policies allow a site to display price and availability only if Amazon serves that data or it comes through the Creators or PA API. That page does neither, and the figures it shows are now stale, which also makes them a misleading claim. The /docs/ build is git-ignored, is not produced by any current pipeline, and is a leftover from an earlier session's generator.",
+      "impact": "A live page on the same domain as the compliant site carries a price-display violation and stale ratings. This is the highest-risk item on the domain.",
+      "manual_step": "Retired in this session: the directory was removed and a redirect page now stands in its place, so the URL keeps working while showing no prices. If the earlier edition is ever wanted back, it must be regenerated without price or rating fields first.",
+      "sources": [
+        "S03",
+        "S02"
+      ]
+    },
+    {
+      "id": "FLG-055",
+      "severity": "high",
+      "title": "Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is",
+      "detail": "All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish."
+    },
+    {
+      "id": "FLG-056",
+      "severity": "high",
+      "title": "Program Policies forbid tying a sub-tag or program identifier to a specific end user",
+      "detail": "Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings."
+    },
+    {
+      "id": "FLG-057",
+      "severity": "medium",
+      "title": "The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here",
+      "detail": "Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "manual_step": "Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way."
+    },
+    {
+      "id": "FLG-058",
+      "severity": "low",
+      "title": "Attribution is a 24-hour session plus an 89-day cart path, not 90 days",
+      "detail": "Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate's link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Set the ledger's window definition from the policy line when the first row is written, not from a guide."
+    },
+    {
+      "id": "FLG-059",
+      "severity": "low",
+      "title": "CI asserts a directory the build does not write, so stale generated output merges green",
+      "detail": ".github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [],
+      "manual_step": "Assert `git diff --quiet -- editorial` after build.py, and add a build.mjs step with its own diff assertion, so neither publisher can ship output that has drifted from its data.",
+      "status": "resolved",
+      "resolution": "Current .github/workflows/verify.yml runs `npm run check` (both generators, both gates) and then fails if `git status --porcelain` is non-empty, which asserts the whole tree rather than any single directory. The gap described here no longer exists."
+    },
+    {
+      "id": "FLG-060",
+      "severity": "info",
+      "title": "The Operating Agreement section cited for the Associates statement was checked against the text",
+      "detail": "data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S01"
+      ],
+      "manual_step": "None. Recorded so a reviewer does not re-open it.",
+      "status": "resolved",
+      "resolution": "Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: ‘As an Amazon Associate I earn from qualifying purchases.’” Section 6 adds that any violation of Section 5 will be deemed a material breach, and Section 4 states Amazon makes no representation about expected traffic or commission income — the basis for publishing no revenue forecast."
+    },
+    {
+      "severity": "medium",
+      "title": "A resolved merge conflict was committed into a frozen legacy page",
+      "detail": "legacy/categories/unresolved/index.html contains a literal <<<<<<< / ======= / >>>>>>> conflict marker on main, so a conflict was committed rather than resolved. It is inside the archive rather than the live site, which is why check_site.py does not see it, and it renders as visible junk text on a served page. Not this session's edit and not repaired here, because legacy/ belongs to whoever froze it. Observed 2026-11-20 by session arena-43565031-affil3.",
+      "sources": [],
+      "manual_step": "Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session's frozen record, so it is logged rather than done.",
+      "id": "FLG-061",
+      "status": "resolved",
+      "resolution": "Fixed during integration session arena-78c96140: the conflict markers in legacy/categories/unresolved/index.html were resolved to the archived edition's own content, and the page renders without conflict junk again."
+    },
+    {
+      "id": "FLG-062",
+      "severity": "high",
+      "title": "The Amazon title for P01 calls it an oven; the maker's page does not",
+      "detail": "The Amazon title reads 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows'. Chefman's own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat 'oven'. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.",
+      "sources": [
+        "S11",
+        "S04"
+      ],
+      "manual_step": "Read the shipped manual's function list. If it includes a bake or oven mode, correct the product page."
+    },
+    {
+      "id": "FLG-063",
+      "severity": "medium",
+      "title": "'NIST-certified' on P04 is not supported by a certificate we could find",
+      "detail": "ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST's own published FAQ states that NIST 'does not recommend or endorse commercial equipment, instruments, or materials' and does not 'define, specify, assure, or certify traceability' of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker's claim and does not repeat 'NIST-certified' as a fact.",
+      "sources": [
+        "S21",
+        "S29"
+      ],
+      "manual_step": "Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker's."
+    },
+    {
+      "id": "FLG-064",
+      "severity": "low",
+      "title": "Guide topics are editorial hypotheses, not keyword research",
+      "detail": "The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.",
+      "sources": [],
+      "manual_step": "Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions."
+    },
+    {
+      "id": "FLG-065",
       "severity": "medium",
       "status": "open",
       "area": "findability",
@@ -626,10 +744,10 @@
         "S26",
         "S09"
       ],
-      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (ad43826 and later passes; the workflow page now cites FLG-044 for the citation class) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (data/design-brief.json amended note). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-46, S-47, Q-06, Q-18, S-42), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open; what counts as a post is question Q-23. Renumbered twice at merge: FLG-043/FLG-044 were taken by main's robots and citation rows, and ids 046/047 are documented gaps on main's board, so this row lands at FLG-054."
+      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (ad43826 and later passes; the workflow page now cites FLG-044 for the citation class) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (data/design-brief.json amended note). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-47, S-48, Q-06, Q-18, S-43), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open; what counts as a post is question Q-23. Renumbered three times at merge as main's waves took FLG-043/044 and then FLG-054/055; this row lands at FLG-065."
     },
     {
-      "id": "FLG-055",
+      "id": "FLG-066",
       "severity": "medium",
       "status": "resolved",
       "area": "citation",
@@ -647,6 +765,6 @@
       ]
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-054 and FLG-055 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references; a work-log claim not carried by its merged PR), renumbered twice at merge because main had taken FLG-043/FLG-044 and documents 046 to 048 as gaps. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-065 and FLG-066 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references; a work-log claim not carried by its merged PR), renumbered three times at merge as main took FLG-043/044 then FLG-054/055; ids 046 to 048 remain main's documented gaps. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
   "checked": "2026-11-20"
 }

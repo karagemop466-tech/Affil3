@@ -9,10 +9,10 @@
 <meta property="og:title" content="Suggestions review queue">
 <meta property="og:description" content="Fourteen proposals with trade-offs, held for a decision rather than implemented silently.">
 <meta property="og:type" content="website">
-<meta name="robots" content="noindex,nofollow">
+<meta name="robots" content="noindex,follow">
 <!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="../assets/site.css">
-<link rel="alternate" type="application/rss+xml" title="Countertop & Co." href="../feed.xml">
+<!-- No feed discovery: this retained editorial archive is noindex. -->
 
 </head>
 <body>
@@ -28,6 +28,7 @@
     <strong>Paid links.</strong> As an Amazon Associate I earn from qualifying purchases. Every product link on this site is an affiliate link.
   </div>
 </div>
+<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="../../index.html">Visit the current publication</a>.</aside>
 <main id="main">
 <div class="wrap section">
 <h1>Suggestions review queue</h1>
@@ -37,7 +38,7 @@ labelled as such; the rest do nothing until you choose.</p>
 <div class="callout">
 <p><strong>How to decide.</strong> Read impact and effort together. A high-impact, low-effort item that
 you disagree with is still worth rejecting explicitly, because an unanswered proposal becomes a
-default. Write the decision into <code>data/suggestions.json</code> under <code>decided</code> and the
+default. Write the decision into <code>data/register/suggestions.json</code> under <code>decided</code> and the
 next build renders it as an outcome.</p>
 </div>
 <div class="shipped">
@@ -240,6 +241,62 @@ next build renders it as an outcome.</p>
 <p class="small"><strong>Decision needed:</strong> Name the endpoint owner and a retention period.</p>
 
 
+</article></div><h2>Reader polish</h2><div class="suggs"><article class="sugg" id="SG-27">
+<div class="sugg-head">
+  <span class="sid">SG-27</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Reader polish: one brand, and imagery that is what it says it is</h3>
+<p><strong>The problem.</strong> This publication ships as &#x27;Countertop &amp; Co.&#x27; while the root site ships as &#x27;Affil3&#x27;, and it uses editorial illustrations rather than product photography because marketplace images are Program Content and no original shots exist.</p>
+<p><strong>The proposal.</strong> Choose one name and one domain, and commission original photography of units you own. Until then keep the illustrations labelled, which is what they already are.</p>
+<p><strong>The trade-off.</strong> A single name and real photographs are the cheapest trust win available, and both need something a build cannot supply: a decision and a camera.</p>
+<p class="small"><strong>Decision needed:</strong> Pick the name, or keep both and say so on the About page.</p>
+
+
+</article><article class="sugg" id="SG-28">
+<div class="sugg-head">
+  <span class="sid">SG-28</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Reader polish: a name and a check date on every page</h3>
+<p><strong>The problem.</strong> Guides carry a team byline. A specification-check date is already printed next to every table, which is the harder half of an authorship signal.</p>
+<p><strong>The proposal.</strong> Add one named editor with a short bio and a corrections address. The method does not change; only the name above it does.</p>
+<p><strong>The trade-off.</strong> A named person has to answer for corrections. That is the point, and it is also the cost.</p>
+<p class="small"><strong>Decision needed:</strong> Name the editor, or confirm the team byline is permanent.</p>
+
+
+</article><article class="sugg" id="SG-29">
+<div class="sugg-head">
+  <span class="sid">SG-29</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Reader polish: verify Search Console and pick the next guide from the query report</h3>
+<p><strong>The problem.</strong> Canonical URLs, JSON-LD, sitemap.xml and the RSS feed all ship. Search Console does not, so nobody can see which guides are found.</p>
+<p><strong>The proposal.</strong> Verify the property, submit the sitemap, and read the Performance report before writing the next guide.</p>
+<p><strong>The trade-off.</strong> Needs an owner Google account and an hour. It is the only remaining decision that turns topic choice from instinct into evidence.</p>
+<p class="small"><strong>Decision needed:</strong> Verify the property, or accept that cadence is chosen blind.</p>
+
+
+</article><article class="sugg" id="SG-30">
+<div class="sugg-head">
+  <span class="sid">SG-30</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: low</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Reader polish: RSS now, email only when there is something to send</h3>
+<p><strong>The problem.</strong> An email form or a seasonal hub added before there is query data asks readers for an address with nothing behind it, and email brings its own rules: the Amazon Trademark Guidelines govern marks and links in email.</p>
+<p><strong>The proposal.</strong> Keep RSS as the only subscription route until at least three guides exist and the email rules have been read.</p>
+<p><strong>The trade-off.</strong> No direct channel to readers, and no consent or retention obligations either.</p>
+<p class="small"><strong>Decision needed:</strong> Confirm RSS-only, or scope the email list and the email-rules review together.</p>
+
+
 </article></div>
 </div></main>
 <footer class="footer">
@@ -283,6 +340,8 @@ next build renders it as an outcome.</p>
     <p class="colophon small">Verified against official sources on 2026-11-20. Specifications carry a
     source and an access date because they change. No prices and no star ratings appear on this site;
     see <a href="../disclosure/">why</a>.</p>
+    <p class="small">Archive note: this editorial subtree is marked noindex; the root site is the canonical publication. Google Search Central describes the <code>noindex</code> robots meta directive in its
+    <a href="https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag" rel="noopener external">robots meta tag guidance</a>.</p>
   </div>
 </footer>
 <script src="../assets/analytics.js" defer></script>

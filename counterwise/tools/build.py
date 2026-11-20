@@ -72,6 +72,10 @@ def url(path: str) -> str:
     return (PREFIX + path) if path.startswith("/") else path
 
 
+def plural(n: int, word: str) -> str:
+    return f"{n} {word}{'' if n == 1 else 's'}"
+
+
 def GAP(text: str) -> str:
     return '<span class="gap">' + esc(text) + "</span>"
 
@@ -488,7 +492,7 @@ def front() -> str:
         f'<a class="card card--link" href="{url("/clusters/" + c["id"] + "/")}">'
         f'<span class="kicker">{esc("seasonal · " + c["seasonal"] if c["seasonal"] != "evergreen" else "evergreen")}</span>'
         f"<h3>{esc(c['name'])}</h3><p>{esc(c['question'])}</p>"
-        f'<p class="meta">{len(c["guides"])} guides · {len([p for p in c["products"] if p in PUBLISHED_PRODUCT_IDS])} listings</p></a>'
+        f'<p class="meta">{plural(len(c["guides"]), "guide")} · {plural(len([x for x in c["products"] if x in PUBLISHED_PRODUCT_IDS]), "listing")}</p></a>'
         for c in CLUSTERS.values()
         if c["id"] != "unresolved"
     )
@@ -505,7 +509,7 @@ def front() -> str:
       <div class="meta-row">
         <span>Updated {fmt_date(TODAY)}</span><span>·</span>
         <span>{len(PUBLISHED_PRODUCT_IDS)} listings with verified destinations</span><span>·</span>
-        <span>{link_proof_count()}</span>
+        <span>·</span><span>{link_proof_count()}</span>
         <span>{len(unresolved)} supplied link still unresolved</span>
       </div>
       <div class="hero-actions">
