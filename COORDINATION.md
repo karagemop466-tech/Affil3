@@ -852,3 +852,15 @@ and the discrepancy is flagged for owner review rather than silently merged.
 - Merge: `gh pr merge 25 --merge`. Result recorded on the PR and below.
 - GitHub Pages deploy: https://karagemop466-tech.github.io/Affil3/ — source `main` at
   `/`, status `built` (re-checked after merge).
+
+## Final integration checks (this session, after rebase)
+
+- Combined data re-verified line by line against the official listing pages (2026-11-20).
+- `python3 scripts/check_links.py`: **0 broken internal links** (471 links across 15 pages;
+  external hosts unreachable from the sandbox are warnings, not failures).
+- `python3 scripts/build_sitemap.py --check`: **OK — 15 pages all present**.
+- Compliance audit: every page carries the disclosure strip above the fold and the footer
+  disclosure; every outbound product-listing link carries `rel="sponsored"` and a visible
+  "Sponsored" label.
+- Local render check: all 10 docs/ routes return HTTP 200.
+- Root-site gate re-run after integration: `npm run check` — 23 pages built, gate passed.
