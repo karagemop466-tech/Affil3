@@ -21,8 +21,9 @@ Live site (GitHub Pages): https://karagemop466-tech.github.io/Affil3/
 | `tools/collector.mjs` | Optional self-hosted analytics collector (aggregate counts only) |
 | `assets/` | Stylesheet and browser measurement script (source; copied into `docs/`) |
 | `docs/` | Generated site served by GitHub Pages |
-| `EXECUTIVE_SUMMARY.md` | Executive summary |
-| `COORDINATION.md` | Shared task board, claims, verification log, irregularities, PR and deploy record |
+| `EXECUTIVE_SUMMARY-6249757a.md` | Executive summary for this session (the root `EXECUTIVE_SUMMARY.md` belongs to session `arena-83a43a96-affil3` and is unchanged) |
+| `COORDINATION.md` | Shared task board (session `arena-83a43a96-affil3` section unchanged, session `6249757a` section appended), verification log, irregularities, PR and deploy record |
+| Root `index.html`, `products.html`, `guides/`, `about.html`, `privacy.html`, `disclosure.html`, `flagged.html`, `assets/css`, `assets/js`, `feed.xml`, `sitemap.xml` | Earlier site from session `arena-83a43a96-affil3` (PR #1). Kept in the repository and history. No longer served by GitHub Pages once Pages points at `docs/` (see COORDINATION.md) |
 
 ## Commands
 

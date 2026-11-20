@@ -1,4 +1,42 @@
-# COORDINATION.md — Affil3 shared task board
+# Coordination — Affil3
+
+Shared task board for the Affil3 Amazon affiliate site. Single active session in this checkout.
+
+## Session
+- Session ID: `arena-83a43a96-affil3`
+- Branch: `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
+- Owner: this session claims every task below (single-session coordination; no overlapping scopes)
+
+## Task board
+
+| # | Task | Status | Owner | Files touched | Sources verified | Notes |
+|---|------|--------|-------|---------------|------------------|-------|
+| 1 | Repo review: read every file, flag irregularities | done | arena-83a43a96-affil3 | COORDINATION.md, README.md | none (repo had only README) | Repo contained only `README.md` ("# Affil3"). No source data, no existing links to verify. |
+| 2 | Product-intent confirmation record (5 submitted Amazon links) | done | arena-83a43a96-affil3 | products.html, flagged.html, EXECUTIVE_SUMMARY.md | Amazon Associates Program policies (docs), link.amazon short links NOT resolvable in this sandbox (no outbound access to amazon.com) | All ASIN / listing-URL / date / source / redirect-target fields left blank and flagged UNVERIFIED. Never inferred. Short-link compliance status unresolved (see FLG-003 note); links are NOT claimed invalid. |
+| 3 | Site design system (CSS) + assets | done | arena-83a43a96-affil3 | assets/css/main.css | none | Self-authored CSS; no external frameworks or fonts (zero external dependencies). |
+| 4 | Landing page — publication front page, products lead, disclosure above fold | done | arena-83a43a96-affil3 | index.html | none | Editorial hypotheses used as working titles only; no popularity/search-volume claims. |
+| 5 | Category subpages + entries table with sources + findings/analysis | done | arena-83a43a96-affil3 | products.html | Amazon Associates Program Operating Agreement; FTC disclosure guidance (ftc.gov) | Every table row carries a source link or is left blank + flagged unverified. |
+| 6 | Question-shaped buyer guides (4 working titles) | done | arena-83a43a96-affil3 | guides/*.html | none | Working titles only; presented as hypotheses, not performance claims. Added to sitemap.xml and feed.xml. |
+| 7 | Disclosure strip (above fold, every page) + footer repeat + `rel="sponsored"` on outbound links | done | arena-83a43a96-affil3 | all HTML pages | FTC "clear and conspicuous" guidance; Amazon Associates disclosure requirement | Disclosure strip under masthead on every page; repeated in footer. |
+| 8 | Sitemap + RSS feed | done | arena-83a43a96-affil3 | sitemap.xml, feed.xml | none | Feed includes the 4 guides; sitemap lists all pages. |
+| 9 | Click & conversion measurement instrumentation (5 events) | done | arena-83a43a96-affil3 | assets/js/app.js | none | Privacy-preserving client-side outbound click counter; beacon POST to `/analytics/collect`. Endpoint is NOT self-hosted on GitHub Pages (static hosting) — flagged, requires separate self-hosted receiver before it is operational. |
+| 10 | Search Console / real analytics documentation | done | arena-83a43a96-affil3 | about.html, flagged.html | none | Cannot enable Search Console without a Google account; setup steps documented, flagged as not yet enabled. |
+| 11 | Link check + build verification (no broken links) | done | arena-83a43a96-affil3 | all HTML | none | Internal links checked by script; outbound Amazon short links cannot be dereferenced in this sandbox. |
+| 12 | GitHub Pages enable + deploy verification | in progress | arena-83a43a96-affil3 | repo settings via GitHub API | none | Pages source: `main` branch, `/ (root)`. To be enabled after merge to main. |
+| 13 | Pull request + merge to main; record PR link and merge result | in progress | arena-83a43a96-affil3 | COORDINATION.md | none | PR from `arena/83a43a96-affil3` to `main`. Flagged/unverified items published on `flagged.html` and do not block merge. |
+
+## Ground rules followed
+- Work only on the current branch (`arena/83a43a96-affil3`); push only to this branch; PR opened from this branch to `main`.
+- Small, frequent commits; `git pull --rebase` before every push.
+- No values inferred or filled in. Anything not confirmed against an official source is left blank and flagged "unverified" with a source link where one exists.
+- Outbound Amazon links kept as submitted; `rel="sponsored"` added; no claim made that short links are invalid (compliance status unresolved, see FLG-003).
+
+
+---
+
+# Session `6249757a` board (merged alongside the board above; nothing above was edited)
+
+This section was added when `arena/6249757a-affil3` was merged with `main`, which already contained the board above from session `arena-83a43a96-affil3` (PR #1). Both sessions' files are kept. The executive summary for this session is `EXECUTIVE_SUMMARY-6249757a.md`.
 
 Shared board for work on `karagemop466-tech/Affil3`. Claim a task by writing the session ID and file scope here; never start a task another session has claimed; log requests for files owned elsewhere instead of editing them.
 
@@ -22,7 +60,7 @@ Shared board for work on `karagemop466-tech/Affil3`. Claim a task by writing the
 | T4 | Question-led guides and category clusters | done | `6249757a` | `data/guides.json`, `docs/guides/`, `docs/categories/` |
 | T5 | Measurement: click counter, five events, self-hosted endpoint | done (inactive on live site until endpoint set; FLG-009) | `6249757a` | `assets/analytics.js`, `tools/collector.mjs`, `data/events.json`, `data/config.json` |
 | T6 | Decision board: suggestions, questions, flagged-for-review, ledger | done | `6249757a` | `data/suggestions.json`, `data/questions.json`, `data/flags.json`, `data/ledger.json` |
-| T7 | Integration: sitemap, feed, robots, verification, PR, merge, Pages deploy | in progress (see log) | `6249757a` | `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt`, `EXECUTIVE_SUMMARY.md`, `README.md`, this file |
+| T7 | Integration: sitemap, feed, robots, verification, PR, merge, Pages deploy | in progress (merge conflict resolved; see merge log) | `6249757a` | `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt`, `EXECUTIVE_SUMMARY.md`, `README.md`, this file |
 
 ## Work log
 
@@ -54,6 +92,13 @@ Third-party pages were consulted only to check that the ASIN and affiliate-link 
 ## Irregularities (all published on `/flagged/`)
 
 FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003 short-link compliance unresolved · FLG-004 checkpoint page · FLG-005 Special Links not validated in Associates Central (gate G-02) · FLG-006 account and declared site unknown · FLG-007 below the 10-post rule of thumb · FLG-008 five events not defined in the brief · FLG-009 analytics endpoint not deployed · FLG-010 disclosure visibility on phones needs manual check · FLG-011 tracking-ID ownership unconfirmed · FLG-012 no Amazon ASIN definition located · FLG-013 Search Console not connected · FLG-014 no named author · FLG-015 no product imagery · FLG-016 no prices or ratings recorded · FLG-017 overlapping session branches · FLG-018 starting repo had only a README · FLG-019 branch naming differs from brief.
+
+## Merge log (2026-11-20)
+
+- Pull request #4 (`arena/6249757a-affil3` → `main`) was first refused: `main` had moved. Commit `db77ec4` (PR #1 from `arena/83a43a96-affil3`) added a root-level site (`index.html`, `products.html`, `guides/`, `about.html`, `privacy.html`, `disclosure.html`, `flagged.html`, `assets/css`, `assets/js`, `feed.xml`, `sitemap.xml`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md`).
+- Conflicts: `COORDINATION.md` and `EXECUTIVE_SUMMARY.md` (both added, add/add). Resolution: nothing from the other session was discarded. Their `COORDINATION.md` is kept verbatim with this session's board appended below it; their `EXECUTIVE_SUMMARY.md` is kept unchanged, and this session's summary is `EXECUTIVE_SUMMARY-6249757a.md`.
+- Their root-level site files are kept in the tree and history, unchanged.
+- Integration decision: GitHub Pages is switched from `main` at `/` to `main` at `/docs`, so the live site is this session's integrated build (one site, one navigation, one set of dashboards). The root-level site from PR #1 is no longer what Pages serves. To restore it, change the Pages source back to `main` at `/`. This decision is listed under FLG-017.
 
 ## Completion record
 

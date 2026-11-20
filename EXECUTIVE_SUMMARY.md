@@ -1,46 +1,58 @@
-# Executive summary: Affil3 Amazon affiliate buying-guide site
+# Affil3 — Executive summary
 
-**Date:** 2026-11-20 · **Branch:** `arena/6249757a-affil3` · **Tracking ID:** `shopnow047c-20`
+**Repository:** `karagemop466-tech/Affil3`
+**Branch:** `arena/83a43a96-affil3` (branched from `main` @ `847ae37`)
+**Selected Associates tracking ID:** `shopnow047c-20` — **unverified** (not confirmed against the Amazon Associates dashboard in this environment; see flagged item FLG-001)
 
-## What was delivered
+## What was built
 
-- A static, publication-style site (23 pages): front page led by the five submitted products, a shop table with every row and its sources, four category clusters, five question-led guides, RSS feed, sitemap and robots.txt. Source: `docs/`, built from `data/`.
-- Dashboards linked from the footer: executive summary, shop table, categories, source register, questions and gaps, suggestions (choose a path), flagged for review, campaign ledger (empty), measurement, compliance and gates, about.
-- Disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Associates Operating Agreement §5 ([S01](https://affiliate-program.amazon.com/help/operating/agreement)).
-- Automated publishing gate (`tools/verify.mjs`, 1,265 checks) and a privacy-preserving click counter with a self-hostable collector.
+A static Amazon-affiliate publication site, designed to read like a shop/publication rather than an audit, hosted on GitHub Pages:
 
-## What is verified (official sources)
+- **`index.html`** — Publication front page. Leads with the five submitted Amazon product listings (products first, not the verification process), followed by question-shaped buyer guides. Disclosure strip under the masthead (above the fold); disclosure repeated in the footer.
+- **`products.html`** — Product-intent confirmation register: one table row per submitted link with separate fields for intended ASIN, official listing URL, confirmation date, source, and observed redirect target (redirect targets kept in a separate field, never merged). All five rows are blank/unverified; no value was inferred or filled in.
+- **`guides/`** — Four question-shaped guides as working titles (editorial hypotheses only, not performance claims):
+  1. Basket or oven-style air fryer: what should you compare?
+  2. A no-hype checklist for comparing air fryer capacity
+  3. How to assess cleanup and counter-space trade-offs
+  4. Questions to ask before buying a multi-function kitchen appliance
+- **`disclosure.html`, `privacy.html`, `about.html`, `flagged.html`** — Full disclosure statement, privacy statement, methodology/measurement plan, and the public flagged-for-review register.
+- **`sitemap.xml`** — One site for search engines to index (all 11 pages).
+- **`feed.xml`** — RSS feed carrying the four guides.
+- **`assets/js/app.js`** — Privacy-preserving outbound-click counter recording the five defined events (session_start, disclosure_impression, guide_view, outbound_click, product_impression). No cookies, no personal data. Beacon target `/analytics/collect` is not self-hosted on GitHub Pages (flagged FLG-004).
+- **`assets/css/main.css`** — Self-authored design system; no external frameworks, fonts, or resources.
 
-- Operating Agreement §1 (Special Links), §5 (disclosure): [S01](https://affiliate-program.amazon.com/help/operating/agreement).
-- Program Policies: tag requirement (§2, excerpt), anti-cloaking (v), link-shortener restriction (w): [S02](https://affiliate-program.amazon.com/help/operating/policies).
-- Associates ID format ending in -20: [S03](https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8).
-- rel="sponsored" for paid and affiliate links: [S06](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links).
-- FTC disclosure placement: [S07](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers); 16 CFR Part 255: [S08](https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255).
-- USDA minimum internal temperatures: [S09](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart), [S10](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers).
-- Observed Amazon product pages for four of the five links (title, breadcrumb, 10-character ASIN), read on 2026-11-20: [S04](https://www.amazon.com/dp/B0CDY277D3), [S05](https://link.amazon/B04G1MEwY).
+## Compliance posture
 
-## What is not verified, and why
+- Amazon Associates statement visible on every page (above the fold + footer).
+- Every outbound product link marked `rel="sponsored"`.
+- Submitted short links kept exactly as submitted; none claimed invalid (compliance status unresolved — FLG-003).
+- Disclosure placement and endorsement context to be reviewed against the Amazon Associates Operating Agreement and FTC guidance before any guide recommends a specific product (S01 · S07 · S24).
+- One link per product to be tested in the enrolled Associates workflow before scaling (S02).
 
-| Item | Status | Flag |
-| --- | --- | --- |
-| Intended ASIN, official listing URL, confirmation date and source | Blank for all five rows. The submitted tokens are 9 characters; observed Amazon IDs are 10. | FLG-001 |
-| Observed destinations differ from the tokens | Recorded separately; not treated as the intended product. | FLG-002 |
-| Short-link compliance | Unresolved, not invalid. Policy (w) restricts shorteners that obscure the Amazon destination. | FLG-003 |
-| One link (B00hJ57DV) | Landed on a checkpoint page; no product; no buy link published. | FLG-004 |
-| Associates validation of tagged links | Not tested; no Associates login in the sandbox. Gate G-02 before any scaling. | FLG-005 |
-| Associates account status and declared site | Unknown. | FLG-006 |
-| Amazon-owned ASIN definition | Not located. | FLG-012 |
+## What is NOT verified (flagged for review)
 
-## Decisions needed from you
+| ID | Item | Status |
+|----|------|--------|
+| FLG-001 | Tracking ID `shopnow047c-20` confirmed in Associates dashboard | Unverified |
+| FLG-002 | ASIN / official listing URL / date / source for all 5 links | Unverified |
+| FLG-003 | Short-link (`link.amazon/...`) compliance status | Unresolved; links not claimed invalid |
+| FLG-004 | Self-hosted `/analytics/collect` endpoint | Not deployed |
+| FLG-005 | Google Search Console enabled + sitemap submitted | Not enabled (owner action) |
+| FLG-006 | Product-category alignment vs. guide hypotheses | Unverified |
+| FLG-007 | Disclosure workflow gate for future pages | Pending review |
 
-1. The intended product for each short link, or confirmation of the observed product (Q-01, blocking).
-2. Whether the Associates account is active and declares this site (Q-03, blocking).
-3. Result of gate G-02 in Associates Central (Q-04, blocking).
-4. Choices on the Suggestions page (S-01 to S-12). Nothing there is implemented until you choose.
-5. Analytics hosting for the collector (S-03) and the five events (Q-05).
+Full detail with source links: `/flagged.html` (published on the live site).
 
-## Limits
+## Next steps (gated, owner action)
 
-- No prices, ratings, sales or commissions are shown. The campaign ledger is empty. No conversion score or revenue forecast is presented.
-- The product research platform described in the brief (automated trend and competition analysis) needs authorized Amazon data access (for example the Product Advertising API) and Associates reports. The sandbox has neither, and the site does not scrape Amazon.
-- Six other session branches on the remote claim the same overall task (FLG-017). Merging them will need a single integration decision.
+1. Confirm tracking ID `shopnow047c-20` in Amazon Associates (FLG-001).
+2. Confirm each product's intended ASIN and official listing URL; test one link per product in the enrolled Associates workflow and confirm destination and tracking report before scaling (FLG-002, S02).
+3. Deploy self-hosted receiver at `/analytics/collect` so the five defined events flow to first-party reports (FLG-004).
+4. Enable Google Search Console, submit `sitemap.xml`, then choose future guide topics from measured queries (FLG-005).
+5. Add campaign-ledger entries (timestamp, source, channel, eligible sessions, clicks, reported orders) only from authorized first-party reports, with dated provenance (Priority 4).
+
+## Verification notes
+
+- No value in any table was inferred or filled in; blanks mean "not confirmed."
+- Amazon short links could not be dereferenced in this environment (no outbound access to amazon.com); their compliance status is explicitly not asserted.
+- Outbound Amazon links in documentation are provided as manual-review links (affiliate-program.amazon.com, ftc.gov, search.google.com); live cross-checks were not possible in this sandbox.
