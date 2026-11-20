@@ -6,7 +6,7 @@
   "language": "en-US",
   "trackingId": "shopnow047c-20",
   "associatesStatement": "As an Amazon Associate I earn from qualifying purchases.",
-  "disclosureStrip": "Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.",
+  "disclosureStrip": "Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases.",
   "author": "ShopNow Kitchen editorial team",
   "lastReviewed": "2026-11-20",
   "analyticsEndpoint": "",
@@ -17,5 +17,6 @@
   "priorName": "Affil3",
   "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
   "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units.",
-  "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer."
+  "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer.",
+  "ftcDisclosure": "I get commissions for purchases made through links in this post."
 }

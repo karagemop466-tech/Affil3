@@ -1027,3 +1027,15 @@ hero-thermometer.jpg (closes the missing-image flag FLG-029 for the wireless the
 product card). ID collisions resolved again without touching published IDs: this session's
 corroboration flag renumbered FLG-021→FLG-023→FLG-028→**FLG-030**. Gate after sync:
 **3212 checks passed, 0 failed**.
+
+## Disclosure-gate fix (session `arena63534e5d`, 2026-11-20)
+
+The `disclosure` workflow inherited two failures in the `docs/` edition (stale generated
+files showing `price_as_listed` values from `data/c46310a7-affil3/products.json`, and
+missing statements). Fixed at the source, per the repo-wide no-prices gate (G-06):
+price fields blanked in the register, `docs/` regenerated with `tools/build_site.py`,
+and the FTC example sentence ("I get commissions for purchases made through links in this
+post.") added to the disclosure strip alongside the Amazon §5 statement on every page.
+All three gates now pass: `verify.mjs` (3212 checks), `disclosure-check.mjs` (both
+statements above the fold on all 30 pages; no price or rating text), `archive-check.mjs`
+(100 archived pages, all links resolve).
