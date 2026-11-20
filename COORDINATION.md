@@ -1311,3 +1311,32 @@ the five measured events and the compliance gate exactly as they are.
 | T-08 | Decision surfaces: suggestions S-11…S-14, questions Q-14 + discovery D-09/D-10 | done | `data/suggestions.json`, `data/questions.json` |
 | T-09 | Design polish (typography, shelf, tiles, seasonal, follow band, tables) | done | `src/assets/style.css` |
 | T-10 | Executive summary, gates green, PR, merge, Pages | done | `EXECUTIVE_SUMMARY-f0300606.md`, this file |
+
+## Verification log (2026-11-20, this session)
+
+| Check | Method | Result |
+| --- | --- | --- |
+| Baseline before changes | `node tools/build.mjs && node tools/verify.mjs` on `67cfe2f` | 30 pages, 3212 checks, 0 failed |
+| Full gate after each change batch | `npm run check` (root build + verify + editorial build + editorial check) | 33 pages, 8 feed items, 32 sitemap URLs; **3776 checks, 0 failed**; editorial 21 pages PASS |
+| Second gate | `node tools/disclosure-check.mjs` | PASS — both statements above the fold on every page, no price or rating text |
+| Archive integrity | `node tools/archive-check.mjs` | PASS — archived editions resolve |
+| Negative test: strip `sponsored` from a buy link | edited generated `index.html`, ran `tools/verify.mjs` | **FAIL as expected** ("Amazon link is sponsored"); restored; clean again |
+| Negative test: add a currency amount | edited generated `index.html`, ran `tools/disclosure-check.mjs` | **FAIL as expected** ("currency amount in page text ($49)"); restored; clean again |
+| New guides claim-sourcing | every factual sentence traced to register sources S03/S04/S10/S12/S13/S14/S20 or self-referential site facts; no price, rating, popularity or hands-on claim introduced | reviewed line by line; gate phrase rules pass |
+| P04 correction | row mapping B0c8moW59 → B0DHZTCNR5 cross-checked against the dated retest and three independent fetch passes recorded in earlier boards | reason text now derives from FLG-025, the actual cause |
+| Title lengths, one h1, canonical, images with alt, internal links, sitemap/feed coverage | `tools/verify.mjs` (all automated) | included in the 3776 passing checks |
+| Guide ordering bug found and fixed | equal-date comparator returned -1 both ways; front page and RSS showed oldest first | fixed (`latestFirst`), rebuilt, re-verified |
+
+## Sources used this session
+
+No new external facts were introduced beyond the existing register (S01–S20). Two illustrations
+were generated (`src/assets/img/guide-shapes.png`, `src/assets/img/season-deal-week.png`) and
+are labelled as AI-generated editorial illustration at the point of use. The Black Friday guide
+cites S03 (the price/availability clause) for why the site shows no prices and makes no other
+external factual claim.
+
+## Completion record — session `arena/f0300606-affil3`
+
+- Pull request: _recorded below after opening_
+- Merge result: _recorded below after merge_
+- GitHub Pages: _recorded below after deploy check_
