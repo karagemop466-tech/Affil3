@@ -175,7 +175,7 @@
       "options": {
         "A": "Deploy server/analytics_server.py on the owner's host, point the site at it (recommended).",
         "B": "Keep the counter in no-op/demo mode until hosting is decided.",
-        "C": "Use a third-party analytics SaaS (requires privacy review).",
+        "C": "Use a third-party analytics SaaS (requires privacy review)."
       },
       "recommendation": "A",
       "impact": "High (measurement)",
