@@ -1,0 +1,81 @@
+{
+  "record_type": "sources",
+  "updated": "2026-11-20",
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Amazon Associates Program Operating Agreement",
+      "publisher": "Amazon (Associates Central)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; quotes used for the compliance gate (Special Links, compliance requirements, commission/session mechanics)."
+    },
+    {
+      "id": "S2",
+      "title": "Amazon Associates Program Policies",
+      "publisher": "Amazon (Associates Central)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; includes Participation Requirements and the Commission Income Statement (Qualifying Purchases / Session)."
+    },
+    {
+      "id": "S3",
+      "title": "Amazon A-to-Z selling glossary (ASIN definition)",
+      "publisher": "Amazon (sell.amazon.com)",
+      "url": "https://sell.amazon.com/learn/selling-glossary",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; defines ASIN as 'Amazon Standard Identification Number' - a unique Amazon-assigned number for a product to help identify it in the Amazon store."
+    },
+    {
+      "id": "S4",
+      "title": "Qualify your outbound links to Google (rel attribute values)",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; verbatim: 'Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.'"
+    },
+    {
+      "id": "S5",
+      "title": "FTC - Endorsements, Influencers, and Reviews",
+      "publisher": "Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; hub for the Endorsement Guides and disclosure guidance."
+    },
+    {
+      "id": "S6",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "publisher": "Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "verified_on": "2026-11-20",
+      "verification": "URL confirmed via the official FTC hub (S5); direct automated fetch was blocked. Provided for manual review."
+    },
+    {
+      "id": "S7",
+      "title": "Configuring a publishing source for your GitHub Pages site",
+      "publisher": "GitHub Docs",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site",
+      "verified_on": "2026-11-20",
+      "verification": "Fetched live; confirms /docs folder on a branch as a valid publishing source."
+    },
+    {
+      "id": "S8",
+      "title": "Five submitted links and resolved official listing pages",
+      "publisher": "Amazon.com",
+      "urls": [
+        "https://link.amazon/B04G1MEwY",
+        "https://link.amazon/B02NbDxp3",
+        "https://link.amazon/B00hJ57DV",
+        "https://link.amazon/B0c8moW59",
+        "https://link.amazon/B0f3GKalj",
+        "https://www.amazon.com/dp/B0CDY277D3",
+        "https://www.amazon.com/dp/B09B7SB46R",
+        "https://www.amazon.com/dp/B08DKYBTPH",
+        "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "https://www.amazon.com/dp/B0DHZTCNR5"
+      ],
+      "verified_on": "2026-11-20",
+      "verification": "Live resolution + line-by-line reading of official listing pages. See products.json and the Flagged for Review page for results."
+    }
+  ]
+}
