@@ -1765,3 +1765,41 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
   internal one, a sensor count); guide count and cluster count on the front page and the categories
   page are now read from the register instead of being written by hand.
+
+---
+
+---
+
+# Session `c0758f34` — shop-first publication polish and index-boundary review
+
+Registry: `arena/c0758f34-affil3` (current branch; status active; based on `main` at `16ee89f9962d1175848cfda3b286aef37facf94b`). This is the active integration session for this checkout. Earlier boards are historical records from already-merged sessions; this section does not alter their entries.
+
+## Task board
+
+| ID | Task | Status | Owner | Files in scope |
+|---|---|---|---|---|
+| C-01 | Baseline review: read the coordination board, identify the current publication pipeline, and run existing build and link gates | done | `c0758f34` | read-only review |
+| C-02 | Improve the root publication's shop-first hierarchy and reader-facing polish without weakening source, disclosure, sponsored-link, or evidence gates | in progress | `c0758f34` | `tools/build.mjs`, `data/config.json`, `assets/style.css`, generated root publication |
+| C-03 | Audit and correct the one-indexable-publication boundary, including alternate site trees discoverable at the same GitHub Pages origin | in progress | `c0758f34` | `robots.txt`, relevant static build/workflow files, generated output |
+| C-04 | Re-check the existing suggestions/questions/decision surfaces and executive summary; keep unknown values blank and publish any unresolved item with provenance | in progress | `c0758f34` | `data/*.json`, generated decision pages, `EXECUTIVE-SUMMARY.md` only if corrections are needed |
+| C-05 | Run clean rebuilds, verification gates, internal-link checks, then open/merge a PR from this branch and verify the Pages deployment | pending | `c0758f34` | `COORDINATION.md`, generated outputs, PR/deploy record |
+
+## Baseline verification (2026-11-20)
+
+- `node tools/build.mjs`: 32 root pages, 5 feed items, 31 sitemap URLs.
+- `node tools/verify.mjs`: 3,484 checks passed, 0 failed.
+- `python3 tools/build.py && python3 tools/check_site.py`: 21 editorial pages passed.
+- `python3 scripts/build_sitemap.py --check`: 18 pages covered.
+- `python3 scripts/check_links.py --no-external`: 593 internal links checked; no broken internal links.
+- Initial review found `robots.txt` disallows `/editorial/`, `/legacy/`, and `/crisp-index/` but does not disallow the separately published `/counter/` and `/counterwise/` site trees. This is a candidate index-boundary gap; verify each tree and its generator before changing anything.
+
+## Ground rules
+
+- Work only on `arena/c0758f34-affil3`; do not switch, rename, or create a branch.
+- Do not overwrite another session's source register or make unverified product claims.
+- Keep intended-product confirmation fields separate from dated observed destinations. The submitted short-link status remains unresolved unless a fresh official/Associates workflow check resolves it.
+- Do not describe analytics, conversion tracking, or Special Links as live/validated when the required self-hosted endpoint or Associates Central report is unavailable.
+
+## Rebase conflict log
+
+- Before the claim push, `origin/main` advanced from `16ee89f` to `1f65f70`. The append to this session's board conflicted with another session's appended coordination record. Resolution preserves both records verbatim; no main-side coordination content was removed.
