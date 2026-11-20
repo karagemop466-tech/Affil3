@@ -47,6 +47,7 @@ const DASHBOARDS = [
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Compliance and gates'],
   ['/about/', 'About and editorial policy'],
+  ['/editorial/', 'Editorial register (second publication)'],
 ];
 
 // ---------- helpers ----------
@@ -526,6 +527,6 @@ ${feedItems.map((g) => `  <item>
 `);
 
 // robots
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\nSitemap: ${abs('/editorial/sitemap.xml')}\n`);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);
