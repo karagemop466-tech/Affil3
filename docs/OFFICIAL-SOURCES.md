@@ -11,8 +11,9 @@ something could not be confirmed it says so instead of filling the gap.
 | A1 | Associates Program Operating Agreement | https://affiliate-program.amazon.com/help/operating/agreement | Updated **October 15, 2025** | 2026-11-20 | §1 Special Links definition, Program Content definition; §2 compliance and cease-payment clause |
 | A2 | Associates Program Policies (Commission Income Statement; Participation Requirements) | https://affiliate-program.amazon.com/help/operating/policies | Updated **April 14, 2026** | 2026-11-20 | §1 session/attribution windows; §2(b) link requirements, price display, product lists, promotions expiry, sub-tag prohibition; §6 payment terms and minimums; Participation Requirements §1 enrolment and suitability |
 
-Quoted in the site's claims ledger as CLM-01 … CLM-17 (`data/claims.json`, rendered on
-[suggestions.html](../suggestions.html#claim-ledger)).
+Quoted in full in this session's register `evidence/43565031/claims.json` (rows `CLM-01`…`CLM-17`);
+the six rules that changed a design decision are folded into `data/register/compliance.json` as
+`R13`–`R18` so they render on the published site.
 
 ## B. Documents retrieved and quoted (US Government, official)
 
@@ -24,8 +25,8 @@ Quoted in the site's claims ledger as CLM-01 … CLM-17 (`data/claims.json`, ren
 ## C. Live evidence about the submitted links
 
 Retrieved by this session with the workspace fetch tool, anonymous, no cookies, no Associates
-credentials. Full records with timestamps in `data/link-verification.json` and rendered on
-[verification.html](../verification.html).
+credentials. Full records with timestamps in [`evidence/43565031/link-verification.json`](../evidence/43565031/link-verification.json),
+summarised on the published site at `/flagged/` (`FLG-023`…`FLG-029`) and `/questions/`.
 
 | # | Request | What came back | Review link |
 |---|---|---|---|

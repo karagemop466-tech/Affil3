@@ -475,3 +475,61 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+
+---
+
+## Reconciliation record — session 43565031, second phase (2026-11-20)
+
+**What happened.** While this session built standalone pages (commits `060ecce`…`70e9a19`), `main`
+advanced 31 commits (`2e3c9bf`…`ac89023`) and re-architected: the PR #1 site moved to `legacy/`, the
+root publication became generated output of `tools/build.mjs` from `data/*.json`, and `/editorial/`
+became generated output of `tools/build.py` from `data/register/*.json`. Two other sessions had already
+independently dereferenced the same short links and had built a decision room, a questions register, a
+flagged page, a compliance ledger and an executive summary.
+
+**Conflict resolution, per the protocol.** `git merge -X theirs origin/main` — `main` treated as the
+single publisher, no upstream content discarded. Two mistakes made and fixed during it, recorded because
+they are the kind that silently destroys another session's work:
+
+1. `rm -rf guides` deleted `main`'s five published guide pages along with this session's superseded
+   copies. Restored with `git checkout -- guides` before any commit; verified present afterwards.
+2. `rm EXECUTIVE_SUMMARY-6249757a.md` deleted another session's summary. Restored, left in place.
+
+**What was removed from this branch** (duplicates of `main` surfaces, not content losses):
+`shop.html`, `suggestions.html`, `questions.html`, `verification.html`, `products.html`, `flagged.html`,
+`about.html`, `disclosure.html`, `privacy.html`, `guides/*.html`, `assets/css/main.css`,
+`assets/js/app.js`, `scripts/{build_registers,validate_site,check_markup,add_nav_entries}.py`,
+`.github/workflows/ci.yml`. Their content moved into `main`'s own data files instead.
+
+**What this session contributed to `main`'s model** (all rendered, all verified in the built output):
+
+| Register | Added | Renders at |
+|---|---|---|
+| `data/flags.json` | `FLG-023`…`FLG-029` (fallback-marker caveat on `identity_status: resolved`; two sessions' divergent outcomes; the sub-tag/end-user prohibition; the unconfirmed three-sales-in-180-days rule; 24h/89-day attribution window; the CI `docs` vs `editorial` assertion defect; §5 citation confirmed) | `/flagged/` |
+| `data/register/compliance.json` | `R13`–`R18` with verbatim quotes and status met/blocked/open | `/editorial/dashboard/`, `/editorial/disclosure/` |
+| `data/questions.json` | `K-08`…`K-11`, `Q-14`…`Q-17`, `D-07`…`D-10` | `/questions/` |
+| `data/suggestions.json` | `S-13`…`S-16` | `/suggestions/` |
+| `docs/OFFICIAL-SOURCES.md` | new: verbatim sources with version dates, the live-evidence table with reproduction links, and an explicit not-verified section | repo (manual review) |
+| `evidence/43565031/` | new: this session's raw registers, outside `data/` so no builder reads them | repo |
+| `EXECUTIVE_SUMMARY.md` | rewritten to the merged reality | repo, published at `/executive-summary/` |
+| `editorial/assets/site.css` | rebuilt — it was 5 lines behind `tools/assets/site.css` in the committed tree | `/editorial/` |
+
+**Irregularities for whoever integrates next.**
+- `verify.yml` asserts `git diff --quiet -- docs` but `tools/build.py` writes `editorial/`; stale
+  generated output merges green (`FLG-028`). One-line fix.
+- Three executive summaries now exist (`EXECUTIVE_SUMMARY.md`, `EXECUTIVE-SUMMARY.md`,
+  `EXECUTIVE_SUMMARY-6249757a.md`). Consolidate to one page; nothing here was deleted unilaterally.
+- Two publishers, two data roots (`data/*.json` vs `data/register/*.json`) holding overlapping product,
+  question and suggestion rows. Drift between them is inevitable; see `Q-17`.
+- `data/register/products.json` marks rows `identity_status: resolved` while every destination carries
+  `plpRedirect=mhFallback`. Suggest a `resolved_to_fallback` state rather than leaving the caveat in a
+  flag only.
+- `assets/analytics.js` + `tools/collector.mjs` are within a line of breaching the sub-tag rule if a
+  first-party id is ever joined to a per-page tag. Worth an assertion before the receiver ships (`Q-14`).
+
+**Claims verified this session, with sources.** Associates Program Operating Agreement (updated
+2025-10-15) §§1, 2, 4, 5, 6 read in the live document; Associates Program Policies (updated
+2026-04-14) Commission Income Statement §§1, 4, 5, 6 and Participation Requirements §§1–3; FTC
+Endorsement Guides: What People Are Asking. Verbatim quotes in `docs/OFFICIAL-SOURCES.md`. The
+"three qualifying sales in 180 days" rule was **not** found in that text and is flagged, not asserted.

@@ -100,7 +100,19 @@ Populated only from an authorized first-party report, with the report name and e
 <td><span class="pill st-shipped">met</span></td>
 <td class="small">The site is web-only. The RSS feed carries guide links, not affiliate links.</td><td><a class="srclink" href="#S02">S02</a></td></tr><tr><th scope="row">R12</th><td>Disclosure must be unavoidable and placed where readers will see it.</td>
 <td><span class="pill st-shipped">met</span></td>
-<td class="small">The strip sits immediately under the masthead, before any product content, on every page including the disclosure page itself. There are no anchor shortcuts that skip it.</td><td><a class="srclink" href="#S04">S04</a></td></tr></tbody></table></div>
+<td class="small">The strip sits immediately under the masthead, before any product content, on every page including the disclosure page itself. There are no anchor shortcuts that skip it.</td><td><a class="srclink" href="#S04">S04</a></td></tr><tr><th scope="row">R13</th><td>The site displays no price or availability figure it did not receive from Amazon or a licensed API.</td>
+<td><span class="pill st-shipped">met</span></td>
+<td class="small">check_site.py fails the build on any currency amount or star rating in generated output; product rows render a dated link to the listing instead of a number.</td><td><a class="srclink" href="#S02">S02</a></td></tr><tr><th scope="row">R14</th><td>Pages that link to a list of products carry original content relevant to those links.</td>
+<td><span class="pill st-shipped">met</span></td>
+<td class="small">Every category and shop page renders an editorial body from the guides register; no links-only list page is published. The build does not yet assert this, so it is a review item rather than a checked one.</td><td><a class="srclink" href="#S02">S02</a></td></tr><tr><th scope="row">R15</th><td>No sub-tag or program identifier is associated with a specific end user.</td>
+<td><span class="pill st-shipped">met</span></td>
+<td class="small">Event fields are limited to path, referrer_host, product_id and destination_host and nothing is persisted in the browser. See FLG-025 for the constraint on future changes.</td><td><a class="srclink" href="#S02">S02</a></td></tr><tr><th scope="row">R16</th><td>References to limited-time promotions are removed as soon as the promotion ends.</td>
+<td><span class="pill st-blocked">open</span></td>
+<td class="small">Not enforced by the build. Satisfied today only because no promotional or seasonal offer claim is published; an expires_on field is proposed as S-14.</td><td><a class="srclink" href="#S02">S02</a></td></tr><tr><th scope="row">R17</th><td>Nothing on the site forecasts traffic, commission income or conversion rate.</td>
+<td><span class="pill st-shipped">met</span></td>
+<td class="small">No revenue or conversion figure is published. The campaign ledger ships empty by design and the executive summary states that no forecast exists.</td><td><a class="srclink" href="#S01">S01</a></td></tr><tr><th scope="row">R18</th><td>Every product link carries the Associates tag as a URL parameter, or the site publishes no product link.</td>
+<td><span class="pill st-blocked">blocked</span></td>
+<td class="small">check_site.py asserts every outbound amazon link carries the tracking tag; while the account is unconfirmed the site publishes no buy links, so the assertion passes on an empty set. Recorded as blocked, not met.</td><td><a class="srclink" href="#S02">S02</a></td></tr></tbody></table></div>
 <p class="small muted">One rule is <em>blocked</em> rather than met: the tracking tag. That single block
 is why no outbound button renders on this site. <a href="../flagged/#FLG-003">FLG-003</a>.</p>
 

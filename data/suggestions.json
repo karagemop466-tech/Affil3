@@ -6,8 +6,16 @@
       "topic": "Outbound link handling",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
-        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
+        {
+          "id": "A",
+          "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).",
+          "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."
+        },
+        {
+          "id": "B",
+          "label": "Hide all buy buttons until gate G-02 passes.",
+          "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."
+        }
       ],
       "recommendation": "B, until G-02 passes."
     },
@@ -16,9 +24,21 @@
       "topic": "Publishing cadence",
       "current": "A",
       "options": [
-        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
-        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
-        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+        {
+          "id": "A",
+          "label": "One new guide every two weeks (proposed default).",
+          "tradeoff": "Steady growth; needs a writing slot every two weeks."
+        },
+        {
+          "id": "B",
+          "label": "One new guide per week.",
+          "tradeoff": "Faster growth; higher manual load."
+        },
+        {
+          "id": "C",
+          "label": "A batch of 10 guides before launch, then monthly.",
+          "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."
+        }
       ],
       "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
     },
@@ -27,10 +47,26 @@
       "topic": "Where the analytics collector runs",
       "current": "D",
       "options": [
-        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
-        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
-        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
-        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
+        {
+          "id": "A",
+          "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.",
+          "tradeoff": "Full control of raw data; you run the server."
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a platform that supports Node.js with persistent storage.",
+          "tradeoff": "Less server work; check the platform's data terms."
+        },
+        {
+          "id": "C",
+          "label": "Use a third-party privacy-focused analytics product.",
+          "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."
+        },
+        {
+          "id": "D",
+          "label": "No analytics for now (current).",
+          "tradeoff": "Nothing to maintain; no click or conversion data."
+        }
       ],
       "recommendation": "A or B if you want measured queries before choosing the next topic."
     },
@@ -39,8 +75,16 @@
       "topic": "Brand name",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
-        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
+        {
+          "id": "A",
+          "label": "Keep the working name 'Affil3' (current).",
+          "tradeoff": "Matches the repository."
+        },
+        {
+          "id": "B",
+          "label": "Choose a consumer-facing name and domain.",
+          "tradeoff": "Better recall; needs a domain and a naming check."
+        }
       ],
       "recommendation": "B before wider promotion."
     },
@@ -49,9 +93,21 @@
       "topic": "Imagery",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
-        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
-        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
+        {
+          "id": "A",
+          "label": "Typography and layout only, no product photos (current).",
+          "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."
+        },
+        {
+          "id": "B",
+          "label": "Original photography of products you own.",
+          "tradeoff": "Strong for reader trust; needs equipment and time."
+        },
+        {
+          "id": "C",
+          "label": "Amazon-supplied images through the Associates tools.",
+          "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."
+        }
       ],
       "recommendation": "B for guides; A for the front page."
     },
@@ -60,8 +116,16 @@
       "topic": "Authorship",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
-        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
+        {
+          "id": "A",
+          "label": "Team byline 'Affil3 editorial team' (current).",
+          "tradeoff": "No invented person."
+        },
+        {
+          "id": "B",
+          "label": "Named author with a real bio and a review date.",
+          "tradeoff": "Stronger signal of accountability; needs a real person."
+        }
       ],
       "recommendation": "B once a real reviewer is named."
     },
@@ -70,8 +134,16 @@
       "topic": "Content depth before Associates review",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
-        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
+        {
+          "id": "A",
+          "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).",
+          "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."
+        },
+        {
+          "id": "B",
+          "label": "Hold the site from review until 10 original posts exist.",
+          "tradeoff": "Aligns with S11; delays the tag-based program."
+        }
       ],
       "recommendation": "B."
     },
@@ -80,8 +152,16 @@
       "topic": "Seasonal content",
       "current": "B",
       "options": [
-        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
-        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+        {
+          "id": "A",
+          "label": "A gift and holiday-cooking guide hub for November and December 2026.",
+          "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."
+        },
+        {
+          "id": "B",
+          "label": "Evergreen guides only (current).",
+          "tradeoff": "Simpler; no seasonal claims."
+        }
       ],
       "recommendation": "B until measured queries (from S-03) show interest."
     },
@@ -90,8 +170,16 @@
       "topic": "Category focus",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
-        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
+        {
+          "id": "A",
+          "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).",
+          "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."
+        },
+        {
+          "id": "B",
+          "label": "Focus on air fryers and move the thermometer to a supporting note.",
+          "tradeoff": "Tighter topic; drops the thermometer cluster."
+        }
       ],
       "recommendation": "A until the unresolved link is decided."
     },
@@ -100,8 +188,16 @@
       "topic": "Prices and ratings",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
-        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+        {
+          "id": "A",
+          "label": "Show no prices or ratings (current).",
+          "tradeoff": "No stale or unverified numbers."
+        },
+        {
+          "id": "B",
+          "label": "Show dated prices from an authorized source, refreshed on a schedule.",
+          "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."
+        }
       ],
       "recommendation": "A now; B only after an authorized source is confirmed."
     },
@@ -110,8 +206,16 @@
       "topic": "Reader capture (email list)",
       "current": "A",
       "options": [
-        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
-        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
+        {
+          "id": "A",
+          "label": "No email capture (current).",
+          "tradeoff": "No email data to store."
+        },
+        {
+          "id": "B",
+          "label": "Opt-in email list.",
+          "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."
+        }
       ],
       "recommendation": "A until the email rules are reviewed."
     },
@@ -120,10 +224,95 @@
       "topic": "Search Console",
       "current": "B",
       "options": [
-        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
-        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+        {
+          "id": "A",
+          "label": "Do not connect Search Console.",
+          "tradeoff": "No search data."
+        },
+        {
+          "id": "B",
+          "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).",
+          "tradeoff": "Needs a Google account owner (Q-12)."
+        }
       ],
       "recommendation": "B."
+    },
+    {
+      "id": "S-13",
+      "topic": "Measurement scope",
+      "current": "Event fields are path, referrer_host, product_id and destination_host, collected only if a receiver is deployed.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep events aggregate-only and forbid any browser-persisted identifier.",
+          "tradeoff": "No per-visitor funnels and no per-visitor A/B attribution. Nearly every decision the site needs survives at page and product level."
+        },
+        {
+          "id": "B",
+          "label": "Add a first-party id so sessions can be stitched into funnels.",
+          "tradeoff": "Reads like ordinary analytics, and becomes a breach the moment it is joined with a tag or sub-tag."
+        }
+      ],
+      "recommendation": "A, and assert it in the build so B cannot be re-added by accident."
+    },
+    {
+      "id": "S-14",
+      "topic": "Seasonal and deal content",
+      "current": "No promotional or seasonal claim is published, so the removal-on-expiry rule is met by avoidance.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave it: no deal content, no expiry obligation.",
+          "tradeoff": "Gives up the highest-intent seasonal traffic the niche has."
+        },
+        {
+          "id": "B",
+          "label": "Add expires_on to page front matter and have the builder drop expired pages to an archive without the offer text.",
+          "tradeoff": "One build change plus an archive page to maintain, then seasonal content becomes safe to publish."
+        },
+        {
+          "id": "C",
+          "label": "Publish seasonal framing that makes no price or discount claim.",
+          "tradeoff": "Weaker hook than B, but no expiry mechanism required."
+        }
+      ],
+      "recommendation": "C now, B before the first real deal page. Do not publish deals relying on A while claiming A."
+    },
+    {
+      "id": "S-15",
+      "topic": "Evidence quality",
+      "current": "Compliance rules in data/register/compliance.json carry quotes; the root site's data/sources.json carries a used_for summary with no quoted text.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave root sources as summaries.",
+          "tradeoff": "A reviewer must open Amazon's policy page and hunt for the clause to check any row."
+        },
+        {
+          "id": "B",
+          "label": "Require a verbatim quote plus the document's own update date and a retrieval date on every source that supports a compliance claim.",
+          "tradeoff": "Slower to edit, and quotes need re-verification when Amazon revises a document, which is the point."
+        }
+      ],
+      "recommendation": "B. The two governing documents are dated 2025-10-15 and 2026-04-14, so a quote without its version date stops being checkable within a quarter."
+    },
+    {
+      "id": "S-16",
+      "topic": "Build integrity",
+      "current": "verify.yml asserts git diff --quiet -- docs while tools/build.py writes editorial/, so stale committed output merges green.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Point the assertion at editorial/.",
+          "tradeoff": "One line. It will fail the first change that edits data without rebuilding, which is the intended effect."
+        },
+        {
+          "id": "B",
+          "label": "Write to docs/ and publish docs/ as the Pages source.",
+          "tradeoff": "Cleanest source/output split, but it touches Pages settings and the live /Affil3/editorial/ URLs."
+        }
+      ],
+      "recommendation": "A now; reconsider B only when the two publishers are consolidated."
     }
   ]
 }

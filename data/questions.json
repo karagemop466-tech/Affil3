@@ -1,35 +1,321 @@
 {
   "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/.",
   "known": [
-    {"id": "K-01", "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S03"]},
-    {"id": "K-02", "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.", "sources": ["S01"]},
-    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a URL parameter.", "sources": ["S02"]},
-    {"id": "K-04", "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).", "sources": ["S02"]},
-    {"id": "K-05", "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.", "sources": ["S06"]},
-    {"id": "K-06", "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.", "sources": ["S04", "S05"]},
-    {"id": "K-07", "statement": "The submitted tokens are 9 characters long.", "sources": ["S05"]}
+    {
+      "id": "K-01",
+      "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.",
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "K-02",
+      "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-03",
+      "statement": "Special Links must carry the Associates tag as a URL parameter.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-04",
+      "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-05",
+      "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "K-06",
+      "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-07",
+      "statement": "The submitted tokens are 9 characters long.",
+      "sources": [
+        "S05"
+      ]
+    },
+    {
+      "id": "K-08",
+      "statement": "All four submitted links that reached a product page did so through a URL carrying plpRedirect=mhFallback, and none carried an Associates tag parameter.",
+      "sources": [
+        "S02",
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-09",
+      "statement": "One retrieval on 2026-11-20 reached an Amazon checkpoint page for B0c8moW59 while resolving B00hJ57DV normally; an earlier session recorded the opposite. The checkpoint outcome is not tied to a single token.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-10",
+      "statement": "The required Associates statement is Operating Agreement Section 5, verified verbatim against the 2025-10-15 text; Section 6 deems its violation a material breach and Section 4 disclaims any representation about expected traffic or commission income.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-11",
+      "statement": "Eligibility depends on original content that is publicly available at the address given in the application, with significant commentary, analysis or transformation where third-party material is reused — so thin aggregation is an eligibility problem, not a style problem.",
+      "sources": [
+        "S02"
+      ]
+    }
   ],
   "unknown": [
-    {"id": "Q-01", "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?", "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.", "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.", "sources": ["S05", "S04"], "blocking": true},
-    {"id": "Q-02", "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?", "why_it_matters": "Decides whether to keep, replace or drop the short links.", "how_to_close": "Check the links in Associates Central and against the policy text.", "sources": ["S02"], "blocking": true},
-    {"id": "Q-03", "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?", "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.", "how_to_close": "Check Associates Central account settings and the declared site list.", "sources": ["S11"], "blocking": true},
-    {"id": "Q-04", "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?", "why_it_matters": "This is gate G-02. No scaling until it passes.", "how_to_close": "Run the Associates test for one link per product and record the result.", "sources": ["S01", "S02"], "blocking": true},
-    {"id": "Q-05", "question": "Which five measurement events should be recorded?", "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).", "how_to_close": "Owner confirms or replaces the list.", "sources": [], "blocking": false},
-    {"id": "Q-06", "question": "Where should the analytics collector run, and who may access its data?", "why_it_matters": "GitHub Pages cannot run it (FLG-009).", "how_to_close": "Choose a hosting option (S-03).", "sources": [], "blocking": false},
-    {"id": "Q-07", "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)", "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).", "how_to_close": "Owner confirms the US marketplace.", "sources": ["S03", "S04"], "blocking": false},
-    {"id": "Q-08", "question": "Who is the named author, and what credentials, if any, should appear?", "why_it_matters": "Reader trust and publication polish (FLG-014).", "how_to_close": "Owner supplies a name and bio, or keeps the team byline.", "sources": [], "blocking": false},
-    {"id": "Q-09", "question": "What publishing cadence should be used?", "why_it_matters": "Sets how the feed and sitemap grow.", "how_to_close": "Choose a cadence (S-02).", "sources": [], "blocking": false},
-    {"id": "Q-10", "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?", "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).", "how_to_close": "Choose the approach in S-10.", "sources": ["S04"], "blocking": false},
-    {"id": "Q-11", "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?", "why_it_matters": "The ledger stays empty until authorized first-party reports exist.", "how_to_close": "Owner exports reports and provides them with their date and source.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).", "how_to_close": "Owner adds the property and verifies it.", "sources": ["S06"], "blocking": false},
-    {"id": "Q-13", "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?", "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.", "how_to_close": "Owner decides whether to obtain legal review.", "sources": [], "blocking": false}
+    {
+      "id": "Q-01",
+      "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?",
+      "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.",
+      "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-02",
+      "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?",
+      "why_it_matters": "Decides whether to keep, replace or drop the short links.",
+      "how_to_close": "Check the links in Associates Central and against the policy text.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-03",
+      "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?",
+      "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.",
+      "how_to_close": "Check Associates Central account settings and the declared site list.",
+      "sources": [
+        "S11"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-04",
+      "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?",
+      "why_it_matters": "This is gate G-02. No scaling until it passes.",
+      "how_to_close": "Run the Associates test for one link per product and record the result.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-05",
+      "question": "Which five measurement events should be recorded?",
+      "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).",
+      "how_to_close": "Owner confirms or replaces the list.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-06",
+      "question": "Where should the analytics collector run, and who may access its data?",
+      "why_it_matters": "GitHub Pages cannot run it (FLG-009).",
+      "how_to_close": "Choose a hosting option (S-03).",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-07",
+      "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)",
+      "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).",
+      "how_to_close": "Owner confirms the US marketplace.",
+      "sources": [
+        "S03",
+        "S04"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-08",
+      "question": "Who is the named author, and what credentials, if any, should appear?",
+      "why_it_matters": "Reader trust and publication polish (FLG-014).",
+      "how_to_close": "Owner supplies a name and bio, or keeps the team byline.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-09",
+      "question": "What publishing cadence should be used?",
+      "why_it_matters": "Sets how the feed and sitemap grow.",
+      "how_to_close": "Choose a cadence (S-02).",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-10",
+      "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?",
+      "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).",
+      "how_to_close": "Choose the approach in S-10.",
+      "sources": [
+        "S04"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-11",
+      "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?",
+      "why_it_matters": "The ledger stays empty until authorized first-party reports exist.",
+      "how_to_close": "Owner exports reports and provides them with their date and source.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-12",
+      "question": "Who owns the Search Console property?",
+      "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).",
+      "how_to_close": "Owner adds the property and verifies it.",
+      "sources": [
+        "S06"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-13",
+      "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?",
+      "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.",
+      "how_to_close": "Owner decides whether to obtain legal review.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-14",
+      "question": "Does the analytics receiver, as designed, keep any identifier that could later be joined to a sub-tag or to a visitor?",
+      "why_it_matters": "The programme forbids associating a sub-tag or program reporting with a specific end user. Aggregate counters are fine; a persistent id meeting a per-page sub-tag is not, and that is the feature an analytics upgrade tends to add without anyone noticing.",
+      "how_to_close": "Read the collector's stored record shape against Participation Requirements 2(b) before enabling it, and assert in the build that no sub-tag value derives from browser storage.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-15",
+      "question": "Do the pages the submitted links reached carry the products the owner meant to promote?",
+      "why_it_matters": "The fallback marker and two sessions' differing outcomes both say the destination is not a reliable statement of intent. Specs and comparisons written against a fallback destination produce a page that is wrong in a way the publisher owns.",
+      "how_to_close": "Owner supplies the intended ASIN or product URL per link, or confirms the observed listing is the intended one.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "Q-16",
+      "question": "What attribution window does the campaign ledger use, and where is it written down?",
+      "why_it_matters": "The policy defines a 24-hour session and an 89-day cart path. Guides online say 90 days, and a report built on the wrong window misstates every conversion figure while looking internally consistent.",
+      "how_to_close": "Record 24 hours and 89 days, linked to the policy line, in the ledger header when the first row is added.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-17",
+      "question": "Which of the two publishers owns which pages, and what happens to the duplicate surfaces?",
+      "why_it_matters": "tools/build.mjs writes the root site from data/*.json and tools/build.py writes editorial/ from data/register/*.json, with the two registers holding overlapping product, question and suggestion data. Readers and crawlers get one site or two competing ones depending on which builder was run last.",
+      "how_to_close": "Name one publisher for reader-facing pages and reduce the other to the appendix, or generate both from a single register directory.",
+      "sources": []
+    }
   ],
   "discovery": [
-    {"id": "D-01", "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.", "closes": ["Q-01", "Q-02"]},
-    {"id": "D-02", "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.", "closes": ["Q-04"]},
-    {"id": "D-03", "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.", "closes": ["Q-03", "Q-07"]},
-    {"id": "D-04", "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.", "closes": []},
-    {"id": "D-05", "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.", "closes": ["Q-12"]},
-    {"id": "D-06", "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.", "closes": ["Q-05", "Q-06"]}
+    {
+      "id": "D-01",
+      "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.",
+      "closes": [
+        "Q-01",
+        "Q-02"
+      ]
+    },
+    {
+      "id": "D-02",
+      "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.",
+      "closes": [
+        "Q-04"
+      ]
+    },
+    {
+      "id": "D-03",
+      "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.",
+      "closes": [
+        "Q-03",
+        "Q-07"
+      ]
+    },
+    {
+      "id": "D-04",
+      "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.",
+      "closes": []
+    },
+    {
+      "id": "D-05",
+      "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.",
+      "closes": [
+        "Q-12"
+      ]
+    },
+    {
+      "id": "D-06",
+      "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.",
+      "closes": [
+        "Q-05",
+        "Q-06"
+      ]
+    },
+    {
+      "id": "D-07",
+      "suggestion": "Request each submitted link twice from a private, signed-out window and write down the address bar after every redirect. Two different answers for one link is itself the finding, and it costs about four minutes.",
+      "closes": [
+        "Q-15",
+        "Q-01"
+      ]
+    },
+    {
+      "id": "D-08",
+      "suggestion": "Read Participation Requirements Section 2(b) in a logged-in session and diff it against the site's own link builder clause by clause: tag parameter, no bookmarking prompts, no posting links on Amazon, price display, promotion expiry, sub-tags.",
+      "closes": [
+        "Q-14",
+        "Q-16"
+      ]
+    },
+    {
+      "id": "D-09",
+      "suggestion": "Inventory the publishers before adding any page: root site versus editorial/, data/*.json versus data/register/*.json. Anything published twice should become one page with a cross-link, which is also what keeps indexation in one place.",
+      "closes": [
+        "Q-17"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Search the repo for the string 90 days and for any percentage sign: both are claims the retrieved policy text contradicts (89 days) or does not support (rates behind a login).",
+      "closes": [
+        "Q-16"
+      ]
+    }
   ]
 }
