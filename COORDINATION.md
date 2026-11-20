@@ -1765,3 +1765,35 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
   internal one, a sensor count); guide count and cluster count on the front page and the categories
   page are now read from the register instead of being written by hand.
+
+---
+
+# Session `arena/5a91ea5c-affil3` — claim (appended; nothing above edited)
+
+Registry: session `5a91ea5c`, branch `arena/5a91ea5c-affil3`, cut from `main` @ `16ee89f`,
+fast-forwarded to `main` @ `1f65f70` (PR #54) before any file was written. Status **active**.
+
+## Task board
+
+| ID | Task | Status | Files touched |
+|----|------|--------|---------------|
+| A-01 | Claim scope; push before touching anything else | done (this commit) | `COORDINATION.md` (this section only) |
+| A-02 | Line-by-line repo review; flag irregularities with sources | in progress | `COORDINATION.md`, `data/flags.json` (FLG-043, FLG-044) |
+| A-03 | First-hand source re-verification round | in progress | this file (verification log below) |
+| A-04 | Editorial-growth suggestions: organic-traffic and design-prompt rows on the decision board | pending | `data/suggestions.json` (append track + S-20, S-31…S-37) |
+| A-05 | Discovery questions that close missing-information gaps | pending | `data/questions.json` (append Q-24, Q-25, D-13, D-14) |
+| A-06 | Fix stale hand-written guide counts and stale decision-ID references in reader-facing copy | pending | `tools/build.mjs` (copy strings only), `data/design-brief.json`, `data/flags.json` (FLG-007/008/014/015/016 references) |
+| A-07 | Session executive summary | pending | `EXECUTIVE_SUMMARY-5a91ea5c.md` (new sibling) |
+| A-08 | Rebuild, run every gate, open PR, merge, confirm Pages deploy, record result | pending | generated pages, this file |
+
+## Scope rules
+
+- Nothing above this section is edited; every other session's board is read only.
+- Not touched: `data/products.json`, `data/sources.json`, `data/guides.json`, `data/config.json`,
+  root `EXECUTIVE-SUMMARY.md` (open PR #59 owns it), `src/`, `editorial/`, `counter*/`,
+  `crisp-index/`, `docs/`, `legacy/`, `tools/verify.mjs`, `tools/build.py`.
+- `tools/build.mjs` is touched only for reader-facing copy strings (stale counts, stale
+  decision-ID references). No template, path, `OWNED` entry or gate behaviour changes.
+- New IDs avoid open-PR collisions: suggestions S-20 and S-31…S-37 (PR #51 holds S-21…S-30),
+  questions Q-24/Q-25 (PR #51 holds Q-17…Q-23), flags FLG-043/FLG-044 (PR #51 holds
+  FLG-037…FLG-042). If a merge forces a renumber, it is logged here, not done silently.
