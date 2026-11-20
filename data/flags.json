@@ -39,7 +39,7 @@
     {
       "id": "FLG-004",
       "severity": "high",
-      "title": "One submitted link (B00hJ57DV) did not resolve to a product",
+      "title": "One submitted link (B00hJ57DV) initially appeared not to resolve to a product",
       "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.",
       "sources": [
         "S05"
