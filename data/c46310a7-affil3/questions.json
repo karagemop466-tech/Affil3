@@ -1,0 +1,107 @@
+{
+  "record_type": "open_questions",
+  "updated": "2026-11-20",
+  "purpose": "Decision-readiness register. A decision should not be made until the 'Information needed' column is answered from a trusted source.",
+  "questions": [
+    {
+      "id": "Q-01",
+      "question": "What product did the owner intend behind each supplied short link?",
+      "information_needed": "The intended ASIN, official listing URL, confirmation date, and source for each of the five links.",
+      "what_we_have": "Observed redirect targets for 4 of 5 links (2026-11-20), verified against official listing pages.",
+      "what_we_dont_have": "Any public or first-party statement of intent. The product-intent confirmation fields are blank by design.",
+      "how_to_discover": "Owner resolves each link from a normal browser session and records the intended ASIN + confirmation date. Do not infer intent from the redirect.",
+      "blocking": true,
+      "status": "open"
+    },
+    {
+      "id": "Q-02",
+      "question": "Are the five supplied short links compliant Associates Special Links?",
+      "information_needed": "Confirmation that each link uses the tagged Special Link format and passes the enrolled-workflow test (destination + tracking report).",
+      "what_we_have": "The links resolve to real Amazon listings for 4 of 5 (P-04 redirect unverified). Exact compliance status is unresolved (FLG-003).",
+      "what_we_dont_have": "Associate ID/tag presence in the redirect chain and tracking-report confirmation for any link.",
+      "how_to_discover": "Test one link per product through the enrolled Associates workflow (SG-07) and record the destination and tracking report.",
+      "blocking": true,
+      "status": "open"
+    },
+    {
+      "id": "Q-03",
+      "question": "Which Associate ID / tag is attached to these links?",
+      "information_needed": "The Associate ID (XXXXX-## format) in each link's parameters, if any.",
+      "what_we_have": "The submitted link.amazon URLs as given.",
+      "what_we_dont_have": "Inspection of the final redirected URL parameters and access to the Associates dashboard.",
+      "how_to_discover": "Resolve the links with redirect inspection (browser or curl -I) and read the Associates dashboard link inventory.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-04",
+      "question": "What commission rates apply to these product categories?",
+      "information_needed": "Current Standard Commission Income for the relevant categories.",
+      "what_we_have": "The official Commission Income Statement location (S2).",
+      "what_we_dont_have": "The current rate table values for kitchen small appliances and kitchen gadgets, read from the official statement.",
+      "how_to_discover": "Read the Commission Income Statement on the official Program Policies page (S2) and record the rate + date read.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-05",
+      "question": "What questions are real buyers typing, and in what volume?",
+      "information_needed": "Measured query data (queries, impressions, clicks) for the site.",
+      "what_we_have": "Editorial hypotheses (working titles) for four buyer questions - explicitly not claims about popularity or volume.",
+      "what_we_dont_have": "Any measurement. The site has no live analytics history.",
+      "how_to_discover": "Deploy the click counter + Search Console (SG-05, SG-08), then review queries on a cadence and pick topics from the data.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-06",
+      "question": "What publishing cadence is realistic for this project?",
+      "information_needed": "Owner's capacity commitment (hours/week) and quality bar.",
+      "what_we_have": "A suggested biweekly cadence in SG-02.",
+      "what_we_dont_have": "An owner decision on capacity.",
+      "how_to_discover": "Owner decision in the Suggestions review; no external source exists.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-07",
+      "question": "Where will analytics event data be hosted, stored, and how long retained?",
+      "information_needed": "A hosting decision plus a privacy notice covering purpose, storage, retention, and third parties.",
+      "what_we_have": "A self-hosted endpoint (server/analytics_server.py) that stores no IP addresses and no cookies.",
+      "what_we_dont_have": "A hosting provider/decision and a published privacy notice.",
+      "how_to_discover": "Owner decision; then publish a privacy notice before any real data flows (SG-12).",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-08",
+      "question": "May the site use official Amazon product imagery?",
+      "information_needed": "Confirmation against the Associates IP License and Program Policies.",
+      "what_we_have": "The Operating Agreement describes Program Content (images, text, link formats) made available by Amazon (S1).",
+      "what_we_dont_have": "A compliance ruling on using listing-page imagery pulled outside the provided Program Content.",
+      "how_to_discover": "Compliance review of the IP License section in the Program Policies (S2) and, if needed, Associates support.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-09",
+      "question": "Which additional niches beyond air fryers and meat thermometers should be explored?",
+      "information_needed": "Measured demand signals (queries, competitor coverage, commission viability).",
+      "what_we_have": "Five verified products across two categories.",
+      "what_we_dont_have": "Any demand measurement for other niches.",
+      "how_to_discover": "Only after Q-05 is answered with real data - do not pick niches from instinct.",
+      "blocking": false,
+      "status": "open"
+    },
+    {
+      "id": "Q-10",
+      "question": "What is the P-04 redirect target (link.amazon/B0c8moW59)?",
+      "information_needed": "The observed redirect target for P-04.",
+      "what_we_have": "Candidate ASIN B0DHZTCNR5 verified to exist (ThermoMaven 1-Sec thermometer) - consistent with a prior-session record, but NOT a redirect observation.",
+      "what_we_dont_have": "A live redirect observation in this session (bot checkpoint blocked it).",
+      "how_to_discover": "Owner resolves the link from a normal browser session and records the target; then re-run the intake validation.",
+      "blocking": true,
+      "status": "open"
+    }
+  ]
+}

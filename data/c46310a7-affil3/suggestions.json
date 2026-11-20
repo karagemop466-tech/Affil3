@@ -1,0 +1,187 @@
+{
+  "record_type": "suggestions",
+  "updated": "2026-11-20",
+  "purpose": "Decision-support list. Nothing here is implemented without an owner choosing a path. Decision statuses: pending review (default), accepted, declined, deferred.",
+  "suggestions": [
+    {
+      "id": "SG-01",
+      "title": "Adopt a publication voice and brand system (masthead, byline, section labels)",
+      "problem": "The site currently reads like a generated audit. A consistent editorial voice and brand shell make it read like a shop/publication.",
+      "options": {
+        "A": "Full style guide: voice rules, heading patterns, bylines, seasonal tags.",
+        "B": "Lightweight voice template applied to every page (recommended to start).",
+        "C": "No voice work; keep template copy."
+      },
+      "recommendation": "B",
+      "impact": "High (feels published, not generated)",
+      "effort": "Low",
+      "gate": "None. Can start immediately.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-02",
+      "title": "Publish human-sounding, question-shaped buyer guides on a fixed cadence",
+      "problem": "No guides exist yet, so there is nothing organic to rank and no reason for a buyer to return.",
+      "options": {
+        "A": "Weekly cadence with 4 launch guides (the working editorial hypotheses).",
+        "B": "Biweekly cadence, 2 launch guides (recommended to start).",
+        "C": "Publish only when data suggests a topic."
+      },
+      "recommendation": "B",
+      "impact": "High (organic traffic + reader trust)",
+      "effort": "Medium",
+      "gate": "Each guide must pass the compliance gate (disclosure, sponsored markup) before publishing.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-03",
+      "title": "Build a comparison hub per category (air fryers, thermometers)",
+      "problem": "Buyers comparing options currently have to jump to Amazon; comparison pages capture that intent and feed the shop feel.",
+      "options": {
+        "A": "Comparison pages for every category, updated on a schedule.",
+        "B": "Two launch comparisons: dual-basket vs single-basket air fryers; smart vs instant-read thermometers (recommended).",
+        "C": "Skip comparisons for now."
+      },
+      "recommendation": "B",
+      "impact": "Medium-high",
+      "effort": "Medium",
+      "gate": "All comparison values must be sourced to official listing pages; unverified values stay blank.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-04",
+      "title": "Use official product imagery on product cards",
+      "problem": "Text-only cards feel flat; imagery strongly improves the shop feel.",
+      "options": {
+        "A": "Use official Amazon listing imagery (requires compliance confirmation first).",
+        "B": "Clean CSS product cards with badges and price chips, no images (recommended until compliance is confirmed).",
+        "C": "Generate illustrative graphics (avoid - risks looking AI-generated and misrepresenting products)."
+      },
+      "recommendation": "B",
+      "impact": "High (shop feel)",
+      "effort": "Medium",
+      "gate": "Compliance review against the Associates IP License before any Amazon imagery is used.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-05",
+      "title": "Choose future topics from measured queries, not instinct",
+      "problem": "Topic selection by instinct produces speculative content with no demand signal.",
+      "options": {
+        "A": "Weekly query review in Search Console + click counter, pick one topic per review.",
+        "B": "Monthly review only (recommended to start).",
+        "C": "No measurement-driven selection."
+      },
+      "recommendation": "B",
+      "impact": "High (content-market fit)",
+      "effort": "Low",
+      "gate": "Requires SG-08 (Search Console) and SG-12 (analytics) to be live first.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-06",
+      "title": "Add privacy-preserving reader capture (newsletter)",
+      "problem": "No way to bring readers back; capture must be consent-first.",
+      "options": {
+        "A": "Self-hosted mailing list with explicit consent checkbox (recommended).",
+        "B": "Third-party email ESP with double opt-in.",
+        "C": "No capture for now."
+      },
+      "recommendation": "A",
+      "impact": "Medium",
+      "effort": "Low",
+      "gate": "Privacy notice must state purpose, storage, and retention; no pre-checked boxes.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-07",
+      "title": "Validate one Special Link per product in the enrolled Associates workflow before scaling",
+      "problem": "Compliance status of the supplied short links is unresolved (FLG-003); blind scaling risks policy violations.",
+      "options": {
+        "A": "Validate all five links one by one, record destination + tracking report per link.",
+        "B": "Validate the highest-traffic three first, then the rest (recommended).",
+        "C": "Assume links are fine and scale (not recommended)."
+      },
+      "recommendation": "B",
+      "impact": "High (compliance + tracking confidence)",
+      "effort": "Medium",
+      "gate": "Requires an enrolled Associates account and access to the tracking reports.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-08",
+      "title": "Register the site in Google Search Console and keep the sitemap auto-regenerated",
+      "problem": "Search engines need one canonical site to index with a live sitemap.",
+      "options": {
+        "A": "Register now and wire sitemap.xml into every publish (recommended).",
+        "B": "Register only after first guide publishes.",
+        "C": "Skip Search Console."
+      },
+      "recommendation": "A",
+      "impact": "High (organic traffic)",
+      "effort": "Low",
+      "gate": "None. Sitemap is already generated by scripts/build_sitemap.py.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-09",
+      "title": "Organize content into seasonal and topical clusters",
+      "problem": "Flat lists of articles feel like a feed; clusters feel like a publication.",
+      "options": {
+        "A": "Full cluster taxonomy with seasonal hubs.",
+        "B": "Two launch clusters: air frying; cooking-temperature accuracy (recommended).",
+        "C": "No clustering."
+      },
+      "recommendation": "B",
+      "impact": "Medium",
+      "effort": "Medium",
+      "gate": "Depends on SG-02 having published guides to cluster.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-10",
+      "title": "Enforce the product-intent confirmation gate for every new link",
+      "problem": "Intent and observed redirect are different facts; merging them corrupts the record.",
+      "options": {
+        "A": "Block publishing any new product link until intended_asin, intended_listing_url, confirmation_date, and intended_source are filled by the owner.",
+        "B": "Warn but allow publishing (not recommended).",
+        "C": "No gate."
+      },
+      "recommendation": "A",
+      "impact": "High (data integrity)",
+      "effort": "Low",
+      "gate": "None. Mechanically enforced by the intake script and reviewed in the compliance gate.",
+      "status": "pending review"
+    },
+    {
+      "id": "SG-11",
+      "title": "Keep one navigation group and route all dashboard surfaces through the footer",
+      "problem": "Mixing shop pages and dashboards in one nav creates an audit feel.",
+      "options": {
+        "A": "Single nav group for shop pages; footer lists dashboard surfaces (already implemented - keep).",
+        "B": "Two nav groups (Shop / Dashboard) (not recommended per brief).",
+        "C": "No separation."
+      },
+      "recommendation": "A",
+      "impact": "Medium (shop feel)",
+      "effort": "None (implemented)",
+      "gate": "None.",
+      "status": "accepted"
+    },
+    {
+      "id": "SG-12",
+      "title": "Deploy the self-hosted analytics endpoint and run a weekly measurement review",
+      "problem": "Clicks and conversions must be measured before any optimization is attempted (measure before automating).",
+      "options": {
+        "A": "Deploy server/analytics_server.py on the owner's host, point the site at it (recommended).",
+        "B": "Keep the counter in no-op/demo mode until hosting is decided.",
+        "C": "Use a third-party analytics SaaS (requires privacy review).",
+      },
+      "recommendation": "A",
+      "impact": "High (measurement)",
+      "effort": "Low",
+      "gate": "Privacy notice + retention decision required before real data flows.",
+      "status": "pending review"
+    }
+  ]
+}
