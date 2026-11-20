@@ -369,7 +369,7 @@ const add = (p) => pages.push(p);
     <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -511,7 +511,7 @@ const add = (p) => pages.push(p);
 add({
   path: '/categories/', title: 'Categories',
   description: 'Product categories and the guides that cover each one.',
-  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">Three clusters. Each cluster lists its products and the guides that cover them.</p></section>
+  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} clusters. Each cluster lists its products and the guides that cover them.</p></section>
 <div class="cat-grid">${CATEGORIES.map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><p class="small muted">${products.filter((p) => p.category === c.slug).length} product row(s) · ${guides.filter((g) => g.category === c.slug || (g.cluster_links || []).includes(c.slug)).length} guide(s)</p></a>`).join('')}</div>`,
 });
 for (const c of CATEGORIES) {
@@ -699,7 +699,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -861,10 +861,10 @@ add({
   body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
 <div class="prose">
 <h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-02 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has five original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S11, FLG-007).</p>
+<p>Current default: one new guide every two weeks (suggestion S-05, marked current, not yet chosen by the owner). A faster cadence or a pre-review batch of eight guides are on the decision board; nothing changes until you choose. At the current count, the site has ${guides.length} guides. Amazon's application-review help page gives “at least 10 posts” as a rule of thumb (S11). That page does not say whether guides count as posts, so FLG-007 stays open.</p>
 <h2>From question to page</h2>
 <ol>
-<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
+<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the questions buyers ask, checked against the sources the guides cite. The decision board tracks this (S-03 and Q-07).</li>
 <li><strong>Answer it honestly.</strong> Facts come from official sources only (the observed listings on the Shop table, USDA food-safety pages, Amazon's own help pages). Opinion and reasoning are labeled as such.</li>
 <li><strong>Link every claim.</strong> Each guide's Sources section lists the exact source IDs used; the <a href="${esc(href('/sources/'))}">source register</a> records how each one was checked.</li>
 <li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="${esc(href('/compliance/'))}">Compliance</a>).</li>
