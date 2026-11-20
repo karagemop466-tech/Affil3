@@ -93,7 +93,7 @@
     },
     {
       "id": "K-13",
-      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
       "sources": [
         "S05",
         "S04",
@@ -159,7 +159,7 @@
     },
     {
       "id": "K-22",
-      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the manufacturer's own FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The table on the product page and on the comparison page previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
+      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the same brand's FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The product page and the comparison table previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
       "sources": [
         "S14",
         "S15"
@@ -326,12 +326,46 @@
     },
     {
       "id": "Q-17",
-      "question": "Which of the two published temperature ranges should a reader compare against a cooking target: the food range or the ambient range?",
-      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line and the guide that covers the product.",
-      "lack": "Nothing for the table itself. What is missing is guidance from the manufacturer about which figure a buyer should use when checking whether the probe will survive a particular cooking method, since a 1,000 F ambient figure invites the reading that the probe can be left in a 1,000 F oven.",
-      "who": "Manufacturer support, or the owner's own judgment after reading the manual",
-      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The distinction is the difference between a safe instruction and a dangerous one, and the site currently publishes only the number, not the instruction.",
-      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance next to the table.",
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
+      "sources": [
+        "S05"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-18",
+      "question": "What is this publication called?",
+      "have": "A placeholder wordmark ('Affil3') that is the repository directory name, shipped in every title tag, og:site_name and footer; a design-brief row (DX-6) that names this as an open owner decision; a naming checklist drafted in suggestion S-22.",
+      "lack": "A chosen name, and the trademark and Associates trademark-guideline checks that make the choice safe to ship.",
+      "who": "Site owner",
+      "why_it_matters": "Every polished detail on the site sits behind one generic string a reader cannot remember, spell from hearing, or associate with kitchens. The rename touches every template, so it gets more expensive every week it is deferred.",
+      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-19",
+      "question": "Which guide gets written next, and on what evidence?",
+      "have": "Thirteen published question-shaped guides with a house style that can be checked (S-19); a seasonal calendar proposal (S-23); a source-backed cluster proposal (S-24); an empty measurement loop (no Search Console property, no analytics endpoint).",
+      "lack": "Any first-party evidence of what queries reach the site, and any record of what visitors click.",
+      "who": "Site owner (with whichever session holds the publishing cadence, S-05)",
+      "why_it_matters": "Until something measures arrivals, every new title is an uncheckable hypothesis and 'measure whether anyone arrives' remains a plan rather than a loop. Operating Agreement 4 bars substituting anyone else's traffic estimates for that measurement (K-19).",
+      "how_to_close": "Verify the Search Console property (D-05) and read two Performance-report cycles, then answer S-21; until then, choose topics only from the seasonal calendar (S-23 B) and mark each entry a hypothesis.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-20",
+      "question": "Which of the two published temperature ranges should a reader treat as the probe's working limit in a given cooking method?",
+      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line.",
+      "lack": "Manufacturer guidance on which figure applies to the probe as a whole in each cooking method. A 1,000 F ambient figure invites the reading that the probe may be left in a 1,000 F oven, and no manufacturer page addresses that reading directly.",
+      "who": "Manufacturer support, or the owner after reading the product manual",
+      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The site currently publishes both numbers, which is accurate, but not the instruction that would make them safe to act on.",
+      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance beside the table.",
       "sources": [
         "S14",
         "S15"
@@ -339,12 +373,12 @@
       "blocking": false
     },
     {
-      "id": "Q-18",
-      "question": "Does the short-link behaviour seen on 2026-11-20 mean anything about the submitted links?",
-      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is already recorded on two earlier dated rounds (FLG-004, FLG-031), and the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs in the same session.",
-      "lack": "A fetch of the same five links from a signed-in browser, which the sandbox cannot do. Without one, the observation stays an observation and no conclusion about the links is available.",
+      "id": "Q-21",
+      "question": "What does the repeated Amazon-home-page result for the five short links mean?",
+      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is recorded on earlier dated rounds (FLG-004, FLG-031, FLG-037). In the same session, the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs.",
+      "lack": "A fetch from a signed-in browser, which the sandbox cannot do. Without one the observation stays an observation and no conclusion about the links is available.",
       "who": "Site owner",
-      "why_it_matters": "Three sessions in a row have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on them (FLG-003) depends on which is true.",
+      "why_it_matters": "Several sessions have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on the links (FLG-003) depends on which is true.",
       "how_to_close": "Open each of the five links in a signed-in Amazon session and record the product name and the ten-character ASIN from the resulting URL. One pass, five minutes, and it closes Q-01 as well.",
       "sources": [
         "S05",
@@ -435,22 +469,32 @@
     },
     {
       "id": "D-13",
-      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving the reader to infer it from two numbers.",
-      "closes": [
-        "Q-17"
-      ]
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": []
     },
     {
       "id": "D-14",
-      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, alongside the date. This has now failed to resolve from three separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
+      "closes": []
+    },
+    {
+      "id": "D-16",
+      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
       "closes": [
-        "Q-01",
-        "Q-18"
+        "Q-20"
       ]
     },
     {
-      "id": "D-15",
-      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with themselves - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing in its introduction against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
+      "id": "D-17",
+      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, with the date. This has now failed to resolve from several separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "closes": [
+        "Q-01",
+        "Q-21"
+      ]
+    },
+    {
+      "id": "D-18",
+      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with itself - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
       "closes": [
         "Q-02"
       ]

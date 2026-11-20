@@ -1,0 +1,45 @@
+{
+  "_about": "Dated re-check by session 4c8c7811 of the five supplied short links, plus the /dp/ pages they were recorded against. Observations only: a final URL here is what this fetch tool received, not proof of a customer's redirect. No intended ASIN is set by this file (data/products.json remains the register).",
+  "check_date": "2026-11-20",
+  "session": "arena/4c8c7811-affil3",
+  "method": "Unauthenticated fetch of each exact supplied short link (https://link.amazon/<token>), with redirects followed, through the sandbox fetch tool. No Associates session was available, so no tag or Associates report was observed.",
+  "links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "product_asin_observed": null
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "product_asin_observed": null
+    },
+    {
+      "token": "B00hJ57DV",
+      "row": "P03",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "product_asin_observed": null
+    },
+    {
+      "token": "B0c8moW59",
+      "row": "unresolved (slot 4)",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "product_asin_observed": null
+    },
+    {
+      "token": "B0f3GKalj",
+      "row": "P05",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "product_asin_observed": null
+    }
+  ],
+  "side_observation": "A wrong-host attempt (https://link.amazon.com/B04G1MEwY) was redirected to an Amazon internal single-sign-on page. That host is not the supplied short-link domain and was not used for any register value.",
+  "conclusion": "All five supplied short links returned the Amazon home page in this fetch. This is the same pattern recorded in FLG-031 and FLG-036. It does not show any link to be dead, and it does not change any observed mapping in data/products.json."
+}
