@@ -337,6 +337,29 @@ preserves the superseded value, and the editorial register provides an independe
   constructed `?tag=` URLs, not links validated in Associates Central.
 - No price, rating, availability or conversion figure is published, and none was introduced.
 
+## Cross-register check (2026-11-20, after PR #10)
+
+Commit `1355b16` (PR #10) fixed two transposed destinations in the **root** register. Its message
+states the editorial register already had both correct. Re-checked here, value by value:
+
+| Slot | Submitted token | Editorial register | Root register (after #10) | Agree |
+|---|---|---|---|---|
+| P1/P01 | `B04G1MEwY` | `B0CDY277D3` Chefman 6 Qt dual | `B0CDY277D3` | yes |
+| P2/P02 | `B02NbDxp3` | `B09B7SB46R` Emeril 26 QT | `B09B7SB46R` | yes |
+| P3/P03 | `B00hJ57DV` | `B08DKYBTPH` Chefman 8 Qt | `B08DKYBTPH` | yes |
+| P4/P04 | `B0c8moW59` | `B0DHZTCNR5` ThermoMaven | `B0DHZTCNR5` | yes |
+| P5/P05 | `B0f3GKalj` | `B0DZFD6R9Z` CHEF iQ Sense | `B0DZFD6R9Z` | yes |
+
+Both registers now agree on all five destinations. The lesson worth keeping: a single fetch that
+returns a checkpoint page is **not** evidence a link is dead, and a register that records one
+observation without a retry will be wrong about it. Both sessions hit this and both corrected it in
+public rather than quietly.
+
+Merge resolution for this merge: the two registers (`data/products.json`, `data/flags.json`) were
+taken from `main` because PR #10 had just verified them independently, and every conflicted HTML
+page was **regenerated** by `node tools/build.mjs` rather than hand-merged. Root gates: 1317 checks,
+0 failed.
+
 ---
 
 # Session `f761b123` board (integration check on `arena/f761b123-affil3`)
