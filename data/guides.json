@@ -610,6 +610,387 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "black-friday-kitchen-deals-a-shoppers-checklist",
+      "title": "Black Friday kitchen deals: a checklist before you click add to cart",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens",
+        "cooking-thermometers"
+      ],
+      "image": "/assets/img/season-deal-week.png",
+      "image_alt": "Editorial illustration: a notepad with a blank checklist, a pencil and a cup of coffee on a kitchen counter, an air fryer softly blurred behind",
+      "date": "2026-11-20",
+      "deck": "Deal week runs on urgency. Your decision should not. A short, reusable checklist for judging a kitchen discount before the countdown timer starts.",
+      "description": "A no-hype Black Friday checklist for kitchen appliances: decide your number first, read which offer a price belongs to, price the accessories, and check the return window before the banners start blinking.",
+      "sources": [
+        "S03"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/season-deal-week.png",
+          "alt": "Editorial illustration: a notepad with a blank checklist, a pencil and a cup of coffee on a kitchen counter, an air fryer softly blurred behind",
+          "caption": "Illustration: AI-generated for this site. A planning scene, not a product photo."
+        },
+        {
+          "type": "p",
+          "text": "Deal week is loud on purpose. Every appliance on every site wears a percentage-off badge, and the banners blink in the exact rhythm that makes deciding feel like running out of time. Here is the checklist we keep taped to the inside of a cupboard door. It works in November and it works in any other month."
+        },
+        {
+          "type": "h2",
+          "text": "Decide your number first"
+        },
+        {
+          "type": "p",
+          "text": "A deal is only good relative to the price you would actually pay. Before you open a single listing, decide what this thing is worth to you. A discount off a number you would never have paid is not a saving; it is arithmetic. Write your number down, then shop against it."
+        },
+        {
+          "type": "h2",
+          "text": "Read which offer the price belongs to"
+        },
+        {
+          "type": "p",
+          "text": "A listing can carry several offers at once: new from the brand, new from a reseller, used, warehouse. A lower number attached to a used or warehouse offer is not a discount on the new one, and the headline badge rarely makes the distinction for you. Look inside the offer box before you believe the banner."
+        },
+        {
+          "type": "h2",
+          "text": "Price the whole ownership, not just the box"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Replacement parts. A unit whose baskets or trays are sold separately has a running cost; the listing or the manual usually says what is available.",
+            "Accessories you will actually use. Bundles change the unit math, and the per-unit figure is usually printed right on the listing if you look for it.",
+            "Counter space. The best-priced appliance is a bad deal if it lives on the floor because it does not fit under the cabinet. The dimensions are on each product page on this site, in the specification grid.",
+            "Your time. Two small baskets finish dinner differently than one big one; so does an oven with three rack levels. The cheapest shape is the one that matches how you actually cook."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Check the return window before the deal, not after"
+        },
+        {
+          "type": "p",
+          "text": "Return policies stretch and shrink with the season, and they vary by item and by seller. Read the return window on the listing before you buy, while you can still walk away. Impulse buys are safer with a generous window, but only if the item actually qualifies for it."
+        },
+        {
+          "type": "h2",
+          "text": "Ignore the countdown"
+        },
+        {
+          "type": "p",
+          "text": "A timer is merchandising, not information. It tells you what the seller wants you to feel, not what the item is worth. If the deal disappears while you are thinking, the honest question is not whether you missed out, but whether you would have bought it at your number in the first place."
+        },
+        {
+          "type": "h2",
+          "text": "Why this site never shows you a price"
+        },
+        {
+          "type": "p",
+          "text": "Prices change hourly, and Amazon's own rules say a site may display price and availability only from data Amazon serves or supplies through its authorized tools. This site does neither, so it shows no prices anywhere. Every button on this site goes straight to the live listing, where the current number always is, with the day's date on it rather than a stale one in our copy."
+        },
+        {
+          "type": "note",
+          "text": "Seasonal note: this guide will age; the checklist will not. We will date-stamp it again at the next deal window rather than pretend it is evergreen."
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Write down your number before you browse.",
+            "Check which offer the price belongs to.",
+            "Price the parts, the accessories and the counter space.",
+            "Read the return window while you can still walk away.",
+            "Treat every countdown timer as decoration."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is a percentage-off badge proof of a real discount?",
+              "a": "No. It is a merchandising label. Only comparison against the recent price tells you whether the number moved, and only your own budget tells you whether it matters."
+            },
+            {
+              "q": "Should I wait for the next deal day instead?",
+              "a": "If waiting costs you nothing and you would buy at your number either way, waiting is free. If the item is for a specific meal or a gift with a date, a smaller honest discount beats a hypothetical bigger one."
+            },
+            {
+              "q": "Do your buy buttons change during deal week?",
+              "a": "No. They always go to the live listing on Amazon with our tracking ID, deal week or not. Whatever price is showing there when you click is the real one."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Five appliances, each checked against the maker's own specification page where one exists.",
+          "label": "Browse the shelf",
+          "href": "/shop/"
+        }
+      ]
+    },
+    {
+      "slug": "which-air-fryer-shape-fits-your-week",
+      "title": "Dual-basket, single-basket, or oven-style? Match the shape to your week",
+      "category": "air-fryers",
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "image": "/assets/img/guide-shapes.png",
+      "image_alt": "Editorial illustration: a dual-basket air fryer, a large single-basket air fryer and a countertop oven with glass french doors lined up on a wooden kitchen counter",
+      "date": "2026-11-20",
+      "deck": "Three shapes, three kinds of weeknights. Find your cooking pattern on the map and the shortlist narrows without a single editor's-choice badge.",
+      "description": "Dual-basket vs single-basket vs oven-style air fryers: a decision map based on household size, meal patterns and cleanup tolerance, with the product rows on this site matched to each shape.",
+      "sources": [
+        "S04",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-shapes.png",
+          "alt": "Editorial illustration: a dual-basket air fryer, a large single-basket air fryer and a countertop oven with glass french doors lined up on a wooden kitchen counter",
+          "caption": "Illustration: AI-generated for this site. It shows the three shapes, not the specific products we track."
+        },
+        {
+          "type": "p",
+          "text": "Ignore the model names for a minute. Every air fryer on the market is one of three shapes, and each shape is a bet about how your household eats. Find your pattern below and the shortlist narrows on its own, with no badges and no points out of ten."
+        },
+        {
+          "type": "h2",
+          "text": "Shape one: the single basket"
+        },
+        {
+          "type": "p",
+          "text": "The bet: one food, done well, with the fewest parts to clean. It suits households of one to three, snacks and sides, and anyone upgrading from a microwave for reheating."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: the fastest path from cold to eating, the smallest footprint, one basket and a rack in the sink.",
+            "Limits: one temperature at a time. A main and a side means two batches, which means the second one waits."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the Chefman TurboFry 8 Qt (P03) is the single-basket row, with one 8 qt basket and a dishwasher-safe basket and rack stated by the maker. One caution before you order it: the Amazon listing and Chefman's own page describe two different 8 Qt machines, so read the model-number note on its product page first."
+        },
+        {
+          "type": "h2",
+          "text": "Shape two: the dual basket"
+        },
+        {
+          "type": "p",
+          "text": "The bet: two foods, two timings, one finish. It suits households that always cook a main and a side, and anyone tired of keeping one thing warm while the other crisps."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: two independent drawers with their own times and temperatures, and many dual units can finish both at the same moment.",
+            "Limits: two small baskets are not one big one. A large single batch has to be split, and there are two drawers to wash."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the CHEFMAN 6 Qt Dual Basket (P01) is the dual row. The maker states two independent 3 qt baskets, windows in the drawers, and a finish-together mode, all on its own product page."
+        },
+        {
+          "type": "h2",
+          "text": "Shape three: the oven-style"
+        },
+        {
+          "type": "p",
+          "text": "The bet: a whole meal at once, on more than one level. It suits people who cook for a crowd, who want a rack and a tray rather than a drawer, and who have the counter depth for a small oven."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Strengths: multiple rack levels, room for a tray or a small roast, and doors instead of a drawer you have to shake.",
+            "Limits: it is the largest footprint of the three, it heats more slowly than a basket, and it wants real counter depth."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "On our shelf: the Emeril Lagasse 26 QT French Door (P02) is the oven-style row, with 26 qt of room stated by the maker and french doors over the racks. The maker's own pages disagree on its preset count, so do not shop this row by preset totals."
+        },
+        {
+          "type": "h2",
+          "text": "Find your week on the map"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Your week",
+            "Shape that fits",
+            "The row on our shelf"
+          ],
+          "rows": [
+            [
+              "Two different foods, one dinner, same finish",
+              "Dual basket",
+              "P01 - CHEFMAN 6 Qt Dual Basket"
+            ],
+            [
+              "One big batch of one thing",
+              "Single basket",
+              "P03 - Chefman TurboFry 8 Qt"
+            ],
+            [
+              "Snacks, sides and reheating for one to three",
+              "Single basket",
+              "P03 - Chefman TurboFry 8 Qt"
+            ],
+            [
+              "A whole meal at once, more than one level",
+              "Oven-style",
+              "P02 - Emeril Lagasse 26 QT"
+            ],
+            [
+              "A holiday crowd and a roast to fit",
+              "Oven-style, plus a thermometer",
+              "P02 with P04 or P05"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What all three have in common"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "They move hot air fast, so they outperform a toaster oven at crisping and lose to a pan at searing.",
+            "They all need counter space. Measure the spot, including the clearance to open a drawer or a door; the dimensions are in each product page's specification grid.",
+            "They all punish guessing. Whatever shape you pick, a thermometer is the cheapest upgrade to any of them."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Can an air fryer replace my full-size oven?",
+              "a": "For weeknight meals for a few people, often yes. For a holiday bird or three trays at once, no. The oven-style shape narrows the gap; it does not close it."
+            },
+            {
+              "q": "Do I need two baskets if I cook for one?",
+              "a": "Usually not. Two baskets are about timing two foods, not about volume. A single basket is simpler to live with and to clean."
+            },
+            {
+              "q": "What is the first spec to check?",
+              "a": "Footprint before capacity. Decide where it will live and what has to move when a drawer opens, then pick the largest capacity that fits that space."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Every row, every specification, every source link, in one table.",
+          "label": "Open the full comparison",
+          "href": "/shop/"
+        }
+      ]
+    },
+    {
+      "slug": "smart-meat-thermometer-what-actually-matters",
+      "title": "Smart meat thermometers: what actually matters before you buy",
+      "category": "cooking-thermometers",
+      "cluster_links": [],
+      "image": "/assets/img/guide-questions.jpg",
+      "image_alt": "Editorial illustration: a raw chicken on a wooden cutting board beside an open notebook, a pencil and a cup of coffee on a table by a window",
+      "date": "2026-11-20",
+      "deck": "WiFi range, probe counts, app promises. The small set of facts that separates a useful probe from a gadget-drawer item, and how to read a listing without the marketing.",
+      "description": "A buying guide to smart and wireless meat thermometers: probe accuracy statements, heat limits, connectivity, and the difference between instant-read and leave-in probes.",
+      "sources": [
+        "S10",
+        "S20",
+        "S14",
+        "S15",
+        "S04"
+      ],
+      "body": [
+        {
+          "type": "img",
+          "src": "/assets/img/guide-questions.jpg",
+          "alt": "Editorial illustration: a raw chicken on a wooden cutting board beside an open notebook, a pencil and a cup of coffee on a table by a window",
+          "caption": "Illustration: AI-generated for this site. Planning a roast, not reviewing a product."
+        },
+        {
+          "type": "p",
+          "text": "A wireless meat thermometer is a genuinely useful tool: you can watch the roast from the sofa instead of opening the oven every ten minutes. It is also a category full of app promises. Here is what is worth checking before you buy, including the question nobody asks first: whether you need smart at all."
+        },
+        {
+          "type": "h2",
+          "text": "First question: instant-read or leave-in?"
+        },
+        {
+          "type": "p",
+          "text": "These are two different tools. An instant-read probe is a spot check: you touch it to the meat for a second or two at the moment you think dinner is done. A leave-in probe stays in the cook from raw to rested and reports continuously. Both are on our shelf, and they are not competitors."
+        },
+        {
+          "type": "p",
+          "text": "The ThermoMaven row (P04) is the instant-read shape: a handheld probe for the final check at the grill. The CHEF iQ Sense (P05) is the leave-in shape: a wireless probe with an app, for the long cook where you want to know the number without going outside."
+        },
+        {
+          "type": "h2",
+          "text": "The specs that actually matter"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "A stated accuracy, with a number in it. A maker who states an accuracy range is making a checkable claim. A maker who states none is making none, and we treat a listing-only accuracy claim as unverified rather than repeating it.",
+            "Heat limits, stated as numbers. The CHEF iQ Sense maker rates the probe heat-safe to 1000 degrees Fahrenheit and states the probe is waterproof and dishwasher safe, on its own product page. A number on the maker's page beats an adjective in an ad.",
+            "Probe count and sensors. The CHEF iQ Sense carries four internal sensors plus one ambient sensor, so its app tracks the meat and the air around it at the same time. That is the difference between the chicken is done and the whole chicken is done.",
+            "What the connectivity depends on. A hub and an app mean battery life and a Wi-Fi connection become part of dinner. The CHEF iQ maker's own pages disagree on battery life for this generation, so treat any battery figure in that family as soft.",
+            "Cleanup, stated by the maker. Probes live in hot, greasy places. Waterproof and dishwasher-safe claims are worth having, but only when the maker states them, not the seller copy."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What a thermometer is actually for"
+        },
+        {
+          "type": "p",
+          "text": "Whatever the app looks like, the job is one number: the internal temperature that makes the food safe and the timing right. The USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles, and it publishes where to place the probe so the reading means something. Both are official, both are free, and both are summarized in our thermometer accuracy guide."
+        },
+        {
+          "type": "h2",
+          "text": "How to read a listing like a skeptic"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Ask who is making each claim. Maker pages are checkable commitments; seller copy is marketing. Where the two disagree, we publish the disagreement instead of picking a winner.",
+            "Check the model number against the maker's own page. On one row in our register, the listing and the maker describe two different machines with different power figures. The model number is the thread that unravels that.",
+            "Ignore ratings as a spec. Star averages say what a crowd felt, not what a probe measures. This site republishes no ratings at all, and links to the live listing instead.",
+            "Prefer numbers to adjectives. Heat-safe to a stated temperature, accuracy to a stated range, a stated probe diameter. Anything else is atmosphere."
+          ]
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do I need a smart thermometer to hit safe temperatures?",
+              "a": "No. Any reliable probe gets you there. Smart features buy convenience: watching a long cook from another room, tracking a whole chicken in more than one place, and getting an alert instead of hovering."
+            },
+            {
+              "q": "How many probes do I actually need?",
+              "a": "One is enough for a weeknight. Two or more make sense for a whole bird or a long smoke, where the question is not is it done but is all of it done."
+            },
+            {
+              "q": "Why does this site withhold some thermometer specs?",
+              "a": "Because we found no manufacturer page to check them against, and listing copy is not a source. Where that happens, the specification grid says not stated and the flag page explains what would close the gap."
+            }
+          ]
+        },
+        {
+          "type": "cta",
+          "text": "Both thermometer rows, side by side, with what we could and could not confirm.",
+          "label": "See the thermometer rows",
+          "href": "/categories/cooking-thermometers/"
+        }
+      ]
     }
   ]
 }
