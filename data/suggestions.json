@@ -345,9 +345,7 @@
         "sources": [
           "S02"
         ],
-        "flags": [
-          "FLG-032"
-        ]
+        "flags": []
       },
       "depends_on": [],
       "decision": "undecided",
@@ -474,9 +472,7 @@
       "recommendation": "B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.",
       "evidence": {
         "sources": [],
-        "flags": [
-          "FLG-033"
-        ]
+        "flags": []
       },
       "depends_on": [],
       "decision": "undecided",
@@ -519,8 +515,8 @@
           "S01"
         ],
         "flags": [
-          "FLG-030",
-          "FLG-031"
+          "FLG-031",
+          "FLG-032"
         ]
       },
       "depends_on": [
@@ -565,7 +561,7 @@
           "S02"
         ],
         "flags": [
-          "FLG-032"
+          "FLG-035"
         ]
       },
       "depends_on": [
