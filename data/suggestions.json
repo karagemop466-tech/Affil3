@@ -1,352 +1,129 @@
 {
-  "register": "suggestions",
-  "title": "Decision Room",
-  "session": "arena-43565031-affil3",
-  "how_to_use": "Nothing here is implemented beyond the site shell and the registers themselves. Read a card, check what it depends on, mark the path you want. Each card ends with the exact text to paste into the build prompt once it is approved, so choosing is the only manual step left.",
-  "status_legend": {
-    "awaiting decision": "the owner has not picked a path yet; nothing built",
-    "safe to build now": "no gate and no missing input, so it can proceed without a decision",
-    "blocked": "cannot proceed until a listed question is answered"
-  },
-  "paths": [
-    {
-      "id": "PATH-A",
-      "name": "Trustworthy shop, minimum surface",
-      "summary": "Fix identity first: resolve what the five links actually are, rebuild every outbound link as a tagged Special Link, keep the page count small, publish nothing the compliance gate rejects.",
-      "pick_if": "The account matters more than the audience right now, and losing commission income is the failure you want to avoid at all costs.",
-      "includes": ["SUG-01", "SUG-02", "SUG-03", "SUG-09", "SUG-10"],
-      "excludes_for_now": ["SUG-04", "SUG-05", "SUG-11", "SUG-12", "SUG-14"],
-      "time_to_first_real_page": "Days, gated on account access rather than on work.",
-      "risk": "Slow traffic growth. A correct shop nobody visits."
-    },
-    {
-      "id": "PATH-B",
-      "name": "Publication that earns the click",
-      "summary": "Everything in Path A, plus the storefront, category clusters, a weekly editorial cadence, comparison components, an RSS and sitemap pipeline, and real analytics so the next topic comes from measured queries.",
-      "pick_if": "You want organic traffic and a site a buyer would actually read, and you can accept roughly a quarter of work before revenue signal.",
-      "includes": ["SUG-01", "SUG-02", "SUG-03", "SUG-05", "SUG-06", "SUG-07", "SUG-10", "SUG-11", "SUG-13", "SUG-14"],
-      "excludes_for_now": ["SUG-04", "SUG-08", "SUG-12", "SUG-15"],
-      "time_to_first_real_page": "One to two weeks of build sessions after product identity is confirmed.",
-      "risk": "More surface to maintain; the cadence fails if nobody owns publishing."
-    },
-    {
-      "id": "PATH-C",
-      "name": "Automated platform",
-      "summary": "Everything in Path B, plus API-backed product data, scheduled re-verification of every listing, an editorial pipeline that drafts and self-checks, the campaign ledger, and seasonal modules that expire themselves.",
-      "pick_if": "The goal really is the scalable platform described in the brief, and you can supply Amazon account credentials for PA-API or Creators API access.",
-      "includes": ["SUG-01", "SUG-02", "SUG-03", "SUG-04", "SUG-05", "SUG-06", "SUG-07", "SUG-08", "SUG-09", "SUG-10", "SUG-11", "SUG-12", "SUG-13", "SUG-14", "SUG-15", "SUG-16"],
-      "excludes_for_now": [],
-      "time_to_first_real_page": "Weeks. Hard-gated on API access, which this environment cannot obtain.",
-      "risk": "Highest build cost and the highest blast radius if automation publishes an unverified page. CLM-15 makes that failure expensive, so this path only works with SUG-09 kept permanently on."
-    }
-  ],
+  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
   "suggestions": [
     {
-      "id": "SUG-01",
-      "area": "Data",
-      "title": "Resolve the five products before anything else is written",
-      "problem": "The submitted tokens and the pages they reach do not match. On 2026-11-20 four of five resolved to a live listing whose ASIN differs from the submitted token, and one resolved to an Amazon checkpoint page instead of a product. Three land in Air fryers and one in Meat thermometers, so the set is not even one category.",
-      "proposal": "Treat the product set as unknown. Ask for the ten-character ASIN of each intended listing, or a full amazon.com/dp/ URL, taken from the listing itself while signed in. Re-verify each one and record intended and observed values in separate columns of data/link-verification.json, which already has both fields.",
-      "shop_feel": "A reader never sees a card titled \"Product 1 - submitted listing\". They see a named product with a named reason behind it.",
-      "expected_effect": "Unblocks every other content decision. Removes the single most audit-like element on the current page.",
-      "effort": "S",
-      "risk": "Low. The risk is in the opposite direction: publishing product claims built on a fallback destination.",
-      "policy_gate": ["CLM-02", "CLM-05"],
-      "needs_before_deciding": ["Q-01", "Q-03"],
+      "id": "S-01",
+      "topic": "Outbound link handling",
+      "current": "A",
       "options": [
-        {"label": "Owner supplies ten ASINs", "tradeoff": "Fastest and cleanest; one paste."},
-        {"label": "Promote the four observed listings instead", "tradeoff": "Zero input needed and each is a real product page, but you are then promoting whatever the fallback surfaced, not what you picked. Not recommended as a silent choice."},
-        {"label": "Rebuild the set from a category you choose deliberately", "tradeoff": "Best merchandising outcome, most owner input."}
+        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
+        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
       ],
-      "paste_into_prompt": "Populate data/link-verification.json intended_asin and intended_listing_url from this list of confirmed ASINs, re-run the resolver to confirm each destination, and only then rewrite the product cards with the confirmed names.",
-      "status": "awaiting decision"
+      "recommendation": "B, until G-02 passes."
     },
     {
-      "id": "SUG-02",
-      "area": "Compliance",
-      "title": "Generate every live link as a tagged Special Link; keep the short links as evidence only",
-      "problem": "None of the five submitted links carries an Associates tag, and Program Policies require the tag as a URL parameter on every link placed on the site. An untagged or mis-tagged link earns nothing and can end the account.",
-      "proposal": "Build the site's outbound links as https://www.amazon.com/dp/ASIN?tag=XXXXX-20&linkCode=...&th=1 produced inside the enrolled workflow, one link per product. Keep the originally submitted short links on the verification page as dated evidence, clearly labelled as input, never as the click target.",
-      "shop_feel": "Invisible to the reader, which is the point. Buttons read \"Check price on Amazon\" and land on the right listing.",
-      "expected_effect": "Attribution and therefore revenue start working. Also the only way to test whether a link is even eligible to earn.",
-      "effort": "S",
-      "risk": "Low. Do not hand-construct tags before the account is confirmed, since a wrong tag also fails to track.",
-      "policy_gate": ["CLM-01", "CLM-02", "CLM-08"],
-      "needs_before_deciding": ["Q-01", "Q-02"],
+      "id": "S-02",
+      "topic": "Publishing cadence",
+      "current": "A",
       "options": [
-        {"label": "Test one product first, confirm in the tracking report, then scale", "tradeoff": "Recommended and exactly what the brief asks for; one extra day."},
-        {"label": "Scale all five at once", "tradeoff": "Faster, but a systemic tag error then touches every page."}
+        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
+        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
+        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
       ],
-      "paste_into_prompt": "Add scripts/build_links.py that renders every outbound href from data/link-verification.json plus the confirmed Associates tag, refuses to emit a link without a tag parameter, and fails CI if any product href on the site does not match the register.",
-      "status": "awaiting decision"
+      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
     },
     {
-      "id": "SUG-03",
-      "area": "Storefront",
-      "title": "Stop shipping prices and star ratings; ship a decision instead",
-      "problem": "A shop page tempts you to hardcode the price and the star count you saw this morning. Program Policies allow price and availability only when Amazon serves the link or when the data comes from Creators or PA API. Neither applies here, and scraped prices go stale within days.",
-      "proposal": "Replace the price column with a what-to-compare block: capacity, footprint, power, controls, dishwasher-safe parts, warranty terms as stated on the listing, each linked to the listing as its source. Use \"Check current price on Amazon\" as the button, which is both compliant and what a confident shop looks like.",
-      "shop_feel": "Reads like a specialist with a point of view rather than a mirror of a product page that will be wrong by Friday.",
-      "expected_effect": "Removes the most common reason affiliate sites get de-indexed and demonetised at once, and removes the staleness maintenance burden entirely.",
-      "effort": "M",
-      "risk": "Lower conversion on cold traffic that wants a number, partly recovered by the API path in SUG-04.",
-      "policy_gate": ["CLM-03", "CLM-05", "CLM-09"],
-      "needs_before_deciding": [],
+      "id": "S-03",
+      "topic": "Where the analytics collector runs",
+      "current": "D",
       "options": [
-        {"label": "No prices ever, criteria only", "tradeoff": "Safest, permanent."},
-        {"label": "No prices until API access, then API-served widgets", "tradeoff": "Recommended; keeps the door open without ever hand-typing a number."}
+        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
+        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
+        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
+        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
       ],
-      "paste_into_prompt": "Remove any numeric price or rating field from all product components. Add a compare-specs block whose rows each link to the listing, and a single CTA labelled \"Check current price on Amazon\".",
-      "status": "safe to build now"
+      "recommendation": "A or B if you want measured queries before choosing the next topic."
     },
     {
-      "id": "SUG-04",
-      "area": "Automation",
-      "title": "Get product data from an API, not from page scraping",
-      "problem": "The brief asks for automated product research, pricing, review and competition analysis. Everything about products on this site currently has to be hand-retrieved, which is slow, fragile, and the reason so many fields sit blank. The Program Content clause points at the sanctioned route: data and images supplied through Amazon's own tools and interfaces.",
-      "proposal": "Apply for Creators API or PA-API access once the account is live, and make it the only source of product fields. Every automated column then carries a machine-readable retrieval timestamp, and the site can refresh on a schedule instead of rotting.",
-      "shop_feel": "Lets the shop show a real image, a real price and a \"last checked\" stamp without anybody editing HTML.",
-      "expected_effect": "The keystone for scaling past five products. Also the only defensible way to display prices.",
-      "effort": "L",
-      "risk": "Access is conditional and outside this environment's control; the project must not stall waiting on it. Do not build a scraper as a substitute: automated access is exactly what the bonus-event exclusions and the Program Content definition push away from.",
-      "policy_gate": ["CLM-03", "CLM-09", "CLM-17"],
-      "needs_before_deciding": ["Q-01", "Q-04"],
+      "id": "S-04",
+      "topic": "Brand name",
+      "current": "A",
       "options": [
-        {"label": "Wait for API access before automating data", "tradeoff": "Slow but clean."},
-        {"label": "Hand-maintain a small set indefinitely", "tradeoff": "Fine up to roughly twenty products; stops being fine after that."}
+        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
+        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
       ],
-      "paste_into_prompt": "Add tools/fetch_pa_api.py that writes data/product-snapshot.json with a timestamp per field, and make the build refuse to render any product field older than a configured max age.",
-      "status": "blocked"
+      "recommendation": "B before wider promotion."
     },
     {
-      "id": "SUG-05",
-      "area": "Content",
-      "title": "Build category clusters with a weekly cadence, and write them like a person",
-      "problem": "The site currently has four guide pages and no editorial identity. A cluster needs a hub, several leaves, and internal links between them. Separately, Amazon's own eligibility rule says original content reusing third-party material must add significant commentary, analysis, or transformation, which is the formal version of the owner's objection to AI slop.",
-      "proposal": "One hub per cluster (dual-basket air fryers, air fryer ovens, counter-space and cleanup, multi-function appliances, cooking thermometers), each with four to six question-shaped leaves on a weekly cadence. Every leaf must contain something no listing says: a trade-off, a measurement method, a failure mode, or a decision rule. Voice rules to enforce it: second person, no throat-clearing openers, no \"in today's fast-paced world\", no sentence starting with \"Whether you're\", no paragraph that could be moved to another product unchanged, one concrete number or hands-on step per section, and read the page aloud once.",
-      "shop_feel": "Feels like a specialist newsletter with a shop attached, which is the format that actually converts.",
-      "expected_effect": "Topical authority, internal linking, and the reason to rank that the brief asks for. The anti-slop rules are what make the difference between this and a content farm.",
-      "effort": "L",
-      "risk": "Cadence is a commitment. Publishing three strong guides then stopping beats twenty generated ones.",
-      "policy_gate": ["CLM-04", "CLM-05", "CLM-12"],
-      "needs_before_deciding": ["Q-05"],
+      "id": "S-05",
+      "topic": "Imagery",
+      "current": "A",
       "options": [
-        {"label": "Weekly, one cluster at a time", "tradeoff": "Recommended; sustainable and measurable."},
-        {"label": "Fortnightly with longer pieces", "tradeoff": "Better depth per URL, slower cluster completion."},
-        {"label": "Burst of ten at once, then pause", "tradeoff": "Looks published for a month, then signals abandonment."}
+        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
+        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
+        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
       ],
-      "paste_into_prompt": "Draft the cluster hub and leaves for <cluster name> using the voice rules in docs/STYLE.md; every factual claim about a listing must carry a listing link, and every page must add at least one trade-off or measurement step that the listing does not state.",
-      "status": "awaiting decision"
+      "recommendation": "B for guides; A for the front page."
     },
     {
-      "id": "SUG-06",
-      "area": "Brand",
-      "title": "Give the site a name and a byline that a person can trust",
-      "problem": "\"Affil3\" is a project codename, and a codename in the masthead is an instant tell. There is also no author, so no accountable human behind any recommendation, which weakens both reader trust and E-E-A-T style evaluation.",
-      "proposal": "Pick a consumer-facing name for the niche and keep Affil3 as the repo name only. Add a named author byline with a short bio stating actual experience and how products were evaluated, plus a corrections note. Naming constraint from the participation requirements: no Amazon trademark or near-miss in the domain, subdomain, tag, or any social handle.",
-      "shop_feel": "A masthead, a byline, and a promise. That is most of what separates a shop from a report.",
-      "expected_effect": "Trust, brand searches, and a lawful basis to publish authorship claims.",
-      "effort": "S",
-      "risk": "Authorship must be true. A fabricated expert credential is a deceptive claim, not a design flourish.",
-      "policy_gate": ["CLM-13", "CLM-05"],
-      "needs_before_deciding": ["Q-06", "Q-07"],
+      "id": "S-06",
+      "topic": "Authorship",
+      "current": "A",
       "options": [
-        {"label": "Keep Affil3, add a real byline", "tradeoff": "No new domain; cheapest trust win."},
-        {"label": "New consumer name plus custom domain", "tradeoff": "Best brand ceiling; adds cost and a DNS step."}
+        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
+        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
       ],
-      "paste_into_prompt": "Replace the masthead brand, title suffix, and RSS channel name with <name>; add author byline and bio to every guide from data/authors.json; keep the repo name in the footer only.",
-      "status": "awaiting decision"
+      "recommendation": "B once a real reviewer is named."
     },
     {
-      "id": "SUG-07",
-      "area": "Traffic",
-      "title": "One site, one sitemap, one feed, then measure before choosing topics",
-      "problem": "Right now two sessions have produced two parallel site shapes, which is how a site ends up with duplicate pages fighting each other. Search Console is also not connected, so the next topic is chosen by instinct instead of queries.",
-      "proposal": "Declare main as the single published site and merge competing branches into it rather than publishing side by side. Verify the property in Search Console, submit sitemap.xml, add Article and BreadcrumbList structured data to guides and an ItemList to each hub, and after two to four weeks of data pick topics from the queries that actually arrived.",
-      "shop_feel": "Nothing visible, which is exactly what findable means.",
-      "expected_effect": "Indexing, correct canonical entity, and a feedback loop that turns content into a measured decision.",
-      "effort": "M",
-      "risk": "Search Console and analytics need the owner's accounts; they cannot be done from here. Do not backdate performance claims.",
-      "policy_gate": [],
-      "needs_before_deciding": ["Q-08"],
+      "id": "S-07",
+      "topic": "Content depth before Associates review",
+      "current": "A",
       "options": [
-        {"label": "Search Console only", "tradeoff": "Queries and impressions with zero code."},
-        {"label": "Search Console plus self-hosted first-party events", "tradeoff": "Adds click data; needs a receiver, see SUG-11."}
+        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
+        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
       ],
-      "paste_into_prompt": "Add JSON-LD Article and BreadcrumbList to guides, ItemList to hubs, canonical tags site-wide, and append the four new pages to sitemap.xml and feed.xml; document the Search Console verification step in docs/LAUNCH.md as an owner task.",
-      "status": "awaiting decision"
+      "recommendation": "B."
     },
     {
-      "id": "SUG-08",
-      "area": "Content",
-      "title": "Seasonal and deal content that expires itself",
-      "problem": "Gift guides and seasonal rounds are the highest-converting affiliate formats, and the brief mentions seasons and clusters. But a live page mentioning an expired discount must be taken down as soon as the promotion ends, so a deals page without an expiry date is a standing liability.",
-      "proposal": "Every seasonal or promotion page carries an expires_utc field in its front matter. The build step refuses to render a page whose expiry has passed and moves it to an archive listing without the offer text. Keep the framing as \"what to look for in this season\" rather than any specific discount claim.",
-      "shop_feel": "Timely, calendar-driven, and obviously maintained, which is a large part of feeling published rather than generated.",
-      "expected_effect": "Allows seasonal traffic capture with the compliance risk designed out instead of deferred.",
-      "effort": "M",
-      "risk": "Requires the archive page and the build check to exist before the first seasonal post, not after.",
-      "policy_gate": ["CLM-06", "CLM-05"],
-      "needs_before_deciding": [],
+      "id": "S-08",
+      "topic": "Seasonal content",
+      "current": "B",
       "options": [
-        {"label": "Seasonal framing, no price claims", "tradeoff": "Compliant, no expiry pressure, slightly weaker hook."},
-        {"label": "Deal coverage with automatic expiry", "tradeoff": "Strong hook, needs the build gate; both can run."}
+        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
+        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
       ],
-      "paste_into_prompt": "Add expires_utc to page front matter, make the builder skip and archive expired pages, and add a seasonal calendar page listing the next four windows with their owner-action dates.",
-      "status": "awaiting decision"
+      "recommendation": "B until measured queries (from S-03) show interest."
     },
     {
-      "id": "SUG-09",
-      "area": "Automation",
-      "title": "Put the gate in front of publishing, permanently",
-      "problem": "The brief wants automation and a gate for what cannot be automated. The Operating Agreement allows Amazon to cease all commission income permanently, without notice, for a violation. Auto-publishing unverified product claims is the one failure mode that can cost more than the whole project earns.",
-      "proposal": "Keep the two scripts added in this branch as required CI checks on every pull request: pages are generated from the registers, and the validator fails on an unsourced table row, a blank without a flag, a missing disclosure strip above the fold, a product link without rel=\"sponsored\", a link without a tag parameter, an expired seasonal page, or an unverified field presented as fact. Content generation stays free to draft; publishing stays gated.",
-      "shop_feel": "Invisible to readers; visible to you as a green check on every change.",
-      "expected_effect": "Makes the trustworthiness of the machinery a build status instead of a habit.",
-      "effort": "M",
-      "risk": "A gate nobody can bypass needs a documented override for genuine emergencies, recorded with a date and reason.",
-      "policy_gate": ["CLM-15", "CLM-02", "CLM-06", "CLM-17"],
-      "needs_before_deciding": [],
+      "id": "S-09",
+      "topic": "Category focus",
+      "current": "A",
       "options": [
-        {"label": "Hard gate, no merges on failure", "tradeoff": "Recommended."},
-        {"label": "Warn only", "tradeoff": "Defeats the purpose."}
+        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
+        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
       ],
-      "paste_into_prompt": "Make validate_site.py a required status check and extend its rules with any new register field I add.",
-      "status": "safe to build now"
+      "recommendation": "A until the unresolved link is decided."
     },
     {
-      "id": "SUG-10",
-      "area": "Compliance",
-      "title": "Move disclosure from a banner to a sentence the reader believes",
-      "problem": "A single strip under the masthead satisfies the letter of the requirement and is otherwise ignored. FTC guidance is that the connection must be clear and conspicuous in the context where the endorsement is made, and staff guidance is explicitly not a safe harbour.",
-      "proposal": "Keep the strip above the fold and the footer repeat, and add a plain sentence inside each page next to the first product link, in the reader's language, saying what happens if they click and what it costs them. Include it in every guide, not only on the hub. Put the same sentence in the RSS description so a syndicated copy carries it too.",
-      "shop_feel": "Said once, honestly, where it matters, and then out of the way. Confidence, not hedging.",
-      "expected_effect": "Meets the standard in context rather than in a corner, and reads as a publication that has nothing to hide.",
-      "effort": "S",
-      "risk": "Very low. The failure mode is burying it in a footer only.",
-      "policy_gate": ["CLM-16"],
-      "needs_before_deciding": [],
+      "id": "S-10",
+      "topic": "Prices and ratings",
+      "current": "A",
       "options": [
-        {"label": "Strip plus per-page in-context line", "tradeoff": "Recommended."},
-        {"label": "Add a modal on first outbound click", "tradeoff": "Highest visibility, measurably annoying, hurts conversion."}
+        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
+        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
       ],
-      "paste_into_prompt": "Insert the disclosure partial immediately before the first product link on every content page and into each feed.xml item description; keep the existing strip and footer.",
-      "status": "safe to build now"
+      "recommendation": "A now; B only after an authorized source is confirmed."
     },
     {
-      "id": "SUG-11",
-      "area": "Measurement",
-      "title": "Measure clicks and conversions, but only in aggregate",
-      "problem": "The brief wants click and conversion measurement before more writing, and a self-hosted endpoint plus five defined events. Two constraints collide: GitHub Pages serves static files with no receiver, and Program Policies forbid tying any tag or sub-tag to a specific end user or dynamically assigning sub-tags to track visitor behaviour.",
-      "proposal": "Count events server-side in aggregate only: outbound_click per page and per destination ASIN, disclosure_impression, guide_view, product_impression, session_start as a per-day count. No cookies, no IP retained, no client-side identifier joined to a sub-tag. Ship a tiny receiver (one container or one edge function) that appends to a log, and point the existing beacon at it. Keep per-post sub-tags for channel attribution, since a sub-tag identifies the link, not the person.",
-      "shop_feel": "Nothing on the page. Speed, and no consent banner creeping into the layout.",
-      "expected_effect": "Answers which cards get clicked and which guides precede a click, which is the input every later content decision needs.",
-      "effort": "M",
-      "risk": "Real hosting and retention decisions. Anything that profiles a visitor crosses CLM-07 and drags in consent obligations. Marked not-yet-operational until a receiver exists.",
-      "policy_gate": ["CLM-07", "CLM-17"],
-      "needs_before_deciding": ["Q-09"],
+      "id": "S-11",
+      "topic": "Reader capture (email list)",
+      "current": "A",
       "options": [
-        {"label": "Search Console only for now", "tradeoff": "Zero infrastructure, no click counts."},
-        {"label": "Self-hosted aggregate counter", "tradeoff": "Recommended once a host exists."},
-        {"label": "Third-party analytics", "tradeoff": "Easiest, weakest fit with a no-personal-data posture."}
+        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
+        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
       ],
-      "paste_into_prompt": "Deploy analytics/server.mjs behind a relative /collect path, log one JSON line per event with page, event, destination ASIN and day, and document the retention window in privacy.html.",
-      "status": "awaiting decision"
+      "recommendation": "A until the email rules are reviewed."
     },
     {
-      "id": "SUG-12",
-      "area": "Measurement",
-      "title": "Start the campaign ledger empty and let it fill only from real reports",
-      "problem": "Nothing in this repo can currently show a conversion rate, and no forecast is available. An empty honest ledger is worth more than a dashboard full of modelled numbers, and it is what the brief asks for.",
-      "proposal": "Keep data/campaign-ledger.csv with columns timestamp, source, channel, eligible_sessions, clicks, reported_orders, associates_report_date, provenance_url. Fill it only by transcribing authorized first-party Associates reports, dated, never backfilled and never estimated. Publish the ledger as a table with its provenance column visible, and state plainly that no conversion score exists yet.",
-      "shop_feel": "Invisible to buyers; visible to you as the difference between evidence and vibes.",
-      "expected_effect": "Makes later optimisation decisions reviewable, and gives the 24-hour and 89-day windows a place to be recorded correctly.",
-      "effort": "S",
-      "risk": "Temptation to model gaps. Any filled estimate must be flagged as an estimate or it is a misleading performance claim.",
-      "policy_gate": ["CLM-05", "CLM-10"],
-      "needs_before_deciding": ["Q-01"],
+      "id": "S-12",
+      "topic": "Search Console",
+      "current": "B",
       "options": [
-        {"label": "Manual weekly transcription from Associates reports", "tradeoff": "Recommended; small and accurate."},
-        {"label": "Report download automation", "tradeoff": "Needs account API access that does not exist yet."}
+        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
+        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
       ],
-      "paste_into_prompt": "Add scripts/ledger_from_report.py that validates a pasted report export against the ledger schema and appends rows with a provenance URL, refusing to write estimated values.",
-      "status": "awaiting decision"
-    },
-    {
-      "id": "SUG-13",
-      "area": "Storefront",
-      "title": "Build the comparison table component once, then reuse it",
-      "problem": "Buyers decide on a side-by-side. Without a component, every guide writes its own table, drift starts, and the register stops being the source of truth.",
-      "proposal": "One generated comparison component rendered from the registers, with a fixed row set (capacity, footprint, power, controls, cleaning, what the listing states about warranty), a source link per row, and a dated \"checked\" stamp on the table rather than on each cell. No verdict column until a stated criteria block supports one.",
-      "shop_feel": "The single most shop-like element on any affiliate page, done credibly.",
-      "expected_effect": "Time on page, return visits, and one place to fix data instead of twenty.",
-      "effort": "M",
-      "risk": "Do not let a rendered table imply a recommendation the evidence does not support.",
-      "policy_gate": ["CLM-03", "CLM-05"],
-      "needs_before_deciding": ["Q-03"],
-      "options": [
-        {"label": "Criteria table, no verdict", "tradeoff": "Recommended until SUG-04 lands."},
-        {"label": "Scored ranking", "tradeoff": "Needs a published scoring rubric and real data; premature."}
-      ],
-      "paste_into_prompt": "Add templates/compare-table.html.j2 rendered from data/link-verification.json with a source link per row and a register-level checked date.",
-      "status": "awaiting decision"
-    },
-    {
-      "id": "SUG-14",
-      "area": "Storefront",
-      "title": "Fix the three things that make a page read as generated",
-      "problem": "Concrete, not aesthetic: every card repeats the same disclaimer block verbatim, headings are all noun-phrases with no answer in them, and there is no image, number, or first-person test anywhere. Any reader pattern-matches that in seconds.",
-      "proposal": "One short disclosure line per page instead of a disclaimer per card. Turn headings into questions answered in the first sentence below them. Add self-drawn diagrams of footprint, basket shape, and clearance as SVG in the repo, never scraped Amazon imagery. Add an \"how we checked\" line naming the method and the date. Keep prose length varied on purpose.",
-      "shop_feel": "This is the pass that removes the AI smell without adding a single claim.",
-      "expected_effect": "Reader trust and dwell time; also reduces CLM-12 originality exposure because each page carries content only this site produces.",
-      "effort": "M",
-      "risk": "Diagrams must be labelled as illustrative where they are not measured from a listing.",
-      "policy_gate": ["CLM-09", "CLM-12"],
-      "needs_before_deciding": [],
-      "options": [
-        {"label": "Own SVG diagrams, illustrative", "tradeoff": "Recommended now."},
-        {"label": "API imagery once licensed", "tradeoff": "Better-looking, later, and only via Program Content."}
-      ],
-      "paste_into_prompt": "Add assets/diagrams/*.svg drawn from listing-stated dimensions where available, label each as illustrative or measured, and collapse repeated disclosure blocks into one per page.",
-      "status": "awaiting decision"
-    },
-    {
-      "id": "SUG-15",
-      "area": "Traffic",
-      "title": "Own a domain and stop shipping on a project codename",
-      "problem": "A github.io path with a repo codename in the title is a trust ceiling as much as a technical limitation, and it caps what the brand can become.",
-      "proposal": "Buy a niche-fitting domain, add a CNAME, set the Pages custom domain, keep the site on one origin, and update canonical, sitemap, and feed URLs in the same change so no split arises. Check the chosen name against the trademark rule before paying for it.",
-      "shop_feel": "Reads as a site, not a deployment.",
-      "expected_effect": "Brand recall, shareability, and a cleaner property in Search Console.",
-      "effort": "S",
-      "risk": "Cost plus a DNS propagation window. Verify the name is allowed before buying, since CLM-13 can disqualify a site over the name itself.",
-      "policy_gate": ["CLM-13"],
-      "needs_before_deciding": ["Q-06"],
-      "options": [
-        {"label": "Stay on github.io until the niche is settled", "tradeoff": "Free; reversible."},
-        {"label": "Buy the domain now", "tradeoff": "Recommended once SUG-06 picks a name."}
-      ],
-      "paste_into_prompt": "Add a CNAME file, set the Pages custom domain, and rewrite canonical, sitemap, and feed URLs to https://<domain>/ in one commit.",
-      "status": "awaiting decision"
-    },
-    {
-      "id": "SUG-16",
-      "area": "Automation",
-      "title": "Automate the re-verification sweep, not the writing",
-      "problem": "Product listings change: they get renamed, moved to a new ASIN, go unavailable, or the seller edits the specs. The site publishes on a dated snapshot, so a page silently becomes wrong. The brief asks for continuous optimisation; the honest first version of that is continuous checking.",
-      "proposal": "A scheduled job that re-fetches each linked listing, compares observed title, availability, and browse node against the stored snapshot, opens an issue on drift instead of editing pages, and never auto-publishes a replacement claim. Human approves; then the register updates.",
-      "shop_feel": "Stale pages get caught, which is what \"last checked\" is supposed to mean.",
-      "expected_effect": "Converts verification from a launch-time ritual into a running property of the site, at the exact point where automation is safe.",
-      "effort": "L",
-      "risk": "Automated access to Amazon pages must stay polite and lawful; drift detection should alert, not rewrite. CLM-17 is the reason the write side stays human.",
-      "policy_gate": ["CLM-15", "CLM-17"],
-      "needs_before_deciding": ["Q-04"],
-      "options": [
-        {"label": "Weekly drift check opening issues", "tradeoff": "Recommended."},
-        {"label": "Monthly manual sweep", "tradeoff": "Low tech; will not hold past twenty URLs."}
-      ],
-      "paste_into_prompt": "Add .github/workflows/reverify.yml that re-runs the resolver over data/link-verification.json, diffs observed fields, and opens an issue per drift, with no write access to content files.",
-      "status": "awaiting decision"
+      "recommendation": "B."
     }
   ]
 }

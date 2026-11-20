@@ -1,55 +1,77 @@
 # Affil3
 
-A buyer's shop for countertop cooking, built as an Amazon Associates affiliate publication, with the
-evidence and the decision-making exposed next to the products.
+Amazon Associates publications built from a verified source register. Tracking ID `shopnow047c-20`.
 
-**Live site:** https://karagemop466-tech.github.io/Affil3/
+**Live:** https://karagemop466-tech.github.io/Affil3/
 
-## What is here
+GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
+Nothing was deleted to make room; each session's output is kept and reachable.
 
-| Path | What it is |
+## What is published
+
+| Path | Owner | What it is |
+|---|---|---|
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
+
+`/editorial/` exists because its build was written against a different data model and its verification
+found things the other register did not. Keeping both builds preserves both verification passes rather
+than merging them into one file whose provenance nobody can reconstruct.
+
+## Read these first
+
+| File | What it is |
 |---|---|
-| `index.html` | Front page: the shelf, the guides, how the shop works |
-| `shop.html` | Shelf plus five editorial clusters and their topic queues |
-| `products.html` | The five submitted Amazon links exactly as received |
-| `verification.html` | Link evidence register — intended vs observed fields, dated, with control tests |
-| `suggestions.html` | Decision room — 16 ranked proposals, 3 paths, each resting on quoted policy text |
-| `questions.html` | Open questions — what is known, what is missing, how to go find it, who must answer |
-| `flagged.html` | Flagged-for-review register with a source link per row |
-| `guides/` | Question-shaped buyer guides |
-| `EXECUTIVE_SUMMARY.md` | The summary a decision should start from |
-| `docs/OFFICIAL-SOURCES.md` | Every source relied on, quoted, with retrieval dates and what could not be verified |
-| `COORDINATION.md` | Shared task board for parallel sessions |
+| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
+| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`data/`](data/) | Register for the root site |
+| [`data/register/`](data/register/) | Register for `/editorial/` |
 
-## How it is built
+## Build
 
-`data/*.json` are the registers and the source of truth. Four of the pages above are **generated** from
-them:
+**Root site** (Node, no dependencies):
 
 ```bash
-python3 scripts/build_registers.py     # write the pages
-python3 scripts/validate_site.py       # the publishing gate
-python3 scripts/check_markup.py        # structural check
+node tools/build.mjs     # data/*.json  -> repository root
+node tools/verify.mjs    # gates
 ```
 
-CI (`.github/workflows/ci.yml`) runs all three on every push and pull request. A generated page must
-not be edited by hand — change the register and rebuild, or the build fails.
+**Editorial site** (Python, no dependencies):
 
-Static HTML, no framework, no external fonts or assets, no build dependencies beyond Python 3.
+```bash
+python3 tools/build.py       # data/register/*.json -> editorial/
+python3 tools/check_site.py  # gates
+```
 
-## House rules the code enforces
+Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
 
-- No displayed price or availability figure anywhere: program policy permits a site to show them only
-  when Amazon serves them or a licensed API supplies them.
-- No unsourced row: anything not confirmed against an official source stays blank and is flagged, and a
-  blank is never back-filled from a neighbouring column.
-- Every outbound product link carries `rel="sponsored nofollow"`.
-- Disclosure sits under the masthead and repeats in the footer on every page.
-- No superlative or demand claim ("most popular", "top-rated", "trending") unless it is quoted from a
-  source; a phrase inside a sentence that disclaims it is treated as a mention, not a claim.
+## What the editorial gate refuses to let through
 
-## Known open items
+- A price. No currency amount may appear in the HTML at all.
+- A star rating or review count.
+- A product call-to-action without `tag=shopnow047c-20`.
+- An Amazon citation not marked `rel="nofollow"`.
+- A page without the required Associates statement.
+- A spec row citing a source ID that does not exist.
+- A link that escapes the published subtree.
+- A page missing from that subtree's sitemap.
 
-Product identity for the five submitted links is unresolved, the Associates account and tracking ID are
-unconfirmed, and no click or conversion data is collected yet (GitHub Pages cannot receive the beacon).
-Each is listed with its lookup path in `questions.html` rather than being answered by guesswork.
+This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
+See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
+
+## The finding both sessions independently agree on
+
+Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
+Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
+The links are untagged — that is a different claim from *invalid*, and only the first is made here.
+
+## Licence and attribution
+
+Product names and trademarks belong to their owners. Specification values are quoted from the
+publisher's own pages and cited by source ID. Neither publication is endorsed by or affiliated with
+Amazon.com, Inc. beyond participation in the Amazon Associates program.
+
+As an Amazon Associate I earn from qualifying purchases.
