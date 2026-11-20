@@ -1681,3 +1681,159 @@ Three separate registers in this repository concluded that the ThermoMaven therm
    - `data/products.json` `P04.no_buy_link_reason`, `data/sources.json` `S05`, and `data/questions.json` `K-07` still state that `B0c8moW59` never resolved to a listing, contradicting `P04.observed_asin = "B0DHZTCNR5"` and `FLG-022` in the same register.
    - `QA-BRIEF.md` and `EXECUTIVE-SUMMARY.md` still carry stale pre-PR-#12 text claiming link 4 resolved to nothing and link to moved `docs/*` paths instead of `editorial/*`.
 2. **Orphaned CI failure on `main` @ `09ae7e1` / `2afaf62` (`.github/workflows/check.yml`)**: PR #26 deleted `docs/` (from completed session `c46310a7`, PR #25 merged 2026-11-20T05:51Z), causing `scripts/build_sitemap.py --check` (`Site checks` workflow) to fail with `sitemap.xml missing`. Because `c46310a7` is completed and the brief instructs fixing failing checks before merge, this session claims the minimal fallback in `scripts/build_sitemap.py` and `scripts/check_links.py` so `Site checks` passes cleanly when `docs/` is absent.
+
+## Session arena/c252594d-affil3 — merge record (2026-11-20)
+
+Main advanced with other sessions' registers while this branch was open. Resolution, deliberately conservative:
+- `data/products.json`, `data/flags.json`, `data/sources.json`, `data/questions.json`, `data/suggestions.json`, `tools/build.mjs`, `tools/verify.mjs`: taken from `main`, whose IDs were already reconciled by the later sessions.
+- `data/guides.json`: this branch's 13 guides, with main's corrected thermometer-guide note.
+- This branch's register additions were **not** merged because their IDs collide with main's and two factual findings disagree with main. Open for owner adjudication:
+  - **Chefman TurboFry RJ38-SQSS-8T wattage:** main lists 1700 W; this branch leaves it blank because the Amazon listing states 1000 W for the same model name (FLG-026). The maker page is the disputed source.
+  - **Chefman 450 °F Hi-Fry option:** this branch attributes the 450 °F figure to the other maker model RJ38-8T-BLACK (S12) and publishes 200–400 °F for RJ38-SQSS-8T; main's flags do not cover this.
+  - **Flag numbering:** this branch's FLG-031 to FLG-033 (ThermoMaven model names, ThermoMaven NSF/IP67 claim, CHEF iQ sensor count) and its status changes to FLG-012 and FLG-025 to FLG-027 differ from main's FLG-031 to FLG-035. They remain in this branch's history and in `git show cd15041:data/flags.json`.
+  - **Suggestions and questions:** this branch's S-07 to S-18 and extra K/Q/D rows are not in main's registers. Their content is kept in the branch history for re-adding under main's numbering.
+
+### Original session log (this branch)
+
+
+---
+
+# Session `c252594d` board — final integration + primary-source correction pass
+
+- Session ID: `c252594d`
+- Branch: `arena/c252594d-affil3` (branched from `main` @ `67cfe2f`)
+- Role: **final integration session** for the parallel wave, plus the primary-source correction
+  pass the register still needed.
+- Scope owned by this session: `COORDINATION.md`, `VERIFICATION.md`, `EXECUTIVE_SUMMARY.md`,
+  `README.md`, `data/*.json` (root register), `tools/build.mjs`, `tools/verify.mjs`,
+  and the generated root pages that `tools/build.mjs` owns. Nothing under
+  `counter/`, `counterwise/`, `crisp-index/`, `editorial/` or `legacy/` is edited by this
+  session; those surfaces belong to the sessions that built them.
+
+## Claim and state at claim time
+
+- `origin/main` @ `67cfe2f`; root publication "ShopNow Kitchen" builds 30 pages and passes
+  3,212 gate checks; all five CI workflows are green on `main`.
+- Eight pull requests were still open from parallel sessions: #28, #32, #33, #36, #38, #39,
+  #40, #44. Seven were reported `CONFLICTING` against `main`; #44 was `CLEAN`.
+- Their branches are left untouched on the remote. This session **merges their verified
+  content into the one live register** and regenerates with the one builder, rather than
+  landing eight competing copies of the same root pages.
+
+## Task board
+
+| ID | Task | Status | Files touched |
+| --- | --- | --- | --- |
+| I01 | Claim board; repo review line by line (register, tools, workflows, surfaces) | in progress | `COORDINATION.md` |
+| I02 | Primary-source re-verification of every published spec row (P01–P05) against the maker's own page | in progress | `data/sources.json`, `data/products.json` |
+| I03 | Correct P05 (CHEF iQ Sense): internal range is 32–212 °F; 1,000 °F is the ambient/heat-resistance ceiling | in progress | `data/products.json`, `data/flags.json` |
+| I04 | Publish P04 (ThermoMaven F1 Ace) specs from the manufacturer's own page; close FLG-025 | in progress | `data/products.json`, `data/flags.json`, `data/sources.json` |
+| I05 | Add the maker's second 8 Qt air-fryer page as a source; record the two-model conflict | in progress | `data/sources.json`, `data/flags.json` |
+| I06 | Resolve FLG-012 with Amazon's own ASIN page | in progress | `data/sources.json`, `data/flags.json` |
+| I07 | Port the still-open parallel branches' verified findings into the live register, re-verified | unclaimed | `data/*.json` |
+| I08 | Publication depth: additional question-shaped, source-backed guides | unclaimed | `data/guides.json`, generated `guides/` |
+| I09 | Suggestions board: design and marketing suggestions for owner review before implementation | unclaimed | `data/suggestions.json` |
+| I10 | Questions board: the missing-information questions that must be answered before decisions | unclaimed | `data/questions.json` |
+| I11 | Update `VERIFICATION.md`, the executive summary and `README.md` to the corrected record | unclaimed | `VERIFICATION.md`, `EXECUTIVE_SUMMARY.md`, `README.md` |
+| I12 | Rebuild, gate, link-check, PR to `main`, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md` |
+
+## Rules this session holds itself to
+
+- Nothing is filled in from inference. Every value published on the site has a dated fetch
+  against the maker's own page or the Amazon Associates program pages behind it.
+- Intended-product fields and observed-redirect fields stay in separate columns and are
+  never merged.
+- The submitted short links are **not** called invalid. Their compliance status stays open
+  (FLG-003) until one link is tested inside the enrolled Associates workflow.
+- No price, rating or review count is published anywhere.
+
+---
+
+## Session `c252594d` — work log
+
+### 2026-11-20 · Repo review (I01)
+
+Read the repository end to end: the root pipeline (`tools/build.mjs`, `tools/verify.mjs`), the
+registers (`data/*.json`), the five CI workflows, the generated pages, and the parallel surfaces
+(`counter/`, `counterwise/`, `crisp-index/`, `editorial/`, `legacy/`). Findings:
+
+- The root pipeline is one builder and one gate over one register. `tools/build.mjs` deletes and
+  regenerates the paths it owns (`index.html`, `shop/`, `products/`, `categories/`, `guides/`,
+  `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`,
+  `ledger/`, `measurement/`, `compliance/`, `about/`, `workflow/`, `privacy/`, `404.html`,
+  `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`) and leaves every other path alone. Images
+  live in `src/assets/img/` and are copied to `assets/img/` by the build — writing an image
+  straight into `assets/img/` is deleted by the next build. Worth knowing; it cost this session
+  one build cycle.
+- All five workflows were green on `main` at `67cfe2f`, and all four local gates passed
+  (root build + gate, editorial build + gate, disclosure check, archive check).
+- Eight pull requests were still open from parallel sessions (#28, #32, #33, #36, #38, #39, #40,
+  #44); seven reported `CONFLICTING` against `main`, #44 `CLEAN`. Their branches are left untouched
+  on the remote. Their *findings* are integrated below by re-verification rather than by landing
+  eight competing copies of the same root pages.
+
+### 2026-11-20 · Primary-source re-verification (I02–I06)
+
+Every product row was re-read against the manufacturer's own product page, fetched in full on
+2026-11-20. Full line-by-line table in `VERIFICATION.md` §B; sources in §A.
+
+| Row | Result |
+|---|---|
+| P01 CHEFMAN 6 qt dual basket | Every published value confirmed unchanged against Chefman's own page (S11). |
+| P02 Emeril Lagasse 26 qt | Capacity, size, voltage and model confirmed (S13). Wattage, weight and temperature range are not stated by the maker and stay blank. The 25-versus-24 preset conflict stands (FLG-024). |
+| P03 Chefman 8 qt | **Corrected.** Chefman publishes two 8 qt machines. The page for RJ38-SQSS-8T (S22) is the model the Amazon listing itself names, so the 200–400 °F range and 12.8 lb weight are now published from the maker's page. Wattage and size still disagree with the listing and stay blank (FLG-026). |
+| P04 ThermoMaven | **Corrected.** FLG-025 said no manufacturer page could be located; one exists (S21). The row now carries a specification grid, and a tagged outbound link, because the submitted short link for this row does resolve to this listing. FLG-031 and FLG-032 record what is still open. |
+| P05 CHEF iQ Sense | **Corrected.** The published range 32–1,000 °F was the ambient and heat-resistance ceiling. The internal range is 32–212 °F and is now what the table shows; the ambient figure has its own row (FLG-033 records the maker's own sensor-count contradiction). |
+| FLG-012 | **Closed** with Amazon's own definition of the ASIN (S23). |
+
+Nothing was filled in from inference. Disagreements between two official pages still produce a
+blank cell and a published flag.
+
+### 2026-11-20 · Publication depth (I08)
+
+Eight question-shaped guides added, taking the site from five to thirteen. Each is a question a
+buyer actually asks, each lists the source ids it used, and each states its disagreements rather
+than smoothing them:
+
+1. How much counter space does an air fryer really need?
+2. Dual basket or single basket: which one for four people?
+3. Air fryer, toaster oven or microwave: which earns the space?
+4. Instant-read or leave-in probe: which one do you need?
+5. How to read an Amazon listing before you buy a kitchen appliance
+6. Holiday hosting on a small counter: a plan for the big meal
+7. Air fryer presets: how many do you actually need?
+8. Air fryer chicken breast: how do you know it is done?
+
+The thermometer guide's closing note was rewritten: it still said no manufacturer page could be
+found for the tracked instant-read unit, which stopped being true on 2026-11-20.
+
+### 2026-11-20 · Decision boards (I09, I10)
+
+- Suggestions S-11 to S-18 added (18 total): design direction, which product leads the front page,
+  how opinionated the guides should be, article length, whether the shelf grows, how the guides
+  earn traffic, whether the evidence surfaces move up from the footer, and distribution.
+- Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added (17 known, 17 unknown, 12 discovery
+  actions). Q-16 and Q-15 are marked blocking: no tagged link on this site has yet been confirmed to
+  credit a sale, and the intended ThermoMaven variant is still unconfirmed.
+- K-07 and K-10 were corrected: all five short links have now resolved at some point, and all five
+  products have a maker page.
+
+### 2026-11-20 · Gate and tooling changes
+
+- `tools/verify.mjs`: source allowlist extended with `advertising.amazon.com` and
+  `www.thermomaven.com`, both official; new check that every extra specification row on a product
+  page actually reaches the page.
+- `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
+  internal one, a sensor count); guide count and cluster count on the front page and the categories
+  page are now read from the register instead of being written by hand.
+
+---
+
+# Session `e52ea644` — current-branch executive-summary correction (2026-11-20)
+
+- **Claim / scope:** `arena/e52ea644-affil3`; `EXECUTIVE-SUMMARY.md` and this appended log entry only. Read the existing task board first; did not modify product data, generated site pages, or another session's files.
+- **Finding:** the existing root executive summary contained claims inconsistent with the live register and current generated site (e.g. blanket statements that only four products were observed, that no buttons render, and old counts/paths). Replaced it with an executive brief grounded in current repository data and the passing build, and explicitly separated unverified product intent from observed destination.
+- **Sources linked for manual review:** Amazon Associates Operating Agreement (https://affiliate-program.amazon.com/help/operating/agreement), Program Policies (https://affiliate-program.amazon.com/help/operating/policies), FTC Endorsement Guides (https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking), and Google outbound-link guidance (https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links). Product source records remain in `data/sources.json`.
+- **Verification:** `npm run check` passed before the summary edit: build generated 32 pages, 3,484 checks passed, editorial build produced 21 pages, and the site checker passed all 21 pages. The summary edit is Markdown-only and does not alter generated pages. Working tree was clean after the check; final diff review remains required.
+- **Limits:** no external Amazon/FTC/Google page was fetched in this session. Linked source documents are provided for review, not newly asserted as re-verified. No login, Associates Central test, analytics deployment, Search Console property, or live conversion data was available. No PR or merge was created in this session.
+- **PR:** https://github.com/karagemop466-tech/Affil3/pull/59 — checks `disclosure`, `gate`, and `verify` all passed. Awaiting merge at the time this note was written.

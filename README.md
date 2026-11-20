@@ -26,8 +26,9 @@ verification pass rather than merging them into one file whose provenance nobody
 
 | File | What it is |
 |---|---|
-| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
-| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`EXECUTIVE-SUMMARY-c252594d.md`](EXECUTIVE-SUMMARY-c252594d.md) | **The current summary**: the five products, what was corrected on 2026-11-20, what is verified and from where, what is still open, and the decisions waiting |
+| [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md) | The first session's summary, kept for the record (describes an earlier, smaller shape of the site) |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's earlier summary |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
 | [`EXECUTIVE_SUMMARY-3b45b513.md`](EXECUTIVE_SUMMARY-3b45b513.md) | The Counter Desk edition: what is verified, what is withheld and why, and the two corrections it made to earlier findings |
 | [`VERIFICATION-3b45b513.md`](VERIFICATION-3b45b513.md) | Line-by-line verification log for that edition, with every official URL |
