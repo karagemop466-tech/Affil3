@@ -824,6 +824,7 @@ and the discrepancy is flagged for owner review rather than silently merged.
 - FLG-005 product-intent fields intentionally blank; never merged with observed fields
 - FLG-006 direct fetch of the FTC Endorsement Guides page blocked (URL provided for manual review)
 - **FLG-022** cross-session redirect-observation conflict for B00hJ57DV and B0c8moW59 (see above)
+- **FLG-023** this session's first `data/suggestions.json` contained a trailing comma (invalid JSON); fixed, and the root-gate parse check now covers it (see integration actions)
 
 ## Integration actions (this session)
 
@@ -834,16 +835,29 @@ and the discrepancy is flagged for owner review rather than silently merged.
   - `README.md` (content): consolidated to describe the repository, the live root
     site, `editorial/`, and this session's `docs/` site and tooling.
   - `data/products.json`, `data/sources.json`, `data/suggestions.json`,
-    `data/questions.json` (add/add): the canonical top-level versions (owned by the
-    root build) are kept; this session's records are preserved under
-    `data/c46310a7-affil3/` with identical content.
+    `data/questions.json` (add/add): during the rebase the side labels are
+    inverted relative to a merge — `--theirs` is the commit being applied (this
+    session). An initial resolution took this session's records over the root
+    build's canonical files and broke `npm run check` (JSON parse + undefined
+    data model). **Corrected:** the canonical top-level versions were restored
+    from `origin/main`, and this session's records are preserved unchanged under
+    `data/c46310a7-affil3/` (verified as valid JSON).
+  - This session's `data/campaign-ledger.json` was removed from the top level
+    (no canonical counterpart; the session copy lives in `data/c46310a7-affil3/`).
+- **Self-fix logged (FLG-023):** this session's first `data/suggestions.json`
+  contained a trailing comma (invalid JSON). It was fixed in both the session
+  copy and — after the canonical restore — the root build's file. Caught only
+  because the root build gate parses every JSON file; lesson: run the full gate
+  suite on a session's data before opening a PR.
 - Pages: source stays `main` at `/` (the `/docs` source change was refused with
   HTTP 403 in an earlier session — FLG-020). The live site remains the root build.
   This session's `docs/` site is a fully verified alternate artifact in the
   repository (all checks pass locally).
-- Root-site gate re-run after integration: `npm run check` — 23 pages built, gate passed.
-- This session's docs/ checks re-run after integration: sitemap coverage OK,
-  0 broken internal links, all routes render.
+- Root-site gate re-run after integration: `npm run check` — 23 pages built,
+  **1317 checks passed, 0 failed**.
+- Editorial gate: `python3 tools/check_site.py` — exit 0.
+- This session's docs/ checks re-run after integration: sitemap coverage OK
+  (15 pages), 0 broken internal links (408 links), all routes render.
 
 ## Completion record (this session)
 
