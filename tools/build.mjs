@@ -27,6 +27,7 @@ const guides = read('data/guides.json').guides;
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
 const decisionPaths = read('data/decision-paths.json').paths;
+const cadence = read('data/cadence.json');
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
@@ -925,25 +926,42 @@ ${table(['Gate', 'Check', 'Method', 'Status'], [
 // Workflow (publishing cadence + who does what)
 add({
   path: '/workflow/', title: 'Publishing workflow',
-  description: 'How a guide gets made, the cadence, the pre-publish gates, and the parallel-session coordination rules.',
-  body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, and the gates it passes on the way.</p></section>
+  description: 'How a guide gets made, the cadence register, the pre-publish gates, and the parallel-session coordination rules.',
+  body: `<section class="page-head"><p class="kicker">Workflow</p><h1>How a guide gets made</h1><p class="deck">The pipeline from a reader question to a published, source-linked guide, the gates it passes on the way, and the topics actually queued.</p></section>
 <div class="prose">
-<h2>The cadence</h2>
-<p>Current proposal: one new guide every two weeks (suggestion S-02 option A). A faster cadence or a pre-review batch of ten posts are on the decision board; nothing changes until you choose. At the current count, the site has five original guides — below the “at least 10 posts” rule of thumb Amazon's application-review help page mentions (S11, FLG-007).</p>
+<h2>The cadence, and why it is that slow</h2>
+<p>${esc(cadence.cadence.current)}, starting ${esc(dateLong(cadence.cadence.starts))}. ${esc(cadence.cadence.why_this_cadence)}</p>
+<p>The cadence changes when a measured trigger fires, not when the schedule feels slow: ${esc(cadence.cadence.measured_trigger_to_change)}</p>
+<p>Topics are chosen like this: ${esc(cadence.cadence.how_topics_are_chosen)}</p>
+<div class="cadence-stats">
+  <div class="flag-stat"><span class="n">${guides.length}</span><span class="l">published</span></div>
+  <div class="flag-stat"><span class="n">${cadence.queued.length}</span><span class="l">queued</span></div>
+  <div class="flag-stat"><span class="n">${10 - guides.length > 0 ? 10 - guides.length : 0}</span><span class="l">to the 10-post mark</span></div>
+</div>
+<h2>The queue</h2>
+<table class="checklist"><thead><tr><th scope="col">ID</th><th scope="col">Working title</th><th scope="col">Shape</th><th scope="col">Why this one</th><th scope="col">Sources it would need</th></tr></thead><tbody>
+${cadence.queued.map((t) => `<tr><td><strong>${esc(t.id)}</strong></td><td><strong>${esc(t.title)}</strong>${t.blocked_by ? `<br><span class="small muted">Open question: ${esc(t.blocked_by)}</span>` : ''}</td><td>${esc(t.shape)}</td><td>${esc(t.why_this_one)}</td><td>${t.sources_needed.map(srcLink).join(', ')}</td></tr>`).join('\n')}
+</tbody></table>
+<p class="small muted">Working titles are editorial hypotheses. They are not claims about search volume, ranking, or product superiority, and no such claim is made anywhere on this site.</p>
+<h2>What this publication will not do</h2>
+<ul>
+${cadence.not_doing.map((n) => `<li><strong>${esc(n.topic)}.</strong> ${esc(n.why_not)}</li>`).join('\n')}
+</ul>
 <h2>From question to page</h2>
 <ol>
-<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the buyer questions in our guides' comments of fact — the decision board tracks this (S-02, Q-09).</li>
-<li><strong>Answer it honestly.</strong> Facts come from official sources only (the observed listings on the Shop table, USDA food-safety pages, Amazon's own help pages). Opinion and reasoning are labeled as such.</li>
-<li><strong>Link every claim.</strong> Each guide's Sources section lists the exact source IDs used; the <a href="${esc(href('/sources/'))}">source register</a> records how each one was checked.</li>
-<li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="${esc(href('/compliance/'))}">Compliance</a>).</li>
-<li><strong>Publish and index.</strong> The new guide is added to the sitemap and the RSS feed automatically at build time. Search Console submission is an owner step (FLG-013, SG-29).</li>
+<li><strong>Pick the question.</strong> From measured queries once Search Console is verified (discovery task D-09 ${flagLinks(['FLG-013'])}), and from the queue above before then.</li>
+<li><strong>Read the primary sources in full.</strong> The manufacturer's page and the listing, both in full. A guide that cites a search excerpt is not finished.</li>
+<li><strong>Write down the conflict.</strong> If two official pages disagree, the guide publishes the disagreement rather than picking a winner. That rule produced most of what is distinctive on this site.</li>
+<li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, every source fetched and dated, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="${esc(href('/compliance/'))}">Compliance</a>).</li>
+<li><strong>Publish and index.</strong> The guide is added to the sitemap and the RSS feed automatically at build time.</li>
 </ol>
 <h2>Parallel-session coordination</h2>
 <p>This repository may be worked on by several agent sessions at once. The shared task board is <code>COORDINATION.md</code> at the repository root: tasks are claimed there, scopes do not overlap, and shared outputs (registers, navigation, the front page) are integrated only by a final integration pass that re-verifies everything. Conflicts are resolved without discarding the other session's work, and the resolution is logged.</p>
 <h2>What is automated, and what is not</h2>
 <ul>
-<li>Automated: site generation, the compliance gate, link checking, sitemap/feed updates, drift detection in CI.</li>
-<li>Human-gated: Associates Central link validation (G-02), Search Console verification, analytics-endpoint deployment, option choices on the decision board, any ledger import.</li>
+<li><strong>Automated:</strong> site generation, the compliance gate, the source-freshness gate, link checking, sitemap and feed updates, build-drift detection in CI.</li>
+<li><strong>Requires the owner's credentials:</strong> Associates Central link validation (gate G-02 ${flagLinks(['FLG-005'])}), Search Console verification, analytics-endpoint deployment, any ledger import.</li>
+<li><strong>Requires a judgment:</strong> which question to answer next, and whether a conflict is worth publishing. Neither is delegated.</li>
 </ul>
 </div>`,
 });

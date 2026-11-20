@@ -18,6 +18,7 @@ const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
 const decisionPaths = read('data/decision-paths.json').paths;
+const cadence = read('data/cadence.json');
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
@@ -235,6 +236,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const hits = (shopHtml.match(new RegExp(`data-product="${p.id}" data-placement="at-a-glance"`, 'g')) || []).length;
     check(`at-a-glance grid row for ${p.id} is present exactly once`, p.no_buy_link ? hits === 0 : hits === 1, `${hits} rendered`);
   }
+
+  // cadence register: a plan may name topics, but it may not smuggle in a claim it cannot measure.
+  check('cadence register has a stated cadence', !!cadence.cadence && !!cadence.cadence.current);
+  check('cadence register states a measured trigger for changing pace', !!cadence.cadence.measured_trigger_to_change);
+  check('cadence register has at least three queued topics', (cadence.queued || []).length >= 3, `${(cadence.queued||[]).length}`);
+  for (const t of cadence.queued) {
+    check(`${t.id} names a shape for the piece`, !!t.shape);
+    check(`${t.id} says why this topic and not another`, !!t.why_this_one && t.why_this_one.length > 40);
+    check(`${t.id} cites only sources that exist`, (t.sources_needed || []).length > 0 && t.sources_needed.every((id) => SRC.has(id)), (t.sources_needed||[]).join(','));
+    check(`${t.id} makes no popularity, volume or ranking claim`, !/\b(search volume|high[- ]volume|popular demand|ranking potential|rank(s|ing)? (well|high)|low competition|high[- ]converting|best[- ]selling)\b/i.test(`${t.title} ${t.why_this_one}`), t.id);
+  }
+  check('cadence register names what the publication will not do', (cadence.not_doing || []).length >= 1);
+  const wf = fs.readFileSync(path.join(DOCS, 'workflow', 'index.html'), 'utf8');
+  for (const t of cadence.queued) check(`queued topic ${t.id} appears on the workflow page`, wf.includes(t.id));
 
   // sitemap coverage
   for (const u of pageUrls) check(`sitemap includes ${u}`, sitemapUrls.includes(u));

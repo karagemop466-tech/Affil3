@@ -1,0 +1,71 @@
+{
+  "note": "The publishing plan, stated as a plan rather than a promise. A topic enters 'queued' only when someone has decided to write it; it enters 'drafted' only when a file exists with a source for every factual claim. No topic here is a claim about search volume, popularity or ranking potential - those words are banned from this register and checked by tools/verify.mjs. The order is a plan, not a forecast.",
+  "cadence": {
+    "current": "One guide every two weeks (suggestion S-05, option A)",
+    "starts": "2026-12-04",
+    "why_this_cadence": "A guide at this site's standard needs a manufacturer page read in full, a listing read in full, and at least one conflict or gap written up honestly. That is a day of work, not an hour. A weekly cadence at that standard would produce the thin pages this site exists to avoid.",
+    "measured_trigger_to_change": "Two consecutive four-week windows in which published guides average at least 50 outbound clicks a month from the site's own collector. Below that, more guides do not help; better ones do.",
+    "how_topics_are_chosen": "From Search Console query data once the property is verified (discovery task D-09), and from the questions readers actually ask before then. Not from intuition, and not from keyword-volume guesses this project cannot measure."
+  },
+  "queued": [
+    {
+      "id": "T-01",
+      "title": "Does an air fryer actually save you money on electricity?",
+      "shape": "Cost comparison",
+      "why_this_one": "It is the first real question a cautious buyer asks once they accept the appliance works. It can be answered with arithmetic the reader can check: a stated wattage, a stated cook time, and a published electricity rate. No manufacturer page states a running cost, so the whole value is in showing the working.",
+      "sources_needed": ["S11", "S12", "S10"],
+      "blocked_by": "Needs a defensible electricity price source. A US federal average is published, but it is a national number and this site should not present it as the reader's own rate.",
+      "status": "queued"
+    },
+    {
+      "id": "T-02",
+      "title": "What '450°F' means on four different appliance labels",
+      "shape": "Investigation",
+      "why_this_one": "Three tracked products make a temperature claim and each means something different: a two-minute finish, a sustained setting, and an ambient sensor ceiling. That is a real finding from reading the makers' pages, and no other page can write it without doing the same reading.",
+      "sources_needed": ["S11", "S12", "S15"],
+      "blocked_by": "",
+      "status": "queued"
+    },
+    {
+      "id": "T-03",
+      "title": "The two-minute test that tells you whether your air fryer is lying to you",
+      "shape": "Practical test",
+      "why_this_one": "A reader can run it at home with a thermometer and a slice of bread. It turns a specification page into something usable, and it gives the thermometer and the fryer a reason to be on the same page.",
+      "sources_needed": ["S10", "S20"],
+      "blocked_by": "",
+      "status": "queued"
+    },
+    {
+      "id": "T-04",
+      "title": "Rotisserie, dehydrate, proof: the modes people pay for and never use",
+      "shape": "Buying advice",
+      "why_this_one": "Directly supports the multi-function guide without repeating it: this one asks which accessories each mode physically requires, and therefore which modes are really included.",
+      "sources_needed": ["S13"],
+      "blocked_by": "The accessory count on the tracked oven is itself in dispute (FLG-024), so this guide has to present the conflict rather than a number.",
+      "status": "queued"
+    },
+    {
+      "id": "T-05",
+      "title": "What to do when the listing and the maker disagree about the model number",
+      "shape": "Reader service",
+      "why_this_one": "This site has a documented case (FLG-026) and a repeatable method for resolving it. It is the honest version of a 'spot a fake' post, and it applies to every appliance on the shelf.",
+      "sources_needed": ["S12", "S16", "S04"],
+      "blocked_by": "",
+      "status": "queued"
+    }
+  ],
+  "not_doing": [
+    {
+      "topic": "Best air fryers of 2026",
+      "why_not": "A ranked list requires either testing every unit or reproducing someone else's ranking. This site does neither, and a ranking would force it to hide the trade-offs it currently publishes."
+    },
+    {
+      "topic": "Amazon Prime Day deals roundup",
+      "why_not": "It would require price data from an Amazon feed. The site publishes no prices by policy (S03, FLG-016), and a deals post that cannot show a price is worse than no post."
+    },
+    {
+      "topic": "Anything generated in bulk to fill the archive",
+      "why_not": "Amazon's spam policy describes scaled content abuse, and its application review asks for robust original content (S09, S19). Volume is the failure mode here, not the goal."
+    }
+  ]
+}

@@ -290,3 +290,6 @@ p.resolution { background: #eef5f1; border-left: 3px solid #2f7d5d; padding: 9px
 .src-meta dt { font: 700 10.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 3px; }
 .src-meta dd { margin: 0; font-size: 13.5px; color: var(--ink); }
 .src-quote { margin: 0 0 10px; padding: 10px 13px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; font-size: 13.5px; font-style: italic; color: var(--ink); }
+
+/* ---- cadence board ---- */
+.cadence-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 22px; }
