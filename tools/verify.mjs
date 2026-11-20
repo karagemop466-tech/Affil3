@@ -16,6 +16,8 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const articles = read('data/articles.json').articles;
+const decisions = read('data/decisions.json');
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
@@ -75,6 +77,18 @@ for (const p of products) {
 check('five submitted product rows present', products.length === 5, String(products.length));
 for (const g of guides) {
   for (const sid of g.sources) check(`guide ${g.slug} source ${sid} exists`, SRC.has(sid), sid);
+}
+for (const a of articles) {
+  for (const sid of a.sources) check(`article ${a.slug} source ${sid} exists`, SRC.has(sid), sid);
+  check(`article ${a.slug} has a topic and read time`, !!a.topic && a.read_minutes > 0, a.topic);
+  check(`article ${a.slug} title within 90 characters`, a.title.length > 0 && a.title.length <= 74, String(a.title.length));
+  check(`article ${a.slug} has image alt text`, !!a.image_alt, a.image);
+}
+for (const s of decisions.suggestions) {
+  check(`decision ${s.id} has options and a recommendation`, s.options.length >= 2 && !!s.recommendation, s.id);
+}
+for (const q of decisions.questions) {
+  check(`decision ${q.id} has the four fields`, !!q.question && !!q.have && !!q.missing && !!q.who && !!q.closes, q.id);
 }
 for (const f of flags) for (const sid of f.sources) check(`flag ${f.id} source ${sid} exists`, SRC.has(sid), sid);
 
@@ -148,7 +162,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
     // Kept in step with DASHBOARDS in tools/build.mjs; /privacy/ and /design-brief/ were added by
     // session 66f2548a so the two new pages cannot silently lose their footer entry.
-    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
+    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/decisions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
       check(`${name}: footer links ${d}`, footer.includes(`${base}${d}`));
     }
     // links
@@ -217,6 +231,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`guide ${g.slug} lists its sources`, /Sources for this guide/.test(h));
     check(`guide ${g.slug} states it is not a test`, !/we tested|our test kitchen|we cooked/i.test(h));
   }
+  for (const a of articles) {
+    const f = path.join(DOCS, 'articles', a.slug, 'index.html');
+    check(`article page exists for ${a.slug}`, fs.existsSync(f), a.slug);
+    if (!fs.existsSync(f)) continue;
+    const h = fs.readFileSync(f, 'utf8');
+    check(`article ${a.slug} has a hero image`, /class="article-hero"/.test(h) && /<img [^>]*alt="[^"]+"/.test(h));
+    check(`article ${a.slug} lists its sources`, /Sources for this article/.test(h));
+    check(`article ${a.slug} has a data-article attribute`, /data-article="/.test(h));
+    check(`article ${a.slug} is labelled as illustration`, /editorial illustration, not the reviewed unit/i.test(h));
+    check(`article ${a.slug} names its source ids`, a.sources.every((id) => h.includes(id)));
+    check(`article ${a.slug} makes no hands-on test claim`, !/we tested|our test kitchen|we cooked/i.test(h));
+  }
+  check('Journal index exists', fs.existsSync(path.join(DOCS, 'articles', 'index.html')));
+  check('decision board exists', fs.existsSync(path.join(DOCS, 'decisions', 'index.html')));
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
   check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
@@ -229,26 +257,29 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
+  const feedArticleLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/articles/'));
+  check('feed has one item per Journal article', feedArticleLinks.length === articles.length, `${feedArticleLinks.length} vs ${articles.length}`);
+  for (const l of feedArticleLinks) check(`feed article in sitemap: ${l}`, sitemapUrls.includes(l));
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
-  // One site to index: every superseded edition that publishes a page of its own has to be out of
-  // the index, and no path this build owns may be excluded by mistake (FLG-037).
-  const editions = extraEditions(ROOT);
+  // One site to index. Every superseded edition that publishes a page of its own, and every session
+  // record left at the repository root, has to be out of the index; the list is generated from the
+  // tree, so a build that falls behind it fails here (FLG-042).
   const robotsTxt = fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8');
-  for (const e of editions) check(`robots.txt excludes superseded edition /${e}/`, robotsTxt.includes(`Disallow: /${e}/`), e);
   const disallowed = [...robotsTxt.matchAll(/^Disallow:\s*(\/[^\s]+)/gm).map((m) => m[1])];
+  for (const e of extraEditions(ROOT)) check(`robots.txt excludes superseded edition /${e}/`, disallowed.includes(`/${e}/`), e);
   for (const doc of rootMarkdown(ROOT).map((n) => `/${n}`)) check(`robots.txt excludes the session record ${doc}`, disallowed.includes(doc), doc);
   for (const o of OWNED) {
-    if (!o.endsWith('.html') && !o.includes('.')) check(`robots.txt does not exclude this build's /${o}/`, !disallowed.some((d) => d === `/${o}/`), d0(o, disallowed));
+    if (!o.endsWith('.html') && !o.includes('.')) check(`robots.txt does not exclude this build's /${o}/`, !disallowed.includes(`/${o}/`), d0(o, disallowed));
   }
   // Counts in prose come from the rows, so an unrendered token means the data grew past the builder.
-  check('no unrendered count token reaches a reader', !/\{(guide|product|flag|openflag)\}/.test(allHtml), (allHtml.match(/\{(guide|product|openflag)\}/) || [''])[0]);
-  // Structured data must parse and must not invent a URL for the page it sits on.
+  check('no unrendered count token reaches a reader', !/\{(guide|product|article|suggestion|question|flag|openflag)\}/.test(allHtml), (allHtml.match(/\{(guide|product|article|suggestion|question|flag|openflag)\}/) || [''])[0]);
+  // Structured data must parse, and a trail must not point at the page it sits on.
   const ldBlocks = [...allHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map((m) => m[1]);
   check('every JSON-LD block parses', ldBlocks.length > 0 && ldBlocks.every((b) => { try { JSON.parse(b); return true; } catch { return false; } }), `${ldBlocks.length} blocks`);
-  const crumbs = ldBlocks.map((b) => { try { return JSON.parse(b); } catch { return null; } }).filter((o) => o && o['@type'] === 'BreadcrumbList');
+  const crumbs = ldBlocks.map((bl) => { try { return JSON.parse(bl); } catch { return null; } }).filter((o) => o && o['@type'] === 'BreadcrumbList');
   check('breadcrumb trails exist on guides and product pages', crumbs.length >= guides.length + products.length, `${crumbs.length} trails for ${guides.length + products.length} pages`);
-  check('no breadcrumb trails itself with a URL to the current page', crumbs.every((c) => c.itemListElement.every((it, i, a) => i === a.length - 1 ? !it.item : !!it.item)));
+  check('no breadcrumb trails itself with a URL to the current page', crumbs.every((c) => c.itemListElement.every((it, i, a) => (i === a.length - 1 ? !it.item : !!it.item))))
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
 }
 

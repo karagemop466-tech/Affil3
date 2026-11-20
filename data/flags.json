@@ -74,12 +74,12 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "An earlier revision of this flag cited S11 for the 'at least 10 posts' rule of thumb; S11 is Chefman's product page, and the help page the sentence came from is S19, so the citation is corrected here (see FLG-041). The count is written as a token and filled by the builder, because a hand-typed number on a page about provenance is the one typo this site cannot afford. As of this build the site has {guide} guides and {product} product rows, which reaches the rule of thumb read from S19; the reading is still an excerpt awaiting a manual re-check, so this flag stays open until the account status behind Q-03 is known. Adding content remains a decision for the owner (suggestions S-05 and S-07).",
+      "detail": "An earlier revision of this flag cited S11 for the 'at least 10 posts' rule of thumb; S11 is Chefman's product page, and the Associates application-review help page that the sentence came from is S19, so the citation is corrected here (FLG-041) and in the publishing workflow. The count is now filled by the builder from the rows that exist: this build has {guide} guides, {product} product rows and {article} Journal articles, which reaches the rule of thumb as it was read from S19. The flag stays open because nobody has read that help page in full from a signed-in account, and because it does not say whether guides count as posts. Adding content remains a decision for the owner (suggestions S-05 and S-07).",
       "sources": [
         "S19",
         "S02"
       ],
-      "manual_step": "Read the application-review help page in a signed-in Associates account and confirm what it asks for, then decide the content plan (S-05) before submitting the site for review."
+      "manual_step": "Read the application-review help page (S19) in a signed-in Associates account, confirm what it asks for, then decide the content plan (S-05) before submitting the site for review."
     },
     {
       "id": "FLG-008",
@@ -468,74 +468,68 @@
     },
     {
       "id": "FLG-041",
-      "severity": "low",
-      "status": "resolved",
-      "area": "source citation",
-      "title": "A flag cited the wrong source id for the 10-posts rule of thumb (corrected)",
-      "detail": "FLG-007 cited S11 as the page that says a rule of thumb is at least 10 posts. In this register S11 is Chefman's product page for the dual-basket air fryer; the Associates application-review help page is S19. The mismatch was found by reading each source id in the flag register against data/sources.json on 2026-11-20 (session ca51f5b3), not by fetching anything new. The citation is corrected in FLG-007 itself, and the excerpt-reading caveat on S19 is kept rather than upgraded, because nobody has read that page in full from a signed-in account.",
-      "impact": "No product claim changed. One provenance pointer was wrong and now is not.",
-      "manual_step": "None for the owner. Confirming the rule of thumb itself needs a signed-in read of S19.",
-      "sources": [
-        "S19",
-        "S11"
-      ],
-      "resolution": "FLG-007 now cites S19; the same sentence in the publishing workflow page was corrected in the same commit."
-    },
-    {
-      "id": "FLG-042",
       "severity": "medium",
-      "status": "resolved",
-      "area": "site structure",
-      "title": "Two superseded editions were still crawlable; the exclusion list is derived now, and that is necessary but not sufficient",
-      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ is both disallowed and carries noindex; /crisp-index/ and /legacy/ are disallowed; /counter/ and /counterwise/ were neither, and both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain as the root publication. Their HTML was not edited, in keeping with the archive rule that preserved editions are not corrected, so the fix is made where this build has authority: robots.txt is now generated from the repository tree, so every root directory that publishes a page of its own and is not written by this build is excluded automatically, and tools/verify.mjs fails if the file ever falls behind the tree. Residual limits, stated plainly and consistent with FLG-038 (session d19dff2c): this publication is served at a project path, and Google reads robots.txt only from the host root, so these Disallow lines bind a crawler on a custom domain or a host-root deploy and document intent here; they are not the whole answer. A disallowed page that carries no noindex tag can still be indexed by URL, and a sub-path robots.txt file is not read at all. What this session could do inside its own scope: it removed the one link that walked a crawler from every published page into a second edition (the /editorial/ entry in the footer dashboard group), and it made the generated file match the tree so the intent is stated where it is honoured. The remaining step is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
-      "impact": "One site is crawlable instead of three, which is what the brief asks for and what the sitemap already claims.",
-      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/ and crisp-index/ need a noindex meta tag on their own pages, which is an edit inside those directories and is requested in COORDINATION.md rather than performed here.",
-      "sources": [
-        "S09",
-        "S25"
-      ],
-      "resolution": "Generated exclusion list added to tools/build.mjs and gated by tools/verify.mjs; negative test in the merge log: deleting one line makes the build fail."
-    },
-    {
-      "id": "FLG-043",
-      "severity": "high",
-      "status": "resolved",
-      "area": "publishing gate",
-      "title": "The gate walked a shorter page list than the builder wrote, so five published pages were never checked",
-      "detail": "tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder's list grew to cover /compare/, /workflow/, /privacy/, /design-brief/ and now /find/; the gate's copy did not, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.",
-      "impact": "Check count rose from 3,477 to 4,723 over 38 pages, and the previously unchecked pages passed. A green build now means what it says.",
-      "manual_step": "None. Two negative tests were run and are recorded in the merge log: a stripped sponsored attribute and a deleted robots line each fail the build.",
-      "sources": [
-        "S06"
-      ],
-      "resolution": "Shared tools/site-scope.mjs consumed by builder and gate; OWNED drift is no longer possible without a failing check."
-    },
-    {
-      "id": "FLG-044",
-      "severity": "low",
       "status": "open",
       "area": "link resolution",
-      "title": "A third dated fetch of the submitted short links again returned the Amazon home page",
-      "detail": "On 2026-11-20 an independent session fetched https://link.amazon/B04G1MEwY and was returned amazon.com's home page rather than a product page, with no product title and no ASIN in the result. This corroborates FLG-031 and FLG-004 rather than adding a new kind of failure. In the same round the three observed listings for that session's rows were fetched directly by their /dp/ identifier and every title matched the register. The register therefore still carries its observed mapping from the earlier dated rounds. No short link is claimed to be dead, and FLG-003 stays open: the compliance status of the supplied links is unresolved, not invalid.",
-      "impact": "Nothing published changes. The evidence that a sandbox fetch cannot test link behaviour keeps growing, which is why gate G-02 belongs to the owner.",
-      "manual_step": "Open each short link in a signed-in browser, record the product name and the 10-character ASIN from the address bar, and keep that record as the confirmation source. That closes Q-01 and narrows FLG-003.",
+      "title": "Source note S05 contradicted the dated P04 correction; the 2026-11-20 re-check could not re-observe any short link",
+      "detail": "Source note S05 said that B0c8moW59 'did not resolve to a product listing'. The P04 correction in data/products.json, and the retest in data/observations/2026-11-20-retest.json, record that the same link resolved to B0DHZTCNR5 on two dated fetches on 2026-11-20. The S05 sentence was stale; it has been corrected to match the dated record. In a further re-check on the same date (data/observations/2026-11-20-dd2ad3dc-recheck.json), all five short links returned the Amazon home page rather than a product page, so none of the five destinations was re-observed in that round. The five /dp/ pages were fetched directly, and each page title contains the register's observed title with the observed ASIN matching. Nothing here shows a link to be dead, and no intended ASIN has been set.",
+      "impact": "The observed destination of each short link rests on the earlier dated rounds only. The S05 note now agrees with the register, so a reader cannot take the stale sentence as evidence against P04.",
+      "manual_step": "Open each of the five short links in a signed-in Associates browser session and record the product title and the 10-character ASIN from the address bar, together with the date. Compare the result with the observed mappings in data/products.json.",
       "sources": [
         "S04",
         "S05"
       ]
     },
     {
-      "id": "FLG-045",
-      "severity": "low",
+      "id": "FLG-042",
+      "severity": "medium",
       "status": "open",
-      "area": "reader trust",
-      "title": "Session records at the repository root are served as plain text on the public site",
-      "detail": "The executive summaries each session wrote, the design brief, the QA brief, the decision review and the verification log sit at the repository root, which is also the web root because Pages publishes main at /. With .nojekyll set, each is served as unrendered markdown at a guessable URL, so a reader who wanders there finds internal session notes, and a pile of near-identical summaries is itself the 'generated, not published' tell the owner asked about. The correct half was already in place: none of them is in the sitemap. This session did not move another session's file; it added a derived robots exclusion for every markdown file at the root, generated from the tree so it cannot go stale, and left the relocation itself as a decision (S-22). tools/verify.mjs fails if a new root-level file joins the list and the exclusion does not.",
-      "impact": "Index risk only; nothing on a reader-facing page changed. GitHub still renders each file from the repository view.",
-      "manual_step": "Choose S-22: move them under legacy/session-records/ in one commit, or keep them where they are with the exclusion in place.",
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
       "sources": [
-        "S09"
+        "S09",
+        "S25"
       ]
+    },
+    {
+      "id": "FLG-043",
+      "severity": "medium",
+      "status": "open",
+      "area": "crawl and indexing",
+      "title": "Crawl control at a project path: robots.txt is not read from /Affil3/, and the other editions are not all noindexed",
+      "detail": "tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder's list grew to cover /compare/, /workflow/, /privacy/, /design-brief/, /articles/, /decisions/ and now /find/; the gate's copy did not follow, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.",
+      "impact": "Near-duplicate copies of the same guides can compete with the root publication in search results. The sitemap is not discovered at the project path, so it must be submitted by hand.",
+      "manual_step": "None. Two negative tests were run on 2026-11-20 and are recorded in COORDINATION.md: stripping one rel=\\\"sponsored\\\" attribute and deleting one robots exclusion each make the build fail.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-044",
+      "severity": "low",
+      "status": "resolved",
+      "area": "documentation",
+      "title": "README stated a stale check count and listed a /docs/ publication that is not in the tree (corrected)",
+      "detail": "README.md said that node tools/verify.mjs runs 2,808 checks. The run on 1f65f70 reports 4,588 passed checks. The README also listed a /docs/ publication built from scripts/ and server/, but git ls-files shows no docs/ path at 1f65f70. The count is now stated as a figure from the current run, and the /docs/ row says the directory is not present. scripts/ and server/ exist and were not changed.",
+      "impact": "A reader could follow a link or a command that does not match the repository. No published page was wrong.",
+      "manual_step": "None. Re-check the count after any change to tools/verify.mjs.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-045",
+      "severity": "medium",
+      "status": "open",
+      "area": "sitemap / generator",
+      "title": "crisp-index/sitemap.xml had two writers and malformed URLs on main; the sitemap gate passed only by substring match",
+      "detail": "On main, crisp-index/sitemap.xml was written by scripts/build_sitemap.py. That script (1) collapsed https:// to https:/ in every <loc>, and (2) omitted the crisp-index/ path segment, so every entry pointed at a path that does not exist on the site (for example https:/…/about/index.html). The gate in the same script (check.yml runs --check) compared with a substring test, so the malformed entries still counted as present. The Crisp Index generator (tools/build_site.py) writes the same file with the correct URLs. Session 4c8c7811 changed scripts/build_sitemap.py so that it refuses to write, excludes noindex pages (the 404 page), and checks exact <loc> values against files on disk. The sitemap was regenerated by tools/build_site.py.",
+      "impact": "Before this fix the Crisp Index sitemap gave search engines no usable URL for any of its pages. The surface is disallowed in robots.txt, so this affects that surface only, not the root site that GitHub Pages indexes.",
+      "manual_step": "Choose S-28: move them under legacy/session-records/ in one commit, or keep them where they are with the generated exclusion in place.",
+      "sources": []
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",

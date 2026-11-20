@@ -30,6 +30,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/articles/">Journal</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/find/">Find yours</a>
       <a href="/Affil3/about/">About</a>
@@ -40,7 +41,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-20 to S-25 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, what happens after a seasonal page, where the session records live, whether the fit check is measured, and which marketplace the buttons belong to.</p></section>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured.</p></section>
 <div class="choice-grid">
 <section class="choice-card" id="S-01">
   <p class="kicker">S-01 · Two publications in one repository</p>
@@ -163,40 +164,70 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
 </section>
 <section class="choice-card" id="S-21">
-  <p class="kicker">S-21 · Reader capture, without a third-party form</p>
-  <p class="choice-current">Current: <span class="badge">Not implemented. RSS only</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep RSS and an email address as the only return paths<br><span class="muted small">Tradeoff: No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds.</span></li><li><strong>B.</strong> Add a hosted form provider<br><span class="muted small">Tradeoff: Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done.</span></li><li><strong>C.</strong> Self-host a form endpoint next to the collector<br><span class="muted small">Tradeoff: Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. The site has 15 guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already).</p>
+  <p class="kicker">S-21 · Choose the next guide from measured queries, not instinct</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep writing hypothesis-led guides on editorial judgement (current).<br><span class="muted small">Tradeoff: Fast, and the house style (S-19) keeps the quality bar up. Topic choice stays guesswork, and the &#39;then measure whether anyone arrives&#39; half of the plan never happens.</span></li><li><strong>B.</strong> Pause new guides until query evidence exists: verify Search Console (D-05), read two Performance-report cycles, then write against measured queries.<br><span class="muted small">Tradeoff: Topic choice becomes evidence-based. The site sits still for weeks, right through the season when a seasonal guide (S-23) has its best chance of being useful to a reader.</span></li><li><strong>C.</strong> Run both tracks: keep a small seasonal calendar (S-23) moving while the measurement is set up, and switch topic selection to measured queries once the Performance report has real rows.<br><span class="muted small">Tradeoff: A little bookkeeping now. Calendar entries that earned no arrivals get retired on evidence instead of opinion, and nothing is written against a number that does not exist yet.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> C. It is the only option that keeps the site alive this week and closes the measurement gap this month; B alone misses the season, A alone never measures.</p>
 </section>
 <section class="choice-card" id="S-22">
-  <p class="kicker">S-22 · Session records sitting in the web root</p>
-  <p class="choice-current">Current: <span class="badge">Excluded from the index in this session; files not moved</span></p>
-  <ul class="opts"><li><strong>A.</strong> Leave them, keep the generated robots exclusion<br><span class="muted small">Tradeoff: The URLs still resolve for anyone who guesses them, which is fine for a repository and odd for a publication.</span></li><li><strong>B.</strong> Move them under legacy/session-records/ in one commit<br><span class="muted small">Tradeoff: Cleaner tree and no index risk to manage. It rewrites paths other sessions wrote, so it needs the coordination board to be quiet for one commit.</span></li><li><strong>C.</strong> Move them and stop publishing the duplicates<br><span class="muted small">Tradeoff: Same as B plus a rule that future sessions write their summary into COORDINATION.md only. Costs a session nothing and stops the pile growing back.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> C, when the board is quiet. Until then the exclusion added in this session holds: it is generated from the tree, so a new root-level markdown file is excluded by the next build and a missing exclusion fails the gate.</p>
+  <p class="kicker">S-22 · A name the reader can remember</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep &#39;Affil3&#39; everywhere (current).<br><span class="muted small">Tradeoff: Zero work. Every title tag, share card and search snippet stays generic, and the repository name keeps leaking into the brand.</span></li><li><strong>B.</strong> Choose a descriptive house name now against a written checklist (spellable from hearing; no conflict with an existing trademark - check the USPTO search and re-read the Associates trademark guidelines before committing; no product brand we do not own; no jargon), then rename templates, titles, og:site_name and the design brief in one commit.<br><span class="muted small">Tradeoff: An hour of naming work and one rename commit; every future page inherits a real masthead. The trademark and Associates trademark-guideline check is a hard precondition, not a footnote.</span></li><li><strong>C.</strong> Defer naming until analytics show which pages earn traffic (needs S-21 C and S-03 live).<br><span class="muted small">Tradeoff: Naming with evidence in hand. The name touches every page, so every week of delay makes the rename marginally bigger, and the current name keeps shipping into search results and share cards meanwhile.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, executed the week the owner is available: it is the cheapest high-leverage polish item left, and the checklist keeps it honest.</p>
 </section>
 <section class="choice-card" id="S-23">
-  <p class="kicker">S-23 · The seasonal deal guide&#39;s afterlife</p>
-  <p class="choice-current">Current: <span class="badge">Published 2026-11-20 as a checklist, not a deal post</span></p>
-  <ul class="opts"><li><strong>A.</strong> Take it down the day the event ends<br><span class="muted small">Tradeoff: The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check.</span></li><li><strong>B.</strong> Keep it, and drop the event name from the title after the sale window<br><span class="muted small">Tradeoff: Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended.</span></li><li><strong>C.</strong> Re-date and re-promote it each November<br><span class="muted small">Tradeoff: Turns one honest page into an annual promise, and the takedown obligation with it.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause.</p>
+  <p class="kicker">S-23 · Seasonal hooks, published as honest checklists</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> No seasonal content on the root publication (current).<br><span class="muted small">Tradeoff: Nothing goes stale. The site also never gives a reader a reason to arrive in a specific week, which is the weakest possible organic-traffic posture.</span></li><li><strong>B.</strong> One seasonal guide per major buying moment (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), each a question-shaped checklist with cited sources, each re-read for staleness in the week after the moment passes (K-21).<br><span class="muted small">Tradeoff: Roughly one extra guide per month at peak seasons, plus a staleness review that cannot be skipped - a forgotten deals checklist is worse than none.</span></li><li><strong>C.</strong> A dated deals feed or price-watch page.<br><span class="muted small">Tradeoff: Matches what many affiliate sites do; it is not available here. Price tracking is barred by 6(y) (K-15) and prices may not be displayed unless Amazon serves the data (K-04). This option is recorded so it is visibly rejected, not silently ignored.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, starting with a Black Friday week checklist published while the week is still current, and the staleness review owned by whoever holds the cadence (S-05).</p>
 </section>
 <section class="choice-card" id="S-24">
-  <p class="kicker">S-24 · Which marketplace the buy buttons belong to</p>
-  <p class="choice-current">Current: <span class="badge">One marketplace, amazon.com, for every link</span></p>
-  <ul class="opts"><li><strong>A.</strong> Stay US-only and say so<br><span class="muted small">Tradeoff: Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation.</span></li><li><strong>B.</strong> Add amazon.nl links for the same products<br><span class="muted small">Tradeoff: Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified.</span></li><li><strong>C.</strong> Split the site by marketplace, one publication each<br><span class="muted small">Tradeoff: Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-20 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
+  <p class="kicker">S-24 · Grow the done-temperature cluster the sources already support</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the single done-temperature guide (current).<br><span class="muted small">Tradeoff: Nothing new to maintain. The cluster never accumulates the internal links that tell both a reader and a crawler the topic is covered properly.</span></li><li><strong>B.</strong> Grow it into a small cluster (three to four guides: whole chicken, ground meat, reheated leftovers), every temperature cited to the same USDA table (S10) and probe-placement note (S20), a short hub paragraph linking the members, and product links only where the reader actually needs a thermometer.<br><span class="muted small">Tradeoff: Three more guides to the house standard. Each is short, each is checkable against one official source, and none repeats another&#39;s wording - the scaled-content rule Google publishes (S09) is the reason the cluster stays small and hand-written.</span></li><li><strong>C.</strong> Skip recipe-adjacent content entirely and stay a pure buying-guide site.<br><span class="muted small">Tradeoff: Sharper focus. The site forfeits the one content family where an official government source can back every number published.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, but only after S-21 C is chosen - write the cluster pieces against measured queries when the data exists, and only where the USDA table covers the food.</p>
 </section>
 <section class="choice-card" id="S-25">
-  <p class="kicker">S-25 · Whether the fit check is measured</p>
-  <p class="choice-current">Current: <span class="badge">Runs entirely in the browser. Nothing is sent</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep it unmeasured forever<br><span class="muted small">Tradeoff: The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread.</span></li><li><strong>B.</strong> Add one aggregate event when the collector exists<br><span class="muted small">Tradeoff: Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people.</span></li><li><strong>C.</strong> Measure the outcome instead: outbound clicks from /find/ results<br><span class="muted small">Tradeoff: Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists.</p>
+  <p class="kicker">S-25 · Make the decision board the front door for decisions</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the board as it is (current).<br><span class="muted small">Tradeoff: It works. Decisions still have to be hunted across six tracks, and a choice made outside the board leaves no trace in the repository.</span></li><li><strong>B.</strong> Render the decision support the data already implies: a &#39;decide next&#39; shortlist derived from the sequence, a decision-log section that populates when the first choice is recorded, and a &#39;last reviewed&#39; stamp the owner updates when they have read the board.<br><span class="muted small">Tradeoff: One build change to one page. After that the owner answers rows instead of searching them, and every decision lands in versioned history.</span></li><li><strong>C.</strong> Move decision tracking out of the repository into a spreadsheet or task tool.<br><span class="muted small">Tradeoff: Comfortable editing. The decisions leave the versioned history, the site stops being self-describing, and the review trail the brief asks for now depends on an external tool nobody has chosen.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. The suggestions page is already the review gate the brief asks for; this change makes it obviously usable instead of merely present.</p>
 </section>
 <section class="choice-card" id="S-26">
   <p class="kicker">S-26 · What the front page shows first</p>
   <p class="choice-current">Current: <span class="badge">Implemented in this session (option B), reversible in one commit</span></p>
   <ul class="opts"><li><strong>A.</strong> Leave the order alone<br><span class="muted small">Tradeoff: The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled.</span></li><li><strong>B.</strong> Lead with the three highest-intent decisions<br><span class="muted small">Tradeoff: Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order.</span></li><li><strong>C.</strong> Rotate the three cards weekly<br><span class="muted small">Tradeoff: Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the &#39;reads like a shop&#39; complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change.</p>
+</section>
+<section class="choice-card" id="S-27">
+  <p class="kicker">S-27 · Reader capture, without a third-party form</p>
+  <p class="choice-current">Current: <span class="badge">Not implemented. RSS only</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep RSS and an email address as the only return paths<br><span class="muted small">Tradeoff: No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds.</span></li><li><strong>B.</strong> Add a hosted form provider<br><span class="muted small">Tradeoff: Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done.</span></li><li><strong>C.</strong> Self-host a form endpoint next to the collector<br><span class="muted small">Tradeoff: Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. The site has 15 guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already).</p>
+</section>
+<section class="choice-card" id="S-28">
+  <p class="kicker">S-28 · Session records sitting in the web root</p>
+  <p class="choice-current">Current: <span class="badge">Excluded from the index in this session; files not moved</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave them, keep the generated robots exclusion<br><span class="muted small">Tradeoff: The URLs still resolve for anyone who guesses them, which is fine for a repository and odd for a publication.</span></li><li><strong>B.</strong> Move them under legacy/session-records/ in one commit<br><span class="muted small">Tradeoff: Cleaner tree and no index risk to manage. It rewrites paths other sessions wrote, so it needs the coordination board to be quiet for one commit.</span></li><li><strong>C.</strong> Move them and stop publishing the duplicates<br><span class="muted small">Tradeoff: Same as B plus a rule that future sessions write their summary into COORDINATION.md only. Costs a session nothing and stops the pile growing back.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> C, when the board is quiet. Until then the exclusion added in this session holds: it is generated from the tree, so a new root-level markdown file is excluded by the next build and a missing exclusion fails the gate.</p>
+</section>
+<section class="choice-card" id="S-29">
+  <p class="kicker">S-29 · The seasonal deal guide&#39;s afterlife</p>
+  <p class="choice-current">Current: <span class="badge">Published 2026-11-20 as a checklist, not a deal post</span></p>
+  <ul class="opts"><li><strong>A.</strong> Take it down the day the event ends<br><span class="muted small">Tradeoff: The most literal reading of the promotion clause, and it throws away the evergreen part of the page: the model-number check and the capacity check.</span></li><li><strong>B.</strong> Keep it, and drop the event name from the title after the sale window<br><span class="muted small">Tradeoff: Requires one edit at the right time and a note in the flag register. The page then answers the question year-round without leaning on a promotion that has ended.</span></li><li><strong>C.</strong> Re-date and re-promote it each November<br><span class="muted small">Tradeoff: Turns one honest page into an annual promise, and the takedown obligation with it.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the date for the edit recorded next to the flag so it is not remembered by a person. The page was written so that the title is the only thing that ages: every fact in it is a manufacturer figure or a policy clause.</p>
+</section>
+<section class="choice-card" id="S-30">
+  <p class="kicker">S-30 · Which marketplace the buy buttons belong to</p>
+  <p class="choice-current">Current: <span class="badge">One marketplace, amazon.com, for every link</span></p>
+  <ul class="opts"><li><strong>A.</strong> Stay US-only and say so<br><span class="muted small">Tradeoff: Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation.</span></li><li><strong>B.</strong> Add amazon.nl links for the same products<br><span class="muted small">Tradeoff: Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified.</span></li><li><strong>C.</strong> Split the site by marketplace, one publication each<br><span class="muted small">Tradeoff: Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-20 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
+</section>
+<section class="choice-card" id="S-31">
+  <p class="kicker">S-31 · Whether the fit check is measured</p>
+  <p class="choice-current">Current: <span class="badge">Runs entirely in the browser. Nothing is sent</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep it unmeasured forever<br><span class="muted small">Tradeoff: The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread.</span></li><li><strong>B.</strong> Add one aggregate event when the collector exists<br><span class="muted small">Tradeoff: Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people.</span></li><li><strong>C.</strong> Measure the outcome instead: outbound clicks from /find/ results<br><span class="muted small">Tradeoff: Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists.</p>
 </section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
@@ -209,9 +240,10 @@
       <p class="small muted"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/legacy/archive/">Archived editions</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
     </div>
     <div class="footer-col">
-      <h2 class="foot-h">Guides</h2>
+      <h2 class="foot-h">Guides &amp; Journal</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
+        <li><a href="/Affil3/articles/">The Journal</a></li>
         <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
         <li><a href="/Affil3/guides/dual-basket-or-single-basket-air-fryer/">Dual basket or single basket: which one for four people?</a></li>
         <li><a href="/Affil3/guides/black-friday-air-fryer-deal-checklist/">Is a Black Friday air fryer deal worth waiting for?</a></li>
@@ -226,6 +258,7 @@
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>
         <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+        <li><a href="/Affil3/decisions/">Decision board (this session)</a></li>
         <li><a href="/Affil3/flagged/">Flagged for review</a></li>
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
@@ -269,7 +302,7 @@
     if (cooking === 'batch') {
       if (!r.dual && !r.oven) { score += 3; why.push('One ' + r.capacity + ' basket with no divider to plan around'); }
       else if (r.oven) { score += 1; why.push('More room than a basket, in a taller footprint'); }
-      else { miss.push('Two ' + r.capacity + ' baskets rather than one large one'); }
+      else { miss.push('Two baskets rather than one large one'); }
     }
     if (cooking === 'meal') {
       if (r.oven) { score += 3; why.push('Oven-style room, stated at ' + r.capacity); }
@@ -296,8 +329,8 @@
     var reasons = node('ul', 'fit-why');
     res.why.forEach(function (t) { reasons.appendChild(node('li', null, t)); });
     var cautions = node('ul', 'fit-miss');
-    res.miss.forEach(function (t) { var li = node('li', null, t); cautions.appendChild(li); });
-    if (!res.miss.length) { cautions.className = 'fit-miss is-hidden'; }
+    res.miss.forEach(function (t) { cautions.appendChild(node('li', null, t)); });
+    if (!res.miss.length) cautions.className = 'fit-miss is-hidden';
     card.appendChild(node('p', 'small muted', r.bestFor));
     card.appendChild(reasons);
     card.appendChild(node('p', 'small muted', 'Worth knowing: ' + (r.tradeoff || 'read the row for its gaps')));

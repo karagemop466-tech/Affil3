@@ -9,7 +9,7 @@ import path from 'node:path';
 // Paths the root build writes. Anything at the repository root outside this list belongs to another
 // edition or to the repository itself and is left untouched.
 export const OWNED = [
-  'index.html', 'shop', 'compare', 'find', 'products', 'categories', 'guides', 'how-we-choose',
+  'index.html', 'shop', 'compare', 'find', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose',
   'executive-summary', 'sources', 'questions', 'suggestions', 'flagged', 'ledger', 'measurement',
   'compliance', 'about', 'workflow', 'privacy', 'design-brief', '404.html',
   'feed.xml', 'sitemap.xml', 'robots.txt',
