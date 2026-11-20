@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
+const OWNED = ['index.html', 'shop', 'search', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
   'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
 // Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
 function imageSize(file) {
@@ -46,6 +46,9 @@ const decisions = read('data/decisions.json');
 const ALLOWED_SOURCE_HOSTS = new Set([
   'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
+  // NIST is the U.S. standards institute; its published FAQ is the official source behind
+  // the flag that says NIST does not certify commercial equipment (added with FLG-052).
+  'www.nist.gov',
   'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
   // Added 2026-11-20 (session 197d4f9e-affil3): ThermoMaven is the maker of a submitted
   // product, so its own product page is the same kind of official source as the other two

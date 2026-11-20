@@ -35,6 +35,11 @@
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
     </nav>
+    <form class="nav-search" role="search" action="/Affil3/search/" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -392,6 +397,27 @@
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
   <p class="small"><strong>Manual step:</strong> Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session&#39;s frozen record, so it is logged rather than done.</p>
 </section>
+<section class="flag-card" id="FLG-051">
+  <p class="flag-head"><span class="badge flag">FLG-051</span> <span class="badge sev-high">high</span> <strong>The Amazon title for P01 calls it an oven; the maker&#39;s page does not</strong></p>
+  <p>The Amazon title reads &#39;CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows&#39;. Chefman&#39;s own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat &#39;oven&#39;. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Read the shipped manual&#39;s function list. If it includes a bake or oven mode, correct the product page.</p>
+</section>
+<section class="flag-card" id="FLG-052">
+  <p class="flag-head"><span class="badge flag">FLG-052</span> <span class="badge sev-medium">medium</span> <strong>&#39;NIST-certified&#39; on P04 is not supported by a certificate we could find</strong></p>
+  <p>ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST&#39;s own published FAQ states that NIST &#39;does not recommend or endorse commercial equipment, instruments, or materials&#39; and does not &#39;define, specify, assure, or certify traceability&#39; of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker&#39;s claim and does not repeat &#39;NIST-certified&#39; as a fact.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.nist.gov/pml/sensor-science/optical-radiation/faqs-spectral-responsivity-calibrations" rel="noopener external">S27</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker&#39;s.</p>
+</section>
+<section class="flag-card" id="FLG-053">
+  <p class="flag-head"><span class="badge flag">FLG-053</span> <span class="badge sev-low">low</span> <strong>Guide topics are editorial hypotheses, not keyword research</strong></p>
+  <p>The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.</p>
+  
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -424,6 +450,7 @@
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
         <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+        <li><a href="/Affil3/search/">Search the shop</a></li>
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>

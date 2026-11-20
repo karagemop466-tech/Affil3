@@ -1533,6 +1533,40 @@ a merge conflicts, the resolution keeps both sides' content and is logged here.
 | I-06 | Final integration PR to `main`, merge, confirm GitHub Pages deploy | unclaimed → claimed | arena-78c96140-affil3 | COORDINATION.md |
 
 Claim pushed first, before any other file change, per the coordination rules.
+
+### I-05 integration log (session arena-78c96140, 2026-11-20)
+
+Nine of the eleven originally open PRs were integrated on this branch, one by one, with the full
+gate suite re-run after every merge (`npm run check`, disclosure, archive, sitemap/links,
+`build_site`/`check_site`, `link_report`, `check_all_links`, plus each surface's own gate).
+Rules followed: FLG/Q/S/D/S-id collisions were resolved by keeping `main`'s ids and renumbering
+this branch's additions past the highest id in the file; generated HTML was never hand-merged
+(resolve `data/*.json` + the generators, then rebuild); COORDINATION conflicts kept both sides.
+
+| PR | Result | What it brought / how conflicts were resolved |
+| --- | --- | --- |
+| #44 | merged into branch (`b188f82`) | counterwise single-basket cluster + plural fixes; gates green |
+| #21 | merged into branch (`3b3b585`) | decision-readiness report `DECISION-REVIEW-771fbf79.md`; board append/append union |
+| #38 | merged into branch (`1e83785`) | docs/ retirement; main already had the guide fixes — kept `main`'s guides, folded the docs retirement in (FLG renumbered at the time) |
+| #32 | merged into branch (`51aa6d1`) | evidence register `evidence/43565031/`; PR's nine findings renumbered to FLG-032..040 (later renumbered again against main, see below); legacy conflict-marker page repaired (their open item, now resolved) |
+| #40 | merged into branch (`b31478f`) | SG-27..SG-30 parallel-pass rows, primary-source audit, source-anchor fixes; S-01..S-10 identical to main's so only SG rows were new |
+| #36 | merged into branch (`1fdfa4f`) | **G-02 Special Link gate**: `special_link_validation` per product, purchase CTAs withheld until Associates Central evidence exists; `noindex` archive consolidation + `markArchiveNoindex` pass; their Q/S/D rows renumbered to Q-18/S-15/D-13/S23 at the time; `check_site.py` link-escape rule relaxed for the archive notice (target must exist inside the repo); `npm run check` reordered so the archive pass runs last |
+| #23 | merged into branch (`3e311fc`) | `/kitchen-edit/` + its gates; `gates.yml` adapted (their `tools/build_pages.py` does not exist in this repo — step dropped, `tools/validate.py` kept, it had no CI before) |
+| #33 | merged into branch (`a84c835`) | `/shopnow/` + `ci.yml`; **content clash fixed**: both shopnow and Crisp & Counter globbed `content/guides/` with different frontmatter — shopnow's content moved under `shopnow/content/` and its two scripts repointed |
+| #28 | merged into branch (`1a35a7d`) | Countertop Notes: sources `site-src/`, output now committed at `/countertop-notes/` (was `_site/`, which Pages never served), FTC example sentence added to its strip/footer, `docs/REQUIREMENTS.md`+`docs/SOURCES.md` relocated to `site-src/docs/` (docs/ stays retirement-only), **`pages.yml` stripped of upload/deploy** so it cannot replace the root publish workflow |
+| #39 | **extracted, not merged wholesale** (`pending commit`) | `main` independently landed the same product corrections under different ids (e.g. FLG-041 ambient range, FLG-027 450 °F), different product slugs, and its own compare page — a wholesale merge would have renamed live URLs and collided with FLG-023..032. Ported instead: the three findings that do not exist anywhere on `main` (**FLG-051** P01 listing says "oven", maker does not; **FLG-052** "NIST-certified" has no public certificate — NIST FAQ added as **S27**, `www.nist.gov` added to the allowed official hosts; **FLG-053** guide topics are not keyword research), plus the **client-side search** page, nav search box, and its CSS |
+| #3 | will be closed as superseded | resurrection of the retired `docs/` publication with prices/ratings, duplicates `legacy/`, stale data — nothing in it that `main` does not already carry; closing rather than merging preserves it in history for review |
+
+Also merged `origin/main` twice mid-flight (`c6c04c8` carried main's PRs #46–#82): `main` had
+grown its own FLG-031..042, S-16..27, Q-18..21 while this branch worked, so this branch's
+additions were renumbered to **FLG-043..050, Q-22, S-28, D-19, S26**; two of this branch's flags
+were dropped as duplicates of findings `main` already publishes (checkpoint-vs-product rounds →
+main's FLG-037; docs/ edition → this session's own FLG-043). `main`'s products/guides/registers
+won every content conflict; the G-02 gate and archive-noindex machinery were ported onto `main`'s
+newer `tools/build.mjs` rather than overwritten.
+
+Gate count after every step is recorded in the commit messages; last full run on this branch:
+**`verify.mjs` 7,132 checks, 0 failed**, disclosure PASS, archive PASS, every surface gate PASS.
 Session `771fbf79`: resolved second concurrent append conflict by retaining both records.
 - Merge result: **merged 2026-11-20T05:46:12Z** as merge commit `1075a62cbf38fc73fe481d5e3b892497f5a707e2`
   (`gh pr merge 22 --merge`). CI “Gate the published Pages site” (`npm run check`) passed on

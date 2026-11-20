@@ -9,7 +9,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
+const OWNED = ['index.html', 'shop', 'compare', 'search', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
   'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
   '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
@@ -65,6 +65,7 @@ const DASHBOARDS = [
   ['/ledger/', 'Campaign ledger'],
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Compliance and gates'],
+  ['/search/', 'Search the shop'],
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
@@ -194,6 +195,11 @@ ${jsonld}
       <a href="${esc(href('/categories/'))}">Categories</a>
       <a href="${esc(href('/about/'))}">About</a>
     </nav>
+    <form class="nav-search" role="search" action="${esc(href('/search/'))}" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -503,6 +509,62 @@ const add = (p) => pages.push(p);
     <p>An independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
   </div>
 </section>`,
+  });
+}
+
+// Search: a client-side index over the products and guides. No server, no tracking.
+{
+  const index = [
+    ...products.filter((p) => p.observed_asin).map((p) => ({
+      t: `${p.brand} ${p.short_name || p.name}`, u: `/products/${p.slug}/`, k: `${catName(p.category)} product`,
+      d: p.fit_line || p.lede || '',
+      x: [p.brand, p.name, p.short_name, p.model, p.shape, p.best_for, p.tradeoff, catName(p.category),
+        p.capacity_qt ? p.capacity_qt + ' qt' : '', p.temp_max_f ? p.temp_max_f + ' F' : '',
+        p.observed_title, p.lede].filter(Boolean).join(' ').toLowerCase()
+    })),
+    ...guides.map((g) => ({ t: g.title, u: `/guides/${g.slug}/`, k: `${catName(g.category)} guide`, d: g.deck || '',
+      x: [g.title, g.deck, g.description || '', catName(g.category)].join(' ').toLowerCase() })),
+    ...CATEGORIES.filter((c) => c.slug !== 'unresolved').map((c) => ({ t: c.name, u: `/categories/${c.slug}/`, k: 'Category', d: c.blurb, x: (c.name + ' ' + c.blurb).toLowerCase() })),
+    { t: 'Compare all five side by side', u: '/compare/', k: 'Comparison', d: 'The shape decision in one table.', x: 'compare basket oven style shape capacity' },
+  ];
+  add({
+    path: '/search/', title: 'Search the shop',
+    description: 'Search the five tracked products and the buying guides, in the browser.',
+    type: 'search',
+    body: `<section class="page-head">
+  <p class="kicker">Search</p>
+  <h1>Find a product or a guide</h1>
+  <p class="deck">Type what you cook, or the shape you are after. The results come from this site only: five products, five guides and three categories. Nothing is sent anywhere.</p>
+</section>
+<form class="searchbox" role="search" onsubmit="return false">
+  <label class="sr" for="sq">Search</label>
+  <input type="search" id="sq" placeholder="e.g. basket, thermometer, two foods, 8 qt" autocomplete="off" autofocus>
+</form>
+<p class="small muted" id="scount"></p>
+<ul class="results" id="results"></ul>
+<script type="application/json" id="search-index">${JSON.stringify(index).replace(/</g, '\\u003c')}</script>
+<script>
+(function () {
+  var data = JSON.parse(document.getElementById('search-index').textContent);
+  var input = document.getElementById('sq');
+  var out = document.getElementById('results');
+  var count = document.getElementById('scount');
+  function render() {
+    var q = input.value.trim().toLowerCase();
+    var hits = q ? data.filter(function (r) { return r.x.indexOf(q) !== -1; })
+                 : data.filter(function (r) { return r.k.indexOf('product') !== -1; });
+    hits = hits.slice(0, 20);
+    out.innerHTML = hits.map(function (r) {
+      return '<li><a href="' + r.u + '"><span class="k">' + r.k + '</span><strong>' + r.t + '</strong><span class="d">' + r.d + '</span></a></li>';
+    }).join('');
+    count.textContent = q ? hits.length + ' result' + (hits.length === 1 ? '' : 's') + ' for \"' + input.value + '\"'
+                          : 'Showing all ' + hits.length + ' products. Type to narrow.';
+    if (!hits.length) count.textContent = 'Nothing matched. Try "air fryer", "thermometer", "two foods" or "capacity".';
+  }
+  input.addEventListener('input', render);
+  render();
+})();
+</script>`,
   });
 }
 
