@@ -2979,3 +2979,26 @@ site; they are now 704 KB and 764 KB at 1200 px wide, with 68 KB and 39 KB 768 p
 deal-checklist guide's orphan artwork (2.0 MB, referenced by nothing after the duplicate was cut) was
 removed from `src/assets/img/` and `assets/img/`. The gate's intrinsic-size check re-reads the files, so
 the declared `width`/`height` on every `<img>` still matches the pixel size exactly.
+
+## Completion record for `ca51f5b3`
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/84 — **merged into `main` as `e6a0d5e0e09`**
+  at 2026-11-20T07:39:25Z (`gh pr merge 84 --merge`). No review was awaited, per the standing instruction.
+- Checks on the merged head, before merging: `verify`, `gate` (publish-gate, including the drift step),
+  `Gate the published Pages site`, `check-site` and `disclosure` all **success**.
+- Pages: build `1386424728` for commit `e6a0d5e0e09` finished with status **`built`**, `duration` 22.9 s,
+  `error` null, pushed 1 s after the merge. The site is served at
+  `https://karagemop466-tech.github.io/Affil3/`. The sandbox cannot fetch `github.io` directly (only a
+  small allowlist of hosts is reachable), so the deploy is confirmed by the Pages build API naming
+  exactly this merge commit, which is the strongest evidence available from here; a browser check of
+  `/find/` and one guide is worth ten seconds for whoever can reach the URL.
+- Nothing from any session's record was rewritten: this branch's five merges kept the other sessions'
+  rows verbatim and moved only its own ids (`FLG-049`…`FLG-053`, `K-27`…`K-30`, `Q-26`…`Q-28`,
+  `D-23`…`D-26`, `S-37`…`S-41`, source `S24`→`S27`), and dropped only its own duplicate rows once main
+  already answered the same question (three guides to `c252594d`, one to `b7320829`, and the
+  `FLG-046` citation flag in favour of the broader `FLG-044`).
+- Still open for the owner, unchanged by this PR: `Q-01` (what each 9-character token was meant to
+  point at), gate G-02 / `FLG-005` (test one Special Link per product in Associates Central), `Q-03`
+  (account active and this site declared), `S-02`/cadence, `S-03` (analytics host), `Q-28` (which
+  marketplace the buy buttons belong to), and the noindex half of `S-20`, which needs an edit inside
+  each superseded edition.
