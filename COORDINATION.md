@@ -1497,3 +1497,27 @@ existing per-product confirmation fields and changes no rendered output, so it w
 published, both flagged); Special Link validation in Associates Central (no login in the sandbox,
 gate G-02); intended-ASIN fields blank for all five products (FLG-001/002); short-link status
 unresolved, not invalid (FLG-003/031).
+
+## Final integration outcome (session 197d4f9e-affil3)
+
+- **PR #47** — https://github.com/karagemop466-tech/Affil3/pull/47 — "Final integration:
+  verified shop-style affiliate publication with corrected P03, /compare/, and reconciled
+  summaries"
+- **Merge result: MERGED** into `main` as merge commit `76a54c261aef4649639cdaade104d12a5616b474`
+  on 2026-11-20T06:37:12Z.
+- **Merge conflicts during the two concurrent-session advances:** resolved without discarding
+  either side. First advance: data registers merged by ID (this session's verified entries kept
+  alongside the concurrent sessions' additions); `tools/build.mjs` `OWNED` unioned to keep both
+  `'compare'` and `'design-brief'`; generated pages rebuilt from the merged data;
+  `COORDINATION.md` resolved to keep main's publish log with this session's record re-appended.
+  Second advance: only `COORDINATION.md` conflicted; resolved the same way. Both resolutions
+  re-ran every gate clean.
+- **Final gate state:** `node tools/build.mjs` — 32 pages, 31 sitemap URLs, 5 feed items;
+  `node tools/verify.mjs` — 3,477 checks passed, 0 failed; `python3 tools/build.py` +
+  `tools/check_site.py` — 21 pages, PASS. All gates re-run after the final commit.
+- **GitHub Pages: deployed** (`status: built`, source `main`, /) —
+  https://karagemop466-tech.github.io/Affil3/. Live verification 2026-11-20: root publication
+  serves with the disclosure strip above the fold and five buy buttons; `/compare/` serves the
+  side-by-side table with the corrected P03 row and the disagreement section; the P03 product
+  page serves the verified RJ38-SQSS-8T specifications with the agrees/differs conflict table
+  and source links.
