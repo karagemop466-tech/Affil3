@@ -63,10 +63,10 @@
       "id": "FLG-006",
       "severity": "medium",
       "title": "Associates account status and declared site are unknown",
-      "detail": "Associates help states that tags must be embedded in links on the sites declared in the application (S11). The declared site URL and account approval status are unknown to this build. The qualifying-sales requirement (three within 180 days) is also stated (S11).",
+      "detail": "Associates help states that tags must be embedded in links on the sites declared in the application, and the qualifying-sales requirement is three sales within 180 days (S19, read from an excerpt: re-check in a signed-in session). Program Policies 2(b) is the clause tying the tag to every link on a declared site (S02). The declared site URL and account approval status are unknown to this build. Citation corrected 2026-11-20 by session b7320829-affil3, which had credited S11 for both statements: in this register S11 is the Chefman dual-basket product page (FLG-044).",
       "sources": [
-        "S11",
-        "S03"
+        "S19",
+        "S02"
       ],
       "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active."
     },
@@ -74,9 +74,9 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07). Update (478e6577, 2026-11-20): the site now has 13 guides (data/guides.json), not five. S11 does not say whether guides count as posts, so this flag stays open until the owner decides (S-05).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 16 question-shaped guides and 5 product rows after the 2026-11-20 parallel sessions. Adding content is a decision for the user (see suggestion S-05). Citation corrected 2026-11-20: the rule of thumb was credited to S11, a Chefman product page; the row that holds it is S19 (FLG-044).",
       "sources": [
-        "S11"
+        "S19"
       ],
       "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
     },
@@ -122,12 +122,12 @@
       "id": "FLG-012",
       "severity": "medium",
       "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
+      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources. Corrected 2026-11-20: this row also credited S12, which is the Chefman High-Fry product page and says nothing about what an ASIN is; the sell.amazon.com candidate page is listed as text in the manual step because that host is not on the gate's source allowlist (FLG-044).",
       "sources": [
         "S04",
-        "S12"
+        "S23"
       ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+      "manual_step": "Either cite https://sell.amazon.com/learn/prepare-to-sell after adding sell.amazon.com to ALLOWED_SOURCE_HOSTS in tools/verify.mjs, or accept the observed-identifier basis and close this flag as 'not needed'."
     },
     {
       "id": "FLG-013",
@@ -143,7 +143,7 @@
       "id": "FLG-014",
       "severity": "low",
       "title": "Author is a team byline, not a named person",
-      "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
+      "detail": "No named author, credential or biography is supplied, so every byline reads with the team name held in data/config.json ('ShopNow Kitchen editorial team'). Inventing a person would be a fabrication, and a fabricated credential would also cut against the truthfulness the Program Policies ask of an Associates site. If a named editor is wanted, the name, the role and any claimed experience have to come from the owner (Q-06, suggestion S-08). Corrected 2026-11-20: this row quoted a byline string ('Affil3 editorial team') that the config has not held since the rename (FLG-044).",
       "sources": [],
       "manual_step": "Decide on a named author and bio (suggestion S-06)."
     },
@@ -352,7 +352,7 @@
       "status": "open",
       "area": "site structure",
       "title": "Four editions of this publication are published under one domain; only the root one is in the sitemap",
-      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml; the others are excluded from the index through robots.txt and noindex metadata, and they are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
+      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml. What protects the others is thinner than that sentence used to claim, and is now stated exactly: every non-root page is reachable, the root robots.txt disallows /editorial/, /legacy/, /crisp-index/, /counter/ and /counterwise/ (widened 2026-11-20), only /editorial/ ships a noindex tag of its own, and robots.txt is not an indexing control at all - Google reads it from the host root, not from a project path, and says it 'is not a mechanism for keeping a web page out of Google' (S24, S25, S26, FLG-038, FLG-043). They are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
       "impact": "Five near-identical editions on one domain split the search signals and the tracking data. The fix applied here is one indexed site plus a labelled archive; the owner can reverse it for any edition.",
       "manual_step": "Decide which single edition is the product, and whether the other three should stay on this domain at all. Suggestion S-11 records the options; each edition keeps its own generator and gate, so republishing one is a one-line change.",
       "sources": [
@@ -500,6 +500,119 @@
     },
     {
       "id": "FLG-043",
+      "severity": "medium",
+      "status": "open",
+      "area": "findability",
+      "title": "The root robots.txt the site leans on is not read where the site is served, and the board said the editions were de-indexed",
+      "detail": "Wording: FLG-032 stated the non-root editions 'are excluded from the index through robots.txt and noindex metadata'. Google's pages say a robots.txt file 'is not a mechanism for keeping a web page out of Google', that a disallowed URL 'can still appear in search results' without a description, that 'Specifying the noindex rule in the robots.txt file is not supported by Google', and that a page blocked in robots.txt cannot have its noindex tag seen (S24, S26). Against the shipped files: /editorial/ carries noindex; /counter/, /counterwise/, /counter-desk/ and /crisp-index/ do not, and /counter/ and /counterwise/ advertise sitemaps of their own. That sentence is now replaced with what the files actually do. Mechanism: main's FLG-038 established that Google reads robots.txt from the host root, so /Affil3/robots.txt is not consulted for these URLs at all - which means the Disallow lines for the secondary editions, and the index,follow meta tag now on every root page, buy crawl-budget management and explicit intent for crawlers that read path-scoped files, and nothing for Google today. The only per-page control available without host access is a noindex meta tag in each edition's own generator, with those paths left crawlable so the tag can be read: S-20 option B. Moving an edition under /legacy/ is option C.",
+      "impact": "Either the site says plainly that four near-duplicate editions of the same five products are indexable and competing, or it does not get to claim it de-indexed them. The first is honest and fixable; the second is a promise the repository cannot keep from the root.",
+      "manual_step": "Pick S-20 option B (noindex,follow in each secondary edition's generator, no Disallow line on those paths) or option C (archive them off this Pages site). Each edition is built by its own session's tooling, so the request is logged in COORDINATION.md rather than executed here.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26",
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-044",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "citation",
+      "title": "Eleven cross-references pointed at rows that exist and say something else",
+      "detail": "Found while merging with main and by reading the registers against the documents they cite. Five guides - counter-space, dual-versus-single basket, how to read a listing, the preset guide and the chicken-breast guide - cite S22 for Chefman specification figures, but S22 in this register is the FTC Endorsement Guides page; those figures come from S23 (the maker's page for RJ38-SQSS-8T) and, for the matte-black High-Fry unit, S12. FLG-006 and FLG-007 credited S11, a Chefman product page, with the declared-site rule and the 'at least 10 posts' rule of thumb, which both live in S19, and the workflow page carried the same wrong id. FLG-012 credited S12 with support for the ASIN definition. FLG-014 quoted a byline string the config has not held since the rename. DESIGN-BRIEF PB-4 blocks on the house-style row but cites S-20, which is crawl control; the house-style row is S-19. And the chicken-breast guide cited S11 and S23 inline without declaring either in its own source list. All eleven corrected on 2026-11-20, and the last one was caught by the gate rule written for this class the moment it ran. Recorded together for one reason: every one of these ids resolves to a row that exists, so a check limited to existence passes all of them. The rules that do catch it now live in tools/verify.mjs - an inline citation must be declared by the guide that uses it, and a sentence carrying a measurement may not cite a policy or consumer-advice page (S-35).",
+      "impact": "A source id is the whole evidentiary claim of a row. Pointing a reader from a wattage figure to an FTC disclosure page is worse than no citation, because it looks like one.",
+      "resolution": "Corrections and both gate rules by session b7320829-affil3 on 2026-11-20, in the merge commit that resolves the branch.",
+      "manual_step": "If those guide figures are re-checked, compare against S23 and S12 - never S22.",
+      "sources": [
+        "S22",
+        "S23",
+        "S12",
+        "S19",
+        "S11"
+      ]
+    },
+    {
+      "id": "FLG-045",
+      "severity": "low",
+      "status": "resolved",
+      "area": "editorial",
+      "title": "This session's five new guides would have duplicated pages that landed on main first",
+      "detail": "Cut from 7fac552, where the shelf held five guides, this session drafted five more: dishwasher-safe parts, reading thermometer certification labels, what Sync Finish and Hi-Fry do, how to read a preset list, and holiday capacity planning. main published eleven more in the meantime, and four of the five drafts covered ground its pages already own - the cleanup guide already reads dishwasher claims, the preset guide already runs the 24-versus-25 comparison, the holiday guide already plans a big meal on a small counter, and the listing guide already teaches listing-versus-maker checking. Publishing both sets would have produced near-duplicate pages on one domain, the pattern Google's spam policies call scaled content abuse (S09) and the pattern FLG-032 already reproaches this repository for. Resolution: one guide ships (Sync Finish and Hi-Fry, whose subject - what the named buttons do, and the disputed 450 °F ceiling - no other page answers), and even that page had its basket-shape paragraph cut to a cross-reference because the dual-basket guide owns that argument. The first-hand material from the other four was merged into the existing pages as new sections carrying their own sources and dated 'amended' notes. Convergence recorded in the same pass rather than re-filed: the stray degree sign in P01's function list, the stale 'fifth link resolves to nothing' executive summary and the /docs/ row in the README had all been fixed on main first, and the unreproducible short-link fetches are main's FLG-036 and FLG-037.",
+      "impact": "Had the merge been a concatenation, the site would have published twins about the same appliances while arguing in its own flag board that the editions' twins are a problem.",
+      "resolution": "Resolved in the merge commit by session b7320829-affil3 on 2026-11-20: five drafts became one page plus three enriched pages; one unused illustration was deleted.",
+      "manual_step": "None. If the withdrawn topics are revisited, check the shelf first: presets, holiday planning, cleanup and listing-reading all have an owner page already.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-049",
+      "severity": "medium",
+      "status": "open",
+      "area": "crawl and indexing",
+      "title": "Crawl control at a project path: robots.txt is not read from /Affil3/, and the other editions are not all noindexed",
+      "detail": "tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder's list grew to cover /compare/, /workflow/, /privacy/, /design-brief/, /articles/, /decisions/ and now /find/; the gate's copy did not follow, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.",
+      "impact": "Near-duplicate copies of the same guides can compete with the root publication in search results. The sitemap is not discovered at the project path, so it must be submitted by hand.",
+      "manual_step": "None. Two negative tests were run on 2026-11-20 and are recorded in COORDINATION.md: stripping one rel=\\\"sponsored\\\" attribute and deleting one robots exclusion each make the build fail.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-050",
+      "severity": "medium",
+      "status": "open",
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
+      "sources": [
+        "S09",
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-051",
+      "severity": "low",
+      "status": "resolved",
+      "area": "documentation",
+      "title": "README stated a stale check count and listed a /docs/ publication that is not in the tree (corrected)",
+      "detail": "README.md said that node tools/verify.mjs runs 2,808 checks. The run on 1f65f70 reports 4,588 passed checks. The README also listed a /docs/ publication built from scripts/ and server/, but git ls-files shows no docs/ path at 1f65f70. The count is now stated as a figure from the current run, and the /docs/ row says the directory is not present. scripts/ and server/ exist and were not changed.",
+      "impact": "A reader could follow a link or a command that does not match the repository. No published page was wrong.",
+      "manual_step": "None. Re-check the count after any change to tools/verify.mjs.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-052",
+      "severity": "medium",
+      "status": "open",
+      "area": "sitemap / generator",
+      "title": "crisp-index/sitemap.xml had two writers and malformed URLs on main; the sitemap gate passed only by substring match",
+      "detail": "On main, crisp-index/sitemap.xml was written by scripts/build_sitemap.py. That script (1) collapsed https:// to https:/ in every <loc>, and (2) omitted the crisp-index/ path segment, so every entry pointed at a path that does not exist on the site (for example https:/…/about/index.html). The gate in the same script (check.yml runs --check) compared with a substring test, so the malformed entries still counted as present. The Crisp Index generator (tools/build_site.py) writes the same file with the correct URLs. Session 4c8c7811 changed scripts/build_sitemap.py so that it refuses to write, excludes noindex pages (the 404 page), and checks exact <loc> values against files on disk. The sitemap was regenerated by tools/build_site.py.",
+      "impact": "Before this fix the Crisp Index sitemap gave search engines no usable URL for any of its pages. The surface is disallowed in robots.txt, so this affects that surface only, not the root site that GitHub Pages indexes.",
+      "manual_step": "Choose S-28: move them under legacy/session-records/ in one commit, or keep them where they are with the generated exclusion in place.",
+      "sources": []
+    },
+    {
+      "id": "FLG-053",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "toolchain",
+      "title": "The gate passed in the sandbox and threw on CI, because a newer JavaScript runtime accepted an API the declared floor does not have",
+      "detail": "publish-gate failed on 2026-11-20 with `TypeError: robotsTxt.matchAll.map is not a function or its return value is not iterable` at tools/verify.mjs:300, while the same commit passed 7,552 checks in the working sandbox and in a fresh clone of it. Cause: the line read `[...str.matchAll(re).map(f)]`, which asks the iterator matchAll returns for `.map`. Iterator helpers are ES2025; the sandbox runs node 22.22.3, which has them, and CI runs node 20, which does not, while package.json declares `engines.node >=18`. So the gate's own code broke the floor it is meant to protect, and nothing in the local loop could see it. The line is fixed to spread first and then map, and every other matchAll site in tools/ was read and already spreads first.",
+      "impact": "Every push to this branch was red for the wrong reason, which teaches people to ignore a red gate. The build content was never affected: the generator itself avoided the API.",
+      "manual_step": "None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate's output tail as check annotations, so a red run can be read from the API without the Actions log.",
+      "resolution": "Fixed in tools/verify.mjs, and publish-gate now prints the runtime version and annotates the failure output.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-054",
       "severity": "high",
       "status": "resolved",
       "area": "site scope",
@@ -513,7 +626,7 @@
       ]
     },
     {
-      "id": "FLG-044",
+      "id": "FLG-055",
       "severity": "high",
       "title": "Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is",
       "detail": "All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -524,7 +637,7 @@
       "manual_step": "Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish."
     },
     {
-      "id": "FLG-045",
+      "id": "FLG-056",
       "severity": "high",
       "title": "Program Policies forbid tying a sub-tag or program identifier to a specific end user",
       "detail": "Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -534,7 +647,7 @@
       "manual_step": "Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings."
     },
     {
-      "id": "FLG-046",
+      "id": "FLG-057",
       "severity": "medium",
       "title": "The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here",
       "detail": "Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -545,7 +658,7 @@
       "manual_step": "Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way."
     },
     {
-      "id": "FLG-047",
+      "id": "FLG-058",
       "severity": "low",
       "title": "Attribution is a 24-hour session plus an 89-day cart path, not 90 days",
       "detail": "Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate's link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -555,7 +668,7 @@
       "manual_step": "Set the ledger's window definition from the policy line when the first row is written, not from a guide."
     },
     {
-      "id": "FLG-048",
+      "id": "FLG-059",
       "severity": "low",
       "title": "CI asserts a directory the build does not write, so stale generated output merges green",
       "detail": ".github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -565,7 +678,7 @@
       "resolution": "Current .github/workflows/verify.yml runs `npm run check` (both generators, both gates) and then fails if `git status --porcelain` is non-empty, which asserts the whole tree rather than any single directory. The gap described here no longer exists."
     },
     {
-      "id": "FLG-049",
+      "id": "FLG-060",
       "severity": "info",
       "title": "The Operating Agreement section cited for the Associates statement was checked against the text",
       "detail": "data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
@@ -582,12 +695,12 @@
       "detail": "legacy/categories/unresolved/index.html contains a literal <<<<<<< / ======= / >>>>>>> conflict marker on main, so a conflict was committed rather than resolved. It is inside the archive rather than the live site, which is why check_site.py does not see it, and it renders as visible junk text on a served page. Not this session's edit and not repaired here, because legacy/ belongs to whoever froze it. Observed 2026-11-20 by session arena-43565031-affil3.",
       "sources": [],
       "manual_step": "Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session's frozen record, so it is logged rather than done.",
-      "id": "FLG-050",
+      "id": "FLG-061",
       "status": "resolved",
       "resolution": "Fixed during integration session arena-78c96140: the conflict markers in legacy/categories/unresolved/index.html were resolved to the archived edition's own content, and the page renders without conflict junk again."
     },
     {
-      "id": "FLG-051",
+      "id": "FLG-062",
       "severity": "high",
       "title": "The Amazon title for P01 calls it an oven; the maker's page does not",
       "detail": "The Amazon title reads 'CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows'. Chefman's own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat 'oven'. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.",
@@ -598,18 +711,18 @@
       "manual_step": "Read the shipped manual's function list. If it includes a bake or oven mode, correct the product page."
     },
     {
-      "id": "FLG-052",
+      "id": "FLG-063",
       "severity": "medium",
       "title": "'NIST-certified' on P04 is not supported by a certificate we could find",
       "detail": "ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST's own published FAQ states that NIST 'does not recommend or endorse commercial equipment, instruments, or materials' and does not 'define, specify, assure, or certify traceability' of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker's claim and does not repeat 'NIST-certified' as a fact.",
       "sources": [
         "S21",
-        "S27"
+        "S29"
       ],
       "manual_step": "Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker's."
     },
     {
-      "id": "FLG-053",
+      "id": "FLG-064",
       "severity": "low",
       "title": "Guide topics are editorial hypotheses, not keyword research",
       "detail": "The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.",
@@ -617,6 +730,6 @@
       "manual_step": "Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions."
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass.",
   "checked": "2026-11-20"
 }

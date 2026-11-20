@@ -29,3 +29,6 @@ _site/
 .env
 .env.*
 !.env.example
+
+# A pristine clone used to reproduce CI locally; never part of the site or the record.
+/.freshci/
