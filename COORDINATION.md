@@ -1857,10 +1857,10 @@ marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own
 
 | ID | Task | Status | Owner | Files touched | Notes |
 | --- | --- | --- | --- | --- | --- |
-| M-01 | Suggestions board: marketing, design-prompt and organic-traffic suggestions S-20+ for owner review before implementation (continues I09) | in progress | `991c8230-affil3` | `data/suggestions.json` (append-only), generated `/suggestions/` page | New rows only; no existing row edited. |
-| M-02 | Questions board: the decision-blocking questions and discovery actions that close them (continues I10) | in progress | `991c8230-affil3` | `data/questions.json` (append-only: Q-17, Q-18, D-13, D-14), generated `/questions/` page | New rows only. |
-| M-03 | Dated re-observation of the five submitted short links and the five /dp/ pages, plus a liveness check of the cited policy sources | in progress | `991c8230-affil3` | `data/observations/2026-11-20-991c8230-recheck.json` (new), `data/flags.json` (append-only, FLG-037+ only if warranted) | Follows D-12. No link is claimed invalid; observed targets recorded separately from intended fields. |
-| M-04 | Session executive summary | pending | `991c8230-affil3` | `EXECUTIVE_SUMMARY-991c8230.md` (new file) | No existing summary file edited. |
+| M-01 | Suggestions board: marketing, design-prompt and organic-traffic suggestions S-20+ for owner review before implementation (continues I09) | done | `991c8230-affil3` | `data/suggestions.json` (append-only), generated `/suggestions/` page | New rows only; no existing row edited. |
+| M-02 | Questions board: the decision-blocking questions and discovery actions that close them (continues I10) | done | `991c8230-affil3` | `data/questions.json` (append-only: Q-17, Q-18, D-13, D-14), generated `/questions/` page | New rows only. |
+| M-03 | Dated re-observation of the five submitted short links and the five /dp/ pages, plus a liveness check of the cited policy sources | done | `991c8230-affil3` | `data/observations/2026-11-20-991c8230-recheck.json` (new), `data/flags.json` (append-only, FLG-037+ only if warranted) | Follows D-12. No link is claimed invalid; observed targets recorded separately from intended fields. |
+| M-04 | Session executive summary | done | `991c8230-affil3` | `EXECUTIVE_SUMMARY-991c8230.md` (new file) | No existing summary file edited. |
 | M-05 | Baseline + integration: run every build/gate on latest main, rebuild generated pages, line-by-line check of new rows, PR to `main`, merge, confirm Pages deploy, record result | pending | `991c8230-affil3` | generated pages, `COORDINATION.md` (this section) | Flagged/unverified items do not block merge per the brief. |
 
 ## Scope rules for this session
