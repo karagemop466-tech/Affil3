@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19332d">
+  <meta name="site-root" content="../">
+  <meta name="robots" content="noindex,follow">
+  <meta name="description" content="Implementation status for publication, disclosures, links, measurement, SEO, reader capture, and deployment requirements.">
+  
+  
+  <title>Requirements and status — Countertop Notes</title>
+  <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/countertop-notes/desk/requirements.html">
+  <link rel="alternate" type="application/rss+xml" title="Countertop Notes RSS" href="../feed.xml">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/site.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Countertop Notes">
+  <meta property="og:title" content="Requirements and status — Countertop Notes">
+  <meta property="og:description" content="Implementation status for publication, disclosures, links, measurement, SEO, reader capture, and deployment requirements.">
+  <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/countertop-notes/desk/requirements.html">
+  <meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/countertop-notes/assets/hero.svg">
+</head>
+<body data-page="desk/requirements.html" data-page-type="website">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="masthead">
+      <a class="brand" href="../" aria-label="Countertop Notes home"><span class="brand-mark" aria-hidden="true">CN</span><span class="brand-copy"><span class="brand-name">Countertop Notes</span><span class="brand-line">Kitchen choices, made clearer</span></span></a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="../shop/">Shop</a>
+        <a href="../guides/">Buying guides</a>
+        <a href="../about/">Our approach</a>
+        <details class="nav-details"><summary>Research desk</summary><div class="nav-panel">
+          <span class="nav-panel-label">Research & decisions</span>
+          <a href="../desk/">Executive summary</a>
+          <a href="../desk/products.html">Product-intent register</a>
+          <a href="../desk/suggestions.html">Suggestions & paths</a>
+          <a href="../desk/questions.html">Open questions</a>
+          <a href="../desk/requirements.html">Requirements & status</a>
+          <span class="nav-panel-label">Measurement & review</span>
+          <a href="../desk/measurement.html">Analytics & campaign ledger</a>
+          <a href="../desk/workflow.html">Automation & compliance gate</a>
+          <a href="../desk/sources.html">Source register</a>
+          <a href="../flagged/">Flagged for Review</a>
+        </div></details>
+      </nav>
+    </div>
+    <div class="disclosure-strip"><div class="disclosure-inner"><p><strong>Affiliate disclosure</strong> “I get commissions for purchases made through links in this post.” As an Amazon Associate I earn from qualifying purchases.</p><a href="../about/#affiliate">How this works</a></div></div>
+  </header>
+  <main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="../">Home</a><span aria-hidden="true">/</span><a href="../desk/">Research desk</a><span aria-hidden="true">/</span> Requirements</p>
+    <p class="eyebrow">Implementation register · line-by-line status</p>
+    <h1>What is shipped, what is gated, and why.</h1>
+    <p class="lede">This status list separates repository work from tasks that require the owner's private account, confirmation, or a runtime GitHub Pages cannot provide.</p>
+  </section>
+  <section class="section">
+    <div class="table-wrap">
+      <table>
+        <caption>Requirements and evidence checked on 20 November 2026</caption>
+        <thead><tr><th scope="col">ID</th><th scope="col">Requirement</th><th scope="col">Status</th><th scope="col">Implementation / limitation</th><th scope="col">Official source links</th></tr></thead>
+        <tbody><tr>
+    <td><code>SG-27</code></td>
+    <td><strong>Publication navigation labels and footer access</strong></td>
+    <td><span class="status-pill good">done</span></td>
+    <td>One primary navigation group and a single Research desk menu; the footer repeats links to every decision, research, measurement, source, and review surface.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="nofollow noopener noreferrer">SRC-01 · Amazon Associates Central</a></div></td>
+  </tr>
+<tr>
+    <td><code>SG-28</code></td>
+    <td><strong>Ship an RSS feed and keep guides in the sitemap</strong></td>
+    <td><span class="status-pill good">done</span></td>
+    <td>The build emits feed.xml and sitemap.xml from the same page manifest as the four question-shaped guides. Google discovery is not guaranteed by a sitemap.</td>
+    <td><div class="source-links"><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="nofollow noopener noreferrer">SRC-08 · Google Search Central</a></div></td>
+  </tr>
+<tr>
+    <td><code>SG-29</code></td>
+    <td><strong>Search Console setup and query measurement</strong></td>
+    <td><span class="status-pill alert">blocked</span></td>
+    <td>Site property ownership and sitemap submission require an authorized Search Console account; no verification token or property access was provided. Instructions and source links are published; no traffic/query result is claimed.</td>
+    <td><div class="source-links"><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" target="_blank" rel="nofollow noopener noreferrer">SRC-09 · Google Search Central</a></div></td>
+  </tr>
+<tr>
+    <td><code>SG-30</code></td>
+    <td><strong>Reader capture</strong></td>
+    <td><span class="status-pill alert">blocked</span></td>
+    <td>No email form is enabled because no capture endpoint/provider, privacy retention plan, or unsubscribe path is configured. The page explains this instead of collecting addresses into a dead-end form.</td>
+    <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a><a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business" target="_blank" rel="nofollow noopener noreferrer">SRC-11 · Federal Trade Commission</a></div></td>
+  </tr>
+<tr>
+    <td><code>PUB-01</code></td>
+    <td><strong>Product-led publication front page with categories and question-led guides</strong></td>
+    <td><span class="status-pill good">done</span></td>
+    <td>The homepage leads with buyer questions, an original illustration, guide clusters, and a small shop queue; operational details sit in the footer Research desk group.</td>
+    <td><div class="source-links"><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" target="_blank" rel="nofollow noopener noreferrer">SRC-04 · Federal Trade Commission</a></div></td>
+  </tr>
+<tr>
+    <td><code>COM-01</code></td>
+    <td><strong>Disclosure above the fold on every page and repeated in the footer</strong></td>
+    <td><span class="status-pill good">done with gate</span></td>
+    <td>The exact Associates statement appears below the masthead and again in every footer. Associates account approval is not verified and is flagged before live links are enabled.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="nofollow noopener noreferrer">SRC-01 · Amazon Associates Central</a><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" target="_blank" rel="nofollow noopener noreferrer">SRC-04 · Federal Trade Commission</a></div></td>
+  </tr>
+<tr>
+    <td><code>COM-02</code></td>
+    <td><strong>Mark outbound product links as sponsored</strong></td>
+    <td><span class="status-pill good">done with gate</span></td>
+    <td>Any product-record inspection link uses rel sponsored, nofollow, noopener, noreferrer and an explicit inspection-only label. No unvalidated link is presented as a Buy button or Special Link.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="nofollow noopener noreferrer">SRC-01 · Amazon Associates Central</a><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="nofollow noopener noreferrer">SRC-02 · Amazon Associates Central</a><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" target="_blank" rel="nofollow noopener noreferrer">SRC-04 · Federal Trade Commission</a></div></td>
+  </tr>
+<tr>
+    <td><code>LINK-01</code></td>
+    <td><strong>Record product intent separately from observed redirects</strong></td>
+    <td><span class="status-pill alert">done with unverified fields</span></td>
+    <td>All five input URLs have distinct intendedAsin, officialListingUrl, confirmationDate, confirmationSource, and observedRedirectTarget fields. Intent, official intended listing URL, confirmation date, and source remain blank until confirmed.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC" target="_blank" rel="nofollow noopener noreferrer">SRC-03 · Amazon Associates Central Help</a><a href="https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR" target="_blank" rel="nofollow noopener noreferrer">SRC-12 · Amazon Associates Central Help</a><a href="https://www.amazon.com/dp/B0CDY277D3" target="_blank" rel="sponsored nofollow noopener noreferrer">SRC-P01 · Amazon.com</a><a href="https://www.amazon.com/dp/B09B7SB46R" target="_blank" rel="sponsored nofollow noopener noreferrer">SRC-P02 · Amazon.com</a><a href="https://www.amazon.com/dp/B08DKYBTPH" target="_blank" rel="sponsored nofollow noopener noreferrer">SRC-P03 · Amazon.com</a><a href="https://www.amazon.com/dp/B0DHZTCNR5" target="_blank" rel="sponsored nofollow noopener noreferrer">SRC-P04 · Amazon.com</a><a href="https://www.amazon.com/dp/B0DZFD6R9Z" target="_blank" rel="sponsored nofollow noopener noreferrer">SRC-P05 · Amazon.com</a></div></td>
+  </tr>
+<tr>
+    <td><code>LINK-02</code></td>
+    <td><strong>Validate each Special Link in Associates Central and confirm destination/report</strong></td>
+    <td><span class="status-pill alert">blocked</span></td>
+    <td>The five submitted links remain unresolved in FLG-003. No enrolled Associates account or report was accessed, and no link is claimed invalid. Test one link per product and verify its tracking report before activating purchase CTAs.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="nofollow noopener noreferrer">SRC-02 · Amazon Associates Central</a><a href="https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC" target="_blank" rel="nofollow noopener noreferrer">SRC-03 · Amazon Associates Central Help</a><a href="https://affiliate-program.amazon.com/help/node/topic/GMWAK55DQX8JEK7C" target="_blank" rel="nofollow noopener noreferrer">SRC-05 · Amazon Associates Central Help</a><a href="https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR" target="_blank" rel="nofollow noopener noreferrer">SRC-12 · Amazon Associates Central Help</a></div></td>
+  </tr>
+<tr>
+    <td><code>MEAS-01</code></td>
+    <td><strong>Propose five privacy-preserving events; confirm the missing event specification</strong></td>
+    <td><span class="status-pill neutral">proposal coded awaiting event contract</span></td>
+    <td>The request refers to five events but does not enumerate names, triggers, payloads, or retention. The current page_view, guide_open, site_search, outbound_click, and reader_signup schema is an explicit proposal only. The generated Pages artifact and default preview are disabled; the local API also requires explicit opt-in.</td>
+    <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+  </tr>
+<tr>
+    <td><code>MEAS-02</code></td>
+    <td><strong>Maintain an empty, provenance-first campaign ledger</strong></td>
+    <td><span class="status-pill good">done empty by design</span></td>
+    <td>The ledger has timestamp, source report, channel, eligible sessions, clicks, reported orders, and provenance fields. It contains no rows because no authorized first-party report was supplied.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/node/topic/GMWAK55DQX8JEK7C" target="_blank" rel="nofollow noopener noreferrer">SRC-05 · Amazon Associates Central Help</a><a href="https://affiliate-program.amazon.com/help/node/topic/GPTZ495QPL6TEZLJ" target="_blank" rel="nofollow noopener noreferrer">SRC-06 · Amazon Associates Central Help</a></div></td>
+  </tr>
+<tr>
+    <td><code>AUTO-01</code></td>
+    <td><strong>Automate research and content only through authorized data and a human publication gate</strong></td>
+    <td><span class="status-pill neutral">scaffolded no live api or model</span></td>
+    <td>A gated workflow and API policy checklist are published. No PA API credentials, reports, model provider, or permission to use Program Content for model training were supplied; no automated product scores, generated product claims, or auto-publishing are active.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="nofollow noopener noreferrer">SRC-02 · Amazon Associates Central</a><a href="https://affiliate-program.amazon.com/help/node/topic/GVJ2BJP35457CLML" target="_blank" rel="nofollow noopener noreferrer">SRC-07 · Amazon Associates Central Help</a></div></td>
+  </tr>
+<tr>
+    <td><code>SEO-01</code></td>
+    <td><strong>Use one canonical site, sitemap, feed, and question-shaped editorial cluster</strong></td>
+    <td><span class="status-pill good">done with search console gate</span></td>
+    <td>Canonical URLs use the repository&#39;s current GitHub Pages address. The sitemap and feed are generated from the site manifest. Search Console is not connected, and no ranking or traffic outcome is claimed.</td>
+    <td><div class="source-links"><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="nofollow noopener noreferrer">SRC-08 · Google Search Central</a><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" target="_blank" rel="nofollow noopener noreferrer">SRC-09 · Google Search Central</a><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+  </tr>
+<tr>
+    <td><code>CONTENT-01</code></td>
+    <td><strong>Publish four useful buyer-question guides without trend or product-superiority claims</strong></td>
+    <td><span class="status-pill good">done as editorial frameworks</span></td>
+    <td>Four guides cover shape, capacity, cleaning/space, and multi-function questions. The titles are marked as editorial hypotheses, not popularity or search-volume evidence.</td>
+    <td><div class="source-links"><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" target="_blank" rel="nofollow noopener noreferrer">SRC-04 · Federal Trade Commission</a><a href="https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap" target="_blank" rel="nofollow noopener noreferrer">SRC-08 · Google Search Central</a><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" target="_blank" rel="nofollow noopener noreferrer">SRC-09 · Google Search Central</a></div></td>
+  </tr>
+<tr>
+    <td><code>REVIEW-01</code></td>
+    <td><strong>Publish a Flagged for Review page for unresolved information</strong></td>
+    <td><span class="status-pill good">done</span></td>
+    <td>FLG-003 and related enrollment, analytics, search, and product-data gaps are published with official source links and the next verification step.</td>
+    <td><div class="source-links"><a href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="nofollow noopener noreferrer">SRC-01 · Amazon Associates Central</a><a href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="nofollow noopener noreferrer">SRC-02 · Amazon Associates Central</a><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" target="_blank" rel="nofollow noopener noreferrer">SRC-09 · Google Search Central</a><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+  </tr>
+<tr>
+    <td><code>PAGES-01</code></td>
+    <td><strong>Deploy the static publication to GitHub Pages</strong></td>
+    <td><span class="status-pill alert">workflow ready pending merge and deployment check</span></td>
+    <td>A custom Pages workflow builds and checks the static output. GitHub Pages currently uses the legacy main-branch source; switch to Actions after the workflow is merged, then verify deployment. The Node analytics endpoint is not a Pages runtime.</td>
+    <td><div class="source-links"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages" target="_blank" rel="nofollow noopener noreferrer">SRC-10 · GitHub Docs</a></div></td>
+  </tr></tbody>
+      </table>
+    </div>
+    <p class="table-note">“Done” means the site/code surface exists and passes the local checks. It does not mean a private account or third-party deployment was verified. See <a href="../flagged/">Flagged for Review</a> for the open gates.</p>
+  </section>
+</main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand"><a class="brand" href="../"><span class="brand-mark" aria-hidden="true">CN</span><span class="brand-copy"><span class="brand-name">Countertop Notes</span><span class="brand-line">Kitchen choices, made clearer</span></span></a><p>A publication-style guide to thoughtful kitchen purchases. Clear questions, careful sources, and no invented product claims.</p></div>
+        <div class="footer-groups">
+          <section class="footer-group" aria-labelledby="footer-read"><h2 id="footer-read">Read</h2><ul><li><a href="../shop/">Shop queue</a></li><li><a href="../guides/">Buying guides</a></li><li><a href="../about/">About the publication</a></li><li><a href="../privacy/">Privacy</a></li><li><a href="../feed.xml">RSS feed</a></li></ul></section>
+          <section class="footer-group" aria-labelledby="footer-desk-one"><h2 id="footer-desk-one">Research desk</h2><ul><li><a href="../desk/">Executive summary</a></li><li><a href="../desk/products.html">Product register</a></li><li><a href="../desk/suggestions.html">Suggestions</a></li><li><a href="../desk/questions.html">Open questions</a></li><li><a href="../desk/requirements.html">Requirements</a></li></ul></section>
+          <section class="footer-group" aria-labelledby="footer-desk-two"><h2 id="footer-desk-two">Measurement & checks</h2><ul><li><a href="../desk/measurement.html">Measurement ledger</a></li><li><a href="../desk/workflow.html">Automation gate</a></li><li><a href="../desk/sources.html">Source register</a></li><li><a href="../flagged/">Flagged for Review</a></li><li><a href="../sitemap.xml">Sitemap</a></li></ul></section>
+        </div>
+      </div>
+      <div class="footer-disclosure"><strong>Affiliate disclosure:</strong> “I get commissions for purchases made through links in this post.” As an Amazon Associate I earn from qualifying purchases.</div>
+      <div class="footer-bottom"><span>© 2026 Countertop Notes · Editorial frameworks, not product tests.</span><span><a href="../privacy/">Privacy</a> · <a href="../feed.xml">RSS</a> · <a href="../flagged/">Open review flags</a></span></div>
+    </div>
+  </footer>
+  <script src="../assets/analytics.js" defer></script>
+  <script src="../assets/site.js" defer></script>
+  
+  
+</body>
+</html>

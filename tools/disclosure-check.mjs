@@ -40,8 +40,10 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 // was removed, and a single noindex redirect page now stands in its place so
 // old links keep resolving. The exemption below applies only to that page (no
 // Amazon links, no tag, noindex); see FLG-031.
-const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "counter", "src", "tools", "data", "analytics-data"]);
+const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "counter", "src", "tools", "data", "analytics-data", "site-src", "shopnow/content", "content"]);
 
+// site-src/ (and shopnow/content, content/) hold build inputs — partial templates and markdown —
+// the same category as src/; their rendered output at countertop-notes/ IS walked below.
 const FTC = "I get commissions for purchases made through links in this post";
 const ASSOC = "As an Amazon Associate I earn from qualifying purchases";
 

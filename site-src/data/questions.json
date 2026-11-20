@@ -1,0 +1,169 @@
+{
+  "questions": [
+    {
+      "id": "Q-01",
+      "question": "Is the site enrolled and approved in the U.S. Amazon Associates program, and is shopnow047c-20 active for this property?",
+      "known": "The owner supplied the tracking ID; the repository initially had no account evidence.",
+      "unknown": "Application/approval status, registered site URL, and Tracking ID status in Associates Central.",
+      "howToFind": "Check the logged-in Associates Central account and site list; verify the exact Tracking ID in the report selector before publishing Special Links.",
+      "blocks": "Disclosure accuracy and any claim that links are active Associates links.",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-05",
+        "SRC-12"
+      ]
+    },
+    {
+      "id": "Q-02",
+      "question": "Which product and intended ASIN did the owner mean for each of the five submitted URLs?",
+      "known": "Five exact URLs were supplied. Individual page-reader re-opens surfaced five Amazon product page views: three with the Air Fryers breadcrumb and two in the Meat Thermometers category path. Those are observed destinations/categories stored separately, not intended-product confirmations.",
+      "unknown": "Intended ASIN, intended official listing URL, confirmation date, and confirmation source for every record.",
+      "howToFind": "Compare each link with the owner's source list or saved Associates Central link record. Confirm the product detail page and record the evidence and date before changing the intent fields.",
+      "blocks": "Product-specific copy, comparison, and purchase CTAs.",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-03",
+        "SRC-12",
+        "SRC-P01",
+        "SRC-P02",
+        "SRC-P03",
+        "SRC-P04",
+        "SRC-P05"
+      ]
+    },
+    {
+      "id": "Q-03",
+      "question": "Do the submitted links carry the intended Tracking ID and produce the expected Associates report entry?",
+      "known": "The selected Tracking ID string is shopnow047c-20. No link is represented as tested.",
+      "unknown": "Final click destination, tag attribution, and a corresponding report entry for each product.",
+      "howToFind": "Use an enrolled Associates workflow or Link Checker as appropriate; run one controlled test per product and check the account's Tracking ID/report. Record evidence, not just the URL.",
+      "blocks": "Replacing the inspection-only links with validated Special Links.",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-05",
+        "SRC-12"
+      ]
+    },
+    {
+      "id": "Q-04",
+      "question": "Is PA API or Creators API access active, and which product content may this site use or cache?",
+      "known": "Amazon's public help describes prerequisites and separate policy terms.",
+      "unknown": "Account access, credentials, permitted program content, refresh cadence, and any permission needed for a model or data analysis use.",
+      "howToFind": "Check Associates Central eligibility and the current IP License/usage requirements before connecting an API. Do not scrape Amazon or send Program Content to a model without the required authorization.",
+      "blocks": "Automated pricing/review/product research and content generation.",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-07"
+      ]
+    },
+    {
+      "id": "Q-05",
+      "question": "Which current product facts should be compared, and what evidence may be used for price, availability, reviews, competition, and commission?",
+      "known": "The requested fields are identified in the research schema; every value is presently blank.",
+      "unknown": "Current authorized price/availability data, permissible review data, competitors, category commission rates, and any first-hand evidence.",
+      "howToFind": "For product facts, use an authorized current Amazon source or manufacturer documentation and retain the source/time. Use Associates reports for observed performance; do not infer a rate or demand from the listing.",
+      "blocks": "Ranking products or making price, quality, popularity, commission, or conversion claims.",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-05",
+        "SRC-06",
+        "SRC-07"
+      ]
+    },
+    {
+      "id": "Q-06",
+      "question": "Who is the named author, and what testing or firsthand experience may the publication honestly claim?",
+      "known": "No author identity or test records were present in the repository. The site uses the transparent role ‘Countertop Notes Editorial Desk.’",
+      "unknown": "Author bio, product access, test protocol, sponsorships, and substantiation for any endorsement or performance claim.",
+      "howToFind": "Add a real byline and dated methodology only after the owner supplies the identity and records. Otherwise keep content as a general decision checklist and do not call it tested or independent product testing.",
+      "blocks": "Product review language and endorsement context.",
+      "sourceIds": [
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "Q-07",
+      "question": "Who can verify the GitHub Pages property in Search Console and submit the sitemap?",
+      "known": "The repository's configured public Pages URL is https://karagemop466-tech.github.io/Affil3/; sitemap.xml is generated.",
+      "unknown": "Search Console property ownership, verification token/method, and actual indexing/query data.",
+      "howToFind": "A site owner verifies the property in Search Console, inspects indexing, and may submit the sitemap. Review query and page reports after data accrues.",
+      "blocks": "Search-volume claims and data-led topic selection.",
+      "sourceIds": [
+        "SRC-08",
+        "SRC-09",
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "Q-08",
+      "question": "Where will the self-hosted event API run, and what retention and security settings will govern it?",
+      "known": "The static GitHub Pages artifact and default preview both keep event sending disabled; the included local Node API requires explicit opt-in. The user request does not specify a public backend.",
+      "unknown": "A backend host, public API origin, retention period, operational owner, and whether a same-origin reverse proxy is available.",
+      "howToFind": "Choose a server host or reverse proxy that can run the included Node endpoint, configure a same-origin route and retention policy, then verify event counts in production. Do not enable a client endpoint that returns 404.",
+      "blocks": "Cross-visitor click measurement and real audience analytics.",
+      "sourceIds": [
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "Q-09",
+      "question": "Which reader-capture service, privacy notice, retention period, and unsubscribe mechanism should be used?",
+      "known": "No address collection is enabled; the static build has no mailing service.",
+      "unknown": "Provider/endpoint, consent language, data controller/contact, retention, and working unsubscribe process.",
+      "howToFind": "Choose and test an email provider or self-hosted endpoint, publish a privacy explanation, and verify an easy functioning opt-out path before opening a form.",
+      "blocks": "Newsletter signup and the reader_signup event.",
+      "sourceIds": [
+        "SRC-10",
+        "SRC-11"
+      ]
+    },
+    {
+      "id": "Q-10",
+      "question": "Which buyer audience and search queries should the next article serve?",
+      "known": "Four editorial hypotheses were supplied for air-fryer/kitchen-appliance buying questions.",
+      "unknown": "Actual queries, impressions, audience geography, entry pages, and reader objections.",
+      "howToFind": "After Search Console ownership is verified and the pages have impressions, review Search performance by query and page. Treat suggested titles as hypotheses until those reports exist.",
+      "blocks": "Claims that a topic is trending, popular, or high-converting.",
+      "sourceIds": [
+        "SRC-09"
+      ]
+    },
+    {
+      "id": "Q-11",
+      "question": "Can the owner supply a canonical domain or contact details for publication and privacy pages?",
+      "known": "The current public GitHub Pages address is confirmed by repository settings; no custom domain or public contact details were configured.",
+      "unknown": "Custom domain preference, owner contact, and publication/legal contact route.",
+      "howToFind": "Choose a domain in repository settings and provide a monitored contact method before collecting personal information or publishing a named author profile.",
+      "blocks": "Branded-domain Search Console verification and operational contact details.",
+      "sourceIds": [
+        "SRC-09",
+        "SRC-10",
+        "SRC-11"
+      ]
+    },
+    {
+      "id": "Q-12",
+      "question": "What source-register definitions do S01, S02, S07, and S24 refer to in the user's notes?",
+      "known": "Those reference labels appear in the request, but no earlier source register or mapping file exists in the repository.",
+      "unknown": "The intended document/URL behind each label and whether those labels identify the same sources used here.",
+      "howToFind": "Add the original source register or map each ID to its authoritative URL. This implementation cites actual source titles and URLs without guessing the legacy ID mapping.",
+      "blocks": "A verified crosswalk to the referenced S01/S02/S07/S24 provenance labels.",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "Q-13",
+      "question": "Which exact event names, triggers, payloads, and retention rules did the request's “five defined events” refer to?",
+      "known": "The request mentions five events but does not enumerate the schema. This repository proposes page_view, guide_open, site_search, outbound_click, and reader_signup as a starting point.",
+      "unknown": "The owner-approved event names, triggers, allowed fields, consent gates, and retention requirements.",
+      "howToFind": "Use the intended event contract if one exists, or approve/revise this proposal explicitly. Keep the default runtime disabled until the schema is approved and a separate endpoint is reviewed and deployed.",
+      "blocks": "Claiming the implementation matches a user-specified event schema or activating production collection.",
+      "sourceIds": [
+        "SRC-10"
+      ]
+    }
+  ]
+}

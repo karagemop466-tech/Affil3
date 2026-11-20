@@ -1,0 +1,152 @@
+{
+  "flags": [
+    {
+      "id": "FLG-001",
+      "title": "Product intent is not confirmed for any submitted link",
+      "status": "Open — confirmation required",
+      "finding": "All five intended ASIN, intended official listing URL, confirmation date, and confirmation source fields are blank. The observed redirect target is kept in a separate field and is not used to populate intent.",
+      "irregularity": "The submitted path tails are each nine characters. Amazon's link-building help describes an ASIN separately from the Associate ID; these tails are therefore not recorded as intended ASINs. This observation does not establish that any submitted link is invalid.",
+      "nextStep": "Match every submitted link to the owner's intended item and record the official listing, intended ASIN, date, and evidence before publishing a product recommendation.",
+      "sourceIds": [
+        "SRC-03",
+        "SRC-12",
+        "SRC-P01",
+        "SRC-P02",
+        "SRC-P03",
+        "SRC-P04",
+        "SRC-P05"
+      ]
+    },
+    {
+      "id": "FLG-003",
+      "title": "Special Link compliance and tracking report remain unresolved",
+      "status": "Open — explicit workflow test required",
+      "finding": "The exact compliance status of the supplied short links is unresolved. No one-link-per-product Associates workflow test or tracking-report confirmation was performed.",
+      "irregularity": "Do not claim that the supplied short links are invalid. Do not treat the page-reader observations as Special Link validation or tag attribution.",
+      "nextStep": "In the enrolled Associates workflow, generate or inspect one Special Link per confirmed product, test destination and tag, then verify the corresponding Tracking ID/report before enabling buy CTAs.",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-03",
+        "SRC-05",
+        "SRC-12"
+      ]
+    },
+    {
+      "id": "FLG-004",
+      "title": "Associates enrollment and selected Tracking ID are owner-provided, not account-verified",
+      "status": "Open — account confirmation required",
+      "finding": "The selected Tracking ID is recorded as shopnow047c-20 because the owner supplied it. No authenticated Associates Central account was accessed.",
+      "irregularity": "The site displays the required Associates statement as requested, but eligibility and ID status still need to be confirmed by the account owner before live affiliate links are enabled.",
+      "nextStep": "Confirm the property and Tracking ID in Associates Central and verify a report row for a controlled link test.",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-05",
+        "SRC-12"
+      ]
+    },
+    {
+      "id": "FLG-005",
+      "title": "Observed category mix does not confirm the intended product set",
+      "status": "Open — owner intent confirmation required",
+      "finding": "Individual re-opens of the five exact submitted URLs surfaced three Amazon pages with the Air Fryers breadcrumb and two pages with the Meat Thermometers category path. These are observed page categories only.",
+      "irregularity": "A category shown on an observed Amazon page does not establish which products the owner intended to publish, nor does it validate the submitted link as a compliant Special Link.",
+      "nextStep": "Confirm whether each observed product belongs in the intended publication, then record the intended ASIN, official listing URL, confirmation date, and evidence separately.",
+      "sourceIds": [
+        "SRC-P01",
+        "SRC-P02",
+        "SRC-P03",
+        "SRC-P04",
+        "SRC-P05",
+        "SRC-03"
+      ]
+    },
+    {
+      "id": "FLG-006",
+      "title": "Price, availability, ratings, review data, competition, commission, and trend fields are blank",
+      "status": "Open — authorized evidence required",
+      "finding": "No product score, revenue forecast, trend claim, price, availability, review metric, commission estimate, or competitor count is shown.",
+      "irregularity": "No authorized API credentials or Associates reports were supplied. Search-result snippets and third-party estimates were not used as values.",
+      "nextStep": "Use current authorized Amazon or manufacturer data for product facts, and Associates first-party reports for performance; retain the source and data timestamp for each field.",
+      "sourceIds": [
+        "SRC-02",
+        "SRC-05",
+        "SRC-06",
+        "SRC-07"
+      ]
+    },
+    {
+      "id": "FLG-007",
+      "title": "Real site analytics are not active on GitHub Pages",
+      "status": "Open — backend hosting required",
+      "finding": "The repository includes a self-hosted aggregate-count Node endpoint and a five-event schema proposal. The static Pages artifact and default preview config both disable event sending; the preview API rejects events unless explicitly enabled in an isolated local environment.",
+      "irregularity": "No cross-visitor click or conversion data is collected by the default preview or live static site. The campaign ledger remains empty.",
+      "nextStep": "Only after event-schema approval, deploy the API on a separately reviewed host or same-origin reverse proxy; test privacy controls and event counts before using data to optimize content.",
+      "sourceIds": [
+        "SRC-05",
+        "SRC-06",
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "FLG-008",
+      "title": "Search Console ownership and query baseline are not verified",
+      "status": "Open — property owner action required",
+      "finding": "A canonical URL, sitemap, and RSS feed are present. No Search Console property, ownership verification, sitemap submission, search query, impression, click, or ranking result is claimed.",
+      "irregularity": "A sitemap does not guarantee indexing or ranking.",
+      "nextStep": "Verify the GitHub Pages property, submit the generated sitemap if desired, and review actual page/query reports when data is available.",
+      "sourceIds": [
+        "SRC-08",
+        "SRC-09",
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "FLG-009",
+      "title": "Reader capture is intentionally disabled",
+      "status": "Open — consent and service choices required",
+      "finding": "The site does not ask for or store email addresses. There is no mailing provider, reader-capture endpoint, privacy-retention plan, or unsubscribe workflow configured.",
+      "irregularity": "No dead-end or decorative signup form was added.",
+      "nextStep": "Select and configure a provider or self-hosted endpoint, publish a privacy/retention explanation, and test opt-out before collecting addresses.",
+      "sourceIds": [
+        "SRC-10",
+        "SRC-11"
+      ]
+    },
+    {
+      "id": "FLG-010",
+      "title": "The source IDs S01, S02, S07, and S24 and full legacy source register were not in the repository",
+      "status": "Open — source crosswalk missing",
+      "finding": "The user's notes reference source labels and a pre-existing source register, but the checkout contained only README.md and no source register or task rows.",
+      "irregularity": "No mapping from those legacy IDs to URLs is guessed. This site uses explicit SRC-* source records with official URLs.",
+      "nextStep": "Supply or connect the original register if a strict S01/S02/S07/S24 crosswalk is needed; otherwise keep using the explicit source URLs listed here.",
+      "sourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "FLG-011",
+      "title": "No individual author identity or product-testing record was supplied",
+      "status": "Open — owner documentation required for endorsements",
+      "finding": "The site uses an editorial desk byline and does not claim testing, ownership, or firsthand product experience.",
+      "irregularity": "Product recommendation language is withheld until evidence and authorship are available.",
+      "nextStep": "Provide a real author byline, test records, and any material connection disclosures before publishing firsthand endorsements.",
+      "sourceIds": [
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "FLG-012",
+      "title": "The requested five-event specification is incomplete",
+      "status": "Open — exact event contract not supplied",
+      "finding": "The request mentions five defined events but does not provide their names, triggers, payloads, or retention requirements. This repository labels its five-event schema as a proposal only.",
+      "irregularity": "The proposal is not represented as an established user requirement, and the static/default-preview runtime remains disabled.",
+      "nextStep": "Use the event names, fields, consent gates, and retention the owner confirms. Keep event collection disabled until the accepted schema and separate API deployment are reviewed.",
+      "sourceIds": [
+        "SRC-10"
+      ]
+    }
+  ]
+}

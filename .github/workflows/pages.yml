@@ -1,0 +1,32 @@
+name: Build and verify Countertop Notes
+
+# Verify-only: the root publish workflow owns the GitHub Pages deployment. This surface builds
+# into _site/ and runs its gates; it never uploads or deploys an artifact, so it cannot replace
+# the published root site.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build and gate the site
+        run: npm run notes:check
+      - name: Static output audit
+        run: |
+          echo "html pages:  $(find _site -name '*.html' | wc -l)"
+          echo "no-crawl:    $(grep -rl 'noindex' _site --include='*.html' | wc -l) pages"

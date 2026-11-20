@@ -1,0 +1,32 @@
+<main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="{{root}}">Home</a><span aria-hidden="true">/</span><a href="{{root}}desk/">Research desk</a><span aria-hidden="true">/</span> Automation</p>
+    <p class="eyebrow">Trustworthy machinery · gates before automation</p>
+    <h1>Automate the checks. Keep a human at the publication gate.</h1>
+    <p class="lede">The repository contains an evidence workflow, not an active AI product researcher. Account access, authorized data, and an editor's sign-off are prerequisites—not assumptions.</p>
+  </section>
+  <section class="section">
+    <div class="note-box warning-box"><strong>Automation is not connected.</strong><p>No Amazon API credentials, Associates report, model provider, or data license were supplied. There is no product discovery score, trend detector, price watcher, review analyzer, commission forecast, or automatic publishing in this build.</p></div>
+    <div class="step-list">
+      <div class="step"><b>01 · Authorize</b><p>Confirm Associates account, website, Tracking ID, API eligibility, and permitted data use.</p></div>
+      <div class="step"><b>02 · Source</b><p>Fetch only permitted data; retain its source, timestamp, and refresh instructions.</p></div>
+      <div class="step"><b>03 · Draft</b><p>Use AI only for a cited draft if rights and policy allow; do not invent missing fields or use restricted Program Content for model training.</p></div>
+      <div class="step"><b>04 · Approve</b><p>A human verifies product intent, disclosure, claims, link destination, and required policy checks before publication.</p></div>
+    </div>
+    <h2>Current automation boundary</h2>
+    <div class="table-wrap">
+      <table>
+        <caption>Allowed now versus gated for a future authorized setup</caption>
+        <thead><tr><th scope="col">Function</th><th scope="col">Current state</th><th scope="col">What must be true first</th><th scope="col">Official source</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Static page build, sitemap, feed, internal link checks</strong></td><td>Implemented in the repository's local/Actions build.</td><td>Run the checked build on every site change.</td><td><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages">GitHub Pages workflows</a></td></tr>
+          <tr><td><strong>Product discovery, trend scoring, price/review analysis</strong></td><td>Not active; data fields remain blank.</td><td>Authorized data access, supported freshness, source logging, and policy review.</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GVJ2BJP35457CLML">Amazon PA API requirements</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies">Amazon program policies</a></td></tr>
+          <tr><td><strong>AI-written product copy</strong></td><td>No model connected and no product claims generated.</td><td>Allowed source use, grounded citations, editorial review, and any required prior written approval for Program Content model use.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies">Amazon Associates Program Policies</a> · <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking">FTC endorsement guidance</a></td></tr>
+          <tr><td><strong>Special Links and disclosure checks</strong></td><td>Automated site check plus manual approval gate; purchase links not activated.</td><td>Confirmed intent, generated/tagged Special Link, destination test, report confirmation, and nearby disclosure.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement">Amazon Operating Agreement</a> · <a href="https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR">Amazon link checker help</a></td></tr>
+          <tr><td><strong>Orders and conversion optimization</strong></td><td>No conversion score or forecast; campaign ledger empty.</td><td>Authorized Amazon report with date, Tracking ID, and provenance.</td><td><a href="https://affiliate-program.amazon.com/help/node/topic/GMWAK55DQX8JEK7C">Amazon Associates reports</a> · <a href="https://affiliate-program.amazon.com/help/node/topic/GPTZ495QPL6TEZLJ">Order Report definitions</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Amazon's Program Policies include restrictions on using Program Content, including API/feed content. Do not scrape Amazon or send Program Content to a model unless the applicable agreement expressly allows it.</p>
+  </section>
+</main>

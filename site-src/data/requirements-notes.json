@@ -1,0 +1,7 @@
+{
+  "claimScope": "Only the files in this repository and public official source pages were inspected. No Associates account, private report, Search Console property, analytics host, or publisher credentials were accessed.",
+  "unmappedUserReferences": ["S01", "S02", "S07", "S24"],
+  "unmappedReferenceNote": "The labels appear in the user's request but no source register exists in the repository; the implementation uses explicit SRC-* IDs and does not guess a legacy crosswalk.",
+  "parallelPassRows": ["SG-27", "SG-28", "SG-29", "SG-30"],
+  "coordinationNote": "The request described parallel sessions and separate task branches, but the Arena session is constrained to the assigned branch. No other claims were present when COORDINATION.md was created; all work is on the assigned branch."
+}

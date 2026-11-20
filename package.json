@@ -17,7 +17,11 @@
     "shop:serve": "node scripts/serve.mjs --port 8080",
     "shop:collect": "node scripts/collect.mjs --port 8788",
     "shop:links": "node scripts/links.mjs",
-    "shop:new-guide": "node scripts/new-guide.mjs"
+    "shop:new-guide": "node scripts/new-guide.mjs",
+    "notes:build": "node scripts/build-site.mjs",
+    "notes:check": "node scripts/build-site.mjs && node scripts/verify-site.mjs && node scripts/test-analytics.mjs",
+    "notes:test-analytics": "node scripts/test-analytics.mjs",
+    "notes:serve": "node server/index.mjs"
   },
   "engines": {
     "node": ">=18"

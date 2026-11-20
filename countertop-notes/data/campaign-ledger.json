@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "description": "Provenance-first campaign ledger. One row is added only from an authorized first-party Amazon Associates report or another documented first-party source.",
+  "columns": [
+    "timestamp_utc",
+    "source_report",
+    "channel",
+    "eligible_sessions",
+    "clicks",
+    "reported_orders",
+    "provenance_note"
+  ],
+  "rows": [],
+  "emptyReason": "No authorized first-party report has been supplied or connected. No clicks, sessions, orders, revenue, score, or forecast are inferred."
+}

@@ -1,0 +1,171 @@
+{
+  "verifiedOn": "2026-11-20",
+  "requirements": [
+    {
+      "id": "SG-27",
+      "title": "Publication navigation labels and footer access",
+      "status": "done",
+      "implementation": "One primary navigation group and a single Research desk menu; the footer repeats links to every decision, research, measurement, source, and review surface.",
+      "evidenceSourceIds": [
+        "SRC-01"
+      ]
+    },
+    {
+      "id": "SG-28",
+      "title": "Ship an RSS feed and keep guides in the sitemap",
+      "status": "done",
+      "implementation": "The build emits feed.xml and sitemap.xml from the same page manifest as the four question-shaped guides. Google discovery is not guaranteed by a sitemap.",
+      "evidenceSourceIds": [
+        "SRC-08"
+      ]
+    },
+    {
+      "id": "SG-29",
+      "title": "Search Console setup and query measurement",
+      "status": "blocked",
+      "implementation": "Site property ownership and sitemap submission require an authorized Search Console account; no verification token or property access was provided. Instructions and source links are published; no traffic/query result is claimed.",
+      "evidenceSourceIds": [
+        "SRC-09"
+      ]
+    },
+    {
+      "id": "SG-30",
+      "title": "Reader capture",
+      "status": "blocked",
+      "implementation": "No email form is enabled because no capture endpoint/provider, privacy retention plan, or unsubscribe path is configured. The page explains this instead of collecting addresses into a dead-end form.",
+      "evidenceSourceIds": [
+        "SRC-10",
+        "SRC-11"
+      ]
+    },
+    {
+      "id": "PUB-01",
+      "title": "Product-led publication front page with categories and question-led guides",
+      "status": "done",
+      "implementation": "The homepage leads with buyer questions, an original illustration, guide clusters, and a small shop queue; operational details sit in the footer Research desk group.",
+      "evidenceSourceIds": [
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "COM-01",
+      "title": "Disclosure above the fold on every page and repeated in the footer",
+      "status": "done-with-gate",
+      "implementation": "The exact Associates statement appears below the masthead and again in every footer. Associates account approval is not verified and is flagged before live links are enabled.",
+      "evidenceSourceIds": [
+        "SRC-01",
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "COM-02",
+      "title": "Mark outbound product links as sponsored",
+      "status": "done-with-gate",
+      "implementation": "Any product-record inspection link uses rel sponsored, nofollow, noopener, noreferrer and an explicit inspection-only label. No unvalidated link is presented as a Buy button or Special Link.",
+      "evidenceSourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-04"
+      ]
+    },
+    {
+      "id": "LINK-01",
+      "title": "Record product intent separately from observed redirects",
+      "status": "done-with-unverified-fields",
+      "implementation": "All five input URLs have distinct intendedAsin, officialListingUrl, confirmationDate, confirmationSource, and observedRedirectTarget fields. Intent, official intended listing URL, confirmation date, and source remain blank until confirmed.",
+      "evidenceSourceIds": [
+        "SRC-03",
+        "SRC-12",
+        "SRC-P01",
+        "SRC-P02",
+        "SRC-P03",
+        "SRC-P04",
+        "SRC-P05"
+      ]
+    },
+    {
+      "id": "LINK-02",
+      "title": "Validate each Special Link in Associates Central and confirm destination/report",
+      "status": "blocked",
+      "implementation": "The five submitted links remain unresolved in FLG-003. No enrolled Associates account or report was accessed, and no link is claimed invalid. Test one link per product and verify its tracking report before activating purchase CTAs.",
+      "evidenceSourceIds": [
+        "SRC-02",
+        "SRC-03",
+        "SRC-05",
+        "SRC-12"
+      ]
+    },
+    {
+      "id": "MEAS-01",
+      "title": "Propose five privacy-preserving events; confirm the missing event specification",
+      "status": "proposal-coded-awaiting-event-contract",
+      "implementation": "The request refers to five events but does not enumerate names, triggers, payloads, or retention. The current page_view, guide_open, site_search, outbound_click, and reader_signup schema is an explicit proposal only. The generated Pages artifact and default preview are disabled; the local API also requires explicit opt-in.",
+      "evidenceSourceIds": [
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "MEAS-02",
+      "title": "Maintain an empty, provenance-first campaign ledger",
+      "status": "done-empty-by-design",
+      "implementation": "The ledger has timestamp, source report, channel, eligible sessions, clicks, reported orders, and provenance fields. It contains no rows because no authorized first-party report was supplied.",
+      "evidenceSourceIds": [
+        "SRC-05",
+        "SRC-06"
+      ]
+    },
+    {
+      "id": "AUTO-01",
+      "title": "Automate research and content only through authorized data and a human publication gate",
+      "status": "scaffolded-no-live-api-or-model",
+      "implementation": "A gated workflow and API policy checklist are published. No PA API credentials, reports, model provider, or permission to use Program Content for model training were supplied; no automated product scores, generated product claims, or auto-publishing are active.",
+      "evidenceSourceIds": [
+        "SRC-02",
+        "SRC-07"
+      ]
+    },
+    {
+      "id": "SEO-01",
+      "title": "Use one canonical site, sitemap, feed, and question-shaped editorial cluster",
+      "status": "done-with-search-console-gate",
+      "implementation": "Canonical URLs use the repository's current GitHub Pages address. The sitemap and feed are generated from the site manifest. Search Console is not connected, and no ranking or traffic outcome is claimed.",
+      "evidenceSourceIds": [
+        "SRC-08",
+        "SRC-09",
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "CONTENT-01",
+      "title": "Publish four useful buyer-question guides without trend or product-superiority claims",
+      "status": "done-as-editorial-frameworks",
+      "implementation": "Four guides cover shape, capacity, cleaning/space, and multi-function questions. The titles are marked as editorial hypotheses, not popularity or search-volume evidence.",
+      "evidenceSourceIds": [
+        "SRC-04",
+        "SRC-08",
+        "SRC-09"
+      ]
+    },
+    {
+      "id": "REVIEW-01",
+      "title": "Publish a Flagged for Review page for unresolved information",
+      "status": "done",
+      "implementation": "FLG-003 and related enrollment, analytics, search, and product-data gaps are published with official source links and the next verification step.",
+      "evidenceSourceIds": [
+        "SRC-01",
+        "SRC-02",
+        "SRC-09",
+        "SRC-10"
+      ]
+    },
+    {
+      "id": "PAGES-01",
+      "title": "Deploy the static publication to GitHub Pages",
+      "status": "workflow-ready-pending-merge-and-deployment-check",
+      "implementation": "A custom Pages workflow builds and checks the static output. GitHub Pages currently uses the legacy main-branch source; switch to Actions after the workflow is merged, then verify deployment. The Node analytics endpoint is not a Pages runtime.",
+      "evidenceSourceIds": [
+        "SRC-10"
+      ]
+    }
+  ]
+}

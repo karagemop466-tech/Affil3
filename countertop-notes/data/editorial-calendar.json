@@ -1,0 +1,37 @@
+{
+  "status": "Initial guide cluster prepared for launch; future cadence is proposed, not a claim about search demand.",
+  "cadence": "Proposed: publish one evidence-backed, question-shaped guide every two weeks. After the first four weeks of verified Search Console data, review actual query impressions and clicks before choosing the next topic.",
+  "nextReviewDate": "",
+  "dateReason": "No Search Console property has been verified, so a data-review date is not assigned.",
+  "guides": [
+    {
+      "path": "guides/basket-or-oven.html",
+      "title": "Basket or oven-style air fryer: what should you compare?",
+      "publicationDate": "2026-11-20",
+      "status": "Published as an editorial framework; no products ranked.",
+      "hypothesis": true
+    },
+    {
+      "path": "guides/capacity-checklist.html",
+      "title": "A no-hype checklist for comparing air fryer capacity",
+      "publicationDate": "2026-11-20",
+      "status": "Published as an editorial framework; no capacity values claimed.",
+      "hypothesis": true
+    },
+    {
+      "path": "guides/cleanup-counter-space.html",
+      "title": "How to assess cleanup and counter-space trade-offs",
+      "publicationDate": "2026-11-20",
+      "status": "Published as an editorial framework; no product care or dimension claims made.",
+      "hypothesis": true
+    },
+    {
+      "path": "guides/multi-function-questions.html",
+      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "publicationDate": "2026-11-20",
+      "status": "Published as an editorial framework; no product rankings or popularity claims made.",
+      "hypothesis": true
+    }
+  ],
+  "editorialGuardrail": "These are working editorial hypotheses supplied for this project. Their wording is not evidence of search volume, trend status, popularity, product superiority, or likely conversion."
+}
