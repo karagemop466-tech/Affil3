@@ -1,9 +1,15 @@
+# Generated analytics data (aggregate counts; never commit)
+analytics-data/
+# Local tooling
 node_modules/
 .DS_Store
-*.log
+*.tmp
+# Python tooling (editorial register build)
+__pycache__/
+*.pyc
+.venv/
 
-# Never commit a regenerated legacy tree. tools/build.py (an earlier session's
-# builder) writes into this directory; if it ever lands at the repository root it
-# would publish a second, competing site next to the live one. See COORDINATION.md.
+# Never commit a regenerated legacy tree at the repository root. The frozen
+# editions live under legacy/ only, where they are unambiguously archived.
 /docs/
-/editorial/
+/editorial-legacy/
