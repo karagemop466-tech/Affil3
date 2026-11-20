@@ -1,18 +1,129 @@
 {
-  "_about": "Suggestions for review. Nothing on this page is implemented until the owner picks an option. Reply with 'SUG-NN: <letter>' or edit this file on a branch. 'Recommended' is a default, not a decision.",
+  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
   "suggestions": [
-    {"id": "SUG-01", "area": "Attribution (highest risk)", "suggestion": "Confirm that the submitted links carry the Associates tag before any further content is published.", "options": {"A": "Keep the submitted short links; owner tests each in Associates Central (steps: sign in, click, check the tracking report).", "B": "Replace with https://www.amazon.com/dp/ASIN?tag=shopnow047c-20 links, using ASINs from products.json.", "C": "Generate Special Links per ASIN in Associates Central and paste them into products.json."}, "recommended": "A, then C. Keeps the links the owner submitted until the owner's test passes (SRC-02 2(b)).", "effort": "Low", "risk": "High if skipped", "status": "Awaiting your choice", "source": "SRC-01 §1, SRC-02 2(b), SRC-02 Section 2"},
-    {"id": "SUG-02", "area": "Measurement", "suggestion": "Host the self-hosted analytics receiver.", "options": {"A": "Run analytics/collect_server.py on a server or container you control, with a domain and HTTPS.", "B": "Use a privacy-focused hosted analytics product (requires an account, which needs your input).", "C": "Leave measurement off until a decision is made."}, "recommended": "A. The receiver stores daily counts only and keeps no IPs or user agents.", "effort": "Medium", "risk": "Medium", "status": "Awaiting your choice", "source": "SRC-02 (privacy disclosure; section not recorded), SRC-05"},
-    {"id": "SUG-03", "area": "Publishing cadence", "suggestion": "Set the guide schedule.", "options": {"A": "One guide every 14 days (current proposed default).", "B": "One guide every 7 days.", "C": "One guide every 30 days."}, "recommended": "A. Gives time to read Search Console data before each new topic.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-07 (helpful content over volume)"},
-    {"id": "SUG-04", "area": "Brand", "suggestion": "Confirm the brand name.", "options": {"A": "Countertop Journal (current working name).", "B": "Keep 'Affil3' (repository name).", "C": "A different name you supply."}, "recommended": "A. Contains no Amazon mark (Associates policy on Amazon names). 'Affil3' is a repo name, not a brand.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-02 (Amazon names in brand; section not recorded)"},
-    {"id": "SUG-05", "area": "Authorship", "suggestion": "Decide the byline.", "options": {"A": "Editorial team byline (current).", "B": "A named author with a bio (needs your input).", "C": "No byline."}, "recommended": "A until a named author is supplied. A byline is never invented.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-07 (who created the content)"},
-    {"id": "SUG-06", "area": "Imagery", "suggestion": "Choose product imagery.", "options": {"A": "Typographic cards, no photos (current).", "B": "Photos the owner takes of products they own.", "C": "Amazon product photos (not recommended without image-rights confirmation)."}, "recommended": "A now, B later.", "effort": "Medium for B", "risk": "High for C", "status": "Awaiting your choice", "source": "SRC-02 (image use; section not recorded)"},
-    {"id": "SUG-07", "area": "Prices and ratings", "suggestion": "Decide whether price and rating data should appear.", "options": {"A": "Leave them out (current).", "B": "Apply for approved Associates data access and show data only as the policy allows.", "C": "Show prices scraped from pages (not permitted)."}, "recommended": "A. Option C is excluded by SRC-02 2(b) and §6(t).", "effort": "Medium for B", "risk": "High for C", "status": "Awaiting your choice", "source": "SRC-02 2(b), 6(t), 6(y)"},
-    {"id": "SUG-08", "area": "Unverified link P03", "suggestion": "Decide what happens to P03.", "options": {"A": "Owner opens it in a browser and sends the product, then it is confirmed.", "B": "Remove the P03 card from the site.", "C": "Keep the card as 'awaiting verification' until confirmed (current)."}, "recommended": "C now, then A.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-16"},
-    {"id": "SUG-09", "area": "Guide direction", "suggestion": "Choose the guide type.", "options": {"A": "Question-shaped buyer guides from listing text and public guidance (current).", "B": "Hands-on reviews (requires testing, which has not happened).", "C": "Comparison tables using only listing text."}, "recommended": "A. B only after testing. C is a smaller version of A.", "effort": "Low for A", "risk": "High for B without testing", "status": "Awaiting your choice", "source": "SRC-05"},
-    {"id": "SUG-10", "area": "Search and findability", "suggestion": "Verify the site in Google Search Console and submit sitemap.xml.", "options": {"A": "Owner does it with their Google account (steps in the About page).", "B": "Skip, and use only the sitemap and feed.", "C": "Add Bing Webmaster Tools as well."}, "recommended": "A.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-08"},
-    {"id": "SUG-11", "area": "Reader capture", "suggestion": "Decide how readers stay in touch.", "options": {"A": "RSS feed only (built).", "B": "An email list through a provider (requires an account and a consent process).", "C": "No capture."}, "recommended": "A now.", "effort": "Low for A", "risk": "Medium for B", "status": "Awaiting your choice", "source": "SRC-09"},
-    {"id": "SUG-12", "area": "Next categories", "suggestion": "Decide whether to add categories.", "options": {"A": "Stay with the current three until measured reader data exists.", "B": "Add a category now based on the brief's hypotheses.", "C": "Add categories from search data once available."}, "recommended": "A, then C.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "Brief, Priority 4 (measure before automating)"},
-    {"id": "SUG-13", "area": "Automation gate", "suggestion": "Run the site checker on every pull request with GitHub Actions.", "options": {"A": "Add a workflow file (needs workflow permission on the token).", "B": "Run tools/check_site.py by hand before each merge (current)."}, "recommended": "A once permission is confirmed.", "effort": "Low", "risk": "Low", "status": "Awaiting your choice", "source": "SRC-10"}
+    {
+      "id": "S-01",
+      "topic": "Outbound link handling",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
+        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
+      ],
+      "recommendation": "B, until G-02 passes."
+    },
+    {
+      "id": "S-02",
+      "topic": "Publishing cadence",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
+        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
+        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+      ],
+      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
+    },
+    {
+      "id": "S-03",
+      "topic": "Where the analytics collector runs",
+      "current": "D",
+      "options": [
+        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
+        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
+        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
+        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
+      ],
+      "recommendation": "A or B if you want measured queries before choosing the next topic."
+    },
+    {
+      "id": "S-04",
+      "topic": "Brand name",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
+        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
+      ],
+      "recommendation": "B before wider promotion."
+    },
+    {
+      "id": "S-05",
+      "topic": "Imagery",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
+        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
+        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
+      ],
+      "recommendation": "B for guides; A for the front page."
+    },
+    {
+      "id": "S-06",
+      "topic": "Authorship",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
+        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
+      ],
+      "recommendation": "B once a real reviewer is named."
+    },
+    {
+      "id": "S-07",
+      "topic": "Content depth before Associates review",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
+        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
+      ],
+      "recommendation": "B."
+    },
+    {
+      "id": "S-08",
+      "topic": "Seasonal content",
+      "current": "B",
+      "options": [
+        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
+        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+      ],
+      "recommendation": "B until measured queries (from S-03) show interest."
+    },
+    {
+      "id": "S-09",
+      "topic": "Category focus",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
+        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
+      ],
+      "recommendation": "A until the unresolved link is decided."
+    },
+    {
+      "id": "S-10",
+      "topic": "Prices and ratings",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
+        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+      ],
+      "recommendation": "A now; B only after an authorized source is confirmed."
+    },
+    {
+      "id": "S-11",
+      "topic": "Reader capture (email list)",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
+        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
+      ],
+      "recommendation": "A until the email rules are reviewed."
+    },
+    {
+      "id": "S-12",
+      "topic": "Search Console",
+      "current": "B",
+      "options": [
+        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
+        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+      ],
+      "recommendation": "B."
+    }
   ]
 }

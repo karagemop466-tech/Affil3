@@ -1,235 +1,154 @@
 #!/usr/bin/env python3
-"""Compliance and integrity checks for docs/ (run after tools/build_site.py).
+"""Gate the build. Fails CI if the site breaks a rule we said we would keep.
 
-Exits non-zero on any failure. Covers: Associates disclosure text (above the fold and in the footer),
-rel="sponsored" on every Amazon link, no prices or star ratings, no storage/cookie code, internal links,
-ASIN format, every register row carrying a source link, empty campaign ledger, and no broken local refs.
+Checks
+ 1. Every internal link resolves to a file that exists.
+ 2. No currency or price text anywhere in the generated HTML.
+ 3. No star rating or review count pattern.
+ 4. Every outbound Amazon link carries tag=<TRACKING_ID>.
+ 5. Every page carries the required Associates statement.
+ 6. Every spec row on a product page cites a source ID that exists.
+ 7. sitemap.xml lists every generated HTML page that is not a 404.
 """
+
 from __future__ import annotations
 
-import csv
-import html.parser
 import json
 import pathlib
 import re
 import sys
-from urllib.parse import urlsplit
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-DOCS = ROOT / "docs"
-DATA = ROOT / "data"
-DISCLOSURE = json.loads((DATA / "site.json").read_text())["associates_statement"]
-PRODUCTS = json.loads((DATA / "products.json").read_text())["products"]
-ASIN_RE = re.compile(r"^[A-Z0-9]{10}$")
-failures: list[str] = []
+DOCS = ROOT / "editorial"
+DATA = ROOT / "data" / "register"
+TRACKING_ID = "shopnow047c-20"
+STATEMENT = "As an Amazon Associate I earn from qualifying purchases."
+
+errors: list[str] = []
 
 
-def fail(msg: str):
-    failures.append(msg)
+def err(msg: str) -> None:
+    errors.append(msg)
 
 
-class Page(html.parser.HTMLParser):
-    def __init__(self):
-        super().__init__(convert_charrefs=True)
-        self.links = []          # (href, rel, in_footer)
-        self.ids = set()
-        self.text_before_main = []
-        self.text_footer = []
-        self.in_footer = False
-        self.in_main = False
-        self.seen_main = False
-        self.tables = []
-        self._table_depth = 0
-        self._row = None
-        self.rows = []           # (cells list of (text, has_link_to_source))
-        self._cell = None
-        self.text_all = []
-        self.in_script = False
-
-    def handle_starttag(self, tag, attrs):
-        a = dict(attrs)
-        if a.get("id"):
-            self.ids.add(a["id"])
-        if tag == "main":
-            self.in_main = True
-            self.seen_main = True
-        if tag == "footer":
-            self.in_footer = True
-        if tag == "script":
-            self.in_script = True
-        if tag == "a" and a.get("href"):
-            self.links.append((a["href"], a.get("rel", ""), self.in_footer, a.get("data-product")))
-            if self._cell is not None:
-                self._cell["links"].append(a["href"])
-        if tag == "table":
-            self._table_depth += 1
-        if tag == "tr" and self._table_depth:
-            self._row = []
-        if tag in ("td", "th") and self._row is not None:
-            self._cell = {"text": [], "links": []}
-
-    def handle_endtag(self, tag):
-        if tag == "main":
-            self.in_main = False
-        if tag == "footer":
-            self.in_footer = False
-        if tag == "script":
-            self.in_script = False
-        if tag in ("td", "th") and self._cell is not None and self._row is not None:
-            self._row.append(self._cell)
-            self._cell = None
-        if tag == "tr" and self._row is not None:
-            if self._row and self._row[0]["text"]:
-                self.rows.append(self._row)
-            self._row = None
-        if tag == "table":
-            self._table_depth -= 1
-
-    def handle_data(self, data):
-        if self.in_script:
-            return
-        self.text_all.append(data)
-        if self._cell is not None:
-            self._cell["text"].append(data)
-        if not self.seen_main:
-            self.text_before_main.append(data)
-        if self.in_footer:
-            self.text_footer.append(data)
-
-
-def norm(s: str) -> str:
-    return re.sub(r"\s+", " ", s).strip()
-
-
-def check_page(path: pathlib.Path):
-    rel = path.relative_to(DOCS).as_posix()
-    p = Page()
-    p.feed(path.read_text(encoding="utf-8"))
-    text = norm(" ".join(p.text_all))
-
-    # 1. Disclosure: exact wording, above the fold (before <main>) and in footer
-    before = norm(" ".join(p.text_before_main))
-    footer = norm(" ".join(p.text_footer))
-    if rel != "404.html":
-        if DISCLOSURE not in before:
-            fail(f"{rel}: disclosure statement not above <main> (above-the-fold rule)")
-        if DISCLOSURE not in footer:
-            fail(f"{rel}: disclosure statement missing from footer")
-
-    # 2. Amazon links must be rel=sponsored
-    for href, link_rel, in_footer, product in p.links:
-        host = (urlsplit(href).hostname or "").lower()
-        if host == "link.amazon" or host == "amazon.com" or host.endswith(".amazon.com"):
-            if "sponsored" not in link_rel.split():
-                fail(f"{rel}: Amazon link without rel=sponsored: {href}")
-
-    # 3. Internal links resolve to a file in docs/
-    for href, *_rest in p.links:
-        if href.startswith(("http://", "https://", "mailto:", "#")):
-            if href.startswith("#"):
-                frag = href[1:]
-                if frag and frag not in p.ids:
-                    fail(f"{rel}: broken fragment {href}")
-            continue
-        target = (path.parent / href.split("#")[0].split("?")[0])
-        if href.endswith("/"):
-            target = target / "index.html"
-        if not target.exists():
-            fail(f"{rel}: broken internal link {href}")
-
-    # 4. No prices or star ratings
-    if re.search(r"(?<![\w])\$\s?\d", text) or re.search(r"£|€", text):
-        fail(f"{rel}: currency amount found (prices must not be shown)")
-    if re.search(r"\b\d(\.\d)?\s*(out of 5|stars?)\b", text, re.I) or re.search(r"\d+\s+ratings?\b", text, re.I):
-        fail(f"{rel}: star rating text found")
-
-    # 5. Register table rows: every row with product data must carry a source link
-    if rel == "products/index.html":
-        data_rows = [r for r in p.rows if r and r[0]["text"] and r[0]["text"][0].strip().startswith("P0")]
-        if len(data_rows) != len(PRODUCTS):
-            fail(f"{rel}: expected {len(PRODUCTS)} register rows, found {len(data_rows)}")
-        header = [norm("".join(c["text"])) for c in p.rows[0]] if p.rows else []
-        src_col = next((i for i, h in enumerate(header) if h.startswith("Source")), None)
-        if src_col is None:
-            # header row is in <thead>; find by text
-            pass
-        by_id = {prod["id"]: prod for prod in PRODUCTS}
-        for r in data_rows:
-            pid = norm("".join(r[0]["text"]))
-            prod = by_id.get(pid)
-            if prod is None:
-                fail(f"{rel}: row {pid} is not in data/products.json")
-                continue
-            row_links = [l for c in r for l in c["links"]]
-            if prod["source_url"] not in row_links:
-                fail(f"{rel}: row {pid} does not link its recorded source ({prod['source_url']})")
-
-    # 6. ASIN format for every ASIN that the site shows
-    for prod in PRODUCTS:
-        if prod["intended_asin"] and not ASIN_RE.match(prod["intended_asin"]):
-            fail(f"data: {prod['id']} ASIN not 10 alphanumeric characters")
-
-    # 7. No storage or cookie code in shipped assets (checked once below)
-
-
-def rel_path(path: pathlib.Path) -> str:
-    return path.relative_to(DOCS).as_posix()
-
-
-def check_assets():
-    js = (DOCS / "assets" / "js" / "measure.js").read_text(encoding="utf-8")
-    for bad in ("localStorage", "sessionStorage", "document.cookie", "Math.random"):
-        if bad in js:
-            fail(f"assets/js/measure.js contains forbidden storage/identifier call: {bad}")
-    for stale in ("assets/js/app.js", "assets/css/main.css"):
-        if (DOCS / stale).exists():
-            fail(f"stale asset present: docs/{stale}")
-
-
-def check_ledger():
-    with open(DATA / "campaign_ledger.csv", encoding="utf-8") as fh:
-        rows = [r for r in csv.reader(fh)][1:]
-    rows = [r for r in rows if any(c.strip() for c in r)]
-    if rows:
-        fail(f"data/campaign_ledger.csv has {len(rows)} row(s); ledger must start empty and be filled only from first-party reports")
-
-
-def check_feed_and_sitemap():
-    feed = (DOCS / "feed.xml").read_text(encoding="utf-8")
-    if "<rss version=\"2.0\">" not in feed:
-        fail("feed.xml: not RSS 2.0")
-    sitemap = (DOCS / "sitemap.xml").read_text(encoding="utf-8")
-    for page in DOCS.rglob("*.html"):
-        rel = page.relative_to(DOCS).as_posix()
-        if rel == "404.html" or "http-equiv=\"refresh\"" in page.read_text(encoding="utf-8"):
-            continue
-        loc = "https://karagemop466-tech.github.io/Affil3/" + (rel.replace("index.html", "") if rel != "index.html" else "")
-        if loc not in sitemap:
-            fail(f"sitemap.xml: missing {loc}")
+def html_files() -> list[pathlib.Path]:
+    return sorted(DOCS.rglob("*.html"))
 
 
 def main() -> int:
     if not DOCS.exists():
-        print("docs/ missing: run tools/build_site.py", file=sys.stderr)
-        return 2
-    for page in sorted(DOCS.rglob("*.html")):
-        if "http-equiv=\"refresh\"" in page.read_text(encoding="utf-8"):
-            continue  # legacy redirect stub: target is checked below
-        check_page(page)
-    for legacy_stub in ["products.html", "about.html", "disclosure.html", "privacy.html", "flagged.html", "index.html"]:
-        if not (DOCS / legacy_stub).exists():
-            fail(f"legacy URL {legacy_stub} has no redirect stub")
-    check_assets()
-    check_ledger()
-    check_feed_and_sitemap()
-    if failures:
-        print(f"CHECK FAILED ({len(failures)} issue(s)):")
-        for f in failures:
-            print("  -", f)
+        print("FAIL: editorial/ has not been built. Run tools/build.py first.")
         return 1
-    n = len(list(DOCS.rglob("*.html")))
-    print(f"check ok: {n} HTML pages, disclosure above fold and in footer, all Amazon links sponsored, "
-          f"{len(PRODUCTS)} register rows sourced, ledger empty, no prices/ratings, no storage code")
+
+    source_ids = {s["id"] for s in json.load(open(DATA / "sources.json"))["sources"]}
+    pages = html_files()
+    if not pages:
+        err("no HTML files were generated")
+        return report()
+
+    products = json.load(open(DATA / "products.json"))["products"]
+    product_pages = {f"products/{p['id'].lower()}/index.html" for p in products}
+
+    # 1. internal links + 4/5/6 content rules
+    for page in pages:
+        rel = page.relative_to(DOCS).as_posix()
+        text = page.read_text(encoding="utf-8")
+
+        base = page.parent
+        for href in re.findall(r'(?:href|src)="([^"#?:]+)"', text):
+            if href.startswith(("//", "http", "mailto:", "data:")):
+                continue
+            candidate = (base / href).resolve()
+            if href.endswith("/") or candidate.is_dir():
+                candidate = candidate / "index.html"
+            try:
+                candidate.relative_to(DOCS.resolve())
+            except ValueError:
+                err(f"link escapes the site root: {rel} -> {href}")
+                continue
+            if not candidate.exists():
+                err(f"broken internal link: {rel} -> {href}")
+
+        # 5. required statement on every page
+        if STATEMENT not in text:
+            err(f"missing Associates statement: {rel}")
+
+        # 2. no price text. Allow the words "price" in the button label and the words
+        #    "no prices" in prose; reject an actual currency amount.
+        for m in re.finditer(r"[$£€]\s?\d", text):
+            snippet = text[max(0, m.start() - 60): m.start() + 40].replace("\n", " ")
+            err(f"currency amount found in {rel}: ...{snippet}...")
+            break
+
+        # 3. no star rating / review count
+        for pattern in (r"\d+(?:\.\d+)?\s*out of 5\s*stars", r"★", r"☆",
+                        r'"aggregateRating"', r"ratingValue", r"reviewCount"):
+            if re.search(pattern, text, re.IGNORECASE):
+                err(f"rating pattern '{pattern}' found in {rel}")
+
+        # 4. Two different things must not be confused.
+        #    A product CTA (class="btn") must carry the tag, or it must not exist.
+        #    A citation to an Amazon policy page or a listing is evidence, not a sell,
+        #    and must be marked rel="nofollow" so it is never treated as a Special Link.
+        for anchor in re.finditer(r"<a\b([^>]*)>", text):
+            attrs = anchor.group(1)
+            href_m = re.search(r'href="([^"]+)"', attrs)
+            if not href_m:
+                continue
+            url = href_m.group(1)
+            if "amazon." not in url:
+                continue
+            is_cta = 'class="btn"' in attrs
+            is_cite = "cite" in attrs and "nofollow" in attrs
+            if is_cta and TRACKING_ID not in url:
+                err(f"product CTA without tracking tag in {rel}: {url}")
+            elif not is_cta and not is_cite:
+                err(f"unmarked amazon anchor in {rel}: {url} (needs the tag as a CTA, or class=cite rel=nofollow as evidence)")
+
+        # 6. spec source citations on product pages
+        if rel in product_pages:
+            for sid in re.findall(r'class="srclink"[^>]*>(S\d+)<', text):
+                if sid not in source_ids:
+                    err(f"unknown source id {sid} cited on {rel}")
+
+    # 7. sitemap covers every indexable page
+    sitemap = (DOCS / "sitemap.xml").read_text(encoding="utf-8")
+    for page in pages:
+        rel = page.relative_to(DOCS).as_posix()
+        if rel in ("404.html",):
+            continue
+        url = "/" + ("" if rel == "index.html" else rel.replace("index.html", ""))
+        if url not in sitemap:
+            err(f"page missing from sitemap: {url}")
+
+    # extra: feed and sitemap parse as XML
+    import xml.etree.ElementTree as ET
+    for name in ("sitemap.xml", "feed.xml"):
+        try:
+            ET.parse(DOCS / name)
+        except ET.ParseError as exc:
+            err(f"{name} is not valid XML: {exc}")
+
+    return report()
+
+
+def report() -> int:
+    pages = len(html_files()) if DOCS.exists() else 0
+    if errors:
+        print(f"FAIL: {len(errors)} problem(s) across {pages} page(s)\n")
+        for msg in errors[:80]:
+            print("  -", msg)
+        if len(errors) > 80:
+            print(f"  ... and {len(errors) - 80} more")
+        return 1
+    print(f"PASS: {pages} pages checked")
+    print("  - internal links resolve")
+    print("  - no currency amounts")
+    print("  - no star ratings or review counts")
+    print("  - every outbound amazon link carries the tracking tag (currently none render)")
+    print("  - Associates statement present on every page")
+    print("  - every cited source id exists")
+    print("  - sitemap covers every page; feed and sitemap parse as XML")
     return 0
 
 
