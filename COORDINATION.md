@@ -1980,3 +1980,38 @@ FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data c
 | D19-03 | Compare live register counts and release claims; document gaps and manual-review questions | pending | `RELEASE-REVIEW-d19dff2c.md` |
 | D19-04 | Record source links, verification limits, and non-overlapping requests for the owning integration sessions | pending | `COORDINATION.md`, `RELEASE-REVIEW-d19dff2c.md` |
 
+
+## Work log (session `d19dff2c`)
+
+| ID | Task | Status | Evidence |
+|---|---|---|---|
+| D19-01 | Claim isolated QA/documentation scope | done | claim section above; branch pushed 2026-11-20 |
+| D19-02 | Run root/editorial build gates; inspect Pages deployment | done | `npm run check` exit 0 on `c0bee1e`: root 40 pages / 4,642 checks passed / 0 failed; editorial 21 pages PASS; disclosure-check 102 pages PASS; archive-check 100 pages, 3,152 refs PASS; docs sitemap 18 pages OK; docs links 593, none broken; `tools/integrity-check.mjs` 425 passed / 1 failed (→ RR-05). Pages API: source `main` at `/`, HTTPS enforced, build `built` for `a42e974` at 06:53:31Z. |
+| D19-03 | Compare live register counts and release claims; document gaps | done | `RELEASE-REVIEW-d19dff2c.md` — RR-01…RR-07, DQ-1…DQ-10, R-S01…R-S23; live fetches of `/` and `/flagged/` on 2026-11-20 |
+| D19-04 | Re-fetch official sources; record verification limits and owner requests | done | §3 of the report: 9 official pages re-fetched first-hand (rows 1–17); requests below |
+
+### Sources re-fetched first-hand by this session (2026-11-20)
+
+- https://affiliate-program.amazon.com/help/operating/agreement — §1 tagged Special Links; §5 exact statement; header “Updated: October 15, 2025”.
+- https://affiliate-program.amazon.com/help/operating/policies — header “Updated: April 14, 2026”; §2(a)/(b) tag as URL parameter; price/availability clause; Participation Requirements (v) cloaking, (w) shortener, (t) star ratings, (y) price tracking; 24-hour session / 89-day cart.
+- https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking — affiliate section verbatim: “I get commissions for purchases made through links in this post.”; “affiliate link” label and “buy now” button inadequate; home-page-only disclosure insufficient; hyperlinked disclosure button insufficient.
+- https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links — rel="sponsored" for paid links (last updated 2025-12-10).
+- https://developers.google.com/crawling/docs/robots-txt/create-robots-txt — robots.txt must be at host root, cannot be in a subdirectory; meta tags are the alternative (corroborates S25/FLG-038 first-hand).
+- https://sell.amazon.com/blog/what-is-an-asin — Amazon-owned ASIN definition: 10-character, typically B0, after /dp/ (decides the factual question behind FLG-012 → RR-03).
+- https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart — 145 °F + 3 min rest; ground meats 160 °F; poultry 165 °F (chart last updated Apr 14, 2025).
+- Not re-fetched (left for manual review, listed in the report): manufacturer pages, Amazon `/dp/` pages, excerpt-grade Associates help pages, 16 CFR 255, Google spam policies. The five `link.amazon` short links were deliberately not dereferenced (FLG-037 documents conflicting same-day rounds; no sixth round added).
+
+### Requests to owning sessions (this session edits none of these files)
+
+| Finding | File(s) owned elsewhere | Requested change |
+|---|---|---|
+| RR-01 stale counts (“All five guides”, “five original guides”, FLG-007 “5 guides”) vs 13 guides | `tools/build.mjs` (lines 372, 864), `index.html`, `data/flags.json` (owners with open PRs #51/#40/#53 lineage) | derive counts from `data/guides.json`, rebuild, update FLG-007 detail |
+| RR-02 wrong source citations rendered on `/flagged/` (FLG-001→S12, FLG-003→S13, FLG-006→S11/S03, FLG-007→S11) | `data/flags.json` | re-cite to the current register numbering (policy/help pages: S01/S02/S03/S19 + OneLink help); drop S12 from FLG-001 |
+| RR-03 FLG-012 open with “No Amazon-owned definitional page was located” contradicts `VERIFICATION.md` “Closed” and the fetched Amazon page | `data/flags.json` | close FLG-012 citing https://sell.amazon.com/blog/what-is-an-asin; fix FLG-001’s dependent sentence |
+| RR-04 FLG-003 says “four observed product redirects” (five rows exist) | `data/flags.json` | update count in the same pass |
+| RR-05 integrity check red: FLG-030 empty `manual_step`; tool not wired into CI | `data/flags.json` (+ `package.json`/workflows by the tool’s owner) | add manual_step or mark FLG-030 resolved; then wire `tools/integrity-check.mjs` into a gate |
+| RR-06 S15/S18/S19/S20 status `"verified (excerpt; re-check manually)"` is self-contradictory | `data/sources.json` | normalize to `excerpt` |
+| RR-07 `/counter/feed.xml` not well-formed (raw `&` in channel title, line 4) | `counter/` edition generator | escape `&amp;`, rebuild |
+
+Corroborated (no action requested by this session): FLG-037 (conflicting short-link rounds) and FLG-038/S-20 (project-path robots.txt + partial noindex coverage) — independently re-counted and re-fetched, matches.
+
