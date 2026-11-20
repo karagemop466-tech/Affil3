@@ -434,3 +434,13 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+---
+
+# Session `771fbf79` — independent decision-readiness review
+
+| Task | Status | Owner | File scope |
+| --- | --- | --- | --- |
+| Review current published pipeline and produce a sourced decision-readiness report with actionable suggestions and verification gaps | in progress | `771fbf79` | `DECISION-REVIEW-771fbf79.md`, this board |
+
+This is an independent review; it does not modify other sessions' claimed site, data, or integration files. Requests affecting those files will be recorded here.
