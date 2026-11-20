@@ -1,0 +1,56 @@
+{
+  "_about": "Dated retest of each submitted short link, kept separate from intent. The intended ASIN stays blank for every row (data/products.json). Redirect targets are observed values, not confirmations of which product the owner meant to submit.",
+  "retest_date": "2026-11-20",
+  "method": "Unauthenticated HTTP fetch of each short link, following redirects, with no Associates session. Final URL and page title recorded. Earlier fetches on the same day are summarised from the register on main (data/products.json reverification blocks, PR #10) and are not re-derived here.",
+  "links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "retest_final_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "retest_observed_asin": "B0CDY277D3",
+      "retest_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "agrees_with_register": true,
+      "note": "Consistent across fetches."
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "retest_final_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "retest_observed_asin": "B09B7SB46R",
+      "retest_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+      "agrees_with_register": true,
+      "note": "Consistent across fetches."
+    },
+    {
+      "token": "B00hJ57DV",
+      "row": "P03",
+      "retest_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "retest_observed_asin": "B08DKYBTPH",
+      "retest_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "agrees_with_register": true,
+      "note": "Matches the corrected register (PR #10). An earlier fetch returned an intermittent Amazon checkpoint page, recorded in the register's reverification block. Not treated as a dead link."
+    },
+    {
+      "token": "B0c8moW59",
+      "row": "P04",
+      "retest_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "retest_observed_asin": "B0DHZTCNR5",
+      "retest_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
+      "agrees_with_register": true,
+      "note": "Matches the corrected register (PR #10). The earlier register value B08DKYBTPH was a transposition between P03 and P04 and is corrected there."
+    },
+    {
+      "token": "B0f3GKalj",
+      "row": "P05",
+      "retest_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "retest_observed_asin": "B0DZFD6R9Z",
+      "retest_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "agrees_with_register": true,
+      "note": "Consistent across fetches."
+    }
+  ],
+  "effect_on_site": "None. No product field, outbound link or intended ASIN was changed by this retest. Every intended ASIN remains blank; the owner step to confirm intent is unchanged (see FLG-002).",
+  "still_open": [
+    "Tag attribution: none of the observed final URLs contains tag=; test in Associates Central (FLG-009 on main)."
+  ]
+}
