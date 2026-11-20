@@ -1320,3 +1320,83 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - The submitted short links are **not** called invalid. Their compliance status stays open
   (FLG-003) until one link is tested inside the enrolled Associates workflow.
 - No price, rating or review count is published anywhere.
+
+---
+
+## Session `c252594d` — work log
+
+### 2026-11-20 · Repo review (I01)
+
+Read the repository end to end: the root pipeline (`tools/build.mjs`, `tools/verify.mjs`), the
+registers (`data/*.json`), the five CI workflows, the generated pages, and the parallel surfaces
+(`counter/`, `counterwise/`, `crisp-index/`, `editorial/`, `legacy/`). Findings:
+
+- The root pipeline is one builder and one gate over one register. `tools/build.mjs` deletes and
+  regenerates the paths it owns (`index.html`, `shop/`, `products/`, `categories/`, `guides/`,
+  `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`,
+  `ledger/`, `measurement/`, `compliance/`, `about/`, `workflow/`, `privacy/`, `404.html`,
+  `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`) and leaves every other path alone. Images
+  live in `src/assets/img/` and are copied to `assets/img/` by the build — writing an image
+  straight into `assets/img/` is deleted by the next build. Worth knowing; it cost this session
+  one build cycle.
+- All five workflows were green on `main` at `67cfe2f`, and all four local gates passed
+  (root build + gate, editorial build + gate, disclosure check, archive check).
+- Eight pull requests were still open from parallel sessions (#28, #32, #33, #36, #38, #39, #40,
+  #44); seven reported `CONFLICTING` against `main`, #44 `CLEAN`. Their branches are left untouched
+  on the remote. Their *findings* are integrated below by re-verification rather than by landing
+  eight competing copies of the same root pages.
+
+### 2026-11-20 · Primary-source re-verification (I02–I06)
+
+Every product row was re-read against the manufacturer's own product page, fetched in full on
+2026-11-20. Full line-by-line table in `VERIFICATION.md` §B; sources in §A.
+
+| Row | Result |
+|---|---|
+| P01 CHEFMAN 6 qt dual basket | Every published value confirmed unchanged against Chefman's own page (S11). |
+| P02 Emeril Lagasse 26 qt | Capacity, size, voltage and model confirmed (S13). Wattage, weight and temperature range are not stated by the maker and stay blank. The 25-versus-24 preset conflict stands (FLG-024). |
+| P03 Chefman 8 qt | **Corrected.** Chefman publishes two 8 qt machines. The page for RJ38-SQSS-8T (S22) is the model the Amazon listing itself names, so the 200–400 °F range and 12.8 lb weight are now published from the maker's page. Wattage and size still disagree with the listing and stay blank (FLG-026). |
+| P04 ThermoMaven | **Corrected.** FLG-025 said no manufacturer page could be located; one exists (S21). The row now carries a specification grid, and a tagged outbound link, because the submitted short link for this row does resolve to this listing. FLG-031 and FLG-032 record what is still open. |
+| P05 CHEF iQ Sense | **Corrected.** The published range 32–1,000 °F was the ambient and heat-resistance ceiling. The internal range is 32–212 °F and is now what the table shows; the ambient figure has its own row (FLG-033 records the maker's own sensor-count contradiction). |
+| FLG-012 | **Closed** with Amazon's own definition of the ASIN (S23). |
+
+Nothing was filled in from inference. Disagreements between two official pages still produce a
+blank cell and a published flag.
+
+### 2026-11-20 · Publication depth (I08)
+
+Eight question-shaped guides added, taking the site from five to thirteen. Each is a question a
+buyer actually asks, each lists the source ids it used, and each states its disagreements rather
+than smoothing them:
+
+1. How much counter space does an air fryer really need?
+2. Dual basket or single basket: which one for four people?
+3. Air fryer, toaster oven or microwave: which earns the space?
+4. Instant-read or leave-in probe: which one do you need?
+5. How to read an Amazon listing before you buy a kitchen appliance
+6. Holiday hosting on a small counter: a plan for the big meal
+7. Air fryer presets: how many do you actually need?
+8. Air fryer chicken breast: how do you know it is done?
+
+The thermometer guide's closing note was rewritten: it still said no manufacturer page could be
+found for the tracked instant-read unit, which stopped being true on 2026-11-20.
+
+### 2026-11-20 · Decision boards (I09, I10)
+
+- Suggestions S-11 to S-18 added (18 total): design direction, which product leads the front page,
+  how opinionated the guides should be, article length, whether the shelf grows, how the guides
+  earn traffic, whether the evidence surfaces move up from the footer, and distribution.
+- Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added (17 known, 17 unknown, 12 discovery
+  actions). Q-16 and Q-15 are marked blocking: no tagged link on this site has yet been confirmed to
+  credit a sale, and the intended ThermoMaven variant is still unconfirmed.
+- K-07 and K-10 were corrected: all five short links have now resolved at some point, and all five
+  products have a maker page.
+
+### 2026-11-20 · Gate and tooling changes
+
+- `tools/verify.mjs`: source allowlist extended with `advertising.amazon.com` and
+  `www.thermomaven.com`, both official; new check that every extra specification row on a product
+  page actually reaches the page.
+- `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
+  internal one, a sensor count); guide count and cluster count on the front page and the categories
+  page are now read from the register instead of being written by hand.
