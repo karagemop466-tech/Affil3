@@ -6,25 +6,110 @@
       "description": "A buyer's guide that starts with how you cook, then tells you what to compare between basket and oven-style air fryers.",
       "date": "2026-11-20",
       "category": "air-fryers",
-      "deck": "Start with the food you cook most, then pick the shape that fits it.",
+      "deck": "Two shapes, two different kitchens. Decide this before you look at a single model number.",
       "body": [
-        {"type": "note", "text": "Working title. This is an editorial hypothesis about the questions buyers ask. It is not a claim about popularity, search volume, or whether either style is better."},
-        {"type": "h2", "text": "Start with the food you cook most"},
-        {"type": "p", "text": "A basket air fryer cooks in a removable drawer with a fan above it. An oven-style unit is a countertop oven with a door and racks or a tray. The food you cook most often usually decides which shape fits your counter and your routine."},
-        {"type": "h2", "text": "Questions to answer before you compare listings"},
-        {"type": "ul", "items": [
-          "How many people do you usually cook for, and what is the biggest single item you cook (a whole chicken, a sheet pan, a rack of ribs)?",
-          "Do you need to cook two different foods at the same time? Dual-basket and dual-zone designs do this in different ways, so read the listing and the manual rather than the title alone.",
-          "Which functions do you need in practice: air fry, bake, broil, toast, dehydrate, reheat? Check the manual's list of functions, not only the marketing headline.",
-          "Would you rather shake a basket halfway through, or turn food on a rack or tray?",
-          "Will the unit fit under your cabinets with the door or lid open? Measure the footprint and the height."
-        ]},
-        {"type": "h2", "text": "What we tracked, and what we did not do"},
-        {"type": "p", "text": "The Shop lists five products we tracked on 2026-11-20. Two observed listings are basket-style air fryers, and one observed listing is an air fryer and toaster oven with a door. We have not tested any of them, and this guide does not rank them. Read each listing and its manual before you decide."},
-        {"type": "p", "text": "Listings referenced here are observed titles and categories from Amazon pages on 2026-11-20. Titles and categories can change."}
+        {
+          "type": "p",
+          "text": "A basket air fryer is a drawer with a heating element and a fan above it. An oven-style air fryer is a small countertop oven that uses the same fast-moving air. They are sold as if they were the same appliance in different clothes. In practice they suit different cooking."
+        },
+        {
+          "type": "h2",
+          "text": "The three questions that actually decide it"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "What is the biggest single thing you cook? A whole chicken or a 12-inch pizza needs a door and a rack, not a drawer.",
+            "Do you cook two foods on two different timings? That points at two baskets, or at an oven with two racks and a single shared temperature.",
+            "How much counter and cabinet space do you have? A drawer pulls out; French doors open forward. Both need clearance you may not have."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The two shapes on the tracked products"
+        },
+        {
+          "type": "p",
+          "text": "The figures below are the manufacturers' own published specifications, read on 2026-11-20. They are not test results, and capacity is not comparable across shapes: six quarts of drawer, eight quarts of basket and 26 quarts of oven are three different kinds of space."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "",
+            "Chefman 6 Qt dual basket",
+            "Chefman 8 Qt single basket",
+            "Emeril 26 Qt French door"
+          ],
+          "rows": [
+            [
+              "Shape",
+              "Two 3-qt drawers",
+              "One 8-qt basket",
+              "Countertop oven, French doors"
+            ],
+            [
+              "Capacity",
+              "6 qt / 5.67 L",
+              "8 qt / 7.57 L",
+              "26 qt / 24.6 L"
+            ],
+            [
+              "Heat ceiling",
+              "450 °F",
+              "400 °F (maker); listing says 450 °F",
+              "not published"
+            ],
+            [
+              "Footprint (in)",
+              "13.38 D × 11.81 W × 10.63 H",
+              "15.4 × 12.6 × 13.5",
+              "16.9 D × 15.8 W × 14.8 H"
+            ],
+            [
+              "Best at",
+              "Two foods, two timings",
+              "One big batch",
+              "Whole birds, trays, pizza"
+            ],
+            [
+              "Source",
+              "S14",
+              "S15",
+              "S16"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Pick the shape, then pick the size"
+        },
+        {
+          "type": "p",
+          "text": "Once the shape is settled, the size question is usually a question about your counter. Measure the depth with the drawer open or the doors swung out, not just the closed footprint. The three tracked appliances need between 10.6 and 14.8 inches of height and between 12.6 and 16.9 inches of depth."
+        },
+        {
+          "type": "h2",
+          "text": "What this guide does not do"
+        },
+        {
+          "type": "p",
+          "text": "It does not tell you which brand is better. It has not tested any of these appliances, and the chefman and Emeril pages on this site say the same. If you want the shape decision in a single table, the comparison page has it."
+        },
+        {
+          "type": "p",
+          "text": "One thing worth knowing before you shop: on two of the tracked listings the advertised headline disagrees with the manufacturer's own specification sheet. The Chefman 8 Qt listing advertises 450 °F where Chefman publishes 400 °F, and the Chefman 6 Qt listing calls the product an oven where its own page describes a two-drawer basket fryer. Read the maker's specification, not the listing title."
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16",
+        "S04"
+      ]
     },
     {
       "slug": "no-hype-checklist-comparing-air-fryer-capacity",
@@ -32,26 +117,88 @@
       "description": "How to read air fryer capacity on a listing, including total quarts versus per-basket quarts, and how to test a load.",
       "date": "2026-11-20",
       "category": "air-fryers",
-      "deck": "Capacity is one of the first numbers you see and one of the easiest to misread.",
+      "deck": "Quarts are the number everyone quotes and the number that misleads the most.",
       "body": [
-        {"type": "note", "text": "Working title. This checklist does not claim that any capacity is better or that any size will cook faster."},
-        {"type": "h2", "text": "1. Check whether the number is total or per basket"},
-        {"type": "p", "text": "Some listings give a total for the unit and a separate figure for each basket. The observed title for one dual-basket Chefman listing gives '6 Quart' for the unit and '2 Independent 3Qt' baskets. Those numbers measure different things, so write down which one you are comparing."},
-        {"type": "h2", "text": "2. Measure the food you actually cook"},
-        {"type": "ul", "items": [
-          "Measure your largest regular item and the number of pieces you cook at once.",
-          "Use the inside dimensions of the basket or rack from the manual. Outside dimensions include the handle and the housing.",
-          "Note whether the manual gives a recommended maximum load."
-        ]},
-        {"type": "h2", "text": "3. Compare time and temperature, not only size"},
-        {"type": "p", "text": "A larger basket is not automatically faster. For the same food, compare the time and temperature charts in each manual. If a manual has no chart for your food, record that as a gap."},
-        {"type": "h2", "text": "4. Test a load before you rely on it"},
-        {"type": "p", "text": "If the manual gives no maximum load, cook in batches first and note how evenly the food browns. Keep your notes with the date and the food, so you can repeat the test on another unit."},
-        {"type": "h2", "text": "5. Write down what you could not confirm"},
-        {"type": "p", "text": "If the listing does not state a capacity in both total and per-basket terms, mark the row as unconfirmed. Do not fill the gap from a different listing."}
+        {
+          "type": "p",
+          "text": "Air fryer capacity is usually given in quarts. That number hides three different things: how much food actually fits in one layer, whether the space is one chamber or several, and whether the quoted figure is usable volume or total volume."
+        },
+        {
+          "type": "h2",
+          "text": "A five-point checklist for any listing"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Is the capacity one chamber or the sum of several? Two 3-quart baskets are 6 quarts, but you cannot put a 6-quart item in them.",
+            "Does the maker give litres as well as quarts? Both of the tracked Chefman pages do, which lets you check the conversion instead of trusting it.",
+            "What are the basket's inside dimensions? Quarts say nothing about whether a whole chicken or a pizza fits.",
+            "How full can it be loaded? Air frying needs a single layer with room for air to move; the usable capacity is smaller than the marketed one.",
+            "Is the outer footprint the same as the cooking area? The 8-quart Chefman is 15.4 in deep; the 6-quart dual basket is 13.38 in deep. Measure the counter, not the capacity."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The same word, four different sizes"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Tracked product",
+            "Capacity the maker publishes",
+            "How it is divided",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Chefman TurboFry Touch 6 Qt",
+              "6 qt / 5.67 L",
+              "Two independent 3-qt baskets",
+              "S14"
+            ],
+            [
+              "Chefman TurboFry Touch 8 Qt",
+              "8 qt / 7.57 L",
+              "One basket",
+              "S15"
+            ],
+            [
+              "Emeril French Door AirFryer 360",
+              "26 qt / 24.6 L",
+              "One oven interior with racks",
+              "S16"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The gap between 6 and 26 quarts is not a gap in quality. It is the difference between cooking two portions at once and cooking for four to six people, which is the range the Emeril page states for its oven."
+        },
+        {
+          "type": "h2",
+          "text": "What to do with the number"
+        },
+        {
+          "type": "p",
+          "text": "Convert it into a meal. If you usually cook for two, ask whether two portions fit in one layer. If you cook for four, ask whether the basket is big enough for all four portions at once or whether you will be cooking in batches. That question is more useful than the quart figure on its own."
+        },
+        {
+          "type": "h2",
+          "text": "Where these numbers came from"
+        },
+        {
+          "type": "p",
+          "text": "Every figure above was read on the manufacturer's own product page on 2026-11-20 and is cited by source id. Where a manufacturer does not publish a value, this site leaves it blank rather than estimating it."
+        }
       ],
-      "cluster_links": ["air-fryers"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryers"
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16"
+      ]
     },
     {
       "slug": "how-to-assess-cleanup-and-counter-space-tradeoffs",
@@ -59,28 +206,96 @@
       "description": "A practical way to compare cleanup effort, basket care, and the room a countertop appliance needs.",
       "date": "2026-11-20",
       "category": "air-fryers",
-      "deck": "The best-looking appliance is the one you will actually clean and have room for.",
+      "deck": "The appliance you use is the one that is easy to clean and has somewhere to live.",
       "body": [
-        {"type": "note", "text": "Working title. Cleanup claims such as 'dishwasher-safe' come from the manufacturer; check the manual's care section before you rely on them."},
-        {"type": "h2", "text": "Cleanup questions"},
-        {"type": "ul", "items": [
-          "How many removable parts are there, and do they all come out without tools?",
-          "What does the manufacturer's care section say about washing each part? Write down the exact wording.",
-          "Is the non-stick surface described with cleaning instructions, such as avoiding metal utensils or abrasive pads? Follow the manufacturer's text.",
-          "Where will the parts dry?"
-        ]},
-        {"type": "h2", "text": "Counter-space test"},
-        {"type": "ol", "items": [
-          "Tape the footprint on your counter with painter's tape.",
-          "Measure the height with the lid or door fully open, and check the clearance under the cabinets.",
-          "Measure how far the door or basket pulls out, and whether anything else on the counter would block it.",
-          "Find an outlet and check that the cord reaches without a strain."
-        ]},
-        {"type": "h2", "text": "Trade-offs to write down"},
-        {"type": "p", "text": "Write a one-line trade-off for each option: for example, 'faster cleanup, less capacity' or 'more functions, more parts to wash'. Writing it down makes the comparison concrete and keeps it honest."}
+        {
+          "type": "p",
+          "text": "Two things get decided after the purchase and are rarely discussed before it: where the appliance lives, and how much of it has to be washed. Both are answerable from the manufacturer's published dimensions and materials list."
+        },
+        {
+          "type": "h2",
+          "text": "Measure three things, not one"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "The closed footprint. Every maker publishes this: the tracked appliances range from 13.38 in to 16.9 in deep.",
+            "The space it needs to open. A drawer pulls straight out; French doors swing forward. Measure with the appliance open, and check what is above it if the lid or door lifts.",
+            "The clearance to the wall and to the cabinet above, which decides whether the heat and steam have anywhere to go. The manufacturer's manual states this; the product page often does not."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Then count the parts that touch food"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Product",
+            "Parts that come out to wash",
+            "Dishwasher",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Chefman 6 Qt dual basket",
+              "Two nonstick baskets",
+              "Baskets are dishwasher-safe",
+              "S14"
+            ],
+            [
+              "Chefman 8 Qt single basket",
+              "One nonstick basket",
+              "Basket is top-rack dishwasher-safe",
+              "S15"
+            ],
+            [
+              "Emeril 26 Qt French door",
+              "Racks, trays and accessories",
+              "Not stated on the maker's page for each part",
+              "S16"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A dual-basket appliance has two of everything, which is twice the washing but also means one basket can soak while the other cooks. An oven has racks and a tray and a door with a gasket and crevices."
+        },
+        {
+          "type": "h2",
+          "text": "The counter-space test, in one minute"
+        },
+        {
+          "type": "p",
+          "text": "Clear the counter space you think you have. Put a sheet of paper down at the footprint of the appliance you are considering, then put a second sheet where the drawer or doors would open. If both fit without moving anything you use daily, the appliance has a home. If you have to move the kettle every time, it does not, and it will end up in a cupboard."
+        },
+        {
+          "type": "h2",
+          "text": "Cleaning questions to ask before you buy"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Which parts are nonstick, and does the maker say they are dishwasher-safe? Nonstick coatings survive hand-washing longer.",
+            "Is there a window, and does it need cleaning inside and out? A window saves opening the drawer but adds a surface.",
+            "Where do the crumbs and grease go? A basket with a removable crisper plate is easier to wash than one with a fixed base.",
+            "Does the maker publish a cleaning section in the manual? If it does, read it before you buy; it is the most honest description of what the appliance is like to own."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "None of the appliances on this site has been cleaned or used by anyone here. The parts lists above are the manufacturers' own descriptions, cited by source id."
+        }
       ],
-      "cluster_links": ["air-fryers", "air-fryer-ovens"],
-      "sources": []
+      "cluster_links": [
+        "air-fryers",
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S14",
+        "S15",
+        "S16"
+      ]
     },
     {
       "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
@@ -88,25 +303,58 @@
       "description": "Eight plain questions to answer before you buy a multi-function countertop appliance.",
       "date": "2026-11-20",
       "category": "air-fryer-ovens",
-      "deck": "Multi-function appliances promise a lot. Ask which functions you will actually use.",
+      "deck": "A 10-in-1 badge is a list of functions, not a promise that you will use them.",
       "body": [
-        {"type": "h2", "text": "Eight questions"},
-        {"type": "ol", "items": [
-          "Which three functions will you use every week? Ignore the rest when comparing.",
-          "Do the presets match the food you cook, or will you set time and temperature yourself?",
-          "Can you see the temperature and time while the appliance runs?",
-          "Does the manual include time and temperature charts for your foods?",
-          "What does the warranty cover, and who services it? Read the warranty text rather than the summary.",
-          "Are replacement baskets, racks or trays sold separately? Check the listing and the manufacturer's site.",
-          "How loud is it? If the manufacturer gives no figure, note that you could not confirm it.",
-          "Where will it live, and how often will you move it?"
-        ]},
-        {"type": "h2", "text": "Why these questions"},
-        {"type": "p", "text": "A list of functions is not the same as a list of things you will use. These questions tie the purchase to your routine and to the documents the manufacturer provides."},
-        {"type": "p", "text": "The Shop lists one multi-function air fryer and toaster oven we observed on 2026-11-20. We have not tested it."}
+        {
+          "type": "p",
+          "text": "Multi-function appliances trade specialisation for range. That is a good trade if the functions you need are the ones your routine actually uses, and a bad one if the extra functions are what you pay for and never touch."
+        },
+        {
+          "type": "h2",
+          "text": "Questions that separate the useful functions from the badge"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Which three functions will you use in a normal week? Write them down before you read any listing.",
+            "Does the maker list the functions individually? The tracked Emeril oven names ten: air fry, bake, broil, defrost, dehydrate, grill, proof, reheat, roast and warm.",
+            "Do the functions need extra accessories to work? Rotisserie needs a spit; grilling may need a plate sold separately.",
+            "Is the preset count consistent? The same Emeril page states 25 presets in its specification tiles and 24 in its description. When a maker disagrees with itself, treat the count as approximate.",
+            "Does one function compromise another? A big oven takes longer to preheat for a small batch than a drawer does."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The badge versus the manual"
+        },
+        {
+          "type": "p",
+          "text": "Every maker's product page is a sales page. The manual is where the limits are stated: what temperature each function reaches, what accessories are required, what must not go in the dishwasher. If a manufacturer publishes the manual as a PDF on the product page, download it before you buy. The tracked products link their manuals where the maker provides one."
+        },
+        {
+          "type": "h2",
+          "text": "One worked example"
+        },
+        {
+          "type": "p",
+          "text": "The Emeril Lagasse French Door AirFryer 360 is sold as a 10-in-1 with 24 or 25 presets, depending on which part of its own page you read. It holds 26 quarts and measures 16.9 in deep by 15.8 in wide by 14.8 in tall. Its maker does not publish a wattage or a temperature range on the product page, so this site does not claim either. That absence is itself a question worth asking before you buy."
+        },
+        {
+          "type": "h2",
+          "text": "If you only ask one question"
+        },
+        {
+          "type": "p",
+          "text": "Ask what the appliance does badly. Every one of them does something badly: a 26-quart oven is slow to heat for a handful of fries, and a drawer with two 3-quart baskets cannot roast a whole chicken. Find that answer before you buy, not after."
+        }
       ],
-      "cluster_links": ["air-fryer-ovens"],
-      "sources": ["S04"]
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
+      "sources": [
+        "S16",
+        "S04"
+      ]
     },
     {
       "slug": "is-your-meat-thermometer-telling-you-the-right-number",
@@ -116,30 +364,158 @@
       "category": "cooking-thermometers",
       "deck": "A thermometer is only as useful as the number you compare it with.",
       "body": [
-        {"type": "note", "text": "Working title. The temperatures below are the USDA's published minimums. This guide does not test the accuracy of any thermometer."},
-        {"type": "h2", "text": "The minimum internal temperatures"},
-        {"type": "ul", "items": [
-          "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, then rest for at least 3 minutes.",
-          "Ground meats: 160 °F.",
-          "Ground poultry: 165 °F.",
-          "All poultry, including breasts, whole birds, legs, thighs and wings: 165 °F.",
-          "Fresh or smoked ham that is uncooked: 145 °F, then rest for at least 3 minutes."
-        ]},
-        {"type": "p", "text": "Source: USDA Food Safety and Inspection Service, Safe Minimum Internal Temperature Chart."},
-        {"type": "h2", "text": "Where to put the probe"},
-        {"type": "p", "text": "For a whole bird, the USDA says to check the innermost part of the thigh, the innermost part of the wing and the thickest part of the breast, avoiding bone. For poultry parts, insert the probe into the thickest area, avoiding bone."},
-        {"type": "h2", "text": "Questions to ask about a wireless thermometer"},
-        {"type": "ul", "items": [
-          "What temperature range and probe count does the manufacturer state?",
-          "Does the manufacturer describe how accuracy was tested? If it does not, write that down.",
-          "Does the app need an account, and what does the privacy policy say it collects?",
-          "Is the probe rated for the temperature you will cook at? Check the manufacturer's stated limit."
-        ]},
-        {"type": "h2", "text": "What the Shop shows"},
-        {"type": "p", "text": "The Shop lists one wireless thermometer in this cluster, observed on 2026-11-20. We have not tested it. The temperatures above come from the USDA, not from the product maker."}
+        {
+          "type": "note",
+          "text": "The temperatures below are the US Department of Agriculture's published minimum internal temperatures, read from the FSIS chart on 2026-11-20. This guide does not test the accuracy of any thermometer."
+        },
+        {
+          "type": "h2",
+          "text": "The minimum internal temperatures"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Food",
+            "Minimum internal temperature",
+            "Rest time"
+          ],
+          "rows": [
+            [
+              "Beef, pork, veal and lamb steaks, chops and roasts",
+              "145 °F (62.8 °C)",
+              "At least 3 minutes"
+            ],
+            [
+              "Ground meats",
+              "160 °F (71.1 °C)",
+              "—"
+            ],
+            [
+              "Ground poultry",
+              "165 °F (73.9 °C)",
+              "—"
+            ],
+            [
+              "All poultry: breasts, whole bird, legs, thighs, wings, giblets, stuffing",
+              "165 °F (73.9 °C)",
+              "—"
+            ],
+            [
+              "Fresh or smoked ham, uncooked",
+              "145 °F (62.8 °C)",
+              "At least 3 minutes"
+            ],
+            [
+              "Fully cooked ham, reheated",
+              "140 °F (60 °C) if packaged in a USDA-inspected plant, otherwise 165 °F (73.9 °C)",
+              "—"
+            ],
+            [
+              "Eggs",
+              "160 °F (71.1 °C)",
+              "—"
+            ],
+            [
+              "Fish and shellfish",
+              "145 °F (62.8 °C)",
+              "—"
+            ],
+            [
+              "Leftovers and casseroles",
+              "165 °F (73.9 °C)",
+              "—"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "The USDA adds that these are minimums and that a cook may choose to go higher for personal preference."
+        },
+        {
+          "type": "h2",
+          "text": "Where to put the probe"
+        },
+        {
+          "type": "p",
+          "text": "For a whole bird, the USDA says to check the innermost part of the thigh, the innermost part of the wing and the thickest part of the breast, avoiding bone. For poultry parts, insert the probe into the thickest area, avoiding bone. Bone heats faster than meat and will give you a reading that is too high."
+        },
+        {
+          "type": "h2",
+          "text": "Instant read or leave in"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "",
+            "Instant-read probe",
+            "Wireless leave-in probe"
+          ],
+          "rows": [
+            [
+              "What it is for",
+              "Taking one reading at the end of cooking",
+              "Watching a temperature while food cooks"
+            ],
+            [
+              "Tracked example",
+              "ThermoMaven F1 Ace",
+              "CHEF iQ Sense"
+            ],
+            [
+              "Reading time",
+              "About 1 second",
+              "Continuous, sent to your phone"
+            ],
+            [
+              "Stated accuracy",
+              "±0.5 °F (the maker's claim)",
+              "Within 1 °F (the maker's claim)"
+            ],
+            [
+              "Stated temperature range",
+              "Not published on the maker's page",
+              "32–212 °F internal, 32–1,000 °F ambient"
+            ],
+            [
+              "Source",
+              "S17",
+              "S18"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "Four questions to ask about any thermometer"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "What range does the manufacturer state, and is it internal or ambient? The CHEF iQ Sense publishes both, and they are very different numbers: 32–212 °F internal against 32–1,000 °F ambient. The higher figure is not a reading range.",
+            "How was accuracy established, and is there a certificate? A retail page saying a product is certified is not a certificate. Ask for the accredited laboratory and the certificate number.",
+            "Can you calibrate it? The CHEF iQ Sense describes self-calibration with each measurement. An instant-read is usually checked against an ice bath or boiling water; the manual will say how.",
+            "What does the app collect? A wireless probe often needs an account and a phone. Read the privacy policy before you connect it to your home network."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What this site can and cannot tell you"
+        },
+        {
+          "type": "p",
+          "text": "The two tracked thermometers have manufacturer-published specifications on their product pages, cited by source id. Neither has been tested by anyone here, and neither page repeats a certification as fact: the ThermoMaven page quotes ±0.5 °F as the maker's claim and notes that NIST's own FAQ says NIST does not endorse commercial equipment."
+        }
       ],
-      "cluster_links": ["cooking-thermometers"],
-      "sources": ["S09", "S10", "S04"]
+      "cluster_links": [
+        "cooking-thermometers"
+      ],
+      "sources": [
+        "S09",
+        "S10",
+        "S17",
+        "S18",
+        "S19"
+      ]
     }
-  ]
+  ],
+  "note": "Guides are written to answer the question in the title, then to hand the reader a way to act on it. Every factual claim names the source it came from. These are working titles informed by the products on the site; they are not claims about search volume (see FLG-034)."
 }

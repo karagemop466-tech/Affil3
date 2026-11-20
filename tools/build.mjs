@@ -48,6 +48,7 @@ const DASHBOARDS = [
   ['/ledger/', 'Campaign ledger'],
   ['/measurement/', 'Measurement'],
   ['/compliance/', 'Compliance and gates'],
+  ['/search/', 'Search the shop'],
   ['/about/', 'About and editorial policy'],
   ['/editorial/', 'Editorial register (second publication)'],
 ];
@@ -200,6 +201,7 @@ function renderBlock(b) {
     case 'h2': return `<h2 id="${esc(b.text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''))}">${esc(b.text)}</h2>`;
     case 'ul': return `<ul>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ul>`;
     case 'ol': return `<ol>${b.items.map((i) => `<li>${esc(i)}</li>`).join('')}</ol>`;
+    case 'table': return `<div class="table-wrap"><table class="guide-table"><thead><tr>${b.headers.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c, i) => i === 0 ? `<th scope="row">${esc(c)}</th>` : `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
     default: throw new Error('unknown block ' + b.type);
   }
 }
@@ -338,10 +340,12 @@ for (const p of products) {
     </div>
   </div>
   <aside class="buybox">
-    <h2>Where to buy</h2>
-    <p class="reason">${esc(c.best_for)}</p>
+    <h2>At a glance</h2>
+    <table class="mini"><tbody>
+      ${c.specs.filter((sp) => sp.value).slice(0, 4).map((sp) => `<tr><th scope="row">${esc(sp.label)}</th><td>${esc(sp.value)}</td></tr>`).join('')}
+    </tbody></table>
     <a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="product-buybox">View on Amazon</a>
-    <p class="note-sm">${esc(p.outbound_status)} Opens the Amazon listing with our Associates tag <code>${esc(cfg.trackingId)}</code>. We earn a commission if you buy. ${flagLinks(['FLG-005'])}</p>
+    <p class="note-sm">${esc(p.outbound_status)}. Opens the Amazon listing with our Associates tag <code>${esc(cfg.trackingId)}</code>; we earn a commission if you buy. ${flagLinks(['FLG-005'])}</p>
     <ul>
       <li>No price is shown here; Amazon shows the live price.</li>
       <li>No rating is quoted; read the reviews on the listing.</li>
@@ -563,6 +567,7 @@ for (const c of CATEGORIES) {
     description: `${c.name}: ${c.blurb}`,
     attrs: `data-category="${esc(c.slug)}"`,
     type: 'category',
+    noSitemap: c.slug === 'unresolved' && products.filter((p) => p.category === 'unresolved').length === 0,
     body: `<section class="page-head"><p class="kicker">Category</p><h1>${esc(c.name)}</h1><p class="deck">${esc(c.blurb)}</p></section>
 <section class="shelf">${cards || '<p>No product rows in this category.</p>'}</section>
 <section class="band"><h2>Guides for this cluster</h2>
@@ -578,7 +583,11 @@ add({
   description: 'Question-led buying guides for air fryers, air fryer ovens and cooking thermometers.',
   body: `<section class="page-head"><p class="kicker">Guides</p><h1>Buying guides, by question</h1>
 <p class="deck">Each guide starts with a question buyers ask. Working titles are editorial hypotheses, not claims about popularity or search volume.</p></section>
-<ul class="guide-list">${guides.map((g) => `<li class="guide-item"><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a><span class="muted"> · ${esc(dateLong(g.date))}</span><p>${esc(g.deck)}</p></li>`).join('')}</ul>`,
+<div class="prose"><p>Each guide answers one question, then gives you a way to act on the answer: a table, a checklist, or a decision you can make before you buy. Every figure in them is cited to the source it came from.</p></div>
+<ul class="guide-list">${guides.map((g) => {
+  const words = g.body.reduce((n, b) => n + (b.text ? b.text.split(/\s+/).length : 0) + (b.items ? b.items.join(' ').split(/\s+/).length : 0) + (b.rows ? b.rows.flat().join(' ').split(/\s+/).length : 0), 0);
+  return `<li class="guide-item"><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a><span class="muted"> · ${esc(catName(g.category))} · ${Math.max(2, Math.round(words / 200))} min read</span><p>${esc(g.deck)}</p></li>`;
+}).join('')}</ul>`,
 });
 for (const g of guides) {
   const productsHere = products.filter((p) => tagged(p) && (p.category === g.category || (g.cluster_links || []).includes(p.category)));

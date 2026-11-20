@@ -126,7 +126,9 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   };
   const sitemap = fs.readFileSync(path.join(DOCS, 'sitemap.xml'), 'utf8');
   const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  const pageUrls = htmlFiles.filter((f) => path.basename(f) !== '404.html').map((f) => cfg.siteUrl + rel(f).replace(/index\.html$/, ''));
+  // 404 and the empty "unresolved" cluster are reachable but deliberately not advertised for indexing.
+  const NO_SITEMAP = ['/404.html', '/categories/unresolved/index.html'];
+  const pageUrls = htmlFiles.filter((f) => !NO_SITEMAP.includes(rel(f))).map((f) => cfg.siteUrl + rel(f).replace(/index\.html$/, ''));
 
   for (const f of htmlFiles) {
     const html = fs.readFileSync(f, 'utf8');

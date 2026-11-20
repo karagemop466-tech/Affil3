@@ -342,6 +342,14 @@
         "S07"
       ],
       "manual_step": "Owner answers Q-14 (which products, if any, have been handled). Pages are then labelled 'tested', 'owned' or 'not tested' per product, and only tested products may carry hands-on claims."
+    },
+    {
+      "id": "FLG-034",
+      "severity": "low",
+      "title": "Guide topics are editorial hypotheses, not keyword research",
+      "detail": "The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.",
+      "sources": [],
+      "manual_step": "Connect Search Console (S-12) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions."
     }
   ],
   "checked": "2026-11-20"

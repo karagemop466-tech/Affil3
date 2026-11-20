@@ -247,3 +247,14 @@ table.wide td { min-width: 120px; }
 .results .k { display: block; font: 600 11px/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
 .results strong { display: block; font: 700 18px/1.3 var(--serif); }
 .results .d { display: block; font-size: 15px; color: var(--muted); margin-top: 3px; }
+
+/* compact spec table in the buy box */
+.buybox table.mini { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 14px; }
+.buybox table.mini th, .buybox table.mini td { padding: 6px 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; background: none; position: static; }
+.buybox table.mini th { width: 46%; font: 600 12px/1.4 var(--sans); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.buybox table.mini td { font-weight: 600; }
+
+/* guide tables: first column is a row header, so people can scan left to right */
+.guide-table th[scope="row"] { background: #faf7f0; font-weight: 700; color: var(--ink); font-size: 15px; position: static; text-transform: none; letter-spacing: 0; }
+.guide-table td, .guide-table th[scope="row"] { min-width: 110px; }
+.prose .table-wrap { margin: 18px 0 22px; }
