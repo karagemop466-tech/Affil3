@@ -1,0 +1,35 @@
+<main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="{{root}}">Home</a><span aria-hidden="true">/</span><a href="{{root}}desk/">Research desk</a><span aria-hidden="true">/</span> Measurement</p>
+    <p class="eyebrow">Measurement · count only what the source can support</p>
+    <h1>Clicks and conversions need two different ledgers.</h1>
+    <p class="lede">The request asks for five defined events but does not list them. The five names below are an explicit privacy-preserving proposal—not an approved event contract. Amazon-reported orders stay separate and can be added only from authorized first-party reports with provenance.</p>
+  </section>
+  <section class="section">
+    <div class="stat-grid">
+      <div class="stat"><strong>5</strong><span>proposed event names · confirmation pending</span></div>
+      <div class="stat"><strong>{{PUBLIC_EVENTS_STATUS}}</strong><span>public event collection state on GitHub Pages</span></div>
+      <div class="stat"><strong>{{CAMPAIGN_ROW_COUNT}}</strong><span>campaign report rows</span></div>
+      <div class="stat"><strong>—</strong><span>conversion forecast (not calculated)</span></div>
+    </div>
+    <div class="note-box warning-box"><strong>Endpoint status: no public runtime; event names are still a proposal.</strong><p data-measure-status aria-live="polite">GitHub Pages and the default preview both serve a disabled runtime. The optional Node API requires explicit configuration in a separate, isolated local environment; it is not a public Pages service. Do not treat local test events as production traffic.</p></div>
+    <div class="card" aria-live="polite" data-measure-summary><p class="table-note">No public aggregate event totals are available while the Pages endpoint is disabled.</p></div>
+    <div class="table-wrap">
+      <table>
+        <caption>Proposed five-event schema · event names and triggers not yet confirmed</caption>
+        <thead><tr><th scope="col">Event</th><th scope="col">Purpose</th><th scope="col">Allowed payload</th><th scope="col">Privacy rule</th><th scope="col">Source / implementation</th></tr></thead>
+        <tbody>{{EVENT_TABLE_ROWS}}</tbody>
+      </table>
+    </div>
+    <h2>Campaign ledger</h2>
+    <p class="section-intro">One campaign row must record a timestamp, source report, channel, eligible sessions, clicks, reported orders, and provenance. No authorized Associates report was supplied, so the ledger is intentionally empty.</p>
+    <div class="table-wrap">
+      <table>
+        <caption>First-party report ledger · no observations entered</caption>
+        <thead><tr><th scope="col">Timestamp (UTC)</th><th scope="col">Source report</th><th scope="col">Channel</th><th scope="col">Eligible sessions</th><th scope="col">Clicks</th><th scope="col">Reported orders</th><th scope="col">Provenance</th></tr></thead>
+        <tbody>{{CAMPAIGN_TABLE_ROWS}}</tbody>
+      </table>
+    </div>
+    <p class="table-note">Amazon Associates describes its own reports as the source for clicks, ordered items, shipped items, and conversion reporting. The site-side event counter does not see an Amazon order and must never be presented as an order count.</p>
+  </section>
+</main>

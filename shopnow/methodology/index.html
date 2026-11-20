@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>How we decide what to publish — ShopNow 047</title>
+<meta name="description" content="The four rules this site runs on, the automated gate that enforces them, and the exact list of things we could not verify.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/shopnow/methodology/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ShopNow 047">
+<meta property="og:title" content="How we decide what to publish — ShopNow 047">
+<meta property="og:description" content="The four rules this site runs on, the automated gate that enforces them, and the exact list of things we could not verify.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/shopnow/methodology/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/shopnow/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="ShopNow 047 — Checked, not hyped." href="https://karagemop466-tech.github.io/Affil3/shopnow/feed.xml">
+<link rel="icon" href="/Affil3/shopnow/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/Affil3/shopnow/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"How we decide what to publish","url":"https://karagemop466-tech.github.io/Affil3/shopnow/methodology/","description":"The four rules this site runs on, the automated gate that enforces them, and the exact list of things we could not verify."}</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header class="masthead"><div class="masthead-in">
+  <a class="wordmark" href="/Affil3/shopnow/">ShopNow<span class="num">047</span></a>
+  <div class="kicker">Counter-top desk · Amazon.com (US)</div>
+  <div class="tagline">Checked, not hyped.</div>
+</div></header>
+<div class="strip" role="note" aria-label="Affiliate disclosure">
+  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> In the FTC's own example wording: “I get commissions for purchases made through links in this post.” Links marked Sponsored pay us a commission. ShopNow 047 has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="/Affil3/shopnow/disclosure/" style="white-space:nowrap">Full disclosure</a></span></div>
+</div>
+<nav class="main" aria-label="Primary"><div class="nav-in">
+  <a href="/Affil3/shopnow/">ShopNow</a>
+  <a href="/Affil3/shopnow/guides/">Guides</a>
+  <a href="/Affil3/shopnow/clusters/basket-air-fryers/">Air fryers</a>
+  <a href="/Affil3/shopnow/clusters/oven-style-multi-cookers/">Oven-style</a>
+  <a href="/Affil3/shopnow/compare/">Compare</a>
+  <a href="/Affil3/shopnow/methodology/">How we decide</a>
+  <details class="mech"><summary>Inside the project</summary><div class="pop">
+    <a href="/Affil3/shopnow/dashboard/">Source dashboard</a>
+    <a href="/Affil3/shopnow/suggestions/">Suggestions to review</a>
+    <a href="/Affil3/shopnow/decisions/">Open questions</a>
+    <a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a>
+    <a href="/Affil3/shopnow/sources/">Source register</a>
+    <a href="/Affil3/shopnow/executive-summary/">Executive summary</a>
+    <a href="/Affil3/shopnow/search/">Search</a>
+  </div></details>
+</div></nav>
+<main id="top">
+<div class="breadcrumb" aria-label="Breadcrumb"><a href="/Affil3/shopnow/">Home</a> <span>/</span> <em>How we decide what to publish</em></div>
+<article class="article"><h1 class="article-title">How we decide what to publish</h1><div class="prose"><h2 id="four-rules">Four rules</h2>
+<p><strong>1. A number needs a source, or it does not appear.</strong> Every figure on this site resolves to a row in the <a href="/Affil3/shopnow/sources/">source register</a>: an official page, fetched or excerpted, with an access date and the exact quote. Four of the eleven source rows are marked unresolved. That is not a gap in the work; it is the work telling you where it stopped.</p>
+<p><strong>2. We do not claim to have tested anything.</strong> There is no test kitchen behind this site. No product has been measured, weighed, cooked in, or disassembled by us. First-person testing claims, lab claims, and hands-on framing do not appear here, and a build check rejects them by name. When a guide says &quot;check X&quot;, it means you should check X, not that we did.</p>
+<p><strong>3. Prices and ratings belong to Amazon, at the moment of purchase.</strong> Amazon's Program Policies permit a site to show price and availability only when the data comes from an Amazon-served link or its catalog API, with a 24-hour refresh ceiling. We have no API access - and the eligibility gate for it sits behind the sales that access would help produce. So we publish no monetary figure at all, and a build check fails if one slips in.</p>
+<p><strong>4. The sponsor relationship is stated where you are reading, not on a page you have to go find.</strong> The disclosure sentence sits under the masthead on every page and again in the footer, in text, not behind a button. That placement is deliberate: the FTC has said a hyperlinked &quot;DISCLOSURE&quot; control is not clear and conspicuous, because most people will not click it.</p>
+<h2 id="what-a-machine-enforces">What a machine enforces</h2>
+<p>Compliance that depends on someone remembering is compliance that fails on a busy day. So the checks are code, they run on every build, and CI blocks the merge:</p>
+<table><thead><tr><th>Gate</th><th>What it catches</th></tr></thead><tbody><tr><td>Disclosure present</td><td>any page missing the required sentence above the fold or in the footer</td></tr><tr><td>Sponsored marking</td><td>any commerce link without <code>rel=&quot;sponsored nofollow&quot;</code> and a visible Sponsored label</td></tr><tr><td>Tracking tag</td><td>any Amazon link whose <code>tag=</code> does not match the site's tracking ID</td></tr><tr><td>Price guard</td><td>any currency pattern reaching the published site</td></tr><tr><td>Program Content guard</td><td>any reference to Amazon's image CDN</td></tr><tr><td>Claim guard</td><td>banned-phrase list, including implied testing and implied endorsement</td></tr><tr><td>Verification guard</td><td>a field published as fact with no source row behind it</td></tr><tr><td>Link integrity</td><td>any broken internal link, and any page missing from the sitemap or feed</td></tr></tbody></table>
+<p>The list is the file <a href="https://github.com/karagemop466-tech/Affil3/blob/main/scripts/checks.mjs" rel="noopener noreferrer" target="_blank">scripts/checks.mjs</a>. If you want to argue with a rule, the argument is with a script, not with a person's judgement on a bad day.</p>
+<h2 id="how-a-product-gets-listed">How a product gets listed</h2>
+<p>A product is only published when its listing has been <em>resolved</em>: we follow the supplied link, record the destination, and store the intended identifier and the observed destination in <strong>separate fields</strong> so a reader can see which is which. Where a link would not resolve - as with one of our five - the product has no page and no card, and the register says UNRESOLVED.</p>
+<p>We did not guess a brand, a category, or a price to fill that row. Five products came in; four are on the shop floor; one is in the dashboard with a blank where the name should be. <a href="/Affil3/shopnow/dashboard/">Full ledger.</a></p>
+<h2 id="what-verified-means-here-precisely">What &quot;verified&quot; means here, precisely</h2>
+<ul><li><strong>verbatim</strong> - we fetched the official page in this session and copied the text.</li><li><strong>excerpt</strong> - official-domain text returned by a search index; the page itself would not load in this environment. Enough to publish a citation, not enough to quote at length.</li><li><strong>unresolved</strong> - sources conflict, or the page could not be reached. Nothing was adopted. The row stays, with the conflict described.</li></ul>
+<p>No row on this site uses a fourth category. There is no &quot;probably&quot;, and nothing is filled in because the blank looked bad.</p>
+<h2 id="reader-facing-honesty-page">Reader-facing honesty page</h2>
+<p>If we get a fact wrong, the register should show it before you have to email us. That is what <a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a> is for: ten open items, each with the source link, the exact owner action that would close it, and what we withheld from the site as a result.</p></div></article>
+</main>
+<footer class="site"><div class="foot-in">
+  <div class="foot-disclose"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+  <p class="tiny" style="margin:.4rem 0 0">In the regulator's own example wording: &ldquo;I get commissions for purchases made through links in this post.&rdquo; That is the FTC's suggested phrasing for an affiliate relationship, and it is stated here in words rather than behind a disclosure button, because a linked disclosure is one most readers never open.</p>
+  <p class="tiny" style="margin:.4rem 0 0">Repeated here because it belongs on every page, not only on a page you have to go looking for. A purchase is assigned to us by Amazon through your click and a session we cannot see. We publish no price, availability, rating or review figure, because we cannot refresh one. <a href="/Affil3/shopnow/disclosure/">Disclosure</a> · <a href="/Affil3/shopnow/privacy/">Privacy</a> · <a href="/Affil3/shopnow/methodology/">Methodology</a></p></div>
+  <div class="foot-cols">
+  <div><h5>Shop</h5><ul><li><a href="/Affil3/shopnow/products/">All products</a></li><li><a href="/Affil3/shopnow/clusters/dual-basket/">Dual-basket</a></li><li><a href="/Affil3/shopnow/clusters/getting-the-temperature-right/">Temperature &amp; probes</a></li></ul></div>
+  <div><h5>Read</h5><ul><li><a href="/Affil3/shopnow/guides/">Guides</a></li><li><a href="/Affil3/shopnow/about/">Editorial standards</a></li><li><a href="/Affil3/shopnow/methodology/">Methodology</a></li><li><a href="/Affil3/shopnow/feed.xml">Feed</a></li></ul></div>
+  <div><h5>Inside the project</h5><ul><li><a href="/Affil3/shopnow/dashboard/">Dashboard</a></li><li><a href="/Affil3/shopnow/suggestions/">Suggestions</a></li><li><a href="/Affil3/shopnow/decisions/">Open questions</a></li><li><a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a></li><li><a href="/Affil3/shopnow/executive-summary/">Executive summary</a></li></ul></div>
+  <div><h5>Legal</h5><ul><li><a href="/Affil3/shopnow/disclosure/">Disclosure</a></li><li><a href="/Affil3/shopnow/privacy/">Privacy</a></li><li><a href="/Affil3/shopnow/sources/">Source register</a></li><li><a href="/Affil3/shopnow/search/">Search</a></li></ul></div>
+  </div>
+  <div class="foot-legal">
+    <div>© 2026 ShopNow 047 · kitchen gear desk</div>
+    <div><a href="/Affil3/shopnow/sources/">11 source rows</a> · <a href="/Affil3/shopnow/flagged-for-review/">10 flagged</a> · <a href="/Affil3/shopnow/feed.xml">RSS</a> · generated from a register, gated in CI</div>
+  </div>
+</div></footer>
+<script src="/Affil3/shopnow/assets/track.js" defer></script>
+<script src="/Affil3/shopnow/assets/app.js" defer></script>
+
+</body>
+</html>

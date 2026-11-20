@@ -182,6 +182,54 @@
       "proposal": "Ship the script with the endpoint unset so it fails open and records nothing. Turn it on when a named person will read the dashboard monthly and can answer how long events are kept.",
       "tradeoff": "You launch without traffic numbers. Given FLG-003, the numbers would be meaningless anyway.",
       "decision_needed": "Name the endpoint owner and a retention period."
+    },
+    {
+      "id": "SG-27",
+      "title": "Reader polish: one brand, and imagery that is what it says it is",
+      "category": "Reader polish",
+      "status": "proposed",
+      "impact": "medium",
+      "effort": "medium",
+      "problem": "This publication ships as 'Countertop & Co.' while the root site ships as 'Affil3', and it uses editorial illustrations rather than product photography because marketplace images are Program Content and no original shots exist.",
+      "proposal": "Choose one name and one domain, and commission original photography of units you own. Until then keep the illustrations labelled, which is what they already are.",
+      "tradeoff": "A single name and real photographs are the cheapest trust win available, and both need something a build cannot supply: a decision and a camera.",
+      "decision_needed": "Pick the name, or keep both and say so on the About page."
+    },
+    {
+      "id": "SG-28",
+      "title": "Reader polish: a name and a check date on every page",
+      "category": "Reader polish",
+      "status": "proposed",
+      "impact": "medium",
+      "effort": "low",
+      "problem": "Guides carry a team byline. A specification-check date is already printed next to every table, which is the harder half of an authorship signal.",
+      "proposal": "Add one named editor with a short bio and a corrections address. The method does not change; only the name above it does.",
+      "tradeoff": "A named person has to answer for corrections. That is the point, and it is also the cost.",
+      "decision_needed": "Name the editor, or confirm the team byline is permanent."
+    },
+    {
+      "id": "SG-29",
+      "title": "Reader polish: verify Search Console and pick the next guide from the query report",
+      "category": "Reader polish",
+      "status": "proposed",
+      "impact": "high",
+      "effort": "low",
+      "problem": "Canonical URLs, JSON-LD, sitemap.xml and the RSS feed all ship. Search Console does not, so nobody can see which guides are found.",
+      "proposal": "Verify the property, submit the sitemap, and read the Performance report before writing the next guide.",
+      "tradeoff": "Needs an owner Google account and an hour. It is the only remaining decision that turns topic choice from instinct into evidence.",
+      "decision_needed": "Verify the property, or accept that cadence is chosen blind."
+    },
+    {
+      "id": "SG-30",
+      "title": "Reader polish: RSS now, email only when there is something to send",
+      "category": "Reader polish",
+      "status": "proposed",
+      "impact": "low",
+      "effort": "medium",
+      "problem": "An email form or a seasonal hub added before there is query data asks readers for an address with nothing behind it, and email brings its own rules: the Amazon Trademark Guidelines govern marks and links in email.",
+      "proposal": "Keep RSS as the only subscription route until at least three guides exist and the email rules have been read.",
+      "tradeoff": "No direct channel to readers, and no consent or retention obligations either.",
+      "decision_needed": "Confirm RSS-only, or scope the email list and the email-rules review together."
     }
   ],
   "decided": []

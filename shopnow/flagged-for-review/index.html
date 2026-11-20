@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flagged for review — ShopNow 047</title>
+<meta name="description" content="Unverified values, unresolved links, withheld fields and open owner actions — with the source link for each and the exact step that closes it.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/shopnow/flagged-for-review/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow 047">
+<meta property="og:title" content="Flagged for review — ShopNow 047">
+<meta property="og:description" content="Unverified values, unresolved links, withheld fields and open owner actions — with the source link for each and the exact step that closes it.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/shopnow/flagged-for-review/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/shopnow/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="ShopNow 047 — Checked, not hyped." href="https://karagemop466-tech.github.io/Affil3/shopnow/feed.xml">
+<link rel="icon" href="/Affil3/shopnow/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/Affil3/shopnow/assets/style.css">
+
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header class="masthead"><div class="masthead-in">
+  <a class="wordmark" href="/Affil3/shopnow/">ShopNow<span class="num">047</span></a>
+  <div class="kicker">Counter-top desk · Amazon.com (US)</div>
+  <div class="tagline">Checked, not hyped.</div>
+</div></header>
+<div class="strip" role="note" aria-label="Affiliate disclosure">
+  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> In the FTC's own example wording: “I get commissions for purchases made through links in this post.” Links marked Sponsored pay us a commission. ShopNow 047 has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="/Affil3/shopnow/disclosure/" style="white-space:nowrap">Full disclosure</a></span></div>
+</div>
+<nav class="main" aria-label="Primary"><div class="nav-in">
+  <a href="/Affil3/shopnow/">ShopNow</a>
+  <a href="/Affil3/shopnow/guides/">Guides</a>
+  <a href="/Affil3/shopnow/clusters/basket-air-fryers/">Air fryers</a>
+  <a href="/Affil3/shopnow/clusters/oven-style-multi-cookers/">Oven-style</a>
+  <a href="/Affil3/shopnow/compare/">Compare</a>
+  <a href="/Affil3/shopnow/methodology/">How we decide</a>
+  <details class="mech"><summary>Inside the project</summary><div class="pop">
+    <a href="/Affil3/shopnow/dashboard/">Source dashboard</a>
+    <a href="/Affil3/shopnow/suggestions/">Suggestions to review</a>
+    <a href="/Affil3/shopnow/decisions/">Open questions</a>
+    <a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a>
+    <a href="/Affil3/shopnow/sources/">Source register</a>
+    <a href="/Affil3/shopnow/executive-summary/">Executive summary</a>
+    <a href="/Affil3/shopnow/search/">Search</a>
+  </div></details>
+</div></nav>
+<main id="top">
+<div class="breadcrumb" aria-label="Breadcrumb"><a href="/Affil3/shopnow/">Home</a> <span>/</span> <em>Inside the project</em> <span>/</span> <em>Flagged for review</em></div>
+<div class="section-head"><span class="eyebrow">Transparency</span><h2>Flagged for review</h2></div>
+<p class="lede">Everything this project could not confirm, every place the evidence ran out, and every rule we chose the strict reading of. Nothing here blocks the site going live — that is the point of publishing it rather than fixing it silently. Each row names what was withheld from the site as a result.</p>
+<div class="search-box"><input type="search" placeholder="Filter 10 rows — try 'ASIN', 'price', 'tag'" data-filter-table="#flagtable" aria-label="Filter flagged items"><span class="tiny muted" data-filter-count></span></div>
+<div class="table-wrap" style="margin-bottom:1.6rem"><table class="data" id="flagtable"><thead><tr><th>ID</th><th>Item</th><th>Severity</th><th>Effect on this site</th><th>Closes when</th></tr></thead><tbody>
+<tr><td class="num">FLG-001</td><td>None of the five submitted strings is an ASIN</td><td><span class="chip chip-warn">high</span></td><td class="tiny">The 'intended ASIN' field is blank for all five rows. A link-level identity claim cannot be made. Anything published against a product uses the observed listing URL only.</td><td class="tiny">Paste the ten-character ASINs (or full amazon.com/dp/ URLs) from Associates Central &gt; Links &gt; Special Links, or confirm that 'whatever the short link resolves to today' is the intended target.</td></tr>
+<tr><td class="num">FLG-002</td><td>No prices, ratings, review counts, specs or commission rates are published anywhere</td><td><span class="chip chip">medium</span></td><td class="tiny">Comparison tables carry criteria, not numbers. The product cards carry a 'what we did not verify' panel instead of a spec sheet. This is the single biggest difference between this site and a typical affiliate site, and it is deliberate.</td><td class="tiny">Either (a) keep the no-price stance and lean into 'we tell you how to judge it in 90 seconds' as the brand, or (b) obtain API credentials and let the builder render Amazon-supplied fields with a visible timestamp.</td></tr>
+<tr><td class="num">FLG-003</td><td>Compliance status of the supplied short links is unresolved - not claimed invalid</td><td><span class="chip chip-warn">high</span></td><td class="tiny">The site publishes Special Links built in the documented tagged format with the site's tracking ID, and does not reuse the supplied short links as its primary outbound. The supplied links are not described anywhere on the site as invalid.</td><td class="tiny">In Associates Central, generate one Special Links test link per product, click it in a clean browser, and confirm (i) the landing ASIN and (ii) that a session appears in Reports &gt; Transactions. Test one product first, then scale.</td></tr>
+<tr><td class="num">FLG-004</td><td>P04 (token B0c8moW59) could not be resolved at all</td><td><span class="chip chip">medium</span></td><td class="tiny">P04 has no product page on the site and appears in the register as UNRESOLVED (6 attempts logged in products.json). Nothing about it is guessed - not its category, not its brand, not even whether it is a kitchen product.</td><td class="tiny">Open the link once in your own browser and paste the resulting amazon.com/dp/ URL, or replace the link.</td></tr>
+<tr><td class="num">FLG-005</td><td>No site URL is registered to the tracking ID, and the site has no analytics deployed</td><td><span class="chip chip-warn">high</span></td><td class="tiny">Traffic measurement is currently a stub: events buffer in the reader’s own tab (sessionStorage, cleared when the tab closes) and are transmitted only if a collector endpoint is configured, and monetisation should not be attempted on a github.io subpath.</td><td class="tiny">Register a domain you control, point Pages at it, list the exact URL in Associates Central &gt; Account Settings &gt; Site Settings, and create tracking ID shopnow047c-20 if it does not already exist.</td></tr>
+<tr><td class="num">FLG-006</td><td>Content is AI-assisted and has had no human editorial sign-off</td><td><span class="chip chip-warn">high</span></td><td class="tiny">The guides are written as *what to look for and what to ask*, never as test results. Words like 'we tested', 'our lab', 'we compared side by side' do not appear, and checks.mjs rejects them.</td><td class="tiny">Either adopt the byline as-is (a desk, not a person) or assign a human editor before the site is used for monetised traffic. Do not add a person's name or credentials to 'about' without their agreement.</td></tr>
+<tr><td class="num">FLG-007</td><td>Repo state did not match the brief's implied history</td><td><span class="chip chip">medium</span></td><td class="tiny">The referenced registers were re-established forward on this branch with the identifiers the brief used, and labelled as newly created rather than recovered. If the real prior work exists in another repository or branch, this site's registers must be reconciled against it before trusting continuity.</td><td class="tiny">Point this session at the repository/branch that holds the earlier register if one exists, so the two can be diffed row by row.</td></tr>
+<tr><td class="num">FLG-008</td><td>Program Policies and API-eligibility pages were not fetched verbatim</td><td><span class="chip chip-ghost">low</span></td><td class="tiny">S02 and S05 carry status 'unresolved' or 'excerpt'. No site copy quotes the price policy's exact wording, and the temperature guide links out to USDA rather than paraphrasing a standard we could not read in full.</td><td class="tiny">None required for launch. Optional hardening: re-fetch both from a normal browser and promote the rows to 'verbatim'.</td></tr>
+<tr><td class="num">FLG-009</td><td>Two parallel sessions claimed the same output paths</td><td><span class="chip chip">medium</span></td><td class="tiny">RESOLVED IN THE MERGE. main had meanwhile advanced through sibling merges and now publishes a root site plus /editorial/ and /legacy/, so this session relocated its output from docs/ to shop/ and set base_url to .../Affil3/shop, adopting the convention already established on main instead of competing for its paths. Nothing at the repository root, in tools/, data/, editorial/ or legacy/ was edited or deleted. If another branch is later integrated, regenerate shop/ rather than resolving HTML by hand.</td><td class="tiny">Pick one output tree. Recommended: keep the branch whose register is the fuller one (this one has row-level source status), then run npm run build.</td></tr>
+<tr><td class="num">FLG-010</td><td>No traffic, ranking, revenue or conversion forecast is made anywhere</td><td><span class="chip chip-ghost">informational</span></td><td class="tiny">The site publishes no 'expected earnings', no 'X% conversion rate', no 'this keyword has N volume'. The ledger exists with typed columns and zero rows, and the methodology page explains why.</td><td class="tiny">After 2-4 weeks of first-party data, decide whether to fund an SEO tool account; only then does volume-based topic selection become defensible.</td></tr>
+</tbody></table></div>
+<section class="flag">
+  <h3>FLG-001 · None of the five submitted strings is an ASIN</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip-warn">high</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>The brief supplies https://link.amazon/&lt;token&gt; for tokens B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj. Each token is 9 characters. Amazon ASINs are 10 characters. The strings behave as redirector tokens, not identifiers: four of them resolve to listings whose ASINs (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DZFD6R9Z) share no characters with the submitted token.</dd>
+    <dt>Consequence</dt><dd>The 'intended ASIN' field is blank for all five rows. A link-level identity claim cannot be made. Anything published against a product uses the observed listing URL only.</dd>
+    <dt>You would do</dt><dd>Paste the ten-character ASINs (or full amazon.com/dp/ URLs) from Associates Central &gt; Links &gt; Special Links, or confirm that 'whatever the short link resolves to today' is the intended target.</dd>
+    <dt>Discovery step</dt><dd>In Associates Central, open each product, copy the ASIN from the URL bar, and drop the five ASINs into register/products.json under intended_asin. The build then stops showing the 'identity unconfirmed' state.</dd>
+    <dt>Withheld</dt><dd>no product-name or brand claim is attributed to the owner's intent; only observed listing titles are quoted as observations</dd>
+    <dt>Source</dt><dd><a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20&amp;linkCode=ll1" rel="sponsored nofollow noopener noreferrer" target="_blank">https://www.amazon.com/dp/B0CDY277D3</a> · register row <code>S06</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-002 · No prices, ratings, review counts, specs or commission rates are published anywhere</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">medium</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Amazon's Program Policies are described (by two secondary sources) as permitting price and availability display only when the data is served by Amazon's own link/widget or pulled from the Creators/PA API, with a 24-hour refresh ceiling. This project holds no API credentials, and the policy text itself was not fetched from the official page (see S02).</dd>
+    <dt>Consequence</dt><dd>Comparison tables carry criteria, not numbers. The product cards carry a 'what we did not verify' panel instead of a spec sheet. This is the single biggest difference between this site and a typical affiliate site, and it is deliberate.</dd>
+    <dt>You would do</dt><dd>Either (a) keep the no-price stance and lean into 'we tell you how to judge it in 90 seconds' as the brand, or (b) obtain API credentials and let the builder render Amazon-supplied fields with a visible timestamp.</dd>
+    <dt>Discovery step</dt><dd>Check Associates Central for a 'Request API access' control and record the eligibility wording you see there; that simultaneously resolves S02, S07 and Q-09.</dd>
+    <dt>Withheld</dt><dd>all monetary and rating fields; scripts/checks.mjs fails the build on any currency pattern in shop/</dd>
+    <dt>Source</dt><dd><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored nofollow noopener noreferrer" target="_blank">https://affiliate-program.amazon.com/help/operating/policies</a> · register row <code>S02</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-003 · Compliance status of the supplied short links is unresolved - not claimed invalid</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip-warn">high</span><span class="tag">needs review - open</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Section 1 of the Operating Agreement requires links to 'properly use the special tagged link formats we provide'. The four resolved redirect chains ended at amazon.com/dp/ URLs whose recorded final URL carried no tag= parameter. That is an observation about what this environment saw, not proof of what an Associate-created short link transmits: Amazon's own onelink/Associates tooling can attach attribution at a step this fetch could not observe (redirect cookie, session-side tagging, or a later hop).</dd>
+    <dt>Consequence</dt><dd>The site publishes Special Links built in the documented tagged format with the site's tracking ID, and does not reuse the supplied short links as its primary outbound. The supplied links are not described anywhere on the site as invalid.</dd>
+    <dt>You would do</dt><dd>In Associates Central, generate one Special Links test link per product, click it in a clean browser, and confirm (i) the landing ASIN and (ii) that a session appears in Reports &gt; Transactions. Test one product first, then scale.</dd>
+    <dt>Discovery step</dt><dd>One controlled test: new incognito window, click generated link, add any item to cart, do not buy, then read Reports for the session. Record the result in register/links.json test_log.</dd>
+    <dt>Withheld</dt><dd>the phrase 'invalid' is never used about the supplied links; the wording used is 'compliance status unresolved'</dd>
+    <dt>Source</dt><dd><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored nofollow noopener noreferrer" target="_blank">https://affiliate-program.amazon.com/help/operating/agreement</a> · register row <code>S01</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-004 · P04 (token B0c8moW59) could not be resolved at all</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">medium</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Six attempts (2026-11-20, two windows) to resolve https://link.amazon/B0c8moW59: three landed on an Amazon anti-bot interstitial (amazon.com/checkpoint/continue) and three failed at transport. No listing was reached, so no ASIN, title, brand or category is known. A sibling session had earlier mis-recorded a checkpoint as a dead link and corrected it, so this row was deliberately retried before recording the negative - the outcome held.</dd>
+    <dt>Consequence</dt><dd>P04 has no product page on the site and appears in the register as UNRESOLVED (6 attempts logged in products.json). Nothing about it is guessed - not its category, not its brand, not even whether it is a kitchen product.</dd>
+    <dt>You would do</dt><dd>Open the link once in your own browser and paste the resulting amazon.com/dp/ URL, or replace the link.</dd>
+    <dt>Discovery step</dt><dd>Resolve manually in a normal browser session (which will not trip the checkpoint), copy the final URL, then re-run npm run build.</dd>
+    <dt>Withheld</dt><dd>the product page for P04 and its navigation entry</dd>
+    <dt>Source</dt><dd><span class="blank">no source exists yet — that is the finding</span> · register row <code>S06</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-005 · No site URL is registered to the tracking ID, and the site has no analytics deployed</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip-warn">high</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Associates Central requires each Site where Program Content appears to be listed and approved, with the tracking ID attached to it. The Pages URL (https://karagemop466-tech.github.io/Affil3/) is a preview-grade subpath of a github.io domain; it has not been registered and cannot be registered from this environment. The click counter in shopnow/assets/track.js posts to an endpoint that is implemented locally (scripts/collect.mjs) but not deployed.</dd>
+    <dt>Consequence</dt><dd>Traffic measurement is currently a stub: events buffer in the reader’s own tab (sessionStorage, cleared when the tab closes) and are transmitted only if a collector endpoint is configured, and monetisation should not be attempted on a github.io subpath.</dd>
+    <dt>You would do</dt><dd>Register a domain you control, point Pages at it, list the exact URL in Associates Central &gt; Account Settings &gt; Site Settings, and create tracking ID shopnow047c-20 if it does not already exist.</dd>
+    <dt>Discovery step</dt><dd>Check whether shopnow047c-20 already appears in Account Settings &gt; Tracking IDs. If it does not, create it before publishing any live link.</dd>
+    <dt>Withheld</dt><dd>the endpoint URL is left as a documented placeholder rather than pointed at a third-party collector</dd>
+    <dt>Source</dt><dd><a href="https://affiliate-program.amazon.com/home/accounturldetails" rel="sponsored nofollow noopener noreferrer" target="_blank">https://affiliate-program.amazon.com/home/accounturldetails</a> · register row <code>S09</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-006 · Content is AI-assisted and has had no human editorial sign-off</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip-warn">high</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Every guide on this site was drafted in an automated session. No named human editor reviewed it, and no hands-on testing of any product was performed by this project. The site says so on the methodology page and on each guide.</dd>
+    <dt>Consequence</dt><dd>The guides are written as *what to look for and what to ask*, never as test results. Words like 'we tested', 'our lab', 'we compared side by side' do not appear, and checks.mjs rejects them.</dd>
+    <dt>You would do</dt><dd>Either adopt the byline as-is (a desk, not a person) or assign a human editor before the site is used for monetised traffic. Do not add a person's name or credentials to 'about' without their agreement.</dd>
+    <dt>Discovery step</dt><dd>Answer Q-12 (who signs off) and Q-13 (is a named byline available). Until then the site keeps the disclosure line.</dd>
+    <dt>Withheld</dt><dd>no fabricated author biography, no fabricated test data, no invented ratings</dd>
+    <dt>Source</dt><dd><span class="blank">no source exists yet — that is the finding</span> · register row <code>S01</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-007 · Repo state did not match the brief's implied history</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">medium</span><span class="tag">needs review - informational</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>At base commit 847ae37 the repository contained one file, README.md (8 bytes). The brief refers to an existing 'careful source register', rows SG-27..SG-30, flags FLG-003, and sections S01/S07/S24. No such artifacts exist in any commit on any branch of this repository. Nine sibling session branches exist, each containing only README.md + COORDINATION.md.</dd>
+    <dt>Consequence</dt><dd>The referenced registers were re-established forward on this branch with the identifiers the brief used, and labelled as newly created rather than recovered. If the real prior work exists in another repository or branch, this site's registers must be reconciled against it before trusting continuity.</dd>
+    <dt>You would do</dt><dd>Point this session at the repository/branch that holds the earlier register if one exists, so the two can be diffed row by row.</dd>
+    <dt>Discovery step</dt><dd>git log --all --oneline --name-only on the correct remote; diff the prior register against register/.</dd>
+    <dt>Withheld</dt><dd>the site does not claim continuity with an earlier audit; it presents the register it can stand behind</dd>
+    <dt>Source</dt><dd><a href="https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6" rel="noopener noreferrer" target="_blank">https://github.com/karagemop466-tech/Affil3/commit/847ae376e15d0bba14809ebce17ddaea317f79b6</a> · register row <code>S11</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-008 · Program Policies and API-eligibility pages were not fetched verbatim</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">low</span><span class="tag">needs review</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Two load-bearing pages resisted in-session retrieval: the Associates Program Policies body (JavaScript console shell) and the USDA FSIS page (fetcher error on 3 attempts, resolved via official-domain excerpt). Where text could not be fetched, this register says so rather than upgrading the claim.</dd>
+    <dt>Consequence</dt><dd>S02 and S05 carry status 'unresolved' or 'excerpt'. No site copy quotes the price policy's exact wording, and the temperature guide links out to USDA rather than paraphrasing a standard we could not read in full.</dd>
+    <dt>You would do</dt><dd>None required for launch. Optional hardening: re-fetch both from a normal browser and promote the rows to 'verbatim'.</dd>
+    <dt>Discovery step</dt><dd>Open each URL, copy the paragraph, paste into register/sources.json under verified_claims, set status verbatim.</dd>
+    <dt>Withheld</dt><dd>no verbatim quotation is presented as Amazon policy text where we only had a paraphrase</dd>
+    <dt>Source</dt><dd><a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe" rel="noopener noreferrer" target="_blank">https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/steps-keep-food-safe</a> · register row <code>S05</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-009 · Two parallel sessions claimed the same output paths</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">medium</span><span class="tag">resolved in merge</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Session 772f3220 claimed docs/ and register/ at 05:13Z; this session claimed the same paths at 05:14Z. Because main had no COORDINATION.md, there was no ordering mechanism to arbitrate. No sibling branch contained any site content at the time, so no work was duplicated in a destructive way.</dd>
+    <dt>Consequence</dt><dd>RESOLVED IN THE MERGE. main had meanwhile advanced through sibling merges and now publishes a root site plus /editorial/ and /legacy/, so this session relocated its output from docs/ to shop/ and set base_url to .../Affil3/shop, adopting the convention already established on main instead of competing for its paths. Nothing at the repository root, in tools/, data/, editorial/ or legacy/ was edited or deleted. If another branch is later integrated, regenerate shop/ rather than resolving HTML by hand.</dd>
+    <dt>You would do</dt><dd>Pick one output tree. Recommended: keep the branch whose register is the fuller one (this one has row-level source status), then run npm run build.</dd>
+    <dt>Discovery step</dt><dd>git log origin/arena/772f3220-affil3 --stat to compare volume before deciding.</dd>
+    <dt>Withheld</dt><dd>nothing</dd>
+    <dt>Source</dt><dd><a href="https://github.com/karagemop466-tech/Affil3/branches" rel="noopener noreferrer" target="_blank">https://github.com/karagemop466-tech/Affil3/branches</a> · register row <code>S11</code></dd>
+  </dl>
+</section>
+<section class="flag">
+  <h3>FLG-010 · No traffic, ranking, revenue or conversion forecast is made anywhere</h3>
+  <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem"><span class="chip chip">informational</span><span class="tag">closed by design</span><span class="tag">blocks launch: no</span></div>
+  <dl>
+    <dt>Finding</dt><dd>Section 4 of the Operating Agreement records that Amazon makes no representation about traffic or commission income an Associate can expect. Nothing in this repository measures search demand, and the campaign ledger is empty by design. A revenue model built on those two facts would be invention.</dd>
+    <dt>Consequence</dt><dd>The site publishes no 'expected earnings', no 'X% conversion rate', no 'this keyword has N volume'. The ledger exists with typed columns and zero rows, and the methodology page explains why.</dd>
+    <dt>You would do</dt><dd>After 2-4 weeks of first-party data, decide whether to fund an SEO tool account; only then does volume-based topic selection become defensible.</dd>
+    <dt>Discovery step</dt><dd>Search Console query export (owner action Q-08) is the cheapest first-party substitute for keyword volume and is enough to start.</dd>
+    <dt>Withheld</dt><dd>every forecast</dd>
+    <dt>Source</dt><dd><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored nofollow noopener noreferrer" target="_blank">https://affiliate-program.amazon.com/help/operating/agreement</a> · register row <code>S01</code></dd>
+  </dl>
+</section>
+<div class="panel panel-note" style="margin-top:2rem"><h4>Reading this list as a backlog</h4><p class="tiny" style="margin:0">Three rows — FLG-001, FLG-005 and FLG-006 — are worth more than every optimisation on the <a href="/Affil3/shopnow/suggestions/">suggestions board</a> combined, because they gate identity, monetisation and trust respectively. The other seven are quality-of-evidence items that improve the register without changing what a reader sees.</p></div>
+</main>
+<footer class="site"><div class="foot-in">
+  <div class="foot-disclose"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+  <p class="tiny" style="margin:.4rem 0 0">In the regulator's own example wording: &ldquo;I get commissions for purchases made through links in this post.&rdquo; That is the FTC's suggested phrasing for an affiliate relationship, and it is stated here in words rather than behind a disclosure button, because a linked disclosure is one most readers never open.</p>
+  <p class="tiny" style="margin:.4rem 0 0">Repeated here because it belongs on every page, not only on a page you have to go looking for. A purchase is assigned to us by Amazon through your click and a session we cannot see. We publish no price, availability, rating or review figure, because we cannot refresh one. <a href="/Affil3/shopnow/disclosure/">Disclosure</a> · <a href="/Affil3/shopnow/privacy/">Privacy</a> · <a href="/Affil3/shopnow/methodology/">Methodology</a></p></div>
+  <div class="foot-cols">
+  <div><h5>Shop</h5><ul><li><a href="/Affil3/shopnow/products/">All products</a></li><li><a href="/Affil3/shopnow/clusters/dual-basket/">Dual-basket</a></li><li><a href="/Affil3/shopnow/clusters/getting-the-temperature-right/">Temperature &amp; probes</a></li></ul></div>
+  <div><h5>Read</h5><ul><li><a href="/Affil3/shopnow/guides/">Guides</a></li><li><a href="/Affil3/shopnow/about/">Editorial standards</a></li><li><a href="/Affil3/shopnow/methodology/">Methodology</a></li><li><a href="/Affil3/shopnow/feed.xml">Feed</a></li></ul></div>
+  <div><h5>Inside the project</h5><ul><li><a href="/Affil3/shopnow/dashboard/">Dashboard</a></li><li><a href="/Affil3/shopnow/suggestions/">Suggestions</a></li><li><a href="/Affil3/shopnow/decisions/">Open questions</a></li><li><a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a></li><li><a href="/Affil3/shopnow/executive-summary/">Executive summary</a></li></ul></div>
+  <div><h5>Legal</h5><ul><li><a href="/Affil3/shopnow/disclosure/">Disclosure</a></li><li><a href="/Affil3/shopnow/privacy/">Privacy</a></li><li><a href="/Affil3/shopnow/sources/">Source register</a></li><li><a href="/Affil3/shopnow/search/">Search</a></li></ul></div>
+  </div>
+  <div class="foot-legal">
+    <div>© 2026 ShopNow 047 · kitchen gear desk</div>
+    <div><a href="/Affil3/shopnow/sources/">11 source rows</a> · <a href="/Affil3/shopnow/flagged-for-review/">10 flagged</a> · <a href="/Affil3/shopnow/feed.xml">RSS</a> · generated from a register, gated in CI</div>
+  </div>
+</div></footer>
+<script src="/Affil3/shopnow/assets/track.js" defer></script>
+<script src="/Affil3/shopnow/assets/app.js" defer></script>
+
+</body>
+</html>

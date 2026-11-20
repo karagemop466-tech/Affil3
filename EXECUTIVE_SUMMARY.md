@@ -1,4 +1,8 @@
-# Affil3 — Executive summary
+# Historical executive-summary snapshot — superseded
+
+> **Do not use this snapshot for current product or release status.** It describes an earlier site version and contains findings that were later corrected. The current summary is [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) and the current site page is https://karagemop466-tech.github.io/Affil3/executive-summary/.
+
+# Affil3 — Executive summary (historical)
 
 > **Current state (2026-11-20, branch `arena/c252594d-affil3`):** this is the first session's summary and describes the earlier four-guide shape. The current publication has **13 guides**, **18 suggestions**, **17 known facts**, **17 open questions**, and **12 discovery actions**. See [`EXECUTIVE-SUMMARY-c252594d.md`](EXECUTIVE-SUMMARY-c252594d.md) for the current summary.
 

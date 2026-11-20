@@ -188,6 +188,33 @@
       "url": "https://www.thermomaven.com/products/f1-ace",
       "supports": "NIST-certified +/-0.5 F accuracy, 1-second thermocouple read, waterproof design, built-in magnet, lifetime warranty registration for product P4.",
       "accessed": "2026-11-20"
+    },
+    {
+      "id": "S21",
+      "tier": "listing",
+      "org": "Amazon",
+      "title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer — B0DHZTCNR5",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "supports": "Observed destination of supplied link 4; identity, and the listing-only claims 'Auto-Rotate Bright LED Screen', 'IP67 Waterproof', 'NIST&NSF Certified' and a newer-model callout for B0GL7Z4KP4 (FLG-008).",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S22",
+      "tier": "official_help",
+      "org": "USDA FSIS",
+      "title": "Safe Minimum Internal Temperature Chart",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "supports": "Minimum internal temperatures quoted in the thermometer guide: 145 °F with a 3-minute rest for beef, pork, veal, lamb and fish; 160 °F for ground meats and egg dishes; 165 °F for all poultry and leftovers.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S23",
+      "tier": "official_help",
+      "org": "USDA FSIS",
+      "title": "Food Thermometers",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "supports": "Probe placement for whole birds and poultry parts, and the instant-read versus leave-in distinction.",
+      "accessed": "2026-11-20"
     }
   ]
 }

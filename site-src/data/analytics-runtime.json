@@ -1,0 +1,6 @@
+{
+  "enabled": false,
+  "endpoint": "",
+  "summaryEndpoint": "",
+  "deploymentNote": "GitHub Pages is static. Keep disabled until this same-origin API or proxy is securely hosted, privacy-reviewed, tested, and configured. The local Node server writes only aggregates to the local filesystem and is not a production hosting solution."
+}

@@ -531,6 +531,14 @@
         "S01"
       ],
       "blocking": true
+    },
+    {
+      "id": "Q-29",
+      "question": "Which AI model/provider, approved product-data source, trend or keyword source, and human reviewer are available before research or drafts are automated?",
+      "why_it_matters": "No model, Amazon product-data API, trend/query feed, or publishing integration is configured. Without authorized inputs and a named editor, automation could produce unsupported product claims or fabricated demand signals.",
+      "how_to_close": "Choose an approved provider and authorized data sources; document costs and data terms; run a source-cited draft-only pilot with a human reviewer before considering automated publishing.",
+      "sources": [],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -707,6 +715,13 @@
       "id": "D-26",
       "suggestion": "Before trusting a green gate, run it on the runtime CI actually uses: package.json declares node >=18, the sandbox may be two majors ahead, and an API that exists there can throw on the floor. A gate that only works on one machine is not a gate.",
       "closes": []
+    },
+    {
+      "id": "D-27",
+      "suggestion": "Inventory available Associates/Product Advertising API access, Search Console query data, AI-provider terms, budget and a human reviewer; run a citation-only draft pilot before considering automated publishing.",
+      "closes": [
+        "Q-14"
+      ]
     }
   ],
   "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site."

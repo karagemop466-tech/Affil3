@@ -34,8 +34,16 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 //                like crisp-index/ it runs its own gate (site-checks.yml) and its
 //                design rules differ (it publishes date-stamped observed prices
 //                and ratings, with the listing linked as source of truth)
-const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "counter", "src", "tools", "data", "analytics-data"]);
+//
+// docs/ is deliberately NOT skipped. Only its retirement page remains there: an
+// earlier edition published Amazon prices and star ratings, the whole edition
+// was removed, and a single noindex redirect page now stands in its place so
+// old links keep resolving. The exemption below applies only to that page (no
+// Amazon links, no tag, noindex); see FLG-031.
+const SKIP = new Set([".git", "node_modules", "legacy", "editorial", "crisp-index", "counter", "src", "tools", "data", "analytics-data", "site-src", "shopnow/content", "content"]);
 
+// site-src/ (and shopnow/content, content/) hold build inputs — partial templates and markdown —
+// the same category as src/; their rendered output at countertop-notes/ IS walked below.
 const FTC = "I get commissions for purchases made through links in this post";
 const ASSOC = "As an Amazon Associate I earn from qualifying purchases";
 
@@ -55,6 +63,15 @@ const pages = walk(ROOT);
 for (const f of pages) {
   const page = relative(ROOT, f);
   const html = readFileSync(f, "utf8");
+
+  // A page that carries no affiliate link and no product claim needs no affiliate
+  // disclosure. Rather than trusting a marker, verify it: count outbound Amazon
+  // links and affiliate tags. /docs/ is retired and must stay link-free.
+  const amazonLinks = (html.match(/https?:\/\/(?:[a-z0-9-]+\.)*amazon\.com\//gi) || []).length;
+  const tagged = /[?&]tag=shopnow047c-20\b/.test(html);
+  const disclosureFree = page.startsWith("docs/") && amazonLinks === 0 && !tagged
+    && /<meta name="robots" content="noindex/.test(html);
+  if (disclosureFree) continue;
 
   if (!html.includes(FTC)) problems.push(`${page}: missing the FTC example disclosure sentence`);
   if (!html.includes(ASSOC)) problems.push(`${page}: missing the Amazon Associates statement (section 5)`);

@@ -58,7 +58,15 @@
       "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
       "guide_title": "Basket or oven-style air fryer: what should you compare?",
       "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
-      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3) against the manufacturer page: model RJ38-SQPF-3TDB-2W, 'Max temp: 450ºF/ 235ºC with Hi-Fry function' and the Sync Finish wording all match this row. The listing itself could not be fetched in that round, so its observed fields are carried from the dated rounds that read them (FLG-036, FLG-037)."
+      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3) against the manufacturer page: model RJ38-SQPF-3TDB-2W, 'Max temp: 450ºF/ 235ºC with Hi-Fry function' and the Sync Finish wording all match this row. The listing itself could not be fetched in that round, so its observed fields are carried from the dated rounds that read them (FLG-036, FLG-037).",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P02",
@@ -124,7 +132,15 @@
         "weight_lb": "The manufacturer page does not state unit weight; no figure is published.",
         "presets": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch presets' (FLG-005), so no preset count is published."
       },
-      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3): the manufacturer page's specification strip and description were fetched and every figure on this row - 26 qt / 24.6 L, food for 4-6 people, 16.9 x 15.8 x 14.8 in, 120 V, model 4-00675-02A-VN - matched. The page states no washing claim, and the preset disagreement in FLG-024 was confirmed again first-hand (FLG-042)."
+      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3): the manufacturer page's specification strip and description were fetched and every figure on this row - 26 qt / 24.6 L, food for 4-6 people, 16.9 x 15.8 x 14.8 in, 120 V, model 4-00675-02A-VN - matched. The page states no washing claim, and the preset disagreement in FLG-024 was confirmed again first-hand (FLG-042).",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P03",
@@ -209,7 +225,15 @@
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes for this unit. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing. That conclusion was wrong and is corrected here (see FLG-026)."
+      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes for this unit. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing. That conclusion was wrong and is corrected here (see FLG-026).",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P04",
@@ -302,7 +326,15 @@
         "material": "Plastic housing, black",
         "source": "S04"
       },
-      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3): the ThermoMaven F1 Ace page states NIST-certified ±0.5 °F / ±0.3 °C, a one-second thermocouple read, a 100% waterproof design, a built-in magnet and a lifetime warranty that must be activated within 30 days. It names no model correspondence with the listing title and no IP rating, so FLG-025 stays open and the listing's IP67 wording is left unattributed to the maker."
+      "verification_note": "Re-read 2026-11-20 (session b7320829-affil3): the ThermoMaven F1 Ace page states NIST-certified ±0.5 °F / ±0.3 °C, a one-second thermocouple read, a 100% waterproof design, a built-in magnet and a lifetime warranty that must be activated within 30 days. It names no model correspondence with the listing title and no IP rating, so FLG-025 stays open and the listing's IP67 wording is left unattributed to the maker.",
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      }
     },
     {
       "id": "P05",
@@ -376,6 +408,14 @@
           "S14",
           "S15"
         ]
+      },
+      "special_link_validation": {
+        "status": "pending",
+        "validated_url": "",
+        "confirmed_destination": "",
+        "tracking_report_reference": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
       }
     }
   ]

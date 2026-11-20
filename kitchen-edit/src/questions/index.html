@@ -1,0 +1,112 @@
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Decision readiness</p>
+  <h1>Questions before decisions</h1>
+  <p class="lede">The clear list of questions that must be answered <strong>before any decision can
+  reasonably be made</strong> — what information we already have, what we don't, and how to discover
+  the missing parts. Machine-readable: <code>data/questions.json</code>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+
+    <div class="q-card">
+      <h3>Q-01 · Are the five submitted short links Associates-generated Special Links carrying shopnow047c-20? <span class="chip warn">P0</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>All five live under the .amazon gTLD operated by Amazon Registry Services [S09].</li>
+      <li>Observation 2026-11-20: four resolved to amazon.com product pages; none carried <code>tag=shopnow047c-20</code> [FLG-003].</li>
+      <li>Commission pays only on clicks through Special Links [S01, S03].</li></ul>
+      <div class="lbl">Missing</div>
+      <ul><li>Whether each link was generated inside Associates Central and whether clicks attribute to the ID.</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Associates Central → Reports → Links: click one and check attribution · regenerate one link per product via SiteStripe/Link Builder · compare destination and tracking.</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Verified CTA status; any conversion measurement we can trust.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-02 · Is tracking ID shopnow047c-20 enrolled and active, and for which marketplace? <span class="chip warn">P0</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>The ID came from the brief; "-20" is the conventional US marketplace suffix — convention, not verification [FLG-001].</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Associates Central → Settings → Account info: confirm ID, marketplace, standing.</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Everything downstream: attribution, reporting, Creators API [S13].</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-03 · Which exact products do the five links intend? Do observed landings match? <span class="chip warn">P0</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Submitted path identifiers are 9 chars; official ASIN definition is 10 [S05].</li>
+      <li>Observed landing ASINs differ from path identifiers in every observed case (B04G1MEwY→B0CDY277D3, B02NbDxp3→B09B7SB46R, B00hJ57DV→B08DKYBTPH, B0f3GKalj→B0DZFD6R9Z, B0c8moW59→unresolved).</li>
+      <li>Intent and observation are kept separate, never merged.</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Ask the submitter for original product URLs / SiteStripe screenshots · one GetItems call per ASIN once Creators API is active [S13].</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Verified profile fields; comparison table; any "best for" claims about specific products.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-04 · What niche and category scope should we publish against? <span class="chip">P1</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>4/5 observed landings are air fryers, 1 is a thermometer — consistent with the brief's hypotheses (working hypothesis, flagged FLG-005).</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Confirm Q-03 first; then validate the published guides' topics against the confirmed set before expanding clusters.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-05 · Where should the self-hosted analytics endpoint live? <span class="chip warn">P0</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Pages is static hosting [S10]; the collector and local queue already ship.</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Choose A/B/C on the suggestion board (SG-08); set <code>analyticsEndpoint</code>.</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Live measurement; ledger population; measured topic selection.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-06 · When is product-data automation possible (Creators API)? <span class="chip">P1</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>PA-API 5 deprecated → Creators API [S12]; prerequisites: enrollment + 10 qualifying sales/30 days [S13].</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Associates Central → Reports: check trailing-30-day qualifying sales; when ≥10, register for the Creators API.</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Automated price/spec refresh; verified comparison table.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-07 · What imagery may the site use? <span class="chip">P2</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Current: AI-generated, labeled illustrative; no Amazon imagery or marks (Participation Requirements restrict their use) [S01, S02].</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Decide on the board (SG-10); update the imagery note the same day.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-08 · Where should reader capture deliver? <span class="chip">P2</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Current form records interest locally; no address leaves the browser.</li>
+      <li>Affiliate links in email are barred absent a separate written agreement [S02 clause 6].</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Pick a provider (SG-11); wire the form; keep the privacy note accurate.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-09 · What publishing cadence can we sustain? <span class="chip">P2</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Four guides live; seasonal calendar sketched; topic selection should switch to measured queries.</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Commit on the board (SG-12); re-evaluate after 30 days of Search Console data.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Q-10 · Who owns Search Console verification? <span class="chip">P1</span></h3>
+      <div class="lbl">We know</div>
+      <ul><li>Methods documented by Google [S11]; the HTML-tag placeholder is already in the site head; verification needs the owner's Google account.</li></ul>
+      <div class="lbl">How to discover</div>
+      <ul><li>Follow <a href="../search-console/index.html">the setup page</a> (about 10 minutes).</li></ul>
+      <div class="lbl">Blocks</div>
+      <ul><li>Measured topic selection (Q-09); index-coverage monitoring.</li></ul>
+    </div>
+
+  </div>
+</section>

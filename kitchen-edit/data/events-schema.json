@@ -1,0 +1,43 @@
+{
+  "schema": "shopnow.events.v1",
+  "updated": "2026-11-20",
+  "privacy_contract": [
+    "No cookies are set. No fingerprinting, no cross-site or cross-session identifiers, no IP-based storobes.",
+    "Events queue in the visitor's browser (localStorage key shopnow_events_v1, capped at 500) and POST only to the configured self-hosted endpoint (window.SHOPNOW_CONFIG.analyticsEndpoint). Endpoint unset = nothing leaves the browser.",
+    "No personal data fields exist in any event schema. Payloads contain page paths, event names, product IDs, and host names only.",
+    "The visitor can see and export their own queue from dashboard/index.html."
+  ],
+  "endpoint": "unset (decision SG-08 / FLG-002)",
+  "events": [
+    {
+      "name": "page_view",
+      "when": "Every page load (once per view).",
+      "payload": {"path": "string", "title": "string", "referrer": "string (document.referrer, may be empty)"},
+      "purpose": "Traffic baseline for every surface; the denominator for all click rates."
+    },
+    {
+      "name": "outbound_product_click",
+      "when": "Any click on an anchor carrying data-product-intent (every product CTA).",
+      "payload": {"product_id": "string (p1..p5)", "intended_asin": "string as submitted", "target_host": "string", "link_status": "unverified|verified", "sponsored_rel": true},
+      "purpose": "The outbound-click counter. Feeds ledger clicks only after corroborated by authorized first-party reports (S03 qualifying-purchase chain)."
+    },
+    {
+      "name": "guide_engaged",
+      "when": "Reader scrolls past 75% of a guide page (fired once per page load).",
+      "payload": {"path": "string", "depth_percent": 75},
+      "purpose": "Distinguishes arrived-and-read from bounced traffic when picking the next topic."
+    },
+    {
+      "name": "reader_capture_submitted",
+      "payload": {"placement": "string (about|guide-footer|dashboard)", "endpoint_configured": "boolean"},
+      "when": "Reader submits the capture form. No address is stored or sent until an email provider decision (SG-11).",
+      "purpose": "Interest signal for reader capture (SG-30 line of the brief)."
+    },
+    {
+      "name": "dashboard_event_exported",
+      "when": "A maintainer exports the event queue from the dashboard.",
+      "payload": {"count": "integer"},
+      "purpose": "Provenance trail for manual ledger entries: every ledger row added from an export should cite the export in provenance_note."
+    }
+  ]
+}

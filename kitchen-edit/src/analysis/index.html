@@ -1,0 +1,89 @@
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Findings &amp; analysis</p>
+  <h1>Findings &amp; analysis</h1>
+  <p class="lede">What the verification and observation passes found, in plain language — what it means,
+  and what each finding changes about the next decision. No speculation fills the gaps; the gaps are
+  listed on <a href="../flagged/index.html">Flagged for review</a>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="q-card">
+      <h3>Finding 1 — The niche signal is strong and consistent</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>Four of five submitted links resolved to air-fryer listings (dual-basket, French-door
+      oven-style, family-size basket) and one to a wireless meat thermometer, all under Home &amp;
+      Kitchen. The brief's four editorial hypotheses are all air-fryer/kitchen questions.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>The working niche — air fryers and multi-function kitchen appliances — is supported by the
+      observations, and the four published guides align with the shortlist's formats.</li>
+      <li>Caveat: observed landing ≠ intended product until Q-03 is answered, so the niche plan stays a
+      <strong>flagged hypothesis</strong>, not a fact (<a href="../flagged/index.html">FLG-005</a>).</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 2 — The tracking gap is the single most important issue</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>None of the observed landing URLs contained <code>tag=shopnow047c-20</code>. Landing URLs
+      carried <code>lv=shuf</code> / <code>btn_ref=srctok-…</code> parameters instead.</li>
+      <li>Commission requires the qualifying-purchase chain: a click through <em>a Special Link</em>
+      [S01, S03].</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>Until gate G5 (one-link test in the enrolled Associates workflow, destination + tracking
+      report confirmed) passes, <strong>every click through the public CTAs may be unattributed</strong>
+      — which would make any conversion measurement meaningless and any optimization premature.</li>
+      <li>That is exactly why this session: (a) records the observation without a verdict (FLG-003's
+      no-verdict rule), (b) ships the kill switch, and (c) refuses to present any conversion or revenue
+      figures.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 3 — Identifier mismatch: intent ≠ observation</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>Submitted path identifiers are 9 characters (<code>B04G1MEwY</code>,
+      <code>B02NbDxp3</code>, <code>B00hJ57DV</code>, <code>B0c8moW59</code>, <code>B0f3GKalj</code>);
+      Amazon's official ASIN definition is 10 characters [S05].</li>
+      <li>Every observed landing ASIN (10 chars) differs from its submitted path identifier:
+      B04G1MEwY→B0CDY277D3 · B02NbDxp3→B09B7SB46R · B00hJ57DV→B08DKYBTPH · B0f3GKalj→B0DZFD6R9Z ·
+      B0c8moW59→unresolved.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>The two-never-merge rule exists precisely for this: <strong>intent</strong> (what the
+      submitter meant) and <strong>observation</strong> (what the link did, once, from one vantage
+      point) are different claims about the world, and only the second was measurable this session.</li>
+      <li>The reconciliation — which listing is "the product" for each link — needs the account-side
+      test (Q-01/Q-03), not more observation from outside.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 4 — The automation stack's official path changed under our feet</h3>
+      <p class="lbl">Verification</p>
+      <ul><li>PA-API 5.0 is <strong>deprecated</strong>; the Creators API is the supported successor [S12,
+      S13], gated on Associates enrollment plus 10 qualifying sales in the past 30 days.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>Any "AI-powered product research/automation" ambition (the brief's platform vision) must be
+      planned against the Creators API, and its real-world prerequisite is sales volume — not
+      engineering. The pragmatic sequencing: verify links manually first (G5), measure, hit the API
+      threshold, <em>then</em> automate pricing/spec refresh.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 5 — What the site can and cannot promise today</h3>
+      <div class="tbl-wrap" style="margin-top:10px">
+        <table class="tbl">
+          <thead><tr><th>Can promise (sourced)</th><th>Cannot promise (flagged)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Disclosure placement &amp; sponsored marking on every page (CI-enforced)<br>
+              The four guides' category guidance<br>Full intent/observation records with dates<br>
+              A governed process: registers, gates, review board</td>
+              <td>That the submitted short links are valid Special Links (FLG-003 — unresolved)<br>
+              That clicks attribute to shopnow047c-20 (no tag observed)<br>
+              Any product price, rating, spec or availability (FLG-005 — blank until confirmed)<br>
+              Any traffic, conversion or revenue figure (ledger empty by design)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

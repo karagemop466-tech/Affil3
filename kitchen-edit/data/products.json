@@ -1,0 +1,254 @@
+{
+  "schema": "shopnow.product-intent.v1",
+  "updated": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "tracking_id_verified": false,
+  "tracking_id_note": "Tracking ID shopnow047c-20 was supplied in the project brief. Enrollment status and activity were NOT verified from an official source; see FLG-001.",
+  "require_verified_links": false,
+  "require_verified_links_note": "Kill switch. When true, every product CTA on the site renders as a disabled 'Listing verification pending' button instead of an outbound link. Owner of this flag: site owner (manual gate G5, compliance page).",
+  "rules": [
+    "Intent and observation are stored in separate objects and are never merged.",
+    "official_listing_url, confirmed_asin, confirmation_date, and confirmation_source stay blank until confirmed inside the enrolled Associates workflow (gate G-02) or via the Creators API [S13].",
+    "No price, rating, review count, or spec value is recorded anywhere in this file: none was verified from the landing pages' own offer data.",
+    "No compliance verdict (valid/invalid) is asserted about the submitted short links; their exact compliance status is unresolved in FLG-003.",
+    "Outbound CTAs on this surface point to the canonical register's tagged /dp/<observed-ASIN>?tag=shopnow047c-20 URLs (root publication, data/products.json) — the canonical register governs destinations and tracking status; this register records this surface's independent observations on top of it."
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "intent": {
+        "intended_asin_as_submitted": "B04G1MEwY",
+        "intended_asin_format_note": "Identifier embedded in the submitted path is 9 characters. Amazon's official definition: a unique 10-character alphanumeric code [S05]. Reconciliation pending — FLG-003.",
+        "official_listing_url": "",
+        "confirmed_asin": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      },
+      "observation": {
+        "observed": true,
+        "observed_date": "2026-11-20",
+        "observed_via": "server-side fetch of the submitted URL",
+        "observed_redirect_target": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+        "observed_landing_asin": "B0CDY277D3",
+        "observed_landing_page_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+        "observed_breadcrumb_category": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "observed_associates_tag_present": false,
+        "observation_note": "Landing URL parameters included lv=shuf and btn_ref=srctok-…&channelId=704; no tag=shopnow047c-20 parameter was present. Observation is not confirmation; landing identity may vary by session."
+      },
+      "editorial": {
+        "display_name": "Dual-basket air fryer — listing pending confirmation",
+        "category_cluster": "Dual-basket air fryers",
+        "shop_blurb": "Two independent baskets mean two foods, two settings, one counter spot — the format shoppers shortlist when weeknight timing is the pain point. What earns a dual-basket pick a slot here: real per-basket capacity, sync or finish-together logic that is actually readable on the panel, and baskets that go in the dishwasher without argument. Listing-specific facts are added only after confirmation [G5].",
+        "profile_slug": "products/p1.html"
+      },
+      "status": "unverified",
+      "flags": [
+        "FLG-003"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "canonical_register": {
+        "source": "root publication (data/products.json at repository root)",
+        "observed_asin": "B0CDY277D3",
+        "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
+        "outbound_status": "Associates link check pending (gate G-02)",
+        "note": "Canonical for outbound destination and tracking status. This surface's own observation (below) is a supplementary dated vantage point."
+      }
+    },
+    {
+      "id": "p2",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "intent": {
+        "intended_asin_as_submitted": "B02NbDxp3",
+        "intended_asin_format_note": "Identifier embedded in the submitted path is 9 characters. Amazon's official definition: a unique 10-character alphanumeric code [S05]. Reconciliation pending — FLG-003.",
+        "official_listing_url": "",
+        "confirmed_asin": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      },
+      "observation": {
+        "observed": true,
+        "observed_date": "2026-11-20",
+        "observed_via": "server-side fetch of the submitted URL",
+        "observed_redirect_target": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+        "observed_landing_asin": "B09B7SB46R",
+        "observed_landing_page_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+        "observed_breadcrumb_category": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "observed_associates_tag_present": false,
+        "observation_note": "Landing URL parameters included lv=shuf and btn_ref=srctok-…&channelId=704; no tag=shopnow047c-20 parameter was present. Observation is not confirmation; landing identity may vary by session."
+      },
+      "editorial": {
+        "display_name": "French-door air-fryer toaster oven — listing pending confirmation",
+        "category_cluster": "Air-fryer toaster ovens",
+        "shop_blurb": "The oven-style format trades basket simplicity for range: toast, bake, rotisserie and air-fry in one footprint — at the cost of counter real estate and preheat patience. What earns an oven-style pick a slot here: honest interior dimensions versus the marketing quart figure, door ergonomics, and accessories that ship in the box. Listing-specific facts are added only after confirmation [G5].",
+        "profile_slug": "products/p2.html"
+      },
+      "status": "unverified",
+      "flags": [
+        "FLG-003"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "canonical_register": {
+        "source": "root publication (data/products.json at repository root)",
+        "observed_asin": "B09B7SB46R",
+        "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
+        "outbound_status": "Associates link check pending (gate G-02)",
+        "note": "Canonical for outbound destination and tracking status. This surface's own observation (below) is a supplementary dated vantage point."
+      }
+    },
+    {
+      "id": "p3",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "intent": {
+        "intended_asin_as_submitted": "B00hJ57DV",
+        "intended_asin_format_note": "Identifier embedded in the submitted path is 9 characters. Amazon's official definition: a unique 10-character alphanumeric code [S05]. Reconciliation pending — FLG-003.",
+        "official_listing_url": "",
+        "confirmed_asin": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      },
+      "observation": {
+        "observed": true,
+        "observed_date": "2026-11-20",
+        "observed_via": "server-side fetch of the submitted URL",
+        "observed_redirect_target": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+        "observed_landing_asin": "B08DKYBTPH",
+        "observed_landing_page_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+        "observed_breadcrumb_category": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+        "observed_associates_tag_present": false,
+        "observation_note": "Landing URL parameters included lv=shuf and btn_ref=srctok-…&channelId=704; no tag=shopnow047c-20 parameter was present. Observation is not confirmation; landing identity may vary by session."
+      },
+      "editorial": {
+        "display_name": "Family-size basket air fryer — listing pending confirmation",
+        "category_cluster": "Basket air fryers",
+        "shop_blurb": "The classic single-basket format is still the fastest thing on the counter for weeknight proteins and frozen sides. What earns a big-basket pick a slot here: a basket shape that fits a whole family portion without stacking, a genuinely dishwasher-safe basket, and controls that don't hide the basics. Listing-specific facts are added only after confirmation [G5].",
+        "profile_slug": "products/p3.html"
+      },
+      "status": "unverified",
+      "flags": [
+        "FLG-003"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "canonical_register": {
+        "source": "root publication (data/products.json at repository root)",
+        "observed_asin": "B08DKYBTPH",
+        "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+        "outbound_status": "Associates link check pending (gate G-02)",
+        "note": "Canonical for outbound destination and tracking status. This surface's own observation (below) is a supplementary dated vantage point."
+      }
+    },
+    {
+      "id": "p4",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "intent": {
+        "intended_asin_as_submitted": "B0c8moW59",
+        "intended_asin_format_note": "Identifier embedded in the submitted path is 9 characters. Amazon's official definition: a unique 10-character alphanumeric code [S05]. Reconciliation pending — FLG-003.",
+        "official_listing_url": "",
+        "confirmed_asin": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      },
+      "observation": {
+        "observed": false,
+        "observed_date": "2026-11-20",
+        "observed_via": "server-side fetch of the submitted URL",
+        "observed_redirect_target": "https://www.amazon.com/checkpoint/continue?token=v1.rJwhW5U-[token elided — see verification note]",
+        "observed_landing_asin": "",
+        "observed_landing_page_title": "Amazon.com checkpoint interstitial — \"To continue, please click the 'Continue shopping' button below.\"",
+        "observed_breadcrumb_category": "",
+        "observed_associates_tag_present": false,
+        "observation_note": "This surface's fetch landed on an Amazon checkpoint ('continue shopping') interstitial rather than a product page; no landing ASIN or title was observed here. The canonical register's observation pass resolved this submitted link to B0DHZTCNR5, and the outbound link follows that record. Both dated observations are kept — a checkpoint is not evidence a link is dead (see FLG-004)."
+      },
+      "editorial": {
+        "display_name": "Cross-checked listing — destination observed in canonical register",
+        "category_cluster": "Cross-checked listing",
+        "shop_blurb": "This submitted link did not resolve to a product page during this surface's independent fetch — Amazon served a checkpoint interstitial. The canonical register's observation resolved it to listing B0DHZTCNR5, so the outbound link follows that record while this page publishes both dated observations. Nothing is inferred to fill the gap; listing identity is pending the Associates workflow [G5/G-02].",
+        "profile_slug": "products/p4.html"
+      },
+      "status": "unverified",
+      "flags": [
+        "FLG-003",
+        "FLG-004"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "canonical_register": {
+        "source": "root publication (data/products.json at repository root)",
+        "observed_asin": "B0DHZTCNR5",
+        "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+        "outbound_status": "Associates link check pending (gate G-02)",
+        "note": "Canonical for outbound destination and tracking status. This surface's own observation (below) is a supplementary dated vantage point."
+      }
+    },
+    {
+      "id": "p5",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "intent": {
+        "intended_asin_as_submitted": "B0f3GKalj",
+        "intended_asin_format_note": "Identifier embedded in the submitted path is 9 characters. Amazon's official definition: a unique 10-character alphanumeric code [S05]. Reconciliation pending — FLG-003.",
+        "official_listing_url": "",
+        "confirmed_asin": "",
+        "confirmation_date": "",
+        "confirmation_source": ""
+      },
+      "observation": {
+        "observed": true,
+        "observed_date": "2026-11-20",
+        "observed_via": "server-side fetch of the submitted URL",
+        "observed_redirect_target": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+        "observed_landing_asin": "B0DZFD6R9Z",
+        "observed_landing_page_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3 : Home & Kitchen",
+        "observed_breadcrumb_category": "Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat",
+        "observed_associates_tag_present": false,
+        "observation_note": "Landing URL parameters included lv=shuf and btn_ref=srctok-…&channelId=500; no tag=shopnow047c-20 parameter was present. Observation is not confirmation; landing identity may vary by session."
+      },
+      "editorial": {
+        "display_name": "Wireless smart meat thermometer — listing pending confirmation",
+        "category_cluster": "Prep & precision",
+        "shop_blurb": "A wireless thermometer is the quiet companion purchase to any air fryer or oven: it converts guess-and-check into a number, which matters most with thick cuts and multi-function appliances that cook unevenly at first. What earns a pick a slot here: probe thinness, reliable wireless range in a small home, and an app that does not demand an account for every read. Listing-specific facts are added only after confirmation [G5].",
+        "profile_slug": "products/p5.html"
+      },
+      "status": "unverified",
+      "flags": [
+        "FLG-003"
+      ],
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S09"
+      ],
+      "canonical_register": {
+        "source": "root publication (data/products.json at repository root)",
+        "observed_asin": "B0DZFD6R9Z",
+        "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
+        "outbound_status": "Associates link check pending (gate G-02)",
+        "note": "Canonical for outbound destination and tracking status. This surface's own observation (below) is a supplementary dated vantage point."
+      }
+    }
+  ]
+}

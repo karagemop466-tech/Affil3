@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy — ShopNow 047</title>
+<meta name="description" content="No cookies, no trackers, no third-party scripts. Here is the complete list of what could possibly be recorded, and how to turn it off.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/shopnow/privacy/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="ShopNow 047">
+<meta property="og:title" content="Privacy — ShopNow 047">
+<meta property="og:description" content="No cookies, no trackers, no third-party scripts. Here is the complete list of what could possibly be recorded, and how to turn it off.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/shopnow/privacy/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/shopnow/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="ShopNow 047 — Checked, not hyped." href="https://karagemop466-tech.github.io/Affil3/shopnow/feed.xml">
+<link rel="icon" href="/Affil3/shopnow/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/Affil3/shopnow/assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Privacy","url":"https://karagemop466-tech.github.io/Affil3/shopnow/privacy/","description":"No cookies, no trackers, no third-party scripts. Here is the complete list of what could possibly be recorded, and how to turn it off."}</script>
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header class="masthead"><div class="masthead-in">
+  <a class="wordmark" href="/Affil3/shopnow/">ShopNow<span class="num">047</span></a>
+  <div class="kicker">Counter-top desk · Amazon.com (US)</div>
+  <div class="tagline">Checked, not hyped.</div>
+</div></header>
+<div class="strip" role="note" aria-label="Affiliate disclosure">
+  <div class="strip-in"><span class="dot" aria-hidden="true"></span><span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> In the FTC's own example wording: “I get commissions for purchases made through links in this post.” Links marked Sponsored pay us a commission. ShopNow 047 has not been paid or supplied by any brand named here, and nothing here has been tested by us. <a href="/Affil3/shopnow/disclosure/" style="white-space:nowrap">Full disclosure</a></span></div>
+</div>
+<nav class="main" aria-label="Primary"><div class="nav-in">
+  <a href="/Affil3/shopnow/">ShopNow</a>
+  <a href="/Affil3/shopnow/guides/">Guides</a>
+  <a href="/Affil3/shopnow/clusters/basket-air-fryers/">Air fryers</a>
+  <a href="/Affil3/shopnow/clusters/oven-style-multi-cookers/">Oven-style</a>
+  <a href="/Affil3/shopnow/compare/">Compare</a>
+  <a href="/Affil3/shopnow/methodology/">How we decide</a>
+  <details class="mech"><summary>Inside the project</summary><div class="pop">
+    <a href="/Affil3/shopnow/dashboard/">Source dashboard</a>
+    <a href="/Affil3/shopnow/suggestions/">Suggestions to review</a>
+    <a href="/Affil3/shopnow/decisions/">Open questions</a>
+    <a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a>
+    <a href="/Affil3/shopnow/sources/">Source register</a>
+    <a href="/Affil3/shopnow/executive-summary/">Executive summary</a>
+    <a href="/Affil3/shopnow/search/">Search</a>
+  </div></details>
+</div></nav>
+<main id="top">
+<div class="breadcrumb" aria-label="Breadcrumb"><a href="/Affil3/shopnow/">Home</a> <span>/</span> <em>Privacy</em></div>
+<article class="article"><h1 class="article-title">Privacy</h1><div class="prose"><h2 id="short-version">Short version</h2>
+<p>This site sets <strong>no cookies</strong>, uses <strong>no third-party analytics or advertising scripts</strong>, and stores <strong>nothing</strong> about you on our side. There is no account, no newsletter form, no comment system, and no fingerprinting.</p>
+<h2 id="the-one-measurement-and-its-current-state">The one measurement, and its current state</h2>
+<p>We wrote a click counter for the site, because a shop that cannot see which links get clicked cannot decide what to write next. It is switched to <strong>local-only</strong> today, and here is what that means in practice.</p>
+<p><strong>If the collector endpoint is unconfigured</strong> (the current state on this deployment): a page records a bounded list of events in your browser's <code>sessionStorage</code>. Nothing is sent anywhere. <code>sessionStorage</code> is cleared when you close the tab. There is no server behind this site - it is static files - so &quot;we&quot; cannot read it even if we wanted to.</p>
+<p><strong>If a collector is configured later</strong>, a page sends one small JSON object per event to that one endpoint, over HTTPS, and nothing else.</p>
+<h3 id="what-an-event-contains">What an event contains</h3>
+<table><thead><tr><th>Event</th><th>Fields sent</th><th>Why</th></tr></thead><tbody><tr><td>Page view</td><td>page path, a random per-tab token, timestamp</td><td>was anyone here</td></tr><tr><td>Guide view</td><td>guide slug, cluster, token, timestamp</td><td>which topic earned attention</td></tr><tr><td>Outbound click</td><td>our product id, placement on the page, timestamp</td><td>which surface gets the click</td></tr><tr><td>Link copy</td><td>product id, timestamp</td><td>deliberate buying intent</td></tr><tr><td>Gap view</td><td>the flag id of a missing field</td><td>does a blank field cost us anything</td></tr></tbody></table>
+<h3 id="what-is-never-included">What is never included</h3>
+<p>Your name, email, or any account identifier. Your IP address, as far as our own code is concerned - we do not read or send it. Your device model, browser version, screen size, or fonts. The text you typed into search, the page you came from beyond its origin, or anything about the destination URL. Cross-site or cross-visit identity of any kind.</p>
+<p>The random per-tab token exists so that ten clicks from one reading session are not counted as ten readers. It is not stored anywhere durable and it is generated fresh each time you open the site.</p>
+<h2 id="selling-data">Selling data</h2>
+<p>There is none. No data broker, no ad network, no analytics vendor, and no affiliate network gets a payload from this page. The register that backs every article lives in a public repository as ordinary text files.</p>
+<h2 id="amazon-s-side-of-the-click">Amazon's side of the click</h2>
+<p>When you click a <code>Sponsored</code> link, you leave this site. Amazon then handles your session under <a href="https://www.amazon.com/gp/help/customer/display.html?nodeId=GX7NJQ4ZB8MHFRNJ" rel="sponsored nofollow noopener noreferrer" target="_blank">Amazon's own Privacy Notice</a>, and the attribution that lets us earn a commission works through their cookie and their session, not through anything recorded here. We cannot see who you are, what you bought, or whether you returned it - and we do not need to: the only numbers we are allowed to publish about earnings are the ones read out of Amazon's own reports, dated, with their source attached.</p>
+<h2 id="turning-it-off">Turning it off</h2>
+<p>Three ways, none of which breaks the site:</p>
+<ol><li>Do nothing - with no collector configured there is no transmission to disable.</li><li>Clear site data in your browser; <code>sessionStorage</code> dies with the tab anyway.</li><li>Block the domain if you use a network filter. Every page works without JavaScript; the counter simply does not run.</li></ol>
+<h2 id="if-this-site-later-serves-readers-outside-the-united-states">If this site later serves readers outside the United States</h2>
+<p>The design was chosen to sit outside consent-banner regimes for a US audience: no cookies, no persistent identifiers, no profiling. &quot;Outside most regimes&quot; is not &quot;outside all of them&quot;, and if the audience changes, the lawful-basis note on this page changes with it before the collector is switched on. That dependency is recorded as an open decision rather than a promise.</p></div></article>
+</main>
+<footer class="site"><div class="foot-in">
+  <div class="foot-disclose"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+  <p class="tiny" style="margin:.4rem 0 0">In the regulator's own example wording: &ldquo;I get commissions for purchases made through links in this post.&rdquo; That is the FTC's suggested phrasing for an affiliate relationship, and it is stated here in words rather than behind a disclosure button, because a linked disclosure is one most readers never open.</p>
+  <p class="tiny" style="margin:.4rem 0 0">Repeated here because it belongs on every page, not only on a page you have to go looking for. A purchase is assigned to us by Amazon through your click and a session we cannot see. We publish no price, availability, rating or review figure, because we cannot refresh one. <a href="/Affil3/shopnow/disclosure/">Disclosure</a> · <a href="/Affil3/shopnow/privacy/">Privacy</a> · <a href="/Affil3/shopnow/methodology/">Methodology</a></p></div>
+  <div class="foot-cols">
+  <div><h5>Shop</h5><ul><li><a href="/Affil3/shopnow/products/">All products</a></li><li><a href="/Affil3/shopnow/clusters/dual-basket/">Dual-basket</a></li><li><a href="/Affil3/shopnow/clusters/getting-the-temperature-right/">Temperature &amp; probes</a></li></ul></div>
+  <div><h5>Read</h5><ul><li><a href="/Affil3/shopnow/guides/">Guides</a></li><li><a href="/Affil3/shopnow/about/">Editorial standards</a></li><li><a href="/Affil3/shopnow/methodology/">Methodology</a></li><li><a href="/Affil3/shopnow/feed.xml">Feed</a></li></ul></div>
+  <div><h5>Inside the project</h5><ul><li><a href="/Affil3/shopnow/dashboard/">Dashboard</a></li><li><a href="/Affil3/shopnow/suggestions/">Suggestions</a></li><li><a href="/Affil3/shopnow/decisions/">Open questions</a></li><li><a href="/Affil3/shopnow/flagged-for-review/">Flagged for review</a></li><li><a href="/Affil3/shopnow/executive-summary/">Executive summary</a></li></ul></div>
+  <div><h5>Legal</h5><ul><li><a href="/Affil3/shopnow/disclosure/">Disclosure</a></li><li><a href="/Affil3/shopnow/privacy/">Privacy</a></li><li><a href="/Affil3/shopnow/sources/">Source register</a></li><li><a href="/Affil3/shopnow/search/">Search</a></li></ul></div>
+  </div>
+  <div class="foot-legal">
+    <div>© 2026 ShopNow 047 · kitchen gear desk</div>
+    <div><a href="/Affil3/shopnow/sources/">11 source rows</a> · <a href="/Affil3/shopnow/flagged-for-review/">10 flagged</a> · <a href="/Affil3/shopnow/feed.xml">RSS</a> · generated from a register, gated in CI</div>
+  </div>
+</div></footer>
+<script src="/Affil3/shopnow/assets/track.js" defer></script>
+<script src="/Affil3/shopnow/assets/app.js" defer></script>
+
+</body>
+</html>

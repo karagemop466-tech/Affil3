@@ -8,7 +8,7 @@ Checks
  4. Every outbound Amazon link carries tag=<TRACKING_ID>.
  5. Every page carries the required Associates statement.
  6. Every spec row on a product page cites a source ID that exists.
- 7. sitemap.xml lists every generated HTML page that is not a 404.
+ 7. The retained editorial archive is noindex and its sitemap contains no archive URLs.
 """
 
 from __future__ import annotations
@@ -55,19 +55,44 @@ def main() -> int:
         text = page.read_text(encoding="utf-8")
 
         base = page.parent
-        for href in re.findall(r'(?:href|src)="([^"#?:]+)"', text):
-            if href.startswith(("//", "http", "mailto:", "data:")):
+        # Anchors are checked too, not just paths. A link to a fragment that does not
+        # exist on the target page resolves to a real file and silently lands the reader
+        # at the top of it, which is how every #Sxx source citation on this site was
+        # broken without any gate noticing.
+        for href in re.findall(r'(?:href|src)="([^"]+)"', text):
+            if href.startswith(("//", "http", "mailto:", "data:", "javascript:")):
                 continue
-            candidate = (base / href).resolve()
-            if href.endswith("/") or candidate.is_dir():
+            path_part, _, frag = href.partition("#")
+            if not path_part:
+                if frag and f'id="{frag}"' not in text and frag != "main":
+                    err(f"broken in-page anchor: {rel} -> {href}")
+                continue
+            candidate = (base / path_part).resolve()
+            if path_part.endswith("/") or candidate.is_dir():
                 candidate = candidate / "index.html"
             try:
                 candidate.relative_to(DOCS.resolve())
             except ValueError:
-                err(f"link escapes the site root: {rel} -> {href}")
+                # The archive notice links back to the root publication, which sits
+                # outside this subtree but inside the repository. Allow it when the
+                # target really exists; anything else is still an escaping link.
+                try:
+                    candidate.relative_to(DOCS.resolve().parent)
+                    if not candidate.exists():
+                        err(f"link escapes the site root: {rel} -> {href}")
+                except ValueError:
+                    err(f"link escapes the site root: {rel} -> {href}")
                 continue
             if not candidate.exists():
                 err(f"broken internal link: {rel} -> {href}")
+            elif frag and candidate.suffix == ".html" and frag != "main":
+                target = candidate.read_text(encoding="utf-8")
+                if f'id="{frag}"' not in target:
+                    err(f"broken anchor target: {rel} -> {href}")
+
+        # This is a review archive, not a second publication for search engines.
+        if '<meta name="robots" content="noindex,follow">' not in text:
+            err(f"editorial archive page is not noindex: {rel}")
 
         # 5. required statement on every page
         if STATEMENT not in text:
@@ -111,15 +136,10 @@ def main() -> int:
                 if sid not in source_ids:
                     err(f"unknown source id {sid} cited on {rel}")
 
-    # 7. sitemap covers every indexable page
+    # 7. Archive pages are noindex and must not appear in the sitemap.
     sitemap = (DOCS / "sitemap.xml").read_text(encoding="utf-8")
-    for page in pages:
-        rel = page.relative_to(DOCS).as_posix()
-        if rel in ("404.html",):
-            continue
-        url = "/" + ("" if rel == "index.html" else rel.replace("index.html", ""))
-        if url not in sitemap:
-            err(f"page missing from sitemap: {url}")
+    if "<url>" in sitemap:
+        err("noindex editorial archive sitemap must not contain URLs")
 
     # extra: feed and sitemap parse as XML
     import xml.etree.ElementTree as ET
@@ -145,10 +165,10 @@ def report() -> int:
     print("  - internal links resolve")
     print("  - no currency amounts")
     print("  - no star ratings or review counts")
-    print("  - every outbound amazon link carries the tracking tag (currently none render)")
+    print("  - no untagged product CTA renders; source citations are explicitly nofollow")
     print("  - Associates statement present on every page")
     print("  - every cited source id exists")
-    print("  - sitemap covers every page; feed and sitemap parse as XML")
+    print("  - archive pages are noindex and omitted from its sitemap; feed and sitemap parse as XML")
     return 0
 
 

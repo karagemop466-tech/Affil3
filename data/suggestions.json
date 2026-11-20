@@ -26,27 +26,20 @@
     {
       "id": "S-02",
       "topic": "Buy buttons while links are untested",
-      "current": "A",
+      "current": "B",
       "options": [
         {
           "id": "A",
-          "label": "Keep the buy buttons, labelled as provisional and pending a tracking check (current).",
+          "label": "Keep buy buttons while the Associates test is pending (not selected).",
           "tradeoff": "The site can earn from day one, but an untested link that silently fails credits nothing."
         },
         {
           "id": "B",
-          "label": "Hide every buy button until gate G-02 passes.",
+          "label": "Hide every buy button until gate G-02 passes (current).",
           "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
-        },
-        {
-          "id": "D",
-          "label": "Keep A, and give every product row a special_link field: the moment a link is generated in Associates Central it is pasted there with its date, and the build prefers it over the constructed URL.",
-          "tradeoff": "Recommended by session b7320829-affil3. One test per product, no downtime, and the link a reader clicks becomes the link Amazon issued rather than the link we assembled. The register then holds both, dated, and the difference between them stays visible.",
-          "effort": "20 minutes per product",
-          "risk": "low"
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure. Session b7320829-affil3 adds option D: it changes no copy on the site and makes the tested link the one that renders."
+      "recommendation": "B until every product has a recorded Associates Central test, confirmed destination, and tracking-report evidence."
     },
     {
       "id": "S-03",
@@ -1267,9 +1260,104 @@
         }
       ],
       "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
+    },
+    {
+      "id": "S-42",
+      "topic": "AI research and publishing automation",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep research and publishing manual for now; use explicit source, validation, and disclosure gates (current).",
+          "tradeoff": "No provider cost or generated claims, but no automated research or drafts."
+        },
+        {
+          "id": "B",
+          "label": "Pilot AI-assisted drafts using only approved product/query data, with citations and mandatory human approval.",
+          "tradeoff": "Can speed research and first drafts; requires an authorized source, model/provider, data terms, budget, and named editor."
+        },
+        {
+          "id": "C",
+          "label": "Automatically publish AI-generated product pages and links.",
+          "tradeoff": "Highest automation and risk; requires validated source data, policy checks, working analytics, and rollback owner. Not recommended now."
+        }
+      ],
+      "recommendation": "B only after Q-14 and D-09 are answered; do not automate publication before evidence and review gates exist."
+    },
+    {
+      "id": "SG-27",
+      "topic": "Reader-facing identity: one brand, imagery that is what it says it is",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the two working names and keep editorial illustrations labelled as illustrations (current).",
+          "tradeoff": "Nothing is misrepresented; a reader moving between surfaces sees two names."
+        },
+        {
+          "id": "B",
+          "label": "Pick one consumer name and domain, and commission original photography of the units you own.",
+          "tradeoff": "Stronger recall and trust; needs a domain and physical units. Marketplace images remain Program Content and cannot simply be reused."
+        }
+      ],
+      "recommendation": "B once a name and units exist. Until then A is the only honest option, because the illustrations are labelled as illustrations."
+    },
+    {
+      "id": "SG-28",
+      "topic": "Reader-facing authorship: a name and a check date",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Team byline with a visible specification-check date on every guide and product page (current).",
+          "tradeoff": "No invented person; a team byline is a weaker trust signal than a name."
+        },
+        {
+          "id": "B",
+          "label": "Named editor with a short bio, a contact address and a stated review cadence.",
+          "tradeoff": "The cheapest trust win available, but a real person has to answer for corrections."
+        }
+      ],
+      "recommendation": "B as soon as a real person will take the byline. The check dates already exist, so this is a change of name, not of method."
+    },
+    {
+      "id": "SG-29",
+      "topic": "Reader-facing findability: Search Console, topic clusters, RSS",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Ship canonical URLs, JSON-LD, sitemap, robots.txt and the RSS feed, and leave Search Console unverified (current).",
+          "tradeoff": "Everything a crawler needs is present, but nobody can see which guides are being found."
+        },
+        {
+          "id": "B",
+          "label": "Verify the Search Console property, submit the sitemap, and choose the next guide from the query report.",
+          "tradeoff": "Turns topic choice from instinct into evidence; needs an owner Google account."
+        }
+      ],
+      "recommendation": "B. Cheapest remaining decision, and the only one that shows whether the guides are read at all."
+    },
+    {
+      "id": "SG-30",
+      "topic": "Reader-facing capture: RSS now, email only when there is something to send",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "RSS only; no email capture and no seasonal hub until query data justifies one (current).",
+          "tradeoff": "Nothing to maintain, no consent or retention obligations, and no direct channel to readers."
+        },
+        {
+          "id": "B",
+          "label": "Add a double opt-in list and a seasonal hub once demand is measured, after reading the Amazon Trademark Guidelines on email.",
+          "tradeoff": "Owns the audience instead of renting it from search; adds a privacy notice, a provider and an email-rules review."
+        }
+      ],
+      "recommendation": "A until there are at least three guides worth returning for and the email rules have been read."
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation.",
   "tracks": [
     {
       "id": "revenue",

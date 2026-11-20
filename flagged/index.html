@@ -36,6 +36,11 @@
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/find/">Find yours</a>
     </nav>
+    <form class="nav-search" role="search" action="/Affil3/search/" method="get">
+      <label class="sr" for="q">Search the shop</label>
+      <input type="search" id="q" name="q" placeholder="Search products, guides…" autocomplete="off">
+      <button type="submit" aria-label="Search">Search</button>
+    </form>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
@@ -393,6 +398,83 @@
   <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
   <p class="small"><strong>Manual step:</strong> None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate&#39;s output tail as check annotations, so a red run can be read from the API without the Actions log.</p>
 </section>
+<section class="flag-card is-resolved" id="FLG-054">
+  <p class="flag-head"><span class="badge flag">FLG-054</span> <span class="badge sev-high">high</span> <strong>A second publication at /docs/ publishes Amazon prices and star ratings</strong> <span class="badge resolved">resolved</span></p>
+  <p>This domain serves two separate sites. The root site is generated from data/*.json and shows no prices or ratings. A second, older publication at /docs/ is still live and puts a current Amazon price (for example a four-figure-cent price for the 6 Qt basket) next to star ratings and review counts on its front page and product pages. Amazon&#39;s Program Policies allow a site to display price and availability only if Amazon serves that data or it comes through the Creators or PA API. That page does neither, and the figures it shows are now stale, which also makes them a misleading claim. The /docs/ build is git-ignored, is not produced by any current pipeline, and is a leftover from an earlier session&#39;s generator.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S03</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Retired in this session: the directory was removed and a redirect page now stands in its place, so the URL keeps working while showing no prices. If the earlier edition is ever wanted back, it must be regenerated without price or rating fields first.</p>
+</section>
+<section class="flag-card" id="FLG-055">
+  <p class="flag-head"><span class="badge flag">FLG-055</span> <span class="badge sev-high">high</span> <strong>Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is</strong></p>
+  <p>All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish.</p>
+</section>
+<section class="flag-card" id="FLG-056">
+  <p class="flag-head"><span class="badge flag">FLG-056</span> <span class="badge sev-high">high</span> <strong>Program Policies forbid tying a sub-tag or program identifier to a specific end user</strong></p>
+  <p>Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users&#39; behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings.</p>
+</section>
+<section class="flag-card" id="FLG-057">
+  <p class="flag-head"><span class="badge flag">FLG-057</span> <span class="badge sev-medium">medium</span> <strong>The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here</strong></p>
+  <p>Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way.</p>
+</section>
+<section class="flag-card" id="FLG-058">
+  <p class="flag-head"><span class="badge flag">FLG-058</span> <span class="badge sev-low">low</span> <strong>Attribution is a 24-hour session plus an 89-day cart path, not 90 days</strong></p>
+  <p>Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate&#39;s link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> Set the ledger&#39;s window definition from the policy line when the first row is written, not from a guide.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-059">
+  <p class="flag-head"><span class="badge flag">FLG-059</span> <span class="badge sev-low">low</span> <strong>CI asserts a directory the build does not write, so stale generated output merges green</strong> <span class="badge resolved">resolved</span></p>
+  <p>.github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  <p class="resolution"><strong>Resolution:</strong> Current .github/workflows/verify.yml runs `npm run check` (both generators, both gates) and then fails if `git status --porcelain` is non-empty, which asserts the whole tree rather than any single directory. The gap described here no longer exists.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Assert `git diff --quiet -- editorial` after build.py, and add a build.mjs step with its own diff assertion, so neither publisher can ship output that has drifted from its data.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-060">
+  <p class="flag-head"><span class="badge flag">FLG-060</span> <span class="badge sev-info">info</span> <strong>The Operating Agreement section cited for the Associates statement was checked against the text</strong> <span class="badge resolved">resolved</span></p>
+  <p>data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.</p>
+  <p class="resolution"><strong>Resolution:</strong> Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: ‘As an Amazon Associate I earn from qualifying purchases.’” Section 6 adds that any violation of Section 5 will be deemed a material breach, and Section 4 states Amazon makes no representation about expected traffic or commission income — the basis for publishing no revenue forecast.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></p>
+  <p class="small"><strong>Manual step:</strong> None. Recorded so a reviewer does not re-open it.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-061">
+  <p class="flag-head"><span class="badge flag">FLG-061</span> <span class="badge sev-medium">medium</span> <strong>A resolved merge conflict was committed into a frozen legacy page</strong> <span class="badge resolved">resolved</span></p>
+  <p>legacy/categories/unresolved/index.html contains a literal &lt;&lt;&lt;&lt;&lt;&lt;&lt; / ======= / &gt;&gt;&gt;&gt;&gt;&gt;&gt; conflict marker on main, so a conflict was committed rather than resolved. It is inside the archive rather than the live site, which is why check_site.py does not see it, and it renders as visible junk text on a served page. Not this session&#39;s edit and not repaired here, because legacy/ belongs to whoever froze it. Observed 2026-11-20 by session arena-43565031-affil3.</p>
+  <p class="resolution"><strong>Resolution:</strong> Fixed during integration session arena-78c96140: the conflict markers in legacy/categories/unresolved/index.html were resolved to the archived edition&#39;s own content, and the page renders without conflict junk again.</p>
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session&#39;s frozen record, so it is logged rather than done.</p>
+</section>
+<section class="flag-card" id="FLG-062">
+  <p class="flag-head"><span class="badge flag">FLG-062</span> <span class="badge sev-high">high</span> <strong>The Amazon title for P01 calls it an oven; the maker&#39;s page does not</strong></p>
+  <p>The Amazon title reads &#39;CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows&#39;. Chefman&#39;s own page for model RJ38-SQPF-3TDB-2W describes a two-drawer basket air fryer with Sync Finish and does not list an oven function. The product page therefore describes the basket shape and does not repeat &#39;oven&#39;. This is recorded as a conflict between the listing and the maker, not as proof that either is wrong.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Manual step:</strong> Read the shipped manual&#39;s function list. If it includes a bake or oven mode, correct the product page.</p>
+</section>
+<section class="flag-card" id="FLG-063">
+  <p class="flag-head"><span class="badge flag">FLG-063</span> <span class="badge sev-medium">medium</span> <strong>&#39;NIST-certified&#39; on P04 is not supported by a certificate we could find</strong></p>
+  <p>ThermoMaven describes the F1 Ace as NIST-certified with +/-0.5 °F accuracy. NIST&#39;s own published FAQ states that NIST &#39;does not recommend or endorse commercial equipment, instruments, or materials&#39; and does not &#39;define, specify, assure, or certify traceability&#39; of measurements. That does not make the accuracy claim false; it means the accuracy has no verifiable certificate behind it in public. The product page quotes the accuracy as the maker&#39;s claim and does not repeat &#39;NIST-certified&#39; as a fact.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.thermomaven.com/products/f1-ace" rel="noopener external">S21</a>, <a href="https://www.nist.gov/pml/sensor-science/optical-radiation/faqs-spectral-responsivity-calibrations" rel="noopener external">S29</a></p>
+  <p class="small"><strong>Manual step:</strong> Ask ThermoMaven for the calibration certificate or the accredited laboratory and certificate number. If one exists, cite it; otherwise keep the claim labelled as the maker&#39;s.</p>
+</section>
+<section class="flag-card" id="FLG-064">
+  <p class="flag-head"><span class="badge flag">FLG-064</span> <span class="badge sev-low">low</span> <strong>Guide topics are editorial hypotheses, not keyword research</strong></p>
+  <p>The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.</p>
+  
+  <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
+  <p class="small"><strong>Manual step:</strong> Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -425,6 +507,7 @@
         <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
         <li><a href="/Affil3/measurement/">Measurement</a></li>
         <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+        <li><a href="/Affil3/search/">Search the shop</a></li>
         <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>

@@ -1,0 +1,130 @@
+{
+  "schema": "shopnow.flags.v1",
+  "updated": "2026-11-20",
+  "note": "Flags do not block publication or merge. Every flag is published on flagged/index.html with source links. Statuses: open / in-review / resolved.",
+  "flags": [
+    {
+      "id": "FLG-001",
+      "title": "Tracking ID shopnow047c-20 not yet verified against Associates Central",
+      "severity": "high",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "The ID was supplied in the project brief. It is structurally plausible for a US marketplace ID (the '-20' suffix is the standard US marketplace convention), but enrollment and activity could not be confirmed from any official source because Associates Central is account-gated.",
+      "what_is_missing": "Confirmation from Associates Central (Settings → Account info) that the ID exists, is active, and belongs to this program account.",
+      "discovery": "Sign in to Associates Central and check the tracked store ID list; confirm in the account settings page.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/agreement"
+      ],
+      "blocks": [
+        "Verified CTAs",
+        "Commission reporting",
+        "Creators API onboarding (S13 prerequisite)"
+      ]
+    },
+    {
+      "id": "FLG-002",
+      "title": "Self-hosted analytics endpoint undecided — events queue locally",
+      "severity": "medium",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "The site ships a privacy-preserving event collector (5 defined events). GitHub Pages is static hosting and cannot run the server side of a self-hosted endpoint, so events are queued in the visitor's browser (localStorage, no cookies, no cross-site identifiers) and exportable from the dashboard.",
+      "what_is_missing": "A hosting decision for the endpoint (see suggestions SG-08 options A/B/C).",
+      "discovery": "Choose an option on suggestions/index.html (SG-08); then point window.SHOPNOW_CONFIG.analyticsEndpoint at it.",
+      "source_links": [
+        "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages"
+      ],
+      "blocks": [
+        "Real click/conversion measurement",
+        "Ledger population"
+      ]
+    },
+    {
+      "id": "FLG-003",
+      "title": "Compliance status of the five submitted link.amazon short links — UNRESOLVED",
+      "severity": "high",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "Observation pass 2026-11-20: all five submitted URLs (https://link.amazon/B04G1MEwY, /B02NbDxp3, /B00hJ57DV, /B0c8moW59, /B0f3GKalj) are second-level names under the .amazon gTLD operated by Amazon Registry Services, Inc. [S09]. Four resolved to amazon.com product pages; one (B0c8moW59) hit an Amazon checkpoint interstitial [FLG-004]. NONE of the observed landing URLs contained an Associates tag parameter (tag=shopnow047c-20 absent); landing URLs carried lv=shuf and btn_ref=srctok-… parameters instead. The identifiers embedded in the submitted paths are 9 characters; Amazon's official ASIN definition is 10 characters [S05]; the observed landing ASINs (10 characters) differ from the submitted path identifiers in every observed case. The Operating Agreement requires commission-bearing links to use its special 'tagged' link formats [S01, S03]. Cross-session note (2026-11-20): the canonical register (root publication) records tagged /dp/<observed-ASIN>?tag=shopnow047c-20 outbound links for all five products — destinations observed, tag added, Associates check pending (gate G-02). This surface's independent pass adds a second dated vantage point: B00hJ57DV→B08DKYBTPH observed directly (independently confirming the canonical retest); B0c8moW59 hit a checkpoint here while the canonical pass resolved it to B0DHZTCNR5.",
+      "what_is_missing": "Whether these short links are (a) Associates-generated Special Links carrying shopnow047c-20, (b) something else (e.g., social-shopping share links generated without an Associates tag), and (c) stable destinations. This cannot be determined from outside the account.",
+      "discovery": "In Associates Central: generate a fresh link per product (SiteStripe 'Get link' or Link Builder), compare destination and confirm the click appears in Reports → 'Links' report; or run one GetItems lookup per intended ASIN once Creators API access is active [S13]. Test ONE link per product; confirm destination AND tracking report before scaling.",
+      "no_verdict_rule": "No session may claim the supplied short links are valid OR invalid from outside the account. Their exact compliance status is unresolved until G5 is performed.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/help/operating/agreement",
+        "https://affiliate-program.amazon.com/help/operating/policies",
+        "https://sell.amazon.com/blog/what-is-an-asin",
+        "https://www.iana.org/domains/root/db/amazon.html"
+      ],
+      "blocks": [
+        "Link verification status 'verified'"
+      ]
+    },
+    {
+      "id": "FLG-004",
+      "title": "link.amazon/B0c8moW59: this surface's fetch hit a checkpoint; canonical register resolved it to B0DHZTCNR5",
+      "severity": "medium",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "Server-side fetch on 2026-11-20 (this surface) reached an Amazon 'checkpoint/continue' interstitial instead of a product page — no landing ASIN or title observed here. The canonical register's observation resolved the link to B0DHZTCNR5, and the outbound link on products/p4.html follows that record. Both observations are published, dated, and never merged. A checkpoint is intermittent and session-dependent.",
+      "what_is_missing": "The in-account Associates confirmation of destination and tracking (gate G-02) for this link's tagged outbound URL.",
+      "discovery": "Open the URL signed in to a normal Amazon session; confirm the landing ASIN matches B0DHZTCNR5; then complete the intent record and the canonical register's confirmation fields.",
+      "source_links": [
+        "https://sell.amazon.com/blog/what-is-an-asin"
+      ],
+      "blocks": [
+        "p4 observation field completion"
+      ]
+    },
+    {
+      "id": "FLG-005",
+      "title": "Product identity, price, rating and availability data: blank until confirmed from the listing itself",
+      "severity": "medium",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "Observed landing page titles were recorded per link (see products.json observation fields), but titles are observations of a redirect target at one point in time — they are not a confirmation that the intended product matches, and no price/rating/spec value was captured from the landing pages' own offer data during the pass.",
+      "what_is_missing": "Per-ASIN confirmation of title, price, availability and rating from the listing or the Creators API.",
+      "discovery": "After G5/G6: fill the intent record from the confirmed listing; populate the comparison table only from verified values.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction"
+      ],
+      "blocks": [
+        "Verified product comparison table"
+      ]
+    },
+    {
+      "id": "FLG-006",
+      "title": "Brand name and identity are provisional ('ShopNow Kitchen Edit')",
+      "severity": "low",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "The masthead brand 'ShopNow Kitchen Edit' was derived from the submitted tracking ID (shopnow047c-20) and the observed product niche (kitchen appliances). It is a working label, not a decision.",
+      "what_is_missing": "An approved brand name, and ideally a domain decision (github.io path vs custom domain).",
+      "discovery": "Pick a final name on suggestions/index.html (SG-10); register a domain if wanted; then update masthead, footer, and canonical URLs in one pass.",
+      "source_links": [],
+      "blocks": [
+        "Final brand rollout",
+        "Custom domain / canonical decision"
+      ]
+    },
+    {
+      "id": "FLG-007",
+      "title": "SiteStripe guidance page could not be fetched — cited nowhere",
+      "severity": "low",
+      "status": "open",
+      "raised": "2026-11-20",
+      "raised_by": "arena-0a417943-affil3",
+      "what_we_know": "https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe failed to fetch during verification (2026-11-20). It is listed in sources.json with verified=false and is relied upon nowhere on the site.",
+      "what_is_missing": "A successful fetch, or replacement with another official page describing SiteStripe.",
+      "discovery": "Retry the fetch in a later session; if it still fails, remove the row and rely on Associates Central's in-account documentation only.",
+      "source_links": [
+        "https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe"
+      ],
+      "blocks": []
+    }
+  ]
+}

@@ -2,15 +2,26 @@
   "name": "affil3",
   "version": "1.0.0",
   "private": true,
-  "description": "Static affiliate buying-guide site generated from data/*.json, with a publishing gate and an optional self-hosted analytics collector. No runtime dependencies.",
+  "description": "Static affiliate buying-guide site generated from data/*.json, with a publishing gate and an optional self-hosted analytics collector. No runtime dependencies. Also hosts the /shop/ surface (register-driven site + 11-gate compliance check in scripts/).",
   "type": "commonjs",
   "scripts": {
     "build": "node tools/build.mjs",
     "verify": "node tools/verify.mjs",
-    "check": "node tools/build.mjs && node tools/verify.mjs && python3 tools/build.py && python3 tools/check_site.py",
+    "check": "python3 tools/build.py && node tools/build.mjs && node tools/verify.mjs && python3 tools/check_site.py",
     "collector": "node tools/collector.mjs",
     "editorial:build": "python3 tools/build.py",
-    "editorial:check": "python3 tools/build.py && python3 tools/check_site.py"
+    "editorial:check": "python3 tools/build.py && python3 tools/check_site.py",
+    "shop:build": "node scripts/build.mjs",
+    "shop:check": "node scripts/checks.mjs",
+    "shop:verify": "node scripts/build.mjs && node scripts/checks.mjs",
+    "shop:serve": "node scripts/serve.mjs --port 8080",
+    "shop:collect": "node scripts/collect.mjs --port 8788",
+    "shop:links": "node scripts/links.mjs",
+    "shop:new-guide": "node scripts/new-guide.mjs",
+    "notes:build": "node scripts/build-site.mjs",
+    "notes:check": "node scripts/build-site.mjs && node scripts/verify-site.mjs && node scripts/test-analytics.mjs",
+    "notes:test-analytics": "node scripts/test-analytics.mjs",
+    "notes:serve": "node server/index.mjs"
   },
   "engines": {
     "node": ">=18"

@@ -12,10 +12,23 @@ __pycache__/
 # Never commit a regenerated legacy tree at the repository root. The frozen
 # editions live under legacy/ only, where they are unambiguously archived.
 /docs/
+# ...except the retirement page for the old /docs/ edition. It has to be tracked
+# or the deletion never reaches GitHub Pages, and the stale edition keeps being
+# served with Amazon prices on it. See FLG-031.
+!/docs/
+/docs/*
+!/docs/index.html
 /editorial-legacy/
 
 # Local preview scaffolding (symlink so the site can be served under its /Affil3 base path)
 .preview/
+# ShopNow surface (/shopnow/) — generated event data from scripts/collect.mjs
+data/events.ndjson
+_site/
+.local/
+.env
+.env.*
+!.env.example
 
 # A pristine clone used to reproduce CI locally; never part of the site or the record.
 /.freshci/

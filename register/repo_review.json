@@ -1,0 +1,63 @@
+{
+  "$comment": "Line-by-line review of the repository at the point work began, plus what was added. Recorded so the build can be audited without re-reading the git history.",
+  "reviewed_commit": "847ae376e15d0bba14809ebce17ddaea317f79b6",
+  "reviewed_at": "2026-11-20",
+  "inventory_before": [
+    {"path": "README.md", "bytes": 8, "content": "# Affil3", "finding": "stub"}
+  ],
+  "history": [
+    {"commit": "847ae37", "message": "Initial commit", "files": 1}
+  ],
+  "findings": [
+    {
+      "id": "R-01",
+      "severity": "high",
+      "finding": "The repository contains no prior work. The brief describes an existing source register, rows SG-27..SG-30, flags FLG-003 and sections S01/S07/S24. None exist in any commit or branch.",
+      "verified_by": "git ls-tree -r main, git log --all --name-only, and a file-count of every remote branch",
+      "action_taken": "Registers re-established forward on this branch with the brief's identifiers, marked 'newly created' rather than 'restored'. Logged as FLG-007."
+    },
+    {
+      "id": "R-02",
+      "severity": "medium",
+      "finding": "Nine sibling arena/*-affil3 branches exist on origin, all containing only README.md + COORDINATION.md, committed 05:09-05:13Z. Two of them (772f3220, and this one) claim the same docs/ and register/ paths. No COORDINATION.md on main means there is no arbitration point.",
+      "verified_by": "git for-each-ref + git ls-tree per branch",
+      "action_taken": "Claim pushed before any edit; overlap logged in COORDINATION.md and as FLG-009. No sibling file was modified."
+    },
+    {
+      "id": "R-03",
+      "severity": "high",
+      "finding": "No CI, no Pages configuration, no .gitignore, no lockfile, no dependencies, and no build system. Nothing to break, but also nothing to inherit - the toolchain had to be created rather than extended.",
+      "verified_by": "directory listing at base commit",
+      "action_taken": "Zero-dependency Node toolchain added (scripts/*.mjs) plus .github/workflows/ci.yml, deliberately avoiding an npm install in CI."
+    },
+    {
+      "id": "R-04",
+      "severity": "informational",
+      "finding": "Sandbox egress is limited to github.com, codeload, api.github, npmjs and PyPI. Direct curl to amazon.com fails at TLS (SSL_ERROR_SYSCALL), so all Amazon observation in this session was made through the platform's page fetcher.",
+      "verified_by": "curl to www.amazon.com returned http_code=000 with a TLS error; the same fetcher resolved amazon.com pages successfully",
+      "action_taken": "Every Amazon-side observation records the fetch method, and nothing that could not be fetched is claimed. Two fetches failed three times each (USDA page, PA-API docs) and are recorded as such rather than retried into a confident-sounding claim."
+    },
+    {
+      "id": "R-05",
+      "severity": "medium",
+      "finding": "The five product links in the brief use the host link.amazon with a 9-character path. This is not a documented Associates link format, and the strings are not valid ASINs, yet the host does resolve and does redirect to live listings.",
+      "verified_by": "string measurement plus four successful resolutions and one checkpoint interstitial",
+      "action_taken": "Tokens and resolved ASINs stored in separate fields (CTL-11). Site built on generated /dp/?tag= links. FLG-001, FLG-003, FLG-004."
+    },
+    {
+      "id": "R-06",
+      "severity": "informational",
+      "finding": "No brand asset, no domain, no audience data, no keyword dataset and no Associates credentials accompany the repo. Four of the five question sections in register/questions.json exist because of this.",
+      "verified_by": "repo contents plus the brief itself",
+      "action_taken": "Brand derived from the tracking ID and labelled as derived (SG-25). No market or traffic claim is made anywhere (FLG-010)."
+    }
+  ],
+  "irregularities_flagged_for_review": ["FLG-001", "FLG-002", "FLG-003", "FLG-004", "FLG-005", "FLG-006", "FLG-007", "FLG-008", "FLG-009", "FLG-010"],
+  "what_was_added": {
+    "data": ["register/sources.json", "register/products.json", "register/flags.json", "register/questions.json", "register/suggestions.json", "register/compliance.json", "register/links.json", "register/ledger.json", "register/measurement.json", "register/repo_review.json", "register/site.json", "register/schema/research_snapshot.schema.json"],
+    "content": ["content/home.md", "content/about.md", "content/methodology.md", "content/disclosure.md", "content/privacy.md", "content/guides/*.md (6)"],
+    "code": ["scripts/build.mjs", "scripts/checks.mjs", "scripts/collect.mjs", "scripts/links.mjs", "scripts/new-guide.mjs", "scripts/serve.mjs", "content/assets/style.css", "content/assets/app.js", "content/assets/search.js", "content/assets/track.js", ".github/workflows/ci.yml"],
+    "docs": ["report/EXECUTIVE-SUMMARY.md", "report/DECISION-BRIEF.md", "COORDINATION.md", "README.md"],
+    "published_at": "shopnow/ (mounted under /shop/ because Pages publishes main:/ and the root and /editorial/ surfaces were already owned by sibling sessions)"
+  }
+}
