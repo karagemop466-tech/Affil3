@@ -46,35 +46,35 @@
   <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
   <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
   <p class="manual"><strong>What would close it:</strong> Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL.</p>
 </section>
 <section class="flag-card" id="FLG-002">
   <p class="flag-head"><span class="badge flag">FLG-002</span> <span class="badge sev-high">high</span> <strong>Observed destination ASIN differs from the token in the link</strong></p>
   <p>The short links resolved to different 10-character ASINs than the submitted token (for example B04G1MEwY resolved to B0CDY277D3). The observed destinations are recorded in separate fields and are not treated as the intended product. The site links to the observed destination only as a tagged, observed product (see FLG-005).</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   <p class="manual"><strong>What would close it:</strong> Open each submitted short link in a signed-in browser and confirm the product shown. Confirm whether the intended product is the observed product before it is published as the buy link.</p>
 </section>
 <section class="flag-card" id="FLG-003">
   <p class="flag-head"><span class="badge flag">FLG-003</span> <span class="badge sev-high">high</span> <strong>Compliance status of the supplied short links is unresolved</strong></p>
   <p>The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon&#39;s Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a>, <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <code>link.amazon/B04G1MEwY</code>, <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a></p>
   <p class="manual"><strong>What would close it:</strong> Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely.</p>
 </section>
 <section class="flag-card is-resolved" id="FLG-004">
   <p class="flag-head"><span class="badge flag">FLG-004</span> <span class="badge sev-high">high</span> <strong>One submitted link (B00hJ57DV) initially appeared not to resolve to a product</strong> <span class="badge good">resolved</span></p>
   <p>The link landed on an Amazon &#39;Continue shopping&#39; checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.</p>
   <p class="manual"><strong>Resolution:</strong> Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier &quot;Continue shopping&quot; checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH</p>
-  <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
+  <p class="small"><strong>Sources:</strong> <code>link.amazon/B04G1MEwY</code></p>
   <p class="manual"><strong>What would close it:</strong> Open the link in a signed-in browser. Supply the intended product URL if it can be identified.</p>
 </section>
 <section class="flag-card" id="FLG-005">
   <p class="flag-head"><span class="badge flag">FLG-005</span> <span class="badge sev-high">high</span> <strong>Tagged Special Links are not yet validated in Associates Central</strong></p>
   <p>The outbound links use the Associates tracking ID shopnow047c-20 in the /dp/ format (?tag=). Operating Agreement §1 defines Special Links as links in the tagged formats Amazon provides, and Participation Requirements §2 requires the tag as a URL parameter (S01, S02). The links have not been generated or tested in Associates Central, and no tracking report has been reviewed, because the sandbox has no Associates login. Gate G-02 requires one link per product to be validated before any scaling.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="manual"><strong>What would close it:</strong> Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done.</p>
 </section>
 <section class="flag-card" id="FLG-006">
@@ -123,7 +123,7 @@
   <p class="flag-head"><span class="badge flag">FLG-012</span> <span class="badge sev-medium">medium</span> <strong>No Amazon-owned ASIN definition was retrieved</strong></p>
   <p>Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
   <p class="manual"><strong>What would close it:</strong> Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register.</p>
 </section>
 <section class="flag-card" id="FLG-013">
@@ -151,7 +151,7 @@
   <p class="flag-head"><span class="badge flag">FLG-016</span> <span class="badge sev-medium">medium</span> <strong>Prices, ratings and availability are not recorded</strong></p>
   <p>Prices and ratings were visible only in carousel items on the fetched pages, not as confirmed values for the observed product. They change over time. Nothing is recorded or displayed, so no unverified number appears on the site.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="manual"><strong>What would close it:</strong> If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source.</p>
 </section>
 <section class="flag-card" id="FLG-017">
@@ -193,7 +193,7 @@
   <p class="flag-head"><span class="badge flag">FLG-022</span> <span class="badge sev-high">high</span> <strong>Two product destinations were transposed in the root-site register (corrected)</strong> <span class="badge good">resolved</span></p>
   <p>data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a &quot;reverification&quot; block preserving the earlier value, so the fix is auditable rather than silent.</p>
   <p class="manual"><strong>Resolution:</strong> P03 and P04 corrected in data/products.json; previous values retained in each record&#39;s reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5</p>
-  <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
+  <p class="small"><strong>Sources:</strong> <code>link.amazon/B04G1MEwY</code></p>
   
 </section>
 <section class="flag-card" id="FLG-023">
@@ -207,78 +207,106 @@
   <p class="flag-head"><span class="badge flag">FLG-024</span> <span class="badge sev-medium">medium</span> <strong>Emeril Lagasse 26 QT: preset and accessory counts differ across official pages</strong></p>
   <p>The Emeril Everyday product page shows &#39;25 Cooking Pre-sets&#39; in its specification strip and &#39;24 one-touch cooking presets&#39; in its own description, and an image on the same page reads &#39;11-in-1&#39;. The Amazon listing title says &#39;24 One-Touch Preset Options&#39; and &#39;Six Cooking Accessories Included&#39;, while the manufacturer description mentions seven. Because the official sources conflict, this site publishes no preset count and no accessory count.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360" rel="noopener external">S13</a>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="manual"><strong>What would close it:</strong> Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.</p>
 </section>
 <section class="flag-card" id="FLG-025">
   <p class="flag-head"><span class="badge flag">FLG-025</span> <span class="badge sev-medium">medium</span> <strong>ThermoMaven: no manufacturer page, so every specification is withheld</strong></p>
   <p>No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="manual"><strong>What would close it:</strong> If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.</p>
 </section>
 <section class="flag-card" id="FLG-026">
   <p class="flag-head"><span class="badge flag">FLG-026</span> <span class="badge sev-high">high</span> <strong>The 8 Qt air fryer listing and the manufacturer page describe two different machines</strong></p>
   <p>The Amazon listing for B08DKYBTPH states, in its own &#39;About this item&#39; copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman&#39;s own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing&#39;s figures are shown in a separate column so a reader can see both without either being presented as verified.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">S16</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
   <p class="manual"><strong>What would close it:</strong> Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.</p>
 </section>
 <section class="flag-card" id="FLG-027">
   <p class="flag-head"><span class="badge flag">FLG-027</span> <span class="badge sev-medium">medium</span> <strong>The same listing carries two different temperature ranges in two places</strong></p>
   <p>In the &#39;About this item&#39; bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a &#39;450°F Hi-Fry option&#39;. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">S16</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20" rel="sponsored noopener">S16</a></p>
   <p class="manual"><strong>What would close it:</strong> The user guide linked from the listing should settle it. Read it and supply the page reference.</p>
 </section>
-<section class="flag-card" id="FLG-028">
-  <p class="flag-head"><span class="badge flag">FLG-028</span> <span class="badge sev-high">high</span> <strong>Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is</strong></p>
-  <p>All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
-  
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
-  <p class="manual"><strong>What would close it:</strong> Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish.</p>
+<section class="flag-card is-resolved" id="FLG-028">
+  <p class="flag-head"><span class="badge flag">FLG-028</span> <span class="badge sev-high">high</span> <strong>Amazon links were published without the tracking tag, including the citations</strong> <span class="badge good">resolved</span></p>
+  <p>Program Policies 2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. The site linked the observed Amazon page in the source column of the shop table and on product pages, and published the supplied link.amazon short links as clickable links, none of which carried tag=shopnow047c-20.</p>
+  <p class="manual"><strong>Resolution:</strong> Build-level link policy added and asserted by the gate on every page (retail Amazon link must carry the tag; no short link may be published as a link). Check count rose from 1,610 to 2,805.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> None. The build now enforces the rule on every page: any link to an Amazon retail host gets the tag and rel=sponsored, and a link.amazon short link is rendered as text because it cannot carry the tag.</p>
 </section>
-<section class="flag-card" id="FLG-029">
-  <p class="flag-head"><span class="badge flag">FLG-029</span> <span class="badge sev-medium">medium</span> <strong>Two sessions recorded different outcomes for the same tokens</strong></p>
-  <p>One record in this repo has B00hJ57DV as the link that hit an Amazon “Continue shopping” checkpoint. On an independent retrieval the same day, B00hJ57DV resolved to a product page (ASIN B08DKYBTPH) and it was B0c8moW59 that hit the checkpoint. Both records are kept and neither is overwritten. Read together they show the outcome depends on session, timing or routing rather than on the token, and that any re-verification job must append attempts rather than replace a row. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
+<section class="flag-card is-resolved" id="FLG-029">
+  <p class="flag-head"><span class="badge flag">FLG-029</span> <span class="badge sev-medium">medium</span> <strong>Every thermometer page referenced an image that was never committed</strong> <span class="badge good">resolved</span></p>
+  <p>Fourteen references pointed at /assets/img/hero-thermometer.jpg, which did not exist in the repository. The category page, both thermometer product pages, the guides index and the thermometer guide would have shown a broken image on the live site.</p>
+  <p class="manual"><strong>Resolution:</strong> Image added on 2026-11-20. The image check was added to the gate, so a missing image fails the build from now on.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S04</a>, <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
-  <p class="manual"><strong>What would close it:</strong> Re-run each of the five links twice from a private window a few minutes apart and record the ASIN each time before treating any mapping as stable.</p>
+  <p class="manual"><strong>What would close it:</strong> None. The image was created in the same photographic style as the other hero images and committed; the gate now checks that every referenced image exists, is served locally, and has alt text.</p>
 </section>
 <section class="flag-card" id="FLG-030">
-  <p class="flag-head"><span class="badge flag">FLG-030</span> <span class="badge sev-high">high</span> <strong>Program Policies forbid tying a sub-tag or program identifier to a specific end user</strong></p>
+  <p class="flag-head"><span class="badge flag">FLG-030</span> <span class="badge sev-high">high</span> <strong>Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is</strong></p>
+  <p>All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="manual"><strong>What would close it:</strong> Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish.</p>
+</section>
+<section class="flag-card" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-medium">medium</span> <strong>Two sessions recorded different outcomes for the same tokens</strong></p>
+  <p>One record in this repo has B00hJ57DV as the link that hit an Amazon “Continue shopping” checkpoint. On an independent retrieval the same day, B00hJ57DV resolved to a product page (ASIN B08DKYBTPH) and it was B0c8moW59 that hit the checkpoint. Both records are kept and neither is overwritten. Read together they show the outcome depends on session, timing or routing rather than on the token, and that any re-verification job must append attempts rather than replace a row. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="manual"><strong>What would close it:</strong> Re-run each of the five links twice from a private window a few minutes apart and record the ASIN each time before treating any mapping as stable.</p>
+</section>
+<section class="flag-card" id="FLG-032">
+  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-high">high</span> <strong>Program Policies forbid tying a sub-tag or program identifier to a specific end user</strong></p>
   <p>Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users&#39; behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="manual"><strong>What would close it:</strong> Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings.</p>
 </section>
-<section class="flag-card" id="FLG-031">
-  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-medium">medium</span> <strong>The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here</strong></p>
+<section class="flag-card" id="FLG-033">
+  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-medium">medium</span> <strong>The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here</strong></p>
   <p>Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="manual"><strong>What would close it:</strong> Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way.</p>
 </section>
-<section class="flag-card" id="FLG-032">
-  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-low">low</span> <strong>Attribution is a 24-hour session plus an 89-day cart path, not 90 days</strong></p>
+<section class="flag-card" id="FLG-034">
+  <p class="flag-head"><span class="badge flag">FLG-034</span> <span class="badge sev-low">low</span> <strong>Attribution is a 24-hour session plus an 89-day cart path, not 90 days</strong></p>
   <p>Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate&#39;s link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="manual"><strong>What would close it:</strong> Set the ledger&#39;s window definition from the policy line when the first row is written, not from a guide.</p>
 </section>
-<section class="flag-card" id="FLG-033">
-  <p class="flag-head"><span class="badge flag">FLG-033</span> <span class="badge sev-low">low</span> <strong>CI asserts a directory the build does not write, so stale generated output merges green</strong></p>
+<section class="flag-card" id="FLG-035">
+  <p class="flag-head"><span class="badge flag">FLG-035</span> <span class="badge sev-low">low</span> <strong>CI asserts a directory the build does not write, so stale generated output merges green</strong></p>
   <p>.github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
   
   
   <p class="manual"><strong>What would close it:</strong> Assert `git diff --quiet -- editorial` after build.py, and add a build.mjs step with its own diff assertion, so neither publisher can ship output that has drifted from its data.</p>
 </section>
-<section class="flag-card is-resolved" id="FLG-034">
-  <p class="flag-head"><span class="badge flag">FLG-034</span> <span class="badge sev-info">info</span> <strong>The Operating Agreement section cited for the Associates statement was checked against the text</strong> <span class="badge good">resolved</span></p>
+<section class="flag-card is-resolved" id="FLG-036">
+  <p class="flag-head"><span class="badge flag">FLG-036</span> <span class="badge sev-info">info</span> <strong>The Operating Agreement section cited for the Associates statement was checked against the text</strong> <span class="badge good">resolved</span></p>
   <p>data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in docs/OFFICIAL-SOURCES.md.</p>
   <p class="manual"><strong>Resolution:</strong> Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: ‘As an Amazon Associate I earn from qualifying purchases.’” Section 6 adds that any violation of Section 5 will be deemed a material breach, and Section 4 states Amazon makes no representation about expected traffic or commission income — the basis for publishing no revenue forecast.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></p>
   <p class="manual"><strong>What would close it:</strong> None. Recorded so a reviewer does not re-open it.</p>
+</section>
+<section class="flag-card" id="FLG-037">
+  <p class="flag-head"><span class="badge flag">FLG-037</span> <span class="badge sev-high">high</span> <strong>A committed docs/ edition was being served without the FTC example disclosure and with hardcoded prices</strong></p>
+  <p>tools/disclosure-check.mjs reported 37 problems, all of them under docs/: pages that carry currency amounts ($79.93, $99.99, $149.93, $209.99 and similar on docs/comparisons/index.html and the docs/guides pages) and lack the disclosure sentence the gate enforces. Program Policies 2(b) allow a site to show prices only when Amazon serves them or a licensed Creators/PA API feed supplies them, so a committed copy of the site under docs/ is not a harmless spare: it is a second published edition that breaches the price rule and, being at the repository root while Pages publishes / , would be reachable. The repo&#39;s own .gitignore already says this tree must never be committed — “Never commit a regenerated legacy tree at the repository root” with /docs/ listed — but the rule arrived after the files were tracked, so it had no effect. This branch untracks docs/ (git rm --cached); the files stay in history and on disk, and the generator that produced them still owns them. Observed 2026-11-20 by session arena-43565031-affil3.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="manual"><strong>What would close it:</strong> The owner of whatever writes docs/ should either point its output at a path outside the served root or rebuild it from the same disclosure partial as the root site. Untracking stops the live exposure; it does not settle which edition is canonical.</p>
+</section>
+<section class="flag-card" id="FLG-038">
+  <p class="flag-head"><span class="badge flag">FLG-038</span> <span class="badge sev-medium">medium</span> <strong>A resolved merge conflict was committed into a frozen legacy page</strong></p>
+  <p>legacy/categories/unresolved/index.html contains a literal &lt;&lt;&lt;&lt;&lt;&lt;&lt; / ======= / &gt;&gt;&gt;&gt;&gt;&gt;&gt; conflict marker on main, so a conflict was committed rather than resolved. It is inside the archive rather than the live site, which is why check_site.py does not see it, and it renders as visible junk text on a served page. Not this session&#39;s edit and not repaired here, because legacy/ belongs to whoever froze it. Observed 2026-11-20 by session arena-43565031-affil3.</p>
+  
+  
+  <p class="manual"><strong>What would close it:</strong> Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session&#39;s frozen record, so it is logged rather than done.</p>
 </section>
 </div>
 </main>

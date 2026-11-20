@@ -115,6 +115,21 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`${name}: Associates statement present`, html.includes(cfg.associatesStatement));
     check(`${name}: footer repeats disclosure`, /<footer[\s\S]*<p class="disclosure-footer">[\s\S]*?Disclosure\./.test(html));
     check(`${name}: no meta refresh / redirect`, !/http-equiv="refresh"|window\.location\s*=/.test(html));
+    for (const m of html.matchAll(/<img\b([^>]*)>/g)) {
+      const attrs = m[1];
+      const src = (attrs.match(/src="([^"]*)"/) || [])[1] || '';
+      check(`${name}: image has alt attribute`, /\balt="/.test(attrs), src);
+      check(`${name}: image is served from this site`, src.startsWith(base + '/assets/img/'), src);
+      const imgFile = src.startsWith(base) ? path.join(DOCS, src.slice(base.length)) : '';
+      check(`${name}: image file exists`, !!imgFile && fs.existsSync(imgFile), src);
+    }
+    check(`${name}: has a canonical URL`, /<link rel="canonical" href="https:\/\/karagemop466-tech\.github\.io\/Affil3\//.test(html));
+    if (path.basename(f) !== '404.html') {
+      const h1s = (html.match(/<h1[\s>]/g) || []).length;
+      check(`${name}: exactly one h1`, h1s === 1, String(h1s));
+      const title = (html.match(/<title>([\s\S]*?)<\/title>/) || ['', ''])[1];
+      check(`${name}: title within 90 characters`, title.length > 0 && title.length <= 90, String(title.length));
+    }
     check(`${name}: no price-like amounts`, !/\$\s?\d/.test(body), (body.match(/.{0,20}\$\s?\d.{0,20}/) || [''])[0]);
     // dashboards in footer
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
@@ -130,6 +145,14 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       if (/(^|\.)amazon\.com$/.test(host) || host === 'link.amazon') {
         check(`${name}: Amazon link is sponsored`, /\bsponsored\b/.test(rel_), href);
       }
+      // Program Policies 2(b): a link to an Amazon retail site must carry the tag.
+      const DOC_HOSTS = ['affiliate-program.amazon.com', 'sell.amazon.com', 'developer.amazon.com', 'advertising.amazon.com'];
+      const retail = /(^|\.)amazon\.com$/.test(host) && !DOC_HOSTS.includes(host);
+      if (retail) {
+        const t = href.match(/[?&]tag=([^&]+)/);
+        check(`${name}: retail Amazon link carries the tag ${TAG}`, !!t && decodeURIComponent(t[1]) === TAG, href);
+      }
+      check(`${name}: no link.amazon short link is published as a link`, host !== 'link.amazon', href);
       if (href.includes('/dp/') && host.endsWith('amazon.com')) {
         const m2 = href.match(/\/dp\/([A-Za-z0-9]+)/);
         check(`${name}: /dp/ link has a 10-character ASIN`, !!m2 && m2[1].length === 10, href);
