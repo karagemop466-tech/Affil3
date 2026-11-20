@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions review queue</title>
+<meta name="description" content="Fourteen proposals with trade-offs, held for a decision rather than implemented silently.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/editorial/suggestions/">
+<meta property="og:title" content="Suggestions review queue">
+<meta property="og:description" content="Fourteen proposals with trade-offs, held for a decision rather than implemented silently.">
+<meta property="og:type" content="website">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="alternate" type="application/rss+xml" title="Countertop & Co." href="../feed.xml">
+
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a class="wordmark" href="../">Countertop &amp; Co.<span class="dot">.</span></a>
+    <nav class="nav" aria-label="Sections"><a class="navlink" href="../">Start here</a><a class="navlink" href="../air-fryers/">Air fryers</a><a class="navlink" href="../air-fryer-ovens/">Oven-style</a><a class="navlink" href="../thermometers/">Thermometers</a><a class="navlink" href="../guides/">Guides</a></nav>
+  </div>
+</header>
+<div class="disclosure-strip" id="disclosure" role="note">
+  <div class="wrap">
+    <strong>Paid links.</strong> As an Amazon Associate I earn from qualifying purchases. Every product link on this site is an affiliate link.
+  </div>
+</div>
+<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="/Affil3/">Visit the current publication</a>.</aside>
+<main id="main">
+<div class="wrap section">
+<h1>Suggestions review queue</h1>
+<p class="sub">A section built for reviewing before implementing. Each proposal states the problem it
+solves, what it costs, and the specific decision it needs from you. Three are already shipped and
+labelled as such; the rest do nothing until you choose.</p>
+<div class="callout">
+<p><strong>How to decide.</strong> Read impact and effort together. A high-impact, low-effort item that
+you disagree with is still worth rejecting explicitly, because an unanswered proposal becomes a
+default. Write the decision into <code>data/suggestions.json</code> under <code>decided</code> and the
+next build renders it as an outcome.</p>
+</div>
+<div class="shipped">
+<h2>Already shipped in this build</h2>
+<ul class="tick"><li>Disclosure strip under the masthead on every page, repeated in the footer (R01–R03, R12).</li><li>No prices and no star ratings anywhere on the site (R04, R05).</li><li>Buy buttons refuse to render without tag=shopnow047c-20 (R06).</li><li>Flagged for Review page with seven items and source links.</li><li>Open-questions register with an owner and a resolution method per question.</li><li>Five-event, cookie-free analytics script with an endpoint you configure.</li><li>Build-time link and price-pattern checks that fail CI.</li></ul>
+</div>
+<h2>Positioning</h2><div class="suggs"><article class="sugg" id="SG-01">
+<div class="sugg-head">
+  <span class="sid">SG-01</span>
+  <span class="pill st-shipped">shipped</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Make the front page a front page, not a verification report</h3>
+<p><strong>The problem.</strong> The register was the most interesting thing on the page. A shopper does not arrive wanting to read a source register.</p>
+<p><strong>The proposal.</strong> Lead with three shape-based picks — dual basket, single basket, oven — each with one sentence of who it suits. Move the register, the dashboard, and the compliance record into a single footer group where they stay reachable but never compete with the products.</p>
+<p><strong>The trade-off.</strong> You lose the &#x27;we verified everything&#x27; impression on first paint. You gain a page a buyer can act on in ten seconds.</p>
+<p class="small"><strong>Decision needed:</strong> None — shipped in this build. Flag it if you want the register back above the fold.</p>
+
+
+</article><article class="sugg" id="SG-10">
+<div class="sugg-head">
+  <span class="sid">SG-10</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Write for one person: the renter with 15 inches of counter</h3>
+<p><strong>The problem.</strong> &#x27;Everyone who cooks&#x27; is not an audience. Four of the five products are countertop appliances whose main constraint is space.</p>
+<p><strong>The proposal.</strong> Pick one reader and hold the line: someone with limited counter depth, cooking for two to four, who wants one appliance to do more than one job. Every guide answers a question that reader has.</p>
+<p><strong>The trade-off.</strong> You give up the family-of-six and the outdoor-smoker reader. Both are better served by sites that already own those queries.</p>
+<p class="small"><strong>Decision needed:</strong> Name the reader, or name a different one. This single decision changes all copy.</p>
+
+
+</article></div><h2>Information architecture</h2><div class="suggs"><article class="sugg" id="SG-02">
+<div class="sugg-head">
+  <span class="sid">SG-02</span>
+  <span class="pill st-shipped">shipped</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Split the catalog by shape, not by brand</h3>
+<p><strong>The problem.</strong> Four of five links are air fryers, two of those are the same brand. Brand-led navigation makes the choice look arbitrary.</p>
+<p><strong>The proposal.</strong> Three category pages: Air fryers, Air fryer ovens, Thermometers. Within air fryers, the reviewer chooses by basket shape first, brand second.</p>
+<p><strong>The trade-off.</strong> Brand searches convert well if you have brand authority. You do not yet. Shape is the buyer&#x27;s first real question.</p>
+<p class="small"><strong>Decision needed:</strong> None — shipped.</p>
+
+
+</article></div><h2>Content</h2><div class="suggs"><article class="sugg" id="SG-03">
+<div class="sugg-head">
+  <span class="sid">SG-03</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Publish four question-shaped guides before any product roundup</h3>
+<p><strong>The problem.</strong> A roundup titled &#x27;best air fryer&#x27; competes with a thousand established sites. A question-shaped guide can win a query no one has answered well.</p>
+<p><strong>The proposal.</strong> Write: &#x27;Basket or oven-style air fryer: what should you compare?&#x27;, &#x27;A no-hype checklist for comparing air fryer capacity&#x27;, &#x27;How to assess cleanup and counter-space trade-offs&#x27;, and &#x27;Questions to ask before buying a multi-function kitchen appliance.&#x27; Each one is answerable from the verified specs already in the register.</p>
+<p><strong>The trade-off.</strong> These titles carry no search-volume claim. They are editorial hypotheses. If Search Console shows no impressions after 60 days, retire the format rather than the topic.</p>
+<p class="small"><strong>Decision needed:</strong> Approve the four working titles, or name the four you would rather have.</p>
+
+<p class="small">These are working titles, not claims about popularity, search volume, or product superiority.</p>
+</article></div><h2>Editorial trust</h2><div class="suggs"><article class="sugg" id="SG-04">
+<div class="sugg-head">
+  <span class="sid">SG-04</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Replace the two &#x27;winner&#x27; badges with a fit statement</h3>
+<p><strong>The problem.</strong> &#x27;Best overall&#x27; implies a ranking you cannot substantiate without hands-on testing, and it is the fastest way to sound like every other affiliate page.</p>
+<p><strong>The proposal.</strong> Instead of a badge, each card states a fit condition: &#x27;Pick this if two foods need different temperatures.&#x27; It is falsifiable, it is useful, and it does not require a lab.</p>
+<p><strong>The trade-off.</strong> Badges scan faster than sentences and may lift click-through in the short term. They also invite the exact scrutiny you cannot yet survive.</p>
+<p class="small"><strong>Decision needed:</strong> Choose badge, fit statement, or both.</p>
+
+
+</article><article class="sugg" id="SG-06">
+<div class="sugg-head">
+  <span class="sid">SG-06</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>State the 212 F probe limit as the lead qualifier on the thermometer page</h3>
+<p><strong>The problem.</strong> Buyers assume a 1,000 F thermometer measures 1,000 F oil. The inserted portion is rated to 212 F; the 1,000 F figure is the ambient sensor.</p>
+<p><strong>The proposal.</strong> Put that distinction in the second sentence, not the footnote. It is the single most useful thing on the page and nobody else states it plainly.</p>
+<p><strong>The trade-off.</strong> It may read as a reason not to buy. It is also the reason a reader will trust the next page they read here.</p>
+<p class="small"><strong>Decision needed:</strong> Confirm the wording is not read as a defect claim. It is a specification, not a fault.</p>
+
+
+</article><article class="sugg" id="SG-09">
+<div class="sugg-head">
+  <span class="sid">SG-09</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Publish a correction log and keep it public</h3>
+<p><strong>The problem.</strong> When two official pages disagree, most affiliate sites pick the friendlier number and move on. That is how a site becomes untrustworthy one spec at a time.</p>
+<p><strong>The proposal.</strong> A dated list of every correction and every unresolved conflict, linked from the footer. FLG-001 through FLG-007 become the first seven entries.</p>
+<p><strong>The trade-off.</strong> It makes your uncertainty legible. It also makes it auditable, which is the only durable advantage a small site has.</p>
+<p class="small"><strong>Decision needed:</strong> Approve a public correction log, or keep the flag page internal-only.</p>
+
+
+</article></div><h2>Decision tool</h2><div class="suggs"><article class="sugg" id="SG-05">
+<div class="sugg-head">
+  <span class="sid">SG-05</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Add a counter-depth and cabinet-clearance checker</h3>
+<p><strong>The problem.</strong> The most common reason an air fryer gets returned is that it does not fit where the buyer planned to put it. Depth and height are already verified for four products.</p>
+<p><strong>The proposal.</strong> A single input pair — available depth, available height — that filters the cards to the models that clear it. Pure client-side arithmetic on values already sourced to manufacturer pages.</p>
+<p><strong>The trade-off.</strong> Adds a step before the reader sees products. Solved by defaulting the checker to open, not blocking.</p>
+<p class="small"><strong>Decision needed:</strong> Approve the interaction. No new data is required.</p>
+
+
+</article><article class="sugg" id="SG-12">
+<div class="sugg-head">
+  <span class="sid">SG-12</span>
+  <span class="pill st-shipped">shipped</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Put the comparison table behind a &#x27;what actually differs&#x27; column</h3>
+<p><strong>The problem.</strong> Spec tables list everything equally. A buyer needs the two rows that change the decision.</p>
+<p><strong>The proposal.</strong> Every product table carries a final column that names the one spec that makes this model the wrong choice for someone. On P3 it is 400 F versus 450 F. On P1 it is 3 quarts per basket.</p>
+<p><strong>The trade-off.</strong> Some rows will read as negative. They are the reason the table gets read.</p>
+<p class="small"><strong>Decision needed:</strong> None — shipped.</p>
+
+
+</article></div><h2>Compliance</h2><div class="suggs"><article class="sugg" id="SG-07">
+<div class="sugg-head">
+  <span class="sid">SG-07</span>
+  <span class="pill st-shipped">shipped</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Give every outbound link a visible product-intent record</h3>
+<p><strong>The problem.</strong> You cannot prove what a submitted link was supposed to point to once it is live.</p>
+<p><strong>The proposal.</strong> For each submitted link store the intended ASIN, the official listing URL, the confirmation date, and the source. Keep the observed redirect target in a separate field. Never merge them.</p>
+<p><strong>The trade-off.</strong> Two fields to maintain per link. That is the point: the intended target and the observed target are different claims and must be able to disagree in public.</p>
+<p class="small"><strong>Decision needed:</strong> None — the schema is live in data/products.json and rendered on each review page.</p>
+
+
+</article></div><h2>Monetization</h2><div class="suggs"><article class="sugg" id="SG-08">
+<div class="sugg-head">
+  <span class="sid">SG-08</span>
+  <span class="pill st-blocked">blocked</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Test one Special Link before scaling to five</h3>
+<p><strong>The problem.</strong> The supplied links carry no tag. Building a five-product site on untagged links would create traffic that earns nothing and a tracking record that proves nothing.</p>
+<p><strong>The proposal.</strong> Re-issue one link from Associates Central SiteStripe with tag=shopnow047c-20. Click it yourself. Confirm the click appears in the Associates report against that tag. Only then re-issue the other four.</p>
+<p><strong>The trade-off.</strong> Delays launch by days. Launching on untagged links costs every click in the meantime and teaches you nothing.</p>
+<p class="small"><strong>Decision needed:</strong> Do the one-link test now, or accept zero measurable traffic until it is done.</p>
+<p class="small blocked">Blocked by FLG-003. Needs the account holder to open Associates Central.</p>
+
+</article></div><h2>Growth</h2><div class="suggs"><article class="sugg" id="SG-11">
+<div class="sugg-head">
+  <span class="sid">SG-11</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: medium</span>
+</div>
+<h3>Publish on a cadence you can defend: one guide every two weeks</h3>
+<p><strong>The problem.</strong> A burst of twelve pages then silence is the signature of a generated site. Search engines and readers both read cadence as a signal.</p>
+<p><strong>The proposal.</strong> One guide every two weeks, each added to sitemap.xml and feed.xml in the same commit. After 60 days, choose the next topic from Search Console impressions rather than instinct.</p>
+<p><strong>The trade-off.</strong> Slower than a content dump. Twelve weeks gives you six honest pages and real query data.</p>
+<p class="small"><strong>Decision needed:</strong> Commit to the cadence, or set a different one. Do not leave it implicit.</p>
+
+
+</article></div><h2>Operations</h2><div class="suggs"><article class="sugg" id="SG-13">
+<div class="sugg-head">
+  <span class="sid">SG-13</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: high</span>
+  <span class="pill">effort: high</span>
+</div>
+<h3>Do not build an AI content pipeline until three human-edited guides exist</h3>
+<p><strong>The problem.</strong> The brief asks for automated article generation. Automating before the editorial standard exists produces volume with no standard, which is the failure mode you asked to avoid.</p>
+<p><strong>The proposal.</strong> Write and hand-edit three guides. Note every judgment call. Those notes become the checklist a generator would have to satisfy. Only then decide whether to automate drafting, and keep a human gate before publish.</p>
+<p><strong>The trade-off.</strong> Slower to volume. The alternative is scaling a voice nobody chose.</p>
+<p class="small"><strong>Decision needed:</strong> Agree to the sequence, or accept that automated drafts ship unreviewed.</p>
+
+
+</article></div><h2>Measurement</h2><div class="suggs"><article class="sugg" id="SG-14">
+<div class="sugg-head">
+  <span class="sid">SG-14</span>
+  <span class="pill st-proposed">proposed</span>
+  <span class="pill">impact: medium</span>
+  <span class="pill">effort: low</span>
+</div>
+<h3>Keep the analytics endpoint off until someone owns the data</h3>
+<p><strong>The problem.</strong> A counter with no owner accumulates data nobody reads and a retention question nobody answers.</p>
+<p><strong>The proposal.</strong> Ship the script with the endpoint unset so it fails open and records nothing. Turn it on when a named person will read the dashboard monthly and can answer how long events are kept.</p>
+<p><strong>The trade-off.</strong> You launch without traffic numbers. Given FLG-003, the numbers would be meaningless anyway.</p>
+<p class="small"><strong>Decision needed:</strong> Name the endpoint owner and a retention period.</p>
+
+
+</article></div>
+</div></main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-disclosure">
+      <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong></p>
+      <p class="small">Countertop & Co. is an independent publication. It is not endorsed by, sponsored by, or
+      affiliated with Amazon.com, Inc. or any brand named here beyond participation in the
+      Amazon Associates program. Product names and marks belong to their owners.</p>
+    </div>
+    <div class="footer-cols">
+      <div>
+        <h4>The shop</h4>
+        <a href="../air-fryers/">Air fryers</a>
+        <a href="../air-fryer-ovens/">Oven-style air fryers</a>
+        <a href="../thermometers/">Thermometers</a>
+        <a href="../guides/">Guides</a>
+      </div>
+      <div>
+        <h4>The record</h4>
+        <a href="../dashboard/">Dashboard</a>
+        <a href="../sources/">Source register</a>
+        <a href="../flagged/">Flagged for review</a>
+        <a href="../questions/">Open questions</a>
+        <a href="../suggestions/">Suggestions</a>
+        <a href="../disclosure/">Disclosure &amp; method</a>
+      </div>
+      <div>
+        <h4>Elsewhere in this publication</h4>
+        <a href="https://karagemop466-tech.github.io/Affil3/">The shop index (root site)</a>
+        <a href="https://karagemop466-tech.github.io/Affil3/flagged/">Root site flags</a>
+        <a href="https://karagemop466-tech.github.io/Affil3/executive-summary/">Root executive summary</a>
+      </div>
+      <div>
+        <h4>Feeds</h4>
+        <a href="../feed.xml">RSS</a>
+        <a href="../sitemap.xml">Sitemap</a>
+        <a href="https://github.com/karagemop466-tech/Affil3">Repository</a>
+      </div>
+    </div>
+    <p class="colophon small">Verified against official sources on 2026-11-20. Specifications carry a
+    source and an access date because they change. No prices and no star ratings appear on this site;
+    see <a href="../disclosure/">why</a>.</p>
+  </div>
+</footer>
+<script src="../assets/analytics.js" defer></script>
+</body>
+</html>

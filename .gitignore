@@ -8,3 +8,8 @@ node_modules/
 __pycache__/
 *.pyc
 .venv/
+
+# Never commit a regenerated legacy tree at the repository root. The frozen
+# editions live under legacy/ only, where they are unambiguously archived.
+/docs/
+/editorial-legacy/

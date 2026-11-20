@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Discoverability — ShopNow Labs</title>
+<meta name="description" content="Canonical URLs, a generated sitemap, an RSS feed, structured data and question-shaped pages, plus the verification step that is still missing.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/operations/discoverability/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow Labs">
+<meta property="og:title" content="Discoverability — ShopNow Labs">
+<meta property="og:description" content="Canonical URLs, a generated sitemap, an RSS feed, structured data and question-shaped pages, plus the verification step that is still missing.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/operations/discoverability/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fbf8f3">
+<meta name="generator" content="ShopNow Labs static desk v1">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Labs — new guides" href="../../feed.xml">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<script defer src="../../assets/js/analytics-config.js"></script>
+<script defer src="../../assets/js/shop.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <a class="brand" href="../../index.html">
+      <span class="brand__mark">ShopNow<em>.</em>Labs</span>
+      <span class="brand__tag">Countertop buying desk</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../../buying-guides/index.html">Guides</a><a href="../../air-fryers/index.html">Air fryers</a><a href="../../thermometers/index.html">Thermometers</a><a href="../../how-we-pick/index.html">How we pick</a>
+      <a class="nav__cta" href="../../buying-guides/index.html">Start with a guide</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap">
+    <span class="disclosure__tag">Disclosure</span>
+    <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links are marked <strong>paid</strong> and open Amazon in a new tab. <a href="../../disclosure/index.html">How this works</a></span>
+  </div>
+</div>
+<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="/Affil3/">Visit the current publication</a>.</aside>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span>Operations<span>/</span>Discoverability</nav>
+
+<section class="article-head wrap">
+  <p class="kicker">Discoverability</p>
+  <h1>One site to index, and a reason to rank it</h1>
+  <p class="lede">A search engine needs a canonical version of every page, a map of them, and a reason to prefer them to the alternatives. Here is what this build provides for each.</p>
+  <div class="article-head__meta"><span>Updated 2026-11-20</span><span>sitemap · feed · structured data</span></div>
+</section>
+<section class="section wrap">
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Signal</th><th>What exists</th><th>Why it matters</th></tr></thead>
+      <tbody>
+        <tr><td>Canonical URL</td><td>Every page declares one <code>rel="canonical"</code> absolute URL</td><td>A canonical annotation is a strong consolidation signal. <a href="../../review/sources/#C-20">C-20</a></td></tr>
+        <tr><td>XML sitemap</td><td><code>/sitemap.xml</code>, generated at build time, every indexable route exactly once</td><td>Sitemap inclusion is a weaker signal than a canonical, but it helps discovery. <a href="../../review/sources/#C-20">C-20</a></td></tr>
+        <tr><td>robots.txt</td><td><code>/robots.txt</code> with an explicit sitemap declaration</td><td>Points a crawler at the map without needing a submission.</td></tr>
+        <tr><td>RSS feed</td><td><code>/feed.xml</code>, one item per guide, with publication dates</td><td>Google supports RSS as a sitemap format, so the feed is a second discovery path. <a href="../../review/sources/#C-22">C-22</a></td></tr>
+        <tr><td>Structured data</td><td>Organization, WebSite, Article, CollectionPage, Product and Review</td><td>Gives a crawler unambiguous entity information instead of inferring it from prose.</td></tr>
+        <tr><td>Duplicate risk</td><td>Project path only, no alternate hostname, no query-string variants, no print views</td><td>Fewer URLs describing the same page, so less for a canonical to resolve.</td></tr>
+        <tr><td>Question-shaped pages</td><td>Six pages, each targeting a decision rather than a product keyword</td><td>A category page competes with Amazon. A question does not.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What is missing</h2>
+  <p><strong>Verification and submission.</strong> The property could not be verified from this environment, so the sitemap has not been submitted and no query data exists. This is the single most important open item for organic traffic. <a href="../../review/flagged-for-review/#FLG-007">FLG-007</a></p>
+  <p><strong>Search demand evidence.</strong> The six guides were chosen on editorial judgement. Nothing on this site claims a search volume, a difficulty score or a trend, because no keyword tool was consulted. <a href="../../review/questions/#Q-05">Q-05</a></p>
+  <p><strong>Links from anywhere else.</strong> Nothing points at this site yet, and no link-building tactic is proposed here, because the honest ones take time and the dishonest ones are a penalty risk.</p>
+
+  <h2>A publishing cadence that compounds</h2>
+  <ol>
+    <li><strong>Ship two verified guides a month.</strong> Each one adds a sitemap entry and a feed item automatically, with no manual bookkeeping.</li>
+    <li><strong>Read queries after four to six weeks.</strong> Write the next guide in the language people actually used, not the language we guessed.</li>
+    <li><strong>Update rather than pile up.</strong> A revised guide with a new <code>dateModified</code> is worth more than two thin ones.</li>
+    <li><strong>Retire what stops being true.</strong> When a product listing changes materially, the page that described it is corrected or removed, not left to rot.</li>
+  </ol>
+
+  <div class="callout">
+    <span class="callout__label">Rule of thumb</span>
+    <p class="small" style="margin:0">One verified page that answers one question beats ten pages that summarise a category. The sitemap does not care how many URLs it holds; a crawler only keeps the ones worth keeping.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html"><span class="brand__mark">ShopNow<em>.</em>Labs</span></a>
+        <p style="margin-top:.7rem">A small buying desk for countertop cooking appliances. We publish the reasoning, not just the ranking.</p>
+        <p class="tiny" style="margin-top:.7rem">Tracking ID <code>shopnow047c-20</code> · Amazon.com</p>
+      </div>
+      <div>
+      <h3>The desk</h3>
+      <ul><li><a href="../../buying-guides/index.html">All buying guides</a></li><li><a href="../../air-fryers/index.html">Air fryers</a></li><li><a href="../../thermometers/index.html">Thermometers</a></li><li><a href="../../how-we-pick/index.html">How we pick</a></li><li><a href="../../collections/index.html">Seasonal collections</a></li></ul>
+    </div><div>
+      <h3>Review room</h3>
+      <ul><li><a href="../../review/executive-summary/index.html">Executive summary</a></li><li><a href="../../review/flagged-for-review/index.html">Flagged for review</a></li><li><a href="../../review/suggestions/index.html">Suggestion register</a></li><li><a href="../../review/questions/index.html">Open questions</a></li><li><a href="../../review/product-register/index.html">Product register</a></li></ul>
+    </div><div>
+      <h3>Operations</h3>
+      <ul><li><a href="../automation/index.html">Automation & gates</a></li><li><a href="../measurement/index.html">Measurement plan</a></li><li><a href="../../review/campaign-ledger/index.html">Campaign ledger</a></li><li><a href="../../review/sources/index.html">Source register</a></li></ul>
+    </div><div>
+      <h3>The fine print</h3>
+      <ul><li><a href="../../disclosure/index.html">Disclosure</a></li><li><a href="../../privacy/index.html">Privacy</a></li><li><a href="../../editorial-standards/index.html">Editorial standards</a></li><li><a href="../../contact/index.html">Contact</a></li><li><a href="../../index.html">Archived editions</a></li></ul>
+    </div>
+    </div>
+    <div class="footer__legal">
+      <p class="assoc"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> I get commissions for purchases made through links in this post.</p>
+      <p>Prices and availability are shown on Amazon and can change at any time. We do not publish prices on this site. Product names, logos and brands are the property of their respective owners and are used for identification only. This site is not endorsed by or affiliated with any brand mentioned.</p>
+      <p>© 2026 ShopNow Labs. Editorial content published 2026-11-20. <a href="../../privacy/index.html">Privacy</a> · <a href="../../disclosure/index.html">Disclosure</a> · <a href="../../review/flagged-for-review/index.html">Known gaps</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -223,21 +223,32 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
 }
 
-// The historical editorial register stays available as a review archive, not a second search publication.
-const editorialDir = path.join(ROOT, 'editorial');
-if (fs.existsSync(editorialDir)) {
+// Historical publications remain reachable but out of search. Allow crawling so robots meta can be read.
+for (const archive of ['editorial', 'crisp-index', 'legacy']) {
+  const archiveDir = path.join(ROOT, archive);
+  if (!fs.existsSync(archiveDir)) continue;
   const archiveHtml = [];
   const walkArchive = (dir) => { for (const entry of fs.readdirSync(dir)) { const f = path.join(dir, entry); if (fs.statSync(f).isDirectory()) walkArchive(f); else if (f.endsWith('.html')) archiveHtml.push(f); } };
-  walkArchive(editorialDir);
+  walkArchive(archiveDir);
+  check(`${archive} archive has HTML pages`, archiveHtml.length > 0);
   for (const f of archiveHtml) {
     const html = fs.readFileSync(f, 'utf8');
     check(`${path.relative(ROOT, f)} is noindex`, /<meta name="robots" content="noindex,follow">/.test(html));
+    check(`${path.relative(ROOT, f)} identifies itself as an archive`, /class="archive-notice"/.test(html));
+    check(`${path.relative(ROOT, f)} has no clickable product CTA`, !/<a\b(?=[^>]*\bdata-product=)(?=[^>]*\btag=shopnow047c-20)/i.test(html));
+    check(`${path.relative(ROOT, f)} has no unresolved merge markers`, !/^<<<<<<<|^=======|^>>>>>>>/m.test(html));
   }
-  const archiveMap = fs.readFileSync(path.join(editorialDir, 'sitemap.xml'), 'utf8');
-  check('editorial archive sitemap contains no URLs', !/<url>/.test(archiveMap));
-  const rootMap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
-  check('canonical root sitemap excludes editorial archive', !rootMap.includes('/editorial/'));
+  const archiveMapPath = path.join(archiveDir, 'sitemap.xml');
+  if (archive === 'editorial' && fs.existsSync(archiveMapPath)) {
+    const archiveMap = fs.readFileSync(archiveMapPath, 'utf8');
+    check('editorial archive sitemap contains no URLs', !/<url>/.test(archiveMap));
+  }
 }
+const rootMap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
+for (const archive of ['editorial', 'crisp-index', 'legacy']) {
+  check(`canonical root sitemap excludes ${archive} archive`, !rootMap.includes(`/${archive}/`));
+}
+check('robots.txt allows crawlers to read archive noindex directives', !fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8').split(/\r?\n/).some((line) => /^Disallow:\s*\/(editorial|crisp-index|legacy)\//.test(line)));
 
 // ---------- report ----------
 console.log(`verify: ${passes.length} checks passed, ${failures.length} failed`);

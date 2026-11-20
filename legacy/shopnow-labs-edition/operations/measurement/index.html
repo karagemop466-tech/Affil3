@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex,follow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement plan — ShopNow Labs</title>
+<meta name="description" content="The five defined events, their payloads, what is deliberately excluded for privacy, and the honest statement that no analytics collector is live yet.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/operations/measurement/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ShopNow Labs">
+<meta property="og:title" content="Measurement plan — ShopNow Labs">
+<meta property="og:description" content="The five defined events, their payloads, what is deliberately excluded for privacy, and the honest statement that no analytics collector is live yet.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/operations/measurement/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#fbf8f3">
+<meta name="generator" content="ShopNow Labs static desk v1">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Labs — new guides" href="../../feed.xml">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<script defer src="../../assets/js/analytics-config.js"></script>
+<script defer src="../../assets/js/shop.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="wrap masthead__bar">
+    <a class="brand" href="../../index.html">
+      <span class="brand__mark">ShopNow<em>.</em>Labs</span>
+      <span class="brand__tag">Countertop buying desk</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="../../buying-guides/index.html">Guides</a><a href="../../air-fryers/index.html">Air fryers</a><a href="../../thermometers/index.html">Thermometers</a><a href="../../how-we-pick/index.html">How we pick</a>
+      <a class="nav__cta" href="../../buying-guides/index.html">Start with a guide</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap">
+    <span class="disclosure__tag">Disclosure</span>
+    <span>I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links are marked <strong>paid</strong> and open Amazon in a new tab. <a href="../../disclosure/index.html">How this works</a></span>
+  </div>
+</div>
+<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="/Affil3/">Visit the current publication</a>.</aside>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumb"><a href="../../index.html">Home</a><span>/</span>Operations<span>/</span>Measurement</nav>
+
+<section class="article-head wrap">
+  <p class="kicker">Measurement plan</p>
+  <h1>Five events, no cookies, and a collector that is not switched on</h1>
+  <p class="lede">Click and conversion measurement was supposed to come first. Here is the instrument, the payloads, and an honest statement that no endpoint exists yet.</p>
+  <div class="article-head__meta"><span>Updated 2026-11-20</span><span>Collector: not configured</span></div>
+</section>
+<section class="section wrap">
+  <div class="callout callout--warn" style="margin-bottom:1.75rem"><span class="callout__label">Read this first</span><p class="small" style="margin:0">The site emits the events below to a documented interface. Because no endpoint is configured, every event is dropped before it leaves the browser. Nothing is being recorded, and no figure anywhere on this site is derived from measurement.</p></div>
+
+  <h2>The five events</h2>
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Event</th><th>Fires when</th><th>Payload</th><th>Deliberately excluded</th></tr></thead>
+      <tbody>
+        <tr><td><code>page_view</code></td><td>Every page load</td><td class="tiny">path, referrer category (search / direct / referral / internal), viewport bucket</td><td class="tiny">No IP, no user agent string, no fingerprint</td></tr><tr><td><code>guide_read</code></td><td>A guide page reaching 75% scroll depth</td><td class="tiny">path, minutes on page rounded to the minute</td><td class="tiny">No scroll positions, no keystrokes</td></tr><tr><td><code>product_view</code></td><td>A product page load</td><td class="tiny">product id, entry path</td><td class="tiny">No cross-visit identity</td></tr><tr><td><code>outbound_click</code></td><td>A click on a paid Amazon link</td><td class="tiny">product id, page path, link position on page</td><td class="tiny">No Amazon customer data, no order attribution</td></tr><tr><td><code>capture_submit</code></td><td>The newsletter form being submitted</td><td class="tiny">page path, whether the field validated</td><td class="tiny">No email address is sent to analytics, ever</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Why not just install Google Analytics</h2>
+  <p>You can, and it may be the right answer. It is free, it is capable, and it comes with a consent obligation in several jurisdictions and a third-party script on every page. The design here is the opposite: a small first-party collector that stores aggregate counts and nothing that identifies a person. That choice is not free either — you have to run it.</p>
+  <p>The decision is recorded as <a href="../../review/suggestions/#SUG-11">SUG-11</a> with three paths and a recommendation, so it can be made deliberately rather than by default.</p>
+
+  <h2>What "conversion" means here</h2>
+  <p>Two different things get called a conversion, and conflating them is how affiliate reporting goes wrong:</p>
+  <ul>
+    <li><strong>An outbound click</strong> — measured by this site, at the moment someone leaves for Amazon. This site can count it.</li>
+    <li><strong>A qualifying purchase</strong> — measured only by Amazon, inside a session that begins with a click on a tagged Special Link and ends at the first of 24 hours, an order, or a click on a different Associates link. Cart purchases can still qualify up to 89 days later. This site cannot count it. <a href="../../review/sources/#C-18">C-18</a></li>
+  </ul>
+  <p>So the site reports clicks. It does not report a conversion rate, because the denominator would be invented. When Amazon reports orders, they go into the <a href="../../review/campaign-ledger/index.html">campaign ledger</a> with the report date, and never into a score.</p>
+
+  <h2>What is not measured, and why that is a problem</h2>
+  <ul>
+    <li><strong>Which question actually brings people in.</strong> Needs Search Console (see below) or a search-referrer breakdown from the collector.</li>
+    <li><strong>Whether anyone reaches the paid link.</strong> Will be measurable once the collector exists; today the <code>outbound_click</code> event fires into nothing.</li>
+    <li><strong>Whether a click becomes an order.</strong> Requires Amazon's report, which requires a working tagged link, which is the open item in <a href="../../review/flagged-for-review/#FLG-002">FLG-002</a>.</li>
+  </ul>
+
+  <h2>Turning it on</h2>
+  <ol>
+    <li>Choose a host for the endpoint and decide the retention period. Recommended: 30 days for raw aggregates, indefinite for daily totals.</li>
+    <li>Set <code>ANALYTICS_ENDPOINT</code> in <code>assets/js/analytics-config.js</code>. The file ships with an empty string, which is why nothing transmits.</li>
+    <li>Update the <a href="../../privacy/index.html">privacy page</a> before switching it on, not after.</li>
+    <li>Record the switch-on date in the campaign ledger so every later figure has a start date.</li>
+    <li>Verify the property in Search Console and submit <code>/Affil3/sitemap.xml</code>.</li>
+  </ol>
+
+  <div class="callout callout--verify">
+    <span class="callout__label">The honest status</span>
+    <p class="small" style="margin:0">Instrument: shipped. Collector: not configured. Search Console: not verified. Therefore: zero measured data, and no optimisation claim anywhere on this site. <a href="../../review/flagged-for-review/#FLG-006">FLG-006</a> · <a href="../../review/flagged-for-review/#FLG-007">FLG-007</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="../../index.html"><span class="brand__mark">ShopNow<em>.</em>Labs</span></a>
+        <p style="margin-top:.7rem">A small buying desk for countertop cooking appliances. We publish the reasoning, not just the ranking.</p>
+        <p class="tiny" style="margin-top:.7rem">Tracking ID <code>shopnow047c-20</code> · Amazon.com</p>
+      </div>
+      <div>
+      <h3>The desk</h3>
+      <ul><li><a href="../../buying-guides/index.html">All buying guides</a></li><li><a href="../../air-fryers/index.html">Air fryers</a></li><li><a href="../../thermometers/index.html">Thermometers</a></li><li><a href="../../how-we-pick/index.html">How we pick</a></li><li><a href="../../collections/index.html">Seasonal collections</a></li></ul>
+    </div><div>
+      <h3>Review room</h3>
+      <ul><li><a href="../../review/executive-summary/index.html">Executive summary</a></li><li><a href="../../review/flagged-for-review/index.html">Flagged for review</a></li><li><a href="../../review/suggestions/index.html">Suggestion register</a></li><li><a href="../../review/questions/index.html">Open questions</a></li><li><a href="../../review/product-register/index.html">Product register</a></li></ul>
+    </div><div>
+      <h3>Operations</h3>
+      <ul><li><a href="../automation/index.html">Automation & gates</a></li><li><a href="index.html">Measurement plan</a></li><li><a href="../../review/campaign-ledger/index.html">Campaign ledger</a></li><li><a href="../../review/sources/index.html">Source register</a></li></ul>
+    </div><div>
+      <h3>The fine print</h3>
+      <ul><li><a href="../../disclosure/index.html">Disclosure</a></li><li><a href="../../privacy/index.html">Privacy</a></li><li><a href="../../editorial-standards/index.html">Editorial standards</a></li><li><a href="../../contact/index.html">Contact</a></li><li><a href="../../index.html">Archived editions</a></li></ul>
+    </div>
+    </div>
+    <div class="footer__legal">
+      <p class="assoc"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> I get commissions for purchases made through links in this post.</p>
+      <p>Prices and availability are shown on Amazon and can change at any time. We do not publish prices on this site. Product names, logos and brands are the property of their respective owners and are used for identification only. This site is not endorsed by or affiliated with any brand mentioned.</p>
+      <p>© 2026 ShopNow Labs. Editorial content published 2026-11-20. <a href="../../privacy/index.html">Privacy</a> · <a href="../../disclosure/index.html">Disclosure</a> · <a href="../../review/flagged-for-review/index.html">Known gaps</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

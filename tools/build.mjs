@@ -156,6 +156,7 @@ ${body}
         <ul class="foot-links">
           ${DASHBOARDS.map(([u, t]) => `<li><a href="${esc(href(u))}">${esc(t)}</a></li>`).join('\n          ')}
           <li><a href="${esc(href('/feed.xml'))}">RSS feed</a></li>
+          <li><a href="${esc(href('/legacy/archive/'))}">Archived editions</a></li>
           <li><a href="${esc(href('/sitemap.xml'))}">Sitemap</a></li>
         </ul>
       </div>
@@ -984,5 +985,36 @@ ${feedItems.map((g) => `  <item>
 `);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// Keep historical publication surfaces reachable but out of search. Do not disallow
+// these paths in robots.txt: crawlers must fetch each page to read its noindex directive.
+const markArchiveNoindex = (dir) => {
+  const full = path.join(OUT, dir);
+  if (!fs.existsSync(full)) return;
+  const walk = (folder) => {
+    for (const entry of fs.readdirSync(folder, { withFileTypes: true })) {
+      const file = path.join(folder, entry.name);
+      if (entry.isDirectory()) walk(file);
+      else if (entry.isFile() && entry.name.endsWith('.html')) {
+        let html = fs.readFileSync(file, 'utf8');
+        // Old archive builds may still contain provisional product buttons. Retain their copy,
+        // but never leave an unvalidated affiliate destination clickable in an archive.
+        html = html.replace(/<a\b(?=[^>]*\bdata-product=)(?=[^>]*\btag=shopnow047c-20)[^>]*>([\s\S]*?)<\/a>/gi,
+          '<span class="archive-link-held">$1 <span class="small">(purchase link held pending G-02)</span></span>');
+        if (!/<meta\s+name=["']robots["']\s+content=["']noindex,follow["']/.test(html)) {
+          html = html.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,follow">');
+        }
+        if (!/class=["'][^"']*archive-notice/.test(html)) {
+          const notice = `<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="${esc(href('/'))}">Visit the current publication</a>.</aside>\n`;
+          html = html.replace(/<main\b/i, `${notice}<main`);
+        }
+        html = html.replace(/[ \t]+$/gm, '');
+        fs.writeFileSync(file, html);
+      }
+    }
+  };
+  walk(full);
+};
+for (const archive of ['editorial', 'crisp-index', 'legacy']) markArchiveNoindex(archive);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);
