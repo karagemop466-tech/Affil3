@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open questions &mdash; Affil3</title>
+<meta name="description" content="Every question that must be answered before a decision on the Affil3 site is reasonable, with what is known, what is missing, and how to go find the missing part.">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/questions.html">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
+<link rel="alternate" type="application/rss+xml" title="Affil3 &mdash; Recent guides" href="feed.xml">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrapper">
+    <div class="brand"><a href="index.html">Affil3</a></div>
+    <p class="dek">Buyer questions first. Verified links second. Nothing invented.</p>
+  </div>
+  <div class="disclosure-strip" role="region" aria-label="Affiliate disclosure">
+    <strong>Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases. If you buy through our links we may earn a commission at no extra cost to you. Every outbound product link is marked <code>rel="sponsored"</code>. <a href="disclosure.html">Why we word it this way &rarr;</a>
+  </div>
+  <nav class="navgroup" aria-label="Main navigation">
+  <div class="wrapper">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="products.html">Products</a>
+    <a href="guides/index.html">Guides</a>
+    <a href="verification.html">Link evidence</a>
+    <a href="suggestions.html">Decision room</a>
+    <a href="questions.html" aria-current="page">Open questions</a>
+    <a href="flagged.html">Flagged</a>
+    <a href="disclosure.html">Disclosure</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="about.html">About</a>
+  </div>
+  </nav>
+</header>
+<main>
+<div class="wrapper">
+  <section>
+    <h1>Open questions</h1>
+    <p class="lead">Each row states what is already known from retrieved evidence, what is still missing, the concrete way to find the missing part, and which suggestions or paths stay blocked until it is answered. Blank answers are blank because they are genuinely unknown, not because they were skipped.</p>
+    <div class="notebox"><b>How to answer</b> Fill the answer field, set status to answered, then re-run the build. The decision room cards that reference the question will unblock.</div>
+    <h2>Index</h2>
+    <ul>
+      <li>Account &mdash; <a href="#Q-01">Q-01</a>, <a href="#Q-02">Q-02</a></li>
+      <li>Products &mdash; <a href="#Q-03">Q-03</a></li>
+      <li>Data access &mdash; <a href="#Q-04">Q-04</a></li>
+      <li>Editorial &mdash; <a href="#Q-05">Q-05</a>, <a href="#Q-07">Q-07</a></li>
+      <li>Brand &mdash; <a href="#Q-06">Q-06</a></li>
+      <li>Traffic &mdash; <a href="#Q-08">Q-08</a></li>
+      <li>Measurement &mdash; <a href="#Q-09">Q-09</a></li>
+      <li>Business &mdash; <a href="#Q-10">Q-10</a></li>
+      <li>Niche &mdash; <a href="#Q-11">Q-11</a></li>
+      <li>Compliance &mdash; <a href="#Q-12">Q-12</a></li>
+      <li>Provenance &mdash; <a href="#Q-13">Q-13</a></li>
+      <li>Payments &mdash; <a href="#Q-14">Q-14</a></li>
+      <li>Coordination &mdash; <a href="#Q-15">Q-15</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>The register</h2>
+    <div class="sug-grid">
+      <article class="card q" id="Q-01">
+        <p class="tagline">Account &bull; Q-01 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Is there an active, accepted Amazon Associates account, and is this site listed in its application?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Special Links may only be displayed after applying to the program, and the site has to contain original content and be publicly available at the address given in the application. A site that is not in the application cannot monetise however good its content is. This single answer gates four of the sixteen suggestions and all of Path C.</p>
+        <p class="field"><b>What we already know</b> The repo contains no evidence of enrolment. Nothing in the codebase, git history, or issue tracker references a verified account. The Pages deployment at https://karagemop466-tech.github.io/Affil3/ is live and building, so the public-site condition is satisfiable today.</p>
+        <p class="field"><b>What we do not know</b> Whether an account exists; whether it is accepted or still in a conditional state; whether this Pages URL is registered on it; whether the account is in good standing; the payment and tax profile state.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Associates Central, Account settings, and the site list inside it. Then confirm by generating one link there rather than constructing one. To discover without account access: check whether any prior project notes, emails, or a password manager entry reference an Associates login; check whether the tracking ID appears in any analytics property you already own.</p>
+        <p class="field"><b>Who must answer</b> Owner. Cannot be answered from this environment by any tool available here.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-02">SUG-02</a>, <a href="suggestions.html#SUG-04">SUG-04</a>, <a href="suggestions.html#SUG-12">SUG-12</a>, <a href="suggestions.html#PATH-C">PATH-C</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-02">
+        <p class="tagline">Account &bull; Q-02 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Is &quot;shopnow047c-20&quot; a tracking ID, a full tag, or something else, and does it belong to this site?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Every Special Link must include the Associates ID or tag as a URL parameter in the XXXXX-## form. Put the wrong string in a link and traffic arrives at Amazon with no attribution, which looks like a content failure and is actually an accounting failure.</p>
+        <p class="field"><b>What we already know</b> The submitted value is shopnow047c-20. Its -20 suffix matches the shape the policy text describes for a tag. Whether a tracking ID and a tag suffix are the same string is not stated in the retrieved text, so this register keeps the value unsplit rather than guessing.</p>
+        <p class="field"><b>What we do not know</b> Whether the ID exists; whether it is active; whether more than one tracking ID is in use; whether it was created for this domain; whether the -20 suffix is the correct one for this site.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Associates Central, Account settings, Tracking IDs. Generate a test link there and read the tag it emits rather than assuming. To discover: look for other live pages already using a tag, since an existing publishing footprint will usually reveal the real value.</p>
+        <p class="field"><b>Who must answer</b> Owner, in the Associates account.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-02">SUG-02</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-03">
+        <p class="tagline">Products &bull; Q-03 &bull;
+        <span class="unverified">open</span></p>
+        <h3>What are the five products, actually?</h3>
+        <p class="field"><b>Why it matters before deciding</b> The site cannot describe, compare, or recommend items whose identity is unresolved. Every downstream choice, from category clusters to the keyword set to which images you are allowed to use, depends on this.</p>
+        <p class="field"><b>What we already know</b> The five submitted URLs and tokens are recorded exactly as given, all nine characters long. Four resolve on 2026-11-20 to live listings: CHEFMAN 6 Qt Dual Basket Air Fryer Oven (B0CDY277D3), Emeril Lagasse 26QT French Door Air Fryer Toaster Oven (B09B7SB46R), Chefman 8 Qt TurboFry Air Fryer (B08DKYBTPH), and CHEF iQ Sense wireless meat thermometer (B0DZFD6R9Z). One, B0c8moW59, reached an Amazon checkpoint page and resolved to nothing. In every resolved case the page reached does not match the submitted token, and each destination URL carried plpRedirect=mhFallback.</p>
+        <p class="field"><b>What we do not know</b> Which listing the owner meant for each token; whether the observed pages are the intended products or a fallback surface; whether the mismatch is a transcription error, an expired short link, or something else; the true product set and its price band.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Open each listing signed in and copy the ten-character ASIN from the product information section or the /dp/ URL. For discovery: search your own order history, wishlist, or the notes where the links were first collected, and check whether the links were pasted from a chat client where characters may have been trimmed, since nine characters where ten are expected is consistent with a truncated copy.</p>
+        <p class="field"><b>Who must answer</b> Owner, or anyone with the source document the links came from.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-01">SUG-01</a>, <a href="suggestions.html#SUG-13">SUG-13</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-04">
+        <p class="tagline">Data access &bull; Q-04 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Can the project obtain Creators API or PA-API access for product data and imagery?</h3>
+        <p class="field"><b>Why it matters before deciding</b> It decides whether prices, availability, and product images can ever appear lawfully, and whether product research can be automated at all. Without it, the automation the brief asks for has no legitimate data source and the site is confined to criteria and links.</p>
+        <p class="field"><b>What we already know</b> Program Policies permit showing prices only through a link Amazon serves or data obtained via Creators API or PA API. Program Content, including images, is what Amazon makes available through its own tools. This environment has no API credentials and cannot apply.</p>
+        <p class="field"><b>What we do not know</b> Whether the account is eligible today; what the current access route and its conditions are; rate limits; which fields are available for the relevant categories. Note also that the widely repeated &quot;three qualifying sales within 180 days&quot; condition was NOT found in the policy text retrieved on 2026-11-20, so do not plan around it as fact (UNV-01).</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Associates Central, Tools, Product Advertising API, in-account. Read the current eligibility notice rather than any blog. To discover: search the retrieved Participation Requirements and License text for the API terms in a logged-in session, where the linked License page renders in full.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-04">SUG-04</a>, <a href="suggestions.html#SUG-16">SUG-16</a>, <a href="suggestions.html#PATH-C">PATH-C</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-05">
+        <p class="tagline">Editorial &bull; Q-05 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Who owns the publishing cadence, and does anyone actually own the products?</h3>
+        <p class="field"><b>Why it matters before deciding</b> A cadence with no owner silently stops, and a site with nothing to compare stalls at criteria-only content. The anti-slop rules only work if a person applies them, because they require judgement about what counts as a real trade-off.</p>
+        <p class="field"><b>What we already know</b> Nothing in the repo indicates an editorial owner. The four existing guides are working titles recorded as hypotheses, with no stated testing behind them. Program Policies require original content with significant commentary, analysis, or transformation, so &quot;someone&quot; has to supply the judgement the rule is asking for.</p>
+        <p class="field"><b>What we do not know</b> Whether anyone on this project has hands-on experience with any of the products; who edits; how many hours a week exist for writing; whether the site may publish criteria-only guidance or must wait until something has been used.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Direct answer from the owner. To discover what is achievable: check whether a product can be bought, borrowed, or returned within the review window, because the honest options are hands-on, spec-comparison, or nothing, and the site should say which one it is doing on every page.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-05">SUG-05</a>, <a href="suggestions.html#SUG-07">SUG-07</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-06">
+        <p class="tagline">Brand &bull; Q-06 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Does the site keep the name Affil3, take a consumer name, and get a custom domain?</h3>
+        <p class="field"><b>Why it matters before deciding</b> The name is the first trust signal and the last thing a reader sees before clicking. It is also the one decision with a legal trap attached: a trademark or a variant of one in a domain, subdomain, tag, or handle is on the list of things that make a site unsuitable for the programme.</p>
+        <p class="field"><b>What we already know</b> Affil3 is a repo codename appearing in the masthead. Neither Affil3 nor shopnow047c contains an Amazon trademark, so the current names clear the retrieved rule.</p>
+        <p class="field"><b>What we do not know</b> The niche the brand should claim, whether a domain budget exists, and whether any candidate name is already in use or trademarked by a third party.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Shortlist three names, check each against the participation-requirements trademark clause, then a registrar availability lookup and a general trademark search for the relevant class. Treat the trademark check as your own diligence with counsel, not as a conclusion from this document.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-06">SUG-06</a>, <a href="suggestions.html#SUG-15">SUG-15</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-07">
+        <p class="tagline">Editorial &bull; Q-07 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Whose byline goes on the guides, and what may that person truthfully claim?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Authorship is the reader-facing polish the brief asks for, and it is also where a site most often starts making claims it cannot support. A byline implying testing that did not happen is a misleading claim about a product, and an endorsement credibility problem, not a formatting choice.</p>
+        <p class="field"><b>What we already know</b> No author exists in the repo. Every page can truthfully say what it did: which listings were retrieved, on what date, from what source, and what was not tested.</p>
+        <p class="field"><b>What we do not know</b> A real author&#x27;s name, actual experience with the category, and their willingness to be named.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Ask the person. To discover a defensible claim: list what each candidate author has actually done with the products and write the bio from that list only.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-06">SUG-06</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-08">
+        <p class="tagline">Traffic &bull; Q-08 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Is Search Console connected for the published origin, and can it be checked from this project?</h3>
+        <p class="field"><b>Why it matters before deciding</b> The brief asks to turn on real analytics so the next topic is chosen from measured queries instead of instinct. Without it, the site cannot tell whether anyone arrives, and topic selection stays guesswork forever.</p>
+        <p class="field"><b>What we already know</b> The site is live on one origin with a sitemap.xml and feed.xml present. This environment cannot verify a Search Console property, since that needs the owner&#x27;s Google account. No Search Console verification record appears in the repo.</p>
+        <p class="field"><b>What we do not know</b> Property state, any existing query data, index coverage, and whether the earlier site build from another branch was ever submitted.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Verify the URL-prefix or domain property, submit sitemap.xml, wait for coverage, then read the queries report. To discover whether it was already done: check the DNS TXT records of the domain and the ownership list in the Google account.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-07">SUG-07</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-09">
+        <p class="tagline">Measurement &bull; Q-09 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Where does event data go, who hosts it, and what is retained?</h3>
+        <p class="field"><b>Why it matters before deciding</b> GitHub Pages cannot receive the beacon the current client script posts to, so five events are instrumented and zero are collected. Choosing the receiver also fixes the privacy posture, and one of the policy rules forbids associating a sub-tag with a specific end user, which constrains what the receiver may store.</p>
+        <p class="field"><b>What we already know</b> The beacon endpoint and the five event names are defined in the site&#x27;s client script. A self-hosted receiver exists in an unmerged branch as a Node server and is not deployed. CLM-07 forbids per-visitor sub-tag assignment.</p>
+        <p class="field"><b>What we do not know</b> Whether a host exists or is affordable; the retention window; whether consent obligations apply to this audience mix; who reviews the privacy statement.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Answer with one hosting decision and one retention number. To discover the consent question properly: get a legal read of the audience mix rather than relying on a project document, which is not legal advice.</p>
+        <p class="field"><b>Who must answer</b> Owner, plus whoever reviews privacy.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-11">SUG-11</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-10">
+        <p class="tagline">Business &bull; Q-10 &bull;
+        <span class="unverified">open</span></p>
+        <h3>What is the goal: revenue, an audience asset, or a portfolio demonstration?</h3>
+        <p class="field"><b>Why it matters before deciding</b> The three answer the same trade-offs differently. Revenue pushes toward deal content and faster publishing; an audience asset pushes toward editorial voice and cadence; a demonstration pushes toward visible automation and data plumbing. The paths offered in the decision room are ranked on the assumption of revenue, which is only the brief&#x27;s stated priority.</p>
+        <p class="field"><b>What we already know</b> The brief prioritises automation, scalability, data-driven decisions, and compliance, and asks for organic traffic and real people buying. That reads as revenue with a compliance floor.</p>
+        <p class="field"><b>What we do not know</b> Target revenue, timeline, acceptable spend on hosting, a domain, and products to buy for testing, and what happens if the niche underperforms.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Owner answer. To make it concrete: name the number of monthly outbound clicks that would count as success at ninety days, since that number converts the abstract priority into a decision rule the ledger can be judged against.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#PATH-A">PATH-A</a>, <a href="suggestions.html#PATH-B">PATH-B</a>, <a href="suggestions.html#PATH-C">PATH-C</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-11">
+        <p class="tagline">Niche &bull; Q-11 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Is the site an air fryer shop, a broader countertop-cooking shop, or whatever the resolved products turn out to be?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Cluster structure, internal links, and topical authority all depend on a declared niche. The evidence points at countertop cooking with one outlier: three of the four resolved listings sit in the Air Fryers browse node and one sits in Meat thermometers, so the current set is not one category.</p>
+        <p class="field"><b>What we already know</b> Observed browse nodes on 2026-11-20: 17659096011 (Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers) for three listings, and 289810 (Kitchen Utensils &amp; Gadgets &gt; Thermometers &amp; Timers &gt; Meat) for one.</p>
+        <p class="field"><b>What we do not know</b> Whether the outlier is deliberate, and how much category expansion the owner wants, since a niche narrowing after publishing means redirecting content.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Decide from the confirmed product set once Q-03 is answered. To discover the shape of the market: read the category browse structure on Amazon itself, which reveals sibling nodes a shop could legitimately own, and check which of them the existing content could serve.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-05">SUG-05</a>, <a href="suggestions.html#SUG-06">SUG-06</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-12">
+        <p class="tagline">Compliance &bull; Q-12 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Who signs off the disclosure wording and its placement, and against what text?</h3>
+        <p class="field"><b>Why it matters before deciding</b> The disclosure is the one requirement every page inherits, and the brief asks for a review against the Operating Agreement and FTC guidance as a priority-5 gate. A named reviewer is what turns that from a sentence into a process.</p>
+        <p class="field"><b>What we already know</b> The FTC standard is retrieved and quoted at CLM-16, including that staff guidance is not a safe harbour. The disclosure strip exists above the fold on every page and repeats in the footer. The exact Amazon-mandated wording sits in the participation requirements and the trademark and identification guidelines, which were not fully captured in the retrieved chunks.</p>
+        <p class="field"><b>What we do not know</b> Whether the current wording matches the identification statement Amazon requires verbatim, whether it is present in the syndicated feed copy, and who has authority to approve changes.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Read the Identification and disclosure clauses of the Participation Requirements in a logged-in session, where the full linked documents render, and diff them against the site&#x27;s sentence. To discover drift: grep the built HTML for the disclosure string and confirm it appears before the first product link on every page, which the validator now does automatically.</p>
+        <p class="field"><b>Who must answer</b> Owner, ideally with a legal read.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-10">SUG-10</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-13">
+        <p class="tagline">Provenance &bull; Q-13 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Where did the five link.amazon URLs come from, and were they generated by a different Amazon creator programme?</h3>
+        <p class="field"><b>Why it matters before deciding</b> This decides whether the links are broken, superseded, or from a different programme with its own rules. A short link that is not an Associates link at all needs a different remediation than a mistyped one, and the wrong fix could waste the launch.</p>
+        <p class="field"><b>What we already know</b> The host link.amazon accepts a trailing token and hands requests to amazon.com with plpRedirect=mhFallback on four of five. That behaviour is consistent with a router falling back rather than resolving, but the mechanism is inferred from responses, not documented here.</p>
+        <p class="field"><b>What we do not know</b> Domain ownership and authorisation (UNV-04); which programme minted the links; whether they expire; whether they carry attribution at all; whether the tokens are ASINs in another format.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Ask whoever supplied them, and check the source app or email that produced them. To discover independently: open one in a normal signed-out browser and watch the address bar through the redirect chain; check whether an Amazon Influencer or Creator programme dashboard exists on the same email, since those programmes mint their own short links and have separate terms.</p>
+        <p class="field"><b>Who must answer</b> Owner, or the person who supplied the links.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-02">SUG-02</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-14">
+        <p class="tagline">Payments &bull; Q-14 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Is the payment method, currency, and tax profile complete, and does the balance ever reach the payout minimum?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Effort spent on traffic is invisible in the bank if payout settings are unfinished, and the retrieved rules set real thresholds: about sixty days after month end, ten USD minimum for direct deposit, two thousand USD ceiling on gift-card payouts, one hundred USD minimum for a check with a fifteen USD fee, and withholding rights on accounts with no substantial activity for three years.</p>
+        <p class="field"><b>What we already know</b> The thresholds above are retrieved from the Commission Income Statement at CLM-11 and its section on payment minimums.</p>
+        <p class="field"><b>What we do not know</b> Whether a bank account and tax information are on file, which payment option is selected, and the account activity state.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> Associates Central, Account settings. To discover quickly: check for a payment-method confirmation email in the account&#x27;s inbox.</p>
+        <p class="field"><b>Who must answer</b> Owner.</p>
+        <p class="field"><b>Blocks</b> <span class="blank">nothing is blocked on this; it is context</span></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+      <article class="card q" id="Q-15">
+        <p class="tagline">Coordination &bull; Q-15 &bull;
+        <span class="unverified">open</span></p>
+        <h3>Which branch is the site, and does the project want one merged site or several competing ones?</h3>
+        <p class="field"><b>Why it matters before deciding</b> Twelve branches exist. One site build is merged, a second full build sits open as a pull request with a different homepage, a different brand name, and its own data files, and other branches contain coordination claims over the same shared files. Publishing both shapes would split the very indexation the brief asks for.</p>
+        <p class="field"><b>What we already know</b> main is deployed and building at the Pages URL, containing PR #1. PR #2 from another session is open and rewrites index.html, adds an analytics server, and uses a different publication name. Another session has claimed repo-wide integration scope on its own branch. This session therefore added only new files plus four nav and sitemap lines, and logged requests against other scopes.</p>
+        <p class="field"><b>What we do not know</b> Which brand, which homepage, and which data files survive integration; who arbitrates; whether PR #2 should merge, close, or be partially cherry-picked for its analytics receiver and link checker.</p>
+        <p class="field"><b>How to find out, including how to go looking</b> One integration decision. To discover the least destructive merge: diff the two site shapes on the four contested files, keep the merged one on main, and cherry-pick the pieces unique to the open branch, namely the analytics receiver, the site checker, and the campaign ledger, rather than swapping the site wholesale.</p>
+        <p class="field"><b>Who must answer</b> Owner, or whichever session is named integrator.</p>
+        <p class="field"><b>Blocks</b> <a href="suggestions.html#SUG-07">SUG-07</a>, <a href="suggestions.html#SUG-15">SUG-15</a></p>
+        <div class="answer"><b>Your answer</b><p class="blank"><span class="blank">&mdash; not confirmed</span></p></div>
+      </article>
+    </div>
+  </section>
+</div>
+</main>
+<footer>
+  <div class="wrapper">
+    <div class="disclosure-strip footer-strip" role="region" aria-label="Affiliate disclosure">
+      <strong>Disclosure:</strong> As an Amazon Associate, we earn from qualifying purchases. If you buy through our links we may earn a commission at no extra cost to you. Every outbound product link is marked <code>rel="sponsored"</code>. <a href="disclosure.html">Why we word it this way &rarr;</a>
+    </div>
+    <nav class="navgroup" aria-label="Site navigation (footer)">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="products.html">Products</a>
+    <a href="guides/index.html">Guides</a>
+    <a href="verification.html">Link evidence</a>
+    <a href="suggestions.html">Decision room</a>
+    <a href="questions.html" aria-current="page">Open questions</a>
+    <a href="flagged.html">Flagged</a>
+    <a href="disclosure.html">Disclosure</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="about.html">About</a>
+    </nav>
+    <p class="small">Associates tracking ID <code>shopnow047c-20</code>, unconfirmed against the
+    Associates account (see <a href="questions.html#Q-02">Q-02</a>) &bull;
+    <a href="sitemap.xml">Sitemap</a> &bull; <a href="feed.xml">RSS</a> &bull;
+    <a href="verification.html">Link evidence register</a> &bull;
+    <a href="flagged.html">Flagged for review</a></p>
+  </div>
+</footer>
+</body>
+</html>

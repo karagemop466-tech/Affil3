@@ -1,0 +1,217 @@
+{
+  "register": "claims",
+  "title": "Claim ledger - every rule this site relies on, quoted from source",
+  "rule": "No published sentence about policy may exist without a row here. Quotations are verbatim and truncated with an ellipsis where needed. If a claim is not in this file, it is treated as opinion and labelled as such on the site.",
+  "retrieved_at_utc": "2026-11-20",
+  "verified_claims": [
+    {
+      "id": "CLM-01",
+      "claim": "Affiliate links must be Special Links in Amazon's tagged formats, not arbitrary links.",
+      "quote": "The links must properly use the special \"tagged\" link formats we provide and comply with this Agreement (\"Special Links\").",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Amazon Associates Program Operating Agreement, Section 1",
+      "document_updated": "2025-10-15",
+      "retrieved": "2026-11-20",
+      "changes": "Justifies replacing the five submitted short links with links generated inside the enrolled workflow before the site is promoted anywhere."
+    },
+    {
+      "id": "CLM-02",
+      "claim": "Every outbound Amazon link must carry the Associates tag as a URL parameter.",
+      "quote": "For example, you must include your Associates ID or \"tag\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b) General Requirements Applicable to All Special Links",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "None of the five submitted links carries a tag parameter (OBS-4). Site links are therefore generated as tagged /dp/ASIN URLs, and the short links are retained only as submitted evidence, never as the live destination."
+    },
+    {
+      "id": "CLM-03",
+      "claim": "A site may display price or availability only if Amazon serves it, or it comes from Creators/PA API.",
+      "quote": "Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Decides a design question that looked aesthetic: no hardcoded prices or star ratings anywhere on the site. Buttons say \"Check price on Amazon\" instead. Prices seen in retrieved page chunks are not republished."
+    },
+    {
+      "id": "CLM-04",
+      "claim": "Pages that link to product lists need additional original content relevant to the link.",
+      "quote": "Special Links must link to Products (as defined in the Products Statement). When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link. Product lists include search results, events (e.g. Prime Day), or a department homepage (e.g. grocery).",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Rules out the common affiliate shortcut of a category page that is only a grid of links. Each category hub on this site must carry buyer-facing decision content of its own, which is what SUG-05 builds."
+    },
+    {
+      "id": "CLM-05",
+      "claim": "No inaccurate, overbroad or misleading product, policy, promotion or price claims.",
+      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Sets the copy rule that keeps this site out of \"best\", \"#1\", \"most popular\", and invented search-volume claims. Editorials frame comparisons as criteria and trade-offs, with the basis stated."
+    },
+    {
+      "id": "CLM-06",
+      "claim": "References to limited-time promotions must be removed as soon as the promotion ends.",
+      "quote": "You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Any seasonal or deal content needs an expiry date and a build-time check that removes it, otherwise the fastest way to grow the site is also a standing breach. Built into the validator as SUG-08."
+    },
+    {
+      "id": "CLM-07",
+      "claim": "Sub-tags must never be tied to an individual visitor or used to track visitors.",
+      "quote": "Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Constrains the measurement design: aggregate click counts only, no per-visitor session identity stitched to a sub-tag, no fingerprinting. Confirms the cookie-free counter direction and forbids the tempting per-user A/B tag scheme."
+    },
+    {
+      "id": "CLM-08",
+      "claim": "Special Links must be reached directly from the site and must not be bookmarked by users.",
+      "quote": "You must not encourage customers to bookmark your Special Links. All Special Links must be accessed directly from your Site.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 2(b)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "No \"save this deal link\" prompts and no shareable raw affiliate URL printed as text anywhere on the site, only clickable links from the page."
+    },
+    {
+      "id": "CLM-09",
+      "claim": "Product data and imagery may only come to the site as Program Content through Amazon's tools.",
+      "quote": "we may make available to you data, images, text, link formats, widgets, links, marketing content, and other linking tools, application program interfaces, Alexa functionality, and other information in connection with the Associates Program (\"Program Content\")",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Associates Program Operating Agreement, Section 1",
+      "document_updated": "2025-10-15",
+      "retrieved": "2026-11-20",
+      "changes": "The site uses no scraped product photography and no scraped marketing copy. Product identity is stated in the site's own words with a link to the listing. This is why the storefront has no borrowed hero shots; getting them legitimately is SUG-04."
+    },
+    {
+      "id": "CLM-10",
+      "claim": "Attribution window: 24-hour session, 89-day cart path, 180-day ship-and-pay condition.",
+      "quote": "during a single session, which is measured as beginning when a customer clicks through that Special Link and ending upon the first to occur of the following: (x) 24 hours elapse from that click ... (i) the customer purchases a Product by adding a Product to his or her shopping cart and completing the order for that Product no later than 89 days after their initial click-through of the Special Link",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Commission Income Statement, Section 1",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Any conversion window or attribution claim in reporting must use 24 hours and 89 days, not the 90 days widely repeated online. Sets the measurement definition for the campaign ledger."
+    },
+    {
+      "id": "CLM-11",
+      "claim": "Payment is roughly 60 days after month end, with published minimums and a check fee.",
+      "quote": "We will pay Standard Commission Income and Special Commission Income ... approximately 60 days following the end of each calendar month in which they were earned",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Commission Income Statement, Section 6",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Cash-flow expectation for the project plan: first revenue appears at least one month after the first qualifying click, so the schedule cannot be judged weekly. Minimums retrieved: direct deposit 10 USD, gift card 10 USD with a 2,000 USD maximum, check 100 USD with a 15 USD processing fee."
+    },
+    {
+      "id": "CLM-12",
+      "claim": "The site must be listed in the application, be public, and add significant commentary to anything it reuses.",
+      "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 1 Enrollment and Eligibility",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Two consequences. The Pages URL has to be added to the Associates account before it can be monetised at all (Q-01). And thin aggregation is an eligibility problem, not just a quality problem, which is the strongest available argument against the AI-slop pattern the owner objected to (SUG-05)."
+    },
+    {
+      "id": "CLM-13",
+      "claim": "Amazon trademarks or near-misses may not appear in a domain, subdomain, tag, Associates ID, or social handle.",
+      "quote": "include any trademark of Amazon or its affiliates, or a variant or misspelling of a trademark of Amazon or its affiliates in any domain name, subdomain name, in any \"tag\" or Associates ID, or in any username, group name, or other identifier on any social networking site",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 1",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Constrains the brand decision in SUG-06. A name like \"AmazonFindsDaily\" is disqualifying, not just off-brand. \"Affil3\" and \"shopnow047c\" do not contain an Amazon trademark, which is the only part of the naming question that can be checked from here."
+    },
+    {
+      "id": "CLM-14",
+      "claim": "Enrolment is free and Amazon authorises no paid setup or consulting service.",
+      "quote": "The Associates Program is free to join, and we provide resources on the Associates Site to help Associates succeed with the program. We have never authorized any business to provide paid set-up or consulting services to our associates",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Participation Requirements, Section 1",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Relevant to buying tooling for this project: any vendor selling guaranteed Amazon approval is not authorised. Budget should go to hosting, a domain, and data access, not approval services."
+    },
+    {
+      "id": "CLM-15",
+      "claim": "A breach can end commission income permanently, without notice.",
+      "quote": "If you violate this Agreement ... we reserve the right to permanently (to the extent permitted by applicable law) cease payment of (and you agree you will not be eligible to receive) any and all commission income otherwise payable to you under this Agreement ... without notice",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "publisher": "Associates Program Operating Agreement, Section 2",
+      "document_updated": "2025-10-15",
+      "retrieved": "2026-11-20",
+      "changes": "The rationale for putting a gate in the publishing workflow rather than reviewing later. Automation that can publish an unverified page is the single most expensive failure mode in this project (SUG-09)."
+    },
+    {
+      "id": "CLM-16",
+      "claim": "FTC: a material connection a significant minority would not expect must be disclosed clearly and conspicuously; the guidance is not a safe harbour.",
+      "quote": "if there's a connection between an endorser and the marketer that a significant minority of consumers wouldn't expect and it would affect how they evaluate the endorsement, that connection should be disclosed clearly and conspicuously. ... Our staff guidance can't be definitive because the context of any particular endorsement is very important ... This guidance doesn't provide a safe harbor from potential liability",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "publisher": "Federal Trade Commission, FTC's Endorsement Guides: What People Are Asking",
+      "document_updated": "Guides revised in 2023, including a new definition of \"clearly and conspicuously\"",
+      "retrieved": "2026-11-20",
+      "changes": "Disclosure must sit where the reader meets the recommendation, not only in a footer. Drives SUG-10 (disclosure at each link cluster, above the fold, in plain words)."
+    },
+    {
+      "id": "CLM-17",
+      "claim": "Bonus events do not qualify when generated with bots or automated software.",
+      "quote": "... bots or automated software, repetitive Bonus Events, and Bonus Events that do not result from Special Links on your Site ...",
+      "source_url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "publisher": "Associates Program Commission Income Statement (bonus-event exclusions; fragment as retrieved)",
+      "document_updated": "2026-04-14",
+      "retrieved": "2026-11-20",
+      "changes": "Directly limits the \"automate everything\" instruction: automation may produce drafts, registers, and checks. It may not generate traffic, clicks, or events. Marked partially retrieved: the sentence before the fragment was not captured in this chunk."
+    }
+  ],
+  "unverified_claims": [
+    {
+      "id": "UNV-01",
+      "statement": "An Associates account must generate 3 qualifying sales within 180 days or it is closed, and PA-API access depends on it.",
+      "why_it_is_widely_repeated": "Appears in numerous third-party affiliate blogs surfaced by search on 2026-11-20.",
+      "status": "NOT confirmed in the Program Policies or Operating Agreement text retrieved on 2026-11-20. Do not publish. Verify in Associates Central before it is used to plan a launch schedule.",
+      "where_to_check": "https://affiliate-program.amazon.com/help/operating/policies (Participation Requirements) and the enrolment notices in the account"
+    },
+    {
+      "id": "UNV-02",
+      "statement": "Commission rate for the Home & Kitchen / small-appliance categories.",
+      "status": "Not retrieved. The rate card sits behind the Associates login. No percentage is stated anywhere on this site.",
+      "where_to_check": "https://affiliate-program.amazon.com/help/operating/policies (Commission Income Statement rate card, in-account)"
+    },
+    {
+      "id": "UNV-03",
+      "statement": "An ASIN is exactly 10 alphanumeric characters, as an official published definition.",
+      "status": "Corroborated only by Amazon's catalogue glossary as quoted on an Amazon-hosted customer Q&A page, and by direct observation that all four resolved listings carry 10-character tokens. The Seller Central reference page itself was not reachable from this environment.",
+      "where_to_check": "Seller Central help, ASIN definition (login required)"
+    },
+    {
+      "id": "UNV-04",
+      "statement": "Whether link.amazon is an Amazon-owned short-link domain.",
+      "status": "Unconfirmed. Requests to it are handed to an amazon.com destination, which shows routing, not ownership or authorisation. No whois or registrar evidence was obtainable here.",
+      "where_to_check": "Amazon Associates documentation of approved link tools, plus a registrar lookup outside this sandbox"
+    },
+    {
+      "id": "UNV-05",
+      "statement": "Whether the submitted short links are non-compliant.",
+      "status": "Deliberately not asserted. What is verified is narrow: they carry no tag parameter and did not resolve to the submitted token. Compliance is Amazon's determination, not this register's. Per the owner's instruction the links are not claimed invalid.",
+      "where_to_check": "Test one tagged link per product inside the enrolled Associates workflow and confirm the destination and the tracking report"
+    },
+    {
+      "id": "UNV-06",
+      "statement": "That tracking ID shopnow047c-20 exists, is enrolled, and is the correct tag for this site.",
+      "status": "Unverified. Not checkable without the account. Note the XXXXX-## shape in CLM-02 is consistent with a tag whose Associates ID is \"shopnow047c\" and suffix \"-20\", but the policy text does not say a tracking ID and a tag suffix are the same string, so the register records the submitted value unsplit.",
+      "where_to_check": "Associates Central, Account settings, Tracking IDs"
+    }
+  ]
+}

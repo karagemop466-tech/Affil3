@@ -102,3 +102,45 @@ footer .wrapper { display: grid; grid-template-columns: 1fr; gap: 26px; }
 
 /* Pre-wrap long URLs */
 pre, .url-wrap { word-break: break-all; }
+/* ---------------------------------------------------------------------------
+   Registers, decision room, storefront — added by session arena-43565031-affil3.
+   Scoped to the components above; nothing here is loaded from a third party.
+--------------------------------------------------------------------------- */
+h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 16px 0 6px; }
+.table-scroll { overflow-x: auto; }
+.tagline { margin: 0 0 6px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.statusline { margin: 0 0 10px; font-size: 0.8rem; }
+.sug-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+@media (min-width: 860px) { .sug-grid { grid-template-columns: 1fr 1fr; } }
+.sug, .q { display: flex; flex-direction: column; padding: 18px; }
+.sug h3, .q h3 { margin: 0 0 8px; font-size: 1.05rem; line-height: 1.35; }
+.gate { border-left: 3px solid var(--accent); background: #f2f8f5; padding: 10px 12px; margin: 12px 0; border-radius: 0 6px 6px 0; }
+.gate ul { margin: 4px 0 0 18px; font-size: 0.84rem; }
+.opts { margin: 0 0 10px 18px; font-size: 0.88rem; }
+pre.prompt { background: #10161d; color: #e8edf2; padding: 12px 14px; border-radius: 6px; font-size: 0.8rem; line-height: 1.5; overflow-x: auto; margin: 0 0 4px; white-space: pre-wrap; word-break: break-word; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.path-grid { grid-template-columns: 1fr; }
+@media (min-width: 900px) { .path-grid { grid-template-columns: repeat(3, 1fr); } }
+.path-card { background: var(--surface); }
+.path-card h3 { margin-top: 0; }
+.prod .warnline { font-size: 0.82rem; background: var(--flag-bg); border: 1px solid #f0c7c7; color: var(--flag); padding: 8px 10px; border-radius: 6px; margin: 10px 0; }
+.answer { border: 1px dashed var(--border); border-radius: 6px; padding: 10px 12px; margin-top: auto; font-size: 0.85rem; }
+.answer p { margin: 4px 0 0; }
+.card { gap: 2px; }
+.kicker { margin: 0 0 10px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.hero { padding: 40px 0 8px; }
+.hero h1 { font-size: 2.5rem; max-width: 22ch; }
+.hero .lead { font-size: 1.1rem; max-width: 62ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
+a.ghost { display: inline-block; padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px; text-decoration: none; font-weight: 700; color: var(--text); background: var(--bg); }
+a.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.pitch { font-size: 0.9rem; color: var(--text); margin: 0 0 10px; }
+.spec { font-size: 0.82rem; margin: 3px 0; color: var(--muted); }
+.spec b { color: var(--muted); }
+.trust-grid { display: grid; grid-template-columns: 1fr; gap: 8px 28px; }
+@media (min-width: 760px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+.trust-grid h3 { margin: 14px 0 4px; }
+.trust-grid p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+.rowlinks { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 860px) { .rowlinks { grid-template-columns: repeat(4, 1fr); } }
+.rowlinks a { text-decoration: none; font-size: 0.86rem; color: var(--muted); }
+.rowlinks a:hover { color: var(--accent); }
