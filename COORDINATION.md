@@ -444,3 +444,9 @@ Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 2
 | Review current published pipeline and produce a sourced decision-readiness report with actionable suggestions and verification gaps | in progress | `771fbf79` | `DECISION-REVIEW-771fbf79.md`, this board |
 
 This is an independent review; it does not modify other sessions' claimed site, data, or integration files. Requests affecting those files will be recorded here.
+
+## Completion and integration requests (2026-11-20)
+
+Status: **needs review**. Report: `DECISION-REVIEW-771fbf79.md`. Root check: 23 pages, 1,316 passes, zero failures. Python check: 21 pages pass, but its build modified `editorial/assets/site.css`; restored after test. The GitHub Pages build for base `9287de5` was built; a later main build was in progress. No Amazon account, conversion or new direct listing verification was performed. Sources and limitations are linked in the report.
+
+Requests to integration owners (no files in their scopes edited): reconcile stale K-06 and executive summary claims with dated retests; remove unsupported absolute revenue/attribution assertions; choose a consistent, validated-link policy across root and editorial; investigate Python build output and CI's `docs/` diff target; clarify event semantics; select preferred canonical publication and preserve provenance. Account-bound validation and analytics hosting remain unresolved. Flag these findings on the site's Flagged for Review page when that scope is available.
