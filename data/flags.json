@@ -24,7 +24,8 @@
         "S04",
         "S05"
       ],
-      "manual_step": "Open each submitted short link in a signed-in browser and confirm the product shown. Confirm whether the intended product is the observed product before it is published as the buy link."
+      "manual_step": "Open each submitted short link in a signed-in browser and confirm the product shown. Confirm whether the intended product is the observed product before it is published as the buy link.",
+      "status": "open"
     },
     {
       "id": "FLG-003",
@@ -36,7 +37,8 @@
         "S05",
         "S13"
       ],
-      "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely."
+      "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely.",
+      "status": "open"
     },
     {
       "id": "FLG-004",
@@ -60,7 +62,8 @@
         "S02",
         "S04"
       ],
-      "manual_step": "Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done."
+      "manual_step": "Sign in to Associates Central, generate one Special Link per observed product with the enrolled tracking ID, click it, confirm the destination and the tracking report, then mark G-02 done.",
+      "status": "open"
     },
     {
       "id": "FLG-006",
@@ -71,7 +74,8 @@
         "S11",
         "S03"
       ],
-      "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active."
+      "manual_step": "Confirm that the Associates account declares the GitHub Pages URL (https://karagemop466-tech.github.io/Affil3/) or a custom domain for it, and that the account is active.",
+      "status": "open"
     },
     {
       "id": "FLG-007",
@@ -81,7 +85,8 @@
       "sources": [
         "S11"
       ],
-      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
+      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review.",
+      "status": "open"
     },
     {
       "id": "FLG-008",
@@ -89,7 +94,8 @@
       "title": "Measurement events were not defined in the brief",
       "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
       "sources": [],
-      "manual_step": "Confirm or replace the five events (question Q-05)."
+      "manual_step": "Confirm or replace the five events (question Q-05).",
+      "status": "open"
     },
     {
       "id": "FLG-009",
@@ -97,7 +103,8 @@
       "title": "Analytics endpoint is not deployed; analytics is inactive on the live site",
       "detail": "GitHub Pages serves static files and cannot run the collector. The client code is present but sends nothing until an endpoint is configured in data/config.json. The collector (tools/collector.mjs) is self-hostable. No clicks or conversions are being recorded on the live site yet.",
       "sources": [],
-      "manual_step": "Choose a hosting option for the collector (suggestion S-03). Then set analyticsEndpoint in data/config.json and rebuild."
+      "manual_step": "Choose a hosting option for the collector (suggestion S-03). Then set analyticsEndpoint in data/config.json and rebuild.",
+      "status": "open"
     },
     {
       "id": "FLG-010",
@@ -109,7 +116,8 @@
         "S07",
         "S08"
       ],
-      "manual_step": "Open the live site on a phone-sized screen and confirm the strip is visible without scrolling on the home page and on a guide page."
+      "manual_step": "Open the live site on a phone-sized screen and confirm the strip is visible without scrolling on the home page and on a guide page.",
+      "status": "open"
     },
     {
       "id": "FLG-011",
@@ -119,18 +127,20 @@
       "sources": [
         "S03"
       ],
-      "manual_step": "In Associates Central, confirm that shopnow047c-20 is listed as a tracking ID on the account."
+      "manual_step": "In Associates Central, confirm that shopnow047c-20 is listed as a tracking ID on the account.",
+      "status": "open"
     },
     {
       "id": "FLG-012",
-      "severity": "medium",
-      "title": "No Amazon-owned ASIN definition was retrieved",
+      "severity": "low",
+      "title": "No Amazon-owned ASIN definition was retrieved (resolved)",
       "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
       "sources": [
-        "S04",
-        "S12"
+        "S18"
       ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+      "manual_step": "",
+      "status": "resolved",
+      "resolution": "Resolved 2026-11-20. The manual step was met: Associates Central's own help page 'How do I build a simple text link to a specific item on Amazon?' states 'ASIN is the 10-digit code that Amazon uses to denote specific products' and gives the /dp/ASIN/ref=nosim?tag= link format. Added to the source register as S18 and quoted there. The 10-character rule no longer depends on secondary sources or on the observed identifiers."
     },
     {
       "id": "FLG-013",
@@ -140,7 +150,8 @@
       "sources": [
         "S06"
       ],
-      "manual_step": "Add the site as a URL-prefix property in Search Console, verify it, and submit sitemap.xml."
+      "manual_step": "Add the site as a URL-prefix property in Search Console, verify it, and submit sitemap.xml.",
+      "status": "open"
     },
     {
       "id": "FLG-014",
@@ -148,7 +159,8 @@
       "title": "Author is a team byline, not a named person",
       "detail": "No named author, credential or biography is supplied, so the site uses 'Affil3 editorial team'. Inventing a person would be a fabrication.",
       "sources": [],
-      "manual_step": "Decide on a named author and bio (suggestion S-06)."
+      "manual_step": "Decide on a named author and bio (suggestion S-06).",
+      "status": "open"
     },
     {
       "id": "FLG-015",
@@ -158,7 +170,8 @@
       "sources": [
         "S02"
       ],
-      "manual_step": "Decide the imagery approach (suggestion S-05)."
+      "manual_step": "Decide the imagery approach (suggestion S-05).",
+      "status": "open"
     },
     {
       "id": "FLG-016",
@@ -168,7 +181,8 @@
       "sources": [
         "S04"
       ],
-      "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source."
+      "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source.",
+      "status": "open"
     },
     {
       "id": "FLG-017",
@@ -176,7 +190,8 @@
       "title": "Parallel sessions claim the same task on separate branches",
       "detail": "Five other arena/*-affil3 branches on origin each claim the same overall task and each has its own COORDINATION.md. They were read (not modified) to check for overlap. Merging them to main will conflict. This branch builds at the repository root and uses its own file names to limit collisions, but a single integration branch should be chosen by the user. The other session's site (PR #1) is preserved unchanged at legacy/arena-83a43a96/ and is not linked from this site.",
       "sources": [],
-      "manual_step": "Choose which branch becomes the integration branch, or close the others."
+      "manual_step": "Choose which branch becomes the integration branch, or close the others.",
+      "status": "open"
     },
     {
       "id": "FLG-018",
@@ -184,7 +199,8 @@
       "title": "Repository review: the starting repo had only a one-line README",
       "detail": "The repository had one commit with a README.md containing '# Affil3'. No code, data, configuration or history beyond that was present, so there were no existing irregularities to review.",
       "sources": [],
-      "manual_step": "None."
+      "manual_step": "None.",
+      "status": "open"
     },
     {
       "id": "FLG-019",
@@ -192,7 +208,8 @@
       "title": "Branch naming request differs from the session rule",
       "detail": "The brief asks for session-<id>/<task> branches. This session may only work on its assigned branch, arena/6249757a-affil3, so all work is committed there and the PR is opened from it.",
       "sources": [],
-      "manual_step": "None unless you want a different naming policy."
+      "manual_step": "None unless you want a different naming policy.",
+      "status": "open"
     },
     {
       "id": "FLG-020",
@@ -200,7 +217,8 @@
       "title": "GitHub Pages source could not be changed from this session",
       "detail": "The sandbox token returned HTTP 403 ('Resource not accessible by integration') when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings > Pages.",
       "sources": [],
-      "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies."
+      "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies.",
+      "status": "open"
     },
     {
       "id": "FLG-021",
@@ -211,7 +229,8 @@
         "S09",
         "S10"
       ],
-      "action": "None. Recorded for transparency."
+      "action": "None. Recorded for transparency.",
+      "status": "open"
     },
     {
       "id": "FLG-022",

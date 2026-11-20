@@ -272,3 +272,12 @@ table.checklist { min-width: 560px; }
 table.wide td { vertical-align: top; font-size: 14px; }
 table.wide td strong { font-size: 14.5px; }
 table.wide .blank { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,.045) 4px, rgba(0,0,0,.045) 8px); }
+
+/* ---- flagged review: triage board ---- */
+.flag-stats { display: flex; flex-wrap: wrap; gap: 12px; margin: 16px 0 20px; }
+.flag-stat { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 2px; min-width: 92px; }
+.flag-stat .n { font: 700 26px/1 var(--serif); color: var(--accent-deep); }
+.flag-stat .l { font: 600 11.5px/1 var(--sans); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.flag-card.is-resolved { opacity: .82; border-left: 3px solid var(--good, #2f7d5d); }
+.badge.resolved { background: #e4f0e9; color: #235c45; }
+p.resolution { background: #eef5f1; border-left: 3px solid #2f7d5d; padding: 9px 12px; border-radius: 8px; font-size: 14.5px; }

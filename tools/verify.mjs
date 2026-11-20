@@ -225,8 +225,10 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`${dp.id} cites at least one source that exists`, (dp.sources || []).length > 0 && dp.sources.every((id) => SRC.has(id)), (dp.sources || []).join(','));
     check(`${dp.id} states a trade-off`, !!dp.tradeoff && dp.tradeoff.length > 10);
     check(`${dp.id} names no score, rank or popularity`, !/\b(rank|scoring|score|#1|number one|best seller|most popular|top pick|winner)\b/i.test(`${dp.situation} ${dp.because} ${dp.tradeoff} ${dp.why_this_row}`), dp.id);
-    check(`${dp.id} rendered on the front page`, home.includes(`id="${dp.id}"`));
-    check(`${dp.id} rendered on the shop page`, shopHtml.includes(`id="${dp.id}"`));
+    check(`${dp.id} is anchorable on the front page`, home.includes(`id="${dp.id}"`));
+    check(`${dp.id} is anchorable on the shop page`, shopHtml.includes(`id="${dp.id}"`));
+    // The reader-facing copy must not lead with the internal row id.
+    check(`${dp.id} does not print its internal id in the card heading`, !home.includes(`<p class="kicker">${dp.id}</p>`));
   }
   // every product row must appear in the at-a-glance comparison grid exactly once
   for (const p of products) {

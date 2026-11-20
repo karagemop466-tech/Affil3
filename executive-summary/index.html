@@ -46,21 +46,27 @@
 <ul>
 <li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
+<li>One live, indexable publication. Four earlier parallel editions were archived under <code>legacy/editions/</code> with their builders, data and tests intact rather than deleted, and <code>robots.txt</code> disallows <code>/legacy/</code> so search engines see a single site (S-01, option D).</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>
 <h2>What is verified</h2>
+<p class="small muted">Every source below was fetched in full on November 20, 2026, and the source register records how and when. A gate in <code>tools/verify.mjs</code> refuses any source that does not.</p>
 <ul>
-<li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
-<li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
-<li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
-<li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li><strong>Amazon's own rules.</strong> The Operating Agreement statement requirement, the Special Link and tag rules, the anti-cloaking clause, and the Participation Requirements are read from the official Associates pages (S01, S02, S03, S17).</li>
+<li><strong>Amazon's own definitions.</strong> Associates Central help defines an ASIN as “the 10-digit code that Amazon uses to denote specific products” and documents the simple text link format (S18). This settles FLG-001: the five submitted tokens are 9 characters, so none is an ASIN.</li>
+<li><strong>Amazon's stated bar for a site.</strong> The application review help page states the qualified-sales requirement, the public-availability requirement, the “at least 10 posts” content rule of thumb, and the 60-day recency expectation (S19).</li>
+<li><strong>Disclosure law and search guidance.</strong> The FTC endorsement guides (S07, S08, including the affiliate-link example at 16 CFR 255.5 Example 11), Google's outbound-link and spam policies (S06, S09), and the USDA temperature guidance (S10, S20) are read from the official pages.</li>
+<li><strong>Manufacturer specifications.</strong> Every published specification is read from the maker's own page (S11–S15) or, for the one unit with no maker page, withheld entirely (FLG-025). Where the listing and the maker disagree, both figures are shown side by side (FLG-024, FLG-026).</li>
+<li><strong>The observed listings.</strong> All five observed ASINs were re-read directly on November 20, 2026, and each page's own title matches the title in the register (see the dated observation record).</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
-<li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li><strong>Which product was meant.</strong> The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The tokens are not ASINs (FLG-001), and the token-to-listing mapping did not reproduce on the last check — two links reached the Amazon home page and three were unreachable from the check environment (FLG-031). It is unverified, not disproven.</li>
+<li><strong>Whether a click earns anything.</strong> No Special Link has been tested in Associates Central, so tag attribution is unproven (FLG-005, gate G-02). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
+<li><strong>Content volume.</strong> Amazon describes a rule of thumb of at least 10 posts; this site publishes five guides (FLG-032).</li>
+<li><strong>Claim stability.</strong> Two destinations were transposed in an earlier register revision and corrected after a retest (FLG-022). Manufacturer-page cross-checks produced FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
@@ -69,7 +75,7 @@
 <li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
 <li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
-<li>Choose options on the <a href="/Affil3/suggestions/">Suggestions</a> page. Nothing there is implemented until you choose.</li>
+<li>Choose options on the <a href="/Affil3/suggestions/">Suggestions</a> page. Nine decisions are still open; S-01 is settled and recorded as implemented.</li>
 </ol>
 <h2>Measure before expanding</h2>
 <p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener external">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (<a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>

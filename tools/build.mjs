@@ -183,7 +183,7 @@ function productCard(p, placement) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
   ${cardArt(p)}
   <div class="card-body">
-    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <p class="kicker">${esc(cat)}${p.shape ? ` · ${esc(p.shape)}` : ''}</p>
     <h3>${esc(title)}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
     ${placement === 'front-shelf' ? '' : fit}
@@ -197,7 +197,7 @@ function productCard(p, placement) {
     return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
   ${cardArt(p)}
   <div class="card-body">
-    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <p class="kicker">${esc(cat)}${p.shape ? ` · ${esc(p.shape)}` : ''}</p>
     <h3>${esc(p.name || displayName(p))}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
     <p class="status"><strong>No buy button on this card.</strong> ${esc(p.no_buy_link_reason || 'No manufacturer specification page exists for this model, so nothing here is stood behind yet.')} ${flagLinks(p.flags || [])}</p>
@@ -206,7 +206,7 @@ function productCard(p, placement) {
   }
   return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
   <div class="card-body">
-    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <p class="kicker">${esc(cat)}</p>
     <h3>Link not resolved</h3>
     <p class="muted small">Submitted link: <code>${esc(p.submitted_token)}</code></p>
     <p class="status">No buy link is published. The link has not resolved to a product page in a verified session. An Amazon "Continue shopping" checkpoint is intermittent and is not by itself evidence that a link is dead. ${flagLinks(['FLG-004'])}</p>
@@ -300,7 +300,6 @@ function decisionPathCards() {
     const pending = rows.filter((p) => p.no_buy_link);
     return `<article class="card path-card" id="${esc(dp.id)}">
   <div class="card-body">
-    <p class="kicker">${esc(dp.id)}</p>
     <h3>${esc(dp.situation)}</h3>
     <p class="path-because">${esc(dp.because)}</p>
     <p class="path-products">${names}</p>
@@ -374,15 +373,15 @@ const add = (p) => pages.push(p);
   <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
     <h2>On the shelf this month</h2>
-    <p>Five submitted products, each resolved to an observed Amazon listing and checked against the maker's own specification pages where those exist — including one unit where the listing and the maker describe two different machines (flagged on its product page). The buttons go straight to the listings.</p>
+    <p>Five appliances, picked because they answer five different cooking problems: two foods at once, a whole meal at once, one enormous batch, a quick spot check, and a cook you never have to stand over. Every specification comes from the maker's own page, and where the listing and the maker disagree, we say so on that product's page.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
+  <p class="shelf-note">Buttons open the listing on Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
 </section>
 <section class="band band-alt" id="which">
   <div class="band-head">
     <h2>Which one is right for you?</h2>
-    <p>Start from the situation, not the spec sheet. Each shortcut below is written from the same register the shop table uses, and it names the trade-off as plainly as it names the benefit.</p>
+    <p>Start from what you are cooking, not from the spec sheet. Each shortcut below names the trade-off as plainly as the benefit, and links to the page the figure came from.</p>
   </div>
   ${decisionPathCards()}
   <p class="shelf-note">These are shortcuts, not scores. We do not rank products, and we do not publish a best-of list, because a ranking would have to hide the trade-offs. Every figure above links to the page it came from.</p>
@@ -403,7 +402,7 @@ const add = (p) => pages.push(p);
 </section>
 <section class="band band-alt">
   <div class="band-head">
-    <h2>How we review</h2>
+    <h2>How these pages are made</h2>
     <p>Three rules, applied to every page on this site.</p>
   </div>
   <div class="steps">
@@ -699,21 +698,27 @@ add({
 <ul>
 <li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
+<li>One live, indexable publication. Four earlier parallel editions were archived under <code>legacy/editions/</code> with their builders, data and tests intact rather than deleted, and <code>robots.txt</code> disallows <code>/legacy/</code> so search engines see a single site (S-01, option D).</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>
 <h2>What is verified</h2>
+<p class="small muted">Every source below was fetched in full on ${esc(dateLong(cfg.lastReviewed))}, and the source register records how and when. A gate in <code>tools/verify.mjs</code> refuses any source that does not.</p>
 <ul>
-<li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
-<li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
-<li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
-<li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li><strong>Amazon's own rules.</strong> The Operating Agreement statement requirement, the Special Link and tag rules, the anti-cloaking clause, and the Participation Requirements are read from the official Associates pages (S01, S02, S03, S17).</li>
+<li><strong>Amazon's own definitions.</strong> Associates Central help defines an ASIN as “the 10-digit code that Amazon uses to denote specific products” and documents the simple text link format (S18). This settles FLG-001: the five submitted tokens are 9 characters, so none is an ASIN.</li>
+<li><strong>Amazon's stated bar for a site.</strong> The application review help page states the qualified-sales requirement, the public-availability requirement, the “at least 10 posts” content rule of thumb, and the 60-day recency expectation (S19).</li>
+<li><strong>Disclosure law and search guidance.</strong> The FTC endorsement guides (S07, S08, including the affiliate-link example at 16 CFR 255.5 Example 11), Google's outbound-link and spam policies (S06, S09), and the USDA temperature guidance (S10, S20) are read from the official pages.</li>
+<li><strong>Manufacturer specifications.</strong> Every published specification is read from the maker's own page (S11–S15) or, for the one unit with no maker page, withheld entirely (FLG-025). Where the listing and the maker disagree, both figures are shown side by side (FLG-024, FLG-026).</li>
+<li><strong>The observed listings.</strong> All five observed ASINs were re-read directly on ${esc(dateLong(cfg.lastReviewed))}, and each page's own title matches the title in the register (see the dated observation record).</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
-<li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li><strong>Which product was meant.</strong> The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The tokens are not ASINs (FLG-001), and the token-to-listing mapping did not reproduce on the last check — two links reached the Amazon home page and three were unreachable from the check environment (FLG-031). It is unverified, not disproven.</li>
+<li><strong>Whether a click earns anything.</strong> No Special Link has been tested in Associates Central, so tag attribution is unproven (FLG-005, gate G-02). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
+<li><strong>Content volume.</strong> Amazon describes a rule of thumb of at least 10 posts; this site publishes five guides (FLG-032).</li>
+<li><strong>Claim stability.</strong> Two destinations were transposed in an earlier register revision and corrected after a retest (FLG-022). Manufacturer-page cross-checks produced FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
@@ -722,7 +727,7 @@ add({
 <li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
 <li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
-<li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nothing there is implemented until you choose.</li>
+<li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nine decisions are still open; S-01 is settled and recorded as implemented.</li>
 </ol>
 <h2>Measure before expanding</h2>
 <p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener external">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (${srcLink('S02')}) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
@@ -783,6 +788,32 @@ add({
   path: '/flagged/', title: 'Flagged for review',
   description: 'Irregularities and unverified items, with the sources and the manual step that would close each one.',
   body: `<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">${esc(flagsDoc.note)} Flags do not block publication.</p></section>
+${(() => {
+    const open = flagsDoc.flags.filter((f) => f.status !== 'resolved');
+    const done = flagsDoc.flags.filter((f) => f.status === 'resolved');
+    const bySev = (sev) => open.filter((f) => f.severity === sev).length;
+    const row = (f) => [`<a href="#${esc(f.id)}">${esc(f.id)}</a>`, `<span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span>`, esc(f.title), f.sources.length ? f.sources.map(srcLink).join(', ') : '<span class="muted">none</span>'];
+    return `<section class="band band-alt">
+  <h2>Open items first</h2>
+  <p class="small muted">${open.length} open, ${done.length} resolved and kept for the audit trail. Sorted by severity, then by id. Every row links to the full entry, its official sources, and the manual step that would close it.</p>
+  <div class="flag-stats">
+    <div class="flag-stat"><span class="n">${bySev('high')}</span><span class="l">high</span></div>
+    <div class="flag-stat"><span class="n">${bySev('medium')}</span><span class="l">medium</span></div>
+    <div class="flag-stat"><span class="n">${bySev('low')}</span><span class="l">low</span></div>
+    <div class="flag-stat"><span class="n">${done.length}</span><span class="l">resolved</span></div>
+  </div>
+  ${table(['ID', 'Severity', 'What is wrong', 'Official sources'], [...open].sort((a, b) => {
+    const rank = { high: 0, medium: 1, low: 2 };
+    return (rank[a.severity] ?? 3) - (rank[b.severity] ?? 3) || a.id.localeCompare(b.id);
+  }).map(row), 'wide')}
+</section>
+<section class="band">
+  <h2>Resolved, kept for the trail</h2>
+  <p class="small muted">These were real problems. They are listed so a reader can see what changed rather than take the current state on faith.</p>
+  ${table(['ID', 'Severity when raised', 'What was wrong', 'Official sources'], done.map(row), 'wide')}
+</section>
+<section class="band band-alt">
+  <h2>Every entry in full</h2>`; })()}
 ${flagsDoc.flags.map((f) => `<section class="flag-card${f.status === 'resolved' ? ' is-resolved' : ''}" id="${esc(f.id)}">
   <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong>${f.status === 'resolved' ? ' <span class="badge resolved">resolved</span>' : ''}</p>
   <p>${esc(f.detail)}</p>
