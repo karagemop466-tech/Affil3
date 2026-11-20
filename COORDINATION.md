@@ -1655,7 +1655,13 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 
 **Pages incident (this session):** main's Pages builds for `29daada` and `a448c57` reported `errored` ("Page build failed.", no detail in the Pages API) at 06:50–06:51 UTC. A rebuild request from this token returned 403. Main then advanced to `a42e974` (PR #63), whose Pages build reported `built` at 06:53 UTC, so the live site serves that commit. The branch was synced to `a42e974` (merge `87929fa`) and every CI command was re-run on the merged tree: all pass, no drift. The cause of the earlier errors was not identified and was not reproduced.
 
-**Completion record:** filled in below after the pull request is merged.
+**Completion record (session `4c8c7811`):**
+- **PR:** https://github.com/karagemop466-tech/Affil3/pull/61 — "Session 4c8c7811: sitemap gate fix (FLG-040), dated short-link re-check, executive summary".
+- **Merge result:** **MERGED** into `main` as merge commit `c8282ea` at 2026-11-20T07:01:58Z (`gh pr merge 61 --merge`, no auto-merge). Checks on the PR head `0e38e24`: site-checks, publish-gate, Verify site, Disclosure and archive integrity, Site checks, counter-desk — all success.
+- **Sync history:** main moved four times while this PR was open (`a42e974`, `e3743de`, `efe0124`, `9732c4c`). Each time the branch was merged with main, the conflicts were resolved by keeping both sides, and every gate was re-run. FLG-037 was renumbered to FLG-040 because main had already used FLG-037 to FLG-039.
+- **GitHub Pages:** source `main` at `/` (legacy). Latest build for `9732c4c` reported `built` at 2026-11-20T07:02:04Z. Live fetch (cache-busted `?v=c8282ea`) of `/flagged/` shows FLG-040 and the disclosure strip above the fold; the root homepage serves with the disclosure strip above the fold.
+- **Not done, owner-only:** Associates Central Special Link test (G-02); intended ASINs and listing URLs (FLG-002); Search Console property (FLG-013); analytics endpoint (FLG-009); decision on publishing `/crisp-index/` (FLG-040).
+- **Not claimed:** no short link is called valid or invalid; no conversion, revenue or traffic figure is stated.
 
 | CB-01 | Read `COORDINATION.md` & `origin/main`; register non-overlapping scope and push claim immediately | done | `3b45b513` | `COORDINATION.md` |
 | CB-02 | Line-by-line repo review across root (`data/*.json`, `tools/build.mjs`, `QA-BRIEF.md`, `EXECUTIVE-SUMMARY.md`), `/editorial/`, `/crisp-index/`, and CI workflows; log cross-session irregularities | done | `3b45b513` | `data/3b45b513/repo-audit.json`, `VERIFICATION-3b45b513.md`, `COORDINATION.md` |
