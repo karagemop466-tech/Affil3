@@ -11,9 +11,12 @@
       "image": "/assets/img/guide-basket-vs-oven.png",
       "date": "2026-11-20",
       "deck": "Start with the food you cook on a busy Tuesday, not with the shape on the box. Then let the shape follow.",
-      "description": "A plain-English comparison of basket-style and oven-style air fryers: what each shape does well, what to check before you choose, and how the appliances we track blur the line.",
+      "description": "A plain-English comparison of basket-style and oven-style air fryers: what each shape does well, the depth and power numbers that actually decide between them, and how the appliances we track blur the line.",
       "sources": [
-        "S04"
+        "S04",
+        "S11",
+        "S12",
+        "S13"
       ],
       "body": [
         {
@@ -86,6 +89,34 @@
         },
         {
           "type": "h2",
+          "text": "The number that decides between them"
+        },
+        {
+          "type": "p",
+          "text": "If both shapes cook the food you make, the tie goes to whichever one your counter can hold, and that is a measurement rather than a preference. The basket-style fryer we track is 10.63 inches deep and 13.3 pounds. The oven-style one is 14.8 inches deep by 16.9 wide by 15.8 high, and its maker does not state a weight. Depth is the number to compare first, because it decides whether the drawer opens or the door swings under the cabinet you have."
+        },
+        {
+          "type": "p",
+          "text": "Power is the second tie-breaker, and it is a circuit question as much as a cooking one. The basket unit is rated 1700 W on 120 V. The oven's maker states 120 V but no wattage, so no comparison is possible from the official pages and the cell stays blank. Anyone who tells you one of these is more efficient is guessing, unless they are reading a number off a spec sheet you can also read."
+        },
+        {
+          "type": "p",
+          "text": "There is a third difference the brochures never put side by side: how many pieces come apart. A basket fryer is a drawer, a rack and a basket. An oven with french doors adds racks, a drip tray, usually a rotisserie spit, and a door that has to be wiped inside and out. The oven does more at once and asks more of the sink."
+        },
+        {
+          "type": "h2",
+          "text": "What to do if you are still undecided"
+        },
+        {
+          "type": "p",
+          "text": "Cook one normal week in your head. Write down every meal where you would have used the appliance, and next to each one write whether you needed two things at different temperatures at once. If the answer is yes more than once, the dual-basket or the oven earns its footprint. If the answer is no, a single basket is cheaper, smaller and easier to clean, and the extra capacity is a number you paid for and never used."
+        },
+        {
+          "type": "p",
+          "text": "Then measure the counter, including the space in front of the appliance for the drawer or the door. That measurement, not the shape on the box, is what decides whether you use the thing on a Tuesday night or move it to the garage."
+        },
+        {
+          "type": "h2",
           "text": "One honest warning about the labels"
         },
         {
@@ -138,9 +169,13 @@
       "image": "/assets/img/guide-capacity.png",
       "date": "2026-11-20",
       "deck": "Capacity is the first number you see and the easiest one to misread. Here is how to read it better.",
-      "description": "What quart ratings measure, what they leave out, and a printable checklist of questions to compare air fryer capacity without the marketing gloss.",
+      "description": "A no-hype checklist for comparing air fryer capacity: what quarts actually measure, the three other numbers that decide whether it fits, and how to read a title that oversells its own number.",
       "sources": [
-        "S04"
+        "S04",
+        "S11",
+        "S12",
+        "S13",
+        "S16"
       ],
       "body": [
         {
@@ -164,6 +199,38 @@
         {
           "type": "p",
           "text": "Shape matters as much as volume. A wide, shallow basket crisps a single layer better than a tall, narrow one of the same rated volume, because more food sits near the heating element and the fan. Two smaller baskets can beat one larger number for cooking two things at once, if the controls let you run them independently."
+        },
+        {
+          "type": "h2",
+          "text": "The three numbers that are not capacity"
+        },
+        {
+          "type": "p",
+          "text": "Once you have decided roughly how many quarts you need, three other numbers decide whether the appliance fits your kitchen and your cooking. The first is power. The 8-quart unit we track is rated 1700 W on a 120 V circuit by its manufacturer, which is enough that a dedicated 15 A kitchen circuit is worth checking before you plug it in beside a kettle and a coffee maker."
+        },
+        {
+          "type": "p",
+          "text": "The second is depth, and it is the number people forget. The dual-basket 6-quart fryer on our shelf is 10.63 inches deep; the french-door countertop oven is 14.8 inches deep. That four-inch difference is the difference between a drawer that opens under an upper cabinet and one you have to pull forward every time. Measure the counter, then measure the depth the door or drawer needs in front of it, not just the footprint."
+        },
+        {
+          "type": "p",
+          "text": "The third is the temperature ceiling, and it is where titles get creative. One tracked listing advertises a 450 F high-heat setting; the manufacturer's page for that same model describes the Hi-Fry function as raising the heat to 450 F for the last two minutes of cooking. Those are two different promises. A two-minute finish at 450 F is not the same appliance as one that holds 450 F for a forty-minute roast."
+        },
+        {
+          "type": "h2",
+          "text": "What a box label will not tell you"
+        },
+        {
+          "type": "p",
+          "text": "Three things decide whether you will actually use the appliance, and none of them is printed in quarts. The first is whether the basket or tray is dishwasher safe, and whether that means the whole basket or only the rack. The second is whether there is a window, because a fryer without one turns every check into a loss of heat. The third is how many pieces come apart to clean, which is the number that decides whether the appliance gets used on a Tuesday."
+        },
+        {
+          "type": "p",
+          "text": "There is also a specification that manufacturers sometimes decline to publish at all. For the countertop oven on our shelf, the maker's specification strip states capacity, dimensions, voltage and cooking presets but no wattage and no maximum temperature. We publish those two cells as blank rather than filling them from a reseller listing, because a number from the wrong source is worse than an honest gap."
+        },
+        {
+          "type": "p",
+          "text": "The last thing to check is the model number. An 8-quart air fryer is not one appliance; it is a family of them, and the listing you are reading may describe a different member of that family than the page you researched. Our tracked 8-quart unit is a documented case: the Amazon listing names one model number with a 1000 W rating and a 200-400 F range, while the maker's page for the same 8-quart capacity names a different model number with 1700 W and a 450 F Hi-Fry ceiling. Both pages are official. Only one of them describes the unit that will arrive."
         },
         {
           "type": "h2",
@@ -272,9 +339,13 @@
       "image": "/assets/img/guide-cleanup.png",
       "date": "2026-11-20",
       "deck": "The best-looking appliance is the one you will actually clean, and the one that still fits when the drawer is open.",
-      "description": "A practical method for weighing dishwasher claims, hand-washing reality, counter footprint, ventilation clearance and open-door space before you buy a kitchen appliance.",
+      "description": "How to assess cleanup and counter-space trade-offs before you buy: what 'dishwasher safe' covers, what the counter really has to hold, and the maintenance facts listings leave out.",
       "sources": [
-        "S04"
+        "S04",
+        "S11",
+        "S12",
+        "S13",
+        "S15"
       ],
       "body": [
         {
@@ -314,6 +385,34 @@
         {
           "type": "p",
           "text": "Grease lands where the air ends. In basket units it pools under a removable basket, which is convenient. In oven styles it can drip toward the door and the crumb tray, which is a wider wipe. Door glass, interior walls, and heating-element guards all earn a spot on the cleaning schedule eventually. Look at interior photos for how far food spatter can travel."
+        },
+        {
+          "type": "h2",
+          "text": "What 'dishwasher safe' is actually promising"
+        },
+        {
+          "type": "p",
+          "text": "It is worth reading that phrase closely, because the makers do not use it the same way. The 8-quart fryer we track says its nonstick basket and rack are top-rack dishwasher safe, and separately says the unit shuts off automatically when the timer ends or the basket is removed. The dual-basket 6-quart says its two nonstick baskets are dishwasher safe, without the top-rack qualifier. Neither statement covers the heating element, the housing or the window, and no manufacturer claims they do."
+        },
+        {
+          "type": "p",
+          "text": "A wireless probe makes the point sharpest. CHEF iQ states that its probe is waterproof and technically top-rack dishwasher safe, then recommends against putting it there because washing it can scratch it, and adds that the hub must never be washed with water at all - it should be wiped with a damp cloth. Three different cleaning rules for three parts of one product. A listing that summarises the whole thing as 'dishwasher safe' is telling you the least useful version of the truth."
+        },
+        {
+          "type": "p",
+          "text": "There is a maintenance fact that no listing surfaces and that decides how a wireless probe ages: there is no off switch on the probe, so out of its nest it is broadcasting and using battery whether or not you are cooking. A probe left on the counter between uses is a probe that is flat when you need it."
+        },
+        {
+          "type": "h2",
+          "text": "What the counter actually has to hold"
+        },
+        {
+          "type": "p",
+          "text": "Counter space is usually measured as a footprint, which is only half the question. The number that decides whether an appliance is annoying is depth plus clearance: the drawer or door needs room to open in front of the unit, and the lid or the basket needs room to lift above it. The dual-basket fryer on our shelf is 10.63 inches deep; the french-door oven is 14.8 inches deep and opens outward rather than upward, which changes which cabinet it can live under."
+        },
+        {
+          "type": "p",
+          "text": "Weight matters for a different reason: an appliance you have to move to use is an appliance you stop using. The dual-basket fryer is listed at 13.3 pounds by its manufacturer. The countertop oven's weight is not stated on its maker's page, so that cell stays blank here rather than being filled from a reseller listing."
         },
         {
           "type": "h2",
@@ -396,9 +495,10 @@
       "image": "/assets/img/guide-multifunction.png",
       "date": "2026-11-20",
       "deck": "Multi-function appliances promise a dozen tools in one box. Ask which three you will actually use.",
-      "description": "A buyer's interrogation guide for combination air fryers, toaster ovens and other multi-function appliances: counting real functions, presets, accessories and the learning curve.",
+      "description": "Questions to ask before buying a multi-function kitchen appliance: what the maker's own page must agree with itself about, which accessories decide whether it replaces anything, and when a combo box is the right call.",
       "sources": [
-        "S04"
+        "S04",
+        "S13"
       ],
       "body": [
         {
@@ -422,6 +522,34 @@
         {
           "type": "note",
           "text": "A check we now run on every tracked appliance: the preset and accessory counts on the tracked 26-quart unit differ across official pages (flag FLG-024). Count from the listing's own spec table, and treat round numbers in marketing copy as marketing."
+        },
+        {
+          "type": "h2",
+          "text": "When the maker's own page disagrees with itself"
+        },
+        {
+          "type": "p",
+          "text": "A multi-function appliance concentrates more claims per page than any other kitchen purchase, and that is where inconsistency shows up. The french-door countertop oven we track is a worked example from a single official page. Its specification strip advertises 25 cooking presets. Its own description, a few inches lower, says 24 one-touch cooking presets. An image on the same page reads 11-in-1. The Amazon listing for the same appliance says 24 presets and six cooking accessories, while the manufacturer's description mentions seven."
+        },
+        {
+          "type": "p",
+          "text": "None of those numbers is a lie in isolation. A preset count can count modes, or programs, or buttons. 'In-1' can count a different thing again. But you cannot compare a 25-preset oven to a 24-preset oven when the same page cannot agree with itself, so we publish no preset count and no accessory count for that unit, and point at both official pages instead. That is the general rule: when two official sources conflict, the honest output is the conflict, not a median."
+        },
+        {
+          "type": "p",
+          "text": "Capacity is the number that survives this test most often, because it is a physical dimension rather than a marketing category. The oven's 26 quarts is stated in both the specification strip and the description, and its dimensions are given to a tenth of an inch. Buy the physical numbers and treat the feature counts as claims to check in the manual."
+        },
+        {
+          "type": "h2",
+          "text": "The accessories that decide whether it replaces anything"
+        },
+        {
+          "type": "p",
+          "text": "The premise of a multi-function appliance is that it replaces two or three single-purpose ones. That only holds if the accessories that make the extra functions possible are included rather than sold separately. A rotisserie function with no spit in the box is a setting, not a capability. Before buying, list the three appliances the unit claims to replace, then list what each of those functions physically requires, then confirm the box contains it."
+        },
+        {
+          "type": "p",
+          "text": "An oven-style air fryer also has a different failure mode from a basket one. A basket fryer is a closed drawer that collects its own mess; a countertop oven has a door, racks, a heating element and usually a crumb tray, and each is a separate thing to clean. Ask how many pieces come out, and whether the manufacturer describes them as dishwasher safe individually or as a group."
         },
         {
           "type": "h2",
@@ -490,11 +618,12 @@
       "image": "/assets/img/guide-thermometer.png",
       "date": "2026-11-20",
       "deck": "A thermometer is only as useful as the number you compare it with, and the place you stick the probe.",
-      "description": "How to use a meat thermometer so the reading means something: USDA target temperatures, probe placement, calibration checks, and what wireless specs like range and probe count really buy you.",
+      "description": "How to use a meat thermometer so the reading means something: USDA target temperatures, probe placement, calibration, the difference between a probe's food-contact limit and its ambient rating, and what wireless specs like range and probe count really buy you.",
       "sources": [
+        "S04",
         "S10",
-        "S20",
-        "S04"
+        "S15",
+        "S20"
       ],
       "body": [
         {
@@ -543,6 +672,38 @@
         {
           "type": "p",
           "text": "Carryover heat matters too: a roast resting on the board keeps climbing a few degrees after it leaves the heat. The USDA's three-minute rest exists partly for that reason. Pulling meat exactly at the target number is a skill; pulling a few degrees early and resting is the forgiving version of the same skill."
+        },
+        {
+          "type": "h2",
+          "text": "What a probe can and cannot survive"
+        },
+        {
+          "type": "p",
+          "text": "A specification that gets read past on almost every wireless probe listing is the split between what the probe can be inserted into and what it can merely sit near. CHEF iQ's own FAQ makes the distinction explicit for the unit we track: the portion of the probe inserted into the food is rated to 212 F, the ambient sensor at the ceramic end is rated to 752 F, and the third-generation model raises only the ambient figure, to 1,000 F. That 1,000 F headline describes air around the probe, not the inside of your brisket. Read a probe's headline number and ask which of the two limits it is describing."
+        },
+        {
+          "type": "p",
+          "text": "The same page is candid about a trade-off the marketing copy leaves out: there is no off switch on the probe, so when it is out of its nest in the hub it is broadcasting and draining its battery whether or not you are cooking. It also says the probe is technically top-rack dishwasher safe but recommends against it, because washing it there can scratch it. Both details are the kind a buyer only learns after the box is open, which is why they are written down here."
+        },
+        {
+          "type": "p",
+          "text": "Battery claims are where two official pages can quietly disagree. On the CHEF iQ product page the Sense states 70-plus hours of battery; the brand's own FAQ says a third-generation probe holds a charge for up to 60 hours. We publish neither figure and point at both pages instead. When a manufacturer contradicts itself, the safe reading is the lower one, and the honest move is to say so rather than pick the friendlier number."
+        },
+        {
+          "type": "h2",
+          "text": "How to tell whether your thermometer is lying"
+        },
+        {
+          "type": "p",
+          "text": "The USDA's own tolerance is wider than most people assume: it states most food thermometers give an accurate reading within 2 to 4 degrees F. On a chicken breast cooked to 165 F that tolerance is not the difference between safe and unsafe. On a steak you are pulling at 130 F for medium rare, four degrees is the difference between medium rare and medium. That is why the calibration check above matters more for the cook who cares about doneness than for the cook who only cares about safety."
+        },
+        {
+          "type": "p",
+          "text": "The guidance that should change how you cook is about color. FSIS is blunt that color and grill marks are not indicators that food is safe, citing its own research in which 21 percent of participants relied on visual cues to judge whether a hamburger patty was done. A patty that has gone brown on the outside can still be below a safe internal temperature; one cooked to 160 F is safe regardless of how it looks. If you take one habit from this page, make it the thermometer rather than the spatula."
+        },
+        {
+          "type": "p",
+          "text": "Placement follows the same logic. For thin foods the USDA says to insert the probe through the side until it reaches the center. For a large or irregular roast, check several places. And before trusting any probe, read its own instructions for how deep it must sit, because a reading taken at the wrong depth is a number from the wrong place - accurate instrument, wrong answer."
         },
         {
           "type": "h2",
