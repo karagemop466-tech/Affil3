@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FBF7F0"/>
+      <stop offset="1" stop-color="#F2EADC"/>
+    </linearGradient>
+    <pattern id="grain" width="9" height="9" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="0.9" fill="#2a241c" opacity="0.05"/>
+      <circle cx="6.5" cy="7" r="0.7" fill="#2a241c" opacity="0.04"/>
+    </pattern>
+    <pattern id="tile" width="112" height="56" patternUnits="userSpaceOnUse">
+      <rect width="112" height="56" fill="#F1E7D6"/>
+      <rect width="56" height="56" fill="#E9DCC4"/>
+      <rect x="56" y="0" width="56" height="28" fill="#E4D8BF"/>
+      <rect x="0" y="28" width="56" height="28" fill="#E4D8BF"/>
+      <rect width="112" height="56" fill="none" stroke="#DCCDB0" stroke-width="2"/>
+    </pattern>
+    <marker id="dia" markerWidth="18" markerHeight="18" refX="9" refY="9" orient="auto">
+      <path d="M9 1 L17 9 L9 17 L1 9 Z" fill="#B4532A"/>
+    </marker>
+    <marker id="diaS" markerWidth="14" markerHeight="14" refX="7" refY="7" orient="auto">
+      <path d="M7 1 L13 7 L7 13 L1 7 Z" fill="#8C9A6E"/>
+    </marker>
+  </defs>
+
+  <rect width="1536" height="1024" fill="url(#wall)"/>
+  <rect width="1536" height="1024" fill="url(#grain)"/>
+
+  <!-- backsplash -->
+  <rect x="0" y="300" width="1536" height="330" fill="url(#tile)" opacity="0.85"/>
+  <rect x="0" y="296" width="1536" height="6" fill="#C9B795"/>
+
+  <!-- upper cabinet -->
+  <rect x="0" y="0" width="1536" height="196" fill="#EADFCB"/>
+  <rect x="0" y="190" width="1536" height="10" fill="#D2C1A2"/>
+  <rect x="470" y="0" width="8" height="196" fill="#DFD1B6"/>
+  <rect x="1058" y="0" width="8" height="196" fill="#DFD1B6"/>
+  <rect x="706" y="150" width="124" height="14" rx="7" fill="#B99C6E"/>
+
+  <!-- shelf with jars -->
+  <rect x="196" y="252" width="420" height="12" rx="6" fill="#C2A578"/>
+  <g>
+    <rect x="226" y="206" width="52" height="48" rx="8" fill="#D8C9A8"/>
+    <rect x="232" y="198" width="40" height="12" rx="6" fill="#B4532A"/>
+    <rect x="296" y="216" width="46" height="38" rx="8" fill="#CFD8BC"/>
+    <rect x="301" y="208" width="36" height="11" rx="5" fill="#5F6F48"/>
+    <rect x="360" y="212" width="58" height="42" rx="9" fill="#E3D6BC"/>
+    <rect x="366" y="203" width="46" height="12" rx="6" fill="#C89A3D"/>
+  </g>
+
+  <!-- plant -->
+  <g>
+    <path d="M124 630 C124 570 128 520 138 486" stroke="#5F6F48" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M136 540 C104 528 88 500 92 472 C124 476 142 500 138 540 Z" fill="#6E7F52"/>
+    <path d="M140 502 C170 494 190 470 188 444 C158 446 138 468 138 502 Z" fill="#5F6F48"/>
+    <path d="M138 566 C106 560 84 538 84 512 C114 510 138 530 140 566 Z" fill="#7C8B5E"/>
+    <path d="M118 628 L186 628 L176 704 L128 704 Z" fill="#C4693C"/>
+    <rect x="108" y="606" width="88" height="30" rx="8" fill="#D98055"/>
+  </g>
+
+  <!-- worktop -->
+  <rect x="0" y="806" width="1536" height="30" fill="#B4532A"/>
+  <rect x="0" y="836" width="1536" height="188" fill="#E7DCC7"/>
+  <rect x="0" y="836" width="1536" height="7" fill="#93431F" opacity="0.5"/>
+  <g fill="#DACDB4">
+    <rect x="120" y="836" width="4" height="188"/>
+    <rect x="470" y="836" width="4" height="188"/>
+    <rect x="820" y="836" width="4" height="188"/>
+    <rect x="1170" y="836" width="4" height="188"/>
+  </g>
+
+  <!-- compact basket fryer -->
+  <g>
+    <rect x="286" y="536" width="256" height="270" rx="52" fill="#B4532A"/>
+    <rect x="286" y="536" width="256" height="74" rx="37" fill="#F4DFD2"/>
+    <circle cx="414" cy="572" r="18" fill="#B4532A"/>
+    <rect x="340" y="652" width="148" height="28" rx="14" fill="#F4DFD2"/>
+    <rect x="352" y="712" width="124" height="20" rx="10" fill="#93431F" opacity="0.55"/>
+    <rect x="316" y="640" width="34" height="140" rx="16" fill="#8E3F1F" opacity="0.5"/>
+  </g>
+
+  <!-- single basket fryer -->
+  <g>
+    <rect x="646" y="466" width="330" height="340" rx="56" fill="#5F6F48"/>
+    <rect x="646" y="466" width="330" height="84" rx="42" fill="#E9ECDD"/>
+    <rect x="742" y="494" width="138" height="26" rx="13" fill="#5F6F48"/>
+    <circle cx="906" cy="508" r="14" fill="#C89A3D"/>
+    <rect x="706" y="604" width="210" height="32" rx="16" fill="#E9ECDD"/>
+    <rect x="726" y="672" width="170" height="22" rx="11" fill="#3E4A31" opacity="0.5"/>
+    <rect x="672" y="600" width="30" height="170" rx="15" fill="#4C5A3B" opacity="0.55"/>
+  </g>
+
+  <!-- countertop oven -->
+  <g>
+    <rect x="1094" y="392" width="306" height="414" rx="22" fill="#2A241C"/>
+    <rect x="1108" y="406" width="278" height="386" rx="14" fill="#F7F1E6"/>
+    <rect x="1136" y="440" width="150" height="24" rx="12" fill="#DCCFB4"/>
+    <rect x="1136" y="494" width="222" height="212" rx="12" fill="#2F2820"/>
+    <rect x="1150" y="508" width="194" height="184" rx="8" fill="#F3ECDF"/>
+    <line x1="1150" y1="566" x2="1344" y2="566" stroke="#DCCFB4" stroke-width="6"/>
+    <line x1="1150" y1="624" x2="1344" y2="624" stroke="#DCCFB4" stroke-width="6"/>
+    <rect x="1136" y="726" width="118" height="26" rx="13" fill="#E3D6BC"/>
+    <circle cx="1330" cy="739" r="17" fill="#B4532A"/>
+    <rect x="1380" y="470" width="16" height="330" rx="8" fill="#413931"/>
+  </g>
+
+  <!-- depth dimension for the oven -->
+  <line x1="1094" y1="884" x2="1400" y2="884" stroke="#B4532A" stroke-width="5" marker-start="url(#dia)" marker-end="url(#dia)"/>
+  <line x1="1094" y1="838" x2="1094" y2="900" stroke="#B4532A" stroke-width="4" opacity="0.55"/>
+  <line x1="1400" y1="838" x2="1400" y2="900" stroke="#B4532A" stroke-width="4" opacity="0.55"/>
+  <text x="1247" y="936" font-family="Georgia, 'Times New Roman', serif" font-size="32" fill="#93431F" text-anchor="middle">depth of the unit</text>
+
+  <!-- depth dimension for the single basket fryer -->
+  <line x1="646" y1="884" x2="976" y2="884" stroke="#8C9A6E" stroke-width="5" marker-start="url(#diaS)" marker-end="url(#diaS)"/>
+  <text x="811" y="936" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#5F6F48" text-anchor="middle">shallower</text>
+
+  <!-- clearance above the oven -->
+  <line x1="1440" y1="392" x2="1440" y2="300" stroke="#B4532A" stroke-width="5" stroke-dasharray="14 11" marker-start="url(#dia)" marker-end="url(#dia)"/>
+  <text x="1412" y="352" font-family="Georgia, 'Times New Roman', serif" font-size="27" fill="#93431F" text-anchor="end" transform="rotate(-90 1412 352)">clearance above</text>
+</svg>

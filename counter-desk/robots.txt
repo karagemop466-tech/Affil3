@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /Affil3/counter-desk/
+
+Sitemap: https://karagemop466-tech.github.io/Affil3/counter-desk/sitemap.xml
