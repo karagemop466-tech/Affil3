@@ -1,0 +1,141 @@
+{
+  "retrieved": "2026-11-20",
+  "note": "Questions that must be answered before a decision can be made reasonably. 'Blocking' means the decision cannot proceed until the question is answered. 'Brief only' in the source column means no official source exists for the question.",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "Does each submitted short link reach the product its identifier was meant to reach?",
+      "have": "Observed redirect targets for P1, P2, P3 and P5 (all different ASINs). P4 reached an interstitial.",
+      "missing": "A confirmed listing for each intended identifier, and the owner's intended product for each link.",
+      "how_to_discover": "Open each short link in a signed-in browser. Note the ASIN in the URL after /dp/ and in Product information. Compare with the intended identifier.",
+      "source_ids": ["SRC-12", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "blocking": true
+    },
+    {
+      "id": "Q02",
+      "question": "Are the five intended identifiers valid Amazon ASINs?",
+      "have": "Each is 9 characters with lowercase letters. An ASIN is 10 characters (SRC-12).",
+      "missing": "The original source of each identifier.",
+      "how_to_discover": "Ask the person who supplied the links where each identifier came from. Check the listing title against the product you intend.",
+      "source_ids": ["SRC-12", "SRC-13"],
+      "blocking": true
+    },
+    {
+      "id": "Q03",
+      "question": "Is the tracking ID shopnow047c-20 an active ID in an enrolled Associates account, and is it on each link?",
+      "have": "User-supplied ID. Observed destinations contain no tag= parameter.",
+      "missing": "Account view in Associates Central; test-click results in the Associates tracking report.",
+      "how_to_discover": "In Associates Central, confirm the ID. Generate one Special Link for one product and click it from a test browser. Check the tracking report. Only then scale.",
+      "source_ids": ["SRC-01", "SRC-02"],
+      "blocking": true
+    },
+    {
+      "id": "Q04",
+      "question": "Are the submitted link.amazon short links permitted on the site?",
+      "have": "Owner brief says compliance is unresolved (FLG-003). No official document describing this domain was found.",
+      "missing": "An official ruling or a written answer from Associates support.",
+      "how_to_discover": "Contact Associates support through the Contact form linked from the Program Policies page. Ask about link.amazon links specifically. Do not assume either way.",
+      "source_ids": ["SRC-02"],
+      "blocking": true
+    },
+    {
+      "id": "Q05",
+      "question": "Has this GitHub Pages URL been registered as a Site in the Associates application?",
+      "have": "Participation Requirements §1 says Sites must be identified in the application.",
+      "missing": "Confirmation of the registered Site URL in Associates Central.",
+      "how_to_discover": "In Associates Central, check the Site(s) listed on the account. Add the Pages URL if it is not listed.",
+      "source_ids": ["SRC-02"],
+      "blocking": true
+    },
+    {
+      "id": "Q06",
+      "question": "What are the five defined measurement events?",
+      "have": "The brief refers to them but does not list them. A proposed list is on the Measurement page.",
+      "missing": "The owner's definitions.",
+      "how_to_discover": "Owner to supply the list. Until then nothing is recorded.",
+      "source_ids": [],
+      "blocking": true
+    },
+    {
+      "id": "Q07",
+      "question": "Where will the analytics endpoint and outbound-click counter run?",
+      "have": "GitHub Pages serves static files only. The click hook is built and sends nothing unless an endpoint is set.",
+      "missing": "A server or serverless host the owner controls, and a decision on what is stored.",
+      "how_to_discover": "Owner to choose a host and retention period. Any analytics or cookie use must be disclosed on the site (SRC-02 §3(e)).",
+      "source_ids": ["SRC-06", "SRC-02"],
+      "blocking": true
+    },
+    {
+      "id": "Q08",
+      "question": "Should the site show prices and availability at all?",
+      "have": "SRC-02 §2(b) allows prices only if Amazon serves the link or through Creators API / PA API. The site currently shows none.",
+      "missing": "A decision on API access, and whether eligibility is met.",
+      "how_to_discover": "Read the API terms on the Program Policies page and check eligibility in Associates Central.",
+      "source_ids": ["SRC-02"],
+      "blocking": false
+    },
+    {
+      "id": "Q09",
+      "question": "What are the commission rates by category?",
+      "have": "The schedule URL exists (SRC-03) but was not readable without sign-in.",
+      "missing": "Rates, with the date read.",
+      "how_to_discover": "Owner to sign in to Associates and read the Standard Commission Income schedule, then supply figures.",
+      "source_ids": ["SRC-03"],
+      "blocking": false
+    },
+    {
+      "id": "Q10",
+      "question": "Is P4 (intended B0c8moW59) reachable and which category does it belong to?",
+      "have": "Redirect reached an Amazon interstitial.",
+      "missing": "A product page and breadcrumb.",
+      "how_to_discover": "Retest the short link from a signed-in browser after Q01.",
+      "source_ids": ["SRC-10"],
+      "blocking": false
+    },
+    {
+      "id": "Q11",
+      "question": "Which product set is intended: these five, or a set chosen by research?",
+      "have": "Five submitted links. Three air fryers, one meat thermometer, one unknown.",
+      "missing": "The owner's selection criteria and any research output.",
+      "how_to_discover": "Owner to define criteria. Research requires first-party data (see Q12).",
+      "source_ids": [],
+      "blocking": false
+    },
+    {
+      "id": "Q12",
+      "question": "Where will real click, order, and traffic data come from?",
+      "have": "The campaign ledger is empty and has a provenance column.",
+      "missing": "Authorized first-party reports (Associates reports; Search Console for search queries).",
+      "how_to_discover": "Owner to export Associates reports and verify the Search Console property, then add rows with source and date.",
+      "source_ids": ["SRC-02"],
+      "blocking": false
+    },
+    {
+      "id": "Q13",
+      "question": "What brand name, byline, and contact address should appear?",
+      "have": "Placeholder: 'Affil3 editorial desk'.",
+      "missing": "Owner decision.",
+      "how_to_discover": "Owner to supply the details. No author is invented.",
+      "source_ids": ["SRC-04"],
+      "blocking": false
+    },
+    {
+      "id": "Q14",
+      "question": "Does the site copy comply with the Amazon Trademark Guidelines?",
+      "have": "The Guidelines are linked from the Program Policies page but were not read in this session.",
+      "missing": "A reviewer's sign-off.",
+      "how_to_discover": "Read the Trademark Guidelines on the Program Policies page and compare against the site copy.",
+      "source_ids": ["SRC-02"],
+      "blocking": false
+    },
+    {
+      "id": "Q15",
+      "question": "How often should guides be published?",
+      "have": "No cadence was set in the brief.",
+      "missing": "Owner decision.",
+      "how_to_discover": "Pick a cadence from the options on the Suggestions page. Measure after 28 days.",
+      "source_ids": [],
+      "blocking": false
+    }
+  ]
+}

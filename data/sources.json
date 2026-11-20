@@ -1,0 +1,122 @@
+{
+  "retrieved": "2026-11-20",
+  "note": "Every entry was fetched and read in this session. 'tier' says what kind of source it is. Only 'official' sources may support a verified value. 'observed' entries are live Amazon pages captured by the verification fetch tool and must be re-checked by a human before publication decisions.",
+  "sources": [
+    {
+      "id": "SRC-01",
+      "tier": "official",
+      "title": "Associates Program Operating Agreement",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "page_updated": "October 15, 2025",
+      "supports": "§5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site. §5 also bars implying Amazon endorses or sponsors the Site. §2 requires Associates to comply with the Agreement. §7 disclaims warranties on Special Links and link formats."
+    },
+    {
+      "id": "SRC-02",
+      "tier": "official",
+      "title": "Associates Program Policies (Participation Requirements; Commission Income Statement)",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "page_updated": "April 14, 2026",
+      "supports": "Participation Requirements §1: Site must have original content; third-party material needs significant commentary. §2(a): Special Links must use the Associates ID assigned. §2(b): tag must be in every link URL; links must be accessed directly from the Site; prices and availability may be shown only if Amazon serves the link or via Creators API / PA API; no misleading claims about products. §3(c)–(e): Site owner is responsible for content, legal compliance and cookie/data disclosure. §4: no offline use of Special Links, including in printed material. §6(a)–(b): do not alter Program Content; do not create tagged links for a site that is not your Site. Commission Income Statement §2(g): links that are not properly formatted are disqualified."
+    },
+    {
+      "id": "SRC-03",
+      "tier": "official",
+      "title": "Associates Program Standard Commission Income schedule",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/schedule",
+      "page_updated": "not shown",
+      "supports": "Commission rates by category. NOT VERIFIED: the page redirected to an Amazon sign-in screen when fetched, so no rate was read. No rate is published on this site."
+    },
+    {
+      "id": "SRC-04",
+      "tier": "official",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "publisher": "U.S. Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "page_updated": "November 2019",
+      "supports": "Disclose when there is a financial relationship with a brand. Place the disclosure where it is hard to miss, with the endorsement itself. Disclosures that appear only on an About page or at the end of content are likely to be missed. Use simple terms such as 'ad' or 'sponsored'. Points to the FTC Endorsement Guides."
+    },
+    {
+      "id": "SRC-05",
+      "tier": "official",
+      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "page_updated": "2025-12-10",
+      "supports": "rel=\"sponsored\" marks advertisements or paid placements (paid links). Multiple rel values may be combined."
+    },
+    {
+      "id": "SRC-06",
+      "tier": "official",
+      "title": "Creating a GitHub Pages site",
+      "publisher": "GitHub Docs",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site",
+      "page_updated": "not shown",
+      "supports": "A branch-and-folder publishing source (for example the /docs folder on main) must have its entry file (index.html) at the top level of that folder. Changes can take up to 10 minutes to publish. Repositories on GitHub Free must be public."
+    },
+    {
+      "id": "SRC-07",
+      "tier": "observed",
+      "title": "Amazon.com listing observed from submitted link 1 (path B04G1MEwY)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed": "2026-11-20",
+      "supports": "Observed redirect target, title, and category breadcrumb (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers). Price and main-listing rating NOT captured."
+    },
+    {
+      "id": "SRC-08",
+      "tier": "observed",
+      "title": "Amazon.com listing observed from submitted link 2 (path B02NbDxp3)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed": "2026-11-20",
+      "supports": "Observed redirect target, title, and category breadcrumb (Air Fryers). Price and main-listing rating NOT captured."
+    },
+    {
+      "id": "SRC-09",
+      "tier": "observed",
+      "title": "Amazon.com listing observed from submitted link 3 (path B00hJ57DV)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed": "2026-11-20",
+      "supports": "Observed redirect target, title, and category breadcrumb (Air Fryers). Price and main-listing rating NOT captured."
+    },
+    {
+      "id": "SRC-10",
+      "tier": "observed",
+      "title": "Amazon checkpoint page observed from submitted link 4 (path B0c8moW59)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/checkpoint/continue",
+      "observed": "2026-11-20",
+      "supports": "The redirect ended at an Amazon interstitial ('To continue, please click the Continue shopping button'). No product was resolved. The token in the full URL is omitted here."
+    },
+    {
+      "id": "SRC-11",
+      "tier": "observed",
+      "title": "Amazon.com listing observed from submitted link 5 (path B0f3GKalj)",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed": "2026-11-20",
+      "supports": "Observed redirect target, title, and category breadcrumb (Kitchen Utensils & Gadgets > Thermometers & Timers > Meat). Price and main-listing rating NOT captured."
+    },
+    {
+      "id": "SRC-12",
+      "tier": "official",
+      "title": "Understanding ASIN numbers: Your guide to Amazon's product identification system",
+      "publisher": "Amazon Selling Partner Blog (sell.amazon.com)",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "page_updated": "June 4, 2025",
+      "supports": "An ASIN is a unique 10-character alphanumeric code assigned to each product in the Amazon store. Formats typically start with 'B0'. The ASIN appears after '/dp/' in a product URL."
+    },
+    {
+      "id": "SRC-13",
+      "tier": "user-supplied",
+      "title": "Submitted short links (owner brief)",
+      "publisher": "Project owner",
+      "url": "https://link.amazon/B04G1MEwY",
+      "supports": "The five submitted short-link URLs and the tracking ID shopnow047c-20. No official Amazon document was found that describes the link.amazon domain. Its compliance status is unresolved (FLG-003 in the brief)."
+    }
+  ]
+}

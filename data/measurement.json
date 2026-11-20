@@ -1,0 +1,19 @@
+{
+  "retrieved": "2026-11-20",
+  "status": "GATED — no endpoint is configured. Nothing is recorded or sent. The click hook is built and inactive.",
+  "privacy_design": [
+    "No cookies are set by the site's own code.",
+    "No IP addresses or full URLs are stored in the code. Only the product ID and destination host would be sent.",
+    "Visitors with Global Privacy Control or Do Not Track enabled are not counted.",
+    "The endpoint, if added, must be disclosed on the site (SRC-02 §3(e))."
+  ],
+  "events": [
+    {"name": "page_view", "fields": "page path, timestamp (UTC)", "status": "PROPOSED — not defined in the brief"},
+    {"name": "outbound_click", "fields": "product ID, destination host, timestamp (UTC)", "status": "PROPOSED — not defined in the brief"},
+    {"name": "category_nav_click", "fields": "category slug, timestamp (UTC)", "status": "PROPOSED — not defined in the brief"},
+    {"name": "guide_scroll_75", "fields": "guide slug, timestamp (UTC)", "status": "PROPOSED — not defined in the brief"},
+    {"name": "feed_click", "fields": "feed name, timestamp (UTC)", "status": "PROPOSED — not defined in the brief"}
+  ],
+  "source_ids": ["SRC-02"],
+  "ledger_rule": "Rows come only from authorized first-party reports (Associates or Search Console). Each row needs a timestamp, source, channel, and provenance note. No conversion score or revenue forecast is shown."
+}

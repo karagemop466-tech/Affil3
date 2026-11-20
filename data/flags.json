@@ -1,0 +1,150 @@
+{
+  "retrieved": "2026-11-20",
+  "note": "Irregularities and unverified items. None of these blocks the merge. They are published on docs/flagged.html for owner review.",
+  "flags": [
+    {
+      "id": "FLG-01",
+      "severity": "high",
+      "title": "All five intended identifiers fail the ASIN format check",
+      "detail": "Each identifier in the submitted links is 9 characters, not 10, and contains lowercase letters. Observed listing ASINs are 10 characters, uppercase letters and digits. A direct fetch of each identifier's /dp/ page failed.",
+      "source_ids": ["SRC-12", "SRC-13", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "where": "data/products.json (intended_asin, intended_asin_format)",
+      "action": "Owner to confirm the identifiers from the original Amazon listings. Nothing has been corrected or replaced."
+    },
+    {
+      "id": "FLG-02",
+      "severity": "high",
+      "title": "Four of five short links resolve to a different ASIN than the one in the link",
+      "detail": "Observed redirect ASINs: P1 B0CDY277D3, P2 B09B7SB46R, P3 B08DKYBTPH, P5 B0DZFD6R9Z. None equals its intended identifier.",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-11", "SRC-13"],
+      "where": "data/products.json (asin_match = MISMATCH)",
+      "action": "Do not treat the observed product as the intended product. Owner to confirm which product each link was meant to reach."
+    },
+    {
+      "id": "FLG-03",
+      "severity": "high",
+      "title": "One short link ends at an Amazon interstitial page",
+      "detail": "link.amazon/B0c8moW59 redirected to amazon.com/checkpoint/continue, which asks the visitor to click 'Continue shopping'. No product was reached.",
+      "source_ids": ["SRC-10", "SRC-13"],
+      "where": "data/products.json (P4)",
+      "action": "Retest from the owner's signed-in browser. P4 is listed as uncategorized and unverified."
+    },
+    {
+      "id": "FLG-04",
+      "severity": "high",
+      "title": "The tracking ID is not visible in any observed redirect target",
+      "detail": "None of the four observed destination URLs contains a 'tag=' parameter. The tracking ID shopnow047c-20 is not present in them. Associates links must carry the tag (SRC-02 §2(b)). The redirect was followed without a signed-in session, so attribution may still happen in a browser, but this is unverified.",
+      "source_ids": ["SRC-02", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "where": "data/products.json (observed_tag_param)",
+      "action": "Check the Associates tracking report for test clicks on each link. Do not assume attribution."
+    },
+    {
+      "id": "FLG-05",
+      "severity": "high",
+      "title": "Associates account and site registration are not verified",
+      "detail": "Nothing in this session confirms that the tracking ID belongs to an enrolled account, or that this GitHub Pages URL has been registered as a Site in the application. SRC-02 §1 requires the Site to be identified in the application.",
+      "source_ids": ["SRC-02", "SRC-13"],
+      "where": "COORDINATION.md; docs/measurement.html",
+      "action": "Owner to confirm in Associates Central. This is a gate before any scaling."
+    },
+    {
+      "id": "FLG-06",
+      "severity": "medium",
+      "title": "The submitted link domain is not described in the official pages reviewed",
+      "detail": "The Operating Agreement and Program Policies pages read in this session describe tagged Special Link formats. They do not describe the link.amazon domain. Its compliance status is unresolved (FLG-003 in the brief). No claim is made that the links are invalid.",
+      "source_ids": ["SRC-01", "SRC-02", "SRC-13"],
+      "where": "docs/compliance.html",
+      "action": "Owner to confirm with Associates support, or replace with Special Links generated in Associates Central after a one-product test."
+    },
+    {
+      "id": "FLG-07",
+      "severity": "medium",
+      "title": "Referenced source register IDs are not in this repository",
+      "detail": "The brief cites S01, S02, S07, S24, S01–S30 and FLG-003. None is present in the repository. This site uses its own IDs (SRC-01 to SRC-13) and does not map to the brief's IDs.",
+      "source_ids": ["SRC-13"],
+      "where": "data/sources.json",
+      "action": "Owner to share the source register file so IDs can be reconciled."
+    },
+    {
+      "id": "FLG-08",
+      "severity": "medium",
+      "title": "The 'five defined events' are not defined in the materials",
+      "detail": "The brief asks for the five defined events to be recorded, but does not list them. A proposed list is shown on docs/measurement.html and marked as proposed.",
+      "source_ids": ["SRC-13"],
+      "where": "data/measurement.json",
+      "action": "Owner to define the events. No event is recorded anywhere until an endpoint is configured."
+    },
+    {
+      "id": "FLG-09",
+      "severity": "medium",
+      "title": "Commission rates are not verified",
+      "detail": "The rate schedule page redirected to an Amazon sign-in screen. No category rate was read, so commission potential cannot be stated.",
+      "source_ids": ["SRC-03"],
+      "where": "docs/analysis.html",
+      "action": "Owner to read the rate schedule in a signed-in Associates session and provide the figures with a date."
+    },
+    {
+      "id": "FLG-10",
+      "severity": "medium",
+      "title": "No prices or main-listing ratings were captured",
+      "detail": "The fetched pages show prices and ratings for related items in carousels. These belong to other products, so they were excluded. Under SRC-02 §2(b), prices may be shown only if Amazon serves the link or through Creators API / PA API.",
+      "source_ids": ["SRC-02", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "where": "docs/products.html; docs/analysis.html",
+      "action": "Decide whether to apply for Creators API / PA API access (see Questions Q08)."
+    },
+    {
+      "id": "FLG-11",
+      "severity": "medium",
+      "title": "Static hosting cannot run the requested analytics endpoint",
+      "detail": "GitHub Pages serves static files only. A self-hosted analytics endpoint, a stored outbound-click counter, and any server-side reader capture need a server the owner controls. The click hook in this build sends nothing until an endpoint URL is set.",
+      "source_ids": ["SRC-06"],
+      "where": "docs/assets/analytics.js; docs/measurement.html",
+      "action": "Decide where the endpoint will run (see Questions Q07 and Suggestions S04)."
+    },
+    {
+      "id": "FLG-12",
+      "severity": "medium",
+      "title": "Search Console verification needs the owner's Google account",
+      "detail": "Search Console verification cannot be completed without the owner's Google account. The sitemap and robots.txt are in place, so the site is ready to submit.",
+      "source_ids": ["SRC-06"],
+      "where": "docs/sitemap.xml; docs/robots.txt",
+      "action": "Owner to verify the GitHub Pages URL in Search Console and submit docs/sitemap.xml."
+    },
+    {
+      "id": "FLG-13",
+      "severity": "medium",
+      "title": "Amazon Trademark Guidelines were not reviewed",
+      "detail": "The Program Policies incorporate Trademark Guidelines. They were not read in this session. Site copy uses the word 'Amazon' only in the required statement, in product listing titles, and in link labels.",
+      "source_ids": ["SRC-01", "SRC-02"],
+      "where": "docs/compliance.html",
+      "action": "Owner or reviewer to read the Trademark Guidelines and confirm the site copy complies."
+    },
+    {
+      "id": "FLG-14",
+      "severity": "low",
+      "title": "Observed page data came from a non-browser fetch",
+      "detail": "The verification fetch tool is not a signed-in browser. Listing content can vary by location, session, or time. The URL parameters lv=shuf and plpRedirect are not explained by the official pages reviewed.",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-10", "SRC-11"],
+      "where": "data/products.json",
+      "action": "Re-check each listing from a browser and update confirmation_date when re-checked."
+    },
+    {
+      "id": "FLG-15",
+      "severity": "low",
+      "title": "No named author; brand and byline are placeholders",
+      "detail": "No author or brand was supplied. The site is signed 'Affil3 editorial desk' as a placeholder.",
+      "source_ids": ["SRC-04"],
+      "where": "docs/about.html",
+      "action": "Owner to choose the brand and byline."
+    },
+    {
+      "id": "FLG-16",
+      "severity": "low",
+      "title": "Category for P4 is unknown",
+      "detail": "P4 reached an interstitial page, so no breadcrumb was recorded. It is listed under 'Uncategorized — pending verification'.",
+      "source_ids": ["SRC-10"],
+      "where": "docs/uncategorized.html",
+      "action": "Assign a category after P4 is re-checked (see FLG-03)."
+    }
+  ]
+}

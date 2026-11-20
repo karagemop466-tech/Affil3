@@ -1,0 +1,80 @@
+{
+  "retrieved": "2026-11-20",
+  "publish_date": "2026-11-20",
+  "byline": "Affil3 editorial desk",
+  "note": "Working titles from the brief. Each is a hypothesis to test, not evidence of popularity, search volume, or product quality. Guides contain questions and checks only. They make no performance claim about any product.",
+  "guides": [
+    {
+      "slug": "basket-or-oven-air-fryer",
+      "title": "Basket or oven-style air fryer: what should you compare?",
+      "summary": "Two common shapes answer different kitchens. Start with how you plan to cook before you compare models.",
+      "questions": [
+        "Do you mostly cook one tray of food at a time, or several things at once?",
+        "Do you need to bake or roast whole items, or mostly fry?",
+        "How much counter space is free, and how tall can the appliance be?"
+      ],
+      "listing_checks": [
+        "Does the title say 'Dual Basket' or 'Double Basket'? Observed here: the P1 title describes two independent baskets.",
+        "Does the title describe an oven, toaster oven, or 'French Door' design? Observed here: the P2 title describes a French door multi-function air fryer toaster oven.",
+        "Does the title list functions beyond frying? Observed here: the P3 title lists Bake, Dehydrate, and Frozen functions."
+      ],
+      "category_slug": "air-fryers",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-04"],
+      "related_products": ["P1", "P2", "P3"]
+    },
+    {
+      "slug": "air-fryer-capacity-checklist",
+      "title": "A no-hype checklist for comparing air fryer capacity",
+      "summary": "Capacity is easy to misread. Compare the numbers the listing states, and check what they mean for your food.",
+      "questions": [
+        "How many people will you usually cook for?",
+        "What size of food do you cook most often?",
+        "Does the listing give capacity per basket or for the whole unit?"
+      ],
+      "listing_checks": [
+        "Capacity in quarts appears in the titles here: '6 Quart' (P1), '26QT' (P2), and '8 Qt' (P3).",
+        "Check the product details section for the stated capacity and basket dimensions before comparing titles.",
+        "A two-basket title (P1) may list capacity per basket. Confirm this in the listing details."
+      ],
+      "category_slug": "air-fryers",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09"],
+      "related_products": ["P1", "P2", "P3"]
+    },
+    {
+      "slug": "cleanup-counter-space",
+      "title": "How to assess cleanup and counter-space trade-offs",
+      "summary": "Cleaning and storage often decide whether a small appliance gets used. Check them before you buy.",
+      "questions": [
+        "Which parts will you wash after each use, and how often?",
+        "Do you have a sink or dishwasher close to the appliance?",
+        "Where will the appliance live between uses?"
+      ],
+      "listing_checks": [
+        "Check whether the listing says the baskets or trays are dishwasher-safe. Observed here: the P1 title says 'Dishwasher Safe Frying Baskets' and the P3 title says 'Dishwasher-Safe Basket'.",
+        "Check the stated dimensions and weight in the product details section.",
+        "Look for accessories that add parts to clean. Observed here: the P2 title says 'Six Cooking Accessories Included'."
+      ],
+      "category_slug": "air-fryers",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09"],
+      "related_products": ["P1", "P2", "P3"]
+    },
+    {
+      "slug": "multi-function-appliance-questions",
+      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "summary": "Many functions can mean more to learn and more parts to store. Decide which functions you will use before you compare.",
+      "questions": [
+        "Which two or three functions would you use every week?",
+        "Would you use a preset, or set time and temperature yourself?",
+        "What would you stop using first if the appliance had fewer parts?"
+      ],
+      "listing_checks": [
+        "Count the preset options as stated in the title. Observed here: the P2 title states '24 One-Touch Preset Options'.",
+        "Check which functions the title names. Observed here: P3 names 'TurboFry 4-in-1' and lists Bake, Dehydrate, and Frozen.",
+        "Check whether the listing states a temperature range. Confirm it in the product details."
+      ],
+      "category_slug": "air-fryers",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09"],
+      "related_products": ["P2", "P3"]
+    }
+  ]
+}

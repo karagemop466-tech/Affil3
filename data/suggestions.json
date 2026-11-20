@@ -1,0 +1,145 @@
+{
+  "retrieved": "2026-11-20",
+  "note": "Suggestions only. Nothing on this list has been implemented beyond what is already in the build. Each item needs an option chosen by the owner before any change is made. Status for every item: AWAITING YOUR CHOICE.",
+  "suggestions": [
+    {
+      "id": "S01",
+      "title": "Register this site with Associates before adding links",
+      "options": [
+        {"id": "A", "label": "Register the GitHub Pages URL as a Site, then continue (recommended as the first step)", "effort": "low", "risk": "low"},
+        {"id": "B", "label": "Keep the links as-is and register later", "effort": "none", "risk": "higher; tracking may not attribute correctly"}
+      ],
+      "why": "SRC-02 §1 says Sites must be identified in the application.",
+      "source_ids": ["SRC-02"],
+      "depends_on": ["Q05"]
+    },
+    {
+      "id": "S02",
+      "title": "Replace the submitted links with Special Links, after a one-product test",
+      "options": [
+        {"id": "A", "label": "Test one link end to end (generate Special Link, click, check tracking report), then decide", "effort": "low", "risk": "low"},
+        {"id": "B", "label": "Replace all five links at once", "effort": "medium", "risk": "high; the identifiers fail the ASIN check"},
+        {"id": "C", "label": "Keep the submitted links unchanged until Q01–Q04 are answered", "effort": "none", "risk": "medium; links may not attribute"}
+      ],
+      "why": "SRC-02 §2(a)–(b) requires Special Links with the Associates ID. The brief asks for a one-product test before scaling.",
+      "source_ids": ["SRC-02"],
+      "depends_on": ["Q01", "Q02", "Q03", "Q04"]
+    },
+    {
+      "id": "S03",
+      "title": "Price and availability display",
+      "options": [
+        {"id": "A", "label": "Show no prices (current)", "effort": "none", "risk": "low; less 'shop-like'"},
+        {"id": "B", "label": "Apply for Creators API / PA API access, then show served data with a timestamp", "effort": "medium", "risk": "eligibility unknown"},
+        {"id": "C", "label": "Show only prices Amazon serves through the Special Link itself", "effort": "low", "risk": "limited display"}
+      ],
+      "why": "SRC-02 §2(b) limits price display to Amazon-served links or API data.",
+      "source_ids": ["SRC-02"],
+      "depends_on": ["Q08"]
+    },
+    {
+      "id": "S04",
+      "title": "Choose a measurement path",
+      "options": [
+        {"id": "A", "label": "Associates reports only; no site analytics", "effort": "none", "risk": "no site-level click data"},
+        {"id": "B", "label": "Owner-hosted endpoint that counts outbound clicks by product, no cookies, no IP storage", "effort": "medium", "risk": "needs a host; retention must be disclosed"},
+        {"id": "C", "label": "Third-party analytics with cookies", "effort": "low", "risk": "needs cookie disclosure (SRC-02 §3(e)) and consent handling"}
+      ],
+      "why": "GitHub Pages cannot store events. Measurement must be chosen before the five events are defined.",
+      "source_ids": ["SRC-02", "SRC-06"],
+      "depends_on": ["Q06", "Q07"]
+    },
+    {
+      "id": "S05",
+      "title": "Publishing cadence for guides",
+      "options": [
+        {"id": "A", "label": "Two guides per month", "effort": "medium", "risk": "slower to read data"},
+        {"id": "B", "label": "One guide per week", "effort": "high", "risk": "content quality under time pressure"},
+        {"id": "C", "label": "One guide every two weeks", "effort": "low", "risk": "slower discovery"}
+      ],
+      "why": "The brief asks for a cadence. Any cadence must still include a source check for each claim.",
+      "source_ids": [],
+      "depends_on": ["Q15"]
+    },
+    {
+      "id": "S06",
+      "title": "Choose which editorial angles to test",
+      "options": [
+        {"id": "A", "label": "Publish the four working titles from the brief as written", "effort": "low", "risk": "untested demand"},
+        {"id": "B", "label": "Rewrite titles as checklists tied to listing fields (capacity, cleanup, presets)", "effort": "low", "risk": "less search-led"},
+        {"id": "C", "label": "Hold until 28 days of Search Console data exists", "effort": "none", "risk": "slower start"}
+      ],
+      "why": "The brief calls the titles hypotheses, not evidence of search volume or product superiority.",
+      "source_ids": [],
+      "depends_on": ["Q12"]
+    },
+    {
+      "id": "S07",
+      "title": "Seasonal and topic clusters",
+      "options": [
+        {"id": "A", "label": "Air-fryer cluster first (three observed listings)", "effort": "low", "risk": "narrow"},
+        {"id": "B", "label": "Kitchen-thermometer cluster first (one observed listing)", "effort": "low", "risk": "one product only"},
+        {"id": "C", "label": "Defer clusters until the product set is confirmed", "effort": "none", "risk": "slower"}
+      ],
+      "why": "Clusters depend on the confirmed product set (Q01, Q11).",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "depends_on": ["Q01", "Q11"]
+    },
+    {
+      "id": "S08",
+      "title": "Imagery",
+      "options": [
+        {"id": "A", "label": "Typographic design only (current)", "effort": "none", "risk": "less visual"},
+        {"id": "B", "label": "Owner-supplied original photos", "effort": "medium", "risk": "owner must supply"},
+        {"id": "C", "label": "Generated illustrations, labelled as such", "effort": "medium", "risk": "must not imply product appearance"}
+      ],
+      "why": "SRC-02 §6(a) bars altering Program Content, and product photos on Amazon are Program Content. Avoid reusing listing images without permission.",
+      "source_ids": ["SRC-02"],
+      "depends_on": []
+    },
+    {
+      "id": "S09",
+      "title": "Brand and authorship",
+      "options": [
+        {"id": "A", "label": "'Affil3 editorial desk' (current placeholder)", "effort": "none", "risk": "less personal"},
+        {"id": "B", "label": "Named author with a short bio (owner to supply)", "effort": "low", "risk": "owner must supply details"}
+      ],
+      "why": "Authorship helps readers judge a source. No author has been invented.",
+      "source_ids": ["SRC-04"],
+      "depends_on": ["Q13"]
+    },
+    {
+      "id": "S10",
+      "title": "Where the site is hosted",
+      "options": [
+        {"id": "A", "label": "Keep static GitHub Pages (current)", "effort": "none", "risk": "no server features"},
+        {"id": "B", "label": "Add a small owner-hosted service for the click counter and endpoint", "effort": "medium", "risk": "new hosting to maintain"}
+      ],
+      "why": "The click counter and self-hosted analytics need a server (FLG-11).",
+      "source_ids": ["SRC-06"],
+      "depends_on": ["Q07"]
+    },
+    {
+      "id": "S11",
+      "title": "Search Console and feed submission",
+      "options": [
+        {"id": "A", "label": "Owner verifies the Pages URL, then submits the sitemap (recommended)", "effort": "low", "risk": "requires owner account"},
+        {"id": "B", "label": "Defer until the product links are confirmed", "effort": "none", "risk": "slower indexing"}
+      ],
+      "why": "A sitemap and feed are already in place (docs/sitemap.xml, docs/feed.xml).",
+      "source_ids": ["SRC-06"],
+      "depends_on": []
+    },
+    {
+      "id": "S12",
+      "title": "Expand the product set through research",
+      "options": [
+        {"id": "A", "label": "Keep the five submitted products only", "effort": "none", "risk": "limited"},
+        {"id": "B", "label": "Research additional products under owner-approved criteria, with each listing checked against an official Amazon page", "effort": "high", "risk": "time; compliance review required"}
+      ],
+      "why": "Research must be measured, not guessed. Each added product needs its own confirmation record.",
+      "source_ids": ["SRC-02"],
+      "depends_on": ["Q11"]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "retrieved": "2026-11-20",
+  "note": "Counts are computed from data/products.json and recorded here, not scored. No conversion score, revenue forecast, or popularity claim is made.",
+  "findings": [
+    {
+      "id": "A1",
+      "finding": "Intended identifiers passing the 10-character ASIN format check",
+      "value": "0 of 5",
+      "detail": "All five are 9 characters with lowercase letters.",
+      "source_ids": ["SRC-12", "SRC-13"],
+      "flag": "FLG-01"
+    },
+    {
+      "id": "A2",
+      "finding": "Intended ASIN matched by observed redirect ASIN",
+      "value": "0 of 5 match · 4 mismatch · 1 unresolved",
+      "detail": "P1, P2, P3 and P5 reached a different product. P4 reached an interstitial.",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-10", "SRC-11"],
+      "flag": "FLG-02"
+    },
+    {
+      "id": "A3",
+      "finding": "Official listing URL verified for the intended ASIN",
+      "value": "0 of 5",
+      "detail": "Direct fetches of each intended /dp/ page failed. Recorded as blank.",
+      "source_ids": ["SRC-07", "SRC-13"],
+      "flag": "FLG-01"
+    },
+    {
+      "id": "A4",
+      "finding": "Observed destinations containing the tracking ID as a 'tag=' parameter",
+      "value": "0 of 4 observed destinations",
+      "detail": "P4 reached no product page, so 4 destinations were checked.",
+      "source_ids": ["SRC-02", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "flag": "FLG-04"
+    },
+    {
+      "id": "A5",
+      "finding": "Category (from Amazon breadcrumb) for observed listings",
+      "value": "Air Fryers: 3 · Meat thermometers: 1 · Unknown: 1",
+      "detail": "Breadcrumbs: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers (P1, P2, P3). Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat (P5).",
+      "source_ids": ["SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "flag": "FLG-16"
+    },
+    {
+      "id": "A6",
+      "finding": "Main-listing price verified",
+      "value": "0 of 5",
+      "detail": "Prices visible in the fetched pages belong to related items. Excluded.",
+      "source_ids": ["SRC-02", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],
+      "flag": "FLG-10"
+    },
+    {
+      "id": "A7",
+      "finding": "Commission rate verified for any category",
+      "value": "0",
+      "detail": "The schedule page requires Associates sign-in. Commission potential is not stated.",
+      "source_ids": ["SRC-03"],
+      "flag": "FLG-09"
+    },
+    {
+      "id": "A8",
+      "finding": "Click or conversion data in the campaign ledger",
+      "value": "0 rows",
+      "detail": "The ledger is intentionally empty. It takes only data from authorized first-party Associates reports (see data/campaign_ledger.csv).",
+      "source_ids": ["SRC-02"],
+      "flag": "FLG-05"
+    }
+  ]
+}

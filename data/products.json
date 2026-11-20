@@ -1,0 +1,138 @@
+{
+  "retrieved": "2026-11-20",
+  "tracking_id": {
+    "value": "shopnow047c-20",
+    "status": "user-supplied; not verified against an Associates account (no account access in this session)",
+    "source_ids": [
+      "SRC-13",
+      "SRC-02"
+    ]
+  },
+  "rules": {
+    "intended_asin": "The path segment after the domain of the submitted link. Checked against the ASIN format in SRC-12 (10 characters, typically starting 'B0'). Not confirmed as a listing.",
+    "official_listing_url": "Left blank unless a listing page for the intended ASIN is fetched and read. Blank in every row here.",
+    "observed_redirect_target": "The final URL reached by following the submitted short link. Kept separate from the intended ASIN and never merged with it.",
+    "asin_match": "MATCH if observed ASIN equals intended ASIN; MISMATCH if both exist and differ; UNRESOLVED if no product was reached."
+  },
+  "products": [
+    {
+      "id": "P1",
+      "category_slug": "air-fryers",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "intended_asin": "B04G1MEwY",
+      "official_listing_url": "",
+      "official_listing_status": "UNVERIFIED — a direct fetch of https://www.amazon.com/dp/B04G1MEwY failed; the identifier fails the 10-character ASIN format check, so no listing is assumed.",
+      "confirmation_date": "2026-11-20",
+      "source_ids": [
+        "SRC-07",
+        "SRC-13"
+      ],
+      "observed_redirect_target": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B0CDY277D3",
+      "observed_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "observed_category": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "observed_tag_param": "none",
+      "asin_match": "MISMATCH",
+      "price": "",
+      "price_status": "UNVERIFIED — the price shown on the fetched page belongs to a related item, not this listing.",
+      "intended_asin_length": 9,
+      "intended_asin_format": "FAIL — 9 characters (ASIN format per SRC-12 is 10); contains lowercase letters"
+    },
+    {
+      "id": "P2",
+      "category_slug": "air-fryers",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "intended_asin": "B02NbDxp3",
+      "official_listing_url": "",
+      "official_listing_status": "UNVERIFIED — a direct fetch of https://www.amazon.com/dp/B02NbDxp3 failed; the identifier fails the 10-character ASIN format check, so no listing is assumed.",
+      "confirmation_date": "2026-11-20",
+      "source_ids": [
+        "SRC-08",
+        "SRC-13"
+      ],
+      "observed_redirect_target": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B09B7SB46R",
+      "observed_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "observed_category": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "observed_tag_param": "none",
+      "asin_match": "MISMATCH",
+      "price": "",
+      "price_status": "UNVERIFIED — the price shown on the fetched page belongs to a related item, not this listing.",
+      "intended_asin_length": 9,
+      "intended_asin_format": "FAIL — 9 characters (ASIN format per SRC-12 is 10); contains lowercase letters"
+    },
+    {
+      "id": "P3",
+      "category_slug": "air-fryers",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "intended_asin": "B00hJ57DV",
+      "official_listing_url": "",
+      "official_listing_status": "UNVERIFIED — a direct fetch of https://www.amazon.com/dp/B00hJ57DV failed; the identifier fails the 10-character ASIN format check, so no listing is assumed.",
+      "confirmation_date": "2026-11-20",
+      "source_ids": [
+        "SRC-09",
+        "SRC-13"
+      ],
+      "observed_redirect_target": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B08DKYBTPH",
+      "observed_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "observed_category": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "observed_tag_param": "none",
+      "asin_match": "MISMATCH",
+      "price": "",
+      "price_status": "UNVERIFIED — the price shown on the fetched page belongs to a related item, not this listing.",
+      "intended_asin_length": 9,
+      "intended_asin_format": "FAIL — 9 characters (ASIN format per SRC-12 is 10); contains lowercase letters"
+    },
+    {
+      "id": "P4",
+      "category_slug": "uncategorized",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "intended_asin": "B0c8moW59",
+      "official_listing_url": "",
+      "official_listing_status": "UNVERIFIED — a direct fetch of https://www.amazon.com/dp/B0c8moW59 failed; the identifier fails the 10-character ASIN format check, so no listing is assumed.",
+      "confirmation_date": "2026-11-20",
+      "source_ids": [
+        "SRC-10",
+        "SRC-13"
+      ],
+      "observed_redirect_target": "https://www.amazon.com/checkpoint/continue (Amazon interstitial; token omitted)",
+      "observed_asin": "",
+      "observed_title": "Amazon.com (interstitial page; no product title)",
+      "observed_category": "",
+      "observed_tag_param": "none",
+      "asin_match": "UNRESOLVED",
+      "price": "",
+      "price_status": "UNVERIFIED — no product page was reached.",
+      "intended_asin_length": 9,
+      "intended_asin_format": "FAIL — 9 characters (ASIN format per SRC-12 is 10); contains lowercase letters"
+    },
+    {
+      "id": "P5",
+      "category_slug": "meat-thermometers",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "intended_asin": "B0f3GKalj",
+      "official_listing_url": "",
+      "official_listing_status": "UNVERIFIED — a direct fetch of https://www.amazon.com/dp/B0f3GKalj failed; the identifier fails the 10-character ASIN format check, so no listing is assumed.",
+      "confirmation_date": "2026-11-20",
+      "source_ids": [
+        "SRC-11",
+        "SRC-13"
+      ],
+      "observed_redirect_target": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B0DZFD6R9Z",
+      "observed_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "observed_category": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+      "observed_tag_param": "none",
+      "asin_match": "MISMATCH",
+      "price": "",
+      "price_status": "UNVERIFIED — no main-listing price was captured.",
+      "intended_asin_length": 9,
+      "intended_asin_format": "FAIL — 9 characters (ASIN format per SRC-12 is 10); contains lowercase letters"
+    }
+  ],
+  "intended_asin_format_checks": {
+    "rule": "SRC-12: a unique 10-character alphanumeric code, typically starting with 'B0', found after '/dp/' in a product URL.",
+    "result": "All five intended identifiers are 9 characters long and contain lowercase letters. All four observed listing ASINs are 10 characters, uppercase letters and digits. The five intended identifiers therefore fail the format check. Flagged for review; not corrected or replaced."
+  }
+}
