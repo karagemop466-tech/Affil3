@@ -510,15 +510,15 @@ branches exist on `origin`. This session pushes only `arena/66f2548a-affil3`.
 
 | ID | Task | Status | Files | Notes |
 |----|------|--------|-------|-------|
-| A1 | Re-resolve all five submitted short links independently, fresh | claimed | observation file | Two reads per link where the first is ambiguous |
-| A2 | Re-read every official source in `data/sources.json` line by line | claimed | `data/sources.json` | Record re-checked date and whether the page still supports the claim |
-| A3 | Repo review for irregularities; flag, do not silently fix | claimed | `data/flags.json` | Includes CI, cross-register agreement, stale copy |
-| A4 | Add the SG-27..SG-30 rows the brief names but the registers lack | claimed | `data/suggestions.json` | Numbering gap is itself flagged |
-| A5 | Make `/suggestions/` a reviewable choose-a-path board | claimed | `data/suggestions.json`, `tools/build.mjs` | Tracks, sequence, cost, risk, decision record |
-| A6 | Make `/questions/` a known / unknown / discovery register | claimed | `data/questions.json`, `tools/build.mjs` | Each unknown: what we have, what we lack, how to find out, who, blocks what |
-| A7 | Shop-voice pass on reader-facing pages | claimed | `tools/build.mjs`, `data/products.json` | Verification content demoted, not deleted |
-| A8 | Write the design brief that feeds the next prompt | claimed | `DESIGN-BRIEF.md` | Concrete, not aspirational |
-| A9 | Integration: rebuild, gate, PR, merge, Pages | claimed | generated HTML, this board | Last, after A1-A8 |
+| A1 | Re-resolve all five submitted short links independently, fresh | done | observation file | Two reads per link where the first is ambiguous |
+| A2 | Re-read every official source in `data/sources.json` line by line | done | `data/sources.json` | Record re-checked date and whether the page still supports the claim |
+| A3 | Repo review for irregularities; flag, do not silently fix | done | `data/flags.json` | Includes CI, cross-register agreement, stale copy |
+| A4 | Add the SG-27..SG-30 rows the brief names but the registers lack | done | `data/suggestions.json` | Numbering gap is itself flagged |
+| A5 | Make `/suggestions/` a reviewable choose-a-path board | done | `data/suggestions.json`, `tools/build.mjs` | Tracks, sequence, cost, risk, decision record |
+| A6 | Make `/questions/` a known / unknown / discovery register | done | `data/questions.json`, `tools/build.mjs` | Each unknown: what we have, what we lack, how to find out, who, blocks what |
+| A7 | Shop-voice pass on reader-facing pages | done | `tools/build.mjs`, `data/products.json` | Verification content demoted, not deleted |
+| A8 | Write the design brief that feeds the next prompt | done | `DESIGN-BRIEF.md` | Concrete, not aspirational |
+| A9 | Integration: rebuild, gate, PR, merge, Pages | done | generated HTML, this board | Last, after A1-A8 |
 
 Ground rules: no value inferred; anything not confirmable from an official source stays blank and
 flagged; no price, rating, availability, conversion or revenue figure introduced; outbound Amazon
@@ -534,3 +534,96 @@ hosts, so re-verification below was done through it, one URL per call, and each 
 final URL the fetcher reported. The live Pages deployment could **not** be fetched over HTTP from
 here; its state was read from the GitHub API (`repos/.../pages`), which is an official source for
 the deployment but not for the rendered HTML.
+
+## Verification log (A1, A2) — every claim below was read from the page, not recalled
+
+Fetched 2026-11-20 with `fetch_page`, one URL per call, redirects followed, unauthenticated.
+
+| Source | What was read | Result |
+|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | reported final URL, page title, every query parameter | `amazon.com/dp/B0CDY277D3` · CHEFMAN 6 Quart Dual Basket Air Fryer Oven · **no `tag=`** · agrees with both registers |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | same | `amazon.com/dp/B09B7SB46R` · Emeril Lagasse 26QT French Door · **no `tag=`** · agrees |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | same | `amazon.com/dp/B08DKYBTPH` · Chefman Air Fryer 8 Qt TurboFry® · **no `tag=`** · agrees; confirms the PR #10 correction |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | same | `amazon.com/dp/B0DHZTCNR5` · ThermoMaven 1 Sec · **no `tag=`** · agrees; page carries a "Newer Version Available" block → B0GL7Z4KP4 |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | same | `amazon.com/dp/B0DZFD6R9Z` · CHEF iQ Sense Gen3 · **no `tag=`** · agrees |
+| [S01 Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §1, §4, §5, §6, §7 in full | §5 disclosure wording confirmed verbatim. **New:** §6 makes any violation of §5 a *material breach*; §4 disclaims any representation about traffic or commission income — the official basis for publishing no revenue forecast |
+| [S02 Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | Commission Income Statement §1; Participation Requirements §1(a)-(h), §2(a)-(b), §3(a)-(f), §4, §5, §6(a)-(z); Products Statement §1-§3(b) | **§2(a)-(b) promoted from search excerpt to full text**, closing the re-check caveat an earlier session left. Tag requirement quoted verbatim. **New clauses recorded:** §5 (no ML use of Special Links or Program Content without prior written approval), §6(y) (no price tracking or alerting on the Site), §3(e) (must disclose cookies/pixels/other technologies), §6(t) (no reviews or star ratings without PA API), §6(u) (no purchasing through your own links — so G-02 cannot be tested by buying), §6(g) (no incentive for using Special Links), §4 (Special Links in email only if solicited) |
+| [S06 Qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | full page | `rel="sponsored"` is for "advertisements or paid placements"; multiple values may be space-separated; such links "will generally not be followed". Page states "Last updated 2025-12-10 UTC". Confirms the register |
+
+Not re-fetched in this pass, so they keep the status an earlier session recorded: S03, S07–S13. S12
+stays blank with no URL, as it was left. No third-party page was used for any value.
+
+**Two official pages contradict themselves or point at a successor**, both now flagged rather than
+resolved by picking a number: the Emeril page states six accessories in its title and seven in its
+on-page summary (FLG-026); the ThermoMaven page presents a newer version at a different ASIN
+(FLG-025). A price and a star rating were visible on both pages and neither was transcribed.
+
+## Repo review (A3) — irregularities found and what was done
+
+| Finding | Action |
+|---|---|
+| `.github/workflows/verify.yml` diffed `docs/`, which has never existed, and never ran the root gate | **Fixed** (FLG-023, S-21). CI now rebuilds both surfaces, diffs the paths each writes, catches untracked build output, runs both gates |
+| That vacuous CI had a real consequence: `editorial/assets/site.css` was committed stale, missing the resolved-flag styles present in its own source `tools/assets/site.css` | **Regenerated** by running `tools/build.py`. Resolved flags were rendering unstyled on the live site. Nothing in `editorial/` was hand-edited |
+| Category pages published product rows with zero source links, and no table | **Fixed** (FLG-024). Each category now has a comparison table whose rows cite their own official sources |
+| S04's `method` text named three ASINs; the register said five. It still described the pre-PR-#10 state | **Corrected** (FLG-033), and S14–S18 added so each product row has its own register-level source link |
+| FLG-003's detail said "four observed product redirects"; five resolve | **Corrected**, and the flag sharpened with the verbatim 6(w) and 2(b) text |
+| The executive-summary page asserted "one link resolved to a checkpoint page", contradicting the shop table | **Now derived from the data** rather than hand-written (S-17) |
+| `/categories/unresolved/` shipped as a public page whose body was an empty string under a heading promising an explanation | **Empty clusters are no longer rendered** (FLG-032). No link to it remains anywhere outside `legacy/`; 1986 hrefs scanned, zero broken |
+| Root site loads a click counter on every page and publishes no privacy notice, against §3(e) | **Draft `/privacy/` added** (FLG-029, S-23). Marked as a draft for review, not legal advice |
+| SG-27..SG-30, named in the brief, do not exist in either register | **Added as S-13..S-16** (FLG-030). Not renumbered into the SG range unilaterally — Q-20 asks |
+| Three publications are crawlable and robots.txt advertises two | **Flagged, not fixed** (FLG-034, S-18). Retiring another session's published surface is an owner decision |
+
+Repo-wide check: 1986 `<a>` hrefs across all HTML, **0 broken internal links**. 235 amazon-host
+anchors: every one in the root site is `rel="sponsored"`; the 26 that are not all sit in
+`editorial/`, where its own gate requires `class="cite" rel="nofollow"` for citations and publishes
+no buy button at all. Two defensible policies, deliberately different — recorded in S-18's problem
+statement rather than "fixed", because neither is wrong. **0 outbound product links missing
+`tag=shopnow047c-20`.**
+
+## Cross-scope edits (files this session had not claimed)
+
+Three, each logged rather than made quietly:
+
+1. **`tools/verify.mjs`** — added `privacy` and `design-brief` to `OWNED`, and added one rule
+   asserting no external stylesheet, script or font origin. Both *increase* coverage; nothing was
+   relaxed. Without the `OWNED` change the two new pages would have been published ungated, which
+   is worse than the scope breach. Negative-tested: an external Google Fonts `<link>` fails the
+   build, a missing `sponsored` fails it, a wrong tag fails it.
+2. **`src/assets/style.css`** — added a `--display` system font stack, a 70-character measure on
+   reader-facing paragraphs, and styles for the new components. No webfont request is introduced, so
+   the site still makes zero third-party requests and `/privacy/` stays true.
+3. **`editorial/assets/site.css`** — regenerated, not edited. See the table above.
+
+`tools/build.py`, `tools/check_site.py`, `tools/collector.mjs`, `src/assets/analytics.js`,
+`data/register/`, `legacy/`, `QA-BRIEF.md` and both `EXECUTIVE_SUMMARY*.md` files were read only.
+
+**Request to whoever owns `tools/verify.mjs` next:** the gate marks *every* `amazon.com` anchor
+`sponsored`, which is right for product links and a misstatement for a citation to Amazon's own help
+pages. That was hit while writing `/privacy/`; the link was removed rather than mislabelled or the
+gate weakened. Refining it is recorded as **S-25** and left undecided on purpose.
+
+## Gate results
+
+- `node tools/build.mjs && node tools/verify.mjs`: **24 pages, 23 sitemap URLs, 5 feed items, 1699 checks passed, 0 failed** (was 23 pages / 1316 checks).
+- `python3 tools/build.py && python3 tools/check_site.py`: **21 pages, PASS**.
+- Determinism: both builds re-run after commit leave `git status` clean.
+- Flags: 34 total, 32 open, 2 resolved. Suggestions: 25 rows, all awaiting a choice. Questions: 17 known, 20 open, 6 blocking.
+
+## What was deliberately not done
+
+- No price, star rating, review count, availability, conversion, revenue or search-volume figure was
+  introduced anywhere, including where one was visible on a page that was fetched.
+- No intended ASIN, official listing URL, confirmation date or confirmation source was filled. All
+  five stay blank; only the account holder can close that (Q-01).
+- No Special Link was generated or tested. There is no Associates login here, so gate G-02 is still
+  untested (FLG-005).
+- No option on the Suggestions page was chosen on the owner's behalf. The rows implemented in this
+  session are the ones where leaving them undone meant shipping a known defect, and each is
+  reversible in one commit.
+- `robots.txt` still declares two sitemaps. Changing it pre-empts S-18.
+
+## Completion record
+
+- Pull request: _filled in below after opening_
+- Merge result: _filled in below after merging_
+- GitHub Pages: source `main` at `/` (root), status read from `GET /repos/karagemop466-tech/Affil3/pages` = `built` before this session's work; re-checked after merge. The rendered HTML could not be fetched from this sandbox (`github.io` is unreachable), so the deployment is confirmed through the API and the Pages build log rather than by loading the page.

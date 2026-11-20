@@ -657,7 +657,7 @@
       "id": "S-18",
       "track": "findability",
       "topic": "How many publications should a crawler see",
-      "problem": "Three surfaces publish the same five products: the root site, /editorial/, and /legacy/arena-83a43a96/. robots.txt advertises two of them. The brief asks for one site to index.",
+      "problem": "Three surfaces publish the same five products: the root site, /editorial/, and /legacy/arena-83a43a96/. robots.txt advertises two of them. The brief asks for one site to index. The three do not merely duplicate content, they disagree about policy: the root site marks every amazon.com link rel=\"sponsored\" and publishes tagged buy buttons, while /editorial/ marks its Amazon citations class=\"cite\" rel=\"nofollow\" and publishes no buy button at all, because its own gate refuses a call-to-action without a validated tag. Both positions are defensible and each is enforced by its own build. A reader who lands on both sees two sites with different rules about the same products.",
       "current": "A",
       "options": [
         {
