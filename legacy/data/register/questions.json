@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0.0",
+  "verified_on": "2026-11-20",
+  "intro": "Twenty-four questions. Each one has an owner and a method, because a question without a way to close it is just a worry. 'Have' means an official source answers it now. 'Don't have' means nothing official answers it and a decision made today would be a guess.",
+  "questions": [
+    {
+      "id": "Q01",
+      "question": "Do the five supplied links carry our tracking ID at all?",
+      "status": "have",
+      "answer": "No. Each short link resolves to an amazon.com/dp/ URL with no tag parameter. Under Program Policies 2(b) the Associates ID must appear as a parameter on every link placed on a site.",
+      "source": "S02",
+      "consequence": "Any traffic sent through the supplied links earns nothing attributable and proves nothing. Nothing on this site links out until this is fixed.",
+      "owner": "Account holder",
+      "how_to_close": "Open Associates Central, click a product through SiteStripe, and read the URL. If it contains tag=shopnow047c-20 the question is closed in one minute."
+    },
+    {
+      "id": "Q02",
+      "question": "Is shopnow047c-20 an approved tracking ID on this account?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "The build stamps this value into every outbound URL. If it is not a live ID, every link is broken in a way no check on this repository can detect.",
+      "owner": "Account holder",
+      "how_to_close": "Associates Central, Account Settings, Tracking IDs. Screenshot the list."
+    },
+    {
+      "id": "Q03",
+      "question": "What does link 4 (B0c8moW59) actually point to?",
+      "status": "dont_have",
+      "answer": "Not determinable. The link lands on a 'Continue shopping' interstitial and a catalog search for the code returns no results.",
+      "source": "S16",
+      "consequence": "Slot 4 is empty on the site. Naming a product for it would mean inventing one.",
+      "owner": "Account holder",
+      "how_to_close": "Re-issue from SiteStripe and confirm the destination loads a detail page."
+    },
+    {
+      "id": "Q04",
+      "question": "Does the account have API access (PA API or Creators API)?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Determines whether prices, availability, and ratings can ever appear on the site. Without API access they must not appear at all.",
+      "owner": "Account holder",
+      "how_to_close": "Check Associates Central for API credentials. Record the answer here either way."
+    },
+    {
+      "id": "Q05",
+      "question": "How many qualifying sales has the account had, and when?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Amazon's program requires a minimum level of activity to stay enrolled; the exact current threshold must be read from the agreement, not from memory. If the account is dormant, a five-product site will not revive it.",
+      "owner": "Account holder",
+      "how_to_close": "Read the current Commission Income Statement (S02) for the eligibility clause, and export the payment report."
+    },
+    {
+      "id": "Q06",
+      "question": "Which Amazon marketplace is the audience in?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "All five products are 120 V, US-spec. If the reader is elsewhere, the site is recommending appliances they cannot plug in.",
+      "owner": "Account holder",
+      "how_to_close": "State the intended marketplace. The current build assumes amazon.com and says so in the footer."
+    },
+    {
+      "id": "Q07",
+      "question": "What is the Associates commission rate for this category, today?",
+      "status": "dont_have",
+      "answer": "Deliberately not stated. The rate card is behind sign-in (S02 links to a schedule that redirects to a login page) and rates change by category and by month.",
+      "source": "S02",
+      "consequence": "No revenue model is presented anywhere on this site. Any figure a reader sees would be a guess dressed as a fact.",
+      "owner": "Account holder",
+      "how_to_close": "Read the rate card while signed in and record the category rate with the date read."
+    },
+    {
+      "id": "Q08",
+      "question": "Is there any hands-on testing behind these recommendations?",
+      "status": "have",
+      "answer": "No. Everything published is sourced from manufacturer specification pages and Amazon listings. No unit was used by anyone writing this site.",
+      "source": "S06",
+      "consequence": "The site must never use first-person testing language. It compares published specifications and states who each model suits. That is a real, useful thing — but it is not a review.",
+      "owner": "Editor",
+      "how_to_close": "Either fund one unit for testing, or keep the spec-comparison framing permanently and label it as such."
+    },
+    {
+      "id": "Q09",
+      "question": "Which preset count is correct for the Emeril oven: 24 or 25?",
+      "status": "dont_have",
+      "answer": "Unresolved. The manufacturer page states both, in a spec tile and in body copy.",
+      "source": "S08",
+      "consequence": "The field is blank. No preset count appears in the copy for that product.",
+      "owner": "Editor",
+      "how_to_close": "Email manufacturer support and keep the reply. See FLG-001."
+    },
+    {
+      "id": "Q10",
+      "question": "Is the Chefman 8 Qt 1700 W or 1000 W?",
+      "status": "dont_have",
+      "answer": "Unresolved. The manufacturer page says 1700 W; the Amazon bullet says 1000 W for the same model number.",
+      "source": "S07",
+      "consequence": "The site uses the manufacturer figure and flags the conflict. It should not be used in an ad claim until confirmed.",
+      "owner": "Editor",
+      "how_to_close": "Confirm with CHEFMAN support in writing. See FLG-002."
+    },
+    {
+      "id": "Q11",
+      "question": "What is actually in the box for the Emeril oven now?",
+      "status": "dont_have",
+      "answer": "Unresolved. The manufacturer says 7 accessories; its own accessory page says the grill plate is no longer included.",
+      "source": "S09",
+      "consequence": "The site does not claim an accessory list. Copy says to check current box contents.",
+      "owner": "Editor",
+      "how_to_close": "Ask the manufacturer for the current in-box list by model number. See FLG-006."
+    },
+    {
+      "id": "Q12",
+      "question": "Do we have a privacy policy that covers the analytics endpoint?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "The analytics script deliberately records no identifiers, which makes the policy short — but 'short' is not 'unnecessary'. Program Policies require a compliant privacy disclosure.",
+      "owner": "Site owner",
+      "how_to_close": "Publish a policy that names the endpoint, the five event types, the fields, and the retention period."
+    },
+    {
+      "id": "Q13",
+      "question": "Where will the analytics endpoint live?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "The script ships with the endpoint unset so it fails open and records nothing. Site works, measurement does not.",
+      "owner": "Site owner",
+      "how_to_close": "Set ANALYTICS_ENDPOINT at build time. See SG-14."
+    },
+    {
+      "id": "Q14",
+      "question": "Who reads the dashboard, and how often?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Data nobody reads is a liability with no return.",
+      "owner": "Site owner",
+      "how_to_close": "Name a person and a monthly cadence, or leave analytics off."
+    },
+    {
+      "id": "Q15",
+      "question": "Is the domain karagemop466-tech.github.io/Affil3 the permanent home?",
+      "status": "have",
+      "answer": "It is where the site is published today, via GitHub Pages from main.",
+      "source": "S17",
+      "consequence": "A github.io subpath is indexable but carries no brand ownership. Moving later means redirects and a temporary ranking reset.",
+      "owner": "Site owner",
+      "how_to_close": "Decide before content volume grows. Record the decision in this file."
+    },
+    {
+      "id": "Q16",
+      "question": "Has the site been verified in Search Console?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Without verification there is no impression data, so the 'choose the next topic from measured queries' plan cannot start.",
+      "owner": "Site owner",
+      "how_to_close": "Verify the property per S17 and submit sitemap.xml per S18."
+    },
+    {
+      "id": "Q17",
+      "question": "Does the site have an authorship signal a reader can evaluate?",
+      "status": "dont_have",
+      "answer": "Not yet. There is an editorial standards page but no named author with credentials.",
+      "source": null,
+      "consequence": "Readers and search quality raters both weigh who is making the claim. 'The editors' is weaker than a name and a method.",
+      "owner": "Site owner",
+      "how_to_close": "Publish a real author bio, or state plainly that the site publishes spec comparisons rather than tests and name the method."
+    },
+    {
+      "id": "Q18",
+      "question": "What separates this site from the ten air fryer sites already ranking?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Without an answer the guides compete on volume, which is a race the site loses on day one.",
+      "owner": "Editor",
+      "how_to_close": "Write one sentence a competitor could not also write. The current candidate: we publish conflicts between official sources instead of picking the friendlier number."
+    },
+    {
+      "id": "Q19",
+      "question": "Is there budget for the products, or for images?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Image use is constrained by policy: Amazon product images may not be stored. Manufacturer marketing images have their own terms. The current build uses no product photography and says why.",
+      "owner": "Site owner",
+      "how_to_close": "Decide: no photography (current), licensed photography, or original photography."
+    },
+    {
+      "id": "Q20",
+      "question": "What is the correction policy when a reader reports an error?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "Without a policy, corrections happen ad hoc and the flag page stops being maintained. That is the point at which the verification advantage quietly disappears.",
+      "owner": "Editor",
+      "how_to_close": "Adopt SG-09 and publish the log."
+    },
+    {
+      "id": "Q21",
+      "question": "Do the four resolved products still match the live listings?",
+      "status": "have",
+      "answer": "Yes as of 2026-11-20. Each was re-resolved and read that day.",
+      "source": "S12",
+      "consequence": "This answer expires. Specs and model numbers change; the access date is on every row for that reason.",
+      "owner": "Editor",
+      "how_to_close": "Re-run the verification quarterly and update the access dates."
+    },
+    {
+      "id": "Q22",
+      "question": "Which of the four resolved products is the one to lead with?",
+      "status": "have",
+      "answer": "The Chefman 6 Qt dual-window: it is the only one of the four with two independent zones and a window on each basket, and its specifications are the least contested across official sources. This is an editorial judgment from published specs, not a sales claim.",
+      "source": "S06",
+      "consequence": "It sits first on the front page. If you disagree, move it and say why.",
+      "owner": "Editor",
+      "how_to_close": "Confirm or overrule. Either is fine; leaving it unstated is not."
+    },
+    {
+      "id": "Q23",
+      "question": "Is '25 Qt' or '26 Qt' the model to track for Emeril?",
+      "status": "have",
+      "answer": "26 QT. The manufacturer sells 26 QT (4-00675-02A-VN) and a separate 25 QT dual-zone unit (DZEL24 series). These are different appliances and must not be compared as one.",
+      "source": "S08",
+      "consequence": "The register tracks only the 26 QT unit, matching the linked listing.",
+      "owner": "Editor",
+      "how_to_close": "Closed. Re-check if the linked SKU changes."
+    },
+    {
+      "id": "Q24",
+      "question": "What happens if the Associates account is not approved for this site?",
+      "status": "dont_have",
+      "answer": null,
+      "source": null,
+      "consequence": "A github.io subpath is a site Amazon will review. If it is rejected, every link here becomes a plain link with no commission and the disclosure language becomes inaccurate.",
+      "owner": "Account holder",
+      "how_to_close": "List the site in the Associates account before sending traffic to it. Confirm the site appears as an approved channel."
+    }
+  ]
+}

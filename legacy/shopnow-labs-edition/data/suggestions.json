@@ -1,0 +1,262 @@
+{
+  "meta": {
+    "purpose": "A decision room, not a to-do list. Every suggestion is a choice with named paths, a stated tradeoff, and the evidence behind it. Nothing here has been implemented silently: items marked 'applied' were implemented in this build and are listed so the decision is visible and reversible.",
+    "scoring_note": "Impact, confidence and effort are editorial judgements made on 2026-11-20. They are NOT measured outcomes. No traffic, revenue, conversion or rank figure is asserted anywhere in this file because none was measured.",
+    "decision_legend": {
+      "open": "A reviewer still needs to choose. Pick a path ID.",
+      "applied": "Implemented in this build. Reversible; listed for transparency.",
+      "blocked": "Cannot be done without violating a sourced policy or without information we do not have. Do not implement.",
+      "deferred": "Depends on an earlier decision or on data we do not yet have."
+    }
+  },
+  "suggestions": [
+    {
+      "id": "SUG-01",
+      "title": "Lead with the products, keep the checking in the footer",
+      "pillar": "Read like a shop, not an audit",
+      "why": "The first version of a compliance-heavy affiliate site usually opens with its verification process, which is the least interesting thing to a buyer. The front page should look like a publication front page: a lead story, a product grid, a clear next step. The register, the claims and the flags stay reachable but stop being the headline.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Publication front page, registers in footer", "tradeoff": "Buyer-friendly, but a reviewer has to scroll to find the audit trail.", "picked": true },
+        { "id": "B", "label": "Dashboard front page with all tables", "tradeoff": "Great for the operator, poor for a reader, and reads exactly like the 'audit' the brief says to avoid.", "picked": false }
+      ],
+      "evidence": [],
+      "implemented_as": "index.html rebuilt as a front page: lead guide, product grid, collections, then a single footer group linking every dashboard surface."
+    },
+    {
+      "id": "SUG-02",
+      "title": "Publish question-shaped guides instead of category pages",
+      "pillar": "Findable",
+      "why": "A category page competes with Amazon. A question does not. Each of the six guides answers one question a buyer actually types, then hands off to the product that fits the answer. This is the cheapest organic-traffic strategy available to a site with no domain authority.",
+      "impact": "high",
+      "confidence": "medium",
+      "effort": "medium",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Six question guides, one per decision", "tradeoff": "Needs ongoing cadence to compound; six pages is a start, not a strategy.", "picked": true },
+        { "id": "B", "label": "One long 'best air fryer' listicle", "tradeoff": "Highest competition, most likely to be ignored, and impossible to keep accurate as prices move.", "picked": false }
+      ],
+      "evidence": [],
+      "implemented_as": "content/guides/*.md — six guides, each with its own URL, canonical, sitemap entry and feed item.",
+      "what_would_change_our_mind": "Search Console query data showing these questions get no impressions and a different question set does. That requires the site to be verified in Search Console first (see SUG-11)."
+    },
+    {
+      "id": "SUG-03",
+      "title": "Show a product table a buyer can scan, and separate it from the audit table",
+      "pillar": "Read like a shop, not an audit",
+      "why": "The brief asks for both a simple table of entries and a findings table. Those are different documents with different readers. Merging them produces a table nobody can use for either purpose.",
+      "impact": "medium",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Two tables: buyer-facing on the category pages, evidence-facing in the review room", "tradeoff": "More pages to keep in sync; solved here by generating both from one data file.", "picked": true },
+        { "id": "B", "label": "One table containing both", "tradeoff": "Every buyer row inherits audit jargon and every audit row inherits marketing tone.", "picked": false }
+      ],
+      "evidence": [],
+      "implemented_as": "/review/product-register/ holds the evidence table with observed-vs-intended link fields; category pages hold the scanning table."
+    },
+    {
+      "id": "SUG-04",
+      "title": "Do not publish prices",
+      "pillar": "Trustworthy machinery",
+      "why": "Amazon permits price display only when Amazon serves the link or when the figure comes from the Creators API or PA API. This site has no API credentials, and scraped prices drift within hours. Publishing them would be both a policy risk and a guaranteed inaccuracy.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "none",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "No prices; link to the live listing", "tradeoff": "Slightly less convenient for the reader, fully defensible, and never wrong.", "picked": true },
+        { "id": "B", "label": "Scrape and display prices with a 'last updated' note", "tradeoff": "Violates the price-display condition in the Program Policies and will be stale.", "picked": false },
+        { "id": "C", "label": "Apply for Creators API access, then display API-sourced prices", "tradeoff": "The correct long-term path, but requires approved API credentials that we do not have.", "picked": false }
+      ],
+      "evidence": ["C-09", "C-10", "C-26"],
+      "implemented_as": "No price appears on any page. Every product links to the live listing instead."
+    },
+    {
+      "id": "SUG-05",
+      "title": "Use text and typography instead of Amazon product photography",
+      "pillar": "Read like a publication",
+      "why": "Program Content may only be used as licensed, and image caching is restricted. Republishing listing photos is the single most common way affiliate sites breach the IP License. A monogram-and-typography treatment keeps the page looking designed without borrowing anyone's assets.",
+      "impact": "medium",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Typographic product cards, no third-party imagery", "tradeoff": "Less visually rich than a photo grid; zero licensing risk; no third-party requests on load.", "picked": true },
+        { "id": "B", "label": "Hotlink listing images", "tradeoff": "Risk under the IP License and breaks whenever the URL rotates.", "picked": false },
+        { "id": "C", "label": "Commission original photography", "tradeoff": "Best result for trust and SEO, but it is a real cost and cannot be produced from this environment.", "picked": false }
+      ],
+      "evidence": ["C-11", "C-12"],
+      "implemented_as": "Monogram tiles generated from the brand name; zero external asset requests."
+    },
+    {
+      "id": "SUG-06",
+      "title": "Do not use AI to write the guides from Amazon listing text",
+      "pillar": "Trustworthy machinery",
+      "why": "The brief asks for an AI-powered content engine. The Program Policies prohibit using Program Content or Special Links to develop machine learning models without prior written approval. So the automation boundary is: a model may draft from our own notes and public non-Amazon sources, but Amazon listing text must not be piped into a model to generate articles.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "blocked",
+      "paths": [
+        { "id": "A", "label": "Human-written guides, automated checks", "tradeoff": "Slower to scale; compliant; this is what was built.", "picked": true },
+        { "id": "B", "label": "Model-generated articles from scraped listing content", "tradeoff": "Likely breach of the ML-use clause, and produces the exact generic tone the brief rejects.", "picked": false }
+      ],
+      "evidence": ["C-24"],
+      "blocked_by": "Requires prior written approval from Amazon for Program Content use in model development. Not available to this project."
+    },
+    {
+      "id": "SUG-07",
+      "title": "Put a hard gate in front of publishing",
+      "pillar": "Trustworthy machinery",
+      "why": "Automation should handle the mechanical checks and refuse to publish when a human-only judgement is needed. A link that resolves to a different ASIN than intended, a missing disclosure, or a product with no verified identity should fail the build rather than go live.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "medium",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Deterministic validator runs in CI and blocks the build", "tradeoff": "Occasionally blocks on a false positive, which is the correct failure direction for compliance.", "picked": true },
+        { "id": "B", "label": "Checklist a human follows before publishing", "tradeoff": "No enforcement, and the check silently stops happening under deadline.", "picked": false }
+      ],
+      "evidence": ["C-02", "C-03", "C-05"],
+      "implemented_as": "tools/validate.mjs, wired into .github/workflows/checks.yml; a failing gate prevents deploy."
+    },
+    {
+      "id": "SUG-08",
+      "title": "Keep intended and observed link destinations in separate fields",
+      "pillar": "Trustworthy machinery",
+      "why": "The submitted short links do not carry the tag in the redirect we observed. Recording 'what we meant' and 'what we saw' in one field is how a broken affiliate link goes unnoticed for months. Separating them makes the mismatch auditable and lets a validator fail on it.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Two fields, validator requires them to agree before publish", "tradeoff": "More data entry; the only way to detect drift automatically.", "picked": true },
+        { "id": "B", "label": "Single 'link' field", "tradeoff": "Cheap now, invisible failures later.", "picked": false }
+      ],
+      "evidence": ["C-02", "C-19"],
+      "implemented_as": "data/products.json: intended_asin / intended_listing_url vs observed_redirect_target / observed_tag_parameter."
+    },
+    {
+      "id": "SUG-09",
+      "title": "Rebuild outbound links as tagged Special Links before driving any traffic",
+      "pillar": "Compliance gate",
+      "why": "The observed redirects from the five submitted short links carried no Associates tag. A click through them cannot be attributed to this account. Until the tagged form is confirmed to track, publishing more content sends traffic into a hole.",
+      "impact": "critical",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "open",
+      "paths": [
+        { "id": "A", "label": "Rebuild each link as the canonical tagged URL and verify one in the Associates dashboard", "tradeoff": "Requires dashboard access and one test click; confirms tracking before scaling. Recommended.", "picked": false },
+        { "id": "B", "label": "Keep the supplied short links as-is", "tradeoff": "Zero effort, but no evidence they attribute to this tag.", "picked": false },
+        { "id": "C", "label": "Apply for a SiteStripe-generated link for each product", "tradeoff": "Cleanest source of truth for the exact required format, but needs an enrolled account.", "picked": false }
+      ],
+      "evidence": ["C-01", "C-02"],
+      "recommended": "A",
+      "blocked_by": "Requires Associates dashboard access that this environment does not have. Logged as FLG-003."
+    },
+    {
+      "id": "SUG-10",
+      "title": "Add a seasonal spine and named collections",
+      "pillar": "Read like a publication",
+      "why": "A publication has a calendar. Seasonal groupings give an editor a reason to publish on a schedule and give a reader a reason to return, without inventing urgency or fake deadlines.",
+      "impact": "medium",
+      "confidence": "medium",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Named collections tied to cooking occasions", "tradeoff": "Needs refreshing each season or it reads stale.", "picked": true },
+        { "id": "B", "label": "Countdown timers and 'deal ends tonight' banners", "tradeoff": "Manufactured urgency on prices we cannot verify. Avoid.", "picked": false }
+      ],
+      "evidence": ["C-16"],
+      "implemented_as": "/collections/ plus collection labels on each product."
+    },
+    {
+      "id": "SUG-11",
+      "title": "Turn on real measurement before writing another word",
+      "pillar": "Measure before optimizing",
+      "why": "Choosing the next guide from instinct is the most expensive habit available. But this build can only ship the instrument, not the readings: an analytics endpoint needs a host and a privacy decision, and Search Console needs domain verification.",
+      "impact": "critical",
+      "confidence": "high",
+      "effort": "medium",
+      "decision": "deferred",
+      "paths": [
+        { "id": "A", "label": "Self-hosted, cookieless endpoint on a subdomain you control", "tradeoff": "No consent banner needed for aggregate, non-identifying counts; requires a host and DNS record.", "picked": false },
+        { "id": "B", "label": "Google Analytics 4", "tradeoff": "Free and capable, but adds a third-party script and a consent obligation in several jurisdictions.", "picked": false },
+        { "id": "C", "label": "Ship the event calls now, endpoint later", "tradeoff": "Events fire into a documented queue with no collector; no data is lost from the code's perspective, but nothing is recorded yet.", "picked": true }
+      ],
+      "evidence": ["C-05", "C-18"],
+      "recommended": "A",
+      "blocked_by": "Needs a host and a privacy decision from the owner. Logged as FLG-006."
+    },
+    {
+      "id": "SUG-12",
+      "title": "Resolve the fifth product before adding any fifth product page",
+      "pillar": "Compliance gate",
+      "why": "One submitted link returns a checkpoint page instead of a product. Any page written for it would be an invented product. It stays out of the catalogue until it resolves.",
+      "impact": "high",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "open",
+      "paths": [
+        { "id": "A", "label": "Owner re-sends the full amazon.com/dp/ URL", "tradeoff": "Fastest and unambiguous; the ASIN arrives as a fact rather than an inference.", "picked": false },
+        { "id": "B", "label": "Resolve it from a different network", "tradeoff": "May succeed by luck; still a guess about which product was intended.", "picked": false }
+      ],
+      "evidence": [],
+      "recommended": "A",
+      "blocked_by": "The link is served a bot-checkpoint page from this environment. Logged as FLG-001."
+    },
+    {
+      "id": "SUG-13",
+      "title": "Keep email capture, but make no offer",
+      "pillar": "Read like a publication",
+      "why": "A newsletter is a legitimate publication habit, but any incentive tied to clicking an Amazon link is prohibited. A capture form that promises a discount in exchange for a purchase would cross that line.",
+      "impact": "medium",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Plain 'tell me when a guide publishes' capture, no reward", "tradeoff": "Lower signup rate than an incentive; compliant.", "picked": true },
+        { "id": "B", "label": "'Subscribe for a 10% off code'", "tradeoff": "Prohibited incentive structure when tied to Special Links.", "picked": false }
+      ],
+      "evidence": ["C-23"],
+      "implemented_as": "Capture block on the front page and guide index, wired to a local placeholder handler that records nothing until an endpoint exists."
+    },
+    {
+      "id": "SUG-14",
+      "title": "State authorship, ownership and correction policy up front",
+      "pillar": "Read like a publication",
+      "why": "Readers forgive limits that are declared and distrust claims that are implied. Naming the desk, saying it has not physically tested the products, and publishing a correction policy costs almost nothing and is the difference between 'a review site' and 'a content farm'.",
+      "impact": "medium",
+      "confidence": "high",
+      "effort": "low",
+      "decision": "applied",
+      "paths": [
+        { "id": "A", "label": "Editorial standards page plus a byline on every guide", "tradeoff": "Admits the desk has not tested the products, which is honest and also a differentiator when most competitors hide it.", "picked": true },
+        { "id": "B", "label": "Anonymous site with implied authority", "tradeoff": "Reads like generated content, which is the failure mode the brief names.", "picked": false }
+      ],
+      "evidence": ["C-15", "C-16"],
+      "implemented_as": "/editorial-standards/, byline block on every guide, /review/sources/."
+    },
+    {
+      "id": "SUG-15",
+      "title": "Hold the guide cadence to what can be verified",
+      "pillar": "Findable",
+      "why": "A publishing calendar only compounds if every entry is true when it ships. A cadence of two verified guides a month beats eight unverified ones, and the gate can enforce the difference.",
+      "impact": "medium",
+      "confidence": "medium",
+      "effort": "low",
+      "decision": "open",
+      "paths": [
+        { "id": "A", "label": "Two guides per month, each gated", "tradeoff": "Slower growth, higher survival rate.", "picked": false },
+        { "id": "B", "label": "Weekly programmatic pages", "tradeoff": "Volume without verification produces exactly the site this brief rejects.", "picked": false }
+      ],
+      "evidence": ["C-15", "C-16"],
+      "recommended": "A"
+    }
+  ]
+}

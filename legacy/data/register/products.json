@@ -1,0 +1,643 @@
+{
+  "schema_version": "1.0.0",
+  "verified_on": "2026-11-20",
+  "tracking_id": "shopnow047c-20",
+  "editorial_note": "A field is present only if an official page stated it. A field is null when no official source stated it. `listing_only: true` means the value came from the Amazon detail page and should be re-checked against the manufacturer page before any marketing claim.",
+  "products": [
+    {
+      "id": "P1",
+      "slot": 1,
+      "supplied_link": "https://link.amazon/B04G1MEwY",
+      "supplied_code": "B04G1MEwY",
+      "supplied_code_chars": 9,
+      "observed_redirect": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed_asins": [
+        "B0CDY277D3"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "Supplied short link resolves to Amazon detail page B0CDY277D3, whose title and manufacturer page agree on the same model.",
+      "brand": "CHEFMAN",
+      "name": "TurboFry Touch 6 Qt. Dual-Window Air Fryer",
+      "model": "RJ38-SQPF-3TDB-2W",
+      "category": "air-fryers",
+      "category_label": "Air fryers",
+      "shape": "dual-basket",
+      "best_for": "Two different foods, two different timings, one compact footprint.",
+      "one_liner": "Two 3-quart baskets that finish at the same moment, with a window on each so you stop opening the drawer.",
+      "specs": {
+        "capacity_qt": {
+          "value": 6,
+          "note": "Two independent 3-quart baskets",
+          "source": "S06",
+          "listing_only": false
+        },
+        "capacity_l": {
+          "value": 5.67,
+          "source": "S06",
+          "listing_only": false
+        },
+        "temp_min_f": {
+          "value": 200,
+          "source": "S06",
+          "listing_only": false
+        },
+        "temp_max_f": {
+          "value": 450,
+          "source": "S06",
+          "listing_only": false
+        },
+        "watts": {
+          "value": 1700,
+          "source": "S06",
+          "listing_only": false
+        },
+        "volts": {
+          "value": 120,
+          "source": "S06",
+          "listing_only": false
+        },
+        "dimensions_in": {
+          "value": "13.38 D x 11.81 W x 10.63 H",
+          "source": "S06",
+          "listing_only": false
+        },
+        "weight_lb": {
+          "value": 13.3,
+          "source": "S06",
+          "listing_only": false
+        },
+        "baskets": {
+          "value": 2,
+          "source": "S06",
+          "listing_only": false
+        },
+        "presets": {
+          "value": null,
+          "note": "Manufacturer page lists functions (Sync Finish, Hi-Fry, +2 min, shake reminder), not a preset count. Amazon listing does not state a count either. Left blank rather than inferred."
+        },
+        "dishwasher_safe_basket": {
+          "value": true,
+          "source": "S06",
+          "listing_only": false
+        },
+        "viewing_window": {
+          "value": true,
+          "source": "S06",
+          "listing_only": false
+        },
+        "warranty_years": {
+          "value": 1,
+          "source": "S06",
+          "listing_only": false
+        },
+        "certification": {
+          "value": "cETL",
+          "source": "S06",
+          "listing_only": false
+        }
+      },
+      "tradeoffs": {
+        "pros": [
+          "A window on each basket means fewer heat-losing peeks.",
+          "Sync Finish lands two foods at the same moment.",
+          "Two 3-quart zones are easier to clean than one wide chamber.",
+          "1700 W and a 450 F ceiling give a real crisping finish."
+        ],
+        "cons": [
+          "Six quarts is the sum of two small baskets, not one big cooking space.",
+          "No preset count published by the manufacturer, so don't shop it as a preset machine.",
+          "13.3 lb and 13.38 in deep, so measure the counter and the cabinet clearance."
+        ],
+        "skip_if": "You regularly cook one large item, or you want a single wide basket for a big batch."
+      },
+      "questions_answered": [
+        "Will two foods actually finish together?",
+        "Can I see the food without pulling the basket?",
+        "Does it fit under a cabinet?"
+      ],
+      "official_url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "sources": [
+        "S06",
+        "S12"
+      ]
+    },
+    {
+      "id": "P2",
+      "slot": 2,
+      "supplied_link": "https://link.amazon/B02NbDxp3",
+      "supplied_code": "B02NbDxp3",
+      "supplied_code_chars": 9,
+      "observed_redirect": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed_asins": [
+        "B09B7SB46R"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "Supplied short link resolves to Amazon detail page B09B7SB46R, whose title matches the Emeril Everyday 26 QT French Door AirFryer 360.",
+      "brand": "Emeril Lagasse",
+      "name": "French Door AirFryer 360 Toaster Oven Combo, 26 QT",
+      "model": "4-00675-02A-VN",
+      "category": "air-fryer-ovens",
+      "category_label": "Air fryer ovens",
+      "shape": "oven-style",
+      "best_for": "Cooking a whole meal's worth at once, on more than one rack.",
+      "one_liner": "A countertop oven with french doors, three rack positions, and 26 quarts of room — the one to pick when the basket is the bottleneck.",
+      "specs": {
+        "capacity_qt": {
+          "value": 26,
+          "source": "S08",
+          "listing_only": false
+        },
+        "capacity_l": {
+          "value": 24.6,
+          "source": "S08",
+          "listing_only": false
+        },
+        "dimensions_in": {
+          "value": "16.9 D x 15.8 W x 14.8 H",
+          "source": "S08",
+          "listing_only": false
+        },
+        "volts": {
+          "value": 120,
+          "source": "S08",
+          "listing_only": false
+        },
+        "presets": {
+          "value": null,
+          "note": "Conflict: manufacturer spec tile says '25 Cooking Pre-sets', manufacturer body copy says '24 one-touch cooking presets', and the Amazon listing title says '24 One-Touch Preset Options'. Unresolved — left blank and flagged as FLG-001."
+        },
+        "watts": {
+          "value": null,
+          "note": "Not stated on the manufacturer product page. Third-party listings vary between 1550 W and 1700 W; not republished."
+        },
+        "baskets": {
+          "value": null,
+          "note": "Oven format, not a basket appliance. Rack count not stated on the manufacturer product page."
+        },
+        "warranty_years": {
+          "value": 1,
+          "source": "S08",
+          "listing_only": false
+        },
+        "certification": {
+          "value": null,
+          "note": "Not stated on the manufacturer product page."
+        },
+        "dishwasher_safe_basket": {
+          "value": null,
+          "note": "Manufacturer page does not state dishwasher safety for the accessories."
+        },
+        "viewing_window": {
+          "value": true,
+          "note": "Glass french doors",
+          "source": "S08",
+          "listing_only": false
+        },
+        "temp_min_f": {
+          "value": null,
+          "note": "No temperature range is stated on the manufacturer product page for this model. Promotional pages on other manufacturer-affiliated domains quote a range, but they are not the product page, so no value is published."
+        },
+        "temp_max_f": {
+          "value": null,
+          "note": "See above. Left blank rather than filled from a promotional page."
+        }
+      },
+      "tradeoffs": {
+        "pros": [
+          "26 quarts across multiple rack levels, so a main and a side can cook together.",
+          "French doors open with one pull and stay out of the way.",
+          "Manufacturer states it serves 4 to 6 people.",
+          "Fits a 12-inch pizza per the manufacturer."
+        ],
+        "cons": [
+          "16.9 in. deep and 14.8 in. tall — it eats counter depth and vertical clearance.",
+          "The grill plate is no longer included; the manufacturer sells it separately.",
+          "The manufacturer product page does not state a temperature range or a wattage, so neither is published here.",
+          "Preset count is inconsistent across the manufacturer's own page (see FLG-001)."
+        ],
+        "skip_if": "Counter depth is tight, or you only ever cook one basket-sized portion."
+      },
+      "questions_answered": [
+        "Can it replace a toaster oven and an air fryer?",
+        "Will a 12-inch pizza fit?",
+        "What is actually in the box?"
+      ],
+      "official_url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "sources": [
+        "S08",
+        "S09",
+        "S13"
+      ]
+    },
+    {
+      "id": "P3",
+      "slot": 3,
+      "supplied_link": "https://link.amazon/B00hJ57DV",
+      "supplied_code": "B00hJ57DV",
+      "supplied_code_chars": 9,
+      "observed_redirect": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_asins": [
+        "B08DKYBTPH"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "Supplied short link resolves to Amazon detail page B08DKYBTPH. Amazon's own 'About this item' block names model RJ38-SQSS-8T, matching the Chefman TurboFry Touch 8 Qt page.",
+      "brand": "CHEFMAN",
+      "name": "TurboFry Touch Stainless-Steel Air Fryer, 8 Qt",
+      "model": "RJ38-SQSS-8T",
+      "category": "air-fryers",
+      "category_label": "Air fryers",
+      "shape": "single-basket",
+      "best_for": "One big batch, one basket, no dividers to work around.",
+      "one_liner": "Eight quarts in a single basket: the straightforward pick for a family portion of fries, wings, or vegetables.",
+      "specs": {
+        "capacity_qt": {
+          "value": 8,
+          "source": "S07",
+          "listing_only": false
+        },
+        "capacity_l": {
+          "value": 7.57,
+          "source": "S07",
+          "listing_only": false
+        },
+        "temp_min_f": {
+          "value": 200,
+          "source": "S07",
+          "listing_only": false
+        },
+        "temp_max_f": {
+          "value": 400,
+          "source": "S07",
+          "listing_only": false
+        },
+        "watts": {
+          "value": 1700,
+          "source": "S07",
+          "listing_only": false
+        },
+        "volts": {
+          "value": 120,
+          "source": "S07",
+          "listing_only": false
+        },
+        "dimensions_in": {
+          "value": "15.4 x 12.6 x 13.5",
+          "source": "S07",
+          "listing_only": false
+        },
+        "weight_lb": {
+          "value": 12.8,
+          "source": "S07",
+          "listing_only": false
+        },
+        "baskets": {
+          "value": 1,
+          "source": "S07",
+          "listing_only": false
+        },
+        "presets": {
+          "value": 4,
+          "source": "S07",
+          "listing_only": false
+        },
+        "dishwasher_safe_basket": {
+          "value": true,
+          "source": "S07",
+          "listing_only": false
+        },
+        "viewing_window": {
+          "value": true,
+          "source": "S07",
+          "listing_only": false
+        },
+        "warranty_years": {
+          "value": 1,
+          "source": "S07",
+          "listing_only": false
+        },
+        "certification": {
+          "value": "cETL",
+          "source": "S07",
+          "listing_only": false
+        }
+      },
+      "tradeoffs": {
+        "pros": [
+          "Eight quarts in one basket — no divider limiting a long item.",
+          "Four presets and two dials' worth of decisions; low learning curve.",
+          "Top-rack dishwasher-safe basket.",
+          "400 F ceiling is enough for most frozen and fresh-cook jobs."
+        ],
+        "cons": [
+          "400 F, not 450 F — a real difference against the dual-window unit on crisping.",
+          "One chamber means one temperature at a time.",
+          "The Amazon listing carries a 'newer model of this item' callout, so confirm the current model with the manufacturer before you buy."
+        ],
+        "skip_if": "You routinely cook two foods that need different temperatures."
+      },
+      "questions_answered": [
+        "Will a long item fit without being cut in half?",
+        "How much counter depth does it need?",
+        "Do I need to learn a menu system?"
+      ],
+      "official_url": "https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1",
+      "sources": [
+        "S07",
+        "S14"
+      ]
+    },
+    {
+      "id": "P4",
+      "slot": 4,
+      "supplied_link": "https://link.amazon/B0c8moW59",
+      "supplied_code": "B0c8moW59",
+      "supplied_code_chars": 9,
+      "observed_redirect": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_asins": [
+        "B0DHZTCNR5"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "First fetch returned an Amazon 'Continue shopping' interstitial; a second fetch the same day resolved to detail page B0DHZTCNR5. The linked listing is the ThermoMaven instant-read thermometer, which matches the ThermoMaven F1 Ace family page. The observation is time-dependent and is recorded with that caveat rather than presented as stable.",
+      "brand": "ThermoMaven",
+      "name": "1 Sec Professional Digital Meat Thermometer",
+      "model": null,
+      "category": "thermometers",
+      "category_label": "Thermometers",
+      "shape": "instant-read",
+      "best_for": "A quick spot check at the grill, not a leave-in monitor.",
+      "one_liner": "A folding instant-read: one second to a number, NIST-certified accuracy, and a magnet so it lives on the side of the fridge.",
+      "specs": {
+        "read_time_sec": {
+          "value": 1,
+          "note": "Manufacturer states an instant read in 1 second on the F1 Ace page. The Amazon listing title says 1 sec; some other ThermoMaven models are advertised at 0.5 sec. No 0.5 figure is claimed here.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "accuracy_f": {
+          "value": "+/-0.5 °F",
+          "note": "Manufacturer states NIST-certified +/-0.5 F / +/-0.3 C.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "nist_certified": {
+          "value": true,
+          "source": "S20",
+          "listing_only": false
+        },
+        "waterproof": {
+          "value": "waterproof design",
+          "note": "Manufacturer says '100% waterproof design'. No IP rating is stated on the F1 Ace page, so none is claimed.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "sensor_type": {
+          "value": "thermocouple",
+          "source": "S20",
+          "listing_only": false
+        },
+        "display": {
+          "value": "LCD, auto-rotating",
+          "source": "S20",
+          "listing_only": false
+        },
+        "magnet": {
+          "value": true,
+          "source": "S20",
+          "listing_only": false
+        },
+        "warranty_years": {
+          "value": null,
+          "note": "Manufacturer offers a lifetime warranty on registration within 30 days; no period is stated, so no number is given."
+        },
+        "leave_in_rated": {
+          "value": null,
+          "note": "The manufacturer page does not state a maximum ambient temperature or leave-in rating. Do not assume it can stay in the oven."
+        }
+      },
+      "tradeoffs": {
+        "pros": [
+          "One-second read, so the oven door is open for less time.",
+          "NIST-certified +/-0.5 F accuracy, stated by the manufacturer.",
+          "Folds shut and switches itself off, which is why people keep using it.",
+          "Built-in magnet."
+        ],
+        "cons": [
+          "This is a spot-check tool. No leave-in rating is published, so it is not a substitute for a probe you leave in the meat.",
+          "No IP rating is stated on the manufacturer page, only 'waterproof design'.",
+          "Battery type and replacement interval are not stated on the page."
+        ],
+        "skip_if": "You want continuous monitoring through a long cook. That is the CHEF iQ Sense on this site, not this."
+      },
+      "questions_answered": [
+        "How fast is a reading?",
+        "Can I wash it under the tap?",
+        "Will it stay in the drawer or on the fridge?"
+      ],
+      "official_url": "https://www.thermomaven.com/products/f1-ace",
+      "sources": [
+        "S20",
+        "S16"
+      ]
+    },
+    {
+      "id": "P5",
+      "slot": 5,
+      "supplied_link": "https://link.amazon/B0f3GKalj",
+      "supplied_code": "B0f3GKalj",
+      "supplied_code_chars": 9,
+      "observed_redirect": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_asins": [
+        "B0DZFD6R9Z"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "Supplied short link resolves to Amazon detail page B0DZFD6R9Z, titled CHEF iQ Sense with 3 probes, Gen3. The CHEF iQ product page offers 1–4 probe configurations, so the 3-probe bundle is the SKU to match.",
+      "brand": "CHEF iQ",
+      "name": "iQ Sense Smart Wireless Meat Thermometer, 3 Probes (Gen3)",
+      "model": null,
+      "category": "thermometers",
+      "category_label": "Thermometers",
+      "shape": "probe",
+      "best_for": "Knowing when to pull the meat without standing next to the grill.",
+      "one_liner": "Three thin wireless probes, a hub that charges and relays them, and a 1,000 F ambient rating — monitoring from the couch instead of the lid.",
+      "specs": {
+        "probes_included": {
+          "value": 3,
+          "note": "Probe count is a purchasable option on the manufacturer page (1–4); the linked Amazon SKU is the 3-probe bundle.",
+          "source": "S10",
+          "listing_only": false
+        },
+        "sensors_internal": {
+          "value": 4,
+          "source": "S10",
+          "listing_only": false
+        },
+        "sensors_ambient": {
+          "value": 1,
+          "source": "S10",
+          "listing_only": false
+        },
+        "ambient_max_f": {
+          "value": 1000,
+          "source": "S10",
+          "listing_only": false
+        },
+        "inserted_probe_max_f": {
+          "value": 212,
+          "source": "S11",
+          "listing_only": false
+        },
+        "probe_length_in": {
+          "value": 4.75,
+          "source": "S10",
+          "listing_only": false
+        },
+        "probe_diameter_in": {
+          "value": 0.19,
+          "source": "S10",
+          "listing_only": false
+        },
+        "connectivity": {
+          "value": "Bluetooth 5 probe-to-hub; WiFi hub-to-app",
+          "source": "S10",
+          "listing_only": false
+        },
+        "charging": {
+          "value": "USB-C, hub charges probes",
+          "source": "S10",
+          "listing_only": false
+        },
+        "probe_battery_hours": {
+          "value": 70,
+          "note": "Manufacturer marketing states '70+ hours'; FAQ states Gen 3 holds up to 60 hours per charge. Range published as stated, not reconciled. See FLG-005.",
+          "source": "S10",
+          "listing_only": false
+        },
+        "dishwasher_safe": {
+          "value": true,
+          "note": "Manufacturer states 'waterproof, easy to clean, and dishwasher safe'.",
+          "source": "S10",
+          "listing_only": false
+        },
+        "warranty_years": {
+          "value": null,
+          "note": "Not stated on the manufacturer product page or FAQ."
+        }
+      },
+      "tradeoffs": {
+        "pros": [
+          "Unlimited range because the hub relays over WiFi, not Bluetooth alone.",
+          "Four internal sensors plus an ambient sensor, so flare-ups show up too.",
+          "Three probes means a brisket and two sides of the grill at once.",
+          "Rated to 1,000 F ambient, well past most oven and grill ceilings."
+        ],
+        "cons": [
+          "The inserted portion of the probe tops out at 212 F — it reads doneness, not oil temperature.",
+          "You need the app and a paired device; there is no on-probe display.",
+          "The 70 vs 60 hour battery figure is not consistent across the manufacturer's own pages."
+        ],
+        "skip_if": "You want an instant-read thermometer with a screen, or you don't want an app in the loop."
+      },
+      "questions_answered": [
+        "Can I monitor from inside the house?",
+        "How many pieces of meat can I track at once?",
+        "Will it survive a hot grill lid?"
+      ],
+      "official_url": "https://chefiq.com/products/iq-sense",
+      "sources": [
+        "S10",
+        "S11",
+        "S15"
+      ]
+    }
+  ],
+  "flags": [
+    {
+      "id": "FLG-001",
+      "severity": "medium",
+      "product": "P2",
+      "title": "Preset count contradicts itself on the manufacturer's own page",
+      "detail": "The Emeril Everyday product page shows a spec tile reading '25 Cooking Pre-sets' while the product body copy on the same page says '24 one-touch cooking presets'. The Amazon listing title says '24 One-Touch Preset Options'. No official page resolves the discrepancy, so the field is blank on the site and no preset count is claimed anywhere in the copy.",
+      "sources": [
+        "S08",
+        "S13"
+      ],
+      "action": "Ask the manufacturer which figure is current; then publish that number with the source date."
+    },
+    {
+      "id": "FLG-002",
+      "severity": "medium",
+      "product": "P3",
+      "title": "Amazon listing names a different model number than the manufacturer page",
+      "detail": "The Amazon 'About this item' block for B08DKYBTPH ends with '1000 Watts/120 Volts – RJ38-SQSS-8T', while the CHEFMAN product page for RJ38-SQSS-8T states 1700W/120V and 400 F. The wattage figure contradicts itself between the two official pages. The site publishes the manufacturer's 1700 W and flags the conflict; the wattage should not be used in ad copy until confirmed.",
+      "sources": [
+        "S07",
+        "S14"
+      ],
+      "action": "Confirm wattage with CHEFMAN support in writing before any paid or comparison claim."
+    },
+    {
+      "id": "FLG-003",
+      "severity": "high",
+      "product": "all",
+      "title": "None of the five supplied links carries the tracking ID",
+      "detail": "Each supplied link is a link.amazon short URL with a 9-character code. Resolving them yields amazon.com/dp/<ASIN> URLs with no tag= parameter. Under Program Policies section 2(b), the Associates ID must appear as a parameter in the URL of each link placed on a site, and under the Agreement section 1 links must use the tagged link formats Amazon provides. As supplied, these links would not attribute commission to shopnow047c-20. The exact compliance status of link.amazon short links is not addressed in the documents reviewed — do not describe them as invalid; describe them as untagged and unresolved.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "action": "Re-issue all five links from Associates Central SiteStripe with tag=shopnow047c-20, or enroll them in the Associates workflow and confirm the tracking report before scaling."
+    },
+    {
+      "id": "FLG-004",
+      "severity": "medium",
+      "product": "P4",
+      "title": "Link 4 is time-dependent: an interstitial on first fetch, a product on the second",
+      "detail": "The first fetch of https://link.amazon/B0c8moW59 returned an Amazon 'Continue shopping' interstitial (checkpoint page) rather than a product. A second fetch on the same day resolved to amazon.com/dp/B0DHZTCNR5, the ThermoMaven instant-read thermometer. A catalog search for the bare code B0C8MOW59 returns no results, which is expected: the code is a short-link token, not an ASIN. The earlier 'unresolved' conclusion in this register was wrong and is corrected here with both observations retained.",
+      "sources": [
+        "S16",
+        "S20"
+      ],
+      "action": "Re-confirm the link in a signed-in browser before relying on it; checkpoint pages are served to some clients intermittently."
+    },
+    {
+      "id": "FLG-005",
+      "severity": "low",
+      "product": "P5",
+      "title": "Battery life differs between two CHEF iQ pages",
+      "detail": "The iQ Sense product page advertises '70+ Hours of Battery'. The iQ Sense FAQ states Gen 3 probes hold a charge for up to 60 hours. Both are on chefiq.com. The product register records the marketing figure and this note; no single number is asserted in buyer-facing copy.",
+      "sources": [
+        "S10",
+        "S11"
+      ],
+      "action": "Ask CHEF iQ which figure applies to the 3-probe Gen 3 bundle."
+    },
+    {
+      "id": "FLG-006",
+      "severity": "medium",
+      "product": "P2",
+      "title": "Accessory set in the box is not identical across channels",
+      "detail": "The Emeril Everyday product page states 7 accessories are included. The manufacturer's own accessory page states the grill plate 'is now an optional accessory and is no longer included'. Retail listings still describe a set including a grill plate. Nothing on the site claims a specific accessory list; the copy says to check the current box contents.",
+      "sources": [
+        "S08",
+        "S09"
+      ],
+      "action": "Ask the manufacturer for the current in-box list for 4-00675-02A-VN."
+    },
+    {
+      "id": "FLG-007",
+      "severity": "low",
+      "product": "all",
+      "title": "No first-party traffic or conversion data exists yet",
+      "detail": "The repository began as a single-line README. There is no analytics history, no Associates report export, and no campaign ledger. Every performance statement on this site is therefore absent rather than estimated. The dashboard shows zeroes with 'no data' provenance, not projections.",
+      "sources": [
+        "S02"
+      ],
+      "action": "Turn on the self-hosted endpoint, accumulate 30 days, then populate data/campaign-ledger.json from an Associates report export."
+    }
+  ]
+}
