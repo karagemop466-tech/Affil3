@@ -1,0 +1,244 @@
+{
+  "register": "open-questions",
+  "title": "What has to be answered before a decision is reasonable",
+  "session": "arena-43565031-affil3",
+  "structure": "Each row states what is already known from retrieved evidence, what is still missing, the concrete way to find the missing part, and which suggestions or paths stay blocked until it is answered. Blank answers are blank because they are genuinely unknown, not because they were skipped.",
+  "answer_key": "Fill the answer field, set status to answered, then re-run the build. The decision room cards that reference the question will unblock.",
+  "questions": [
+    {
+      "id": "Q-01",
+      "category": "Account",
+      "question": "Is there an active, accepted Amazon Associates account, and is this site listed in its application?",
+      "why_it_matters": "Special Links may only be displayed after applying to the program, and the site has to contain original content and be publicly available at the address given in the application. A site that is not in the application cannot monetise however good its content is. This single answer gates four of the sixteen suggestions and all of Path C.",
+      "what_we_know": "The repo contains no evidence of enrolment. Nothing in the codebase, git history, or issue tracker references a verified account. The Pages deployment at https://karagemop466-tech.github.io/Affil3/ is live and building, so the public-site condition is satisfiable today.",
+      "what_we_do_not_know": "Whether an account exists; whether it is accepted or still in a conditional state; whether this Pages URL is registered on it; whether the account is in good standing; the payment and tax profile state.",
+      "how_to_find_out": "Associates Central, Account settings, and the site list inside it. Then confirm by generating one link there rather than constructing one. To discover without account access: check whether any prior project notes, emails, or a password manager entry reference an Associates login; check whether the tracking ID appears in any analytics property you already own.",
+      "who_must_answer": "Owner. Cannot be answered from this environment by any tool available here.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-02",
+        "SUG-04",
+        "SUG-12",
+        "PATH-C"
+      ]
+    },
+    {
+      "id": "Q-02",
+      "category": "Account",
+      "question": "Is \"shopnow047c-20\" a tracking ID, a full tag, or something else, and does it belong to this site?",
+      "why_it_matters": "Every Special Link must include the Associates ID or tag as a URL parameter in the XXXXX-## form. Put the wrong string in a link and traffic arrives at Amazon with no attribution, which looks like a content failure and is actually an accounting failure.",
+      "what_we_know": "The submitted value is shopnow047c-20. Its -20 suffix matches the shape the policy text describes for a tag. Whether a tracking ID and a tag suffix are the same string is not stated in the retrieved text, so this register keeps the value unsplit rather than guessing.",
+      "what_we_do_not_know": "Whether the ID exists; whether it is active; whether more than one tracking ID is in use; whether it was created for this domain; whether the -20 suffix is the correct one for this site.",
+      "how_to_find_out": "Associates Central, Account settings, Tracking IDs. Generate a test link there and read the tag it emits rather than assuming. To discover: look for other live pages already using a tag, since an existing publishing footprint will usually reveal the real value.",
+      "who_must_answer": "Owner, in the Associates account.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-02"
+      ]
+    },
+    {
+      "id": "Q-03",
+      "category": "Products",
+      "question": "What are the five products, actually?",
+      "why_it_matters": "The site cannot describe, compare, or recommend items whose identity is unresolved. Every downstream choice, from category clusters to the keyword set to which images you are allowed to use, depends on this.",
+      "what_we_know": "The five submitted URLs and tokens are recorded exactly as given, all nine characters long. Four resolve on 2026-11-20 to live listings: CHEFMAN 6 Qt Dual Basket Air Fryer Oven (B0CDY277D3), Emeril Lagasse 26QT French Door Air Fryer Toaster Oven (B09B7SB46R), Chefman 8 Qt TurboFry Air Fryer (B08DKYBTPH), and CHEF iQ Sense wireless meat thermometer (B0DZFD6R9Z). One, B0c8moW59, reached an Amazon checkpoint page and resolved to nothing. In every resolved case the page reached does not match the submitted token, and each destination URL carried plpRedirect=mhFallback.",
+      "what_we_do_not_know": "Which listing the owner meant for each token; whether the observed pages are the intended products or a fallback surface; whether the mismatch is a transcription error, an expired short link, or something else; the true product set and its price band.",
+      "how_to_find_out": "Open each listing signed in and copy the ten-character ASIN from the product information section or the /dp/ URL. For discovery: search your own order history, wishlist, or the notes where the links were first collected, and check whether the links were pasted from a chat client where characters may have been trimmed, since nine characters where ten are expected is consistent with a truncated copy.",
+      "who_must_answer": "Owner, or anyone with the source document the links came from.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-01",
+        "SUG-13"
+      ]
+    },
+    {
+      "id": "Q-04",
+      "category": "Data access",
+      "question": "Can the project obtain Creators API or PA-API access for product data and imagery?",
+      "why_it_matters": "It decides whether prices, availability, and product images can ever appear lawfully, and whether product research can be automated at all. Without it, the automation the brief asks for has no legitimate data source and the site is confined to criteria and links.",
+      "what_we_know": "Program Policies permit showing prices only through a link Amazon serves or data obtained via Creators API or PA API. Program Content, including images, is what Amazon makes available through its own tools. This environment has no API credentials and cannot apply.",
+      "what_we_do_not_know": "Whether the account is eligible today; what the current access route and its conditions are; rate limits; which fields are available for the relevant categories. Note also that the widely repeated \"three qualifying sales within 180 days\" condition was NOT found in the policy text retrieved on 2026-11-20, so do not plan around it as fact (UNV-01).",
+      "how_to_find_out": "Associates Central, Tools, Product Advertising API, in-account. Read the current eligibility notice rather than any blog. To discover: search the retrieved Participation Requirements and License text for the API terms in a logged-in session, where the linked License page renders in full.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-04",
+        "SUG-16",
+        "PATH-C"
+      ]
+    },
+    {
+      "id": "Q-05",
+      "category": "Editorial",
+      "question": "Who owns the publishing cadence, and does anyone actually own the products?",
+      "why_it_matters": "A cadence with no owner silently stops, and a site with nothing to compare stalls at criteria-only content. The anti-slop rules only work if a person applies them, because they require judgement about what counts as a real trade-off.",
+      "what_we_know": "Nothing in the repo indicates an editorial owner. The four existing guides are working titles recorded as hypotheses, with no stated testing behind them. Program Policies require original content with significant commentary, analysis, or transformation, so \"someone\" has to supply the judgement the rule is asking for.",
+      "what_we_do_not_know": "Whether anyone on this project has hands-on experience with any of the products; who edits; how many hours a week exist for writing; whether the site may publish criteria-only guidance or must wait until something has been used.",
+      "how_to_find_out": "Direct answer from the owner. To discover what is achievable: check whether a product can be bought, borrowed, or returned within the review window, because the honest options are hands-on, spec-comparison, or nothing, and the site should say which one it is doing on every page.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-05",
+        "SUG-07"
+      ]
+    },
+    {
+      "id": "Q-06",
+      "category": "Brand",
+      "question": "Does the site keep the name Affil3, take a consumer name, and get a custom domain?",
+      "why_it_matters": "The name is the first trust signal and the last thing a reader sees before clicking. It is also the one decision with a legal trap attached: a trademark or a variant of one in a domain, subdomain, tag, or handle is on the list of things that make a site unsuitable for the programme.",
+      "what_we_know": "Affil3 is a repo codename appearing in the masthead. Neither Affil3 nor shopnow047c contains an Amazon trademark, so the current names clear the retrieved rule.",
+      "what_we_do_not_know": "The niche the brand should claim, whether a domain budget exists, and whether any candidate name is already in use or trademarked by a third party.",
+      "how_to_find_out": "Shortlist three names, check each against the participation-requirements trademark clause, then a registrar availability lookup and a general trademark search for the relevant class. Treat the trademark check as your own diligence with counsel, not as a conclusion from this document.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-06",
+        "SUG-15"
+      ]
+    },
+    {
+      "id": "Q-07",
+      "category": "Editorial",
+      "question": "Whose byline goes on the guides, and what may that person truthfully claim?",
+      "why_it_matters": "Authorship is the reader-facing polish the brief asks for, and it is also where a site most often starts making claims it cannot support. A byline implying testing that did not happen is a misleading claim about a product, and an endorsement credibility problem, not a formatting choice.",
+      "what_we_know": "No author exists in the repo. Every page can truthfully say what it did: which listings were retrieved, on what date, from what source, and what was not tested.",
+      "what_we_do_not_know": "A real author's name, actual experience with the category, and their willingness to be named.",
+      "how_to_find_out": "Ask the person. To discover a defensible claim: list what each candidate author has actually done with the products and write the bio from that list only.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-06"
+      ]
+    },
+    {
+      "id": "Q-08",
+      "category": "Traffic",
+      "question": "Is Search Console connected for the published origin, and can it be checked from this project?",
+      "why_it_matters": "The brief asks to turn on real analytics so the next topic is chosen from measured queries instead of instinct. Without it, the site cannot tell whether anyone arrives, and topic selection stays guesswork forever.",
+      "what_we_know": "The site is live on one origin with a sitemap.xml and feed.xml present. This environment cannot verify a Search Console property, since that needs the owner's Google account. No Search Console verification record appears in the repo.",
+      "what_we_do_not_know": "Property state, any existing query data, index coverage, and whether the earlier site build from another branch was ever submitted.",
+      "how_to_find_out": "Verify the URL-prefix or domain property, submit sitemap.xml, wait for coverage, then read the queries report. To discover whether it was already done: check the DNS TXT records of the domain and the ownership list in the Google account.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-07"
+      ]
+    },
+    {
+      "id": "Q-09",
+      "category": "Measurement",
+      "question": "Where does event data go, who hosts it, and what is retained?",
+      "why_it_matters": "GitHub Pages cannot receive the beacon the current client script posts to, so five events are instrumented and zero are collected. Choosing the receiver also fixes the privacy posture, and one of the policy rules forbids associating a sub-tag with a specific end user, which constrains what the receiver may store.",
+      "what_we_know": "The beacon endpoint and the five event names are defined in the site's client script. A self-hosted receiver exists in an unmerged branch as a Node server and is not deployed. CLM-07 forbids per-visitor sub-tag assignment.",
+      "what_we_do_not_know": "Whether a host exists or is affordable; the retention window; whether consent obligations apply to this audience mix; who reviews the privacy statement.",
+      "how_to_find_out": "Answer with one hosting decision and one retention number. To discover the consent question properly: get a legal read of the audience mix rather than relying on a project document, which is not legal advice.",
+      "who_must_answer": "Owner, plus whoever reviews privacy.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-11"
+      ]
+    },
+    {
+      "id": "Q-10",
+      "category": "Business",
+      "question": "What is the goal: revenue, an audience asset, or a portfolio demonstration?",
+      "why_it_matters": "The three answer the same trade-offs differently. Revenue pushes toward deal content and faster publishing; an audience asset pushes toward editorial voice and cadence; a demonstration pushes toward visible automation and data plumbing. The paths offered in the decision room are ranked on the assumption of revenue, which is only the brief's stated priority.",
+      "what_we_know": "The brief prioritises automation, scalability, data-driven decisions, and compliance, and asks for organic traffic and real people buying. That reads as revenue with a compliance floor.",
+      "what_we_do_not_know": "Target revenue, timeline, acceptable spend on hosting, a domain, and products to buy for testing, and what happens if the niche underperforms.",
+      "how_to_find_out": "Owner answer. To make it concrete: name the number of monthly outbound clicks that would count as success at ninety days, since that number converts the abstract priority into a decision rule the ledger can be judged against.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "PATH-A",
+        "PATH-B",
+        "PATH-C"
+      ]
+    },
+    {
+      "id": "Q-11",
+      "category": "Niche",
+      "question": "Is the site an air fryer shop, a broader countertop-cooking shop, or whatever the resolved products turn out to be?",
+      "why_it_matters": "Cluster structure, internal links, and topical authority all depend on a declared niche. The evidence points at countertop cooking with one outlier: three of the four resolved listings sit in the Air Fryers browse node and one sits in Meat thermometers, so the current set is not one category.",
+      "what_we_know": "Observed browse nodes on 2026-11-20: 17659096011 (Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers) for three listings, and 289810 (Kitchen Utensils & Gadgets > Thermometers & Timers > Meat) for one.",
+      "what_we_do_not_know": "Whether the outlier is deliberate, and how much category expansion the owner wants, since a niche narrowing after publishing means redirecting content.",
+      "how_to_find_out": "Decide from the confirmed product set once Q-03 is answered. To discover the shape of the market: read the category browse structure on Amazon itself, which reveals sibling nodes a shop could legitimately own, and check which of them the existing content could serve.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-05",
+        "SUG-06"
+      ]
+    },
+    {
+      "id": "Q-12",
+      "category": "Compliance",
+      "question": "Who signs off the disclosure wording and its placement, and against what text?",
+      "why_it_matters": "The disclosure is the one requirement every page inherits, and the brief asks for a review against the Operating Agreement and FTC guidance as a priority-5 gate. A named reviewer is what turns that from a sentence into a process.",
+      "what_we_know": "The FTC standard is retrieved and quoted at CLM-16, including that staff guidance is not a safe harbour. The disclosure strip exists above the fold on every page and repeats in the footer. The exact Amazon-mandated wording sits in the participation requirements and the trademark and identification guidelines, which were not fully captured in the retrieved chunks.",
+      "what_we_do_not_know": "Whether the current wording matches the identification statement Amazon requires verbatim, whether it is present in the syndicated feed copy, and who has authority to approve changes.",
+      "how_to_find_out": "Read the Identification and disclosure clauses of the Participation Requirements in a logged-in session, where the full linked documents render, and diff them against the site's sentence. To discover drift: grep the built HTML for the disclosure string and confirm it appears before the first product link on every page, which the validator now does automatically.",
+      "who_must_answer": "Owner, ideally with a legal read.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-10"
+      ]
+    },
+    {
+      "id": "Q-13",
+      "category": "Provenance",
+      "question": "Where did the five link.amazon URLs come from, and were they generated by a different Amazon creator programme?",
+      "why_it_matters": "This decides whether the links are broken, superseded, or from a different programme with its own rules. A short link that is not an Associates link at all needs a different remediation than a mistyped one, and the wrong fix could waste the launch.",
+      "what_we_know": "The host link.amazon accepts a trailing token and hands requests to amazon.com with plpRedirect=mhFallback on four of five. That behaviour is consistent with a router falling back rather than resolving, but the mechanism is inferred from responses, not documented here.",
+      "what_we_do_not_know": "Domain ownership and authorisation (UNV-04); which programme minted the links; whether they expire; whether they carry attribution at all; whether the tokens are ASINs in another format.",
+      "how_to_find_out": "Ask whoever supplied them, and check the source app or email that produced them. To discover independently: open one in a normal signed-out browser and watch the address bar through the redirect chain; check whether an Amazon Influencer or Creator programme dashboard exists on the same email, since those programmes mint their own short links and have separate terms.",
+      "who_must_answer": "Owner, or the person who supplied the links.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-02"
+      ]
+    },
+    {
+      "id": "Q-14",
+      "category": "Payments",
+      "question": "Is the payment method, currency, and tax profile complete, and does the balance ever reach the payout minimum?",
+      "why_it_matters": "Effort spent on traffic is invisible in the bank if payout settings are unfinished, and the retrieved rules set real thresholds: about sixty days after month end, ten USD minimum for direct deposit, two thousand USD ceiling on gift-card payouts, one hundred USD minimum for a check with a fifteen USD fee, and withholding rights on accounts with no substantial activity for three years.",
+      "what_we_know": "The thresholds above are retrieved from the Commission Income Statement at CLM-11 and its section on payment minimums.",
+      "what_we_do_not_know": "Whether a bank account and tax information are on file, which payment option is selected, and the account activity state.",
+      "how_to_find_out": "Associates Central, Account settings. To discover quickly: check for a payment-method confirmation email in the account's inbox.",
+      "who_must_answer": "Owner.",
+      "answer": "",
+      "status": "open",
+      "blocks": []
+    },
+    {
+      "id": "Q-15",
+      "category": "Coordination",
+      "question": "Which branch is the site, and does the project want one merged site or several competing ones?",
+      "why_it_matters": "Twelve branches exist. One site build is merged, a second full build sits open as a pull request with a different homepage, a different brand name, and its own data files, and other branches contain coordination claims over the same shared files. Publishing both shapes would split the very indexation the brief asks for.",
+      "what_we_know": "main is deployed and building at the Pages URL, containing PR #1. PR #2 from another session is open and rewrites index.html, adds an analytics server, and uses a different publication name. Another session has claimed repo-wide integration scope on its own branch. This session therefore added only new files plus four nav and sitemap lines, and logged requests against other scopes.",
+      "what_we_do_not_know": "Which brand, which homepage, and which data files survive integration; who arbitrates; whether PR #2 should merge, close, or be partially cherry-picked for its analytics receiver and link checker.",
+      "how_to_find_out": "One integration decision. To discover the least destructive merge: diff the two site shapes on the four contested files, keep the merged one on main, and cherry-pick the pieces unique to the open branch, namely the analytics receiver, the site checker, and the campaign ledger, rather than swapping the site wholesale.",
+      "who_must_answer": "Owner, or whichever session is named integrator.",
+      "answer": "",
+      "status": "open",
+      "blocks": [
+        "SUG-07",
+        "SUG-15"
+      ]
+    }
+  ]
+}

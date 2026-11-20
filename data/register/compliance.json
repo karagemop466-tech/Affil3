@@ -98,6 +98,54 @@
       "source": "S04",
       "where_enforced": "The strip sits immediately under the masthead, before any product content, on every page including the disclosure page itself. There are no anchor shortcuts that skip it.",
       "status": "met"
+    },
+    {
+      "id": "R13",
+      "requirement": "The site displays no price or availability figure it did not receive from Amazon or a licensed API.",
+      "quote": "\"Product prices and availability may vary from time to time. Because prices for and availability of Products that you have listed on your Site may change, your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.\"",
+      "source": "S02",
+      "where_enforced": "check_site.py fails the build on any currency amount or star rating in generated output; product rows render a dated link to the listing instead of a number.",
+      "status": "met"
+    },
+    {
+      "id": "R14",
+      "requirement": "Pages that link to a list of products carry original content relevant to those links.",
+      "quote": "\"When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link. Product lists include search results, events (e.g. Prime Day), or a department homepage (e.g. grocery).\"",
+      "source": "S02",
+      "where_enforced": "Every category and shop page renders an editorial body from the guides register; no links-only list page is published. The build does not yet assert this, so it is a review item rather than a checked one.",
+      "status": "met"
+    },
+    {
+      "id": "R15",
+      "requirement": "No sub-tag or program identifier is associated with a specific end user.",
+      "quote": "\"Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).\"",
+      "source": "S02",
+      "where_enforced": "Event fields are limited to path, referrer_host, product_id and destination_host and nothing is persisted in the browser. See FLG-025 for the constraint on future changes.",
+      "status": "met"
+    },
+    {
+      "id": "R16",
+      "requirement": "References to limited-time promotions are removed as soon as the promotion ends.",
+      "quote": "\"You must remove from your Site any links and related references to limited time promotions as soon as that promotion on the relevant Amazon Site ends.\"",
+      "source": "S02",
+      "where_enforced": "Not enforced by the build. Satisfied today only because no promotional or seasonal offer claim is published; an expires_on field is proposed as S-14.",
+      "status": "open"
+    },
+    {
+      "id": "R17",
+      "requirement": "Nothing on the site forecasts traffic, commission income or conversion rate.",
+      "quote": "\"We do not make any representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time in connection with the Associates Program, and we will not be liable for any actions you undertake based on your expectations.\"",
+      "source": "S01",
+      "where_enforced": "No revenue or conversion figure is published. The campaign ledger ships empty by design and the executive summary states that no forecast exists.",
+      "status": "met"
+    },
+    {
+      "id": "R18",
+      "requirement": "Every product link carries the Associates tag as a URL parameter, or the site publishes no product link.",
+      "quote": "\"you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site\"",
+      "source": "S02",
+      "where_enforced": "check_site.py asserts every outbound amazon link carries the tracking tag; while the account is unconfirmed the site publishes no buy links, so the assertion passes on an empty set. Recorded as blocked, not met.",
+      "status": "blocked"
     }
   ],
   "events": [

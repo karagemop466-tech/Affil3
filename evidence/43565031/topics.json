@@ -1,0 +1,70 @@
+{
+  "register": "topics",
+  "title": "Editorial clusters and working titles",
+  "session": "arena-43565031-affil3",
+  "framing_rule": "Every title below is a working hypothesis about what a buyer asks, not a claim about popularity, search volume, or product superiority. No topic may be published as \"the most popular\" or \"best\" without evidence in the claims ledger. Topics tied to product identity stay blocked until Q-03 is answered.",
+  "cluster_dependency": "Clusters 1-4 assume an air-fryer and countertop-oven niche, which is what three of the four resolved listings sit in. Cluster 5 exists because one resolved listing sits in a different browse node and should not be silently folded into the others.",
+  "clusters": [
+    {
+      "id": "C1",
+      "name": "Basket versus oven-style",
+      "browse_evidence": "Air Fryers node 17659096011 observed on three of four resolved listings",
+      "hub_status": "to create",
+      "topics": [
+        {"title": "Basket or oven-style air fryer: what should you compare?", "angle": "A criteria walkthrough, not a verdict. Ends with the two questions that decide it for most kitchens.", "type": "decision guide", "depends_on": "Q-03", "non_slop_requirement": "Must state one case where the oven style is the worse buy."},
+        {"title": "Why dual-basket machines get accused of cooking two different meals badly", "angle": "What sync finish does and does not fix, from the controls the listing names.", "type": "explainer", "depends_on": "Q-03", "non_slop_requirement": "Must describe the limitation in the buyer's own kitchen terms."},
+        {"title": "The counter footprint test: measure before you order", "angle": "A tape-measure method with clearance, vent, and door-swing numbers to write down.", "type": "checklist", "depends_on": null, "non_slop_requirement": "Must be doable without any product in hand."},
+        {"title": "What a quart number on an air fryer listing does not tell you", "angle": "Capacity claims, basket shape, and the difference between stated and usable volume.", "type": "myth-busting", "depends_on": null, "non_slop_requirement": "May only use what listings state, quoted with a link."}
+      ]
+    },
+    {
+      "id": "C2",
+      "name": "Capacity and household fit",
+      "browse_evidence": "Capacity appears in the title of every resolved air-fryer listing",
+      "hub_status": "to create",
+      "topics": [
+        {"title": "A no-hype checklist for comparing air fryer capacity", "angle": "Six lines to fill in, then a rule for which row should win.", "type": "checklist", "depends_on": null, "non_slop_requirement": "Must include at least one trap buyers fall into, named plainly."},
+        {"title": "Two people, four people, Sunday dinner: sizing by how you actually cook", "angle": "Capacity framed by cooking pattern rather than by household size alone.", "type": "decision guide", "depends_on": null, "non_slop_requirement": "Must avoid the 'perfect for families' phrasing entirely."},
+        {"title": "Why your air fryer batch-cooks worse than the recipe says", "angle": "Single-layer physics, crowding, and what to change in the method first.", "type": "troubleshooting", "depends_on": null, "non_slop_requirement": "Must give one change that costs nothing."}
+      ]
+    },
+    {
+      "id": "C3",
+      "name": "Cleanup, noise and counter space",
+      "browse_evidence": "Dishwasher-safe wording observed in listing titles",
+      "hub_status": "to create",
+      "topics": [
+        {"title": "How to assess cleanup and counter-space trade-offs", "angle": "A five-minute audit of the counter you already have.", "type": "decision guide", "depends_on": null, "non_slop_requirement": "Must name the trade-off it accepts, not just the benefits."},
+        {"title": "Coatings, baskets, and the words listings use to avoid promising", "angle": "How to read dishwasher-safe and non-stick claims for what they actually say.", "type": "reading guide", "depends_on": null, "non_slop_requirement": "Only quotes listing wording; invents no warranty."},
+        {"title": "The smell, the noise, and the thing nobody mentions in reviews", "angle": "Venting, decibel expectations, and placement distance.", "type": "explainer", "depends_on": null, "non_slop_requirement": "Must say clearly that no measurement was taken by this site unless one is published."}
+      ]
+    },
+    {
+      "id": "C4",
+      "name": "Multi-function appliances",
+      "browse_evidence": "Two of four resolved listings describe themselves as multi-function",
+      "hub_status": "to create",
+      "topics": [
+        {"title": "Questions to ask before buying a multi-function kitchen appliance", "angle": "Which functions you will use twice a week and which you will use once.", "type": "decision guide", "depends_on": null, "non_slop_requirement": "Must include the honest answer that a single-purpose tool sometimes wins."},
+        {"title": "Countertop oven versus air fryer versus neither", "angle": "Frames the case for buying nothing new, which is the credibility move most affiliate sites skip.", "type": "comparison", "depends_on": null, "non_slop_requirement": "Must contain a section arguing against any purchase."},
+        {"title": "What an extra preset is actually worth", "angle": "Dehydrate, rotisserie, frozen modes, and how to judge whether a preset is a real programme or a button.", "type": "explainer", "depends_on": "Q-03", "non_slop_requirement": "Must not attribute preset behaviour the listing does not state."}
+      ]
+    },
+    {
+      "id": "C5",
+      "name": "Doneness and temperature (adjacent cluster)",
+      "browse_evidence": "One resolved listing sits in the Meat thermometers node 289810",
+      "hub_status": "hold until Q-11",
+      "topics": [
+        {"title": "Does an air fryer need a probe thermometer?", "angle": "Where small high-sided baskets make guessing unreliable.", "type": "bridge guide", "depends_on": "Q-11", "non_slop_requirement": "Must link the two clusters honestly, not force a bundle."},
+        {"title": "Reading a wireless thermometer spec without over-claiming it", "angle": "Range, probe count, heat tolerance, and what those numbers are measured against.", "type": "reading guide", "depends_on": "Q-03", "non_slop_requirement": "No connectivity claims beyond the listing wording."}
+      ]
+    }
+  ],
+  "cadence_proposal": {
+    "note": "Cadence is a suggestion awaiting a decision, not a commitment the site makes to readers.",
+    "weekly": "One leaf per week inside a single open cluster; hub updated in the same commit as its newest leaf.",
+    "measured": "After four weeks with Search Console data, retire the topic with the fewest impressions and promote a follow-up to the best-performing leaf.",
+    "hard_rule": "No topic enters the schedule until the cluster's products are confirmed, because a guide about an unidentified product can only be padded, and padding is what the owner is objecting to."
+  }
+}

@@ -220,6 +220,83 @@
         }
       ],
       "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    },
+    {
+      "id": "S-11",
+      "topic": "Measurement scope",
+      "current": "Event fields are path, referrer_host, product_id and destination_host; a collector exists under tools/analytics-endpoint but no endpoint is configured, so nothing is collected.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep events aggregate-only and forbid any browser-persisted identifier.",
+          "tradeoff": "No per-visitor funnels and no per-visitor A/B attribution. Nearly every decision the site needs survives at page and product level."
+        },
+        {
+          "id": "B",
+          "label": "Add a first-party id so sessions can be stitched into funnels.",
+          "tradeoff": "Reads like ordinary analytics, and becomes a breach the moment it is joined with a tag or sub-tag."
+        }
+      ],
+      "recommendation": "A, and assert it in the build so B cannot be re-added by accident."
+    },
+    {
+      "id": "S-12",
+      "topic": "Seasonal and deal content",
+      "current": "No promotional or seasonal claim is published, so the removal-on-expiry rule is met by avoidance.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave it: no deal content, no expiry obligation.",
+          "tradeoff": "Gives up the highest-intent seasonal traffic the niche has."
+        },
+        {
+          "id": "B",
+          "label": "Add expires_on to page front matter and have the builder drop expired pages to an archive without the offer text.",
+          "tradeoff": "One build change plus an archive page to maintain, then seasonal content becomes safe to publish."
+        },
+        {
+          "id": "C",
+          "label": "Publish seasonal framing that makes no price or discount claim.",
+          "tradeoff": "Weaker hook than B, but no expiry mechanism required."
+        }
+      ],
+      "recommendation": "C now, B before the first real deal page. Do not publish deals while relying on A and claiming otherwise."
+    },
+    {
+      "id": "S-13",
+      "topic": "Evidence quality",
+      "current": "Compliance rules in data/register/compliance.json carry quotes; the root site's data/sources.json carries a used_for summary with no quoted text.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave root sources as summaries.",
+          "tradeoff": "A reviewer has to open Amazon's policy page and hunt for the clause to check any row."
+        },
+        {
+          "id": "B",
+          "label": "Require a verbatim quote plus the document's own version date and a retrieval date on every source that supports a compliance claim.",
+          "tradeoff": "Slower to edit, and quotes need re-verification when Amazon revises a document, which is the point."
+        }
+      ],
+      "recommendation": "B. The two governing documents are dated 2025-10-15 and 2026-04-14, so a quote without its version date stops being checkable inside a quarter."
+    },
+    {
+      "id": "S-14",
+      "topic": "Build integrity",
+      "current": "verify.yml asserts git diff --quiet -- docs while tools/build.py writes editorial/, and the root generator is not run by CI at all, so stale committed output merges green.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Point the assertion at editorial/ and add a build.mjs step with its own diff assertion.",
+          "tradeoff": "Two lines. It will fail the first change that edits data without rebuilding, which is the intended effect."
+        },
+        {
+          "id": "B",
+          "label": "Publish only from a build artefact rather than committing generated HTML.",
+          "tradeoff": "Cleanest source/output split, but it changes the Pages source and every live URL's provenance."
+        }
+      ],
+      "recommendation": "The first option now; revisit the second only when the two publishers are consolidated."
     }
   ]
 }

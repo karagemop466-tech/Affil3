@@ -1,0 +1,178 @@
+{
+  "register": "link-verification",
+  "title": "Product-intent confirmation record",
+  "session": "arena-43565031-affil3",
+  "retrieved_at_utc": "2026-11-20",
+  "field_policy": "intended_* fields describe what the owner submitted and intend to promote. observed_* fields describe what the retrieval client actually received on 2026-11-20. The two groups are recorded in separate fields and are never merged, corrected, or back-filled from one another.",
+  "method": "Each submitted URL was requested once with the workspace retrieval client (anonymous, no cookies, no Associates credentials). The client follows redirects; the final URL, page title, and breadcrumb returned by that client are recorded verbatim. No Amazon internal tooling, no Product Advertising API, no Creators API, and no Associates reports were used, because no enrolled account is reachable from this environment.",
+  "known_limits": [
+    "Retrieved pages are the first chunk of a long page. Prices and ratings visible in that chunk belong to related-product carousels, not necessarily to the landing ASIN, so no price or rating is attributed to any landing ASIN here.",
+    "A second request of LINK-01 returned a byte-identical response including the same Amazon session identifier, so it was a cached retrieval. It therefore does NOT establish whether the redirect target is stable or rotates. Recorded as inconclusive.",
+    "A single fetch per link cannot distinguish a per-request personalised fallback from a deterministic mapping. Confirm in a signed-in browser before publishing product identity.",
+    "link.amazon itself could not be inspected for domain ownership from this environment; treat ownership as unconfirmed (Q-02)."
+  ],
+  "records": [
+    {
+      "id": "LINK-01",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "intended_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B0CDY277D3",
+      "observed_asin_length": 10,
+      "observed_page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "observed_breadcrumb": ["Home & Kitchen", "Kitchen & Dining", "Small Appliances", "Fryers", "Air Fryers"],
+      "observed_node_id": "17659096011",
+      "observed_query_flags": ["lv=shuf", "btn_ref=srctok-*", "channelId=704", "plpRedirect=mhFallback"],
+      "outcome": "resolved-to-different-asin",
+      "observed_at_utc": "2026-11-20",
+      "review_link": "https://www.amazon.com/dp/B0CDY277D3",
+      "price_or_rating_published": "none - see CLM-03 (Program Policies 2(b))",
+      "flags": ["FLG-43565031-01", "FLG-43565031-02", "FLG-43565031-04"]
+    },
+    {
+      "id": "LINK-02",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "intended_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B09B7SB46R",
+      "observed_asin_length": 10,
+      "observed_page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "observed_breadcrumb": ["Home & Kitchen", "Kitchen & Dining", "Small Appliances", "Fryers", "Air Fryers"],
+      "observed_node_id": "17659096011",
+      "observed_query_flags": ["lv=shuf", "btn_ref=srctok-*", "channelId=704", "plpRedirect=mhFallback"],
+      "outcome": "resolved-to-different-asin",
+      "observed_at_utc": "2026-11-20",
+      "review_link": "https://www.amazon.com/dp/B09B7SB46R",
+      "price_or_rating_published": "none - see CLM-03 (Program Policies 2(b))",
+      "flags": ["FLG-43565031-01", "FLG-43565031-02"]
+    },
+    {
+      "id": "LINK-03",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "intended_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B08DKYBTPH",
+      "observed_asin_length": 10,
+      "observed_page_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "observed_breadcrumb": ["Home & Kitchen", "Kitchen & Dining", "Small Appliances", "Fryers", "Air Fryers"],
+      "observed_node_id": "17659096011",
+      "observed_query_flags": ["lv=shuf", "btn_ref=srctok-*", "channelId=704", "plpRedirect=mhFallback", "th=1"],
+      "outcome": "resolved-to-different-asin",
+      "observed_at_utc": "2026-11-20",
+      "review_link": "https://www.amazon.com/dp/B08DKYBTPH",
+      "price_or_rating_published": "none - see CLM-03 (Program Policies 2(b))",
+      "flags": ["FLG-43565031-01", "FLG-43565031-02"]
+    },
+    {
+      "id": "LINK-04",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "intended_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed_final_url": "https://www.amazon.com/checkpoint/continue?token=<redacted-length-473>",
+      "observed_asin": "",
+      "observed_asin_length": null,
+      "observed_page_title": "Amazon.com",
+      "observed_breadcrumb": [],
+      "observed_node_id": "",
+      "observed_query_flags": ["checkpoint/continue", "page text: \"To continue, please click the \u201cContinue shopping\u201d button below.\""],
+      "outcome": "blocked-by-checkpoint",
+      "observed_at_utc": "2026-11-20",
+      "review_link": "https://link.amazon/B0c8moW59",
+      "price_or_rating_published": "n/a - no product page reached",
+      "flags": ["FLG-43565031-03"]
+    },
+    {
+      "id": "LINK-05",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "submitted_token_length": 9,
+      "intended_asin": "",
+      "intended_listing_url": "",
+      "confirmation_date": "",
+      "confirmation_source": "",
+      "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B0DZFD6R9Z",
+      "observed_asin_length": 10,
+      "observed_page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000\u00b0F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "observed_breadcrumb": ["Home & Kitchen", "Kitchen & Dining", "Kitchen Utensils & Gadgets", "Thermometers & Timers", "Meat"],
+      "observed_node_id": "289810",
+      "observed_query_flags": ["lv=shuf", "btn_ref=srctok-*", "channelId=500", "plpRedirect=mhFallback", "th=1"],
+      "outcome": "resolved-to-different-asin-and-different-category",
+      "observed_at_utc": "2026-11-20",
+      "review_link": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "price_or_rating_published": "none - see CLM-03 (Program Policies 2(b))",
+      "flags": ["FLG-43565031-01", "FLG-43565031-02", "FLG-43565031-05"]
+    }
+  ],
+  "controls": [
+    {
+      "id": "CTRL-A",
+      "purpose": "Test whether link.amazon returns a product page for a token that cannot be an ASIN.",
+      "request": "https://link.amazon/ZZ9ZZ9ZZZ9",
+      "observed": "request did not return a page the client could read (non-success response)",
+      "conclusion": "inconclusive - a single failed request does not identify the routing rule. Recorded, not interpreted.",
+      "observed_at_utc": "2026-11-20"
+    },
+    {
+      "id": "CTRL-B",
+      "purpose": "Test whether the submitted 9-character token works as a direct product deep link.",
+      "request": "https://www.amazon.com/dp/B00hJ57DV",
+      "observed": "request did not return a product page (non-success response)",
+      "conclusion": "consistent with the token not being a retrievable product identifier on its own; not proof, because an Amazon error page and an automated-request block look the same to this client.",
+      "observed_at_utc": "2026-11-20"
+    },
+    {
+      "id": "CTRL-C",
+      "purpose": "Test whether the redirect target of LINK-01 is stable across requests.",
+      "request": "https://link.amazon/B04G1MEwY (second request, same day)",
+      "observed": "byte-identical response, including an identical Amazon session identifier (137-5977742-0712164)",
+      "conclusion": "inconclusive - the retrieval layer served a cached copy. Does not establish stability or rotation.",
+      "observed_at_utc": "2026-11-20"
+    }
+  ],
+  "observations": [
+    {
+      "id": "OBS-1",
+      "observation": "All five submitted tokens are 9 characters long. Every ASIN observed on an Amazon product page in this register is 10 characters. Amazon's catalogue glossary, quoted on an Amazon-hosted customer Q&A page, defines an ASIN as a unique block of 10 letters and/or numbers.",
+      "status": "observed; formal definition source not reachable without a Seller Central login",
+      "source": "https://www.amazon.com/ask/questions/TxJGX2UK4WITXE/"
+    },
+    {
+      "id": "OBS-2",
+      "observation": "In 4 of 5 requests the submitted token did not equal the ASIN of the page reached, and every one of those 4 destination URLs carried the query parameter plpRedirect=mhFallback.",
+      "status": "observed",
+      "source": "see records above"
+    },
+    {
+      "id": "OBS-3",
+      "observation": "Three of the four resolved destinations sit in the Air Fryers browse node; one sits in the Meat thermometers browse node, and its destination URL carries channelId=500 while the other three carry channelId=704. The destinations therefore do not share one category.",
+      "status": "observed",
+      "source": "see records above"
+    },
+    {
+      "id": "OBS-4",
+      "observation": "No destination URL in this register carries a Associates tag parameter (no tag= or similar). Under Program Policies, Section 2(b), a Special Link must include the Associates ID or tag as a URL parameter, appearing as XXXXX-##.",
+      "status": "rule verified; compliance determination reserved to Amazon",
+      "source": "https://affiliate-program.amazon.com/help/operating/policies"
+    }
+  ]
+}

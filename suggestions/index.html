@@ -102,6 +102,30 @@
   <ul class="opts"><li><strong>A.</strong> Dark disclosure bar directly under the masthead, repeated in the footer (current).<br><span class="muted small">Tradeoff: Impossible to miss, and slightly heavy visually.</span></li><li><strong>B.</strong> A lighter inline notice above the first product, plus the footer repeat.<br><span class="muted small">Tradeoff: Prettier; risks being read as decoration rather than disclosure.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
 </section>
+<section class="choice-card" id="S-11">
+  <p class="kicker">S-11 · Measurement scope</p>
+  <p class="choice-current">Current: <span class="badge">Event fields are path, referrer_host, product_id and destination_host; a collector exists under tools/analytics-endpoint but no endpoint is configured, so nothing is collected.</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep events aggregate-only and forbid any browser-persisted identifier.<br><span class="muted small">Tradeoff: No per-visitor funnels and no per-visitor A/B attribution. Nearly every decision the site needs survives at page and product level.</span></li><li><strong>B.</strong> Add a first-party id so sessions can be stitched into funnels.<br><span class="muted small">Tradeoff: Reads like ordinary analytics, and becomes a breach the moment it is joined with a tag or sub-tag.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, and assert it in the build so B cannot be re-added by accident.</p>
+</section>
+<section class="choice-card" id="S-12">
+  <p class="kicker">S-12 · Seasonal and deal content</p>
+  <p class="choice-current">Current: <span class="badge">No promotional or seasonal claim is published, so the removal-on-expiry rule is met by avoidance.</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave it: no deal content, no expiry obligation.<br><span class="muted small">Tradeoff: Gives up the highest-intent seasonal traffic the niche has.</span></li><li><strong>B.</strong> Add expires_on to page front matter and have the builder drop expired pages to an archive without the offer text.<br><span class="muted small">Tradeoff: One build change plus an archive page to maintain, then seasonal content becomes safe to publish.</span></li><li><strong>C.</strong> Publish seasonal framing that makes no price or discount claim.<br><span class="muted small">Tradeoff: Weaker hook than B, but no expiry mechanism required.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> C now, B before the first real deal page. Do not publish deals while relying on A and claiming otherwise.</p>
+</section>
+<section class="choice-card" id="S-13">
+  <p class="kicker">S-13 · Evidence quality</p>
+  <p class="choice-current">Current: <span class="badge">Compliance rules in data/register/compliance.json carry quotes; the root site&#39;s data/sources.json carries a used_for summary with no quoted text.</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave root sources as summaries.<br><span class="muted small">Tradeoff: A reviewer has to open Amazon&#39;s policy page and hunt for the clause to check any row.</span></li><li><strong>B.</strong> Require a verbatim quote plus the document&#39;s own version date and a retrieval date on every source that supports a compliance claim.<br><span class="muted small">Tradeoff: Slower to edit, and quotes need re-verification when Amazon revises a document, which is the point.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B. The two governing documents are dated 2025-10-15 and 2026-04-14, so a quote without its version date stops being checkable inside a quarter.</p>
+</section>
+<section class="choice-card" id="S-14">
+  <p class="kicker">S-14 · Build integrity</p>
+  <p class="choice-current">Current: <span class="badge">verify.yml asserts git diff --quiet -- docs while tools/build.py writes editorial/, and the root generator is not run by CI at all, so stale committed output merges green.</span></p>
+  <ul class="opts"><li><strong>A.</strong> Point the assertion at editorial/ and add a build.mjs step with its own diff assertion.<br><span class="muted small">Tradeoff: Two lines. It will fail the first change that edits data without rebuilding, which is the intended effect.</span></li><li><strong>B.</strong> Publish only from a build artefact rather than committing generated HTML.<br><span class="muted small">Tradeoff: Cleanest source/output split, but it changes the Pages source and every live URL&#39;s provenance.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> The first option now; revisit the second only when the two publishers are consolidated.</p>
+</section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
 </main>

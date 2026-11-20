@@ -342,6 +342,103 @@
         "S03",
         "S02"
       ]
+    },
+    {
+      "id": "FLG-032",
+      "severity": "high",
+      "title": "Every resolved destination carries a fallback marker, so “resolved” reads stronger than it is",
+      "detail": "All four submitted links that reached a product page landed on a URL carrying the query parameter plpRedirect=mhFallback, and in every case the ASIN of the page reached differs from the token in the submitted link. A marker of that shape means the router did not find the requested item and served something else. The product register records identity_status resolved on the basis of listing-title and manufacturer-page agreement, which identifies the page reached but cannot show it is the page intended. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Open each submitted link in a signed-in browser, read the ASIN from the address bar, and compare it with the ASIN the owner meant. A mismatch is an input error to fix at source, not a mapping to publish."
+    },
+    {
+      "id": "FLG-033",
+      "severity": "medium",
+      "title": "Two sessions recorded different outcomes for the same tokens",
+      "detail": "One record in this repo has B00hJ57DV as the link that hit an Amazon “Continue shopping” checkpoint. On an independent retrieval the same day, B00hJ57DV resolved to a product page (ASIN B08DKYBTPH) and it was B0c8moW59 that hit the checkpoint. Both records are kept and neither is overwritten. Read together they show the outcome depends on session, timing or routing rather than on the token, and that any re-verification job must append attempts rather than replace a row. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Re-run each of the five links twice from a private window a few minutes apart and record the ASIN each time before treating any mapping as stable."
+    },
+    {
+      "id": "FLG-034",
+      "severity": "high",
+      "title": "Program Policies forbid tying a sub-tag or program identifier to a specific end user",
+      "detail": "Participation Requirements 2(b): “Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).” The site ships a client event emitter and a self-hosted collector under tools/analytics-endpoint. The event fields as specified (path, referrer_host, product_id, destination_host) carry no visitor identifier, which is consistent with the rule; the risk is the future join, which looks like ordinary analytics. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Before the collector is enabled, assert in the build that no sub-tag value is derived from anything persisted in the browser, and keep per-page sub-tags static strings."
+    },
+    {
+      "id": "FLG-035",
+      "severity": "medium",
+      "title": "The three-qualifying-sales-in-180-days condition is not in the policy text retrieved here",
+      "detail": "Repeated widely across third-party affiliate guides as the condition for remaining in the programme and for API access. It does not appear in the Operating Agreement (updated 2025-10-15) or the Program Policies (updated 2026-04-14) as fetched on 2026-11-20. Nothing on this site relies on it; flagged so no launch date or account-risk assumption is built on it either. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "manual_step": "Read the enrolment notices and the Participation Requirements in a logged-in Associates session, where the current conditions render in full, and settle this row either way."
+    },
+    {
+      "id": "FLG-036",
+      "severity": "low",
+      "title": "Attribution is a 24-hour session plus an 89-day cart path, not 90 days",
+      "detail": "Commission Income Statement 1(b) ends the Session at the first of 24 hours elapsed, an order placed, or a click through another associate's link; 1(c)(i) allows the cart route to complete “no later than 89 days after their initial click-through”. Guides online say 90 days. Any report, ledger note or article mentioning an attribution window must use 24 hours and 89 days. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "Set the ledger's window definition from the policy line when the first row is written, not from a guide."
+    },
+    {
+      "id": "FLG-037",
+      "severity": "low",
+      "title": "CI asserts a directory the build does not write, so stale generated output merges green",
+      "detail": ".github/workflows/verify.yml runs tools/build.py and then asserts `git diff --quiet -- docs`. tools/build.py writes the site into editorial/ (its print statement still says docs/). Rebuilding in this branch produced a 5-line difference in editorial/assets/site.css against the committed copy, which that assertion cannot see. Root pages are regenerated by a second, separate generator (tools/build.mjs), which CI does not run at all. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [],
+      "manual_step": "Assert `git diff --quiet -- editorial` after build.py, and add a build.mjs step with its own diff assertion, so neither publisher can ship output that has drifted from its data.",
+      "status": "resolved",
+      "resolution": "Current .github/workflows/verify.yml runs `npm run check` (both generators, both gates) and then fails if `git status --porcelain` is non-empty, which asserts the whole tree rather than any single directory. The gap described here no longer exists."
+    },
+    {
+      "id": "FLG-038",
+      "severity": "info",
+      "title": "The Operating Agreement section cited for the Associates statement was checked against the text",
+      "detail": "data/sources.json attributes the required statement and the no-embellishment rule to Section 5 of the Agreement, which is worth double-checking because the same wording also appears in help-centre articles. Observed 2026-11-20 by session arena-43565031-affil3; verbatim sources in evidence/43565031/.",
+      "sources": [
+        "S01"
+      ],
+      "manual_step": "None. Recorded so a reviewer does not re-open it.",
+      "status": "resolved",
+      "resolution": "Confirmed correct on 2026-11-20 against the Agreement updated 2025-10-15. Section 5 is headed Identifying Yourself as an Associate and reads: “You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: ‘As an Amazon Associate I earn from qualifying purchases.’” Section 6 adds that any violation of Section 5 will be deemed a material breach, and Section 4 states Amazon makes no representation about expected traffic or commission income — the basis for publishing no revenue forecast."
+    },
+    {
+      "severity": "high",
+      "title": "A committed docs/ edition was being served without the FTC example disclosure and with hardcoded prices",
+      "detail": "tools/disclosure-check.mjs reported 37 problems, all of them under docs/: pages of a committed spare edition that display current price figures for several products and omit the disclosure sentence this repository's own gate enforces. Program Policies 2(b) allow a site to show prices only when Amazon serves them or a licensed Creators/PA API feed supplies them, so a committed copy of the site under docs/ is not a harmless spare: while Pages publishes / it is a second published edition, reachable at /Affil3/docs/, breaching the price rule on every one of those pages. The repo's .gitignore already says this tree must never be committed — “Never commit a regenerated legacy tree at the repository root”, with /docs/ listed — but the rule arrived after the files were tracked, so it had no effect. Note that even naming the offending figures on this page would breach the same rule, which is why they are described here rather than quoted; the gate caught exactly that in this flag's first draft. Observed 2026-11-20 by session arena-43565031-affil3.",
+      "sources": [
+        "S02"
+      ],
+      "manual_step": "The owner of whatever writes docs/ should point its output outside the served root, or rebuild it from the same disclosure partial as the root site. Untracking stops the live exposure; it does not settle which edition is canonical.",
+      "id": "FLG-039",
+      "status": "resolved",
+      "resolution": "Superseded by FLG-031: docs/ was deleted from the tree and gitignored; a single tracked noindex redirect page now stands at /docs/ so old links still resolve. The price and disclosure exposure ended when the edition was removed."
+    },
+    {
+      "severity": "medium",
+      "title": "A resolved merge conflict was committed into a frozen legacy page",
+      "detail": "legacy/categories/unresolved/index.html contains a literal <<<<<<< / ======= / >>>>>>> conflict marker on main, so a conflict was committed rather than resolved. It is inside the archive rather than the live site, which is why check_site.py does not see it, and it renders as visible junk text on a served page. Not this session's edit and not repaired here, because legacy/ belongs to whoever froze it. Observed 2026-11-20 by session arena-43565031-affil3.",
+      "sources": [],
+      "manual_step": "Owner of that archive: resolve the marker in place, or re-freeze the edition from its source commit. A one-line repair, but it changes another session's frozen record, so it is logged rather than done.",
+      "id": "FLG-040",
+      "status": "resolved",
+      "resolution": "Fixed during integration session arena-78c96140: the conflict markers in legacy/categories/unresolved/index.html were resolved to the archived edition's own content, and the page renders without conflict junk again."
     }
   ],
   "checked": "2026-11-20"
