@@ -202,7 +202,6 @@ ${jsonld}
       <a href="${esc(href('/articles/'))}">Journal</a>
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/find/'))}">Find yours</a>
-      <a href="${esc(href('/about/'))}">About</a>
     </nav>
   </div>
 </header>
