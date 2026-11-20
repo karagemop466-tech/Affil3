@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suggestions: choose a path | ShopNow Kitchen</title>
-<meta name="description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
+<title>Suggestions: review, then choose a path | ShopNow Kitchen</title>
+<meta name="description" content="A decision board for the site: every open choice, its options, its trade-offs, a recommendation with a confidence level, and a prompt you can paste to have it built.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/suggestions/">
-<meta property="og:title" content="Suggestions: choose a path">
-<meta property="og:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
+<meta property="og:title" content="Suggestions: review, then choose a path">
+<meta property="og:description" content="A decision board for the site: every open choice, its options, its trade-offs, a recommendation with a confidence level, and a prompt you can paste to have it built.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/suggestions/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ShopNow Kitchen">
 <meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Suggestions: choose a path">
-<meta name="twitter:description" content="Options for the next decisions. Nothing is implemented until the owner chooses.">
+<meta name="twitter:title" content="Suggestions: review, then choose a path">
+<meta name="twitter:description" content="A decision board for the site: every open choice, its options, its trade-offs, a recommendation with a confidence level, and a prompt you can paste to have it built.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="analytics-endpoint" content="">
+<meta name="robots" content="noindex, follow">
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
@@ -30,6 +31,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/compare/">Compare</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -40,130 +42,723 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.</p></section>
-<div class="choice-grid">
-<section class="choice-card" id="S-01">
-  <p class="kicker">S-01 · Two publications in one repository</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).<br><span class="muted small">Tradeoff: Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</span></li><li><strong>B.</strong> Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.<br><span class="muted small">Tradeoff: Cleanest signal for search engines; a redirect map has to be written and tested first.</span></li><li><strong>C.</strong> Merge the better parts of the old edition into the root site and remove the duplicate pages.<br><span class="muted small">Tradeoff: Best content outcome, most work, and the old edition&#39;s data conflicts with the root data and must be reconciled.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.</p>
+<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions, ready for you to choose</h1>
+<p class="deck">Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main&#39;s S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main&#39;s. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.</p></section>
+<section class="band band-alt decision-how">
+  <h2>How to use this page</h2>
+  <div class="how-steps-3">
+    <p><strong>1. Read the question in bold.</strong> It is the plain version, not the jargon one.</p>
+    <p><strong>2. Compare the options by what they cost you</strong>, not by which sounds best. Each one states its trade-off.</p>
+    <p><strong>3. Paste the prompt</strong> under the option you want. Only what you name gets built.</p>
+  </div>
 </section>
-<section class="choice-card" id="S-02">
-  <p class="kicker">S-02 · Buy buttons while links are untested</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the buy buttons, labelled as provisional and pending a tracking check (current).<br><span class="muted small">Tradeoff: The site can earn from day one, but an untested link that silently fails credits nothing.</span></li><li><strong>B.</strong> Hide every buy button until gate G-02 passes.<br><span class="muted small">Tradeoff: Maximum compliance confidence; the site earns nothing until the owner tests.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
+<div class="decision-list"><article class="decision" id="S-01">
+  <header class="decision-head">
+    <p class="kicker">S-01 · Two publications in one repository</p>
+    <h3>Two publications in one repository</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Retire /editorial/ entirely and redirect its URLs to the equivalent root pages. </p>
+      <p class="opt-tradeoff">Cleanest signal for search engines; a redirect map has to be written and tested first.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Merge the better parts of the old edition into the root site and remove the duplicate pages. </p>
+      <p class="opt-tradeoff">Best content outcome, most work, and the old edition&#39;s data conflicts with the root data and must be reconciled.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.</p>
+    <p class="small muted">To have it built, reply with “S-01 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-02">
+  <header class="decision-head">
+    <p class="kicker">S-02 · Buy buttons while links are untested</p>
+    <h3>Buy buttons while links are untested</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the buy buttons, labelled as provisional and pending a tracking check (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">The site can earn from day one, but an untested link that silently fails credits nothing.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Hide every buy button until gate G-02 passes. </p>
+      <p class="opt-tradeoff">Maximum compliance confidence; the site earns nothing until the owner tests.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A, but test within the first week. A page that cannot be clicked is a brochure.</p>
+    <p class="small muted">To have it built, reply with “S-02 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-03">
+  <header class="decision-head">
+    <p class="kicker">S-03 · Where the analytics collector runs</p>
+    <h3>Where the analytics collector runs</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: D</span></p>
+  </header>
+  <ol class="options">
+    <li class="">
+      <p><span class="opt-id">A</span> Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS. </p>
+      <p class="opt-tradeoff">Full control of raw data; the owner runs a server and patches it.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Run it as a serverless function on a platform that supports Node. </p>
+      <p class="opt-tradeoff">No server to patch; cold starts and platform limits on storage.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Skip self-hosting and use a privacy-focused hosted analytics service. </p>
+      <p class="opt-tradeoff">Fastest to start; one more third party, and the data leaves your control.</p>
+    </li><li class="is-current">
+      <p><span class="opt-id">D</span> Stay inactive until there is traffic worth measuring (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B. It removes the server maintenance objection without handing the data away.</p>
+    <p class="small muted">To have it built, reply with “S-03 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-04">
+  <header class="decision-head">
+    <p class="kicker">S-04 · Pricing display</p>
+    <h3>Pricing display</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Show no prices; every button reads &#39;Check the current price on Amazon&#39; (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Always accurate, and compliant with the price clause; readers have to click to know a budget.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Enroll in the Creators API and display Amazon-served prices with a timestamp. </p>
+      <p class="opt-tradeoff">Better for budget-led shoppers; more engineering, and a stale price is a compliance risk.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Show a coarse price band instead of a figure. </p>
+      <p class="opt-tradeoff">Useful and stable; still a claim that needs checking, and it ages badly.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A until traffic justifies the Creators API work. Then B.</p>
+    <p class="small muted">To have it built, reply with “S-04 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-05">
+  <header class="decision-head">
+    <p class="kicker">S-05 · Publishing cadence</p>
+    <h3>Publishing cadence</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> One new guide every two weeks (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Sustainable; slow to build a topic cluster.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> One new guide per week. </p>
+      <p class="opt-tradeoff">Faster topical coverage; needs a real writing slot weekly.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> A batch of eight guides before launch, then monthly. </p>
+      <p class="opt-tradeoff">Reaches a useful site size quickly; risks thin pages if the batch is rushed.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.</p>
+    <p class="small muted">To have it built, reply with “S-05 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-06">
+  <header class="decision-head">
+    <p class="kicker">S-06 · Reader capture</p>
+    <h3>Reader capture</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> No email capture yet; the RSS feed is the only subscription route (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Nothing to maintain and no consent obligations; no direct channel to readers.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a single-field email capture with double opt-in on guide pages. </p>
+      <p class="opt-tradeoff">Owns the audience instead of renting it from search; adds a privacy notice and a provider.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Publish a &#39;notify me when a new guide ships&#39; link that opens a mail draft. </p>
+      <p class="opt-tradeoff">Zero infrastructure and honest; very low conversion.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.</p>
+    <p class="small muted">To have it built, reply with “S-06 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-07">
+  <header class="decision-head">
+    <p class="kicker">S-07 · Imagery</p>
+    <h3>Imagery</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep editorial illustration, clearly labelled as not the reviewed unit (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Consistent look, no licensing exposure, no misleading product photography.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Use Amazon-hosted product images through the approved image service. </p>
+      <p class="opt-tradeoff">Shows the actual product; images must be served by Amazon&#39;s tools and can change without notice.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Commission real photography of the units. </p>
+      <p class="opt-tradeoff">Highest trust and highest cost; needs physical units.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.</p>
+    <p class="small muted">To have it built, reply with “S-07 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-08">
+  <header class="decision-head">
+    <p class="kicker">S-08 · The byline</p>
+    <h3>The byline</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the team byline, flagged as a weakness (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Honest and unchanging; weaker trust signal than a person.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a named editor with a short bio and a contact address. </p>
+      <p class="opt-tradeoff">Strongest trust signal; a person has to be accountable for the corrections.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B as soon as a real person will take the byline. This is one of the cheapest trust wins available.</p>
+    <p class="small muted">To have it built, reply with “S-08 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-09">
+  <header class="decision-head">
+    <p class="kicker">S-09 · Product scope</p>
+    <h3>Product scope</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Stay at five submitted products and go deep on them (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Focused and honest; a thin catalogue for a shopping site.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add three to five comparison products per category, researched the same way. </p>
+      <p class="opt-tradeoff">Makes the categories credible; each added product needs its own source page and verification.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Expand into a second niche once the first converts. </p>
+      <p class="opt-tradeoff">Scales the model; splits attention before anything is proven.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B, one category at a time, and only where a manufacturer page exists to verify against.</p>
+    <p class="small muted">To have it built, reply with “S-09 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-10">
+  <header class="decision-head">
+    <p class="kicker">S-10 · Disclosure prominence</p>
+    <h3>Disclosure prominence</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Dark disclosure bar directly under the masthead, repeated in the footer (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Impossible to miss, and slightly heavy visually.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> A lighter inline notice above the first product, plus the footer repeat. </p>
+      <p class="opt-tradeoff">Prettier; risks being read as decoration rather than disclosure.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
+    <p class="small muted">To have it built, reply with “S-10 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-11">
+  <header class="decision-head">
+    <p class="kicker">S-11 · Four editions on one domain</p>
+    <h3>Four editions on one domain</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Publish the other editions on separate domains, each with its own tracking ID. </p>
+      <p class="opt-tradeoff">Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Unpublish the other editions and keep only their pages in the repository history. </p>
+      <p class="opt-tradeoff">The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build.</p>
+    <p class="small muted">To have it built, reply with “S-11 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-12">
+  <header class="decision-head">
+    <p class="kicker">S-12 · Publishing the ThermoMaven buy button</p>
+    <h3>Publishing the ThermoMaven buy button</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Keep the button hidden until the listing model field confirms the F1 Ace. </p>
+      <p class="opt-tradeoff">The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Point the button at the manufacturer F1 Ace page instead of the Amazon listing. </p>
+      <p class="opt-tradeoff">Breaks the affiliate link and the tracking the site exists for.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question.</p>
+    <p class="small muted">To have it built, reply with “S-12 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-13">
+  <header class="decision-head">
+    <p class="kicker">S-13 · A side-by-side comparison page</p>
+    <h3>A side-by-side comparison page</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">It is the page a buyer actually wants and the strongest internal link target for every guide.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Keep the comparison inside the shop table and the category pages only. </p>
+      <p class="opt-tradeoff">Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Add comparison products beyond the five submitted rows so the table has more than one option per category. </p>
+      <p class="opt-tradeoff">More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research.</p>
+    <p class="small muted">To have it built, reply with “S-13 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-14">
+  <header class="decision-head">
+    <p class="kicker">S-14 · Derive every count on a page from the rows that page counts</p>
+    <h3>Derive every count on a page from the rows that page counts</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Fix each instance when it is found, which is what has happened so far. <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Works until the next one. Nothing prevents recurrence, and the instances have been found by later sessions rather than by the build.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a gate rule banning hand-written count phrases in templates, and require the computed form instead. </p>
+      <p class="opt-tradeoff">A few hours. Catches the class rather than the instance.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Add a build assertion that no rendered section has a non-empty heading over an empty body, and that every collection rendered on a page is non-empty unless the page says so. </p>
+      <p class="opt-tradeoff">Cheaper than B and it also catches the empty-page case.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.</p>
+    <p class="small muted">To have it built, reply with “S-14 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-15">
+  <header class="decision-head">
+    <p class="kicker">S-15 · Record the two policy clauses that constrain the AI half of the brief</p>
+    <h3>Record the two policy clauses that constrain the AI half of the brief</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Treat the automation in the brief as unqualified and build it. <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">The fastest path to what the brief describes and the likeliest path to a material breach, which permits immediate termination under Operating Agreement §6.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Build only automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, and drafts written from manufacturer pages with citations. Keep pricing analysis off the Site. Ask Amazon about §5 before going further. </p>
+      <p class="opt-tradeoff">Slower, and part of the brief stays unbuilt. Everything already in this repository is inside it.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Request PA API / Creators API access and Amazon&#39;s written approval, then build the full pipeline. </p>
+      <p class="opt-tradeoff">The only route to prices, ratings and the automated research the brief describes. Needs an approved account and a qualifying site, so it depends on S-02 and Q-03.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B now and C as the destination. Published on the compliance page in this session so the boundary is visible to whoever builds next rather than rediscovered later.</p>
+    <p class="small muted">To have it built, reply with “S-15 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-16">
+  <header class="decision-head">
+    <p class="kicker">S-16 · A privacy notice for the click counter</p>
+    <h3>A privacy notice for the click counter</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Ship no notice. <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted. </p>
+      <p class="opt-tradeoff">An hour, and done in this session for review. It is a draft of a legal-adjacent page and should be read rather than trusted.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Adopt a hosted consent and privacy service. </p>
+      <p class="opt-tradeoff">Proportionate for a site with a real audience and third-party processors. Overkill now, and it adds a processor of its own.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B, implemented in this session as a draft. It closes Q-11 and answers part of Q-16; whether the wording is adequate where the site is operated from is a question for counsel, not something a build session should settle.</p>
+    <p class="small muted">To have it built, reply with “S-16 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-17">
+  <header class="decision-head">
+    <p class="kicker">S-17 · One product register or two</p>
+    <h3>One product register or two</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep both and re-check them against each other each session (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No migration risk. The check is manual, and manual checks here have a documented record of being missed.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a gate rule that fails the build when the two registers disagree on any shared field for any product. </p>
+      <p class="opt-tradeoff">About an hour. It does not remove the duplication but it makes disagreement impossible to ship, which is the failure that actually happened.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Merge into one register with per-publication views. </p>
+      <p class="opt-tradeoff">Removes the duplication permanently. The largest data change available here, and it touches files two earlier sessions built.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B now, and C if S-01 chooses to consolidate the publications. B is a few dozen lines and converts a class of silent error into a build failure.</p>
+    <p class="small muted">To have it built, reply with “S-17 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-18">
+  <header class="decision-head">
+    <p class="kicker">S-18 · Should the gate tell a product link apart from a citation?</p>
+    <h3>Should the gate tell a product link apart from a citation?</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the blanket rule and cite Amazon help pages as plain text rather than linking them (what /privacy/ does now). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Impossible to ship an unmarked product link, which is the failure that matters. It costs a few convenience links, and a plain-text URL is worse on a phone.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Make the rule precise and fail-closed: a link is product-intent if it targets /dp/, carries tag= or carries data-outbound, and must then be both sponsored and tagged; any other amazon.com link must not be sponsored. Anything that cannot be classified fails the build. </p>
+      <p class="opt-tradeoff">Semantically correct against Google&#39;s guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test written first and should not be made by a build session on its own authority.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Keep the blanket rule for product links and allow a short explicit allowlist of informational Amazon paths, checked literally. </p>
+      <p class="opt-tradeoff">Narrower than B and easier to audit, because the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B, with the negative test written first: break a product link&#39;s tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently one of the things standing between this site and an untagged outbound link.</p>
+    <p class="small muted">To have it built, reply with “S-18 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-19">
+  <header class="decision-head">
+    <p class="kicker">S-19 · A house style rule that can be checked</p>
+    <h3>A house style rule that can be checked</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Rely on editorial judgement per page. <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Free, and it is how the current copy was produced - which is good enough that the diagnosis is worth writing down rather than repeating.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Publish a house style file with do/don&#39;t rules and real before-and-after examples from this site, and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section. </p>
+      <p class="opt-tradeoff">Half a day. The gate catches the mechanical failures; the rest stays editorial. Publishing the standard does more for reader trust than any badge.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Add a readability-score threshold per page to the gate. </p>
+      <p class="opt-tradeoff">Objective and easy to implement, and it optimises for the wrong thing: it pushes copy toward short dumb sentences, which is its own kind of slop.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.</p>
+    <p class="small muted">To have it built, reply with “S-19 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-20">
+  <header class="decision-head">
+    <p class="kicker">S-20 · Crawl control for a site served at a project path</p>
+    <h3>Crawl control for a site served at a project path</h3>
+    
+    <p class="decision-meta"><span class="badge conf-medium">Not stated</span>  <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site. </p>
+      <p class="opt-tradeoff">Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served. </p>
+      <p class="opt-tradeoff">Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.</p>
+    </li><li class="">
+      <p><span class="opt-id">D</span> Serve the root publication from a repository named for the owner&#39;s GitHub Pages host, so robots.txt is read from the host root. </p>
+      <p class="opt-tradeoff">Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
+    <p class="small muted">To have it built, reply with “S-20 A” and the option letter you want.</p>
+  </div>
+</article>
+<article class="decision" id="S-21">
+  <header class="decision-head">
+    <p class="kicker">S-21 · Where the site actually lives</p>
+    <h3>Do you want to keep this on a github.io address, or is there a real domain name?</h3>
+    <p class="decision-why">Every link problem here starts with the fact that the site&#39;s address belongs to GitHub, not to you. A real .com is cheap, is what a buyer expects to type, and is what affiliate applications look at.</p>
+    <p class="decision-meta"><span class="badge conf-high">High confidence</span> <span class="badge">Effort: 30 minutes plus the annual fee</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Stay on karagemop466-tech.github.io/Affil3/ (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Free and instant. Long, unbranded, and it reads as a test project to both readers and Amazon&#39;s reviewers.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Buy a short brand domain and point it at GitHub Pages with a CNAME file. </p>
+      <p class="opt-tradeoff">Costs a yearly fee and a DNS step. Fixes the address in every canonical tag, sitemap and feed at once.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B. It is the single highest-leverage change in this list and it touches nothing else. I am 90% confident it pays for itself in trust alone.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-11 B: add a CNAME file for my domain, switch config siteUrl and basePath to it, and rebuild so every canonical, sitemap entry and feed link uses the new address.</pre>
+  </div>
+</article>
+<article class="decision" id="S-22">
+  <header class="decision-head">
+    <p class="kicker">S-22 · Which edition is the shop</p>
+    <h3>This repo has six different-looking websites on one address. Which one do you want people and Google to see?</h3>
+    <p class="decision-why">Right now the root site, /editorial/, /crisp-index/, /counter/, /counterwise/ and /legacy/ all publish the same five products in six designs. To a search engine that is one topic repeated six times by six brands, and to a reader who lands on two of them it looks like two different companies.</p>
+    <p class="decision-meta"><span class="badge conf-high">High confidence</span> <span class="badge">Effort: done on this branch</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Root publication is the shop; every other edition is archived, kept online, and marked noindex (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">One clear site, everything preserved. Requires the archive editions to carry the noindex directive, which is now in place.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Delete the non-root editions from the repository entirely. </p>
+      <p class="opt-tradeoff">Cleanest possible signal; throws away other sessions&#39; published work and the audit trail.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Promote one of the other editions to the root and retire the current root pages. </p>
+      <p class="opt-tradeoff">You may prefer one of the other designs. Costs a full re-integration and re-verification of that edition&#39;s data.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A. It is done: robots.txt blocks all five archive paths and every archived page carries noindex. Choose C only if you prefer another edition&#39;s look, and say which.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-12 C with the &lt;edition name&gt; edition as the shop: move it to the site root, keep the root data register as the source of truth, re-point the sitemap, feed and canonical tags, and re-run every gate.</pre>
+  </div>
+</article>
+<article class="decision" id="S-23">
+  <header class="decision-head">
+    <p class="kicker">S-23 · Getting the site read at all</p>
+    <h3>Are you willing to spend a couple of hours on Search Console and one social post, or should I assume no promotion?</h3>
+    <p class="decision-why">Nothing here has ever been indexed or submitted. A five-page shop with no inbound links ranking for &#39;air fryer&#39; is not going to happen by accident; those phrases are owned by review sites with thousands of pages.</p>
+    <p class="decision-meta"><span class="badge conf-medium">Medium confidence</span> <span class="badge">Effort: 2 hours for A, ongoing for B</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Owner verifies Search Console and submits the sitemap; no other outreach (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Gets the site discovered eventually. Slow, and no data for weeks.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a focused free-traffic layer: a Reddit/forum-appropriate answer strategy and one seasonal page per guide cluster. </p>
+      <p class="opt-tradeoff">Real work per post, and communities punish obvious link-dropping. No paid spend.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Run Amazon&#39;s own affiliate tools: SiteStripe share links and the Associates&#39; bounties instead of trying to rank. </p>
+      <p class="opt-tradeoff">Traffic without a website, but then this site is a brochure rather than the business.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A now, B once three guides are live. I am 70% confident on B&#39;s payoff and 100% confident that doing nothing gets zero readers.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-13 A: write the exact Search Console steps as a checklist for me, including the DNS or HTML-file verification route and which sitemap URL to submit.</pre>
+  </div>
+</article>
+<article class="decision" id="S-24">
+  <header class="decision-head">
+    <p class="kicker">S-24 · Images that sell</p>
+    <h3>Do you have the right to use the manufacturers&#39; product photos, or should the site keep AI illustrations?</h3>
+    <p class="decision-why">Every image here is generated artwork and labelled as such. It is honest, and it is also the reason the page does not look like a shop: real product photography is what makes a buyer trust a listing page, and Amazon&#39;s own program allows certain uses of its product images through the API only.</p>
+    <p class="decision-meta"><span class="badge conf-medium">Medium confidence</span> <span class="badge">Effort: weeks (approval-dependent)</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep AI illustrations, labelled at the point of use (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No rights risk at all. Visibly not a shop, and it caps conversion.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Use Amazon product images obtained through the Product Advertising API, with the required attribution. </p>
+      <p class="opt-tradeoff">The correct long-term answer. Needs an approved API key and a working Associates account.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Ask the manufacturers for press images and written permission. </p>
+      <p class="opt-tradeoff">Free, legitimate, slow, and only covers brands that answer email.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B, once the account exists. Until then A is the only honest option, and I will not put a stock photo of a different air fryer on a product page.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-14 C: draft the permission-request email for the five brands, with the exact usage we need stated, and a page that lists which brands have replied.</pre>
+  </div>
+</article>
+<article class="decision" id="S-25">
+  <header class="decision-head">
+    <p class="kicker">S-25 · How the site earns</p>
+    <h3>Is this Amazon-only, or do you want other affiliate programs and display ads alongside it?</h3>
+    <p class="decision-why">Amazon&#39;s commission on small kitchen appliances is thin, and the cookie window is 24 hours. One appliance order can easily pay less than a dollar. Whether that is acceptable decides how much content is worth writing.</p>
+    <p class="decision-meta"><span class="badge conf-low">Low confidence</span> <span class="badge">Effort: contracts and paperwork</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Amazon Associates only (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Simplest to disclose and comply with. Thin payouts, and one policy change can zero it out.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add manufacturer and retailer programs with higher rates, disclosed the same way. </p>
+      <p class="opt-tradeoff">Better economics, more contracts, more disclosure variants, more to maintain.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Add display advertising once traffic exists. </p>
+      <p class="opt-tradeoff">Decouples income from clicks, but ads on a five-product page look like a content farm.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A until there is measurable traffic, then B. I will not model revenue for any option: no rate table has been verified (FLG-038).</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-15 B: list three non-Amazon programs that accept small kitchen-appliance publishers, with their published commission ranges and the source URL for each.</pre>
+  </div>
+</article>
+<article class="decision" id="S-26">
+  <header class="decision-head">
+    <p class="kicker">S-26 · What the next guides should be</p>
+    <h3>Should the next four articles be chosen from measured search queries, or from your own product knowledge?</h3>
+    <p class="decision-why">The five existing guides are hypotheses, not evidence. Writing the next four on instinct repeats that. Writing them from Search Console queries needs the site indexed first, which needs S-13.</p>
+    <p class="decision-meta"><span class="badge conf-medium">Medium confidence</span> <span class="badge">Effort: one writing cycle per guide</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Wait for measured query data before choosing the next four topics (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Honest and evidence-based. Blocks new content for weeks.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Publish four more guides now from the existing buyer questions, then re-rank them once data arrives. </p>
+      <p class="opt-tradeoff">Site reaches a useful size sooner; some of those four will miss.</p>
+    </li><li class="">
+      <p><span class="opt-id">C</span> Publish comparison pages targeting the exact product names, which have low competition and high intent. </p>
+      <p class="opt-tradeoff">Closest to money, least like editorial. Works best for a shop, not a magazine.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> C plus B: product-name comparisons first because intent is highest, then question guides. 65% confident; the alternative is waiting with nothing published.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-16 C: draft three product-name comparison pages from the verified specification data only, with a table, a &#39;who should buy which&#39; section, and no invented measurements.</pre>
+  </div>
+</article>
+<article class="decision" id="S-27">
+  <header class="decision-head">
+    <p class="kicker">S-27 · Catching readers who are not ready to buy</p>
+    <h3>Do you want an email list, or is the RSS feed enough?</h3>
+    <p class="decision-why">Almost nobody buys on the first visit. Without any way to stay in touch, every reader who is not ready today is lost, and the only traffic you ever get is what search gives you that week.</p>
+    <p class="decision-meta"><span class="badge conf-medium">Medium confidence</span> <span class="badge">Effort: a morning</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> RSS feed only (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No consent, privacy or provider obligations. Almost no consumer uses RSS.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> One-field email capture with double opt-in and a single &#39;new guide&#39; send. </p>
+      <p class="opt-tradeoff">Builds an asset you own. Needs a provider, a privacy update and a real reason for someone to subscribe.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B, but only after S-13 A gives the site somewhere to send people from. Asking for an email with no audience and no promise converts at zero.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-17 B: add a single-field capture form to guide pages with double opt-in, update the privacy notice, and leave the provider unset until I choose one.</pre>
+  </div>
+</article>
+<article class="decision" id="S-28">
+  <header class="decision-head">
+    <p class="kicker">S-28 · Making the tables usable on a phone</p>
+    <h3>Do you want the specification tables to become stacked cards on mobile?</h3>
+    <p class="decision-why">The shop table has twelve columns. On a phone it is a horizontal scroll, which is where most buying research actually happens. Two-thirds of a shop&#39;s sessions are mobile.</p>
+    <p class="decision-meta"><span class="badge conf-high">High confidence</span> <span class="badge">Effort: under an hour</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the wide table with horizontal scroll (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Nothing to maintain, and every column stays comparable. Poor on a phone.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Stack each row into a labelled card under 700px. </p>
+      <p class="opt-tradeoff">Readable on a phone and still a table on desktop. Requires the build to emit both label and value.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B. I am 80% confident it improves time-on-page, and it costs one CSS block plus data labels. It is the cheapest usability win on the list.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-18 B: emit data-label attributes in the wide tables and add the stacked-card CSS for under 700px, keeping the desktop table unchanged.</pre>
+  </div>
+</article>
+<article class="decision" id="S-29">
+  <header class="decision-head">
+    <p class="kicker">S-29 · Telling people the site is a shop</p>
+    <h3>Do you want prices visible on the page, or is sending people to Amazon for the price fine?</h3>
+    <p class="decision-why">Amazon&#39;s policy forbids showing a price unless it comes from an approved API and is timestamped. Sending people to Amazon is compliant and costless, and it costs you the reader who wanted a budget before clicking.</p>
+    <p class="decision-meta"><span class="badge conf-high">High confidence</span> <span class="badge">Effort: API approval</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> No prices on the site; the button says &#39;Check price on Amazon&#39; (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">Always accurate and policy-safe. Readers have to leave to learn a budget.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Display API-served prices with a timestamp and the required attribution. </p>
+      <p class="opt-tradeoff">Best for the reader. Needs the Product Advertising API and a build step that can refresh prices.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> A. B only with a real API key and a refresh job; a stale price is worse than no price.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-19 B: add a price-fetching step that only runs when an API key is present in the environment, with a visible timestamp and an automatic fallback to &#39;Check price on Amazon&#39;.</pre>
+  </div>
+</article>
+<article class="decision" id="S-30">
+  <header class="decision-head">
+    <p class="kicker">S-30 · Who is credited for the writing</p>
+    <h3>Is there a person&#39;s name and a line of real experience we can put on these pages, or should they stay a team byline?</h3>
+    <p class="decision-why">Every page says &#39;ShopNow Kitchen editorial team&#39;. Search engines and readers both look for a named author with a reason to be trusted on this subject, and an anonymous team byline is one of the strongest signals of auto-generated content.</p>
+    <p class="decision-meta"><span class="badge conf-high">High confidence</span> <span class="badge">Effort: one paragraph</span> <span class="badge">Currently: A</span></p>
+  </header>
+  <ol class="options">
+    <li class="is-current">
+      <p><span class="opt-id">A</span> Keep the team byline (current). <span class="badge resolved">in place now</span></p>
+      <p class="opt-tradeoff">No false claims. Weakest possible authorship signal.</p>
+    </li><li class="">
+      <p><span class="opt-id">B</span> Add a named author with a genuine one-paragraph bio and a photo. </p>
+      <p class="opt-tradeoff">The single best anti-slop signal there is. Requires a real person who has actually used the appliances.</p>
+    </li>
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> B. I will not invent a person: give me a name and two true sentences about their kitchen experience, and it goes on every guide with an author page.</p>
+    <p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">Do S-20 B with the name and bio I provide: add an author page, an author box on every guide, and Person schema, without inventing any credential.</pre>
+  </div>
+</article></div>
+<section class="band">
+  <h2>If you only do one thing</h2>
+  <p>Deploy the analytics endpoint (S-03 B) and get the site verified in Search Console (S-13 A). Everything else on this page is an opinion about what to write; those two turn writing into a decision made from evidence.</p>
+  <p class="small muted">No suggestion here is implemented until you name it. The site keeps serving the option marked “in place now”.</p>
 </section>
-<section class="choice-card" id="S-03">
-  <p class="kicker">S-03 · Where the analytics collector runs</p>
-  <p class="choice-current">Current: <span class="badge">D</span></p>
-  <ul class="opts"><li><strong>A.</strong> Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS.<br><span class="muted small">Tradeoff: Full control of raw data; the owner runs a server and patches it.</span></li><li><strong>B.</strong> Run it as a serverless function on a platform that supports Node.<br><span class="muted small">Tradeoff: No server to patch; cold starts and platform limits on storage.</span></li><li><strong>C.</strong> Skip self-hosting and use a privacy-focused hosted analytics service.<br><span class="muted small">Tradeoff: Fastest to start; one more third party, and the data leaves your control.</span></li><li><strong>D.</strong> Stay inactive until there is traffic worth measuring (current).<br><span class="muted small">Tradeoff: Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B. It removes the server maintenance objection without handing the data away.</p>
-</section>
-<section class="choice-card" id="S-04">
-  <p class="kicker">S-04 · Pricing display</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Show no prices; every button reads &#39;Check the current price on Amazon&#39; (current).<br><span class="muted small">Tradeoff: Always accurate, and compliant with the price clause; readers have to click to know a budget.</span></li><li><strong>B.</strong> Enroll in the Creators API and display Amazon-served prices with a timestamp.<br><span class="muted small">Tradeoff: Better for budget-led shoppers; more engineering, and a stale price is a compliance risk.</span></li><li><strong>C.</strong> Show a coarse price band instead of a figure.<br><span class="muted small">Tradeoff: Useful and stable; still a claim that needs checking, and it ages badly.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A until traffic justifies the Creators API work. Then B.</p>
-</section>
-<section class="choice-card" id="S-05">
-  <p class="kicker">S-05 · Publishing cadence</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> One new guide every two weeks (current).<br><span class="muted small">Tradeoff: Sustainable; slow to build a topic cluster.</span></li><li><strong>B.</strong> One new guide per week.<br><span class="muted small">Tradeoff: Faster topical coverage; needs a real writing slot weekly.</span></li><li><strong>C.</strong> A batch of eight guides before launch, then monthly.<br><span class="muted small">Tradeoff: Reaches a useful site size quickly; risks thin pages if the batch is rushed.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.</p>
-</section>
-<section class="choice-card" id="S-06">
-  <p class="kicker">S-06 · Reader capture</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> No email capture yet; the RSS feed is the only subscription route (current).<br><span class="muted small">Tradeoff: Nothing to maintain and no consent obligations; no direct channel to readers.</span></li><li><strong>B.</strong> Add a single-field email capture with double opt-in on guide pages.<br><span class="muted small">Tradeoff: Owns the audience instead of renting it from search; adds a privacy notice and a provider.</span></li><li><strong>C.</strong> Publish a &#39;notify me when a new guide ships&#39; link that opens a mail draft.<br><span class="muted small">Tradeoff: Zero infrastructure and honest; very low conversion.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.</p>
-</section>
-<section class="choice-card" id="S-07">
-  <p class="kicker">S-07 · Imagery</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep editorial illustration, clearly labelled as not the reviewed unit (current).<br><span class="muted small">Tradeoff: Consistent look, no licensing exposure, no misleading product photography.</span></li><li><strong>B.</strong> Use Amazon-hosted product images through the approved image service.<br><span class="muted small">Tradeoff: Shows the actual product; images must be served by Amazon&#39;s tools and can change without notice.</span></li><li><strong>C.</strong> Commission real photography of the units.<br><span class="muted small">Tradeoff: Highest trust and highest cost; needs physical units.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.</p>
-</section>
-<section class="choice-card" id="S-08">
-  <p class="kicker">S-08 · The byline</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the team byline, flagged as a weakness (current).<br><span class="muted small">Tradeoff: Honest and unchanging; weaker trust signal than a person.</span></li><li><strong>B.</strong> Add a named editor with a short bio and a contact address.<br><span class="muted small">Tradeoff: Strongest trust signal; a person has to be accountable for the corrections.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B as soon as a real person will take the byline. This is one of the cheapest trust wins available.</p>
-</section>
-<section class="choice-card" id="S-09">
-  <p class="kicker">S-09 · Product scope</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Stay at five submitted products and go deep on them (current).<br><span class="muted small">Tradeoff: Focused and honest; a thin catalogue for a shopping site.</span></li><li><strong>B.</strong> Add three to five comparison products per category, researched the same way.<br><span class="muted small">Tradeoff: Makes the categories credible; each added product needs its own source page and verification.</span></li><li><strong>C.</strong> Expand into a second niche once the first converts.<br><span class="muted small">Tradeoff: Scales the model; splits attention before anything is proven.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, one category at a time, and only where a manufacturer page exists to verify against.</p>
-</section>
-<section class="choice-card" id="S-10">
-  <p class="kicker">S-10 · Disclosure prominence</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Dark disclosure bar directly under the masthead, repeated in the footer (current).<br><span class="muted small">Tradeoff: Impossible to miss, and slightly heavy visually.</span></li><li><strong>B.</strong> A lighter inline notice above the first product, plus the footer repeat.<br><span class="muted small">Tradeoff: Prettier; risks being read as decoration rather than disclosure.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A. The FTC standard is that the disclosure must be hard to miss, and this one is.</p>
-</section>
-<section class="choice-card" id="S-11">
-  <p class="kicker">S-11 · Four editions on one domain</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current).<br><span class="muted small">Tradeoff: One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain.</span></li><li><strong>B.</strong> Publish the other editions on separate domains, each with its own tracking ID.<br><span class="muted small">Tradeoff: Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain.</span></li><li><strong>C.</strong> Unpublish the other editions and keep only their pages in the repository history.<br><span class="muted small">Tradeoff: The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build.</p>
-</section>
-<section class="choice-card" id="S-12">
-  <p class="kicker">S-12 · Publishing the ThermoMaven buy button</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current).<br><span class="muted small">Tradeoff: The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away.</span></li><li><strong>B.</strong> Keep the button hidden until the listing model field confirms the F1 Ace.<br><span class="muted small">Tradeoff: The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken.</span></li><li><strong>C.</strong> Point the button at the manufacturer F1 Ace page instead of the Amazon listing.<br><span class="muted small">Tradeoff: Breaks the affiliate link and the tracking the site exists for.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question.</p>
-</section>
-<section class="choice-card" id="S-13">
-  <p class="kicker">S-13 · A side-by-side comparison page</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current).<br><span class="muted small">Tradeoff: It is the page a buyer actually wants and the strongest internal link target for every guide.</span></li><li><strong>B.</strong> Keep the comparison inside the shop table and the category pages only.<br><span class="muted small">Tradeoff: Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table.</span></li><li><strong>C.</strong> Add comparison products beyond the five submitted rows so the table has more than one option per category.<br><span class="muted small">Tradeoff: More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research.</p>
-</section>
-<section class="choice-card" id="S-14">
-  <p class="kicker">S-14 · Derive every count on a page from the rows that page counts</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Fix each instance when it is found, which is what has happened so far.<br><span class="muted small">Tradeoff: Works until the next one. Nothing prevents recurrence, and the instances have been found by later sessions rather than by the build.</span></li><li><strong>B.</strong> Add a gate rule banning hand-written count phrases in templates, and require the computed form instead.<br><span class="muted small">Tradeoff: A few hours. Catches the class rather than the instance.</span></li><li><strong>C.</strong> Add a build assertion that no rendered section has a non-empty heading over an empty body, and that every collection rendered on a page is non-empty unless the page says so.<br><span class="muted small">Tradeoff: Cheaper than B and it also catches the empty-page case.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.</p>
-</section>
-<section class="choice-card" id="S-15">
-  <p class="kicker">S-15 · Record the two policy clauses that constrain the AI half of the brief</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Treat the automation in the brief as unqualified and build it.<br><span class="muted small">Tradeoff: The fastest path to what the brief describes and the likeliest path to a material breach, which permits immediate termination under Operating Agreement §6.</span></li><li><strong>B.</strong> Build only automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, and drafts written from manufacturer pages with citations. Keep pricing analysis off the Site. Ask Amazon about §5 before going further.<br><span class="muted small">Tradeoff: Slower, and part of the brief stays unbuilt. Everything already in this repository is inside it.</span></li><li><strong>C.</strong> Request PA API / Creators API access and Amazon&#39;s written approval, then build the full pipeline.<br><span class="muted small">Tradeoff: The only route to prices, ratings and the automated research the brief describes. Needs an approved account and a qualifying site, so it depends on S-02 and Q-03.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B now and C as the destination. Published on the compliance page in this session so the boundary is visible to whoever builds next rather than rediscovered later.</p>
-</section>
-<section class="choice-card" id="S-16">
-  <p class="kicker">S-16 · A privacy notice for the click counter</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Ship no notice.<br><span class="muted small">Tradeoff: The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.</span></li><li><strong>B.</strong> Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted.<br><span class="muted small">Tradeoff: An hour, and done in this session for review. It is a draft of a legal-adjacent page and should be read rather than trusted.</span></li><li><strong>C.</strong> Adopt a hosted consent and privacy service.<br><span class="muted small">Tradeoff: Proportionate for a site with a real audience and third-party processors. Overkill now, and it adds a processor of its own.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, implemented in this session as a draft. It closes Q-11 and answers part of Q-16; whether the wording is adequate where the site is operated from is a question for counsel, not something a build session should settle.</p>
-</section>
-<section class="choice-card" id="S-17">
-  <p class="kicker">S-17 · One product register or two</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep both and re-check them against each other each session (current).<br><span class="muted small">Tradeoff: No migration risk. The check is manual, and manual checks here have a documented record of being missed.</span></li><li><strong>B.</strong> Add a gate rule that fails the build when the two registers disagree on any shared field for any product.<br><span class="muted small">Tradeoff: About an hour. It does not remove the duplication but it makes disagreement impossible to ship, which is the failure that actually happened.</span></li><li><strong>C.</strong> Merge into one register with per-publication views.<br><span class="muted small">Tradeoff: Removes the duplication permanently. The largest data change available here, and it touches files two earlier sessions built.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B now, and C if S-01 chooses to consolidate the publications. B is a few dozen lines and converts a class of silent error into a build failure.</p>
-</section>
-<section class="choice-card" id="S-18">
-  <p class="kicker">S-18 · Should the gate tell a product link apart from a citation?</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the blanket rule and cite Amazon help pages as plain text rather than linking them (what /privacy/ does now).<br><span class="muted small">Tradeoff: Impossible to ship an unmarked product link, which is the failure that matters. It costs a few convenience links, and a plain-text URL is worse on a phone.</span></li><li><strong>B.</strong> Make the rule precise and fail-closed: a link is product-intent if it targets /dp/, carries tag= or carries data-outbound, and must then be both sponsored and tagged; any other amazon.com link must not be sponsored. Anything that cannot be classified fails the build.<br><span class="muted small">Tradeoff: Semantically correct against Google&#39;s guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test written first and should not be made by a build session on its own authority.</span></li><li><strong>C.</strong> Keep the blanket rule for product links and allow a short explicit allowlist of informational Amazon paths, checked literally.<br><span class="muted small">Tradeoff: Narrower than B and easier to audit, because the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, with the negative test written first: break a product link&#39;s tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently one of the things standing between this site and an untagged outbound link.</p>
-</section>
-<section class="choice-card" id="S-19">
-  <p class="kicker">S-19 · A house style rule that can be checked</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Rely on editorial judgement per page.<br><span class="muted small">Tradeoff: Free, and it is how the current copy was produced - which is good enough that the diagnosis is worth writing down rather than repeating.</span></li><li><strong>B.</strong> Publish a house style file with do/don&#39;t rules and real before-and-after examples from this site, and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.<br><span class="muted small">Tradeoff: Half a day. The gate catches the mechanical failures; the rest stays editorial. Publishing the standard does more for reader trust than any badge.</span></li><li><strong>C.</strong> Add a readability-score threshold per page to the gate.<br><span class="muted small">Tradeoff: Objective and easy to implement, and it optimises for the wrong thing: it pushes copy toward short dumb sentences, which is its own kind of slop.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.</p>
-</section>
-<section class="choice-card" id="S-20">
-  <p class="kicker">S-20 · Crawl control for a site served at a project path</p>
-  <p class="choice-current">Current: <span class="badge">A</span></p>
-  <ul class="opts"><li><strong>A.</strong> Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).<br><span class="muted small">Tradeoff: No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.</span></li><li><strong>B.</strong> Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.<br><span class="muted small">Tradeoff: Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.</span></li><li><strong>C.</strong> Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.<br><span class="muted small">Tradeoff: Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.</span></li><li><strong>D.</strong> Serve the root publication from a repository named for the owner&#39;s GitHub Pages host, so robots.txt is read from the host root.<br><span class="muted small">Tradeoff: Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
-</section>
-</div>
-<section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -186,6 +781,7 @@
       <ul class="foot-links">
         <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
         <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
+        <li><a href="/Affil3/compare/">Compare specifications</a></li>
         <li><a href="/Affil3/categories/">Categories</a></li>
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>

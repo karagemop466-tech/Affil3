@@ -47,6 +47,7 @@ const catImg = (slug) => (CATEGORIES.find((c) => c.slug === slug) || { img: '' }
 const DASHBOARDS = [
   ['/executive-summary/', 'Executive summary'],
   ['/shop/', 'Shop table (all rows)'],
+  ['/compare/', 'Compare specifications'],
   ['/categories/', 'Categories'],
   ['/sources/', 'Source register'],
   ['/questions/', 'Questions and gaps'],
@@ -96,7 +97,7 @@ function cardArt(p) {
   return `<div class="card-art"><img src="${esc(href(src))}" alt="Editorial illustration for ${esc(p.name || p.id)}; not the reviewed unit" loading="lazy" width="768" height="512"><span class="art-tag">Illustration</span></div>`;
 }
 
-function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png' }) {
+function page({ title, description, path: p, body, type = 'page', attrs = '', ogType = 'website', jsonld = '', ogImage = '/assets/img/hero.png', noindex = false }) {
   const canonical = abs(p);
   const ogImg = abs(ogImage);
   return `<!doctype html>
@@ -118,6 +119,7 @@ function page({ title, description, path: p, body, type = 'page', attrs = '', og
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImg)}">
 <meta name="analytics-endpoint" content="${esc(cfg.analyticsEndpoint || '')}">
+${noindex ? '<meta name="robots" content="noindex, follow">' : ''}
 <link rel="icon" type="image/svg+xml" href="${esc(href('/assets/img/favicon.svg'))}">
 <link rel="stylesheet" href="${esc(href('/assets/style.css'))}">
 <link rel="alternate" type="application/rss+xml" title="${esc(cfg.siteName)} guides" href="${esc(abs('/feed.xml'))}">
@@ -131,6 +133,7 @@ ${jsonld}
     <p class="tagline">${esc(cfg.tagline)}</p>
     <nav class="nav" aria-label="Main">
       <a href="${esc(href('/shop/'))}">Shop</a>
+      <a href="${esc(href('/compare/'))}">Compare</a>
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/categories/'))}">Categories</a>
       <a href="${esc(href('/about/'))}">About</a>
@@ -307,103 +310,146 @@ const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label
 const pages = [];
 const add = (p) => pages.push(p);
 
-// Home (publication front page: products first)
+// Home — a shop front page. Order of the page is deliberate: masthead, disclosure,
+// one hero promise, the five products with their buttons, then the editorial and the
+// housekeeping. The verification record is one link away, never the opening move.
 {
-  const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
-  const quickPick = products.map((p) => `<div class="qp-item">
-  <p class="qp-product">${esc(p.short_name)}</p>
-  <p class="qp-fit">${esc(p.fit_line)}</p>
-  <p class="qp-links"><a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a> · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
-</div>`).join('\n');
-  const newestGuides = [...guides].slice(0, 3);
-  const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
+  const priced = (p) => !!(tagged(p) && !p.no_buy_link);
+  const shelfCards = products.map((p, i) => {
+    const name = p.name || displayName(p);
+    return `<article class="product-card${p.no_buy_link ? ' unavailable' : ''}${i === 0 ? ' lead' : ''}" data-product-view="${esc(p.id)}">
+  <a class="product-card-link" href="${esc(href('/products/' + p.slug + '/'))}" aria-label="Read the full check on ${esc(name)}">
+    <div class="product-media">
+      <img src="${esc(href(PRODUCT_IMAGE[p.id] || '/assets/img/hero.png'))}" alt="Editorial illustration for ${esc(name)}; artwork, not a photo of the unit" loading="lazy" width="768" height="512">
+      ${i === 0 ? '<span class="ribbon">Start here</span>' : ''}
+      <span class="art-tag">Illustration</span>
+    </div>
+    <div class="product-body">
+      <p class="kicker">${esc(catName(p.category))}</p>
+      <h3>${esc(p.short_name || name)}</h3>
+      <p class="product-hook">${esc(p.lede || '')}</p>
+      <ul class="pros">
+        <li><strong>Good if</strong> ${esc(p.good_if || p.best_for || '')}</li>
+        <li><strong>Skip if</strong> ${esc(p.skip_if || p.tradeoff || '')}</li>
+      </ul>
+    </div>
+  </a>
+  <div class="product-foot">
+    ${priced(p)
+      ? `<a class="btn btn-primary" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-shelf">Check price on Amazon</a>
+    <span class="price-note">Live price and availability on Amazon · paid link</span>`
+      : `<span class="no-button">${esc(p.no_buy_link ? 'No buy button: no confirmed listing for this unit yet' : 'No buy button while the link check is open')}</span>`}
+    <a class="text-link" href="${esc(href('/products/' + p.slug + '/'))}">Read the full check →</a>
+  </div>
+</article>`;
+  }).join('\n');
+
+  const guideCards = guides.slice(0, 3).map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
-  <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
+  <div class="card-body"><p class="kicker">${esc(catName(g.category))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
 </a>`).join('\n');
-  const catCards = CATEGORIES.filter((c) => c.slug !== 'unresolved').map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p></a>`).join('\n');
+
+  const catCards = CATEGORIES.map((c) => `<a class="cat-tile" href="${esc(href('/categories/' + c.slug + '/'))}">
+  <h3>${esc(c.name)}</h3><p>${esc(c.tagline || c.blurb)}</p>
+  <span class="cat-count">${products.filter((p) => p.category === c.slug && priced(p)).length} pick(s)</span>
+</a>`).join('\n');
+
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'WebSite', name: cfg.siteName, alternateName: cfg.priorName,
     url: cfg.siteUrl + '/', description: cfg.tagline,
+    publisher: { '@type': 'Organization', name: cfg.siteName },
   })}</script>`;
+
   add({
-    path: '/', title: 'Kitchen gear, explained like a friend would',
-    description: 'Air fryers, oven-style cookers and smart thermometers, explained in plain English. Every product links straight to its Amazon listing and every claim says where it came from.',
-    type: 'home',
-    ogImage: '/assets/img/hero.png',
-    jsonld,
+    path: '/', title: 'Air fryers and meat thermometers we actually checked', type: 'home',
+    description: 'Five air fryers, oven-style cookers and meat thermometers, each read against its own listing and its maker\'s specification page. Specs in plain tables, no invented ratings, prices always live on Amazon.',
+    ogImage: '/assets/img/hero.png', jsonld,
     body: `
-<section class="hero">
-  <div class="hero-copy">
-    <p class="kicker">Independent kitchen buying guides · Updated ${esc(dateLong(cfg.lastReviewed))}</p>
-    <h1>Kitchen gear, explained like a friend would</h1>
-    <p class="deck">We track a small shelf of air fryers, oven-style cookers and a smart thermometer. Every pick links straight to its Amazon listing, and every claim on this site says where it came from. No hype, no invented ratings, no mystery methods.</p>
+<section class="hero-shop">
+  <div class="hero-shop-copy">
+    <p class="kicker">Kitchen appliances · Independent · Updated ${esc(dateLong(cfg.lastReviewed))}</p>
+    <h1>Five appliances. The specs that decide it.</h1>
+    <p class="deck">We read the Amazon listing and the manufacturer's own spec page for each one, put the numbers side by side, and tell you where they disagree. No star ratings, no fake prices, no five-star filler. If we could not confirm a number, it is missing, not guessed.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="${esc(href('/shop/'))}">Browse the shelf</a>
-      <a class="btn btn-ghost" href="${esc(href('/guides/'))}">Start with a question</a>
+      <a class="btn btn-primary" href="#shelf">See all five picks</a>
+      <a class="btn btn-ghost" href="${esc(href('/guides/'))}">Read the buying guides</a>
     </div>
+    <p class="hero-trust"><span>5</span> appliances checked · <span>${guides.length}</span> question-led guides · <span>${sourcesDoc.sources.length}</span> official sources on record</p>
   </div>
-  <div class="hero-figure">
-    <img src="${esc(href('/assets/img/hero.png'))}" alt="Editorial illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter; not the reviewed unit" width="1536" height="1024">
-    <p class="credit">Illustration: AI-generated for ${esc(cfg.siteName)}. It is artwork, not a product photo.</p>
+  <div class="hero-shop-art">
+    <img src="${esc(href('/assets/img/hero.png'))}" alt="Editorial illustration of a basket air fryer on a wooden counter; artwork, not a photo of any reviewed unit" width="1536" height="1024">
+    <p class="credit">Illustration, not a product photo.</p>
   </div>
 </section>
-<section class="band" id="shelf">
-  <a id="picks" class="picks-anchor" aria-hidden="true"></a>
+
+<section class="band shelf-band" id="shelf">
   <div class="band-head">
-    <h2>The shortlist</h2>
-    <p>Five kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
+    <h2>The shelf</h2>
+    <p class="band-sub">Every product here was submitted by the site's owner. Prices and availability stay on Amazon, where they are always current &mdash; we would rather send you to the real number than print a stale one.</p>
   </div>
-  <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all five in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
+  <div class="shop-grid">${shelfCards}</div>
+  <p class="shelf-note">Every button is a paid Amazon link (tag <code>${esc(cfg.trackingId)}</code>) and is marked sponsored. ${flagLinks(['FLG-005', 'FLG-034'])} One link per product still has to be validated inside the Associates account before anyone should treat the attribution as proven.</p>
 </section>
-<section class="band band-alt">
+
+<section class="band band-alt quickpick-band">
   <div class="band-head">
     <h2>Not sure which one? Pick by how you cook</h2>
-    <p>One line per product, and the guide that matches your kitchen.</p>
+    <p class="band-sub">One line per product, with the guide that matches your kitchen.</p>
   </div>
-  <div class="quick-pick">${quickPick}</div>
+  <div class="quick-pick">
+    ${products.map((p) => `<div class="qp-item">
+      <p class="qp-product">${esc(p.short_name)}</p>
+      <p class="qp-fit">${esc(p.fit_line || p.best_for || '')}</p>
+      <p class="qp-links">${tagged(p) && !p.no_buy_link ? `<a class="btn btn-ghost btn-sm" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a>` : '<span class="small muted">No buy button yet</span>'}${p.guide_slug ? ` · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a>` : ''}</p>
+    </div>`).join('\n')}
+  </div>
 </section>
 <section class="band band-alt">
   <div class="band-head">
-    <h2>Start with a question, not a product</h2>
-    <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
+    <h2>What people ask before they buy</h2>
+    <p class="band-sub">Five guides, each built around one question buyers actually type.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
 </section>
+
 <section class="band">
-  <div class="band-head">
-    <h2>Browse by category</h2>
-  </div>
-  <div class="cat-grid">${catCards}</div>
+  <div class="band-head"><h2>Shop by kind</h2></div>
+  <div class="cat-tiles">${catCards}</div>
 </section>
-<section class="band band-alt">
-  <div class="band-head">
-    <h2>How we review</h2>
-    <p>Three rules, applied to every page on this site.</p>
+
+<section class="band band-alt how-band">
+  <div class="how-copy">
+    <h2>Why you can trust the table</h2>
+    <ol class="how-steps">
+      <li><strong>A source on every row.</strong> Each figure links to the Amazon listing or the maker's own page. Where a value could not be confirmed it stays blank and the row is flagged &mdash; not filled in from a similar model.</li>
+      <li><strong>Conflicts shown, not smoothed.</strong> When the listing and the manufacturer describe different machines, both readings are printed side by side.</li>
+      <li><strong>No borrowed numbers.</strong> We do not republish star ratings, review counts, prices or sales rank, so nothing here goes stale or misleading the week after it is written.</li>
+      <li><strong>Honest about the gaps.</strong> We have not handled these units. Nothing on this site is a lab test, and we say so where it matters.</li>
+    </ol>
+    <p><a class="text-link" href="${esc(href('/how-we-choose/'))}">How we choose and check →</a></p>
   </div>
-  <div class="steps">
-    <div class="step"><span class="step-n">1</span><h3>Read the official page</h3><p>Every product fact comes from the observed Amazon listing or another official source, linked on the spot. If a value cannot be confirmed, the cell stays blank and the row is flagged.</p></div>
-    <div class="step"><span class="step-n">2</span><h3>Say what we do not know</h3><p>Unverified things are labeled unverified. Open questions live on the <a href="${esc(href('/questions/'))}">questions page</a>; irregularities live on <a href="${esc(href('/flagged/'))}">Flagged for review</a>. Nothing is hidden in a footnote.</p></div>
-    <div class="step"><span class="step-n">3</span><h3>Disclose, then link</h3><p>The disclosure is at the top of every page, and every Amazon link is marked sponsored. As an Amazon Associate we earn from qualifying purchases, and we say so before you reach a single buy button.</p></div>
-  </div>
+  <aside class="season-card">
+    <p class="kicker">In season</p>
+    <h3>The holiday roast problem</h3>
+    <p>One oven, one bird, and a house full of people asking when it is done. A leave-in probe answers the only question that matters, and an oven-style air fryer buys back the space the sides need.</p>
+    <p><a class="text-link" href="${esc(href('/guides/is-your-meat-thermometer-telling-you-the-right-number/'))}">How to read a thermometer →</a></p>
+  </aside>
 </section>
-<section class="band seasonal">
-  <div class="seasonal-copy">
-    <p class="kicker">Late November, in the kitchen</p>
-    <h2>The month of the big roast</h2>
-    <p>Holiday cooking season is thermometer season. If one appliance earns counter space this month, it is the one that tells you whether the bird is done, and the one that frees up oven space. Our guides keep working all year; the timing is yours.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-ghost" href="${esc(href('/guides/is-your-meat-thermometer-telling-you-the-right-number/'))}">Thermometer questions, answered</a>
-      <a class="btn btn-ghost" href="${esc(href('/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/'))}">Is a combo appliance worth it?</a>
-    </div>
+
+<section class="band start-band">
+  <h2>Not sure where to start?</h2>
+  <div class="start-grid">
+    <a href="${esc(href('/guides/basket-or-oven-style-air-fryer-what-should-you-compare/'))}"><strong>Cooking for a family</strong><span>Basket or oven-style first</span></a>
+    <a href="${esc(href('/guides/no-hype-checklist-comparing-air-fryer-capacity/'))}"><strong>Comparing quarts</strong><span>What the capacity number hides</span></a>
+    <a href="${esc(href('/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/'))}"><strong>Small kitchen</strong><span>Cleanup and counter space first</span></a>
+    <a href="${esc(href('/suggestions/'))}"><strong>Have a say</strong><span>Review the open decisions</span></a>
   </div>
-  <div class="seasonal-art"><img src="${esc(href('/assets/img/guide-thermometer.png'))}" alt="" loading="lazy" width="768" height="512"></div>
 </section>
 <section class="band band-alt whatsite">
   <div class="band-head">
     <h2>What this site is</h2>
-    <p>An independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
+    <p>An independent buying guide for five kitchen appliances submitted by the site's owner. We are not a test kitchen: nothing here is hands-on measurement. Every claim is traced to the Amazon listing or the manufacturer's page, every gap is labelled, and the full verification record sits one click away in the footer. <a href="${esc(href('/flagged/'))}">Open flags</a> · <a href="${esc(href('/executive-summary/'))}">Executive summary</a></p>
   </div>
 </section>`,
   });
@@ -533,7 +579,59 @@ ${gl.length ? `<ul class="guide-list">${gl.map((g) => `<li class="guide-item"><a
   });
 }
 
-// Guides index + guide pages
+// Compare — the specification table a buyer actually needs, no ratings, no prices
+{
+  const priced = products.filter((p) => tagged(p) && !p.no_buy_link);
+  const rows = [
+    ['What it is', (p) => catName(p.category)],
+    ['Model the maker states', (p) => p.model],
+    ['Capacity', (p) => (p.capacity_qt ? `${p.capacity_qt} qt` : '')],
+    ['Temperature', (p) => (p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}–${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : ''))],
+    ['Power', (p) => (p.power_w ? `${p.power_w} W` : '')],
+    ['Voltage', (p) => p.voltage],
+    ['Size (in)', (p) => p.dimensions_in],
+    ['Weight', (p) => (p.weight_lb ? `${p.weight_lb} lb` : '')],
+    ['Dishwasher-safe parts', (p) => p.dishwasher_safe],
+    ['Safety listing', (p) => p.certification],
+    ['Warranty', (p) => p.warranty],
+    ['Buy it if', (p) => p.good_if || p.best_for],
+    ['The catch', (p) => p.tradeoff],
+  ];
+  const head = priced.map((p) => `<th scope="col"><a href="${esc(href('/products/' + p.slug + '/'))}">${esc(p.short_name || p.name)}</a></th>`).join('');
+  const body = rows.map(([label, get]) => `<tr><th scope="row">${esc(label)}</th>${priced.map((p) => {
+    const v = get(p);
+    return `<td>${v ? esc(String(v)) : '<span class="na">not stated</span>'}</td>`;
+  }).join('')}</tr>`).join('');
+  const buttons = `<tr><th scope="row">Where to buy</th>${priced.map((p) => `<td><a class="btn btn-primary btn-sm" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="compare-table">Check price</a></td>`).join('')}</tr>`;
+  add({
+    path: '/compare/', title: 'Compare the three we track, spec by spec',
+    description: 'Side-by-side specification comparison of the air fryers and oven-style cookers we track: capacity, temperature, power, size, weight, cleaning and warranty, with every gap marked not stated.',
+    body: `<section class="page-head"><p class="kicker">Compare</p><h1>Side by side, with the gaps left visible</h1>
+<p class="deck">Only what a manufacturer or the listing actually states. A cell reading <em>not stated</em> means nobody published that number — it is not a guess and it is not a zero.</p></section>
+<div class="table-wrap"><table class="compare"><thead><tr><th scope="col">Specification</th>${head}</tr></thead><tbody>${body}${buttons}</tbody></table></div>
+<p class="small muted">Every column links to that product's page, where each figure carries its own source. Prices, star ratings and review counts are not shown: they change daily and we do not republish them.</p>
+<section class="band band-alt">
+  <h2>Reading this table without being fooled</h2>
+  <ul class="findings">
+    <li><strong>Quarts are not comparable across shapes.</strong> A 6 qt figure split into two drawers is not the same cooking space as 6 qt in one basket, and a 26 qt oven measures the whole cavity around racks.</li>
+    <li><strong>'Not stated' outnumbers 'stated' more than you would expect.</strong> ${products.filter((p) => p.no_buy_link).length} of the ${products.length} rows has no manufacturer page at all, so its entire column is blank on purpose.</li>
+    <li><strong>Two official pages can disagree.</strong> Where the listing and the maker describe different machines, both readings are printed on that product's page rather than reconciled.</li>
+  </ul>
+  <p class="small">${flagLinks(['FLG-026','FLG-027','FLG-025'])}</p>
+</section>
+<section class="band">
+  <h2>Which one fits which kitchen</h2>
+  <div class="compare-cases">
+    <div><h3>Cooking for two, most nights</h3><p>The dual-basket 6 qt: two small batches on two timers, in a footprint that fits under a cabinet.</p></div>
+    <div><h3>A family, one big batch</h3><p>The 8 qt single basket, after you confirm which model number you are ordering — that listing and the maker's page describe different machines.</p></div>
+    <div><h3>Sides, roasts and a whole meal at once</h3><p>The 26 qt oven-style unit: racks, a door instead of a drawer, and the counter depth an oven needs.</p></div>
+    <div><h3>'Is it done yet?'</h3><p>A thermometer answers that. They are not interchangeable: one reads a spot in seconds, the other watches a cook from the app.</p></div>
+  </div>
+</section>`,
+  });
+}
+
+
 add({
   path: '/guides/', title: 'Guides',
   description: 'Question-led buying guides for air fryers, air fryer ovens and cooking thermometers.',
@@ -662,6 +760,26 @@ for (const p of products) {
     ${facts.map(([h, v]) => `<div class="fact"><h3>${esc(h)}</h3><p>${esc(v || '')}</p></div>`).join('\n    ')}
   </div>
 </section>
+<section class="band">
+  <h2>What the numbers mean in a real kitchen</h2>
+  <div class="guide-out">
+    ${p.capacity_note ? `<div class="out-item"><h3>Capacity in practice</h3><p>${esc(p.capacity_note)}. A rated quart figure is the volume to the walls; usable space is always smaller, and it shrinks fastest with bulky or stacked food.</p></div>` : ''}
+    ${p.dimensions_in ? `<div class="out-item"><h3>Will it fit your counter</h3><p>Listed at ${esc(String(p.dimensions_in))} in (${esc(p.dimensions_order || 'as the manufacturer lists it')}). Measure the depth you have <em>including</em> the space the door or drawer needs when open — that is the dimension people forget and the one that decides whether the appliance stays out or lives in a cupboard.</p></div>` : ''}
+    ${p.dishwasher_safe ? `<div class="out-item"><h3>Cleaning</h3><p>${esc(p.dishwasher_safe)}. Anything the maker does not call washable gets hand-washed; check the manual before the first wash rather than after.</p></div>` : ''}
+    ${p.certification ? `<div class="out-item"><h3>Safety listing</h3><p>${esc(p.certification)}. A certification is a claim from the maker until you see it printed on the appliance's own label.</p></div>` : ''}
+    ${p.warranty ? `<div class="out-item"><h3>Warranty</h3><p>${esc(p.warranty)}. Keep the order confirmation; a warranty claim without a dated proof of purchase is usually refused.</p></div>` : ''}
+  </div>
+</section>
+<section class="band band-alt">
+  <h2>Who should buy this, and who should not</h2>
+  <table class="fit-table"><tbody>
+    <tr><th scope="row">Buy it if</th><td>${esc(p.good_if || p.best_for || 'Not stated.')}</td></tr>
+    <tr><th scope="row">Skip it if</th><td>${esc(p.skip_if || p.tradeoff || 'Not stated.')}</td></tr>
+    <tr><th scope="row">The honest catch</th><td>${esc(p.tradeoff || 'Not stated.')}</td></tr>
+    ${Object.keys(p.blank_reason || {}).length ? `<tr><th scope="row">What we could not confirm</th><td>${Object.values(p.blank_reason).map(esc).join(' ')}</td></tr>` : ''}
+  </tbody></table>
+  <p class="small muted">Everything above comes from the listing and the maker's own specification page, linked at the bottom of this page. None of it is a hands-on measurement, and we do not print ratings or prices.</p>
+</section>
 <section class="band sources">
   <h2>Sources for this product</h2>
   <ul>${(p.sources || []).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}${(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id)).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}</ul>
@@ -746,34 +864,77 @@ ${table(['ID', 'Source', 'Publisher', 'Checked', 'Used for', 'Status', 'Link'], 
   ]), 'wide')}`,
 });
 
-// Questions
-add({
-  path: '/questions/', title: 'Questions and gaps',
-  description: 'What is known, what is not, and how each gap can be closed before a decision is made.',
-  body: `<section class="page-head"><p class="kicker">Questions</p><h1>What we know, what we do not, and how to close the gap</h1><p class="deck">${esc(questions.note)}</p></section>
-<h2>Known</h2>
-${table(['ID', 'Statement', 'Sources'], questions.known.map((k) => [esc(k.id), esc(k.statement), k.sources.map(srcLink).join(', ') || '<span class="muted">none</span>']))}
-<h2>Unknown: answer these before deciding</h2>
-${table(['ID', 'Question', 'Why it matters', 'How to close it', 'Blocks scaling?', 'Sources'], questions.unknown.map((q) => [esc(q.id), esc(q.question), esc(q.why_it_matters), esc(q.how_to_close), q.blocking ? '<strong>Yes</strong>' : 'No', q.sources.map(srcLink).join(', ') || '<span class="muted">none</span>']), 'wide')}
-<h2>Ways to discover missing information</h2>
-${table(['ID', 'Suggestion', 'Closes'], questions.discovery.map((d) => [esc(d.id), esc(d.suggestion), d.closes.map(esc).join(', ') || '<span class="muted">none</span>']))}`,
-});
+// Questions — what is known, what is not, and exactly what answer closes each gap
+{
+  const blocking = questions.unknown.filter((q) => q.blocking).length;
+  const qCards = questions.unknown.map((q) => `<article class="q-card${q.blocking ? ' blocking' : ''}" id="${esc(q.id)}">
+  <p class="kicker">${esc(q.id)} ${q.blocking ? '<span class="badge bad">Blocks work</span>' : '<span class="badge">No block</span>'}</p>
+  <h3>${esc(q.plain || q.question)}</h3>
+  ${q.plain ? `<p class="q-formal"><strong>The formal question:</strong> ${esc(q.question)}</p>` : ''}
+  <p>${esc(q.why_it_matters)}</p>
+  <p><strong>How to close it:</strong> ${esc(q.how_to_close)}</p>
+  ${q.answer_template ? `<pre class="answer-tpl">${esc(q.answer_template)}</pre>` : ''}
+  <p class="small muted">Sources: ${q.sources.length ? q.sources.map(srcLink).join(', ') : 'owner input only'}</p>
+</article>`).join('\n');
+  add({
+    path: '/questions/', title: 'Questions and answers still needed', noindex: true, noindex: true,
+    description: 'The open questions that decide what this site can claim, each with a plain-language explanation, an answer template, and what changes once it is answered.',
+    body: `<section class="page-head"><p class="kicker">Open questions</p><h1>${questions.unknown.length} questions before anything else changes</h1>
+<p class="deck">${esc(questions.note)}</p>
+<p class="hero-trust"><span>${blocking}</span> of ${questions.unknown.length} questions block work; the rest only slow it down.</p></section>
+<div class="q-list">${qCards}</div>
+<section class="band band-alt"><h2>What is already established</h2>
+${table(['ID', 'What we can state as fact', 'Sources'], questions.known.map((k) => [esc(k.id), esc(k.statement), k.sources.map(srcLink).join(', ') || '<span class="muted">none</span>']))}
+</section>
+<section class="band"><h2>Ways to close a gap without waiting for me to ask</h2>
+${table(['ID', 'Suggestion', 'Closes'], questions.discovery.map((d2) => [esc(d2.id), esc(d2.suggestion), d2.closes.map(esc).join(', ') || '<span class="muted">none</span>']))}
+</section>`,
+  });
+}
 
-// Suggestions (decision board: review, then choose)
-add({
-  path: '/suggestions/', title: 'Suggestions: choose a path',
-  description: 'Options for the next decisions. Nothing is implemented until the owner chooses.',
-  body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions awaiting a choice</h1><p class="deck">${esc(suggestionsDoc.note)}</p></section>
-<div class="choice-grid">
-${suggestionsDoc.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
-  <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
-  <p class="choice-current">Current: <span class="badge">${esc(s.current)}</span></p>
-  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
-</section>`).join('\n')}
-</div>
-<section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="${esc(href('/questions/'))}">questions page</a>.</p></section>`,
-});
+// Suggestions — the decision board. Review, compare, then choose.
+{
+  const byConfidence = { high: 'High confidence', medium: 'Medium confidence', low: 'Low confidence' };
+  const confBadge = (c) => `<span class="badge conf-${esc(c || 'medium')}">${esc(byConfidence[c] || 'Not stated')}</span>`;
+  const cards = suggestionsDoc.suggestions.map((s) => `<article class="decision" id="${esc(s.id)}">
+  <header class="decision-head">
+    <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
+    <h3>${esc(s.plain_question || s.topic)}</h3>
+    ${s.why ? `<p class="decision-why">${esc(s.why)}</p>` : ''}
+    <p class="decision-meta">${confBadge(s.confidence)} ${s.effort ? `<span class="badge">Effort: ${esc(s.effort)}</span>` : ''} <span class="badge">Currently: ${esc(s.current)}</span></p>
+  </header>
+  <ol class="options">
+    ${s.options.map((o) => `<li class="${o.id === s.current ? 'is-current' : ''}">
+      <p><span class="opt-id">${esc(o.id)}</span> ${esc(o.label)} ${o.id === s.current ? '<span class="badge resolved">in place now</span>' : ''}</p>
+      <p class="opt-tradeoff">${esc(o.tradeoff)}</p>
+    </li>`).join('')}
+  </ol>
+  <div class="decision-foot">
+    <p><strong>What I would do:</strong> ${esc(s.recommendation)}</p>
+    ${s.prompt ? `<p class="small muted">To have it built, reply with this:</p><pre class="prompt-tpl">${esc(s.prompt)}</pre>` : `<p class="small muted">To have it built, reply with “${esc(s.id)} ${esc(s.options[0].id)}” and the option letter you want.</p>`}
+  </div>
+</article>`).join('\n');
+  add({
+    path: '/suggestions/', title: 'Suggestions: review, then choose a path', noindex: true,
+    description: 'A decision board for the site: every open choice, its options, its trade-offs, a recommendation with a confidence level, and a prompt you can paste to have it built.',
+    body: `<section class="page-head"><p class="kicker">Decision board</p><h1>Suggestions, ready for you to choose</h1>
+<p class="deck">${esc(suggestionsDoc.note)}</p></section>
+<section class="band band-alt decision-how">
+  <h2>How to use this page</h2>
+  <div class="how-steps-3">
+    <p><strong>1. Read the question in bold.</strong> It is the plain version, not the jargon one.</p>
+    <p><strong>2. Compare the options by what they cost you</strong>, not by which sounds best. Each one states its trade-off.</p>
+    <p><strong>3. Paste the prompt</strong> under the option you want. Only what you name gets built.</p>
+  </div>
+</section>
+<div class="decision-list">${cards}</div>
+<section class="band">
+  <h2>If you only do one thing</h2>
+  <p>Deploy the analytics endpoint (S-03 B) and get the site verified in Search Console (S-13 A). Everything else on this page is an opinion about what to write; those two turn writing into a decision made from evidence.</p>
+  <p class="small muted">No suggestion here is implemented until you name it. The site keeps serving the option marked “in place now”.</p>
+</section>`,
+  });
+}
 
 // Flagged for review
 add({
@@ -1008,7 +1169,7 @@ for (const p of pages) {
   const file = p.path.endsWith('.html') ? path.join(OUT, p.path) : path.join(OUT, p.path, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, linkPolicy(page(p)));
-  written.push({ path: p.path, file: path.relative(ROOT, file), noSitemap: !!p.noSitemap });
+  written.push({ path: p.path, file: path.relative(ROOT, file), noSitemap: !!p.noSitemap || !!p.noindex });
 }
 
 // Assets
@@ -1048,7 +1209,8 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+const ARCHIVES = ['/editorial/', '/legacy/', '/crisp-index/', '/counter/', '/counterwise/'];
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n${ARCHIVES.map((d) => `Disallow: ${d}`).join('\n')}\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 // DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
 // file and the published page cannot disagree. That is the principle behind S-14 applied to itself.

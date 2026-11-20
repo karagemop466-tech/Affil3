@@ -17,6 +17,7 @@
 <meta name="twitter:description" content="Irregularities and unverified items, with the sources and the manual step that would close each one.">
 <meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="analytics-endpoint" content="">
+
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
@@ -30,6 +31,7 @@
     <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/compare/">Compare</a>
       <a href="/Affil3/guides/">Guides</a>
       <a href="/Affil3/categories/">Categories</a>
       <a href="/Affil3/about/">About</a>
@@ -314,6 +316,27 @@
   <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/crawling/docs/robots-txt/create-robots-txt" rel="noopener external">S25</a></p>
   <p class="small"><strong>Manual step:</strong> None. Re-check the count after any change to tools/verify.mjs.</p>
 </section>
+<section class="flag-card" id="FLG-040">
+  <p class="flag-head"><span class="badge flag">FLG-040</span> <span class="badge sev-high">high</span> <strong>Affiliate links cannot be confirmed as Associates-generated Special Links from outside the account</strong></p>
+  <p>The tagged links published here were built by appending ?tag=shopnow047c-20 to the observed product URLs. The Operating Agreement defines Special Links as the links generated through the Associates account, and reports are keyed to those links. A hand-built tagged URL is not evidence that the account recognises it. Until one link per product is generated in the account and opened from the site, click and order attribution is unproven — and the site&#39;s own counter cannot show it either, because it counts clicks made on this site, not orders reported by Amazon.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S26</a>, <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> In Associates Central, use SiteStripe on each of the five listings, copy the generated link, compare it to the link on the site, then open one and confirm the click appears in the tracking report (gate G-02).</p>
+</section>
+<section class="flag-card" id="FLG-041">
+  <p class="flag-head"><span class="badge flag">FLG-041</span> <span class="badge sev-low">low</span> <strong>No server may host the analytics collector without the owner&#39;s credentials, so measurement stays off</strong></p>
+  <p>The five-event counter is present in every page&#39;s script and inert: the endpoint is blank, so nothing is sent (see the measurement page). Turning it on needs a host the owner controls, a deploy token and a domain. This session has none of those and will not ask for them in chat. The consequence is stated plainly: no click on this site has ever been recorded, so no page can currently claim to be performing.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S26</a></p>
+  <p class="small"><strong>Manual step:</strong> Deploy tools/analytics-endpoint/worker.js (or server.py) to a host you control, then set analyticsEndpoint in data/config.json and rebuild.</p>
+</section>
+<section class="flag-card" id="FLG-042">
+  <p class="flag-head"><span class="badge flag">FLG-042</span> <span class="badge sev-low">low</span> <strong>Search Console and sitemap submission are owner steps and have not been done</strong></p>
+  <p>The sitemap and feed are generated and valid, but nothing has been submitted to Google, and no verification token exists in this repository. Indexing therefore depends on discovery alone. This is a repeat of FLG-013 in concrete form: the files are ready, the account step is not.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a></p>
+  <p class="small"><strong>Manual step:</strong> Verify the domain in Search Console, submit sitemap.xml, and expect a multi-week delay before query data exists.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">
@@ -336,6 +359,7 @@
       <ul class="foot-links">
         <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
         <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
+        <li><a href="/Affil3/compare/">Compare specifications</a></li>
         <li><a href="/Affil3/categories/">Categories</a></li>
         <li><a href="/Affil3/sources/">Source register</a></li>
         <li><a href="/Affil3/questions/">Questions and gaps</a></li>

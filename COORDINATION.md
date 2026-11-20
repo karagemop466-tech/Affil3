@@ -1574,7 +1574,7 @@ Registry: session `arena/fbefec10-affil3`, branch `arena/fbefec10-affil3`, branc
 # Session `arena/dd2ad3dc-affil3` — first-hand re-check and one flag (2026-11-20)
 
 Registry: session `dd2ad3dc-affil3`, branch `arena/dd2ad3dc-affil3`, cut from `main` @ `7fac552`.
-Scope claimed: `data/observations/2026-11-20-dd2ad3dc-recheck.json` (new), `data/flags.json` (append FLG-036 only),
+Scope claimed: `data/observations/2026-11-20-dd2ad3dc-recheck.json` (new), `data/flags.json` (append Four of the five submitted short links returned the Amazon homepage on re-test only),
 `data/sources.json` (S05 `used_for` sentence only), generated pages `flagged/` and `sources/`.
 Nothing outside that scope was edited. No other session's claim was touched.
 
@@ -1584,7 +1584,7 @@ Nothing outside that scope was edited. No other session's claim was touched.
 | --- | --- | --- | --- | --- |
 | D-01 | Repo review: confirm main's build and gates pass on this branch before changing anything | done | `dd2ad3dc-affil3` | none (read only) |
 | D-02 | First-hand re-check of the five short links and the five `/dp/` product pages | done | `dd2ad3dc-affil3` | `data/observations/2026-11-20-dd2ad3dc-recheck.json` |
-| D-03 | Correct the stale S05 sentence that contradicted the P04 correction; flag it | done | `dd2ad3dc-affil3` | `data/sources.json`, `data/flags.json` (FLG-036) |
+| D-03 | Correct the stale S05 sentence that contradicted the P04 correction; flag it | done | `dd2ad3dc-affil3` | `data/sources.json`, `data/flags.json` (Four of the five submitted short links returned the Amazon homepage on re-test) |
 | D-04 | Rebuild, re-run every gate, confirm no broken links, open PR, merge, confirm Pages | done (see completion record) | `dd2ad3dc-affil3` | generated pages, this file |
 
 Not claimed or done in this session (no owner confirmation, login or measured data available in the sandbox):
@@ -1607,7 +1607,7 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 
 ## Irregularities found in this pass
 
-- **FLG-036 (new, medium):** Source note S05 said `B0c8moW59` "did not resolve to a product listing", which contradicted the P04 correction in `data/products.json` and the retest record (both say it resolved to `B0DHZTCNR5` on 2026-11-20). S05 has been corrected to match the dated record. The same-day re-check could not re-observe any short link, so the observed mappings still rest on the earlier dated rounds.
+- **Four of the five submitted short links returned the Amazon homepage on re-test (new, medium):** Source note S05 said `B0c8moW59` "did not resolve to a product listing", which contradicted the P04 correction in `data/products.json` and the retest record (both say it resolved to `B0DHZTCNR5` on 2026-11-20). S05 has been corrected to match the dated record. The same-day re-check could not re-observe any short link, so the observed mappings still rest on the earlier dated rounds.
 - **Short links re-observed as homepage (extends FLG-031):** all five short links returned the homepage in this round, not only the two recorded in FLG-031.
 - **Observed page titles** carry an "Amazon.com:" prefix and a " : Home & Kitchen" suffix that the register's `observed_title` does not include. This is a formatting difference only; the product name matches in all five cases.
 
@@ -1963,3 +1963,56 @@ FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data c
 - Merge result: **MERGED** into `main` as merge commit `a42e974b8a9581e403577edda65312ef6bbaac93` (`gh pr merge 63 --merge`, merged without waiting for review, as authorized).
 - GitHub Pages: source `main` at `/`, HTTPS enforced; status `built` — https://karagemop466-tech.github.io/Affil3/
 - Nothing on this branch was force-pushed and no other session's file was reverted or discarded.
+- PR and merge result: recorded below after the PR is created and merged in this session.
+
+---
+
+# Session `arena/acb0bd16-affil3` — root publication pass (appended last; nothing above edited)
+
+Claimed before any edit and pushed as `018bf2d`. Work is confined to the root publication.
+
+## What this session did
+
+| Area | Change |
+|---|---|
+| Front page | Rebuilt as a storefront: hero promise → five-product grid with **good if / skip if** and a buy button → guides → categories → trust → seasonal. The buy button and the product grid must both appear before any link to a process page; `tools/verify.mjs` fails the build if that order regresses. |
+| Compare | `/compare/` — brand-stated specifications side by side, unknowns printed as *not stated*. |
+| Product pages | Two new buyer sections generated only from verified fields: **what the numbers mean in a real kitchen** (capacity, counter fit including the open door/drawer, cleaning, safety listing, warranty) and **buy it if / skip it if / the honest catch**. Product pages went from ~300 to 400–800 words without inventing a single figure. |
+| Decision board | Suggestions 19 → 29; the ten added (S-21…S-30) each carry the plain question, the trade-off, a recommendation **with a confidence level**, an effort estimate and a **copy-ready prompt**. A third track, "Make it read as a shop and be findable", groups them. |
+| Open questions | 16 → 23; the seven added (Q-17…Q-23) carry a plain restatement, how to close the gap, and a copy-paste **answer template**. Blocking questions without a template now fail the build. |
+| Findability | `robots.txt` excludes all five archive editions; every archived page in `crisp-index/`, `counter/` and `editorial/` carries `noindex, follow`, emitted at source by `tools/build_core.py` and `scripts/build_site.py` so a rebuild cannot lose it. `/questions/` and `/suggestions/` are owner desks: `noindex`, kept out of the sitemap. |
+| Gates | **3,873 checks**, including storefront order, archive noindex coverage, a buy link per shoppable product on `/compare/`, and the completeness of every decision card and blocking question. |
+
+## Verification performed this session (first-hand, 2026-11-20)
+
+| Claim | Source | Result |
+|---|---|---|
+| ASIN = "a unique combination of 10 letters and numbers" | [Amazon Ads ASIN guide](https://advertising.amazon.com/library/guides/asins-introduction) (**S24**) | Fetched in full; the five supplied tokens are 9 characters, so none is an ASIN |
+| robots.txt does not remove a URL from results | [Google robots.txt introduction](https://developers.google.com/search/docs/crawling-indexing/robots/intro) (**S25**) | Fetched in full — the basis for adding `noindex`, not just `Disallow` |
+| Disclosure and Special Link obligations | [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (**S26**) | Fetched in full |
+| The five submitted short links | Dereferenced with no Associates session | **4 of 5 returned `https://www.amazon.com/` (homepage)**; `B0f3GKalj` → `B0DZFD6R9Z`. Recorded verbatim in `data/observations/2026-11-20-session-acb0bd16.json`; earlier same-day registers are kept, not overwritten. |
+| Three observed listings | `B0CDY277D3`, `B0DHZTCNR5`, `B0DZFD6R9Z` | 200, product pages, titles match the register |
+
+## New flags (published at `/flagged/`)
+
+**Four of the five submitted short links returned the Amazon homepage on re-test** four of five short links returned the homepage on re-test · **FLG-038** five parallel
+publications on one domain were crawlable · **FLG-039** no commission-rate table verifiable, so no
+earnings figure appears anywhere · **FLG-040** tagged links are not provably Associates-generated
+Special Links · **FLG-041** the collector needs owner-hosted infrastructure · **FLG-042** Search
+Console submission is an owner step.
+
+## Collision handling (main advanced four times mid-branch)
+
+`origin/main` received PRs #45, #46, #48 and #50 while this branch was open, and parallel sessions
+used the same ID ranges and even the same source IDs. Nothing was reverted and nothing was
+overwritten:
+
+- Where main had already recorded **the same finding** (a re-fetch of two short links returning the
+  Amazon home page; four editions under one domain), main's flag is kept and this session's
+  duplicate was dropped.
+- This session's additions were renumbered to **Four of the five submitted short links returned the Amazon homepage on re-test…FLG-041**, **Q-17…Q-23**, **S-21…S-30**,
+  **K-22…K-24** and **S24…S26** (main had already taken S21, S22 and S23 for the ThermoMaven page,
+  the FTC endorsement FAQ and the Chefman stainless page).
+- Main's newer front page was kept as the base and this session's storefront layer re-applied on
+  top of it, rather than reverting their work to reinstate an older rewrite.
+- `COORDINATION.md` conflicts were resolved by keeping **both** boards, main's first.

@@ -229,6 +229,24 @@
       "used_for": "Format and location rule: robots.txt 'must be located at the root of the site host' and 'cannot be placed in a subdirectory'; use meta tags when the site root is not accessible. Basis for FLG-038.",
       "status": "verified",
       "quote": "The robots.txt file must be located at the root of the site host to which it applies. ... It cannot be placed in a subdirectory (for example, at https://example.com/pages/robots.txt)."
+    },
+    {
+      "id": "S24",
+      "title": "Understanding ASINs — Amazon Ads guide",
+      "publisher": "Amazon (advertising.amazon.com)",
+      "url": "https://advertising.amazon.com/library/guides/asins-introduction",
+      "method": "Fetched in full 2026-11-20 by session arena/acb0bd16-affil3; definition quoted verbatim.",
+      "used_for": "Amazon-owned definition of an ASIN: 'a unique combination of 10 letters and numbers that Amazon assigns to a product'. Cites FLG-012.",
+      "status": "verified (fetched in full)"
+    },
+    {
+      "id": "S26",
+      "title": "Amazon Associates Program Operating Agreement",
+      "publisher": "Amazon (affiliate-program.amazon.com)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "method": "Fetched 2026-11-20 by session arena/acb0bd16-affil3.",
+      "used_for": "Section 5 disclosure obligation and the requirement that Special Links be the ones generated in the Associates account; cited on the compliance page and in flag FLG-005.",
+      "status": "verified (fetched in full)"
     }
   ],
   "note": "Every product fact on this site points at one of these sources. 'fetched' means the full page text was retrieved and read in this session (2026-11-20). 'excerpt' means only a search-result excerpt of the official page was available; the wording should be re-checked by hand before it is relied on. 'observed' means a value read off an Amazon page on a dated fetch; observations can change without notice. Nothing in this register is a third-party blog or review site.",

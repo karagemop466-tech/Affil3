@@ -453,6 +453,41 @@
       "sources": [
         "S25"
       ]
+    },
+    {
+      "id": "FLG-040",
+      "severity": "high",
+      "status": "open",
+      "title": "Affiliate links cannot be confirmed as Associates-generated Special Links from outside the account",
+      "detail": "The tagged links published here were built by appending ?tag=shopnow047c-20 to the observed product URLs. The Operating Agreement defines Special Links as the links generated through the Associates account, and reports are keyed to those links. A hand-built tagged URL is not evidence that the account recognises it. Until one link per product is generated in the account and opened from the site, click and order attribution is unproven — and the site's own counter cannot show it either, because it counts clicks made on this site, not orders reported by Amazon.",
+      "sources": [
+        "S26",
+        "S01",
+        "S02"
+      ],
+      "manual_step": "In Associates Central, use SiteStripe on each of the five listings, copy the generated link, compare it to the link on the site, then open one and confirm the click appears in the tracking report (gate G-02)."
+    },
+    {
+      "id": "FLG-041",
+      "severity": "low",
+      "status": "open",
+      "title": "No server may host the analytics collector without the owner's credentials, so measurement stays off",
+      "detail": "The five-event counter is present in every page's script and inert: the endpoint is blank, so nothing is sent (see the measurement page). Turning it on needs a host the owner controls, a deploy token and a domain. This session has none of those and will not ask for them in chat. The consequence is stated plainly: no click on this site has ever been recorded, so no page can currently claim to be performing.",
+      "sources": [
+        "S26"
+      ],
+      "manual_step": "Deploy tools/analytics-endpoint/worker.js (or server.py) to a host you control, then set analyticsEndpoint in data/config.json and rebuild."
+    },
+    {
+      "id": "FLG-042",
+      "severity": "low",
+      "status": "open",
+      "title": "Search Console and sitemap submission are owner steps and have not been done",
+      "detail": "The sitemap and feed are generated and valid, but nothing has been submitted to Google, and no verification token exists in this repository. Indexing therefore depends on discovery alone. This is a repeat of FLG-013 in concrete form: the files are ready, the account step is not.",
+      "sources": [
+        "S06"
+      ],
+      "manual_step": "Verify the domain in Search Console, submit sitemap.xml, and expect a multi-week delay before query data exists."
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",

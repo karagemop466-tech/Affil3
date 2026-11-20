@@ -604,6 +604,261 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-21",
+      "topic": "Where the site actually lives",
+      "plain_question": "Do you want to keep this on a github.io address, or is there a real domain name?",
+      "why": "Every link problem here starts with the fact that the site's address belongs to GitHub, not to you. A real .com is cheap, is what a buyer expects to type, and is what affiliate applications look at.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Stay on karagemop466-tech.github.io/Affil3/ (current).",
+          "tradeoff": "Free and instant. Long, unbranded, and it reads as a test project to both readers and Amazon's reviewers."
+        },
+        {
+          "id": "B",
+          "label": "Buy a short brand domain and point it at GitHub Pages with a CNAME file.",
+          "tradeoff": "Costs a yearly fee and a DNS step. Fixes the address in every canonical tag, sitemap and feed at once."
+        }
+      ],
+      "recommendation": "B. It is the single highest-leverage change in this list and it touches nothing else. I am 90% confident it pays for itself in trust alone.",
+      "confidence": "high",
+      "effort": "30 minutes plus the annual fee",
+      "prompt": "Do S-11 B: add a CNAME file for my domain, switch config siteUrl and basePath to it, and rebuild so every canonical, sitemap entry and feed link uses the new address."
+    },
+    {
+      "id": "S-22",
+      "topic": "Which edition is the shop",
+      "plain_question": "This repo has six different-looking websites on one address. Which one do you want people and Google to see?",
+      "why": "Right now the root site, /editorial/, /crisp-index/, /counter/, /counterwise/ and /legacy/ all publish the same five products in six designs. To a search engine that is one topic repeated six times by six brands, and to a reader who lands on two of them it looks like two different companies.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Root publication is the shop; every other edition is archived, kept online, and marked noindex (current).",
+          "tradeoff": "One clear site, everything preserved. Requires the archive editions to carry the noindex directive, which is now in place."
+        },
+        {
+          "id": "B",
+          "label": "Delete the non-root editions from the repository entirely.",
+          "tradeoff": "Cleanest possible signal; throws away other sessions' published work and the audit trail."
+        },
+        {
+          "id": "C",
+          "label": "Promote one of the other editions to the root and retire the current root pages.",
+          "tradeoff": "You may prefer one of the other designs. Costs a full re-integration and re-verification of that edition's data."
+        }
+      ],
+      "recommendation": "A. It is done: robots.txt blocks all five archive paths and every archived page carries noindex. Choose C only if you prefer another edition's look, and say which.",
+      "confidence": "high",
+      "effort": "done on this branch",
+      "prompt": "Do S-12 C with the <edition name> edition as the shop: move it to the site root, keep the root data register as the source of truth, re-point the sitemap, feed and canonical tags, and re-run every gate."
+    },
+    {
+      "id": "S-23",
+      "topic": "Getting the site read at all",
+      "plain_question": "Are you willing to spend a couple of hours on Search Console and one social post, or should I assume no promotion?",
+      "why": "Nothing here has ever been indexed or submitted. A five-page shop with no inbound links ranking for 'air fryer' is not going to happen by accident; those phrases are owned by review sites with thousands of pages.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Owner verifies Search Console and submits the sitemap; no other outreach (current).",
+          "tradeoff": "Gets the site discovered eventually. Slow, and no data for weeks."
+        },
+        {
+          "id": "B",
+          "label": "Add a focused free-traffic layer: a Reddit/forum-appropriate answer strategy and one seasonal page per guide cluster.",
+          "tradeoff": "Real work per post, and communities punish obvious link-dropping. No paid spend."
+        },
+        {
+          "id": "C",
+          "label": "Run Amazon's own affiliate tools: SiteStripe share links and the Associates' bounties instead of trying to rank.",
+          "tradeoff": "Traffic without a website, but then this site is a brochure rather than the business."
+        }
+      ],
+      "recommendation": "A now, B once three guides are live. I am 70% confident on B's payoff and 100% confident that doing nothing gets zero readers.",
+      "confidence": "medium",
+      "effort": "2 hours for A, ongoing for B",
+      "prompt": "Do S-13 A: write the exact Search Console steps as a checklist for me, including the DNS or HTML-file verification route and which sitemap URL to submit."
+    },
+    {
+      "id": "S-24",
+      "topic": "Images that sell",
+      "plain_question": "Do you have the right to use the manufacturers' product photos, or should the site keep AI illustrations?",
+      "why": "Every image here is generated artwork and labelled as such. It is honest, and it is also the reason the page does not look like a shop: real product photography is what makes a buyer trust a listing page, and Amazon's own program allows certain uses of its product images through the API only.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep AI illustrations, labelled at the point of use (current).",
+          "tradeoff": "No rights risk at all. Visibly not a shop, and it caps conversion."
+        },
+        {
+          "id": "B",
+          "label": "Use Amazon product images obtained through the Product Advertising API, with the required attribution.",
+          "tradeoff": "The correct long-term answer. Needs an approved API key and a working Associates account."
+        },
+        {
+          "id": "C",
+          "label": "Ask the manufacturers for press images and written permission.",
+          "tradeoff": "Free, legitimate, slow, and only covers brands that answer email."
+        }
+      ],
+      "recommendation": "B, once the account exists. Until then A is the only honest option, and I will not put a stock photo of a different air fryer on a product page.",
+      "confidence": "medium",
+      "effort": "weeks (approval-dependent)",
+      "prompt": "Do S-14 C: draft the permission-request email for the five brands, with the exact usage we need stated, and a page that lists which brands have replied."
+    },
+    {
+      "id": "S-25",
+      "topic": "How the site earns",
+      "plain_question": "Is this Amazon-only, or do you want other affiliate programs and display ads alongside it?",
+      "why": "Amazon's commission on small kitchen appliances is thin, and the cookie window is 24 hours. One appliance order can easily pay less than a dollar. Whether that is acceptable decides how much content is worth writing.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Amazon Associates only (current).",
+          "tradeoff": "Simplest to disclose and comply with. Thin payouts, and one policy change can zero it out."
+        },
+        {
+          "id": "B",
+          "label": "Add manufacturer and retailer programs with higher rates, disclosed the same way.",
+          "tradeoff": "Better economics, more contracts, more disclosure variants, more to maintain."
+        },
+        {
+          "id": "C",
+          "label": "Add display advertising once traffic exists.",
+          "tradeoff": "Decouples income from clicks, but ads on a five-product page look like a content farm."
+        }
+      ],
+      "recommendation": "A until there is measurable traffic, then B. I will not model revenue for any option: no rate table has been verified (FLG-038).",
+      "confidence": "low",
+      "effort": "contracts and paperwork",
+      "prompt": "Do S-15 B: list three non-Amazon programs that accept small kitchen-appliance publishers, with their published commission ranges and the source URL for each."
+    },
+    {
+      "id": "S-26",
+      "topic": "What the next guides should be",
+      "plain_question": "Should the next four articles be chosen from measured search queries, or from your own product knowledge?",
+      "why": "The five existing guides are hypotheses, not evidence. Writing the next four on instinct repeats that. Writing them from Search Console queries needs the site indexed first, which needs S-13.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Wait for measured query data before choosing the next four topics (current).",
+          "tradeoff": "Honest and evidence-based. Blocks new content for weeks."
+        },
+        {
+          "id": "B",
+          "label": "Publish four more guides now from the existing buyer questions, then re-rank them once data arrives.",
+          "tradeoff": "Site reaches a useful size sooner; some of those four will miss."
+        },
+        {
+          "id": "C",
+          "label": "Publish comparison pages targeting the exact product names, which have low competition and high intent.",
+          "tradeoff": "Closest to money, least like editorial. Works best for a shop, not a magazine."
+        }
+      ],
+      "recommendation": "C plus B: product-name comparisons first because intent is highest, then question guides. 65% confident; the alternative is waiting with nothing published.",
+      "confidence": "medium",
+      "effort": "one writing cycle per guide",
+      "prompt": "Do S-16 C: draft three product-name comparison pages from the verified specification data only, with a table, a 'who should buy which' section, and no invented measurements."
+    },
+    {
+      "id": "S-27",
+      "topic": "Catching readers who are not ready to buy",
+      "plain_question": "Do you want an email list, or is the RSS feed enough?",
+      "why": "Almost nobody buys on the first visit. Without any way to stay in touch, every reader who is not ready today is lost, and the only traffic you ever get is what search gives you that week.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "RSS feed only (current).",
+          "tradeoff": "No consent, privacy or provider obligations. Almost no consumer uses RSS."
+        },
+        {
+          "id": "B",
+          "label": "One-field email capture with double opt-in and a single 'new guide' send.",
+          "tradeoff": "Builds an asset you own. Needs a provider, a privacy update and a real reason for someone to subscribe."
+        }
+      ],
+      "recommendation": "B, but only after S-13 A gives the site somewhere to send people from. Asking for an email with no audience and no promise converts at zero.",
+      "confidence": "medium",
+      "effort": "a morning",
+      "prompt": "Do S-17 B: add a single-field capture form to guide pages with double opt-in, update the privacy notice, and leave the provider unset until I choose one."
+    },
+    {
+      "id": "S-28",
+      "topic": "Making the tables usable on a phone",
+      "plain_question": "Do you want the specification tables to become stacked cards on mobile?",
+      "why": "The shop table has twelve columns. On a phone it is a horizontal scroll, which is where most buying research actually happens. Two-thirds of a shop's sessions are mobile.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the wide table with horizontal scroll (current).",
+          "tradeoff": "Nothing to maintain, and every column stays comparable. Poor on a phone."
+        },
+        {
+          "id": "B",
+          "label": "Stack each row into a labelled card under 700px.",
+          "tradeoff": "Readable on a phone and still a table on desktop. Requires the build to emit both label and value."
+        }
+      ],
+      "recommendation": "B. I am 80% confident it improves time-on-page, and it costs one CSS block plus data labels. It is the cheapest usability win on the list.",
+      "confidence": "high",
+      "effort": "under an hour",
+      "prompt": "Do S-18 B: emit data-label attributes in the wide tables and add the stacked-card CSS for under 700px, keeping the desktop table unchanged."
+    },
+    {
+      "id": "S-29",
+      "topic": "Telling people the site is a shop",
+      "plain_question": "Do you want prices visible on the page, or is sending people to Amazon for the price fine?",
+      "why": "Amazon's policy forbids showing a price unless it comes from an approved API and is timestamped. Sending people to Amazon is compliant and costless, and it costs you the reader who wanted a budget before clicking.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "No prices on the site; the button says 'Check price on Amazon' (current).",
+          "tradeoff": "Always accurate and policy-safe. Readers have to leave to learn a budget."
+        },
+        {
+          "id": "B",
+          "label": "Display API-served prices with a timestamp and the required attribution.",
+          "tradeoff": "Best for the reader. Needs the Product Advertising API and a build step that can refresh prices."
+        }
+      ],
+      "recommendation": "A. B only with a real API key and a refresh job; a stale price is worse than no price.",
+      "confidence": "high",
+      "effort": "API approval",
+      "prompt": "Do S-19 B: add a price-fetching step that only runs when an API key is present in the environment, with a visible timestamp and an automatic fallback to 'Check price on Amazon'."
+    },
+    {
+      "id": "S-30",
+      "topic": "Who is credited for the writing",
+      "plain_question": "Is there a person's name and a line of real experience we can put on these pages, or should they stay a team byline?",
+      "why": "Every page says 'ShopNow Kitchen editorial team'. Search engines and readers both look for a named author with a reason to be trusted on this subject, and an anonymous team byline is one of the strongest signals of auto-generated content.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the team byline (current).",
+          "tradeoff": "No false claims. Weakest possible authorship signal."
+        },
+        {
+          "id": "B",
+          "label": "Add a named author with a genuine one-paragraph bio and a photo.",
+          "tradeoff": "The single best anti-slop signal there is. Requires a real person who has actually used the appliances."
+        }
+      ],
+      "recommendation": "B. I will not invent a person: give me a name and two true sentences about their kitchen experience, and it goes on every guide with an author page.",
+      "confidence": "high",
+      "effort": "one paragraph",
+      "prompt": "Do S-20 B with the name and bio I provide: add an author page, an author box on every guide, and Person schema, without inventing any credential."
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",

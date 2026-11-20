@@ -156,6 +156,28 @@
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "K-22",
+      "statement": "Amazon defines an ASIN as a unique combination of 10 letters and numbers that Amazon assigns to a product. The five supplied tokens are 9 characters, so none of them is an ASIN.",
+      "sources": [
+        "S24"
+      ]
+    },
+    {
+      "id": "K-23",
+      "statement": "A robots.txt Disallow rule does not remove a URL from Google's results; a noindex directive is the mechanism for that. This is why the archived editions carry noindex as well as the Disallow rule.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "K-24",
+      "statement": "On a fresh re-test on 2026-11-20, four of the five submitted short links returned the Amazon homepage and one returned its product page. The destination observed from outside an Associates session is therefore not stable, and is recorded as an observation, not as intent.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
     }
   ],
   "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
@@ -169,7 +191,8 @@
         "S05",
         "S04"
       ],
-      "blocking": true
+      "blocking": true,
+      "answer_template": "Link 1 (B04G1MEwY) → product: <name>, ID: <10 chars>\nLink 2 (B02NbDxp3) → …\nLink 3 (B00hJ57DV) → …\nLink 4 (B0c8moW59) → …\nLink 5 (B0f3GKalj) → …"
     },
     {
       "id": "Q-02",
@@ -180,7 +203,8 @@
         "S01",
         "S02"
       ],
-      "blocking": true
+      "blocking": true,
+      "answer_template": "Product I meant for each link:\n1. <name>  2. <name>  3. <name>  4. <name>  5. <name>"
     },
     {
       "id": "Q-03",
@@ -190,7 +214,8 @@
       "sources": [
         "S01"
       ],
-      "blocking": true
+      "blocking": true,
+      "answer_template": "Tracking ID on the account: shopnow047c-20 → yes / no\nWebsite declared in Associates: <exact URL>"
     },
     {
       "id": "Q-04",
@@ -325,6 +350,81 @@
         "S05"
       ],
       "blocking": false
+    },
+    {
+      "id": "Q-18",
+      "question": "Is tracking ID shopnow047c-20 on your Associates account, and does that account list this site?",
+      "plain": "The ID is in the format Amazon uses for US accounts, but only you can see your own account. If the ID belongs to a different account, or the account does not list this site, no commission from any link here can be paid.",
+      "why_it_matters": "A site that cannot be paid for is a hobby with extra steps. It also affects whether Amazon will approve the account at all.",
+      "how_to_close": "Associates Central → Account Settings → check the tracking ID and the website list. Reply yes/no plus the site exactly as declared.",
+      "answer_template": "Track ID: shopnow047c-20 → on my account: yes/no\nDeclared site: <exact URL as entered>",
+      "blocking": true,
+      "sources": [
+        "S26",
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-19",
+      "question": "Will you test one link per product inside the Associates account?",
+      "plain": "I can build a link that looks right. Only the account can confirm that Amazon counts a click on it. This is the one step in the whole project that a machine cannot do for you, and everything downstream (reporting, earnings, deciding what to write next) depends on it.",
+      "why_it_matters": "Until one click shows up in a tracking report, the site has no proof its links work at all.",
+      "how_to_close": "SiteStripe on each listing → get the short link and the text link → open one → check the tracking report the next day. Ten minutes per product.",
+      "answer_template": "P01 tested: yes/no — click appeared in report: yes/no\nP02 tested: …",
+      "blocking": true,
+      "sources": [
+        "S26",
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-20",
+      "question": "Where should the analytics endpoint run, and do you want measurement on at all?",
+      "plain": "The site can count clicks and page views without cookies, but only if there is a small server somewhere to receive them. Nothing is being recorded today. I will not ask you for a token or password in this chat.",
+      "why_it_matters": "This is the difference between choosing the next article from data and choosing it from opinion.",
+      "how_to_close": "Say yes or no. If yes, pick a host you control and deploy tools/analytics-endpoint/ yourself; then paste the endpoint URL into the config in the repo.",
+      "answer_template": "Measurement: on/off\nEndpoint URL: https://…",
+      "blocking": false,
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "Q-21",
+      "question": "What does the site's owner actually know about these appliances?",
+      "plain": "Every guide here is written from manufacturer specifications, because nobody on this project has used the machines. That is why the site cannot tell you which air fryer crisps better. One honest sentence of real experience per product would change the writing more than any technical change on my list.",
+      "why_it_matters": "Search engines and readers both discount content with no first-hand experience behind it, and reviewers can tell.",
+      "how_to_close": "Reply with whatever is true: which model you own, what you cook in it, what annoyed you.",
+      "answer_template": "I own: <model>. What I cook most: <dish>. What I would warn someone about: <one sentence>.",
+      "blocking": false,
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "Q-22",
+      "question": "Which single edition of this site is the real one?",
+      "plain": "Five agent sessions built five differently branded publications on one address, each with the same five products: ShopNow Kitchen at the root, The Crisp Index, Crisp & Counter, Counterwise and Countertop & Co. All are live. Only one can be the shop.",
+      "why_it_matters": "Duplicated near-identical content on one domain competes with itself and looks generated, which is exactly the impression to avoid.",
+      "how_to_close": "Name the edition you want. The others get archived with noindex, which is now in position.",
+      "answer_template": "Keep: <root / crisp-index / counter / counterwise / editorial>. Archive the rest: yes/no.",
+      "blocking": true,
+      "sources": [
+        "S25",
+        "S09"
+      ]
+    },
+    {
+      "id": "Q-23",
+      "question": "What is the realistic budget, in hours per week, and is there any cash for a domain or hosting?",
+      "plain": "The plan that fits depends on this. A domain and a small host cost about as much as a takeaway per month; writing two guides a week is four to six hours. If the honest answer is zero hours, the right plan is one seasonal page and no new features.",
+      "why_it_matters": "It decides whether the recommendation is 'build an audience' or 'keep five good pages and stop'.",
+      "how_to_close": "Two numbers: hours per week, and a yes/no on roughly thirty dollars a year for a domain plus hosting.",
+      "answer_template": "Hours per week: <n>. Cash available: yes/no (about thirty dollars a year).",
+      "blocking": false,
+      "sources": [
+        "S25"
+      ]
     }
   ],
   "discovery": [

@@ -237,7 +237,8 @@ def shell(ctx, page):
     title = f'{page["title"]} · {ctx.site["brand"]}'
     crumbs = page.get("breadcrumb")
     crumb_html = breadcrumb_html(ctx, crumbs) if crumbs else ""
-    robots = '<meta name="robots" content="noindex">\n' if page.get("noindex") else ""
+    # Archive edition: noindex by default. Only the root publication is indexed.
+    robots = "" if page.get("indexable") else '<meta name="robots" content="noindex, follow">\n' 
     return resolve_rel_placeholders(f"""<!DOCTYPE html>
 <html lang="{esc(ctx.site['locale'])}">
 <head>
