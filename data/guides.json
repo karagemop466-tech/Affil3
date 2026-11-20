@@ -5,46 +5,129 @@
       "slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
       "title": "Basket or oven-style air fryer: what should you compare?",
       "category": "air-fryers",
-      "cluster_links": ["air-fryer-ovens"],
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
       "image": "/assets/img/guide-basket-vs-oven.png",
       "date": "2026-11-20",
       "deck": "Start with the food you cook on a busy Tuesday, not with the shape on the box. Then let the shape follow.",
       "description": "A plain-English comparison of basket-style and oven-style air fryers: what each shape does well, what to check before you choose, and how the appliances we track blur the line.",
-      "sources": ["S04"],
+      "sources": [
+        "S04"
+      ],
       "body": [
-        { "type": "img", "src": "/assets/img/guide-basket-vs-oven.png", "alt": "Illustration comparing a rounded basket-style air fryer and a taller oven-style air fryer with a door and rack, side by side on a shelf", "caption": "Illustration: AI-generated for this site. It shows the two shapes, not any specific product we track." },
-        { "type": "p", "text": "Most buying advice starts with capacity or wattage. Start one step earlier: with the meals you actually cook. The two air fryer shapes are good at different things, and the shape you pick quietly decides your weeknight routine." },
-        { "type": "h2", "text": "What a basket style does best" },
-        { "type": "p", "text": "A basket air fryer is a drawer you shake. That is the whole magic. Fries crisp because you pull the drawer, give everything a toss, and push it back in. Cleanup is usually one nonstick basket, and preheating is quick because you are heating a small chamber. If your air fryer life is frozen fries, chicken pieces, roasted vegetables for two to four people, the basket shape fits." },
-        { "type": "p", "text": "The trade-offs show up when dinner gets big. Two levels of food compete for one drawer. Anything breaded and delicate can be awkward to flip without losing coating. And a tall drawer of food cooks less evenly than a shallow layer, so big batches want a shake you might not have time for." },
-        { "type": "h2", "text": "What an oven style does best" },
-        { "type": "p", "text": "An oven-style air fryer trades the drawer for a door, racks, and usually more room. You can run two levels at once, rotate trays halfway through, and fit irregular things a drawer would refuse: a whole chicken piece with bones, a small casserole, skewers. Many double as toaster ovens, which means they earn their counter space at breakfast too." },
-        { "type": "p", "text": "The costs are the mirror image. Doors release heat and smell into the kitchen. Racks and trays mean more pieces to wash, and the machine is usually taller and deeper, so cabinet clearance matters more. If you hate washing dishes, count the accessories before you fall for the capacity." },
-        { "type": "h2", "text": "The four questions worth answering first" },
-        { "type": "table", "headers": ["Question", "Points you toward a basket", "Points you toward an oven style"], "rows": [
-          ["How many people do you cook for on most nights?", "One to four; shallow layers cook best", "Five or more, or two levels running at once"],
-          ["What is your cleanup tolerance?", "One basket, ideally dishwasher-safe", "You accept racks, trays, and a crumb tray"],
-          ["Where will it live?", "Under a cabinet; modest footprint", "Needs standing height clearance and door swing room"],
-          ["Do you want it to replace a toaster?", "No; it is a single-purpose tool", "Yes; many oven styles toast and bake too"]
-        ] },
-        { "type": "h2", "text": "One honest warning about the labels" },
-        { "type": "p", "text": "As we built the product shelf on this site, we noticed the naming gets blurry. One appliance we track is titled with both words: it is described as a dual-basket unit and as an oven, with windows on the baskets. Marketing borrows the strengths of both shapes, so the label on the box will not settle your decision. The listing pages will, if you look at the photos and the basket arrangement rather than the headline." },
-        { "type": "h2", "text": "Questions to take with you" },
-        { "type": "ul", "items": [
-          "Does the basket or oven cavity match the deepest food you cook, not just the biggest?"
-          ,
-          "Are the pieces that touch food removable and dishwasher-safe, or hand-wash only?"
-          ,
-          "How far does the door or drawer extend when open, and does that fit your counter?"
-          ,
-          "If it promises multiple functions, which two or three will you actually use weekly?"
-        ] },
-        { "type": "cta", "label": "See the appliances we are tracking", "href": "/shop/", "text": "Every row on our shop table links to the observed Amazon listing, with the sources we read." },
-        { "type": "faq", "items": [
-          { "q": "Is one shape always healthier?", "a": "No. Both shapes cook with moving hot air. Health claims belong to what you cook, not to the shape of the machine." },
-          { "q": "Is a dual-basket model the same as two air fryers?", "a": "It is two baskets sharing one housing and one plug. Independent controls help when you want two foods finishing at different times, but check whether temperatures can actually differ between baskets before assuming it." },
-          { "q": "Which shape should a first-time buyer pick?", "a": "The shape that matches your most common meal. If you cannot name that meal yet, a mid-size basket model is the cheaper way to find out whether the habit sticks." }
-        ] }
+        {
+          "type": "img",
+          "src": "/assets/img/guide-basket-vs-oven.png",
+          "alt": "Illustration comparing a rounded basket-style air fryer and a taller oven-style air fryer with a door and rack, side by side on a shelf",
+          "caption": "Illustration: AI-generated for this site. It shows the two shapes, not any specific product we track."
+        },
+        {
+          "type": "p",
+          "text": "Most buying advice starts with capacity or wattage. Start one step earlier: with the meals you actually cook. The two air fryer shapes are good at different things, and the shape you pick quietly decides your weeknight routine."
+        },
+        {
+          "type": "h2",
+          "text": "What a basket style does best"
+        },
+        {
+          "type": "p",
+          "text": "A basket air fryer is a drawer you shake. That is the whole magic. Fries crisp because you pull the drawer, give everything a toss, and push it back in. Cleanup is usually one nonstick basket, and preheating is quick because you are heating a small chamber. If your air fryer life is frozen fries, chicken pieces, roasted vegetables for two to four people, the basket shape fits."
+        },
+        {
+          "type": "p",
+          "text": "The trade-offs show up when dinner gets big. Two levels of food compete for one drawer. Anything breaded and delicate can be awkward to flip without losing coating. And a tall drawer of food cooks less evenly than a shallow layer, so big batches want a shake you might not have time for."
+        },
+        {
+          "type": "h2",
+          "text": "What an oven style does best"
+        },
+        {
+          "type": "p",
+          "text": "An oven-style air fryer trades the drawer for a door, racks, and usually more room. You can run two levels at once, rotate trays halfway through, and fit irregular things a drawer would refuse: a whole chicken piece with bones, a small casserole, skewers. Many double as toaster ovens, which means they earn their counter space at breakfast too."
+        },
+        {
+          "type": "p",
+          "text": "The costs are the mirror image. Doors release heat and smell into the kitchen. Racks and trays mean more pieces to wash, and the machine is usually taller and deeper, so cabinet clearance matters more. If you hate washing dishes, count the accessories before you fall for the capacity."
+        },
+        {
+          "type": "h2",
+          "text": "The four questions worth answering first"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Question",
+            "Points you toward a basket",
+            "Points you toward an oven style"
+          ],
+          "rows": [
+            [
+              "How many people do you cook for on most nights?",
+              "One to four; shallow layers cook best",
+              "Five or more, or two levels running at once"
+            ],
+            [
+              "What is your cleanup tolerance?",
+              "One basket, ideally dishwasher-safe",
+              "You accept racks, trays, and a crumb tray"
+            ],
+            [
+              "Where will it live?",
+              "Under a cabinet; modest footprint",
+              "Needs standing height clearance and door swing room"
+            ],
+            [
+              "Do you want it to replace a toaster?",
+              "No; it is a single-purpose tool",
+              "Yes; many oven styles toast and bake too"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "One honest warning about the labels"
+        },
+        {
+          "type": "p",
+          "text": "As we built the product shelf on this site, we noticed the naming gets blurry. One appliance we track is titled with both words: it is described as a dual-basket unit and as an oven, with windows on the baskets. Marketing borrows the strengths of both shapes, so the label on the box will not settle your decision. The listing pages will, if you look at the photos and the basket arrangement rather than the headline."
+        },
+        {
+          "type": "h2",
+          "text": "Questions to take with you"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Does the basket or oven cavity match the deepest food you cook, not just the biggest?",
+            "Are the pieces that touch food removable and dishwasher-safe, or hand-wash only?",
+            "How far does the door or drawer extend when open, and does that fit your counter?",
+            "If it promises multiple functions, which two or three will you actually use weekly?"
+          ]
+        },
+        {
+          "type": "cta",
+          "label": "See the appliances we are tracking",
+          "href": "/shop/",
+          "text": "Every row on our shop table links to the observed Amazon listing, with the sources we read."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Is one shape always healthier?",
+              "a": "No. Both shapes cook with moving hot air. Health claims belong to what you cook, not to the shape of the machine."
+            },
+            {
+              "q": "Is a dual-basket model the same as two air fryers?",
+              "a": "It is two baskets sharing one housing and one plug. Independent controls help when you want two foods finishing at different times, but check whether temperatures can actually differ between baskets before assuming it."
+            },
+            {
+              "q": "Which shape should a first-time buyer pick?",
+              "a": "The shape that matches your most common meal. If you cannot name that meal yet, a mid-size basket model is the cheaper way to find out whether the habit sticks."
+            }
+          ]
+        }
       ]
     },
     {
@@ -56,111 +139,339 @@
       "date": "2026-11-20",
       "deck": "Capacity is the first number you see and the easiest one to misread. Here is how to read it better.",
       "description": "What quart ratings measure, what they leave out, and a printable checklist of questions to compare air fryer capacity without the marketing gloss.",
-      "sources": ["S04"],
+      "sources": [
+        "S04"
+      ],
       "body": [
-        { "type": "img", "src": "/assets/img/guide-capacity.png", "alt": "Illustration of two cooking baskets of different sizes filled to different levels, with a measuring cup and kitchen scale", "caption": "Illustration: AI-generated for this site. Numbers in listings, not in artwork, are what count." },
-        { "type": "p", "text": "Quarts sell air fryers. They are also the least self-explanatory number in the kitchen aisle, because a quart measures volume, not dinner. Four quarts of air is not four quarts of fries. This checklist gives you the questions that actually predict whether an air fryer feeds your household." },
-        { "type": "h2", "text": "Why the number on the box misleads" },
-        { "type": "p", "text": "Capacity is measured to the walls of the basket. Your food does not touch the walls, and it should not: hot air needs room to move around each piece for crisping. Pile food to the ceiling of the basket and you get steaming, not frying, no matter what the quart rating promised. Usable capacity is always smaller than stated capacity, and the gap widens with anything bulky or irregular." },
-        { "type": "p", "text": "Shape matters as much as volume. A wide, shallow basket crisps a single layer better than a tall, narrow one of the same rated volume, because more food sits near the heating element and the fan. Two smaller baskets can beat one larger number for cooking two things at once, if the controls let you run them independently." },
-        { "type": "h2", "text": "The checklist" },
-        { "type": "table", "headers": ["#", "Check", "Why it matters"], "rows": [
-          ["1", "Name the main dish you will cook most", "Capacity needs are set by your signature meal, not by the largest one you can imagine"],
-          ["2", "Look at basket shape, not just quarts", "Shallow and wide crisps single layers; tall and narrow stacks heat unevenly"],
-          ["3", "Check the height of the basket, not just floor area", "A roast or a layered dish needs vertical room, a tray of fries does not"],
-          ["4", "Count how many layers you would really run", "Stacked cooking means rotating or shaking mid-cook; decide if you will actually do that"],
-          ["5", "Measure the counter footprint and the open-drawer depth", "The drawer extends when open; the machine needs that space every time you use it"],
-          ["6", "Read the dishwasher claims for every removable piece", "One dishwasher-safe basket is a different life than four hand-washed accessories"]
-        ] },
-        { "type": "h2", "text": "How the numbers in our own shelf read" },
-        { "type": "p", "text": "The appliances we track make a good case study in reading titles carefully. As of the date we observed them, one listing title leads with 6 quart and splits that space across two independent 3-quart baskets. Another leads with 8 Qt and a single extra-large basket. A third, an oven-style unit, leads with 26QT of cavity. Those are not comparable numbers, and they are not meant to be: one measures drawer space split in two, one measures a single basket, and one measures a whole oven interior." },
-        { "type": "p", "text": "Notice also what the titles do with temperature: one advertises a 450°F high-heat setting. That is a feature claim from the listing, not something we have measured. We do not repeat pricing or rating numbers on this site, and we treat listing-title specifications as claims to verify on the listing page, not as established facts." },
-        { "type": "h2", "text": "A rule of thumb for households" },
-        { "type": "ol", "items": [
-          "Cooking for one or two most nights: a single-basket model in the middle of the line's range usually fits, with room to host occasionally.",
-          "Cooking for three or four with picky eaters: two independent baskets earn their footprint when the two foods need different times or temperatures.",
-          "Batch cooking, big families, or replacing a toaster: look at oven styles and judge by tray size and rack count rather than one big quart figure."
-        ] },
-        { "type": "cta", "label": "Compare the tracked models", "href": "/shop/", "text": "The shop table shows the observed listing for each tracked appliance, side by side, with the exact title we read." },
-        { "type": "faq", "items": [
-          { "q": "Does a bigger air fryer use much more electricity?", "a": "Larger cavities generally draw more power to reach temperature, but total energy depends on cook time and how full you run it. A big machine running a small batch can waste energy; a right-sized machine used daily may not. We have not measured any unit, so treat this as physics reasoning, not lab data." },
-          { "q": "Are quart ratings standardized across brands?", "a": "No single standard governs where brands measure from, which is exactly why basket shape and your signature meal should outrank the number." },
-          { "q": "Is a 26-quart oven the same as a 26-quart basket fryer?", "a": "No. The oven figure describes the whole cavity including space around racks; the basket figure describes the drawer. Treat them as different units of meaning." }
-        ] }
+        {
+          "type": "img",
+          "src": "/assets/img/guide-capacity.png",
+          "alt": "Illustration of two cooking baskets of different sizes filled to different levels, with a measuring cup and kitchen scale",
+          "caption": "Illustration: AI-generated for this site. Numbers in listings, not in artwork, are what count."
+        },
+        {
+          "type": "p",
+          "text": "Quarts sell air fryers. They are also the least self-explanatory number in the kitchen aisle, because a quart measures volume, not dinner. Four quarts of air is not four quarts of fries. This checklist gives you the questions that actually predict whether an air fryer feeds your household."
+        },
+        {
+          "type": "h2",
+          "text": "Why the number on the box misleads"
+        },
+        {
+          "type": "p",
+          "text": "Capacity is measured to the walls of the basket. Your food does not touch the walls, and it should not: hot air needs room to move around each piece for crisping. Pile food to the ceiling of the basket and you get steaming, not frying, no matter what the quart rating promised. Usable capacity is always smaller than stated capacity, and the gap widens with anything bulky or irregular."
+        },
+        {
+          "type": "p",
+          "text": "Shape matters as much as volume. A wide, shallow basket crisps a single layer better than a tall, narrow one of the same rated volume, because more food sits near the heating element and the fan. Two smaller baskets can beat one larger number for cooking two things at once, if the controls let you run them independently."
+        },
+        {
+          "type": "h2",
+          "text": "The checklist"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "#",
+            "Check",
+            "Why it matters"
+          ],
+          "rows": [
+            [
+              "1",
+              "Name the main dish you will cook most",
+              "Capacity needs are set by your signature meal, not by the largest one you can imagine"
+            ],
+            [
+              "2",
+              "Look at basket shape, not just quarts",
+              "Shallow and wide crisps single layers; tall and narrow stacks heat unevenly"
+            ],
+            [
+              "3",
+              "Check the height of the basket, not just floor area",
+              "A roast or a layered dish needs vertical room, a tray of fries does not"
+            ],
+            [
+              "4",
+              "Count how many layers you would really run",
+              "Stacked cooking means rotating or shaking mid-cook; decide if you will actually do that"
+            ],
+            [
+              "5",
+              "Measure the counter footprint and the open-drawer depth",
+              "The drawer extends when open; the machine needs that space every time you use it"
+            ],
+            [
+              "6",
+              "Read the dishwasher claims for every removable piece",
+              "One dishwasher-safe basket is a different life than four hand-washed accessories"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "How the numbers in our own shelf read"
+        },
+        {
+          "type": "p",
+          "text": "The appliances we track make a good case study in reading titles carefully. As of the date we observed them, one listing title leads with 6 quart and splits that space across two independent 3-quart baskets. Another leads with 8 Qt and a single extra-large basket. A third, an oven-style unit, leads with 26QT of cavity. Those are not comparable numbers, and they are not meant to be: one measures drawer space split in two, one measures a single basket, and one measures a whole oven interior."
+        },
+        {
+          "type": "p",
+          "text": "Notice also what the titles do with temperature: one advertises a 450°F high-heat setting. That is a feature claim from the listing, not something we have measured. We do not repeat pricing or rating numbers on this site, and we treat listing-title specifications as claims to verify on the listing page, not as established facts."
+        },
+        {
+          "type": "h2",
+          "text": "A rule of thumb for households"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Cooking for one or two most nights: a single-basket model in the middle of the line's range usually fits, with room to host occasionally.",
+            "Cooking for three or four with picky eaters: two independent baskets earn their footprint when the two foods need different times or temperatures.",
+            "Batch cooking, big families, or replacing a toaster: look at oven styles and judge by tray size and rack count rather than one big quart figure."
+          ]
+        },
+        {
+          "type": "cta",
+          "label": "Compare the tracked models",
+          "href": "/shop/",
+          "text": "The shop table shows the observed listing for each tracked appliance, side by side, with the exact title we read."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Does a bigger air fryer use much more electricity?",
+              "a": "Larger cavities generally draw more power to reach temperature, but total energy depends on cook time and how full you run it. A big machine running a small batch can waste energy; a right-sized machine used daily may not. We have not measured any unit, so treat this as physics reasoning, not lab data."
+            },
+            {
+              "q": "Are quart ratings standardized across brands?",
+              "a": "No single standard governs where brands measure from, which is exactly why basket shape and your signature meal should outrank the number."
+            },
+            {
+              "q": "Is a 26-quart oven the same as a 26-quart basket fryer?",
+              "a": "No. The oven figure describes the whole cavity including space around racks; the basket figure describes the drawer. Treat them as different units of meaning."
+            }
+          ]
+        }
       ]
     },
     {
       "slug": "how-to-assess-cleanup-and-counter-space-tradeoffs",
       "title": "How to assess cleanup and counter-space trade-offs",
       "category": "air-fryers",
-      "cluster_links": ["air-fryer-ovens"],
+      "cluster_links": [
+        "air-fryer-ovens"
+      ],
       "image": "/assets/img/guide-cleanup.png",
       "date": "2026-11-20",
       "deck": "The best-looking appliance is the one you will actually clean, and the one that still fits when the drawer is open.",
       "description": "A practical method for weighing dishwasher claims, hand-washing reality, counter footprint, ventilation clearance and open-door space before you buy a kitchen appliance.",
-      "sources": ["S04"],
+      "sources": [
+        "S04"
+      ],
       "body": [
-        { "type": "img", "src": "/assets/img/guide-cleanup.png", "alt": "Illustration of a sponge, a drying rack with washed baskets, and a measuring tape across a wooden countertop", "caption": "Illustration: AI-generated for this site." },
-        { "type": "p", "text": "Appliance regret almost never comes from cooking performance. It comes from the two taxes you pay every single day: the washing, and the space. Both are predictable before you buy, if you ask the right questions." },
-        { "type": "h2", "text": "The cleanup questions, in order" },
-        { "type": "h3", "text": "1. Count the pieces that touch food" },
-        { "type": "p", "text": "A basket fryer is one basket and maybe a crisper plate. An oven-style unit can be two racks, a fry basket, a crumb tray, and a rotisserie spit. Every piece that touched grease needs washing after every greasy cook. Before you buy, list the removable parts from the listing photos and imagine the drying rack after taco night." },
-        { "type": "h3", "text": "2. Read dishwasher claims precisely" },
-        { "type": "p", "text": "Titles are careful with this, and so should you be. On our shelf, one observed listing titles its two baskets as dishwasher-safe, and another titles a single nonstick basket the same way. Neither phrase tells you whether racks, trays, or the housing wipe down easily; it only covers named pieces. Nonstick also has a service life: metal utensils and abrasive sponges shorten it, so the claim survives only as long as your habits are gentle." },
-        { "type": "h3", "text": "3. Judge the grease path" },
-        { "type": "p", "text": "Grease lands where the air ends. In basket units it pools under a removable basket, which is convenient. In oven styles it can drip toward the door and the crumb tray, which is a wider wipe. Door glass, interior walls, and heating-element guards all earn a spot on the cleaning schedule eventually. Look at interior photos for how far food spatter can travel." },
-        { "type": "h2", "text": "The counter-space questions" },
-        { "type": "table", "headers": ["Measure", "How to take it", "What people forget"], "rows": [
-          ["Footprint", "Width and depth of the base, plus vibration room at the back", "The back needs ventilation clearance, not just the sides"],
-          ["Open clearance", "Depth of the drawer or door swing in use", "You open it while cooking, so the space must be free at dinner time, not just in the store photo"],
-          ["Height", "Machine height plus anything you place on top now", "Cabinet overhangs and shelves above eat usable height"],
-          ["Weight", "Check the listing's shipping weight as a proxy", "Heavy units do not move for cleaning behind and under, and that chore matters"]
-        ] },
-        { "type": "p", "text": "One trick that saves returns: outline the machine's footprint in painter's tape on the counter, then outline the open drawer in front of it. Live with the tape for two days. Most people discover the open-drawer outline crosses either the sink or the stove, and that discovery is cheaper in tape than in shipping." },
-        { "type": "h2", "text": "The trade-off, stated plainly" },
-        { "type": "p", "text": "Big capacity buys you fewer cooking batches and costs you more washing and more counter. Small capacity keeps cleanup to one basket and gives the counter back, at the price of cooking in rounds. Neither is wrong; the mistake is paying for capacity you use twice a year while washing the price of it every night." },
-        { "type": "cta", "label": "See what each tracked unit claims", "href": "/shop/", "text": "The shop table preserves each observed listing title, so you can compare dishwasher and accessory claims in one place." },
-        { "type": "faq", "items": [
-          { "q": "Do I need to clean the heating element?", "a": "Follow the manual's guidance for the specific unit. What we can say generally: grease reaches the area above the food chamber over time, and units designed with easier access to that area make the deep clean less of a project." },
-          { "q": "Is dishwasher-safe the same as durable?", "a": "No. Dishwasher-safe describes surviving the wash; nonstick coatings still age with abrasive contact. Gentle washing extends the life of any coated piece." },
-          { "q": "Can I store the appliance in a cabinet?", "a": "Yes, if you will actually lift it in and out. Weight is the deciding factor, which is why we suggest checking listing weight before choosing an under-cabinet life." }
-        ] }
+        {
+          "type": "img",
+          "src": "/assets/img/guide-cleanup.png",
+          "alt": "Illustration of a sponge, a drying rack with washed baskets, and a measuring tape across a wooden countertop",
+          "caption": "Illustration: AI-generated for this site."
+        },
+        {
+          "type": "p",
+          "text": "Appliance regret almost never comes from cooking performance. It comes from the two taxes you pay every single day: the washing, and the space. Both are predictable before you buy, if you ask the right questions."
+        },
+        {
+          "type": "h2",
+          "text": "The cleanup questions, in order"
+        },
+        {
+          "type": "h3",
+          "text": "1. Count the pieces that touch food"
+        },
+        {
+          "type": "p",
+          "text": "A basket fryer is one basket and maybe a crisper plate. An oven-style unit can be two racks, a fry basket, a crumb tray, and a rotisserie spit. Every piece that touched grease needs washing after every greasy cook. Before you buy, list the removable parts from the listing photos and imagine the drying rack after taco night."
+        },
+        {
+          "type": "h3",
+          "text": "2. Read dishwasher claims precisely"
+        },
+        {
+          "type": "p",
+          "text": "Titles are careful with this, and so should you be. On our shelf, one observed listing titles its two baskets as dishwasher-safe, and another titles a single nonstick basket the same way. Neither phrase tells you whether racks, trays, or the housing wipe down easily; it only covers named pieces. Nonstick also has a service life: metal utensils and abrasive sponges shorten it, so the claim survives only as long as your habits are gentle."
+        },
+        {
+          "type": "h3",
+          "text": "3. Judge the grease path"
+        },
+        {
+          "type": "p",
+          "text": "Grease lands where the air ends. In basket units it pools under a removable basket, which is convenient. In oven styles it can drip toward the door and the crumb tray, which is a wider wipe. Door glass, interior walls, and heating-element guards all earn a spot on the cleaning schedule eventually. Look at interior photos for how far food spatter can travel."
+        },
+        {
+          "type": "h2",
+          "text": "The counter-space questions"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Measure",
+            "How to take it",
+            "What people forget"
+          ],
+          "rows": [
+            [
+              "Footprint",
+              "Width and depth of the base, plus vibration room at the back",
+              "The back needs ventilation clearance, not just the sides"
+            ],
+            [
+              "Open clearance",
+              "Depth of the drawer or door swing in use",
+              "You open it while cooking, so the space must be free at dinner time, not just in the store photo"
+            ],
+            [
+              "Height",
+              "Machine height plus anything you place on top now",
+              "Cabinet overhangs and shelves above eat usable height"
+            ],
+            [
+              "Weight",
+              "Check the listing's shipping weight as a proxy",
+              "Heavy units do not move for cleaning behind and under, and that chore matters"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "One trick that saves returns: outline the machine's footprint in painter's tape on the counter, then outline the open drawer in front of it. Live with the tape for two days. Most people discover the open-drawer outline crosses either the sink or the stove, and that discovery is cheaper in tape than in shipping."
+        },
+        {
+          "type": "h2",
+          "text": "The trade-off, stated plainly"
+        },
+        {
+          "type": "p",
+          "text": "Big capacity buys you fewer cooking batches and costs you more washing and more counter. Small capacity keeps cleanup to one basket and gives the counter back, at the price of cooking in rounds. Neither is wrong; the mistake is paying for capacity you use twice a year while washing the price of it every night."
+        },
+        {
+          "type": "cta",
+          "label": "See what each tracked unit claims",
+          "href": "/shop/",
+          "text": "The shop table preserves each observed listing title, so you can compare dishwasher and accessory claims in one place."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do I need to clean the heating element?",
+              "a": "Follow the manual's guidance for the specific unit. What we can say generally: grease reaches the area above the food chamber over time, and units designed with easier access to that area make the deep clean less of a project."
+            },
+            {
+              "q": "Is dishwasher-safe the same as durable?",
+              "a": "No. Dishwasher-safe describes surviving the wash; nonstick coatings still age with abrasive contact. Gentle washing extends the life of any coated piece."
+            },
+            {
+              "q": "Can I store the appliance in a cabinet?",
+              "a": "Yes, if you will actually lift it in and out. Weight is the deciding factor, which is why we suggest checking listing weight before choosing an under-cabinet life."
+            }
+          ]
+        }
       ]
     },
     {
       "slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
       "title": "Questions to ask before buying a multi-function kitchen appliance",
       "category": "air-fryer-ovens",
-      "cluster_links": ["cooking-thermometers"],
+      "cluster_links": [
+        "cooking-thermometers"
+      ],
       "image": "/assets/img/guide-multifunction.png",
       "date": "2026-11-20",
       "deck": "Multi-function appliances promise a dozen tools in one box. Ask which three you will actually use.",
       "description": "A buyer's interrogation guide for combination air fryers, toaster ovens and other multi-function appliances: counting real functions, presets, accessories and the learning curve.",
-      "sources": ["S04"],
+      "sources": [
+        "S04"
+      ],
       "body": [
-        { "type": "img", "src": "/assets/img/guide-multifunction.png", "alt": "Illustration of a countertop oven with small floating icons suggesting different cooking modes", "caption": "Illustration: AI-generated for this site." },
-        { "type": "p", "text": "Every appliance category eventually grows a multi-function flagship, and kitchen gear is no exception. The pitch is seductive: air fryer, toaster, oven, dehydrator, rotisserie, broiler, one plug. The reality, for most households, is that three functions do ninety-five percent of the work. Your job is to find out which three, and whether this box does them well." },
-        { "type": "h2", "text": "Count the presets, then discount them" },
-        { "type": "p", "text": "Presets are recipes, not features. One appliance we track advertises twenty-four one-touch preset options in its title; the number reads impressively, but think about what it means. You do not need twenty-four buttons to cook twenty-four foods. You need a temperature, a time, and the judgment to check early. Presets earn their keep for foods you cook on repeat; the rest are shortcuts you will never press. When you compare units, ignore the count and hunt for the presets matching your weekly foods." },
-        { "type": "h2", "text": "The accessory audit" },
-        { "type": "p", "text": "Functions are delivered by accessories, and accessories are delivered by you to the sink. A rotisserie function implies a spit, forks, and a removal tool. Dehydrating implies racks, and hours of low heat that occupy the machine. Baking implies a pan or tray. One observed listing on our shelf titles six cooking accessories as included, which sounds generous until you imagine all six in the dishwasher. Ask for each advertised function: what physical part does it need, where does that part store, and who washes it." },
-        { "type": "h2", "text": "Five questions before you buy" },
-        { "type": "ol", "items": [
-          "Which three functions will I use in a normal week? Name the meals, not the modes.",
-          "Does each of those functions have a dedicated, well-reviewed control path, or is it buried in a combo mode with compromises?",
-          "What accessories does each function require, and are they included or extra purchases?",
-          "How big is the learning curve, and does the manual (available as a PDF on most listings) read like a cookbook or a contract?",
-          "Where do the accessories live between uses? Storage is the silent dealbreaker for combo appliances."
-        ] },
-        { "type": "h2", "text": "When a multi-function box is the right call" },
-        { "type": "p", "text": "Combination appliances shine in three situations: small kitchens where three separate machines cannot fit; households that genuinely use the spread, like one person toasting at breakfast and air-frying at dinner; and renters or temporary setups where one box beats a move of many. If that is not your life, the honest math favors two good single-purpose tools over one crowd-pleasing box, even when the box looks like the better deal on paper." },
-        { "type": "p", "text": "One more angle from our shelf: the multi-function units we track sit in the same observed category (air fryers) as the basket models, but they are judged by buyers differently, on toast quality and oven evenness as much as frying. If you buy a combo unit, expect to judge it as an oven first; that is where most daily use lands." },
-        { "type": "cta", "label": "Review the multi-function units we track", "href": "/categories/air-fryer-ovens/", "text": "Each row links to the observed listing so you can run this interrogation against the real spec sheet." },
-        { "type": "faq", "items": [
-          { "q": "Do combo appliances cook worse than dedicated units?", "a": "They can, at the edges: a combo oven's air fry mode shares a cavity designed for baking, so crisping a single layer may take more attention than a dedicated basket. For most daily cooking the difference is manageable; for fries-every-night households it is the trade to test." },
-          { "q": "Is more presets better?", "a": "More presets is more buttons. The useful count is how many presets match foods you already cook weekly." },
-          { "q": "What is the first function to skip?", "a": "For most buyers: dehydrating or rotisserie. Both are occasional-use modes that carry permanent accessory storage and washing costs." }
-        ] }
+        {
+          "type": "img",
+          "src": "/assets/img/guide-multifunction.png",
+          "alt": "Illustration of a countertop oven with small floating icons suggesting different cooking modes",
+          "caption": "Illustration: AI-generated for this site."
+        },
+        {
+          "type": "p",
+          "text": "Every appliance category eventually grows a multi-function flagship, and kitchen gear is no exception. The pitch is seductive: air fryer, toaster, oven, dehydrator, rotisserie, broiler, one plug. The reality, for most households, is that three functions do ninety-five percent of the work. Your job is to find out which three, and whether this box does them well."
+        },
+        {
+          "type": "h2",
+          "text": "Count the presets, then discount them"
+        },
+        {
+          "type": "p",
+          "text": "Presets are recipes, not features. One appliance we track advertises twenty-four one-touch preset options in its title; the number reads impressively, but think about what it means. You do not need twenty-four buttons to cook twenty-four foods. You need a temperature, a time, and the judgment to check early. Presets earn their keep for foods you cook on repeat; the rest are shortcuts you will never press. When you compare units, ignore the count and hunt for the presets matching your weekly foods."
+        },
+        {
+          "type": "h2",
+          "text": "The accessory audit"
+        },
+        {
+          "type": "p",
+          "text": "Functions are delivered by accessories, and accessories are delivered by you to the sink. A rotisserie function implies a spit, forks, and a removal tool. Dehydrating implies racks, and hours of low heat that occupy the machine. Baking implies a pan or tray. One observed listing on our shelf titles six cooking accessories as included, which sounds generous until you imagine all six in the dishwasher. Ask for each advertised function: what physical part does it need, where does that part store, and who washes it."
+        },
+        {
+          "type": "h2",
+          "text": "Five questions before you buy"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Which three functions will I use in a normal week? Name the meals, not the modes.",
+            "Does each of those functions have a dedicated, well-reviewed control path, or is it buried in a combo mode with compromises?",
+            "What accessories does each function require, and are they included or extra purchases?",
+            "How big is the learning curve, and does the manual (available as a PDF on most listings) read like a cookbook or a contract?",
+            "Where do the accessories live between uses? Storage is the silent dealbreaker for combo appliances."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "When a multi-function box is the right call"
+        },
+        {
+          "type": "p",
+          "text": "Combination appliances shine in three situations: small kitchens where three separate machines cannot fit; households that genuinely use the spread, like one person toasting at breakfast and air-frying at dinner; and renters or temporary setups where one box beats a move of many. If that is not your life, the honest math favors two good single-purpose tools over one crowd-pleasing box, even when the box looks like the better deal on paper."
+        },
+        {
+          "type": "p",
+          "text": "One more angle from our shelf: the multi-function units we track sit in the same observed category (air fryers) as the basket models, but they are judged by buyers differently, on toast quality and oven evenness as much as frying. If you buy a combo unit, expect to judge it as an oven first; that is where most daily use lands."
+        },
+        {
+          "type": "cta",
+          "label": "Review the multi-function units we track",
+          "href": "/categories/air-fryer-ovens/",
+          "text": "Each row links to the observed listing so you can run this interrogation against the real spec sheet."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Do combo appliances cook worse than dedicated units?",
+              "a": "They can, at the edges: a combo oven's air fry mode shares a cavity designed for baking, so crisping a single layer may take more attention than a dedicated basket. For most daily cooking the difference is manageable; for fries-every-night households it is the trade to test."
+            },
+            {
+              "q": "Is more presets better?",
+              "a": "More presets is more buttons. The useful count is how many presets match foods you already cook weekly."
+            },
+            {
+              "q": "What is the first function to skip?",
+              "a": "For most buyers: dehydrating or rotisserie. Both are occasional-use modes that carry permanent accessory storage and washing costs."
+            }
+          ]
+        }
       ]
     },
     {
@@ -172,37 +483,120 @@
       "date": "2026-11-20",
       "deck": "A thermometer is only as useful as the number you compare it with, and the place you stick the probe.",
       "description": "How to use a meat thermometer so the reading means something: USDA target temperatures, probe placement, calibration checks, and what wireless specs like range and probe count really buy you.",
-      "sources": ["S09", "S10", "S04"],
+      "sources": [
+        "S09",
+        "S10",
+        "S04"
+      ],
       "body": [
-        { "type": "img", "src": "/assets/img/guide-thermometer.png", "alt": "Illustration of a digital probe thermometer with a cable beside a roast on a cutting board", "caption": "Illustration: AI-generated for this site." },
-        { "type": "p", "text": "An instrument is only trustworthy if two things are true: it reads accurately, and it sits where the temperature means what you think it means. Meat thermometers fail cooks on both counts, quietly. The good news is that both are fixable with five minutes and a cup of ice water." },
-        { "type": "h2", "text": "First, the numbers worth trusting" },
-        { "type": "p", "text": "The USDA's Food Safety and Inspection Service publishes safe minimum internal temperatures, and their chart is the reference the rest of us should quote. From that chart: beef, pork, veal and lamb steaks, chops and roasts are cooked safely at 145°F with a three-minute rest, and all poultry, including ground poultry, at 165°F. The full chart covers ground meats, fish and more; link it, bookmark it, stop guessing." },
-        { "type": "table", "headers": ["Food", "Safe minimum internal temperature", "Source"], "rows": [
-          ["Beef, pork, veal, lamb — steaks, chops, roasts", "145°F plus a 3-minute rest", "USDA FSIS safe temperature chart (S09)"],
-          ["All poultry (whole or ground)", "165°F", "USDA FSIS safe temperature chart (S09)"]
-        ] },
-        { "type": "p", "text": "Carryover heat matters too: a roast resting on the board keeps climbing a few degrees after it leaves the heat. The USDA's three-minute rest exists partly for that reason. Pulling meat exactly at the target number is a skill; pulling a few degrees early and resting is the forgiving version of the same skill." },
-        { "type": "h2", "text": "Placement: the error nobody blames" },
-        { "type": "p", "text": "USDA guidance on thermometers is blunt about placement: for whole poultry, check the thigh, the wing, and the thickest part of the breast, avoiding bone. The general rule for any cut is the thickest part, away from bone, fat pockets, and the pan. Bone conducts heat differently than meat, so a probe touching bone reads a temperature the meat itself does not have. A reading near the surface reads cooler than the center. Both mistakes send confident cooks back to the oven with a false number." },
-        { "type": "p", "text": "With thin cuts, angle the probe so the sensitive tip sits in the thermal center, not halfway through the side. With irregular cuts, take two or three readings in different spots and trust the lowest center reading; that is the coldest place your food still needs to cook." },
-        { "type": "h2", "text": "Calibration: the five-minute check" },
-        { "type": "ol", "items": [
-          "Fill a glass with crushed ice and a little water, stir, and wait thirty seconds for it to settle at the ice point.",
-          "Insert the probe so the tip sits in the ice water without touching the glass.",
-          "The reading should settle near 32°F. Note how far off it is.",
-          "If your model adjusts, follow its calibration instructions; if not, remember the offset and apply it mentally, or retire the probe.",
-          "Repeat whenever the probe is dropped, and whenever readings start feeling suspicious. Drops knock probes out of true more than any other cause."
-        ] },
-        { "type": "h2", "text": "What wireless specs actually buy you" },
-        { "type": "p", "text": "The smart thermometers now crowding the aisle add a radio and an app to the probe. Read those specs with a practical eye. Range claims are line-of-sight promises; walls, appliances and your grill lid eat them fast, so 'unlimited range' titles usually mean the signal routes through your home network rather than a direct radio link. Probe count decides how many foods or zones you can watch at once. Heat-resistance ratings tell you whether the probe survives leaving in a hot oven or grill for the whole cook." },
-        { "type": "p", "text": "As an example of how these claims stack in a listing title, the wireless thermometer we track advertises three ultra-thin probes, app-based range, a high heat-resistance ceiling, and multiple sensors per probe, as its title read on the day we observed it. Those are claims to check against the listing and the manual, not measurements of ours. What the specs do not change: placement discipline and the ice-water check. A wireless probe in the wrong spot reports the wrong temperature at the speed of light." },
-        { "type": "cta", "label": "See the thermometer we are tracking", "href": "/categories/cooking-thermometers/", "text": "One observed listing, linked straight to Amazon, with the exact title we read." },
-        { "type": "faq", "items": [
-          { "q": "Can I leave a probe in the meat for the whole cook?", "a": "Only if the manufacturer rates the probe for sustained oven or grill temperatures; that is what heat-resistance ratings describe. Check the manual before leaving any probe in during a long or high-heat cook." },
-          { "q": "Do I need a wireless thermometer at all?", "a": "No. An instant-read probe used correctly produces trustworthy numbers with zero setup. Wireless buys convenience and monitoring, not accuracy. Start simple if you are new to thermometers." },
-          { "q": "Where should the probe go in a whole chicken?", "a": "Per USDA guidance: check the thickest part of the breast, the thigh, and the wing, avoiding bone. The lowest of those readings is the number to cook to." }
-        ] }
+        {
+          "type": "img",
+          "src": "/assets/img/guide-thermometer.png",
+          "alt": "Illustration of a digital probe thermometer with a cable beside a roast on a cutting board",
+          "caption": "Illustration: AI-generated for this site."
+        },
+        {
+          "type": "p",
+          "text": "An instrument is only trustworthy if two things are true: it reads accurately, and it sits where the temperature means what you think it means. Meat thermometers fail cooks on both counts, quietly. The good news is that both are fixable with five minutes and a cup of ice water."
+        },
+        {
+          "type": "h2",
+          "text": "First, the numbers worth trusting"
+        },
+        {
+          "type": "p",
+          "text": "The USDA's Food Safety and Inspection Service publishes safe minimum internal temperatures, and their chart is the reference the rest of us should quote. From that chart: beef, pork, veal and lamb steaks, chops and roasts are cooked safely at 145°F with a three-minute rest, and all poultry, including ground poultry, at 165°F. The full chart covers ground meats, fish and more; link it, bookmark it, stop guessing."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Food",
+            "Safe minimum internal temperature",
+            "Source"
+          ],
+          "rows": [
+            [
+              "Beef, pork, veal, lamb — steaks, chops, roasts",
+              "145°F plus a 3-minute rest",
+              "USDA FSIS safe temperature chart (S09)"
+            ],
+            [
+              "Ground meats (beef, pork, veal, lamb)",
+              "160°F",
+              "USDA FSIS safe temperature chart (S09)"
+            ],
+            [
+              "All poultry (whole or ground)",
+              "165°F",
+              "USDA FSIS safe temperature chart (S09)"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Carryover heat matters too: a roast resting on the board keeps climbing a few degrees after it leaves the heat. The USDA's three-minute rest exists partly for that reason. Pulling meat exactly at the target number is a skill; pulling a few degrees early and resting is the forgiving version of the same skill."
+        },
+        {
+          "type": "h2",
+          "text": "Placement: the error nobody blames"
+        },
+        {
+          "type": "p",
+          "text": "USDA guidance on thermometers is blunt about placement: for whole poultry, check the thigh, the wing, and the thickest part of the breast, avoiding bone. The general rule for any cut is the thickest part, away from bone, fat pockets, and the pan. Bone conducts heat differently than meat, so a probe touching bone reads a temperature the meat itself does not have. A reading near the surface reads cooler than the center. Both mistakes send confident cooks back to the oven with a false number."
+        },
+        {
+          "type": "p",
+          "text": "With thin cuts, angle the probe so the sensitive tip sits in the thermal center, not halfway through the side. With irregular cuts, take two or three readings in different spots and trust the lowest center reading; that is the coldest place your food still needs to cook."
+        },
+        {
+          "type": "h2",
+          "text": "Calibration: the five-minute check"
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Fill a glass with crushed ice and a little water, stir, and wait thirty seconds for it to settle at the ice point.",
+            "Insert the probe so the tip sits in the ice water without touching the glass.",
+            "The reading should settle near 32°F. Note how far off it is.",
+            "If your model adjusts, follow its calibration instructions; if not, remember the offset and apply it mentally, or retire the probe.",
+            "Repeat whenever the probe is dropped, and whenever readings start feeling suspicious. Drops knock probes out of true more than any other cause."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "What wireless specs actually buy you"
+        },
+        {
+          "type": "p",
+          "text": "The smart thermometers now crowding the aisle add a radio and an app to the probe. Read those specs with a practical eye. Range claims are line-of-sight promises; walls, appliances and your grill lid eat them fast, so 'unlimited range' titles usually mean the signal routes through your home network rather than a direct radio link. Probe count decides how many foods or zones you can watch at once. Heat-resistance ratings tell you whether the probe survives leaving in a hot oven or grill for the whole cook."
+        },
+        {
+          "type": "p",
+          "text": "As an example of how these claims stack in a listing title, the wireless thermometer we track advertises three ultra-thin probes, app-based range, a high heat-resistance ceiling, and multiple sensors per probe, as its title read on the day we observed it. Those are claims to check against the listing and the manual, not measurements of ours. What the specs do not change: placement discipline and the ice-water check. A wireless probe in the wrong spot reports the wrong temperature at the speed of light."
+        },
+        {
+          "type": "cta",
+          "label": "See the thermometer we are tracking",
+          "href": "/categories/cooking-thermometers/",
+          "text": "One observed listing, linked straight to Amazon, with the exact title we read."
+        },
+        {
+          "type": "faq",
+          "items": [
+            {
+              "q": "Can I leave a probe in the meat for the whole cook?",
+              "a": "Only if the manufacturer rates the probe for sustained oven or grill temperatures; that is what heat-resistance ratings describe. Check the manual before leaving any probe in during a long or high-heat cook."
+            },
+            {
+              "q": "Do I need a wireless thermometer at all?",
+              "a": "No. An instant-read probe used correctly produces trustworthy numbers with zero setup. Wireless buys convenience and monitoring, not accuracy. Start simple if you are new to thermometers."
+            },
+            {
+              "q": "Where should the probe go in a whole chicken?",
+              "a": "Per USDA guidance: check the thickest part of the breast, the thigh, and the wing, avoiding bone. The lowest of those readings is the number to cook to."
+            }
+          ]
+        }
       ]
     }
   ]

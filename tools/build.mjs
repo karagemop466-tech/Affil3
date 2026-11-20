@@ -50,6 +50,7 @@ const DASHBOARDS = [
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
+  ['/editorial/', 'Editorial register (second publication)'],
 ];
 
 // ---------- helpers ----------
@@ -177,9 +178,9 @@ function productCard(p, placement) {
     <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
     <h3>${esc(title)}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
-    <p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>
+    ${placement === 'front-shelf' ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
     <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
-    <p class="status">${esc(p.outbound_status)}</p>
+    ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
   </div>
 </article>`;
   }
@@ -188,7 +189,7 @@ function productCard(p, placement) {
     <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
     <h3>Link not resolved</h3>
     <p class="muted small">Submitted link: <code>${esc(p.submitted_token)}</code></p>
-    <p class="status">No buy link is published. The link landed on a checkpoint page with no product. ${flagLinks(['FLG-004', 'FLG-021'])}</p>
+    <p class="status">No buy link is published. The link has not resolved to a product page in a verified session. An Amazon "Continue shopping" checkpoint is intermittent and is not by itself evidence that a link is dead. ${flagLinks(['FLG-004'])}</p>
   </div>
 </article>`;
 }
@@ -267,7 +268,7 @@ const add = (p) => pages.push(p);
 <section class="band" id="shelf">
   <div class="band-head">
     <h2>On the shelf this month</h2>
-    <p>Five submitted products, four resolved to observed Amazon listings and one held back because its link landed on a checkpoint page. The cards below say what the listing titles claim; the buttons go straight to the listings.</p>
+    <p>Five submitted products, each resolved to an observed Amazon listing. Two destinations needed a retest after an earlier register revision transposed them; the cards below say what the listing titles claim, and the buttons go straight to the listings.</p>
   </div>
   <div class="shelf">${shelf}</div>
   <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
@@ -314,6 +315,9 @@ const add = (p) => pages.push(p);
 
 // Shop table
 {
+  const resolvedCount = products.filter((p) => p.observed_asin).length;
+  const unanswered = products.filter((p) => !p.observed_asin);
+  const taggedCount = products.filter((p) => p.tagged_outbound_url).length;
   const rows = products.map((p) => [
     `<strong>${esc(p.id)}</strong>`,
     `<a href="${esc(href('/categories/' + p.category + '/'))}">${esc(catName(p.category))}</a>`,
@@ -344,10 +348,9 @@ const add = (p) => pages.push(p);
   <h2>What the table shows</h2>
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
-    <li>Four short links resolved to a product page, and each product ID differs from the token in its link. ${flagLinks(['FLG-002'])}</li>
-    <li>Across two sessions' observations, two different submitted tokens have routed to the same observed product, and the observations disagree about which token maps to it. ${flagLinks(['FLG-021'])}</li>
-    <li>One short link (B00hJ57DV) landed on a checkpoint page, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}</li>
-    <li>Four tagged links to observed products are published with the tracking ID shopnow047c-20. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
+    <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
+    <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-023'])}</li>
+    <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
   </ul>
@@ -378,7 +381,7 @@ for (const c of CATEGORIES) {
 <section class="band"><h2>Guides for this cluster</h2>
 ${gl.length ? `<ul class="guide-list">${gl.map((g) => `<li class="guide-item"><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a><p>${esc(g.deck)}</p></li>`).join('')}</ul>` : '<p>No guide yet in this cluster.</p>'}
 </section>
-${c.slug === 'unresolved' ? `<section class="band"><h2>Why this cluster is empty</h2><p>${esc(products.find((p) => p.category === 'unresolved') ? 'The submitted link B00hJ57DV landed on a checkpoint page. We did not substitute a product.' : '')}</p><p>${flagLinks(['FLG-003', 'FLG-004', 'FLG-021'])}</p></section>` : ''}`,
+${c.slug === 'unresolved' ? `<section class="band"><h2>Why this cluster is empty</h2><p>${esc(products.find((p) => p.category === 'unresolved') ? 'No submitted link remains unresolved. The B00hJ57DV link first hit an intermittent checkpoint page and later resolved to a product, so this cluster is empty. We did not substitute any product.' : '')}</p><p>${flagLinks(['FLG-003', 'FLG-004', 'FLG-022'])}</p></section>` : ''}`,
   });
 }
 
@@ -446,17 +449,19 @@ add({
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two submitted tokens have been observed routing to the same product across two sessions' observations, with the observations disagreeing on the mapping (FLG-021). One link resolved to a checkpoint page (FLG-004). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-023). The status of the short links is unresolved, not invalid (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
-<h2>Decisions needed from you</h2>
+<h2>Evidence needed before expanding</h2>
 <ol>
-<li>Give the intended product for each short link, or confirm the observed product (Q-01).</li>
+<li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
-<li>Run gate G-02: one Special Link per product in Associates Central, then tell us the result (Q-04).</li>
+<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
 <li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nothing there is implemented until you choose.</li>
 </ol>
+<h2>Measure before expanding</h2>
+<p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener external">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (${srcLink('S02')}) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
 <h2>Limits</h2>
 <p>This build cannot pull Amazon product data, prices or sales reports. Those require authorized access (for example the Product Advertising API or Associates reports), which the sandbox does not have. The site does not scrape Amazon.</p>
 </div>`,
@@ -507,11 +512,12 @@ add({
   path: '/flagged/', title: 'Flagged for review',
   description: 'Irregularities and unverified items, with the sources and the manual step that would close each one.',
   body: `<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">${esc(flagsDoc.note)} Flags do not block publication.</p></section>
-${flagsDoc.flags.map((f) => `<section class="flag-card" id="${esc(f.id)}">
-  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong></p>
+${flagsDoc.flags.map((f) => `<section class="flag-card${f.status === 'resolved' ? ' is-resolved' : ''}" id="${esc(f.id)}">
+  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong>${f.status === 'resolved' ? ' <span class="badge resolved">resolved</span>' : ''}</p>
   <p>${esc(f.detail)}</p>
+  ${f.status === 'resolved' && f.resolution ? `<p class="resolution"><strong>Resolution:</strong> ${esc(f.resolution)}</p>` : ''}
   <p class="small"><strong>Sources:</strong> ${f.sources.length ? f.sources.map(srcLink).join(', ') : 'none (repo or owner input)'}</p>
-  <p class="small"><strong>Manual step:</strong> ${esc(f.manual_step)}</p>
+  ${f.manual_step ? `<p class="small"><strong>Manual step:</strong> ${esc(f.manual_step)}</p>` : ''}
 </section>`).join('\n')}`,
 });
 

@@ -1,0 +1,25 @@
+name: Verify site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Gate the published Pages site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm run check
+      - name: Require committed output to match a clean build
+        run: |
+          git status --short
+          test -z "$(git status --porcelain)"

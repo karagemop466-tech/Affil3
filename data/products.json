@@ -61,7 +61,7 @@
     },
     {
       "id": "P03",
-      "category": "unresolved",
+      "category": "air-fryers",
       "submitted_url": "https://link.amazon/B00hJ57DV",
       "submitted_token": "B00hJ57DV",
       "submitted_token_length": 9,
@@ -69,27 +69,36 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified; no product page observed",
+      "confirmation_status": "Unverified",
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-004"
+        "FLG-022"
       ],
-      "observed_final_url": "",
-      "observed_asin": "",
-      "observed_title": "Not observed: the link landed on an Amazon 'Continue shopping' checkpoint page with no product.",
-      "observed_breadcrumb": "",
+      "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_asin": "B08DKYBTPH",
+      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
       "sources": [
-        "S05"
+        "S05",
+        "S04"
       ],
-      "tagged_outbound_url": "",
-      "outbound_status": "Not published as a buy link (no product observed)",
-      "editorial_note": "No product page was observed for this submitted link, so there is nothing to describe. The row is kept for the record; no buy link is published."
+      "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "reverification": {
+        "date": "2026-11-20",
+        "previous_observed_asin": "",
+        "previous_observed_final_url": "",
+        "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
+        "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
+        "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
+      },
+      "editorial_note": "The observed listing title reads as a single-basket 8-quart unit with a high-heat setting advertised in the title and a dishwasher-safe basket claim. This row initially sat in the unresolved cluster until a re-fetch resolved it (FLG-004, FLG-022)."
     },
     {
       "id": "P04",
-      "category": "air-fryers",
+      "category": "cooking-thermometers",
       "submitted_url": "https://link.amazon/B0c8moW59",
       "submitted_token": "B0c8moW59",
       "submitted_token_length": 9,
@@ -100,20 +109,29 @@
       "confirmation_status": "Unverified",
       "flags": [
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "FLG-022"
       ],
-      "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "observed_asin": "B08DKYBTPH",
-      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
-      "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "observed_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_asin": "B0DHZTCNR5",
+      "observed_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
+      "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
         "S04"
       ],
-      "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+      "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
-      "editorial_note": "The observed listing title reads as a single-basket 8-quart unit with a high-heat setting advertised in the title and a dishwasher-safe basket claim."
+      "reverification": {
+        "date": "2026-11-20",
+        "previous_observed_asin": "B08DKYBTPH",
+        "previous_observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
+        "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
+        "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
+      },
+      "editorial_note": "The observed listing title reads as a fast-read digital instant-read thermometer with a claimed ±0.5°F accuracy and waterproofing — the second thermometer on the shelf, alongside the wireless multi-probe unit P05 (FLG-022 records the corrected mapping)."
     },
     {
       "id": "P05",
@@ -143,5 +161,6 @@
       "outbound_status": "Associates link check pending (gate G-02)",
       "editorial_note": "The observed listing title reads as a wireless multi-probe thermometer with app-based range and a high heat-resistance rating advertised in the title."
     }
-  ]
+  ],
+  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022."
 }

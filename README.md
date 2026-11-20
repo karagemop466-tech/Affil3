@@ -1,72 +1,92 @@
 # Affil3
 
-A static buying-guide site for five submitted Amazon products, built from structured data.
-Live site (GitHub Pages): https://karagemop466-tech.github.io/Affil3/
+Amazon Associates publications built from a verified source register. Tracking ID `shopnow047c-20`.
 
-## What is here
+**Live:** https://karagemop466-tech.github.io/Affil3/
 
-| Path | Purpose |
-| --- | --- |
-| `data/products.json` | The five product rows: submitted link, intended ASIN fields (blank until verified), observed Amazon fields (kept separate), flags, sources |
-| `data/sources.json` | Source register (S01–S12): official page, how it was checked, status |
-| `data/flags.json` | Flagged for Review items (FLG-001 …) with evidence and the manual step that closes each |
-| `data/questions.json` | Known facts, open questions, and ways to discover missing information |
-| `data/suggestions.json` | Options to choose between. Nothing is implemented until chosen |
-| `data/guides.json` | Question-led guides (content, dates, sources) |
-| `data/config.json` | Site name, tracking ID, disclosure text, analytics endpoint (empty by default) |
-| `data/events.json` | The five proposed analytics events and privacy rules |
-| `data/ledger.json` | Empty campaign ledger (filled only from authorized first-party reports) |
-| `tools/build.mjs` | Generates the site at the repository root (no dependencies). Replaces only its own paths |
-| `tools/verify.mjs` | Publishing gate: data and HTML checks; exits non-zero on failure |
-| `tools/collector.mjs` | Optional self-hosted analytics collector (aggregate counts only) |
-| `src/assets/` | Stylesheet and browser measurement script (source; copied to `assets/`) |
-| `index.html`, `shop/`, `guides/`, `categories/`, … | Generated site served by GitHub Pages from the repository root |
-| `legacy/arena-83a43a96/` | Earlier root-level site from session `arena-83a43a96-affil3` (PR #1), moved here unchanged |
-| `EXECUTIVE_SUMMARY-6249757a.md` | Executive summary for this session (the root `EXECUTIVE_SUMMARY.md` belongs to session `arena-83a43a96-affil3` and is unchanged) |
-| `COORDINATION.md` | Shared task board (session `arena-83a43a96-affil3` section unchanged, session `6249757a` section appended), verification log, irregularities, PR and deploy record |
+GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
+Nothing was deleted to make room; each session's output is kept and reachable.
 
-## Commands
+## What is published
 
-```sh
-npm run build     # regenerate the site at the repository root
-npm run verify    # run the publishing gate
-npm run check     # build, then verify
-npm run collector # optional: start the analytics collector on :8787
+| Path | Owner | What it is |
+|---|---|---|
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
+
+`/editorial/` exists because its build was written against a different data model and its verification
+found things the other register did not. Keeping both builds preserves both verification passes rather
+than merging them into one file whose provenance nobody can reconstruct.
+
+## Read these first
+
+| File | What it is |
+|---|---|
+| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
+| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`data/`](data/) | Register for the root site |
+| [`data/register/`](data/register/) | Register for `/editorial/` |
+
+## Build
+
+**Root site** (Node, no dependencies):
+
+```bash
+node tools/build.mjs     # data/*.json  -> repository root
+node tools/verify.mjs    # gates
 ```
 
-Node.js 18 or later. No packages are installed.
+**Editorial site** (Python, no dependencies):
 
-## Rules the build enforces
+```bash
+python3 tools/build.py       # data/register/*.json -> editorial/
+python3 tools/check_site.py  # gates
+```
 
-- Every product row has a source link to an official page, or the field is blank and flagged.
-- Intended ASIN, official listing URL, confirmation date and confirmation source are filled only from an official source. Observed redirect destinations live in separate fields.
-- Every link to an Amazon host carries `rel="sponsored noopener"`.
-- Product links use the tracking ID from `data/config.json` (`?tag=shopnow047c-20`), and point to an observed `/dp/` product. No redirects or cloaking.
-- The disclosure strip sits under the masthead on every page and is repeated in the footer. It contains the Associates statement from Operating Agreement §5.
-- No prices, ratings or availability are shown.
-- Analytics records only the five listed events, with no cookies. The browser script sends nothing unless an endpoint is set.
+Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
 
-## Turning analytics on
+## What the editorial gate refuses to let through
 
-GitHub Pages cannot run the collector. To measure clicks:
+- A price. No currency amount may appear in the HTML at all.
+- A star rating or review count.
+- A product call-to-action without `tag=shopnow047c-20`.
+- An Amazon citation not marked `rel="nofollow"`.
+- A page without the required Associates statement.
+- A spec row citing a source ID that does not exist.
+- A link that escapes the published subtree.
+- A page missing from that subtree's sitemap.
 
-1. Run `tools/collector.mjs` on a host you control, behind HTTPS, with `SITE_ORIGIN=https://karagemop466-tech.github.io`.
-2. Set `analyticsEndpoint` in `data/config.json` to `https://<your-host>/collect`.
-3. Run `npm run check` and push.
+This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
+See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
 
-See suggestion S-03 and flag FLG-009.
+## The finding both sessions independently agree on
 
-## Open items
+Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
+Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
+The links are untagged — that is a different claim from *invalid*, and only the first is made here.
 
-See `/flagged/` on the live site and `COORDINATION.md`. The main blockers are the 9-character submitted tokens (FLG-001), the observed destinations that differ from the tokens (FLG-002), and Associates validation of the tagged links (gate G-02, FLG-005).
+## Licence and attribution
+
+Product names and trademarks belong to their owners. Specification values are quoted from the
+publisher's own pages and cited by source ID. Neither publication is endorsed by or affiliated with
+Amazon.com, Inc. beyond participation in the Amazon Associates program.
+
+As an Amazon Associate I earn from qualifying purchases.
 
 ---
 
 ## Session addendum — `arena63534e5d` (publication polish pass, 2026-11-20)
 
-This session merged `main` (PR #6) without discarding anything and is executing the
-reader-facing polish pass on top of the machinery above: a new design system, rewritten
-editorial copy, disclosed AI-generated illustrations, and a products-first front page.
-All build rules ("Rules the build enforces") are unchanged and still enforced by
-`tools/verify.mjs`. New session work is tracked in the `arena63534e5d` section of
-[`COORDINATION.md`](COORDINATION.md).
+This session merged `main` twice (PR #6, then PRs #17/#19/#20) without discarding anything,
+and executed the reader-facing polish pass on top of the machinery above: rebrand to
+"ShopNow Kitchen" (disclosed on About), a new editorial design system, labeled AI-generated
+illustrations, rewritten human-voice guides (including the FSIS ground-meat correction),
+`/workflow/` and `/privacy/` pages, a card-based decision board, and a CI drift gate
+(`.github/workflows/publish.yml`). All build rules ("Rules the build enforces") are unchanged
+and still enforced by `tools/verify.mjs`; the `editorial/` second publication and its
+tooling from session `arena/4578ad4b-affil3` are untouched. This session's work is tracked
+in the `arena63534e5d-affil3` section of [`COORDINATION.md`](COORDINATION.md), and its PR is
+[#26](https://github.com/karagemop466-tech/Affil3/pull/26).

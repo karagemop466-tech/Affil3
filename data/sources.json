@@ -89,7 +89,7 @@
       "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
       "updated": "not stated on the excerpt",
       "method": "excerpt",
-      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
+      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F. Ground meats: 160 °F (row added to the thermometer guide on 2026-11-20; re-check against the full chart).",
       "status": "verified (excerpt; re-check manually)"
     },
     {
@@ -119,17 +119,27 @@
       "url": "https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC",
       "updated": "not stated",
       "method": "excerpt",
-      "used_for": "Amazon-owned description of ASINs ('ASIN is the 10-digit code that Amazon uses to denote specific products') and the official Associates text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID). Update (2026-11-20): an Amazon-owned page was located; it was read as a search excerpt of the official domain, so a manual full-page re-check is still pending (FLG-012).",
+      "used_for": "Amazon-owned description of ASINs ('ASIN is the 10-digit code that Amazon uses to denote specific products') and the official Associates text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID). Update (2026-11-20, session arena63534e5d): an Amazon-owned page was located on the allowlisted Associates Central host; read as a search excerpt, so a manual full-page re-check is still pending (FLG-012).",
       "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S13",
+      "title": "Amazon Associates Central help: OneLink and link support (Amazon full links and short links)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GC4NVV7K3XNG99X5",
+      "updated": "",
+      "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
+      "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
+      "status": "excerpt verified; manual check pending"
+    },
+    {
+      "id": "S14",
       "title": "Amazon.com Associates Central - Help: What is the application review process? (tagged links)",
       "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
       "updated": "not stated",
       "method": "excerpt",
-      "used_for": "Confirms Associates 'special' links are the tagged identifiers (e.g. abcd-20) embedded in product links on the declared site(s), and that tagged links must be recreated from the new application if re-applied. Duplicates S11 for the tagged-link point; retained as a distinct row because FLG-001 cites it for the tag-format comparison.",
+      "used_for": "Confirms Associates 'special' links are the tagged identifiers (e.g. abcd-20) embedded in product links on the declared site(s). Same topic as S11; retained because FLG-001 cites it for the tag-format comparison. Renumbered from a draft S13 on this session's branch after session arena/822d5c60-affil3 used S13 for the OneLink short-link source.",
       "status": "verified (excerpt; re-check manually)"
     }
   ]

@@ -4,3 +4,7 @@ analytics-data/
 node_modules/
 .DS_Store
 *.tmp
+# Python tooling (editorial register build)
+__pycache__/
+*.pyc
+.venv/

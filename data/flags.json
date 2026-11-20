@@ -10,7 +10,7 @@
         "S04",
         "S05",
         "S12",
-        "S13"
+        "S14"
       ],
       "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
     },
@@ -29,22 +29,25 @@
       "id": "FLG-003",
       "severity": "high",
       "title": "Compliance status of the supplied short links is unresolved",
-      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence.",
+      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.",
       "sources": [
         "S02",
-        "S05"
+        "S05",
+        "S13"
       ],
       "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely."
     },
     {
       "id": "FLG-004",
       "severity": "high",
-      "title": "One submitted link (B00hJ57DV) did not resolve to a product",
-      "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published.",
+      "title": "One submitted link (B00hJ57DV) initially appeared not to resolve to a product",
+      "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.",
       "sources": [
         "S05"
       ],
-      "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified."
+      "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
+      "status": "resolved",
+      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
     },
     {
       "id": "FLG-005",
@@ -121,12 +124,12 @@
       "id": "FLG-012",
       "severity": "medium",
       "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Secondary pages were the only ASIN definition available when the first register was written. Update (2026-11-20, session arena63534e5d): an Amazon-owned Associates help page describing ASINs as a 10-digit code and the official text-link format was located and added to the register as S13, and the S12 entry was pointed at it. The page was read via a search excerpt of the official domain, so a manual full-page re-check is still the step that closes this flag.",
+      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources. Update (2026-11-20, session arena63534e5d): an Amazon-owned Associates help page describing ASINs as a 10-digit code and the official text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID) was located and recorded as S12; it was read as a search excerpt of the official domain, so a manual full-page re-check remains the step that closes this flag.",
       "sources": [
         "S04",
         "S12"
       ],
-      "manual_step": "Open S13 in a browser, confirm the ASIN definition wording in the full page text, and update the source register entry from 'excerpt' to 'fetched'."
+      "manual_step": "Open S12 in a browser, confirm the ASIN definition wording in the full page text, and update the S12 register entry from 'excerpt' to 'fetched'."
     },
     {
       "id": "FLG-013",
@@ -200,14 +203,40 @@
     },
     {
       "id": "FLG-021",
+      "severity": "low",
+      "title": "Thermometer guide omitted the FSIS ground-meat row; corrected",
+      "detail": "The guide 'Is your meat thermometer telling you the right number?' listed beef, poultry and ham minimums but omitted the FSIS row 'Ground Meats: 160 degrees F'. Corrected on 2026-11-20 by adding 'Ground meats: 160 °F.' to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.",
+      "sources": [
+        "S09",
+        "S10"
+      ],
+      "action": "None. Recorded for transparency."
+    },
+    {
+      "id": "FLG-022",
+      "title": "Two product destinations were transposed in the root-site register (corrected)",
       "severity": "high",
-      "title": "Two submitted tokens have been observed routing to the same product, across two sessions' observations",
-      "detail": "Session 6249757a observed B0c8moW59 resolving to B08DKYBTPH and B00hJ57DV to a checkpoint page. Session arena63534e5d observed B00hJ57DV resolving to B08DKYBTPH and B0c8moW59 to a checkpoint page. Across observations, two different submitted tokens route to the same observed product and the two observations disagree about which token maps to it. This reinforces FLG-002 and FLG-004: the token-to-product mapping is unstable or rate-limited, and the intended product behind each link can only be established by the owner in a signed-in browser (D-01) or from Associates Central records.",
+      "status": "resolved",
+      "area": "product data",
+      "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
+      "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
+      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
+      "sources": [
+        "S05"
+      ],
+      "detected_by": "session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "low",
+      "title": "Independent fetch by session arena63534e5d corroborated the corrected P03/P04 mapping",
+      "detail": "During the publication polish pass, an unauthenticated fetch observed B00hJ57DV resolving to B08DKYBTPH (Chefman 8 Qt) and B0c8moW59 landing on an intermittent checkpoint. Both observations agree with the corrected register: P03's mapping to B08DKYBTPH was confirmed independently, and P04's checkpoint matches the intermittent behavior recorded in FLG-004/FLG-022 rather than a dead link. An earlier draft of this flag (temporarily numbered FLG-021 on this session's branch) described a disagreement between registers; the corrected register (FLG-022) explains it. Kept as dated corroborating evidence.",
       "sources": [
         "S04",
         "S05"
       ],
-      "manual_step": "Owner opens each of the five short links in a signed-in browser, records the product name and ASIN observed, and confirms the intended product for each row (discovery step D-01, question Q-01)."
+      "manual_step": ""
     }
-  ]
+  ],
+  "checked": "2026-11-20"
 }
