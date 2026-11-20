@@ -1,0 +1,17 @@
+<main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="{{root}}">Home</a><span aria-hidden="true">/</span><a href="{{root}}about/">About</a><span aria-hidden="true">/</span> Privacy</p>
+    <p class="eyebrow">Privacy · current behavior and future gates</p>
+    <h1>This static edition does not collect reader profiles.</h1>
+    <p class="lede">No email address, cookie-based identifier, raw search query, or Amazon account information is collected by the public GitHub Pages build.</p>
+  </section>
+  <section class="section">
+    <div class="card-grid two">
+      <article class="card"><p class="card-meta">Site measurement</p><h2>Events are disabled on the public Pages runtime</h2><p>The repository includes a proposed five-event schema and a self-hosted Node endpoint. The request did not specify event names or fields; the static Pages artifact and default preview both serve a disabled runtime and send no analytics events.</p></article>
+      <article class="card"><p class="card-meta">Local preference</p><h2>Suggestion selection stays in this browser</h2><p>If you choose a path on the Suggestions page, that preference is stored in this browser's localStorage. It is not sent to the site or used to personalize other pages. You can clear it by removing the site's local storage in your browser.</p></article>
+      <article class="card"><p class="card-meta">Reader capture</p><h2>No signup form is active</h2><p>The site does not ask for or save email addresses. Reader capture will stay closed until a service, privacy/retention explanation, and functioning unsubscribe path are configured.</p></article>
+      <article class="card"><p class="card-meta">Future endpoint</p><h2>Aggregate-only by design</h2><p>If the self-hosted endpoint is deployed, the included server stores daily aggregate counts by event, page, and internal product record, with a 90-day default retention that the operator can configure. It does not persist IP addresses, cookies, full referrers, raw search queries, emails, or user IDs. The server uses a connection address transiently in memory for rate limiting; a hosting provider or reverse proxy may have separate request logs and retention. Production behavior must be tested and disclosed before measurement is described as active.</p></article>
+    </div>
+    <p class="table-note">The current privacy state and implementation gate are recorded in <a href="{{root}}desk/measurement.html">Measurement</a> and <a href="{{root}}flagged/">Flagged for Review</a>. This page describes the current implementation, not a legal determination.</p>
+  </section>
+</main>

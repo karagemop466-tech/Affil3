@@ -1,0 +1,158 @@
+{
+  "checkedOn": "2026-11-20",
+  "sources": [
+    {
+      "id": "SRC-01",
+      "title": "Amazon Associates Program Operating Agreement",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "2025-10-15",
+      "verifiedNotes": "The agreement says Special Links must use the special tagged formats Amazon provides and requires the statement, ‘As an Amazon Associate I earn from qualifying purchases.’"
+    },
+    {
+      "id": "SRC-02",
+      "title": "Associates Program Policies",
+      "publisher": "Amazon Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "2026-04-14",
+      "verifiedNotes": "Program policies include Special Link formatting and PA API / Creators API content-use requirements. This is the primary policy source used for the link and automation gates."
+    },
+    {
+      "id": "SRC-03",
+      "title": "How do I build a simple text link to a specific item on Amazon?",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Amazon documents a product link format that uses an ASIN and Associate ID, and recommends using its link-building tools. The submitted short-link path values are not copied into the intended-ASIN field."
+    },
+    {
+      "id": "SRC-04",
+      "title": "FTC's Endorsement Guides: What People Are Asking",
+      "publisher": "Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "FTC guidance says affiliate relationships should be disclosed clearly and conspicuously, close to recommendations and links; the guidance notes context matters and is not a safe harbor."
+    },
+    {
+      "id": "SRC-05",
+      "title": "How To use reports",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GMWAK55DQX8JEK7C",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Amazon Associates reports surface clicks, ordered items, shipped items and conversions, with reports selectable by Tracking ID. No account report was supplied or accessed for this project."
+    },
+    {
+      "id": "SRC-06",
+      "title": "How to read the Order Report",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GPTZ495QPL6TEZLJ",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Amazon defines fields in the Order Report, including product-link clicks and product-link conversion. Project reporting fields remain blank until copied from an authorized first-party report with provenance."
+    },
+    {
+      "id": "SRC-07",
+      "title": "Are There Any Requirements to Use the Product Advertising API?",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GVJ2BJP35457CLML",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Amazon says PA API use requires an open Associates account, compliance with the Operating Agreement, and application for PA API subject to its license. No API credentials or account were supplied."
+    },
+    {
+      "id": "SRC-08",
+      "title": "Build and submit a sitemap",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Google documents sitemap formats, root placement, and sitemap submission options. The shipped sitemap lists the public publication pages and guides."
+    },
+    {
+      "id": "SRC-09",
+      "title": "Get started with Search Console",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Google describes verifying site ownership, checking indexing, submitting a sitemap if desired, and using Search performance reports for query and traffic data. Search Console ownership is not verified here."
+    },
+    {
+      "id": "SRC-10",
+      "title": "Using custom workflows with GitHub Pages",
+      "publisher": "GitHub Docs",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "GitHub documents building and deploying static Pages artifacts with Actions. GitHub Pages does not run the Node analytics API included in this repository."
+    },
+    {
+      "id": "SRC-11",
+      "title": "CAN-SPAM Act: A Compliance Guide for Business",
+      "publisher": "Federal Trade Commission",
+      "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "FTC guidance describes commercial-email requirements, including a clear opt-out explanation and a functioning opt-out process. No signup form or email collection is enabled."
+    },
+    {
+      "id": "SRC-12",
+      "title": "Can I Check If My Links Are Tagging to My Account?",
+      "publisher": "Amazon Associates Central Help",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Amazon describes checking the Store ID or Tracking ID in a generated link and says its Link Checker is for links created or modified outside Associates Central. The supplied links have not been tested in an enrolled Associates workflow."
+    },
+    {
+      "id": "SRC-P01",
+      "title": "Observed Amazon page after individual re-open of submitted link 01",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Individually re-opened the exact submitted URL https://link.amazon/B04G1MEwY in the page reader on 2026-11-20. The normalized Amazon target path, visible page title, and breadcrumb category 'Air Fryers' are observations only. They do not confirm owner intent, the complete HTTP redirect chain, current listing details, or Special Link compliance/tracking."
+    },
+    {
+      "id": "SRC-P02",
+      "title": "Observed Amazon page after individual re-open of submitted link 02",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Individually re-opened the exact submitted URL https://link.amazon/B02NbDxp3 in the page reader on 2026-11-20. The normalized Amazon target path, visible page title, and breadcrumb category 'Air Fryers' are observations only. They do not confirm owner intent, the complete HTTP redirect chain, current listing details, or Special Link compliance/tracking."
+    },
+    {
+      "id": "SRC-P03",
+      "title": "Observed Amazon page after individual re-open of submitted link 03",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Individually re-opened the exact submitted URL https://link.amazon/B00hJ57DV in the page reader on 2026-11-20. The normalized Amazon target path, visible page title, and breadcrumb category 'Air Fryers' are observations only. They do not confirm owner intent, the complete HTTP redirect chain, current listing details, or Special Link compliance/tracking."
+    },
+    {
+      "id": "SRC-P04",
+      "title": "Observed Amazon page after individual re-open of submitted link 04",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Individually re-opened the exact submitted URL https://link.amazon/B0c8moW59 in the page reader on 2026-11-20. The normalized Amazon target path, visible page title, and breadcrumb category 'Meat Thermometers' are observations only. They do not confirm owner intent, the complete HTTP redirect chain, current listing details, or Special Link compliance/tracking."
+    },
+    {
+      "id": "SRC-P05",
+      "title": "Observed Amazon page after individual re-open of submitted link 05",
+      "publisher": "Amazon.com",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "checkedOn": "2026-11-20",
+      "pageUpdated": "",
+      "verifiedNotes": "Individually re-opened the exact submitted URL https://link.amazon/B0f3GKalj in the page reader on 2026-11-20. The normalized Amazon target path, visible page title, and breadcrumb category 'Meat Thermometers' are observations only. They do not confirm owner intent, the complete HTTP redirect chain, current listing details, or Special Link compliance/tracking."
+    }
+  ]
+}

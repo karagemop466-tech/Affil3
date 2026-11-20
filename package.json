@@ -1,0 +1,13 @@
+{
+  "name": "countertop-notes-affiliate-publication",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-first static affiliate publication and gated research desk.",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "check": "node scripts/build-site.mjs && node scripts/verify-site.mjs && node scripts/test-analytics.mjs",
+    "test:analytics": "node scripts/test-analytics.mjs",
+    "start": "node server/index.mjs"
+  }
+}

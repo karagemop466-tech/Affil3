@@ -1,0 +1,26 @@
+<main id="main-content">
+  <section class="page-hero">
+    <p class="breadcrumbs"><a href="{{root}}">Home</a><span aria-hidden="true">/</span><a href="{{root}}desk/">Research desk</a><span aria-hidden="true">/</span> Suggestions</p>
+    <p class="eyebrow">Decision room · proposals, not silent changes</p>
+    <h1>Choose the next path before it becomes a publishing decision.</h1>
+    <p class="lede">The site separates a suggested direction from a decision to implement it. Compare the benefit, trade-off, missing evidence, and official references before choosing.</p>
+  </section>
+  <section class="section">
+    <div class="note-box success-box"><strong>Recommended next gate: proof-first shopping launch.</strong><p>Confirm intended products, test the corresponding Special Links, and verify the Tracking ID report before turning inspection records into purchase recommendations. This is a recommendation about sequence, not a product score.</p></div>
+    <div class="table-wrap">
+      <table>
+        <caption>Suggestion board · each path is explicitly proposed or gated</caption>
+        <thead><tr><th scope="col">Path</th><th scope="col">Proposal</th><th scope="col">Why consider it</th><th scope="col">Trade-off / status</th><th scope="col">Official sources</th></tr></thead>
+        <tbody>{{SUGGESTION_TABLE_ROWS}}</tbody>
+      </table>
+    </div>
+    <form class="choice-form" data-path-choice>
+      <fieldset>
+        <legend>Which area should be the next review priority?</legend>
+        {{SUGGESTION_OPTIONS}}
+      </fieldset>
+      <div class="choice-save"><span class="choice-status" data-choice-status aria-live="polite">Recommended path is selected as a starting point.</span><button class="button small" type="submit">Save local preference</button></div>
+      <p class="table-note">Your choice is stored in this browser only. It does not change source data, publish a guide, activate a link, deploy a backend, or contact an external service.</p>
+    </form>
+  </section>
+</main>
