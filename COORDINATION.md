@@ -485,3 +485,33 @@ Parallel proposals remain untouched. Root publication is already the Pages sourc
 
 - Resolved the concurrent append from PR #17 by retaining both session records. The root gate passed 1,317 checks after correcting the Amazon policy source link.
 - Reviewed the [Associates Agreement](https://affiliate-program.amazon.com/help/operating/agreement), [Program Policies](https://affiliate-program.amazon.com/help/operating/policies), and [Search Console documentation](https://developers.google.com/search/docs/monitor-debug/search-console-start). Historical product rows were not freshly reverified. The live collector, Search Console ownership, and authenticated Special Link validation remain unconfirmed (see Flagged for Review).
+
+## Completion record — session `166bf329`
+
+| Field | Value |
+|---|---|
+| Branch | `arena/166bf329-affil3` |
+| PR #8 | #8 closed unmerged — built from the stale base `847ae37`; its 21-page site was discarded rather than allowed to overwrite the live site |
+| PR #10 | merged (squash) — corrected two transposed product destinations; `main` @ `1355b16` |
+| PR #13 | merged (squash) — shop summary counts derived from data; `main` @ `f31fa23` |
+| PR #15 | merged (squash) — resolved flags render as resolved; `main` @ `ac89023` |
+| PR #16 | merged (squash) — exact link→destination pairs in the resolutions; `main` @ `9287de5` |
+| Deploy | GitHub Pages, source `main` at `/`, legacy build. Status `built` on `9287de5`, verified by fetching `/shop/` and `/flagged/` |
+| Gate | `node tools/build.mjs && node tools/verify.mjs` → 23 pages, 22 sitemap URLs, 5 feed items, **1316 checks, 0 failed** |
+
+### What this session did not do
+
+- It did not merge its own 21-page publication. `main` already had a site, a generator and a data
+  model when this session's work arrived, and two publications on one domain would have competed.
+  The separate build is closed with PR #8 and nothing of it remains on `main`.
+- It did not change any product data other than the two corrected rows, and it introduced no price,
+  rating, availability or conversion figure.
+- It did not resolve FLG-002, FLG-003 or FLG-005. Those need a signed-in Associates session, which
+  this sandbox does not have.
+
+### The one thing worth reading if you read nothing else
+
+`B00hJ57DV` was recorded as a dead link because one fetch returned an Amazon "Continue shopping"
+checkpoint. It was never dead. That single over-cautious observation cost a product row, put a meat
+thermometer under the wrong submitted link, and was carried into the published page. **A checkpoint
+is not evidence a link is dead** — retry before recording a negative.
