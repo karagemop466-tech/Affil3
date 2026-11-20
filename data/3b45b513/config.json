@@ -1,0 +1,25 @@
+{
+  "siteName": "Counter Desk",
+  "siteUrl": "https://karagemop466-tech.github.io/Affil3",
+  "basePath": "/Affil3/counter-desk",
+  "language": "en-US",
+  "trackingId": "shopnow047c-20",
+  "associatesStatement": "As an Amazon Associate I earn from qualifying purchases.",
+  "disclosure": "I get commissions for purchases made through links in this post.",
+  "disclosureLine": "I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.",
+  "author": "The Counter Desk editorial desk",
+  "authorNote": "A team byline, deliberately. No named editor has been supplied, and inventing a person would be worse than admitting there is not one yet.",
+  "lastReviewed": "2026-11-20",
+  "edition": "Reader edition, built 2026-11-20",
+  "analyticsEndpoint": "",
+  "analyticsNote": "Off by design. GitHub Pages cannot run the collector, so no endpoint is set and the browser sends nothing. See /counter-desk/measurement/.",
+  "seasonal": {
+    "kicker": "Late November, in the kitchen",
+    "title": "The month the oven is fully booked",
+    "body": "For four weeks a year, counter space is the scarcest thing in the kitchen and the oven has a queue. That is the fortnight when a second cooking box and a probe that reports from inside the meat stop being gadgets and start being logistics.",
+    "links": [
+      ["/guides/holiday-cooking-with-less-counter-space/", "Cooking a holiday meal with less counter space"],
+      ["/guides/is-your-meat-thermometer-telling-you-the-right-number/", "What the probe should actually read"]
+    ]
+  }
+}

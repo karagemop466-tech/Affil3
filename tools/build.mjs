@@ -36,6 +36,8 @@ const COUNT_TOKENS = { guide: GUIDE_COUNT, product: PRODUCT_COUNT, flag: flagsDo
 const fillTokens = (t = '') => String(t).replace(/\{([a-z]+)\}/g, (m, k) => (COUNT_TOKENS[k] === undefined ? m : String(COUNT_TOKENS[k])));
 const NUM_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
 const num = (n) => (NUM_WORDS[n] === undefined ? String(n) : NUM_WORDS[n]);
+// A count that opens a sentence is written like one.
+const cap = (t = '') => String(t).charAt(0).toUpperCase() + String(t).slice(1);
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
@@ -68,7 +70,9 @@ const DASHBOARDS = [
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
   ['/design-brief/', 'Design brief (next redesign)'],
-  ['/editorial/', 'Editorial register (second publication)'],
+  // The second publication is deliberately not linked from the footer any more. Every page on the site
+  // linked it, which is the crawl path that puts a duplicate edition in front of a search engine; the
+  // editions stay reachable from /legacy/archive/, and the decision to index one of them is S-20.
 ];
 
 // ---------- helpers ----------
@@ -421,6 +425,11 @@ const add = (p) => pages.push(p);
 // Home (publication front page: products first)
 {
   const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
+  const quickPick = products.map((p) => `<div class="qp-item">
+  <p class="qp-product">${esc(p.short_name)}</p>
+  <p class="qp-fit">${esc(p.fit_line)}</p>
+  <p class="qp-links"><a class="btn" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="front-quickpick">View on Amazon</a> · <a href="${esc(href('/guides/' + p.guide_slug + '/'))}">${esc(p.guide_title)}</a></p>
+</div>`).join('\n');
   const newestGuides = [...guides].slice(0, 3);
   const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
@@ -457,10 +466,17 @@ const add = (p) => pages.push(p);
   <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
     <h2>The shortlist</h2>
-    <p>${esc(num(PRODUCT_COUNT))} kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
+    <p>${esc(cap(num(PRODUCT_COUNT)))} kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
   <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all ${esc(num(PRODUCT_COUNT))} in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
+</section>
+<section class="band band-alt">
+  <div class="band-head">
+    <h2>Not sure which one? Pick by how you cook</h2>
+    <p>One line per product, and the guide that matches your kitchen.</p>
+  </div>
+  <div class="quick-pick">${quickPick}</div>
 </section>
 <section class="band band-alt">
   <div class="band-head">
@@ -477,7 +493,7 @@ const add = (p) => pages.push(p);
     <p>Say what you cook, how much of it, and how much counter you are willing to give up. The fit check reads only the numbers the manufacturers publish on the pages this site cites, and it shows its working: the match, the runner-up, and the figure each answer rested on.</p>
     <div class="hero-ctas">
       <a class="btn btn-primary" href="${esc(href('/find/'))}">Take the fit check</a>
-      <a class="btn btn-ghost" href="${esc(href('/guides/dual-basket-or-one-big-basket/'))}">Or read the dual-basket question first</a>
+      <a class="btn btn-ghost" href="${esc(href('/guides/dual-basket-or-single-basket-air-fryer/'))}">Or read the dual-basket question first</a>
     </div>
   </div>
   <ol class="finder-preview">
@@ -1149,7 +1165,7 @@ ${g.opts.map(([v, label, hint]) => `    <label class="finder-opt"><input type="r
 </form>
 <section class="band band-alt">
   <div class="band-head"><h2>The two thermometers are a different question</h2>
-  <p>A probe is not chosen by capacity or counter space, so it is not in this check. It is chosen by whether you want a number now or a number while you are in another room: <a href="${esc(href('/guides/instant-read-or-leave-in-probe/'))}">instant read or leave-in probe</a>.</p></div>
+  <p>A probe is not chosen by capacity or counter space, so it is not in this check. It is chosen by whether you want a number now or a number while you are in another room: <a href="${esc(href('/guides/instant-read-or-leave-in-probe-which-thermometer-do-you-need/'))}">instant read or leave-in probe</a>.</p></div>
 </section>
 <section class="band">
   <div class="band-head"><h2>Where every number came from</h2>

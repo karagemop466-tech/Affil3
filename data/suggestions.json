@@ -552,26 +552,58 @@
     },
     {
       "id": "S-20",
-      "topic": "What the front page shows first",
-      "current": "Implemented in this session (option B), reversible in one commit",
+      "track": "findability",
+      "topic": "Crawl control for a site served at a project path",
+      "problem": "robots.txt is generated at /Affil3/, but search engines read it only from the host root (FLG-038). The 'one site to index' goal therefore depends on noindex tags and on how the other editions are handled, not on robots.txt. The surfaces that now compete with the root are /editorial/, /counter/, /counterwise/, /crisp-index/, /legacy/ and /counter-desk/ (added on main after this branch was cut).",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Leave the order alone",
-          "tradeoff": "The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled."
+          "label": "Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).",
+          "tradeoff": "No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.",
+          "effort": "minutes",
+          "risk": "medium"
         },
         {
           "id": "B",
-          "label": "Lead with the three highest-intent decisions",
-          "tradeoff": "Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order."
+          "label": "Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.",
+          "tradeoff": "Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.",
+          "effort": "about 2 hours",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Rotate the three cards weekly",
-          "tradeoff": "Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity."
+          "label": "Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.",
+          "tradeoff": "Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.",
+          "effort": "about 1 hour",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Serve the root publication from a repository named for the owner's GitHub Pages host, so robots.txt is read from the host root.",
+          "tradeoff": "Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.",
+          "effort": "about half a day",
+          "risk": "medium"
         }
       ],
-      "recommendation": "B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the 'reads like a shop' complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change."
+      "recommendation": "A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the 'one site to index' goal, and this suggestion does not claim that it does.",
+      "evidence": {
+        "sources": [
+          "S25"
+        ],
+        "flags": [
+          "FLG-038",
+          "FLG-013"
+        ]
+      },
+      "depends_on": [
+        "S-11",
+        "Q-10",
+        "FLG-013"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-21",
@@ -663,7 +695,7 @@
           "tradeoff": "Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions."
         }
       ],
-      "recommendation": "A, today, as a one-line clarification; B only after Q-19 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
+      "recommendation": "A, today, as a one-line clarification; B only after Q-20 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid."
     },
     {
       "id": "S-25",
@@ -687,6 +719,29 @@
         }
       ],
       "recommendation": "C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists."
+    },
+    {
+      "id": "S-26",
+      "topic": "What the front page shows first",
+      "current": "Implemented in this session (option B), reversible in one commit",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the order alone",
+          "tradeoff": "The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled."
+        },
+        {
+          "id": "B",
+          "label": "Lead with the three highest-intent decisions",
+          "tradeoff": "Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order."
+        },
+        {
+          "id": "C",
+          "label": "Rotate the three cards weekly",
+          "tradeoff": "Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity."
+        }
+      ],
+      "recommendation": "B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the 'reads like a shop' complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change."
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-20 to S-25 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, what happens after a seasonal page, where the session records live, whether the fit check is measured, and which marketplace the buttons belong to.",
@@ -806,7 +861,7 @@
     },
     {
       "order": 17,
-      "id": "S-20",
+      "id": "S-26",
       "why": "Already taken; listed so the choice is on the record and reversible."
     }
   ],

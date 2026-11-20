@@ -1,0 +1,24 @@
+{
+  "status": "Empty by design. No authorised first-party report has been supplied, so the ledger has zero rows and no totals.",
+  "rule": "A row may be added only from an authorised first-party report — an Associates export the owner supplies, or a report from a platform the owner controls — and each row must record where it came from. A site click is not an order. Nothing here may be estimated, modelled, scraped or back-filled.",
+  "added_by_hand": true,
+  "columns": [
+    { "name": "period_start", "meaning": "First day of the reporting window, ISO 8601 (YYYY-MM-DD)." },
+    { "name": "period_end", "meaning": "Last day of the reporting window, inclusive." },
+    { "name": "source", "meaning": "The report this row came from, named exactly as the system names it, e.g. 'Amazon Associates — Link Type report'." },
+    { "name": "channel", "meaning": "Where the traffic came from: organic search, direct, RSS, a named social post, an email send." },
+    { "name": "eligible_sessions", "meaning": "Sessions the report counts as eligible for attribution, as the report defines it. Never derived by subtraction from another column." },
+    { "name": "clicks", "meaning": "Outbound clicks the report attributes to this site and this window." },
+    { "name": "reported_orders", "meaning": "Orders the report attributes to this site and this window. Orders, not revenue, and only from the first-party report." },
+    { "name": "provenance", "meaning": "Path or reference to the underlying export, its export date, and who exported it." },
+    { "name": "notes", "meaning": "Anything that qualifies the row: a tracking gap, a currency or marketplace caveat, a known duplicate." }
+  ],
+  "rows": [],
+  "prohibited": [
+    "Revenue or commission estimates of any kind.",
+    "Conversion rates calculated from modelled traffic.",
+    "Traffic forecasts.",
+    "Numbers copied from a screenshot without the underlying export.",
+    "Rows assembled from two reports with different windows."
+  ]
+}

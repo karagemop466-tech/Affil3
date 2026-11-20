@@ -130,6 +130,15 @@ a.cat-card { padding: 20px; }
 .seasonal p { color: #46503a; }
 .seasonal-art img { border-radius: 14px; display: block; }
 
+/* quick pick: shopper decision helper on the front shelf */
+.quick-pick { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin: 14px 0 4px; }
+.qp-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; background: var(--card); box-shadow: var(--shadow); }
+.qp-product { font-weight: 800; font-size: 15.5px; margin: 0 0 4px; color: var(--ink); }
+.qp-fit { color: var(--muted); font-size: 13.5px; margin: 0 0 10px; line-height: 1.45; }
+.qp-links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.qp-links a.btn { font-size: 13px; padding: 7px 14px; margin: 0; }
+.qp-links a + a::before { content: "·"; color: var(--muted); padding: 0 4px; }
+
 /* figures in guides */
 .figure { margin: 22px 0 26px; max-width: 760px; }
 .figure img { width: 100%; box-shadow: var(--shadow); }

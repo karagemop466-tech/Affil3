@@ -93,7 +93,7 @@
     },
     {
       "id": "K-13",
-      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
       "sources": [
         "S05",
         "S04",
@@ -191,7 +191,6 @@
       ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. K-22 to K-25, Q-17 to Q-19 and D-13 to D-15 were added on 2026-11-20 by session ca51f5b3, after a fresh fetch round and the findability review; Q-19 is marked blocking because a marketplace choice sits underneath every buy button on the site.",
   "unknown": [
     {
       "id": "Q-01",
@@ -351,6 +350,16 @@
     },
     {
       "id": "Q-17",
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
+      "sources": [
+        "S05"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-18",
       "question": "Should the fit check stay on-device, or should its answers be counted once a collector exists?",
       "why_it_matters": "The fit check is the one page on the site that reads a reader's intent directly, so it is the most useful thing to measure and the most personal thing to measure. Today it sends nothing anywhere, which is what /privacy/ promises. Counting it would mean changing that notice first and adding an event name to three files that must agree.",
       "how_to_close": "Answer with S-25 when the collector host is decided (Q-04). Option A costs nothing and keeps the notice true; option B requires the privacy page to be updated in the same commit that turns counting on, plus the ten-click test in D-04.",
@@ -361,7 +370,7 @@
       "blocking": false
     },
     {
-      "id": "Q-18",
+      "id": "Q-19",
       "question": "Who takes the seasonal deal guide down when the promotion ends, and on what date?",
       "why_it_matters": "Amazon's participation requirements ask that links and references to a limited-time promotion be removed as soon as the promotion ends. A page that keeps the words Black Friday in its headline after the event is a standing instruction nobody has acted on, and the site's own cadence is automated while this one is not.",
       "how_to_close": "Pick S-23. If the answer is a takedown, the removal is one commit on a branch owned by whoever is next in COORDINATION.md; the date is the day after the event ends on the marketplace named in Q-05.",
@@ -372,7 +381,7 @@
       "blocking": false
     },
     {
-      "id": "Q-19",
+      "id": "Q-20",
       "question": "Do the buy links aim at the marketplace the owner can actually be paid on?",
       "why_it_matters": "Every published link goes to www.amazon.com with tracking ID shopnow047c-20, whose -20 suffix matches the US convention. An owner reading this from the Netherlands may intend amazon.nl, which is a separate Associates program with its own IDs, its own agreement and its own listings, none of which this sandbox can fetch. The answer decides the domain of every buy button, the disclosure wording and which listings are even legal to link.",
       "how_to_close": "Answer with S-24. Either way, export the account's tracking ID list (D-03) so the ID and the marketplace are confirmed together rather than inferred from a suffix.",
@@ -467,7 +476,7 @@
       "id": "D-13",
       "suggestion": "Work the fit check through its six obvious combinations in a browser, including the two that should not produce a clean answer (a whole meal in a foot of counter, a big household wanting one batch). If a row ever wins with nothing behind it, that is a matcher bug and belongs on the flag page, not in a copy edit.",
       "closes": [
-        "Q-17"
+        "Q-18"
       ]
     },
     {
@@ -482,5 +491,6 @@
         "Q-15"
       ]
     }
-  ]
+  ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. K-22 to K-25, Q-18 to Q-20 and D-13 to D-15 were added on 2026-11-20 by session ca51f5b3, after a fresh fetch round and the findability review; the short-link question opened the same day by session d19dff2c is Q-17. Q-20 is marked blocking because a marketplace choice sits underneath every buy button on the site."
 }

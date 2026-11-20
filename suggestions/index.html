@@ -157,16 +157,16 @@
   <p class="choice-rec"><strong>Session recommendation:</strong> B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.</p>
 </section>
 <section class="choice-card" id="S-20">
-  <p class="kicker">S-20 · What the front page shows first</p>
-  <p class="choice-current">Current: <span class="badge">Implemented in this session (option B), reversible in one commit</span></p>
-  <ul class="opts"><li><strong>A.</strong> Leave the order alone<br><span class="muted small">Tradeoff: The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled.</span></li><li><strong>B.</strong> Lead with the three highest-intent decisions<br><span class="muted small">Tradeoff: Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order.</span></li><li><strong>C.</strong> Rotate the three cards weekly<br><span class="muted small">Tradeoff: Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the &#39;reads like a shop&#39; complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change.</p>
+  <p class="kicker">S-20 · Crawl control for a site served at a project path</p>
+  <p class="choice-current">Current: <span class="badge">A</span></p>
+  <ul class="opts"><li><strong>A.</strong> Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).<br><span class="muted small">Tradeoff: No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.</span></li><li><strong>B.</strong> Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/, counter-desk/), then keep the root publication as the only indexed site.<br><span class="muted small">Tradeoff: Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.</span></li><li><strong>C.</strong> Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.<br><span class="muted small">Tradeoff: Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.</span></li><li><strong>D.</strong> Serve the root publication from a repository named for the owner&#39;s GitHub Pages host, so robots.txt is read from the host root.<br><span class="muted small">Tradeoff: Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the &#39;one site to index&#39; goal, and this suggestion does not claim that it does.</p>
 </section>
 <section class="choice-card" id="S-21">
   <p class="kicker">S-21 · Reader capture, without a third-party form</p>
   <p class="choice-current">Current: <span class="badge">Not implemented. RSS only</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep RSS and an email address as the only return paths<br><span class="muted small">Tradeoff: No list, no re-marketing. Honest, and it costs the one thing an affiliate site normally builds.</span></li><li><strong>B.</strong> Add a hosted form provider<br><span class="muted small">Tradeoff: Breaks the rule the privacy page is built on: the site currently loads no third-party origin at all. A form vendor is a data processor, a cookie surface and a review this site has not done.</span></li><li><strong>C.</strong> Self-host a form endpoint next to the collector<br><span class="muted small">Tradeoff: Only real if S-03 chooses a host. Mail is then a server the owner runs, and the privacy notice has to say what the address is kept for and for how long.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. The site has 10 guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already).</p>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A for now. The site has 15 guides and no measurable audience yet; a capture box on a page nobody has found is a form with no queue. Revisit when S-03 is decided and the guide count has grown, and never choose B without updating /privacy/ first (FLG-035 was closed once already).</p>
 </section>
 <section class="choice-card" id="S-22">
   <p class="kicker">S-22 · Session records sitting in the web root</p>
@@ -184,13 +184,19 @@
   <p class="kicker">S-24 · Which marketplace the buy buttons belong to</p>
   <p class="choice-current">Current: <span class="badge">One marketplace, amazon.com, for every link</span></p>
   <ul class="opts"><li><strong>A.</strong> Stay US-only and say so<br><span class="muted small">Tradeoff: Add one line to /about/ and the footer: prices, shipping and availability shown by Amazon are US-marketplace figures. Costs a reader nothing, removes a wrong expectation.</span></li><li><strong>B.</strong> Add amazon.nl links for the same products<br><span class="muted small">Tradeoff: Needs a Dutch Associates account, NL listing URLs verified from an official page, and a second tag in every link. This sandbox cannot fetch amazon.nl, so every one of those rows would ship unverified.</span></li><li><strong>C.</strong> Split the site by marketplace, one publication each<br><span class="muted small">Tradeoff: Doubles the register, the gate and the disclosure obligations, against a traffic base of zero measured sessions.</span></li></ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-19 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
+  <p class="choice-rec"><strong>Session recommendation:</strong> A, today, as a one-line clarification; B only after Q-20 is answered in writing and one tagged NL link has been tested in the same way gate G-02 tests the US one. Publishing an unverified marketplace link is exactly the failure this site exists to avoid.</p>
 </section>
 <section class="choice-card" id="S-25">
   <p class="kicker">S-25 · Whether the fit check is measured</p>
   <p class="choice-current">Current: <span class="badge">Runs entirely in the browser. Nothing is sent</span></p>
   <ul class="opts"><li><strong>A.</strong> Keep it unmeasured forever<br><span class="muted small">Tradeoff: The cleanest privacy position available and no new event name; the cost is that the most valuable reader signal on the site stays unread.</span></li><li><strong>B.</strong> Add one aggregate event when the collector exists<br><span class="muted small">Tradeoff: Needs the host decision (S-03), a matching name in three files that the gate already keeps in step, and /privacy/ updated in the same commit. Counts answers, never people.</span></li><li><strong>C.</strong> Measure the outcome instead: outbound clicks from /find/ results<br><span class="muted small">Tradeoff: Needs no new event, because the click counter already tags placements. It tells you whether the match was followed, which is the only question that matters, once a buy link can earn at all.</span></li></ul>
   <p class="choice-rec"><strong>Session recommendation:</strong> C first, and it is already instrumented: every result card links to a product page whose buy button carries a placement. If that shows readers arriving at /find/ and clicking, move to B with the collector decision. Do not add B before the privacy page can say it exists.</p>
+</section>
+<section class="choice-card" id="S-26">
+  <p class="kicker">S-26 · What the front page shows first</p>
+  <p class="choice-current">Current: <span class="badge">Implemented in this session (option B), reversible in one commit</span></p>
+  <ul class="opts"><li><strong>A.</strong> Leave the order alone<br><span class="muted small">Tradeoff: The three cards stay the original basket-shape guides, which read well but answer questions most readers have already settled.</span></li><li><strong>B.</strong> Lead with the three highest-intent decisions<br><span class="muted small">Tradeoff: Done: the shelf stays, and the first three guide cards are now the dual-basket question, the will-it-fit question and the deal question, because those are the pages a shopper clicks before they compare. Costs nothing and is only an array order.</span></li><li><strong>C.</strong> Rotate the three cards weekly<br><span class="muted small">Tradeoff: Needs a date-driven builder and a takedown rule; the same machinery S-23 asks for, spent on vanity.</span></li></ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> B, taken without waiting. A front page that leads with the questions people arrive asking is the cheapest change on this board and the only one that touches the &#39;reads like a shop&#39; complaint directly. Feed order and sitemap are generated from the same array, so nothing else had to change.</p>
 </section>
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="/Affil3/questions/">questions page</a>.</p></section>
@@ -206,9 +212,9 @@
       <h2 class="foot-h">Guides</h2>
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
-        <li><a href="/Affil3/guides/dual-basket-or-one-big-basket/">Dual basket or one big basket: which fits your weeknights?</a></li>
         <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
-        <li><a href="/Affil3/guides/instant-read-or-leave-in-probe/">Instant read or leave-in probe: which earns a drawer?</a></li>
+        <li><a href="/Affil3/guides/dual-basket-or-single-basket-air-fryer/">Dual basket or single basket: which one for four people?</a></li>
+        <li><a href="/Affil3/guides/black-friday-air-fryer-deal-checklist/">Is a Black Friday air fryer deal worth waiting for?</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -228,7 +234,6 @@
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
         <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
-        <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
       </ul>
     </div>
   </div>
