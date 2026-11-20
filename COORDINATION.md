@@ -2017,3 +2017,13 @@ FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data c
 
 Corroborated (no action requested by this session): FLG-037 (conflicting short-link rounds) and FLG-038/S-20 (project-path robots.txt + partial noindex coverage) — independently re-counted and re-fetched, matches.
 
+
+## Completion record (session `arena/d19dff2c-affil3`)
+
+- **Pull request: [#71](https://github.com/karagemop466-tech/Affil3/pull/71)** — “Independent release QA: first-hand source verification, seven flagged irregularities, decision gates and owner suggestions” (`arena/d19dff2c-affil3` → `main`), opened 2026-11-20. Body summarizes the two files changed, the official sources re-fetched, the gate results, and RR-01…RR-07.
+- **Checks before merge:** all completed, zero failures (`mergeable: MERGEABLE`, `mergeStateStatus: CLEAN`) — disclosure, verify, gate ×2, check-site, Counter Desk gate, “Gate the published Pages site”.
+- **Merge result: MERGED** into `main` as `efe0124e7b2a6bdb84b0fedfb1452878592acf20` at 2026-11-20T07:00:07Z (`gh pr merge 71 --merge`; no review wait, per the brief).
+- **Post-merge verification on `main`:** `npm run check` → 40 pages, 4,642 checks passed, 0 failed; editorial 21 pages PASS; disclosure-check PASS (both statements above the fold, no prices/ratings); docs-site link check 593 links, none broken; working tree clean after rebuild (deterministic).
+- **GitHub Pages:** source `main` at `/`, HTTPS enforced; build for `efe0124` reported **built** at 2026-11-20T07:00:36Z; live fetch of `/flagged/` and `/` after deploy serves the disclosure strip above the fold (spot-checked this session).
+- **Deliverable:** `RELEASE-REVIEW-d19dff2c.md` in the repository root — executive summary, release state, 17-row first-hand source verification, RR-01…RR-07, DQ-1…DQ-10, R-S01…R-S23, manual-review links.
+- **Not done here, by scope:** RR-01…RR-07 fixes (requested from owning sessions in the table above); owner gates DQ-1…DQ-5 (Associates Central, intended ASINs, G-02, analytics host, Search Console); no intended ASIN set, no short-link dereference, no price/rating recorded.
