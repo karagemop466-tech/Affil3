@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaign ledger &amp; analytics · The Crisp Index</title>
+<meta name="description" content="The empty-but-defined campaign ledger, the proposed five-event analytics schema, the self-hosted endpoint gate, and the compliance checks in the publishing workflow.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/workshop/ledger.html">
+<link rel="alternate" type="application/rss+xml" title="The Crisp Index feed" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<meta property="og:title" content="Campaign ledger &amp; analytics · The Crisp Index">
+<meta property="og:description" content="The empty-but-defined campaign ledger, the proposed five-event analytics schema, the self-hosted endpoint gate, and the compliance checks in the publishing workflow.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/workshop/ledger.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Crisp Index">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="masthead-inner"><a class="brand" href="../index.html"><span class="brand-mark">The <em>Crisp</em> Index</span><span class="brand-tag">Straight answers for the countertop kitchen</span></a><button class="nav-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button><nav class="main-nav" id="main-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../guides/index.html">Buyer&#x27;s Guides</a><a href="../compare/index.html">Compare</a><a href="../products/index.html">The Test Queue</a><a href="../about/index.html">About</a></nav></div></header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure"><p><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Links marked <span class="chip chip-sponsored">Sponsored</span> are affiliate links — the price you pay never changes. <a href="../disclosure/index.html">Full disclosure</a></p></div>
+<main id="main">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="executive-summary.html">The Workshop</a><span class="sep">/</span><span>Campaign ledger &amp; analytics</span></nav>
+
+<div class="wrap article-header">
+  <p class="eyebrow">The Workshop · Campaign ledger &amp; analytics</p>
+  <h1>Measurement, gated honestly</h1>
+  <p class="lede">Priority 4 — measure before automating optimization. This campaign ledger starts empty but well-defined. Rows are added ONLY from authorized first-party reports: Amazon Associates reports for reported orders (and their own session/click figures), or the self-hosted analytics endpoint for eligible sessions and clicks once deployed. Each row carries a dated provenance entry. No conversion score or revenue forecast is presented anywhere in this project.</p>
+</div>
+<section class="section"><div class="wrap">
+  <h2>Campaign ledger schema</h2>
+  <div class="table-scroll"><table class="data">
+    <thead><tr><th>Field</th><th>Type</th><th>Definition</th><th>Required</th></tr></thead>
+    <tbody><tr><td><code>timestamp</code></td><td>ISO 8601 date</td><td>Report period start (or run date for point-in-time pulls)</td><td>yes</td></tr><tr><td><code>source</code></td><td>string</td><td>Report origin, e.g. &#x27;Amazon Associates Orders report 2026-12-01 run&#x27;</td><td>yes</td></tr><tr><td><code>channel</code></td><td>string</td><td>Traffic channel as reported, e.g. &#x27;organic search&#x27;, &#x27;direct&#x27;</td><td>yes</td></tr><tr><td><code>eligible_sessions</code></td><td>integer</td><td>Sessions counted by the authorized first-party analytics endpoint</td><td>yes</td></tr><tr><td><code>clicks</code></td><td>integer</td><td>Outbound product clicks counted by the authorized first-party analytics endpoint</td><td>yes</td></tr><tr><td><code>reported_orders</code></td><td>integer</td><td>Orders as reported by Amazon Associates first-party reports for the tagged links</td><td>yes</td></tr><tr><td><code>provenance</code></td><td>string</td><td>Report name, date pulled, and who pulled it — dated provenance trail</td><td>yes</td></tr></tbody>
+  </table></div>
+  <div class="callout">
+    <h3>Current entries: none</h3>
+    <p>Empty at launch (2026-11-20). No authorized first-party reports have been obtained yet; nothing is estimated, inferred, or forecast.</p>
+    <p class="fine">Status: <span class="status-pill status-info">empty by policy</span></p>
+  </div>
+
+  <h2 style="margin-top:2em">Event schema (proposed)</h2>
+  <p>The brief requires recording “the five defined events” but does not enumerate them
+  <a class="chip chip-flag" href="flagged.html#FLG-009" title="Open the Flagged for Review register">FLG-009</a>. Proposed five, implemented in <code>assets/js/analytics.js</code> and
+  awaiting your confirmation <a class="chip chip-flag" href="flagged.html#FLG-006" title="Open the Flagged for Review register">FLG-006</a>:</p>
+  <p><code>page_view, outbound_click, guide_read, newsletter_signup, feedback_click</code></p>
+  <p class="fine">PROPOSED schema (SUG-003) for the brief&#x27;s undefined &#x27;five defined events&#x27; (Q-003). Owner confirmation pending; sending is disabled until the self-hosted endpoint is deployed (FLG-006).</p>
+
+  <h2 style="margin-top:2em">The gate: self-hosted endpoint</h2>
+  <ol>
+    <li>Deploy <code>tools/analytics-endpoint/</code> (Cloudflare Worker reference, or the Python
+    stdlib server) on the host chosen in <a href="suggestions.html#SUG-004">SUG-004</a>.</li>
+    <li>Set <code>analyticsEndpoint</code> in <code>docs/site-config.js</code> — that single line
+    releases the counter.</li>
+    <li>The endpoint stores only <code>{event, path, ts, ref}</code> — no cookies, no IP, no
+    user agent, no cross-site identifiers.</li>
+    <li>Rows appear in the ledger only from authorized first-party reports, each with a dated
+    provenance entry. Until then: no sessions, no clicks, no orders, no forecasts.</li>
+  </ol>
+
+  <h2 style="margin-top:2em">Compliance gate in the publishing workflow (Priority 5)</h2>
+  <ul>
+    <li>Disclosure placement and endorsement context reviewed against the Operating Agreement
+    <a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" title="Associates Program Operating Agreement (updated October 15, 2025) — Amazon Associates, accessed 2026-11-20">S-01</a> and FTC guidance <a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener" target="_blank" title="Disclosures 101 for Social Media Influencers — U.S. Federal Trade Commission, accessed 2026-11-20">S-04</a> <a class="src" href="https://www.ftc.gov/news-events/topics/truth-advertising/advertisement-endorsements" rel="noopener" target="_blank" title="Advertisement Endorsements — Endorsement Guides topic hub — U.S. Federal Trade Commission, accessed 2026-11-20">S-05</a> on every publish.</li>
+    <li>No product goes live without register entry + source links; no optimization runs before
+    measurement exists (Priority 4).</li>
+  </ul>
+</div></section>
+
+</main>
+<footer class="site-footer"><div class="wrap">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="brand-mark">The <em>Crisp</em> Index</span>
+      <p>Question-first buying guides for air fryers, countertop ovens, and the gadgets between — with every claim sourced and every link disclosed.</p>
+      <p><a href="../disclosure/index.html">Disclosure &amp; affiliate policy</a> ·
+         <a href="../about/index.html#corrections">Corrections</a></p>
+    </div>
+    <div>
+      <h4>Shop &amp; read</h4>
+      <ul><li><a href="../guides/index.html">Buyer’s guides</a></li><li><a href="../compare/index.html">Compare air fryer shapes</a></li><li><a href="../products/index.html">The Test Queue</a></li><li><a href="../guides/holiday-hosting-countertop.html">Holiday hosting 2026</a></li><li><a href="../feed.xml">RSS feed</a></li></ul>
+    </div>
+    <div>
+      <h4>The Workshop</h4>
+      <ul><li><a href="executive-summary.html">Executive summary</a></li><li><a href="register.html">Product register &amp; verification</a></li><li><a href="flagged.html">Flagged for Review</a></li><li><a href="suggestions.html">Suggestions &amp; decisions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="ledger.html">Campaign ledger &amp; analytics</a></li><li><a href="../disclosure/index.html">Disclosure policy</a></li><li><a href="../about/index.html">About &amp; methodology</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-disclosure">
+    <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Disclosure repeated in full on every page and under every
+    product link, per the Amazon Associates Operating Agreement
+    (<a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank">S-01</a>)
+    and FTC guidance
+    (<a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener" target="_blank">S-04</a>).
+    Product facts come from the linked listings; anything we could not confirm from an official
+    source is left blank and flagged on the <a href="flagged.html">Flagged for Review</a> page.</p>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 The Crisp Index</span>
+    <span>Published from San Francisco, California</span>
+    <span>Tracking ID shopnow047c-20</span>
+    <span>Site build 2026-11-20</span>
+    <a href="../sitemap.xml">Sitemap</a>
+  </div>
+</div></footer>
+<script src="../site-config.js"></script>
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
