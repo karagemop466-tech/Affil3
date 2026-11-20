@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement — Affil3</title>
+<meta name="description" content="The five events the site records, the privacy rules, and the honest current state: inactive until an endpoint is deployed.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/measurement/">
+<meta property="og:title" content="Measurement">
+<meta property="og:description" content="The five events the site records, the privacy rules, and the honest current state: inactive until an endpoint is deployed.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/measurement/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Affil3">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-counter.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="analytics-endpoint" content="">
+<link rel="stylesheet" href="/Affil3/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 — buying guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+
+</head>
+<body data-page="measurement" >
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead-top">
+      <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span><small>Kitchen buying guides</small></a>
+      <p class="masthead-issue"><b>Independent</b> · checked November 20, 2026</p>
+    </div>
+    <nav class="nav" aria-label="Main">
+      <a href="/Affil3/shop/">The picks</a>
+      <a href="/Affil3/guides/">Buying guides</a>
+      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/about/">How we choose</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure.</strong> <span>Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</span> <a href="/Affil3/compliance/">How we disclose</a></div>
+</div>
+<main id="main">
+<div class="wrap">
+<section class="page-head"><p class="kicker">Measurement</p><h1>What we record, and what we refuse to</h1>
+<p class="deck">A proposed set of five events. The client records them only when analyticsEndpoint is set in data/config.json; today it is empty, so nothing is sent and no traffic figure exists.</p></section>
+<div class="status-box"><strong>Live status:</strong> Inactive. No endpoint is configured, so the browser sends nothing and no traffic figure exists. <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a></div>
+<div class="table-wrap"><table class="wide"><thead><tr><th scope="col">Event</th><th scope="col">Fires when</th><th scope="col">Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load.</td><td><code>path</code> <code>referrer_host</code></td></tr><tr><td><code>category_view</code></td><td>Once per category page load.</td><td><code>category</code></td></tr><tr><td><code>product_view</code></td><td>When a product page or product card is shown, once per page load.</td><td><code>product_id</code></td></tr><tr><td><code>outbound_click</code></td><td>When a reader clicks a buy link. The link is not redirected; the browser goes straight to the Amazon URL.</td><td><code>product_id</code> <code>destination_host</code> <code>placement</code></td></tr><tr><td><code>guide_read_75</code></td><td>When a reader scrolls past 75 percent of a guide.</td><td><code>guide</code></td></tr></tbody></table></div>
+<h2>Privacy</h2>
+<p>No cookies. No IP address stored. No user-agent stored. No fingerprinting. No cross-site identifiers. Counts are aggregated per day, and browsers sending Do Not Track are not counted at all.</p>
+<p class="small muted">Not collected: cookies, IP address, user-agent, account data, anything typed into the page, cross-site identifiers.</p>
+<h2>Why clicks are not routed through a redirect</h2>
+<p>The Program Policies prohibit cloaking the URL of a site that carries Special Links, including by sending readers indirectly through an intermediate page. A redirect-based click counter is exactly that pattern, so the counter records the click in the browser and lets the link go straight to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+<h2>How a click actually earns</h2>
+<p>A qualifying purchase begins when a reader clicks a tagged link and ends at the first of: 24 hours, an order, or a click on somebody else's link. If the item goes into the cart first, the window extends to 89 days. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S17</a></p>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span></a>
+        <p class="foot-blurb">An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/shop/">The full comparison table</a></li>
+          <li><a href="/Affil3/sources/">Source register</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/suggestions/">Suggestions to review</a></li>
+          <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
+          <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Some links here are affiliate links and are marked sponsored. Photography on this site is editorial illustration, not the reviewed units.</p>
+    <p class="fine">Affil3 is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown here. Product photography is editorial illustration, not the reviewed unit. Last checked November 20, 2026. Source links appear on every claim, and the full register is in the footer.</p>
+  </div>
+</footer>
+<script src="/Affil3/assets/analytics.js" defer></script>
+</body>
+</html>

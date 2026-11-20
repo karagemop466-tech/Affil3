@@ -1,93 +1,104 @@
-# Affil3 — ShopNow 047
+# Affil3
 
-An Amazon-Associates publishing site for kitchen gear, built so that **every claim on a page can be
-traced to a dated row in a register, and every rule that can be checked by a machine is checked on
-every build.**
+Amazon Associates publications built from a verified source register. Tracking ID `shopnow047c-20`.
 
-Live site: **https://karagemop466-tech.github.io/Affil3/** (served from `docs/` on `main`)
+**Live:** https://karagemop466-tech.github.io/Affil3/
 
-> **Read this first.** The five product links supplied to this project were
-> `https://link.amazon/<9-character token>`. Amazon ASINs are 10 characters, so those strings are
-> redirect handles, not identifiers. Four of them resolved on 2026-11-20 to real listings
-> (`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DZFD6R9Z`); one did not resolve at all. The register
-> stores the *intended* identifier and the *observed* one in separate fields and never merges them.
-> No price, rating, review count or availability appears anywhere on this site, because the sources
-> that would make those figures current are not available to it. Nothing is guessed. See
-> [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md).
+GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
+Nothing was deleted to make room; each session's output is kept and reachable.
 
-## Quickstart
+## What is published
 
-```bash
-node scripts/build.mjs     # register + content  ->  docs/
-node scripts/checks.mjs    # the compliance gate; exit 1 = do not merge
-node scripts/serve.mjs     # preview at http://localhost:8080/Affil3/
-node scripts/collect.mjs   # local event collector on :8788 (see /dashboard/)
-npm run verify             # build + gate
-```
+| Path | Owner | What it is |
+|---|---|---|
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
+| `/shop/` | session `59aebafb` (`scripts/build.mjs`) | Third independent publication: 6 buyer guides, 4 product records, 4 shape clusters, a comparison table, and the full review board (22 suggestions, 22 open questions, 10 flags) — with an 11-gate compliance checker |
 
-No dependencies. No install step. Node 20+.
+`/editorial/` exists because its build was written against a different data model and its verification
+found things the other register did not. Keeping both builds preserves both verification passes rather
+than merging them into one file whose provenance nobody can reconstruct.
 
-## Layout
+## Read these first
 
-| Path | Role |
+| File | What it is |
 |---|---|
-| `register/` | **Source of truth.** Products, sources, flags, suggestions, questions, ledger, links, measurement, compliance, site config |
-| `register/schema/` | Ingest contract for automated product research — refuses a 9-char ASIN and any unlicensed source system |
-| `content/` | Authored editorial: home, about, methodology, disclosure, privacy, `guides/*.md` |
-| `scripts/` | `build.mjs`, `checks.mjs`, `links.mjs`, `new-guide.mjs`, `collect.mjs`, `serve.mjs` |
-| `docs/` | Generated site. Committed so Pages serves exactly what was reviewed. **Do not hand-edit** — change the register and rebuild |
-| `docs/EXECUTIVE-SUMMARY.md`, `docs/DECISION-BRIEF.md` | The two reading-first documents |
-| `COORDINATION.md` | Shared task board for parallel sessions: claims, scope, log |
-| `.github/workflows/ci.yml` | CI: parse registers → rebuild → run gate → prove `docs/` is not stale → audit output |
+| [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
+| [`report/EXECUTIVE-SUMMARY.md`](report/EXECUTIVE-SUMMARY.md) | The `/shop/` session's summary: what the links resolve to, what was verified, what is blocked |
+| [`report/DECISION-BRIEF.md`](report/DECISION-BRIEF.md) | The six answers that gate everything else, plus the discovery steps that obtain them |
+| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`data/`](data/) | Register for the root site |
+| [`data/register/`](data/register/) | Register for `/editorial/` |
 
-## The rules the build enforces
+## Build
 
-`scripts/checks.mjs` fails the build on any of:
-
-- **C-01** the required Associates sentence missing above the fold or in the footer of any page
-- **C-02** an Amazon link without `tag=` matching the site tracking ID, or without `rel="sponsored nofollow"`, or a purchase link routed through anything but `amazon.com`
-- **C-03** any currency figure or star rating reaching the published site
-- **C-04** testing language, superlatives, implied endorsement, or an unsourced demand claim, on any page a buyer reads
-- **C-05** any Amazon CDN asset loaded as a resource (Program Content licensing path)
-- **C-06** trackers, cookies, persistent storage identity, foreign scripts, missing canonical or description
-- **C-07** a field published as fact with no source row, or a volatile product field populated while its policy source is unresolved
-- **C-08** a compliance control claiming "passing" with no gate defined behind it
-- **C-09** a broken internal link
-- **C-10** any page missing from the sitemap, or any sitemap/feed entry pointing nowhere
-- **C-11** an orphan page nothing links to
-
-## Publishing a guide
+**Root site** (Node, no dependencies):
 
 ```bash
-node scripts/new-guide.mjs "What should you compare before buying a dual-basket fryer" --cluster air-fryers
-$EDITOR content/guides/what-should-you-compare-before-buying-a-dual-basket-fryer.md
-node scripts/build.mjs && node scripts/checks.mjs
+node tools/build.mjs     # data/*.json  -> repository root
+node tools/verify.mjs    # gates
 ```
 
-The guides index, home rack, sitemap, RSS feed, search index and JSON-LD all pick it up. A new
-guide cannot skip the byline, the no-testing note, or the sources section — the template pre-fills
-them, and the gate rejects the page if the wording fails.
+**Editorial site** (Python, no dependencies):
 
-## What is deliberately *not* here
+```bash
+python3 tools/build.py       # data/register/*.json -> editorial/
+python3 tools/check_site.py  # gates
+```
 
-- **No prices.** Amazon's terms permit price and availability only from an Amazon-served link or the
-  catalog API, with a short refresh ceiling. There are no API credentials here, so there are no
-  numbers. The alternative — a figure copied once and left to rot — is the failure this project was
-  built to avoid.
-- **No testing claims.** No product was handled. Guides are written as *what to check*, and each one
-  says so inside the article.
-- **No revenue or traffic forecast.** Section 4 of the Operating Agreement disclaims any
-  representation about expected traffic or income; the campaign ledger ships with zero rows and a
-  provenance rule, and read-time ratios are hidden until their denominators clear a stated floor.
-- **No email capture.** See SG-30: the provider, the consent text, and the traffic to justify it do
-  not exist yet. The RSS feed is the subscription channel that requires none of that.
-- **No invented author.** The byline is a desk, and the about page explains why that is more honest
-  than a biography.
+Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
 
-## Status
+## Build
 
-11 source rows (3 verbatim, 4 excerpt, 4 unresolved), 5 product-intent records, 22 suggestions
-(12 implemented, 8 awaiting a choice), 22 open questions (6 blocking), 10 flagged items, 12
-compliance controls, 5 defined events, 29 published pages. Every unresolved item is published on
-[/flagged-for-review/](https://karagemop466-tech.github.io/Affil3/flagged-for-review/) with the one
-action that closes it.
+**Shop site** (Node, no dependencies) — output is committed to `shop/`:
+
+```bash
+node scripts/build.mjs     # register/*.json + content/*.md  ->  shop/
+node scripts/checks.mjs     # 11 gates; exit 1 blocks the merge
+node scripts/serve.mjs      # http://localhost:8080/Affil3/shop/
+node scripts/collect.mjs    # optional self-hosted event collector on :8788
+```
+
+Run via npm as `npm run shop:build`, `shop:check`, `shop:verify`, `shop:links`,
+`shop:new-guide`, `shop:collect`, `shop:serve`. The `build` / `verify` / `check` names stay
+pointed at the root site so nothing that already calls them breaks.
+
+## What the editorial gate refuses to let through
+
+- A price. No currency amount may appear in the HTML at all.
+- A star rating or review count.
+- A product call-to-action without `tag=shopnow047c-20`.
+- An Amazon citation not marked `rel="nofollow"`.
+- A page without the required Associates statement.
+- A spec row citing a source ID that does not exist.
+- A link that escapes the published subtree.
+- A page missing from that subtree's sitemap.
+
+This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
+See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
+
+`/shop/` reaches the same conclusion from the other direction: it publishes no price and no rating
+either, but it *does* render a buy button, built as a tagged `/dp/<ASIN>?tag=shopnow047c-20`
+Special Link derived from the resolved ASIN rather than from the supplied short link. The two
+surfaces differ on whether an untagged supplied link should be used at all — that disagreement is
+recorded rather than averaged away, in `FLG-003` and in `register/links.json`.
+
+## The finding all sessions independently agree on
+
+Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
+Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
+The links are untagged — that is a different claim from *invalid*, and only the first is made here.
+The `/shop/` register records the same four resolved ASINs (`B0CDY277D3`, `B09B7SB46R`,
+`B08DKYBTPH`, `B0DZFD6R9Z`), the same `redirect_had_tag: false`, and the same blank *intended* ASIN
+on every row — two independent resolution passes agreeing is stronger evidence than either alone.
+
+## Licence and attribution
+
+Product names and trademarks belong to their owners. Specification values are quoted from the
+publisher's own pages and cited by source ID. Neither publication is endorsed by or affiliated with
+Amazon.com, Inc. beyond participation in the Amazon Associates program.
+
+As an Amazon Associate I earn from qualifying purchases.

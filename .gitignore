@@ -1,5 +1,13 @@
-# generated / runtime artifacts
-data/events.ndjson
+# Generated analytics data (aggregate counts; never commit)
+analytics-data/
+# Local tooling
 node_modules/
 .DS_Store
-*.log
+*.tmp
+# Python tooling (editorial register build)
+__pycache__/
+*.pyc
+.venv/
+
+# Shop surface (/shop/) — generated event data from scripts/collect.mjs
+data/events.ndjson

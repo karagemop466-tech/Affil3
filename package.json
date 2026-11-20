@@ -1,33 +1,29 @@
 {
-  "name": "affil3-shopnow-047",
+  "name": "affil3",
   "version": "1.0.0",
   "private": true,
-  "description": "Amazon Associates publishing site for kitchen gear: register-driven static site, compliance gate, and a self-hosted event collector. Zero runtime dependencies.",
-  "type": "module",
-  "engines": {
-    "node": ">=20"
-  },
+  "description": "Static affiliate buying-guide site generated from data/*.json, with a publishing gate and an optional self-hosted analytics collector. No runtime dependencies. Also hosts the /shop/ surface (register-driven site + 11-gate compliance check in scripts/).",
+  "type": "commonjs",
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "check": "node scripts/checks.mjs",
-    "verify": "node scripts/build.mjs && node scripts/checks.mjs",
-    "serve": "node scripts/serve.mjs --port 8080",
-    "collect": "node scripts/collect.mjs --port 8788",
-    "links": "node scripts/links.mjs",
-    "new-guide": "node scripts/new-guide.mjs"
+    "build": "node tools/build.mjs",
+    "verify": "node tools/verify.mjs",
+    "check": "node tools/build.mjs && node tools/verify.mjs && python3 tools/build.py && python3 tools/check_site.py",
+    "collector": "node tools/collector.mjs",
+    "editorial:build": "python3 tools/build.py",
+    "editorial:check": "python3 tools/build.py && python3 tools/check_site.py",
+    "shop:build": "node scripts/build.mjs",
+    "shop:check": "node scripts/checks.mjs",
+    "shop:verify": "node scripts/build.mjs && node scripts/checks.mjs",
+    "shop:serve": "node scripts/serve.mjs --port 8080",
+    "shop:collect": "node scripts/collect.mjs --port 8788",
+    "shop:links": "node scripts/links.mjs",
+    "shop:new-guide": "node scripts/new-guide.mjs"
   },
-  "files": [
-    "scripts",
-    "register",
-    "content",
-    "docs"
-  ],
-  "keywords": [
-    "affiliate",
-    "amazon-associates",
-    "static-site",
-    "seo",
-    "compliance"
-  ],
-  "license": "UNLICENSED"
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "playwright-core": "^1.49.1"
+  }
 }

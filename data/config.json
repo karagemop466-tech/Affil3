@@ -1,0 +1,17 @@
+{
+  "siteName": "Affil3",
+  "tagline": "Kitchen buying guides, checked against the maker's own specification sheet",
+  "footerBlurb": "An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.",
+  "siteUrl": "https://karagemop466-tech.github.io/Affil3",
+  "basePath": "/Affil3",
+  "language": "en-US",
+  "trackingId": "shopnow047c-20",
+  "associatesStatement": "As an Amazon Associate I earn from qualifying purchases.",
+  "disclosureStrip": "Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.",
+  "imageDisclosure": "Photography on this site is editorial illustration, not the reviewed units.",
+  "author": "Affil3 editorial team",
+  "lastReviewed": "2026-11-20",
+  "analyticsEndpoint": "",
+  "analyticsNote": "Empty by design: GitHub Pages cannot run the collector. Set this to the URL of a deployed tools/collector.mjs (HTTPS, path ending in /collect) to turn analytics on. See FLG-009.",
+  "suggestionsNote": "Suggestions are listed at /suggestions/ and are not implemented until chosen."
+}
