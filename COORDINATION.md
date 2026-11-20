@@ -1083,3 +1083,13 @@ here. Amazon documentation hosts are already exempt by `DOC_HOSTS`.
 - GitHub Pages: source `main` at `/`, `status: built` read from the Pages API before this session's
   work and again after the merge. The rendered site cannot be fetched from this sandbox, so the
   deployment is confirmed through the Pages API and the build logs rather than by loading a page.
+
+**Scope note found in the final link sweep.** A repository-wide scan of all 6,446 anchors found zero
+broken internal links and zero unmarked retail Amazon links on any indexed surface. The seven retail
+`www.amazon.com` anchors that carry neither `sponsored` nor `nofollow` are all inside
+`legacy/shopnow-labs-edition/`, a preserved edition that `robots.txt` disallows and that this board
+treats as untouchable. They are recorded here rather than fixed, because editing a preserved archive
+to satisfy a rule the archive was never subject to would misrepresent its history. The 94 remaining
+unmarked Amazon anchors are citations to `affiliate-program.amazon.com` and `sell.amazon.com` policy
+pages on `/docs/` and `/legacy/`, which are documentation hosts rather than retail links and
+correctly carry no paid-placement attribute under Google's guidance.
