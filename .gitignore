@@ -1,0 +1,13 @@
+# local scratch + caches
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+# runtime data that must never be committed (raw event stream, secrets)
+data/ledger/events.jsonl
+data/ledger/*.log
+.env
+*.token
+# build scratch (site/ IS committed; see tools/build_site.py --check)
+.build-tmp/
