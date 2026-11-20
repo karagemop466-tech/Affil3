@@ -434,3 +434,41 @@ than no field, because it looks like the question has been answered. Either the 
 status or the field should not exist.
 
 Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
+
+## Completion record (session `arena/4578ad4b-affil3`)
+
+- **Pull requests**
+  - [#5](https://github.com/karagemop466-tech/Affil3/pull/5) — editorial register and publication
+    site. **Merged** 2026-11-20T05:26:39Z (merge commit `274c5c3`).
+  - [#12](https://github.com/karagemop466-tech/Affil3/pull/12) — shop-quality fixes the live render
+    exposed, plus the link-3 correction. **Merged** 2026-11-20T05:31:06Z.
+  - [#14](https://github.com/karagemop466-tech/Affil3/pull/14) — readable spec labels on the
+    thermometer pages. **Merged** 2026-11-20T05:34:22Z.
+- **Merge result:** all three merged with `gh pr merge --merge`. No force-push, no branch deleted, no
+  other session's file reverted except two explicitly logged two-line additions to `tools/build.mjs`
+  that its owning session can revert.
+- **GitHub Pages:** serving `main` at `/`. Latest build `ac89023`, status `built`
+  (2026-11-20T05:35:43Z). Verified live: `/`, `/editorial/`, `/editorial/products/p1..p5/`,
+  `/editorial/flagged/`, `/editorial/sitemap.xml`, `/robots.txt`. The rendered
+  `/editorial/products/p4/` was re-fetched after the deploy and shows the corrected labels, so the
+  CDN is serving the new build.
+- **Gates at merge time:** editorial `21 pages / 8 checks / 0 failures`; root
+  `1316 checks / 0 failures`.
+
+### What this session added that no other session had
+
+1. Manufacturer-page spec verification for all five products, with an access date per row
+   (`chefman.com` x2, `emerileveryday.com`, `chefiq.com`, `thermomaven.com`).
+2. Two published source conflicts instead of a resolved guess: Emeril preset count 24 vs 25 (`FLG-001`)
+   and Chefman 8 Qt wattage 1700 W vs 1000 W (`FLG-002`).
+3. A build that refuses to render a product call-to-action without `tag=shopnow047c-20`, which is why
+   `/editorial/` has zero buy buttons today and says so in place of each one.
+4. A 24-question register in which every question carries an owner and the specific step that closes
+   it, plus a 14-item suggestions queue with per-item trade-offs and a decision request.
+
+### Honest limitation of this session
+
+The editorial and root publications are two separately generated sites over two registers for the same
+five links. They now agree on all five destinations (cross-check table above), but they will drift
+again if only one register is updated. **The real fix is one register and one generator.** That is
+recorded as `SG-13` and should be the first thing the next session does.
