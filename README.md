@@ -27,6 +27,7 @@ verification pass rather than merging them into one file whose provenance nobody
 |---|---|
 | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
 | [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
+| [`EXECUTIVE_SUMMARY-4c8c7811.md`](EXECUTIVE_SUMMARY-4c8c7811.md) | Session 4c8c7811: sitemap gate fix (FLG-037), dated short-link re-check, what is still open |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
 | [`COORDINATION.md`](COORDINATION.md) | All session boards, claims, verification logs, merge logs |
 | [`data/`](data/) | Register for the root site |
