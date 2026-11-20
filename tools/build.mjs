@@ -44,7 +44,7 @@ const inCat = (slug) => products.filter((p) => p.category === slug);
 const PRODUCT_IMAGE = {
   P01: 'hero-counter.jpg',
   P02: 'oven-french-door.jpg',
-  P03: 'guide-capacity.jpg',
+  P03: 'basket-turbofry-8qt.jpg',
   P04: 'thermometer-instant-read.jpg',
   P05: 'hero-thermometer.jpg',
 };
@@ -480,7 +480,7 @@ for (const p of products) {
   ${p.observed_specs ? `<h3 style="margin-top:34px">What the Amazon listing states</h3>
   <p>These figures come from the listing's own copy, not from the manufacturer. They are kept in a separate column on purpose, because on this listing they describe a different model from the manufacturer page. Read them as evidence of the conflict, not as specifications of the product.</p>
   ${table(['Field', 'Listing states', 'Manufacturer states'], [
-    ['Model', esc(p.observed_specs.model), esc((p.model || '').split(';')[0] || '')],
+    ['Model', esc(p.observed_specs.model), esc(p.model || '')],
     ['Power', esc(p.observed_specs.power), '<span class="muted">1700 W / 120 V (S12)</span>'],
     ['Temperature', esc(p.observed_specs.temperature), '<span class="muted">up to 450 °F on Hi-Fry (S12)</span>'],
     ['Size', esc(p.observed_specs.dimensions), '<span class="muted">not stated (S12)</span>'],
