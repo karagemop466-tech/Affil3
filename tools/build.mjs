@@ -311,7 +311,17 @@ const add = (p) => pages.push(p);
 // Home (publication front page: products first)
 {
   const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
-  const newestGuides = [...guides].slice(0, 3);
+  // A rail of four, not the first three rows: the newest guide plus one per cluster, so the front page
+  // shows the shape of the shelf rather than the order the data file happens to be in.
+  const byNewest = [...guides].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+  const newestGuides = [];
+  for (const g of byNewest) {
+    const key = g.category;
+    if (newestGuides.some((x) => x.category === key)) continue;
+    newestGuides.push(g);
+  }
+  for (const g of byNewest) { if (newestGuides.length >= 4) break; if (!newestGuides.includes(g)) newestGuides.push(g); }
+  newestGuides.sort((a, b) => byNewest.indexOf(a) - byNewest.indexOf(b));
   const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
@@ -588,6 +598,26 @@ for (const g of guides) {
 }
 
 // Product detail pages (specifications from the manufacturer page, gaps as labelled "not stated")
+// Which guides are relevant to a product row: its own companion guide first, then any guide whose
+// published text names the brand. A brand mention is the weakest link in this list, so the section says
+// exactly that rather than claiming the guide is about this product.
+const guideText = (g) => [g.title, g.deck, g.description, g.summary || '', ...g.body.map((b) => [b.text, b.caption, ...(b.items || []), ...(b.headers || []), ...(b.rows || []).flat()].filter(Boolean).join(' '))].join(' ');
+const guidesFor = (p) => {
+  const brand = (p.brand || '').toLowerCase();
+  const seen = new Set();
+  const out = [];
+  for (const g of guides) {
+    const t = guideText(g).toLowerCase();
+    const own = p.guide_slug === g.slug;
+    const names = brand && t.includes(brand);
+    if (!own && !names) continue;
+    if (seen.has(g.slug)) continue;
+    seen.add(g.slug);
+    out.push({ g, own });
+  }
+  return out.sort((a, b) => (b.own ? 1 : 0) - (a.own ? 1 : 0));
+};
+
 for (const p of products) {
   const c = CATEGORIES.find((x) => x.slug === p.category) || { name: p.category };
   const facts = [
@@ -666,6 +696,7 @@ for (const p of products) {
   <h2>The specifications we could confirm</h2>
   ${specGrid(p)}
   <p class="small muted">${esc(p.capacity_note || '')}${p.model_note ? ' ' + esc(p.model_note) : ''}${p.dimensions_order ? ' Dimensions are shown as ' + esc(p.dimensions_order) + '.' : ''}</p>
+  ${p.verification_note ? `<p class="small muted verification-note">${esc(p.verification_note)}</p>` : ''}
   ${matchNote(p)}
   ${conflictTable}
 </section>
@@ -675,6 +706,11 @@ for (const p of products) {
     ${facts.map(([h, v]) => `<div class="fact"><h3>${esc(h)}</h3><p>${esc(v || '')}</p></div>`).join('\n    ')}
   </div>
 </section>
+${(() => {
+  const gs = guidesFor(p).slice(0, 3);
+  if (!gs.length) return '';
+  return `<section class="band related"><h2>Read next on this shelf</h2><ul class="related-list">${gs.map(({ g, own }) => `<li><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a><p>${own ? 'Written around this product: it names the same listing and cites the same maker page.' : 'A guide on this shelf that names ' + esc(p.brand) + ' in its text.'}</p></li>`).join('\n')}</ul></section>`;
+})()}
 <section class="band sources">
   <h2>Sources for this product</h2>
   <ul>${(p.sources || []).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}${(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id)).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}</ul>
@@ -715,6 +751,7 @@ add({
 <li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, ${CATEGORIES.length} category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap. Guide and page counts on this site are computed from the registers at build time, so this sentence cannot go stale.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
+<li>Three dated verification rounds are on file (data/observations/). The most recent, 2026-11-20, re-read seven official pages first-hand, recorded the fetches it could not complete as failures rather than as agreement, corrected four citation defects in the registers, and added a gate check so a dangling citation fails the build. The same round corrected a findability claim this site had been making about itself: a robots.txt file manages crawling and does not exclude a page from Google's index, which is stated in Google's own words and recorded as FLG-036.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
 <li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links, plus a CI workflow that re-runs the build and the gate on every push.</li>
 </ul>

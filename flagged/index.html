@@ -329,6 +329,13 @@
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a>, <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
   <p class="small"><strong>Manual step:</strong> Decide whether sell.amazon.com should be added to the allowlist in tools/verify.mjs so FLG-012 can cite an official ASIN definition; until then the gate refuses that host and the citation stays text-only.</p>
 </section>
+<section class="flag-card is-resolved" id="FLG-042">
+  <p class="flag-head"><span class="badge flag">FLG-042</span> <span class="badge sev-low">low</span> <strong>The README documented a published /docs/ surface that is gitignored and was never deployed</strong> <span class="badge resolved">resolved</span></p>
+  <p>README.md&#39;s &#39;What is published&#39; table listed /docs/ as a third, independently generated publication, and its build instructions told a reader to check docs/sitemap.xml. .gitignore carries an explicit &#39;/docs/&#39; entry, and git ls-files confirms zero tracked files under docs/, so nothing in that path is committed and GitHub Pages cannot serve it. The surface the row described exists only in a working copy: its tooling (scripts/, server/) is tracked, its output is not. Corrected on 2026-11-20 by labelling it as local-only and by listing the surfaces that really are online, which include /counter/ and /counterwise/, previously unlisted in that table. This is the same class of drift as the indexability claim in FLG-036: documentation describing an intention rather than the shipped tree.</p>
+  <p class="resolution"><strong>Resolution:</strong> README corrected by session b7320829-affil3, which listed the tracked surfaces, marked the docs site as local-only, and refreshed the gate counts to the numbers this branch&#39;s gate reports.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+  <p class="small"><strong>Manual step:</strong> If the /docs/ publication is wanted live, its output must be generated into a tracked path (or published from a workflow); the alternative is to treat scripts/ and server/ as tooling for the root site and say so.</p>
+</section>
 </main>
 <footer class="site-footer">
   <div class="wrap footer-grid">

@@ -486,6 +486,20 @@
         "S19",
         "S02"
       ]
+    },
+    {
+      "id": "FLG-042",
+      "severity": "low",
+      "status": "resolved",
+      "area": "repository documentation",
+      "title": "The README documented a published /docs/ surface that is gitignored and was never deployed",
+      "detail": "README.md's 'What is published' table listed /docs/ as a third, independently generated publication, and its build instructions told a reader to check docs/sitemap.xml. .gitignore carries an explicit '/docs/' entry, and git ls-files confirms zero tracked files under docs/, so nothing in that path is committed and GitHub Pages cannot serve it. The surface the row described exists only in a working copy: its tooling (scripts/, server/) is tracked, its output is not. Corrected on 2026-11-20 by labelling it as local-only and by listing the surfaces that really are online, which include /counter/ and /counterwise/, previously unlisted in that table. This is the same class of drift as the indexability claim in FLG-036: documentation describing an intention rather than the shipped tree.",
+      "impact": "Anyone auditing the repository from the README looks for a publication at a URL that returns 404, and may conclude a verification pass was lost rather than never deployed.",
+      "resolution": "README corrected by session b7320829-affil3, which listed the tracked surfaces, marked the docs site as local-only, and refreshed the gate counts to the numbers this branch's gate reports.",
+      "manual_step": "If the /docs/ publication is wanted live, its output must be generated into a tracked path (or published from a workflow); the alternative is to treat scripts/ and server/ as tooling for the root site and say so.",
+      "sources": [
+        "S02"
+      ]
     }
   ],
   "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-036 to FLG-039 were added by session b7320829-affil3 on 2026-11-20 from a verification round that read seven official pages first-hand; FLG-031, FLG-024 and FLG-025 were extended with that round's re-read, and FLG-032's wording was corrected.",

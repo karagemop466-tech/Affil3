@@ -280,3 +280,7 @@ table.checklist { min-width: 560px; }
 .related li { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; }
 .related li a { font-weight: 700; }
 .related li p { margin: 4px 0 0; color: var(--muted); font-size: 14.5px; }
+.related-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; max-width: 78ch; }
+.related-list li { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 16px; }
+.related-list li p { margin: 4px 0 0; color: var(--muted); font-size: 14.5px; }
+.verification-note { border-left: 3px solid var(--line-strong); padding-left: 10px; }
