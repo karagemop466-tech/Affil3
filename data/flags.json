@@ -75,7 +75,7 @@
       "id": "FLG-007",
       "severity": "medium",
       "title": "Content depth is below the official 'robust content' rule of thumb",
-      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 5 guides and 5 product rows. Adding content is a decision for the user (see suggestion S-07).",
+      "detail": "The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 8 question-shaped guides and 5 product rows after the 2026-11-20 polish pass. Adding content is a decision for the user (see suggestion S-05).",
       "sources": [
         "S11"
       ],
@@ -328,6 +328,18 @@
         "S05"
       ],
       "manual_step": ""
+    },
+    {
+      "id": "FLG-031",
+      "severity": "low",
+      "status": "resolved",
+      "title": "P04's no-buy-button reason contradicted its own row (fixed)",
+      "detail": "The P04 card text said 'No submitted link resolved to this listing', while the same row records its submitted token resolving to its own observed listing (B0c8moW59 -> B0DHZTCNR5, corroborated by the dated retest and by three independent fetch passes). The prose predated the PR #10 transposition fix and was never re-derived from the corrected row. The actual reason the buy button is withheld is FLG-025: no manufacturer specification page was located for this model. P04's blank_reason also cited FLG-007 (content depth) for the NIST and NSF claims; that is FLG-025 as well.",
+      "resolution": "Reason text rewritten to the actual cause (FLG-025) and the stale flag cross-references corrected on 2026-11-20. Same failure mode as the shop summary counts fixed earlier: prose derived from row state must be re-derived when the row changes.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
     }
   ],
   "checked": "2026-11-20"
