@@ -156,6 +156,6 @@ Each observed value was compared with the page text fetched on 2026-11-20.
 
 ## Completion record (this session)
 
-- Pull request: see the PR link recorded below once created.
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/7 (`arena/bb0a6985-affil3` → `main`), opened 2026-11-20.
 - Merge: `gh pr merge --merge` on the PR, from `arena/bb0a6985-affil3` to `main`. Result recorded on the PR.
 - GitHub Pages deploy: checked after merge, `https://karagemop466-tech.github.io/Affil3/`.
