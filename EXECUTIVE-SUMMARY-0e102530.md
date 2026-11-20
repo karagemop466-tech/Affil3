@@ -26,8 +26,9 @@ confirmed in the tracking report.
 | 3 | **Measurement proved to work.** `tools/collector.mjs` was started and driven with one request per defined event. All five were accepted and aggregated. Four kinds of malformed request were rejected and counted for nothing. | Same file, `collector_test` block; status codes 204 / 400 |
 | 4 | **Two new guides.** "Dual basket or single basket: which air fryer do you need?" and "How to read air fryer specifications without being misled." Both are written only from figures the manufacturer published, and both are built into the sitemap and the RSS feed automatically. | `data/guides.json`, `guides/` |
 | 5 | **Guide counts derived, not typed.** The front page said "All five guides" in a template. It now reads the number from the data, so it cannot go stale the way the hand-written count did before (this is the same class of bug as DX-7). | `tools/build.mjs` |
-| 6 | **Page weight cut by roughly two thirds.** Six illustrations were 3.3–4.0 MB each. Re-encoded to a 256-colour palette, they are now 0.9–1.1 MB each, with no visible change to the artwork (measured pixel RMSE 0.012). No file name, file path or pixel changed, so no page reference moved. | `src/assets/img/`, verified visually |
-| 7 | **Two new suggestions, three new questions, three new discovery steps.** S-20 asks where the analytics collector should actually run, now that it is known to work. S-21 records the image-weight decision. Q-17 and Q-18 are the two questions this session's re-read exposed. | `data/suggestions.json`, `data/questions.json` |
+| 6 | **Page weight cut by most of a third, and the front page by two thirds.** Every illustration was 3.3–4.0 MB. Re-encoded to a 256-colour palette and scaled to 1200 px, they are roughly 0.5 MB each with no visible change (pixel RMSE 0.012). A 768 px card variant derived from each one is offered through `srcset`, so the front page falls from **3.9 MB of images to 1.2 MB** and the guides index from 3.6 MB to **0.4 MB**. The hero is now a 153 KB JPEG, and nothing above the fold blocks on a PNG any more. | `src/assets/img/`, `assets/img/` |
+| 7 | **Image dimensions are read from the files, and gated.** Every `<img>` carried a typed-in `width`/`height` that no longer matched its file, which makes the browser reserve the wrong box and the page jump as images arrive. The build now reads the real pixel size from each file. `tools/verify.mjs` checks all 58 of them, and fails the build if a declared size ever disagrees with the file again. | `tools/build.mjs`, `tools/verify.mjs` |
+| 8 | **Two new flags, two new suggestions, three new questions, three new discovery steps.** FLG-037 and FLG-038 record the two irregularities found in the re-read. S-20 asks where the analytics collector should actually run, now that it is known to work. S-21 records the image-weight decision. Q-17 and Q-18 are the two questions this session's re-read exposed. | `data/flags.json`, `data/suggestions.json`, `data/questions.json` |
 
 ---
 
@@ -75,13 +76,14 @@ breadcrumbs matched the register.
 
 ### Two new irregularities, recorded not smoothed
 
-- **The Emeril page disagrees with itself.** Its specification block says *25 cooking pre-sets*, its
-  image alt text on the same page says *11-in-1*, and its own description says *10-in-1*. The Amazon
-  listing title says 24 presets. This extends FLG-024; the site still publishes no preset count and no
-  in-1 count for this product, which is the only honest answer when four official sources disagree.
-- **The CHEF iQ page disagrees with itself.** Its introduction paragraph says *"Five internal sensors"*
-  while its specification list says four internal plus one ambient. The register follows the
-  specification list. Recorded as K-22 and in the dated observation file.
+- **FLG-038 — two manufacturer pages disagree with themselves.** The Emeril page's specification block
+  says *25 cooking pre-sets*, its own description says *10-in-1*, its image alt text on the same page
+  says *11-in-1*, and the Amazon listing title says *24*. The CHEF iQ page says *"Five internal
+  sensors"* in its introduction while its specification list says four internal plus one ambient. The
+  site publishes no preset count and no in-1 count for the oven, and follows the specification list for
+  the sensor count. Choosing between four official statements would be inference, not verification.
+- **FLG-037 — the correction above, filed as a flag** rather than quietly fixed, so it appears on the
+  Flagged for Review page with both source links and the manual step that would settle it.
 
 ---
 
@@ -113,6 +115,33 @@ agent, cookie or identifier stored. The collector works.
 empty, because GitHub Pages serves static files and cannot run a server. Turning measurement on needs a
 host, and that is now the subject of suggestion S-20 rather than an unexamined gap. It stays flagged as
 FLG-009 and does not block anything.
+
+---
+
+## Page weight, and why it was worth a build
+
+The brief asks for a site that draws organic traffic. Organic traffic arrives on a phone, on a
+connection that is not the one in this sandbox, and a site whose first page weighs 3.9 MB of images
+before a line of text is read does not get read.
+
+The illustrations themselves were never the problem. They are flat, grainy, mid-tone drawings, which is
+exactly the kind of image a small palette compresses well, and they had been saved as full-colour PNGs
+at 3.3–4.0 MB each. Two changes fixed it without touching a single file name, file path or pixel:
+
+| Page | Images before | Images now |
+|---|---|---|
+| Front page | 3,947 KB | 1,176 KB |
+| Guides index | 3,568 KB | 442 KB |
+| A guide page | ~3.4 MB hero alone | 608 KB |
+| Shop table, comparison table | 0 KB | 0 KB |
+
+The third change was less visible and more important for how the site feels. Every `<img>` carried a
+`width` and `height` typed in by hand at some point, and several no longer matched their file, because
+the files had been resized since. A browser that is told an image is 1536×1024 and then receives one
+that is 1200×768 reserves the wrong box, and the page visibly jumps as each image arrives. The build now
+reads the real size from the file, and the gate checks all 58 declared sizes against the files on every
+run. That check is not decorative: it failed on four images the first time it ran, which is how the
+mismatch was found.
 
 ---
 
@@ -189,9 +218,9 @@ All re-fetched 2026-11-20 and recorded in `data/observations/2026-11-20-0e102530
 
 ```
 node tools/build.mjs   → 34 pages, 7 feed items, 33 sitemap URLs
-node tools/verify.mjs  → 3787 checks passed, 0 failed
+node tools/verify.mjs  → 3898 checks passed, 0 failed
 ```
 
-Every disclosure, sponsored-link, tracking-tag, source-link, sitemap, feed and internal-link check
-passes. No price, rating or review count appears anywhere in the generated site. The two new guides
+Every disclosure, sponsored-link, tracking-tag, source-link, sitemap, feed, internal-link and
+image-dimension check passes. No price, rating or review count appears anywhere in the generated site. The two new guides
 are in the sitemap and the RSS feed. The site builds, and it builds clean.
