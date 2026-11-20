@@ -1187,3 +1187,65 @@ titles are working hypotheses, not popularity claims.
   - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
   - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
 - This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
+
+
+---
+
+# Session `arena/0a90f62c-affil3` board (appended; nothing above was edited)
+
+Publisher of the **Crisp & Counter** edition, served at `/counter/` as a namespaced
+publication following the `crisp-index/` convention (this repository's established pattern
+for a session's own edition with its own design rules). The integrated root site keeps the
+root; this session does not modify root pages, root tooling, or the root gates except the
+one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as the
+`crisp-index/` entry recorded there).
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena/0a90f62c-affil3` | `arena/0a90f62c-affil3` | done | `counter/` (generated), `content/`, `data/products-0a90f62c.json`, `data/registers.json`, `scripts/build_site.py`, `scripts/check_site.py`, `tools/{verify_site,link_report,check_all_links}.py`, `server/collect.js`, `docs/EXECUTIVE-SUMMARY.md` |
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| T-01 | Repo review + coordination board | done | arena/0a90f62c-affil3 | COORDINATION.md, README.md |
+| T-02 | Link intake & observation (5 submitted links) | done | arena/0a90f62c-affil3 | data/products-0a90f62c.json, counter/desk/link-register/ |
+| T-03 | Verification register (line by line, sourced) | done | arena/0a90f62c-affil3 | counter/desk/verification/, data/registers.json |
+| T-04 | Publication site (shop, guides, compare, about) | done | arena/0a90f62c-affil3 | counter/ (index, shop, guides, compare, about) |
+| T-05 | Measurement client + analytics spec | done | arena/0a90f62c-affil3 | counter/assets/js/analytics.js, counter/desk/analytics/, server/collect.js |
+| T-06 | Sitemap, robots, RSS + build tooling | done | arena/0a90f62c-affil3 | counter/{sitemap.xml,robots.txt,feed.xml}, scripts/build_site.py |
+| T-07 | Desk surfaces (flagged, questions, suggestions, ledger, compliance) | done | arena/0a90f62c-affil3 | counter/desk/ |
+| T-08 | Release gate + PR + merge | done | arena/0a90f62c-affil3 | .github/workflows/site-checks.yml |
+
+## Verification performed (session 0a90f62c)
+
+1. All five submitted links fetched first-hand via Amazon's own short-link redirects on
+   2026-11-20; listing pages read directly. Observed targets: `B04G1MEwY -> B0CDY277D3`,
+   `B02NbDxp3 -> B09B7SB46R`, `B00hJ57DV -> B08DKYBTPH`, `B0f3GKalj -> B0DZFD6R9Z`,
+   `B0c8moW59 -> B0DHZTCNR5` (resolved on a same-day retest after two transient Amazon
+   checkpoint pages; independently corroborated by session 4578ad4b's dated retest and by
+   other sessions' registers).
+2. Verification register: 34 rows, 100% official-source coverage (`tools/link_report.py --strict`).
+3. Release gate `tools/verify_site.py` — pass (build drift, disclosure strip + Associates
+   statement on every page, `rel="sponsored"` on every product link, sourced rows, internal
+   link integrity). CI: `.github/workflows/site-checks.yml`.
+4. Never inferred: intended ASINs (FLG-001), P1/P4 star averages (FLG-005), commission
+   rates (FLG-009). No conversion score or revenue forecast anywhere in the edition.
+
+## Integration log (2026-11-20)
+
+- Merged `origin/main` repeatedly as concurrent sessions landed. Root ownership: the
+  integrated root publication keeps the root; Crisp & Counter publishes at `/counter/`
+  (the `crisp-index/` namespace pattern). Both data registers preserved side by side.
+- Earlier in the day this branch briefly held the root with a `legacy/arena-4578ad4b/`
+  archive; that snapshot was dropped because `legacy/` already preserves that era.
+- This branch also carried a fix for the 37 `disclosure-check` failures then present on
+  `main` (dual disclosure + blanked prices in `docs/`); session 63534e5d fixed the same
+  failures independently, then their integrations removed the stale `docs/` edition and
+  repointed the check tooling to `crisp-index/`. Their resolution was taken.
+- `scripts/build_sitemap.py` name collision resolved in favour of the root pipeline's tool;
+  this edition's sitemap is emitted inside `scripts/build_site.py`.
+- Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
+  after merge.

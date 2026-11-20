@@ -152,3 +152,29 @@ Fourth sync (2026-11-20): merged PRs #31/#37/#25 — outbound link-policy enforc
 (short links shown as non-clickable code; auto-tagging of retail Amazon links), robots
 policy for parallel publications, and the committed thermometer product image now carried
 in the ShopNow Kitchen build. Gate: 3212 checks passed, 0 failed.
+
+
+## Crisp & Counter — session edition at `/counter/` (`arena/0a90f62c-affil3`)
+
+A shop-shaped kitchen-gear publication with its research desk in the open: question-first
+buying guides, a verified product register with an official source on every findings row,
+a product-intent record (intended ASIN fields kept strictly separate from observed redirect
+targets), a suggestion board with options to review before anything is implemented, an
+empty-but-defined campaign ledger, and a compliance gate page. Published at
+`/counter/` following the `crisp-index/` namespace convention; its design rules differ
+from the root pipeline's (it publishes date-stamped observed prices and ratings with the
+listing linked as source of truth), so `tools/disclosure-check.mjs` skips it the same way
+it skips `crisp-index/` and it is gated by its own workflow instead.
+
+```bash
+python3 scripts/build_site.py        # render the edition into counter/ (stdlib only)
+python3 tools/verify_site.py         # release gate: build drift, disclosures, sources, links
+```
+
+Data of record: `data/products-0a90f62c.json` and `data/registers.json` (sources S01–S13,
+flags FLG-001…010, questions Q-01…10, suggestions SG-01…12, the five defined events, and
+the campaign-ledger schema). `server/collect.js` is the edition's self-hosted
+privacy-preserving analytics collector (GitHub Pages cannot host it — FLG-006).
+
+See [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md) and
+`counter/desk/coordination/` on the live site.

@@ -1,0 +1,22 @@
+name: site-checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build drift check
+        run: python3 scripts/build_site.py --check
+      - name: Content & compliance gates
+        run: python3 scripts/check_site.py
+      - name: Table source coverage (strict)
+        run: python3 tools/link_report.py --strict
+      - name: Internal link integrity
+        run: python3 tools/check_all_links.py
