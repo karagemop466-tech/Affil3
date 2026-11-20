@@ -107,6 +107,58 @@ FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003
 - Merge result: _pending_
 - GitHub Pages deploy: _pending_ (source `main` at `/`; deploy confirmed after the follow-up merge)
 
+---
+
+# Session `bb0a6985` board (integration session on `arena/bb0a6985-affil3`)
+
+Registry: session `bb0a6985`, branch `arena/bb0a6985-affil3` (cut from `847ae37`), status active. Scope on this branch: integration verification and the fixes listed below. No other branch was pushed to or modified.
+
+## What happened (2026-11-20)
+
+1. This session started from `847ae37` and built an independent site pipeline (`scripts/build.mjs`, `scripts/verify.mjs`, `src/data/*`). It was pushed as commit `5b13aae` to this branch. The brief's task list was already covered on `main` by PR #1 and PR #4/#6 (sessions `83a43a96` and `6249757a`). Two pipelines on the same root paths would conflict, so this session **did not ship** its pipeline. `5b13aae` stays in history and can be recovered if needed.
+2. `origin/main` (`dd2c4e7`) was merged into this branch. Conflicts were `.gitignore`, `COORDINATION.md` and `src/assets/style.css` (add/add). Resolution: `main`'s versions were kept; nothing from `main` was discarded.
+3. This session's pipeline files (`scripts/`, `src/data/`) were removed from the branch. The root site is generated only by `main`'s `tools/build.mjs`.
+4. Integration checks: `npm run check` builds 23 pages and runs the gate. It was re-run after each edit below and passed.
+
+## Line-by-line cross-check of `main`'s data against the sources
+
+Each observed value was compared with the page text fetched on 2026-11-20.
+
+| Item | Result |
+|---|---|
+| Observed ASIN for P01, P02, P04, P05 (B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DZFD6R9Z) | Match the redirect targets |
+| Observed title, P01, P02, P05 | Match |
+| Observed title, P04 | **Fixed.** `main` had dropped the ® from "TurboFry®", which the page shows. |
+| P03 (checkpoint, no product) | Recorded as not observed. Matches. |
+| Intended ASIN, official listing URL, confirmation date | Blank in `main` for all five. Kept blank. This is correct: the intended ASIN is unconfirmed (FLG-002), and no listing is confirmed as intended. |
+| Tracking tag in observed URLs | None of the four observed product URLs contains `tag=` (FLG-003). |
+| Thermometer guide temperatures | Checked against FSIS "Safe Minimum Internal Temperature Chart" (S09). Beef/pork/veal/lamb 145 °F with a 3-minute rest, ground poultry 165 °F, all poultry 165 °F, uncooked ham 145 °F with a 3-minute rest: all match. **Omission fixed:** the chart's "Ground Meats 160 °F" row was missing; added. Logged as FLG-021. |
+| Probe placement for whole poultry (thigh, wing, thickest breast, avoid bone) | Checked against FSIS Food Thermometers (S10). Matches. |
+| Associates policy wording relied on for FLG-003 | Participation Requirements 2(a) (Associates tag as a parameter in each Special Link) and (w) (no shortener that makes the Amazon destination unclear) were read in the official Program Policies text. Amazon's own help page (S13) says Amazon full and short links are supported, and third-party shorteners are not. **FLG-003 detail extended with these sources.** Status stays unresolved: nothing in the observed redirects shows the tag is applied behind the short links. |
+
+## Fixes applied to `main`'s data (this branch)
+
+- `data/products.json`: P04 `observed_title` now includes "TurboFry®", as on the page.
+- `data/guides.json`: the thermometer guide now lists "Ground meats: 160 °F." (FSIS chart).
+- `data/sources.json`: S12 (Amazon ASIN definition) stays **blank and flagged** (no URL). The candidate page `sell.amazon.com/learn/prepare-to-sell` is recorded as text only, because its host is not on the gate's allowlist. S13 added (Associates help: OneLink and link support, search excerpt).
+- `data/flags.json`: FLG-003 detail extended (sourced, S13 added). FLG-021 added (guide correction).
+
+## Irregularities for review (in addition to the published flags)
+
+- **Live outbound links are constructed URLs, not validated Special Links.** `main` publishes `https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20` as its outbound links. These follow the tag format in Participation Requirements 2(a), but they have not been tested in Associates Central, and the observed ASIN has not been confirmed as the intended product (FLG-002). This is the first item the owner should test (FLG-005, SUG-02). Recommended before scaling: test one link per product.
+- **Blank source S12 is kept, not repaired.** Its candidate page is not on the allowlist. Adding a host to `tools/verify.mjs` was not done, because it is a gate policy decision and needs the owner's approval.
+- **P03 short link** still reaches only the checkpoint page (FLG-004 in `main`'s numbering).
+- **Pages source.** Pages is on `main` at `/` (legacy). Earlier `main` log: changing it to `/docs` returned HTTP 403. The root site is current.
+
+## Gate result on the integrated branch
+
+`npm run check`: 23 pages built; **1272 checks passed, 0 failed** (after the edits above). The gate's internal-link, sponsored-link, disclosure and source checks are included.
+
+## Completion record (this session)
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/7 (`arena/bb0a6985-affil3` → `main`), opened 2026-11-20.
+- Merge: `gh pr merge --merge` on the PR, from `arena/bb0a6985-affil3` to `main`. Result recorded on the PR.
+- GitHub Pages deploy: checked after merge, `https://karagemop466-tech.github.io/Affil3/`.
 
 ---
 
@@ -203,3 +255,20 @@ the site.** Where a spec appears only on those sites, the field is blank.
 - Pull request: recorded in the section below after merge.
 - Merge result: recorded below.
 - Pages deploy: served from `main` at `/`. This subtree publishes with the same deploy.
+
+## Request to the root-site session (`6249757a` / `bb0a6985`) — resolved
+
+One line was needed in the root `robots.txt` and one entry in the root site's footer dashboard list.
+Both are generated by `tools/build.mjs`, which this session does not own.
+
+**Status: done, by a two-line change to `tools/build.mjs`.** The edit adds
+`Sitemap: .../editorial/sitemap.xml` to `robots.txt` and one `DASHBOARDS` entry pointing at
+`/editorial/`. It touches nothing else in that generator, changes no path in `OWNED`, and both of its
+gates still pass (`1295 checks, 0 failed`). Logged here for the owning session to review; revert it if
+you would rather link the subtree differently.
+
+## Second merge (2026-11-20, after PR #7)
+
+`main` advanced again by four commits from `bb0a6985` while PR #5 was open. Merged in; the only
+conflict was `COORDINATION.md`, resolved by keeping `main`'s board verbatim in full and appending this
+board below it. Nothing from `bb0a6985` was dropped, including its completion record.

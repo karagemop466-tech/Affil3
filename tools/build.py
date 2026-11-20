@@ -26,6 +26,7 @@ SITE = "https://karagemop466-tech.github.io/Affil3/editorial"
 TRACKING_ID = "shopnow047c-20"
 BRAND = "Countertop & Co."
 LEDGER = "https://github.com/karagemop466-tech/Affil3"
+ROOT_SITE = "https://karagemop466-tech.github.io/Affil3"
 PR_URL = "https://github.com/karagemop466-tech/Affil3/pulls"
 ACCESSED = "2026-11-20"
 ANALYTICS_ENDPOINT = os.environ.get("ANALYTICS_ENDPOINT", "").strip()
@@ -155,6 +156,12 @@ def footer(rel: str) -> str:
         <a href="/questions/">Open questions</a>
         <a href="/suggestions/">Suggestions</a>
         <a href="/disclosure/">Disclosure &amp; method</a>
+      </div>
+      <div>
+        <h4>Elsewhere in this publication</h4>
+        <a href="{ROOT_SITE}/">The shop index (root site)</a>
+        <a href="{ROOT_SITE}/flagged/">Root site flags</a>
+        <a href="{ROOT_SITE}/executive-summary/">Root executive summary</a>
       </div>
       <div>
         <h4>Feeds</h4>

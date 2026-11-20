@@ -28,10 +28,11 @@
       "id": "FLG-003",
       "severity": "high",
       "title": "Compliance status of the supplied short links is unresolved",
-      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence.",
+      "detail": "The short links are not claimed to be invalid. Associates Program Policies Participation Requirements (w) restrict a link-shortening service in a manner that makes it unclear that the link goes to an Amazon Site (S02). Whether the link.amazon short links fall within that restriction has not been determined. The site does not use the short links for outbound links; they appear only as source evidence. Added 2026-11-20: Amazon's Associates help (S13) states that Amazon full links and Amazon short links are supported in the OneLink setup, and that third-party shortened links are not. Participation Requirements 2(a) requires the Associates tag as a parameter in each Special Link (S02). None of the four observed product redirects contains a tag parameter (see products). Attribution of the link.amazon links to shopnow047c-20 therefore remains unconfirmed, and this flag stays open.",
       "sources": [
         "S02",
-        "S05"
+        "S05",
+        "S13"
       ],
       "manual_step": "Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely."
     },
@@ -196,6 +197,17 @@
       "detail": "The sandbox token returned HTTP 403 ('Resource not accessible by integration') when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings > Pages.",
       "sources": [],
       "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies."
+    },
+    {
+      "id": "FLG-021",
+      "severity": "low",
+      "title": "Thermometer guide omitted the FSIS ground-meat row; corrected",
+      "detail": "The guide 'Is your meat thermometer telling you the right number?' listed beef, poultry and ham minimums but omitted the FSIS row 'Ground Meats: 160 degrees F'. Corrected on 2026-11-20 by adding 'Ground meats: 160 °F.' to the list, matching the FSIS chart. The other listed values (beef/pork/veal/lamb 145 °F with a 3-minute rest; ground poultry 165 °F; all poultry 165 °F; uncooked ham 145 °F with a 3-minute rest) were checked against the same chart and match. Probe-placement statements for whole poultry were checked against the FSIS Food Thermometers factsheet and match.",
+      "sources": [
+        "S09",
+        "S10"
+      ],
+      "action": "None. Recorded for transparency."
     }
   ]
 }
