@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suggestions and the decisions they wait on — Counter Desk</title>
+<meta name="description" content="Every proposal with its trade-offs, including the four reader-facing items SG-27 to SG-30 and the decisions still open.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/counter-desk/review/suggestions/">
+<meta property="og:title" content="Suggestions and the decisions they wait on">
+<meta property="og:description" content="Every proposal with its trade-offs, including the four reader-facing items SG-27 to SG-30 and the decisions still open.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/counter-desk/review/suggestions/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Counter Desk">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/counter-desk/assets/img/hero-desk.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Suggestions and the decisions they wait on">
+<meta name="twitter:description" content="Every proposal with its trade-offs, including the four reader-facing items SG-27 to SG-30 and the decisions still open.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/counter-desk/assets/img/hero-desk.jpg">
+<meta name="analytics-endpoint" content="">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="alternate" type="application/rss+xml" title="Counter Desk — buying guides" href="https://karagemop466-tech.github.io/Affil3/counter-desk/feed.xml">
+<link rel="stylesheet" href="/Affil3/counter-desk/assets/style.css">
+
+</head>
+<body data-page="review">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="/Affil3/counter-desk/">Counter Desk<span class="dot">.</span><small>Kitchen buying guides</small></a>
+    <p class="issue"><b>Independent</b> · checked November 20, 2026</p>
+    <nav class="nav" aria-label="Main">
+        <a href="/Affil3/counter-desk/shelf/">The shelf</a>
+        <a href="/Affil3/counter-desk/guides/">Buying guides</a>
+        <a href="/Affil3/counter-desk/counter-space/">Counter space</a>
+        <a href="/Affil3/counter-desk/about/">About</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Paid links</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored. <a href="/Affil3/counter-desk/review/compliance/">How we disclose</a></div>
+</div>
+<main id="main">
+<div class="wrap">
+<section class="page-head">
+  <p class="kicker">Decision queue <span class="sep">|</span> 12 items</p>
+  <h1>Choose a path before anything changes</h1>
+  <p class="deck">A decision queue, not a wish list. Each row states the problem, the options with their trade-offs, what this edition does by default, and the single decision that changes it. The SG-27..SG-30 rows are the four reader-facing items carried over from an earlier pass; they are marked shipped or gated so the reader can see which of them this build actually delivered.</p>
+</section>
+
+<div class="box"><span class="t">How to read a row</span><p>Every item states the problem, the options with their real trade-offs, what this build does by default, and the single decision that changes it. A row with no trade-off is a row that has not been thought about.</p></div>
+
+<section class="flag-card" id="SG-27" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#SG-27">SG-27</a>
+    <span class="badge shipped">shipped</span>
+    <span class="badge">Reader experience</span>
+  </div>
+  <h2>Navigation labels that a reader can act on</h2>
+  <p><strong>The problem.</strong> The earlier navigation read like an internal directory — &#39;shop table&#39;, &#39;source register&#39;, &#39;measurement&#39; — which tells a reader where they are in our filing system rather than what they can do there.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep dashboard labels in the primary navigation. <span class="trade">Trade-off: Familiar to the owner; opaque to a first-time reader.</span></li>
+    <li><strong>B.</strong> Reader verbs in the top navigation, dashboard labels only in the footer group. <span class="trade">Trade-off: The front page reads as a publication; the owner has to scroll to reach the registers, which is exactly once per visit.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> B. The front page should read like a magazine shelf, and a records page should be findable in one scroll rather than competing with the products for the top of the page.</p>
+  <p class="small"><strong>Implemented:</strong> Top navigation is now The shelf / Buying guides / Counter space / About. Every register sits in one labelled footer group, plus a dedicated /review/ index for the operator surfaces.</p>
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Next time, specify the two audiences in the brief itself — reader and operator — and ask for separate navigation surfaces rather than one navigation with everything in it.</p>
+</section>
+<section class="flag-card" id="SG-28" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#SG-28">SG-28</a>
+    <span class="badge shipped">shipped</span>
+    <span class="badge">Discoverability</span>
+  </div>
+  <h2>A shipped, valid RSS feed rather than a link to one</h2>
+  <p><strong>The problem.</strong> An earlier pass linked an RSS feed that was not regenerated when guides were added, so the feed listed four guides while the site published five.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the feed as a hand-maintained file. <span class="trade">Trade-off: No build work; it drifts the first time someone forgets.</span></li>
+    <li><strong>B.</strong> Generate the feed from the same guide register as the pages, and fail the build if an item is missing. <span class="trade">Trade-off: A build dependency; the feed can never disagree with the site again.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> B. A feed is a promise of currency. A stale feed is worse than no feed, because aggregators cache the staleness.</p>
+  <p class="small"><strong>Implemented:</strong> feed.xml is generated from data/3b45b513/guides.json, sorted newest first, with a guid per guide. The gate asserts one item per guide and that every item appears in the sitemap.</p>
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Ask for feeds and sitemaps to be generated from the same content register, and for the check to be an assertion rather than a review step.</p>
+</section>
+<section class="flag-card" id="SG-29" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#SG-29">SG-29</a>
+    <span class="badge gated">gated</span>
+    <span class="badge">Discoverability</span>
+  </div>
+  <h2>Search Console setup</h2>
+  <p><strong>The problem.</strong> Query data is the only way to choose the next guide from evidence rather than from instinct, and no property exists.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Skip it and keep publishing on editorial judgement. <span class="trade">Trade-off: No data; every topic decision stays a hypothesis forever.</span></li>
+    <li><strong>B.</strong> Verify a URL-prefix property for the site, submit the sitemap, and review the Performance report after two weeks. <span class="trade">Trade-off: Needs the owner&#39;s Google account and ten minutes; gives impressions, queries and coverage errors.</span></li>
+    <li><strong>C.</strong> Verify by DNS on a custom domain later. <span class="trade">Trade-off: Cleaner long term; blocked on a domain decision nobody has made.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> B (blocked). It is the cheapest measurement available and the only one that reports what readers searched for before they arrived.</p>
+  <p class="small"><strong>Implemented:</strong> sitemap.xml, robots.txt and canonical URLs are generated and valid. Nothing can be verified from this build because no Google account is available; logged as CDF-12.</p>
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Say which measurement sources are expected to be reachable from the build environment. A brief that asks for Search Console data without an account produces a page explaining why there is none.</p>
+</section>
+<section class="flag-card" id="SG-30" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#SG-30">SG-30</a>
+    <span class="badge gated">gated</span>
+    <span class="badge">Reader experience</span>
+  </div>
+  <h2>Reader capture</h2>
+  <p><strong>The problem.</strong> There is no way for a reader who liked a guide to hear about the next one, so every visit starts from zero.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> No capture; the RSS feed is the only subscription route. <span class="trade">Trade-off: Nothing to maintain and no consent obligation; no direct channel.</span></li>
+    <li><strong>B.</strong> Single-field email capture with double opt-in on guide pages. <span class="trade">Trade-off: Owns the audience; adds a provider, a privacy notice and a consent record.</span></li>
+    <li><strong>C.</strong> A &#39;tell me when the next guide ships&#39; mail-draft link. <span class="trade">Trade-off: Zero infrastructure and honest; converts at roughly nothing.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A now, B once there are guides worth returning for.. Asking for an email address before there is anything to send is how a small publication teaches its first hundred readers to ignore it.</p>
+  <p class="small"><strong>Implemented:</strong> Feed only. The decision and its trade-offs are published here rather than quietly deferred.</p>
+  <p class="small"><strong>The prompt that would have got here faster:</strong> If capture is wanted, name the provider and the consent model in the brief. &#39;Add email capture&#39; with no provider produces either nothing or a third-party script that starts collecting before anyone has written a privacy notice.</p>
+</section>
+<section class="flag-card" id="D-01" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-01">D-01</a>
+    <span class="badge open">open</span>
+    <span class="badge">Owner decision</span>
+  </div>
+  <h2>Which product each supplied short link was meant to reach</h2>
+  <p><strong>The problem.</strong> Every product row has an empty intent column. The site can say where a link landed on a given day; it cannot say what the owner meant it to reach, and no document in the repository does either.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Fill the four intent fields from the campaign brief or the Associates link record. <span class="trade">Trade-off: Turns the register from an observation log into a verified record; needs whoever built the campaign to answer.</span></li>
+    <li><strong>B.</strong> Accept the observed destinations as the intended products, dated and signed off. <span class="trade">Trade-off: Fast; freezes a live observation into a claim that will drift the first time Amazon reroutes a short link.</span></li>
+    <li><strong>C.</strong> Leave the columns blank indefinitely. <span class="trade">Trade-off: Honest; the register never becomes usable for anything but reading.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A. B is the tempting option and the one that creates a false record. A is one message long.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Ask for the campaign brief or link-generation export as an input. A register of intent cannot be reconstructed from observations alone.</p>
+</section>
+<section class="flag-card" id="D-02" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-02">D-02</a>
+    <span class="badge open">open</span>
+    <span class="badge">Compliance</span>
+  </div>
+  <h2>Buy links while the tag is untested</h2>
+  <p><strong>The problem.</strong> The tagged links match the formatting rule and have never been validated against a tracking report.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the buttons, labelled provisional, and test within a week. <span class="trade">Trade-off: The site can earn from day one; an untested link that silently fails credits nothing and looks identical to a working one.</span></li>
+    <li><strong>B.</strong> Hide every buy button until gate G-02 passes. <span class="trade">Trade-off: Maximum compliance confidence; the publication becomes a brochure until someone tests.</span></li>
+    <li><strong>C.</strong> Keep buttons and add a visible &#39;link not yet verified&#39; note on each. <span class="trade">Trade-off: Honest and clickable; a visible caveat on every button is not a great look for a shop.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A. The links satisfy the formatting rule as published, and a page nobody can click teaches nothing. The one-week test is the condition attached to the choice.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Ask for the test to be scheduled as a task with an owner and a date, not as an aspiration. &#39;Untested&#39; is a status, not a plan.</p>
+</section>
+<section class="flag-card" id="D-03" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-03">D-03</a>
+    <span class="badge open">open</span>
+    <span class="badge">Measurement</span>
+  </div>
+  <h2>Where the analytics collector runs</h2>
+  <p><strong>The problem.</strong> The five-event schema and the collector exist; no endpoint is deployed, so the site records nothing.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Self-host the collector on a small server behind HTTPS. <span class="trade">Trade-off: Full control of raw data; someone has to patch a server.</span></li>
+    <li><strong>B.</strong> Run it as a serverless function. <span class="trade">Trade-off: No server to maintain; cold starts, and storage limits that need a decision.</span></li>
+    <li><strong>C.</strong> Leave it off. <span class="trade">Trade-off: Zero maintenance; no data, so the ledger stays empty forever.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> B. It removes the maintenance objection without handing the data to a third party, and the schema is already written.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Name the hosting target in the brief. &#39;Add analytics&#39; is three different projects depending on where it runs.</p>
+</section>
+<section class="flag-card" id="D-04" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-04">D-04</a>
+    <span class="badge open">open</span>
+    <span class="badge">Architecture</span>
+  </div>
+  <h2>Two publications in one repository</h2>
+  <p><strong>The problem.</strong> The repository carries several independently generated sites over the same five links — the root publication, /editorial/, /crisp-index/, /counterwise/, legacy archives, and this edition. They agree today on the destinations, but only because sessions keep cross-checking them by hand.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep every edition public and reachable, each excluded from search except the root. <span class="trade">Trade-off: Nothing is lost and the history stays readable; the domain carries five identities and five data models.</span></li>
+    <li><strong>B.</strong> Pick one publication, redirect or retire the rest, and keep one register. <span class="trade">Trade-off: One site, one identity, one gate; needs a redirect map and a decision about whose work becomes canonical.</span></li>
+    <li><strong>C.</strong> Merge the best parts of each into the root publication by hand. <span class="trade">Trade-off: Best content outcome; the most work, and the most chance of two registers drifting again mid-merge.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A now, B as soon as the redirect map exists.. This edition is deliberately namespaced so it cannot collide with the others, but that is a truce, not a fix.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> For a repository worked by more than one session, specify one canonical generator and one register in the brief, and give every other output a namespace and an index. Without that, each session reasonably builds its own.</p>
+</section>
+<section class="flag-card" id="D-05" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-05">D-05</a>
+    <span class="badge open">open</span>
+    <span class="badge">Compliance</span>
+  </div>
+  <h2>Prices and ratings</h2>
+  <p><strong>The problem.</strong> Readers want to know the price. Amazon&#39;s rules only permit a site to show price and availability when Amazon serves that data or it comes through the Creators or PA API, and bar republishing star ratings and reviews without API-sourced data.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Show no price and no rating; every button says what it opens. <span class="trade">Trade-off: Always accurate and compliant; a reader has to click to learn a budget.</span></li>
+    <li><strong>B.</strong> Enrol in the Creators API and display Amazon-served prices with a timestamp. <span class="trade">Trade-off: Genuinely useful to a budget-led shopper; real engineering, and a stale price is a compliance risk.</span></li>
+    <li><strong>C.</strong> Show a coarse band written as a range of tiers — starter, mid, premium — with the date the band was set. <span class="trade">Trade-off: Stable and useful; still a claim that ages, still not Amazon-served, and a tier boundary is itself a judgement nobody asked us to make.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A. Nothing on this site is currently permitted to show a price, so nothing does. The absence is stated on every product page rather than left to be noticed.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> If prices matter, ask for an API enrolment as a prerequisite task with a named owner, not as a display requirement.</p>
+</section>
+<section class="flag-card" id="D-06" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-06">D-06</a>
+    <span class="badge open">open</span>
+    <span class="badge">Reader experience</span>
+  </div>
+  <h2>Imagery</h2>
+  <p><strong>The problem.</strong> Product imagery sells. Amazon-hosted product images are Program Content and their use is limited by the IP License to Associates purposes, so this edition uses generated editorial illustration instead.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Generated editorial illustration, captioned as illustration, no brand marks. <span class="trade">Trade-off: Consistent and licence-clean; a reader cannot see the actual machine.</span></li>
+    <li><strong>B.</strong> Amazon-served product images through the approved tooling. <span class="trade">Trade-off: Shows the real product; images come from Amazon and can change without notice.</span></li>
+    <li><strong>C.</strong> Photograph the units yourself. <span class="trade">Trade-off: Highest trust; needs the units and a morning.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A. A generated picture that says it is a generated picture is honest. A stock photo presented as the product is not.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Say explicitly whether product photography exists. If it does not, ask for illustration plus captions rather than letting a build reach for a stock image.</p>
+</section>
+<section class="flag-card" id="D-07" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-07">D-07</a>
+    <span class="badge open">open</span>
+    <span class="badge">Growth</span>
+  </div>
+  <h2>Publishing cadence</h2>
+  <p><strong>The problem.</strong> Seven guides exist. A burst followed by silence reads as a generated site to both readers and crawlers.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> One new guide every two weeks. <span class="trade">Trade-off: Sustainable; slow cluster growth.</span></li>
+    <li><strong>B.</strong> One a week. <span class="trade">Trade-off: Faster coverage; needs a real writing slot weekly, which is the part that fails.</span></li>
+    <li><strong>C.</strong> A batch of eight now, then monthly. <span class="trade">Trade-off: Reaches a useful size quickly; thin pages are the usual result of a batch.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A. Ten thin guides are worse than five good ones, and a cadence nobody can hold is worse than both.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Ask for a cadence with an owner and a first date attached. &#39;Regularly&#39; is not a cadence.</p>
+</section>
+<section class="flag-card" id="D-08" style="border-left-color:var(--clay)">
+  <div class="flag-head">
+    <a class="badge" href="#D-08">D-08</a>
+    <span class="badge open">open</span>
+    <span class="badge">Trust</span>
+  </div>
+  <h2>The byline</h2>
+  <p><strong>The problem.</strong> Pages are published under a desk name because no editor was supplied. Inventing a plausible person would be a fabrication, so the absence is published instead.</p>
+  <ul class="opts">
+    <li><strong>A.</strong> Keep the desk byline and log the weakness. <span class="trade">Trade-off: Honest and unchanging; a weaker trust signal than a person.</span></li>
+    <li><strong>B.</strong> Add a named editor with a role, a short bio and a contact route. <span class="trade">Trade-off: The strongest cheap trust signal available; requires a real person who answers for corrections.</span></li>
+  </ul>
+  <p class="small" style="margin-top:14px"><strong>What this build does:</strong> A until B is possible. A named author is worth several times what a team byline is worth, and only if the name is real.</p>
+  
+  <p class="small"><strong>The prompt that would have got here faster:</strong> Ask for the author&#39;s name, role and contact channel as an input to the brief. Otherwise every session will either invent one or apologise for not having one.</p>
+</section>
+
+<div class="box info"><span class="t">What SG-27 to SG-30 actually delivered</span>
+<p><strong>SG-27</strong> shipped: the top navigation is reader verbs, and every register lives in one footer group plus an operator index. <strong>SG-28</strong> shipped: the feed is generated from the guide register and the gate asserts one item per guide. <strong>SG-29</strong> and <strong>SG-30</strong> are gated, honestly: Search Console needs a Google account and reader capture needs a provider and a consent model. Both are written up here with their trade-offs rather than quietly dropped.</p></div>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="wordmark" href="/Affil3/counter-desk/">Counter Desk<span class="dot">.</span></a>
+        <p class="foot-blurb">Five countertop cooking appliances, compared the boring way — capacity, footprint, temperature, cleanup — from the makers' own specification pages, with every gap and every conflict written down instead of smoothed over.</p>
+      </div>
+      <div>
+        <h2 class="foot-h">The publication</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/counter-desk/shelf/">The five picks</a></li>
+          <li><a href="/Affil3/counter-desk/guides/">Buying guides</a></li>
+          <li><a href="/Affil3/counter-desk/categories/">Categories</a></li>
+          <li><a href="/Affil3/counter-desk/counter-space/">Counter-space &amp; fit finder</a></li>
+          <li><a href="/Affil3/counter-desk/about/">About and corrections</a></li>
+          <li><a href="/Affil3/counter-desk/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/counter-desk/sitemap.xml">Sitemap</a></li>
+        </ul>
+        <h2 class="foot-h" style="margin-top:22px">Records and dashboards</h2>
+        <ul class="foot-links">
+          <li><a href="/Affil3/counter-desk/review/">Operator index</a></li>
+          <li><a href="/Affil3/counter-desk/review/executive-summary/">Executive summary</a></li>
+          <li><a href="/Affil3/counter-desk/review/flagged/">Flagged for review</a></li>
+          <li><a href="/Affil3/counter-desk/review/questions/">Open questions</a></li>
+          <li><a href="/Affil3/counter-desk/review/suggestions/">Suggestions and decisions</a></li>
+          <li><a href="/Affil3/counter-desk/review/ledger/">Campaign ledger</a></li>
+          <li><a href="/Affil3/counter-desk/review/measurement/">Measurement</a></li>
+          <li><a href="/Affil3/counter-desk/review/compliance/">Disclosure and gates</a></li>
+          <li><a href="/Affil3/counter-desk/review/sources/">Source register</a></li>
+          <li><a href="/Affil3/counter-desk/review/register/">Product-intent register</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</p>
+    <p class="foot-fine">Counter Desk is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown, because Amazon's program rules only permit a site to display price data that Amazon serves. Photographs are editorial illustrations, not the reviewed units. Published under a desk byline; no named editor has been supplied. Last checked November 20, 2026. As an Amazon Associate I earn from qualifying purchases.</p>
+  </div>
+</footer>
+<script src="/Affil3/counter-desk/assets/analytics.js" defer></script>
+
+</body>
+</html>

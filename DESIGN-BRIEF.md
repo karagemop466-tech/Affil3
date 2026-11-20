@@ -57,7 +57,7 @@ true is as bad as one that was never accurate.
 
 **Evidence.** Before the rebrand, 'Affil3' appeared as the wordmark, the title suffix, the og:site_name and the footer. It was the repository name.
 
-**Where it stands now.** Addressed in practice; confirmation open. The wordmark, title and footer now read 'ShopNow Kitchen' (data/config.json, reader-facing name; priorName 'Affil3' is disclosed on /about/ and in the repository). Whether that name is the owner's confirmed final choice is open at question Q-25. This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-043).
+**Where it stands now.** Addressed in practice; confirmation open. The wordmark, title and footer now read 'ShopNow Kitchen' (data/config.json, reader-facing name; priorName 'Affil3' is disclosed on /about/ and in the repository). Whether that name is the owner's confirmed final choice is open at question Q-18 (main's name row; corrected here 2026-11-20). This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-043).
 
 **Why it reads as generated.** It is the one string on the site that exists for the machine's convenience rather than a reader's.
 
@@ -146,7 +146,7 @@ direction, it is a failed build.
 
 - **Before.** Correction to an earlier draft: the CSS was never a single generic sans. It pairs a serif display with a system sans, caps measures at several widths, and uses a warm paper background. Verified by reading src/assets/style.css rather than assuming.
 - **After.** A display face with more character than the current system serif stack, loaded without a third-party request (self-hosted, subsetted, with the gate extended to keep it same-origin), and the accent reserved strictly for actions so a button is never mistaken for a link.
-- **Effort.** Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate; the reader-facing name ships as ShopNow Kitchen, with owner confirmation open at Q-25.
+- **Effort.** Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate; the reader-facing name ships as ShopNow Kitchen, with owner confirmation open at Q-18.
 - **Checkable?** Partly: the gate already asserts no external stylesheet, script or font origin, so any font change is automatically checked for the third-party property. Type scale and measure are not mechanically checkable.
 
 ### PB-8. Seasonality
@@ -214,8 +214,8 @@ Patterns that make copy read as machine-written. The last one is the test that m
 | Step | Do this | Depends on |
 |---|---|---|
 | 1 | Settle S-11 (how many editions a crawler sees; S-01 covers the two-publication case). Everything downstream is wasted if it is applied to three sites. | — |
-| 2 | Confirm the reader-facing name (Q-25) and settle S-08 / Q-06 (byline). These two change every template and every piece of copy. | S-11 |
-| 3 | PB-7 typography and colour. Highest visible impact, no dependencies once the name exists. | Q-25 |
+| 2 | Confirm the reader-facing name (Q-18) and settle S-08 / Q-06 (byline). These two change every template and every piece of copy. | S-11 |
+| 3 | PB-7 typography and colour. Highest visible impact, no dependencies once the name exists. | Q-18 |
 | 4 | PB-1, PB-2 front page and card anatomy. Partly done; finish once the name and palette exist. | PB-7 |
 | 5 | PB-4 voice pass over the guides (thirteen as of 2026-11-20), against the house style file from S-19. | PB-1 |
 | 6 | PB-3 imagery, after S-07 decides the source. | S-07 |
@@ -232,7 +232,7 @@ Hard constraints, enforced by tools/verify.mjs. Do not relax them and do not edi
 
 Already decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.
 
-Still open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-36), reader capture (S-06), navigation labels and footer gloss (S-37), and the design prompt of record (S-20); the reader-facing name confirmation is question Q-25. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
+Still open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-36), reader capture (S-06), navigation labels and footer gloss (S-37), and the design prompt of record (S-28); the reader-facing name confirmation is question Q-18; which of the two assembled design prompts binds (/design-brief/ here, or the /decisions/ assembly) is suggestion S-28. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
 
 Your job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.
 

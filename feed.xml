@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>ShopNow Kitchen guides</title>
+  <title>ShopNow Kitchen guides and Journal</title>
   <link>https://karagemop466-tech.github.io/Affil3/</link>
   <description>Kitchen gear, explained like a friend would. Every claim traced to its source.</description>
   <language>en-US</language>
   <lastBuildDate>Fri, 20 Nov 2026 00:00:00 GMT</lastBuildDate>
   <atom:link href="https://karagemop466-tech.github.io/Affil3/feed.xml" rel="self" type="application/rss+xml"/>
+  <item>
+    <title>The big roast: what temperature actually means</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/the-big-roast-what-temperature-actually-means/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/the-big-roast-what-temperature-actually-means/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>A seasonal plain-English guide to the internal-temperature targets that decide when a roast is done, straight from the USDA.</description>
+  </item>
+  <item>
+    <title>Instant-read vs leave-in: two thermometers, two jobs</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/instant-read-vs-leave-in-two-thermometers-two-jobs/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/instant-read-vs-leave-in-two-thermometers-two-jobs/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>What an instant-read probe and a wireless leave-in probe each do, and how to choose between them by the job.</description>
+  </item>
+  <item>
+    <title>The number that decides when to pull it: thermometer basics</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/the-number-that-decides-when-to-pull-it-thermometer-basics/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/the-number-that-decides-when-to-pull-it-thermometer-basics/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Why an internal-temperature target matters more than time, the safe minimums to aim for, and where to put the probe.</description>
+  </item>
+  <item>
+    <title>Counter space is the real spec: measure before you buy</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/counter-space-is-the-real-spec-measure-before-you-buy/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/counter-space-is-the-real-spec-measure-before-you-buy/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>How to compare the real-world space three countertop appliances need, using the manufacturers&#39; own case dimensions.</description>
+  </item>
+  <item>
+    <title>Eight quarts, one basket: the big-batch air fryer</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/eight-quarts-one-basket-the-big-batch-air-fryer/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/eight-quarts-one-basket-the-big-batch-air-fryer/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>What an 8-quart single-basket air fryer is good at, and the wattage figure to read carefully before ordering.</description>
+  </item>
+  <item>
+    <title>When a basket isn&#39;t enough: the case for a 26-quart oven</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/when-a-basket-isnt-enough-the-case-for-a-26-quart-oven/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/when-a-basket-isnt-enough-the-case-for-a-26-quart-oven/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>Why oven-style air fryers exist, what they trade away, and the one figure to compare before you choose one.</description>
+  </item>
+  <item>
+    <title>Two baskets, one machine: what dual-basket air fryers change</title>
+    <link>https://karagemop466-tech.github.io/Affil3/articles/two-baskets-one-machine-what-dual-basket-air-fryers-change/</link>
+    <guid isPermaLink="true">https://karagemop466-tech.github.io/Affil3/articles/two-baskets-one-machine-what-dual-basket-air-fryers-change/</guid>
+    <pubDate>Fri, 20 Nov 2026 00:00:00 GMT</pubDate>
+    <description>What a dual-basket air fryer does differently from a single-drawer model, and the one number to check before you buy one.</description>
+  </item>
   <item>
     <title>Air fryer chicken breast: how do you know it is done?</title>
     <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-chicken-breast-how-do-you-know-it-is-done/</link>

@@ -93,7 +93,7 @@
     },
     {
       "id": "K-13",
-      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json. Note (478e6577, 2026-11-20): two other same-day rounds recorded the Amazon home page for all five links, so this statement is contested. See FLG-037 and data/observations/2026-11-20-478e6577-recheck.json.",
       "sources": [
         "S05",
         "S04",
@@ -156,9 +156,17 @@
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "K-22",
+      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the same brand's FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The product page and the comparison table previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-24, Q-25, D-13 and D-14 were added by session arena/5a91ea5c-affil3 on 2026-11-20 to close two gaps the register did not carry: which acquisition channels the owner will actually run, and whether the reader-facing name ShopNow Kitchen is confirmed.",
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited. Q-24, D-19 and D-20 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping). Its original Q-25 was dropped at merge as a duplicate of Q-18, and its D-13/D-14 were renumbered to D-19/D-20 because main already uses those ids. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3.",
   "unknown": [
     {
       "id": "Q-01",
@@ -317,6 +325,68 @@
       "blocking": false
     },
     {
+      "id": "Q-17",
+      "question": "Do the five submitted short links open the intended product pages in a signed-in browser?",
+      "why_it_matters": "Same-day sandbox rounds disagree (FLG-037). Until an owner-side check settles it, no short link can be called confirmed, and no row can be treated as checked against the Associates destination.",
+      "how_to_close": "Open each submitted short link in a signed-in browser, record the final URL, and compare it with the observed ASIN in data/products.json. Record the result in the observation log.",
+      "sources": [
+        "S05"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-18",
+      "question": "What is this publication called?",
+      "have": "A reader-facing name already ships: data/config.json has siteName 'ShopNow Kitchen' with priorName 'Affil3' disclosed on /about/, and the rendered <title> reads '… | ShopNow Kitchen'. What is missing is the owner's recorded confirmation — decision_log is empty — so an earlier version of this row (written before the rebrand was noticed) described a placeholder Affil3 wordmark that no longer exists; corrected 2026-11-20 by session arena/5a91ea5c-affil3. A naming checklist exists at suggestion S-22, and design-brief row DX-6 now records the post-rebrand state.",
+      "lack": "A chosen name, and the trademark and Associates trademark-guideline checks that make the choice safe to ship.",
+      "who": "Site owner",
+      "why_it_matters": "Every polished detail on the site sits behind one generic string a reader cannot remember, spell from hearing, or associate with kitchens. The rename touches every template, so it gets more expensive every week it is deferred.",
+      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it. Or, if the name already shipping is right, reply 'keep ShopNow Kitchen' in the decision log — one line closes it.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-19",
+      "question": "Which guide gets written next, and on what evidence?",
+      "have": "Thirteen published question-shaped guides with a house style that can be checked (S-19); a seasonal calendar proposal (S-23); a source-backed cluster proposal (S-24); an empty measurement loop (no Search Console property, no analytics endpoint).",
+      "lack": "Any first-party evidence of what queries reach the site, and any record of what visitors click.",
+      "who": "Site owner (with whichever session holds the publishing cadence, S-05)",
+      "why_it_matters": "Until something measures arrivals, every new title is an uncheckable hypothesis and 'measure whether anyone arrives' remains a plan rather than a loop. Operating Agreement 4 bars substituting anyone else's traffic estimates for that measurement (K-19).",
+      "how_to_close": "Verify the Search Console property (D-05) and read two Performance-report cycles, then answer S-21; until then, choose topics only from the seasonal calendar (S-23 B) and mark each entry a hypothesis.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-20",
+      "question": "Which of the two published temperature ranges should a reader treat as the probe's working limit in a given cooking method?",
+      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line.",
+      "lack": "Manufacturer guidance on which figure applies to the probe as a whole in each cooking method. A 1,000 F ambient figure invites the reading that the probe may be left in a 1,000 F oven, and no manufacturer page addresses that reading directly.",
+      "who": "Manufacturer support, or the owner after reading the product manual",
+      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The site currently publishes both numbers, which is accurate, but not the instruction that would make them safe to act on.",
+      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance beside the table.",
+      "sources": [
+        "S14",
+        "S15"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-21",
+      "question": "What does the repeated Amazon-home-page result for the five short links mean?",
+      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is recorded on earlier dated rounds (FLG-004, FLG-031, FLG-037). In the same session, the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs.",
+      "lack": "A fetch from a signed-in browser, which the sandbox cannot do. Without one the observation stays an observation and no conclusion about the links is available.",
+      "who": "Site owner",
+      "why_it_matters": "Several sessions have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on the links (FLG-003) depends on which is true.",
+      "how_to_close": "Open each of the five links in a signed-in Amazon session and record the product name and the ten-character ASIN from the resulting URL. One pass, five minutes, and it closes Q-01 as well.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true
+    },
+    {
       "id": "Q-24",
       "question": "Which acquisition channels will the owner actually run?",
       "why_it_matters": "Design brief prescription PB-11 lists the channels the policies permit (organic search, an opted-in email list, the RSS feed) and the ones they bar (paid search on Amazon trademarks as a Prohibited Paid Search Placement, any reward or incentive for using Special Links, unsolicited outreach containing Special Links). Without a chosen set, every growth suggestion on the board assumes a channel that may never exist.",
@@ -325,14 +395,6 @@
         "S01",
         "S02"
       ],
-      "blocking": false
-    },
-    {
-      "id": "Q-25",
-      "question": "Is 'ShopNow Kitchen' the final reader-facing name, or a working name awaiting confirmation?",
-      "why_it_matters": "The rebrand shipped (data/config.json: siteName 'ShopNow Kitchen', priorName 'Affil3', disclosed on /about/), but no owner decision is recorded — decision_log is empty. The name touches every template and every piece of copy; replacing it later is a full-site pass, so confirming it now is cheaper than any other time.",
-      "how_to_close": "One line in the decision log confirming or replacing the name. Until then the site keeps ShopNow Kitchen and design-brief row DX-6 records the confirmation as open.",
-      "sources": [],
       "blocking": false
     }
   ],
@@ -418,16 +480,48 @@
     },
     {
       "id": "D-13",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": []
+    },
+    {
+      "id": "D-14",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
+      "closes": []
+    },
+    {
+      "id": "D-16",
+      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
+      "closes": [
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-17",
+      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, with the date. This has now failed to resolve from several separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "closes": [
+        "Q-01",
+        "Q-21"
+      ]
+    },
+    {
+      "id": "D-18",
+      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with itself - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
+      "closes": [
+        "Q-02"
+      ]
+    },
+    {
+      "id": "D-19",
       "suggestion": "List each candidate acquisition channel, check it against Participation Requirements 6(e)-(g) and Operating Agreement section 4, and write the allowed set down before running any of them; refused channels are recorded with the clause that refuses them.",
       "closes": [
         "Q-24"
       ]
     },
     {
-      "id": "D-14",
+      "id": "D-20",
       "suggestion": "Owner replies with the confirmed name (or 'keep ShopNow Kitchen') in the decision log; the reply is copied to data/config.json only if it changes, and design-brief row DX-6 is updated the same day.",
       "closes": [
-        "Q-25"
+        "Q-18"
       ]
     }
   ]

@@ -1,0 +1,312 @@
+{
+  "note": "A decision board for the next design pass. Read the questions first: they separate what is established from what would be guessing. Then read the suggestions, choose an option per suggestion, and only implement the choices made. Nothing here is implemented until the owner chooses.",
+  "how_to_use": "Read DQ-01 to DQ-04 first — they are the owner-access items that gate revenue and every revenue-related decision. Then read the suggestions in order. Reply with a suggestion ID and option letter to implement a choice.",
+  "suggestions": [
+    {
+      "id": "D-01",
+      "topic": "House style that reads human, not generated",
+      "problem": "The reader-facing copy risks reading as machine-written. The design brief already lists the forbidden patterns; the next step is to make them checkable in the build.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Adopt the design-brief house style as a build gate: forbidden patterns become failing checks.",
+          "tradeoff": "Any future page that slips into boilerplate fails the build instead of silently shipping."
+        },
+        {
+          "id": "B",
+          "label": "Add a second-pass human edit to every published page before it ships.",
+          "tradeoff": "Catches tone the regex misses, but adds an editor step to every publish."
+        },
+        {
+          "id": "C",
+          "label": "Do both: regex gate plus a human sign-off on the front page and guides only.",
+          "tradeoff": "Most thorough; the gate stays cheap and the human pass is scoped to the highest-traffic pages."
+        }
+      ],
+      "recommendation": "A now, C once the article volume grows. The gate is cheap and catches the common failure; the human pass is a scoped second net."
+    },
+    {
+      "id": "D-02",
+      "topic": "A magazine of catchy, trend-shaped articles",
+      "problem": "A buyer lands on a careful buying guide. To earn organic traffic and send a reader toward a product, the site also needs articles shaped like the questions and trends people actually search.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Publish a Journal of question- and trend-shaped articles, each tied to a product, with sources and a product box. (This is what this session shipped.)",
+          "tradeoff": "Adds reader-facing content that can rank, while keeping every claim sourced and every link disclosed."
+        },
+        {
+          "id": "B",
+          "label": "Publish trend articles with no product link, to build topical authority first.",
+          "tradeoff": "Builds authority without any affiliate action, but delays any measurable click intent."
+        },
+        {
+          "id": "C",
+          "label": "Publish both: sourced trend articles and pure-explainer articles that link only to guides.",
+          "tradeoff": "Broadest topical coverage; more editorial work to keep every claim sourced."
+        }
+      ],
+      "recommendation": "A. Each article already carries a sourced product box, so a reader can act on it. Pure-explainer articles (B/C) can be added later from measured queries."
+    },
+    {
+      "id": "D-03",
+      "topic": "Topic selection from measured data, not instinct",
+      "problem": "Choosing the next article topic by guesswork is how content that earns nothing gets published. The next topic should follow what actually arrives.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Verify Search Console, submit the sitemap, and pick the next topic from real queries after two weeks of data.",
+          "tradeoff": "Requires owner access and a waiting period; the first topic is still a hypothesis."
+        },
+        {
+          "id": "B",
+          "label": "Publish to a cadence and review queries monthly, letting data redirect the plan.",
+          "tradeoff": "More relaxed; some topics may underperform before the pattern is visible."
+        },
+        {
+          "id": "C",
+          "label": "Use the click counter's outbound events to see which products readers actually open, then write around those.",
+          "tradeoff": "Click data is only available once an analytics endpoint is deployed."
+        }
+      ],
+      "recommendation": "A, then C. Search Console answers what people ask; the click counter answers what they act on. Both need owner setup first."
+    },
+    {
+      "id": "D-04",
+      "topic": "Reader capture before scaling content",
+      "problem": "Content that earns traffic but captures nothing leaves no way to reach readers again or to choose topics from behavior.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Add a privacy-preserving reader-capture endpoint (newsletter or similar) once the analytics endpoint exists.",
+          "tradeoff": "Requires a self-hosted endpoint and an owner decision on what is collected."
+        },
+        {
+          "id": "B",
+          "label": "Skip capture for now and rely on Search Console and the click counter.",
+          "tradeoff": "No owned audience; topic decisions depend entirely on search and click data."
+        },
+        {
+          "id": "C",
+          "label": "Add a lightweight, no-email on-site capture (a saved-list or print feature) that runs on GitHub Pages.",
+          "tradeoff": "Builds a repeat-visit habit without a backend, but is more product work."
+        }
+      ],
+      "recommendation": "B first, A once an endpoint is deployed. Capture is not worth a data processor before there is traffic to capture."
+    },
+    {
+      "id": "D-05",
+      "topic": "Brand, imagery and seasonality",
+      "problem": "The site needs to feel published rather than generated: a recognizable brand, imagery that is clearly editorial, and a sense that the site is current.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep AI-generated illustrations, label them clearly at the point of use, and add a seasonal band that rotates with the calendar.",
+          "tradeoff": "Honest and zero-cost, but illustrations are not product photography."
+        },
+        {
+          "id": "B",
+          "label": "Replace illustrations with product photography once the owner can supply shots.",
+          "tradeoff": "Real imagery lifts trust, but requires the actual units and an ownership decision."
+        },
+        {
+          "id": "C",
+          "label": "A hybrid: illustration for concept pages, real photography for product pages when available.",
+          "tradeoff": "Best of both, but needs a mix of assets and clear labeling of each."
+        }
+      ],
+      "recommendation": "A now, C when real photography is available. The current disclosure already labels every image as editorial illustration, which is the honest default."
+    },
+    {
+      "id": "D-06",
+      "topic": "Navigation in reader vocabulary",
+      "problem": "Dashboard names (sources, ledger, measurement) are internal vocabulary. A reader-facing site should navigate by what a reader would look for.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep reader-facing nav to Shop, Journal, Guides, Categories, About; move every dashboard into one footer group. (Current state.)",
+          "tradeoff": "Clean reader nav with dashboards still reachable; the split is enforced by the build."
+        },
+        {
+          "id": "B",
+          "label": "Rename dashboard nav items into reader language on the nav itself.",
+          "tradeoff": "Friendlier, but risks blurring the line between a buying guide and an internal record."
+        },
+        {
+          "id": "C",
+          "label": "Add a single reader-friendly landing for the records so a curious reader can find the source register without the footer.",
+          "tradeoff": "One more surface to maintain, but lowers the distance to the evidence."
+        }
+      ],
+      "recommendation": "A, plus C as a small addition: the footer already groups the dashboards; a reader-facing pointer to the source register strengthens trust without cluttering nav."
+    },
+    {
+      "id": "D-07",
+      "topic": "Revenue unblock before any content scaling",
+      "problem": "Nothing on the site can earn until one tagged Special Link has been tested against the tracking report. Content work cannot substitute for this.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Generate one Special Link per product in Associates Central, click it once, and confirm it appears in the tracking report before scaling anything.",
+          "tradeoff": "A few minutes of owner time; it is the single highest-value action available."
+        },
+        {
+          "id": "B",
+          "label": "Publish all current tagged links and wait for the first report.",
+          "tradeoff": "Skips the one-link test, so a broken attribution would be discovered only after content is scaled."
+        },
+        {
+          "id": "C",
+          "label": "Confirm the tracking ID is live on the account before testing links.",
+          "tradeoff": "Cheap prerequisite that removes doubt about whether any tagged link can pay at all."
+        }
+      ],
+      "recommendation": "C then A. Confirm the ID is on the account, then test one link per product against the report. This gates every revenue claim."
+    },
+    {
+      "id": "D-08",
+      "topic": "Cadence and the publishing workflow",
+      "problem": "A sustained cadence is what turns a site into a publication. Without a defined workflow, the cadence decays.",
+      "options": [
+        {
+          "id": "A",
+          "label": "Define a weekly cadence: one article or guide, added to the sitemap and feed automatically, verified by the gate.",
+          "tradeoff": "Predictable and automated, but needs a steady supply of sourced topics."
+        },
+        {
+          "id": "B",
+          "label": "Publish to a burst schedule, then pause.",
+          "tradeoff": "Fast initial coverage, but the site goes quiet and the cadence is not sustainable."
+        },
+        {
+          "id": "C",
+          "label": "Set the cadence from measured data: publish more in the categories that earn queries, less where they do not.",
+          "tradeoff": "Data-driven, but only works after Search Console and the click counter are live."
+        }
+      ],
+      "recommendation": "A as the default, moving toward C once measurement is live. The build already adds every new page to the sitemap and feed automatically."
+    }
+  ],
+  "questions": [
+    {
+      "id": "DQ-01",
+      "question": "Which markets and storefronts is this site targeting?",
+      "have": "A single US tracking ID (shopnow047c-20) and US amazon.com listings observed.",
+      "missing": "Confirmation of the intended marketplace and whether any other storefront is in scope.",
+      "who": "Account owner",
+      "closes": "Export the account's tracking-ID and declared-site lists from Associates Central.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-02",
+      "question": "Is the tracking ID live on the account, and is this site declared?",
+      "have": "The ID's -20 suffix matches the US Associates convention.",
+      "missing": "Whether shopnow047c-20 is active and whether this domain is declared in Associates Central.",
+      "who": "Account owner",
+      "closes": "Check Associates Central; export the tracking-ID and declared-site lists.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-03",
+      "question": "Have any tagged Special Links been tested against the tracking report?",
+      "have": "Tagged outbound URLs are published for all five products.",
+      "missing": "Any confirmed click appearing in a tracking report.",
+      "who": "Account owner",
+      "closes": "Generate one Special Link per product, click it, confirm the report row.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-04",
+      "question": "What is the intended product behind each submitted short link?",
+      "have": "Observed redirect destinations and listing titles for the products that resolved.",
+      "missing": "The owner's intended ASIN and official listing URL per link, kept separate from observed targets.",
+      "who": "Account owner",
+      "closes": "Read the original link-generation record or campaign brief; confirm the intended ASIN.",
+      "blocking": true,
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "DQ-05",
+      "question": "Who is the target reader, precisely?",
+      "have": "A general sense of kitchen buyers from the product set.",
+      "missing": "A defined reader persona that topic selection can be checked against.",
+      "who": "Site owner",
+      "closes": "Write down the last five things the household actually cooked; match topics to that list.",
+      "blocking": false,
+      "sources": []
+    },
+    {
+      "id": "DQ-06",
+      "question": "What publishing cadence is sustainable?",
+      "have": "The build auto-adds new pages to the sitemap and feed; no cadence is committed.",
+      "missing": "A committed cadence and who writes and reviews each piece.",
+      "who": "Site owner",
+      "closes": "Choose a cadence in the suggestions board and assign an owner per piece.",
+      "blocking": false,
+      "sources": []
+    },
+    {
+      "id": "DQ-07",
+      "question": "Where will the analytics collector run, and who owns it?",
+      "have": "A privacy-preserving collector and a five-event schema, inactive on the live site.",
+      "missing": "A deployed HTTPS endpoint and an owner for the data it produces.",
+      "who": "Site owner",
+      "closes": "Deploy tools/collector.mjs on a host, set analyticsEndpoint, and run a ten-click test.",
+      "blocking": false,
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-08",
+      "question": "Should prices or ratings ever be displayed?",
+      "have": "No price, rating or availability is recorded or published, by policy.",
+      "missing": "A decision on whether authorized price data would ever be shown, and how staleness would be handled.",
+      "who": "Site owner",
+      "closes": "Decide against or in favor of authorized price data, and record the policy.",
+      "blocking": false,
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-09",
+      "question": "Is a named editor required for reader trust?",
+      "have": "A team byline. Amazon policy requires any stated credential to be true.",
+      "missing": "A named editor and a true, verifiable credential.",
+      "who": "Site owner",
+      "closes": "Assign a named editor with a credential that can be checked.",
+      "blocking": false,
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "DQ-10",
+      "question": "Which published edition is the product?",
+      "have": "Several editions exist under one domain; only the root publication is in the sitemap.",
+      "missing": "A decision to retire or consolidate the secondary editions.",
+      "who": "Site owner",
+      "closes": "Choose an option on the suggestions board and write a redirect map if retiring.",
+      "blocking": false,
+      "sources": []
+    }
+  ],
+  "prompt": "Design ShopNow Kitchen as a polished marketing affiliate website, not an audit report.\n\nReader-facing goal\n- A buyer should land and feel they are on a published, human-run site, not a generated one.\n- Lead with the products and the Journal: catchy, trend-shaped articles and topics tied to the products we promote.\n- The site should earn organic traffic: question- and trend-shaped articles that real people search for, each sending the reader to a disclosed product page.\n\nHard rules (enforced by the build gate, not by good intentions)\n- Disclosure above the fold on every page: the Associates statement strip under the masthead, repeated in the footer.\n- Every outbound product link is marked sponsored (rel=\"sponsored\") and carries the tracking tag shopnow047c-20.\n- No price, no star rating, no review count anywhere.\n- No hands-on testing claims. We do not test products; we read the official listings and manufacturer pages.\n- Every factual table row carries a source link to an official site. A value that cannot be confirmed from an official source is left blank and flagged unverified. Nothing is inferred or filled in.\n- Images are editorial illustration, labeled at the point of use; they are not the reviewed units.\n- One indexable publication. Secondary editions stay reachable but excluded from the sitemap.\n\nTone and style\n- Write like a person who cooks, not like a generator. Short sentences, concrete comparisons, no filler.\n- Article titles are editorial working titles. They are not claims about popularity, search volume or product superiority.\n- Avoid the patterns that read as machine-written: stock openers, listicle padding, vague superlatives, and restating the spec table as prose.\n\nWhat to build\n- A Journal of catchy, trend-shaped articles (already started), each with a sourced product box and a disclosed buy link.\n- Clean reader-facing navigation (Shop, Journal, Guides, Categories, About) with every dashboard reachable from a single footer group.\n- A decision board where suggestions are reviewed and chosen before anything is implemented.\n- A clear questions register: what is known, what is missing, who can close each gap, before any decision is made.\n- Topic selection from measured data (Search Console queries and outbound clicks), not instinct, once measurement is live.\n\nDo not\n- Do not invent traffic, conversion or revenue figures. None exist yet.\n- Do not claim any submitted short link is invalid; their compliance status is unresolved.\n- Do not merge the intended-product fields with the observed redirect targets. Keep them separate."
+}

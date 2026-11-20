@@ -8,8 +8,29 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources',
+const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
   'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+// Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
+function imageSize(file) {
+  try {
+    const buf = fs.readFileSync(file);
+    if (buf.length > 24 && buf[0] === 0x89 && buf[1] === 0x50) {
+      return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+    }
+    if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+      for (let i = 2; i < buf.length - 9; ) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const m = buf[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) {
+          return { w: buf.readUInt16BE(i + 7), h: buf.readUInt16BE(i + 5) };
+        }
+        if (m === 0xd8 || m === 0xd9 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch { /* unreadable: treated as no size known */ }
+  return null;
+}
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -17,6 +38,8 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const articles = read('data/articles.json').articles;
+const decisions = read('data/decisions.json');
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
@@ -76,6 +99,18 @@ check('five submitted product rows present', products.length === 5, String(produ
 for (const g of guides) {
   for (const sid of g.sources) check(`guide ${g.slug} source ${sid} exists`, SRC.has(sid), sid);
 }
+for (const a of articles) {
+  for (const sid of a.sources) check(`article ${a.slug} source ${sid} exists`, SRC.has(sid), sid);
+  check(`article ${a.slug} has a topic and read time`, !!a.topic && a.read_minutes > 0, a.topic);
+  check(`article ${a.slug} title within 90 characters`, a.title.length > 0 && a.title.length <= 74, String(a.title.length));
+  check(`article ${a.slug} has image alt text`, !!a.image_alt, a.image);
+}
+for (const s of decisions.suggestions) {
+  check(`decision ${s.id} has options and a recommendation`, s.options.length >= 2 && !!s.recommendation, s.id);
+}
+for (const q of decisions.questions) {
+  check(`decision ${q.id} has the four fields`, !!q.question && !!q.have && !!q.missing && !!q.who && !!q.closes, q.id);
+}
 for (const f of flags) for (const sid of f.sources) check(`flag ${f.id} source ${sid} exists`, SRC.has(sid), sid);
 
 // analytics allowlist: events.json, the browser script and the collector must agree
@@ -126,6 +161,16 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`${name}: image is served from this site`, src.startsWith(base + '/assets/img/'), src);
       const imgFile = src.startsWith(base) ? path.join(DOCS, src.slice(base.length)) : '';
       check(`${name}: image file exists`, !!imgFile && fs.existsSync(imgFile), src);
+      // The declared width and height must match the real file. A wrong intrinsic size makes the
+      // browser reserve the wrong box, so the page jumps when the image arrives.
+      if (imgFile && fs.existsSync(imgFile)) {
+        const real = imageSize(imgFile);
+        const w = (attrs.match(/\bwidth="(\d+)"/) || [])[1];
+        const h = (attrs.match(/\bheight="(\d+)"/) || [])[1];
+        if (real && w && h) {
+          check(`${name}: image dimensions match the file`, Number(w) === real.w && Number(h) === real.h, `${src} declares ${w}x${h}, file is ${real.w}x${real.h}`);
+        }
+      }
     }
     check(`${name}: has a canonical URL`, /<link rel="canonical" href="https:\/\/karagemop466-tech\.github\.io\/Affil3\//.test(html));
     if (path.basename(f) !== '404.html') {
@@ -148,7 +193,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
     // Kept in step with DASHBOARDS in tools/build.mjs; /privacy/ and /design-brief/ were added by
     // session 66f2548a so the two new pages cannot silently lose their footer entry.
-    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
+    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/decisions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
       check(`${name}: footer links ${d}`, footer.includes(`${base}${d}`));
     }
     // links
@@ -217,6 +262,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`guide ${g.slug} lists its sources`, /Sources for this guide/.test(h));
     check(`guide ${g.slug} states it is not a test`, !/we tested|our test kitchen|we cooked/i.test(h));
   }
+  for (const a of articles) {
+    const f = path.join(DOCS, 'articles', a.slug, 'index.html');
+    check(`article page exists for ${a.slug}`, fs.existsSync(f), a.slug);
+    if (!fs.existsSync(f)) continue;
+    const h = fs.readFileSync(f, 'utf8');
+    check(`article ${a.slug} has a hero image`, /class="article-hero"/.test(h) && /<img [^>]*alt="[^"]+"/.test(h));
+    check(`article ${a.slug} lists its sources`, /Sources for this article/.test(h));
+    check(`article ${a.slug} has a data-article attribute`, /data-article="/.test(h));
+    check(`article ${a.slug} is labelled as illustration`, /editorial illustration, not the reviewed unit/i.test(h));
+    check(`article ${a.slug} names its source ids`, a.sources.every((id) => h.includes(id)));
+    check(`article ${a.slug} makes no hands-on test claim`, !/we tested|our test kitchen|we cooked/i.test(h));
+  }
+  check('Journal index exists', fs.existsSync(path.join(DOCS, 'articles', 'index.html')));
+  check('decision board exists', fs.existsSync(path.join(DOCS, 'decisions', 'index.html')));
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
   check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
@@ -229,6 +288,9 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const feedLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/guides/'));
   check('feed has one item per guide', feedLinks.length === guides.length, `${feedLinks.length} vs ${guides.length}`);
   for (const l of feedLinks) check(`feed item in sitemap: ${l}`, sitemapUrls.includes(l));
+  const feedArticleLinks = [...feed.matchAll(/<link>([^<]+)<\/link>/g)].map((m) => m[1]).filter((u) => u.includes('/articles/'));
+  check('feed has one item per Journal article', feedArticleLinks.length === articles.length, `${feedArticleLinks.length} vs ${articles.length}`);
+  for (const l of feedArticleLinks) check(`feed article in sitemap: ${l}`, sitemapUrls.includes(l));
   check('robots.txt references sitemap', fs.readFileSync(path.join(DOCS, 'robots.txt'), 'utf8').includes(cfg.siteUrl + '/sitemap.xml'));
   check('.nojekyll present', fs.existsSync(path.join(DOCS, '.nojekyll')));
   check('legacy site untouched by build (not regenerated)', !htmlFiles.some((f) => f.includes(path.join('legacy', ''))));
