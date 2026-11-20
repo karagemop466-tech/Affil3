@@ -496,7 +496,9 @@ const add = (p) => pages.push(p);
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
     <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
-    <li>Two destinations were transposed in an earlier register revision and were corrected after a retest; an independent fetch during the polish pass corroborated the corrected mapping. ${flagLinks(['FLG-022', 'FLG-028'])}</li>
+    <li>Two destinations were transposed in an earlier register revision and were corrected after a retest. ${flagLinks(['FLG-022', 'FLG-028'])}</li>
+    <li>All five observed listings were re-read directly on 2026-11-20, and each page's own title matched the title in this table. ${flagLinks(['FLG-030'])}</li>
+    <li>The short-link step itself did not reproduce on the last check: two reached the Amazon home page and three were unreachable from the check environment. The token-to-listing mapping is therefore treated as unverified, not as proven. It does not affect the buy links, which point at the observed listings below rather than at the short links. ${flagLinks(['FLG-031'])}</li>
     <li>${taggedCount} tagged ${taggedCount === 1 ? 'link is' : 'links are'} published with the tracking ID ${esc(cfg.trackingId)}. None has been tested in Associates Central. ${flagLinks(['FLG-005'])}</li>
     <li>The short links' compliance status is unresolved, not invalid. ${flagLinks(['FLG-003'])}</li>
     <li>No price, rating or availability is recorded. ${flagLinks(['FLG-016'])}</li>
@@ -852,7 +854,17 @@ ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-12', 'Observed product destinations cross-checked by an independent retest', 'Retest register + independent fetch; corrections logged', 'Passed (FLG-022 corrected, FLG-028 corroborated)'],
     ['G-13', "Specifications cross-checked against the maker's own pages; conflicts flagged, never smoothed over", 'Manufacturer-page register (S11–S16) + retest', 'Passed — conflicts published (FLG-023…FLG-027)'],
   ])}
-<div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>`,
+<h2>What Amazon says it looks for</h2>
+<p>The following is quoted from Associates Central's own help page for the application review, fetched in full on 2026-11-20 ${srcLink('S19')}. It is listed here because it sets a bar the site can be measured against, rather than a claim about this site's standing.</p>
+<ul>
+<li><strong>Qualified sales before review:</strong> “we require at least three within the first 180 days”, and “personal orders do not qualify”. Whether three have occurred is unknown; the <a href="${esc(href('/ledger/'))}">ledger</a> is empty and no authorized report exists.</li>
+<li><strong>Original content:</strong> “All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.” This site currently publishes ${guides.length} guides. That is below the rule of thumb, and it is recorded as a known gap rather than argued away ${flagLinks(['FLG-032'])}.</li>
+<li><strong>Recency:</strong> “Content on your website must be recent (generally within the last 60 days). You must own your website.” The site states its last review date in the masthead of every page.</li>
+<li><strong>Tagged links:</strong> special “tagged” links must be embedded in the Amazon product links on the declared sites. This site carries the tag ${esc(cfg.trackingId)}, but no link has been tested in Associates Central, so attribution is unproven ${flagLinks(['FLG-005'])}.</li>
+</ul>
+<h2>What the ASIN definition settles</h2>
+<p>The same help system defines an ASIN as “the 10-digit code that Amazon uses to denote specific products” and documents the simple text link format <code>amazon.com/dp/ASIN/ref=nosim?tag=YOURASSOCIATEID</code> ${srcLink('S18')}. That resolves the open point behind FLG-001: the five submitted tokens are 9 characters, so none of them is an ASIN, and they cannot be used directly in the documented link format. It does not say the tokens are invalid or non-compliant — that remains FLG-003. ${flagLinks(['FLG-001'])}</p>
+<div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. The Participation Requirements wording quoted above was read from the official page itself on 2026-11-20, not from a search excerpt.</p></div>`,
 });
 
 // Workflow (publishing cadence + who does what)

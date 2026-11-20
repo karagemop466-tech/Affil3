@@ -1,0 +1,43 @@
+{
+  "_about": "Third independent check of the five submitted links and of the five observed listings, run by the final integration session on 2026-11-20 as part of the polish pass. This file records what was SEEN, not what the owner MEANT. The intended ASIN stays blank for every row in data/products.json.",
+  "check_date": "2026-11-20",
+  "session": "arena/82e6b5eb-affil3",
+  "method": "Unauthenticated page fetch, no Associates session, no cookies. Two separate operations: (a) fetch each link.amazon short link and record the final URL and page title; (b) fetch https://www.amazon.com/dp/<observed ASIN> directly and record the page title. Operation (b) does not depend on operation (a) succeeding.",
+
+  "finding_1_listing_pages_corroborated": {
+    "summary": "All five observed ASINs resolve to listing pages whose own titles match the titles recorded in data/products.json, word for word on the model name. This is the strongest evidence the register has held for the observed column: it no longer rests only on a redirect that was observed once.",
+    "checked": [
+      { "asin": "B0CDY277D3", "row": "P01", "page_title_match": true, "title_seen": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black", "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers" },
+      { "asin": "B09B7SB46R", "row": "P02", "page_title_match": true, "title_seen": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included", "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers" },
+      { "asin": "B08DKYBTPH", "row": "P03", "page_title_match": true, "title_seen": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450 F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel", "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers" },
+      { "asin": "B0DHZTCNR5", "row": "P04", "page_title_match": true, "title_seen": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, +/-0.5 F Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black", "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat" },
+      { "asin": "B0DZFD6R9Z", "row": "P05", "page_title_match": true, "title_seen": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000 F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3", "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat" }
+    ],
+    "consequence": "The observed ASIN and observed title columns are corroborated. Nothing about them changes. The listing URLs published as citation sources (not as buy links) are the pages that were read."
+  },
+
+  "finding_2_short_link_hop_not_reproduced": {
+    "summary": "In this session the short links did NOT resolve to product pages. Each fetch of https://link.amazon/<token> landed on the Amazon home page (https://www.amazon.com/), title 'Amazon.com. Spend less. Smile more.', with no product title, no ASIN and no breadcrumb. This does not reproduce the token-to-ASIN mapping recorded by earlier sessions, and it does not disprove it either.",
+    "checked": [
+      { "token": "B04G1MEwY", "row": "P01", "final_url_seen": "https://www.amazon.com/", "product_seen": false },
+      { "token": "B02NbDxp3", "row": "P02", "final_url_seen": "https://www.amazon.com/", "product_seen": false },
+      { "token": "B00hJ57DV", "row": "P03", "final_url_seen": "https://link.amazon:443 unreachable from this sandbox (TLS handshake refused); not tested", "product_seen": null },
+      { "token": "B0c8moW59", "row": "P04", "final_url_seen": "https://link.amazon:443 unreachable from this sandbox (TLS handshake refused); not tested", "product_seen": null },
+      { "token": "B0f3GKalj", "row": "P05", "final_url_seen": "https://link.amazon:443 unreachable from this sandbox (TLS handshake refused); not tested", "product_seen": null }
+    ],
+    "why_it_matters": "The site's outbound buy links point at observed ASINs, not at the short links, so no buy link depends on the token-to-ASIN hop reproducing. What does depend on it is the claim that a given submitted link was the one the owner intended for a given row. That claim was already left unverified, with every intended ASIN blank, which is why this result changes no published field. It does mean the mapping must not be described as reproducible.",
+    "consequence": "Recorded as FLG-031. The intended-ASIN fields stay blank. No published buy link, citation or claim was altered. A signed-in browser session or an Associates Central check is still the way to close it (discovery task D-01)."
+  },
+
+  "finding_3_prices_seen_and_deliberately_not_recorded": {
+    "summary": "Four of the five listing fetches rendered a price on the page. No price was copied into the register, the tables or the site.",
+    "reason": "Prices are excluded by policy and by the register's own schema (the site publishes no price, rating or availability field). Associates Program Policies restrict showing a price obtained from an Amazon page rather than from an Amazon-provided feed, and a price captured in a sandbox fetch is exactly that. Recording one here would create a stale figure that looks verified.",
+    "consequence": "None on the site. FLG-016 continues to describe the omission."
+  },
+
+  "still_open": [
+    "Token-to-ASIN mapping is unverified and was not reproducible in an unauthenticated fetch (FLG-031, discovery task D-01).",
+    "No link has been tested in Associates Central, so tag attribution is unproven (FLG-005, discovery task D-02).",
+    "Compliance status of the link.amazon short links remains unresolved, not invalid (FLG-003)."
+  ]
+}

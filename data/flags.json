@@ -3,15 +3,17 @@
   "flags": [
     {
       "id": "FLG-001",
-      "severity": "high",
+      "severity": "low",
       "title": "Submitted tokens are 9 characters, not 10",
-      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.",
+      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. Amazon's own Associates Central help now settles what an ASIN is: 'ASIN is the 10-digit code that Amazon uses to denote specific products' (S18, fetched in full 2026-11-20). None of the five tokens is 10 characters, so none of them is an ASIN, and none can be used in the documented simple-text-link format amazon.com/dp/ASIN/ref=nosim?tag=YOURASSOCIATEID. The five observed product identifiers are all 10 characters, which is consistent with them being ASINs. Because the token is not the identifier, the intended ASIN for each row cannot be derived from the submitted link, so the intended ASIN, official listing URL, confirmation date and confirmation source stay blank on every row.",
       "sources": [
-        "S04",
+        "S18",
         "S05",
-        "S12"
+        "S04"
       ],
-      "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
+      "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL.",
+      "status": "open",
+      "resolution_note": "Partially settled 2026-11-20: the definition of an ASIN is no longer in question (S18). What remains open is which product the owner meant each token to point at - that needs a signed-in check, tracked as discovery task D-01 and FLG-031."
     },
     {
       "id": "FLG-002",
@@ -328,6 +330,32 @@
         "S05"
       ],
       "manual_step": ""
+    },
+    {
+      "id": "FLG-031",
+      "severity": "medium",
+      "status": "open",
+      "title": "Five short links did not resolve to product pages on re-check; the token-to-ASIN mapping is not reproducible unauthenticated",
+      "detail": "On 2026-11-20 the final integration session fetched each submitted short link again, without a signed-in browser and without an Associates session. Both link.amazon links that were reachable landed on the Amazon home page (https://www.amazon.com/, title 'Amazon.com. Spend less. Smile more.') with no product title, no ASIN and no breadcrumb. The other three short links could not be reached from the sandbox at all, because the TLS handshake to link.amazon was refused; those three are untested, not failed. This does not reproduce the token-to-ASIN mapping recorded by earlier sessions, and it does not disprove it either. Three different results have now been recorded for the same links: product pages, an intermittent 'Continue shopping' checkpoint, and the Amazon home page. The mapping therefore depends on session, region or bot-check state and cannot be certified from an unauthenticated fetch. No published field changed: every intended ASIN stays blank, and every buy link points at an observed ASIN that was verified directly rather than through the short link (see the same-day observation record).",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Open each short link once in a browser signed in to the Associates account with cookies accepted, and record the ASIN that appears in the URL. If it lands on the home page again, use Associates Central's link report instead, which shows the destination for a tracked link.",
+      "observation_file": "data/observations/2026-11-20-final-integration.json"
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "status": "open",
+      "area": "publishing readiness",
+      "title": "The site publishes 5 guides; Amazon describes a rule of thumb of at least 10 posts",
+      "detail": "Associates Central's application review help page states: 'All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.' This site publishes five guides plus five product pages, a shop table, a categories index and the governance pages. On a strict guide count that is five against a stated rule of thumb of ten. The rule of thumb is not a hard threshold and Amazon reviews the site as a whole, so this is recorded as a gap rather than a failure. The related requirement that site content be recent within roughly 60 days is tracked by publishing cadence (suggestion S-05).",
+      "impact": "None on what is published today. It bounds how the site should be described: the compliance page states the count plainly instead of implying the site already meets the bar.",
+      "manual_step": "Publish the next five guides on the cadence chosen in S-05, then re-read this flag. Choosing topics from Search Console queries (discovery task D-09) is the intended source rather than instinct.",
+      "sources": [
+        "S19"
+      ]
     }
   ],
   "checked": "2026-11-20"

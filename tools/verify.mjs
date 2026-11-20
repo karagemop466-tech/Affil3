@@ -34,10 +34,16 @@ const check = (name, ok, detail = '') => (ok ? passes : failures).push(detail ? 
 // ---------- 1. data ----------
 const SRC = new Map(sources.map((s) => [s.id, s]));
 const FLG = new Map(flags.map((f) => [f.id, f]));
+const TODAY = '2026-11-20';
 for (const s of sources) {
   if (!s.url) continue;
   let host = ''; try { host = new URL(s.url).hostname; } catch {}
   check(`source ${s.id} is https on an allowed official host`, s.url.startsWith('https://') && ALLOWED_SOURCE_HOSTS.has(host), s.url);
+  // A source that was never fetched, or was fetched only in some past pass, must say so rather than
+  // inherit a "verified" status. The date is the evidence that the page was actually read.
+  check(`source ${s.id} records when it was last checked`, !!s.last_checked, s.id);
+  check(`source ${s.id} was checked on this publishing date`, s.last_checked === TODAY, `${s.id}: ${s.last_checked}`);
+  check(`source ${s.id} states how it was checked`, !!s.method && s.method.length > 20, s.id);
 }
 const REQUIRED = ['id', 'category', 'submitted_url', 'submitted_token', 'intended_asin', 'official_listing_url', 'confirmation_date', 'confirmation_source', 'confirmation_status', 'flags', 'observed_final_url', 'observed_asin', 'observed_title', 'observed_breadcrumb', 'observed_date', 'sources', 'tagged_outbound_url', 'outbound_status'];
 for (const p of products) {

@@ -42,10 +42,10 @@
 <main id="main" class="wrap">
 <section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. Flags do not block publication.</p></section>
 <section class="flag-card" id="FLG-001">
-  <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
-  <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.</p>
+  <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-low">low</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
+  <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. Amazon&#39;s own Associates Central help now settles what an ASIN is: &#39;ASIN is the 10-digit code that Amazon uses to denote specific products&#39; (S18, fetched in full 2026-11-20). None of the five tokens is 10 characters, so none of them is an ASIN, and none can be used in the documented simple-text-link format amazon.com/dp/ASIN/ref=nosim?tag=YOURASSOCIATEID. The five observed product identifiers are all 10 characters, which is consistent with them being ASINs. Because the token is not the identifier, the intended ASIN for each row cannot be derived from the submitted link, so the intended ASIN, official listing URL, confirmation date and confirmation source stay blank on every row.</p>
   
-  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a></p>
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC" rel="sponsored noopener">S18</a>, <code>link.amazon/B04G1MEwY</code>, <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
   <p class="small"><strong>Manual step:</strong> Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL.</p>
 </section>
 <section class="flag-card" id="FLG-002">
@@ -250,6 +250,20 @@
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
   
+</section>
+<section class="flag-card" id="FLG-031">
+  <p class="flag-head"><span class="badge flag">FLG-031</span> <span class="badge sev-medium">medium</span> <strong>Five short links did not resolve to product pages on re-check; the token-to-ASIN mapping is not reproducible unauthenticated</strong></p>
+  <p>On 2026-11-20 the final integration session fetched each submitted short link again, without a signed-in browser and without an Associates session. Both link.amazon links that were reachable landed on the Amazon home page (https://www.amazon.com/, title &#39;Amazon.com. Spend less. Smile more.&#39;) with no product title, no ASIN and no breadcrumb. The other three short links could not be reached from the sandbox at all, because the TLS handshake to link.amazon was refused; those three are untested, not failed. This does not reproduce the token-to-ASIN mapping recorded by earlier sessions, and it does not disprove it either. Three different results have now been recorded for the same links: product pages, an intermittent &#39;Continue shopping&#39; checkpoint, and the Amazon home page. The mapping therefore depends on session, region or bot-check state and cannot be certified from an unauthenticated fetch. No published field changed: every intended ASIN stays blank, and every buy link points at an observed ASIN that was verified directly rather than through the short link (see the same-day observation record).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a>, <code>link.amazon/B04G1MEwY</code></p>
+  <p class="small"><strong>Manual step:</strong> Open each short link once in a browser signed in to the Associates account with cookies accepted, and record the ASIN that appears in the URL. If it lands on the home page again, use Associates Central&#39;s link report instead, which shows the destination for a tracked link.</p>
+</section>
+<section class="flag-card" id="FLG-032">
+  <p class="flag-head"><span class="badge flag">FLG-032</span> <span class="badge sev-medium">medium</span> <strong>The site publishes 5 guides; Amazon describes a rule of thumb of at least 10 posts</strong></p>
+  <p>Associates Central&#39;s application review help page states: &#39;All Sites must have robust original content (even when advertising is removed) - a good rule of thumb is at least 10 posts.&#39; This site publishes five guides plus five product pages, a shop table, a categories index and the governance pages. On a strict guide count that is five against a stated rule of thumb of ten. The rule of thumb is not a hard threshold and Amazon reviews the site as a whole, so this is recorded as a gap rather than a failure. The related requirement that site content be recent within roughly 60 days is tracked by publishing cadence (suggestion S-05).</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a></p>
+  <p class="small"><strong>Manual step:</strong> Publish the next five guides on the cadence chosen in S-05, then re-read this flag. Choosing topics from Search Console queries (discovery task D-09) is the intended source rather than instinct.</p>
 </section>
 </main>
 <footer class="site-footer">

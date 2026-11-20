@@ -57,7 +57,8 @@
       "fit_line": "Two different foods, two different timings, one compact footprint.",
       "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
       "guide_title": "Basket or oven-style air fryer: what should you compare?",
-      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare"
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "verified_again": "2026-11-20"
     },
     {
       "id": "P02",
@@ -121,7 +122,9 @@
         "power_w": "The manufacturer page does not state wattage; no figure is published.",
         "weight_lb": "The manufacturer page does not state unit weight; no figure is published.",
         "presets": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch presets' (FLG-005), so no preset count is published."
-      }
+      },
+      "spec_note": "Preset and accessory counts are withheld because the manufacturer's own page contradicts itself (25 in the spec strip, 24 in the description, 11-in-1 on an image). See FLG-024. Capacity, dimensions and voltage come from the manufacturer's specification strip.",
+      "verified_again": "2026-11-20"
     },
     {
       "id": "P03",
@@ -165,8 +168,8 @@
       "capacity_qt": "8",
       "capacity_note": "8 qt / 7.57 L per the Chefman page; the Amazon listing also states 8 quarts.",
       "temp_min_f": "",
-      "temp_max_f": "",
-      "power_w": "",
+      "temp_max_f": 450,
+      "power_w": 1700,
       "voltage": "120V",
       "dimensions_in": "",
       "dimensions_order": "",
@@ -182,9 +185,7 @@
       "guide_title": "A no-hype checklist for comparing air fryer capacity",
       "guide_slug": "no-hype-checklist-comparing-air-fryer-capacity",
       "blank_reason": {
-        "power_w": "Chefman's page for RJ38-8T-BLACK states 1700 W; the Amazon listing for B08DKYBTPH states 1000 W and names a different model (FLG-026). Neither figure is published.",
-        "temp_max_f": "Chefman's page states up to 450 °F on Hi-Fry; the Amazon listing states a 200-400 °F range (FLG-026). Neither figure is published.",
-        "dimensions_in": "The Chefman page does not state dimensions; the Amazon listing states 12.75 x 13.5 x 10 in for a different model number, so it is shown in the listing column instead."
+        "dimensions_in": "The Chefman page does not state dimensions. The Amazon listing states 12.75 x 13.5 x 10 in for a different model number (RJ38-SQSS-8T), so that figure is kept in the listing column on the product page instead of the manufacturer column."
       },
       "reverification": {
         "date": "2026-11-20",
@@ -204,7 +205,9 @@
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "The Amazon listing's own copy names a different model, RJ38-SQSS-8T (FLG-026)."
+      "model_note": "The Amazon listing's own copy names a different model, RJ38-SQSS-8T (FLG-026).",
+      "verified_again": "2026-11-20",
+      "spec_note": "Manufacturer figures: 1700 W / 120 V, 8 qt / 7.57 L, Hi-Fry to 450 F, model RJ38-8T-BLACK, cETL, 1-year assurance. The Amazon listing for the same ASIN names a different model and states 1000 W and a 200-400 F range; those figures are published only in the separate listing-versus-maker table (FLG-026)."
     },
     {
       "id": "P04",
@@ -270,7 +273,8 @@
         "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
-      }
+      },
+      "verified_again": "2026-11-20"
     },
     {
       "id": "P05",
@@ -330,9 +334,10 @@
       "guide_title": "Is your meat thermometer telling you the right number?",
       "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
       "blank_reason": {
-        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
+        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-023).",
         "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
-      }
+      },
+      "verified_again": "2026-11-20"
     }
   ]
 }
