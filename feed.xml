@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Affil3 &mdash; Buyer guides</title>
+    <link>https://karagemop466-tech.github.io/Affil3/guides/index.html</link>
+    <description>Question-shaped buying guides for kitchen and home appliances. Working titles only &mdash; editorial hypotheses, not performance claims.</description>
+    <lastBuildDate>Fri, 20 Nov 2026 00:00:00 UTC</lastBuildDate>
+    <atom:link href="https://karagemop466-tech.github.io/Affil3/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Basket or oven-style air fryer: what should you compare?</title>
+      <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-basket-oven.html</link>
+      <guid isPermaLink="false">affil3-guide-basket-oven-2026-11-20</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 UTC</pubDate>
+      <description>Working title. Compares air-fryer form factors so buyers can decide what to compare before looking at any specific listing. Editorial hypothesis &mdash; not a product recommendation.</description>
+    </item>
+    <item>
+      <title>A no-hype checklist for comparing air fryer capacity</title>
+      <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-capacity-checklist.html</link>
+      <guid isPermaLink="false">affil3-guide-capacity-checklist-2026-11-20</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 UTC</pubDate>
+      <description>Working title. A practical checklist for matching capacity to household size, cooking habits, and counter space. Editorial hypothesis &mdash; not a product recommendation.</description>
+    </item>
+    <item>
+      <title>How to assess cleanup and counter-space trade-offs</title>
+      <link>https://karagemop466-tech.github.io/Affil3/guides/air-fryer-cleanup-counter-space.html</link>
+      <guid isPermaLink="false">affil3-guide-cleanup-counter-space-2026-11-20</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 UTC</pubDate>
+      <description>Working title. Maintenance effort and kitchen real-estate factors to weigh before purchase. Editorial hypothesis &mdash; not a product recommendation.</description>
+    </item>
+    <item>
+      <title>Questions to ask before buying a multi-function kitchen appliance</title>
+      <link>https://karagemop466-tech.github.io/Affil3/guides/multi-function-appliance-questions.html</link>
+      <guid isPermaLink="false">affil3-guide-multi-function-questions-2026-11-20</guid>
+      <pubDate>Fri, 20 Nov 2026 00:00:00 UTC</pubDate>
+      <description>Working title. A pre-purchase question set for multi-function kitchen appliances. Editorial hypothesis &mdash; not a product recommendation.</description>
+    </item>
+  </channel>
+</rss>
