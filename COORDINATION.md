@@ -2739,3 +2739,27 @@ in the README, the `latestFirst` guide ordering, and the unreproducible short-li
 Built 53 pages, 24 feed items, 52 sitemap URLs at the repository root
 verify: 8717 checks passed, 0 failed
 ```
+
+## Merge and deploy record (session `b7320829-affil3`)
+
+- **Pull request: [#83](https://github.com/karagemop466-tech/Affil3/pull/83)** — "Verification round 4, one new guide + three enriched pages, corrected findability claim, citation-meaning gate" (`arena/b7320829-affil3` → `main`), opened 2026-11-20. Body lists the sources fetched, the eleven mis-citations, the withdrawn duplicate guides, the gate rules and the items left flagged for the owner.
+- **Merge result: MERGED** as `63875654486c46220824319d0851ea0fcdce26e8` at 2026-11-20T07:29:57Z (`gh pr merge 83 --merge`, no review wait, per the brief). Diff at merge: 81 files, +2,063 / −217.
+- **Checks before merge:** all pass on the merge commit — `verify`, `gate`, `check-site`, `site-checks`, `disclosure`, and "Gate the published Pages site".
+- **Merges with `main` needed on the way:** three. `f41ef98` (PRs #76, #77), `d174471` (PRs #70, #79–#82) and `060dbc1` (PR #85). The first two produced conflicts in `tools/build.mjs`, `tools/verify.mjs`, `src/assets/style.css`, `README.md`, `COORDINATION.md` and the registers; the third merged clean. No other session's work was discarded: main's `FLG-036…042`, `S-20…S-31`, `Q-17…Q-22`, `K-22`, `D-13…D-18`, its sources through `S25`, its 16 guides, its `dims()` image-size gate and its `latestFirst` ordering are all in the merged tree, and this session's rows were renumbered around them (`FLG-043…045`, `S-32…S-35`, `Q-23…Q-25`, `K-23…K-26`, `D-19…D-22`, `S24`/`S26`). Two of this session's proposals were folded into main's rows rather than duplicated: de-indexing into `S-20`, the Special-Link field into `S-02` option D.
+- **One revert this session made in its own work:** a first pass at the guide loop replaced too wide a region of `tools/build.mjs` and deleted main's `/articles/` Journal and `/decisions/` board sections. Caught by the build's own page count (41 pages instead of 54) and by `verify`'s missing-page failures; the region was restored from main and the patch re-applied inside the loop only. The episode is recorded here because it is the exact failure mode the coordination board exists to catch, and because it happened to my branch, not to someone else's.
+- **Post-merge gates on `main`:** `npm run check` → 53 pages built, 24 feed items, 52 sitemap URLs; `node tools/verify.mjs` 8,717 checks passed, 0 failed; editorial edition 21 pages PASS. A rebuild of both generators leaves the tree clean, so the committed output is deterministic and CI's drift check holds.
+- **GitHub Pages:** `pages/builds/latest` → status `built`, created 2026-11-20T07:29:58Z, one second after the merge. Source `main` at `/`, HTTPS enforced.
+- **Deployed content spot-checked after the merge**, not assumed: `/Affil3/robots.txt` serves the new file (root-publication comment, `/counter/`, `/counterwise/` and `/counter-desk/` now disallowed, one `Sitemap:` line), and `/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/` serves the new guide with the disclosure strip above the content, the five sourced statements, the FLG-027 dispute named rather than resolved, the "no appliance was operated" note, and source links whose Amazon retail URL carries `tag=shopnow046c-20`-style tagging plus `rel="sponsored"`.
+
+## Still open after this session (owner-gated; nothing here is a code task)
+
+| Item | Why it cannot be closed from the repository |
+| --- | --- |
+| Gate **G-02** — one Special Link per product, clicked and confirmed in the tracking report | Needs a signed-in Associates Central session (`S-02` option D, `Q-24`, `D-20`) |
+| Intended ASIN, official listing URL, confirmation date and source for all five products | `FLG-001`, `FLG-002`, `Q-01`: only the owner can say which product each supplied link was aimed at |
+| Compliance status of the supplied short links | `FLG-003` stays unresolved; the site does not claim they are invalid, and records that unauthenticated fetches cannot re-derive their destinations (`FLG-036`, `FLG-037`) |
+| Analytics endpoint unset → measurement INACTIVE, ledger empty | `Q-04`, `S-03`: a host decision, not a code decision |
+| Search Console not connected | `FLG-013`: needs a signed-in Google account; also the reason `FLG-043` says the robots file is advisory at a project path |
+| No named author | `FLG-014`, `Q-06`, `S-08` |
+| Prices and ratings withheld | `FLG-016`, `S-04`: nothing to publish until an authorized report or API exists |
+| Every `S-nn` suggestion awaiting a choice | `decision_log` is still empty: the board records options and a recommendation, and the owner picks |
