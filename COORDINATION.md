@@ -1249,3 +1249,33 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
   this edition's sitemap is emitted inside `scripts/build_site.py`.
 - Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
   after merge.
+
+---
+
+# Session `arena/197d4f9e-affil3` — final integration session
+
+Registry: session `197d4f9e-affil3`, branch `arena/197d4f9e-affil3`, cut from `main` @ `bd9886d`.
+Role: **integration**. Every other session's branch and open PR is treated as parallel input to be
+verified and merged (or, where it would create a second competing publication, deliberately not
+merged) — never as work to overwrite. Rule followed: nothing from another session is deleted; where
+a merge conflicts, the resolution keeps both sides' content and is logged here.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-01 | Repo review, line by line; irregularities flagged with source links | in progress | `197d4f9e-affil3` | `COORDINATION.md`, `EXECUTIVE-SUMMARY-197d4f9e.md` |
+| I-02 | Fresh first-hand verification round (5 links, 5 listings, manufacturer + policy pages) | in progress | `197d4f9e-affil3` | `data/sources.json`, `data/flags.json`, `data/products.json` |
+| I-03 | Fix the stale P04 state (buy link withheld on a reason that the register has since corrected) | pending | `197d4f9e-affil3` | `data/products.json`, `data/flags.json` |
+| I-04 | One indexed publication: retire the competing editions to archive | pending | `197d4f9e-affil3` | `robots.txt`, `tools/build.mjs`, archive index, `counter*` build tools |
+| I-05 | Reader polish: make the front page read like a shop, not an audit | pending | `197d4f9e-affil3` | `tools/build.mjs`, `data/guides.json`, `src/assets/style.css` |
+| I-06 | Merge the parallel sessions' open PRs that add verified value | pending | `197d4f9e-affil3` | merge commits; conflicts logged here |
+| I-07 | Decisions surfaces: suggestions, questions, executive summary | pending | `197d4f9e-affil3` | `data/suggestions.json`, `data/questions.json`, `data/executive-summary.json` |
+| I-08 | Re-run every gate, confirm no broken links, open PR, merge, confirm Pages deploy | pending | `197d4f9e-affil3` | CI, this file |
+
+## Scope rules for this session
+
+- Files owned by other sessions are read, never edited, unless the merge itself brings the change in.
+- `counter/`, `counterwise/`, `crisp-index/` and `editorial/` each ran their own gate on their own
+  branch. This session does not rewrite their generators. Consolidation happens by excluding them
+  from the index and linking them from one archive page, not by deleting them.
