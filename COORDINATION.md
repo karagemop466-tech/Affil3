@@ -1378,3 +1378,8 @@ were visible on two fetched pages and neither was transcribed anywhere.
   with zero broken internal links.
 - **Nothing blocked the merge.** Flagged and unverified items are published at `/flagged/` with their
   sources, per the brief.
+
+**Follow-up recording PR:** [#49](https://github.com/karagemop466-tech/Affil3/pull/49) — the
+restoration above plus this completion record — **MERGED** into `main` as
+`363edb1d3e36b61c0f7985a6f16d7cada8600987`, all five checks green at merge time, so the shared board
+on `main` carries this session's record and not only this branch's copy.
