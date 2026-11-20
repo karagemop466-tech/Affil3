@@ -5,7 +5,7 @@
     {
       "id": "Q01",
       "question": "Does each submitted short link reach the product its identifier was meant to reach?",
-      "have": "Observed redirect targets for P1, P2, P3 and P5 (all different ASINs). P4 reached an interstitial.",
+      "have": "Observed redirect targets for P1, P2 and P5 (different ASINs). P3 and P4 are open: the two short links were recorded in opposite directions by different sessions.",
       "missing": "A confirmed listing for each intended identifier, and the owner's intended product for each link.",
       "how_to_discover": "Open each short link in a signed-in browser. Note the ASIN in the URL after /dp/ and in Product information. Compare with the intended identifier.",
       "source_ids": ["SRC-12", "SRC-07", "SRC-08", "SRC-09", "SRC-11"],

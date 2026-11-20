@@ -258,7 +258,7 @@ def build_index():
     <p class="kicker">Front page · small kitchen appliances</p>
     <h1>Five listings, checked one at a time</h1>
     <p class="lede">Three air fryers and one meat thermometer are in this set so far. Each card below shows the listing as it was observed, with its ASIN check. Prices are not shown, because none could be verified from an official source.</p>
-    <div class="note warn"><strong>Read this first.</strong> Four of the five submitted links reach a different Amazon product from the one identified in the link, and one reaches an Amazon interstitial page. The owner-supplied identifiers also fail the 10-character ASIN format. Details are on the <a href="flagged.html">Flagged for Review</a> page.</div>
+    <div class="note warn"><strong>Read this first.</strong> Of the five submitted links, P1, P2 and P5 reach a different Amazon product from the one identified in the link. P3 and P4 are <strong>open</strong>: this session's re-fetch on 2026-11-20 matched its earlier reading, but another session's board records the two short links the other way round, so the mapping is not settled. The owner-supplied identifiers also fail the 10-character ASIN format. Details are on the <a href="flagged.html">Flagged for Review</a> page.</div>
     <h2>Shop the listings</h2>
     <div class="grid">{cards}</div>
     <h2>Categories</h2>
@@ -532,14 +532,14 @@ def build_exec():
     </ul></div>
     <h2>What is verified</h2>
     <div class="prose"><ul>
-      <li>Four of five observed destinations are Amazon product listings. Their titles, ASINs and category breadcrumbs were recorded.</li>
+      <li>Three observed destinations are Amazon product listings with recorded titles, ASINs and breadcrumbs (P1, P2, P5). P3 and P4 are open; see FLG-02.</li>
       <li>The required Associates statement and the FTC disclosure placement are implemented on every page.</li>
       <li>Every Amazon product link carries <code>rel="sponsored"</code>.</li>
     </ul></div>
     <h2>What is not verified, and why it matters</h2>
     <div class="prose"><ul>
       <li><strong>0 of 5</strong> intended identifiers pass the 10-character ASIN format. All five are 9 characters with lowercase letters. (<a href="flagged.html#FLG-01">FLG-01</a>)</li>
-      <li><strong>4 of 5</strong> links reach a different ASIN than the one in the link; <strong>1 of 5</strong> reaches an interstitial. (<a href="flagged.html#FLG-02">FLG-02</a>, <a href="flagged.html#FLG-03">FLG-03</a>)</li>
+      <li><strong>3 of 5</strong> confirmed links reach a different ASIN than the one in the link (P1, P2, P5). P3 and P4 are <strong>open</strong>: this session's re-fetch on 2026-11-20 matched its earlier reading, but another session's board records the two short links the other way round, so the mapping is not settled. (<a href="flagged.html#FLG-02">FLG-02</a>, <a href="flagged.html#FLG-03">FLG-03</a>)</li>
       <li><strong>0 of 4</strong> observed destinations contain the tracking ID. (<a href="flagged.html#FLG-04">FLG-04</a>)</li>
       <li><strong>No</strong> prices, ratings, or commission rates are verified, so pricing and commission potential cannot be analysed yet. (<a href="flagged.html#FLG-09">FLG-09</a>, <a href="flagged.html#FLG-10">FLG-10</a>)</li>
       <li>The click counter and analytics endpoint are built but <strong>gated</strong>, because GitHub Pages cannot store events. (<a href="flagged.html#FLG-11">FLG-11</a>)</li>

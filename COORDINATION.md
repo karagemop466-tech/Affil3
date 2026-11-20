@@ -45,16 +45,16 @@ Repo: `karagemop466-tech/Affil3` · Base: `main @ 847ae37` · Working branch: `a
 
 | ID | Task | Status | Owner | Files touched |
 |---|---|---|---|---|
-| T01 | Repo review; irregularity log | done | arena-6ca11b63 | `COORDINATION.md`, `data/flags.json` |
-| T02 | Product-intent confirmation records (intended ASIN vs observed redirect) | done | arena-6ca11b63 | `data/products.json` |
-| T03 | Source register (official URLs, retrieval date, what each supports) | done | arena-6ca11b63 | `data/sources.json` |
-| T04 | Static site generator + pages (landing, category, dashboard) | done | arena-6ca11b63 | `scripts/build_site.py`, `docs/**` |
-| T05 | Compliance: Associates statement, disclosure strip (every page + footer), `rel="sponsored"` on every outbound product link | done | arena-6ca11b63 | `scripts/build_site.py`, `docs/**` |
-| T06 | Measurement: outbound-click hook, self-hosted endpoint **gated**, campaign ledger (empty) | done (endpoint gated) | arena-6ca11b63 | `docs/assets/analytics.js`, `data/campaign_ledger.csv` |
-| T07 | Editorial: question-led guides, sitemap, RSS feed | done | arena-6ca11b63 | `data/guides.json`, `docs/guides/**`, `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt` |
-| T08 | Questions, suggestions (decision board), executive summary, Flagged for Review page | done | arena-6ca11b63 | `data/questions.json`, `data/suggestions.json`, `docs/questions.html`, `docs/suggestions.html`, `docs/executive-summary.html`, `docs/flagged.html` |
-| T09 | Validation gate (`check_site.py`): row-level source links, disclosure presence, sponsored rel, internal links | done | arena-6ca11b63 | `scripts/check_site.py` |
-| T10 | Integration: rebuild, re-verify combined data, gate, PR to `main`, merge, enable/confirm GitHub Pages | in progress (build and gate pass locally) | arena-6ca11b63 | all shared outputs |
+| T01 | Repo review; irregularity log | done (on branch `arena/6ca11b63-affil3`; not on `main`) | arena-6ca11b63 | `COORDINATION.md`, `data/flags.json` |
+| T02 | Product-intent confirmation records (intended ASIN vs observed redirect) | done (on branch; P3/P4 open, see re-fetch log) | arena-6ca11b63 | `data/products.json` |
+| T03 | Source register (official URLs, retrieval date, what each supports) | done (on branch; not on `main`) | arena-6ca11b63 | `data/sources.json` |
+| T04 | Static site generator + pages (landing, category, dashboard) | done (on branch; not on `main`) | arena-6ca11b63 | `scripts/build_site.py`, `docs/**` |
+| T05 | Compliance: Associates statement, disclosure strip (every page + footer), `rel="sponsored"` on every outbound product link | done (on branch; not on `main`) | arena-6ca11b63 | `scripts/build_site.py`, `docs/**` |
+| T06 | Measurement: outbound-click hook, self-hosted endpoint **gated**, campaign ledger (empty) | done on branch (endpoint gated; not on `main`) | arena-6ca11b63 | `docs/assets/analytics.js`, `data/campaign_ledger.csv` |
+| T07 | Editorial: question-led guides, sitemap, RSS feed | done (on branch; not on `main`) | arena-6ca11b63 | `data/guides.json`, `docs/guides/**`, `docs/sitemap.xml`, `docs/feed.xml`, `docs/robots.txt` |
+| T08 | Questions, suggestions (decision board), executive summary, Flagged for Review page | done (on branch; not on `main`) | arena-6ca11b63 | `data/questions.json`, `data/suggestions.json`, `docs/questions.html`, `docs/suggestions.html`, `docs/executive-summary.html`, `docs/flagged.html` |
+| T09 | Validation gate (`check_site.py`): row-level source links, disclosure presence, sponsored rel, internal links | done (on branch; negative-tested) | arena-6ca11b63 | `scripts/check_site.py` |
+| T10 | Integration: rebuild, re-verify combined data, gate, PR to `main`, merge, enable/confirm GitHub Pages | BLOCKED on owner decision: `main` now holds another session's integrated site (PR #4, Pages on `main /docs`); see Integration record | arena-6ca11b63 | all shared outputs |
 
 ## Claim log
 
@@ -107,3 +107,28 @@ Written when this session merged `origin/main` (PR #1, session arena-83a43a96) i
 ## Status of the other sessions
 
 No other session's branch has been merged or changed by this session. Sessions whose branches are not merged are not represented in `main`. Each would need its own integration to be included, and any of them that opens a PR into `main` should be reconciled against this record.
+
+## Re-fetch log (2026-11-20, session arena-6ca11b63)
+
+Purpose: settle the P3/P4 mapping before publishing it.
+
+| Short link | Earlier reading (this session) | Re-fetch 2026-11-20 (this session) | Other session's board (same date) | Result |
+|---|---|---|---|---|
+| `link.amazon/B00hJ57DV` (P3) | redirect to `amazon.com/dp/B08DKYBTPH` | redirect to `amazon.com/dp/B08DKYBTPH` (Chefman 8 Qt TurboFry) | reported as a checkpoint page | **Open.** Readings conflict across sessions. |
+| `link.amazon/B0c8moW59` (P4) | Amazon checkpoint/interstitial | Amazon checkpoint/interstitial ("Continue shopping") | reported as `B08DKYBTPH` | **Open.** Readings conflict across sessions. |
+
+Conclusions:
+
+- This session's two readings are self-consistent. Another session's readings for the same links are reversed. Results may vary by visit (checkpoint tokens are per-session).
+- Neither mapping is published as settled. Pages now say P3 and P4 are open. Changed in `scripts/build_site.py`, `data/analysis.json`, `data/questions.json`, and FLG-02 in `data/flags.json`.
+- Intended IDs remain 9 characters and unverified (FLG-01).
+- To close P3/P4: a repeatable check from a clean session, logged here with the date, the link, and the final URL.
+
+## Integration status (2026-11-20)
+
+- Branch `arena/6ca11b63-affil3` is pushed (head `103f6a7` at last push). It contains this session's data, scripts, `docs/`, and the archived PR #1 site under `archive/session-83a43a96/`.
+- PR #3 (this branch → `main`) is **CONFLICTING**. `main` moved to `5d2e7ab` (PR #4 from `arena/6249757a-affil3`). That PR also builds into `docs/`, adds `package.json` and `tools/`, and writes `data/products.json`, `data/flags.json`, and others with different schemas.
+- Merging PR #3 would overwrite another session's live Pages output and its `data/` files. **Not done.** Choosing which integrated site goes live is an owner decision (FLG-017).
+- Options for the owner: (a) keep `arena-6249757a`'s site and close PR #3 after moving any unique content from this branch; (b) keep this site and replace theirs; (c) merge both under separate paths, e.g. `docs/` for one and a different folder for the other.
+- Pages is currently `main` at `/docs`, building from PR #4.
+
