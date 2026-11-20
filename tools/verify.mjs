@@ -17,6 +17,7 @@ const sources = read('data/sources.json').sources;
 const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
+const decisionPaths = read('data/decision-paths.json').paths;
 
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
@@ -173,6 +174,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   }
   // ---- editorial requirements unique to this build ----
   const home = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+  const shopHtml = fs.readFileSync(path.join(DOCS, 'shop', 'index.html'), 'utf8');
   check('home page leads with products, not the audit trail', /class="picks"/.test(home) && home.indexOf('class="picks"') < home.indexOf('What this site is'));
   check('home page carries a hero image with alt text', /class="hero-figure"[\s\S]*?<img [^>]*alt="[^"]+"/.test(home));
   for (const p of products) {
@@ -206,6 +208,25 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
   check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
   check('every product image is labelled as illustration', /not the reviewed unit|Editorial illustration|editorial illustration/i.test(home));
+
+  // decision paths: every path must point at real product rows, cite real sources, and be
+  // rendered on both the front page and the shop page. A path may not carry a score or a rank.
+  const PROD = new Map(products.map((p) => [p.id, p]));
+  check('decision paths register is not empty', decisionPaths.length > 0, `${decisionPaths.length} paths`);
+  for (const dp of decisionPaths) {
+    check(`${dp.id} has a situation`, !!dp.situation && dp.situation.length > 10);
+    check(`${dp.id} points at at least one real product row`, (dp.product_ids || []).length > 0 && dp.product_ids.every((id) => PROD.has(id)), (dp.product_ids || []).join(','));
+    check(`${dp.id} cites at least one source that exists`, (dp.sources || []).length > 0 && dp.sources.every((id) => SRC.has(id)), (dp.sources || []).join(','));
+    check(`${dp.id} states a trade-off`, !!dp.tradeoff && dp.tradeoff.length > 10);
+    check(`${dp.id} names no score, rank or popularity`, !/\b(rank|scoring|score|#1|number one|best seller|most popular|top pick|winner)\b/i.test(`${dp.situation} ${dp.because} ${dp.tradeoff} ${dp.why_this_row}`), dp.id);
+    check(`${dp.id} rendered on the front page`, home.includes(`id="${dp.id}"`));
+    check(`${dp.id} rendered on the shop page`, shopHtml.includes(`id="${dp.id}"`));
+  }
+  // every product row must appear in the at-a-glance comparison grid exactly once
+  for (const p of products) {
+    const hits = (shopHtml.match(new RegExp(`data-product="${p.id}" data-placement="at-a-glance"`, 'g')) || []).length;
+    check(`at-a-glance grid row for ${p.id} is present exactly once`, p.no_buy_link ? hits === 0 : hits === 1, `${hits} rendered`);
+  }
 
   // sitemap coverage
   for (const u of pageUrls) check(`sitemap includes ${u}`, sitemapUrls.includes(u));

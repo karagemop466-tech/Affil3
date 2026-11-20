@@ -1,0 +1,50 @@
+{
+  "note": "Shortcuts from a situation to the product rows that actually fit it. Every line is written from a field that already exists in the product register - best_for, tradeoff, fit_line, capacity_note or a manufacturer-stated dimension - and every row cites the source that supplied those figures. Nothing here is a popularity claim, a ranking, a computed score or a recommendation of what you should buy. If a product row has no confirmed link yet, the path says so instead of showing a buy button.",
+  "paths": [
+    {
+      "id": "DP-01",
+      "situation": "You cook two things that need different times",
+      "because": "Two independent 3 qt baskets in one 6 qt body, with the maker's Sync Finish feature for getting them to the table together.",
+      "product_ids": ["P01"],
+      "why_this_row": "The register records this unit as being for two foods on two timers, in the footprint of a single basket fryer.",
+      "tradeoff": "Each 3 qt basket is smaller than one 6 qt drawer, so a single large batch gets split.",
+      "sources": ["S11", "S04"]
+    },
+    {
+      "id": "DP-02",
+      "situation": "You are cooking for a group and want it all at once",
+      "because": "26 qt of cavity, french doors, and a multi-function convection oven - the largest cavity on this shelf.",
+      "product_ids": ["P02"],
+      "why_this_row": "The register records this unit as being for cooking a whole meal at once, on more than one rack.",
+      "tradeoff": "It is a countertop oven, so it needs oven-sized counter depth and it is the largest footprint in this set.",
+      "sources": ["S13", "S04"]
+    },
+    {
+      "id": "DP-03",
+      "situation": "You want one big batch and no divider in the way",
+      "because": "A single 8 qt basket, so a batch does not have to be split across two drawers.",
+      "product_ids": ["P03"],
+      "why_this_row": "The register records this unit as being for one big batch in one basket, with no divider to work around.",
+      "tradeoff": "No window and no second basket, so checking food means opening the drawer. The listing and the maker's own page also describe two different 8 qt models - read the conflict note on the product page before ordering.",
+      "sources": ["S12", "S16", "S04"]
+    },
+    {
+      "id": "DP-04",
+      "situation": "You want to stop guessing when the meat is done",
+      "because": "Two ways to do it: a handheld spot check at the grill, or a leave-in wireless probe that reports without you standing next to it.",
+      "product_ids": ["P05", "P04"],
+      "why_this_row": "The register records one unit as a quick spot check rather than an unattended cook, and the other as knowing when to pull the meat without standing next to the grill.",
+      "tradeoff": "The leave-in probe depends on an app and a hub, so a flat battery or a dropped connection is a cooking problem. The instant-read unit reads one spot at a time.",
+      "sources": ["S14", "S04"]
+    },
+    {
+      "id": "DP-05",
+      "situation": "Your counter space is the real constraint",
+      "because": "Depth as each manufacturer states it: 10.63 in for the dual-basket fryer, 14.8 in for the french-door oven. Stated capacity: 6 qt against 26 qt.",
+      "product_ids": ["P01", "P02"],
+      "why_this_row": "Both depth figures and both capacity figures come from the maker's own product pages, listed in the row's sources.",
+      "tradeoff": "The larger oven buys the rack space and the whole-meat capacity. The smaller fryer keeps the counter usable and leaves the drawer openable. Neither figure is a price, and neither is a recommendation.",
+      "sources": ["S11", "S13"]
+    }
+  ]
+}

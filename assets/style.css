@@ -251,3 +251,24 @@ table.checklist { min-width: 560px; }
 .hero-figure img { border-radius: 18px; box-shadow: var(--shadow-lift); display: block; }
 .picks { position: relative; }
 @media (max-width: 900px) { .pd-hero { grid-template-columns: 1fr; } }
+
+/* ---- decision paths: situation -> the rows that fit ---- */
+.path-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 18px 0 8px; }
+.path-card { display: flex; }
+.path-card .card-body { display: flex; flex-direction: column; gap: 8px; }
+.path-card h3 { font-size: 19px; margin: 0 0 2px; }
+.path-because { font-size: 15.5px; color: var(--ink); margin: 0; }
+.path-products { margin: 2px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px; }
+.path-product { font-weight: 700; font-size: 15.5px; color: var(--accent-deep); text-decoration: none; border-bottom: 2px solid var(--accent-soft); }
+.path-product:hover { border-bottom-color: var(--accent); }
+.path-sep { color: var(--muted); font-size: 14px; }
+.path-tradeoff { font-size: 14.5px; color: var(--muted); margin: 0; border-top: 1px dashed var(--line); padding-top: 9px; }
+.path-pending { font-size: 13.5px; color: var(--warn); background: var(--warn-bg); border: 1px solid #e5c37a; border-radius: 9px; padding: 8px 10px; margin: 0; }
+.path-src { margin: 0; padding-top: 2px; }
+.path-src a { font-size: 13px; }
+
+/* ---- at-a-glance comparison grid ---- */
+.btn.btn-small { padding: 7px 12px; font-size: 13.5px; white-space: nowrap; }
+table.wide td { vertical-align: top; font-size: 14px; }
+table.wide td strong { font-size: 14.5px; }
+table.wide .blank { background: repeating-linear-gradient(45deg, transparent, transparent 4px, rgba(0,0,0,.045) 4px, rgba(0,0,0,.045) 8px); }

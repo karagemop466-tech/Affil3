@@ -26,6 +26,7 @@ const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
+const decisionPaths = read('data/decision-paths.json').paths;
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
@@ -279,6 +280,57 @@ const guideSource = (id) => (id === 'S04'
 
 const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label="blank: unverified">&nbsp;</span>' : esc(v));
 
+// ---------- decision paths ----------
+// A path is written only from fields that already exist in the product register, and it
+// cites the source that supplied those figures. It never ranks, scores or recommends.
+const byId = Object.fromEntries(products.map((p) => [p.id, p]));
+const pathSources = (ids = []) => ids.map((id) => {
+  if (id === 'S04') {
+    const first = byId[(decisionPaths.find((dp) => dp.sources.includes(id)) || {}).product_ids?.[0]];
+    return `<a href="${esc(href('/shop/'))}">S04</a> <span class="small muted">observed listing pages, one per row</span>`;
+  }
+  if (id === 'S16') return srcLink('S16');
+  return srcLink(id);
+}).join(' \u00b7 ');
+
+function decisionPathCards() {
+  return `<div class="path-grid">${decisionPaths.map((dp) => {
+    const rows = dp.product_ids.map((pid) => byId[pid]).filter(Boolean);
+    const names = rows.map((p) => `<a class="path-product" href="${esc(href('/products/' + p.slug + '/'))}">${esc(p.short_name || p.name)}</a>`).join('<span class="path-sep"> or </span>');
+    const pending = rows.filter((p) => p.no_buy_link);
+    return `<article class="card path-card" id="${esc(dp.id)}">
+  <div class="card-body">
+    <p class="kicker">${esc(dp.id)}</p>
+    <h3>${esc(dp.situation)}</h3>
+    <p class="path-because">${esc(dp.because)}</p>
+    <p class="path-products">${names}</p>
+    <p class="small muted">${esc(dp.why_this_row)}</p>
+    ${dp.tradeoff ? `<p class="path-tradeoff"><strong>The trade-off:</strong> ${esc(dp.tradeoff)}</p>` : ''}
+    ${pending.length ? `<p class="path-pending"><strong>Note:</strong> ${pending.map((p) => esc(p.short_name || p.name)).join(', ')} is listed here as context only; no submitted link resolved to it, so no buy button is published. ${flagLinks(['FLG-001', 'FLG-025'])}</p>` : ''}
+    <p class="small muted path-src">Sources: ${pathSources(dp.sources)}</p>
+  </div>
+</article>`;
+  }).join('\n')}</div>`;
+}
+
+// At-a-glance table: the decision columns first, in one readable grid. Every value is copied
+// from the register; a value the maker does not state stays visibly empty rather than guessed.
+function atGlanceTable() {
+  const rows = products.map((p) => [
+    `<a href="${esc(href('/products/' + p.slug + '/'))}"><strong>${esc(p.short_name || p.name)}</strong></a><br><span class="small muted">${esc(p.brand || '')}</span>`,
+    esc(catName(p.category)),
+    p.capacity_qt ? `${esc(p.capacity_qt)} qt` : cellText(''),
+    (p.temp_min_f && p.temp_max_f) ? `${esc(p.temp_min_f)}\u2013${esc(p.temp_max_f)} \u00b0F` : (p.temp_max_f ? `up to ${esc(p.temp_max_f)} \u00b0F` : cellText('')),
+    p.power_w ? `${esc(p.power_w)} W` : cellText(''),
+    p.dimensions_in ? `${esc(p.dimensions_in)} in` : cellText(''),
+    esc(p.best_for || ''),
+    esc(p.tradeoff || ''),
+    p.no_buy_link ? `<span class="badge bad">no confirmed link</span>` : `<a class="btn btn-small" href="${esc(p.tagged_outbound_url)}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="at-a-glance">Check it on Amazon</a>`,
+    rowSources(p),
+  ]);
+  return table(['Product', 'Category', 'Stated capacity', 'Stated temperature', 'Stated power', 'Stated size', 'Best for', 'The trade-off', 'Buy', 'Sources (official)'], rows, 'wide');
+}
+
 // ---------- pages ----------
 const pages = [];
 const add = (p) => pages.push(p);
@@ -326,6 +378,14 @@ const add = (p) => pages.push(p);
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
   <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
+</section>
+<section class="band band-alt" id="which">
+  <div class="band-head">
+    <h2>Which one is right for you?</h2>
+    <p>Start from the situation, not the spec sheet. Each shortcut below is written from the same register the shop table uses, and it names the trade-off as plainly as it names the benefit.</p>
+  </div>
+  ${decisionPathCards()}
+  <p class="shelf-note">These are shortcuts, not scores. We do not rank products, and we do not publish a best-of list, because a ranking would have to hide the trade-offs. Every figure above links to the page it came from.</p>
 </section>
 <section class="band band-alt">
   <div class="band-head">
@@ -392,9 +452,24 @@ const add = (p) => pages.push(p);
     `${esc(p.confirmation_status)}<br>${flagLinks(p.flags)}`,
     `${rowSources(p)} <span class="small muted">observed ${esc(dateLong(p.observed_date))}</span>`,
   ]);
+  const shopJsonld = `<script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'ItemList',
+    name: 'Submitted product rows', numberOfItems: products.length,
+    itemListElement: products.map((p, i) => ({
+      '@type': 'ListItem', position: i + 1, name: p.name, url: abs('/products/' + p.slug + '/'),
+    })),
+  })}</script>
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: abs('/shop/') },
+    ],
+  })}</script>`;
   add({
     path: '/shop/', title: 'Shop: all submitted products and findings',
     description: 'Every submitted product row: intended ASIN and listing fields (blank where unverified), observed redirect destinations kept separate, sources and flags.',
+    jsonld: shopJsonld,
     body: `
 <section class="page-head">
   <p class="kicker">Shop · 5 rows</p>
@@ -402,6 +477,18 @@ const add = (p) => pages.push(p);
   <p class="deck">One row per submitted link. <strong>Intended</strong> fields come only from an official source; none are confirmed yet, so they are blank. <strong>Observed</strong> fields are what the Amazon page showed on 2026-11-20 and are kept separate.</p>
 </section>
 <section>
+  <h2>At a glance</h2>
+  <p class="small muted">The columns a buyer actually compares: capacity, heat, power, footprint, what the unit is for, and what it costs you to live with. Every value is copied from the row's own source; a figure the maker does not publish stays empty. Nothing here is a price, a rating or a score.</p>
+  ${atGlanceTable()}
+</section>
+<section class="band">
+  <h2>Situation first</h2>
+  <p class="small muted">The same register, read the other way round: from what you are cooking to the row that fits.</p>
+  ${decisionPathCards()}
+</section>
+<section class="band">
+  <h2>Full register</h2>
+  <p class="small muted">One row per submitted link, with the intended and observed fields kept apart.</p>
   ${table(['ID', 'Category', 'Observed title and breadcrumb', 'Observed ASIN and page', 'Submitted link', 'Intended ASIN', 'Official listing URL', 'Confirmation date', 'Confirmation source', 'Buy link status', 'Confirmation status', 'Sources (official)'], rows, 'wide')}
 </section>
 <section class="band">
@@ -457,11 +544,28 @@ add({
 });
 for (const g of guides) {
   const productsHere = products.filter((p) => tagged(p) && (p.category === g.category || (g.cluster_links || []).includes(p.category)));
+  const faqBlock = (g.body || []).find((b) => b.type === 'faq');
+  const faqItems = (faqBlock && faqBlock.items) || [];
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Article', headline: g.title, description: g.description,
     image: abs(g.image),
     datePublished: g.date, dateModified: cfg.lastReviewed, author: { '@type': 'Organization', name: cfg.author },
     publisher: { '@type': 'Organization', name: cfg.siteName }, mainEntityOfPage: abs(`/guides/${g.slug}/`),
+  })}</script>
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'FAQPage',
+    mainEntity: faqItems.map((i) => ({
+      '@type': 'Question', name: i.q,
+      acceptedAnswer: { '@type': 'Answer', text: i.a },
+    })),
+  })}</script>
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: abs('/guides/') },
+      { '@type': 'ListItem', position: 3, name: g.title, item: abs(`/guides/${g.slug}/`) },
+    ],
   })}</script>`;
   add({
     path: `/guides/${g.slug}/`, title: g.title, description: g.description, type: 'guide', ogType: 'article', jsonld,
@@ -497,6 +601,15 @@ for (const p of products) {
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: { '@type': 'Brand', name: p.brand },
     description: p.lede, url: abs('/products/' + p.slug + '/'),
+  })}</script>
+  <script type="application/ld+json">${JSON.stringify({
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: abs('/') },
+      { '@type': 'ListItem', position: 2, name: 'Shop', item: abs('/shop/') },
+      { '@type': 'ListItem', position: 3, name: catName(p.category), item: abs('/categories/' + p.category + '/') },
+      { '@type': 'ListItem', position: 4, name: p.name, item: abs('/products/' + p.slug + '/') },
+    ],
   })}</script>`;
   const conflictTable = p.observed_specs ? `
 <section class="band">
