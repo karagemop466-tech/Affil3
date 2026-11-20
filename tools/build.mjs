@@ -291,15 +291,39 @@ function table(headers, rows, cls = '') {
   return `<div class="table-wrap"><table class="${cls}"><thead><tr>${headers.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
 
-// Row-level sources: S05 and S04 point to this row's own submitted link and observed page.
+// Row-level sources. S04 and S05 are register-wide records standing for "the observed listing"
+// and "the submitted token"; the row's own values live in observed_final_url and submitted_token.
+// Rendering the row's own values here is what stops a row citing a sibling product's page.
 const rowSources = (p) => (p.sources || []).map((id) => {
-  if (id === 'S05') return `<a href="${esc(p.submitted_url)}" rel="sponsored noopener">S05</a>`;
-  if (id === 'S04' && p.observed_final_url) return `<a href="${esc(p.observed_final_url)}" rel="sponsored noopener">S04</a>`;
+  if (id === p.submitted_source_id) {
+    return `<code>link.amazon/${esc(p.submitted_token)}</code> <span class="small muted">(submitted token, owner input)</span>`;
+  }
+  if (id === p.observed_source_id && p.observed_final_url) {
+    return `${ext(p.observed_final_url, id, '')} <span class="small muted">(this row's observed listing)</span>`;
+  }
   return srcLink(id);
-}).join(', ');
+}).join(' · ');
 const guideSource = (id) => (id === 'S04'
   ? `<a href="${esc(href('/shop/'))}">S04</a> · observed Amazon product pages, one per row on the Shop table`
   : `${srcLink(id)} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}`);
+
+// The source list under a product: the row's own observed listing, its own submitted token, and
+// the maker pages behind the specification grid. Every entry points at that exact source.
+const productSourceList = (p) => {
+  const ids = [...(p.sources || []), ...(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id))];
+  return ids.map((id) => {
+    if (id === p.submitted_source_id) {
+      return `<li><strong>${esc(id)}</strong> — <code>link.amazon/${esc(p.submitted_token)}</code> · ${esc(SOURCES[id] ? SOURCES[id].title : '')} <span class="small muted">(owner-supplied input for this row; shown as text, never as a published link)</span></li>`;
+    }
+    if (id === p.observed_source_id && p.observed_final_url) {
+      const rec = SOURCES[id] || {};
+      return `<li><strong>${esc(id)}</strong> — ${ext(p.observed_final_url, 'observed Amazon listing', '')} · ${esc(rec.title || '')} <span class="small muted">(this row's own listing, observed ${esc(dateLong(p.observed_date))})</span></li>`;
+    }
+    const rec = SOURCES[id];
+    if (!rec) return `<li><strong>${esc(id)}</strong> — <span class="muted">missing from the source register</span></li>`;
+    return `<li><strong>${esc(id)}</strong> — ${rec.url ? ext(rec.url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(rec.title || '')}</li>`;
+  }).join('');
+};
 
 const cellText = (v) => (v === '' || v == null ? '<span class="blank" aria-label="blank: unverified">&nbsp;</span>' : esc(v));
 
@@ -664,7 +688,7 @@ for (const p of products) {
 </section>
 <section class="band sources">
   <h2>Sources for this product</h2>
-  <ul>${(p.sources || []).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}${(p.spec_sources || []).filter((id) => !(p.sources || []).includes(id)).map((id) => `<li><strong>${esc(id)}</strong> — ${SOURCES[id] && SOURCES[id].url ? ext(SOURCES[id].url, 'open source', '') : '<span class="muted">no link recorded</span>'} · ${esc(SOURCES[id] ? SOURCES[id].title : '')}</li>`).join('')}</ul>
+  <ul>${productSourceList(p)}</ul>
   <p class="small"><a href="${esc(href('/sources/'))}">Full source register</a> · <a href="${esc(href('/flagged/'))}">${(p.flags || []).length} open flag(s) on this row</a></p>
 </section>`,
   });

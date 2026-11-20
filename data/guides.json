@@ -625,7 +625,7 @@
       "sources": [
         "S11",
         "S13",
-        "S22"
+        "S23"
       ],
       "body": [
         {
@@ -699,7 +699,7 @@
             [
               "Chefman TurboFry Touch 8 qt stainless",
               "15.4 by 12.6 by 13.5 in",
-              "Chefman product page (S22)"
+              "Chefman product page (S23)"
             ],
             [
               "Emeril Lagasse 26 qt french-door oven",
@@ -769,7 +769,7 @@
       "sources": [
         "S11",
         "S12",
-        "S22",
+        "S23",
         "S04"
       ],
       "body": [
@@ -797,7 +797,7 @@
         },
         {
           "type": "p",
-          "text": "One drawer, one timer, one batch. The 8 qt stainless-steel TurboFry on the maker's site states 8 qt / 7.57 L, a 200–400 °F range and four cooking presets, with a top-rack dishwasher-safe basket (S22). The matte-black 8 qt on the same maker's site states 8 qt / 7.57 L with a 450 °F Hi-Fry finish (S12). Both are single-basket machines with roughly twice the volume of one half of the dual unit."
+          "text": "One drawer, one timer, one batch. The 8 qt stainless-steel TurboFry on the maker's site states 8 qt / 7.57 L, a 200–400 °F range and four cooking presets, with a top-rack dishwasher-safe basket (S23). The matte-black 8 qt on the same maker's site states 8 qt / 7.57 L with a 450 °F Hi-Fry finish (S12). Both are single-basket machines with roughly twice the volume of one half of the dual unit."
         },
         {
           "type": "h2",
@@ -843,7 +843,7 @@
             [
               "Total stated capacity",
               "6 qt / 5.67 L (S11)",
-              "8 qt / 7.57 L (S12, S22)"
+              "8 qt / 7.57 L (S12, S23)"
             ]
           ]
         },
@@ -864,7 +864,7 @@
           "items": [
             "Whether the two baskets can run at different temperatures, or only finish at different times. Sync Finish implies the same finishing moment; independent temperature control is a separate question, and the listing is where you will find it.",
             "The size of each basket, not the total. Two 3 qt baskets is the number that decides whether a full tray of wings fits in one go.",
-            "Whether the baskets are removable and dishwasher-safe. Chefman states dishwasher-safe baskets for both the 6 qt dual unit and the 8 qt stainless unit (S11, S22).",
+            "Whether the baskets are removable and dishwasher-safe. Chefman states dishwasher-safe baskets for both the 6 qt dual unit and the 8 qt stainless unit (S11, S23).",
             "Whether you will use the second basket often enough to justify the counter space."
           ]
         },
@@ -1134,7 +1134,7 @@
       "sources": [
         "S16",
         "S12",
-        "S22",
+        "S23",
         "S04"
       ],
       "body": [
@@ -1162,7 +1162,7 @@
         },
         {
           "type": "p",
-          "text": "Every appliance has a model number somewhere in its details, and it is the only field that identifies a machine reliably. Our 8 qt air fryer is a live example of why. The listing's own copy names model RJ38-SQSS-8T, and Chefman publishes that model, stating a 200–400 °F range, 1700W/120V, dimensions of 15.4 by 12.6 by 13.5 in and a weight of 12.8 lb (S22). Chefman also publishes a different 8 qt machine, RJ38-8T-BLACK, with a 450 °F Hi-Fry finish and no stated dimensions (S12). Same capacity, two machines, one shelf. We publish only what the two pages agree on, and we publish the disagreement as well (see our Flagged for review page)."
+          "text": "Every appliance has a model number somewhere in its details, and it is the only field that identifies a machine reliably. Our 8 qt air fryer is a live example of why. The listing's own copy names model RJ38-SQSS-8T, and Chefman publishes that model, stating a 200–400 °F range, 1700W/120V, dimensions of 15.4 by 12.6 by 13.5 in and a weight of 12.8 lb (S23). Chefman also publishes a different 8 qt machine, RJ38-8T-BLACK, with a 450 °F Hi-Fry finish and no stated dimensions (S12). Same capacity, two machines, one shelf. We publish only what the two pages agree on, and we publish the disagreement as well (see our Flagged for review page)."
         },
         {
           "type": "h2",
@@ -1378,7 +1378,7 @@
       "description": "Preset counts are a marketing number. What matters is how many presets match the food you already cook, and how the tracked appliances differ on this.",
       "sources": [
         "S13",
-        "S22",
+        "S23",
         "S11"
       ],
       "body": [
@@ -1412,7 +1412,7 @@
             [
               "Chefman TurboFry Touch 8 qt stainless",
               "4 cooking presets",
-              "Chefman product page (S22)"
+              "Chefman product page (S23)"
             ],
             [
               "CHEFMAN 6 qt dual basket",
@@ -1435,7 +1435,7 @@
         },
         {
           "type": "p",
-          "text": "This is the part the spec sheet hides. The 26 qt unit is described by its maker as a 10-in-1 air fry convection oven with 25 cooking pre-sets and a dual-speed fan (S13). It is standing in for a full oven: a single cavity with a door, racks and more than one level. The 8 qt stainless unit is a single drawer with four presets, a 200–400 °F range and a top-rack dishwasher-safe basket (S22). They are not competing on buttons. They are competing on what you can cook at once."
+          "text": "This is the part the spec sheet hides. The 26 qt unit is described by its maker as a 10-in-1 air fry convection oven with 25 cooking pre-sets and a dual-speed fan (S13). It is standing in for a full oven: a single cavity with a door, racks and more than one level. The 8 qt stainless unit is a single drawer with four presets, a 200–400 °F range and a top-rack dishwasher-safe basket (S23). They are not competing on buttons. They are competing on what you can cook at once."
         },
         {
           "type": "h2",
@@ -1496,9 +1496,11 @@
       "description": "Cooking chicken breast in an air fryer: the safe internal temperature, where to place the probe, why colour and texture mislead, and which tracked appliance suits which job.",
       "sources": [
         "S10",
+        "S11",
+        "S14",
         "S20",
         "S21",
-        "S14"
+        "S23"
       ],
       "body": [
         {
@@ -1560,7 +1562,7 @@
             ],
             [
               "Which machine you use",
-              "The tracked 6 qt dual-basket unit reaches 450 °F on Hi-Fry and stops both baskets together (S11); the 8 qt stainless unit runs a 200–400 °F range (S22). A high-heat finish browns; a moderate cook does the work."
+              "The tracked 6 qt dual-basket unit reaches 450 °F on Hi-Fry and stops both baskets together (S11); the 8 qt stainless unit runs a 200–400 °F range (S23). A high-heat finish browns; a moderate cook does the work."
             ],
             [
               "Whether you open the drawer",

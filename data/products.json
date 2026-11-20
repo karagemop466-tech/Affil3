@@ -1,7 +1,7 @@
 {
   "checked": "2026-11-20",
   "tracking_id": "shopnow047c-20",
-  "rule": "Two kinds of facts live here and they are never merged. INTENDED fields (intended_asin, official_listing_url, confirmation_date, confirmation_source) are filled only when the owner or an official Associates record confirms the product. OBSERVED fields (observed_*) are what an Amazon page showed on a dated fetch, and are kept separate on purpose. A blank cell means 'not confirmed', never 'guessed'. Specs come from the manufacturer page named in 'spec_sources'; where two official pages disagree, the value is left blank and a flag explains why.",
+  "rule": "INTENDED fields (intended_asin, official_listing_url, confirmation_date, confirmation_source) are filled only when the owner or an official Associates record confirms the product. OBSERVED fields record dated listing observations and are never copied into the intended fields. S04 and S05 are register-wide records that stand for 'the observed listing' and 'the submitted token'; the row's own values are observed_final_url and submitted_token, so every row links to its own listing and shows its own token. Specifications come from the manufacturer pages named in spec_sources; where a listing and a maker disagree, the conflict is flagged. Blank cells mean not confirmed, never guessed.",
   "products": [
     {
       "id": "P01",
@@ -57,7 +57,9 @@
       "fit_line": "Two different foods, two different timings, one compact footprint.",
       "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
       "guide_title": "Basket or oven-style air fryer: what should you compare?",
-      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare"
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare",
+      "observed_source_id": "S04",
+      "submitted_source_id": "S05"
     },
     {
       "id": "P02",
@@ -121,7 +123,9 @@
         "power_w": "The manufacturer page does not state wattage; no figure is published.",
         "weight_lb": "The manufacturer page does not state unit weight; no figure is published.",
         "presets": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch presets' (FLG-005), so no preset count is published."
-      }
+      },
+      "observed_source_id": "S04",
+      "submitted_source_id": "S05"
     },
     {
       "id": "P03",
@@ -206,7 +210,9 @@
         "material": "Stainless steel",
         "source": "S16"
       },
-      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes for this unit. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing. That conclusion was wrong and is corrected here (see FLG-026)."
+      "model_note": "RJ38-SQSS-8T is both the model the Amazon listing names and the model Chefman publishes for this unit. Chefman also sells RJ38-8T-BLACK, a different 8 Qt unit with a 450 °F Hi-Fry mode and a matte-black finish; an earlier pass compared this listing against that page and concluded two machines shared one listing. That conclusion was wrong and is corrected here (see FLG-026).",
+      "observed_source_id": "S04",
+      "submitted_source_id": "S05"
     },
     {
       "id": "P04",
@@ -298,7 +304,9 @@
         "capacity": "n/a",
         "material": "Plastic housing, black",
         "source": "S04"
-      }
+      },
+      "observed_source_id": "S04",
+      "submitted_source_id": "S05"
     },
     {
       "id": "P05",
@@ -360,7 +368,9 @@
       "blank_reason": {
         "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
         "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
-      }
+      },
+      "observed_source_id": "S04",
+      "submitted_source_id": "S05"
     }
   ]
 }

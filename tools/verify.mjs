@@ -209,6 +209,22 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`product page ${p.id} has exactly one tagged outbound buy link`, (h.match(/data-outbound/g) || []).length === 1 && h.includes(`tag=${TAG}`));
     }
     check(`product page ${p.id} names its source ids`, (p.sources || []).every((id) => h.includes(`>${id}<`) || h.includes(id)));
+
+    // A row may only cite its own listing and its own submitted token. S04 and S05 are
+    // register-wide records; the row's own values live in observed_final_url / submitted_token.
+    const srcBlock = h.slice(h.indexOf('Sources for this product'));
+    const ownListing = p.observed_final_url;
+    check(`product page ${p.id} links its own observed listing`, !ownListing || srcBlock.includes(ownListing));
+    const siblingListings = products.filter((o) => o.id !== p.id && o.observed_final_url).map((o) => o.observed_final_url);
+    for (const other of siblingListings) {
+      check(`product page ${p.id} does not cite a sibling row's listing`, !srcBlock.includes(other), other);
+    }
+    check(`product page ${p.id} shows its own submitted token`, !p.submitted_token || srcBlock.includes(p.submitted_token));
+    const siblingTokens = products.filter((o) => o.id !== p.id && o.submitted_token).map((o) => o.submitted_token);
+    for (const other of siblingTokens) {
+      check(`product page ${p.id} does not show a sibling row's token`, !srcBlock.includes(other), other);
+    }
+    check(`product page ${p.id} publishes no short link as a link`, !/href="https:\/\/link\.amazon\//.test(srcBlock));
   }
   for (const g of guides) {
     const f = path.join(DOCS, 'guides', g.slug, 'index.html');
@@ -216,6 +232,22 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`guide ${g.slug} has a hero image`, /class="article-hero"/.test(h) && /<img [^>]*alt="[^"]+"/.test(h));
     check(`guide ${g.slug} lists its sources`, /Sources for this guide/.test(h));
     check(`guide ${g.slug} states it is not a test`, !/we tested|our test kitchen|we cooked/i.test(h));
+
+    // Every source ID cited in a guide's body must be declared in that guide's source list,
+    // so the citation and the register entry can never drift apart.
+    const declared = new Set(g.sources || []);
+    const mentioned = new Set();
+    for (const b of g.body || []) {
+      const chunks = [];
+      if (b.type === 'table') for (const r of b.rows || []) chunks.push(r.map(String).join(' '));
+      else if (b.type === 'faq') for (const i of b.items || []) chunks.push(`${i.q || ''} ${i.a || ''}`);
+      else if (b.type === 'ul' || b.type === 'ol') for (const i of b.items || []) chunks.push(String(i));
+      else chunks.push(String(b.text || ''));
+      for (const c of chunks) for (const m of c.matchAll(/\bS\d\d\b/g)) mentioned.add(m[0]);
+    }
+    for (const id of mentioned) {
+      check(`guide ${g.slug} declares the source it cites (${id})`, declared.has(id), `declared: ${[...declared].join(',')}`);
+    }
   }
   check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
   const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
