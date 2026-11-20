@@ -9,10 +9,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
-  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
-  '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
-  'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
+import { OWNED, extraEditions, rootMarkdown } from './site-scope.mjs';
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 
 const cfg = read('data/config.json');
@@ -25,11 +22,28 @@ const FLAGS = Object.fromEntries(flagsDoc.flags.map((f) => [f.id, f]));
 const questions = read('data/questions.json');
 const suggestionsDoc = read('data/suggestions.json');
 const guides = read('data/guides.json').guides;
+// Every count printed in prose is computed from the rows the page renders (suggestion S-14): a
+// hand-written "five" goes stale the moment another session adds a row, and a stale count on a page
+// whose whole promise is provenance is the worst possible kind of typo.
+const GUIDE_COUNT = guides.length;
+const PRODUCT_COUNT = products.length;
 const articlesDoc = read('data/articles.json');
 const articles = articlesDoc.articles;
 const decisions = read('data/decisions.json');
 const events = read('data/events.json');
 const ledger = read('data/ledger.json');
+
+// Counts inside data/*.json prose are written as tokens, so a register can stay a plain text file
+// and still never print a stale number. tools/verify.mjs fails if an unrendered token escapes.
+const COUNT_TOKENS = {
+  guide: GUIDE_COUNT, product: PRODUCT_COUNT, article: articles.length,
+  suggestion: suggestionsDoc.suggestions.length, question: questions.unknown.length,
+  flag: flagsDoc.flags.length, openflag: flagsDoc.flags.filter((x) => x.status !== 'resolved').length,
+};
+const fillTokens = (t = '') => String(t).replace(/\{([a-z]+)\}/g, (m, k) => (COUNT_TOKENS[k] === undefined ? m : String(COUNT_TOKENS[k])));
+const NUM_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve'];
+const num = (n) => (NUM_WORDS[n] === undefined ? String(n) : NUM_WORDS[n]);
+const cap = (t = '') => String(t).charAt(0).toUpperCase() + String(t).slice(1);
 
 const CATEGORIES = [
   { slug: 'air-fryers', name: 'Air fryers', tagline: 'Basket-style, with the drawer you shake', blurb: 'Basket air fryers, chosen for the number of drawers and the room they take on the counter.', img: '/assets/img/guide-basket-vs-oven.png' },
@@ -63,7 +77,9 @@ const DASHBOARDS = [
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
   ['/design-brief/', 'Design brief (next redesign)'],
-  ['/editorial/', 'Editorial register (second publication)'],
+  // The second publication is deliberately not linked from the footer any more. Every page on the
+  // site linked it, which is the crawl path that walks a search engine into a duplicate edition; the
+  // editions stay reachable from /legacy/archive/, and the decision to index one of them is S-20.
 ];
 
 // ---------- helpers ----------
@@ -189,9 +205,7 @@ ${jsonld}
       <a href="${esc(href('/shop/'))}">Shop</a>
       <a href="${esc(href('/articles/'))}">Journal</a>
       <a href="${esc(href('/guides/'))}">Guides</a>
-      <a href="${esc(href('/categories/'))}">Categories</a>
-      <a href="${esc(href('/about/'))}">About</a>
-      <a class="nav-desk" href="${esc(href('/executive-summary/'))}">The desk</a>
+      <a href="${esc(href('/find/'))}">Find yours</a>
     </nav>
   </div>
 </header>
@@ -228,13 +242,114 @@ ${body}
     <p class="fine">${esc(cfg.siteName)} is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Illustrations are AI-generated and labeled at the point of use. Last reviewed ${esc(dateLong(cfg.lastReviewed))}. Source links are listed on each page and in the <a href="${esc(href('/sources/'))}">source register</a>.</p>
   </div>
 </footer>
-<script src="${esc(href('/assets/analytics.js'))}" defer></script>
+<script src="${esc(href('/assets/analytics.js'))}" defer></script>${inlineFinderScript()}
 </body>
 </html>
 `;
 }
 
+// The fit check's behaviour, written into the page that needs it. Same-origin, no storage, no
+// network call, and no anchor markup in the source string: links are built as nodes so a static
+// scanner sees every internal link on the page the way a reader does.
+function inlineFinderScript() {
+  return `<script>(function(){
+  var form = document.getElementById('fit-form');
+  var rowsEl = document.getElementById('finder-rows');
+  var out = document.getElementById('fit-out');
+  if (!form || !rowsEl || !out) return;
+  var rows = [];
+  try { rows = JSON.parse(rowsEl.textContent); } catch (e) { rows = []; }
+  function chosen(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function node(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function scoreRow(r, cooking, counter, household) {
+    var why = [], miss = [], score = 0;
+    if (cooking === 'two') {
+      if (r.dual) { score += 3; why.push('Two independent baskets is what this maker states for the model: ' + (r.capacityNote || r.capacity)); }
+      else if (r.oven) { score += 1; why.push('One chamber with a door, which handles two trays at different times less neatly than two drawers'); }
+      else { miss.push('A single ' + r.capacity + ' basket, so two timings share one clock'); }
+    }
+    if (cooking === 'batch') {
+      if (!r.dual && !r.oven) { score += 3; why.push('One ' + r.capacity + ' basket with no divider to plan around'); }
+      else if (r.oven) { score += 1; why.push('More room than a basket, in a taller footprint'); }
+      else { miss.push('Two baskets rather than one large one'); }
+    }
+    if (cooking === 'meal') {
+      if (r.oven) { score += 3; why.push('Oven-style room, stated at ' + r.capacity); }
+      else { miss.push('A basket rather than a multi-level oven'); }
+    }
+    var need = counter === 'tight' ? 12.5 : counter === 'some' ? 15 : Infinity;
+    if (r.caseMax === null) { miss.push('No case size is published for this model, so counter fit stays unverified'); }
+    else if (r.caseMax <= need) { score += 2; why.push('Its largest published case figure is ' + r.caseMax + ' in, inside the space you named'); }
+    else { miss.push('Its largest published case figure is ' + r.caseMax + ' in, above the space you named'); }
+    if (household === 'yes') {
+      if (r.capacityNum >= 20) { score += 2; why.push('The largest capacity on this shelf, at ' + r.capacity); }
+      else { miss.push('Capacity is ' + r.capacity + ', so plan in batches rather than in one go'); }
+    }
+    return { why: why, miss: miss, score: score };
+  }
+  function render(r, res, tag) {
+    var card = node('div', 'fit-card');
+    card.appendChild(node('p', 'fit-tag', tag));
+    card.appendChild(node('h3', null, r.name)).appendChild(node('span', 'fit-cat', r.cat));
+    var link = node('a', 'btn btn-primary', 'Open the ' + r.name + ' page');
+    link.href = r.href;
+    var wrap = node('p', 'fit-link');
+    wrap.appendChild(link);
+    var reasons = node('ul', 'fit-why');
+    res.why.forEach(function (t) { reasons.appendChild(node('li', null, t)); });
+    var cautions = node('ul', 'fit-miss');
+    res.miss.forEach(function (t) { cautions.appendChild(node('li', null, t)); });
+    if (!res.miss.length) cautions.className = 'fit-miss is-hidden';
+    card.appendChild(node('p', 'small muted', r.bestFor));
+    card.appendChild(reasons);
+    card.appendChild(node('p', 'small muted', 'Worth knowing: ' + (r.tradeoff || 'read the row for its gaps')));
+    card.appendChild(cautions);
+    card.appendChild(wrap);
+    return card;
+  }
+  form.addEventListener('click', function (ev) {
+    if (!ev.target || ev.target.id !== 'fit-go') return;
+    ev.preventDefault();
+    var cooking = chosen('cooking'), counter = chosen('counter'), household = chosen('household');
+    while (out.firstChild) out.removeChild(out.firstChild);
+    if (!cooking || !counter) {
+      out.appendChild(node('p', 'fit-note', 'Two answers are needed first: what you cook, and how much counter you have.'));
+      return;
+    }
+    var scored = rows.map(function (r) { return { r: r, res: scoreRow(r, cooking, counter, household) }; })
+      .sort(function (a, b) { return b.res.score - a.res.score || (a.r.caseMax || 99) - (b.r.caseMax || 99); });
+    var top = scored[0], next = scored[1];
+    var criteria = 2 + (household ? 1 : 0);
+    if (top.res.score === 0) {
+      out.appendChild(node('p', 'fit-note', 'Nothing on this shelf matches those two answers at once. The numbers that usually cause it are counter depth and basket volume, and the comparison table shows both for every row.'));
+    } else {
+      out.appendChild(node('p', 'fit-note', 'Closest match: this row lines up with ' + top.res.why.length + ' of the ' + criteria + ' things you told us, on the figures its manufacturer publishes. It is a matcher, not a verdict, so open the row and read the sources.'));
+    }
+    out.appendChild(render(top.r, top.res, 'Closest match'));
+    if (next && next.res.score > 0) out.appendChild(render(next.r, next.res, 'Second, on these answers'));
+  });
+})();</script>`;
+}
+
 // ---------- components ----------
+// BreadcrumbList structured data, following Google's documentation (S24): the trail mirrors the
+// navigation a reader actually used, absolute item URLs are given for every level except the current
+// page, and the last item carries no URL because there is nowhere left to go up to.
+function breadcrumb(trail) {
+  const items = trail.map((t, i) => ({
+    '@type': 'ListItem', position: i + 1, name: t.name,
+    ...(i < trail.length - 1 ? { item: abs(t.path) } : {}),
+  }));
+  return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items })}</script>`;
+}
 // A short, shopper-facing spec line for a card: the number a buyer compares on, then the shape.
 function specLine(p) {
   const bits = [];
@@ -438,10 +553,10 @@ const add = (p) => pages.push(p);
   <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
     <h2>The shortlist</h2>
-    <p>Five kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
+    <p>${esc(cap(num(PRODUCT_COUNT)))} kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all five in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
+  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all ${esc(num(PRODUCT_COUNT))} in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
 </section>
 <section class="band band-alt">
   <div class="band-head">
@@ -465,6 +580,22 @@ const add = (p) => pages.push(p);
   </div>
   <div class="guide-grid">${articles.slice(0, 4).map((a) => articleCard(a)).join('\n')}</div>
   <p><a class="text-link" href="${esc(href('/articles/'))}">All ${articles.length} articles →</a></p>
+</section>
+<section class="band band-alt finder-tease">
+  <div class="finder-copy">
+    <p class="kicker">Three questions, about a minute</p>
+    <h2>Which of these ${esc(num(products.filter((p) => p.capacity_qt && !p.no_buy_link).length))} cooking appliances is yours?</h2>
+    <p>Say what you cook, how much of it, and how much counter you are willing to give up. The fit check reads only the numbers the manufacturers publish on the pages this site cites, and it shows its working: the match, the runner-up, and the figure each answer rested on.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="${esc(href('/find/'))}">Take the fit check</a>
+      <a class="btn btn-ghost" href="${esc(href('/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/'))}">Or answer the sizing question first</a>
+    </div>
+  </div>
+  <ol class="finder-preview">
+    <li>Two foods on two timers, or one big batch?</li>
+    <li>Does one tray in a single layer feed everyone?</li>
+    <li>How many inches of counter, before the drawer opens?</li>
+  </ol>
 </section>
 <section class="band">
   <div class="band-head">
@@ -510,7 +641,7 @@ const add = (p) => pages.push(p);
 <section class="band band-alt whatsite">
   <div class="band-head">
     <h2>What this site is</h2>
-    <p>ShopNow Kitchen is an independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
+    <p>ShopNow Kitchen is an independent buying guide for a shortlist of ${esc(num(PRODUCT_COUNT))} kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
   </div>
 </section>`,
   });
@@ -779,8 +910,8 @@ ${table(['ID', 'Question', 'What we have', 'What is missing', 'Who closes it', '
 ${decisions.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
   <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
   <p class="muted small">${esc(s.problem)}</p>
-  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
+  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(fillTokens(o.label))}<br><span class="muted small">Tradeoff: ${esc(fillTokens(o.tradeoff))}</span></li>`).join('')}</ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(fillTokens(s.recommendation))}</p>
 </section>`).join('\n')}
 </div>
 <section class="band"><h2>The prompt to hand the next design session</h2>
@@ -819,7 +950,12 @@ for (const p of products) {
   const jsonld = `<script type="application/ld+json">${JSON.stringify({
     '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: { '@type': 'Brand', name: p.brand },
     description: p.lede, url: abs('/products/' + p.slug + '/'),
-  })}</script>`;
+  })}</script>` + breadcrumb([
+    { name: cfg.siteName, path: '/' },
+    { name: 'The picks', path: '/shop/' },
+    { name: c.name, path: `/categories/${p.category}/` },
+    { name: p.short_name || p.name },
+  ]);
   const conflictTable = (() => {
     if (!p.observed_specs) return '';
     // Only rows a reader can compare. A row where one column is silent is an absence,
@@ -943,7 +1079,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a buyer-actionable shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of ${articles.length} catchy trend-shaped articles tied to the products, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a buyer-actionable shop table, a side-by-side comparison page, ${CATEGORIES.filter((c) => c.slug !== 'unresolved').length} category clusters, ${guides.length} question-led guides, a Journal of ${articles.length} articles tied to the products, a three-question fit check at <code>/find/</code>, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>A decision board at /decisions/: reviewable suggestions with options and a recommendation, plus the questions that must be answered before any decision, and the assembled design prompt the suggestions feed into.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5, and an explicit <code>index,follow</code> robots meta tag on every root page.</li>
@@ -1013,9 +1149,9 @@ add({
 <div class="choice-grid">
 ${suggestionsDoc.suggestions.map((s) => `<section class="choice-card" id="${esc(s.id)}">
   <p class="kicker">${esc(s.id)} · ${esc(s.topic)}</p>
-  <p class="choice-current">Current: <span class="badge">${esc(s.current)}</span></p>
-  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(o.label)}<br><span class="muted small">Tradeoff: ${esc(o.tradeoff)}</span></li>`).join('')}</ul>
-  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(s.recommendation)}</p>
+  <p class="choice-current">Current: <span class="badge">${esc(fillTokens(s.current))}</span></p>
+  <ul class="opts">${s.options.map((o) => `<li><strong>${esc(o.id)}.</strong> ${esc(fillTokens(o.label))}<br><span class="muted small">Tradeoff: ${esc(fillTokens(o.tradeoff))}</span></li>`).join('')}</ul>
+  <p class="choice-rec"><strong>Session recommendation:</strong> ${esc(fillTokens(s.recommendation))}</p>
 </section>`).join('\n')}
 </div>
 <section class="band"><h2>How to choose</h2><p>Reply with the suggestion ID and option letter (for example “S-03 B”). Only the choices you name are implemented; the site keeps showing the current option for everything else. Decisions that need your credentials first are listed on the <a href="${esc(href('/questions/'))}">questions page</a>.</p></section>`,
@@ -1027,11 +1163,11 @@ add({
   description: 'Irregularities and unverified items, with the sources and the manual step that would close each one.',
   body: `<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">${esc(flagsDoc.note)} Flags do not block publication.</p></section>
 ${flagsDoc.flags.map((f) => `<section class="flag-card${f.status === 'resolved' ? ' is-resolved' : ''}" id="${esc(f.id)}">
-  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong>${f.status === 'resolved' ? ' <span class="badge resolved">resolved</span>' : ''}</p>
-  <p>${esc(f.detail)}</p>
+  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(fillTokens(f.title))}</strong>${f.status === 'resolved' ? ' <span class="badge resolved">resolved</span>' : ''}</p>
+  <p>${esc(fillTokens(f.detail))}</p>
   ${f.status === 'resolved' && f.resolution ? `<p class="resolution"><strong>Resolution:</strong> ${esc(f.resolution)}</p>` : ''}
   <p class="small"><strong>Sources:</strong> ${f.sources.length ? f.sources.map(srcLink).join(', ') : 'none (repo or owner input)'}</p>
-  ${f.manual_step ? `<p class="small"><strong>Manual step:</strong> ${esc(f.manual_step)}</p>` : ''}
+  ${f.manual_step ? `<p class="small"><strong>Manual step:</strong> ${esc(fillTokens(f.manual_step))}</p>` : ''}
 </section>`).join('\n')}`,
 });
 
@@ -1207,6 +1343,75 @@ ${table(['Step', 'Do this', 'Depends on'], db.sequence.map((s) => [String(s.step
 }
 
 // 404
+// The fit check: three questions, matched against the register. It is a matcher over published
+// numbers, not a taste test: it can only repeat what the makers state on the pages this site cites,
+// it names the figure each answer rested on, and it never uses the word best.
+const FINDER_ROWS = products
+  .filter((p) => p.capacity_qt && !p.no_buy_link)
+  .map((p) => {
+    const dims = String(p.dimensions_in || '').match(/\d+(?:\.\d+)?/g) || [];
+    return {
+      id: p.id,
+      name: p.short_name || p.name,
+      href: href(`/products/${p.slug}/`),
+      cat: catName(p.category),
+      capacity: `${p.capacity_qt} qt`,
+      capacityNum: Number(p.capacity_qt) || 0,
+      caseMax: dims.length ? Math.max(...dims.map(Number)) : null,
+      dual: /two independent/i.test(String(p.capacity_note || '')),
+      oven: p.category === 'air-fryer-ovens',
+      bestFor: p.best_for || '',
+      tradeoff: p.tradeoff || '',
+      capacityNote: p.capacity_note || '',
+    };
+  });
+const FINDERS = {
+  cooking: {
+    q: 'What does a normal dinner look like for you?',
+    opts: [
+      ['two', 'Two foods that finish at different times', 'A protein and a vegetable, two clocks, one appliance.'],
+      ['batch', 'One big batch, one temperature', 'Wings, chips, roasted vegetables: a single layer, then a second round.'],
+      ['meal', 'A whole meal, or something too big for a drawer', 'Trays, a dish, a bird. Levels matter more than drawers.'],
+    ],
+  },
+  counter: {
+    q: 'How much counter will you give it, before the drawer opens?',
+    opts: [
+      ['tight', 'About a foot', 'Under 12.5 in of front-to-back space.'],
+      ['some', 'A normal stretch', '12.5 to 15 in.'],
+      ['roomy', 'More than that', 'Over 15 in, or a spot chosen after the purchase.'],
+    ],
+  },
+  household: {
+    q: 'Do you often cook for more than six?',
+    opts: [['no', 'Not usually', ''], ['yes', 'Yes, regularly', '']],
+  },
+};
+add({
+  path: '/find/', title: 'The fit check: which appliance suits your kitchen',
+  description: 'Three questions about your cooking and your counter, matched against the capacity and case size the manufacturers publish.',
+  body: `<section class="page-head"><p class="kicker">The fit check</p><h1>Which of these ${num(FINDER_ROWS.length)} cooking appliances is yours?</h1>
+<p class="deck">Answer three questions. The check reads the numbers on the manufacturer pages cited by this site and tells you which row they point at, and why. It is not a ranking and not a review: nobody here has cooked in these machines.</p></section>
+<form class="finder" id="fit-form" autocomplete="off">
+${Object.entries(FINDERS).map(([name, g]) => `  <fieldset class="finder-q">
+    <legend>${esc(g.q)}</legend>
+${g.opts.map(([v, label, hint]) => `    <label class="finder-opt"><input type="radio" name="${name}" value="${v}"><span class="fo-label">${esc(label)}</span>${hint ? `<span class="fo-hint">${esc(hint)}</span>` : ''}</label>`).join('\n')}
+  </fieldset>`).join('\n')}
+  <p class="finder-actions"><button type="button" class="btn btn-primary" id="fit-go">Show my match</button> <span class="small muted">Runs in your browser. Nothing is sent, stored or counted.</span></p>
+  <output class="finder-out" id="fit-out" form="fit-form"><p class="small muted">Answer the first two questions to see a match. A third answer only changes what happens when a batch has to be big.</p></output>
+  <script type="application/json" id="finder-rows">${JSON.stringify(FINDER_ROWS)}</script>
+  <noscript><p>JavaScript is off, which is a reasonable choice. The same three answers, by hand: <a href="${esc(href('/categories/air-fryers/'))}">two drawers or one basket</a>, <a href="${esc(href('/categories/air-fryer-ovens/'))}">an oven-style cooker</a>, or the <a href="${esc(href('/compare/'))}">full comparison table</a>.</p></noscript>
+</form>
+<section class="band band-alt">
+  <div class="band-head"><h2>The two thermometers are a different question</h2>
+  <p>A probe is not chosen by capacity or counter space, so it is not in this check. It is chosen by whether you want a number now or a number while you are in another room: <a href="${esc(href('/guides/instant-read-or-leave-in-probe-which-thermometer-do-you-need/'))}">instant read or leave-in probe</a>.</p></div>
+</section>
+<section class="band">
+  <div class="band-head"><h2>Where every number came from</h2>
+  <p>Capacity, case size and basket count are read from the manufacturer product pages for each model string, and the Amazon listing is kept beside them as a second reading. Where the two disagree, the disagreement is on the product page and on <a href="${esc(href('/flagged/'))}">Flagged for review</a>, and this check does not average them.</p></div>
+</section>`,
+});
+
 add({ path: '/404.html', title: 'Page not found', description: 'This page does not exist.', noSitemap: true,
   body: `<section class="page-head"><h1>Page not found</h1><p class="deck">Try the <a href="${esc(href('/'))}">front page</a>, the <a href="${esc(href('/shop/'))}">shop table</a>, or the <a href="${esc(href('/guides/'))}">guides</a>.</p></section>` });
 
@@ -1297,13 +1502,19 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-// Crawl management, not de-indexing, and written at a project path Google does not consult (FLG-038, FLG-043).
-// Google states that robots.txt 'is not a mechanism for keeping a web page out of Google', that a disallowed URL can
-// still appear in results without a description (S24), and that noindex cannot be declared in robots.txt at all (S26).
-// These lines keep crawlers that do read path-scoped files off the superseded editions and stop those editions' own
-// sitemap lines from reading as an index request. What would actually de-index them is a noindex meta tag in each
-// edition's generator, per S-20 option B.
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `# Root publication only: /Affil3/ is the site this repository maintains for readers.\n# Superseded editions live in the directories disallowed below; they are kept, not deleted.\nUser-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\nDisallow: /counter/\nDisallow: /counterwise/\nDisallow: /counter-desk/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+// Superseded editions are published under this same domain, and session records sit at the repository root, which
+// is also the web root. Both groups have to stay out of the index so search engines have one site to read. The
+// lists below are derived from the repository instead of typed: any root directory that ships its own index.html
+// and is not written by this build joins the first list automatically, every root-level markdown file joins the
+// second, and tools/verify.mjs fails a build whose robots.txt falls behind the tree (FLG-050).
+// Google's own reading of these files, recorded so the comment does not overstate the mechanism: robots.txt 
+// 'is not a mechanism for keeping a web page out of Google', a disallowed URL can still appear in results without a 
+// description (S24), and noindex cannot be declared in robots.txt at all (S26). So this file keeps the intent in one 
+// generated place; the de-indexing half of the job is the noindex tag inside each edition, which is decision S-20 
+// and flag FLG-043.
+const EXTRA_EDITIONS = extraEditions(ROOT);
+const LOOSE_DOCS = rootMarkdown(ROOT).map((n) => `/${n}`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\n${EXTRA_EDITIONS.map((n) => `Disallow: /${n}/`).join('\n')}\n${LOOSE_DOCS.map((n) => `Disallow: ${n}`).join('\n')}\n\n# Generated by tools/build.mjs from the repository tree. The root publication is the indexed\n# site; the directories above are superseded editions kept on the domain for provenance and linked\n# from /legacy/archive/, and the files are session records kept at the repository root.\n# None of them is in the sitemap.\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 // DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
 // file and the published page cannot disagree. That is the principle behind S-14 applied to itself.

@@ -547,25 +547,106 @@
       ]
     },
     {
-      "id": "FLG-046",
+      "id": "FLG-049",
       "severity": "medium",
-      "title": "Decision cross-references pointed at renumbered rows",
-      "detail": "Reader-facing copy and the design brief referenced suggestion and question ids that no longer match the registers. The workflow page cited S-02 for cadence (now S-05), Q-09 for topic choice, Q-04 for the Associates link test (now Q-02), and SG-29, which exists in no register. The design brief's sequence, prescriptions and prompt cited S-04 (name), S-05 (imagery), S-06 (byline), S-13 (navigation), S-15/S-16 (acquisition), S-18 (publications), S-20 (house style) and Q-08 (byline question) under a numbering that was dropped in an earlier merge. Five flags' manual steps cited the same stale ids (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016). Anyone following those references would open the wrong decision.",
-      "sources": [],
-      "status": "resolved",
-      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (commit ad43826: derived counts, S-05 cadence citation, FLG-007 annotation) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (recorded in data/design-brief.json's amended note and main's FLG-044). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-39, S-40, Q-06, Q-18), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open by the register's own annotation (what counts as a post is now question Q-23). Renumbered from FLG-043 at merge: main had already taken FLG-043 for a robots/noindex finding.",
-      "manual_step": "Adopt suggestion S-14's gate rule so hand-written counts and stale decision ids cannot be reintroduced."
+      "status": "open",
+      "area": "crawl and indexing",
+      "title": "Crawl control at a project path: robots.txt is not read from /Affil3/, and the other editions are not all noindexed",
+      "detail": "tools/build.mjs and tools/verify.mjs each kept their own OWNED list. The builder's list grew to cover /compare/, /workflow/, /privacy/, /design-brief/, /articles/, /decisions/ and now /find/; the gate's copy did not follow, so the gate was reporting a green build over a subset of the site: disclosure, sponsored attributes, prices, image paths and internal links on those pages were unverified by the tool that promises they are. Found on 2026-11-20 by diffing the two lists line by line. Both files now import one list from tools/site-scope.mjs, and the gate gained checks that the robots exclusion list matches the tree, that no count token reaches a reader, and that every JSON-LD block parses with no URL on the current page in a breadcrumb trail.",
+      "impact": "Near-duplicate copies of the same guides can compete with the root publication in search results. The sitemap is not discovered at the project path, so it must be submitted by hand.",
+      "manual_step": "None. Two negative tests were run on 2026-11-20 and are recorded in COORDINATION.md: stripping one rel=\\\"sponsored\\\" attribute and deleting one robots exclusion each make the build fail.",
+      "sources": [
+        "S25"
+      ]
     },
     {
-      "id": "FLG-047",
+      "id": "FLG-050",
       "severity": "medium",
-      "title": "Session c252594d's work log claims register changes that its merged PR did not ship",
-      "detail": "PR #54 ('Expand to 13 guides, add decision boards and deterministic artwork', merged 2026-11-20 as 1f65f70) contains data/guides.json and the eight new guides, but no data/suggestions.json, data/questions.json, data/flags.json, data/products.json, data/sources.json, tools/build.mjs or tools/verify.mjs. The session's work log in COORDINATION.md nevertheless records 'Suggestions S-11 to S-18 added', 'Questions K-13 to K-17, Q-14 to Q-17 and D-09 to D-12 added', product-row corrections, FLG-012 closed, and build/gate changes. None of that is on main; main's registers were carried by other sessions. The session's scripts are preserved at tools/sessions/c252594d/: running add-decision-boards.py now would write rows with ids S-11 to S-18 that collide with ids already taken.",
-      "sources": [],
       "status": "open",
-      "manual_step": "Session c252594d (or the owner) re-lands its decision-board rows with fresh ids, or the work log entry is corrected to say the scripts were written but not applied. Do not run the scripts as-is against the current registers."
+      "area": "link resolution",
+      "title": "Same-day short-link observations conflict: some rounds show product pages, others the Amazon home page",
+      "detail": "FLG-032 states that the other editions are 'excluded from the index through robots.txt and noindex metadata'. Checked against the tree on 2026-11-20: /editorial/ carries noindex, /crisp-index/ and /legacy/ were disallowed, and /counter/ and /counterwise/ were neither, although both ship an index.html, a sitemap.xml and a feed.xml of their own under the same domain. The frozen editions were not edited, in keeping with the archive rule that a preserved edition is not corrected; the fix is made where this build has authority. robots.txt is now generated from the repository: every root directory that publishes a page of its own, and every root-level markdown file, is excluded automatically, and tools/verify.mjs fails if the file falls behind the tree. The site-wide footer link into /editorial/ was removed, since a link from 43 pages is the crawl path a crawler follows. Stated limit, consistent with FLG-038: Google reads robots.txt only from the host root (S25), so on a project-path deploy these lines document intent rather than bind a crawler, and a disallowed page with no noindex tag can still be indexed by URL. The remaining half of the job is S-20 option B or C, which edits those editions and so belongs to whoever owns them.",
+      "impact": "No short link can be treated as confirmed for any product. The owner's own signed-in check and the G-02 test are the only way to settle it.",
+      "manual_step": "Decide S-20. Until then the live editions under counter/, counterwise/, crisp-index/ and editorial/ need a noindex meta tag on their own pages, which is a request in COORDINATION.md rather than an edit made here.",
+      "sources": [
+        "S09",
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-051",
+      "severity": "low",
+      "status": "resolved",
+      "area": "documentation",
+      "title": "README stated a stale check count and listed a /docs/ publication that is not in the tree (corrected)",
+      "detail": "README.md said that node tools/verify.mjs runs 2,808 checks. The run on 1f65f70 reports 4,588 passed checks. The README also listed a /docs/ publication built from scripts/ and server/, but git ls-files shows no docs/ path at 1f65f70. The count is now stated as a figure from the current run, and the /docs/ row says the directory is not present. scripts/ and server/ exist and were not changed.",
+      "impact": "A reader could follow a link or a command that does not match the repository. No published page was wrong.",
+      "manual_step": "None. Re-check the count after any change to tools/verify.mjs.",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "FLG-052",
+      "severity": "medium",
+      "status": "open",
+      "area": "sitemap / generator",
+      "title": "crisp-index/sitemap.xml had two writers and malformed URLs on main; the sitemap gate passed only by substring match",
+      "detail": "On main, crisp-index/sitemap.xml was written by scripts/build_sitemap.py. That script (1) collapsed https:// to https:/ in every <loc>, and (2) omitted the crisp-index/ path segment, so every entry pointed at a path that does not exist on the site (for example https:/…/about/index.html). The gate in the same script (check.yml runs --check) compared with a substring test, so the malformed entries still counted as present. The Crisp Index generator (tools/build_site.py) writes the same file with the correct URLs. Session 4c8c7811 changed scripts/build_sitemap.py so that it refuses to write, excludes noindex pages (the 404 page), and checks exact <loc> values against files on disk. The sitemap was regenerated by tools/build_site.py.",
+      "impact": "Before this fix the Crisp Index sitemap gave search engines no usable URL for any of its pages. The surface is disallowed in robots.txt, so this affects that surface only, not the root site that GitHub Pages indexes.",
+      "manual_step": "Choose S-28: move them under legacy/session-records/ in one commit, or keep them where they are with the generated exclusion in place.",
+      "sources": []
+    },
+    {
+      "id": "FLG-053",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "toolchain",
+      "title": "The gate passed in the sandbox and threw on CI, because a newer JavaScript runtime accepted an API the declared floor does not have",
+      "detail": "publish-gate failed on 2026-11-20 with `TypeError: robotsTxt.matchAll.map is not a function or its return value is not iterable` at tools/verify.mjs:300, while the same commit passed 7,552 checks in the working sandbox and in a fresh clone of it. Cause: the line read `[...str.matchAll(re).map(f)]`, which asks the iterator matchAll returns for `.map`. Iterator helpers are ES2025; the sandbox runs node 22.22.3, which has them, and CI runs node 20, which does not, while package.json declares `engines.node >=18`. So the gate's own code broke the floor it is meant to protect, and nothing in the local loop could see it. The line is fixed to spread first and then map, and every other matchAll site in tools/ was read and already spreads first.",
+      "impact": "Every push to this branch was red for the wrong reason, which teaches people to ignore a red gate. The build content was never affected: the generator itself avoided the API.",
+      "manual_step": "None for the owner. For sessions: run `node tools/verify.mjs` under the version CI uses, or keep the drift between the CI floor and the sandbox in mind when touching regex iteration. The publish-gate step now also re-emits the gate's output tail as check annotations, so a red run can be read from the API without the Actions log.",
+      "resolution": "Fixed in tools/verify.mjs, and publish-gate now prints the runtime version and annotates the failure output.",
+      "sources": [
+        "S09"
+      ]
+    },
+    {
+      "id": "FLG-054",
+      "severity": "medium",
+      "status": "open",
+      "area": "findability",
+      "title": "The root robots.txt the site leans on is not read where the site is served, and the board said the editions were de-indexed",
+      "detail": "Wording: FLG-032 stated the non-root editions 'are excluded from the index through robots.txt and noindex metadata'. Google's pages say a robots.txt file 'is not a mechanism for keeping a web page out of Google', that a disallowed URL 'can still appear in search results' without a description, that 'Specifying the noindex rule in the robots.txt file is not supported by Google', and that a page blocked in robots.txt cannot have its noindex tag seen (S24, S26). Against the shipped files: /editorial/ carries noindex; /counter/, /counterwise/, /counter-desk/ and /crisp-index/ do not, and /counter/ and /counterwise/ advertise sitemaps of their own. That sentence is now replaced with what the files actually do. Mechanism: main's FLG-038 established that Google reads robots.txt from the host root, so /Affil3/robots.txt is not consulted for these URLs at all - which means the Disallow lines for the secondary editions, and the index,follow meta tag now on every root page, buy crawl-budget management and explicit intent for crawlers that read path-scoped files, and nothing for Google today. The only per-page control available without host access is a noindex meta tag in each edition's own generator, with those paths left crawlable so the tag can be read: S-20 option B. Moving an edition under /legacy/ is option C.",
+      "impact": "Either the site says plainly that four near-duplicate editions of the same five products are indexable and competing, or it does not get to claim it de-indexed them. The first is honest and fixable; the second is a promise the repository cannot keep from the root.",
+      "manual_step": "Pick S-20 option B (noindex,follow in each secondary edition's generator, no Disallow line on those paths) or option C (archive them off this Pages site). Each edition is built by its own session's tooling, so the request is logged in COORDINATION.md rather than executed here.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26",
+        "S09"
+      ],
+      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (ad43826 and later passes; the workflow page now cites FLG-044 for the citation class) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (data/design-brief.json amended note). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-46, S-47, Q-06, Q-18, S-42), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open; what counts as a post is question Q-23. Renumbered twice at merge: FLG-043/FLG-044 were taken by main's robots and citation rows, and ids 046/047 are documented gaps on main's board, so this row lands at FLG-054."
+    },
+    {
+      "id": "FLG-055",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "citation",
+      "title": "Eleven cross-references pointed at rows that exist and say something else",
+      "detail": "Found while merging with main and by reading the registers against the documents they cite. Five guides - counter-space, dual-versus-single basket, how to read a listing, the preset guide and the chicken-breast guide - cite S22 for Chefman specification figures, but S22 in this register is the FTC Endorsement Guides page; those figures come from S23 (the maker's page for RJ38-SQSS-8T) and, for the matte-black High-Fry unit, S12. FLG-006 and FLG-007 credited S11, a Chefman product page, with the declared-site rule and the 'at least 10 posts' rule of thumb, which both live in S19, and the workflow page carried the same wrong id. FLG-012 credited S12 with support for the ASIN definition. FLG-014 quoted a byline string the config has not held since the rename. DESIGN-BRIEF PB-4 blocks on the house-style row but cites S-20, which is crawl control; the house-style row is S-19. And the chicken-breast guide cited S11 and S23 inline without declaring either in its own source list. All eleven corrected on 2026-11-20, and the last one was caught by the gate rule written for this class the moment it ran. Recorded together for one reason: every one of these ids resolves to a row that exists, so a check limited to existence passes all of them. The rules that do catch it now live in tools/verify.mjs - an inline citation must be declared by the guide that uses it, and a sentence carrying a measurement may not cite a policy or consumer-advice page (S-35).",
+      "impact": "A source id is the whole evidentiary claim of a row. Pointing a reader from a wattage figure to an FTC disclosure page is worse than no citation, because it looks like one.",
+      "resolution": "Corrections and both gate rules by session b7320829-affil3 on 2026-11-20, in the merge commit that resolves the branch.",
+      "manual_step": "If those guide figures are re-checked, compare against S23 and S12 - never S22.",
+      "sources": [
+        "S22",
+        "S23",
+        "S12",
+        "S19",
+        "S11"
+      ]
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-046 and FLG-047 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references, and a work-log claim not carried by its merged PR); they were renumbered from FLG-043/FLG-044 at merge because main had taken those ids. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-054 and FLG-055 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references; a work-log claim not carried by its merged PR), renumbered twice at merge because main had taken FLG-043/FLG-044 and documents 046 to 048 as gaps. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
   "checked": "2026-11-20"
 }

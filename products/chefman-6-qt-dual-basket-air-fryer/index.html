@@ -22,7 +22,7 @@
 <link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
 <link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"CHEFMAN 6 Quart Dual Basket Air Fryer","brand":{"@type":"Brand","name":"Chefman"},"description":"Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.","url":"https://karagemop466-tech.github.io/Affil3/products/chefman-6-qt-dual-basket-air-fryer/"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"CHEFMAN 6 Quart Dual Basket Air Fryer","brand":{"@type":"Brand","name":"Chefman"},"description":"Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.","url":"https://karagemop466-tech.github.io/Affil3/products/chefman-6-qt-dual-basket-air-fryer/"}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ShopNow Kitchen","item":"https://karagemop466-tech.github.io/Affil3/"},{"@type":"ListItem","position":2,"name":"The picks","item":"https://karagemop466-tech.github.io/Affil3/shop/"},{"@type":"ListItem","position":3,"name":"Air fryers","item":"https://karagemop466-tech.github.io/Affil3/categories/air-fryers/"},{"@type":"ListItem","position":4,"name":"CHEFMAN 6 Qt. Dual Basket"}]}</script>
 </head>
 <body data-page="product" data-product-view="P01">
 <a class="skip" href="#main">Skip to content</a>
@@ -34,9 +34,7 @@
       <a href="/Affil3/shop/">Shop</a>
       <a href="/Affil3/articles/">Journal</a>
       <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/categories/">Categories</a>
-      <a href="/Affil3/about/">About</a>
-      <a class="nav-desk" href="/Affil3/executive-summary/">The desk</a>
+      <a href="/Affil3/find/">Find yours</a>
     </nav>
   </div>
 </header>
@@ -111,9 +109,9 @@
       <ul class="foot-links">
         <li><a href="/Affil3/guides/">All guides</a></li>
         <li><a href="/Affil3/articles/">The Journal</a></li>
+        <li><a href="/Affil3/guides/can-you-cook-a-whole-chicken-in-an-air-fryer/">Can you cook a whole chicken in it? Check the sheet first</a></li>
         <li><a href="/Affil3/guides/sync-finish-and-hi-fry-what-the-buttons-do/">Sync Finish and Hi-Fry: what the buttons do</a></li>
         <li><a href="/Affil3/guides/smart-meat-thermometer-what-actually-matters/">Smart meat thermometers: what actually matters before you buy</a></li>
-        <li><a href="/Affil3/guides/which-air-fryer-shape-fits-your-week/">Dual-basket, single-basket, or oven-style? Match the shape to your week</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -134,7 +132,6 @@
         <li><a href="/Affil3/about/">About and editorial policy</a></li>
         <li><a href="/Affil3/privacy/">Privacy notice</a></li>
         <li><a href="/Affil3/design-brief/">Design brief (next redesign)</a></li>
-        <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
       </ul>
     </div>
   </div>
@@ -143,6 +140,90 @@
     <p class="fine">ShopNow Kitchen is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Illustrations are AI-generated and labeled at the point of use. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
   </div>
 </footer>
-<script src="/Affil3/assets/analytics.js" defer></script>
+<script src="/Affil3/assets/analytics.js" defer></script><script>(function(){
+  var form = document.getElementById('fit-form');
+  var rowsEl = document.getElementById('finder-rows');
+  var out = document.getElementById('fit-out');
+  if (!form || !rowsEl || !out) return;
+  var rows = [];
+  try { rows = JSON.parse(rowsEl.textContent); } catch (e) { rows = []; }
+  function chosen(name) {
+    var el = form.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : '';
+  }
+  function node(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text !== undefined) n.textContent = text;
+    return n;
+  }
+  function scoreRow(r, cooking, counter, household) {
+    var why = [], miss = [], score = 0;
+    if (cooking === 'two') {
+      if (r.dual) { score += 3; why.push('Two independent baskets is what this maker states for the model: ' + (r.capacityNote || r.capacity)); }
+      else if (r.oven) { score += 1; why.push('One chamber with a door, which handles two trays at different times less neatly than two drawers'); }
+      else { miss.push('A single ' + r.capacity + ' basket, so two timings share one clock'); }
+    }
+    if (cooking === 'batch') {
+      if (!r.dual && !r.oven) { score += 3; why.push('One ' + r.capacity + ' basket with no divider to plan around'); }
+      else if (r.oven) { score += 1; why.push('More room than a basket, in a taller footprint'); }
+      else { miss.push('Two baskets rather than one large one'); }
+    }
+    if (cooking === 'meal') {
+      if (r.oven) { score += 3; why.push('Oven-style room, stated at ' + r.capacity); }
+      else { miss.push('A basket rather than a multi-level oven'); }
+    }
+    var need = counter === 'tight' ? 12.5 : counter === 'some' ? 15 : Infinity;
+    if (r.caseMax === null) { miss.push('No case size is published for this model, so counter fit stays unverified'); }
+    else if (r.caseMax <= need) { score += 2; why.push('Its largest published case figure is ' + r.caseMax + ' in, inside the space you named'); }
+    else { miss.push('Its largest published case figure is ' + r.caseMax + ' in, above the space you named'); }
+    if (household === 'yes') {
+      if (r.capacityNum >= 20) { score += 2; why.push('The largest capacity on this shelf, at ' + r.capacity); }
+      else { miss.push('Capacity is ' + r.capacity + ', so plan in batches rather than in one go'); }
+    }
+    return { why: why, miss: miss, score: score };
+  }
+  function render(r, res, tag) {
+    var card = node('div', 'fit-card');
+    card.appendChild(node('p', 'fit-tag', tag));
+    card.appendChild(node('h3', null, r.name)).appendChild(node('span', 'fit-cat', r.cat));
+    var link = node('a', 'btn btn-primary', 'Open the ' + r.name + ' page');
+    link.href = r.href;
+    var wrap = node('p', 'fit-link');
+    wrap.appendChild(link);
+    var reasons = node('ul', 'fit-why');
+    res.why.forEach(function (t) { reasons.appendChild(node('li', null, t)); });
+    var cautions = node('ul', 'fit-miss');
+    res.miss.forEach(function (t) { cautions.appendChild(node('li', null, t)); });
+    if (!res.miss.length) cautions.className = 'fit-miss is-hidden';
+    card.appendChild(node('p', 'small muted', r.bestFor));
+    card.appendChild(reasons);
+    card.appendChild(node('p', 'small muted', 'Worth knowing: ' + (r.tradeoff || 'read the row for its gaps')));
+    card.appendChild(cautions);
+    card.appendChild(wrap);
+    return card;
+  }
+  form.addEventListener('click', function (ev) {
+    if (!ev.target || ev.target.id !== 'fit-go') return;
+    ev.preventDefault();
+    var cooking = chosen('cooking'), counter = chosen('counter'), household = chosen('household');
+    while (out.firstChild) out.removeChild(out.firstChild);
+    if (!cooking || !counter) {
+      out.appendChild(node('p', 'fit-note', 'Two answers are needed first: what you cook, and how much counter you have.'));
+      return;
+    }
+    var scored = rows.map(function (r) { return { r: r, res: scoreRow(r, cooking, counter, household) }; })
+      .sort(function (a, b) { return b.res.score - a.res.score || (a.r.caseMax || 99) - (b.r.caseMax || 99); });
+    var top = scored[0], next = scored[1];
+    var criteria = 2 + (household ? 1 : 0);
+    if (top.res.score === 0) {
+      out.appendChild(node('p', 'fit-note', 'Nothing on this shelf matches those two answers at once. The numbers that usually cause it are counter depth and basket volume, and the comparison table shows both for every row.'));
+    } else {
+      out.appendChild(node('p', 'fit-note', 'Closest match: this row lines up with ' + top.res.why.length + ' of the ' + criteria + ' things you told us, on the figures its manufacturer publishes. It is a matcher, not a verdict, so open the row and read the sources.'));
+    }
+    out.appendChild(render(top.r, top.res, 'Closest match'));
+    if (next && next.res.score > 0) out.appendChild(render(next.r, next.res, 'Second, on these answers'));
+  });
+})();</script>
 </body>
 </html>
