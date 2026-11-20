@@ -1,0 +1,112 @@
+{
+  "session": "66f2548a",
+  "performed": "2026-11-20",
+  "method": "Independent re-fetch of each submitted short link with the fetch_page tool, one URL per call, redirects followed, unauthenticated. The sandbox shell has no outbound network (curl to www.amazon.com, affiliate-program.amazon.com and karagemop466-tech.github.io all fail with SSL_ERROR_SYSCALL; api.github.com returns 200), so this pass went through fetch_page. For each link the fetcher's reported final URL and reported page title were read verbatim. Query parameters in the reported final URL were enumerated and searched for 'tag'.",
+  "purpose": "Third independent read of the five submitted links. Two earlier reads exist: data/products.json (root register, corrected by PR #10 and PR #16) and data/register/products.json (editorial register). This file neither replaces nor edits either.",
+  "links": [
+    {
+      "slot": "P01",
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "reported_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-0710b7a4f0d14338&channelId=704&plpRedirect=mhFallback",
+      "canonical_dp_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "observed_asin": "B0CDY277D3",
+      "reported_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "tag_parameter_present": false,
+      "query_parameters_seen": ["lv", "btn_type", "ss", "gaOptInStatus", "btn_ref", "srctok-0710b7a4f0d14338", "channelId", "plpRedirect"],
+      "breadcrumb_seen": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+      "agrees_with_root_register": true,
+      "agrees_with_editorial_register": true
+    },
+    {
+      "slot": "P02",
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "reported_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-77f54b7c4a256532&channelId=704&plpRedirect=mhFallback",
+      "canonical_dp_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "observed_asin": "B09B7SB46R",
+      "reported_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "tag_parameter_present": false,
+      "query_parameters_seen": ["lv", "btn_type", "ss", "gaOptInStatus", "btn_ref", "srctok-77f54b7c4a256532", "channelId", "plpRedirect"],
+      "breadcrumb_seen": "",
+      "agrees_with_root_register": true,
+      "agrees_with_editorial_register": true,
+      "on_page_contradiction": "The same official page states the accessory count two ways. The product title says 'Six Cooking Accessories Included'; the on-page product summary says 'Included are 7 premium accessories to maximize versatility - air fry basket, rotisserie spit, bake pan, and more.' Neither number is published on this site. Recorded as FLG-026."
+    },
+    {
+      "slot": "P03",
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "reported_final_url": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-2189f4dab9032c5f&channelId=704&plpRedirect=mhFallback&th=1",
+      "canonical_dp_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_asin": "B08DKYBTPH",
+      "reported_title": "Amazon.com: Chefman Air Fryer 8 Qt | TurboFry\u00ae 4-in-1 with 450\u00b0F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel : Home & Kitchen",
+      "tag_parameter_present": false,
+      "query_parameters_seen": ["lv", "btn_type", "ss", "gaOptInStatus", "btn_ref", "srctok-2189f4dab9032c5f", "channelId", "plpRedirect", "th"],
+      "breadcrumb_seen": "",
+      "agrees_with_root_register": true,
+      "agrees_with_editorial_register": true,
+      "note": "Confirms the PR #10 correction. This token does resolve to a product; the checkpoint page two earlier sessions saw was intermittent, not a dead link (FLG-004, resolved)."
+    },
+    {
+      "slot": "P04",
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "reported_final_url": "https://www.amazon.com/dp/B0DHZTCNR5?lv=shuf&btn_type=ss&gaOptInStatus=true&_encoding=UTF8&sp_csd=d2lkZ2V0TmFtZT1zcF9waG9uZV9ob21lcGFnZV9ibGVuZGVk&language=en_US&content-id=amzn1.sym.4582c56b-139d-4168-9db2-822c68889360&ie=UTF8&btn_ref=srctok-3fc2944d621f80c1&channelId=500&plpRedirect=mhFallback",
+      "canonical_dp_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_asin": "B0DHZTCNR5",
+      "reported_title": "Amazon.com: ThermoMaven 1 Sec Professional Digital Meat Thermometer, \u00b10.5\u2109 Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black : Home & Kitchen",
+      "tag_parameter_present": false,
+      "query_parameters_seen": ["lv", "btn_type", "ss", "gaOptInStatus", "_encoding", "sp_csd", "language", "content-id", "ie", "btn_ref", "srctok-3fc2944d621f80c1", "channelId", "plpRedirect"],
+      "breadcrumb_seen": "",
+      "agrees_with_root_register": true,
+      "agrees_with_editorial_register": true,
+      "note": "Confirms the PR #10 correction: this token resolves to the ThermoMaven thermometer, not to the Chefman 8 Qt air fryer.",
+      "on_page_supersession": "The official page carries a 'Newer Version Available' block pointing at a different ASIN, B0GL7Z4KP4 (same product name, Orange). The submitted link therefore points at a variant Amazon itself presents as superseded. The newer ASIN is recorded as an observation only; it is not published as a product row, because it was not submitted and its intended status is unconfirmed. Recorded as FLG-025. A price and a star rating are also visible on that block; neither is transcribed here or published anywhere, per Program Policies Participation Requirements 6(t) and 2(b)."
+    },
+    {
+      "slot": "P05",
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "reported_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-15c87a8b6e264a7a&channelId=500&plpRedirect=mhFallback&th=1",
+      "canonical_dp_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_asin": "B0DZFD6R9Z",
+      "reported_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000\u00b0F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "tag_parameter_present": false,
+      "query_parameters_seen": ["lv", "btn_type", "ss", "gaOptInStatus", "language", "btn_ref", "srctok-15c87a8b6e264a7a", "channelId", "plpRedirect", "th", "sbo"],
+      "breadcrumb_seen": "",
+      "agrees_with_root_register": true,
+      "agrees_with_editorial_register": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "finding": "All five submitted tokens resolve to a product detail page on www.amazon.com, and all five resolved ASINs match both existing registers exactly.",
+      "evidence": "links[].canonical_dp_url and links[].agrees_with_*_register above."
+    },
+    {
+      "id": "F2",
+      "finding": "None of the five resolved URLs carries a tag= parameter. Every query parameter observed is enumerated per link above; 'tag' does not appear in any of them.",
+      "evidence": "links[].tag_parameter_present is false for all five; links[].query_parameters_seen lists what was there instead.",
+      "consequence": "As supplied, these links cannot attribute a qualifying purchase. Program Policies Participation Requirements 2(b) requires the Associates ID or tag 'as a parameter in the URL of each link you place on your Site to an Amazon Site'. Confirms FLG-003 and FLG-005; does not resolve them."
+    },
+    {
+      "id": "F3",
+      "finding": "The observed destinations are redirect targets, not confirmed intended products. Nothing in this pass could confirm intent, because intent is a property of the account that generated the links, not of the destination page.",
+      "evidence": "Intended ASIN, official listing URL, confirmation date and confirmation source remain blank in data/products.json for all five rows and stay blank after this pass.",
+      "consequence": "FLG-002 stays open. Only the account holder can close it."
+    },
+    {
+      "id": "F4",
+      "finding": "Two official Amazon pages contradict themselves or point at a successor, in ways that matter to a buyer.",
+      "evidence": "P02 accessory count six versus seven on one page; P04 'Newer Version Available' at B0GL7Z4KP4.",
+      "consequence": "Both fields are left blank on the site. New flags FLG-025 and FLG-026."
+    }
+  ],
+  "not_done": [
+    "No price, star rating, review count, availability or sales figure was transcribed from any page, even where one was visible. Program Policies Participation Requirements 6(t) bars displaying customer reviews or star ratings unless obtained through the Creators API or PA API, and 2(b) bars showing prices and availability except where Amazon serves the link or the data comes from the Creators API or PA API.",
+    "No link was generated, tested or clicked inside Associates Central. There is no Associates login in this environment, so gate G-02 remains untested (FLG-005).",
+    "The rendered live site was not fetched. karagemop466-tech.github.io is unreachable from this sandbox. Deployment state was read from the GitHub API instead, which is authoritative for the Pages configuration but not for the rendered HTML."
+  ]
+}
