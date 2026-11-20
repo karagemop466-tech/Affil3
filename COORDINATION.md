@@ -1269,3 +1269,54 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+---
+
+# Session `c252594d` board — final integration + primary-source correction pass
+
+- Session ID: `c252594d`
+- Branch: `arena/c252594d-affil3` (branched from `main` @ `67cfe2f`)
+- Role: **final integration session** for the parallel wave, plus the primary-source correction
+  pass the register still needed.
+- Scope owned by this session: `COORDINATION.md`, `VERIFICATION.md`, `EXECUTIVE_SUMMARY.md`,
+  `README.md`, `data/*.json` (root register), `tools/build.mjs`, `tools/verify.mjs`,
+  and the generated root pages that `tools/build.mjs` owns. Nothing under
+  `counter/`, `counterwise/`, `crisp-index/`, `editorial/` or `legacy/` is edited by this
+  session; those surfaces belong to the sessions that built them.
+
+## Claim and state at claim time
+
+- `origin/main` @ `67cfe2f`; root publication "ShopNow Kitchen" builds 30 pages and passes
+  3,212 gate checks; all five CI workflows are green on `main`.
+- Eight pull requests were still open from parallel sessions: #28, #32, #33, #36, #38, #39,
+  #40, #44. Seven were reported `CONFLICTING` against `main`; #44 was `CLEAN`.
+- Their branches are left untouched on the remote. This session **merges their verified
+  content into the one live register** and regenerates with the one builder, rather than
+  landing eight competing copies of the same root pages.
+
+## Task board
+
+| ID | Task | Status | Files touched |
+| --- | --- | --- | --- |
+| I01 | Claim board; repo review line by line (register, tools, workflows, surfaces) | in progress | `COORDINATION.md` |
+| I02 | Primary-source re-verification of every published spec row (P01–P05) against the maker's own page | in progress | `data/sources.json`, `data/products.json` |
+| I03 | Correct P05 (CHEF iQ Sense): internal range is 32–212 °F; 1,000 °F is the ambient/heat-resistance ceiling | in progress | `data/products.json`, `data/flags.json` |
+| I04 | Publish P04 (ThermoMaven F1 Ace) specs from the manufacturer's own page; close FLG-025 | in progress | `data/products.json`, `data/flags.json`, `data/sources.json` |
+| I05 | Add the maker's second 8 Qt air-fryer page as a source; record the two-model conflict | in progress | `data/sources.json`, `data/flags.json` |
+| I06 | Resolve FLG-012 with Amazon's own ASIN page | in progress | `data/sources.json`, `data/flags.json` |
+| I07 | Port the still-open parallel branches' verified findings into the live register, re-verified | unclaimed | `data/*.json` |
+| I08 | Publication depth: additional question-shaped, source-backed guides | unclaimed | `data/guides.json`, generated `guides/` |
+| I09 | Suggestions board: design and marketing suggestions for owner review before implementation | unclaimed | `data/suggestions.json` |
+| I10 | Questions board: the missing-information questions that must be answered before decisions | unclaimed | `data/questions.json` |
+| I11 | Update `VERIFICATION.md`, the executive summary and `README.md` to the corrected record | unclaimed | `VERIFICATION.md`, `EXECUTIVE_SUMMARY.md`, `README.md` |
+| I12 | Rebuild, gate, link-check, PR to `main`, merge, confirm Pages deploy, record result | unclaimed | `COORDINATION.md` |
+
+## Rules this session holds itself to
+
+- Nothing is filled in from inference. Every value published on the site has a dated fetch
+  against the maker's own page or the Amazon Associates program pages behind it.
+- Intended-product fields and observed-redirect fields stay in separate columns and are
+  never merged.
+- The submitted short links are **not** called invalid. Their compliance status stays open
+  (FLG-003) until one link is tested inside the enrolled Associates workflow.
+- No price, rating or review count is published anywhere.
