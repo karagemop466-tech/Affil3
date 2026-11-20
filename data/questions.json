@@ -1,5 +1,4 @@
 {
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "known": [
     {
       "id": "K-01",
@@ -46,12 +45,11 @@
     },
     {
       "id": "K-07",
-      "statement": "SUPERSEDED by K-13, kept for the audit trail. Original: \"Four of the five supplied short links resolved to a product page across three fetch rounds; one did not.\" A fourth round on 2026-11-20 resolved all five, and the fifth has now resolved in three separate passes. The lesson stands and is worth more than the correction: a single fetch returning an Amazon checkpoint page is not evidence that a link is dead.",
+      "statement": "All five supplied short links have resolved to a product page in at least one dated fetch. One of them (B00hJ57DV) first landed on an intermittent Amazon checkpoint before resolving, which is why earlier rounds recorded four.",
       "sources": [
         "S05",
         "S04"
-      ],
-      "superseded_by": "K-13"
+      ]
     },
     {
       "id": "K-08",
@@ -63,11 +61,11 @@
     },
     {
       "id": "K-09",
-      "statement": "SUPERSEDED by K-13, kept for the audit trail. Original: \"The observed destination for the same short link differed between fetch rounds, so the mapping is recorded per round rather than as a single fact.\" The destinations are now stable across the latest three independent passes and all five agree. The per-round recording practice is retained regardless: it is what made the earlier transposition visible instead of silent.",
+      "statement": "Two destinations were transposed in an earlier register revision and were corrected after a retest. The corrected mapping was corroborated by an independent fetch, and the five product pages were re-read directly by their /dp/ identifier on 2026-11-20 with every title matching the register character for character.",
       "sources": [
-        "S05"
-      ],
-      "superseded_by": "K-13"
+        "S05",
+        "S04"
+      ]
     },
     {
       "id": "K-10",
@@ -160,6 +158,7 @@
       ]
     }
   ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "unknown": [
     {
       "id": "Q-01",
@@ -170,10 +169,7 @@
         "S05",
         "S04"
       ],
-      "blocking": true,
-      "have": "Four independent fetch rounds agree on all five destinations, and four of the five products have a manufacturer specification page behind their figures.",
-      "lack": "Nothing observable from a destination page: whether it is the product that was meant. Intent is a property of the account that issued the link.",
-      "who": "Account holder"
+      "blocking": true
     },
     {
       "id": "Q-02",
@@ -184,10 +180,7 @@
         "S01",
         "S02"
       ],
-      "blocking": true,
-      "have": "The exact required link shape from §2(b), the observation that no supplied link carries a tag, and a gate that refuses to publish a product call-to-action without tag=shopnow047c-20.",
-      "lack": "A click and a row in the tracking report. There is no Associates login in this environment, and §6(u) rules out testing by purchase.",
-      "who": "Account holder"
+      "blocking": true
     },
     {
       "id": "Q-03",
@@ -197,10 +190,7 @@
       "sources": [
         "S01"
       ],
-      "blocking": true,
-      "have": "The tag format from §2(b) and §6(b), which bars displaying tag-formatted links on a site that is not your Site.",
-      "lack": "Whether the account is active and whether this GitHub Pages URL, or a custom domain, is on its declared-site list.",
-      "who": "Account holder"
+      "blocking": true
     },
     {
       "id": "Q-04",
@@ -208,10 +198,7 @@
       "why_it_matters": "GitHub Pages is static, so it cannot run the collector. Without an endpoint there is no measurement, and without measurement the next topic is chosen on instinct.",
       "how_to_close": "Pick a host that runs Node, deploy tools/collector.mjs, and set analyticsEndpoint in data/config.json.",
       "sources": [],
-      "blocking": false,
-      "have": "A working collector in tools/collector.mjs plus a deployable endpoint under tools/analytics-endpoint/, tested for aggregate-only storage, unknown-event rejection and oversize bodies.",
-      "lack": "A running host with HTTPS and persistent storage, and a named person who may read the data. GitHub Pages cannot run it.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-05",
@@ -221,10 +208,7 @@
       "sources": [
         "S01"
       ],
-      "blocking": false,
-      "have": "All five destinations are on www.amazon.com, the -20 suffix matches the US convention, and the policy text read is the US Program Policies.",
-      "lack": "An explicit confirmation. Marketplace choice determines both the ASIN set and which Associates ID applies.",
-      "who": "Account holder"
+      "blocking": false
     },
     {
       "id": "Q-06",
@@ -234,10 +218,7 @@
       "sources": [
         "S09"
       ],
-      "blocking": false,
-      "have": "A team byline, an Organization author in the structured data, and a published editorial method at /how-we-choose/.",
-      "lack": "A name and any credential worth stating. §2(b) bars misleading claims, so a credential may only appear if it is true.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-07",
@@ -245,10 +226,7 @@
       "why_it_matters": "The feed and the sitemap only grow if guides keep shipping. A cadence nobody can keep is worse than a slower one that holds.",
       "how_to_close": "Choose an option on the suggestions page.",
       "sources": [],
-      "blocking": false,
-      "have": "Five published guides, a gated feed with one item per guide, and a gated sitemap.",
-      "lack": "A cadence that can actually be sustained, and the next ten topics. Q-12 would supply the second half from measured queries.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-08",
@@ -258,10 +236,7 @@
       "sources": [
         "S03"
       ],
-      "blocking": false,
-      "have": "The three clauses that govern it - §2(b), §6(t) and §6(y) - all read verbatim, and a gate that fails the build on any currency amount, star rating or review count.",
-      "lack": "An authorized data source. Without PA API or Creators API access the answer is already fixed: no prices, no ratings.",
-      "who": "Account holder"
+      "blocking": false
     },
     {
       "id": "Q-09",
@@ -271,10 +246,7 @@
       "sources": [
         "S01"
       ],
-      "blocking": false,
-      "have": "A ledger schema with timestamp, source, channel, eligible sessions, clicks and reported orders, plus a dated provenance trail. It is empty by design.",
-      "lack": "Any authorized first-party report. Operating Agreement §4 disclaims any traffic or income representation, so nothing may be estimated to fill it.",
-      "who": "Account holder"
+      "blocking": false
     },
     {
       "id": "Q-10",
@@ -284,10 +256,7 @@
       "sources": [
         "S09"
       ],
-      "blocking": false,
-      "have": "robots.txt now disallows /editorial/, /legacy/ and /crisp-index/ and declares a single sitemap, so a crawler is already pointed at one publication.",
-      "lack": "A decision about whether the secondary publications stay served to humans at all, and whether the two data registers merge.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-11",
@@ -295,10 +264,7 @@
       "why_it_matters": "The counter stores no cookies, no IP address and no identifiers, which keeps it small. Whether that is enough is a question for the owner's counsel, not a conclusion this build should state.",
       "how_to_close": "Obtain legal review, or keep the counter off until it is reviewed.",
       "sources": [],
-      "blocking": false,
-      "have": "A counter that sets no cookies, no localStorage and no sessionStorage - asserted by the gate - respects Do Not Track, and has an empty endpoint, plus §3(e) read verbatim.",
-      "lack": "A published notice. A draft /privacy/ page now exists for review; whether it is adequate where the site is operated from is a question for counsel.",
-      "who": "Site owner / counsel"
+      "blocking": false
     },
     {
       "id": "Q-12",
@@ -306,10 +272,7 @@
       "why_it_matters": "Without it, no query data exists and nobody can see which guides are actually being found.",
       "how_to_close": "Verify the property and submit the sitemap URL from robots.txt.",
       "sources": [],
-      "blocking": false,
-      "have": "A sitemap at a known URL and the verification methods Google documents.",
-      "lack": "Property ownership. Someone has to add the property in a Google account and verify it.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-13",
@@ -317,37 +280,28 @@
       "why_it_matters": "A site for 'people buying kitchen gear' is not a site. A site for 'renters with two feet of counter who cook for two' produces different pages than 'families of six with a big kitchen'. This decision changes the guides.",
       "how_to_close": "Nominate one reader and one situation. Content decisions get easier immediately.",
       "sources": [],
-      "blocking": false,
-      "have": "Three product shapes, five guides organised by the job the appliance does, and category pages written around a job rather than a brand.",
-      "lack": "A named reader. 'People who cook' is not a target; the copy cannot be sharpened against it until there is one.",
-      "who": "Site owner"
+      "blocking": false
     },
     {
       "id": "Q-14",
-      "question": "Is the product behind submitted link 4 the one intended, given that Amazon presents it as superseded?",
-      "have": "The official page for B0DHZTCNR5 carries a \"Newer Version Available\" block pointing at ASIN B0GL7Z4KP4 - the same product name in Orange. Observed on a fresh fetch 2026-11-20 (FLG-034).",
-      "lack": "Any indication of which of the two was meant. The successor was not submitted, so publishing it as a product row would be inventing intent.",
-      "who": "Account holder",
-      "why_it_matters": "A reader who clicks through to a variant Amazon labels superseded has a worse experience, and the site is promoting something its own source undercuts. It compounds FLG-025: this product already has no manufacturer page to verify against.",
-      "how_to_close": "Confirm the intended ASIN for slot 4. If it is B0GL7Z4KP4, supply it so the intended fields can be filled from an official source, then issue a tagged Special Link for it.",
+      "question": "Is the ThermoMaven listing the F1 Ace?",
+      "why_it_matters": "The manufacturer page for the F1 Ace (S21) matches the listing title feature for feature, but the listing never says 'F1 Ace'. Until the model is confirmed, the specification grid on that row shows the manufacturer family-page figures rather than confirmed specifications of the listed unit.",
+      "how_to_close": "Open https://www.amazon.com/dp/B0DHZTCNR5 in a signed-in browser, read the model or product-details field, and record what it says with the date. If it names the F1 Ace, the figures can be promoted and FLG-025 can close.",
       "sources": [
-        "S02"
+        "S04",
+        "S21"
       ],
       "blocking": false
     },
     {
       "id": "Q-15",
-      "question": "Will you ask Amazon for prior written approval before any part of the platform uses Special Links or Program Content as model input?",
-      "have": "The clause, read verbatim: Participation Requirements §5 (K-14), plus the preamble making any violation of the Participation Requirements a material breach (K-18).",
-      "lack": "An answer from Amazon, and a decision about whether the automation the brief describes needs one. Nothing built so far crosses the line; the brief's description of an AI-powered research pipeline does approach it.",
-      "who": "Account holder",
-      "why_it_matters": "It decides how much of the brief may be built at all. Building the automated research pipeline first and asking afterwards risks the account, and a material breach permits immediate termination.",
-      "how_to_close": "Contact Associates support with a precise description of the intended automation and record the reply verbatim against FLG-031 before building it.",
+      "question": "Which of the published editions is the product?",
+      "why_it_matters": "Several reader-facing editions are published under one domain and the same tracking ID. Only the root edition is in the sitemap; the rest are excluded from the index but still reachable. One indexed site is the clearest signal to a search engine and the cleanest attribution for a click.",
+      "how_to_close": "Name one edition as the product and decide whether the others stay on this domain at all. Suggestion S-11 lists the options with the trade-off for each.",
       "sources": [
-        "S02",
-        "S01"
+        "S09"
       ],
-      "blocking": true
+      "blocking": false
     },
     {
       "id": "Q-16",
@@ -421,10 +375,9 @@
     },
     {
       "id": "D-09",
-      "suggestion": "Ask Associates support one written question covering both clauses - does the intended automation need prior approval under §5, and does the intended use of price data need agreement under §6(y) - and keep the reply verbatim in the source register rather than summarising it.",
+      "suggestion": "Open the ThermoMaven listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the manufacturer figures can be promoted from family figures to confirmed specifications.",
       "closes": [
-        "Q-15",
-        "Q-08"
+        "Q-14"
       ]
     },
     {

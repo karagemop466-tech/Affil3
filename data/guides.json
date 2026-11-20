@@ -572,7 +572,7 @@
         },
         {
           "type": "note",
-          "text": "Two things our register caught while checking the tracked units against their makers' pages: the manufacturer's own pages disagree about the tracked wireless thermometer's battery life (flag FLG-023), and for the tracked instant-read unit no manufacturer specification page could be located at all, so every specification on its row is withheld (flag FLG-025). Conflicts like these are exactly why we link our sources instead of summarizing them."
+          "text": "Three things our register caught while checking the tracked units against their makers' pages. The manufacturer's own pages disagree about the tracked wireless thermometer's battery life: 70+ hours on the product page, up to 60 on the FAQ, and 50 on the Amazon listing (flag FLG-023). The tracked instant-read unit's maker page is narrower than its own listing: the maker says a waterproof design with no IP code and an LCD, the listing claims IP67, an LED screen and NSF certification (flag FLG-025). And the 8 Qt fryer's maker page and listing name the same model number while disagreeing on wattage and case size (flags FLG-026, FLG-027). Conflicts like these are exactly why we link our sources instead of summarising them."
         },
         {
           "type": "h2",

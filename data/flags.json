@@ -1,5 +1,4 @@
 {
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
   "flags": [
     {
       "id": "FLG-001",
@@ -258,24 +257,27 @@
       "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
-      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
-      "impact": "One of five products is present but not recommended, and carries no outbound link.",
-      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
+      "title": "ThermoMaven: a manufacturer page exists for the F1 Ace family, but the listing does not name the model",
+      "detail": "The register previously recorded that no manufacturer page could be located for this thermometer. That was wrong, and it is corrected here: a ThermoMaven product page for the F1 Ace instant-read thermometer exists at the URL in S21 and was read on 2026-11-20. It states a 1-second instant read on a thermocouple sensor, NIST-certified +/-0.5 °F accuracy, a 100% waterproof design, a built-in magnet and a lifetime warranty activated within 30 days. Those features match the headline claims on the observed Amazon listing (\"1 Sec Professional Digital Meat Thermometer, +/-0.5℃ Accuracy, NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof\"). What is still unconfirmed is the model correspondence: the listing never says \"F1 Ace\", it says \"1 Sec Professional\". The site therefore publishes the F1 Ace figures as the manufacturer figures for this family and states on the product page that they are not confirmed as the specifications of the listed unit. The buy button is now published, because the product identity (an instant-read ThermoMaven thermometer) and the observed listing agree.",
+      "impact": "The row now carries a buy button and a sourced specification set, but the model name on the page is the family page, not a confirmed designation for the listed unit.",
+      "manual_step": "Open the Amazon listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the specification grid can be promoted from family figures to confirmed specifications and this flag can close.",
       "sources": [
-        "S04"
+        "S04",
+        "S05",
+        "S21"
       ]
     },
     {
       "id": "FLG-026",
-      "severity": "high",
+      "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
-      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
-      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
-      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
+      "title": "The 8 Qt air fryer conflict was measured against the wrong model page (corrected)",
+      "detail": "The Amazon listing for B08DKYBTPH states 1000 W/120 V, model RJ38-SQSS-8T, 200-400 °F, 12.75 x 13.5 x 10 in and a stainless-steel finish. An earlier pass compared that listing against Chefman's page for RJ38-8T-BLACK (1700 W, 450 °F Hi-Fry, matte black) and concluded that two different machines shared one listing. That was the wrong comparison: Chefman also publishes a page for RJ38-SQSS-8T itself (S23), which states 8 qt / 7.57 L, 200-400 °F, 1700 W/120 V, 15.4 x 12.6 x 13.5 in and 12.8 lb. Against the correct page the two agree on capacity, model number and the 200-400 °F range, and disagree on wattage (1000 W vs 1700 W) and case size (12.75 x 13.5 x 10 vs 15.4 x 12.6 x 13.5). The manufacturer figures are published for this model and both differences are named. The RJ38-8T-BLACK page (S12) is retained in the register so the wrong comparison stays visible.",
+      "impact": "Wattage and case size stay contested; capacity, model number and the temperature range are published because the correct maker page was located.",
+      "manual_step": "Confirm the wattage and case dimensions for RJ38-SQSS-8T with Chefman support in writing, and confirm whether the listing ships this model or a successor.",
       "sources": [
+        "S23",
         "S16",
         "S12"
       ]
@@ -285,11 +287,12 @@
       "severity": "medium",
       "status": "open",
       "area": "product data",
-      "title": "The same listing carries two different temperature ranges in two places",
-      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
-      "impact": "Temperature is withheld on one product.",
-      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
+      "title": "One Amazon listing states two different temperature ceilings",
+      "detail": "The Amazon listing for B08DKYBTPH advertises a \"450 °F Hi-Fry option\" in its title while its own \"About this item\" bullet and the maker's page for the same model number (S23) both state a 200-400 °F range. A short Hi-Fry burst above the normal ceiling is plausible and common, but neither page explains how it works, so the 450 °F figure is not adopted. The site publishes the 400 °F range that both the maker and the listing's own bullet state, and records the title's claim here.",
+      "impact": "The temperature ceiling is published with the title claim named rather than silently dropped.",
+      "manual_step": "The user guide linked from the listing should settle whether Hi-Fry is a separate short-lived mode. Read it and record the page reference.",
       "sources": [
+        "S23",
         "S16"
       ]
     },
@@ -331,27 +334,29 @@
     },
     {
       "id": "FLG-031",
-      "severity": "high",
+      "severity": "low",
       "status": "open",
-      "title": "Program Policies bar using Special Links or Program Content to develop machine learning models without Amazon's prior written approval",
-      "detail": "Participation Requirements §5, read verbatim 2026-11-20: \"You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.\" The brief for this project asks for an AI-powered platform that automates product research, generates content and optimises campaigns. The clause does not forbid that outright - it is about using Special Links or Program Content as model input - but it draws a hard boundary around the automation the brief describes, and no session had recorded it before this one. Everything built so far stays inside it: no Amazon content was used to train or fine-tune anything, product facts were read from manufacturer and Amazon pages and cited by source ID, and outbound links are constructed from an observed ASIN plus the tracking ID rather than harvested at scale.",
-      "impact": "Sets the ceiling on the automation half of the brief. Any pipeline that ingests Special Links or Program Content as model input needs Amazon's written approval first, and the Program Policies preamble makes a Participation Requirements violation a material breach.",
-      "manual_step": "Before adding automated scraping, model training or bulk link generation, ask Associates support whether it needs prior written approval under §5 and record the reply verbatim against this flag.",
+      "area": "link resolution",
+      "title": "A 2026-11-20 re-fetch of two short links returned the Amazon home page, not a product page",
+      "detail": "During the 2026-11-20 verification round the two submitted short links that were fetched directly (B04G1MEwY and B02NbDxp3) returned the Amazon home page instead of a product detail page. That is the same intermittent behaviour already recorded in FLG-004, which is why the register treats a checkpoint or a home page as a fetch artefact rather than as evidence that a link is dead. It does mean the observed mapping in data/products.json is carried from the earlier dated rounds that observed it, not re-derived in this round; the five product pages themselves were fetched directly by their /dp/ identifier and every title matched the register character for character (S04). No link is claimed to be invalid, and FLG-003 stays open: the compliance status of the supplied short links is still unresolved.",
+      "impact": "The observed destination of each submitted link is carried forward rather than re-derived, and the unresolved status of the short links is unchanged.",
+      "manual_step": "Open each short link in a signed-in browser and record the product name and the 10-character ASIN from the address bar. That also closes Q-01.",
       "sources": [
-        "S02",
-        "S01"
+        "S04",
+        "S05"
       ]
     },
     {
       "id": "FLG-032",
-      "severity": "high",
+      "severity": "medium",
       "status": "open",
-      "title": "The Site may not have price tracking or price alerting functionality unless Amazon agrees",
-      "detail": "Participation Requirements §6(y), read verbatim 2026-11-20: \"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\" The brief asks the platform to analyse pricing and track conversions. Recording prices for internal analysis is a different act from shipping a price-tracking feature to readers, and only the second is barred by 6(y) - but the distinction has to be chosen deliberately. Related and stricter: §2(b) allows the Site to show prices and availability only where Amazon serves the link or the data comes from the Creators API or PA API, and §6(t) bars displaying reviews or star ratings without the same.",
-      "impact": "A hard boundary on comparison tables and any 'best value' framing. The build gate already fails on a currency amount, star rating or review count, so this is enforced rather than merely intended.",
-      "manual_step": "Decide explicitly: no price feature on the site (current, and the safe reading), or apply for PA API / Creators API access and get Amazon's agreement under 6(y) before building one.",
+      "area": "site structure",
+      "title": "Four editions of this publication are published under one domain; only the root one is in the sitemap",
+      "detail": "This repository publishes four separate reader-facing editions under the same domain and the same tracking ID: the root publication (ShopNow Kitchen), /editorial/, /counter/ (Crisp & Counter), /counterwise/ and /crisp-index/, with frozen earlier editions under /legacy/. Only the root publication is listed in sitemap.xml; the others are excluded from the index through robots.txt and noindex metadata, and they are all reachable from the single archive page. Google states that scaled content abuse includes \"pages without unique content or purpose\" and site reputation abuse covers \"many low-quality pages\"; several near-identical editions of the same five products on one domain is the pattern those policies describe. The root publication is the one that is indexed, and the others are preserved rather than deleted, so the owner can publish any of them on its own domain later if that is preferred.",
+      "impact": "Five near-identical editions on one domain split the search signals and the tracking data. The fix applied here is one indexed site plus a labelled archive; the owner can reverse it for any edition.",
+      "manual_step": "Decide which single edition is the product, and whether the other three should stay on this domain at all. Suggestion S-11 records the options; each edition keeps its own generator and gate, so republishing one is a one-line change.",
       "sources": [
-        "S02"
+        "S09"
       ]
     },
     {
@@ -394,5 +399,6 @@
       ]
     }
   ],
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session.",
   "checked": "2026-11-20"
 }

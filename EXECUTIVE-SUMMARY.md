@@ -22,7 +22,7 @@ nothing honest to report yet.
 | 1 | `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` | CHEFMAN TurboFry Touch 6 Qt. Dual-Window Air Fryer (RJ38-SQPF-3TDB-2W) | resolved |
 | 2 | `link.amazon/B02NbDxp3` | `amazon.com/dp/B09B7SB46R` | Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT (4-00675-02A-VN) | resolved |
 | 3 | `link.amazon/B00hJ57DV` | `amazon.com/dp/B08DKYBTPH` | CHEFMAN TurboFry Touch Stainless-Steel Air Fryer, 8 Qt (RJ38-SQSS-8T) | resolved |
-| 4 | `link.amazon/B0c8moW59` | Amazon "Continue shopping" interstitial; catalog search returns no results | — | **unresolved** |
+| 4 | `link.amazon/B0c8moW59` | Amazon "Continue shopping" interstitial; catalog search returns no results | — | **unresolved** (still, as of the latest dated check) |
 | 5 | `link.amazon/B0f3GKalj` | `amazon.com/dp/B0DZFD6R9Z` | CHEF iQ Sense Smart Wireless Meat Thermometer, 3 Probes (Gen3) | resolved |
 
 Four of five are air fryers or air fryer ovens. The niche chose itself: **countertop cooking appliances
@@ -40,9 +40,14 @@ Central, click one, and confirm the click shows up in the report before touching
 one link tested, then scale. That is `SG-08` on the suggestions page, and it is the only thing on this
 site that is blocked rather than done.
 
-Note precisely what is and is not being claimed: the short links are **untagged and unresolved**. No
-official document reviewed says `link.amazon` short URLs are invalid. Their exact compliance status is
-not addressed in the documents read.
+Note precisely what is and is not being claimed. The resolution column reflects the latest dated
+observation: four of five resolved to a product page in the first observation; on 2026-11-20 links 1
+and 2 were re-fetched and both reached the Amazon home page instead, which is the same intermittent
+behaviour and does not establish that any link is dead (FLG-031). Link 4 has not been observed
+resolving to a product page at any dated check. No official document reviewed says `link.amazon`
+short URLs are invalid; their exact compliance status is not addressed in the documents read (FLG-003).
+Checkpoint history is retained in `data/questions.json` and `data/flags.json` rather than replaced by
+any single latest observation.
 
 ## What was built
 

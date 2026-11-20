@@ -1,5 +1,4 @@
 {
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
   "suggestions": [
     {
       "id": "S-01",
@@ -22,16 +21,7 @@
           "tradeoff": "Best content outcome, most work, and the old edition's data conflicts with the root data and must be reconciled."
         }
       ],
-      "recommendation": "B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies.",
-      "track": "findability",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies."
     },
     {
       "id": "S-02",
@@ -49,16 +39,7 @@
           "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
         }
       ],
-      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure.",
-      "track": "revenue",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
     },
     {
       "id": "S-03",
@@ -86,16 +67,7 @@
           "tradeoff": "Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid."
         }
       ],
-      "recommendation": "B. It removes the server maintenance objection without handing the data away.",
-      "track": "measurement",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B. It removes the server maintenance objection without handing the data away."
     },
     {
       "id": "S-04",
@@ -118,16 +90,7 @@
           "tradeoff": "Useful and stable; still a claim that needs checking, and it ages badly."
         }
       ],
-      "recommendation": "A until traffic justifies the Creators API work. Then B.",
-      "track": "compliance",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "A until traffic justifies the Creators API work. Then B."
     },
     {
       "id": "S-05",
@@ -150,16 +113,7 @@
           "tradeoff": "Reaches a useful site size quickly; risks thin pages if the batch is rushed."
         }
       ],
-      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones.",
-      "track": "findability",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones."
     },
     {
       "id": "S-06",
@@ -182,16 +136,7 @@
           "tradeoff": "Zero infrastructure and honest; very low conversion."
         }
       ],
-      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send.",
-      "track": "measurement",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send."
     },
     {
       "id": "S-07",
@@ -214,16 +159,7 @@
           "tradeoff": "Highest trust and highest cost; needs physical units."
         }
       ],
-      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying.",
-      "track": "trust",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying."
     },
     {
       "id": "S-08",
@@ -241,16 +177,7 @@
           "tradeoff": "Strongest trust signal; a person has to be accountable for the corrections."
         }
       ],
-      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available.",
-      "track": "trust",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available."
     },
     {
       "id": "S-09",
@@ -273,16 +200,7 @@
           "tradeoff": "Scales the model; splits attention before anything is proven."
         }
       ],
-      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against.",
-      "track": "findability",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against."
     },
     {
       "id": "S-10",
@@ -300,145 +218,76 @@
           "tradeoff": "Prettier; risks being read as decoration rather than disclosure."
         }
       ],
-      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is.",
-      "track": "compliance",
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": "",
-      "depends_on": [],
-      "evidence": {
-        "sources": [],
-        "flags": []
-      }
+      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
     },
     {
       "id": "S-11",
-      "track": "trust",
-      "topic": "Navigation labels",
-      "problem": "The masthead and footer are written in the project's own vocabulary. A reader who wants the disclosure, or the reason a product has no buy button, has to guess which footer entry carries it. Labels like 'Shop' work; labels that name our artefacts do not.",
+      "topic": "Four editions on one domain",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep the current labels and one flat footer list.",
-          "tradeoff": "No work. The footer reads as a file listing rather than a set of places to go.",
-          "effort": "none",
-          "risk": "low"
+          "label": "Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current).",
+          "tradeoff": "One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain."
         },
         {
           "id": "B",
-          "label": "Relabel to reader vocabulary and split the footer into two headed groups: 'For readers' and 'Records and verification'. Every page stays reachable; only the words and the grouping change.",
-          "tradeoff": "About an hour in the generator. The gate already asserts every dashboard is footer-reachable, so nothing can be lost silently.",
-          "effort": "1 hour",
-          "risk": "low"
+          "label": "Publish the other editions on separate domains, each with its own tracking ID.",
+          "tradeoff": "Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain."
         },
         {
           "id": "C",
-          "label": "Cut the masthead to three items and move every record page behind a single 'How we review' page.",
-          "tradeoff": "Cleanest for a buyer, and /how-we-choose/ already exists to host it. Adds a click to reach the register, which the brief wants kept reachable.",
-          "effort": "2 hours",
-          "risk": "medium"
+          "label": "Unpublish the other editions and keep only their pages in the repository history.",
+          "tradeoff": "The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them."
         }
       ],
-      "recommendation": "B now, C once there is enough editorial content to carry it. B satisfies 'one navigation group' and 'dashboards reachable from the footer' while stopping the footer reading like a directory listing.",
-      "evidence": {
-        "sources": [
-          "S02"
-        ],
-        "flags": []
-      },
-      "depends_on": [],
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": ""
+      "recommendation": "A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build."
     },
     {
       "id": "S-12",
-      "track": "findability",
-      "topic": "The RSS feed that already ships",
-      "problem": "feed.xml exists, carries one item per guide, and the gate asserts that coverage. It is linked from the footer and from the head of every page, but it is never offered to a reader at the point where they have just finished something and might want more. A feed that ships but is never surfaced cannot gain subscribers.",
+      "topic": "Publishing the ThermoMaven buy button",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep it as it is: generated, gated, footer-linked.",
-          "tradeoff": "Zero work. It stays a compliance artefact rather than a channel.",
-          "effort": "none",
-          "risk": "low"
+          "label": "Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current).",
+          "tradeoff": "The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away."
         },
         {
           "id": "B",
-          "label": "Offer it where a reader finishes: one line at the foot of every guide, plus the existing footer and head links.",
-          "tradeoff": "Twenty minutes in the generator. No new dependency and no third party.",
-          "effort": "20 minutes",
-          "risk": "low"
+          "label": "Keep the button hidden until the listing model field confirms the F1 Ace.",
+          "tradeoff": "The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken."
         },
         {
           "id": "C",
-          "label": "Add a JSON Feed alongside RSS.",
-          "tradeoff": "Some apps prefer it. Two feeds to keep in step, for an audience that is currently zero.",
-          "effort": "1 hour",
-          "risk": "low"
+          "label": "Point the button at the manufacturer F1 Ace page instead of the Amazon listing.",
+          "tradeoff": "Breaks the affiliate link and the tracking the site exists for."
         }
       ],
-      "recommendation": "B. It is the cheapest change that turns an existing artefact into something a reader can act on, and it pairs with S-06 so the two offers sit together rather than competing.",
-      "evidence": {
-        "sources": [
-          "S06"
-        ],
-        "flags": []
-      },
-      "depends_on": [
-        "S-06"
-      ],
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": ""
+      "recommendation": "A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question."
     },
     {
       "id": "S-13",
-      "track": "findability",
-      "topic": "Search Console",
-      "problem": "Not connected, so there is no query data, no coverage report and no submitted sitemap. Every editorial choice is therefore made on instinct, which is what the brief asks to stop doing. Q-12 asks who owns the property; this row is the decision that follows from the answer.",
-      "current": "B",
+      "topic": "A side-by-side comparison page",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Verify the property, submit the sitemap, and read the Performance report after two weeks.",
-          "tradeoff": "Needs a Google account and about an hour. It also settles S-01 first, so you are not submitting a sitemap for pages you may then retire.",
-          "effort": "1 hour",
-          "risk": "low"
+          "label": "Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current).",
+          "tradeoff": "It is the page a buyer actually wants and the strongest internal link target for every guide."
         },
         {
           "id": "B",
-          "label": "Not connected (current).",
-          "tradeoff": "Nothing to do, and no measured queries, so the next guide topic stays a guess.",
-          "effort": "none",
-          "risk": "none"
+          "label": "Keep the comparison inside the shop table and the category pages only.",
+          "tradeoff": "Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table."
         },
         {
           "id": "C",
-          "label": "Verify with the HTML-tag method rather than the file method, to avoid committing a verification file to a public repository root.",
-          "tradeoff": "Same cost as A. The token is site-scoped rather than a credential, but it would still be publicly visible.",
-          "effort": "1 hour",
-          "risk": "low"
+          "label": "Add comparison products beyond the five submitted rows so the table has more than one option per category.",
+          "tradeoff": "More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner."
         }
       ],
-      "recommendation": "A or C, after S-01. Verifying before deciding how many publications exist means submitting sitemaps for pages that may then be disallowed.",
-      "evidence": {
-        "sources": [
-          "S06"
-        ],
-        "flags": [
-          "FLG-013"
-        ]
-      },
-      "depends_on": [
-        "S-01"
-      ],
-      "decision": "undecided",
-      "decided_on": "",
-      "decided_by": ""
+      "recommendation": "A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research."
     },
     {
       "id": "S-14",
@@ -702,6 +551,7 @@
       "decided_by": ""
     }
   ],
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
   "tracks": [
     {
       "id": "revenue",
