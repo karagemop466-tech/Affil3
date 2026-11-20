@@ -136,9 +136,9 @@ function productCard(p, placement) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
   <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
   <h3>${esc(title)}</h3>
-  <p class="muted">Observed ASIN <code>${esc(p.observed_asin)}</code></p>
+  ${placement === 'front-shelf' ? '' : `<p class="muted">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
   <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
-  <p class="status">${esc(p.outbound_status)}</p>
+  ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
 </article>`;
   }
   return `<article class="card product warn-card" data-product-view="${esc(p.id)}">
@@ -191,11 +191,11 @@ const add = (p) => pages.push(p);
     type: 'home',
     body: `
 <section class="front">
-  <p class="kicker">Observed on 2026-11-20 · Amazon listings</p>
-  <h1>Five kitchen picks, each traced to its listing</h1>
-  <p class="deck">Start with a product, or with a guide that tells you what to compare. Each product shows the Amazon page it resolved to and the source we read.</p>
+  <p class="kicker">The kitchen shortlist</p>
+  <h1>Air fryers, countertop ovens &amp; cooking thermometers</h1>
+  <p class="deck">Shopping for crisp sides, an oven that can handle toast and dinner, or a way to check when a roast is done? Start with the shortlist, then use the guides to narrow it down by how you cook.</p>
   <div class="shelf">${shelf}</div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a>.</p>
+  <p class="shelf-note">This is a listing-based shortlist, not a hands-on test or ranking. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a>.</p>
 </section>
 <section class="band">
   <h2>Start with a guide</h2>
@@ -336,17 +336,19 @@ add({
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>One link resolved to a checkpoint page (FLG-004). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li>One link previously hit a checkpoint and later resolved to a listing (FLG-004). The short links’ compliance status remains unresolved (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>
-<h2>Decisions needed from you</h2>
+<h2>Evidence needed before expanding</h2>
 <ol>
-<li>Give the intended product for each short link, or confirm the observed product (Q-01).</li>
+<li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
-<li>Run gate G-02: one Special Link per product in Associates Central, then tell us the result (Q-04).</li>
+<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
 <li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nothing there is implemented until you choose.</li>
 </ol>
+<h2>Measure before expanding</h2>
+<p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (${srcLink("S02")}) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
 <h2>Limits</h2>
 <p>This build cannot pull Amazon product data, prices or sales reports. Those require authorized access (for example the Product Advertising API or Associates reports), which the sandbox does not have. The site does not scrape Amazon.</p>
 </div>`,

@@ -472,3 +472,16 @@ The editorial and root publications are two separately generated sites over two 
 five links. They now agree on all five destinations (cross-check table above), but they will drift
 again if only one register is updated. **The real fix is one register and one generator.** That is
 recorded as `SG-13` and should be the first thing the next session does.
+
+## Session `arena/822d5c60-affil3` — publication integration
+
+| Task | Status | Owner | Scope |
+|---|---|---|---|
+| Gate the published root build, improve buyer-facing copy, and document measurement-first decisions | done | arena/822d5c60-affil3 | `.github/workflows/verify.yml`, `tools/build.mjs`, root-generated HTML, `data/suggestions.json` |
+
+Parallel proposals remain untouched. Root publication is already the Pages source; no second deployment is planned.
+
+- Integration pull request: [#19](https://github.com/karagemop466-tech/Affil3/pull/19). The PR timeline and Pages deployment history are the authoritative merge and deploy records.
+
+- Resolved the concurrent append from PR #17 by retaining both session records. The root gate passed 1,317 checks after correcting the Amazon policy source link.
+- Reviewed the [Associates Agreement](https://affiliate-program.amazon.com/help/operating/agreement), [Program Policies](https://affiliate-program.amazon.com/help/operating/policies), and [Search Console documentation](https://developers.google.com/search/docs/monitor-debug/search-console-start). Historical product rows were not freshly reverified. The live collector, Search Console ownership, and authenticated Special Link validation remain unconfirmed (see Flagged for Review).
