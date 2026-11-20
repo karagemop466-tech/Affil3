@@ -863,9 +863,17 @@ and the discrepancy is flagged for owner review rather than silently merged.
 
 - Pull request: https://github.com/karagemop466-tech/Affil3/pull/25
   (`arena/c46310a7-affil3` → `main`), opened 2026-11-20.
-- Merge: `gh pr merge 25 --merge`. Result recorded on the PR and below.
-- GitHub Pages deploy: https://karagemop466-tech.github.io/Affil3/ — source `main` at
-  `/`, status `built` (re-checked after merge).
+- Merge: `gh pr merge 25 --merge` - **MERGED**. Merge commit
+  `c83e6229ec15ac923c96df200c3cc9dc9cb606d4`, merged 2026-11-20T05:51:01Z.
+  (The branch was rebased onto `main` twice during the session because other
+  sessions merged to `main` in parallel; the final push used
+  `--force-with-lease` after the branch was re-attached from the detached
+  rebase HEAD. All conflicts were resolved without discarding any session's
+  work.)
+- GitHub Pages deploy: https://karagemop466-tech.github.io/Affil3/ - source
+  `main` at `/`, status **`built`** after the merge (re-checked via the Pages
+  API). The live root site and the `/editorial/` and `/docs/` subpaths are
+  served from this deployment.
 
 ## Final integration checks (this session, after rebase)
 
