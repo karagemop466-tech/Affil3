@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compliance gate — ShopNow Kitchen Edit</title>
+<meta name="description" content="The publishing workflow: automated checks that run in CI, and the manual gates — Special Link verification, API policy, endorsement context, claims review — before anything ships.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/compliance/index.html">
+<meta property="og:site_name" content="ShopNow Kitchen Edit">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compliance gate — ShopNow Kitchen Edit">
+<meta property="og:description" content="The publishing workflow: automated checks that run in CI, and the manual gates — Special Link verification, API policy, endorsement context, claims review — before anything ships.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console HTML-tag verification: paste the generated meta tag on the next line (see search-console/index.html) -->
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen Edit — Guides" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site-config.js" defer></script>
+<script src="../assets/js/analytics.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://karagemop466-tech.github.io/Affil3/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Compliance gate",
+   "item": "https://karagemop466-tech.github.io/Affil3/compliance/index.html"
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="name">ShopNow Kitchen Edit<span class="tagline">Air fryers &amp; kitchen gear — chosen with the boring questions asked first</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="../guides/index.html">Guides</a>
+<a href="../products/index.html">Shop the picks</a>
+<a href="../sourcing/index.html">How we research</a>
+<a href="../about/index.html">About</a>
+      <a class="cta" href="../products/index.html">Shop the picks</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<main>
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Compliance gate</p>
+  <h1>Compliance gate</h1>
+  <p class="lede">The publishing workflow has two layers: <strong>automated checks</strong> that run in
+  CI on every push, and <strong>manual gates</strong> that require account access or judgment and sit
+  in front of anything the checks can't prove. Nothing ships that skips a gate.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Automated — CI on every push (<code>tools/validate.py</code>)</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Check</th><th>What it enforces</th><th>Source of the rule</th></tr></thead>
+        <tbody>
+          <tr><td><code>G-A1 disclosure-everywhere</code></td><td>Every HTML page carries the
+          above-the-fold disclosure strip (data marker + required-statement language) — no exceptions, including this page.</td>
+          <td><a class="src-link" href="https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98" target="_blank" rel="noopener">S04</a>, <a class="src-link" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener">S07</a></td></tr>
+          <tr><td><code>G-A2 sponsored-links</code></td><td>Every anchor to an Amazon/link.amazon URL
+          carries <code>rel="sponsored nofollow noopener"</code>, <code>target="_blank"</code> and a
+          <code>data-product-intent</code> attribute; no Amazon imagery anywhere.</td>
+          <td><a class="src-link" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="noopener">S01</a></td></tr>
+          <tr><td><code>G-A3 registers-valid</code></td><td>All JSON registers parse; product-intent
+          records keep intent and observation separate; blank intent fields stay blank unless a full
+          confirmation quartet (URL, ASIN, date, source) is present.</td>
+          <td>Project verification rule</td></tr>
+          <tr><td><code>G-A4 sitemap-consistency</code></td><td>Sitemap ↔ files: every published page is
+          in <code>sitemap.xml</code>, every sitemap URL resolves to a file; feed lists every guide.</td>
+          <td>Findability directive</td></tr>
+          <tr><td><code>G-A5 ledger-shape</code></td><td>The campaign ledger keeps its defined schema;
+          rows without all nine provenance columns fail the build; the ledger ships empty until
+          first-party reports exist.</td>
+          <td>Priority-4 directive</td></tr>
+          <tr><td><code>G-A6 pages-fresh</code></td><td>Generated pages match their fragments —
+          regenerating produces zero diffs.</td>
+          <td>Engineering hygiene</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Manual gates — checked by a human, before shipping</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Gate</th><th>What must be done</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td><code>G5 link verification</code></td><td>Inside the enrolled Associates account: test
+          <strong>one link per product</strong> (SiteStripe/Link Builder), confirm the destination AND
+          that a test click appears in Associates reports — before scaling. Then update the product's
+          intent record (official listing URL, confirmed ASIN, confirmation date, source) and consider
+          flipping <code>require_verified_links</code>.</td>
+          <td><span class="chip warn">OPEN — FLG-003</span></td></tr>
+          <tr><td><code>G6 API policy</code></td><td>Any automated product-data integration must target
+          the <strong>Creators API</strong> (PA-API 5 is deprecated [S12]) and respect its prerequisites
+          (enrollment; 10 qualifying sales/30 days [S13]).</td>
+          <td><span class="chip blank">NOT TRIGGERED YET</span></td></tr>
+          <tr><td><code>G7 endorsement context</code></td><td>Before publishing any new page: review
+          disclosure placement and endorsement context against the FTC guidance — is the material
+          connection obvious, adjacent to the message, impossible to miss?</td>
+          <td><span class="chip ok">WALKED 2026-11-20 for the founding build</span></td></tr>
+          <tr><td><code>G8 claims review</code></td><td>No unsubstantiated product claims in copy: no
+          performance, popularity, or superiority assertions without a source; guides stay labeled as
+          editorial hypotheses.</td>
+          <td><span class="chip ok">WALKED 2026-11-20 for the founding build</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Why G5 is a gate and not a checkbox:</strong> the exact compliance status of the submitted
+      short links is unresolved (FLG-003). Only the account holder can resolve it — the site's job is to
+      make that resolution easy (dashboard link pre-check tool, single config file to swap links, kill
+      switch for worst-case) and to make sure nothing on the public site claims more than that.
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>The publishing workflow, end to end</h2>
+    <ol>
+      <li>Pick the next topic from measured queries (Search Console) + reader input — never instinct alone.</li>
+      <li>Draft in <code>content/</code>, run the fragment generator, add the page to sitemap + feed.</li>
+      <li>Open a suggestion on the <a href="../suggestions/index.html">review board</a> if the change
+      alters design, links, or policy — pick the path <em>before</em> implementing.</li>
+      <li>Push; CI runs the automated gates. Failures stop the merge — fix and retry, never ship broken.</li>
+      <li>Walk G7/G8 for the new page; log the walk date in the PR description.</li>
+      <li>Merge; confirm Pages deploy; check the live page's disclosure and sponsored rels once, visually.</li>
+    </ol>
+    <p class="note">The Operating Agreement's participation requirements also shape design decisions:
+    affiliate links stay out of email bodies absent a separate written agreement [S02 clause 6], and no
+    Amazon trademarks/logos are used beyond permitted scopes — hence AI-generated imagery and a
+    wordmark-free Amazon reference throughout.</p>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <div class="brand-line">ShopNow Kitchen Edit</div>
+      <p>A small, reader-supported publication about air fryers, multi-function ovens and the
+      tools that keep them honest. We publish what we can source, leave blank what we can't,
+      and review every suggestion before it changes the site.</p>
+      <p class="note">All site imagery is AI-generated illustration, not product photography.</p>
+    </div>
+    <div>
+      <h4>Read &amp; shop</h4>
+      <ul>
+        <li><a href="../products/index.html">Shop the picks</a></li>
+        <li><a href="../guides/index.html">Buying guides</a></li>
+        <li><a href="../guides/basket-or-oven-air-fryer.html">Basket vs oven-style</a></li>
+        <li><a href="../guides/air-fryer-capacity-checklist.html">Capacity checklist</a></li>
+        <li><a href="../about/index.html">About &amp; standards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project dashboard</h4>
+      <ul>
+<li><a href="../summary/index.html">Executive summary</a></li>
+<li><a href="../suggestions/index.html">Suggestion review board</a></li>
+<li><a href="../questions/index.html">Decision-readiness questions</a></li>
+<li><a href="../flagged/index.html">Flagged for review</a></li>
+<li><a href="../analysis/index.html">Findings & analysis</a></li>
+<li><a href="../analytics/index.html">Analytics & campaign ledger</a></li>
+<li><a href="../dashboard/index.html">Working dashboard</a></li>
+<li><a href="../compliance/index.html">Compliance gate</a></li>
+<li><a href="../sourcing/index.html">Source register</a></li>
+<li><a href="../search-console/index.html">Search Console setup</a></li>
+<li><a href="../feed.xml">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p>New guides land in the <a href="../feed.xml">RSS feed</a> first. Prefer email?
+      The capture form below records interest locally until the newsletter decision lands.</p>
+      <form data-capture="footer">
+        <input type="email" placeholder="you@example.com" aria-label="Email for future newsletter" required>
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span class="assoc-statement">As an Amazon Associate we earn from qualifying purchases.</span>
+      <span>Product CTAs are marked <code>rel="sponsored"</code> and open Amazon in a new tab.
+      Listing identities and prices are shown only when confirmed; otherwise the record says so.
+      © 2026 ShopNow Kitchen Edit. Editorial content — not sponsored by any manufacturer.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

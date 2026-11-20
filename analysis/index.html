@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Findings & analysis — ShopNow Kitchen Edit</title>
+<meta name="description" content="What the verification and observation passes found: niche signals, the tracking gap, the identifier mismatch, and what each finding means for the next decision.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/analysis/index.html">
+<meta property="og:site_name" content="ShopNow Kitchen Edit">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Findings & analysis — ShopNow Kitchen Edit">
+<meta property="og:description" content="What the verification and observation passes found: niche signals, the tracking gap, the identifier mismatch, and what each finding means for the next decision.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/analysis/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console HTML-tag verification: paste the generated meta tag on the next line (see search-console/index.html) -->
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen Edit — Guides" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site-config.js" defer></script>
+<script src="../assets/js/analytics.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://karagemop466-tech.github.io/Affil3/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Findings & analysis",
+   "item": "https://karagemop466-tech.github.io/Affil3/analysis/index.html"
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="name">ShopNow Kitchen Edit<span class="tagline">Air fryers &amp; kitchen gear — chosen with the boring questions asked first</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="../guides/index.html">Guides</a>
+<a href="../products/index.html">Shop the picks</a>
+<a href="../sourcing/index.html">How we research</a>
+<a href="../about/index.html">About</a>
+      <a class="cta" href="../products/index.html">Shop the picks</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<main>
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Findings &amp; analysis</p>
+  <h1>Findings &amp; analysis</h1>
+  <p class="lede">What the verification and observation passes found, in plain language — what it means,
+  and what each finding changes about the next decision. No speculation fills the gaps; the gaps are
+  listed on <a href="../flagged/index.html">Flagged for review</a>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="q-card">
+      <h3>Finding 1 — The niche signal is strong and consistent</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>Four of five submitted links resolved to air-fryer listings (dual-basket, French-door
+      oven-style, family-size basket) and one to a wireless meat thermometer, all under Home &amp;
+      Kitchen. The brief's four editorial hypotheses are all air-fryer/kitchen questions.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>The working niche — air fryers and multi-function kitchen appliances — is supported by the
+      observations, and the four published guides align with the shortlist's formats.</li>
+      <li>Caveat: observed landing ≠ intended product until Q-03 is answered, so the niche plan stays a
+      <strong>flagged hypothesis</strong>, not a fact (<a href="../flagged/index.html">FLG-005</a>).</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 2 — The tracking gap is the single most important issue</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>None of the observed landing URLs contained <code>tag=shopnow047c-20</code>. Landing URLs
+      carried <code>lv=shuf</code> / <code>btn_ref=srctok-…</code> parameters instead.</li>
+      <li>Commission requires the qualifying-purchase chain: a click through <em>a Special Link</em>
+      [S01, S03].</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>Until gate G5 (one-link test in the enrolled Associates workflow, destination + tracking
+      report confirmed) passes, <strong>every click through the public CTAs may be unattributed</strong>
+      — which would make any conversion measurement meaningless and any optimization premature.</li>
+      <li>That is exactly why this session: (a) records the observation without a verdict (FLG-003's
+      no-verdict rule), (b) ships the kill switch, and (c) refuses to present any conversion or revenue
+      figures.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 3 — Identifier mismatch: intent ≠ observation</h3>
+      <p class="lbl">Observation</p>
+      <ul><li>Submitted path identifiers are 9 characters (<code>B04G1MEwY</code>,
+      <code>B02NbDxp3</code>, <code>B00hJ57DV</code>, <code>B0c8moW59</code>, <code>B0f3GKalj</code>);
+      Amazon's official ASIN definition is 10 characters [S05].</li>
+      <li>Every observed landing ASIN (10 chars) differs from its submitted path identifier:
+      B04G1MEwY→B0CDY277D3 · B02NbDxp3→B09B7SB46R · B00hJ57DV→B08DKYBTPH · B0f3GKalj→B0DZFD6R9Z ·
+      B0c8moW59→unresolved.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>The two-never-merge rule exists precisely for this: <strong>intent</strong> (what the
+      submitter meant) and <strong>observation</strong> (what the link did, once, from one vantage
+      point) are different claims about the world, and only the second was measurable this session.</li>
+      <li>The reconciliation — which listing is "the product" for each link — needs the account-side
+      test (Q-01/Q-03), not more observation from outside.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 4 — The automation stack's official path changed under our feet</h3>
+      <p class="lbl">Verification</p>
+      <ul><li>PA-API 5.0 is <strong>deprecated</strong>; the Creators API is the supported successor [S12,
+      S13], gated on Associates enrollment plus 10 qualifying sales in the past 30 days.</li></ul>
+      <p class="lbl">What it means</p>
+      <ul><li>Any "AI-powered product research/automation" ambition (the brief's platform vision) must be
+      planned against the Creators API, and its real-world prerequisite is sales volume — not
+      engineering. The pragmatic sequencing: verify links manually first (G5), measure, hit the API
+      threshold, <em>then</em> automate pricing/spec refresh.</li></ul>
+    </div>
+
+    <div class="q-card">
+      <h3>Finding 5 — What the site can and cannot promise today</h3>
+      <div class="tbl-wrap" style="margin-top:10px">
+        <table class="tbl">
+          <thead><tr><th>Can promise (sourced)</th><th>Cannot promise (flagged)</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Disclosure placement &amp; sponsored marking on every page (CI-enforced)<br>
+              The four guides' category guidance<br>Full intent/observation records with dates<br>
+              A governed process: registers, gates, review board</td>
+              <td>That the submitted short links are valid Special Links (FLG-003 — unresolved)<br>
+              That clicks attribute to shopnow047c-20 (no tag observed)<br>
+              Any product price, rating, spec or availability (FLG-005 — blank until confirmed)<br>
+              Any traffic, conversion or revenue figure (ledger empty by design)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <div class="brand-line">ShopNow Kitchen Edit</div>
+      <p>A small, reader-supported publication about air fryers, multi-function ovens and the
+      tools that keep them honest. We publish what we can source, leave blank what we can't,
+      and review every suggestion before it changes the site.</p>
+      <p class="note">All site imagery is AI-generated illustration, not product photography.</p>
+    </div>
+    <div>
+      <h4>Read &amp; shop</h4>
+      <ul>
+        <li><a href="../products/index.html">Shop the picks</a></li>
+        <li><a href="../guides/index.html">Buying guides</a></li>
+        <li><a href="../guides/basket-or-oven-air-fryer.html">Basket vs oven-style</a></li>
+        <li><a href="../guides/air-fryer-capacity-checklist.html">Capacity checklist</a></li>
+        <li><a href="../about/index.html">About &amp; standards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project dashboard</h4>
+      <ul>
+<li><a href="../summary/index.html">Executive summary</a></li>
+<li><a href="../suggestions/index.html">Suggestion review board</a></li>
+<li><a href="../questions/index.html">Decision-readiness questions</a></li>
+<li><a href="../flagged/index.html">Flagged for review</a></li>
+<li><a href="../analysis/index.html">Findings & analysis</a></li>
+<li><a href="../analytics/index.html">Analytics & campaign ledger</a></li>
+<li><a href="../dashboard/index.html">Working dashboard</a></li>
+<li><a href="../compliance/index.html">Compliance gate</a></li>
+<li><a href="../sourcing/index.html">Source register</a></li>
+<li><a href="../search-console/index.html">Search Console setup</a></li>
+<li><a href="../feed.xml">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p>New guides land in the <a href="../feed.xml">RSS feed</a> first. Prefer email?
+      The capture form below records interest locally until the newsletter decision lands.</p>
+      <form data-capture="footer">
+        <input type="email" placeholder="you@example.com" aria-label="Email for future newsletter" required>
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span class="assoc-statement">As an Amazon Associate we earn from qualifying purchases.</span>
+      <span>Product CTAs are marked <code>rel="sponsored"</code> and open Amazon in a new tab.
+      Listing identities and prices are shown only when confirmed; otherwise the record says so.
+      © 2026 ShopNow Kitchen Edit. Editorial content — not sponsored by any manufacturer.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

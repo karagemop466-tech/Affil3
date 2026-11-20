@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search Console readiness — ShopNow Kitchen Edit</title>
+<meta name="description" content="The exact steps to verify the site in Google Search Console and submit the sitemap, with the meta-tag placeholder already in place.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/search-console/index.html">
+<meta property="og:site_name" content="ShopNow Kitchen Edit">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Search Console readiness — ShopNow Kitchen Edit">
+<meta property="og:description" content="The exact steps to verify the site in Google Search Console and submit the sitemap, with the meta-tag placeholder already in place.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/search-console/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console HTML-tag verification: paste the generated meta tag on the next line (see search-console/index.html) -->
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen Edit — Guides" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site-config.js" defer></script>
+<script src="../assets/js/analytics.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://karagemop466-tech.github.io/Affil3/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Search Console readiness",
+   "item": "https://karagemop466-tech.github.io/Affil3/search-console/index.html"
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="name">ShopNow Kitchen Edit<span class="tagline">Air fryers &amp; kitchen gear — chosen with the boring questions asked first</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="../guides/index.html">Guides</a>
+<a href="../products/index.html">Shop the picks</a>
+<a href="../sourcing/index.html">How we research</a>
+<a href="../about/index.html">About</a>
+      <a class="cta" href="../products/index.html">Shop the picks</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<main>
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Search Console readiness</p>
+  <h1>Search Console readiness</h1>
+  <p class="lede">Everything the site-side of Google Search Console verification needs is already in
+  place. The only remaining step requires a Google account you control — verification cannot be
+  completed by the site itself. Method reference: Google's ownership-verification guide
+  <a href="https://support.google.com/webmasters/answer/9008080" target="_blank" rel="noopener">[S11]</a>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Site-side: done</h2>
+    <ul>
+      <li><strong>One canonical host:</strong> every page declares
+      <code>https://karagemop466-tech.github.io/Affil3/&lt;path&gt;</code> as its canonical URL — one
+      site for search engines to index, no duplicate-host ambiguity.</li>
+      <li><strong>Sitemap:</strong> <code><a href="../sitemap.xml">sitemap.xml</a></code> lists every
+      page with last-modified dates; <code><a href="../robots.txt">robots.txt</a></code> declares it.</li>
+      <li><strong>Feed:</strong> <code><a href="../feed.xml">feed.xml</a></code> carries every guide for
+      readers and aggregators.</li>
+      <li><strong>Structured data:</strong> JSON-LD Article/Breadcrumb/Organization blocks on every
+      relevant page, generated with the layout.</li>
+      <li><strong>HTML-tag placeholder:</strong> the head template carries a marked comment line
+      (<code>Google Search Console HTML-tag verification</code>) — paste the generated meta tag there.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Your-side: the 10-minute checklist</h2>
+    <ol>
+      <li>Open <a href="https://search.google.com/search-console" target="_blank" rel="noopener">search.google.com/search-console</a>
+      and add a <strong>URL-prefix property</strong>:
+      <code>https://karagemop466-tech.github.io/Affil3/</code>.</li>
+      <li>Choose the <strong>HTML tag</strong> method [S11]. Google gives you a
+      <code>&lt;meta name="google-site-verification" content="…"&gt;</code> tag.</li>
+      <li>Paste that tag into the site head at the marked placeholder (edit
+      <code>tools/build_pages.py</code>, run <code>python3 tools/build_pages.py</code>, commit, push;
+      CI regenerates all pages with it).</li>
+      <li>Wait for the Pages deploy, then click <strong>Verify</strong> in Search Console.</li>
+      <li>Submit <code>https://karagemop466-tech.github.io/Affil3/sitemap.xml</code> under Sitemaps.</li>
+      <li>Optionally add the HTML-file method as a backup [S11 recommends multiple methods].</li>
+    </ol>
+    <div class="callout">
+      <strong>Why this matters for the editorial plan:</strong> once verified, Search Console's query
+      data is what picks the next guide's topic (Q-09/Q-10) — measured impressions and queries instead
+      of instinct. That's ~30 days away from being useful, so verify early.
+    </div>
+    <p class="note">Status: <span class="chip blank">verification pending — needs your Google account</span>
+    (tracked as Q-10 in <code>data/questions.json</code>).</p>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <div class="brand-line">ShopNow Kitchen Edit</div>
+      <p>A small, reader-supported publication about air fryers, multi-function ovens and the
+      tools that keep them honest. We publish what we can source, leave blank what we can't,
+      and review every suggestion before it changes the site.</p>
+      <p class="note">All site imagery is AI-generated illustration, not product photography.</p>
+    </div>
+    <div>
+      <h4>Read &amp; shop</h4>
+      <ul>
+        <li><a href="../products/index.html">Shop the picks</a></li>
+        <li><a href="../guides/index.html">Buying guides</a></li>
+        <li><a href="../guides/basket-or-oven-air-fryer.html">Basket vs oven-style</a></li>
+        <li><a href="../guides/air-fryer-capacity-checklist.html">Capacity checklist</a></li>
+        <li><a href="../about/index.html">About &amp; standards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project dashboard</h4>
+      <ul>
+<li><a href="../summary/index.html">Executive summary</a></li>
+<li><a href="../suggestions/index.html">Suggestion review board</a></li>
+<li><a href="../questions/index.html">Decision-readiness questions</a></li>
+<li><a href="../flagged/index.html">Flagged for review</a></li>
+<li><a href="../analysis/index.html">Findings & analysis</a></li>
+<li><a href="../analytics/index.html">Analytics & campaign ledger</a></li>
+<li><a href="../dashboard/index.html">Working dashboard</a></li>
+<li><a href="../compliance/index.html">Compliance gate</a></li>
+<li><a href="../sourcing/index.html">Source register</a></li>
+<li><a href="../search-console/index.html">Search Console setup</a></li>
+<li><a href="../feed.xml">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p>New guides land in the <a href="../feed.xml">RSS feed</a> first. Prefer email?
+      The capture form below records interest locally until the newsletter decision lands.</p>
+      <form data-capture="footer">
+        <input type="email" placeholder="you@example.com" aria-label="Email for future newsletter" required>
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span class="assoc-statement">As an Amazon Associate we earn from qualifying purchases.</span>
+      <span>Product CTAs are marked <code>rel="sponsored"</code> and open Amazon in a new tab.
+      Listing identities and prices are shown only when confirmed; otherwise the record says so.
+      © 2026 ShopNow Kitchen Edit. Editorial content — not sponsored by any manufacturer.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

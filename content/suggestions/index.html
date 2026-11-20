@@ -1,0 +1,163 @@
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Suggestion review board</p>
+  <h1>Suggestion review board</h1>
+  <p class="lede">This section exists so someone can <strong>review suggestions and choose the best path
+  before implementing any changes</strong>. Each card states what changes, the evidence behind it, the
+  realistic options, and the decision needed. Statuses: <span class="chip">proposed</span>
+  <span class="chip">under review</span> <span class="chip ok">implemented</span>. Machine-readable:
+  <code>data/suggestions.json</code>.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="sugg-card">
+      <h3>SG-01 · Rebuild the landing page as a publication front page <span class="status-pill implemented">implemented</span></h3>
+      <dl>
+        <dt>What</dt><dd>Lead with product picks and the four buyer-question guides; every dashboard surface reachable from the footer's single Project dashboard group.</dd>
+        <dt>Evidence</dt><dd>Brief directives: "read like a shop, not an audit"; "lead with the products, not with the verification process".</dd>
+        <dt>Options</dt><dd>A. Shop-first (chosen, live) · B. Magazine-first.</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / low.</dd>
+        <dt>Decision</dt><dd>None — brief directive.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-02 · Disclosure above the fold on every page <span class="status-pill implemented">implemented</span></h3>
+      <dl>
+        <dt>What</dt><dd>Persistent reader-support + Associates strip under the masthead; required statement in every footer; "(paid link)" labels on CTAs.</dd>
+        <dt>Evidence</dt><dd>S04 (statement required "clearly and conspicuously"; link-level disclosure "they shouldn't have to hunt for it") + S07 ("hard to miss"; buried disclosures miss).</dd>
+        <dt>Options</dt><dd>A. Strip + footer repetition (live, CI-enforced) · B. Only on link pages (rejected — S07 warns against placement that requires hunting).</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / low.</dd>
+        <dt>Decision</dt><dd>None — compliance requirement.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-03 · Sponsored marking + single-file link config + kill switch <span class="status-pill under-review">under review</span></h3>
+      <dl>
+        <dt>What</dt><dd>All product CTAs carry <code>rel="sponsored nofollow noopener"</code>, open in a new tab, and resolve from one entry in <code>data/products.json</code> — a validated Special Link swap later touches one file.</dd>
+        <dt>Evidence</dt><dd>Brief: "keep every outbound product link marked as sponsored". S01 Special Links definition.</dd>
+        <dt>Options</dt><dd>A. Direct CTAs to submitted URLs with marking + kill switch (live, pending G5) · B. Hide CTAs until every link is verified.</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / <strong>medium until G5 confirms attribution (FLG-003)</strong>.</dd>
+        <dt>Decision needed</dt><dd><strong>Owner choice after G5:</strong> keep submitted URLs · swap to freshly generated Special Links · or flip the kill switch.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-04 · Question-shaped guides, labeled as hypotheses <span class="status-pill implemented">implemented</span></h3>
+      <dl>
+        <dt>What</dt><dd>The brief's four working titles published with FAQ sections, internal links, and visible "editorial hypothesis" notes.</dd>
+        <dt>Evidence</dt><dd>Brief: working titles, "not claims about popularity, search volume or product superiority".</dd>
+        <dt>Options</dt><dd>A. All four now, then measure (live) · B. One at a time on strict cadence.</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / low.</dd>
+        <dt>Decision</dt><dd>None; next topics switch to measured queries after Q-09/Q-10.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-05 · RSS feed + sitemap + robots + canonicals <span class="status-pill implemented">implemented</span></h3>
+      <dl>
+        <dt>What</dt><dd>feed.xml, sitemap.xml, robots.txt, canonical links and JSON-LD; one canonical host for search engines to index; CI keeps them consistent.</dd>
+        <dt>Evidence</dt><dd>Brief: "give search engines one site to index and a reason to rank it"; shipped-RSS directive.</dd>
+        <dt>Options</dt><dd>A. Hand-rolled static, CI-validated (live) · B. Jekyll plugins.</dd>
+        <dt>Impact / effort / risk</dt><dd>Medium / done / low.</dd>
+        <dt>Decision</dt><dd>None.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-06 · Five defined events, privacy-preserving collector <span class="status-pill implemented">implemented</span> <span class="status-pill under-review">endpoint pending</span></h3>
+      <dl>
+        <dt>What</dt><dd>page_view · outbound_product_click · guide_engaged · reader_capture_submitted · dashboard_event_exported — queued locally, transmitted only to a configured self-hosted endpoint.</dd>
+        <dt>Evidence</dt><dd>Brief: "privacy-preserving outbound-click counter and a self-hosted analytics endpoint; record the five defined events".</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / low (nothing leaves the browser until SG-08).</dd>
+        <dt>Decision</dt><dd>Endpoint choice = SG-08 below.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-08 · DECISION — analytics endpoint hosting <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>Choose where events POST to. A. Serverless worker + KV (self-hosted code, ~free) · B. Self-hosted analytics app on a small VPS (full control, ~$5/mo + ops) · C. Local queue + manual exports (zero infra, no live measurement).</dd>
+        <dt>Evidence</dt><dd>FLG-002: static hosting can't run the endpoint [S10]; the brief requires a self-hosted endpoint.</dd>
+        <dt>Impact / effort / risk</dt><dd>High impact · effort B &gt; A &gt; C · risk: A/B add a privacy contact point; C delays conversion measurement indefinitely.</dd>
+        <dt>Decision needed</dt><dd><strong>Pick A, B, or C</strong>; then set <code>analyticsEndpoint</code> and record the choice here.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-09 · Compliance gate in the publishing workflow <span class="status-pill implemented">implemented</span></h3>
+      <dl>
+        <dt>What</dt><dd>CI validates disclosure, sponsored rels, registers, sitemap/feed consistency and ledger schema; manual gates G5–G8 (link verification, API policy, endorsement context, claims review) sit in front of what can't be automated.</dd>
+        <dt>Evidence</dt><dd>Brief Priority 5; S01/S02/S04/S06/S07/S12/S13.</dd>
+        <dt>Impact / effort / risk</dt><dd>High / done / low.</dd>
+        <dt>Decision</dt><dd>None.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-10 · DECISION — brand name + imagery policy <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>Confirm or replace the working brand "ShopNow Kitchen Edit"; confirm imagery policy (current: AI-generated, labeled; Amazon product imagery is usable only via licensed Content formats [S01, S02], so it's not an option for cards).</dd>
+        <dt>Evidence</dt><dd>FLG-006.</dd>
+        <dt>Options</dt><dd>A. Keep brand + AI imagery · B. New name + AI imagery · C. New name + original photography.</dd>
+        <dt>Decision needed</dt><dd><strong>Owner choice</strong> — affects masthead, footer, OG images, canonical host.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-11 · Reader capture wiring <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>Pick a static-site-compatible newsletter provider and wire the capture form. Email bodies stay link-light: affiliate links in email are barred absent a separate written agreement [S02 clause 6].</dd>
+        <dt>Evidence</dt><dd>Q-08; brief's reader-capture directive.</dd>
+        <dt>Options</dt><dd>A. Hosted newsletter service · B. Self-hosted (pairs with SG-08 B) · C. Defer until measurement exists.</dd>
+        <dt>Decision needed</dt><dd><strong>Owner choice.</strong></dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-12 · Commit a publishing cadence <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>Weekly / biweekly / monthly+seasonal — then let ~30 days of Search Console data pick the topics.</dd>
+        <dt>Evidence</dt><dd>Brief: "next topic chosen from measured queries instead of instinct".</dd>
+        <dt>Risk</dt><dd>Unsustainable cadence is the main failure mode — choose below capacity.</dd>
+        <dt>Decision needed</dt><dd><strong>Owner choice.</strong></dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-13 · Verified comparison table <span class="status-pill proposed">proposed</span> <span class="chip warn">gated on Q-03/Q-06</span></h3>
+      <dl>
+        <dt>What</dt><dd>A products/comparison.html with a row per confirmed ASIN — title, price, capacity, dishwasher parts, footprint — populated only from Creators API or the confirmed listing, every cell dated; blank cells stay visibly blank.</dd>
+        <dt>Evidence</dt><dd>FLG-005; brief's table-format directive.</dd>
+        <dt>Options</dt><dd>A. Scaffold now with honest empty rows · B. Build after API access is live.</dd>
+        <dt>Decision needed</dt><dd><strong>Timing choice.</strong></dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-14 · Seasonal picks pages, gated on verification <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>Seasonal clusters (holiday counter space, big-game snacks, spring de-clutter) ship only for confirmed listings, each with JSON-LD, feed item, sitemap entry.</dd>
+        <dt>Evidence</dt><dd>Brief: "brand, imagery, seasons, and clusters".</dd>
+        <dt>Decision needed</dt><dd>Pick the first seasonal window after Q-03 resolves.</dd>
+      </dl>
+    </div>
+
+    <div class="sugg-card">
+      <h3>SG-15 · Ask-the-reader question box on guides <span class="status-pill proposed">proposed</span></h3>
+      <dl>
+        <dt>What</dt><dd>A one-field "What would you compare next?" box feeding the suggestion queue (local event now; endpoint after SG-08) — a direct reader input channel alongside Search Console.</dd>
+        <dt>Impact / effort / risk</dt><dd>Low-medium / low / low.</dd>
+        <dt>Decision needed</dt><dd><strong>Owner choice.</strong></dd>
+      </dl>
+    </div>
+
+    <div class="callout">
+      <strong>How to decide:</strong> the open questions page lists what must be answered first — most
+      decisions above depend on <a href="../questions/index.html">Q-01/Q-05/Q-10</a>. Update this board's
+      statuses (in <code>data/suggestions.json</code>) as choices are made; the board is the gate, not a
+      changelog.
+    </div>
+  </div>
+</section>
