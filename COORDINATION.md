@@ -504,3 +504,5 @@ Parallel proposals remain untouched. Root publication is already the Pages sourc
 ## Session `771fbf79` merge reconciliation
 
 Concurrent main updates conflicted in the appended coordination records. Retained both sides without discarding either session; merged origin/main into this branch. The report describes the base snapshot and integration requests must be rechecked against newer main changes.
+
+After the merge reconciliation, `git pull --rebase` against this session's remote attempted to replay main's integrated history and conflicted; aborted that rebase without discarding either side. The branch already contains its remote tip plus the main merge, so a normal fast-forward push preserves both histories. PR #19 changed CI; the report now records this update.

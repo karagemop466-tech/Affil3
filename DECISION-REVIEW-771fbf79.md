@@ -46,3 +46,7 @@ The repository already contains a buyer-facing site at [GitHub Pages](https://ka
 - `python3 tools/build.py && python3 tools/check_site.py`: 21 HTML files built and checks passed; the build modified a tracked editorial stylesheet, subsequently restored. This is a reproducibility finding, not a clean-output assertion.
 - GitHub Pages API: base commit `9287de5` had a successful build; a later main build was in progress when checked. No end-to-end buyer click or account report was tested.
 - Reviewed official policy and search documentation linked above. No direct access to Amazon or Google account data was available, and no new official product listing verification was performed.
+
+### Concurrent integration update
+
+After this review's base snapshot, main received PR #19: `.github/workflows/verify.yml` now runs the root Node gate and checks the entire working tree rather than the earlier `docs/`-only diff. The Python/editorial rebuild and its stylesheet reproducibility are still not covered by that workflow; the specific `docs/` CI-target finding above is historical, not the current configuration. Following reconciliation, the root gate passed 1,317 checks and the Python checker passed 21 existing pages.
