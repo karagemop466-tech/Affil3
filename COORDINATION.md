@@ -1661,3 +1661,107 @@ can actually be changed. Files added or changed in that folder: the two new guid
 (pixel RMSE 0.012 on the measured file). No image path, file name or artwork was changed, so no page
 reference moved. The generated `assets/img/` copy is refreshed by the build, not hand-edited.
 
+
+## V-02 · Line-by-line re-verification — done
+
+**Dated record:** `data/observations/2026-11-20-0e102530-verification.json`
+
+Every published specification in `data/products.json` was compared field by field against the
+manufacturer page named in that row's `spec_sources`, and every observed ASIN, title and breadcrumb
+against the Amazon detail page, on 2026-11-20.
+
+| Row | Source read | Result |
+| --- | --- | --- |
+| P01 | S11 https://chefman.com/products/turbofry-touch-dual-window-air-fryer | all fields match |
+| P02 | S13 https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360 | all published fields match |
+| P03 | S23 https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1 | all fields match |
+| P04 | S21 https://www.thermomaven.com/products/f1-ace | all published fields match (family page, FLG-025 stands) |
+| P05 | S14 https://chefiq.com/products/iq-sense + S15 https://chefiq.com/pages/new-iq-sense-faq | **drift found and corrected** |
+
+**The drift.** S14 lists `Internal temp range of 32ºF to 212ºF` and `Ambient temp range of 32ºF to
+1,000ºF`. S15 repeats it: `The max temperature for the portion of the probe inserted into the food is
+212˚F … iQ Sense® Gen 3's maximum ambient temperature limit is 1,000ºF.` The register carried the
+ambient figure as the probe's temperature, so the product page and the comparison table rendered
+`32–1000 °F`. Corrected to `32–212 °F`; the 1,000 °F ambient rating moved into the product's summary
+line; a `correction` block was added to the P05 record; filed as FLG-037, K-22 and Q-17 with discovery
+step D-13.
+
+**Short links.** All five `link.amazon` tokens returned `https://www.amazon.com/` when fetched without a
+session on 2026-11-20 — the same behaviour recorded in FLG-004 and FLG-031, and the same behaviour three
+dated rounds now agree on. Recorded as an observation. No link is called valid or invalid; FLG-003 stands.
+Opened as Q-18 with discovery step D-14, because three rounds of the same unsigned-in result is itself a
+reason to try it the way a reader would.
+
+**New irregularity.** FLG-038: the Emeril page states `25 Cooking Pre-sets` in its specification block,
+`10-in-1` in its description and `11-in-1` in an image alt on the same page, while the listing title says
+24; the CHEF iQ page says `Five internal sensors` in its introduction while its specification list
+enumerates four internal plus one ambient. The site publishes no count in either case, because choosing
+between four official statements would be inference.
+
+## V-03 · Collector end-to-end test — done
+
+`tools/collector.mjs` was started locally and driven with one request per defined event. All five
+(`page_view`, `category_view`, `product_view`, `outbound_click`, `guide_read_75`) returned 204 and were
+aggregated into one daily counts file. Four malformed requests — unknown event, property value with
+spaces, path with a space, body over the 2048-byte cap — returned 400 (or closed the connection) and
+were not counted. No IP address, user agent, cookie or identifier is stored.
+
+**What this does not do:** it does not put the collector on the internet. GitHub Pages cannot run a
+server, `analyticsEndpoint` stays empty, and the live site still sends nothing. That is now suggestion
+S-20 (where should it run) rather than an unexamined gap. FLG-009 stands.
+
+## V-04 · Two new guides — done
+
+- `dual-basket-or-single-basket-air-fryer-which-do-you-need` — the two Chefman units compared on
+  published figures only: capacity per drawer rather than in total, the 450 °F Hi-Fry setting against a
+  plain 400 °F maximum, 1700 W as a question about a 15-amp circuit, and the footprint with the drawer
+  open. Two cells are deliberately blank.
+- `how-to-read-air-fryer-specifications-without-being-misled` — quarts, watts, degrees and presets,
+  built around the conflicts already in the register (1700 W vs a listing's 1000 W for the same model
+  number; a 450 °F title claim vs a published 400 °F maximum; preset counts that differ between a
+  manufacturer page and its own listing).
+
+Both are in `sitemap.xml` and `feed.xml` automatically. Guide counts on the front page, the
+what-we-built list and the workflow page are now read from `data/guides.json` instead of typed, so they
+cannot go stale the way the hand-written counts did before (the DX-7 class of bug).
+
+## Site performance — done, recorded as S-21
+
+Every illustration was a 3.3–4.0 MB PNG. Re-encoded to a 256-colour palette at 1200 px they are about
+0.5 MB each (pixel RMSE 0.012 against the originals). A 768 px `-card.jpg` variant derived from each one
+is offered through `srcset`, so grid cards no longer download full-size art. The hero is a 153 KB JPEG.
+Front page: 3,947 KB of images → 1,176 KB. Guides index: 3,568 KB → 442 KB.
+
+Every `<img>` previously carried a hand-typed `width`/`height`, and four of them no longer matched their
+files, which makes the browser reserve the wrong box and the page jump as images arrive. The build now
+reads the real pixel size from each file, and `tools/verify.mjs` checks all 58 declared sizes against
+the files on every run.
+
+## Final gate run on this branch
+
+```
+node tools/build.mjs                    → 34 pages, 7 feed items, 33 sitemap URLs
+node tools/verify.mjs                   → 3898 checks passed, 0 failed
+python3 scripts/check_links.py           → 593 links, no broken internal links
+python3 scripts/check_site.py            → OK (23 pages, all gates pass)
+npm run check                            → pass
+node tools/disclosure-check.mjs          → PASS, 64 published pages
+node tools/archive-check.mjs             → PASS, 100 archived pages, 3152 refs
+python3 tools/link_report.py --strict    → OK
+counterwise (tools/build.py, gate.py, special_links.py, ledger.py) → PASS, 0 findings
+git status --porcelain                   → clean (committed output matches a clean build)
+```
+
+Independent internal-link crawl of the root publication: 57 HTML pages, 2,009 internal links, 0 broken.
+
+## V-05 · Suggestions and questions added — done
+
+- **S-20** — where the analytics collector should actually run, now that it is proved to work. Four
+  options with tradeoffs, effort and risk.
+- **S-21** — image weight. Decided to B on 2026-11-20 and recorded as decided, with the reasoning.
+- **K-22**, **Q-17**, **Q-18**, **D-13**, **D-14**, **D-15**.
+- **FLG-037**, **FLG-038**.
+
+## V-06 · Session summary — done
+
+`EXECUTIVE-SUMMARY-0e102530.md`.
