@@ -106,3 +106,38 @@ FLG-001 9-character tokens · FLG-002 observed IDs differ from tokens · FLG-003
 - Pull request: _pending_
 - Merge result: _pending_
 - GitHub Pages deploy: _pending_ (source `main` at `/`; deploy confirmed after the follow-up merge)
+
+---
+
+# Session `arena63534e5d` board (appended below the boards above; nothing above was edited)
+
+Added when `arena/63534e5d-affil3` was merged with `main`. The boards from session
+`arena-83a43a96-affil3` (PR #1) and session `6249757a` (PRs #4/#6) are kept verbatim
+above. This session executes the reader-facing polish pass ("publication, not generated")
+requested by the project brief, on top of the existing machinery.
+
+## Session registry (this session)
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena63534e5d` | `arena/63534e5d-affil3` | active | Design system + copy rewrite + imagery + front page + suggestions/decision surfaces + CI workflow, all on this branch only |
+
+## Task board (this session)
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| P-01 | Merge origin/main; resolve add/add conflicts by appending boards (nothing discarded) | done | `arena63534e5d` | COORDINATION.md, README.md |
+| P-02 | New design system (typography, palette, layout) | done | `arena63534e5d` | src/assets/style.css |
+| P-03 | Copy rewrite: front page, guides, shop, dashboards — human editorial voice | done | `arena63534e5d` | data/guides.json, tools/build.mjs templates |
+| P-04 | Editorial imagery (AI-generated illustrations, disclosed) | done | `arena63534e5d` | src/assets/img/, editorial policy |
+| P-05 | New irregularity FLG-021 (two submitted tokens observed routing to the same product) | done | `arena63534e5d` | data/flags.json, data/products.json |
+| P-06 | Suggestions + decision-brief surfaces upgraded for review-and-choose flow | done | `arena63534e5d` | data/suggestions.json, generated pages |
+| P-07 | CI workflow: build drift check + gates on push | done | `arena63534e5d` | .github/workflows/publish.yml |
+| P-08 | Re-verify, PR to main, merge, confirm Pages rebuild | done | `arena63534e5d` | (all), COORDINATION.md |
+
+## Work log (this session)
+
+- **2026-11-20 — claim + merge.** Branch started from `847ae37`; `origin/main` had moved to `dd2c4e7` (PR #6). Conflicts on COORDINATION.md and README.md resolved by keeping main's content verbatim and appending this session's sections. Nothing from prior sessions discarded.
+- **2026-11-20 — new observation (FLG-021).** Session `6249757a` observed `B0c8moW59`→`B08DKYBTPH` and `B00hJ57DV`→checkpoint. This session observed `B00hJ57DV`→`B08DKYBTPH` and `B0c8moW59`→checkpoint. Across observations, two different submitted tokens route to the same observed product (`B08DKYBTPH`) and the two observations disagree about which token maps to it. This strengthens FLG-002/FLG-004: the token↔product mapping is unstable and must be confirmed in Associates Central before any per-product claims are made.
+- **2026-11-20 — official sources re-checked** (FTC Endorsement Guides FAQ fetched in full; Google rel="sponsored" doc fetched in full; Amazon Associates Operating Agreement §5 and Program Policies confirmed via official-domain excerpts; ASIN definition confirmed from sell.amazon.com). See sources.html for the register.
+

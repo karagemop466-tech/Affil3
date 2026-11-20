@@ -9,7 +9,8 @@
       "sources": [
         "S04",
         "S05",
-        "S12"
+        "S12",
+        "S13"
       ],
       "manual_step": "Confirm the intended product for each submitted link in Associates Central (or in the Amazon product page you intended) and supply the full 10-character ASIN or product URL."
     },
@@ -120,12 +121,12 @@
       "id": "FLG-012",
       "severity": "medium",
       "title": "No Amazon-owned ASIN definition was retrieved",
-      "detail": "Searches returned third-party explanations of ASINs. No Amazon-owned definitional page was located, so the 10-character rule is supported only by the observed amazon.com identifiers (S04) and secondary sources.",
+      "detail": "Secondary pages were the only ASIN definition available when the first register was written. Update (2026-11-20, session arena63534e5d): an Amazon-owned Associates help page describing ASINs as a 10-digit code and the official text-link format was located and added to the register as S13, and the S12 entry was pointed at it. The page was read via a search excerpt of the official domain, so a manual full-page re-check is still the step that closes this flag.",
       "sources": [
         "S04",
         "S12"
       ],
-      "manual_step": "Locate an Amazon Seller Central or Associates help page that defines the ASIN and add it to the source register."
+      "manual_step": "Open S13 in a browser, confirm the ASIN definition wording in the full page text, and update the source register entry from 'excerpt' to 'fetched'."
     },
     {
       "id": "FLG-013",
@@ -196,6 +197,17 @@
       "detail": "The sandbox token returned HTTP 403 ('Resource not accessible by integration') when switching Pages to main /docs. Pages therefore serves main at the repository root. To publish one site without changing settings, this site is generated at the repository root and the earlier root-level site (PR #1) was moved, unchanged, to legacy/arena-83a43a96/. Nothing was deleted. To serve a different folder, change Settings > Pages.",
       "sources": [],
       "manual_step": "Optional: if you prefer the site under /docs, change Settings > Pages > Source to main /docs, then remove the root copies."
+    },
+    {
+      "id": "FLG-021",
+      "severity": "high",
+      "title": "Two submitted tokens have been observed routing to the same product, across two sessions' observations",
+      "detail": "Session 6249757a observed B0c8moW59 resolving to B08DKYBTPH and B00hJ57DV to a checkpoint page. Session arena63534e5d observed B00hJ57DV resolving to B08DKYBTPH and B0c8moW59 to a checkpoint page. Across observations, two different submitted tokens route to the same observed product and the two observations disagree about which token maps to it. This reinforces FLG-002 and FLG-004: the token-to-product mapping is unstable or rate-limited, and the intended product behind each link can only be established by the owner in a signed-in browser (D-01) or from Associates Central records.",
+      "sources": [
+        "S04",
+        "S05"
+      ],
+      "manual_step": "Owner opens each of the five short links in a signed-in browser, records the product name and ASIN observed, and confirms the intended product for each row (discovery step D-01, question Q-01)."
     }
   ]
 }

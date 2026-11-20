@@ -14,15 +14,22 @@
       "confirmation_date": "",
       "confirmation_source": "",
       "confirmation_status": "Unverified",
-      "flags": ["FLG-001", "FLG-002"],
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
       "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3",
       "observed_asin": "B0CDY277D3",
       "observed_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
-      "sources": ["S05", "S04"],
+      "sources": [
+        "S05",
+        "S04"
+      ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "editorial_note": "The observed listing title reads as a dual-basket design with see-through windows and a sync-finish feature; it calls itself both a basket unit and an oven, which is exactly the naming blur our first guide discusses."
     },
     {
       "id": "P02",
@@ -35,15 +42,22 @@
       "confirmation_date": "",
       "confirmation_source": "",
       "confirmation_status": "Unverified",
-      "flags": ["FLG-001", "FLG-002"],
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
       "observed_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
-      "sources": ["S05", "S04"],
+      "sources": [
+        "S05",
+        "S04"
+      ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "editorial_note": "The observed listing title reads as a large oven-style unit with a French door, twenty-four one-touch presets, and six included accessories — the multi-function profile our fourth guide interrogates."
     },
     {
       "id": "P03",
@@ -56,15 +70,22 @@
       "confirmation_date": "",
       "confirmation_source": "",
       "confirmation_status": "Unverified; no product page observed",
-      "flags": ["FLG-001", "FLG-002", "FLG-004"],
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-004"
+      ],
       "observed_final_url": "",
       "observed_asin": "",
       "observed_title": "Not observed: the link landed on an Amazon 'Continue shopping' checkpoint page with no product.",
       "observed_breadcrumb": "",
       "observed_date": "2026-11-20",
-      "sources": ["S05"],
+      "sources": [
+        "S05"
+      ],
       "tagged_outbound_url": "",
-      "outbound_status": "Not published as a buy link (no product observed)"
+      "outbound_status": "Not published as a buy link (no product observed)",
+      "editorial_note": "No product page was observed for this submitted link, so there is nothing to describe. The row is kept for the record; no buy link is published."
     },
     {
       "id": "P04",
@@ -77,15 +98,22 @@
       "confirmation_date": "",
       "confirmation_source": "",
       "confirmation_status": "Unverified",
-      "flags": ["FLG-001", "FLG-002"],
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
       "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "observed_asin": "B08DKYBTPH",
       "observed_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
-      "sources": ["S05", "S04"],
+      "sources": [
+        "S05",
+        "S04"
+      ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "editorial_note": "The observed listing title reads as a single-basket 8-quart unit with a high-heat setting advertised in the title and a dishwasher-safe basket claim."
     },
     {
       "id": "P05",
@@ -98,15 +126,22 @@
       "confirmation_date": "",
       "confirmation_source": "",
       "confirmation_status": "Unverified",
-      "flags": ["FLG-001", "FLG-002"],
+      "flags": [
+        "FLG-001",
+        "FLG-002"
+      ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",
       "observed_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
       "observed_date": "2026-11-20",
-      "sources": ["S05", "S04"],
+      "sources": [
+        "S05",
+        "S04"
+      ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "editorial_note": "The observed listing title reads as a wireless multi-probe thermometer with app-based range and a high heat-resistance rating advertised in the title."
     }
   ]
 }

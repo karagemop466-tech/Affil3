@@ -3,25 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compliance and gates | Affil3</title>
+<title>Compliance and gates | ShopNow Kitchen</title>
 <meta name="description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/compliance/">
 <meta property="og:title" content="Compliance and gates">
 <meta property="og:description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Affil3">
+<meta property="og:site_name" content="ShopNow Kitchen">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compliance and gates">
+<meta name="twitter:description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero.png">
 <meta name="analytics-endpoint" content="">
+<link rel="icon" type="image/svg+xml" href="/Affil3/assets/img/favicon.svg">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
 
 </head>
 <body data-page="page" >
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
   <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+    <a class="brand" href="/Affil3/"><svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="currentColor"/><g fill="none" stroke="#FAF6EF" stroke-width="4" stroke-linecap="round"><path d="M20 26 h24 a6 6 0 0 1 6 6 v10 a8 8 0 0 1 -8 8 h-20 a8 8 0 0 1 -8 -8 v-10 a6 6 0 0 1 6 -6 z"/><path d="M24 26 v-6 a4 4 0 0 1 4 -4 h8 a4 4 0 0 1 4 4 v6"/><path d="M22 38 h20"/></g></svg><span>ShopNow Kitchen</span></a>
+    <p class="tagline">Kitchen gear, explained like a friend would. Every claim traced to its source.</p>
     <nav class="nav" aria-label="Main">
       <a href="/Affil3/shop/">Shop</a>
       <a href="/Affil3/guides/">Guides</a>
@@ -45,32 +51,51 @@
 <li>Product links carry the tracking ID <code>shopnow047c-20</code> as a tag parameter <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
 <li>No redirect, cloaking or link-shortener is used for outbound links. The click counter does not route clicks <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
 <li>The five submitted short links are shown only as source evidence, not as buy links (FLG-003).</li>
+<li>Illustrations are AI-generated and labeled at the point of use; they are never presented as product photos, and product claims never rest on them.</li>
 </ul>
 <h2>Gates before scaling</h2>
 </div>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure strip above the fold on every page and repeated in the footer</td><td>Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)</td><td>Passed (automated)</td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, with destination and tracking report confirmed</td><td>Manual, requires Associates login</td><td><strong>Pending</strong> (FLG-005)</td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-04</td><td>Every outbound product link uses tag shopnow047c-20</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-05</td><td>No redirect or cloaking pages generated</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-06</td><td>No prices, ratings or availability displayed</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td>Not applicable (ledger empty)</td></tr><tr><td>G-09</td><td>Analytics: only the five listed events; no cookies</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated</td><td>Passed (automated)</td></tr></tbody></table></div>
-<div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code>; a failing gate stops the build from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>
+<div class="table-wrap"><table class=""><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure strip above the fold on every page and repeated in the footer</td><td>Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)</td><td>Passed (automated)</td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, with destination and tracking report confirmed</td><td>Manual, requires Associates login</td><td><strong>Pending</strong> (FLG-005)</td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-04</td><td>Every outbound product link uses tag shopnow047c-20</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-05</td><td>No redirect or cloaking pages generated</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-06</td><td>No prices, ratings or availability displayed</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td>Not applicable (ledger empty)</td></tr><tr><td>G-09</td><td>Analytics: only the five listed events; no cookies</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-11</td><td>Generated files match the registers (no hand-edited HTML drift)</td><td>Automated (CI re-runs build and compares)</td><td>Passed (automated)</td></tr></tbody></table></div>
+<div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code> and re-run by the CI workflow on every push; a failing gate stops the change from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>
 </main>
 <footer class="site-footer">
-  <div class="wrap">
-    <h2 class="foot-h">Dashboards and records</h2>
-    <ul class="foot-links">
-      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
-      <li><a href="/Affil3/categories/">Categories</a></li>
-      <li><a href="/Affil3/sources/">Source register</a></li>
-      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
-      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
-      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
-      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
-      <li><a href="/Affil3/measurement/">Measurement</a></li>
-      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-      <li><a href="/Affil3/about/">About and editorial policy</a></li>
-      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
-      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
-    </ul>
+  <div class="wrap footer-grid">
+    <div class="footer-col footer-about">
+      <p class="footer-brand">ShopNow Kitchen</p>
+      <p class="small muted">Independent kitchen buying guides. We track a small shelf of appliances, we read the official listings, and we show our sources. ShopNow Kitchen is the reader-facing name for this publication. The repository and internal dashboards keep the working name Affil3.</p>
+      <p class="small muted"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
+    </div>
+    <div class="footer-col">
+      <h2 class="foot-h">Guides</h2>
+      <ul class="foot-links">
+        <li><a href="/Affil3/guides/">All guides</a></li>
+        <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer: what should you compare?</a></li>
+        <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
+        <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h2 class="foot-h">Dashboards and records</h2>
+      <ul class="foot-links">
+        <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+        <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
+        <li><a href="/Affil3/categories/">Categories</a></li>
+        <li><a href="/Affil3/sources/">Source register</a></li>
+        <li><a href="/Affil3/questions/">Questions and gaps</a></li>
+        <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+        <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+        <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+        <li><a href="/Affil3/measurement/">Measurement</a></li>
+        <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+        <li><a href="/Affil3/workflow/">Publishing workflow</a></li>
+        <li><a href="/Affil3/about/">About and editorial policy</a></li>
+        <li><a href="/Affil3/privacy/">Privacy notice</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-legal">
     <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <p class="fine">ShopNow Kitchen is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Illustrations are AI-generated and labeled at the point of use. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
   </div>
 </footer>
 <script src="/Affil3/assets/analytics.js" defer></script>

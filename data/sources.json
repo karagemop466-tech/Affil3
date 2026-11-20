@@ -114,13 +114,23 @@
     },
     {
       "id": "S12",
-      "title": "Amazon ASIN definition (Amazon-owned page)",
-      "publisher": "Amazon (not located)",
-      "url": "",
-      "updated": "",
-      "method": "not retrieved",
-      "used_for": "Not used as a verified source. Secondary third-party pages describe ASINs as 10 characters; the observed amazon.com /dp/ identifiers in S04 are all 10 characters. An Amazon-owned definition still needs to be located for manual review (FLG-012).",
-      "status": "not verified"
+      "title": "Amazon.com Associates Central - Help: How do I build a simple text link to a specific item on Amazon?",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Amazon-owned description of ASINs ('ASIN is the 10-digit code that Amazon uses to denote specific products') and the official Associates text-link format (amazon.com/dp/ASIN/...?tag=YOURASSOCIATEID). Update (2026-11-20): an Amazon-owned page was located; it was read as a search excerpt of the official domain, so a manual full-page re-check is still pending (FLG-012).",
+      "status": "verified (excerpt; re-check manually)"
+    },
+    {
+      "id": "S13",
+      "title": "Amazon.com Associates Central - Help: What is the application review process? (tagged links)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Confirms Associates 'special' links are the tagged identifiers (e.g. abcd-20) embedded in product links on the declared site(s), and that tagged links must be recreated from the new application if re-applied. Duplicates S11 for the tagged-link point; retained as a distinct row because FLG-001 cites it for the tag-format comparison.",
+      "status": "verified (excerpt; re-check manually)"
     }
   ]
 }

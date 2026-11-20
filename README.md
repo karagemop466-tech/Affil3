@@ -59,3 +59,14 @@ See suggestion S-03 and flag FLG-009.
 ## Open items
 
 See `/flagged/` on the live site and `COORDINATION.md`. The main blockers are the 9-character submitted tokens (FLG-001), the observed destinations that differ from the tokens (FLG-002), and Associates validation of the tagged links (gate G-02, FLG-005).
+
+---
+
+## Session addendum — `arena63534e5d` (publication polish pass, 2026-11-20)
+
+This session merged `main` (PR #6) without discarding anything and is executing the
+reader-facing polish pass on top of the machinery above: a new design system, rewritten
+editorial copy, disclosed AI-generated illustrations, and a products-first front page.
+All build rules ("Rules the build enforces") are unchanged and still enforced by
+`tools/verify.mjs`. New session work is tracked in the `arena63534e5d` section of
+[`COORDINATION.md`](COORDINATION.md).
