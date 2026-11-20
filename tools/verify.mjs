@@ -42,7 +42,33 @@ for (const s of sources) {
   let host = ''; try { host = new URL(s.url).hostname; } catch {}
   check(`source ${s.id} is https on an allowed official host`, s.url.startsWith('https://') && ALLOWED_SOURCE_HOSTS.has(host), s.url);
 }
-const REQUIRED = ['id', 'category', 'submitted_url', 'submitted_token', 'intended_asin', 'official_listing_url', 'confirmation_date', 'confirmation_source', 'confirmation_status', 'flags', 'observed_final_url', 'observed_asin', 'observed_title', 'observed_breadcrumb', 'observed_date', 'sources', 'tagged_outbound_url', 'outbound_status'];
+const REQUIRED = ['id', 'category', 'submitted_url', 'submitted_token', 'intended_asin', 'official_listing_url', 'confirmation_date', 'confirmation_source', 'confirmation_status', 'flags', 'observed_final_url', 'observed_asin', 'observed_title', 'observed_breadcrumb', 'observed_date', 'sources', 'tagged_outbound_url', 'outbound_status', 'observed_source_id', 'submitted_source_id'];
+
+// A citation only means something if the register entry it names actually covers the claim.
+// This records the kind of source each ID is, so a flag that talks about policy cannot quietly
+// cite a product page and pass unnoticed.
+const sourceKind = (id) => {
+  const rec = SRC.get(id);
+  if (!rec || !rec.url) return 'unknown';
+  const host = (() => { try { return new URL(rec.url).hostname; } catch { return ''; } })();
+  if (host === 'affiliate-program.amazon.com') return 'amazon-policy';
+  if (host === 'link.amazon') return 'submitted-token';
+  if (host === 'www.amazon.com') return 'amazon-listing';
+  if (host === 'developers.google.com') return 'google';
+  if (/ftc\.gov|ecfr\.gov/.test(host)) return 'regulator';
+  if (/fsis\.usda\.gov/.test(host)) return 'food-safety';
+  if (/chefman|cheﬁq|chefiq|thermomaven|emerileveryday/.test(host)) return 'manufacturer';
+  return 'other';
+};
+// Flags that assert a rule about the program, the link format or the search engines must rest on
+// a policy or regulator source, not on a product page.
+const POLICY_FLAG_IDS = new Set(['FLG-003', 'FLG-005', 'FLG-006', 'FLG-007', 'FLG-010', 'FLG-011', 'FLG-013', 'FLG-028', 'FLG-032', 'FLG-033', 'FLG-035']);
+for (const f of flags) {
+  if (!POLICY_FLAG_IDS.has(f.id)) continue;
+  const kinds = (f.sources || []).map((id) => sourceKind(id));
+  check(`flag ${f.id} rests on a policy or regulator source, not a product page`,
+    kinds.some((k) => ['amazon-policy', 'regulator', 'google'].includes(k)), kinds.join(','));
+}
 for (const p of products) {
   for (const k of REQUIRED) check(`${p.id} has field ${k}`, Object.prototype.hasOwnProperty.call(p, k), k);
   check(`${p.id} submitted token length recorded correctly`, p.submitted_token.length === p.submitted_token_length);
