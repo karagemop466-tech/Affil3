@@ -121,7 +121,7 @@
       "publisher": "Emeril Everyday",
       "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
       "method": "fetched 2026-11-20",
-      "used_for": "P02 26 qt / 24.6 L capacity, dimensions 16.9 x 15.8 x 14.8 in, 120 V, 26 qt french-door form. The page states both '25 Cooking Pre-sets' and '24 one-touch presets', so no preset count is published here (FLG-002).",
+      "used_for": "P02 26 qt / 24.6 L capacity, dimensions 16.9 x 15.8 x 14.8 in, 120 V, 26 qt french-door form. The page states both '25 Cooking Pre-sets' and '24 one-touch presets', so no preset count is published here (FLG-024).",
       "status": "verified"
     },
     {
@@ -139,7 +139,7 @@
       "publisher": "CHEF iQ",
       "url": "https://chefiq.com/pages/new-iq-sense-faq",
       "method": "excerpt 2026-11-20 via search result of the official page",
-      "used_for": "Cross-check on P05 battery life. The FAQ says Gen 3 probes hold 'up to 60 hours', while the product page says '70+ hours', so no battery figure is published (FLG-003).",
+      "used_for": "Cross-check on P05 battery life. The FAQ says Gen 3 probes hold 'up to 60 hours', while the product page says '70+ hours', so no battery figure is published (FLG-023).",
       "status": "excerpt"
     },
     {
@@ -148,7 +148,7 @@
       "publisher": "amazon.com",
       "url": "https://www.amazon.com/dp/B08DKYBTPH",
       "method": "observed 2026-11-20",
-      "used_for": "The Amazon listing's own 'item model number' field does not match the manufacturer model for this feature set (FLG-004). Used only as evidence of the mismatch.",
+      "used_for": "The Amazon listing's own 'item model number' field does not match the manufacturer model for this feature set (FLG-025). Used only as evidence of the mismatch.",
       "status": "observed"
     },
     {

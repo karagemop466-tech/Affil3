@@ -272,3 +272,165 @@ you would rather link the subtree differently.
 `main` advanced again by four commits from `bb0a6985` while PR #5 was open. Merged in; the only
 conflict was `COORDINATION.md`, resolved by keeping `main`'s board verbatim in full and appending this
 board below it. Nothing from `bb0a6985` was dropped, including its completion record.
+
+---
+
+# Session `166bf329` — root-site data correction
+
+Scope: `data/products.json`, `data/flags.json`, one string in `tools/build.mjs`, and this board.
+No file owned by another session was edited. The `editorial/` subtree and
+`data/register/products.json` were read only.
+
+| # | Task | Status | Files touched | Notes |
+|---|------|--------|---------------|-------|
+| 1 | Re-resolve all five submitted short links independently | done | (read only) | Each fetched twice, fresh session each time |
+| 2 | Cross-check resolved destinations against `data/products.json` | done | `data/products.json` | Two destinations found transposed — FLG-022 |
+| 3 | Correct P03 and P04, preserving previous values | done | `data/products.json` | `reverification` block added to each record |
+| 4 | Retire superseded FLG-004; record correction as FLG-022 | done | `data/flags.json` | FLG-004 kept, marked `resolved` |
+| 5 | Correct stale "link not resolved" card copy | done | `tools/build.mjs` | One string; a checkpoint is not a dead link |
+| 6 | Rebuild and re-verify | done | generated HTML | 23 pages, **1317 checks, 0 failed** |
+
+## Finding
+
+Two destinations were swapped between adjacent rows of the root-site register:
+
+| Row | Was recorded | Actually resolves to (verified twice) |
+|---|---|---|
+| P03 `B00hJ57DV` | unresolved (checkpoint page) | `B08DKYBTPH` — Chefman 8 Qt TurboFry air fryer |
+| P04 `B0c8moW59` | `B08DKYBTPH` — Chefman 8 Qt air fryer | `B0DHZTCNR5` — ThermoMaven 1 Sec meat thermometer |
+
+Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an
+air fryer as unresolved, and had two category assignments wrong.
+
+**This was already correct in `data/register/products.json`** (editorial records P3 and P4, added
+by an earlier session). The two registers disagreed; the root site was the stale one. All five
+rows now agree across both registers:
+
+| Link | Root site | Editorial register |
+|---|---|---|
+| `B04G1MEwY` | `B0CDY277D3` | `B0CDY277D3` |
+| `B02NbDxp3` | `B09B7SB46R` | `B09B7SB46R` |
+| `B00hJ57DV` | `B08DKYBTPH` | `B08DKYBTPH` |
+| `B0c8moW59` | `B0DHZTCNR5` | `B0DHZTCNR5` |
+| `B0f3GKalj` | `B0DZFD6R9Z` | `B0DZFD6R9Z` |
+
+## Note for the owner: this happened twice
+
+The same two rows were recorded the same wrong way on 2026-11-20 before being corrected. The
+cause is worth fixing at the source, not just in the data: both observations come from following a
+`link.amazon` short link, and the destination is easy to mis-attribute when several are fetched in
+quick succession. Two safeguards are now in place for these rows — the `reverification` block
+preserves the superseded value, and the editorial register provides an independent second read.
+
+## Verification performed
+
+- Five short links, two fetches each, fresh session. Page title and canonical `/dp/` URL read at
+  each destination; stable across both fetches.
+- `node tools/build.mjs && node tools/verify.mjs`: 23 pages, 22 sitemap URLs, 5 feed items,
+  **1317 checks passed, 0 failed**.
+- Shop page now shows exactly five observed ASINs, one per submitted link, with no row unresolved.
+
+## Still open (unchanged by this session)
+
+- **FLG-002 / FLG-003**: whether `shopnow047c-20` is an active Associates ID, and whether the
+  supplied short links were generated under it, remains unconfirmed. Outbound links are still
+  constructed `?tag=` URLs, not links validated in Associates Central.
+- No price, rating, availability or conversion figure is published, and none was introduced.
+
+## Cross-register check (2026-11-20, after PR #10)
+
+Commit `1355b16` (PR #10) fixed two transposed destinations in the **root** register. Its message
+states the editorial register already had both correct. Re-checked here, value by value:
+
+| Slot | Submitted token | Editorial register | Root register (after #10) | Agree |
+|---|---|---|---|---|
+| P1/P01 | `B04G1MEwY` | `B0CDY277D3` Chefman 6 Qt dual | `B0CDY277D3` | yes |
+| P2/P02 | `B02NbDxp3` | `B09B7SB46R` Emeril 26 QT | `B09B7SB46R` | yes |
+| P3/P03 | `B00hJ57DV` | `B08DKYBTPH` Chefman 8 Qt | `B08DKYBTPH` | yes |
+| P4/P04 | `B0c8moW59` | `B0DHZTCNR5` ThermoMaven | `B0DHZTCNR5` | yes |
+| P5/P05 | `B0f3GKalj` | `B0DZFD6R9Z` CHEF iQ Sense | `B0DZFD6R9Z` | yes |
+
+Both registers now agree on all five destinations. The lesson worth keeping: a single fetch that
+returns a checkpoint page is **not** evidence a link is dead, and a register that records one
+observation without a retry will be wrong about it. Both sessions hit this and both corrected it in
+public rather than quietly.
+
+Merge resolution for this merge: the two registers (`data/products.json`, `data/flags.json`) were
+taken from `main` because PR #10 had just verified them independently, and every conflicted HTML
+page was **regenerated** by `node tools/build.mjs` rather than hand-merged. Root gates: 1317 checks,
+0 failed.
+
+---
+
+# Session `f761b123` board (integration check on `arena/f761b123-affil3`)
+
+Registry: session `f761b123`, branch `arena/f761b123-affil3`, status active. Scope on this branch: reconcile with `main`, retest the submitted links, and record the result. Nothing outside `data/observations/` and this board is changed.
+
+## What happened (2026-11-20, UTC)
+
+1. **Claimed and pushed** a full rebuild (T1–T14) on this branch at 8ca5782. That board is superseded by this section.
+2. **Built a parallel pipeline** (`docs/`, `tools/build_site.py`, `tools/check_site.py`, `analytics/collect_server.py`) on a second commit (9a97c19). It duplicated what `main` already publishes and was not served by GitHub Pages, so it was **not shipped**. It remains in history on this branch.
+3. **Opened PR #11** from this branch to `main`. It conflicted, because `main` had moved (PRs #5, #7, #10 merged in the meantime).
+4. **Reconciled** with `origin/main` by keeping `main`'s tree as the single publisher. The merge commit keeps both histories, and the tree matches `main` exactly (no force-push).
+5. **Retested all five short links** (fresh, unauthenticated, redirects followed). Results are in `data/observations/2026-11-20-retest.json`.
+6. **Checked the Pages source.** It is `main` at `/` (root). The `/docs` switch planned earlier is not needed, so T13 is closed without a change.
+
+## Retest result (summary)
+
+| Token | Retest final URL | Matches `main` register? |
+|---|---|---|
+| B04G1MEwY (P01) | amazon.com/dp/B0CDY277D3 | yes |
+| B02NbDxp3 (P02) | amazon.com/dp/B09B7SB46R | yes |
+| B00hJ57DV (P03) | amazon.com/dp/B08DKYBTPH | yes (corrected in PR #10; earlier checkpoint treated as intermittent) |
+| B0c8moW59 (P04) | amazon.com/dp/B0DHZTCNR5 | yes (corrected in PR #10; B08DKYBTPH was a transposition) |
+| B0f3GKalj (P05) | amazon.com/dp/B0DZFD6R9Z | yes |
+
+Observed redirect targets are not intended ASINs. All intended ASINs remain blank, and the owner step to confirm intent is unchanged (FLG-002).
+
+## Decisions
+
+- No product field, outbound link or intended ASIN was changed by this session. The register on `main` is the source of truth.
+- The tag question stays open (FLG-009). Test one Special Link per product in Associates Central before scaling.
+- The duplicate pipeline is not merged. Its content (5 guides, dashboards, checker, receiver) stays in branch history at 9a97c19 and can be recovered if the owner wants a second publication.
+
+## Completion record
+
+- Pull request: https://github.com/karagemop466-tech/Affil3/pull/11
+- Merge result: recorded on the PR (merge commit on `main`).
+- GitHub Pages: source `main` at `/`, status built. Root site unchanged by this PR except for the observations file, which the build does not read.
+
+## Follow-up (same session, after PR #10 merged)
+
+Merging the data fix was not enough: the shop page's summary bullets beneath the table were
+hard-coded text, so after the correction the page stated "Four short links resolved" and "One
+short link (B00hJ57DV) landed on a checkpoint page" directly under a table showing five resolved
+rows. The page contradicted itself.
+
+Fixed by deriving those counts from `products` in `tools/build.mjs` instead of hard-coding them,
+so the summary can no longer drift from the table:
+
+- `<resolved count> of five` short links resolved, computed from `observed_asin`
+- the list of unresolved tokens is generated from the data, and the sentence disappears when none remain
+- the tagged-link count is computed from `tagged_outbound_url`
+
+This is the same failure mode as the data error itself: a claim written once and never
+re-derived. Anything on a generated page that counts rows should be computed from those rows.
+
+Gate after the change: 23 pages, **1316 checks, 0 failed**.
+
+## Follow-up 2: resolved flags were being rendered as open
+
+`data/flags.json` records `status: "resolved"` and a `resolution` field, but `tools/build.mjs`
+printed only `detail`, `sources` and `manual_step`. So FLG-004 and FLG-022 were rendered exactly
+like open flags, and the /flagged/ page still told readers that `B00hJ57DV` "did not resolve to a
+product" — the opposite of what the shop table by then said.
+
+The renderer now emits a `resolved` badge, the `resolution` text, and a muted card style for any
+flag with `status: "resolved"`; it also tolerates a missing `manual_step` instead of printing
+"undefined". FLG-004's title was moved to the past tense, since the condition no longer holds.
+
+**Worth flagging for whoever owns the data model:** a `status` field that nothing reads is worse
+than no field, because it looks like the question has been answered. Either the renderer shows the
+status or the field should not exist.
+
+Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.

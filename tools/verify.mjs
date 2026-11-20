@@ -60,6 +60,9 @@ for (const p of products) {
   if (p.tagged_outbound_url) {
     const expected = `https://www.amazon.com/dp/${p.observed_asin}?tag=${TAG}`;
     check(`${p.id} outbound link is the observed product with tag ${TAG}`, p.tagged_outbound_url === expected, p.tagged_outbound_url);
+  } else if (p.no_buy_link) {
+    // A product may be observed but still carry no buy link, if there is nothing to stand behind.
+    check(`${p.id} withholds its buy link on purpose and says why`, !!p.no_buy_link_reason, p.no_buy_link_reason);
   } else {
     check(`${p.id} no outbound link without an observed product`, !p.observed_asin);
   }

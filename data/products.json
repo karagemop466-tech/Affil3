@@ -25,7 +25,7 @@
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3",
       "observed_asin": "B0CDY277D3",
-      "observed_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Fryer - Black",
+      "observed_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
       "sources": [
@@ -78,7 +78,8 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-005"
+        "FLG-005",
+        "FLG-024"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
@@ -140,12 +141,11 @@
       "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
-        "FLG-002",
-        "FLG-004"
+        "FLG-002"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "observed_asin": "B08DKYBTPH",
-      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
       "observed_date": "2026-11-20",
       "sources": [
@@ -182,6 +182,14 @@
       "blank_reason": {
         "dimensions_in": "The manufacturer page does not list overall dimensions, so none are shown rather than quoting a retailer field.",
         "temp_min_f": "The manufacturer page does not state a minimum temperature."
+      },
+      "reverification": {
+        "date": "2026-11-20",
+        "previous_observed_asin": "",
+        "previous_observed_final_url": "",
+        "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
+        "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
+        "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
       }
     },
     {
@@ -192,9 +200,9 @@
       "brand": "ThermoMaven",
       "category": "cooking-thermometers",
       "shape": "Instant-read probe",
-      "submitted_url": "",
-      "submitted_token": "",
-      "submitted_token_length": 0,
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "submitted_token_length": 9,
       "intended_asin": "",
       "official_listing_url": "",
       "confirmation_date": "",
@@ -202,11 +210,11 @@
       "confirmation_status": "Unverified; no manufacturer source found",
       "flags": [
         "FLG-001",
-        "FLG-007"
+        "FLG-025"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
       "observed_asin": "B0DHZTCNR5",
-      "observed_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, 0.5 F Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ",
+      "observed_title": "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
       "observed_date": "2026-11-20",
       "sources": [
@@ -214,7 +222,7 @@
         "S04"
       ],
       "spec_sources": [],
-      "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+      "tagged_outbound_url": "",
       "outbound_status": "Associates link check pending (gate G-02)",
       "model": "",
       "capacity_qt": "",
@@ -240,6 +248,14 @@
       "no_buy_link_reason": "The submitted short links that resolved in this session landed on two air fryers and one wireless probe. No submitted link resolved to this listing, so it is shown as context only and carries no buy button. See FLG-001.",
       "blank_reason": {
         "all_specs": "No manufacturer product page for this model was located, so every specification is left blank. The NIST and NSF claims appear only on the marketplace listing and are not treated as verified (FLG-007)."
+      },
+      "reverification": {
+        "date": "2026-11-20",
+        "previous_observed_asin": "B08DKYBTPH",
+        "previous_observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
+        "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
+        "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
       }
     },
     {
@@ -261,11 +277,11 @@
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-003"
+        "FLG-023"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",
-      "observed_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000 F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "observed_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
       "observed_breadcrumb": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
       "observed_date": "2026-11-20",
       "sources": [

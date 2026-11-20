@@ -173,7 +173,7 @@ function pickCard(p) {
     p.shape ? `<span>${esc(p.shape)}</span>` : '',
   ].filter(Boolean).join('');
   return `<a class="pick" href="${esc(href('/products/' + p.slug + '/'))}">
-  ${p.flags.includes('FLG-007') ? '<span class="pick-flag">No source page</span>' : ''}
+  ${p.flags.includes('FLG-025') ? '<span class="pick-flag">No source page</span>' : ''}
   <div class="pick-media">${img(PRODUCT_IMAGE[p.id], p.name)}</div>
   <div class="pick-body">
     <span class="pick-brand">${esc(p.brand)} · ${esc(c.name)}</span>
@@ -468,7 +468,7 @@ for (const p of products) {
     <h1 style="font-size:clamp(30px,3.6vw,44px)">${esc(p.name)}</h1>
     <p class="deck">${esc(p.lede)}</p>
     ${buyBox(p)}
-    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-006'])}), so treat it as provisional.` : `No outbound link is published for this product. ${esc(p.note || '')}`}</p>
+    <p class="small muted">${p.tagged_outbound_url && !p.no_buy_link ? `The link carries our Associates tag and is marked sponsored. It has not yet been confirmed in a tracking report (${flagLinks(['FLG-005'])}), so treat it as provisional.` : `No outbound link is published for this product. ${esc(p.note || '')}`}</p>
   </div>
 </section>
 
@@ -694,8 +694,8 @@ add({
 <h2>What is not verified, and why</h2>
 <ul>
 <li><strong>Which product each submitted short link was meant to reach.</strong> The links resolve, but the observed destination is not the same as the owner's intent, and the mapping changed between fetch rounds ${flagLinks(['FLG-001', 'FLG-002'])}.</li>
-<li><strong>Whether the buy links credit a sale.</strong> No link has been clicked inside an enrolled Associates session ${flagLinks(['FLG-006'])}.</li>
-<li><strong>The ThermoMaven specifications.</strong> No manufacturer page exists for that model ${flagLinks(['FLG-007'])}.</li>
+<li><strong>Whether the buy links credit a sale.</strong> No link has been clicked inside an enrolled Associates session ${flagLinks(['FLG-005'])}.</li>
+<li><strong>The ThermoMaven specifications.</strong> No manufacturer page exists for that model ${flagLinks(['FLG-025'])}.</li>
 <li><strong>Whether the Associates account is active and declares this site</strong> ${flagLinks(['FLG-008'])}.</li>
 </ul>
 
@@ -750,11 +750,12 @@ add({
 <section class="page-head"><p class="kicker">Flagged for review</p><h1>What we could not confirm</h1>
 <p class="deck">${esc(flagsDoc.note)}</p></section>
 <div class="status-box"><strong>Nothing here blocks the site.</strong> Each item is a gap between what a reader might assume and what we can actually show. The manual step in each card is the fastest way to close it.</div>
-${flagsDoc.flags.map((f) => `<section class="flag-card" id="${esc(f.id)}">
-  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong></p>
+${flagsDoc.flags.map((f) => `<section class="flag-card${f.status === 'resolved' ? ' is-resolved' : ''}" id="${esc(f.id)}">
+  <p class="flag-head"><span class="badge flag">${esc(f.id)}</span> <span class="badge sev-${esc(f.severity)}">${esc(f.severity)}</span> <strong>${esc(f.title)}</strong>${f.status === 'resolved' ? ' <span class="badge good">resolved</span>' : ''}</p>
   <p>${esc(f.detail)}</p>
+  ${f.status === 'resolved' && f.resolution ? `<p class="manual"><strong>Resolution:</strong> ${esc(f.resolution)}</p>` : ''}
   ${f.sources.length ? `<p class="small"><strong>Sources:</strong> ${f.sources.map(srcLink).join(', ')}</p>` : ''}
-  <p class="manual"><strong>What would close it:</strong> ${esc(f.manual_step)}</p>
+  ${f.manual_step ? `<p class="manual"><strong>What would close it:</strong> ${esc(f.manual_step)}</p>` : ''}
 </section>`).join('\n')}
 </div>`,
 });
@@ -857,7 +858,7 @@ add({
 </div>
 ${table(['Gate', 'Check', 'Method', 'Status'], [
     ['G-01', 'Disclosure above the fold on every page, repeated in the footer', 'Automated in the build', '<span class="badge good">passing</span>'],
-    ['G-02', 'One Special Link per product tested in Associates Central, destination and report confirmed', 'Manual, needs Associates login', `<span class="badge sev-high">pending</span> ${flagLinks(['FLG-006'])}`],
+    ['G-02', 'One Special Link per product tested in Associates Central, destination and report confirmed', 'Manual, needs Associates login', `<span class="badge sev-high">pending</span> ${flagLinks(['FLG-005'])}`],
     ['G-03', 'Every Amazon-hosted link carries rel="sponsored"', 'Automated in the build', '<span class="badge good">passing</span>'],
     ['G-04', 'Every outbound product link uses the tag ' + cfg.trackingId, 'Automated in the build', '<span class="badge good">passing</span>'],
     ['G-05', 'No redirect or cloaking page generated', 'Automated in the build', '<span class="badge good">passing</span>'],
@@ -888,13 +889,13 @@ add({
 <ul>
 <li>We do not claim to have tested anything. There is no test kitchen.</li>
 <li>We do not publish prices or star ratings ${srcLink('S03')}.</li>
-<li>We do not use manufacturer photography. The images are editorial illustrations and are labelled as such ${flagLinks(['FLG-013'])}.</li>
+<li>We do not use manufacturer photography. The images are editorial illustrations and are labelled as such ${flagLinks(['FLG-015'])}.</li>
 <li>We do not run trackers other than our own click counter, which stores no cookies and no personal data.</li>
 </ul>
 <h2>Corrections</h2>
 <p>If a number here is wrong, open an issue in the <a href="https://github.com/karagemop466-tech/Affil3/issues" rel="noopener external">project repository</a>. Corrections are made in the data file, re-verified against the source, and logged. Nothing gets quietly edited.</p>
 <h2>About the byline</h2>
-<p>Pages are published under a team byline, not a person's name, because there is no named editor yet. That is a weakness, and it is logged rather than papered over ${flagLinks(['FLG-011'])}.</p>
+<p>Pages are published under a team byline, not a person's name, because there is no named editor yet. That is a weakness, and it is logged rather than papered over ${flagLinks(['FLG-014'])}.</p>
 </div>
 <p class="band"><a class="btn" href="${esc(href('/how-we-choose/'))}">The six editorial rules</a></p>
 </div>`,
