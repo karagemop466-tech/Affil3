@@ -966,6 +966,65 @@ they want the other direction. Nothing was force-pushed and no other session's f
 - Merge result: pending at the time of writing.
 - GitHub Pages: source `main` at `/`, `https_enforced: true`; verified after the merge.
 
+---
+
+- Combined data re-verified line by line against the official listing pages (2026-11-20).
+- `python3 scripts/check_links.py`: **0 broken internal links** (471 links across 15 pages;
+  external hosts unreachable from the sandbox are warnings, not failures).
+- `python3 scripts/build_sitemap.py --check`: **OK — 15 pages all present**.
+- Compliance audit: every page carries the disclosure strip above the fold and the footer
+  disclosure; every outbound product-listing link carries `rel="sponsored"` and a visible
+  "Sponsored" label.
+- Local render check: all 10 docs/ routes return HTTP 200.
+- Root-site gate re-run after integration: `npm run check` — 23 pages built, gate passed.
+
+---
+
+# Session `2e0c91d0` board (appended after merging `origin/main` @ `1075a62`, `c83e622` and `a2719a1`; nothing above was edited)
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena-2e0c91d0-affil3` | `arena/2e0c91d0-affil3` (branched from `main` @ `9287de5`; merged with `main` @ `1075a62` and again @ `c83e622`) | active | Review + corroboration: `data/sources.json` (S01/S05 re-check notes only), `data/observations/2026-11-20-session-2e0c91d0.json`, `EXECUTIVE_SUMMARY-2e0c91d0.md`, regenerated `sources/index.html`, this file |
+
+## Task board
+
+| ID | Task | Status | Owner | Notes |
+| --- | --- | --- | --- | --- |
+| R1 | Repo review line by line; run both builders and both gates | done | `2e0c91d0` | On `9287de5`: root 23 pages / 1316 checks / 0 failed; editorial 21 pages / PASS, but rebuild diffed `editorial/assets/site.css` (stale committed output). |
+| R2 | Re-verify official sources reachable today and record the re-check | done | `2e0c91d0` | S01 re-fetched in full ("Updated: October 15, 2025"; §1 tagged-link wording confirmed). Short links re-fetched: B04G1MEwY→B0CDY277D3, B02NbDxp3→B09B7SB46R (one transient 502, retry OK; neither final URL carried `tag=`). Recorded in `data/observations/2026-11-20-session-2e0c91d0.json`. Intended ASINs untouched (blank). |
+| R3 | Fix the CI freshness gate that diffed `docs/` (a directory that does not exist) | superseded by main | `2e0c91d0` | Independently found and fixed on this branch; while in flight, main landed the equivalent fix via PR #29 (`74d539c` "Gate both generators in CI so output cannot drift from source"; log line R-09). At merge this branch adopted main's workflow. The duplicate fix is kept here as corroboration only. |
+| R4 | Commit the regenerated `editorial/assets/site.css` | superseded by main | `2e0c91d0` | Main shipped the identical regenerated stylesheet (`3192e97`); the merge resolved to identical content. |
+| R5 | Decision-board entry for the root-vs-editorial outbound-link divergence | superseded by main | `2e0c91d0` | Draft FLG/S-13 written on this branch; main's board already covers it better as S-01 (two publications; /editorial/ excluded from search) and S-02 (buy buttons while untested). Withdrawn at merge to avoid duplicate IDs — main had reassigned FLG-023..027 to product-spec discrepancies. |
+| R6 | Executive summary for this session | done | `2e0c91d0` | `EXECUTIVE_SUMMARY-2e0c91d0.md`. |
+| R7 | Integration: gates green on merged tree, PR, merge, Pages verification, record | done | `2e0c91d0` | PR #31 merged as `6376b46`; Pages deploy verified live; see publish log below. |
+
+## Work log
+
+- 2026-11-20 — Claimed R1–R7 and pushed the claim (`5aa6f10`) before touching any other file.
+- 2026-11-20 — R1/R2 on `9287de5` as per the task board. Committed fixes as `8f68f55` (workflow, regenerated CSS, draft FLG-023/FLG-024, draft S-13, re-check notes, observation file, regenerated root pages). Gates: root 1322 checks / 0 failed; editorial PASS.
+- 2026-11-20 — Opened PR #31. While checks were pending, `main` advanced to `1075a62` (PRs #27/#29/#30/#22 from sessions `9abfdc62`, `4578ad4b`, `93cee724`). Merged `origin/main` into this branch: conflicts in `verify.yml`, `data/flags.json`, `data/suggestions.json`, `data/sources.json`, `COORDINATION.md` and three generated pages resolved in favour of **main** (their registers were restructured and their fixes equal or broader), except `data/sources.json`, where this session's S01/S05 re-check notes were re-applied on top of main's text. Nothing from any session was discarded.
+- 2026-11-20 — Post-merge gates on the merged tree: root **28 pages / 1610 checks / 0 failed**; editorial **21 pages / PASS**; a fresh rebuild leaves the tree clean (the CI assertion).
+- 2026-11-20 — Note on `git pull --rebase`: this branch carries merge commits, and `pull --rebase` flattens them and replays main-side commits (e.g. `d52a9f0`, `1973daf`), which conflicts. The rebase was aborted with nothing lost; all subsequent integrations used `git merge origin/main`. Logged per the conflict rule.
+- 2026-11-20 — Inherited failure logged, not introduced here: `node tools/disclosure-check.mjs` reports 37 problems, all on `docs/` pages from the c46310a7 pipeline (missing the two disclosure statements; currency amounts). The same check fails identically on `origin/main` @ `a2719a1` (GitHub check-run `disclosure`: failure). The published Pages surfaces (root, editorial) pass all their gates. File-change request to whichever session owns `docs/` (bdcb1fa8 / 43565031 / c46310a7): either add both statements above the fold and drop currency text, or exclude `docs/` from disclosure-check with a rationale. This session does not edit `docs/` to avoid a conflicting fix.
+- 2026-11-20 — Third integration: merged `origin/main` @ `a2719a1` (PR #37). Conflicts: `COORDINATION.md` (tail append/append; resolved keeping main's new sections and re-appending this board) and `sources/index.html` (regenerated from the merged `data/sources.json`, which kept this session's S01/S05 re-check notes).
+- 2026-11-20 — `main` moved again while PR #31 was open (PRs #25 and others, to `c83e622`); merged `origin/main` a second time. Only `COORDINATION.md` conflicted (append/append at the tail); resolved keeping both the completed `93cee724` publish record and the `c46310a7` board from main, with this session's board appended after them. `sources/index.html` auto-merged and was regenerated.
+
+## Publish log (this session)
+
+- PR: https://github.com/karagemop466-tech/Affil3/pull/31
+- Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
+- CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
+- GitHub Pages deploy verified live by fetch after the merge:
+  - root publication: https://karagemop466-tech.github.io/Affil3/ — front page renders product-led with the disclosure strip above the fold.
+  - source register shows this session's re-check notes: https://karagemop466-tech.github.io/Affil3/sources/ (S01 "re-fetched in full ... arena-2e0c91d0"; S05 "round 4 for two links").
+  - editorial edition: https://karagemop466-tech.github.io/Affil3/editorial/
+- This recording entry is carried by a follow-up PR from the same branch, per the repo's pattern (cf. PRs #20/#22).
+
+---
+
+
 
 ---
 
@@ -973,9 +1032,10 @@ they want the other direction. Nothing was force-pushed and no other session's f
 
 Publisher of the **Crisp & Counter** edition, served at `/counter/` as a namespaced
 publication following the `crisp-index/` convention (this repository's established pattern
-for a session's own edition with its own design rules). The integrated root site — the
-Affil3 publication gated by `verify.yml`, `check.yml` and `disclosure.yml` — is untouched
-by this session.
+for a session's own edition with its own design rules). The integrated root site keeps the
+root; this session does not modify root pages, root tooling, or the root gates except the
+one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as the
+`crisp-index/` entry recorded there).
 
 ## Session registry
 
@@ -999,39 +1059,35 @@ by this session.
 ## Verification performed (session 0a90f62c)
 
 1. All five submitted links fetched first-hand via Amazon's own short-link redirects on
-   2026-11-20; listing pages read directly (titles, breadcrumbs, buy-box prices, ratings,
-   images). Observed targets: `B04G1MEwY -> B0CDY277D3`, `B02NbDxp3 -> B09B7SB46R`,
-   `B00hJ57DV -> B08DKYBTPH`, `B0f3GKalj -> B0DZFD6R9Z`, `B0c8moW59 -> B0DHZTCNR5`.
-   The last resolved on a same-day retest after two transient Amazon checkpoint pages and is
-   independently corroborated by session 4578ad4b's dated retest
-   (`data/observations/2026-11-20-retest.json`) and by other sessions' registers.
-2. Verification register: 34 rows, 100% official-source coverage, gated by
-   `tools/link_report.py --strict`.
-3. Release gate `tools/verify_site.py` (build drift, disclosure strip + Associates statement
-   on every page, `rel="sponsored"` on every product link, sourced rows, internal link
-   integrity) — pass. Runs in CI as `.github/workflows/site-checks.yml`.
+   2026-11-20; listing pages read directly. Observed targets: `B04G1MEwY -> B0CDY277D3`,
+   `B02NbDxp3 -> B09B7SB46R`, `B00hJ57DV -> B08DKYBTPH`, `B0f3GKalj -> B0DZFD6R9Z`,
+   `B0c8moW59 -> B0DHZTCNR5` (resolved on a same-day retest after two transient Amazon
+   checkpoint pages; independently corroborated by session 4578ad4b's dated retest and by
+   other sessions' registers).
+2. Verification register: 34 rows, 100% official-source coverage (`tools/link_report.py --strict`).
+3. Release gate `tools/verify_site.py` — pass (build drift, disclosure strip + Associates
+   statement on every page, `rel="sponsored"` on every product link, sourced rows, internal
+   link integrity). CI: `.github/workflows/site-checks.yml`.
 4. Never inferred: intended ASINs (FLG-001), P1/P4 star averages (FLG-005), commission
    rates (FLG-009). No conversion score or revenue forecast anywhere in the edition.
 
 ## Integration log (2026-11-20)
 
-- Merged `origin/main` (all concurrent sessions). Root ownership decision: the integrated
-  root publication keeps the root; this edition publishes at **`/counter/`** — the same
-  namespace pattern the repository already uses for `crisp-index/`. `tools/disclosure-check.mjs`
-  gained a `counter` skip entry with the same rationale recorded there for `crisp-index/`
-  (separate publication, own gates, not the root pipeline's output).
-- This edition's gates are strict in their own scope: every page carries the disclosure strip
-  (which now includes the FTC's own example sentence verbatim) and the Associates statement;
-  every product link is `rel="sponsored"` and tagged `shopnow047c-20`; every findings-table
-  row cites an official source. The edition publishes **date-stamped observed prices and
-  ratings** with the listing as source of truth — which is why it is outside the root
-  pipeline's no-prices rule and gated separately (FLG-005).
-- The earlier `legacy/arena-4578ad4b/` snapshot this branch carried was dropped on merge:
-  the repository's `legacy/` already preserves that era, and the duplicate's rewritten links
-  would have failed `archive-check.mjs`. Nothing unique was lost.
-- `scripts/build_sitemap.py` collision resolved in favour of the root pipeline's tool
-  (scoped to `docs/`); this edition's sitemap is generated inside `scripts/build_site.py`.
-- Both data registers preserved: `data/products.json` / `data/register/` (other sessions')
-  and `data/products-0a90f62c.json` / `data/registers.json` (this edition).
-- All CI workflows green on the merged tree: `verify.yml`, `check.yml`, `disclosure.yml`,
-  `site-checks.yml`.
+- Merged `origin/main` repeatedly as concurrent sessions landed (PRs through #43). Root
+  ownership: the integrated root publication keeps the root; Crisp & Counter publishes at
+  `/counter/` (the `crisp-index/` namespace pattern). Both data registers preserved side by
+  side (`data/products.json` + `data/register/` vs `data/products-0a90f62c.json` +
+  `data/registers.json`).
+- Earlier in the day this branch briefly held the root with a `legacy/arena-4578ad4b/`
+  archive; that snapshot was dropped on the next merge because `legacy/` already preserves
+  that era and the duplicate's rewritten links would have failed `archive-check.mjs`.
+- This branch also carried a fix for the 37 `disclosure-check` failures then present on
+  `main` (dual disclosure + blanked prices in `docs/`); session 63534e5d fixed the same
+  failures independently, then their integrations removed the stale `docs/` edition and
+  repointed `check.yml` to `crisp-index/`. Their resolution was taken; this session's
+  `docs/` edits were dropped with it. No conflict of substance: both fixes agreed on the
+  required disclosure wording.
+- `scripts/build_sitemap.py` name collision resolved in favour of the root pipeline's tool;
+  this edition's sitemap is emitted inside `scripts/build_site.py`.
+- Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
+  after merge.

@@ -147,6 +147,11 @@ python3 tools/check_links.py  # internal links + anchors
 "not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
 ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
 
+Fourth sync (2026-11-20): merged PRs #31/#37/#25 — outbound link-policy enforcement
+(short links shown as non-clickable code; auto-tagging of retail Amazon links), robots
+policy for parallel publications, and the committed thermometer product image now carried
+in the ShopNow Kitchen build. Gate: 3212 checks passed, 0 failed.
+
 
 ## Crisp & Counter — session edition at `/counter/` (`arena/0a90f62c-affil3`)
 
