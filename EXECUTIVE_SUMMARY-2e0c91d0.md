@@ -1,72 +1,73 @@
 # Executive summary — session `arena-2e0c91d0-affil3` (2026-11-20)
 
-Review-and-integration pass over the Affil3 repo at `main` @ `9287de5`. Earlier sessions built the
-two published sites and the data registers; this session re-verified what could be re-verified from
-official sources today, fixed what was broken, and added the new findings to the decision board.
-Nothing was inferred: every new field cites a source or is left blank.
+Independent review-and-corroboration pass. This session branched from `main` @ `9287de5`, found
+two pipeline problems, fixed them, and while it worked, `main` moved: sessions `9abfdc62` (PR #29)
+and `93cee724`/`4578ad4b` (PRs #22/#30) landed overlapping and larger fixes. This branch was then
+merged with the new `main` keeping **their** versions of everything they had already fixed, and
+keeping only what this session contributed that main did not have. Nothing was discarded; the
+duplicate fixes are recorded below as corroboration rather than shipped twice.
 
-## State of the project (verified today)
+## What this session found on `main` @ `9287de5` (independently, before seeing PR #29)
 
-- **Live site:** GitHub Pages is enabled for `karagemop466-tech/Affil3` (`main`, root path), status
-  `built`: https://karagemop466-tech.github.io/Affil3/ (root publication "Affil3") and
-  https://karagemop466-tech.github.io/Affil3/editorial/ (reader publication "Countertop & Co.").
-  Confirmed via the GitHub API (`repos/.../pages`) on 2026-11-20.
-- **Tracking ID:** `shopnow047c-20`, matching the Associates `-20` US convention (source register
-  S03). Ownership by the owner's Associates account is still unconfirmed (FLG-011, Q-03).
-- **Products:** all five submitted `link.amazon` short links resolve to amazon.com detail pages.
-  This session independently re-fetched two of them: `B04G1MEwY → B0CDY277D3` (CHEFMAN 6 Qt Dual
-  Basket Air Fryer Oven) and `B02NbDxp3 → B09B7SB46R` (Emeril Lagasse 26QT French Door Air Fryer
-  Toaster Oven). Both match the register exactly; neither final URL carried a `tag=` parameter.
-  Recorded in `data/observations/2026-11-20-session-2e0c91d0.json`. Intended ASINs remain blank
-  everywhere (FLG-001, FLG-002, Q-01) — only the owner can confirm intent.
-- **Policy sources:** the Associates Operating Agreement (S01) was re-fetched in full today;
-  the page still reads "Updated: October 15, 2025" and §1 still defines Special Links as links
-  using the tagged formats Amazon provides. The register's `used_for` text matches the page.
-- **Gates:** root site `node tools/verify.mjs` → 23 pages, 1322 checks, 0 failed. Editorial site
-  `python3 tools/check_site.py` → 21 pages, PASS (internal links resolve, no prices, no ratings,
-  tracking tag on every rendered Amazon link, Associates statement on every page, sitemap complete).
-
-## Irregularities found this session
-
-1. **FLG-023 (fixed): the CI freshness gate checked a directory that does not exist.**
-   `.github/workflows/verify.yml` rebuilt with `tools/build.py` and asserted
-   `git diff --quiet -- docs` — but the builder writes `editorial/`, and the root builder writes
-   the repo root. Proof it mattered: a fresh rebuild today produced a diff in
+1. **The CI freshness gate checked a directory that does not exist.** `verify.yml` asserted
+   `git diff --quiet -- docs` while the Python builder writes `editorial/` and the Node builder
+   writes the repo root. Proof it mattered: a fresh rebuild produced a diff in
    `editorial/assets/site.css` (resolved-flag styles missing from the committed file) while CI on
-   `main` reported success. The workflow now runs **both** builders, asserts the whole tree is
-   clean afterwards, and runs **both** gates. The stale CSS is committed regenerated.
-2. **FLG-024 (open, owner decision): the two publications take opposite outbound-link positions.**
-   The root site renders tagged `View on Amazon` buttons (`?tag=shopnow047c-20`,
-   `rel="sponsored"`, annotated "pending validation, gate G-02"); the editorial site withholds
-   every outbound button pending the same gate. Both are defensible; together they are
-   inconsistent. Decision path added to the board as **S-13** (options A–D, recommendation:
-   withhold on both until G-02 passes, then consolidate to one publication).
+   `main` reported success. — *Concurrently fixed on main by PR #29 ("Gate both generators in CI
+   so output cannot drift from source") and the stale CSS by "Ship the stylesheet the source
+   actually contains". This branch adopts their workflow and their CSS; the independent find is
+   kept as corroboration (their log line R-09 records the same failure).*
+2. **The two published sites took opposite outbound-link positions** (root rendered tagged
+   `?tag=shopnow047c-20` buy buttons "pending gate G-02"; editorial withheld every outbound
+   button). — *Already on main's decision board in better form: S-01 "Two publications in one
+   repository" (current option excludes /editorial/ from search) and S-02 "Buy buttons while
+   links are untested". This session's draft flag/suggestion were withdrawn at merge to avoid
+   duplicate board entries.*
 
-## What still blocks scaling (unchanged, all owner steps)
+## What this session contributes to `main` (unique, shipped in PR #31)
 
-- **G-02 / Q-04:** test one Special Link per product in Associates Central and confirm the
-  destination and a tracking-report row before any scaling (S02).
-- **Q-01/Q-02/Q-03:** intended ASINs behind the five short links, whether they came from the
-  enrolled account, and whether this site is declared on the account.
-- **FLG-009 / S-03:** the analytics collector (`tools/collector.mjs`) exists but has no host;
-  GitHub Pages cannot run it. No events are recorded until an endpoint is deployed.
-- **FLG-013 / S-12:** Search Console needs a Google account owner.
-- **FLG-007 / S-02:** five guides are published; the application-review rule of thumb is "at
-  least 10 posts" (S11).
+- **Round-4 re-observation of two submitted short links** (`data/observations/2026-11-20-session-2e0c91d0.json`):
+  `https://link.amazon/B04G1MEwY` → `https://www.amazon.com/dp/B0CDY277D3` (CHEFMAN 6 Quart Dual
+  Basket Air Fryer Oven with Easy View Windows) and `https://link.amazon/B02NbDxp3` →
+  `https://www.amazon.com/dp/B09B7SB46R` (Emeril Lagasse 26QT French Door Multi-Function Air
+  Fryer Toaster Oven). Both match the register; neither final URL carried `tag=` (consistent with
+  the open tag-attribution question and gate G-02). One transient HTTP 502 on the first attempt at
+  B02NbDxp3; the retry succeeded. Intended ASINs remain **blank** everywhere — observations are
+  not confirmations of intent.
+- **Independent full re-fetch of S01** (Associates Program Operating Agreement,
+  https://affiliate-program.amazon.com/help/operating/agreement): header still reads "Updated:
+  October 15, 2025"; §1 still defines Special Links as links that "must properly use the special
+  'tagged' link formats we provide"; §5 disclosure requirement matches the register's quote.
+  Re-check notes appended to S01/S05 `method` fields in `data/sources.json`, and the regenerated
+  `/sources/` page shows them.
 
-## Files changed this session
+## Verified state after the merge (gates run locally on the merged tree)
 
-`.github/workflows/verify.yml` · `data/flags.json` (+FLG-023, +FLG-024) · `data/suggestions.json`
-(+S-13) · `data/sources.json` (re-check notes on S01, S05) ·
-`data/observations/2026-11-20-session-2e0c91d0.json` (new) · regenerated `flagged/`,
-`suggestions/`, `sources/` pages and `editorial/assets/site.css` · `COORDINATION.md` · this file.
+- Root site: `node tools/build.mjs && node tools/verify.mjs` → **28 pages, 1610 checks, 0 failed**.
+- Editorial site: `python3 tools/build.py && python3 tools/check_site.py` → **21 pages, PASS**
+  (internal links resolve; no prices; no ratings/review counts; every rendered Amazon link carries
+  the tracking tag; Associates statement on every page; sitemap complete; feed/sitemap parse).
+- A fresh rebuild of both leaves the working tree clean — the exact assertion CI now makes.
+- GitHub Pages: enabled for `main` at root, status `built` (GitHub API, 2026-11-20):
+  https://karagemop466-tech.github.io/Affil3/
+
+## What still blocks scaling (unchanged; all owner steps)
+
+- **Gate G-02:** test one Special Link per product in Associates Central; confirm destination and
+  a tracking-report row before scaling (Program Policies, S02 on the register).
+- **Intent confirmation:** intended ASINs behind the five short links (Q-01), whether they came
+  from the enrolled account (Q-02), and whether this site is declared on the account (Q-03).
+- **Analytics:** the collector exists (`tools/collector.mjs`, plus new `tools/analytics-endpoint/`
+  from main) but has no host; GitHub Pages cannot run it. No events are recorded yet.
+- **Search Console:** needs a Google account owner.
 
 ## Source links for manual review
 
-- Operating Agreement: https://affiliate-program.amazon.com/help/operating/agreement (fetched 2026-11-20)
+- Operating Agreement: https://affiliate-program.amazon.com/help/operating/agreement
 - Program Policies: https://affiliate-program.amazon.com/help/operating/policies
 - FTC Disclosures 101: https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers
+- 16 CFR Part 255: https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255
 - Google, qualify outbound links: https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links
-- Submitted links re-fetched: https://link.amazon/B04G1MEwY · https://link.amazon/B02NbDxp3
-- Full register with per-row methods and statuses: https://karagemop466-tech.github.io/Affil3/sources/
-- Flags: https://karagemop466-tech.github.io/Affil3/flagged/ · Decision board: https://karagemop466-tech.github.io/Affil3/suggestions/
+- Re-fetched short links: https://link.amazon/B04G1MEwY · https://link.amazon/B02NbDxp3
+- Live registers: /sources/ · /flagged/ · /suggestions/ · /questions/ on
+  https://karagemop466-tech.github.io/Affil3/

@@ -75,3 +75,28 @@ publisher's own pages and cited by source ID. Neither publication is endorsed by
 Amazon.com, Inc. beyond participation in the Amazon Associates program.
 
 As an Amazon Associate I earn from qualifying purchases.
+
+---
+
+## Session `93cee724` addition (integrated 2026-11-20; nothing above changed)
+
+| Path | Owner | What it is |
+|---|---|---|
+| `/crisp-index/` | `tools/build_site.py` (Python, stdlib) | A third publication surface: shop front page, 5 question-shaped guides (incl. seasonal), compare hub, test queue with verbatim listing quotes, about/methodology, disclosure, and a Workshop group (product register with intended-vs-observed separation, flagged-for-review, suggestions & decisions queue, open questions, campaign ledger & analytics gates) |
+
+Also added at root: [`VERIFICATION.md`](VERIFICATION.md) (line-by-line verification log,
+sources S-01…S-15 with links for manual review) and
+[`EXECUTIVE_SUMMARY-93cee724.md`](EXECUTIVE_SUMMARY-93cee724.md). This session's register is
+[`data/93cee724/`](data/93cee724/) (its own namespace — `data/*.json` above are untouched).
+
+**Build & gates (this surface):**
+
+```bash
+python3 tools/build_site.py   # data/93cee724/*.json -> crisp-index/
+python3 tools/validate.py     # data + compliance gates
+python3 tools/check_links.py  # internal links + anchors
+```
+
+**Find worth knowing:** the Amazon-owned ASIN definition that FLG-012 (board) recorded as
+"not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
+ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
