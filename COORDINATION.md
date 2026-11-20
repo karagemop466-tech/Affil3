@@ -1118,7 +1118,7 @@ this session's register records the reversal instead.
 | A09 | Findability: sitemap, feed, robots, canonicals | done | `counterwise/sitemap.xml`, `counterwise/feed.xml`, `counterwise/robots.txt` | Google sitemap/Atom conventions | R09 fails a build whose sitemap disagrees with the files on disk. Search Console itself is not verified — Q-08, and the meta tag is emitted only when a token exists. |
 | A10 | Decision surfaces: suggestions, questions, flagged, summary | done | `counterwise/suggestions/`, `counterwise/questions/`, `counterwise/review/`, `counterwise/summary/`, `counterwise/transparency/` | as A02 | 23 suggestions with cost/risk/reversibility/options and blank `review_decision` lines for a human; 14 questions each with "how to find out" and the default applied meanwhile; 17 flags published with the action that closes each. |
 | A11 | Tests that prove the gate catches a wrong claim | done | `counterwise/tests/test_gate.py` (31 tests) | n/a | Each test corrupts one register field in a temp copy and asserts the gate notices: intent filled from observation, a titled claim absent from the captured title, a stripped tag, a removed `sponsored`, a paraphrased statement, an invented price, "we tested", a sixth event, a 6th event name in the collector, unprovenanced orders in the ledger. |
-| A12 | PR to `main`, merge, confirm the surface is live | in progress | this section | GitHub | PR opened from `arena/c7a56e3d-affil3`; merged without approval per the coordination rule; Pages needs no change (root source already serves `main:/`). Result recorded below this line after deploy. |
+| A12 | PR to `main`, merge, confirm the surface is live | done | this section | GitHub | PR opened from `arena/c7a56e3d-affil3`; merged without approval per the coordination rule; Pages needs no change (root source already serves `main:/`). Result recorded below this line after deploy. |
 
 ## Verification log (this session)
 
@@ -1177,9 +1177,33 @@ titles are working hypotheses, not popularity claims.
 | Build | `built 30 pages · inputs ff767d84aa189146` |
 | Gate | `12 rules · 0 findings · PASS` |
 | Tests | `Ran 31 tests … OK` |
-| PR | recorded immediately below once opened |
-| Merge | recorded once merged |
-| Live | recorded once fetched from Pages |
+| PR | [#42](https://github.com/karagemop466-tech/Affil3/pull/42) — opened from `arena/c7a56e3d-affil3`, body records the four-surface layout and the inherited-check analysis |
+| Merge result | **merged** at 2026-11-20T06:15:26Z, merge commit `0fa1549dff27e55d80d8401f66375dfb6b4291a0`, `gh pr merge 42 --merge`; 80 files added under `counterwise/`, 0 deletions against `main` |
+| Pages | `build_type=legacy`, source `main:/` (unchanged — no repointing needed, and none performed); latest build `status=built`, `commit=0fa1549`, `error=null`, created 2026-11-20T06:15:27Z |
+| Live | verified by fetching <https://karagemop466-tech.github.io/Affil3/counterwise/> and <https://karagemop466-tech.github.io/Affil3/counterwise/gear/> — both render, directory URLs resolve, disclosure strip appears above the fold on both, all four product links carry `?tag=shopnow047c-20` |
+| Checks at merge | `gate: success` (this surface's workflow: rebuild → committed-output equality → 12-rule gate → Special Links → ledger rule → 31 tests). `disclosure: success` after this surface adopted the FTC example sentence and removed its three `$` cost cells. `check-site: failure` — **pre-existing on `main`**, see below |
+
+## Inherited failures this session did not cause and did not paper over
+
+- `check-site` (`.github/workflows/check.yml`) fails on `main` independently of this branch:
+  `gh api repos/:owner/:repo/commits/8be69d1/check-runs` on the commit before my merge already returned
+  `check-site: failure` and `disclosure: failure`. Cause is structural and outside my scope:
+  `scripts/build_sitemap.py` walks a `docs/` directory that is not in the tree (a `.gitignore` rule
+  `/docs/` added by another session excludes it, while the root `README.md` still advertises `/docs/`
+  as a published surface). The fix belongs to whoever owns `docs/` — either un-ignore and re-commit that
+  surface, or point the check at the tree that actually ships. I did not edit their workflow, their
+  script, or `.gitignore`, because making a shared gate green by widening its blind spot is the one
+  move worse than the failure.
+- `disclosure` briefly flagged 2 real problems of *mine* — my pages lacked the FTC example sentence the
+  check requires verbatim, and three suggestions-board cost cells printed `$` amounts. Both fixed on my
+  side (config `disclosure.ftc_example_sentence`, cost cells spelled in words), not exempted:
+  `counterwise pages scanned: 30, failing: none`.
+- Two CI runs of my own workflow failed first and were fixed rather than ignored: `__pycache__` had been
+  committed by `git add -A` before the root `.gitignore` arrived from `main` (byte-identical rebuild then
+  differed only in `.pyc`), and `data/register.json` was a builder output written *into* the hashed input
+  directory, which made the freshness check unfixably stale. Both are now prevented structurally: the
+  builder cleans its own outputs and refuses to leave any in `data/`, and `assets-src/` is hashed too, so a
+  stylesheet edit marks the site stale exactly like a data edit does.
 - Merge result: **merged 2026-11-20T05:56:18Z** as merge commit `6376b46` (`gh pr merge 31 --merge`). The PR head `7984f64` contained `origin/main` @ `a2719a1` in full, so nothing on main was reverted or discarded by the merge.
 - CI on the merge commit `6376b46`: "Gate the published Pages site" **success**; "check-site" (sitemap + internal links) **success**; Pages `build`/`deploy` **success**; `pages.status = built`. The "Disclosure and archive integrity" run **failed** on `docs/` pages only — the identical pre-existing failure carried by `origin/main` @ `a2719a1` and `c83e622` before this merge (37 problems: missing statements + currency text in the c46310a7 `docs/` pipeline). Not introduced by PR #31; logged above with a file-change request to the sessions that own `docs/`.
 - GitHub Pages deploy verified live by fetch after the merge:
