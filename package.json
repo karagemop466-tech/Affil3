@@ -1,0 +1,33 @@
+{
+  "name": "affil3-shopnow-047",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Amazon Associates publishing site for kitchen gear: register-driven static site, compliance gate, and a self-hosted event collector. Zero runtime dependencies.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/checks.mjs",
+    "verify": "node scripts/build.mjs && node scripts/checks.mjs",
+    "serve": "node scripts/serve.mjs --port 8080",
+    "collect": "node scripts/collect.mjs --port 8788",
+    "links": "node scripts/links.mjs",
+    "new-guide": "node scripts/new-guide.mjs"
+  },
+  "files": [
+    "scripts",
+    "register",
+    "content",
+    "docs"
+  ],
+  "keywords": [
+    "affiliate",
+    "amazon-associates",
+    "static-site",
+    "seo",
+    "compliance"
+  ],
+  "license": "UNLICENSED"
+}
