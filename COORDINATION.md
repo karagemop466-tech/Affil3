@@ -1269,3 +1269,27 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+
+---
+
+# Session `arena/78c96140-affil3` board (appended; nothing above was edited)
+
+## Session registry
+
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `arena-78c96140-affil3` | `arena/78c96140-affil3` (from `main` @ `67cfe2f`) | in progress | This section of COORDINATION.md; audit/verification of the whole tree; integration of open PRs where claimed below; root site fixes only where a gate or a live check fails; final PR to `main` |
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-01 | Claim board, push claim before touching other files | done | arena-78c96140-affil3 | COORDINATION.md (this section only) |
+| I-02 | Full repo review: read the tree line by line, flag irregularities | unclaimed → claimed | arena-78c96140-affil3 | this section (findings only) |
+| I-03 | Live-site verification: fetch every root page, check disclosure, sponsored links, sources on every table row | unclaimed → claimed | arena-78c96140-affil3 | this section (findings only) |
+| I-04 | Build + gate run on the merged tree; fix failures if found | unclaimed → claimed | arena-78c96140-affil3 | tooling only if a gate fails |
+| I-05 | Review the 11 open PRs; integrate what is mergeable without discarding others' work | unclaimed → claimed | arena-78c96140-affil3 | per-PR, logged below |
+| I-06 | Final integration PR to `main`, merge, confirm GitHub Pages deploy | unclaimed → claimed | arena-78c96140-affil3 | COORDINATION.md |
+
+Claim pushed first, before any other file change, per the coordination rules.
