@@ -1,0 +1,62 @@
+name: build-and-gate
+
+# The publishing workflow IS the compliance gate (Priority 5 of the brief): a page that breaks a
+# rule does not merely fail a check someone reads later, it cannot reach main at all.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Validate every register file parses
+        run: |
+          sh -e -c 'for f in register/*.json register/schema/*.json; do node -e "JSON.parse(require(\"fs\").readFileSync(process.argv[1],\"utf8\"))" "$f" || { echo "INVALID JSON: $f"; exit 1; }; done'
+          echo "registers parse: $(ls register/*.json | wc -l) files"
+
+      - name: Rebuild the site from the register
+        run: node scripts/build.mjs
+
+      - name: Run the compliance gate
+        run: node scripts/checks.mjs
+
+      - name: Published output must match the register
+        run: |
+          # shop/ is committed so Pages serves exactly what was reviewed. If a branch edits the
+          # register without rebuilding, or hand-edits a page, this fails: the only supported way
+          # to change a page is to change the data and rebuild.
+          # build-info.json and feed.xml are excluded because both carry the build timestamp.
+          if ! git diff --exit-code --quiet -- shopnow ':(exclude)shop/build-info.json' ':(exclude)shopnow/feed.xml'; then
+            echo "::error::shop/ is stale or hand-edited. Run 'node scripts/build.mjs' and commit the result."
+            git diff --stat -- shopnow | head -40
+            exit 1
+          fi
+          if git ls-files --others --exclude-standard -- shopnow | grep -q .; then
+            echo "::error::untracked files in shop/ - generated output must be committed, not left dangling"
+            git ls-files --others --exclude-standard -- shopnow | head -20
+            exit 1
+          fi
+
+      - name: Static output audit
+        run: |
+          echo "html pages:  $(find shopnow -name '*.html' | wc -l)"
+          echo "sitemap urls:$(grep -c '<loc>' shopnow/sitemap.xml)"
+          echo "feed items:  $(grep -c '<item>' shopnow/feed.xml || true)"
+          test -s shopnow/index.html -a -s shopnow/sitemap.xml -a -s shopnow/feed.xml -a -s shopnow/robots.txt
+          # nothing may reference an image we did not generate ourselves
+          ! grep -R "media-amazon" shopnow --include=*.html | grep -E "src=|href=|content=" > /dev/null
+          # no third-party script may have crept in
+          ! grep -R "<script" shopnow --include=*.html | grep -v "assets/" | grep -v "ld+json" > /dev/null
+          echo "output audit ok"

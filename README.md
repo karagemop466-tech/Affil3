@@ -206,3 +206,52 @@ privacy-preserving analytics collector (GitHub Pages cannot host it — FLG-006)
 
 See [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md) and
 `counter/desk/coordination/` on the live site.
+## Session `59aebafb` addition (integrated 2026-11-20; nothing above changed)
+
+| Path | Owner | What it is |
+|---|---|---|
+| `/shopnow/` | `scripts/build.mjs` (Node, stdlib only) | A fourth independent publication: publication front page, 6 question-shaped buyer guides, 4 product records with the intended-vs-observed ASIN split, 4 decision-shape clusters, a 7-row shape comparison, methodology / about / disclosure / privacy, and the full review board — 22 suggestions with paths and trade-offs, 22 open questions with the step that closes each, 10 flagged items, source register, dashboard, executive summary. Client-side search over a static index; RSS, sitemap, robots, humans; JSON-LD on every page |
+
+**Why `/shopnow/` and not `/shop/`.** `/shop/` is another session's hub page (`shop/index.html`). The
+first relocation attempt here overwrote it during a local rebuild; the file was restored
+byte-for-byte (`diff` against `origin/main:shop/index.html` → identical) and this surface moved to a
+free path. The rule that prevents a repeat: **check `git ls-tree origin/main -- <path>` before choosing
+a mount point, and treat any non-empty result as claimed.** This checker walks only `shopnow/`, so a
+rebuild cannot reach into a neighbour's tree.
+
+**Build and gate** (npm-namespaced so `build` / `verify` / `check` keep meaning the root site):
+
+```bash
+npm run shop:build       # register/*.json + shopnow/content/*.md -> shopnow/
+npm run shop:check       # 11 gates; exit 1 blocks the merge
+npm run shop:verify      # build + gate
+npm run shop:links       # derive Special Links from the register; refuses a 9-char ASIN
+npm run shop:new-guide   # scaffold the next guide in the cadence
+npm run shop:serve       # http://localhost:8080/Affil3/shopnow/
+npm run shop:collect     # optional self-hosted event collector on :8788
+```
+
+The 11 gates: the Associates sentence above the fold *and* in the footer of every page; `tag=` plus
+`rel="sponsored nofollow"` on every Amazon anchor; **no currency figure anywhere**; no testing or
+superlative language on any buyer-facing page; no Amazon CDN asset and no third-party script; a
+source row behind every published value; intended and observed identifiers kept in separate fields;
+no broken internal link; sitemap/feed parity; no orphan page. Authored assets live in
+`shopnow/content/assets/` and are copied into the output, because a hand-written file inside a generated
+directory is one clean step from destruction — which is how this session lost them once.
+
+**Where this session differs from the others, deliberately.** `/shopnow/` publishes no
+specifications at all: a listing title is an observation, not a verified spec, and `/editorial/`
+quotes listing-sourced capacity and wattage under its own `S06`. Both readings are dated and
+attributed; neither was averaged into the other. Also unlike `/editorial/`, this surface *does*
+render buy buttons, built as tagged `?tag=shopnow047c-20` Special Links derived from the resolved
+ASINs rather than from the supplied short links.
+
+**Cross-verification, and an adopted correction.** `data/register/products.json` and
+`register/products.json` independently recorded the same resolved ASIN set
+(`B0CDY277D3`, `B09B7SB46R`, `B08DKYBTPH`, `B0DZFD6R9Z`), the same `redirect_had_tag: false`, and the
+same blank *intended* ASIN on every row. This session also adopted a correction from this board: a
+checkpoint interstitial is not evidence a link is dead. `B0c8moW59` was therefore retried to **six**
+attempts across two windows (3 checkpoint, 3 transport) before the negative was recorded — it held,
+and that row stays off the shop floor as UNRESOLVED rather than guessed.
+
+As an Amazon Associate I earn from qualifying purchases.

@@ -1,0 +1,214 @@
+{
+  "$comment": "Single source of truth for brand and navigation. The builder reads only this file - no page copy hard-codes the name, the tagline, or the base URL.",
+  "brand": "ShopNow 047",
+  "brand_origin": "derived from the supplied tracking ID 'shopnow047c-20' because the repository contained no brand asset. See SG-25 / Q-16 - change one string and rebuild.",
+  "tagline": "Checked, not hyped.",
+  "promise": "We do not pretend to have tested these. We tell you exactly what to look for at the listing, in about ninety seconds.",
+  "desk_name": "The ShopNow 047 desk",
+  "base_url": "https://karagemop466-tech.github.io/Affil3/shopnow",
+  "base_url_note": "Mounted at /shopnow/ because Pages publishes main:/ and sibling sessions already own / (root site), /editorial/, /legacy/ and /shop/. An earlier attempt to mount at /shop/ collided with a sibling's existing shop/index.html; that file was restored byte-for-byte and this surface moved to a free path. Swap to a production domain by editing base_url and rebuilding - every canonical, sitemap, feed and OG tag follows.",
+  "language": "en-US",
+  "marketplace": "Amazon.com (US)",
+  "tracking_id": "shopnow047c-20",
+  "tracking_id_status": "format accepted; existence on the account unverified - see S09 / Q-06",
+  "disclosure": {
+    "required_text": "As an Amazon Associate I earn from qualifying purchases.",
+    "placement": [
+      "masthead strip on every page, above the fold",
+      "footer of every page",
+      "inline line adjacent to every sponsored link",
+      "FTC example wording quoted in the footer of every page"
+    ],
+    "source_id": "S01",
+    "quote_verified_verbatim": true,
+    "link_level_text": "Sponsored - we may earn a commission if you buy after clicking.",
+    "rule": "Amazon requires the first sentence, clear and prominent (Operating Agreement s.5). The FTC separately requires the material connection to be clear and conspicuous and says a hyperlinked DISCLOSURE control is not enough (S03, S04), so both the Amazon sentence and the FTC's own example wording are rendered inline on every page, not linked to. The repo-wide disclosure gate (tools/disclosure-check.mjs) checks for both strings on every HTML page in the repository, including archived trees; this surface satisfies it.",
+    "ftc_example_sentence": "In the FTC's own example wording: “I get commissions for purchases made through links in this post.”"
+  },
+  "nav": {
+    "reader": [
+      {
+        "label": "Guides",
+        "href": "/guides/"
+      },
+      {
+        "label": "Air fryers",
+        "href": "/clusters/basket-air-fryers/"
+      },
+      {
+        "label": "Oven-style",
+        "href": "/clusters/oven-style-multi-cookers/"
+      },
+      {
+        "label": "Compare",
+        "href": "/compare/"
+      },
+      {
+        "label": "How we decide",
+        "href": "/methodology/"
+      }
+    ],
+    "machinery_label": "Inside the project",
+    "footer_groups": [
+      {
+        "label": "Shop",
+        "items": [
+          {
+            "label": "All products",
+            "href": "/products/"
+          },
+          {
+            "label": "Dual-basket",
+            "href": "/clusters/dual-basket/"
+          },
+          {
+            "label": "Temperature & probes",
+            "href": "/clusters/getting-the-temperature-right/"
+          }
+        ]
+      },
+      {
+        "label": "Read",
+        "items": [
+          {
+            "label": "Guides",
+            "href": "/guides/"
+          },
+          {
+            "label": "Editorial standards",
+            "href": "/about/"
+          },
+          {
+            "label": "Methodology",
+            "href": "/methodology/"
+          },
+          {
+            "label": "Feed",
+            "href": "/feed.xml"
+          }
+        ]
+      },
+      {
+        "label": "Inside the project",
+        "items": [
+          {
+            "label": "Dashboard",
+            "href": "/dashboard/"
+          },
+          {
+            "label": "Suggestions",
+            "href": "/suggestions/"
+          },
+          {
+            "label": "Open questions",
+            "href": "/decisions/"
+          },
+          {
+            "label": "Flagged for review",
+            "href": "/flagged-for-review/"
+          },
+          {
+            "label": "Executive summary",
+            "href": "/executive-summary/"
+          }
+        ]
+      },
+      {
+        "label": "Legal",
+        "items": [
+          {
+            "label": "Disclosure",
+            "href": "/disclosure/"
+          },
+          {
+            "label": "Privacy",
+            "href": "/privacy/"
+          },
+          {
+            "label": "Source register",
+            "href": "/sources/"
+          },
+          {
+            "label": "Search",
+            "href": "/search/"
+          }
+        ]
+      }
+    ]
+  },
+  "categories": [
+    {
+      "slug": "air-fryers",
+      "name": "Air fryers",
+      "blurb": "Baskets, dual baskets, and the oven-style ones that take over the counter."
+    },
+    {
+      "slug": "cooking-instruments",
+      "name": "Cooking instruments",
+      "blurb": "Probes and timers - the part that decides whether the appliance worked."
+    }
+  ],
+  "clusters": [
+    {
+      "slug": "basket-air-fryers",
+      "name": "Basket air fryers",
+      "question": "Will it fit what you actually cook, and can you wash it?",
+      "tags": [
+        "single basket"
+      ],
+      "category": "air-fryers"
+    },
+    {
+      "slug": "dual-basket",
+      "name": "Dual basket",
+      "question": "Two zones, one outlet: what do you gain and what do you lose?",
+      "tags": [
+        "dual basket"
+      ],
+      "category": "air-fryers"
+    },
+    {
+      "slug": "oven-style-multi-cookers",
+      "name": "Oven-style multi-cookers",
+      "question": "More functions, more counter. Where does your kitchen land?",
+      "tags": [
+        "oven-style / French door multi-function"
+      ],
+      "category": "air-fryers"
+    },
+    {
+      "slug": "getting-the-temperature-right",
+      "name": "Getting the temperature right",
+      "question": "How do you know it is done, without cutting into it?",
+      "tags": [
+        "accessory - wireless probe thermometer"
+      ],
+      "category": "cooking-instruments"
+    }
+  ],
+  "cadence": {
+    "proposed": "2 guides per week for 6 weeks, then re-cut the queue from Search Console queries",
+    "source_of_truth": "content/guides/*.md front-matter date; the builder sorts, sitemaps and feeds from it",
+    "status": "not yet running - see SG-08, SG-29"
+  },
+  "imagery": {
+    "policy": "Original generated editorial art only. No Amazon product imagery is hotlinked or downloaded, because Program Content images come through the licensed API/widget path and no credentials exist here (S01, S02).",
+    "credit_line": "Illustration: original editorial art generated for this site. Not product photography. No affiliation with or endorsement by any brand named here is implied.",
+    "source_id": "S01"
+  },
+  "voice": {
+    "banned_words": [
+      "we tested",
+      "our lab",
+      "we tested it",
+      "hands-on for hours",
+      "editor's choice",
+      "best overall",
+      "guaranteed",
+      "Amazon recommends",
+      "as seen on"
+    ],
+    "reason": "No testing occurred (FLG-006); superlatives are unverifiable; and s.5 forbids implying Amazon endorses us. checks.mjs enforces this list.",
+    "source_id": "S01"
+  }
+}

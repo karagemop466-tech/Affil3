@@ -1,0 +1,61 @@
+{
+  "$comment": "Ingest contract for automated product research. It exists so the automation has somewhere honest to write when - and only when - it has a permitted source. No instance of this schema is populated in this repository, because no authorised data source is connected. Absence is the correct state, not a missing file.",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "research_snapshot",
+  "type": "object",
+  "required": ["captured_at_utc", "source_system", "source_endpoint", "eligibility_basis", "items", "ttl_hours", "retention_note"],
+  "additionalProperties": false,
+  "properties": {
+    "captured_at_utc": {"type": "string", "format": "date-time", "description": "When the data was actually retrieved. Publishes a visible 'data as of' stamp; a snapshot older than ttl_hours must be hidden, not labelled."},
+    "source_system": {"type": "string", "enum": ["creators_api", "paapi5", "associates_reports_export", "manual_owner_entry"], "description": "Only these four may ever appear. A scraped page is not a source system and the validator rejects anything else."},
+    "source_endpoint": {"type": "string", "description": "Exact operation or report path, e.g. 'Items' or 'Reports > Transactions'. Needed so a row can be re-checked a month later."},
+    "eligibility_basis": {
+      "type": "object",
+      "required": ["api_access_confirmed", "confirmed_on"],
+      "properties": {
+        "api_access_confirmed": {"type": "boolean"},
+        "confirmed_on": {"type": "string", "format": "date"},
+        "note": {"type": "string"}
+      },
+      "description": "The credential state at capture time. If false, no item may carry a price, availability, rating or review field, and the build refuses to render one."
+    },
+    "ttl_hours": {"type": "integer", "minimum": 1, "maximum": 24, "default": 24, "description": "Maximum staleness tolerated before a field is suppressed rather than displayed with a date. The 24-hour ceiling is set by Amazon's caching rule as described in the Program Policies; the policy wording itself remains an unresolved register row (S02)."},
+    "retention_note": {"type": "string", "description": "Where the raw response was stored and for how long, so a published figure can be traced to bytes."},
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["asin", "asin_provenance", "title_observed"],
+        "additionalProperties": false,
+        "properties": {
+          "asin": {"type": "string", "pattern": "^[A-Z0-9]{10}$", "description": "Ten characters. A 9-character token is not an ASIN and will not validate - the failure that this project's own five links hit."},
+          "asin_provenance": {"type": "string", "enum": ["owner_confirmed", "api_response", "observed_redirect"]},
+          "title_observed": {"type": "string", "description": "Verbatim listing title. Reproduced as an observation; never rewritten into a claim."},
+          "brand": {"type": ["string", "null"]},
+          "price_amount": {"type": ["number", "null"], "description": "Only with eligibility_basis.api_access_confirmed true."},
+          "price_currency": {"type": ["string", "null"]},
+          "availability": {"type": ["string", "null"]},
+          "star_rating": {"type": ["number", "null"], "minimum": 0, "maximum": 5},
+          "review_count": {"type": ["integer", "null"], "minimum": 0},
+          "commission_amount": {"type": ["number", "null"]},
+          "commission_basis_points": {"type": ["number", "null"], "description": "Record the rate Amazon reported, per category, with its date. Never a rate looked up on a third-party table."},
+          "specifications": {"type": ["object", "null"], "description": "Key/value as returned by the API. Free text describing a product is not a specification."}
+        }
+      }
+    },
+    "derived_metrics_allowed": {
+      "type": "array",
+      "description": "Which computed figures may be published from this snapshot. Empty by default.",
+      "items": {"type": "string", "enum": ["price_delta_vs_prior_snapshot", "rating_delta_vs_prior_snapshot", "review_velocity"]}
+    },
+    "prohibited_uses": {
+      "const": ["no search-volume or trend claim may cite this snapshot", "no revenue forecast may be built from it", "no superiority claim ('best', 'top-rated') may be derived from a rating or review count alone"]
+    }
+  },
+  "validation_rules": [
+    "An item with asin_provenance 'observed_redirect' may be used for identification and navigation only: no price, no rating, no spec block renders on a product page until the owner or the API confirms the ASIN.",
+    "captured_at_utc + ttl_hours earlier than build time means every volatile field is suppressed at render, and the page says 'not current' rather than showing the stale value.",
+    "Any item where every volatile field is null is a legal snapshot - this is exactly the state the shipped register is in today."
+  ]
+}

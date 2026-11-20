@@ -1,0 +1,76 @@
+{
+  "$comment": "Special Link register. The brief's instruction is explicit: test ONE link per product in the enrolled Associates workflow, confirm destination and that the tracking report shows the session, then scale. The test cannot be run from this environment, so every row is 'candidate' and none is marked validated.",
+  "format": {
+    "template": "https://www.amazon.com/dp/{ASIN}?tag={TRACKING_ID}&linkCode=ll1&language=en_US",
+    "rationale": "Uses the /dp/ form plus the tag parameter, which is the shape the resolved listing URLs in this session already used. linkCode=ll1 and language are carried as Amazon's own generated links carry them.",
+    "rel_attribute": "sponsored nofollow noopener noreferrer",
+    "source_id": "S01"
+  },
+  "tracking_id": "shopnow047c-20",
+  "links": [
+    {
+      "product_id": "P01",
+      "asin_used": "B0CDY277D3",
+      "asin_provenance": "observed redirect target, not owner-confirmed (FLG-001)",
+      "candidate_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20&linkCode=ll1&language=en_US",
+      "status": "candidate - untested in an enrolled workflow",
+      "validated": false,
+      "destination_confirmed": false,
+      "tracking_report_confirmed": false
+    },
+    {
+      "product_id": "P02",
+      "asin_used": "B09B7SB46R",
+      "asin_provenance": "observed redirect target, not owner-confirmed (FLG-001)",
+      "candidate_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20&linkCode=ll1&language=en_US",
+      "status": "candidate - untested in an enrolled workflow",
+      "validated": false,
+      "destination_confirmed": false,
+      "tracking_report_confirmed": false
+    },
+    {
+      "product_id": "P03",
+      "asin_used": "B08DKYBTPH",
+      "asin_provenance": "observed redirect target, not owner-confirmed (FLG-001)",
+      "candidate_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20&linkCode=ll1&language=en_US",
+      "status": "candidate - untested in an enrolled workflow",
+      "validated": false,
+      "destination_confirmed": false,
+      "tracking_report_confirmed": false
+    },
+    {
+      "product_id": "P04",
+      "asin_used": null,
+      "asin_provenance": "unresolved (FLG-004)",
+      "candidate_url": null,
+      "status": "withheld - no destination exists to link to",
+      "validated": false,
+      "destination_confirmed": false,
+      "tracking_report_confirmed": false,
+      "note": "No link is published for an unknown product. Publishing a link to a guessed ASIN is the one error that would take the whole register down with it."
+    },
+    {
+      "product_id": "P05",
+      "asin_used": "B0DZFD6R9Z",
+      "asin_provenance": "observed redirect target, not owner-confirmed (FLG-001)",
+      "candidate_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20&linkCode=ll1&language=en_US",
+      "status": "candidate - untested in an enrolled workflow",
+      "validated": false,
+      "destination_confirmed": false,
+      "tracking_report_confirmed": false
+    }
+  ],
+  "one_link_test_protocol": {
+    "purpose": "Confirm destination and attribution for a single product before generating the rest, exactly as the brief requires.",
+    "steps": [
+      "1. In Associates Central open Links > Special Links and generate a product link for the P01 ASIN with tracking ID shopnow047c-20.",
+      "2. Compare that generated URL against candidate_url above. If they differ, the generated one wins and becomes the template - record the difference here.",
+      "3. Open a clean incognito window, paste the link, and confirm the listing shown is the intended ASIN.",
+      "4. Add an item to the basket (do not purchase). Return to Associates Central > Reports > Transactions and confirm a session or click appears with the tracking ID.",
+      "5. Record date, browser, outcome in test_log below. Only then mark validated and scale to P02-P05.",
+      "6. If step 4 shows nothing, the failure is in attribution, not in the page - stop and re-check the site registration (Q-07) before publishing more links."
+    ],
+    "do_not_conclude": "Do not record the supplied link.amazon short links as invalid. Their compliance status is unresolved (FLG-003); this session observed no tag on the final URL, which is not the same as proof that no attribution was carried.",
+    "test_log": []
+  }
+}

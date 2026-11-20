@@ -1,0 +1,464 @@
+{
+  "$comment": "Suggestion register - a review surface, not a changelog. 'implemented: true' means the change is already live in this build because the brief mandated it. Everything else is a proposed path with the trade-off spelled out, so you can choose before anything else moves. Recommended is an opinion with a reason attached, never an instruction.",
+  "date": "2026-11-20",
+  "legend": {
+    "status": {
+      "implemented": "live in this build",
+      "awaiting choice": "options below are ready; nothing decided for you",
+      "blocked": "cannot proceed until a named question is answered"
+    },
+    "effort": "s = under an hour of owner time or one commit · m = a day · l = needs budget or product access"
+  },
+  "suggestions": [
+    {
+      "id": "SG-01",
+      "priority": 1,
+      "title": "Lead with products, not with the verification process",
+      "hook": "The home page is a shop window, not a control room.",
+      "problem": "A source register is a compliance artifact. A buyer landing on it learns nothing and leaves. The brief's first reader-facing instruction is to lead with products.",
+      "proposal": "Rebuild the landing page as a publication front page: masthead, one-line promise, the four resolved products as cards, two clusters, the guide rack. Every dashboard surface moves to one nav group plus the footer.",
+      "paths": [
+        {"id": "a", "label": "Publication front page (built)", "description": "Editorial hero + product cards + guide rack; register lives at /dashboard/.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "nothing measurable; auditors see one less page above the fold"},
+        {"id": "b", "label": "Register-first, shop-later", "description": "Keep the table on the home page and add marketing copy around it.", "effort": "s", "impact": "low", "risk": "high for bounce", "gives_up": "the buyer audience entirely"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["scripts/build.mjs", "content/home.md"],
+      "measure": "exit rate on / vs /guides/* after 28 days of real traffic",
+      "depends_on": []
+    },
+    {
+      "id": "SG-02",
+      "priority": 1,
+      "title": "Turn the no-data constraint into the brand",
+      "hook": "Nobody on the internet is telling you which number to look for. We are.",
+      "problem": "We cannot publish prices, ratings or test results (S02, S07). Most affiliate pages win on those three things, so competing on them loses.",
+      "proposal": "Position the site as the 90-second judge: it hands the reader the specific spec, question, and physical check that decides a purchase at the listing page. Verification becomes the voice, not the footnote.",
+      "paths": [
+        {"id": "a", "label": "Adopt 'checked, not hyped' as the line", "description": "Masthead tagline, guide structure, and product cards all built around what to check.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "'best air fryer' head-terms, which this site could not honestly win anyway"},
+        {"id": "b", "label": "Wait for API access, then be a normal review site", "description": "Hold the editorial voice until prices and ratings are legally refreshable.", "effort": "l", "impact": "unknown", "risk": "medium (the API gate is behind the sales it enables)", "gives_up": "months of runway"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["register/site.json", "content/guides/*.md"],
+      "measure": "scroll depth on guides; branded-search appearance in Search Console later",
+      "depends_on": ["Q-11"]
+    },
+    {
+      "id": "SG-05",
+      "priority": 1,
+      "title": "Withhold unresolved products instead of guessing them",
+      "hook": "A blank card beats a wrong card.",
+      "problem": "P04 did not resolve. Any card for it would have to invent a name, a category, or an image.",
+      "proposal": "Publish P04 as a register row with status UNRESOLVED and no product page. Show it in the dashboard and on Flagged for Review, never on the shop floor.",
+      "paths": [
+        {"id": "a", "label": "Withhold (built)", "description": "No product page, no nav entry, one line in the register.", "effort": "s", "impact": "medium", "risk": "none", "gives_up": "one page of inventory"},
+        {"id": "b", "label": "Guess from the token", "description": "Infer a category from the brief's air-fryer framing and write a generic card.", "effort": "s", "impact": "high", "risk": "severe", "gives_up": "every claim this site makes about itself"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["register/products.json", "scripts/build.mjs"],
+      "measure": "zero fabricated rows - asserted by checks.mjs, not by eyeball",
+      "depends_on": ["Q-02"]
+    },
+    {
+      "id": "SG-06",
+      "priority": 1,
+      "title": "Cluster the catalog by decision shape, not by brand",
+      "hook": "Buyers choose a shape first and a brand last.",
+      "problem": "Four products with three brands invite a brand index, which is how affiliate sites end up looking like catalogues.",
+      "proposal": "Two clusters already reflect the actual fork in the road - 'Basket & dual-basket' and 'Oven-style multi-cookers' - with a third, 'Getting the temperature right', carrying the probe thermometer. Clusters are generated from a tag on each product row, so adding product five is a data edit.",
+      "paths": [
+        {"id": "a", "label": "Decision-shape clusters (built)", "description": "basket / oven-style / instruments.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "brand landing pages"},
+        {"id": "b", "label": "Add brand pages too", "description": "Chefman, Emeril Lagasse, CHEF iQ pages with one product each.", "effort": "s", "impact": "low", "risk": "medium - thin pages are a quality liability", "gives_up": "nothing but crawl budget"},
+        {"id": "c", "label": "Add price-band clusters once prices exist", "description": "Under 100 dollars / 100-200 dollars / premium.", "effort": "s", "impact": "medium", "risk": "blocked by SG-14", "gives_up": "nothing; waits for the API"}
+      ],
+      "recommended": "a now, b never until there is inventory, c after SG-14",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["register/products.json", "scripts/build.mjs"],
+      "measure": "cluster page impressions vs guide pages in Search Console",
+      "depends_on": ["Q-03", "Q-04"]
+    },
+    {
+      "id": "SG-08",
+      "priority": 2,
+      "title": "Publish question-shaped guides on a cadence, and register every one",
+      "hook": "Two a week, filed into the sitemap and the feed the same day, or the site is a one-off.",
+      "problem": "The brief asks for a cadence plus measurement so the *next* topic comes from queries rather than instinct. One batch of six guides is a launch, not a cadence.",
+      "proposal": "Guides are markdown in content/guides/ with a front-matter date and cluster. The builder sorts by date, writes the sitemap entry, and emits the RSS item - so publishing is: add file, run build, commit. Suggested cadence: 2/week for 6 weeks, then re-cut topics from Search Console.",
+      "paths": [
+        {"id": "a", "label": "Cadence owned by the register (built)", "description": "One file = one guide = sitemap + feed + nav, enforced by the build.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "manual editing of generated files"},
+        {"id": "b", "label": "Add a scheduled publish job", "description": "GitHub Actions publishes a pre-written queue on a timer.", "effort": "m", "impact": "medium", "risk": "medium - publishes without a human", "gives_up": "the manual commit step; see SG-31 for the gate options"}
+      ],
+      "recommended": "a immediately, b only after Q-21 is answered",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["content/guides/", "scripts/build.mjs"],
+      "measure": "guides published per week; indexed pages in Search Console",
+      "depends_on": ["Q-17", "Q-21"]
+    },
+    {
+      "id": "SG-10",
+      "priority": 2,
+      "title": "Give search engines one site to index",
+      "hook": "Canonical, sitemap, feed, and a schema block on every page - or the crawler guesses.",
+      "problem": "'Make it findable' means one host, one canonical URL family, and machine-readable structure. A Pages subpath with no sitemap and no schema is indexable by accident only.",
+      "proposal": "Generated per page: canonical to the chosen base URL, meta description, Open Graph, JSON-LD (Article on guides with an author object, ItemList on clusters, BreadcrumbList throughout), robots.txt referencing the sitemap, and feed.xml with full items. Sitemap covers every HTML page exactly once.",
+      "paths": [
+        {"id": "a", "label": "Structured, single-origin (built)", "description": "Everything above, plus checks that fail the build on a page missing canonical, description, or disclosure.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "nothing"},
+        {"id": "b", "label": "Skip schema, keep sitemap", "description": "Leaner HTML, less machine-readable.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "eligibility for rich results and any future FAQ treatment"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["scripts/build.mjs"],
+      "measure": "Indexed - Discovery report; sitemap coverage errors",
+      "depends_on": ["Q-16", "Q-09"]
+    },
+    {
+      "id": "SG-12",
+      "priority": 2,
+      "title": "On-site search over the whole register",
+      "hook": "A shop you can search feels stocked even when it is small.",
+      "problem": "At five products and six guides, navigation carries the load. But the brief wants a shop that can absorb a real catalog, and a static host has no query engine.",
+      "proposal": "The build emits a small search index (title, tags, section, blurb) and a client-side filter page. No server, no third-party script, no data leaving the page.",
+      "paths": [
+        {"id": "a", "label": "Static index + client filter (built)", "description": "search/search.json loaded by a 40-line script.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "typo tolerance and ranking quality"},
+        {"id": "b", "label": "Algolia DocSearch or similar", "description": "Typo-tolerant, instant, free tier.", "effort": "m", "impact": "medium", "risk": "medium - third-party script on a page that also carries affiliate links", "gives_up": "self-containment and some privacy posture"},
+        {"id": "c", "label": "No search until 40+ pages", "description": "Leave the page out.", "effort": "s", "impact": "low", "risk": "low", "gives_up": "a shop affordance"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["scripts/build.mjs", "docs/assets/search.js"],
+      "measure": "searches with zero results - the cheapest missing-topic signal you will get",
+      "depends_on": ["Q-04"]
+    },
+    {
+      "id": "SG-13",
+      "priority": 2,
+      "title": "Product research automation - the part that is not yet allowed to run",
+      "hook": "Everything the brief wants automated is gated behind one credential.",
+      "problem": "Trending-product discovery, price analysis, review mining, and commission modelling all need catalog data. There is no API key here, and the eligibility gate itself is disputed (S07). Scraping the listing pages instead would breach the terms this project is built to honour.",
+      "proposal": "Ship the *shape* of the automation without the data: a typed ingest schema (research_snapshot), a validation path, and a stub that refuses to run without credentials. When credentials arrive, the generator has somewhere honest to write.",
+      "paths": [
+        {"id": "a", "label": "Schema + refusal (built)", "description": "register/schema/ defines the ingest contract; the build ignores it when absent.", "effort": "s", "impact": "medium", "risk": "none", "gives_up": "no automated research today - which is already true"},
+        {"id": "b", "label": "Scrape listings for now", "description": "Parse public pages to fill prices and ratings.", "effort": "m", "impact": "high", "risk": "unacceptable - contract breach and stale-data exposure", "gives_up": "the program"},
+        {"id": "c", "label": "Buy a third-party dataset", "description": "Paid Amazon data APIs exist.", "effort": "m", "impact": "high", "risk": "medium - a licence you may not resell display rights under", "gives_up": "the free-tier posture; needs Q-24 budget"}
+      ],
+      "recommended": "a; revisit b/c only with counsel, never casually",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["register/schema/research_snapshot.schema.json"],
+      "measure": "n/a - this row measures readiness, not performance",
+      "depends_on": ["Q-09", "Q-24"]
+    },
+    {
+      "id": "SG-14",
+      "priority": 4,
+      "title": "The price-display decision, made explicitly",
+      "hook": "Three ways to show a number; two of them are a violation.",
+      "problem": "A dated price reads as a claim that outlives its own accuracy. Suppressing prices costs click-through. Amazon-served widgets cost design control.",
+      "paths": [
+        {"id": "a", "label": "Suppress entirely (built)", "description": "No numbers; the reader is sent to the listing where the price is Amazon's own, current, and theirs to display.", "effort": "s", "impact": "medium", "risk": "lowest", "gives_up": "price-anchored copy and 'under 100 dollars' angles"},
+        {"id": "b", "label": "Amazon-served link/widget", "description": "Let Amazon render the price inside its own component.", "effort": "m", "impact": "high", "risk": "low once approved", "gives_up": "layout control; needs a real domain (Q-07)"},
+        {"id": "c", "label": "API with 24h refresh + visible timestamp", "description": "The fully compliant version of a normal review site.", "effort": "l", "impact": "high", "risk": "medium - a failed refresh must *hide* the price, not stale it", "gives_up": "nothing except money and uptime"}
+      ],
+      "recommended": "a until credentials exist, then c with a hide-on-stale rule",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["scripts/checks.mjs (the currency guard would be lifted in c)"],
+      "measure": "click-through per card, before and after",
+      "depends_on": ["Q-10", "Q-12"]
+    },
+    {
+      "id": "SG-16",
+      "priority": 5,
+      "title": "Keep every outbound link sponsored, tagged and one-hop",
+      "hook": "One format, machine-enforced, so 'we always comply' is a fact about a build rather than a hope.",
+      "problem": "Compliance failures in this program are usually mechanical: a link built by hand, missing its tag, or wrapped in a redirect that hides the destination.",
+      "proposal": "The builder is the only place a commerce anchor is written. Every anchor gets rel=\"sponsored nofollow\", target=_blank, the tracking tag, a visible 'Sponsored' chip, and a link-level disclosure line. checks.mjs fails the build if any amazon.com anchor deviates, or if any cloaker/redirect wrapper appears.",
+      "paths": [
+        {"id": "a", "label": "Generator is the only writer (built)", "description": "Hand-written commerce anchors are impossible to merge without failing CI.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "the ability to paste a link into prose quickly"},
+        {"id": "b", "label": "Own-domain redirect stub for link management", "description": "/go/p01 → amazon. Enables click counting and later link swaps.", "effort": "m", "impact": "medium", "risk": "high - cloaking concerns and a redirect layer the agreement discourages; needs review", "gives_up": "link transparency in the address bar"}
+      ],
+      "recommended": "a; do not choose b without reading Section 1 and the policies first",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["scripts/build.mjs", "scripts/checks.mjs"],
+      "measure": "build failures caught in CI (should trend to zero)",
+      "depends_on": ["Q-06"]
+    },
+    {
+      "id": "SG-17",
+      "priority": 3,
+      "title": "Get off github.io before monetising",
+      "hook": "A github.io subpath is a preview, not a publication.",
+      "problem": "Associates approval is per site URL; search engines and readers both treat a subpath of a code-hosting domain as low-trust. The brief wants organic traffic from real buyers.",
+      "proposal": "Register a domain, point Pages at it, set base_url in register/site.json, rebuild, and register the exact URL in Associates Central. Everything generated keys off base_url, so it is a one-line change plus a DNS record.",
+      "paths": [
+        {"id": "a", "label": "Custom domain now", "description": "Cheapest lever with the largest effect on trust and approval.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "nothing but ~10/year"},
+        {"id": "b", "label": "Stay on github.io for the pilot", "description": "Publish, measure, defer the spend.", "effort": "s", "impact": "medium", "risk": "medium - approval risk", "gives_up": "the ability to earn while testing"}
+      ],
+      "recommended": "a, before any traffic work",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["register/site.json"],
+      "measure": "approval status; index rate of the domain",
+      "depends_on": ["Q-07", "Q-06"]
+    },
+    {
+      "id": "SG-19",
+      "priority": 3,
+      "title": "Masthead and voice: choose the honest fight",
+      "hook": "'We tested it' is a sentence this project cannot say. So don't imply it.",
+      "problem": "The fastest way to look like every other affiliate site is to promise hands-on testing that did not happen. That is both a trust failure and an FTC/Amazon exposure.",
+      "proposal": "Keep the byline as a desk, keep the disclosure of AI-assisted drafting on the methodology page, and make the editorial promise something we can actually keep: specific checks, plain numbers to look for, no superlatives.",
+      "paths": [
+        {"id": "a", "label": "'Checked, not hyped' desk voice (built)", "description": "No fake expertise claims; earns trust by being useful.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "instant authority"},
+        {"id": "b", "label": "Buy a real expert", "description": "One contracted chef/tester with a name and a bio.", "effort": "l", "impact": "high", "risk": "low if genuine", "gives_up": "budget; needs Q-12 and Q-24"},
+        {"id": "c", "label": "Write as if tested", "description": "Conventional affiliate voice.", "effort": "s", "impact": "short-term", "risk": "unacceptable - fabricated endorsement", "gives_up": "everything else"}
+      ],
+      "recommended": "a now, b when there is revenue",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["content/about.md", "content/methodology.md"],
+      "measure": "returning visitors; brand queries",
+      "depends_on": ["Q-11", "Q-13"]
+    },
+    {
+      "id": "SG-20",
+      "priority": 3,
+      "title": "Original imagery, never hotlinked product art",
+      "hook": "Amazon's images are Program Content. Our pages should carry our own.",
+      "problem": "Pulling m.media-amazon.com thumbnails into a static build is the easy move and the one that uses catalog imagery outside the licensed path. It also makes every card look like a screenshot.",
+      "proposal": "Generate original editorial art for the hero and the three clusters, alt-texted plainly, credited as illustration and not product photography. Product cards carry no image until API-served imagery with a licence is available.",
+      "paths": [
+        {"id": "a", "label": "Original generated art, labelled (built)", "description": "3 editorial images, no brand marks, captioned as illustration.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "photographic proof of the specific SKU"},
+        {"id": "b", "label": "Hotlink listing images", "description": "Real product photos from Amazon's CDN.", "effort": "s", "impact": "medium", "risk": "medium - outside the sanctioned Program Content path", "gives_up": "the clean licence story"},
+        {"id": "c", "label": "Shoot our own", "description": "Photos of products you own.", "effort": "l", "impact": "high", "risk": "none", "gives_up": "nothing; needs Q-12 yes"}
+      ],
+      "recommended": "a now, c the moment product access exists",
+      "status": "implemented (a)",
+      "implemented": true,
+      "files": ["docs/assets/img/"],
+      "measure": "engagement depth on cards with art vs without",
+      "depends_on": ["Q-12"]
+    },
+    {
+      "id": "SG-21",
+      "priority": 4,
+      "title": "Build the test protocol before the test products",
+      "hook": "A repeatable 40-minute protocol is the asset; the products are interchangeable.",
+      "problem": "If hands-on testing ever starts without a fixed protocol, the results will be unscaleable and uncomparable - and it will look like marketing copy retrofitted to a preference.",
+      "proposal": "Define now: the wing test, the frozen-fry test, the noise reading, the counter-footprint measurement, the dishwasher-fit check, the preheat time. Each guide already names these as reader checks; a protocol turns them into our measurements.",
+      "paths": [
+        {"id": "a", "label": "Publish the protocol as content, run it later", "description": "Readers can use it too - the honest version of a review methodology page.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "nothing; it is a promise with a date"},
+        {"id": "b", "label": "Skip testing forever", "description": "Remain the 90-second judge.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "the moat every serious site has"}
+      ],
+      "recommended": "a, gated on Q-12",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["content/methodology.md"],
+      "measure": "pages/visit of protocol vs other guides",
+      "depends_on": ["Q-12"]
+    },
+    {
+      "id": "SG-22",
+      "priority": 5,
+      "title": "Make the compliance gate block the thing, not the person",
+      "hook": "A rule nobody can merge around is the only rule that survives a busy week.",
+      "problem": "Disclosure and policy checks that live in a checklist get skipped once the site has twenty pages. Here they live in the build.",
+      "proposal": "checks.mjs asserts on every build: disclosure present on all pages, sponsored rel on all commerce anchors, tag present, no currency pattern, no superlative or endorsement language, no unverified field populated, no broken internal link, sitemap/feed parity. CI runs it on every PR to main.",
+      "paths": [
+        {"id": "a", "label": "Hard fail in CI (built)", "description": "Red build = no merge.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "the ability to ship a knowingly non-compliant page (good)"},
+        {"id": "b", "label": "Warn only", "description": "Report and continue.", "effort": "s", "impact": "low", "risk": "medium", "gives_up": "the guarantee"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["scripts/checks.mjs", ".github/workflows/ci.yml"],
+      "measure": "violations caught pre-merge / violations shipped (target: 0)",
+      "depends_on": []
+    },
+    {
+      "id": "SG-24",
+      "priority": 3,
+      "title": "Seasons: plan the calendar you can actually staff",
+      "hook": "Holiday-kitchen content in November is late by two months; dorm content is early by three.",
+      "problem": "The brief lists seasons as a polish path. Seasonal pages age badly if published after the intent passes, and a stale seasonal page on a young site is worse than no seasonal page.",
+      "proposal": "Date-stamp seasonal guides and give them a review_by field the build reads; an expired seasonal page loses its hero placement automatically and keeps its URL (no 404 churn).",
+      "paths": [
+        {"id": "a", "label": "Evergreen first, seasonal from January", "description": "Build the six permanent guides, then schedule dorm/back-to-school for the July window and holiday for the September window.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "this year's holiday traffic, which we would not rank for anyway"},
+        {"id": "b", "label": "Chase the live season", "description": "Publish holiday content this month.", "effort": "m", "impact": "low", "risk": "medium - thin, late content on a new domain", "gives_up": "the evergreen queue"}
+      ],
+      "recommended": "a",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["content/guides/", "register/site.json"],
+      "measure": "seasonal page impressions in its window vs the year before",
+      "depends_on": ["Q-15"]
+    },
+    {
+      "id": "SG-25",
+      "priority": 3,
+      "title": "Brand name: keep the derived one or replace it",
+      "hook": "'ShopNow 047' came from your tracking ID. It is a placeholder with a story.",
+      "problem": "The repo had no brand asset. Deriving the name from the tracking ID made the site coherent in one move, but it is not a name you chose, and it will appear in the feed title, JSON-LD publisher, and masthead.",
+      "proposal": "Swap it by editing one string in register/site.json and rebuilding; the builder touches every surface at once. If a domain has been bought, name the site after it.",
+      "paths": [
+        {"id": "a", "label": "Keep ShopNow 047", "description": "Free, available as a handle, consistent with the tracking ID you already chose.", "effort": "s", "impact": "low", "risk": "low", "gives_up": "a category-meaningful name"},
+        {"id": "b", "label": "Pick a category name", "description": "e.g. a kitchen-desk name, better topical signal.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "the tracking-ID story"},
+        {"id": "c", "label": "Name it after the domain you own", "description": "Send me the domain.", "effort": "s", "impact": "medium", "risk": "none", "gives_up": "nothing"}
+      ],
+      "recommended": "c if a domain exists, otherwise b",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["register/site.json"],
+      "measure": "branded query volume after 60 days",
+      "depends_on": ["Q-16"]
+    },
+    {
+      "id": "SG-26",
+      "priority": 4,
+      "title": "Measure before automating optimisation",
+      "hook": "The ledger is empty on purpose. That is the finding.",
+      "problem": "An optimisation loop with no input optimises nothing and produces confident nonsense - exactly the 'AI slop' failure the brief names. First-party reports are the only authorised input.",
+      "proposal": "register/ledger.json defines the columns (timestamp, source, channel, eligible_sessions, clicks, reported_orders, provenance) and contains zero rows. Rows may be added only from an authorised first-party report, with the report name and access date attached. No conversion score, no revenue forecast, no modelled EPC.",
+      "paths": [
+        {"id": "a", "label": "Empty, typed, provenanced (built)", "description": "Schema ready, values withheld.", "effort": "s", "impact": "high", "risk": "none", "gives_up": "a fake baseline"},
+        {"id": "b", "label": "Seed with industry averages", "description": "Typical CTR 2-5%, typical conversion 5-10%.", "effort": "s", "impact": "high", "risk": "severe - unsupportable numbers become the plan", "gives_up": "the reason to measure"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["register/ledger.json"],
+      "measure": "rows added only with provenance; rows added without = 0",
+      "depends_on": ["Q-17"]
+    },
+    {
+      "id": "SG-27",
+      "priority": 2,
+      "title": "Navigation labels for readers, not for operators",
+      "hook": "'Guides', not 'Editorial pipeline'.",
+      "problem": "Parallel pass row from the brief. Operator vocabulary leaks into reader-facing UI and immediately reads as a dashboard.",
+      "proposal": "Reader nav: Guides, Air fryers, Compare, How we decide. One collapsed group for the machinery: the dashboard, register, flags and suggestions, placed in the footer and repeated once in the nav so the audit is reachable but not in the way.",
+      "paths": [
+        {"id": "a", "label": "Reader-first with one machine group (built)", "description": "Four reader items, one 'Inside the project' group.", "effort": "s", "impact": "medium", "risk": "low", "gives_up": "nothing"},
+        {"id": "b", "label": "Hide the machinery entirely", "description": "Repo-only, no site pages.", "effort": "s", "impact": "low", "risk": "medium - the transparency claim loses its evidence", "gives_up": "the trust signal that the register is public"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["register/site.json", "scripts/build.mjs"],
+      "measure": "nav click distribution",
+      "depends_on": []
+    },
+    {
+      "id": "SG-28",
+      "priority": 4,
+      "title": "Click and conversion measurement on a static host",
+      "hook": "Count the click, not the person.",
+      "problem": "Parallel pass row from the brief, and the hardest one here: Pages serves no backend, so there is nowhere to write an event. Third-party analytics is the usual answer and it is the answer that makes privacy pages necessary.",
+      "proposal": "Ships in two halves. (1) docs/assets/track.js: intercepts commerce-link clicks, no cookies, no IP capture, no fingerprinting, per-tab session token in sessionStorage, bounded local buffer, and a POST to an endpoint only when one is configured. (2) scripts/collect.mjs: a 90-line stdlib Node endpoint that appends NDJSON and serves a totals view. Wire them with one env var. Five events are defined in register/measurement.json and nothing is invented if an event never fires.",
+      "paths": [
+        {"id": "a", "label": "Self-host the shipped collector", "description": "One command on any VPS; data stays yours.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "uptime responsibility"},
+        {"id": "b", "label": "Plausible/Umami instead", "description": "Mature, maintained, still first-party-ish.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "custom event semantics unless configured"},
+        {"id": "c", "label": "GA4", "description": "Free, ubiquitous, ties to Ads.", "effort": "s", "impact": "medium", "risk": "medium - consent obligations and a third-party script beside affiliate links", "gives_up": "the privacy posture this site advertises"},
+        {"id": "d", "label": "Local buffer only", "description": "Instrumentation present, endpoint unset until launch.", "effort": "s", "impact": "low", "risk": "low", "gives_up": "all data until a is chosen - the current state"}
+      ],
+      "recommended": "a for the first 90 days; b if you would rather not operate anything",
+      "status": "awaiting choice (shipped in d state)",
+      "implemented": true,
+      "files": ["docs/assets/track.js", "scripts/collect.mjs", "register/measurement.json"],
+      "measure": "events received per page; clicks per outbound link",
+      "depends_on": ["Q-18", "Q-19"]
+    },
+    {
+      "id": "SG-29",
+      "priority": 4,
+      "title": "Search Console on the production domain",
+      "hook": "The free tool that tells you what to write next.",
+      "problem": "Parallel pass row from the brief. Every topic decision in this project is currently a hypothesis; query data is the only cheap way to replace hypothesis with evidence.",
+      "proposal": "Verify the domain, wait for 28 days, export queries, then re-cut guide titles against the impressions-and-position data. Nothing about the site needs to change to enable it.",
+      "paths": [
+        {"id": "a", "label": "Verify at launch (recommended)", "description": "Costless; the clock starts immediately.", "effort": "s", "impact": "high", "risk": "none", "gives_up": "nothing"},
+        {"id": "b", "label": "Wait until there is traffic", "description": "Delay.", "effort": "s", "impact": "low", "risk": "low", "gives_up": "90 days of data you cannot recover"}
+      ],
+      "recommended": "a",
+      "status": "blocked - owner action",
+      "implemented": false,
+      "files": [],
+      "measure": "queries with impressions > 0 at day 28",
+      "depends_on": ["Q-17", "SG-17"]
+    },
+    {
+      "id": "SG-30",
+      "priority": 3,
+      "title": "Reader capture - and why it is not on the site yet",
+      "hook": "An email list you cannot lawfully keep is worse than none.",
+      "problem": "Parallel pass row from the brief. Collecting emails adds a second compliance surface (state privacy law, CAN-SPAM for commercial content, any consent regime for the form) and needs a provider. There is no provider, no policy decision, and no traffic to capture yet.",
+      "proposal": "Deliberately not shipped. The register reserves the slot and names the three preconditions. Adding a form is 20 minutes the day those three exist.",
+      "paths": [
+        {"id": "a", "label": "Hold until a provider + policy exist (built state)", "description": "No form, no dead promise.", "effort": "s", "impact": "none today", "risk": "none", "gives_up": "an owned audience while the site is a pilot"},
+        {"id": "b", "label": "Button-down / Mailchimp embed now", "description": "Starts the list from day one.", "effort": "m", "impact": "medium", "risk": "medium - provider terms, consent text, and a third-party script", "gives_up": "self-containment"},
+        {"id": "c", "label": "RSS only", "description": "The subscription channel that requires no personal data at all.", "effort": "s", "impact": "low", "risk": "none", "gives_up": "ownership of the audience"}
+      ],
+      "recommended": "c for now (the feed already ships), b after Q-19",
+      "status": "awaiting choice",
+      "implemented": false,
+      "files": ["docs/feed.xml"],
+      "measure": "feed subscribers; later, list size and open rate",
+      "depends_on": ["Q-19"]
+    },
+    {
+      "id": "SG-31",
+      "priority": 5,
+      "title": "Where the human gate sits in an automated pipeline",
+      "hook": "Automation should be able to draft anything and publish nothing it has not been allowed to.",
+      "problem": "The brief asks to automate the automatable and gate the rest. The open question is where the gate bites: at commit, at publish, or in a queue.",
+      "proposal": "Three positions, all supportable. The build-time gate (shipped) catches machine-checkable violations. Editorial judgement - is this fair, is this overclaiming - cannot be automated and needs a named approver if it must be bypass-proof.",
+      "paths": [
+        {"id": "a", "label": "Gate at commit (built)", "description": "CI fails on any policy violation; humans still merge.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "protection from a human who merges anyway"},
+        {"id": "b", "label": "Approval queue before publish", "description": "Generated drafts wait for a recorded approval token in the register.", "effort": "m", "impact": "high", "risk": "low", "gives_up": "speed; needs Q-13"},
+        {"id": "c", "label": "Full autopilot", "description": "Merge publishes.", "effort": "m", "impact": "medium", "risk": "high on a monetised domain", "gives_up": "the last safety net"}
+      ],
+      "recommended": "a now; b before any auto-publish",
+      "status": "awaiting choice",
+      "implemented": true,
+      "files": [".github/workflows/ci.yml"],
+      "measure": "published pages lacking an approval record",
+      "depends_on": ["Q-13", "Q-21"]
+    },
+    {
+      "id": "SG-32",
+      "priority": 4,
+      "title": "Niche expansion: earn the second category first",
+      "hook": "Five products is a shop. Fifty topics on five products is a content farm.",
+      "problem": "The brief asks the agent to identify profitable niches and scale. Scaling page count against a fixed catalog is how young sites earn a thin-content problem, and 'profitable' cannot be computed from what we hold.",
+      "proposal": "Keep the site one-category until either the catalog grows (Q-04) or Search Console shows pull into an adjacent category. The builder already tolerates new categories; the register is the only place to add one.",
+      "paths": [
+        {"id": "a", "label": "Depth before breadth (built)", "description": "Six guides, one category, real internal links.", "effort": "s", "impact": "high", "risk": "low", "gives_up": "topical spread"},
+        {"id": "b", "label": "Add two adjacent categories now", "description": "Air fryer + coffee + bakeware.", "effort": "l", "impact": "unknown", "risk": "high", "gives_up": "coherence, and every guide still has to be written"}
+      ],
+      "recommended": "a",
+      "status": "implemented",
+      "implemented": true,
+      "files": ["register/site.json"],
+      "measure": "internal link density; category-level impressions",
+      "depends_on": ["Q-04"]
+    }
+  ],
+  "summary": {
+    "rows": 22,
+    "implemented": 12,
+    "awaiting_choice": 8,
+    "blocked_on_owner": 1,
+    "highest_value_unblocked_choice": "SG-17 (a real domain) - it is one DNS record and it is upstream of approval, trust, and every measurement row.",
+    "cheapest_high_value_choice": "SG-29 / Q-17 (verify Search Console at launch) - costs nothing and every other editorial decision gets better for free."
+  }
+}

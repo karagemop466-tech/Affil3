@@ -1,0 +1,43 @@
+{
+  "$comment": "Campaign ledger. Empty by design and by instruction: 'add ... only when obtained from authorized first-party reports'. No conversion score and no revenue forecast is presented anywhere from this file.",
+  "schema": {
+    "columns": [
+      {"name": "timestamp_utc", "type": "ISO-8601 date-time", "rule": "when the figure was read, not when the period ended"},
+      {"name": "source", "type": "string", "rule": "exact report name, e.g. 'Associates Central > Reports > Transactions' or 'Search Console > Performance > Query'"},
+      {"name": "channel", "type": "enum", "values": ["organic-search", "direct", "referral", "social", "email", "unattributed"]},
+      {"name": "period_start", "type": "ISO date"},
+      {"name": "period_end", "type": "ISO date"},
+      {"name": "eligible_sessions", "type": "integer|null", "rule": "only as reported by the first-party source; null when the source does not report it"},
+      {"name": "clicks", "type": "integer|null", "rule": "associates click count from Amazon's report, not from our own counter"},
+      {"name": "reported_orders", "type": "integer|null"},
+      {"name": "reported_units", "type": "integer|null"},
+      {"name": "earnings_amount", "type": "number|null", "rule": "record the currency and the number exactly as shown; no extrapolation to annual"},
+      {"name": "currency", "type": "ISO-4217"},
+      {"name": "provenance", "type": "string", "rule": "who read it, from where, and the screenshot or export filename. A dated trail, not a note."},
+      {"name": "caveats", "type": "string", "rule": "anything the report itself qualifies - e.g. pending/returned orders"}
+    ],
+    "integrity_rules": [
+      "A row may not be created by arithmetic on other rows. Derived metrics (CTR, EPC, conversion rate) are computed at read time from recorded numerators and denominators, and are hidden when the denominator is below a stated floor.",
+      "No row may be backfilled with an estimate for a period the source did not report.",
+      "Every row carries its own source and date; the file is append-only so the trail stays dated.",
+      "If a figure later changes (returns, cancellations), a new row is added and the old row is annotated, not edited."
+    ]
+  },
+  "read_time_metric_definitions": {
+    "outbound_click_through_rate": "clicks / eligible_sessions, shown only when eligible_sessions >= 100",
+    "click_to_order_rate": "reported_orders / clicks, shown only when clicks >= 50",
+    "earnings_per_click": "earnings_amount / clicks, shown only when clicks >= 50",
+    "why_floors_exist": "At pilot volume a single order moves a ratio by tens of points. A floor is the difference between a metric and a mood."
+  },
+  "rows": [],
+  "row_count": 0,
+  "first_authorised_ingest": {
+    "status": "not yet available",
+    "blocking_facts": [
+      "the site is not registered in Associates Central (Q-07), so there is no report to read",
+      "no first-party analytics endpoint is deployed (SG-28)",
+      "no Search Console property exists (Q-17)"
+    ],
+    "expected_first_row": "Associates Central > Reports > Transactions, 7 days after a registered domain goes live"
+  }
+}

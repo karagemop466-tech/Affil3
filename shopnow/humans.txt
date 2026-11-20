@@ -1,0 +1,11 @@
+ShopNow 047 — Checked, not hyped.
+# TEAM
+  Desk: The ShopNow 047 desk (AI-assisted; human editorial sign-off pending — see /about/)
+  No named individual is credited on this site. That is deliberate, not an oversight.
+# SITE
+  Language: en-US
+  Built: static, zero dependencies, generated from register/*.json
+  Standards: semantic HTML, works without JavaScript, no cookies, no third-party scripts
+  Sources: see /sources/ — every claim has a dated row, or the page says it cannot
+# NOTE
+  If a figure on this site is wrong, it is wrong in one file and one rebuild fixes it.
