@@ -604,6 +604,229 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-21",
+      "track": "findability",
+      "topic": "Choose the next guide from measured queries, not instinct",
+      "problem": "The brief asks the site to generate organic traffic, but no evidence loop feeds the next-topic decision: no Search Console property is verified (FLG-013) and the analytics endpoint is unset (FLG-009), so every new title is a hypothesis that nothing can later confirm or retire. Operating Agreement 4 (K-19) means borrowed traffic estimates cannot fill the gap either - the measurement has to come from this site's own first-party reports.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep writing hypothesis-led guides on editorial judgement (current).",
+          "tradeoff": "Fast, and the house style (S-19) keeps the quality bar up. Topic choice stays guesswork, and the 'then measure whether anyone arrives' half of the plan never happens.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Pause new guides until query evidence exists: verify Search Console (D-05), read two Performance-report cycles, then write against measured queries.",
+          "tradeoff": "Topic choice becomes evidence-based. The site sits still for weeks, right through the season when a seasonal guide (S-23) has its best chance of being useful to a reader.",
+          "effort": "2 weeks of waiting",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Run both tracks: keep a small seasonal calendar (S-23) moving while the measurement is set up, and switch topic selection to measured queries once the Performance report has real rows.",
+          "tradeoff": "A little bookkeeping now. Calendar entries that earned no arrivals get retired on evidence instead of opinion, and nothing is written against a number that does not exist yet.",
+          "effort": "1 hour to set up the review loop",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "C. It is the only option that keeps the site alive this week and closes the measurement gap this month; B alone misses the season, A alone never measures.",
+      "evidence": {
+        "sources": [
+          "S01",
+          "S09"
+        ],
+        "flags": [
+          "FLG-013",
+          "FLG-009"
+        ]
+      },
+      "depends_on": [
+        "S-23",
+        "S-05"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-22",
+      "track": "trust",
+      "topic": "A name the reader can remember",
+      "problem": "The wordmark, og:site_name, page titles and footer all say 'Affil3', which is the repository directory name (DESIGN-BRIEF DX-6). Nobody names a publication after its folder: it cannot be spelled from hearing, it says nothing about kitchens or shopping, and it is the one string on the site that exists for the machine's convenience. A polished, shop-like site needs a masthead a reader could type from memory.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep 'Affil3' everywhere (current).",
+          "tradeoff": "Zero work. Every title tag, share card and search snippet stays generic, and the repository name keeps leaking into the brand.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Choose a descriptive house name now against a written checklist (spellable from hearing; no conflict with an existing trademark - check the USPTO search and re-read the Associates trademark guidelines before committing; no product brand we do not own; no jargon), then rename templates, titles, og:site_name and the design brief in one commit.",
+          "tradeoff": "An hour of naming work and one rename commit; every future page inherits a real masthead. The trademark and Associates trademark-guideline check is a hard precondition, not a footnote.",
+          "effort": "about an hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Defer naming until analytics show which pages earn traffic (needs S-21 C and S-03 live).",
+          "tradeoff": "Naming with evidence in hand. The name touches every page, so every week of delay makes the rename marginally bigger, and the current name keeps shipping into search results and share cards meanwhile.",
+          "effort": "deferred",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B, executed the week the owner is available: it is the cheapest high-leverage polish item left, and the checklist keeps it honest.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [
+        "S-19"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-23",
+      "track": "trust",
+      "topic": "Seasonal hooks, published as honest checklists",
+      "problem": "The brief asks for catchy, timely articles. The constraint is compliance: Participation Requirements 2(b) (K-21) requires references to limited-time promotions to be removed promptly after they end, and the house style (S-19) bans hype vocabulary - so seasonal content has to be a checklist for shopping carefully, not a deals feed. The indexed root publication currently ships one seasonal guide (holiday hosting); a Black Friday deal-checklist exists only on a secondary surface that robots.txt excludes, so the root site has no reason for a reader to visit in any specific week.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "No seasonal content on the root publication (current).",
+          "tradeoff": "Nothing goes stale. The site also never gives a reader a reason to arrive in a specific week, which is the weakest possible organic-traffic posture.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "One seasonal guide per major buying moment (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), each a question-shaped checklist with cited sources, each re-read for staleness in the week after the moment passes (K-21).",
+          "tradeoff": "Roughly one extra guide per month at peak seasons, plus a staleness review that cannot be skipped - a forgotten deals checklist is worse than none.",
+          "effort": "half a day per guide",
+          "risk": "medium"
+        },
+        {
+          "id": "C",
+          "label": "A dated deals feed or price-watch page.",
+          "tradeoff": "Matches what many affiliate sites do; it is not available here. Price tracking is barred by 6(y) (K-15) and prices may not be displayed unless Amazon serves the data (K-04). This option is recorded so it is visibly rejected, not silently ignored.",
+          "effort": "n/a",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B, starting with a Black Friday week checklist published while the week is still current, and the staleness review owned by whoever holds the cadence (S-05).",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-007"
+        ]
+      },
+      "depends_on": [
+        "S-19",
+        "S-05",
+        "S-21"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-24",
+      "track": "findability",
+      "topic": "Grow the done-temperature cluster the sources already support",
+      "problem": "The strongest source-backed content asset available to this site is the USDA safe-minimum-temperature table (K-11, S10): it is official, stable, and answers the exact questions a reader asks mid-cook. One guide ('Air fryer chicken breast: how do you know it is done?') already ships, but it stands alone - no cluster hub links the related questions together, so a reader who lands on it is never offered the next related answer, and a crawler never sees the topic covered in depth.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the single done-temperature guide (current).",
+          "tradeoff": "Nothing new to maintain. The cluster never accumulates the internal links that tell both a reader and a crawler the topic is covered properly.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Grow it into a small cluster (three to four guides: whole chicken, ground meat, reheated leftovers), every temperature cited to the same USDA table (S10) and probe-placement note (S20), a short hub paragraph linking the members, and product links only where the reader actually needs a thermometer.",
+          "tradeoff": "Three more guides to the house standard. Each is short, each is checkable against one official source, and none repeats another's wording - the scaled-content rule Google publishes (S09) is the reason the cluster stays small and hand-written.",
+          "effort": "half a day per guide",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Skip recipe-adjacent content entirely and stay a pure buying-guide site.",
+          "tradeoff": "Sharper focus. The site forfeits the one content family where an official government source can back every number published.",
+          "effort": "none",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B, but only after S-21 C is chosen - write the cluster pieces against measured queries when the data exists, and only where the USDA table covers the food.",
+      "evidence": {
+        "sources": [
+          "S10",
+          "S20",
+          "S09"
+        ],
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      "depends_on": [
+        "S-21",
+        "S-05"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-25",
+      "track": "measurement",
+      "topic": "Make the decision board the front door for decisions",
+      "problem": "The brief asks for a dedicated suggestions section that someone reviews before anything changes. The page exists (/suggestions/, now 25 rows) and the reply format works, but it is organised for reading top to bottom rather than for deciding: the 'decide next' sequence is stored in the data but rendered nowhere prominent, the decision log exists as an empty array that nothing populates, and nothing on the page says when the board was last reviewed.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the board as it is (current).",
+          "tradeoff": "It works. Decisions still have to be hunted across six tracks, and a choice made outside the board leaves no trace in the repository.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Render the decision support the data already implies: a 'decide next' shortlist derived from the sequence, a decision-log section that populates when the first choice is recorded, and a 'last reviewed' stamp the owner updates when they have read the board.",
+          "tradeoff": "One build change to one page. After that the owner answers rows instead of searching them, and every decision lands in versioned history.",
+          "effort": "1 hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Move decision tracking out of the repository into a spreadsheet or task tool.",
+          "tradeoff": "Comfortable editing. The decisions leave the versioned history, the site stops being self-describing, and the review trail the brief asks for now depends on an external tool nobody has chosen.",
+          "effort": "ongoing",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. The suggestions page is already the review gate the brief asks for; this change makes it obviously usable instead of merely present.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",

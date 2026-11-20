@@ -325,6 +325,30 @@
         "S05"
       ],
       "blocking": false
+    },
+    {
+      "id": "Q-18",
+      "question": "What is this publication called?",
+      "have": "A placeholder wordmark ('Affil3') that is the repository directory name, shipped in every title tag, og:site_name and footer; a design-brief row (DX-6) that names this as an open owner decision; a naming checklist drafted in suggestion S-22.",
+      "lack": "A chosen name, and the trademark and Associates trademark-guideline checks that make the choice safe to ship.",
+      "who": "Site owner",
+      "why_it_matters": "Every polished detail on the site sits behind one generic string a reader cannot remember, spell from hearing, or associate with kitchens. The rename touches every template, so it gets more expensive every week it is deferred.",
+      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-19",
+      "question": "Which guide gets written next, and on what evidence?",
+      "have": "Thirteen published question-shaped guides with a house style that can be checked (S-19); a seasonal calendar proposal (S-23); a source-backed cluster proposal (S-24); an empty measurement loop (no Search Console property, no analytics endpoint).",
+      "lack": "Any first-party evidence of what queries reach the site, and any record of what visitors click.",
+      "who": "Site owner (with whichever session holds the publishing cadence, S-05)",
+      "why_it_matters": "Until something measures arrivals, every new title is an uncheckable hypothesis and 'measure whether anyone arrives' remains a plan rather than a loop. Operating Agreement 4 bars substituting anyone else's traffic estimates for that measurement (K-19).",
+      "how_to_close": "Verify the Search Console property (D-05) and read two Performance-report cycles, then answer S-21; until then, choose topics only from the seasonal calendar (S-23 B) and mark each entry a hypothesis.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
     }
   ],
   "discovery": [
@@ -406,6 +430,16 @@
       "closes": [
         "Q-01"
       ]
+    },
+    {
+      "id": "D-13",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": []
+    },
+    {
+      "id": "D-14",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
+      "closes": []
     }
   ]
 }

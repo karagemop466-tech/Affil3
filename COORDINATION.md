@@ -2058,3 +2058,37 @@ Corroborated (no action requested by this session): FLG-037 (conflicting short-l
 - **GitHub Pages:** source `main` at `/`, HTTPS enforced; build for `efe0124` reported **built** at 2026-11-20T07:00:36Z; live fetch of `/flagged/` and `/` after deploy serves the disclosure strip above the fold (spot-checked this session).
 - **Deliverable:** `RELEASE-REVIEW-d19dff2c.md` in the repository root — executive summary, release state, 17-row first-hand source verification, RR-01…RR-07, DQ-1…DQ-10, R-S01…R-S23, manual-review links.
 - **Not done here, by scope:** RR-01…RR-07 fixes (requested from owning sessions in the table above); owner gates DQ-1…DQ-5 (Associates Central, intended ASINs, G-02, analytics host, Search Console); no intended ASIN set, no short-link dereference, no price/rating recorded.
+
+---
+
+# Session `arena/991c8230-affil3` — claim (2026-11-20)
+
+Registry: session `991c8230-affil3`, branch `arena/991c8230-affil3`, cut from `main` @ `16ee89f`,
+rebased onto `main` @ `29daada` (merge of PRs #58/#60) before any work. The sandbox pins this
+session to its Arena-managed branch, so the `session-<id>/<task>` branch naming cannot be used
+here; all work stays on `arena/991c8230-affil3` and is recorded here instead (same deviation
+already logged by earlier sessions as FLG-019).
+
+Claims read before starting: boards for `arena-83a43a96`, `6249757a`, `93cee724`, `c252594d`,
+`e52ea644`, `dd2ad3dc` and the shared task board rows I01–I12. On that board, **I09 and I10 are
+marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own owners/integration.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched | Notes |
+| --- | --- | --- | --- | --- | --- |
+| M-01 | Suggestions board: marketing, design-prompt and organic-traffic suggestions S-21+ for owner review before implementation (continues I09) | done | `991c8230-affil3` | `data/suggestions.json` (append-only), generated `/suggestions/` page | New rows only; no existing row edited. |
+| M-02 | Questions board: the decision-blocking questions and discovery actions that close them (continues I10) | done | `991c8230-affil3` | `data/questions.json` (append-only: Q-18, Q-19, D-13, D-14), generated `/questions/` page | New rows only. |
+| M-03 | Dated re-observation of the five submitted short links and the five /dp/ pages, plus a liveness check of the cited policy sources | done | `991c8230-affil3` | `data/observations/2026-11-20-991c8230-recheck.json` (new), `data/flags.json` (append-only, FLG-037..FLG-040; landed as FLG-040 after renumber) | Follows D-12. No link is claimed invalid; observed targets recorded separately from intended fields. |
+| M-04 | Session executive summary | done | `991c8230-affil3` | `EXECUTIVE_SUMMARY-991c8230.md` (new file) | No existing summary file edited. |
+| M-05 | Baseline + integration: run every build/gate on latest main, rebuild generated pages, line-by-line check of new rows, PR to `main`, merge, confirm Pages deploy, record result | pending | `991c8230-affil3` | generated pages, `COORDINATION.md` (this section) | Flagged/unverified items do not block merge per the brief. |
+
+## Scope rules for this session
+
+- Append-only to `COORDINATION.md` and to `data/suggestions.json`, `data/questions.json`,
+  `data/flags.json`. No existing row in any register is edited or reordered.
+- Files owned by other sessions (`data/products.json`, `data/sources.json`, `data/guides.json`,
+  `EXECUTIVE-SUMMARY.md`, `README.md`, `VERIFICATION.md`) are read, never written.
+- Nothing is inferred. Any value not confirmable from an official source stays blank and flagged.
+- No price, rating, review count, or search-volume claim is published. Working titles stay labelled
+  as hypotheses.
