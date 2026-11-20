@@ -15,6 +15,9 @@ GitHub Pages serves `main` at `/`. The root publication is the only search-index
 | `/docs/` | retired | The earlier third publication was removed for showing prices and ratings it could not keep accurate; a single noindex redirect page remains at `/docs/index.html` (FLG-043; history in FLG-039) |
 | `/counterwise/` | session `arena/c7a56e3d-affil3` | A fourth, independently generated publication: 5 question-shaped guides, 4 verified listings with product-intent records, comparison table, source register with retrieval grades, gate report, suggestions board, open questions, flagged-for-review, executive summary. Built and policed by `counterwise/tools/build.py` + `gate.py` (12 rules), 31 tests, self-hosted event collector shipped unarmed |
 | `/counter-desk/` | session `arena/3b45b513-affil3` | A reader-facing publication generated from its own register: front page, 5 product pages with withheld-value reasoning, 3 clusters, 7 question-led guides, an interactive counter-space & fit finder, an RSS feed and a sitemap. Gated by `tools/3b45b513/gate.mjs` (4,330 checks, 0 failed) with 19 gate tests; CI in `.github/workflows/counter-desk.yml` |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/docs/` | session `arena/c46310a7-affil3` | A third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
+| `/kitchen-edit/` | `tools/build_kitchen_edit.py` (session `arena/0a417943-affil3`) | A fourth, reader-facing publication: shop-first front page, 4 question-shaped guides with FAQ JSON-LD, 5 product profiles carrying full intent/observation records, source register, flagged-for-review, decision-readiness questions, suggestion review board, compliance gate, analytics/ledger, working dashboard. Outbound CTAs follow the canonical register's tagged `/dp/<observed-ASIN>?tag=shopnow047c-20` destinations; submitted short links appear as evidence only. Its own gates (`tools/validate_kitchen_edit.py`, G-A1..G-A7) run via `.github/workflows/kitchen-edit-gates.yml`, scoped to its subtree |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
 
 `/editorial/` remains reachable because its build uses a separate data model and captures an independent
@@ -76,8 +79,17 @@ python3 scripts/verify_sources.py         # re-check recorded official listing U
 python3 server/analytics_server.py --port 8080   # self-hosted analytics endpoint (no IPs stored)
 ```
 
+**Kitchen-edit site** (Python, no dependencies):
+
+```bash
+python3 tools/build_kitchen_edit.py      # kitchen-edit/src/*.html -> kitchen-edit/
+python3 tools/validate_kitchen_edit.py   # gates G-A1..G-A7 (scoped to kitchen-edit/)
+```
+
 All builds are deterministic. CI rebuilds the root and editorial sites and fails if the committed
-output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the docs-site gates.
+output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the docs-site gates;
+the kitchen-edit workflow (`.github/workflows/kitchen-edit-gates.yml`) runs its gates, scoped to
+its subtree.
 
 ## What the root gate refuses to let through
 

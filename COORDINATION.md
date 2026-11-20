@@ -2673,3 +2673,34 @@ Special Link tested in Associates Central (no login in the sandbox — G-02); no
 already published better ones on the same two questions. Their illustrations (`guide-dual-vs-single-basket`,
 `guide-watts-and-degrees`, ~784 KB) are still in `src/assets/img/` and wired to nothing. Delete them or
 use them for a question the site does not yet answer.
+- Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+
+## Session `arena/0a417943-affil3` — reader-facing publication pass + independent verification (third reconcile)
+
+| Field | Value |
+|---|---|
+| Branch | `arena/0a417943-affil3` (cut from `main` @ `847ae37`, still the empty initial commit at session start; worked fully in parallel with the sessions above) |
+| Outcome | Reconciled three times with a fast-moving `main` (`4d33db8` → 18 add/add conflicts; `a2719a1` → board+README; `6376b46` → board). Main's tree adopted wholesale each time — nothing discarded. Work ships as the self-contained `/kitchen-edit/` surface (README table row) |
+| Surface | `/kitchen-edit/`: shop-first front page, 4 guides (FAQ JSON-LD), 5 product profiles with full intent/observation records, source register, flags, decision questions, suggestion board, compliance gate, analytics/ledger, dashboard. Outbound CTAs follow the canonical register's tagged `/dp/<observed-ASIN>?tag=shopnow047c-20` destinations; submitted short links appear as evidence only; no price/rating/spec text |
+| Gates | `tools/validate_kitchen_edit.py` (G-A1..G-A7, 24 pages) + freshness via `.github/workflows/kitchen-edit-gates.yml` (scoped to `kitchen-edit/**`). Zero kitchen-edit findings in the repo-wide `disclosure-check.mjs` (exact FTC sentence + exact Associates statement above `<main>`; fragments live under `kitchen-edit/src/`, covered by that gate's SKIP list). Root `verify.mjs` and the whole-tree freshness gate unaffected (outputs committed) |
+
+### Verified this session that no other register had (all fetched 2026-11-20)
+
+1. **Official Amazon ASIN definition** — [sell.amazon.com/blog/what-is-an-asin](https://sell.amazon.com/blog/what-is-an-asin): "a unique 10-character alphanumeric code assigned to every product listed in the Amazon store"; ASIN appears after `/dp/`.
+2. **PA-API 5.0 deprecated → Creators API** — [deprecation notice](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation) · [introduction](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction). Prerequisites: Associates enrollment + **≥10 qualifying sales in the past 30 days**; `GetItems` by ASIN. Automation plans should target the Creators API, not PA-API 5.
+3. **IANA root database: `.amazon` gTLD** — [iana.org/domains/root/db/amazon.html](https://www.iana.org/domains/root/db/amazon.html): manager Amazon Registry Services, Inc.; delegated 2020-06-02 (context for the submitted `link.amazon` URLs — no verdict).
+4. **FTC Endorsement Guides FAQ** — [ftc.gov](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking).
+5. **Independent observation pass** — [`data/observations/2026-11-20-arena0a417943.json`](data/observations/2026-11-20-arena0a417943.json): `B00hJ57DV → B08DKYBTPH` observed directly (independently confirms the retest); `B0c8moW59` hit a checkpoint interstitial in this pass while the canonical register resolved it to `B0DHZTCNR5` — both dated observations kept; canonical governs. All landings again carried no `tag=` parameter.
+
+### Merge-conflict resolution log (protocol item 6)
+
+- **Round 1** (`4d33db8`): 18 add/add conflicts → main's tree adopted via `git checkout origin/main -- .`; pipeline relocated under `kitchen-edit/`; my generated root pages removed (regenerated in the subtree); one additive `Sitemap:` line in root `robots.txt`.
+- **Round 2** (`a2719a1`): `COORDINATION.md` + `README.md` add/add → main's versions kept; this section re-appended; README table row re-added.
+- **Round 3** (`6376b46`): `COORDINATION.md` add/add → main's version kept; this section re-appended.
+- No file owned by another session was modified beyond these logged additive edits (README table row + build section, robots.txt sitemap line, this board section).
+
+### Observations for the register owners (requests, not self-applied edits)
+
+1. Inherited (also logged by session `2e0c91d0`): `tools/disclosure-check.mjs` reports failures inside `docs/` (session `arena/c46310a7-affil3`'s surface — missing statements + currency text). `/` and `/kitchen-edit/` pass. Fix belongs to that surface's owner.
+2. Consider adopting the two official sources above into the root `data/sources.json` (requires adding `sell.amazon.com` and `www.iana.org` to that gate's `ALLOWED_SOURCE_HOSTS`).
+3. `SG-13` (one register, one generator) remains the consolidation goal; `/kitchen-edit/` is a candidate base for the reader-facing generator.

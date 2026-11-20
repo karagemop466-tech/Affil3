@@ -1,0 +1,59 @@
+{
+  "schema": "shopnow.observations.v1",
+  "note": "Independent observation pass by session arena-0a417943-affil3, recorded as a supplementary dated vantage point alongside 2026-11-20-retest.json. The canonical register (data/products.json, root publication) governs outbound destinations; nothing here overrides it. Intent and observation are never merged.",
+  "session": "arena-0a417943-affil3",
+  "method": "server-side fetch of each submitted URL (chunk 0 of the landing render), 2026-11-20",
+  "observations": [
+    {
+      "submitted_url": "https://link.amazon/B04G1MEwY",
+      "observed_redirect_target": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-4d1cadbad25f088b&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B0CDY277D3",
+      "observed_title": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+      "observed_breadcrumb": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+      "associates_tag_in_landing_url": false,
+      "agrees_with_canonical_register": true
+    },
+    {
+      "submitted_url": "https://link.amazon/B02NbDxp3",
+      "observed_redirect_target": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1b5e31c7d6202911&channelId=704&plpRedirect=mhFallback",
+      "observed_asin": "B09B7SB46R",
+      "observed_title": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+      "observed_breadcrumb": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+      "associates_tag_in_landing_url": false,
+      "agrees_with_canonical_register": true
+    },
+    {
+      "submitted_url": "https://link.amazon/B00hJ57DV",
+      "observed_redirect_target": "https://www.amazon.com/dp/B08DKYBTPH?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-1aea6c4a9cac9bf0&channelId=704&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B08DKYBTPH",
+      "observed_title": "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 with 450°F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+      "observed_breadcrumb": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+      "associates_tag_in_landing_url": false,
+      "agrees_with_canonical_register": true,
+      "note": "Independently confirms the canonical register's retest resolution: this token was once recorded as a checkpoint/dead link; it is not."
+    },
+    {
+      "submitted_url": "https://link.amazon/B0c8moW59",
+      "observed_redirect_target": "https://www.amazon.com/checkpoint/continue?token=v1.rJwhW5U-[elided]",
+      "observed_asin": "",
+      "observed_title": "Amazon.com checkpoint interstitial — 'To continue, please click the Continue shopping button below.'",
+      "observed_breadcrumb": "",
+      "associates_tag_in_landing_url": false,
+      "agrees_with_canonical_register": "n/a — this pass observed no landing; the canonical register resolved this token to B0DHZTCNR5. Both dated observations are kept; the canonical one governs the outbound link. Checkpoints are intermittent and session-dependent."
+    },
+    {
+      "submitted_url": "https://link.amazon/B0f3GKalj",
+      "observed_redirect_target": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-5efc65918624c588&channelId=500&plpRedirect=mhFallback&th=1",
+      "observed_asin": "B0DZFD6R9Z",
+      "observed_title": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+      "observed_breadcrumb": "Home & Kitchen › Kitchen & Dining › Kitchen Utensils & Gadgets › Thermometers & Timers › Meat",
+      "associates_tag_in_landing_url": false,
+      "agrees_with_canonical_register": true
+    }
+  ],
+  "cross_session_findings": [
+    "All five landing URLs observed in this pass carried lv=shuf and btn_ref=srctok-… parameters and NO tag=shopnow047c-20 — consistent with the root register's finding that the submitted short links are untagged.",
+    "Submitted path tokens are 9 characters; all observed landing ASINs (10 characters) differ from the token in their own link path.",
+    "Observation is not confirmation: landing identity may vary by session; the Associates-side check (gate G-02) remains the authority."
+  ]
+}
