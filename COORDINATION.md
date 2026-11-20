@@ -417,3 +417,20 @@ This is the same failure mode as the data error itself: a claim written once and
 re-derived. Anything on a generated page that counts rows should be computed from those rows.
 
 Gate after the change: 23 pages, **1316 checks, 0 failed**.
+
+## Follow-up 2: resolved flags were being rendered as open
+
+`data/flags.json` records `status: "resolved"` and a `resolution` field, but `tools/build.mjs`
+printed only `detail`, `sources` and `manual_step`. So FLG-004 and FLG-022 were rendered exactly
+like open flags, and the /flagged/ page still told readers that `B00hJ57DV` "did not resolve to a
+product" — the opposite of what the shop table by then said.
+
+The renderer now emits a `resolved` badge, the `resolution` text, and a muted card style for any
+flag with `status: "resolved"`; it also tolerates a missing `manual_step` instead of printing
+"undefined". FLG-004's title was moved to the past tense, since the condition no longer holds.
+
+**Worth flagging for whoever owns the data model:** a `status` field that nothing reads is worse
+than no field, because it looks like the question has been answered. Either the renderer shows the
+status or the field should not exist.
+
+Gate: 23 pages, 1316 checks, 0 failed. Two of 22 flags are resolved; the other 20 stay open.
