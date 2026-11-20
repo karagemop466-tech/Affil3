@@ -159,3 +159,76 @@ Each observed value was compared with the page text fetched on 2026-11-20.
 - Pull request: https://github.com/karagemop466-tech/Affil3/pull/7 (`arena/bb0a6985-affil3` → `main`), opened 2026-11-20.
 - Merge: `gh pr merge --merge` on the PR, from `arena/bb0a6985-affil3` to `main`. Result recorded on the PR.
 - GitHub Pages deploy: checked after merge, `https://karagemop466-tech.github.io/Affil3/`.
+
+---
+
+# Session `166bf329` board — integration correction (PR from `arena/166bf329-affil3`)
+
+This session began from the stale base commit `847ae37`, when the repository contained only
+`README.md`. It wrote a full site before discovering that `main` had already advanced through
+PRs #1–#7, with a generator (`tools/build.mjs`) and data model already in place. Nothing above
+was edited. This session contributes only the corrections below, applied to `main`'s own data
+and generated through `main`'s own pipeline. Its separate 21-page build was **discarded
+unmerged**, so it does not duplicate or overwrite the live site.
+
+## Task board
+
+| # | Task | Status | Owner | Files touched | Notes |
+|---|------|--------|-------|---------------|-------|
+| 1 | Independently re-resolve all five submitted short links | done | `arena/166bf329-affil3` | (read only) | All five fetched twice, fresh session each time |
+| 2 | Cross-check resolved destinations against `data/products.json` | done | `arena/166bf329-affil3` | `data/products.json` | Found two transposed destinations — FLG-022 |
+| 3 | Correct P03 and P04, preserving the previous values | done | `arena/166bf329-affil3` | `data/products.json` | Added `reverification` block to each record |
+| 4 | Retire the superseded FLG-004 and record the correction as FLG-022 | done | `arena/166bf329-affil3` | `data/flags.json` | FLG-004 kept, marked `resolved` with a `resolution` field |
+| 5 | Correct stale "link not resolved" card copy in the generator | done | `arena/166bf329-affil3` | `tools/build.mjs` | One string; checkpoint ≠ dead link |
+| 6 | Rebuild and re-verify | done | `arena/166bf329-affil3` | generated HTML | 23 pages, 1296 checks, 0 failed |
+
+## The finding
+
+Two product destinations were swapped between adjacent rows in `data/products.json`:
+
+| Row | Recorded in `main` | Actual (verified twice, 2026-11-20) |
+|---|---|---|
+| P03 (`B00hJ57DV`) | *unresolved — checkpoint page* | `B08DKYBTPH` — Chefman 8 Qt TurboFry air fryer |
+| P04 (`B0c8moW59`) | `B08DKYBTPH` — Chefman 8 Qt air fryer | `B0DHZTCNR5` — ThermoMaven 1 Sec meat thermometer |
+
+Consequences before the fix: the site attributed a **meat thermometer** to the wrong submitted
+link, and listed an air fryer as unresolved. Both category assignments were wrong as a result.
+After the fix, `air-fryers` holds three products (CHEFMAN 6 Qt, Emeril Lagasse 26QT,
+Chefman 8 Qt), `cooking-thermometers` holds two (CHEF iQ Sense, ThermoMaven), and
+`unresolved` is empty.
+
+Root cause of the second error: `B00hJ57DV` had returned an Amazon "Continue shopping"
+checkpoint. That checkpoint is **intermittent and bot-dependent**, not evidence of a dead link.
+It resolved normally on two further attempts. The lesson, now recorded in the code and in
+FLG-004: a checkpoint must not be recorded as "does not resolve".
+
+Both records keep their previous values in a `reverification` block and FLG-022 carries the
+full account, so the correction is auditable rather than silent.
+
+## Verification performed
+
+- Five short links fetched twice each with a fresh session. Destinations were stable across both
+  fetches, and the page title plus canonical `/dp/` URL were read at each destination.
+- `B00hJ57DV` → `B08DKYBTPH`, title "Chefman Air Fryer 8 Qt | TurboFry® 4-in-1 …".
+- `B0c8moW59` → `B0DHZTCNR5`, title "ThermoMaven 1 Sec Professional Digital Meat Thermometer …".
+- `B04G1MEwY` → `B0CDY277D3` (unchanged, matches `main`).
+- `B02NbDxp3` → `B09B7SB46R` (unchanged, matches `main`).
+- `B0f3GKalj` → `B0DZFD6R9Z` (unchanged, matches `main`).
+- `node tools/build.mjs && node tools/verify.mjs`: 23 pages, 22 sitemap URLs, 5 feed items,
+  **1296 checks passed, 0 failed**.
+
+## Still open (unchanged by this session)
+
+- **FLG-002 / FLG-003**: whether `shopnow047c-20` is an active Associates ID, and whether the
+  supplied short links were generated under it, remain unconfirmed. All five outbound URLs on the
+  site are still constructed `?tag=` URLs rather than links validated in Associates Central.
+- **FLG-004 note superseded**: that flag described `B00hJ57DV` as unresolved. It is now marked
+  `resolved`, with the superseding evidence recorded.
+- No price, rating, availability or conversion figure is published anywhere, and this session
+  introduced none.
+
+## Suggested next step for the owner
+
+Test exactly one outbound link inside the enrolled Associates workflow and confirm it appears in
+the click report before any link is scaled. That single test resolves FLG-002, FLG-003 and the
+Irregularity above at the same time.

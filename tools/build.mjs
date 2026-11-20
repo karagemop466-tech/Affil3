@@ -144,7 +144,7 @@ function productCard(p, placement) {
   <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
   <h3>Link not resolved</h3>
   <p class="muted">Submitted link: <code>${esc(p.submitted_token)}</code></p>
-  <p class="status">No buy link is published. The link landed on a checkpoint page with no product. ${flagLinks(['FLG-004'])}</p>
+  <p class="status">No buy link is published. The link has not resolved to a product page in a verified session. An Amazon "Continue shopping" checkpoint is intermittent and is not by itself evidence that a link is dead ${flagLinks(['FLG-004'])}</p>
 </article>`;
 }
 

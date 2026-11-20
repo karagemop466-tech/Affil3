@@ -40,11 +40,13 @@
       "id": "FLG-004",
       "severity": "high",
       "title": "One submitted link (B00hJ57DV) did not resolve to a product",
-      "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published.",
+      "detail": "The link landed on an Amazon 'Continue shopping' checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published. — RESOLVED 2026-11-20: this link does resolve; see resolution field.",
       "sources": [
         "S05"
       ],
-      "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified."
+      "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
+      "status": "resolved",
+      "resolution": "Superseded on 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. The record is kept for the audit trail rather than deleted."
     },
     {
       "id": "FLG-005",
@@ -208,6 +210,21 @@
         "S10"
       ],
       "action": "None. Recorded for transparency."
+    },
+    {
+      "id": "FLG-022",
+      "title": "Two product destinations were transposed in an earlier record (corrected)",
+      "severity": "high",
+      "status": "resolved",
+      "area": "product data",
+      "detail": "An earlier version of data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. Both records now carry a \"reverification\" block that preserves the earlier value, so the correction is auditable rather than silent.",
+      "impact": "Before the fix, the site attributed a meat thermometer to the wrong submitted link and listed one air fryer as unresolved. Category assignment for both rows changed as a result.",
+      "resolution": "data/products.json corrected for P03 and P04, with the previous values retained in each record's reverification block. FLG-004 marked resolved. Sitemap and category pages regenerated from the corrected data.",
+      "sources": [
+        "S05"
+      ],
+      "detected_by": "integration session arena/166bf329-affil3, cross-checking independently resolved short links against the stored register"
     }
-  ]
+  ],
+  "checked": "2026-11-20"
 }
