@@ -24,6 +24,10 @@ const ALLOWED_SOURCE_HOSTS = new Set([
   'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
   'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
+  // Added 2026-11-20 (session 197d4f9e-affil3): ThermoMaven is the maker of a submitted
+  // product, so its own product page is the same kind of official source as the other two
+  // manufacturers already listed. No reseller, review site or aggregator is added.
+  'www.thermomaven.com',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
