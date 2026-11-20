@@ -1004,9 +1004,12 @@ const markArchiveNoindex = (dir) => {
         if (!/<meta\s+name=["']robots["']\s+content=["']noindex,follow["']/.test(html)) {
           html = html.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,follow">');
         }
+        const homeHref = path.relative(path.dirname(file), path.join(OUT, 'index.html')).split(path.sep).join('/');
         if (!/class=["'][^"']*archive-notice/.test(html)) {
-          const notice = `<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="${esc(href('/'))}">Visit the current publication</a>.</aside>\n`;
+          const notice = `<aside class="archive-notice" style="padding:12px 16px;border-bottom:1px solid #bbb"><strong>Archived edition.</strong> This page is kept for reference and is not the current publication. Purchase links are held until G-02 is confirmed. <a href="${esc(homeHref)}">Visit the current publication</a>.</aside>\n`;
           html = html.replace(/<main\b/i, `${notice}<main`);
+        } else {
+          html = html.replace(/(<aside class="archive-notice"[^>]*>[\s\S]*?<a href=")[^"]+("[^>]*>Visit the current publication<\/a>)/i, `$1${esc(homeHref)}$2`);
         }
         html = html.replace(/[ \t]+$/gm, '');
         fs.writeFileSync(file, html);
@@ -1015,6 +1018,6 @@ const markArchiveNoindex = (dir) => {
   };
   walk(full);
 };
-for (const archive of ['editorial', 'crisp-index', 'legacy']) markArchiveNoindex(archive);
+for (const archive of ['editorial', 'crisp-index', 'legacy', 'docs']) markArchiveNoindex(archive);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

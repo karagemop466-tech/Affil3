@@ -224,7 +224,7 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
 }
 
 // Historical publications remain reachable but out of search. Allow crawling so robots meta can be read.
-for (const archive of ['editorial', 'crisp-index', 'legacy']) {
+for (const archive of ['editorial', 'crisp-index', 'legacy', 'docs']) {
   const archiveDir = path.join(ROOT, archive);
   if (!fs.existsSync(archiveDir)) continue;
   const archiveHtml = [];
@@ -245,10 +245,10 @@ for (const archive of ['editorial', 'crisp-index', 'legacy']) {
   }
 }
 const rootMap = fs.readFileSync(path.join(ROOT, 'sitemap.xml'), 'utf8');
-for (const archive of ['editorial', 'crisp-index', 'legacy']) {
+for (const archive of ['editorial', 'crisp-index', 'legacy', 'docs']) {
   check(`canonical root sitemap excludes ${archive} archive`, !rootMap.includes(`/${archive}/`));
 }
-check('robots.txt allows crawlers to read archive noindex directives', !fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8').split(/\r?\n/).some((line) => /^Disallow:\s*\/(editorial|crisp-index|legacy)\//.test(line)));
+check('robots.txt allows crawlers to read archive noindex directives', !fs.readFileSync(path.join(ROOT, 'robots.txt'), 'utf8').split(/\r?\n/).some((line) => /^Disallow:\s*\/(editorial|crisp-index|legacy|docs)\//.test(line)));
 
 // ---------- report ----------
 console.log(`verify: ${passes.length} checks passed, ${failures.length} failed`);
