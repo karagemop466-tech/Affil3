@@ -114,13 +114,23 @@
     },
     {
       "id": "S12",
-      "title": "Amazon ASIN definition (Amazon-owned page)",
-      "publisher": "Amazon (not located)",
+      "title": "Amazon Seller Central: 'Prepare to sell' (names ASIN as 'Amazon Standard Identification Number')",
+      "publisher": "Amazon Seller Central (sell.amazon.com)",
       "url": "",
       "updated": "",
-      "method": "not retrieved",
-      "used_for": "Not used as a verified source. Secondary third-party pages describe ASINs as 10 characters; the observed amazon.com /dp/ identifiers in S04 are all 10 characters. An Amazon-owned definition still needs to be located for manual review (FLG-012).",
+      "method": "Not fetched and no link recorded (rule: leave unconfirmed values blank). Candidate page for manual check: sell.amazon.com/learn/prepare-to-sell (seen in search results as a snippet naming 'Amazon Standard Identification Number'; host not on the gate allowlist).",
+      "used_for": "Expansion of the term 'ASIN' only. 10-character format is supported by the observed amazon.com /dp/ URLs in S04 (all 10 characters). An Amazon page stating the format still needs manual review (FLG-012).",
       "status": "not verified"
+    },
+    {
+      "id": "S13",
+      "title": "Amazon Associates Central help: OneLink and link support (Amazon full links and short links)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GC4NVV7K3XNG99X5",
+      "updated": "",
+      "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
+      "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
+      "status": "excerpt verified; manual check pending"
     }
   ]
 }

@@ -120,6 +120,7 @@
         {"type": "h2", "text": "The minimum internal temperatures"},
         {"type": "ul", "items": [
           "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, then rest for at least 3 minutes.",
+          "Ground meats: 160 °F.",
           "Ground poultry: 165 °F.",
           "All poultry, including breasts, whole birds, legs, thighs and wings: 165 °F.",
           "Fresh or smoked ham that is uncooked: 145 °F, then rest for at least 3 minutes."
