@@ -101,7 +101,7 @@ def head(title: str, desc: str, rel: str, extra: str = "") -> str:
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
 <meta name="robots" content="noindex,nofollow">
-<!-- Archive publication. The indexable site is the root publication; this tree is kept for provenance. See COORDINATION.md, decision S-16. -->
+<!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="alternate" type="application/rss+xml" title="{BRAND}" href="/feed.xml">
 {extra}

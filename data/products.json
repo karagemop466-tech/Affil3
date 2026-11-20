@@ -270,19 +270,7 @@
         "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
-      },
-      "title_facts": {
-        "style": "Instant-read digital thermometer",
-        "capacity": "",
-        "notable": [
-          "stated ±0.5 °F accuracy",
-          "NIST and NSF certified (as stated)",
-          "auto-rotate LED screen",
-          "IP67 waterproof"
-        ],
-        "use_for": "Quick spot checks across several pieces"
-      },
-      "title_facts_note": "These phrases are taken from the Amazon listing title observed on 2026-11-20 (S04). They are the seller’s wording, not a test result and not a verified specification. Where the title states no capacity, the field is blank."
+      }
     },
     {
       "id": "P05",

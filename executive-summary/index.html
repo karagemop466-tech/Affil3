@@ -6,8 +6,6 @@
 <title>Executive summary — Affil3</title>
 <meta name="description" content="What is built, what is verified, what is blocked, and the four decisions needed from the owner.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/executive-summary/">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#fbf7ef">
 <meta property="og:title" content="Executive summary">
 <meta property="og:description" content="What is built, what is verified, what is blocked, and the four decisions needed from the owner.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary/">
@@ -48,7 +46,7 @@
   <div class="tile"><span class="n">5</span><div class="t">products tracked</div><div class="d">Every one submitted by the owner. None added by us.</div></div>
   <div class="tile"><span class="n">4</span><div class="t">with a manufacturer spec page</div><div class="d">One has none, so its specifications are blank.</div></div>
   <div class="tile"><span class="n">5</span><div class="t">buying guides</div><div class="d">Question-led, each with its sources listed.</div></div>
-  <div class="tile"><span class="n">27</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking.</div></div>
+  <div class="tile"><span class="n">29</span><div class="t">open flags</div><div class="d">Published with sources, none of them blocking.</div></div>
 </div>
 
 <div class="prose">
@@ -91,54 +89,6 @@
 <p>It cannot read Amazon prices, sales, or Associates reports, because that needs authorized API access the build does not have. It does not scrape Amazon. Any figure that would require that data is absent on purpose, not forgotten.</p>
 </div>
 </div>
-
-<div class="prose">
-<h2>What is live</h2>
-<ul>
-<li>A publication-style front page, a shop with five product cards and a full source register, five individual product pages, a side-by-side comparison, three category clusters and 8 guides.</li>
-<li>A disclosure strip under the masthead on every page and a repeat in the footer, using the statement required by Operating Agreement §5. Every Amazon link is marked <code>rel="sponsored"</code> and carries the tracking ID.</li>
-<li>An RSS feed, a sitemap, a 404 page, canonical URLs and structured data. The repository's archive publications are excluded from the index so search engines see one site.</li>
-<li>A publishing gate (<code>tools/verify.mjs</code>) that fails the build on a missing disclosure, an untagged Amazon link, a price, a broken internal link, a missing image or a source ID that does not exist.</li>
-</ul>
-
-<h2>What is verified, and how</h2>
-<ul>
-<li>Operating Agreement §1 and §5 read in full on 2026-11-20: Special Links must use the tagged formats Amazon provides, and the Associates statement must appear clearly and prominently. The Program Policies were read the same day: the tag must be a URL parameter on every link (§2(b)), cloaking is prohibited (§6(v)), a shortener may not obscure the destination (§6(w)), and reviews, ratings and prices may only come from Amazon-served content or the API (§6(t), §2(b)).</li>
-<li>Google's outbound-link guidance, the FTC endorsement guidance and the USDA temperature chart were read and are linked from every page that uses them.</li>
-<li>All five submitted short links were followed again today. Each resolved to the same Amazon product page recorded in the register, with the same product ID and title. The intended ASIN still cannot be confirmed from an official source, so it stays blank.</li>
-</ul>
-
-<h2>What is blocked, and on what</h2>
-<ul>
-<li><strong>Link validation.</strong> One Special Link per product must be generated and tested inside Associates Central. That needs the account, not this build. <a class="badge flag" href="/Affil3/flagged/#FLG-005">FLG-005</a> <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a></li>
-<li><strong>Product intent.</strong> Only you can say which product each short link was meant to reach. Until then the intended fields stay blank. <a class="badge flag" href="/Affil3/flagged/#FLG-002">FLG-002</a></li>
-<li><strong>Measurement.</strong> The five events are defined and the collector exists, but no endpoint is deployed, so the live site records nothing. <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a></li>
-<li><strong>Search visibility.</strong> Search Console is not connected, so the next topic cannot yet be chosen from measured queries. <a class="badge flag" href="/Affil3/flagged/#FLG-013">FLG-013</a></li>
-<li><strong>Names and images.</strong> There is no named author, no product photography and no prices. Each would need a person, a licence or an API. <a class="badge flag" href="/Affil3/flagged/#FLG-014">FLG-014</a> <a class="badge flag" href="/Affil3/flagged/#FLG-015">FLG-015</a> <a class="badge flag" href="/Affil3/flagged/#FLG-016">FLG-016</a></li>
-</ul>
-
-<h2>What changed in this pass</h2>
-<ul>
-<li>The front page was rebuilt as a publication front page: illustrated hero, five product cards, guides, categories, then the records.</li>
-<li>Five product pages and a comparison page were added. Each product page shows the observed listing, the blank intended fields, the source for every row and what was not verified.</li>
-<li>Three guides were added to close the oven and thermometer clusters, and every guide now carries a short version, a table of contents, a limits box and buyer questions.</li>
-<li>The suggestion list became a decision board with three paths, and the question list now separates blocked, open and discoverable gaps.</li>
-<li>Source links were corrected and re-read: USDA temperature values now cite the chart page directly, and the policy clauses are cited from the current published text rather than an excerpt.</li>
-</ul>
-
-<h2>Decisions only you can make</h2>
-<ol>
-<li>Which product each short link was meant to reach (Q-01).</li>
-<li>Whether the account is active and declares this site, and whether the tracking ID belongs to it (Q-03).</li>
-<li>Whether to hide buy buttons until link validation passes (S-01).</li>
-<li>Which path to take — ship and measure, measure first, or Associates-ready (decision board).</li>
-</ol>
-
-<h2>Limits of this build</h2>
-<p>It cannot pull Amazon product data, prices, sales or commission reports. Those require authorized access — the Creators/PA API or Associates reports — and the sandbox has neither. The site does not scrape Amazon, does not display star ratings, and does not forecast revenue.</p>
-</div>
-
-<p><a class="btn" href="/Affil3/suggestions/">Open the decision board</a> <a class="btn-ghost" href="/Affil3/questions/">Open questions</a> <a class="btn-ghost" href="/Affil3/flagged/">Flagged items</a></p>
 </main>
 <footer class="site-footer">
   <div class="wrap">
