@@ -101,7 +101,7 @@ recorded verbatim; their compliance status is **unresolved, not invalid** (FLG-0
 * G-02 one Special Link per product tested in Associates Central — **owner action required
   before scaling** (FLG-005). Do not scale traffic before this is done.
 * The publishing gate (`tools/verify.mjs`) is enforced in CI on every push; a failing check
-  blocks publication. This session pre-merge: 33 pages, 3,776 checks; **merged tree: 52 pages, 6,739 checks, 0 failed**.
+  blocks publication. This session pre-merge: 33 pages, 3,776 checks; **merged tree: 52 pages, 6,937 checks, 0 failed**.
 
 ## Evidence-based iteration (Priority 4)
 
@@ -117,18 +117,18 @@ anti-cloaking). Collection activates when the owner deploys `tools/collector.mjs
 
 Reply with the ID and option letter, e.g. `S-14 A`:
 
-* **S-26** December content: holiday hosting (current A) / gift guides / deal follow-ups.
-* **S-27** target reader: weeknight small households (current A) / hosts / gadget-first.
-* **S-28** order of operations: **A — deploy measurement before the next guide batch** (rec.)
+* **S-29** December content: holiday hosting (current A) / gift guides / deal follow-ups.
+* **S-30** target reader: weeknight small households (current A) / hosts / gadget-first.
+* **S-31** order of operations: **A — deploy measurement before the next guide batch** (rec.)
   or B — publish first (current).
 * From the parallel sessions (kept unchanged): **S-11** four editions on one domain,
   **S-12** the ThermoMaven buy button, **S-13** a side-by-side comparison page (served twice
   over now: their `/compare/` spec sheet and this session's `/shop/` buyer table),
   **S-14** derive every count from its rows, and S-01..S-10 plus S-15..S-20. (My draft S-11
   duplicated their S-11 and was dropped at merge; my drafts S-12..S-14 were renumbered twice as
-  `main` advanced, and now sit at S-26..S-28. Their S-21..S-25 cover adjacent ground:
+  `main` advanced, and now sit at S-29..S-31 after three `main` advances. Their S-21..S-27 cover adjacent ground:
   measured-query topic choice, publication naming, seasonal hooks, the done-temperature
-  cluster, and the decision board as front door.)
+  cluster, and the decision board as front door, the collector host, and image weight.)
 
 Blocking questions (with how-to-close steps on `/questions/`): **Q-01** confirm intended
 products from the enrolled link-generation record; **Q-02** run gate G-02 in Associates

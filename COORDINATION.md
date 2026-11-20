@@ -2239,6 +2239,212 @@ marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own
   FLG-009), Search Console property (FLG-013, Q-12), privacy-notice review (Q-16), the
   decision-board choices themselves (S-01…S-25).
 
+# Session `arena/0e102530-affil3` — line-by-line re-verification, measurement test, two new guides (2026-11-20)
+
+Registry: session `0e102530-affil3`, branch `arena/0e102530-affil3`, cut from `main` @ `16ee89f` (PR #56 merge).
+Scope claimed: `COORDINATION.md` (this board, append-only), `data/observations/2026-11-20-0e102530-verification.json` (new),
+`data/products.json` (only if verification finds drift), `data/guides.json` (append 2 guides), `data/suggestions.json` (append),
+`data/questions.json` (append), `data/flags.json` (append only if a new irregularity is found),
+`assets/img/guide-*.png` (new illustrations), `tools/build.mjs` (guide-count strings only: "All five guides", "five question-led guides"),
+generated pages via `node tools/build.mjs` (`guides/`, `feed.xml`, `sitemap.xml`, `index.html`, etc.),
+`EXECUTIVE-SUMMARY-0e102530.md` (new). Nothing outside that scope will be edited. No other session's claim is touched.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| V-01 | Claim board, baseline build + gates on this branch before changing anything | done | `0e102530-affil3` | `COORDINATION.md` (this board) |
+| V-02 | Line-by-line re-verification: all 5 products vs official manufacturer pages + Amazon detail pages; dated observation recorded | in progress | `0e102530-affil3` | `data/observations/2026-11-20-0e102530-verification.json`, `data/products.json` (only on drift) |
+| V-03 | Collector end-to-end test: start `tools/collector.mjs`, send the five defined events, confirm aggregates; record turn-on status | in progress | `0e102530-affil3` | `data/observations/2026-11-20-0e102530-verification.json` |
+| V-04 | Two new question-shaped guides from sourced data only (Chefman 6 Qt vs 8 Qt comparison; manufacturer buzzword decoder), illustrations, sitemap/feed via build | in progress | `0e102530-affil3` | `data/guides.json`, `assets/img/guide-*.png`, `tools/build.mjs` (count strings), generated pages |
+| V-05 | Append suggestions + questions discovered during verification | in progress | `0e102530-affil3` | `data/suggestions.json`, `data/questions.json` |
+| V-06 | Session executive summary | in progress | `0e102530-affil3` | `EXECUTIVE-SUMMARY-0e102530.md` |
+| V-07 | Rebuild, re-run every gate, confirm no broken links, open PR, merge, confirm Pages | in progress | `0e102530-affil3` | generated pages, this file |
+
+Not claimed or done in this session (no owner confirmation, login, or measured data available in the sandbox):
+Associates Central Special Link test (gate G-02), intended-ASIN confirmation per row (FLG-002),
+Search Console verification (FLG-013), named author (FLG-014), site-name decision (DX-6), analytics deployment
+(GitHub Pages cannot run the collector; FLG-009). These stay flagged and do not block publication.
+
+### Scope extension (session `0e102530-affil3`, 2026-11-20)
+
+The original claim did not list `src/assets/img/`. It is now in scope, and the reason is recorded here
+rather than assumed: `assets/img/` at the repository root is **generated** — `tools/build.mjs` deletes it
+and re-copies it from `src/assets/img/` on every build — so `src/assets/img/` is the only place an image
+can actually be changed. Files added or changed in that folder: the two new guide illustrations
+(`guide-dual-vs-single-basket.jpg`, `guide-watts-and-degrees.jpg`) and six existing PNGs re-encoded to a
+256-colour palette, which cut each from 3.3–4.0 MB to 0.9–1.1 MB with no visible change to the artwork
+(pixel RMSE 0.012 on the measured file). No image path, file name or artwork was changed, so no page
+reference moved. The generated `assets/img/` copy is refreshed by the build, not hand-edited.
+
+
+## V-02 · Line-by-line re-verification — done
+
+**Dated record:** `data/observations/2026-11-20-0e102530-verification.json`
+
+Every published specification in `data/products.json` was compared field by field against the
+manufacturer page named in that row's `spec_sources`, and every observed ASIN, title and breadcrumb
+against the Amazon detail page, on 2026-11-20.
+
+| Row | Source read | Result |
+| --- | --- | --- |
+| P01 | S11 https://chefman.com/products/turbofry-touch-dual-window-air-fryer | all fields match |
+| P02 | S13 https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360 | all published fields match |
+| P03 | S23 https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1 | all fields match |
+| P04 | S21 https://www.thermomaven.com/products/f1-ace | all published fields match (family page, FLG-025 stands) |
+| P05 | S14 https://chefiq.com/products/iq-sense + S15 https://chefiq.com/pages/new-iq-sense-faq | **drift found and corrected** |
+
+**The drift.** S14 lists `Internal temp range of 32ºF to 212ºF` and `Ambient temp range of 32ºF to
+1,000ºF`. S15 repeats it: `The max temperature for the portion of the probe inserted into the food is
+212˚F … iQ Sense® Gen 3's maximum ambient temperature limit is 1,000ºF.` The register carried the
+ambient figure as the probe's temperature, so the product page and the comparison table rendered
+`32–1000 °F`. Corrected to `32–212 °F`; the 1,000 °F ambient rating moved into the product's summary
+line; a `correction` block was added to the P05 record; filed as FLG-037, K-22 and Q-17 with discovery
+step D-13.
+
+**Short links.** All five `link.amazon` tokens returned `https://www.amazon.com/` when fetched without a
+session on 2026-11-20 — the same behaviour recorded in FLG-004 and FLG-031, and the same behaviour three
+dated rounds now agree on. Recorded as an observation. No link is called valid or invalid; FLG-003 stands.
+Opened as Q-18 with discovery step D-14, because three rounds of the same unsigned-in result is itself a
+reason to try it the way a reader would.
+
+**New irregularity.** FLG-038: the Emeril page states `25 Cooking Pre-sets` in its specification block,
+`10-in-1` in its description and `11-in-1` in an image alt on the same page, while the listing title says
+24; the CHEF iQ page says `Five internal sensors` in its introduction while its specification list
+enumerates four internal plus one ambient. The site publishes no count in either case, because choosing
+between four official statements would be inference.
+
+## V-03 · Collector end-to-end test — done
+
+`tools/collector.mjs` was started locally and driven with one request per defined event. All five
+(`page_view`, `category_view`, `product_view`, `outbound_click`, `guide_read_75`) returned 204 and were
+aggregated into one daily counts file. Four malformed requests — unknown event, property value with
+spaces, path with a space, body over the 2048-byte cap — returned 400 (or closed the connection) and
+were not counted. No IP address, user agent, cookie or identifier is stored.
+
+**What this does not do:** it does not put the collector on the internet. GitHub Pages cannot run a
+server, `analyticsEndpoint` stays empty, and the live site still sends nothing. That is now suggestion
+S-20 (where should it run) rather than an unexamined gap. FLG-009 stands.
+
+## V-04 · Two new guides — done
+
+- `dual-basket-or-single-basket-air-fryer-which-do-you-need` — the two Chefman units compared on
+  published figures only: capacity per drawer rather than in total, the 450 °F Hi-Fry setting against a
+  plain 400 °F maximum, 1700 W as a question about a 15-amp circuit, and the footprint with the drawer
+  open. Two cells are deliberately blank.
+- `how-to-read-air-fryer-specifications-without-being-misled` — quarts, watts, degrees and presets,
+  built around the conflicts already in the register (1700 W vs a listing's 1000 W for the same model
+  number; a 450 °F title claim vs a published 400 °F maximum; preset counts that differ between a
+  manufacturer page and its own listing).
+
+Both are in `sitemap.xml` and `feed.xml` automatically. Guide counts on the front page, the
+what-we-built list and the workflow page are now read from `data/guides.json` instead of typed, so they
+cannot go stale the way the hand-written counts did before (the DX-7 class of bug).
+
+## Site performance — done, recorded as S-21
+
+Every illustration was a 3.3–4.0 MB PNG. Re-encoded to a 256-colour palette at 1200 px they are about
+0.5 MB each (pixel RMSE 0.012 against the originals). A 768 px `-card.jpg` variant derived from each one
+is offered through `srcset`, so grid cards no longer download full-size art. The hero is a 153 KB JPEG.
+Front page: 3,947 KB of images → 1,176 KB. Guides index: 3,568 KB → 442 KB.
+
+Every `<img>` previously carried a hand-typed `width`/`height`, and four of them no longer matched their
+files, which makes the browser reserve the wrong box and the page jump as images arrive. The build now
+reads the real pixel size from each file, and `tools/verify.mjs` checks all 58 declared sizes against
+the files on every run.
+
+## Final gate run on this branch
+
+```
+node tools/build.mjs                    → 34 pages, 7 feed items, 33 sitemap URLs
+node tools/verify.mjs                   → 3898 checks passed, 0 failed
+python3 scripts/check_links.py           → 593 links, no broken internal links
+python3 scripts/check_site.py            → OK (23 pages, all gates pass)
+npm run check                            → pass
+node tools/disclosure-check.mjs          → PASS, 64 published pages
+node tools/archive-check.mjs             → PASS, 100 archived pages, 3152 refs
+python3 tools/link_report.py --strict    → OK
+counterwise (tools/build.py, gate.py, special_links.py, ledger.py) → PASS, 0 findings
+git status --porcelain                   → clean (committed output matches a clean build)
+```
+
+Independent internal-link crawl of the root publication: 57 HTML pages, 2,009 internal links, 0 broken.
+
+## V-05 · Suggestions and questions added — done
+
+- **S-20** — where the analytics collector should actually run, now that it is proved to work. Four
+  options with tradeoffs, effort and risk.
+- **S-21** — image weight. Decided to B on 2026-11-20 and recorded as decided, with the reasoning.
+- **K-22**, **Q-17**, **Q-18**, **D-13**, **D-14**, **D-15**.
+- **FLG-037**, **FLG-038**.
+
+## V-06 · Session summary — done
+
+`EXECUTIVE-SUMMARY-0e102530.md`.
+
+## Merge resolution — 2026-11-20 (session `0e102530-affil3`)
+
+`main` advanced 258 commits (PRs #57–#75) while this branch was open, so the merge collided in five
+files. **Conflict resolution log, as the coordination rules require:**
+
+1. **`COORDINATION.md`** — append-only, and both sessions added a section at the same point in the file.
+   Both sections are kept: main's first, this session's after it. Nothing was discarded.
+2. **`data/guides.json`** — this session had added two guides. Main now publishes thirteen, including
+   `dual-basket-or-single-basket-air-fryer` and `how-to-read-an-amazon-listing-before-you-buy-a-kitchen-appliance`,
+   which cover the same two questions better. **Both of this session's guides were withdrawn.** Two
+   versions of one question on one domain is the duplicate-content pattern S09 forbids, and publishing
+   them would have competed with main's own pages. The illustrations remain in `src/assets/img/` unused
+   (recorded, not hidden).
+3. **`data/flags.json`, `data/suggestions.json`, `data/questions.json`** — main had already used
+   FLG-037..040, S-20..S-25, Q-17..Q-19 and D-13..D-14 for other work. This session's rows were
+   **renumbered rather than overwritten**: FLG-037→**FLG-041**, FLG-038→**FLG-042**, S-20→**S-26**,
+   S-21→**S-27**, Q-17→**Q-20**, Q-18→**Q-21**, D-13→**D-16**, D-14→**D-17**, D-15→**D-18**.
+   K-22 was free and kept. No other session's row was edited or reordered.
+4. **`tools/build.mjs`** — two conflicts, both in text this session had only touched to replace a
+   hand-written guide count. Main's version of both sentences was better (it also removed a stale
+   count), so main's side was taken in both.
+5. **Generated HTML, `feed.xml`, `sitemap.xml`** — not hand-merged. The build was re-run from the merged
+   registers and the output committed, which is the only safe way to resolve a conflict in a generated
+   file.
+
+**Side effect of the merge:** main's eight new guides shipped illustrations with no card variant, which
+this session's `srcset` change would have pointed at files that did not exist. Eight `-card.jpg`
+variants were generated, and `cardVariant()` now checks that the variant file exists before offering it,
+so a new guide can never produce a `srcset` that 404s.
+
+**Gates after the merge:** `node tools/build.mjs` 40 pages, 13 feed items, 39 sitemap URLs;
+`node tools/verify.mjs` **4795 checks passed, 0 failed**; working tree clean after a rebuild (no drift).
+
+## V-07 · PR, merge and deploy — done
+
+- **PR #81** — https://github.com/karagemop466-tech/Affil3/pull/81 —
+  "Verify all five product rows, fix the CHEF iQ temperature range, test the collector, and cut page
+  weight by two thirds".
+- **Merged without waiting for approval**, as the brief directs: `gh pr merge 81 --merge` at
+  2026-11-20T07:13:18Z, merge commit `6bdce71ea85af0323ffe839288d8ac898724e828`. All five required CI
+  workflows were green before the merge: `Gate the published Pages site`, `gate` (publish-gate,
+  including the drift check), `check-site`, `disclosure`, `verify`.
+- **GitHub Pages:** source `main` at `/`; build for `6bdce71` reported `built` (23.0 s). Six workflows
+  succeeded on the merge commit, including `pages build and deployment`.
+- **Deployed content confirmed** by reading the tree Pages built: the CHEF iQ product page serves
+  `Temperature 32–212 °F`; `/flagged/` serves FLG-041 and FLG-042; `/suggestions/` serves S-26 and S-27.
+
+**What this session changed on the live site:** one corrected specification, two new flags, two new
+suggestions, three new questions, three new discovery steps, one dated observation record from a
+field-by-field re-verification of all five product rows, an end-to-end test of the analytics collector,
+and roughly a two-thirds reduction in page weight with a new gate rule that checks every declared image
+dimension against its file.
+
+**What it did not change, and why:** no intended ASIN, official listing URL, confirmation date or
+confirmation source (owner only — FLG-002); no verdict on the supplied short links (FLG-003, Q-21); no
+Special Link tested in Associates Central (no login in the sandbox — G-02); no analytics endpoint set
+(GitHub Pages cannot run a server — S-26); no price, rating or review count anywhere (no authorized API).
+
+**One thing to decide:** the two guides written this session were withdrawn at merge time because main
+already published better ones on the same two questions. Their illustrations (`guide-dual-vs-single-basket`,
+`guide-watts-and-degrees`, ~784 KB) are still in `src/assets/img/` and wired to nothing. Delete them or
+use them for a question the site does not yet answer.
+
 
 ---
 
@@ -2401,3 +2607,22 @@ suggestions S-21…S-25, questions Q-18/Q-19, discovery D-13/D-14, and FLG-040. 
    live side by side: `main`'s Journal + `/decisions/` and this session's guide set, `/shop/`
    buyer table and S-26…S-28. Nothing is lost; a later tidy-up can merge near-duplicate guides
    and fold S-26…S-28 into the Journal's editorial calendar if that is preferred.
+
+## Integration log 3 — third merge of `origin/main` (2026-11-20, PRs #81–#82)
+
+Same discipline: **nothing from `origin/main` discarded or altered.** Their side added
+S-26 "Where the analytics collector actually runs", S-27 "Image weight, and the intrinsic size
+nobody was checking", Q-21, D-16…D-18, and a `dims()` intrinsic-image helper used across the
+generator. Resolutions:
+
+1. **Renumbering (mine moved a third time):** my December-content, target-reader and
+   measurement-order suggestions are now **S-29, S-30, S-31** (their S-26/S-27 keep their ids —
+   the id collision was in title only). My email-capture question is now **Q-22**; my persona
+   discovery step is **D-15** and points at S-30. Ids are labels; gaps are never renumbered.
+2. **`tools/build.mjs`** — one hunk: their S-27 `dims()` fix reached the old seasonal band's
+   art, which this session's deal-week module had replaced. Resolved by dropping the stray img
+   and pointing **this session's** seasonal art at `dims()` instead, so their fix applies to the
+   current art. All other `dims()` uses merged cleanly.
+3. **Generated pages** regenerated from merged sources: **52 pages, 23 feed items, 6,937 gate
+   checks, 0 failed**. The suggestions/questions pages now render both sessions' entries sorted
+   by id.

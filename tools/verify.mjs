@@ -10,6 +10,27 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
 const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'articles', 'decisions', 'how-we-choose', 'executive-summary', 'sources',
   'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+// Reads the pixel size of a PNG or JPEG file so a check can compare it with what the page declares.
+function imageSize(file) {
+  try {
+    const buf = fs.readFileSync(file);
+    if (buf.length > 24 && buf[0] === 0x89 && buf[1] === 0x50) {
+      return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+    }
+    if (buf.length > 4 && buf[0] === 0xff && buf[1] === 0xd8) {
+      for (let i = 2; i < buf.length - 9; ) {
+        if (buf[i] !== 0xff) { i++; continue; }
+        const m = buf[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) {
+          return { w: buf.readUInt16BE(i + 7), h: buf.readUInt16BE(i + 5) };
+        }
+        if (m === 0xd8 || m === 0xd9 || (m >= 0xd0 && m <= 0xd7)) { i += 2; continue; }
+        i += 2 + buf.readUInt16BE(i + 2);
+      }
+    }
+  } catch { /* unreadable: treated as no size known */ }
+  return null;
+}
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -140,6 +161,16 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`${name}: image is served from this site`, src.startsWith(base + '/assets/img/'), src);
       const imgFile = src.startsWith(base) ? path.join(DOCS, src.slice(base.length)) : '';
       check(`${name}: image file exists`, !!imgFile && fs.existsSync(imgFile), src);
+      // The declared width and height must match the real file. A wrong intrinsic size makes the
+      // browser reserve the wrong box, so the page jumps when the image arrives.
+      if (imgFile && fs.existsSync(imgFile)) {
+        const real = imageSize(imgFile);
+        const w = (attrs.match(/\bwidth="(\d+)"/) || [])[1];
+        const h = (attrs.match(/\bheight="(\d+)"/) || [])[1];
+        if (real && w && h) {
+          check(`${name}: image dimensions match the file`, Number(w) === real.w && Number(h) === real.h, `${src} declares ${w}x${h}, file is ${real.w}x${real.h}`);
+        }
+      }
     }
     check(`${name}: has a canonical URL`, /<link rel="canonical" href="https:\/\/karagemop466-tech\.github\.io\/Affil3\//.test(html));
     if (path.basename(f) !== '404.html') {

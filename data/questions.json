@@ -156,6 +156,14 @@
       "sources": [
         "S02"
       ]
+    },
+    {
+      "id": "K-22",
+      "statement": "The CHEF iQ Sense publishes two separate temperature ranges, and the site's product table now shows the one that applies to food. The manufacturer's specification page lists an internal range of 32-212 F and an ambient range of 32-1,000 F; the same brand's FAQ repeats the distinction, giving 212 F as the maximum for the portion of the probe inserted into food and 1,000 F as the Gen 3 ambient limit. The product page and the comparison table previously showed 32-1,000 F as the probe temperature, which was the ambient figure. It was corrected to 32-212 F on 2026-11-20 and the ambient rating is stated in the product's summary line instead.",
+      "sources": [
+        "S14",
+        "S15"
+      ]
     }
   ],
   "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
@@ -352,6 +360,34 @@
     },
     {
       "id": "Q-20",
+      "question": "Which of the two published temperature ranges should a reader treat as the probe's working limit in a given cooking method?",
+      "have": "Both ranges, from the manufacturer's specification page and its FAQ. The site now publishes the food range in the specification table and states the ambient rating in the summary line.",
+      "lack": "Manufacturer guidance on which figure applies to the probe as a whole in each cooking method. A 1,000 F ambient figure invites the reading that the probe may be left in a 1,000 F oven, and no manufacturer page addresses that reading directly.",
+      "who": "Manufacturer support, or the owner after reading the product manual",
+      "why_it_matters": "A reader who sees only 1,000 F may leave the probe in an oven or under a broiler that the probe's food-side limit does not cover. The site currently publishes both numbers, which is accurate, but not the instruction that would make them safe to act on.",
+      "how_to_close": "Ask the manufacturer in writing which range applies to which part of the probe in each cooking method, or read the product manual for the limit on the inserted section. Publish the answer as a line of guidance beside the table.",
+      "sources": [
+        "S14",
+        "S15"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-21",
+      "question": "What does the repeated Amazon-home-page result for the five short links mean?",
+      "have": "Five dated fetches on 2026-11-20, one per submitted link, each landing on the Amazon home page rather than a product page. The same behaviour is recorded on earlier dated rounds (FLG-004, FLG-031, FLG-037). In the same session, the direct /dp/ URLs for all five products resolved and returned the expected titles and ASINs.",
+      "lack": "A fetch from a signed-in browser, which the sandbox cannot do. Without one the observation stays an observation and no conclusion about the links is available.",
+      "who": "Site owner",
+      "why_it_matters": "Several sessions have now seen the same thing and none of them can interpret it. Either the short links redirect to the home page for unsigned-in requests, which would be ordinary and would say nothing about their validity, or something about them is different. Those two readings lead to opposite decisions, and the site's compliance position on the links (FLG-003) depends on which is true.",
+      "how_to_close": "Open each of the five links in a signed-in Amazon session and record the product name and the ten-character ASIN from the resulting URL. One pass, five minutes, and it closes Q-01 as well.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-22",
       "question": "Where will reader email capture run, and under what consent wording?",
       "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
       "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
@@ -451,9 +487,31 @@
     },
     {
       "id": "D-15",
-      "suggestion": "Name one reader persona from S-27 and write it at the top of the December commission list before any new guide is drafted.",
+      "suggestion": "Name one reader persona from S-30 and write it at the top of the December commission list before any new guide is drafted.",
       "closes": [
         "Q-13"
+      ]
+    },
+    {
+      "id": "D-16",
+      "suggestion": "Ask the CHEF iQ manufacturer, in writing, which of its two published temperature ranges applies to the probe section inserted into food and which to the ambient sensor, and publish the answer as guidance rather than leaving a reader to infer it from two numbers.",
+      "closes": [
+        "Q-20"
+      ]
+    },
+    {
+      "id": "D-17",
+      "suggestion": "Open the five submitted short links in a signed-in Amazon session and record the destination ASIN and product name for each, with the date. This has now failed to resolve from several separate unsigned-in rounds, which is itself a reason to try it the way a reader would.",
+      "closes": [
+        "Q-01",
+        "Q-21"
+      ]
+    },
+    {
+      "id": "D-18",
+      "suggestion": "Re-check the two manufacturer pages whose own text disagrees with itself - Emeril Lagasse's preset count and in-1 count, and CHEF iQ's 'five internal sensors' phrasing against its four-internal-plus-one-ambient specification list - on a later date, and keep both readings dated rather than choosing the one that reads better.",
+      "closes": [
+        "Q-02"
       ]
     }
   ]

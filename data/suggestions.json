@@ -830,6 +830,98 @@
     },
     {
       "id": "S-26",
+      "track": "measurement",
+      "topic": "Where the analytics collector actually runs",
+      "problem": "The counter is built, reviewed and tested, and it is switched off, because GitHub Pages cannot run a server. Until 2026-11-20 nobody had demonstrated that it works. It now has been: tools/collector.mjs was started locally and driven with one request per defined event, all five were accepted and aggregated, and four kinds of malformed request were rejected and counted for nothing. What is left is not code. It is a host, and a decision about what is worth collecting at all.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the endpoint unset. The site publishes no traffic figures and no revenue figures, and the /measurement/ page says so in plain words.",
+          "tradeoff": "Nothing to deploy, nothing to disclose, nothing to get wrong. It also means the next guide topic is chosen by instinct rather than by measured queries, which is the gap S-21 was written to close.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a small always-on host and point analyticsEndpoint at it.",
+          "tradeoff": "Turns measurement on the day it is deployed. It also makes the host, its logs, its uptime and its backups part of what this site promises a reader, and the privacy notice has to describe a real company rather than a generic process.",
+          "effort": "an afternoon",
+          "risk": "medium"
+        },
+        {
+          "id": "C",
+          "label": "Write daily aggregate counts to a public JSON file in this repository from a scheduled GitHub Actions workflow, and let the browser POST to a queue instead of to the collector.",
+          "tradeoff": "No separate host, no server to pay for, and the counts stay in the repository history. It needs a browser write path that does not accept arbitrary POSTs, so the workflow is the part that has to be designed and reviewed carefully.",
+          "effort": "two to three days",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Measure only outbound clicks, with no page-view events at all.",
+          "tradeoff": "The smallest possible data set, and the only number actually tied to revenue. It cannot answer which guide brought the reader, which is the question the cadence decision needs.",
+          "effort": "one day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B if a host is available and the privacy notice can be settled first (Q-16). D if the only thing worth counting is revenue-bearing clicks. The collector is ready; the remaining work is hosting and disclosure, not code.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-009"
+        ]
+      },
+      "depends_on": [
+        "S-03",
+        "S-21"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-27",
+      "track": "platform",
+      "topic": "Image weight, and the intrinsic size nobody was checking",
+      "problem": "Every illustration on the site was a 3.3 to 4.0 MB PNG, and the front page loaded ten images before a line of text was read. The artwork is flat, grainy and mid-tone, which is exactly what a small palette compresses well, and it had been saved as a full-colour PNG. Separately, every <img> carried a hand-typed width and height and four of them no longer matched their files, so the browser reserved the wrong box and the page jumped as images arrived.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the images as they were.",
+          "tradeoff": "Free, and the pages render. It leaves the heaviest element on the page untouched on a site whose whole purpose is organic traffic, where page experience on a phone is a ranking input rather than a detail.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Re-encode the illustrations to a 256-colour palette at 1200 px, derive a 768 px card variant for grid cards and serve it through srcset, take the hero to JPEG, read every declared width and height from the file, and gate all of it (done 2026-11-20).",
+          "tradeoff": "No artwork changed and no file path moved, so no page reference moved. Front page images fell from 3,947 KB to 1,176 KB and the guides index from 3,568 KB to 442 KB (measured pixel RMSE 0.012 against the originals). The gate now fails if a declared size ever disagrees with its file again.",
+          "effort": "one hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Go further: move every illustration to JPEG, delete the PNGs, and add a weight ceiling to the gate so no image over 300 KB may be committed.",
+          "tradeoff": "The smallest files and a rule that stops the problem returning. It also means the illustration pages are no longer lossless, and a ceiling needs an exception path for a genuinely detailed image.",
+          "effort": "half a day",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B is done and was safe to do without a decision, because it changed no path and no pixel. C is the version that stops it coming back, and is worth doing the next time an illustration is added.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "B",
+      "decided_on": "2026-11-20",
+      "decided_by": "0e102530 (build step, reversible, no path or artwork changed)"
+    },
+    {
+      "id": "S-29",
       "topic": "December content direction",
       "current": "A",
       "options": [
@@ -852,7 +944,7 @@
       "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
     },
     {
-      "id": "S-27",
+      "id": "S-30",
       "topic": "Target reader",
       "current": "A",
       "options": [
@@ -875,7 +967,7 @@
       "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
     },
     {
-      "id": "S-28",
+      "id": "S-31",
       "topic": "Order of operations: measurement or content first",
       "current": "B",
       "options": [
