@@ -18,8 +18,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # Runs both generators, both gates, then requires the committed output to
+      # match. Without the last step a source file can be edited without its
+      # emitted copy being regenerated, and the live site silently serves the
+      # old one. That happened once; this is the check that catches it.
       - run: npm run check
       - name: Require committed output to match a clean build
         run: |
           git status --short
-          test -z "$(git status --porcelain)"
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Committed site output does not match a clean build. Run npm run check and commit the difference."
+            exit 1
+          fi

@@ -1,0 +1,211 @@
+{
+  "tracking_id": "shopnow047c-20",
+  "register_date": "2026-11-20",
+  "record_separation_note": "intended_* fields record only what the owner-submitted link states (token read from the submitted URL path). observed_* fields record only what was seen when fetching that submitted link on the observation date. The two sets are kept strictly separate and are never merged (brief: 'Do not merge the two fields'). No claim is made that any submitted link is invalid; compliance status is unresolved and tracked as FLG-003.",
+  "products": [
+    {
+      "id": "P-01",
+      "display_name": "Chefman 6-Quart Dual Basket Air Fryer Oven",
+      "display_name_note": "Editorial label shortened from the verbatim listing title (FLG-011).",
+      "category_note": "Air Fryers (observed breadcrumb)",
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "submitted_token": "B04G1MEwY",
+      "intended": {
+        "asin": "B04G1MEwY",
+        "listing_url": "https://www.amazon.com/dp/B04G1MEwY",
+        "confirmation_date": "2026-11-20",
+        "source": "Owner-supplied brief; token read from the submitted link path",
+        "source_ref": "S-14"
+      },
+      "token_format_check": {
+        "documented_format": "10-character alphanumeric code, typically 'B0' + 8 (S-03)",
+        "observed_token_format": "9 characters, mixed case",
+        "result": "Does not match the documented ASIN format — flagged FLG-001. Validity unresolved (FLG-003); not claimed invalid."
+      },
+      "observed": {
+        "status": "resolved",
+        "date": "2026-11-20",
+        "method": "Fetch of submitted_link with redirects followed",
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "asin": "B0CDY277D3",
+        "listing_title_verbatim": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black",
+        "category_breadcrumb_verbatim": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "price": null,
+        "rating": null,
+        "note": "Price and rating intentionally not recorded (volatile, not verified at fetch time) — FLG-010."
+      },
+      "listing_claims_verbatim": ["6 Quart", "Dual Basket", "Easy View Windows", "Sync Finish", "Hi-Fry", "Auto Shutoff", "2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets", "Digital"],
+      "listing_claims_note": "Wording quoted verbatim from the observed listing title (S-06); not independently tested.",
+      "site_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
+      "site_outbound_note": "Attribution tag appended to the observed listing URL; replace with an Associates Special Link after the FLG-005 workflow test.",
+      "card_image": "assets/img/guide-basket-vs-oven.jpg",
+      "card_image_alt": "Illustration of a basket-style air fryer beside a French-door countertop oven (original artwork, not a product photo)",
+      "sources": ["S-06", "S-03", "S-14"],
+      "flags": ["FLG-001", "FLG-003", "FLG-005", "FLG-010", "FLG-011"]
+    },
+    {
+      "id": "P-02",
+      "display_name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+      "display_name_note": "Editorial label shortened from the verbatim listing title (FLG-011).",
+      "category_note": "Air Fryers (observed breadcrumb)",
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "submitted_token": "B02NbDxp3",
+      "intended": {
+        "asin": "B02NbDxp3",
+        "listing_url": "https://www.amazon.com/dp/B02NbDxp3",
+        "confirmation_date": "2026-11-20",
+        "source": "Owner-supplied brief; token read from the submitted link path",
+        "source_ref": "S-14"
+      },
+      "token_format_check": {
+        "documented_format": "10-character alphanumeric code, typically 'B0' + 8 (S-03)",
+        "observed_token_format": "9 characters, mixed case",
+        "result": "Does not match the documented ASIN format — flagged FLG-001. Validity unresolved (FLG-003); not claimed invalid."
+      },
+      "observed": {
+        "status": "resolved",
+        "date": "2026-11-20",
+        "method": "Fetch of submitted_link with redirects followed",
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "asin": "B09B7SB46R",
+        "listing_title_verbatim": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included",
+        "category_breadcrumb_verbatim": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "price": null,
+        "rating": null,
+        "note": "Price and rating intentionally not recorded (volatile, not verified at fetch time) — FLG-010."
+      },
+      "listing_claims_verbatim": ["26QT", "French Door", "Multi-Function", "Countertop Convection Cooker", "24 One-Touch Preset Options", "Extra Large Interior", "Six Cooking Accessories Included"],
+      "listing_claims_note": "Wording quoted verbatim from the observed listing title (S-07); not independently tested.",
+      "site_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
+      "site_outbound_note": "Attribution tag appended to the observed listing URL; replace with an Associates Special Link after the FLG-005 workflow test.",
+      "card_image": "assets/img/guide-multifunction.jpg",
+      "card_image_alt": "Illustration of a stainless multi-function countertop oven with its rack, tray, basket, and rotisserie accessories (original artwork, not a product photo)",
+      "sources": ["S-07", "S-03", "S-14"],
+      "flags": ["FLG-001", "FLG-003", "FLG-005", "FLG-010", "FLG-011"]
+    },
+    {
+      "id": "P-03",
+      "display_name": "Chefman TurboFry 8-Quart Air Fryer",
+      "display_name_note": "Editorial label shortened from the verbatim listing title (FLG-011).",
+      "category_note": "Air Fryers (observed breadcrumb)",
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "submitted_token": "B00hJ57DV",
+      "intended": {
+        "asin": "B00hJ57DV",
+        "listing_url": "https://www.amazon.com/dp/B00hJ57DV",
+        "confirmation_date": "2026-11-20",
+        "source": "Owner-supplied brief; token read from the submitted link path",
+        "source_ref": "S-14"
+      },
+      "token_format_check": {
+        "documented_format": "10-character alphanumeric code, typically 'B0' + 8 (S-03)",
+        "observed_token_format": "9 characters, mixed case",
+        "result": "Does not match the documented ASIN format — flagged FLG-001. Validity unresolved (FLG-003); not claimed invalid."
+      },
+      "observed": {
+        "status": "resolved",
+        "date": "2026-11-20",
+        "method": "Fetch of submitted_link with redirects followed",
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "asin": "B08DKYBTPH",
+        "listing_title_verbatim": "Chefman Air Fryer 8 Qt | TurboFry 4-in-1 with 450F Hi-Fry Option for Crispier Results | Bake, Dehydrate, Frozen | XL Nonstick Dishwasher-Safe Basket | Stainless Steel",
+        "category_breadcrumb_verbatim": "Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers",
+        "price": null,
+        "rating": null,
+        "note": "Price and rating intentionally not recorded (volatile, not verified at fetch time) — FLG-010."
+      },
+      "listing_claims_verbatim": ["8 Qt", "TurboFry 4-in-1", "450F Hi-Fry Option", "Bake, Dehydrate, Frozen", "XL Nonstick Dishwasher-Safe Basket", "Stainless Steel"],
+      "listing_claims_note": "Wording quoted verbatim from the observed listing title (S-08); not independently tested. The registered mark in the source title is rendered without the symbol.",
+      "site_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
+      "site_outbound_note": "Attribution tag appended to the observed listing URL; replace with an Associates Special Link after the FLG-005 workflow test.",
+      "card_image": "assets/img/guide-capacity.jpg",
+      "card_image_alt": "Illustration of an air fryer basket seen from above with food spaced for airflow (original artwork, not a product photo)",
+      "sources": ["S-08", "S-03", "S-14"],
+      "flags": ["FLG-001", "FLG-003", "FLG-005", "FLG-010", "FLG-011"]
+    },
+    {
+      "id": "P-04",
+      "display_name": null,
+      "display_name_note": "No display name — the listing behind the submitted link has not been observed (FLG-004).",
+      "category_note": "unknown",
+      "submitted_link": "https://link.amazon/B0c8moW59",
+      "submitted_token": "B0c8moW59",
+      "intended": {
+        "asin": "B0c8moW59",
+        "listing_url": "https://www.amazon.com/dp/B0c8moW59",
+        "confirmation_date": "2026-11-20",
+        "source": "Owner-supplied brief; token read from the submitted link path",
+        "source_ref": "S-14"
+      },
+      "token_format_check": {
+        "documented_format": "10-character alphanumeric code, typically 'B0' + 8 (S-03)",
+        "observed_token_format": "9 characters, mixed case",
+        "result": "Does not match the documented ASIN format — flagged FLG-001. Validity unresolved (FLG-003); not claimed invalid."
+      },
+      "observed": {
+        "status": "blocked",
+        "date": "2026-11-20",
+        "method": "Fetch of submitted_link with redirects followed; 2 attempts",
+        "final_url": "https://www.amazon.com/checkpoint/continue (bot-checkpoint interstitial)",
+        "asin": null,
+        "listing_title_verbatim": null,
+        "category_breadcrumb_verbatim": null,
+        "price": null,
+        "rating": null,
+        "note": "Amazon's 'Continue shopping' checkpoint interstitial returned on both attempts in this session; no product page observed here. Requires a manual browser check (FLG-004)."
+      },
+      "cross_session": {
+        "note": "A later independent retest by session f761b123 (recorded on main in data/observations/2026-11-20-retest.json) resolved this same link to https://www.amazon.com/dp/B0DHZTCNR5 — 'ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5F Accuracy | NIST&NSF Certified, Auto-Rotate Bright LED Screen, IP67 Waterproof for Grill BBQ, Stocking Stuffers Gifts for Men, Black'. That observation is theirs, not ours: it is recorded here as corroborating evidence with attribution, and this session's own observed.* fields stay as observed. Intent is still unconfirmed (FLG-003).",
+        "source_ref": "S-15"
+      },
+      "listing_claims_verbatim": [],
+      "listing_claims_note": "No observed listing — no claims recorded.",
+      "site_outbound_url": "https://link.amazon/B0c8moW59",
+      "site_outbound_note": "Submitted link used as-is (it at least reaches an Amazon property). No attribution tag could be verified for it (FLG-005). Do not assume it is invalid (FLG-003).",
+      "card_image": null,
+      "card_image_alt": null,
+      "sources": ["S-10", "S-03", "S-14"],
+      "flags": ["FLG-001", "FLG-003", "FLG-004", "FLG-005", "FLG-010"]
+    },
+    {
+      "id": "P-05",
+      "display_name": "CHEF iQ Sense Smart Wireless Meat Thermometer (Gen3)",
+      "display_name_note": "Editorial label shortened from the verbatim listing title (FLG-011).",
+      "category_note": "Meat Thermometers & Timers (observed breadcrumb)",
+      "submitted_link": "https://link.amazon/B0f3GKalj",
+      "submitted_token": "B0f3GKalj",
+      "intended": {
+        "asin": "B0f3GKalj",
+        "listing_url": "https://www.amazon.com/dp/B0f3GKalj",
+        "confirmation_date": "2026-11-20",
+        "source": "Owner-supplied brief; token read from the submitted link path",
+        "source_ref": "S-14"
+      },
+      "token_format_check": {
+        "documented_format": "10-character alphanumeric code, typically 'B0' + 8 (S-03)",
+        "observed_token_format": "9 characters, mixed case",
+        "result": "Does not match the documented ASIN format — flagged FLG-001. Validity unresolved (FLG-003); not claimed invalid."
+      },
+      "observed": {
+        "status": "resolved",
+        "date": "2026-11-20",
+        "method": "Fetch of submitted_link with redirects followed",
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "asin": "B0DZFD6R9Z",
+        "listing_title_verbatim": "CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3",
+        "category_breadcrumb_verbatim": "Home & Kitchen > Kitchen & Dining > Kitchen Utensils & Gadgets > Thermometers & Timers > Meat",
+        "price": null,
+        "rating": null,
+        "note": "Price and rating intentionally not recorded (volatile, not verified at fetch time) — FLG-010."
+      },
+      "listing_claims_verbatim": ["Smart Wireless Meat Thermometer", "3 Ultra-Thin Probes", "WiFi Unlimited Range", "1000F Heat Safe", "5 Sensors", "BBQ, Grill, Oven, Smoker, Air Fryer", "Gen3"],
+      "listing_claims_note": "Wording quoted verbatim from the observed listing title (S-09); not independently tested. Degree symbol in the source title rendered as 'F'.",
+      "site_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
+      "site_outbound_note": "Attribution tag appended to the observed listing URL; replace with an Associates Special Link after the FLG-005 workflow test.",
+      "card_image": "assets/img/product-thermometer.jpg",
+      "card_image_alt": "Illustration of a wireless probe thermometer in a roast with its charging dock (original artwork, not a product photo)",
+      "sources": ["S-09", "S-03", "S-14"],
+      "flags": ["FLG-001", "FLG-003", "FLG-005", "FLG-010", "FLG-011"]
+    }
+  ]
+}

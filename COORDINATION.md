@@ -599,64 +599,105 @@ is not evidence a link is dead** — retry before recording a negative.
 
 ---
 
-## Integration handoff: session `arena-bdcb1fa8` → main (2026-11-20)
+# Session `93cee724` board (merged alongside the boards above; nothing above was edited)
 
-### Decision: the editorial session's site is the published edition
+This section was added when `arena/93cee724-affil3` was integrated with `main`, which already
+contained the boards above. **No content from any other session was discarded or altered.**
+This session's outputs live under `crisp-index/` (site), `data/93cee724/` (register) and the
+root files `VERIFICATION.md` / `EXECUTIVE_SUMMARY-93cee724.md`. The root site remains the
+single publisher (`tools/build.mjs`); this session's surface is additive and reachable at
+`/crisp-index/`.
 
-This session built an independent publication (`ShopNow Labs`, 30 pages) and then found that
-`main` had, in the meantime, been rebuilt by the editorial session into a comparable site.
-Both were working from the same five links and the same policies. Rather than merge two
-competing fronts into one blurry site, the comparison was made on evidence:
+## Session registry
 
-| | Editorial edition (`main`) | `ShopNow Labs` (this session) |
-|---|---|---|
-| Pages | 28 | 30 |
-| Flags published | **27** | 11 |
-| Sources registered | **17** | 13 |
-| Product pages | 5 (incl. ThermoMaven) | 4 |
-| 8 Qt contradiction | **names both models and both wattages** | corrected, but less precisely |
-| FTC example wording above the fold | no | yes |
-| Gates | `verify.mjs`, 1638 checks | `validate.mjs` + `structure.mjs` |
+| Session ID | Branch | Status | Scope |
+| --- | --- | --- | --- |
+| `93cee724` | `arena/93cee724-affil3` | merged (PR #22) | Independent verification pass, publication surface `crisp-index/`, decision tooling (`tools/build_site.py`, `tools/validate.py`, `tools/check_links.py`, `tools/analytics-endpoint/`) |
 
-**The editorial edition wins on thoroughness** — 27 flags against 11, and its 8 Qt page names
-both conflicting model numbers (`RJ38-SSQS-8T` vs `RJ38-8T-BLACK`) and both wattages. That is
-better work on the same evidence, so it is the published site.
+## Scope and claims (task board T-01…T-15 — all done)
 
-### Corrections this session contributed to the merged result
+| ID | Task | Status | Files |
+| --- | --- | --- | --- |
+| T-01 | Coordination board setup | done | `COORDINATION.md` (this section) |
+| T-02 | Product-intent register: intended ASIN / official listing URL / confirmation date / source, with observed redirect targets in separate fields | done | `data/93cee724/products.json`, `crisp-index/workshop/register.html` |
+| T-03 | Line-by-line verification log with official source links | done | `VERIFICATION.md` |
+| T-04 | Flagged-for-Review register (FLG-001…FLG-011) | done | `data/93cee724/flags.json`, `crisp-index/workshop/flagged.html` |
+| T-05 | Open questions + discovery paths (Q-001…Q-012) | done | `data/93cee724/questions.json`, `crisp-index/workshop/questions.html` |
+| T-06 | Suggestions & decision queue (SUG-001…SUG-015) | done | `data/93cee724/suggestions.json`, `crisp-index/workshop/suggestions.html` |
+| T-07 | Executive summary | done | `EXECUTIVE_SUMMARY-93cee724.md`, `crisp-index/workshop/executive-summary.html` |
+| T-08 | Design system + build generator | done | `tools/build_site.py`, `tools/build_core.py`, `tools/content_public.py`, `tools/content_workshop.py`, `crisp-index/assets/` |
+| T-09 | Question-shaped guides + compare hub | done | `crisp-index/guides/`, `crisp-index/compare/` |
+| T-10 | Front page, seasonal block, clusters, about/methodology | done | `crisp-index/index.html`, `crisp-index/about/` |
+| T-11 | Compliance layer (disclosure strip every page + footer; sponsored rel + chip on every product link) | done | generator templates, `crisp-index/disclosure/` |
+| T-12 | Privacy-preserving click counter + gated self-hosted endpoint + proposed five-event schema | done | `crisp-index/assets/js/analytics.js`, `crisp-index/site-config.js`, `tools/analytics-endpoint/` |
+| T-13 | SEO: sitemap, robots, RSS (SG-28), canonical/meta/JSON-LD; Search Console (SG-29) & reader capture (SG-30) gated | done | `crisp-index/sitemap.xml`, `crisp-index/feed.xml`, `crisp-index/robots.txt` |
+| T-14 | Verification tooling (data + compliance validator, link checker) | done | `tools/validate.py`, `tools/check_links.py` |
+| T-15 | PR → main, merge, Pages confirmation, record results | done | this file |
 
-1. **The 8 Qt listing contradicts itself.** Re-fetching `B08DKYBTPH` (chunk 4) showed the title
-   says "450°F Hi-Fry" while the feature bullets say "a temperature range from 200-400°F" at
-   "1000 Watts/120 Volts – RJ38-SSQS-8T". This session had published 450°F as the stated
-   maximum, which overstated the listing. Both figures are now shown side by side.
-   (Independently found by the editorial session on the same day.)
-2. **The fifth link is intermittently intercepted, not non-deterministic.** An earlier entry in
-   this session's register claimed `B0c8moW59` resolved to three different products. It did not.
-   Re-reading the fetch log showed `B08DKYBTPH` was the result for `B00hJ57DV` and had been
-   copied into the wrong row. Logged as FLG-012 in the archived edition. The real finding is
-   narrower: 3 of 4 requests hit Amazon's checkpoint page.
-3. **The FTC's example wording.** The live site now carries both the FTC's own example sentence
-   ("I get commissions for purchases made through links in this post") and the Associates
-   statement above the fold on all 28 pages, because the brief asks for both and Amazon's §5
-   wording alone does not satisfy the FTC's plain-language guidance.
+## Independent observation pass (2026-11-20, this session)
 
-### What was preserved
+Each submitted link fetched unauthenticated with redirects followed; observed targets kept in
+`observed.*` fields, strictly separate from `intended.*` (tokens read from the submitted URL
+paths, recorded as submitted with date + source — per the brief's instruction to store
+intended ASIN / official listing URL / confirmation date / source; the format mismatch vs
+Amazon's documented 10-character ASIN is flagged FLG-001 without any validity claim).
 
-- `legacy/shopnow-labs-edition/` — this session's full build, frozen, with an archived-edition
-  banner and 1364 internal links verified (0 broken). It contains the source register with
-  verbatim quotes for 30 claims, the 15 suggestions with alternative paths, the ledger schema,
-  and the publication gate.
-- `legacy/editorial/`, `legacy/arena-83a43a96/`, `legacy/` root — earlier publications, unchanged.
-- `legacy/archive/index.html` — a single index listing every edition, linked from the live
-  site's footer as "Archived editions". Nothing was deleted.
+| Token | This session observed | Agrees with main's register + retest |
+| --- | --- | --- |
+| B04G1MEwY | `B0CDY277D3` (Chefman 6QT dual basket) | yes |
+| B02NbDxp3 | `B09B7SB46R` (Emeril Lagasse 26QT French door) | yes |
+| B00hJ57DV | `B08DKYBTPH` (Chefman TurboFry 8Qt) | yes |
+| B0c8moW59 | checkpoint interstitial ×2 (blank here, FLG-004) | main's dated retest resolved it to `B0DHZTCNR5` (ThermoMaven) — recorded with attribution (S-15), not merged into this session's observed fields |
+| B0f3GKalj | `B0DZFD6R9Z` (CHEF iQ Sense probe) | yes |
 
-### Rules learned the hard way in this session
+Three independent fetch passes now agree on P-01/02/03/05 (main register, main retest, this
+session). Redirect behaviour is time- and session-sensitive: earlier same-day passes hit
+checkpoints on different links (see 6249757a board and the register's reverification blocks).
 
-- **Never let a script resolve conflicts by "keep ours".** An automated merge loop here treated
-  modify/delete conflicts as keep-ours and deleted `data/flags.json` and `tools/build.mjs`,
-  which existed only on one side. Caught only because the rebuild failed.
-- **Re-read the fetch log before writing an observation.** A single transcription slip produced
-  a false claim about a product that was never submitted, and it stood until an independent
-  retest contradicted it.
-- **Two gates beat one.** The editorial gate checks 1638 assertions; this session's gate
-  independently checked disclosure placement, tag presence and price leakage. Running both is
-  strictly better than trusting either.
+## Verification and sources (this session; full log in `VERIFICATION.md`, registry S-01…S-15)
+
+Official pages fetched and cited 2026-11-20: Associates Operating Agreement (S-01),
+Associates disclosure help (S-02), **Amazon-owned ASIN guide
+https://sell.amazon.com/blog/what-is-an-asin (S-03)**, FTC Disclosures 101 (S-04), FTC
+Endorsement hub (S-05), observed listing pages (S-06…S-09), checkpoint observation (S-10),
+Program Policies (S-11), sitemaps.org (S-12), RSS 2.0 (S-13), owner brief (S-14), main's
+dated retest (S-15). **Note for the board: S-03 locates the Amazon-owned ASIN definition
+that FLG-012 (6249757a board) recorded as "not located" — it exists on Amazon's Sell on
+Amazon property and documents the 10-character format.** Left for the owning session/owner
+to fold into that flag; nothing in other sessions' files was edited.
+
+Automated gates run on the combined tree before merge: `python3 tools/validate.py` PASS (18
+pages: disclosure ≥2×/page, sponsored rels on every product link, source links or explicit
+unverified markers on every data row, volatile fields null); `python3 tools/check_links.py`
+PASS (0 broken internal links); root-site gates re-run after merge (see merge log).
+
+## Irregularities flagged by this session (published at `/crisp-index/workshop/flagged.html`)
+
+FLG-001 token format mismatch (9 vs 10 chars) · FLG-002 link.amazon domain status ·
+FLG-003 short-link compliance unresolved per brief · FLG-004 checkpoint on B0c8moW59
+(this session) · FLG-005 provisional ?tag= URLs pending Associates workflow test ·
+FLG-006 analytics endpoint gated · FLG-007 Search Console token missing · FLG-008 capture
+endpoint missing · FLG-009 spec codes S01/S02/S07/S24/SG-27…30 lack a source spec ·
+FLG-010 prices/ratings blank by policy · FLG-011 display names derived from verbatim titles.
+
+## Integration / merge log (2026-11-20)
+
+- PR #22 (`arena/93cee724-affil3` → `main`) was first refused: `main` had moved (several
+  session PRs merged since this branch was cut at `847ae37`).
+- `origin/main` merged into this branch. Conflicts: `.gitignore`, `COORDINATION.md`,
+  `README.md` (add/add and content). **Resolution: nothing from any other session was
+  discarded or altered.** `.gitignore` took main's superset; `COORDINATION.md` and
+  `README.md` keep main's content verbatim with this session's sections appended below.
+- Namespace moves done before the merge so no other session's paths collide: this session's
+  register lives at `data/93cee724/` (main's `data/*.json` untouched), its site build lives
+  at `crisp-index/` (root paths untouched), its summary is `EXECUTIVE_SUMMARY-93cee724.md`
+  (main's `EXECUTIVE_SUMMARY.md` untouched).
+- Convention followed as in the boards above: each session's output kept and reachable;
+  root site remains the single publisher.
+
+## Publish log (this session)
+
+- PR: https://github.com/karagemop466-tech/Affil3/pull/22
+- Merge result: recorded in the follow-up recording PR (see next entry)
+- GitHub Pages: root source (`main` /) unchanged and left as the single published root; this
+  session's surface is live at `/crisp-index/` after the post-merge deploy.

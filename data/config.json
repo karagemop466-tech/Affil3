@@ -14,5 +14,5 @@
   "analyticsEndpoint": "",
   "analyticsNote": "Empty by design: GitHub Pages cannot run the collector. Set this to the URL of a deployed tools/collector.mjs (HTTPS, path ending in /collect) to turn analytics on. See FLG-009.",
   "suggestionsNote": "Suggestions are listed at /suggestions/ and are not implemented until chosen.",
-  "disclosureNote": "Two statements, deliberately. The first sentence is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer."
+  "disclosureNote": "Two statements, deliberately. The first is the FTC's own example wording from its Endorsement Guides FAQ, which the FTC describes as clear for affiliate links; the second is the exact identification statement required by Amazon's Operating Agreement section 5. Both appear above the fold on every page and again in the footer."
 }
