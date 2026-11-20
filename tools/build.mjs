@@ -571,7 +571,7 @@ add({
 <li><strong>Observe the listing.</strong> Each submitted short link is fetched and the final Amazon page recorded (title, breadcrumb, /dp/ identifier). Observations are dated and never copied into the intended-product fields.</li>
 <li><strong>Check the maker.</strong> Where the manufacturer publishes a specification page, its figures populate the product page's specification grid. Where the maker is silent, the cell reads <em>not stated</em> — never filled in.</li>
 <li><strong>Record conflicts.</strong> Where the listing and the maker disagree, both readings are published side by side and the row is flagged (see FLG-023 through FLG-027 on the <a href="${esc(href('/flagged/'))}">flag page</a>).</li>
-<li><strong>Withhold what we cannot stand behind.</strong> No prices, ratings, availability, or hands-on test claims. If a maker publishes no specification page at all, every specification is withheld (FLG-025).</li>
+<li><strong>Withhold what we cannot stand behind.</strong> No prices, ratings, availability, or hands-on test claims. When two official pages disagree, the cell stays blank and the disagreement is published (FLG-026); when a maker's page and a listing disagree about a model name, that is published too (FLG-031, FLG-032).</li>
 <li><strong>Link everything.</strong> Every row and guide carries its source IDs, linked in the <a href="${esc(href('/sources/'))}">source register</a>.</li>
 </ol>
 <h2>What would change a row</h2>
@@ -587,7 +587,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, three category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -598,12 +598,14 @@ add({
 <li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
 <li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
-<li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li>An Amazon-owned ASIN definition has been located and read in full on Amazon's own site: an ASIN is "a unique combination of 10 letters and numbers that Amazon assigns to a product" (S23). FLG-012 is closed.</li>
+<li>Every product's specification grid was re-checked against the manufacturer's own product page on 2026-11-20 (S11, S12, S13, S14, S21, S22). Three published facts were corrected as a result: the wireless thermometer's reading range, the 8 qt fryer's temperature range and weight, and the absence of any specification on the instant-read thermometer.</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
 <li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
+<li>Three open items remain after the 2026-11-20 re-check: the maker's page for the instant-read thermometer and its marketplace listing carry different model names (FLG-031); the listing states certification and a water-resistance rating the maker does not (FLG-032); and the wireless thermometer's maker page contradicts itself on its sensor count (FLG-033).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
 </ul>

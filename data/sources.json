@@ -148,7 +148,7 @@
       "publisher": "amazon.com",
       "url": "https://www.amazon.com/dp/B08DKYBTPH",
       "method": "observed 2026-11-20",
-      "used_for": "The Amazon listing's own 'item model number' field does not match the manufacturer model for this feature set (FLG-025). Used only as evidence of the mismatch.",
+      "used_for": "The Amazon listing's own copy for the tracked 8 qt air fryer names model RJ38-SQSS-8T, states 1000 W / 120 V, a 200-400 F range and 12.75 x 13.5 x 10 in, while the maker's page for that model (S22) states 1700 W / 120 V and 15.4 x 12.6 x 13.5 in. Used as evidence of the disagreement (FLG-026), not as a specification.",
       "status": "observed"
     },
     {
