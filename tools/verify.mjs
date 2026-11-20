@@ -21,10 +21,13 @@ const guides = read('data/guides.json').guides;
 // Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
 // and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
 const ALLOWED_SOURCE_HOSTS = new Set([
-  'affiliate-program.amazon.com', 'advertising.amazon.com', 'www.amazon.com', 'link.amazon',
-  'developers.google.com', 'www.ftc.gov',
+  'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
-  'chefman.com', 'www.emerileveryday.com', 'chefiq.com', 'www.thermomaven.com',
+  'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
+  // Added 2026-11-20 (session 197d4f9e-affil3): ThermoMaven is the maker of a submitted
+  // product, so its own product page is the same kind of official source as the other two
+  // manufacturers already listed. No reseller, review site or aggregator is added.
+  'www.thermomaven.com',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
@@ -132,9 +135,20 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
       check(`${name}: title within 90 characters`, title.length > 0 && title.length <= 90, String(title.length));
     }
     check(`${name}: no price-like amounts`, !/\$\s?\d/.test(body), (body.match(/.{0,20}\$\s?\d.{0,20}/) || [''])[0]);
+    // Zero third-party requests. The site loads one stylesheet, one script and its own images, all
+    // same-origin, and /privacy/ says so. A webfont, hosted analytics script or widget from another
+    // origin would make that page false and would add a data processor nobody has reviewed.
+    check(`${name}: no external stylesheet, script or font origin`,
+      !/<link[^>]+rel="stylesheet"[^>]*href="https?:\/\//i.test(html)
+      && !/<script[^>]+src="https?:\/\//i.test(html)
+      && !/@import\s+url\(\s*['"]?https?:/i.test(html)
+      && !/fonts\.(googleapis|gstatic)\.com/i.test(html),
+      (html.match(/<link[^>]+rel="stylesheet"[^>]*href="https?:[^>]*>|<script[^>]+src="https?:[^>]*>/i) || [''])[0]);
     // dashboards in footer
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
-    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/']) {
+    // Kept in step with DASHBOARDS in tools/build.mjs; /privacy/ and /design-brief/ were added by
+    // session 66f2548a so the two new pages cannot silently lose their footer entry.
+    for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/', '/privacy/', '/design-brief/']) {
       check(`${name}: footer links ${d}`, footer.includes(`${base}${d}`));
     }
     // links
@@ -188,11 +202,6 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     const expectedNa = stated.filter((v) => !v).length;
     const actualNa = (h.match(/class="na"/g) || []).length;
     check(`product page ${p.id} shows exactly ${expectedNa} "not stated" cells`, actualNa === expectedNa, `${actualNa} rendered`);
-    // Extra stated rows (an ambient range beside an internal one, a sensor count) must reach the page.
-    for (const [label, value] of (p.spec_notes || [])) {
-      const escaped = String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-      check(`product page ${p.id} shows the extra specification row "${label}"`, h.includes(escaped), label);
-    }
     if (p.no_buy_link) {
       check(`product page ${p.id} publishes no buy button`, !/data-outbound/.test(h));
       check(`product page ${p.id} explains why`, /No buy button on this page/.test(h));

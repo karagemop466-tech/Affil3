@@ -1250,7 +1250,6 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
   after merge.
 
-
 ## Publish log (session 0a90f62c)
 
 - **PR #18** — https://github.com/karagemop466-tech/Affil3/pull/18 — "Crisp & Counter: verified
@@ -1269,6 +1268,283 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - No build, check or deploy failure outstanding at publish time; the two failures found on the
   way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
   in `docs/`) were fixed and re-run before merge.
+
+## Session `66f2548a` — second merge record (2026-11-20)
+
+`origin/main` advanced a second time while this branch worked: a further rewrite of
+`tools/build.mjs` and `src/assets/style.css`, a restructured source register now reaching S20, its
+own `/privacy/` and `/workflow/` pages, and FLG-030. Thirty-six conflicts; all resolved in favour of
+main with `git checkout --theirs`, nothing discarded, no file hand-merged. This branch's additions to
+`data/questions.json` and `data/suggestions.json` merged cleanly and were kept.
+
+**Superseded by the newest main, therefore not re-applied:** all five live defects this branch had
+fixed (the "open flags" tile counting resolved flags, "1 picks", the hand-written decision count, the
+FLG-008 miscitation, the brand-named alt text) — the newest main fixes each of them independently, and
+its alt text now reads "Editorial illustration for …; not the reviewed unit" with an `art-tag` badge.
+Main's own `/privacy/` page also superseded this branch's draft; the §3(e) obligation is recorded as
+FLG-035 resolved by main rather than claimed here.
+
+**Still missing on the newest main, re-applied in commit 78143a3:** the `/design-brief/` page with its
+stylesheet, `OWNED` and `DASHBOARDS` entries and the generated `DESIGN-BRIEF.md`; the verbatim re-read
+of the Operating Agreement and Program Policies appended to S01, S02 and S06 `used_for` (closing the
+excerpt caveat on §2(a)-(b)); and five flags renumbered to continue main's sequence — FLG-031 (the
+machine-learning clause, §5), FLG-032 (price tracking, §6(y)), FLG-033 (tracking-ID format caveat),
+FLG-034 (the superseded variant behind submitted link 4), FLG-035 (privacy notice, resolved by main).
+This branch's earlier numbering was dropped twice rather than renumbered over main's, and every
+affected register file says so in its `note`.
+
+**Final gate state on this branch:** `node tools/build.mjs` builds 31 pages, 30 sitemap URLs, 5 feed
+items; `node tools/verify.mjs` reports 3,407 checks passed, 0 failed; `python3 tools/build.py` and
+`tools/check_site.py` report 21 pages, PASS. Both builds re-run after the commit leave `git status`
+clean. A repository-wide scan of 8,261 anchors found zero broken internal links; the only Amazon
+anchors without `sponsored` or `nofollow` are citations to policy hosts plus eight inside the
+crawler-disallowed `legacy/` archive and one `gp/help` reference, none of them product links on an
+indexed surface.
+
+---
+
+# Session `66f2548a` — task board, verification log and completion record (RESTORED 2026-11-20)
+
+**Restoration note.** This session's original board, verification log and repo-review table were
+appended early in the session and then **dropped when this session resolved the first `origin/main`
+merge by taking main's side of the `COORDINATION.md` conflict**. That was this session's error, not
+another session's: the file is append-only and both sides should have been kept, as was done for the
+third merge. Everything below is re-created from the session's own records; only the second-merge
+record at line 1272 survived in place. No other session's content was affected.
+
+## Task board (session `66f2548a`, branch `arena/66f2548a-affil3`)
+
+| Task | Status | Session | Files touched |
+|---|---|---|---|
+| A1 independent re-verification of the five submitted links | done | 66f2548a | `data/observations/2026-11-20-reverify-66f2548a.json` |
+| A2 verbatim re-read of S01, S02, S06 and the register | done | 66f2548a | `data/sources.json` |
+| A3 repo review and new flags | done | 66f2548a | `data/flags.json` |
+| A4 questions register with have/lack/who | done | 66f2548a | `data/questions.json` |
+| A5 decision board with tracks and order | done | 66f2548a | `data/suggestions.json`, `tools/build.mjs` |
+| A6 shop-voice pass | superseded by main | 66f2548a | dropped in merge; main shipped it first |
+| A7 privacy notice | superseded by main | 66f2548a | dropped in merge; main shipped `/privacy/` |
+| A8 design brief | done | 66f2548a | `data/design-brief.json`, `DESIGN-BRIEF.md`, `tools/build.mjs`, `src/assets/style.css` |
+| A9 gates, CI, PR, merge, Pages | done | 66f2548a | `tools/verify.mjs`, `.github/workflows/verify.yml` (superseded), PR #46 |
+
+## Verification log (A1, A2) — every claim read from the page, not recalled
+
+Fetched 2026-11-20 with `fetch_page`, one URL per call, redirects followed, unauthenticated.
+
+| Source | What was read | Result |
+|---|---|---|
+| [link.amazon/B04G1MEwY](https://link.amazon/B04G1MEwY) | final URL, title, every query parameter | `amazon.com/dp/B0CDY277D3` · CHEFMAN 6 Quart Dual Basket · **no `tag=`** · agrees with every register |
+| [link.amazon/B02NbDxp3](https://link.amazon/B02NbDxp3) | same | `amazon.com/dp/B09B7SB46R` · Emeril Lagasse 26QT French Door · **no `tag=`** · agrees |
+| [link.amazon/B00hJ57DV](https://link.amazon/B00hJ57DV) | same | `amazon.com/dp/B08DKYBTPH` · Chefman TurboFry 8 Qt · **no `tag=`** · agrees; confirms the PR #10 correction |
+| [link.amazon/B0c8moW59](https://link.amazon/B0c8moW59) | same | `amazon.com/dp/B0DHZTCNR5` · ThermoMaven 1 Sec · **no `tag=`** · agrees; page carries "Newer Version Available" → B0GL7Z4KP4 (FLG-034) |
+| [link.amazon/B0f3GKalj](https://link.amazon/B0f3GKalj) | same | `amazon.com/dp/B0DZFD6R9Z` · CHEF iQ Sense Gen3 · **no `tag=`** · agrees |
+| [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | §1, §4, §5, §6, §7 in full | §5 disclosure wording verbatim; §6 makes any §5 violation a material breach; §4 disclaims any traffic or income representation |
+| [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | CIS §1; PR §1(a)-(h), §2(a)-(b), §3(a)-(f), §4, §5, §6(a)-(z); Products §1-§3(b) | §2(a)-(b) promoted from excerpt to full text; newly recorded §5, §6(g), §6(s), §6(t), §6(u), §6(v), §6(w), §6(y), §3(e), the material-breach preamble, 24 h / 89 d / 180 d |
+| [Qualify outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | full page | `sponsored` = "advertisements or paid placements"; multiple values allowed; "will generally not be followed"; "Last updated 2025-12-10 UTC" |
+
+Not re-fetched, so they keep the status the fetching session recorded: S03, S07–S13 plus main's
+S14–S20 manufacturer rows. No third-party page was used for any value. A price and a star rating
+were visible on two fetched pages and neither was transcribed anywhere.
+
+## Repo review — what was found, and what happened to each finding
+
+| Finding | Outcome |
+|---|---|
+| CI diffed `docs/`, which never existed, and never ran the root gate | Fixed here, then superseded: main shipped its own corrected workflow before the merge |
+| `editorial/assets/site.css` committed stale (resolved-flag styles missing from the emitted copy) | Regenerated; exposed only because the corrected CI could see it |
+| Category pages published rows with no table and no per-row source | Fixed here; main's later rewrite moved specifications onto cited product pages, so the finding closed |
+| S04's method text named three ASINs after the data said five | Corrected here; main restructured the register afterwards |
+| FLG-003 said "four observed redirects"; five resolve | Corrected and sharpened with the verbatim 6(w)/2(b) text |
+| Executive summary asserted "one link resolved to a checkpoint page" over a five-row table | Fixed by deriving the sentence; main later derived its own counts |
+| Empty `/categories/unresolved/` shipped as a public page with an empty body | Fixed here; main removed the cluster independently |
+| Click counter with no privacy notice, against §3(e) | Drafted here; main shipped `/privacy/` independently; recorded as FLG-035 resolved by main |
+| The brief's SG-27…SG-30 did not exist in either register | Added as decision rows; numbering reconciled to main's sequence |
+| Three crawlable publications, robots.txt advertising two | Fixed by main (disallow + one sitemap) before the merge |
+| Exec-summary "open flags" tile counted resolved flags; "1 picks"; "four decisions"; FLG-008 miscited for account status; brand-named alt text | Found live on the shipped site and fixed here; the newest main fixed each independently, so the surviving fixes are the ones main lacked |
+
+## Completion record
+
+- **Pull request: [#46](https://github.com/karagemop466-tech/Affil3/pull/46)** — "Verification pass,
+  decision board, design brief, privacy and five flags (session 66f2548a)".
+- **Merge result: MERGED** into `main` as `3afbacdda321c1e51d1bd5e9106d2c5aa0f5cc42` at
+  2026-11-20T06:31:50Z, after all five required checks passed on the head commit. Merged without
+  waiting for review, per the brief.
+- **GitHub Pages: deployed.** Pages API reports `status: built` for source `main` at `/`; the build
+  created 2026-11-20T06:31:52Z finished `built`. Live at https://karagemop466-tech.github.io/Affil3/,
+  including `/design-brief/` and the restructured `/suggestions/` and `/questions/`. The rendered HTML
+  cannot be fetched from this sandbox, so deployment is confirmed through the Pages API and build
+  status rather than by loading a page.
+- **Final gate state:** root `node tools/verify.mjs` 3,407 checks passed, 0 failed over 31 pages;
+  editorial `tools/check_site.py` 21 pages PASS; both builds deterministic; 8,261 anchors scanned
+  with zero broken internal links.
+- **Nothing blocked the merge.** Flagged and unverified items are published at `/flagged/` with their
+  sources, per the brief.
+
+---
+
+# Session `arena/533ac993-affil3` — integration, verification and publication
+
+Registry: session `arena/533ac993-affil3`, branch `arena/533ac993-affil3`, status active. Branch merged with `origin/main` (`363edb1`); nothing from any concurrent session was discarded, and this session adds only this claim/completion record.
+
+## File scope claimed
+
+- `COORDINATION.md` — this session's claim and completion record sections only (append-only; nothing above this line is edited).
+
+## Scope NOT touched
+
+Everything owned by the root-site generator and its inputs is deliberately left unchanged by this session: `index.html`, `shop/`, `products/`, `categories/`, `guides/`, `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `workflow/`, `about/`, `privacy/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`, `data/*.json`, `src/`, `tools/build.mjs`, `tools/verify.mjs`. These surfaces were published on `main` by prior sessions; this session verifies the combined tree and publishes it through this branch's PR/merge, changing none of them. Any irregularity found on those files is logged here as a request, not edited.
+
+Note for awareness: P04's manufacturer-page correction is carried by open PR #39 (`arena/b1c9cb53-affil3`); this session does not touch product data. ThermoMaven (P04) therefore keeps no specifications and no buy button, consistent with `data/products.json` on `main`.
+
+## Task board
+
+| ID | Task | Status | Notes |
+|---|---|---|---|
+| I-01 | Merge `origin/main` into this branch; preserve all concurrent work | done | merged `363edb1`; both builds re-verified green after |
+| I-02 | Run build + verify + link checks on the combined tree; confirm green | pending | `npm run check` |
+| I-03 | Open PR from this branch to `main` | done | PR #48; summary, sources used, flagged irregularities in the body |
+| I-04 | Merge the PR without waiting for review | pending | user-authorized; `gh pr merge --merge` |
+| I-05 | Confirm GitHub Pages deploys; fetch the live site | pending | `https://karagemop466-tech.github.io/Affil3/` |
+| I-06 | Record PR link, merge result and deploy status in this file | pending | follow-up PR from this branch if needed |
+
+## Sources relied on (register already on `main`; not re-derived here)
+
+S01 Associates Operating Agreement; S02 Program Policies; S03/S11/S13/S18/S19 Associates help topics; S04/S05 submitted links and observed destinations; S06 Google qualified outbound links; S07/S08 FTC disclosure/endorsement; S09/S10 USDA FSIS temperatures and thermometers; manufacturer pages S12–S17. All product rows keep intended.* fields separate from observed.* fields; every outbound product link carries `rel="sponsored"`; disclosure strip is above the fold and repeated in the footer; the campaign ledger is empty by design and no traffic, conversion or revenue figures are claimed.
+
+---
+
+---
+
+# Session `arena/197d4f9e-affil3` — final integration session
+
+Registry: session `197d4f9e-affil3`, branch `arena/197d4f9e-affil3`, cut from `main` @ `bd9886d`.
+Role: **integration**. Every other session's branch and open PR is treated as parallel input to be
+verified and merged (or, where it would create a second competing publication, deliberately not
+merged) — never as work to overwrite. Rule followed: nothing from another session is deleted; where
+a merge conflicts, the resolution keeps both sides' content and is logged here.
+
+## Task board
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-01 | Repo review, line by line; irregularities flagged with source links | in progress | `197d4f9e-affil3` | `COORDINATION.md`, `EXECUTIVE-SUMMARY-197d4f9e.md` |
+| I-02 | Fresh first-hand verification round (5 links, 5 listings, manufacturer + policy pages) | in progress | `197d4f9e-affil3` | `data/sources.json`, `data/flags.json`, `data/products.json` |
+| I-03 | Fix the stale P04 state (buy link withheld on a reason that the register has since corrected) | pending | `197d4f9e-affil3` | `data/products.json`, `data/flags.json` |
+| I-04 | One indexed publication: retire the competing editions to archive | pending | `197d4f9e-affil3` | `robots.txt`, `tools/build.mjs`, archive index, `counter*` build tools |
+| I-05 | Reader polish: make the front page read like a shop, not an audit | pending | `197d4f9e-affil3` | `tools/build.mjs`, `data/guides.json`, `src/assets/style.css` |
+| I-06 | Merge the parallel sessions' open PRs that add verified value | pending | `197d4f9e-affil3` | merge commits; conflicts logged here |
+| I-07 | Decisions surfaces: suggestions, questions, executive summary | pending | `197d4f9e-affil3` | `data/suggestions.json`, `data/questions.json`, `data/executive-summary.json` |
+| I-08 | Re-run every gate, confirm no broken links, open PR, merge, confirm Pages deploy | pending | `197d4f9e-affil3` | CI, this file |
+
+## Scope rules for this session
+
+- Files owned by other sessions are read, never edited, unless the merge itself brings the change in.
+- `counter/`, `counterwise/`, `crisp-index/` and `editorial/` each ran their own gate on their own
+  branch. This session does not rewrite their generators. Consolidation happens by excluding them
+  from the index and linking them from one archive page, not by deleting them.
+
+## P03 correction (PR #40 claim verified first-hand, 2026-11-20)
+
+PR #40 reported that P03's register had compared the observed listing against the wrong Chefman
+page. Checked first-hand before integrating: the listing's own copy names **RJ38-SQSS-8T**, and
+Chefman publishes a page for that exact model
+(https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1, recorded as
+**S23**). The earlier comparison used Chefman's RJ38-8T-BLACK page (S12), which is a *different*
+8 qt model (450 °F Hi-Fry, matte black). The claim is **confirmed**.
+
+Resolved against the correct page (S23 + the listing, S16):
+
+| Field | Manufacturer (S23) | Listing (S16) | Published |
+| --- | --- | --- | --- |
+| Model | RJ38-SQSS-8T | RJ38-SQSS-8T | RJ38-SQSS-8T — agrees |
+| Capacity | 8 qt / 7.57 L | 8 quarts | 8 qt / 7.57 L — agrees |
+| Temperature | 200–400 °F | 200–400 °F | 200–400 °F — agrees |
+| Power | 1700 W / 120 V | 1000 W / 120 V | **1700 W**, difference flagged (FLG-026) |
+| Case size | 15.4 × 12.6 × 13.5 in | 12.75 × 13.5 × 10 in | **15.4 × 12.6 × 13.5 in**, difference flagged (FLG-026) |
+| Weight | 12.8 lb | not stated | 12.8 lb |
+
+- `data/products.json` P03 rewritten to the corrected model, capacity, range, power, dimensions,
+  weight, functions and trade-off; `model_note` records that the earlier comparison was against the
+  wrong page and is corrected here.
+- `FLG-026` rewritten: severity lowered to medium; the conflict is now wattage and case size, not
+  two different machines. `FLG-027` rewritten: the 450 °F Hi-Fry title claim is named, not adopted;
+  the 400 °F ceiling is published.
+- `S12` kept in the register with a note that it is a different model and not P03's spec source.
+- `tools/build.mjs` conflict table replaced with a normalised agrees/differs comparison (integrated
+  from PR #40): only rows both columns state are shown; rows where one side is silent are treated as
+  an absence, not a disagreement. P04 gained `observed_specs` + `observed_specs_extra` so its
+  listing-vs-maker display, waterproofing, certification and successor-SKU differences render as a
+  conflict table too.
+- Guide note in `data/guides.json` updated to describe the corrected state of FLG-023/025/026/027.
+
+## Task board update (2026-11-20)
+
+| ID | Task | Status | Owner | Files touched |
+| --- | --- | --- | --- | --- |
+| I-02 | Fresh first-hand verification round | done | `197d4f9e-affil3` | `data/sources.json`, `data/flags.json`, `data/products.json` |
+| I-03 | Fix the stale P04 state | done | `197d4f9e-affil3` | `data/products.json`, `data/flags.json`, `tools/build.mjs` |
+| I-04 | One indexed publication | done | `197d4f9e-affil3` | `robots.txt`, `tools/build.mjs`, archive index |
+| I-05 | Reader polish: front page reads like a shop | done | `197d4f9e-affil3` | `tools/build.mjs`, `data/guides.json` |
+| I-06 | Merge parallel-session PRs that add verified value | done (selective) | `197d4f9e-affil3` | PR #40 corrections integrated by hand; #21 report copied to `DECISION-REVIEW-771fbf79.md` |
+| I-07 | Decisions surfaces | done | `197d4f9e-affil3` | `data/suggestions.json`, `data/questions.json` |
+| I-08 | Re-run every gate, confirm no broken links, open PR, merge, confirm Pages deploy | in progress | `197d4f9e-affil3` | CI, this file |
+
+**PR #40 integration decision:** its data corrections were verified first-hand against Chefman's own
+page and integrated deliberately (P03 model, specs, flags; guide note; conflict-table generator). Its
+PR #36 counterpart adds only an empty `special_link_validation` schema block, which duplicates the
+existing per-product confirmation fields and changes no rendered output, so it was **not** integrated.
+
+**Still open after this pass:** P02 preset count (24 on Amazon vs 25 on the Emeril page — both
+published, both flagged); Special Link validation in Associates Central (no login in the sandbox,
+gate G-02); intended-ASIN fields blank for all five products (FLG-001/002); short-link status
+unresolved, not invalid (FLG-003/031).
+
+## Final integration outcome (session 197d4f9e-affil3)
+
+- **PR #47** — https://github.com/karagemop466-tech/Affil3/pull/47 — "Final integration:
+  verified shop-style affiliate publication with corrected P03, /compare/, and reconciled
+  summaries"
+- **Merge result: MERGED** into `main` as merge commit `76a54c261aef4649639cdaade104d12a5616b474`
+  on 2026-11-20T06:37:12Z.
+- **Merge conflicts during the two concurrent-session advances:** resolved without discarding
+  either side. First advance: data registers merged by ID (this session's verified entries kept
+  alongside the concurrent sessions' additions); `tools/build.mjs` `OWNED` unioned to keep both
+  `'compare'` and `'design-brief'`; generated pages rebuilt from the merged data;
+  `COORDINATION.md` resolved to keep main's publish log with this session's record re-appended.
+  Second advance: only `COORDINATION.md` conflicted; resolved the same way. Both resolutions
+  re-ran every gate clean.
+- **Final gate state:** `node tools/build.mjs` — 32 pages, 31 sitemap URLs, 5 feed items;
+  `node tools/verify.mjs` — 3,477 checks passed, 0 failed; `python3 tools/build.py` +
+  `tools/check_site.py` — 21 pages, PASS. All gates re-run after the final commit.
+- **GitHub Pages: deployed** (`status: built`, source `main`, /) —
+  https://karagemop466-tech.github.io/Affil3/. Live verification 2026-11-20: root publication
+  serves with the disclosure strip above the fold and five buy buttons; `/compare/` serves the
+  side-by-side table with the corrected P03 row and the disagreement section; the P03 product
+  page serves the verified RJ38-SQSS-8T specifications with the agrees/differs conflict table
+  and source links.
+
+## Completion record (session `arena/533ac993-affil3`)
+
+- **PR #48** — https://github.com/karagemop466-tech/Affil3/pull/48 — "Final verification and publication of the ShopNow Kitchen affiliate site"
+- **Merge result: MERGED** into `main` as merge commit `c2a454c71d0d31fdf7cb8ee045b8d8f1856d82ac` on 2026-11-20T06:36:02Z (`gh pr merge 48 --merge`, merged without waiting for review, as authorized)
+- **Pre-merge verification on the combined tree:** `npm run check` → built 32 pages, 5 feed items, 31 sitemap URLs; `verify.mjs`: 3,477 checks passed, 0 failed; editorial build (`python3 tools/build.py` + `python3 tools/check_site.py`): 21 pages PASS; repository-wide anchor scan: zero broken internal links
+- **GitHub Pages:** source `main` at `/`; status `built`, HTTPS enforced — https://karagemop466-tech.github.io/Affil3/
+- **What this session changed:** only `COORDINATION.md` (this claim and this completion record). All content surfaces were left unchanged and were verified on the combined tree before PR #48 was merged.
+- **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030.
+- **Open owner decisions:** G-02 Associates validation, Q-01 intended products per link, Q-04 analytics host, Q-06 named editor, Q-07 publishing cadence, suggestion S-02 buy buttons while untested, suggestion S-03 collector hosting.
+
+## Session arena/c252594d-affil3 — merge record (2026-11-20)
+
+Main advanced with other sessions' registers while this branch was open. Resolution, deliberately conservative:
+- `data/products.json`, `data/flags.json`, `data/sources.json`, `data/questions.json`, `data/suggestions.json`, `tools/build.mjs`, `tools/verify.mjs`: taken from `main`, whose IDs were already reconciled by the later sessions.
+- `data/guides.json`: this branch's 13 guides, with main's corrected thermometer-guide note.
+- This branch's register additions were **not** merged because their IDs collide with main's and two factual findings disagree with main. Open for owner adjudication:
+  - **Chefman TurboFry RJ38-SQSS-8T wattage:** main lists 1700 W; this branch leaves it blank because the Amazon listing states 1000 W for the same model name (FLG-026). The maker page is the disputed source.
+  - **Chefman 450 °F Hi-Fry option:** this branch attributes the 450 °F figure to the other maker model RJ38-8T-BLACK (S12) and publishes 200–400 °F for RJ38-SQSS-8T; main's flags do not cover this.
+  - **Flag numbering:** this branch's FLG-031 to FLG-033 (ThermoMaven model names, ThermoMaven NSF/IP67 claim, CHEF iQ sensor count) and its status changes to FLG-012 and FLG-025 to FLG-027 differ from main's FLG-031 to FLG-035. They remain in this branch's history and in `git show cd15041:data/flags.json`.
+  - **Suggestions and questions:** this branch's S-07 to S-18 and extra K/Q/D rows are not in main's registers. Their content is kept in the branch history for re-adding under main's numbering.
+
+### Original session log (this branch)
+
 
 ---
 

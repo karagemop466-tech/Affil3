@@ -19,7 +19,7 @@
     },
     {
       "name": "product_view",
-      "fires": "When a product page or product card is shown, once per page load.",
+      "fires": "When a product page or product card is rendered in the DOM, once per page load. This records that the element was rendered, not that a reader saw it in the viewport.",
       "properties": [
         "product_id"
       ]
@@ -35,7 +35,7 @@
     },
     {
       "name": "guide_read_75",
-      "fires": "When a reader scrolls past 75 percent of a guide.",
+      "fires": "When a reader scrolls past 75 percent of a guide. This is a scroll-depth proxy for how far a reader went, not proof that the guide was read.",
       "properties": [
         "guide"
       ]
@@ -49,5 +49,6 @@
     "anything typed into the page",
     "cross-site identifiers"
   ],
-  "why_no_redirect": "The Program Policies prohibit cloaking the URL of a site that carries Special Links, including by sending readers indirectly through an intermediate page. A redirect-based click counter is exactly that pattern, so the counter records the click in the browser and lets the link go straight to Amazon."
+  "why_no_redirect": "The Program Policies prohibit cloaking the URL of a site that carries Special Links, including by sending readers indirectly through an intermediate page. A redirect-based click counter is exactly that pattern, so the counter records the click in the browser and lets the link go straight to Amazon.",
+  "naming_note": "Naming is deliberate: page_view and category_view are page-load events, product_view records a rendered product element rather than viewport visibility, and guide_read_75 is a scroll-depth proxy rather than a reading event. None of them establish that a reader saw or read anything; interpret them accordingly."
 }

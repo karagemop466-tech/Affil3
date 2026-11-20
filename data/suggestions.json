@@ -1,5 +1,4 @@
 {
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B'.",
   "suggestions": [
     {
       "id": "S-01",
@@ -223,192 +222,430 @@
     },
     {
       "id": "S-11",
-      "topic": "Design direction for the site",
+      "topic": "Four editions on one domain",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep the warm editorial system as it stands: cream paper, terracotta accent, serif headlines, illustration-led cards, one navigation group.",
-          "tradeoff": "It is the only direction that has actually been built and checked against the publishing gate, so it is the cheapest to keep and the safest to keep shipping."
+          "label": "Index the root publication only; keep the other editions reachable but excluded from search, and list them on one archive page (current).",
+          "tradeoff": "One site to rank, no content deleted, and each other edition keeps its own generator and gate if the owner later wants it on its own domain."
         },
         {
           "id": "B",
-          "label": "Push it toward a shop: bigger product photography, price-shaped cards, a persistent comparison bar, and the guides demoted below the fold.",
-          "tradeoff": "Closer to how a store reads, and further from why people trust the site. It also collides with the price and availability rule, which only allows prices that come from Amazon's own feeds."
+          "label": "Publish the other editions on separate domains, each with its own tracking ID.",
+          "tradeoff": "Cleanest separation, but it needs three domains, three Associates declarations and three link sets to maintain."
         },
         {
           "id": "C",
-          "label": "Push it toward a reference work: dense specification tables, numbered source citations on every claim, and the front page replaced by an index.",
-          "tradeoff": "Maximum authority and minimum charm. It reads like a database and converts like one."
-        },
-        {
-          "id": "D",
-          "label": "Seasonal campaign layers: the same system with a monthly theme - roast season, grill season, small-kitchen season - carried by the hero band and the guide covers.",
-          "tradeoff": "Gives the front page a reason to change and gives search engines a freshness signal, at the cost of a design change every month and the risk of looking like a banner ad."
+          "label": "Unpublish the other editions and keep only their pages in the repository history.",
+          "tradeoff": "The strongest single signal, and the least reversible: the URLs stop resolving and the archived editions become invisible to readers who had them."
         }
       ],
-      "recommendation": "A as the base, with D layered on in the way the front page already hints at. The current system passes the publishing gate, reads like a publication, and carries the disclosure without shouting. If one thing changes, make it D: a seasonal band is the cheapest way to keep a buying guide looking alive without inventing facts."
+      "recommendation": "A for now. One indexed site is what the brief asks for, nothing is deleted, and option B stays open because each edition is already a self-contained build."
     },
     {
       "id": "S-12",
-      "topic": "Which product leads the front page",
+      "topic": "Publishing the ThermoMaven buy button",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Lead with the shelf in register order: the dual-basket fryer, the french-door oven, the 8 qt fryer, the two thermometers (current).",
-          "tradeoff": "Neutral and predictable. It also leads with the product whose listing and maker page disagree most, because that row is first for historical reasons."
+          "label": "Publish the buy button against the observed listing ASIN, with the model-correspondence caveat written on the product page (current).",
+          "tradeoff": "The reader gets a working, tagged link to the exact unit the submitted link resolves to, and the honest caveat is one click away."
         },
         {
           "id": "B",
-          "label": "Lead with the unit that has the most complete, least contradictory record.",
-          "tradeoff": "The most defensible page becomes the most boring page, and the two units with the most interesting caveats get buried."
+          "label": "Keep the button hidden until the listing model field confirms the F1 Ace.",
+          "tradeoff": "The tightest possible claim, at the cost of one of five products having no way to buy, which reads to a buyer as broken."
         },
         {
           "id": "C",
-          "label": "Lead with the seasonal unit and rotate the lead with the season.",
-          "tradeoff": "Matches what people are actually shopping for at the time, and makes the front page change without anything false being claimed."
+          "label": "Point the button at the manufacturer F1 Ace page instead of the Amazon listing.",
+          "tradeoff": "Breaks the affiliate link and the tracking the site exists for."
         }
       ],
-      "recommendation": "C, with the caveat that the seasonal choice is a judgement about what people are buying, not a claim about what sells. No conversion data exists yet, so a rotation decided by preference and revisited when the click counter is live is the honest version."
+      "recommendation": "A. The product identity is confirmed by two independent observations and the feature match is exact; what is unconfirmed is a model name, which is a labelling question, not an identity question."
     },
     {
       "id": "S-13",
-      "topic": "How opinionated the guides should be",
+      "topic": "A side-by-side comparison page",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Stay descriptive and sourced: explain what each shape does, what the maker states, and what could not be confirmed (current).",
-          "tradeoff": "Safe and durable, but it reads more like a well-organised manual than a magazine, and it leaves the reader to do the final comparison."
+          "label": "Publish /compare/: one table of the five products on published specifications only, with a blank cell wherever a maker is silent (current).",
+          "tradeoff": "It is the page a buyer actually wants and the strongest internal link target for every guide."
         },
         {
           "id": "B",
-          "label": "Take a position in each guide - say which type suits which household - while keeping every factual sentence sourced.",
-          "tradeoff": "Better for the reader and better for search, at the cost of a stated opinion that has to be defensible without ever crossing into an unqualified product claim."
+          "label": "Keep the comparison inside the shop table and the category pages only.",
+          "tradeoff": "Fewer pages to maintain, and buyers must assemble the comparison themselves from a twelve-column table."
         },
         {
           "id": "C",
-          "label": "Add a clear recommendation per guide: one product we would buy, with the reason.",
-          "tradeoff": "The strongest commercial move and the hardest to keep honest, because the site has never used a product. A recommendation without hands-on use is a recommendation from a specification sheet."
+          "label": "Add comparison products beyond the five submitted rows so the table has more than one option per category.",
+          "tradeoff": "More useful to a buyer, but each added product needs the same verification work and none of them has been submitted by the owner."
         }
       ],
-      "recommendation": "B. Position is the one thing a specification sheet cannot supply, and every position in these guides is about suitability for a household rather than a claim about a product. C is not available yet: the site states plainly that it is not a test kitchen, and publishing a pick would contradict that in the same sentence."
+      "recommendation": "A now, and C later if Q-01 and Q-02 are closed and there is budget for real product research."
     },
     {
       "id": "S-14",
-      "topic": "Article length and shape",
+      "track": "platform",
+      "topic": "Derive every count on a page from the rows that page counts",
+      "problem": "This repository has shipped the same class of bug four times: a shop page saying 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five; an empty category page under a heading that promised an explanation. Each time a sentence was written once by hand and never re-derived from the data it described. Two knowns in the questions register were superseded the same way and are now marked rather than deleted.",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Medium guides of roughly 700 to 1,000 words, one question each, with a comparison table and a short reader-questions section (current).",
-          "tradeoff": "Enough to be useful, short enough to be finished, and each one has to earn its place with a source."
+          "label": "Fix each instance when it is found, which is what has happened so far.",
+          "tradeoff": "Works until the next one. Nothing prevents recurrence, and the instances have been found by later sessions rather than by the build.",
+          "effort": "none",
+          "risk": "high"
         },
         {
           "id": "B",
-          "label": "Long-form guides of 1,500 words or more, with history, science and technique, as a magazine would run.",
-          "tradeoff": "Stronger search performance and a real reason to subscribe, and a much larger surface for an error to hide in."
+          "label": "Add a gate rule banning hand-written count phrases in templates, and require the computed form instead.",
+          "tradeoff": "A few hours. Catches the class rather than the instance.",
+          "effort": "half a day",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Short answer pieces of 300 words, designed to be skimmed and shared.",
-          "tradeoff": "Fast to produce and easy to read, and unlikely to rank for the questions that actually matter."
+          "label": "Add a build assertion that no rendered section has a non-empty heading over an empty body, and that every collection rendered on a page is non-empty unless the page says so.",
+          "tradeoff": "Cheaper than B and it also catches the empty-page case.",
+          "effort": "2 hours",
+          "risk": "low"
         }
       ],
-      "recommendation": "A for the running rhythm, with one B-length flagship per quarter. Depth is what a question-shaped guide earns by answering the whole question, not by hitting a word count; the current guides already show the shape works."
+      "recommendation": "B and C together. They are the only rows on this page that prevent a defect rather than describe one, and both are small. CI now catches a stale generated file, which is adjacent but different: it cannot see a sentence that was wrong the first time it was written.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-15",
-      "topic": "Whether the shelf grows past five products",
+      "track": "compliance",
+      "topic": "Record the two policy clauses that constrain the AI half of the brief",
+      "problem": "The brief asks for an AI-powered platform that automates product research and pricing analysis. Two clauses read verbatim in this session's re-fetch bear on that directly and neither had been recorded: §5 bars using Special Links or Program Content to develop machine learning models without Amazon's express prior written approval, and §6(y) bars price tracking or alerting functionality on the Site unless Amazon agrees.",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Stay at the five products the owner supplied, and go deeper on them (current).",
-          "tradeoff": "Nothing is published that nobody checked, and the shelf stays too thin to rank for most category queries."
+          "label": "Treat the automation in the brief as unqualified and build it.",
+          "tradeoff": "The fastest path to what the brief describes and the likeliest path to a material breach, which permits immediate termination under Operating Agreement §6.",
+          "effort": "none",
+          "risk": "high"
         },
         {
           "id": "B",
-          "label": "Add a second shelf of products from the same three categories, each with the same product-intent and observed-redirect discipline.",
-          "tradeoff": "Doubles the pages that can rank, and doubles the verification load, including the link-intake work that is currently the bottleneck."
+          "label": "Build only automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, and drafts written from manufacturer pages with citations. Keep pricing analysis off the Site. Ask Amazon about §5 before going further.",
+          "tradeoff": "Slower, and part of the brief stays unbuilt. Everything already in this repository is inside it.",
+          "effort": "ongoing",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Add a 'considered alternatives' section naming types and models without linking them.",
-          "tradeoff": "Cheap, and it cannot earn a commission, so it only pays if the guide itself earns the click."
+          "label": "Request PA API / Creators API access and Amazon's written approval, then build the full pipeline.",
+          "tradeoff": "The only route to prices, ratings and the automated research the brief describes. Needs an approved account and a qualifying site, so it depends on S-02 and Q-03.",
+          "effort": "weeks",
+          "risk": "medium"
         }
       ],
-      "recommendation": "B, but only after Q-01 and Q-02 are closed. More products do not fix an unresolved link test; they multiply it. Until a Special Link is confirmed to credit a sale, a larger shelf is a larger untested surface."
+      "recommendation": "B now and C as the destination. Published on the compliance page in this session so the boundary is visible to whoever builds next rather than rediscovered later.",
+      "evidence": {
+        "sources": [
+          "S02",
+          "S01"
+        ],
+        "flags": [
+          "FLG-031",
+          "FLG-032"
+        ]
+      },
+      "depends_on": [
+        "S-02"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-16",
-      "topic": "How the guides earn their traffic",
+      "track": "compliance",
+      "topic": "A privacy notice for the click counter",
+      "problem": "Participation Requirements §3(e) requires disclosing cookies, pixels and other technologies and how visitor data is collected, used, stored and disclosed. The site loads a click counter on every page and, until this session, published no notice anywhere on the live surface. Privacy pages existed only under legacy/, belonging to superseded editions.",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Question-shaped titles that read like a buyer asked them, each with the comparison table near the top (current).",
-          "tradeoff": "Matches how people search and how they read, and it will never be as dense with keywords as a title written for a crawler."
+          "label": "Ship no notice.",
+          "tradeoff": "The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.",
+          "effort": "none",
+          "risk": "medium"
         },
         {
           "id": "B",
-          "label": "Keyword-shaped titles with the question as a subtitle.",
-          "tradeoff": "Usually more search volume, at the price of the tone that makes the site feel like it was written for someone rather than for a robot."
+          "label": "Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted.",
+          "tradeoff": "An hour, and done in this session for review. It is a draft of a legal-adjacent page and should be read rather than trusted.",
+          "effort": "1 hour",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Keep question-shaped titles and add an internal 'questions we answer' index page that groups every guide by the question it answers.",
-          "tradeoff": "One more page to maintain, and it gives a crawler a second, denser route through the same material."
+          "label": "Adopt a hosted consent and privacy service.",
+          "tradeoff": "Proportionate for a site with a real audience and third-party processors. Overkill now, and it adds a processor of its own.",
+          "effort": "a day",
+          "risk": "medium"
         }
       ],
-      "recommendation": "A with C. The titles are the reason the guides read like advice rather than filler, and an index page by question is a small addition that helps a reader and a crawler at once."
+      "recommendation": "B, implemented in this session as a draft. It closes Q-11 and answers part of Q-16; whether the wording is adequate where the site is operated from is a question for counsel, not something a build session should settle.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-035"
+        ]
+      },
+      "depends_on": [
+        "S-03"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-17",
-      "topic": "Whether the evidence surfaces move up from the footer",
+      "track": "platform",
+      "topic": "One product register or two",
+      "problem": "Two product registers are maintained: data/products.json for the root site and data/register/products.json for /editorial/. They disagreed once, in a way that attributed a meat thermometer to the wrong submitted link, and the disagreement was caught only because a later session re-read both. Every verified fact is currently held twice.",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep the source register, questions, suggestions and flags in the footer and behind one 'Research desk' group in the navigation (current).",
-          "tradeoff": "The reading experience stays clean, and a reader who never looks for the evidence never finds it."
+          "label": "Keep both and re-check them against each other each session (current).",
+          "tradeoff": "No migration risk. The check is manual, and manual checks here have a documented record of being missed.",
+          "effort": "none",
+          "risk": "medium"
         },
         {
           "id": "B",
-          "label": "Add a visible 'How we check' link in the masthead next to the navigation.",
-          "tradeoff": "One more item in the top bar, and a stronger trust signal for the people who are checking."
+          "label": "Add a gate rule that fails the build when the two registers disagree on any shared field for any product.",
+          "tradeoff": "About an hour. It does not remove the duplication but it makes disagreement impossible to ship, which is the failure that actually happened.",
+          "effort": "1 hour",
+          "risk": "low"
         },
         {
           "id": "C",
-          "label": "Surface a short 'what we could not verify' line on every product card, not only on the product page.",
-          "tradeoff": "More honesty in the place where the decision is made, and a busier card that some readers will read as a problem."
+          "label": "Merge into one register with per-publication views.",
+          "tradeoff": "Removes the duplication permanently. The largest data change available here, and it touches files two earlier sessions built.",
+          "effort": "2 days",
+          "risk": "medium"
         }
       ],
-      "recommendation": "B, and C for the two rows that have real caveats. The evidence pages exist and are well made; the only thing missing is a signpost that costs one item in the masthead."
+      "recommendation": "B now, and C if S-01 chooses to consolidate the publications. B is a few dozen lines and converts a class of silent error into a build failure.",
+      "evidence": {
+        "sources": [],
+        "flags": []
+      },
+      "depends_on": [
+        "S-01"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-18",
-      "topic": "Distribution beyond the site itself",
+      "track": "compliance",
+      "topic": "Should the gate tell a product link apart from a citation?",
+      "problem": "The root gate marks every amazon.com anchor rel=\"sponsored\". For the links that pay for this site that is exactly what Google's guidance asks for. For a citation to Amazon's own help or privacy pages it is a misstatement, because Google reserves sponsored for advertisements and paid placements and says a regular link needs no rel at all. The editorial publication reached the opposite answer and marks its citations class=\"cite\" rel=\"nofollow\", enforced by its own gate. Both are defensible; they are not the same policy, and this session hit the difference while writing /privacy/.",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Publish and wait: the sitemap, the feed and Search Console, and nothing else (current).",
-          "tradeoff": "Cheapest, and the slowest possible route to traffic."
+          "label": "Keep the blanket rule and cite Amazon help pages as plain text rather than linking them (what /privacy/ does now).",
+          "tradeoff": "Impossible to ship an unmarked product link, which is the failure that matters. It costs a few convenience links, and a plain-text URL is worse on a phone.",
+          "effort": "none",
+          "risk": "low"
         },
         {
           "id": "B",
-          "label": "Republish each guide as one social post in a single channel, with the link back to the guide.",
-          "tradeoff": "Real distribution, and a channel that may not be the one the reader is on."
+          "label": "Make the rule precise and fail-closed: a link is product-intent if it targets /dp/, carries tag= or carries data-outbound, and must then be both sponsored and tagged; any other amazon.com link must not be sponsored. Anything that cannot be classified fails the build.",
+          "tradeoff": "Semantically correct against Google's guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test written first and should not be made by a build session on its own authority.",
+          "effort": "2 hours",
+          "risk": "medium"
         },
         {
           "id": "C",
-          "label": "Hold distribution until the click counter is live, so that distribution and measurement are switched on together.",
-          "tradeoff": "Delays traffic by as long as the collector takes to deploy, and avoids sending people to pages whose performance cannot be read."
+          "label": "Keep the blanket rule for product links and allow a short explicit allowlist of informational Amazon paths, checked literally.",
+          "tradeoff": "Narrower than B and easier to audit, because the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.",
+          "effort": "1 hour",
+          "risk": "low"
         }
       ],
-      "recommendation": "C, then B. The measurement question is the one the brief puts first, and there is no point driving traffic to a page whose clicks cannot be counted. Once the collector is deployed, one channel is enough to test the guides; two channels at once would make it impossible to tell which one worked."
+      "recommendation": "B, with the negative test written first: break a product link's tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently one of the things standing between this site and an untagged outbound link.",
+      "evidence": {
+        "sources": [
+          "S06",
+          "S02"
+        ],
+        "flags": [
+          "FLG-028"
+        ]
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-19",
+      "track": "trust",
+      "topic": "A house style rule that can be checked",
+      "problem": "'Do not read like AI slop' is not implementable as stated, and every attempt to implement a vague instruction produces vague output. It becomes implementable as a short list of forbidden patterns a build can test, plus a page of concrete before-and-after examples drawn from this site's own copy.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Rely on editorial judgement per page.",
+          "tradeoff": "Free, and it is how the current copy was produced - which is good enough that the diagnosis is worth writing down rather than repeating.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Publish a house style file with do/don't rules and real before-and-after examples from this site, and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.",
+          "tradeoff": "Half a day. The gate catches the mechanical failures; the rest stays editorial. Publishing the standard does more for reader trust than any badge.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add a readability-score threshold per page to the gate.",
+          "tradeoff": "Objective and easy to implement, and it optimises for the wrong thing: it pushes copy toward short dumb sentences, which is its own kind of slop.",
+          "effort": "2 hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. The forbidden list and the twelve prescriptions are already written at /design-brief/; what is missing is the gate rule and the decision to hold future copy to it.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-014"
+        ]
+      },
+      "depends_on": [
+        "S-08"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     }
-  ]
+  ],
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
+  "tracks": [
+    {
+      "id": "revenue",
+      "name": "1. Unblock revenue",
+      "why": "Nothing here earns until a tagged Special Link exists and has been tested once against the tracking report. These rows come first and are owner-access work measured in minutes, not build work."
+    },
+    {
+      "id": "trust",
+      "name": "2. Reader trust and publication polish",
+      "why": "The rows that decide whether this reads as something a person published: a byline, pictures, navigation in reader vocabulary, and a house style that can be checked rather than hoped for."
+    },
+    {
+      "id": "findability",
+      "name": "3. Findability",
+      "why": "One publication for a crawler to index, a sitemap and feed that grow with each guide, and a way to see which queries actually arrive. Without the last of those, the next topic is chosen by instinct."
+    },
+    {
+      "id": "measurement",
+      "name": "4. Measurement",
+      "why": "Click and conversion counting, the ledger, and reader capture. Deliberately after findability: measuring a page nobody can find produces zeros, and zeros are not a signal."
+    },
+    {
+      "id": "compliance",
+      "name": "5. Compliance gates",
+      "why": "Rules enforced by the build rather than remembered by an editor. Three clauses read verbatim in this session's re-fetch had never been recorded, and two of them change what may be built at all."
+    },
+    {
+      "id": "platform",
+      "name": "6. Platform and repo machinery",
+      "why": "Registers, gates and the failure modes that produced real errors in this repository's own history. Cheap to fix, and they are what stops the same mistake recurring."
+    }
+  ],
+  "how_to_use": "Read the tracks in order. Track 1 is owner-access work measured in minutes and it gates everything else: until one tagged link has been tested against a tracking report, the site cannot earn and no amount of design work changes that. Track 2 is the answer to 'it should not read like AI slop' and is deliberately concrete. Tracks 3 and 4 are findability and measurement. Track 5 records clauses found in this session's verbatim re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository's own repeated bugs came from.",
+  "sequence": [
+    {
+      "order": 1,
+      "id": "S-02",
+      "why": "Gate G-02. One tagged link tested once against the tracking report, before anything scales. Minutes of owner time; unblocks all revenue. §6(u) rules out testing it by purchase."
+    },
+    {
+      "order": 2,
+      "id": "S-15",
+      "why": "Decide the automation boundary before building more automation, not after. Two clauses constrain it and neither was recorded until now."
+    },
+    {
+      "order": 3,
+      "id": "S-01",
+      "why": "Settle how many publications exist before verifying Search Console, or you submit a sitemap for pages you may then retire. robots.txt already disallows the secondary ones."
+    },
+    {
+      "order": 4,
+      "id": "S-08",
+      "why": "A named byline changes every template and every piece of copy, and §2(b) means any credential stated has to be true."
+    },
+    {
+      "order": 5,
+      "id": "S-19",
+      "why": "A checkable house style is what stops the next page regressing. The prescriptions already exist at /design-brief/."
+    },
+    {
+      "order": 6,
+      "id": "S-07",
+      "why": "Imagery, once the byline and style exist to hang it on."
+    },
+    {
+      "order": 7,
+      "id": "S-11",
+      "why": "Navigation labels, after the name and byline, so the words match the publication."
+    },
+    {
+      "order": 8,
+      "id": "S-13",
+      "why": "Search Console, after S-01, so the next topic is chosen from measured queries rather than instinct."
+    },
+    {
+      "order": 9,
+      "id": "S-03",
+      "why": "An analytics endpoint with an owner. Meaningless before there is traffic to measure, and S-16 should be settled first."
+    },
+    {
+      "order": 10,
+      "id": "S-06",
+      "why": "Reader capture, after S-12 and after the privacy notice is reviewed. §4 requires opt-in and §6(g) bars rewarding a click."
+    },
+    {
+      "order": 11,
+      "id": "S-05",
+      "why": "Cadence, once S-13 can say what to write next."
+    },
+    {
+      "order": 12,
+      "id": "S-14",
+      "why": "Do this first instead if you would rather stop the drift bugs than improve the look. It is the cheapest row here."
+    }
+  ],
+  "decision_log": []
 }

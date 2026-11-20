@@ -9,8 +9,9 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // Output goes to the repository root (GitHub Pages serves main at /). Only the paths in OWNED are
 // replaced; every other file (data/, src/, tools/, legacy/, COORDINATION.md, ...) is left alone.
 const OUT = ROOT;
-const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
-  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
+const OWNED = ['index.html', 'shop', 'compare', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources', 'questions', 'suggestions',
+  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'workflow', 'privacy', 'design-brief',
+  '404.html', 'feed.xml', 'sitemap.xml', 'robots.txt',
   'assets/style.css', 'assets/analytics.js', 'assets/img', '.nojekyll'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 
@@ -57,6 +58,7 @@ const DASHBOARDS = [
   ['/workflow/', 'Publishing workflow'],
   ['/about/', 'About and editorial policy'],
   ['/privacy/', 'Privacy notice'],
+  ['/design-brief/', 'Design brief (next redesign)'],
   ['/editorial/', 'Editorial register (second publication)'],
 ];
 
@@ -174,22 +176,35 @@ ${body}
 }
 
 // ---------- components ----------
+// A short, shopper-facing spec line for a card: the number a buyer compares on, then the shape.
+function specLine(p) {
+  const bits = [];
+  if (p.capacity_qt) bits.push(`${p.capacity_qt} qt`);
+  else if (p.shape) bits.push(p.shape);
+  if (p.capacity_qt && p.shape) bits.push(p.shape.toLowerCase());
+  if (p.brand && p.brand.toLowerCase() !== (p.short_name || '').toLowerCase()) bits.push(p.brand);
+  return bits.join(' · ');
+}
 function productCard(p, placement) {
   const title = p.name || displayName(p);
   const cat = catName(p.category);
   const note = p.lede || p.editorial_note || '';
   const fit = p.best_for && p.tradeoff ? `<p class="fit-line"><strong>Best for:</strong> ${esc(p.best_for)}<br><strong>Trade-off:</strong> ${esc(p.tradeoff)}</p>` : '';
+  // On the front shelf the card is for a reader, so it carries the buyer's comparison line and
+  // the product's own summary. The internal row code stays on the Shop table and the product page.
+  const readerCard = placement === 'front-shelf';
+  const kicker = readerCard ? (specLine(p) || cat) : `${cat} · ${p.id}`;
   if (tagged(p)) {
     return `<article class="card product" data-product-view="${esc(p.id)}">
   ${cardArt(p)}
   <div class="card-body">
-    <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
+    <p class="kicker">${esc(kicker)}</p>
     <h3>${esc(title)}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
-    ${placement === 'front-shelf' ? '' : fit}
-    ${placement === 'front-shelf' ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
+    ${readerCard ? (p.fit_line ? `<p class="fit-line">${esc(p.fit_line)}</p>` : '') : fit}
+    ${readerCard ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
     <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
-    ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
+    ${readerCard ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
   </div>
 </article>`;
   }
@@ -212,6 +227,14 @@ function productCard(p, placement) {
     <p class="status">No buy link is published. The link has not resolved to a product page in a verified session. An Amazon "Continue shopping" checkpoint is intermittent and is not by itself evidence that a link is dead. ${flagLinks(['FLG-004'])}</p>
   </div>
 </article>`;
+}
+
+// A note that sits under the specification grid when the manufacturer page and the listing are
+// about the same product but do not name it the same way. It is the difference between a
+// confirmed specification and a family-page figure, so it is stated in full.
+function matchNote(p) {
+  if (!p.model_match_note) return '';
+  return `<aside class="note-box"><p><strong>Read this before you compare the numbers.</strong> ${esc(p.model_match_note)}</p><p class="small">${flagLinks(p.flags || [])}</p></aside>`;
 }
 
 function renderBlock(b, gslug = '') {
@@ -245,10 +268,6 @@ function specGrid(p) {
     ['Certified', p.certification],
     ['Warranty', p.warranty],
   ];
-  // Extra rows a maker states that do not fit the fixed grid (an ambient range beside an
-  // internal one, a sensor count, a variant note). They are stated facts, so they render
-  // as values and never as "not stated".
-  for (const [k, v] of (p.spec_notes || [])) rows.push([k, v]);
   const cells = rows.map(([k, v]) => `<div class="spec"><dt>${esc(k)}</dt>${v
     ? `<dd>${esc(v)}</dd>`
     : `<dd class="na" title="Not stated on the manufacturer page">not stated</dd>`}</div>`).join('\n    ');
@@ -326,11 +345,11 @@ const add = (p) => pages.push(p);
 <section class="band" id="shelf">
   <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
-    <h2>On the shelf this month</h2>
-    <p>Five submitted products, each resolved to an observed Amazon listing and checked against the maker's own specification pages where those exist — including one unit where the listing and the maker describe two different machines (flagged on its product page). The buttons go straight to the listings.</p>
+    <h2>The shortlist</h2>
+    <p>Five kitchen appliances, each one traced to the Amazon listing it actually lands on and to the manufacturer's own specification page. Where the two disagree, the disagreement is written down instead of smoothed over. Pick a shape, then read the guide that matches your kitchen.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
+  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored. We do not publish prices or ratings, so nothing here goes stale. Want them side by side first? <a href="${esc(href('/compare/'))}">Compare all five in one table</a>. Sources are on every product page, in the <a href="${esc(href('/sources/'))}">source register</a>, and the open questions are on <a href="${esc(href('/flagged/'))}">Flagged for review</a>.</p>
 </section>
 <section class="band band-alt">
   <div class="band-head">
@@ -338,7 +357,7 @@ const add = (p) => pages.push(p);
     <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -423,11 +442,64 @@ const add = (p) => pages.push(p);
   });
 }
 
+// Side-by-side comparison: the five products on published specifications only. A blank cell
+// means the maker does not publish that figure; it is never filled in from another source.
+{
+  const specRow = (label, fn) => [label, ...products.map((p) => {
+    const v = fn(p);
+    return v ? esc(v) : '<span class="blank" aria-label="blank: not stated by the maker">&nbsp;</span>';
+  })];
+  const rows = [
+    specRow('Shape', (p) => p.shape),
+    specRow('Capacity', (p) => (p.capacity_qt ? `${p.capacity_qt} qt` : '')),
+    specRow('Temperature', (p) => (p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}–${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : ''))),
+    specRow('Power', (p) => (p.power_w ? `${p.power_w} W` : '')),
+    specRow('Voltage', (p) => p.voltage),
+    specRow('Size', (p) => (p.dimensions_in ? `${p.dimensions_in} in` : '')),
+    specRow('Weight', (p) => (p.weight_lb ? `${p.weight_lb} lb` : '')),
+    specRow('Dishwasher', (p) => p.dishwasher_safe),
+    specRow('Certified', (p) => p.certification),
+    specRow('Warranty', (p) => p.warranty),
+    specRow('Best for', (p) => p.best_for),
+    specRow('Trade-off', (p) => p.tradeoff),
+  ];
+  const header = ['Specification', ...products.map((p) =>
+    `<a href="${esc(href('/products/' + p.slug + '/'))}">${esc(p.short_name || p.name)}</a>`)];
+  const buyRow = ['Buy', ...products.map((p) => tagged(p)
+    ? `<a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="compare">View on Amazon</a>`
+    : '<span class="muted small">No buy link published</span>')];
+  add({
+    path: '/compare/', title: 'Compare the five products side by side',
+    description: 'The five submitted products on published specifications only. Blank cells mean the maker does not publish that figure.',
+    body: `
+<section class="page-head">
+  <p class="kicker">Compare · 5 products</p>
+  <h1>The five, side by side</h1>
+  <p class="deck">Every figure below comes from the manufacturer's own specification page, or from the Amazon listing title where the maker publishes no page. A blank cell means the maker does not publish that number. Nothing here is filled in, and nothing is ranked.</p>
+</section>
+<section>
+  ${table(header, [...rows, buyRow], 'wide')}
+</section>
+<section class="band">
+  <h2>Where the sources disagree</h2>
+  <ul class="findings">
+    <li>The Emeril 26-quart oven-style fryer is listed by Amazon with 24 presets and by Emeril's own page with 25. Both numbers are published on its product page and the row is flagged. ${flagLinks(['FLG-023'])}</li>
+    <li>The ThermoMaven listing does not name a model. The figures in its column are the manufacturer's published figures for the F1 Ace family, which matches the listing title feature for feature. They are labelled as family-page figures, not confirmed specifications of the listed unit. ${flagLinks(['FLG-025'])}</li>
+    <li>The Chefman 8-quart listing and its maker's page agree on the model number and the temperature range, but disagree on wattage (1000 W vs 1700 W) and case size. The maker's figures are published and both differences are named. ${flagLinks(['FLG-026', 'FLG-027'])}</li>
+  </ul>
+</section>
+<section class="band">
+  <h2>How to read this table</h2>
+  <p>Capacity is not a shared unit across these five: three are ovens with baskets, one is a handheld probe, and one is a wireless leave-in probe. The table compares what each maker publishes; it does not say which one to buy. For that, start with the question that matches your kitchen: <a href="${esc(href('/guides/'))}">the guides</a> are written as questions, and each one names the products it covers.</p>
+</section>`,
+  });
+}
+
 // Categories index + category pages
 add({
   path: '/categories/', title: 'Categories',
   description: 'Product categories and the guides that cover each one.',
-  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">${CATEGORIES.length} clusters. Each cluster lists its products and the guides that cover them.</p></section>
+  body: `<section class="page-head"><p class="kicker">Categories</p><h1>Browse by category</h1><p class="deck">Three clusters. Each cluster lists its products and the guides that cover them.</p></section>
 <div class="cat-grid">${CATEGORIES.map((c) => `<a class="card cat-card" href="${esc(href('/categories/' + c.slug + '/'))}"><h3>${esc(c.name)}</h3><p>${esc(c.blurb)}</p><p class="small muted">${products.filter((p) => p.category === c.slug).length} product row(s) · ${guides.filter((g) => g.category === c.slug || (g.cluster_links || []).includes(c.slug)).length} guide(s)</p></a>`).join('')}</div>`,
 });
 for (const c of CATEGORIES) {
@@ -503,20 +575,47 @@ for (const p of products) {
     '@context': 'https://schema.org', '@type': 'Product', name: p.name, brand: { '@type': 'Brand', name: p.brand },
     description: p.lede, url: abs('/products/' + p.slug + '/'),
   })}</script>`;
-  const conflictTable = p.observed_specs ? `
+  const conflictTable = (() => {
+    if (!p.observed_specs) return '';
+    // Only rows a reader can compare. A row where one column is silent is an absence,
+    // not a disagreement, and the spec grid above already shows it. Units are normalised
+    // before comparing so "8 quarts" and "8 qt" are not reported as a conflict.
+    const sais = (v) => !!v && !/^(?:not stated|n\/a|—|-)$/i.test(String(v).trim());
+    const norm = (v) => String(v).toLowerCase()
+      .replace(/\bquarts?\b/g, 'qt').replace(/\binches?\b/g, 'in')
+      .replace(/\s+/g, '').replace(/(\d)(in|qt|w|v|°f)\b/g, '$1 $2');
+    const LABEL = { model: 'Model', power: 'Power', temperature: 'Temperature', dimensions: 'Case size', capacity: 'Capacity', material: 'Finish' };
+    const mine = {
+      model: p.model,
+      power: p.power_w ? `${p.power_w} W / ${p.voltage || ''}`.trim() : '',
+      temperature: p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}-${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : ''),
+      dimensions: p.dimensions_in ? `${p.dimensions_in} in` : '',
+      capacity: p.capacity_qt ? `${p.capacity_qt} qt` : '',
+      material: p.material || '',
+    };
+    const rows = ['model', 'power', 'temperature', 'dimensions', 'capacity', 'material']
+      .filter((k) => sais(p.observed_specs[k]) && sais(mine[k]))
+      .map((k) => [LABEL[k], esc(p.observed_specs[k]), `<span class="muted">${esc(mine[k])}</span>`,
+        norm(p.observed_specs[k]) === norm(mine[k]) ? '<span class="badge good">agrees</span>' : '<span class="badge flag">differs</span>']);
+    const extras = Object.entries(p.observed_specs_extra || {}).map(([k, v]) => {
+      const label = ({ display: 'Display', waterproof: 'Water resistance', certification: 'Certification', newer_model: 'Newer model' })[k] || k;
+      const [listingSays, makerSays] = String(v).split(' vs ');
+      return [label, esc(listingSays),
+        makerSays ? `<span class="muted">${esc(makerSays).replace(/ \(listing\)$| \(manufacturer\)$/, '')}</span>`
+                  : '<span class="muted">the maker publishes no successor notice</span>',
+        k === 'newer_model' ? '<span class="badge flag">check before buying</span>' : '<span class="badge flag">differs</span>'];
+    });
+    if (!rows.length && !extras.length) return '';
+    return `
 <section class="band">
-  <h2>The listing and the maker disagree</h2>
-  <p>These figures come from the listing's own copy, not from the manufacturer. They are kept in a separate table on purpose, because on this listing they describe a different model from the manufacturer page. Read them as evidence of the conflict, not as specifications of the product.</p>
-  ${table(['Field', 'Listing states', 'Manufacturer states'], [
-    ['Model', esc(p.observed_specs.model || ''), esc(p.model || '')],
-    ['Power', esc(p.observed_specs.power || ''), p.power_w ? esc(p.power_w + ' W') : '<span class="muted">not stated</span>'],
-    ['Temperature', esc(p.observed_specs.temperature || ''), p.temp_max_f ? esc('up to ' + p.temp_max_f + ' °F') : '<span class="muted">not stated</span>'],
-    ['Size', esc(p.observed_specs.dimensions || ''), p.dimensions_in ? esc(p.dimensions_in + ' in') : '<span class="muted">not stated</span>'],
-    ['Capacity', esc(p.observed_specs.capacity || ''), p.capacity_qt ? esc(p.capacity_qt + ' qt') : '<span class="muted">not stated</span>'],
-    ['Material', esc(p.observed_specs.material || ''), '<span class="muted">not stated</span>'],
-  ])}
-  <p class="small">${flagLinks((p.flags || []).filter((f) => ['FLG-026', 'FLG-027'].includes(f)))}</p>
-</section>` : '';
+  <h2>Where the listing and the maker disagree</h2>
+  <p>Both columns describe the same product. A retailer listing and a manufacturer page are two different
+  claims about one object, so where they part company the gap is shown rather than averaged away. Nothing
+  in the right-hand column came from the listing.</p>
+  ${table(['Field', 'The listing states', 'The maker states', ''], [...rows, ...extras])}
+  <p class="small">${flagLinks((p.flags || []).filter((f) => !['FLG-001', 'FLG-002', 'FLG-022', 'FLG-028', 'FLG-029'].includes(f)))}</p>
+</section>`;
+  })();
   add({
     path: `/products/${p.slug}/`, type: 'product', ogType: 'article', jsonld,
     ogImage: PRODUCT_IMAGE[p.id] || '/assets/img/hero.png',
@@ -542,6 +641,7 @@ for (const p of products) {
   <h2>The specifications we could confirm</h2>
   ${specGrid(p)}
   <p class="small muted">${esc(p.capacity_note || '')}${p.model_note ? ' ' + esc(p.model_note) : ''}${p.dimensions_order ? ' Dimensions are shown as ' + esc(p.dimensions_order) + '.' : ''}</p>
+  ${matchNote(p)}
   ${conflictTable}
 </section>
 <section class="band band-alt">
@@ -571,7 +671,7 @@ add({
 <li><strong>Observe the listing.</strong> Each submitted short link is fetched and the final Amazon page recorded (title, breadcrumb, /dp/ identifier). Observations are dated and never copied into the intended-product fields.</li>
 <li><strong>Check the maker.</strong> Where the manufacturer publishes a specification page, its figures populate the product page's specification grid. Where the maker is silent, the cell reads <em>not stated</em> — never filled in.</li>
 <li><strong>Record conflicts.</strong> Where the listing and the maker disagree, both readings are published side by side and the row is flagged (see FLG-023 through FLG-027 on the <a href="${esc(href('/flagged/'))}">flag page</a>).</li>
-<li><strong>Withhold what we cannot stand behind.</strong> No prices, ratings, availability, or hands-on test claims. When two official pages disagree, the cell stays blank and the disagreement is published (FLG-026); when a maker's page and a listing disagree about a model name, that is published too (FLG-031, FLG-032).</li>
+<li><strong>Withhold what we cannot stand behind.</strong> No prices, ratings, availability, or hands-on test claims. If a maker publishes no specification page at all, every specification is withheld (FLG-025).</li>
 <li><strong>Link everything.</strong> Every row and guide carries its source IDs, linked in the <a href="${esc(href('/sources/'))}">source register</a>.</li>
 </ol>
 <h2>What would change a row</h2>
@@ -587,7 +687,7 @@ add({
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, three category clusters, ${guides.length} question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a shop table, a side-by-side comparison page, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -598,16 +698,16 @@ add({
 <li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
 <li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
 <li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
-<li>An Amazon-owned ASIN definition has been located and read in full on Amazon's own site: an ASIN is "a unique combination of 10 letters and numbers that Amazon assigns to a product" (S23). FLG-012 is closed.</li>
-<li>Every product's specification grid was re-checked against the manufacturer's own product page on 2026-11-20 (S11, S12, S13, S14, S21, S22). Three published facts were corrected as a result: the wireless thermometer's reading range, the 8 qt fryer's temperature range and weight, and the absence of any specification on the instant-read thermometer.</li>
+<li>An Amazon-owned ASIN definition has been located in Associates Central help (S12/S13, excerpt; manual re-check pending, FLG-012).</li>
+<li>The ThermoMaven manufacturer page was located on 2026-11-20 (S21). It states a 1-second instant read, NIST-certified ±0.5 °F accuracy, a 100% waterproof design and a lifetime warranty, matching the listing title feature for feature. The row now carries a buy button and a sourced specification set, labelled as family-page figures until the listing's model field confirms the F1 Ace (FLG-025, Q-14).</li>
 </ul>
 <h2>What is not verified, and why</h2>
 <ul>
 <li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
-<li>Two destinations were transposed in an earlier register revision and corrected after a retest; one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added flags FLG-023 to FLG-027, including one tracked unit whose listing and maker page describe two different machines (FLG-026). The status of the short links is unresolved, not invalid (FLG-003).</li>
-<li>Three open items remain after the 2026-11-20 re-check: the maker's page for the instant-read thermometer and its marketplace listing carry different model names (FLG-031); the listing states certification and a water-resistance rating the maker does not (FLG-032); and the wireless thermometer's maker page contradicts itself on its sensor count (FLG-033).</li>
+<li>Two destinations were transposed in an earlier register revision and corrected after a retest, and one link first hit an intermittent checkpoint page before resolving (FLG-004, FLG-022, FLG-028). Manufacturer-page cross-checks added FLG-023 to FLG-027. Two of those were themselves corrected in a later pass: the ThermoMaven unit does have a maker page, which had been missed (FLG-025), and the Chefman 8 Qt conflict had been measured against the wrong Chefman page and is really a wattage and case-size difference (FLG-026). A 2026-11-20 re-fetch of two short links returned the Amazon home page rather than a product page, which is the same intermittent behaviour and does not establish that any link is dead (FLG-031). The status of the supplied short links is unresolved, not invalid (FLG-003).</li>
 <li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
 <li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
+<li>Several reader-facing editions of this project are published under one domain. Only this root publication is in the sitemap; the others are excluded from the index and listed on the archive page (FLG-032, Q-15, S-11).</li>
 </ul>
 <h2>Evidence needed before expanding</h2>
 <ol>
@@ -805,6 +905,49 @@ add({
 </div>`,
 });
 
+// ---------------- DESIGN BRIEF ----------------
+// Re-added by session 66f2548a after the second main advance dropped it. Rendered from
+// data/design-brief.json, and DESIGN-BRIEF.md is written from the same object in the write step,
+// so the page and the markdown file cannot disagree.
+{
+  const db = read('data/design-brief.json');
+  add({
+    path: '/design-brief/', title: 'Design brief: making this read like a publication',
+    description: 'The brief to hand whoever designs this site next: diagnosed problems with evidence and where each now stands, invariants no art direction may relax, prescriptions with before-and-after copy, a forbidden list, a sequence, and the prompt itself.',
+    body: `<section class="page-head"><p class="kicker">Design brief · ${db.diagnosis.length} problems · ${db.invariants.length} invariants · ${db.prescriptions.length} prescriptions</p>
+<h1>${esc(db.title)}</h1>
+<p class="deck">${esc(db.purpose)}</p>
+<p class="note">${esc(db.status)}</p></section>
+<section class="band"><h2>What was wrong, with evidence</h2>
+<p class="muted small">Several of these were fixed while this brief was being written, by this branch and by others working in parallel. Each row says so where it applies; a diagnosis that quietly stops being true is as bad as one that was never accurate.</p>
+${db.diagnosis.map((x) => `<article class="flag-card" id="${esc(x.id)}">
+<p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.problem)}</strong>${x.fixed ? ' <span class="badge good">addressed</span>' : ''}</p>
+<p><strong>Evidence.</strong> ${esc(x.evidence)}</p>
+${x.fixed ? `<p class="small muted"><strong>Where it stands now.</strong> ${esc(x.fixed)}</p>` : ''}
+<p class="small muted"><strong>Why it reads as generated.</strong> ${esc(x.why_it_reads_as_generated)}</p>
+</article>`).join('\n')}</section>
+<section class="band"><h2>Invariants: what no redesign may change</h2>
+<p class="small muted">Each is either enforced by the build gate or required by the Associates Program Policies and Operating Agreement. An art direction that breaks one is not a bolder art direction, it is a failed build.</p>
+<ol class="invariants">${db.invariants.map((i) => `<li>${esc(i)}</li>`).join('\n')}</ol></section>
+<section class="band"><h2>Prescriptions</h2>
+${db.prescriptions.map((x) => `<article class="flag-card" id="${esc(x.id)}">
+<p class="flag-head"><span class="badge">${esc(x.id)}</span> <strong>${esc(x.area)}</strong> <span class="badge">${esc(x.effort)}</span></p>
+<p><strong>Rule.</strong> ${esc(x.rule)}</p>
+<p class="beforeafter"><span class="ba-label">Before</span> ${esc(x.before)}</p>
+<p class="beforeafter"><span class="ba-label">After</span> ${esc(x.after)}</p>
+<p class="small muted"><strong>Checkable?</strong> ${esc(x.checkable)}</p>
+</article>`).join('\n')}</section>
+<section class="band"><h2>Forbidden</h2>
+<p class="small muted">Patterns that make copy read as machine-written. The last one is the test that matters.</p>
+<ul class="forbidden">${db.forbidden.map((f) => `<li>${esc(f)}</li>`).join('\n')}</ul></section>
+<section class="band"><h2>Sequence</h2>
+${table(['Step', 'Do this', 'Depends on'], db.sequence.map((s) => [String(s.step), esc(s.do), esc(s.depends || '—')]), 'wide')}</section>
+<section class="band"><h2>The prompt to hand the next session</h2>
+<p class="small muted">Also written to <code>DESIGN-BRIEF.md</code> in the repository from this same JSON document, so the page and the file cannot drift apart.</p>
+<pre class="prompt-block">${esc(db.prompt)}</pre></section>`,
+  });
+}
+
 // 404
 add({ path: '/404.html', title: 'Page not found', description: 'This page does not exist.', noSitemap: true,
   body: `<section class="page-head"><h1>Page not found</h1><p class="deck">Try the <a href="${esc(href('/'))}">front page</a>, the <a href="${esc(href('/shop/'))}">shop table</a>, or the <a href="${esc(href('/guides/'))}">guides</a>.</p></section>` });
@@ -894,5 +1037,48 @@ ${feedItems.map((g) => `  <item>
 `);
 
 fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+
+// DESIGN-BRIEF.md is generated from the same object that renders /design-brief/, so the markdown
+// file and the published page cannot disagree. That is the principle behind S-14 applied to itself.
+{
+  const db = read('data/design-brief.json');
+  const L = [];
+  L.push(`# ${db.title}`, '');
+  L.push(`> Generated from \`data/design-brief.json\` by \`tools/build.mjs\`. The published page is`);
+  L.push(`> \`${cfg.siteUrl}/design-brief/\`. Edit the JSON and rebuild; do not edit this file directly.`, '');
+  L.push(db.purpose, '');
+  L.push(`**Status:** ${db.status}`, '');
+  L.push('## What was wrong, with evidence', '');
+  L.push('Several of these were fixed while this brief was being written, by this branch and by others');
+  L.push('working in parallel. Each row says so where it applies; a diagnosis that quietly stops being');
+  L.push('true is as bad as one that was never accurate.', '');
+  for (const x of db.diagnosis) {
+    L.push(`### ${x.id}. ${x.problem}${x.fixed ? ' — addressed' : ''}`, '');
+    L.push(`**Evidence.** ${x.evidence}`, '');
+    if (x.fixed) L.push(`**Where it stands now.** ${x.fixed}`, '');
+    L.push(`**Why it reads as generated.** ${x.why_it_reads_as_generated}`, '');
+  }
+  L.push('## Invariants: what no redesign may change', '');
+  L.push('Each of these is either enforced by `tools/verify.mjs` or required by the Associates Program');
+  L.push('Policies and Operating Agreement. An art direction that breaks one is not a bolder art');
+  L.push('direction, it is a failed build.', '');
+  db.invariants.forEach((i, n) => L.push(`${n + 1}. ${i}`));
+  L.push('', '## Prescriptions', '');
+  for (const x of db.prescriptions) {
+    L.push(`### ${x.id}. ${x.area}`, '');
+    L.push(`**Rule.** ${x.rule}`, '');
+    L.push(`- **Before.** ${x.before}`);
+    L.push(`- **After.** ${x.after}`);
+    L.push(`- **Effort.** ${x.effort}`);
+    L.push(`- **Checkable?** ${x.checkable}`, '');
+  }
+  L.push('## Forbidden', '');
+  L.push('Patterns that make copy read as machine-written. The last one is the test that matters.', '');
+  db.forbidden.forEach((f) => L.push(`- ${f}`));
+  L.push('', '## Sequence', '', '| Step | Do this | Depends on |', '|---|---|---|');
+  db.sequence.forEach((st) => L.push(`| ${st.step} | ${st.do.replace(/\|/g, '\\|')} | ${st.depends || '—'} |`));
+  L.push('', '## The prompt to hand the next session', '', '```', db.prompt, '```', '');
+  fs.writeFileSync(path.join(ROOT, 'DESIGN-BRIEF.md'), L.join('\n'));
+}
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

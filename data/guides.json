@@ -223,7 +223,7 @@
         },
         {
           "type": "note",
-          "text": "One warning from our own register: for the tracked 8-quart unit, the Amazon listing and the manufacturer's own page describe two different machines, and the listing shows two different temperature ranges in two places (flags FLG-026 and FLG-027 on our Flagged for review page). A quart figure printed on a box is only as reliable as the consistency of the pages behind it. When a listing and the maker disagree, treat the spec as unresolved and check the model number before you buy."
+          "text": "One warning from our own register: for the tracked 8-quart unit, the Amazon listing and the manufacturer's own page describe two different machines, and the listing shows two different temperature ranges in two places (see our Flagged for review page). A quart figure printed on a box is only as reliable as the consistency of the pages behind it. When a listing and the maker disagree, treat the spec as unresolved and check the model number before you buy."
         },
         {
           "type": "h2",
@@ -572,7 +572,7 @@
         },
         {
           "type": "note",
-          "text": "Two things our register caught while checking the tracked units against their makers' pages: the manufacturer's own pages disagree about the tracked wireless thermometer's battery life (flag FLG-023), and the tracked instant-read unit's maker page and its marketplace listing carry different model names, with the listing adding certification and water-resistance claims the maker does not state (flags FLG-031 and FLG-032). Conflicts like these are exactly why we link our sources instead of summarising them."
+          "text": "Three things our register caught while checking the tracked units against their makers' pages. The manufacturer's own pages disagree about the tracked wireless thermometer's battery life: 70+ hours on the product page, up to 60 on the FAQ, and 50 on the Amazon listing (flag FLG-023). The tracked instant-read unit's maker page is narrower than its own listing: the maker says a waterproof design with no IP code and an LCD, the listing claims IP67, an LED screen and NSF certification (flag FLG-025). And the 8 Qt fryer's maker page and listing name the same model number while disagreeing on wattage and case size (see our Flagged for review page). Conflicts like these are exactly why we link our sources instead of summarising them."
         },
         {
           "type": "h2",
@@ -1045,7 +1045,7 @@
         },
         {
           "type": "p",
-          "text": "Two specifications on that second page deserve a pause. The 1,000 °F figure is the ambient sensor's range and the probe's heat-resistance ceiling, not a range for measuring food: the internal range for the food itself is 32–212 °F. And the maker's page is not internally consistent about sensors. The features list says four internal sensors plus one ambient sensor, while the opening paragraph says five internal sensors. We publish the features list and flag the disagreement rather than picking the tidier answer (FLG-033)."
+          "text": "Two specifications on that second page deserve a pause. The 1,000 °F figure is the ambient sensor's range and the probe's heat-resistance ceiling, not a range for measuring food: the internal range for the food itself is 32–212 °F. And the maker's page is not internally consistent about sensors. The features list says four internal sensors plus one ambient sensor, while the opening paragraph says five internal sensors. We publish the features list and flag the disagreement rather than picking the tidier answer (see our Flagged for review page)."
         },
         {
           "type": "h2",
@@ -1162,7 +1162,7 @@
         },
         {
           "type": "p",
-          "text": "Every appliance has a model number somewhere in its details, and it is the only field that identifies a machine reliably. Our 8 qt air fryer is a live example of why. The listing's own copy names model RJ38-SQSS-8T, and Chefman publishes that model, stating a 200–400 °F range, 1700W/120V, dimensions of 15.4 by 12.6 by 13.5 in and a weight of 12.8 lb (S22). Chefman also publishes a different 8 qt machine, RJ38-8T-BLACK, with a 450 °F Hi-Fry finish and no stated dimensions (S12). Same capacity, two machines, one shelf. We publish only what the two pages agree on, and we publish the disagreement as well (FLG-026)."
+          "text": "Every appliance has a model number somewhere in its details, and it is the only field that identifies a machine reliably. Our 8 qt air fryer is a live example of why. The listing's own copy names model RJ38-SQSS-8T, and Chefman publishes that model, stating a 200–400 °F range, 1700W/120V, dimensions of 15.4 by 12.6 by 13.5 in and a weight of 12.8 lb (S22). Chefman also publishes a different 8 qt machine, RJ38-8T-BLACK, with a 450 °F Hi-Fry finish and no stated dimensions (S12). Same capacity, two machines, one shelf. We publish only what the two pages agree on, and we publish the disagreement as well (see our Flagged for review page)."
         },
         {
           "type": "h2",
@@ -1170,7 +1170,7 @@
         },
         {
           "type": "p",
-          "text": "The title of that same listing advertises a 450 °F Hi-Fry option. The maker's page for the model the listing itself names states a 200–400 °F range, and 450 °F belongs to the maker's other 8 qt machine. A headline can be a promise about a product family; a specification block is a claim about one unit. Where they disagree, the specification block wins and the headline gets flagged (FLG-027)."
+          "text": "The title of that same listing advertises a 450 °F Hi-Fry option. The maker's page for the model the listing itself names states a 200–400 °F range, and 450 °F belongs to the maker's other 8 qt machine. A headline can be a promise about a product family; a specification block is a claim about one unit. Where they disagree, the specification block wins and the headline gets flagged (see our Flagged for review page)."
         },
         {
           "type": "h2",
@@ -1197,7 +1197,7 @@
             ],
             [
               "Certification claims",
-              "The tracked thermometer's listing states NSF certification and an IP67 rating. The manufacturer's page states a plus or minus 0.5 °F accuracy and a waterproof design, and does not state an IP rating (FLG-032)."
+              "The tracked thermometer's listing states NSF certification and an IP67 rating. The manufacturer's page states a plus or minus 0.5 °F accuracy and a waterproof design, and does not state an IP rating (see our Flagged for review page)."
             ]
           ]
         },

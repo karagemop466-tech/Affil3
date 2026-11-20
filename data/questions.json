@@ -1,5 +1,4 @@
 {
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at.",
   "known": [
     {
       "id": "K-01",
@@ -46,7 +45,7 @@
     },
     {
       "id": "K-07",
-      "statement": "All five supplied short links have resolved to a product page across dated fetch rounds, although the destination varies by attempt and one of them intermittently lands on an Amazon checkpoint page instead of the listing.",
+      "statement": "All five supplied short links have resolved to a product page in at least one dated fetch. One of them (B00hJ57DV) first landed on an intermittent Amazon checkpoint before resolving, which is why earlier rounds recorded four.",
       "sources": [
         "S05",
         "S04"
@@ -62,21 +61,20 @@
     },
     {
       "id": "K-09",
-      "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.",
+      "statement": "Two destinations were transposed in an earlier register revision and were corrected after a retest. The corrected mapping was corroborated by an independent fetch, and the five product pages were re-read directly by their /dp/ identifier on 2026-11-20 with every title matching the register character for character.",
       "sources": [
-        "S05"
+        "S05",
+        "S04"
       ]
     },
     {
       "id": "K-10",
-      "statement": "All five tracked products now have a manufacturer specification page that states at least some of capacity, temperature, power or dimensions. The ThermoMaven page was located on 2026-11-20, which closed FLG-025.",
+      "statement": "Four of the five products have a manufacturer specification page that states capacity, temperature, power or dimensions.",
       "sources": [
         "S11",
         "S12",
         "S13",
-        "S14",
-        "S21",
-        "S22"
+        "S14"
       ]
     },
     {
@@ -95,43 +93,72 @@
     },
     {
       "id": "K-13",
-      "statement": "Amazon defines the ASIN itself: an ASIN is 'a unique combination of 10 letters and numbers that Amazon assigns to a product', on Amazon's own advertising site. The 10-character rule the register relies on is therefore Amazon's, not a third party's.",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com, and no resolved URL carries a tag= parameter. This is a fourth independent pass, on 2026-11-20, one fetch per link with redirects followed; the fetcher's reported final URL and page title were read verbatim and every query parameter present was enumerated. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z, matching the register. Full record: data/observations/2026-11-20-reverify-66f2548a.json.",
       "sources": [
-        "S23"
+        "S05",
+        "S04",
+        "S02"
       ]
     },
     {
       "id": "K-14",
-      "statement": "The ThermoMaven F1 Ace page states an instant read in one second on a thermocouple sensor, a stated accuracy of plus or minus 0.5 °F, a bright auto-rotating display, a 100% waterproof design, a built-in magnet, and a lifetime warranty activated within 30 days of purchase.",
+      "statement": "Participation Requirements §5 bars using Special Links or Program Content \"to develop machine learning models or related technology\" without Amazon's express prior written approval. Read verbatim 2026-11-20.",
       "sources": [
-        "S21"
+        "S02"
       ]
     },
     {
       "id": "K-15",
-      "statement": "The CHEF iQ Sense page states an internal temperature range of 32 to 212 °F and an ambient temperature range of 32 to 1,000 °F, with heat resistance to 1,000 °F. The 1,000 °F figure is the ambient and heat-resistance limit, not the range the probe measures in food.",
+      "statement": "Participation Requirements §6(y) bars price tracking and price alerting functionality on the Site unless Amazon agrees. Read verbatim 2026-11-20.",
       "sources": [
-        "S14"
+        "S02"
       ]
     },
     {
       "id": "K-16",
-      "statement": "Chefman publishes two different 8 qt air fryers: RJ38-8T-BLACK, stated at 450 °F on Hi-Fry, and RJ38-SQSS-8T, stated at 200 to 400 °F. The Amazon listing for the tracked 8 qt unit names RJ38-SQSS-8T in its own copy, and its title advertises the 450 °F Hi-Fry figure that belongs to the other machine.",
+      "statement": "Participation Requirements §6(u) bars purchasing through your own Special Links and bars permitting, requesting or encouraging friends, relatives, employees or contractors to do so. Gate G-02 must therefore be tested by checking the destination and the tracking report, never by placing an order.",
       "sources": [
-        "S12",
-        "S22",
-        "S16"
+        "S02"
       ]
     },
     {
       "id": "K-17",
-      "statement": "The submitted short link for the ThermoMaven row, link.amazon/B0c8moW59, has resolved to the observed ThermoMaven listing across two dated fetches by two independent sessions, so that row now carries a tagged outbound link like the other four.",
+      "statement": "Participation Requirements §6(g) bars offering any consideration, reward or incentive for using Special Links, and §4 permits Special Links in email, SMS and direct messages only where the communication was solicited. Together these constrain any reader-capture offer: opt-in only, and no reward for clicking.",
       "sources": [
-        "S05",
-        "S04"
+        "S02"
+      ]
+    },
+    {
+      "id": "K-18",
+      "statement": "A violation of the Participation Requirements, the IP License or Operating Agreement §5 is deemed a material breach of the Agreement, and Operating Agreement §6 permits immediate termination on a material breach. The compliance rules this site enforces in its build gate are termination-grade, not stylistic.",
+      "sources": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "K-19",
+      "statement": "Operating Agreement §4 states Amazon makes \"no representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time\". That is the official basis for the empty campaign ledger and for publishing no revenue forecast, conversion score or traffic estimate anywhere in this repository.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-20",
+      "statement": "Participation Requirements §2(b) gives the tag format as \"XXXXX-##, or such other format as we may designate\". The supplied ID has an eleven-character prefix, which the clause permits; the shape neither confirms nor refutes the ID. §1(g) separately bars any Amazon trademark or variant in a tag, and the supplied ID contains none.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-21",
+      "statement": "Participation Requirements §2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends. Seasonal content therefore carries a takedown obligation, and any seasonal page needs an expiry date rather than just a publish date.",
+      "sources": [
+        "S02"
       ]
     }
   ],
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question now carries four fields: what is already in hand, what is missing, who can supply it, and the step that closes it. K-13 to K-21, Q-14 to Q-16 and D-09 to D-12 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim. K-07 and K-09 are marked superseded rather than deleted, with their original wording kept, because a register that quietly rewrites its own history cannot be audited.",
   "unknown": [
     {
       "id": "Q-01",
@@ -257,44 +284,36 @@
     },
     {
       "id": "Q-14",
-      "question": "Is the observed ThermoMaven listing the F1 Ace, and is the maker's F1 Ace page the right page to publish specifications against it?",
-      "why_it_matters": "The maker's page and the listing carry different model names. The features match, so the two are consistent, but the maker does not publish the marketplace identifier, so the P04 specification row rests on a very likely rather than a confirmed match.",
-      "how_to_close": "Ask ThermoMaven, through the contact form on its own product page, whether the 1 Sec Professional listing is the F1 Ace. One reply closes Q-14 and Q-16 together.",
+      "question": "Is the ThermoMaven listing the F1 Ace?",
+      "why_it_matters": "The manufacturer page for the F1 Ace (S21) matches the listing title feature for feature, but the listing never says 'F1 Ace'. Until the model is confirmed, the specification grid on that row shows the manufacturer family-page figures rather than confirmed specifications of the listed unit.",
+      "how_to_close": "Open https://www.amazon.com/dp/B0DHZTCNR5 in a signed-in browser, read the model or product-details field, and record what it says with the date. If it names the F1 Ace, the figures can be promoted and FLG-025 can close.",
       "sources": [
-        "S21",
-        "S04"
+        "S04",
+        "S21"
       ],
       "blocking": false
     },
     {
       "id": "Q-15",
-      "question": "Which ThermoMaven variant did the owner mean when the link was supplied, and is it the one the link now lands on?",
-      "why_it_matters": "The maker sells a 1-second model and a 0.5-second model, and the marketplace carries several near-identical listings with the same accuracy and certification wording. Publishing a spec sheet for the wrong sibling model would be a confident wrong answer.",
-      "how_to_close": "Open the supplied link in a signed-in Amazon session and name the product and the model number, the same one-line check that closes Q-01 for the other four rows.",
+      "question": "Which of the published editions is the product?",
+      "why_it_matters": "Several reader-facing editions are published under one domain and the same tracking ID. Only the root edition is in the sitemap; the rest are excluded from the index but still reachable. One indexed site is the clearest signal to a search engine and the cleanest attribution for a click.",
+      "how_to_close": "Name one edition as the product and decide whether the others stay on this domain at all. Suggestion S-11 lists the options with the trade-off for each.",
       "sources": [
-        "S05",
-        "S21",
-        "S04"
+        "S09"
       ],
-      "blocking": true
+      "blocking": false
     },
     {
       "id": "Q-16",
-      "question": "Does the owner's Amazon account actually credit a sale when a tagged link on this site is clicked?",
-      "why_it_matters": "Every outbound link on this site carries the tracking ID, but a tagged link has never been clicked from this site and confirmed to appear in the account's reports. Until that happens, the earning side of the whole plan is an assumption.",
-      "how_to_close": "Open one Special Link in Associates Central, click it from this site, and confirm the click appears in the reports. This is the same manual step as D-02, and it is the single highest-value thing the owner can do.",
+      "question": "Is the draft privacy notice adequate, and does it need legal review before the analytics endpoint is switched on?",
+      "have": "A draft /privacy/ page describing what the counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. §3(e) read verbatim (FLG-035).",
+      "lack": "A review by anyone qualified to give one. The draft was written by a build session from the code and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
+      "who": "Site owner / counsel",
+      "why_it_matters": "§3(e) is an Associates obligation and a violation of the Participation Requirements is a material breach. Switching the endpoint on before the notice is settled would collect data under an unreviewed disclosure.",
+      "how_to_close": "Read the page, correct anything that overstates or understates what the code does, and decide whether counsel should review it before Q-04 is answered.",
       "sources": [
-        "S01",
         "S02"
       ],
-      "blocking": true
-    },
-    {
-      "id": "Q-17",
-      "question": "Has any appliance on this shelf actually been used by a person?",
-      "why_it_matters": "The site says plainly that it is not a test kitchen and that nothing is hands-on measurement. That is honest and it is also the main limit on what the guides can claim. It is also the difference between a specification-led guide and a recommendation.",
-      "how_to_close": "Either cook with one of the tracked units and record what happened, or state permanently that the site is specification-led. Both answers are publishable; leaving it ambiguous is not.",
-      "sources": [],
       "blocking": false
     }
   ],
@@ -356,29 +375,26 @@
     },
     {
       "id": "D-09",
-      "suggestion": "Ask ThermoMaven whether the 1 Sec Professional listing is the F1 Ace, and whether the unit carries NSF certification and an IP67 rating, then keep the written reply with the source register.",
+      "suggestion": "Open the ThermoMaven listing in a signed-in browser and read the model or product-details field. If it names the F1 Ace, the manufacturer figures can be promoted from family figures to confirmed specifications.",
       "closes": [
-        "Q-14",
-        "Q-01"
+        "Q-14"
       ]
     },
     {
       "id": "D-10",
-      "suggestion": "Read the manufacturer user-guide PDF linked from each product page for the values the web page omits, such as overall dimensions, power draw, temperature limits and probe care instructions.",
+      "suggestion": "Negative-test the gate before trusting it. Introduce a page whose hand-written sentence contradicts its own table, remove a sponsored attribute, and change a tracking tag; confirm the build fails each time. A gate that has never been seen to fail is not evidence of anything. Session 66f2548a ran three of these.",
       "closes": []
     },
     {
       "id": "D-11",
-      "suggestion": "Save a dated, readable copy of each product listing's 'About this item' block, so that when a listing's copy changes, the change is visible rather than merely suspected.",
-      "closes": [
-        "Q-01"
-      ]
+      "suggestion": "Re-read the Operating Agreement and Program Policies on a schedule and record the date each time. Both pages state an \"Updated\" date that changes, and a clause read once is a clause that can quietly stop being true.",
+      "closes": []
     },
     {
       "id": "D-12",
-      "suggestion": "Write down the commercial goal for the next ninety days - clicks, clicks toward one product, or a declared-site approval - so the campaign ledger has a definition of success to record against.",
+      "suggestion": "Re-fetch each submitted link whenever a product row is edited, and keep the raw record in data/observations/ with the date. Two transposition errors and one false 'dead link' in this repository's history all came from a single fetch being trusted on its own.",
       "closes": [
-        "Q-09"
+        "Q-01"
       ]
     }
   ]

@@ -13,3 +13,6 @@ __pycache__/
 # editions live under legacy/ only, where they are unambiguously archived.
 /docs/
 /editorial-legacy/
+
+# Local preview scaffolding (symlink so the site can be served under its /Affil3 base path)
+.preview/
