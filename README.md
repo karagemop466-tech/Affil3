@@ -11,14 +11,14 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 
 | Path | Owner | What it is |
 |---|---|---|
-| `/` | **Crisp & Counter** (`scripts/build_site.py`, session 0a90f62c) | Current root publication: shop, compare, 7 question-shaped guides, research desk (verification register, link register, flagged, questions, suggestion board, campaign ledger, analytics, compliance, coordination) |
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/docs/` | session `arena/c46310a7-affil3` | A third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
-| `/legacy/arena-4578ad4b/` | preserved | The previous integrated root edition (`tools/build.mjs`, sessions 6249757a/f761b123/4578ad4b), kept unchanged; internal `/Affil3/...` links rewritten into the archive so it is self-contained |
 
-`/editorial/` exists because its build was written against a different data model and its verification
-found things the other register did not. Keeping both builds preserves both verification passes rather
-than merging them into one file whose provenance nobody can reconstruct.
+`/editorial/` and `/docs/` exist because their builds were written against different data models and
+each verification pass found things the other register did not. Keeping all builds preserves every
+verification pass rather than merging them into one file whose provenance nobody can reconstruct.
 
 ## Read these first
 
@@ -27,8 +27,9 @@ than merging them into one file whose provenance nobody can reconstruct.
 | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
 | [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
-| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`COORDINATION.md`](COORDINATION.md) | All session boards, claims, verification logs, merge logs |
 | [`data/`](data/) | Register for the root site |
+| [`data/c46310a7-affil3/`](data/c46310a7-affil3/) | Register for the `/docs/` site (session-scoped copy; identical content to the session's committed records) |
 | [`data/register/`](data/register/) | Register for `/editorial/` |
 
 ## Build
@@ -47,7 +48,41 @@ python3 tools/build.py       # data/register/*.json -> editorial/
 python3 tools/check_site.py  # gates
 ```
 
-Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
+**Docs site** (Python, standard library only):
+
+```bash
+python3 scripts/build_sitemap.py --check   # docs/sitemap.xml covers every live page
+python3 scripts/check_links.py            # no broken internal links in docs/
+python3 scripts/build_feed.py             # keep docs/rss.xml in sync
+python3 scripts/amazon_intake.py --link 'https://link.amazon/B04G1MEwY' --validate-only
+python3 scripts/verify_sources.py         # re-check recorded official listing URLs
+python3 server/analytics_server.py --port 8080   # self-hosted analytics endpoint (no IPs stored)
+```
+
+All builds are deterministic. CI rebuilds the root and editorial sites and fails if the committed
+output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the docs-site gates.
+
+## What the root gate refuses to let through
+
+`node tools/verify.mjs` runs **2,808 checks** over the 28 published pages. It stops the build on:
+
+- a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
+- an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
+- a `link.amazon` short link published as a clickable link (it cannot carry the tag, so it renders as text);
+- a currency amount anywhere in the HTML, a star rating or a review count;
+- an image that is missing, remote, or without `alt` text;
+- a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
+- a broken internal link, a missing anchor, or a page missing from the sitemap;
+- a source ID that does not exist, or a spec row citing one.
+
+The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
+cannot bypass them, and by the gate, so a hand-edited page cannot either.
+
+## One indexable site
+
+`robots.txt` disallows `/editorial/`, `/legacy/` and `/crisp-index/`, and every `/editorial/` page also
+carries `<meta name="robots" content="noindex,nofollow">`. The root publication is the one site offered
+to search engines; the other surfaces stay online and reachable for the people who need their evidence.
 
 ## What the editorial gate refuses to let through
 
@@ -69,6 +104,16 @@ Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` 
 Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
 The links are untagged — that is a different claim from *invalid*, and only the first is made here.
 
+## Disclosure
+
+This site participates in the Amazon Associates Program and earns from qualifying purchases.
+Every outbound product link is marked as sponsored. Sources:
+
+- [Associates Program Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement)
+- [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies)
+- [FTC endorsements guidance](https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews)
+- [Google rel="sponsored" guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
+
 ## Licence and attribution
 
 Product names and trademarks belong to their owners. Specification values are quoted from the
@@ -77,33 +122,53 @@ Amazon.com, Inc. beyond participation in the Amazon Associates program.
 
 As an Amazon Associate I earn from qualifying purchases.
 
+---
 
-## Crisp & Counter — current root edition (session `arena/0a90f62c-affil3`)
+## Session `93cee724` addition (integrated 2026-11-20; nothing above changed)
 
-The root site is a shop-shaped publication with its research desk in the open. Every published
-claim carries an official source link; every affiliate link is marked `rel="sponsored"` and
-tagged `shopnow047c-20`; everything unconfirmed is published on the Flagged for Review page
-instead of being guessed.
+| Path | Owner | What it is |
+|---|---|---|
+| `/crisp-index/` | `tools/build_site.py` (Python, stdlib) | A third publication surface: shop front page, 5 question-shaped guides (incl. seasonal), compare hub, test queue with verbatim listing quotes, about/methodology, disclosure, and a Workshop group (product register with intended-vs-observed separation, flagged-for-review, suggestions & decisions queue, open questions, campaign ledger & analytics gates) |
+
+Also added at root: [`VERIFICATION.md`](VERIFICATION.md) (line-by-line verification log,
+sources S-01…S-15 with links for manual review) and
+[`EXECUTIVE_SUMMARY-93cee724.md`](EXECUTIVE_SUMMARY-93cee724.md). This session's register is
+[`data/93cee724/`](data/93cee724/) (its own namespace — `data/*.json` above are untouched).
+
+**Build & gates (this surface):**
 
 ```bash
-python3 scripts/build_site.py        # render the root edition (stdlib only)
-python3 tools/verify_site.py         # release gate (build drift, disclosures, sources, links)
-python3 scripts/build_sitemap.py     # regenerate sitemap.xml from the tree
+python3 tools/build_site.py   # data/93cee724/*.json -> crisp-index/
+python3 tools/validate.py     # data + compliance gates
+python3 tools/check_links.py  # internal links + anchors
 ```
 
-Data of record for this edition: `data/products-0a90f62c.json` (intent fields kept strictly
-separate from observed redirect targets) and `data/registers.json` (sources S01–S13, flags
-FLG-001…010, questions Q-01…10, suggestions SG-01…12, event register, campaign ledger schema).
-`server/collect.js` is the self-hosted privacy-preserving analytics collector (not deployable
-on GitHub Pages — see FLG-006).
+**Find worth knowing:** the Amazon-owned ASIN definition that FLG-012 (board) recorded as
+"not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
+ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
 
-Verification stance: every table row links to an official source or is marked unverified;
-values that can't be confirmed stay blank and flagged; observed prices and ratings carry their
-observation date (2026-11-20); no conversion score or revenue forecast is presented anywhere.
-See [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md) and the
-[Coordination log](https://karagemop466-tech.github.io/Affil3/desk/coordination/).
 
-**Note on `tools/build.mjs`:** its root output is superseded by `scripts/build_site.py`. The
-previous root edition is preserved at `legacy/arena-4578ad4b/`; regenerating it to root would
-overwrite the live site — coordinate in COORDINATION.md first. `tools/build.py` -> `editorial/`
-is unaffected.
+## Crisp & Counter — session edition at `/counter/` (`arena/0a90f62c-affil3`)
+
+A shop-shaped kitchen-gear publication with its research desk in the open: question-first
+buying guides, a verified product register with an official source on every findings row,
+a product-intent record (intended ASIN fields kept strictly separate from observed redirect
+targets), a suggestion board with options to review before anything is implemented, an
+empty-but-defined campaign ledger, and a compliance gate page. Published at
+`/counter/` following the `crisp-index/` namespace convention; its design rules differ
+from the root pipeline's (it publishes date-stamped observed prices and ratings with the
+listing linked as source of truth), so `tools/disclosure-check.mjs` skips it the same way
+it skips `crisp-index/` and it is gated by its own workflow instead.
+
+```bash
+python3 scripts/build_site.py        # render the edition into counter/ (stdlib only)
+python3 tools/verify_site.py         # release gate: build drift, disclosures, sources, links
+```
+
+Data of record: `data/products-0a90f62c.json` and `data/registers.json` (sources S01–S13,
+flags FLG-001…010, questions Q-01…10, suggestions SG-01…12, the five defined events, and
+the campaign-ledger schema). `server/collect.js` is the edition's self-hosted
+privacy-preserving analytics collector (GitHub Pages cannot host it — FLG-006).
+
+See [`docs/EXECUTIVE-SUMMARY.md`](docs/EXECUTIVE-SUMMARY.md) and
+`counter/desk/coordination/` on the live site.

@@ -1,0 +1,21 @@
+{
+  "record_type": "campaign_ledger",
+  "created": "2026-11-20",
+  "policy": "Empty but well-defined. Fields are added ONLY when obtained from authorized first-party reports (Amazon Associates reports). No conversion score or revenue forecast is ever computed or presented here. Every entry carries a dated provenance trail.",
+  "schema": {
+    "entry_id": "string, unique",
+    "timestamp": "ISO-8601 date/time of the observed event",
+    "source": "authorized first-party report name and report ID (e.g., Amazon Associates Performance Report)",
+    "channel": "organic | direct | social | email | paid | referral",
+    "eligible_sessions": "integer, from the first-party report",
+    "clicks": "integer, from the first-party report",
+    "reported_orders": "integer, from the first-party report",
+    "provenance": {
+      "report_name": "string",
+      "report_date": "ISO date",
+      "fetched_by": "string",
+      "notes": "string"
+    }
+  },
+  "entries": []
+}

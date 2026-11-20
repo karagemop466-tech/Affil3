@@ -1,11 +1,16 @@
 {
   "checked": "2026-11-20",
   "tracking_id": "shopnow047c-20",
-  "rule": "Intended ASIN, official listing URL, confirmation date and confirmation source are filled only from an official source. Observed redirect destinations are kept in separate fields and are never copied into the intended fields. Blank = not confirmed (see flag).",
+  "rule": "Two kinds of facts live here and they are never merged. INTENDED fields (intended_asin, official_listing_url, confirmation_date, confirmation_source) are filled only when the owner or an official Associates record confirms the product. OBSERVED fields (observed_*) are what an Amazon page showed on a dated fetch, and are kept separate on purpose. A blank cell means 'not confirmed', never 'guessed'. Specs come from the manufacturer page named in 'spec_sources'; where two official pages disagree, the value is left blank and a flag explains why.",
   "products": [
     {
       "id": "P01",
+      "slug": "chefman-6-qt-dual-basket-air-fryer",
+      "name": "CHEFMAN 6 Quart Dual Basket Air Fryer",
+      "short_name": "CHEFMAN 6 Qt. Dual Basket",
+      "brand": "Chefman",
       "category": "air-fryers",
+      "shape": "Dual basket",
       "submitted_url": "https://link.amazon/B04G1MEwY",
       "submitted_token": "B04G1MEwY",
       "submitted_token_length": 9,
@@ -13,7 +18,7 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified",
+      "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
         "FLG-002"
@@ -25,14 +30,43 @@
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
-        "S04"
+        "S04",
+        "S11"
+      ],
+      "spec_sources": [
+        "S11"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "model": "RJ38-SQPF-3TDB-2W",
+      "capacity_qt": "6",
+      "capacity_note": "6 qt total, in two independent 3 qt baskets",
+      "temp_min_f": "200",
+      "temp_max_f": "450",
+      "power_w": "1700",
+      "voltage": "120V",
+      "dimensions_in": "13.38 × 11.81 × 10.63",
+      "dimensions_order": "depth x width x height, as the manufacturer lists them",
+      "weight_lb": "13.3",
+      "functions": "Air fry, bake, reheat, dehydrate, frozen; Sync °Finish; Hi-Fry to 450 °F",
+      "dishwasher_safe": "Baskets: yes (manufacturer states nonstick, dishwasher-safe baskets)",
+      "certification": "cETL approved (manufacturer)",
+      "warranty": "1-year Chefman assurance",
+      "best_for": "Two foods on two timers, in the footprint of a single basket fryer.",
+      "tradeoff": "Two 3 qt baskets are each smaller than one 6 qt drawer, so a single large batch is split.",
+      "fit_line": "Two different foods, two different timings, one compact footprint.",
+      "lede": "Two 3-quart baskets that can be told to finish at the same moment, each with a window so you stop opening the drawer to check.",
+      "guide_title": "Basket or oven-style air fryer: what should you compare?",
+      "guide_slug": "basket-or-oven-style-air-fryer-what-should-you-compare"
     },
     {
       "id": "P02",
+      "slug": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+      "name": "Emeril Lagasse 26 QT French Door Air Fryer Toaster Oven",
+      "short_name": "Emeril Lagasse 26 QT French Door",
+      "brand": "Emeril Lagasse",
       "category": "air-fryer-ovens",
+      "shape": "Oven-style, french doors",
       "submitted_url": "https://link.amazon/B02NbDxp3",
       "submitted_token": "B02NbDxp3",
       "submitted_token_length": 9,
@@ -40,10 +74,12 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified",
+      "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "FLG-005",
+        "FLG-024"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R",
       "observed_asin": "B09B7SB46R",
@@ -52,14 +88,49 @@
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
-        "S04"
+        "S04",
+        "S13"
+      ],
+      "spec_sources": [
+        "S13"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "model": "4-00675-02 (Amazon listing); 4-00675-02A-VN (manufacturer page)",
+      "capacity_qt": "26",
+      "capacity_note": "26 qt / 24.6 L, stated by the manufacturer as food for 4-6 people",
+      "temp_min_f": "",
+      "temp_max_f": "",
+      "power_w": "",
+      "voltage": "120V",
+      "dimensions_in": "16.9 × 15.8 × 14.8",
+      "dimensions_order": "depth x width x height, as the manufacturer lists them",
+      "weight_lb": "",
+      "functions": "Air fry convection oven with french doors, rotisserie and dehydrate functions per the manufacturer description",
+      "dishwasher_safe": "",
+      "certification": "",
+      "warranty": "1-year warranty (manufacturer page)",
+      "best_for": "Cooking a whole meal at once, on more than one rack.",
+      "tradeoff": "It is a countertop oven, so it needs oven-sized counter depth and it is the largest footprint in this set.",
+      "fit_line": "Cooking a whole meal's worth at once, on more than one rack.",
+      "lede": "A countertop oven with french doors and 26 quarts of room: the one to pick when a basket is the bottleneck.",
+      "guide_title": "Questions to ask before buying a multi-function kitchen appliance",
+      "guide_slug": "questions-to-ask-before-buying-a-multi-function-kitchen-appliance",
+      "blank_reason": {
+        "temp_max_f": "The manufacturer page does not state a maximum temperature; no figure is published.",
+        "power_w": "The manufacturer page does not state wattage; no figure is published.",
+        "weight_lb": "The manufacturer page does not state unit weight; no figure is published.",
+        "presets": "The manufacturer page says both '25 Cooking Pre-sets' and '24 one-touch presets' (FLG-005), so no preset count is published."
+      }
     },
     {
       "id": "P03",
+      "slug": "chefman-turbofry-8-qt-air-fryer",
+      "name": "Chefman TurboFry 8 Qt air fryer",
+      "short_name": "Chefman TurboFry 8 Qt",
+      "brand": "Chefman",
       "category": "air-fryers",
+      "shape": "Single basket",
       "submitted_url": "https://link.amazon/B00hJ57DV",
       "submitted_token": "B00hJ57DV",
       "submitted_token_length": 9,
@@ -67,11 +138,12 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified",
+      "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
         "FLG-002",
-        "FLG-022"
+        "FLG-004",
+        "FLG-026"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B08DKYBTPH",
       "observed_asin": "B08DKYBTPH",
@@ -80,10 +152,40 @@
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
-        "S04"
+        "S04",
+        "S12",
+        "S16"
+      ],
+      "spec_sources": [
+        "S12"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
       "outbound_status": "Associates link check pending (gate G-02)",
+      "model": "RJ38-8T-BLACK",
+      "capacity_qt": "8",
+      "capacity_note": "8 qt / 7.57 L per the Chefman page; the Amazon listing also states 8 quarts.",
+      "temp_min_f": "",
+      "temp_max_f": "",
+      "power_w": "",
+      "voltage": "120V",
+      "dimensions_in": "",
+      "dimensions_order": "",
+      "weight_lb": "",
+      "functions": "Air fry, bake, dehydrate, frozen (Chefman page for RJ38-8T-BLACK). The Amazon listing describes four presets and a 200-400 °F range.",
+      "dishwasher_safe": "Basket and rack: yes (manufacturer states top-rack dishwasher safe)",
+      "certification": "cETL approved (manufacturer)",
+      "warranty": "1-year Chefman assurance",
+      "best_for": "One big batch in one basket, with no divider to work around.",
+      "tradeoff": "No window and no second basket, so checking food means opening the drawer and losing heat. Confirm which 8 Qt model you are buying before you order.",
+      "fit_line": "One big batch, one basket, no dividers to work around.",
+      "lede": "Eight quarts in a single basket. Before you buy, read the model-number conflict below: the Amazon listing and Chefman's own page describe two different 8 Qt machines.",
+      "guide_title": "A no-hype checklist for comparing air fryer capacity",
+      "guide_slug": "no-hype-checklist-comparing-air-fryer-capacity",
+      "blank_reason": {
+        "power_w": "Chefman's page for RJ38-8T-BLACK states 1700 W; the Amazon listing for B08DKYBTPH states 1000 W and names a different model (FLG-026). Neither figure is published.",
+        "temp_max_f": "Chefman's page states up to 450 °F on Hi-Fry; the Amazon listing states a 200-400 °F range (FLG-026). Neither figure is published.",
+        "dimensions_in": "The Chefman page does not state dimensions; the Amazon listing states 12.75 x 13.5 x 10 in for a different model number, so it is shown in the listing column instead."
+      },
       "reverification": {
         "date": "2026-11-20",
         "previous_observed_asin": "",
@@ -91,11 +193,27 @@
         "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
         "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
-      }
+      },
+      "observed_specs": {
+        "note": "Stated in the 'About this item' copy of the Amazon listing on 2026-11-20. Kept separate from the manufacturer column because the two describe different models.",
+        "model": "RJ38-SQSS-8T",
+        "power": "1000 W / 120 V",
+        "temperature": "200–400 °F",
+        "dimensions": "12.75 × 13.5 × 10 in",
+        "capacity": "8 quarts",
+        "material": "Stainless steel",
+        "source": "S16"
+      },
+      "model_note": "The Amazon listing's own copy names a different model, RJ38-SQSS-8T (FLG-026)."
     },
     {
       "id": "P04",
+      "slug": "thermomaven-instant-read-thermometer",
+      "name": "ThermoMaven professional instant-read meat thermometer",
+      "short_name": "ThermoMaven instant-read",
+      "brand": "ThermoMaven",
       "category": "cooking-thermometers",
+      "shape": "Instant-read probe",
       "submitted_url": "https://link.amazon/B0c8moW59",
       "submitted_token": "B0c8moW59",
       "submitted_token_length": 9,
@@ -103,11 +221,10 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified",
+      "confirmation_status": "Unverified; no manufacturer source found",
       "flags": [
         "FLG-001",
-        "FLG-002",
-        "FLG-022"
+        "FLG-025"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
       "observed_asin": "B0DHZTCNR5",
@@ -118,8 +235,34 @@
         "S05",
         "S04"
       ],
-      "tagged_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
+      "spec_sources": [],
+      "tagged_outbound_url": "",
       "outbound_status": "Associates link check pending (gate G-02)",
+      "model": "",
+      "capacity_qt": "",
+      "capacity_note": "",
+      "temp_min_f": "",
+      "temp_max_f": "",
+      "power_w": "",
+      "voltage": "",
+      "dimensions_in": "",
+      "dimensions_order": "",
+      "weight_lb": "",
+      "functions": "Instant-read spot check; not a leave-in probe",
+      "dishwasher_safe": "",
+      "certification": "",
+      "warranty": "",
+      "best_for": "A quick spot check at the grill, not an unattended cook.",
+      "tradeoff": "It reads one spot at a time, so it cannot watch a long smoke the way a leave-in probe can.",
+      "fit_line": "A quick spot check at the grill, not a leave-in monitor.",
+      "lede": "A handheld probe for the moment before you pull the meat off the heat. Different job from a leave-in thermometer.",
+      "guide_title": "Is your meat thermometer telling you the right number?",
+      "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
+      "no_buy_link": true,
+      "no_buy_link_reason": "The submitted short links that resolved in this session landed on two air fryers and one wireless probe. No submitted link resolved to this listing, so it is shown as context only and carries no buy button. See FLG-001.",
+      "blank_reason": {
+        "all_specs": "No manufacturer product page for this model was located, so every specification is left blank. The NIST and NSF claims appear only on the marketplace listing and are not treated as verified (FLG-007)."
+      },
       "reverification": {
         "date": "2026-11-20",
         "previous_observed_asin": "B08DKYBTPH",
@@ -131,7 +274,12 @@
     },
     {
       "id": "P05",
+      "slug": "chef-iq-sense-wireless-thermometer",
+      "name": "CHEF iQ Sense wireless meat thermometer",
+      "short_name": "CHEF iQ Sense",
+      "brand": "CHEF iQ",
       "category": "cooking-thermometers",
+      "shape": "Wireless leave-in probe",
       "submitted_url": "https://link.amazon/B0f3GKalj",
       "submitted_token": "B0f3GKalj",
       "submitted_token_length": 9,
@@ -139,10 +287,11 @@
       "official_listing_url": "",
       "confirmation_date": "",
       "confirmation_source": "",
-      "confirmation_status": "Unverified",
+      "confirmation_status": "Unverified; observation only",
       "flags": [
         "FLG-001",
-        "FLG-002"
+        "FLG-002",
+        "FLG-023"
       ],
       "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
       "observed_asin": "B0DZFD6R9Z",
@@ -151,11 +300,39 @@
       "observed_date": "2026-11-20",
       "sources": [
         "S05",
-        "S04"
+        "S04",
+        "S14",
+        "S15"
+      ],
+      "spec_sources": [
+        "S14"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "model": "",
+      "capacity_qt": "",
+      "capacity_note": "",
+      "temp_min_f": "32",
+      "temp_max_f": "1000",
+      "power_w": "",
+      "voltage": "",
+      "dimensions_in": "0.19 dia. × 4.75 probe length",
+      "dimensions_order": "probe diameter x probe length, as the manufacturer lists them",
+      "weight_lb": "",
+      "functions": "Four internal sensors plus one ambient sensor; Wi-Fi hub with speaker; USB-C charging",
+      "dishwasher_safe": "Probe: yes (manufacturer states waterproof and dishwasher safe)",
+      "certification": "",
+      "warranty": "",
+      "best_for": "Knowing when to pull the meat without standing next to the grill.",
+      "tradeoff": "It depends on an app and a hub, so a flat battery or a dropped connection is a cooking problem.",
+      "fit_line": "Knowing when to pull the meat without standing next to the grill.",
+      "lede": "A leave-in wireless probe with an ambient sensor, so the app can track both the meat and the heat around it.",
+      "guide_title": "Is your meat thermometer telling you the right number?",
+      "guide_slug": "is-your-meat-thermometer-telling-you-the-right-number",
+      "blank_reason": {
+        "battery": "The manufacturer product page says '70+ hours' while the same brand's FAQ says 'up to 60 hours' for Gen 3, so no battery figure is published (FLG-003).",
+        "temp_max_f_note": "32-1000 F is the manufacturer's ambient sensor range, not the range the probe can be inserted into food for."
+      }
     }
-  ],
-  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022."
+  ]
 }

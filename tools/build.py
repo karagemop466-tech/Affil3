@@ -100,7 +100,8 @@ def head(title: str, desc: str, rel: str, extra: str = "") -> str:
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:type" content="website">
-<meta name="robots" content="index,follow">
+<meta name="robots" content="noindex,nofollow">
+<!-- Archive edition. The indexable publication is the root site. See COORDINATION.md. -->
 <link rel="stylesheet" href="/assets/site.css">
 <link rel="alternate" type="application/rss+xml" title="{BRAND}" href="/feed.xml">
 {extra}
@@ -1003,7 +1004,7 @@ def page_dashboard(products, ledger, compliance, flags) -> str:
     resolved = [p for p in products if p["identity_status"] == "resolved"]
     rows = "".join(
         f"""<tr><th scope="row">{e(p['id'])}</th><td>{e(p['brand'])} {e(p['name'])}</td>
-<td>{e(p['model'] or '—')}</td>
+<td>{e(p['model']) if p['model'] else '<span class="unverified">not stated</span>'}</td>
 <td><a href="/products/{e(p['id'].lower())}/">review</a></td>
 <td>{'resolved' if p['identity_status']=='resolved' else '<span class="bad">unresolved</span>'}</td>
 <td>{'<span class="bad">absent</span>' if p['redirect_had_tag'] is False else 'not observable'}</td>
@@ -1253,7 +1254,7 @@ def main() -> int:
         (DOCS / "assets" / "analytics.js").write_text(
             js.replace('var ENDPOINT = "";', f'var ENDPOINT = "{ANALYTICS_ENDPOINT}";'), encoding="utf-8")
 
-    print(f"built {len(list(DOCS.rglob('*.html')))} html files into docs/")
+    print(f"built {len(list(DOCS.rglob('*.html')))} html files into editorial/")
     print(f"analytics endpoint: {ANALYTICS_ENDPOINT or '(unset - records nothing)'}")
     return 0
 

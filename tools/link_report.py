@@ -37,7 +37,7 @@ spec.loader.exec_module(bs)
 with tempfile.TemporaryDirectory() as td:
     PAGE_SET = sorted(bs.build(td).keys())
 for rel in PAGE_SET:
-    f = ROOT / rel
+    f = ROOT / "counter" / rel
     html = f.read_text()
     for ti, m in enumerate(re.finditer(r"<table class=\"data sourced\">.*?</table>", html, re.S)):
         rows = re.findall(r"<tr>.*?</tr>", m.group(0), re.S)[1:]

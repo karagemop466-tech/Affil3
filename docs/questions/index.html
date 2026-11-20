@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions — The Countertop Edit</title>
+<meta name="description" content="The decision-readiness register: questions, the information needed, what we have, what we don't, and how to discover the missing pieces before any decision.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="The Countertop Edit" href="../rss.xml">
+<link rel="sitemap" type="application/xml" href="../sitemap.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="masthead">
+      <div class="brand">
+        <span class="brand-logo">The Countertop Edit</span>
+        <span class="brand-tagline">Kitchen gear, considered — buying guides for air fryers &amp; thermometers</span>
+      </div>
+      <div class="masthead-meta">Tracking ID: shopnow047c-20</div>
+    </div>
+    <div class="disclosure-strip">
+      <strong>Disclosure:</strong> This site contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.
+      Prices shown are as listed on Amazon on 2026-11-20 and may change. All outbound product links are marked as sponsored.
+    </div>
+    <nav class="nav-primary">
+      <a href="../index.html">Home</a>
+      <a href="../products/">Products</a>
+      <a href="../guides/">Guides</a>
+      <a href="../comparisons/">Comparisons</a>
+      <a href="../analytics/">Analytics</a>
+      <a href="../suggestions/">Suggestions</a>
+      <a href="index.html">Questions</a>
+      <a href="../flagged/">Flagged</a>
+      <a href="../compliance/">Compliance</a>
+      <a href="../about/">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure"><strong>Disclosure.</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</div>
+<main>
+  <div class="container">
+
+    <section class="section" style="margin-top:0">
+      <div class="section-head">
+        <span class="kicker">Decision readiness</span>
+        <h1>Open questions &amp; answers</h1>
+      </div>
+      <p class="lede">A decision should not be made until the information needed is answered from a trusted source.
+      This register lists each question, what we have, what we don't, and how to discover the missing piece.
+      Blocking questions gate publishing decisions; non-blocking ones inform the roadmap.</p>
+    </section>
+
+    <section class="section">
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr><th>ID</th><th>Question</th><th>Information needed</th><th>What we have</th><th>What we don't have</th><th>How to discover</th><th>Blocking</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Q-01</strong></td>
+              <td>What product did the owner intend behind each supplied short link?</td>
+              <td>Intended ASIN, official listing URL, confirmation date, and source per link</td>
+              <td>Observed redirect targets for 4 of 5 links (2026-11-20)</td>
+              <td>Any statement of intent — intent fields are blank by design</td>
+              <td>Owner resolves each link from a normal browser session and records the intended ASIN + date</td>
+              <td><span class="badge flagged">Yes</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-02</strong></td>
+              <td>Are the five supplied short links compliant Associates Special Links?</td>
+              <td>Confirmation that each link uses the tagged Special Link format and passes the workflow test</td>
+              <td>Links resolve to real listings for 4 of 5; compliance status unresolved (FLG-003)</td>
+              <td>Associate ID/tag presence and tracking-report confirmation</td>
+              <td>Test one link per product in the enrolled Associates workflow (SG-07)</td>
+              <td><span class="badge flagged">Yes</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-03</strong></td>
+              <td>Which Associate ID / tag is attached to these links?</td>
+              <td>The Associate ID (XXXXX-## format) in each link's parameters</td>
+              <td>The submitted link.amazon URLs</td>
+              <td>Redirect-chain inspection and dashboard access</td>
+              <td>Resolve with redirect inspection (browser or curl -I); read the dashboard link inventory</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-04</strong></td>
+              <td>What commission rates apply to these product categories?</td>
+              <td>Current Standard Commission Income for kitchen small appliances and gadgets</td>
+              <td>Official Commission Income Statement location (Program Policies, S2)</td>
+              <td>The current rate values read from the official statement</td>
+              <td>Read the Commission Income Statement on the official Program Policies page and record rate + date</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-05</strong></td>
+              <td>What questions are real buyers typing, and in what volume?</td>
+              <td>Measured query data (queries, impressions, clicks)</td>
+              <td>Editorial hypotheses (working titles) for four buyer questions</td>
+              <td>Any measurement — no analytics history exists yet</td>
+              <td>Deploy click counter + Search Console (SG-05, SG-08), then review queries on a cadence</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-06</strong></td>
+              <td>What publishing cadence is realistic?</td>
+              <td>Owner's capacity commitment and quality bar</td>
+              <td>Suggested biweekly cadence (SG-02)</td>
+              <td>An owner decision on capacity</td>
+              <td>Owner decision in the Suggestions review</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-07</strong></td>
+              <td>Where will analytics data be hosted, stored, and retained?</td>
+              <td>Hosting decision + privacy notice (purpose, storage, retention)</td>
+              <td>Self-hosted endpoint storing no IPs, no cookies</td>
+              <td>Hosting decision and a published privacy notice</td>
+              <td>Owner decision; publish privacy notice before real data flows (SG-12)</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-08</strong></td>
+              <td>May the site use official Amazon product imagery?</td>
+              <td>Confirmation against the Associates IP License and Program Policies</td>
+              <td>Operating Agreement describes Program Content (images, text, formats) made available by Amazon (S1)</td>
+              <td>A compliance ruling on listing-page imagery</td>
+              <td>Compliance review of the IP License section; Associates support if needed</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-09</strong></td>
+              <td>Which additional niches beyond air fryers and thermometers to explore?</td>
+              <td>Measured demand signals</td>
+              <td>Five verified products across two categories</td>
+              <td>Any demand measurement for other niches</td>
+              <td>Only after Q-05 is answered with real data — not from instinct</td>
+              <td><span class="badge neutral">No</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+            <tr>
+              <td><strong>Q-10</strong></td>
+              <td>What is the P-04 redirect target (link.amazon/B0c8moW59)?</td>
+              <td>The observed redirect target for P-04</td>
+              <td>Candidate ASIN B0DHZTCNR5 verified to exist (ThermoMaven 1-Sec thermometer)</td>
+              <td>A live redirect observation in this session (bot checkpoint blocked it)</td>
+              <td>Owner resolves the link from a normal browser session and records the target</td>
+              <td><span class="badge flagged">Yes</span></td><td><span class="badge pending">Open</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Machine-readable copy: <code>data/questions.json</code>. Statuses update there and are committed with the answer.</p>
+    </section>
+
+    <section class="section">
+      <div class="callout green">
+        <strong>Rule of the register:</strong> an answer is only recorded when it comes from a verified source —
+        an official Amazon page, a first-party report, or an owner decision. Everything else stays open.
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="../index.html">Home</a>
+        <a href="../products/">Products</a>
+        <a href="../guides/">Guides</a>
+        <a href="../comparisons/">Comparisons</a>
+        <a href="../about/">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Dashboard</h4>
+        <a href="../analytics/">Analytics</a>
+        <a href="../suggestions/">Suggestions</a>
+        <a href="index.html">Questions</a>
+        <a href="../flagged/">Flagged for review</a>
+        <a href="../compliance/">Compliance</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="../compliance/">Disclosures &amp; policies</a>
+        <a href="../flagged/">Irregularities</a>
+        <a href="../about/">Source register</a>
+      </div>
+    </div>
+    <div class="footer-disclosure">
+      <strong>Disclosure:</strong> This site is a participant in the Amazon Associates Program, an affiliate advertising program
+      designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon. As an Amazon Associate,
+      we earn from qualifying purchases. All outbound product links are sponsored links and are marked accordingly.
+      Prices and ratings are snapshots as listed on Amazon on 2026-11-20 and may change. © 2026 The Countertop Edit.
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/analytics.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>

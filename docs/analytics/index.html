@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics — The Countertop Edit</title>
+<meta name="description" content="Click and conversion measurement: the five defined events, the privacy-preserving outbound click counter, the self-hosted analytics endpoint, and the empty campaign ledger.">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="The Countertop Edit" href="../rss.xml">
+<link rel="sitemap" type="application/xml" href="../sitemap.xml">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <div class="masthead">
+      <div class="brand">
+        <span class="brand-logo">The Countertop Edit</span>
+        <span class="brand-tagline">Kitchen gear, considered — buying guides for air fryers &amp; thermometers</span>
+      </div>
+      <div class="masthead-meta">Tracking ID: shopnow047c-20</div>
+    </div>
+    <div class="disclosure-strip">
+      <strong>Disclosure:</strong> This site contains affiliate links. As an Amazon Associate, we earn from qualifying purchases.
+      Prices shown are as listed on Amazon on 2026-11-20 and may change. All outbound product links are marked as sponsored.
+    </div>
+    <nav class="nav-primary">
+      <a href="../index.html">Home</a>
+      <a href="../products/">Products</a>
+      <a href="../guides/">Guides</a>
+      <a href="../comparisons/">Comparisons</a>
+      <a href="index.html">Analytics</a>
+      <a href="../suggestions/">Suggestions</a>
+      <a href="../questions/">Questions</a>
+      <a href="../flagged/">Flagged</a>
+      <a href="../compliance/">Compliance</a>
+      <a href="../about/">About</a>
+    </nav>
+  </div>
+</header>
+
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure"><strong>Disclosure.</strong> I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. Links to Amazon are paid links and are marked sponsored.</div>
+<main>
+  <div class="container">
+
+    <section class="section" style="margin-top:0">
+      <div class="section-head">
+        <span class="kicker">Measurement</span>
+        <h1>Analytics &amp; the campaign ledger</h1>
+      </div>
+      <p class="lede">Click and conversion measurement is live in the machinery before anything is optimized.
+      Clicks are counted client-side; conversions are recorded only from authorized first-party reports.
+      No conversion score and no revenue forecast is presented here.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="kicker">Five events</span><h2>The five defined events</h2></div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead><tr><th>Event</th><th>Fired by</th><th>What it records</th><th>Privacy notes</th></tr></thead>
+          <tbody>
+            <tr><td><code>page_view</code></td><td>Client (analytics.js)</td><td>Page path, arrival channel</td><td>No cookies, no storage</td></tr>
+            <tr><td><code>product_view</code></td><td>Client, on product card/row click</td><td>Product ID (e.g. P-01)</td><td>No personal identifiers</td></tr>
+            <tr><td><code>guide_view</code></td><td>Client, on guide page load</td><td>Guide ID</td><td>No personal identifiers</td></tr>
+            <tr><td><code>outbound_click</code></td><td>Client, on any outbound Amazon link</td><td>Destination host, link rel attribute</td><td>Destination host only — no click-through data stored</td></tr>
+            <tr><td><code>conversion</code></td><td><strong>First-party reports only</strong> (Associate Performance Report)</td><td>Reported orders, entered into the ledger with provenance</td><td>Never inferred or estimated by the client</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="kicker">Counter</span><h2>The outbound click counter</h2></div>
+      <p>The client (<code>docs/assets/analytics.js</code>) attaches to every outbound Amazon link. On click it records
+      an <code>outbound_click</code> event with the destination host, and sends it to the analytics endpoint.
+      It uses <code>navigator.sendBeacon</code> so the event survives the page unload. There are no cookies,
+      no local storage, and no personal identifiers.</p>
+      <pre><code>&lt;a href="https://www.amazon.com/dp/B0CDY277D3"
+     target="_blank"
+     rel="sponsored noopener noreferrer"
+     data-outbound="true"
+     data-outbound-host="amazon.com"&gt;View listing&lt;/a&gt;</code></pre>
+      <p>On hosts without an endpoint (e.g. a bare GitHub Pages build), the client silently no-ops —
+      nothing is stored and nothing breaks. Point it at your endpoint with
+      <code>window.ANALYTICS_ENDPOINT = "https://analytics.example.com/api/collect"</code>.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="kicker">Endpoint</span><h2>Self-hosted analytics endpoint</h2></div>
+      <p>The endpoint lives in <code>server/analytics_server.py</code> — standard library only, no dependencies.
+      It accepts <code>POST /api/collect</code>, stores each event as one JSON line, and deliberately stores
+      <strong>no IP addresses</strong>. Requirements: a host you control (a VPS, a container, or a serverless
+      function with the same contract).</p>
+      <pre><code># Deploy (example)
+python3 server/analytics_server.py --port 8080   # binds 0.0.0.0
+
+# What it stores, per event:
+{"ts": "...", "event": "outbound_click", "path": "/products/", "channel": "organic", "target": "amazon.com"}
+
+# Query the raw log:
+tail -f events.jsonl</code></pre>
+      <p class="table-note">The endpoint is a first-party collection point. A privacy notice describing purpose,
+      retention, and deletion should be published before real traffic flows (see the <a href="../questions/">Questions</a>
+      register, Q-07, and <a href="../suggestions/">SG-12</a>).</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="kicker">Ledger</span><h2>Campaign ledger</h2></div>
+      <div class="callout amber">
+        <strong>Status: intentionally empty.</strong> The ledger starts well-defined and stays empty until entries
+        come from authorized first-party reports. No conversion score or revenue forecast is computed or presented.
+      </div>
+      <div class="table-wrap">
+        <table class="data">
+          <thead>
+            <tr><th>Field</th><th>Definition</th><th>Source</th><th>Current value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>timestamp</td><td>ISO-8601 date/time of the observed event</td><td>First-party report</td><td>—</td></tr>
+            <tr><td>source</td><td>Authorized first-party report name + report ID</td><td>First-party report</td><td>—</td></tr>
+            <tr><td>channel</td><td>organic / direct / social / email / paid / referral</td><td>First-party report</td><td>—</td></tr>
+            <tr><td>eligible_sessions</td><td>Sessions eligible for commission</td><td>First-party report</td><td>—</td></tr>
+            <tr><td>clicks</td><td>Clicks recorded by the counter</td><td>First-party report</td><td>—</td></tr>
+            <tr><td>reported_orders</td><td>Orders reported by Amazon</td><td>First-party report</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Provenance rule: every future entry carries a dated provenance trail (report name, report date,
+      who fetched it). Entries are added only from authorized first-party reports — never from estimates or third-party scrapes.
+      Raw ledger file: <code>data/campaign-ledger.json</code>.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="kicker">Cadence</span><h2>Review cadence</h2></div>
+      <div class="grid-2">
+        <article class="card"><h3>Weekly</h3><p>Outbound clicks and page views reviewed against the click counter; any broken link or tracking issue fixed before the next publish.</p></article>
+        <article class="card"><h3>Monthly</h3><p>Query review (Search Console) informs the next guide topic; ledger entries reconciled against the first-party report.</p></article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="../index.html">Home</a>
+        <a href="../products/">Products</a>
+        <a href="../guides/">Guides</a>
+        <a href="../comparisons/">Comparisons</a>
+        <a href="../about/">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Dashboard</h4>
+        <a href="index.html">Analytics</a>
+        <a href="../suggestions/">Suggestions</a>
+        <a href="../questions/">Questions</a>
+        <a href="../flagged/">Flagged for review</a>
+        <a href="../compliance/">Compliance</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="../compliance/">Disclosures &amp; policies</a>
+        <a href="../flagged/">Irregularities</a>
+        <a href="../about/">Source register</a>
+      </div>
+    </div>
+    <div class="footer-disclosure">
+      <strong>Disclosure:</strong> This site is a participant in the Amazon Associates Program, an affiliate advertising program
+      designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon. As an Amazon Associate,
+      we earn from qualifying purchases. All outbound product links are sponsored links and are marked accordingly.
+      Prices and ratings are snapshots as listed on Amazon on 2026-11-20 and may change. © 2026 The Countertop Edit.
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/analytics.js"></script>
+<script src="../assets/site.js"></script>
+</body>
+</html>
