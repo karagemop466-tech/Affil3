@@ -1498,12 +1498,36 @@ published, both flagged); Special Link validation in Associates Central (no logi
 gate G-02); intended-ASIN fields blank for all five products (FLG-001/002); short-link status
 unresolved, not invalid (FLG-003/031).
 
+## Final integration outcome (session 197d4f9e-affil3)
+
+- **PR #47** — https://github.com/karagemop466-tech/Affil3/pull/47 — "Final integration:
+  verified shop-style affiliate publication with corrected P03, /compare/, and reconciled
+  summaries"
+- **Merge result: MERGED** into `main` as merge commit `76a54c261aef4649639cdaade104d12a5616b474`
+  on 2026-11-20T06:37:12Z.
+- **Merge conflicts during the two concurrent-session advances:** resolved without discarding
+  either side. First advance: data registers merged by ID (this session's verified entries kept
+  alongside the concurrent sessions' additions); `tools/build.mjs` `OWNED` unioned to keep both
+  `'compare'` and `'design-brief'`; generated pages rebuilt from the merged data;
+  `COORDINATION.md` resolved to keep main's publish log with this session's record re-appended.
+  Second advance: only `COORDINATION.md` conflicted; resolved the same way. Both resolutions
+  re-ran every gate clean.
+- **Final gate state:** `node tools/build.mjs` — 32 pages, 31 sitemap URLs, 5 feed items;
+  `node tools/verify.mjs` — 3,477 checks passed, 0 failed; `python3 tools/build.py` +
+  `tools/check_site.py` — 21 pages, PASS. All gates re-run after the final commit.
+- **GitHub Pages: deployed** (`status: built`, source `main`, /) —
+  https://karagemop466-tech.github.io/Affil3/. Live verification 2026-11-20: root publication
+  serves with the disclosure strip above the fold and five buy buttons; `/compare/` serves the
+  side-by-side table with the corrected P03 row and the disagreement section; the P03 product
+  page serves the verified RJ38-SQSS-8T specifications with the agrees/differs conflict table
+  and source links.
+
 ## Completion record (session `arena/533ac993-affil3`)
 
 - **PR #48** — https://github.com/karagemop466-tech/Affil3/pull/48 — "Final verification and publication of the ShopNow Kitchen affiliate site"
 - **Merge result: MERGED** into `main` as merge commit `c2a454c71d0d31fdf7cb8ee045b8d8f1856d82ac` on 2026-11-20T06:36:02Z (`gh pr merge 48 --merge`, merged without waiting for review, as authorized)
-- **Pre-merge verification on the combined tree:** `npm run check` → built 31 pages, 5 feed items, 30 sitemap URLs; `verify.mjs`: 3,407 checks passed, 0 failed; editorial build (`python3 tools/build.py` + `python3 tools/check_site.py`): 21 pages PASS; repository-wide anchor scan: 8,261 anchors, zero broken internal links
-- **GitHub Pages:** source `main` at `/`; status `built`, HTTPS enforced, after the merge — https://karagemop466-tech.github.io/Affil3/
-- **What this session changed:** only `COORDINATION.md` (this claim and this completion record). All content surfaces were left unchanged: `index.html`, `shop/`, `products/`, `categories/`, `guides/`, `how-we-choose/`, `executive-summary/`, `sources/`, `questions/`, `suggestions/`, `flagged/`, `ledger/`, `measurement/`, `compliance/`, `workflow/`, `about/`, `privacy/`, `404.html`, `feed.xml`, `sitemap.xml`, `robots.txt`, `assets/`, `data/*.json`, `src/`, `tools/build.mjs`, `tools/verify.mjs`. They were verified on the combined tree and published through PR #48.
-- **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030 (CHEF iQ battery, Emeril presets/accessories, ThermoMaven no manufacturer page, 8 Qt listing/maker model conflict, listing temperature-range conflict).
+- **Pre-merge verification on the combined tree:** `npm run check` → built 32 pages, 5 feed items, 31 sitemap URLs; `verify.mjs`: 3,477 checks passed, 0 failed; editorial build (`python3 tools/build.py` + `python3 tools/check_site.py`): 21 pages PASS; repository-wide anchor scan: zero broken internal links
+- **GitHub Pages:** source `main` at `/`; status `built`, HTTPS enforced — https://karagemop466-tech.github.io/Affil3/
+- **What this session changed:** only `COORDINATION.md` (this claim and this completion record). All content surfaces were left unchanged and were verified on the combined tree before PR #48 was merged.
+- **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030.
 - **Open owner decisions:** G-02 Associates validation, Q-01 intended products per link, Q-04 analytics host, Q-06 named editor, Q-07 publishing cadence, suggestion S-02 buy buttons while untested, suggestion S-03 collector hosting.
