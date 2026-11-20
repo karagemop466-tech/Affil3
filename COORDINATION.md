@@ -472,3 +472,65 @@ The editorial and root publications are two separately generated sites over two 
 five links. They now agree on all five destinations (cross-check table above), but they will drift
 again if only one register is updated. **The real fix is one register and one generator.** That is
 recorded as `SG-13` and should be the first thing the next session does.
+
+---
+
+# Session `66f2548a` board — review, decision board, and shop-voice pass
+
+Registry: session `66f2548a`, branch `arena/66f2548a-affil3`, cut from `main` @ `ac89023`, fast-forwarded
+to `ef743da` (PR #17 merged) before any edit. Status: active. **Nothing above this line was edited.**
+
+## Claim (pushed before any other work, per the parallel-session rule)
+
+Scope claimed on this branch:
+
+| Area | Files |
+|---|---|
+| Independent re-verification record | `data/observations/2026-11-20-reverify-66f2548a.json` (new) |
+| Source register re-check | `data/sources.json` |
+| New irregularities | `data/flags.json` (append only; existing flag text not rewritten except a `status`/`resolution` correction, logged below) |
+| Decision board | `data/suggestions.json`, `data/questions.json` |
+| Display-only product fields | `data/products.json` (**no verified value changed**) |
+| Root-site generator | `tools/build.mjs`, `data/config.json` |
+| CI workflow | `.github/workflows/verify.yml` |
+| Design brief | `DESIGN-BRIEF.md` (new), `COORDINATION.md` (this board) |
+| Generated output | every path in `tools/build.mjs` `OWNED` |
+
+Scope deliberately **not** touched (owned by earlier sessions, all merged): `editorial/`,
+`data/register/`, `tools/build.py`, `tools/check_site.py`, `tools/assets/`, `legacy/`,
+`tools/verify.mjs`, `tools/collector.mjs`, `src/assets/analytics.js`, `QA-BRIEF.md`,
+`EXECUTIVE_SUMMARY*.md`. Requests that need those files are logged at the bottom of this board
+instead of edited.
+
+Open PRs from other branches at claim time: #3 (`arena/6ca11b63-affil3`), #9
+(`arena/bdcb1fa8-affil3`). Neither branch was read-modified; both were left open. 24 session
+branches exist on `origin`. This session pushes only `arena/66f2548a-affil3`.
+
+## Task board
+
+| ID | Task | Status | Files | Notes |
+|----|------|--------|-------|-------|
+| A1 | Re-resolve all five submitted short links independently, fresh | claimed | observation file | Two reads per link where the first is ambiguous |
+| A2 | Re-read every official source in `data/sources.json` line by line | claimed | `data/sources.json` | Record re-checked date and whether the page still supports the claim |
+| A3 | Repo review for irregularities; flag, do not silently fix | claimed | `data/flags.json` | Includes CI, cross-register agreement, stale copy |
+| A4 | Add the SG-27..SG-30 rows the brief names but the registers lack | claimed | `data/suggestions.json` | Numbering gap is itself flagged |
+| A5 | Make `/suggestions/` a reviewable choose-a-path board | claimed | `data/suggestions.json`, `tools/build.mjs` | Tracks, sequence, cost, risk, decision record |
+| A6 | Make `/questions/` a known / unknown / discovery register | claimed | `data/questions.json`, `tools/build.mjs` | Each unknown: what we have, what we lack, how to find out, who, blocks what |
+| A7 | Shop-voice pass on reader-facing pages | claimed | `tools/build.mjs`, `data/products.json` | Verification content demoted, not deleted |
+| A8 | Write the design brief that feeds the next prompt | claimed | `DESIGN-BRIEF.md` | Concrete, not aspirational |
+| A9 | Integration: rebuild, gate, PR, merge, Pages | claimed | generated HTML, this board | Last, after A1-A8 |
+
+Ground rules: no value inferred; anything not confirmable from an official source stays blank and
+flagged; no price, rating, availability, conversion or revenue figure introduced; outbound Amazon
+links stay `rel="sponsored"` and carry `tag=shopnow047c-20`; small frequent commits;
+`git pull --rebase` before every push.
+
+## Access note recorded at claim time (matters for every verification claim below)
+
+The sandbox shell has **no** outbound network access (verified: `curl` to `www.amazon.com`,
+`affiliate-program.amazon.com` and `karagemop466-tech.github.io` all fail with
+`SSL_ERROR_SYSCALL`; `api.github.com` returns 200). The `fetch_page` tool **does** reach those
+hosts, so re-verification below was done through it, one URL per call, and each result records the
+final URL the fetcher reported. The live Pages deployment could **not** be fetched over HTTP from
+here; its state was read from the GitHub API (`repos/.../pages`), which is an official source for
+the deployment but not for the rendered HTML.
