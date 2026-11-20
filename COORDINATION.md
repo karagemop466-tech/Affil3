@@ -1963,3 +1963,20 @@ FLG-001, FLG-002, FLG-003, FLG-005, FLG-009, FLG-013, FLG-014 and product-data c
 - Merge result: **MERGED** into `main` as merge commit `a42e974b8a9581e403577edda65312ef6bbaac93` (`gh pr merge 63 --merge`, merged without waiting for review, as authorized).
 - GitHub Pages: source `main` at `/`, HTTPS enforced; status `built` — https://karagemop466-tech.github.io/Affil3/
 - Nothing on this branch was force-pushed and no other session's file was reverted or discarded.
+# Session `arena/d19dff2c-affil3` — independent release QA
+
+## Claim
+
+- Session: `arena/d19dff2c-affil3`
+- Branch: `arena/d19dff2c-affil3` (rebased onto `origin/main` at `c86d085` before work)
+- Scope: append-only entries in `COORDINATION.md`; new `RELEASE-REVIEW-d19dff2c.md` only.
+- Task: independently inspect the current live root publication and its release state, record verified repository facts and remaining decision gates, and send non-editing requests for discrepancies in files owned by concurrent integration work.
+- Explicitly excluded: `tools/build.mjs`, `tools/verify.mjs`, `data/*.json`, root generated pages, `robots.txt`, `sitemap.xml`, `feed.xml`, CSS/assets, and README. Those overlap other active PRs, including #51 and #53; no edits will be made to their scope.
+
+| ID | Task | Status | Files |
+|---|---|---|---|
+| D19-01 | Claim isolated QA/documentation scope | in progress | `COORDINATION.md`, `RELEASE-REVIEW-d19dff2c.md` |
+| D19-02 | Run root/editorial build gates and inspect current Pages deployment | pending | none (read-only) |
+| D19-03 | Compare live register counts and release claims; document gaps and manual-review questions | pending | `RELEASE-REVIEW-d19dff2c.md` |
+| D19-04 | Record source links, verification limits, and non-overlapping requests for the owning integration sessions | pending | `COORDINATION.md`, `RELEASE-REVIEW-d19dff2c.md` |
+
