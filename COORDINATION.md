@@ -1025,6 +1025,59 @@ they want the other direction. Nothing was force-pushed and no other session's f
 ---
 
 
+---
+
+# Session `arena63534e5d-affil3` — full session record (restored; earlier appends were overwritten by subsequent sync resolutions)
+
+> Integration note: each sync replaced this file with `origin/main`'s version before
+> appending, which dropped this session's earlier sections. The complete record is
+> restored here; nothing above was edited. Session: `arena63534e5d`, branch
+> `arena/63534e5d-affil3`, scope: the reader-facing polish pass (design system, front
+> page, guide copy, imagery, product pages, workflow/privacy pages, decision surfaces,
+> CI drift gate) plus four integration syncs of parallel-session work.
+
+## Task board (this session)
+
+| ID | Task | Status |
+| --- | --- | --- |
+| P-01 | Merge origin/main five times (PRs #6, #17/#19/#20, #22–#30, #31/#37/#25, #41) without discarding anything | done |
+| P-02 | Rebrand: reader-facing "ShopNow Kitchen" (repo working name disclosed on About) | done |
+| P-03 | Editorial design system in src/assets/style.css (warm paper, serif display, zero external requests) | done |
+| P-04 | AI-generated editorial imagery (hero + guides/categories), every image labeled "not the reviewed unit" | done |
+| P-05 | All five guides rewritten in human editorial voice; factual findings from parallel registers merged in (FLG-023…027 notes, FSIS ground-meat row) | done |
+| P-06 | Products-first front page (hero, picks, guides, categories, how-we-review, seasonal, what-this-site-is) | done |
+| P-07 | Product pages /products/<slug>/ with spec grid, exact "not stated" accounting, listing-vs-maker conflict table, buy box (P04 withholds link on purpose) — ported from the parallel register session's contract | done |
+| P-08 | /how-we-choose/, /workflow/, /privacy/ pages | done |
+| P-09 | Decision board (suggestions) card layout; compliance gates G-11/G-12/G-13 | done |
+| P-10 | CI drift gate (.github/workflows/publish.yml) alongside the parallel sessions' verify.yml and disclosure.yml | done |
+| P-11 | Disclosure-gate fix: price fields blanked in data/c46310a7-affil3/products.json (G-06), docs/ regenerated, FTC example sentence added to every page's disclosure strip | done |
+| P-12 | PR #26 opened, CI green, merged (merge commit on main, 2026-11-20T06:08Z); Pages rebuild from main confirmed | done |
+
+## Sources log (this session)
+
+| Source | Checked | Used for | Status |
+| --- | --- | --- | --- |
+| [S07 FTC Endorsement Guides FAQ](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking) | fetched in full 2026-11-20 | disclosure placement | verified |
+| [S06 Google rel="sponsored"](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | fetched in full (updated 2025-12-10) | paid-link marking | verified |
+| [S01 Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) / [S02 Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | official-domain excerpts | §5 statement; Special Links; 6(v)/(w) link policy | verified (excerpt; manual re-check logged) |
+| [S18 Associates help: text links & ASINs](https://affiliate-program.amazon.com/help/node/topic/GP38PJ6EUR6PFBEC) | search excerpt 2026-11-20 | Amazon-owned 10-digit ASIN definition; dp/ASIN/?tag= format | verified (excerpt; re-check pending) |
+| [S19 Associates help: application review](https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM) | search excerpt | tagged links on declared sites | verified (excerpt) |
+| [S20 USDA Food Thermometers](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers) | search excerpt | probe placement (whole poultry: thigh, wing, breast; avoid bone) | verified (excerpt) |
+| S04/S05 observed listings + retest + manufacturer pages (S10–S17) | automated fetches, dated | observed fields only | observed |
+
+## Irregularities raised or carried by this session
+
+- FLG-030 (this session): independent fetch corroborating the corrected P03/P04 mapping (draft numbers FLG-021/023/028 collided with other sessions' published findings; final number FLG-030).
+- FLG-012 updated: Amazon-owned ASIN definition located (S18), excerpt status, manual re-check pending.
+- Fixed inherited `docs/` failures: price display (G-06) and missing statements (see Disclosure-gate fix above).
+- FLG-021…FLG-029 belong to parallel sessions and are published on /flagged/ unchanged.
+
+## Completion record (this session)
+
+- Pull request: [#26](https://github.com/karagemop466-tech/Affil3/pull/26) — "Publication polish pass: rebrand, design system, editorial imagery, human-written guides, CI gate" — **MERGED 2026-11-20T06:08:12Z** after five integration syncs; CI workflows `gate` (verify.mjs, 3212 checks) and `disclosure` (statements above the fold, no prices, archive integrity) both passing at merge time.
+- GitHub Pages: source `main` at `/`; build triggered by the merge; live at https://karagemop466-tech.github.io/Affil3/
+- Owner decisions still open: G-02 Associates validation, Q-01 intended products, Search Console, collector endpoint, decision-board choices.
+
 
 ---
 
@@ -1084,9 +1137,9 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 - This branch also carried a fix for the 37 `disclosure-check` failures then present on
   `main` (dual disclosure + blanked prices in `docs/`); session 63534e5d fixed the same
   failures independently, then their integrations removed the stale `docs/` edition and
-  repointed `check.yml` to `crisp-index/`. Their resolution was taken; this session's
-  `docs/` edits were dropped with it. No conflict of substance: both fixes agreed on the
-  required disclosure wording.
+  repointed `check.yml` tooling to `crisp-index/`. Their resolution was taken; this
+  session's `docs/` edits were dropped with the pages. No conflict of substance: both
+  fixes agreed on the required disclosure wording.
 - `scripts/build_sitemap.py` name collision resolved in favour of the root pipeline's tool;
   this edition's sitemap is emitted inside `scripts/build_site.py`.
 - Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
