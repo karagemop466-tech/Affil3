@@ -1,5 +1,5 @@
 {
-  "note": "Flagged for Review. Flags do not block publication. Each flag lists its evidence and the manual step that would close it. Shown on the site at /flagged/.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives.",
   "flags": [
     {
       "id": "FLG-001",
@@ -46,7 +46,7 @@
       ],
       "manual_step": "Open the link in a signed-in browser. Supply the intended product URL if it can be identified.",
       "status": "resolved",
-      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted."
+      "resolution": "Superseded 2026-11-20: B00hJ57DV was re-fetched and resolved to B08DKYBTPH (Chefman 8 Qt TurboFry). The earlier \"Continue shopping\" checkpoint was an intermittent bot-check, not a dead link. Kept for the audit trail rather than deleted. Check it by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH"
     },
     {
       "id": "FLG-005",
@@ -219,7 +219,7 @@
       "area": "product data",
       "detail": "data/products.json recorded B08DKYBTPH (Chefman 8 Qt air fryer) as the destination of B0c8moW59, and recorded B00hJ57DV as unresolved. Both were wrong. Re-fetched twice on 2026-11-20: B00hJ57DV resolves to B08DKYBTPH and B0c8moW59 resolves to B0DHZTCNR5 (ThermoMaven 1 Sec meat thermometer). The two destinations had been swapped between the two rows. The editorial register at data/register/products.json reached the same destinations by a separate session, which corroborates the correction. Both records now carry a \"reverification\" block preserving the earlier value, so the fix is auditable rather than silent.",
       "impact": "Before the fix the root site attributed a meat thermometer to the wrong submitted link, listed an air fryer as unresolved, and had two category assignments wrong.",
-      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated.",
+      "resolution": "P03 and P04 corrected in data/products.json; previous values retained in each record's reverification block. FLG-004 marked resolved. Category pages, shop table and guide cross-links regenerated. Check both by hand: https://link.amazon/B00hJ57DV should land on https://www.amazon.com/dp/B08DKYBTPH, and https://link.amazon/B0c8moW59 should land on https://www.amazon.com/dp/B0DHZTCNR5",
       "sources": [
         "S05"
       ],
@@ -227,60 +227,71 @@
     },
     {
       "id": "FLG-023",
-      "title": "The publishing gate did not check images, canonical URLs or page titles",
       "severity": "medium",
-      "detail": "tools/verify.mjs checked disclosure, sponsored attributes, tags, prices, links and sitemaps, but nothing looked at images, canonical tags, heading counts or title and description lengths. A page could have shipped a broken illustration or no canonical URL and still passed.",
+      "status": "open",
+      "area": "product data",
+      "title": "CHEF iQ battery life: the manufacturer's own pages disagree",
+      "detail": "The CHEF iQ Sense product page states '70+ Hours of Battery'. The CHEF iQ Sense FAQ on the same domain states that Gen 3 probes hold a charge for 'up to 60 hours'. Both are official CHEF iQ pages, so this site publishes no battery figure at all rather than choosing the friendlier one. The ambient temperature range, sensor count and probe dimensions on the product page are not in dispute and are published.",
+      "impact": "One marketing figure is unusable. No other specification is affected.",
+      "manual_step": "Ask CHEF iQ support which figure applies to the Gen 3 unit sold under B0DZFD6R9Z, or leave the battery field blank.",
       "sources": [
-        "S06"
-      ],
-      "manual_step": "None. Fixed in this pass: the gate now checks every image (present, local, alt text, width and height), the canonical URL, a single h1, title length and description length.",
-      "status": "resolved",
-      "resolution": "Gate extended on 2026-11-20; 2,877 checks pass. A deliberately broken image reference and a removed canonical were both confirmed to fail the gate."
+        "S14",
+        "S15"
+      ]
     },
     {
       "id": "FLG-024",
-      "title": "Continuous integration verified a directory that does not exist",
       "severity": "medium",
-      "detail": "The workflow ran the Python build and then asserted that docs/ matched a fresh build. The Python build writes to editorial/, and docs/ has never existed, so the assertion passed without comparing anything. The claim in README that CI verifies both builds was therefore false for both.",
-      "sources": [],
-      "manual_step": "None. Fixed: CI now builds and gates both publications, asserts that the whole committed tree matches a fresh build, and fails if an archive page loses its noindex tag.",
-      "status": "resolved",
-      "resolution": "Workflow rewritten on 2026-11-20. A generated-file drift test (editing a built page without rebuilding) fails the new assertion."
+      "status": "open",
+      "area": "product data",
+      "title": "Emeril Lagasse 26 QT: preset and accessory counts differ across official pages",
+      "detail": "The Emeril Everyday product page shows '25 Cooking Pre-sets' in its specification strip and '24 one-touch cooking presets' in its own description, and an image on the same page reads '11-in-1'. The Amazon listing title says '24 One-Touch Preset Options' and 'Six Cooking Accessories Included', while the manufacturer description mentions seven. Because the official sources conflict, this site publishes no preset count and no accessory count.",
+      "impact": "Two secondary specifications are withheld. Capacity, dimensions and form factor are unaffected.",
+      "manual_step": "Check the printed quick-start guide in the box, which is the only source that decides it for a shipped unit.",
+      "sources": [
+        "S13",
+        "S04"
+      ]
     },
     {
       "id": "FLG-025",
-      "title": "Two repository documents carried stale product claims",
       "severity": "medium",
-      "detail": "EXECUTIVE-SUMMARY.md said four of five links resolved and that link 4 resolved to nothing. QA-BRIEF.md repeated that, and additionally cited manufacturer model numbers that were not re-read in this pass. Both contradicted the register, which had already been corrected in FLG-022.",
+      "status": "open",
+      "area": "product data",
+      "title": "ThermoMaven: no manufacturer page, so every specification is withheld",
+      "detail": "No manufacturer product page for the ThermoMaven thermometer could be located. Its accuracy, certification and waterproofing claims exist only on the marketplace listing. The site therefore shows the product as context, with no buy button and no specifications at all, rather than promoting listing copy to a verified fact.",
+      "impact": "One of five products is present but not recommended, and carries no outbound link.",
+      "manual_step": "If ThermoMaven publishes a product page for this model, supply the URL and the specification table can be filled and re-verified.",
       "sources": [
-        "S04",
-        "S05"
-      ],
-      "manual_step": "None. Fixed: the summary was rewritten against the register, and the brief carries a correction banner that quotes the superseded rows verbatim and points to the register as authoritative.",
-      "status": "resolved",
-      "resolution": "Both documents updated on 2026-11-20. The superseded text was kept in the brief rather than deleted, so the change stays auditable."
+        "S04"
+      ]
     },
     {
       "id": "FLG-026",
-      "title": "The archive publication was indexable next to the root publication",
-      "severity": "medium",
-      "detail": "GitHub Pages serves the repository root, so /editorial/ and /legacy/ were live and indexable with the same topics, the same five products and their own sitemaps. That splits search signal and reads as duplicate content. Search engines were being offered three sites that say the same thing.",
+      "severity": "high",
+      "status": "open",
+      "area": "product data",
+      "title": "The 8 Qt air fryer listing and the manufacturer page describe two different machines",
+      "detail": "The Amazon listing for B08DKYBTPH states, in its own 'About this item' copy, that the unit is 1000 W/120 V, model RJ38-SQSS-8T, with a 200-400 °F range, a 12.75 x 13.5 x 10 in body and a stainless-steel finish. Chefman's own product page for the 8 Qt model with Hi-Fry describes RJ38-8T-BLACK, 1700 W/120 V, up to 450 °F, and a matte-black finish. Both cannot describe the same appliance. This site therefore publishes capacity (8 qt, which both agree on) and withholds wattage, temperature range, dimensions and finish. The listing's figures are shown in a separate column so a reader can see both without either being presented as verified.",
+      "impact": "Four specifications are withheld on the 8 Qt product page. Readers are told why. This is the single most consequential data conflict found on the site.",
+      "manual_step": "Confirm which model ships from the listing, by checking the model number printed on the unit or the box, or by asking Chefman support whether RJ38-SQSS-8T and RJ38-8T-BLACK share a listing.",
       "sources": [
-        "S06"
-      ],
-      "manual_step": "Owner confirms that one indexable site is the intended arrangement. If a custom domain is chosen later (Q-16), the same rule has to be carried over."
+        "S16",
+        "S12"
+      ]
     },
     {
       "id": "FLG-027",
-      "severity": "high",
-      "title": "Source citations linked to Amazon without the tracking tag",
-      "detail": "The shop register and product pages cited the observed Amazon page, and linked the submitted short link, without a tag parameter. Program Policies §2(b) requires the Associates ID as a URL parameter on every link placed on the site, not only on buy buttons. A citation is still a link.",
+      "severity": "medium",
+      "status": "open",
+      "area": "product data",
+      "title": "The same listing carries two different temperature ranges in two places",
+      "detail": "In the 'About this item' bullets the Amazon listing for B08DKYBTPH describes a 200-400 °F range and a 1000 W element, while the listing title advertises a '450°F Hi-Fry option'. A Hi-Fry burst and a 400 °F ceiling can coexist if Hi-Fry is a separate short-lived mode, but the listing never explains it. Because the two statements are not reconcilable from the page alone, no temperature figure is published for this product.",
+      "impact": "Temperature is withheld on one product.",
+      "manual_step": "The user guide linked from the listing should settle it. Read it and supply the page reference.",
       "sources": [
-        "S02"
-      ],
-      "manual_step": "None. Fixed: every Amazon link now carries tag=shopnow047c-20, including observation citations, and the five short links are shown as text because a short link cannot carry the tag.",
-      "status": "resolved",
-      "resolution": "Gate extended on 2026-11-20: every Amazon-hosted anchor must carry the tag, and no link.amazon anchor may be published. Check count rose from 2,884 to 4,407, all passing."
+        "S16"
+      ]
     }
   ],
   "checked": "2026-11-20"

@@ -1,58 +1,46 @@
 {
-  "note": "Choose a path before anything changes. Each decision lists what it costs, what it buys and what it needs from you. Status values: implemented = done in this pass and reversible; needs decision = waiting on you; blocked = waiting on an account, a person or a provider. Reply with a suggestion ID and an option letter, for example 'S-01 B'.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen; the site keeps working with whichever option is marked current. Reply with the suggestion ID and the letter, for example 'S-03 B'.",
   "suggestions": [
     {
       "id": "S-01",
-      "topic": "Outbound link handling",
+      "topic": "Two publications in one repository",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).",
-          "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."
+          "label": "Keep the earlier /editorial/ edition live but excluded from search, and index only the root site (current).",
+          "tradeoff": "Nothing is lost and there is one indexed site; the old edition is still public if someone has the URL."
         },
         {
           "id": "B",
-          "label": "Hide all buy buttons until gate G-02 passes.",
-          "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."
-        }
-      ],
-      "recommendation": "B, until G-02 passes.",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "High",
-      "effort": "Low",
-      "why": "The single biggest compliance risk on the site.",
-      "note": "Option B until gate G-02 passes."
-    },
-    {
-      "id": "S-02",
-      "topic": "Publishing cadence",
-      "current": "A",
-      "options": [
-        {
-          "id": "A",
-          "label": "One new guide every two weeks (proposed default).",
-          "tradeoff": "Steady growth; needs a writing slot every two weeks."
-        },
-        {
-          "id": "B",
-          "label": "One new guide per week.",
-          "tradeoff": "Faster growth; higher manual load."
+          "label": "Retire /editorial/ entirely and redirect its URLs to the equivalent root pages.",
+          "tradeoff": "Cleanest signal for search engines; a redirect map has to be written and tested first."
         },
         {
           "id": "C",
-          "label": "A batch of 10 guides before launch, then monthly.",
-          "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."
+          "label": "Merge the better parts of the old edition into the root site and remove the duplicate pages.",
+          "tradeoff": "Best content outcome, most work, and the old edition's data conflicts with the root data and must be reconciled."
         }
       ],
-      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review.",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "Medium",
-      "effort": "Medium",
-      "why": "Cadence decides how fast the site looks alive to a reviewer.",
-      "note": "Pick a cadence you can keep for a month."
+      "recommendation": "B once the redirect map is written. Two editions of a five-page site is more surface than the content justifies."
+    },
+    {
+      "id": "S-02",
+      "topic": "Buy buttons while links are untested",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the buy buttons, labelled as provisional and pending a tracking check (current).",
+          "tradeoff": "The site can earn from day one, but an untested link that silently fails credits nothing."
+        },
+        {
+          "id": "B",
+          "label": "Hide every buy button until gate G-02 passes.",
+          "tradeoff": "Maximum compliance confidence; the site earns nothing until the owner tests."
+        }
+      ],
+      "recommendation": "A, but test within the first week. A page that cannot be clicked is a brochure."
     },
     {
       "id": "S-03",
@@ -61,490 +49,177 @@
       "options": [
         {
           "id": "A",
-          "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.",
-          "tradeoff": "Full control of raw data; you run the server."
+          "label": "Run tools/collector.mjs on a small VPS the owner controls, behind HTTPS.",
+          "tradeoff": "Full control of raw data; the owner runs a server and patches it."
         },
         {
           "id": "B",
-          "label": "Run the collector on a platform that supports Node.js with persistent storage.",
-          "tradeoff": "Less server work; check the platform's data terms."
+          "label": "Run it as a serverless function on a platform that supports Node.",
+          "tradeoff": "No server to patch; cold starts and platform limits on storage."
         },
         {
           "id": "C",
-          "label": "Use a third-party privacy-focused analytics product.",
-          "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."
+          "label": "Skip self-hosting and use a privacy-focused hosted analytics service.",
+          "tradeoff": "Fastest to start; one more third party, and the data leaves your control."
         },
         {
           "id": "D",
-          "label": "No analytics for now (current).",
-          "tradeoff": "Nothing to maintain; no click or conversion data."
+          "label": "Stay inactive until there is traffic worth measuring (current).",
+          "tradeoff": "Zero maintenance; decisions stay on instinct, which is exactly what the brief asks to avoid."
         }
       ],
-      "recommendation": "A or B if you want measured queries before choosing the next topic.",
-      "status": "blocked",
-      "owner": "Owner + host",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "No click data until a receiver exists.",
-      "note": "The receiver must be HTTPS and outside this repository."
+      "recommendation": "B. It removes the server maintenance objection without handing the data away."
     },
     {
       "id": "S-04",
-      "topic": "Brand name",
+      "topic": "Pricing display",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep the working name 'Affil3' (current).",
-          "tradeoff": "Matches the repository."
+          "label": "Show no prices; every button reads 'Check the current price on Amazon' (current).",
+          "tradeoff": "Always accurate, and compliant with the price clause; readers have to click to know a budget."
         },
         {
           "id": "B",
-          "label": "Choose a consumer-facing name and domain.",
-          "tradeoff": "Better recall; needs a domain and a naming check."
+          "label": "Enroll in the Creators API and display Amazon-served prices with a timestamp.",
+          "tradeoff": "Better for budget-led shoppers; more engineering, and a stale price is a compliance risk."
+        },
+        {
+          "id": "C",
+          "label": "Show a coarse price band instead of a figure.",
+          "tradeoff": "Useful and stable; still a claim that needs checking, and it ages badly."
         }
       ],
-      "recommendation": "B before wider promotion.",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Low",
-      "effort": "Low",
-      "why": "Brand name is already in use across titles, feed and sitemap.",
-      "note": "Changing it later means a redirect plan."
+      "recommendation": "A until traffic justifies the Creators API work. Then B."
     },
     {
       "id": "S-05",
+      "topic": "Publishing cadence",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "One new guide every two weeks (current).",
+          "tradeoff": "Sustainable; slow to build a topic cluster."
+        },
+        {
+          "id": "B",
+          "label": "One new guide per week.",
+          "tradeoff": "Faster topical coverage; needs a real writing slot weekly."
+        },
+        {
+          "id": "C",
+          "label": "A batch of eight guides before launch, then monthly.",
+          "tradeoff": "Reaches a useful site size quickly; risks thin pages if the batch is rushed."
+        }
+      ],
+      "recommendation": "A, at a quality bar high enough that every guide earns its place. Ten thin guides are worse than four good ones."
+    },
+    {
+      "id": "S-06",
+      "topic": "Reader capture",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "No email capture yet; the RSS feed is the only subscription route (current).",
+          "tradeoff": "Nothing to maintain and no consent obligations; no direct channel to readers."
+        },
+        {
+          "id": "B",
+          "label": "Add a single-field email capture with double opt-in on guide pages.",
+          "tradeoff": "Owns the audience instead of renting it from search; adds a privacy notice and a provider."
+        },
+        {
+          "id": "C",
+          "label": "Publish a 'notify me when a new guide ships' link that opens a mail draft.",
+          "tradeoff": "Zero infrastructure and honest; very low conversion."
+        }
+      ],
+      "recommendation": "B only once there are at least three guides worth returning for. Before that it is asking for an email with nothing to send."
+    },
+    {
+      "id": "S-07",
       "topic": "Imagery",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Typography and layout only, no product photos (current).",
-          "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."
+          "label": "Keep editorial illustration, clearly labelled as not the reviewed unit (current).",
+          "tradeoff": "Consistent look, no licensing exposure, no misleading product photography."
         },
         {
           "id": "B",
-          "label": "Original photography of products you own.",
-          "tradeoff": "Strong for reader trust; needs equipment and time."
+          "label": "Use Amazon-hosted product images through the approved image service.",
+          "tradeoff": "Shows the actual product; images must be served by Amazon's tools and can change without notice."
         },
         {
           "id": "C",
-          "label": "Amazon-supplied images through the Associates tools.",
-          "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."
+          "label": "Commission real photography of the units.",
+          "tradeoff": "Highest trust and highest cost; needs physical units."
         }
       ],
-      "recommendation": "B for guides; A for the front page.",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "Illustrations are decorative and cannot be mistaken for the product being sold.",
-      "note": "Product photography needs the Creators/PA API."
-    },
-    {
-      "id": "S-06",
-      "topic": "Authorship",
-      "current": "A",
-      "options": [
-        {
-          "id": "A",
-          "label": "Team byline 'Affil3 editorial team' (current).",
-          "tradeoff": "No invented person."
-        },
-        {
-          "id": "B",
-          "label": "Named author with a real bio and a review date.",
-          "tradeoff": "Stronger signal of accountability; needs a real person."
-        }
-      ],
-      "recommendation": "B once a real reviewer is named.",
-      "status": "blocked",
-      "owner": "Owner",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "A named author is a trust signal and a policy answer.",
-      "note": "Requires a real person and their consent."
-    },
-    {
-      "id": "S-07",
-      "topic": "Content depth before Associates review",
-      "current": "A",
-      "options": [
-        {
-          "id": "A",
-          "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).",
-          "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."
-        },
-        {
-          "id": "B",
-          "label": "Hold the site from review until 10 original posts exist.",
-          "tradeoff": "Aligns with S11; delays the tag-based program."
-        }
-      ],
-      "recommendation": "B.",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "High",
-      "effort": "Medium",
-      "why": "Content depth is what an Associates reviewer looks at.",
-      "note": "Ten guides is a rule of thumb, not a guarantee."
+      "recommendation": "B for the product hero on each product page, A everywhere else. Readers want to see the actual thing they are buying."
     },
     {
       "id": "S-08",
-      "topic": "Seasonal content",
-      "current": "B",
+      "topic": "The byline",
+      "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "A gift and holiday-cooking guide hub for November and December 2026.",
-          "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."
+          "label": "Keep the team byline, flagged as a weakness (current).",
+          "tradeoff": "Honest and unchanging; weaker trust signal than a person."
         },
         {
           "id": "B",
-          "label": "Evergreen guides only (current).",
-          "tradeoff": "Simpler; no seasonal claims."
+          "label": "Add a named editor with a short bio and a contact address.",
+          "tradeoff": "Strongest trust signal; a person has to be accountable for the corrections."
         }
       ],
-      "recommendation": "B until measured queries (from S-03) show interest.",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "Low",
-      "effort": "Medium",
-      "why": "Seasonal pages need maintenance dates.",
-      "note": "Every dated claim must be re-checked or removed."
+      "recommendation": "B as soon as a real person will take the byline. This is one of the cheapest trust wins available."
     },
     {
       "id": "S-09",
-      "topic": "Category focus",
+      "topic": "Product scope",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).",
-          "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."
+          "label": "Stay at five submitted products and go deep on them (current).",
+          "tradeoff": "Focused and honest; a thin catalogue for a shopping site."
         },
         {
           "id": "B",
-          "label": "Focus on air fryers and move the thermometer to a supporting note.",
-          "tradeoff": "Tighter topic; drops the thermometer cluster."
+          "label": "Add three to five comparison products per category, researched the same way.",
+          "tradeoff": "Makes the categories credible; each added product needs its own source page and verification."
+        },
+        {
+          "id": "C",
+          "label": "Expand into a second niche once the first converts.",
+          "tradeoff": "Scales the model; splits attention before anything is proven."
         }
       ],
-      "recommendation": "A until the unresolved link is decided.",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "Three clusters match the five submitted products.",
-      "note": "A fourth cluster has no products to support it."
+      "recommendation": "B, one category at a time, and only where a manufacturer page exists to verify against."
     },
     {
       "id": "S-10",
-      "topic": "Prices and ratings",
+      "topic": "Disclosure prominence",
       "current": "A",
       "options": [
         {
           "id": "A",
-          "label": "Show no prices or ratings (current).",
-          "tradeoff": "No stale or unverified numbers."
+          "label": "Dark disclosure bar directly under the masthead, repeated in the footer (current).",
+          "tradeoff": "Impossible to miss, and slightly heavy visually."
         },
         {
           "id": "B",
-          "label": "Show dated prices from an authorized source, refreshed on a schedule.",
-          "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."
+          "label": "A lighter inline notice above the first product, plus the footer repeat.",
+          "tradeoff": "Prettier; risks being read as decoration rather than disclosure."
         }
       ],
-      "recommendation": "A now; B only after an authorized source is confirmed.",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "High",
-      "effort": "High",
-      "why": "Prices and ratings are the fastest way to break the rules if done by hand.",
-      "note": "Only via Creators/PA API, and only if you accept the maintenance."
-    },
-    {
-      "id": "S-11",
-      "topic": "Reader capture (email list)",
-      "current": "A",
-      "options": [
-        {
-          "id": "A",
-          "label": "No email capture (current).",
-          "tradeoff": "No email data to store."
-        },
-        {
-          "id": "B",
-          "label": "Opt-in email list.",
-          "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."
-        }
-      ],
-      "recommendation": "A until the email rules are reviewed.",
-      "status": "blocked",
-      "owner": "Owner",
-      "impact": "Medium",
-      "effort": "Medium",
-      "why": "Reader capture needs a provider, consent language and a privacy notice.",
-      "note": "No email form is published until that exists."
-    },
-    {
-      "id": "S-12",
-      "topic": "Search Console",
-      "current": "B",
-      "options": [
-        {
-          "id": "A",
-          "label": "Do not connect Search Console.",
-          "tradeoff": "No search data."
-        },
-        {
-          "id": "B",
-          "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).",
-          "tradeoff": "Needs a Google account owner (Q-12)."
-        }
-      ],
-      "recommendation": "B.",
-      "status": "blocked",
-      "owner": "Owner",
-      "impact": "High",
-      "effort": "Low",
-      "why": "Search Console is how the next topic stops being a guess.",
-      "note": "Requires account access for the verified property."
-    },
-    {
-      "id": "S-13",
-      "topic": "Front page and design system",
-      "current": "B",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "High",
-      "effort": "Medium",
-      "why": "The earlier front page opened with method language. A reader decides in seconds whether this looks like a shop.",
-      "note": "Reversible: the previous layout is in git history.",
-      "options": [
-        {
-          "id": "A",
-          "label": "Keep the earlier, audit-style front page.",
-          "tradeoff": "Nothing to review; it reads like a report, not a publication."
-        },
-        {
-          "id": "B",
-          "label": "Publication front page: illustrated hero, five product cards, guides, categories, then the records in the footer.",
-          "tradeoff": "Warmer and easier to act on; the verification detail moves one click deeper."
-        },
-        {
-          "id": "C",
-          "label": "Hire a designer and rebuild from a Figma file.",
-          "tradeoff": "Best possible finish; slower, and needs a budget and a brief."
-        }
-      ],
-      "recommendation": "B, with A kept in git history so it can be restored."
-    },
-    {
-      "id": "S-14",
-      "topic": "Comparison page",
-      "current": "A",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "Buyers compare before they click. A comparison table is the cheapest page that answers 'which one'.",
-      "note": "Every cell is the listing title wording; nothing is inferred.",
-      "options": [
-        {
-          "id": "A",
-          "label": "Add a side-by-side comparison of the tracked products, quoting the listing titles.",
-          "tradeoff": "Useful and honest, but it shows how thin unverified data is."
-        },
-        {
-          "id": "B",
-          "label": "Wait for API data before publishing any comparison.",
-          "tradeoff": "No comparison page for now; nothing to maintain."
-        }
-      ],
-      "recommendation": "A. A comparison of what the listing states is still useful, as long as it is labelled that way."
-    },
-    {
-      "id": "S-15",
-      "topic": "Individual product pages",
-      "current": "A",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "Search engines index pages, not table rows. Each product needs its own URL to rank for its own name.",
-      "note": "Five pages, generated from the same register as the shop table.",
-      "options": [
-        {
-          "id": "A",
-          "label": "One page per tracked product: observed listing, sources, what is unverified, related guides.",
-          "tradeoff": "Five more pages to keep current when a listing changes."
-        },
-        {
-          "id": "B",
-          "label": "Keep products inside the shop table only.",
-          "tradeoff": "Nothing to maintain; almost nothing for a search engine to rank."
-        }
-      ],
-      "recommendation": "A, with the observation date printed on every page."
-    },
-    {
-      "id": "S-16",
-      "topic": "One indexable site",
-      "current": "A",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "High",
-      "effort": "Low",
-      "why": "The repository publishes three parallel publications on the same topics. That splits whatever search signal exists and can look like duplicate content.",
-      "note": "Robots.txt disallows /editorial/ and /legacy/, and every /editorial/ page now carries a noindex meta tag. Nothing was deleted.",
-      "options": [
-        {
-          "id": "A",
-          "label": "One indexable site at the root; the other two publications stay online but out of the index.",
-          "tradeoff": "The archive is still readable by anyone with the link, but not searchable."
-        },
-        {
-          "id": "B",
-          "label": "Publish all three and let search engines choose.",
-          "tradeoff": "Faster to do nothing; weaker and harder to explain."
-        },
-        {
-          "id": "C",
-          "label": "Delete the extra publications.",
-          "tradeoff": "Cleanest for search; destroys the other sessions' verification passes and their provenance."
-        }
-      ],
-      "recommendation": "A. It keeps every verification pass readable while giving search engines a single site."
-    },
-    {
-      "id": "S-17",
-      "topic": "Guide clusters and internal linking",
-      "current": "A",
-      "status": "implemented",
-      "owner": "Session",
-      "impact": "Medium",
-      "effort": "Low",
-      "why": "Three new guides close the thermometer and oven clusters, and each one links to the product pages it can help with.",
-      "note": "Eight guides now. Cadence is still S-02.",
-      "options": [
-        {
-          "id": "A",
-          "label": "Add three cluster-closing guides and link the clusters both ways.",
-          "tradeoff": "More pages to keep dated and corrected."
-        },
-        {
-          "id": "B",
-          "label": "Publish nothing new until the policy questions close.",
-          "tradeoff": "Safest; the site stays at five guides."
-        }
-      ],
-      "recommendation": "A. Guides are the lowest-risk asset here: they carry no product claims."
-    },
-    {
-      "id": "S-18",
-      "topic": "Product data through an Amazon API",
-      "current": "B",
-      "status": "blocked",
-      "owner": "Owner",
-      "impact": "High",
-      "effort": "High",
-      "why": "Prices, ratings, availability and images can only be shown lawfully through Amazon-served content or the Creators/PA API.",
-      "note": "Requires an active account with qualifying sales. Not available to this build.",
-      "options": [
-        {
-          "id": "A",
-          "label": "Keep the site API-free: no prices, ratings, availability or product photography.",
-          "tradeoff": "Thinner pages, but nothing to break and nothing to misstate."
-        },
-        {
-          "id": "B",
-          "label": "Apply for Creators/PA API access and render only API-served data.",
-          "tradeoff": "Richer pages; a new failure mode and an eligibility bar you have not met yet."
-        }
-      ],
-      "recommendation": "A now, B once the account has qualifying sales."
-    },
-    {
-      "id": "S-19",
-      "topic": "Seasonal hub",
-      "current": "B",
-      "status": "needs decision",
-      "owner": "Owner",
-      "impact": "Low",
-      "effort": "Medium",
-      "why": "A dated seasonal page can earn links, but every dated claim has to be re-checked or removed.",
-      "note": "No seasonal page is published yet; nothing claims a current promotion.",
-      "options": [
-        {
-          "id": "A",
-          "label": "Publish a seasonal hub with dates and a re-check owner.",
-          "tradeoff": "Needs a calendar and a person to keep it true."
-        },
-        {
-          "id": "B",
-          "label": "Skip seasonal pages until a cadence exists (current).",
-          "tradeoff": "No seasonal traffic; no stale claims."
-        }
-      ],
-      "recommendation": "B until S-02 is settled, then A with a named re-check owner."
-    }
-  ],
-  "paths": [
-    {
-      "id": "Path A",
-      "name": "Ship and measure",
-      "summary": "Keep the current tagged links live, close gate G-02 in Associates Central this week, and add only Search Console.",
-      "needs": [
-        "Owner runs one Special Link per product in Associates Central (Q-04)",
-        "Owner confirms the tracking ID belongs to the account (Q-03)",
-        "Search Console verification (S-12)"
-      ],
-      "buys": [
-        "A live site readers can act on today",
-        "First real search data in about two weeks"
-      ],
-      "risks": [
-        "Untested Special Links stay live until G-02 closes",
-        "No click counts until an analytics receiver exists"
-      ],
-      "recommended": true
-    },
-    {
-      "id": "Path B",
-      "name": "Measure first",
-      "summary": "Deploy the collector, record the five events for two weeks, then choose the next topic from data instead of instinct.",
-      "needs": [
-        "An HTTPS receiver for tools/collector.mjs (S-03 A/B)",
-        "A privacy notice covering the click counter (Q-13)",
-        "A fixed test window and a known set of test clicks (D-06)"
-      ],
-      "buys": [
-        "Click and outbound data before more writing",
-        "A defensible answer to 'what should we publish next'"
-      ],
-      "risks": [
-        "More setup before any content ships",
-        "Raw analytics becomes personal data if the receiver is misconfigured"
-      ],
-      "recommended": false
-    },
-    {
-      "id": "Path C",
-      "name": "Associates-ready",
-      "summary": "Hide buy buttons until G-02 passes, reach ten guides, then submit the site for review with a clean disclosure trail.",
-      "needs": [
-        "Option B on S-01 (hide buy buttons)",
-        "Option C or B on S-02 (batch to ten guides)",
-        "Owner confirmation that the account declares this site (Q-03)"
-      ],
-      "buys": [
-        "Lowest compliance risk",
-        "A content base that meets the 'robust content' rule of thumb"
-      ],
-      "risks": [
-        "No purchase path while buttons are hidden",
-        "Slowest path to any revenue"
-      ],
-      "recommended": false
+      "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
     }
   ]
 }

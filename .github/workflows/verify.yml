@@ -11,40 +11,25 @@ permissions:
 
 jobs:
   verify:
-    name: Rebuild both publications and run the gates
+    name: Gate the published Pages site
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-
-      - name: Build the root publication and run its gate
+          python-version: '3.11'
+      # Runs both generators, both gates, then requires the committed output to
+      # match. Without the last step a source file can be edited without its
+      # emitted copy being regenerated, and the live site silently serves the
+      # old one. That happened once; this is the check that catches it.
+      - run: npm run check
+      - name: Require committed output to match a clean build
         run: |
-          node tools/build.mjs
-          node tools/verify.mjs
-
-      - name: Build the archive publication and run its gate
-        run: |
-          python3 tools/build.py
-          python3 tools/check_site.py
-
-      - name: Assert the committed output matches a fresh build
-        run: |
-          if ! git diff --quiet; then
-            echo "::error::Generated files are out of date with data/. Rebuild and commit."
-            git diff --stat
+          git status --short
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Committed site output does not match a clean build. Run npm run check and commit the difference."
             exit 1
           fi
-
-      - name: Assert the archive stays out of the index
-        run: |
-          if grep -rL 'name="robots" content="noindex' --include='*.html' editorial | grep -q .; then
-            echo "::error::An archive page is missing its noindex tag."
-            exit 1
-          fi
-          grep -q 'Disallow: /editorial/' robots.txt
-          grep -q 'Disallow: /legacy/' robots.txt

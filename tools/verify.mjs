@@ -8,8 +8,8 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
-const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
-  'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+const OWNED = ['index.html', 'shop', 'products', 'categories', 'guides', 'how-we-choose', 'executive-summary', 'sources',
+  'questions', 'suggestions', 'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -18,9 +18,12 @@ const flags = read('data/flags.json').flags;
 const events = read('data/events.json').events;
 const guides = read('data/guides.json').guides;
 
+// Official sources only: Amazon Associates pages, Google Search documentation, US federal regulators,
+// and the manufacturers of the products the owner submitted. No blog, review site or reseller is allowed.
 const ALLOWED_SOURCE_HOSTS = new Set([
   'affiliate-program.amazon.com', 'www.amazon.com', 'link.amazon', 'developers.google.com', 'www.ftc.gov',
   'www.ecfr.gov', 'www.fsis.usda.gov', 'github.com',
+  'chefman.com', 'www.emerileveryday.com', 'chefiq.com',
 ]);
 const TAG = cfg.trackingId;
 const failures = [];
@@ -57,6 +60,9 @@ for (const p of products) {
   if (p.tagged_outbound_url) {
     const expected = `https://www.amazon.com/dp/${p.observed_asin}?tag=${TAG}`;
     check(`${p.id} outbound link is the observed product with tag ${TAG}`, p.tagged_outbound_url === expected, p.tagged_outbound_url);
+  } else if (p.no_buy_link) {
+    // A product may be observed but still carry no buy link, if there is nothing to stand behind.
+    check(`${p.id} withholds its buy link on purpose and says why`, !!p.no_buy_link_reason, p.no_buy_link_reason);
   } else {
     check(`${p.id} no outbound link without an observed product`, !p.observed_asin);
   }
@@ -157,6 +163,42 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     // data-attribute checks for analytics
     if (name.startsWith('/guides/') && name !== '/guides/index.html') check(`${name}: has data-guide`, /data-guide="/.test(html));
   }
+  // ---- editorial requirements unique to this build ----
+  const home = fs.readFileSync(path.join(DOCS, 'index.html'), 'utf8');
+  check('home page leads with products, not the audit trail', /class="picks"/.test(home) && home.indexOf('class="picks"') < home.indexOf('What this site is'));
+  check('home page carries a hero image with alt text', /class="hero-figure"[\s\S]*?<img [^>]*alt="[^"]+"/.test(home));
+  for (const p of products) {
+    const f = path.join(DOCS, 'products', p.slug, 'index.html');
+    check(`product page exists for ${p.id}`, fs.existsSync(f), p.slug);
+    if (!fs.existsSync(f)) continue;
+    const h = fs.readFileSync(f, 'utf8');
+    check(`product page ${p.id} has a specification grid`, /class="spec-grid"/.test(h));
+    // Every specification the maker does not state must render as a labelled "not stated" cell,
+    // and the count of those cells must match the data exactly (no silent fill-ins).
+    const stated = [p.model, p.capacity_qt, (p.temp_min_f || p.temp_max_f), p.power_w, p.voltage, p.dimensions_in, p.weight_lb, p.dishwasher_safe, p.certification, p.warranty];
+    const expectedNa = stated.filter((v) => !v).length;
+    const actualNa = (h.match(/class="na"/g) || []).length;
+    check(`product page ${p.id} shows exactly ${expectedNa} "not stated" cells`, actualNa === expectedNa, `${actualNa} rendered`);
+    if (p.no_buy_link) {
+      check(`product page ${p.id} publishes no buy button`, !/data-outbound/.test(h));
+      check(`product page ${p.id} explains why`, /No buy button on this page/.test(h));
+    } else {
+      check(`product page ${p.id} has exactly one tagged outbound buy link`, (h.match(/data-outbound/g) || []).length === 1 && h.includes(`tag=${TAG}`));
+    }
+    check(`product page ${p.id} names its source ids`, (p.sources || []).every((id) => h.includes(`>${id}<`) || h.includes(id)));
+  }
+  for (const g of guides) {
+    const f = path.join(DOCS, 'guides', g.slug, 'index.html');
+    const h = fs.readFileSync(f, 'utf8');
+    check(`guide ${g.slug} has a hero image`, /class="article-hero"/.test(h) && /<img [^>]*alt="[^"]+"/.test(h));
+    check(`guide ${g.slug} lists its sources`, /Sources for this guide/.test(h));
+    check(`guide ${g.slug} states it is not a test`, !/we tested|our test kitchen|we cooked/i.test(h));
+  }
+  check('no page claims hands-on testing', !htmlFiles.some((f) => /we tested (it|this|these|the)|our test kitchen|we cooked (it|with|in)/i.test(fs.readFileSync(f, 'utf8'))));
+  const allHtml = htmlFiles.map((f) => fs.readFileSync(f, 'utf8')).join('\n');
+  check('no star rating or review count is republished', !/\b\d\.\d\s*(out of 5|\/5|stars)\b/i.test(allHtml));
+  check('every product image is labelled as illustration', /not the reviewed unit|Editorial illustration|editorial illustration/i.test(home));
+
   // sitemap coverage
   for (const u of pageUrls) check(`sitemap includes ${u}`, sitemapUrls.includes(u));
   // discovery hygiene: titles and descriptions within search-engine display limits

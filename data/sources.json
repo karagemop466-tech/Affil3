@@ -1,57 +1,52 @@
 {
-  "accessed": "2026-11-20",
-  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read; 'excerpt' = text taken from a search-result excerpt of the official page, so the exact wording must be re-checked manually before relying on it; 'observed' = a value read from an Amazon page, dated, and subject to change. 'rechecked' records the most recent pass in which the page itself was fetched and read.",
+  "note": "Every product fact on this site points at one of these sources. 'fetched' means the full page text was retrieved and read in this session (2026-11-20). 'excerpt' means only a search-result excerpt of the official page was available; the wording should be re-checked by hand before it is relied on. 'observed' means a value read off an Amazon page on a dated fetch; observations can change without notice. Nothing in this register is a third-party blog or review site.",
   "sources": [
     {
       "id": "S01",
       "title": "Associates Program Operating Agreement",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "publisher": "Amazon.com Associates Central",
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "updated": "October 15, 2025 (as stated on the page)",
-      "method": "fetched 2026-11-20 (full agreement page, §1 and §5 read in full)",
-      "used_for": "§1 defines 'Special Links' as tagged links in the formats Amazon provides; §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site; §5 also bars misrepresenting or embellishing the Amazon relationship.",
+      "method": "fetched 2026-11-20 (agreement updated October 15, 2025)",
+      "used_for": "Section 5 requires the exact statement 'As an Amazon Associate I earn from qualifying purchases.'; Section 1 defines Special Links and the tagged-link requirement.",
       "status": "verified",
-      "rechecked": "2026-11-20"
+      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site ...: \"As an Amazon Associate I earn from qualifying purchases.\""
     },
     {
       "id": "S02",
-      "title": "Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Trademark Guidelines)",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "title": "Associates Program Policies (Commission Income Statement, Participation Requirements, IP License, Trademark Guidelines)",
+      "publisher": "Amazon.com Associates Central",
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "updated": "April 14, 2026 (as stated on the page)",
-      "method": "fetched 2026-11-20 (Participation Requirements §2(a)-(b), §3, §4, §5, §6(a)-(z) read directly on the page; Commission Income Statement §1)",
-      "used_for": "Special Links must carry the Associates tag as a URL parameter on every link placed on the Site (§2(b)). Prices and availability may be shown only when Amazon serves them or when obtained through the Creators/PA API (§2(b)); price tracking and alerting is not allowed (§6(y)); customer reviews and star ratings may not be displayed without an API link (§6(t)). Cloaking or obscuring the Site URL, including by redirects, is prohibited (§6(v)). A link shortening service may not be used in a way that makes it unclear the link goes to an Amazon Site (§6(w)). No artificial clicks or Sessions (§6(s)); no purchasing through your own Special Links (§6(u)); no incentives for using Special Links (§6(g)); no customer confusion about the Amazon relationship (§6(l)).",
+      "method": "fetched 2026-11-20 (policies updated April 14, 2026)",
+      "used_for": "Participation Requirements §2(a)-(b): Special Links must carry the Associates tag as a URL parameter and must be accessed directly from the site. §2(b) price clause: a site may show price and availability only if Amazon serves that data or it comes from the Creators/PA API. Also the anti-misleading-claims clause and the trademark rules.",
       "status": "verified",
-      "rechecked": "2026-11-20"
+      "quote": "All Special Links must be accessed directly from your Site. ... you must include your Associates ID or \"tag\" ... as a parameter in the URL of each link you place on your Site to an Amazon Site."
     },
     {
       "id": "S03",
-      "title": "Amazon.com Associates Central - Help: Can I change my Associates ID?",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8",
-      "updated": "not stated",
-      "method": "excerpt",
-      "used_for": "Associates IDs end in '-20' for the US program (the software adds '-20'); additional tracking IDs are requested through Customer Service.",
-      "status": "verified (excerpt; re-check manually)"
+      "title": "Associates Program Policies: price and availability clause (§2(b))",
+      "publisher": "Amazon.com Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "method": "fetched 2026-11-20",
+      "used_for": "The reason no price, star rating or availability figure is published anywhere on this site: the site does not use Amazon-served price data or the Creators/PA API.",
+      "status": "verified",
+      "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API"
     },
     {
       "id": "S04",
-      "title": "Amazon product detail pages observed for the five submitted links (amazon.com/dp/ pages)",
-      "publisher": "Amazon.com, Inc.",
+      "title": "Observed Amazon product detail pages (one per product row)",
+      "publisher": "amazon.com",
       "url": "https://www.amazon.com/dp/B0CDY277D3",
-      "updated": "observed 2026-11-20",
-      "method": "observed (automated fetch; final page title and breadcrumb read; the same fetch returned pages for B09B7SB46R, B08DKYBTPH and B0DZFD6R9Z)",
-      "used_for": "Observed redirect destinations and the 10-character /dp/ ASINs that the destinations carry. Recorded as observations, not as the intended product for each submitted link.",
+      "method": "observed 2026-11-20 by fetching each product URL directly; the per-row URL is listed in the row",
+      "used_for": "Observed title, breadcrumb and ASIN only. Kept in separate fields from the intended ASIN. Prices and ratings seen on these pages are deliberately not republished (S03).",
       "status": "observed"
     },
     {
       "id": "S05",
       "title": "Submitted short links (link.amazon)",
-      "publisher": "Amazon.com, Inc. (link.amazon host as supplied by the user)",
+      "publisher": "link.amazon",
       "url": "https://link.amazon/B04G1MEwY",
-      "updated": "observed 2026-11-20",
-      "method": "observed (automated fetch of each of the five submitted links)",
-      "used_for": "Source of the five submitted tokens and of the observed redirect targets. Recorded only as observations.",
+      "method": "observed 2026-11-20, three fetch rounds per link; the per-row URL is listed in the row",
+      "used_for": "Evidence of where each submitted link lands. Observed mapping: B04G1MEwY to B0CDY277D3, B02NbDxp3 to B09B7SB46R, B00hJ57DV to B08DKYBTPH, B0f3GKalj to B0DZFD6R9Z. B0c8moW59 did not resolve to a product listing. The mapping is time-dependent and is not treated as the intended product.",
       "status": "observed"
     },
     {
@@ -59,83 +54,112 @@
       "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
       "publisher": "Google Search Central",
       "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "updated": "2025-12-10 (as stated on the page)",
-      "method": "fetched 2026-11-20 (page states last updated 2025-12-10)",
-      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links); rel=\"nofollow\" is the fallback when other values do not apply. Links carrying these values will generally not be followed, but the pages may still be discovered another way.",
+      "method": "fetched 2026-11-20 (page last updated 2025-12-10)",
+      "used_for": "Every outbound Amazon link on the site carries rel=\"sponsored\".",
       "status": "verified",
-      "rechecked": "2026-11-20"
+      "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value."
     },
     {
       "id": "S07",
-      "title": "Disclosures 101 for Social Media Influencers",
-      "publisher": "U.S. Federal Trade Commission",
-      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "updated": "November 2019 (as stated on the page)",
-      "method": "fetched",
-      "used_for": "Disclosures must be hard to miss, placed with the endorsement, and in the same language. Disclosures that appear only on an About page or behind a 'more' link are likely to be missed. 'sp', 'spon', 'collab' and stand-alone 'thanks' or 'ambassador' are too vague.",
-      "status": "verified"
+      "title": "16 CFR 255.5 - Disclosure of material connections",
+      "publisher": "U.S. Federal Trade Commission (eCFR)",
+      "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255/section-255.5",
+      "method": "fetched 2026-11-20",
+      "used_for": "Why the disclosure sits above the fold on every page: a material connection must be disclosed clearly and conspicuously, and an affiliate commission is a material connection (Example 11).",
+      "status": "verified",
+      "quote": "When there exists a connection between the endorser and the seller of the advertised product that might materially affect the weight or credibility of the endorsement, and that connection is not reasonably expected by the audience, such connection must be disclosed clearly and conspicuously."
     },
     {
       "id": "S08",
-      "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising",
-      "publisher": "U.S. Federal Trade Commission / eCFR (U.S. Government Publishing Office)",
+      "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising (full part)",
+      "publisher": "U.S. Federal Trade Commission (eCFR)",
       "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
-      "updated": "current eCFR text (revised 2023)",
-      "method": "excerpt",
-      "used_for": "Definition of endorsement (§255.0(b)), general considerations (§255.1), and disclosure of material connections (§255.5). Used as the legal reference for disclosure placement on every page.",
-      "status": "verified (excerpt; re-check manually)"
+      "method": "fetched 2026-11-20 (section 255.5 read in full)",
+      "used_for": "The rule that the disclosure must be in the same place as the endorsement, not buried on a separate page.",
+      "status": "verified"
     },
     {
       "id": "S09",
-      "title": "Safe Minimum Internal Temperature Chart",
-      "publisher": "USDA Food Safety and Inspection Service",
-      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
-      "updated": "Last Updated: Apr 14, 2025 (as stated on the page)",
-      "method": "fetched 2026-11-20 (full chart read)",
-      "used_for": "Safe minimum internal temperatures as published: beef, pork, veal and lamb steaks, chops and roasts 145 °F with a 3-minute rest; ground meats 160 °F; all poultry including ground poultry 165 °F; fish and shellfish 145 °F; leftovers and casseroles 165 °F; eggs 160 °F.",
-      "status": "verified",
-      "rechecked": "2026-11-20"
+      "title": "Google Search spam policies (including scaled content abuse and site reputation abuse)",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "method": "fetched 2026-11-20",
+      "used_for": "The reason this site publishes a small number of hand-checked pages rather than auto-generated pages at scale, and the reason every page has a named publisher and a contact route. Google lists affiliate links used throughout a page, with links qualified properly, among practices that are not inconsistent with its site reputation policy.",
+      "status": "verified"
     },
     {
       "id": "S10",
-      "title": "Food Thermometers",
+      "title": "Safe Minimum Internal Temperature Chart",
       "publisher": "USDA Food Safety and Inspection Service",
-      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
-      "updated": "not stated on the page",
-      "method": "fetched 2026-11-20 (page read; calibration, placement and care sections)",
-      "used_for": "Placement: thickest part of the food, away from bone, fat or gristle; for thin foods insert through the side to the centre; check large or irregular cuts in several places. Most food thermometers read within 2 to 4 °F; read the manufacturer instructions. Colour is not a reliable indicator that food is safe.",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "method": "fetched 2026-11-20 (page last updated April 14, 2025)",
+      "used_for": "The doneness temperatures quoted in the thermometer guides and on the thermometer product pages.",
       "status": "verified",
-      "rechecked": "2026-11-20"
+      "quote": "All Poultry (Breasts, Whole Bird, Legs, Thighs, Wings, Ground Poultry, Giblets and Stuffing) 165 degrees F (73.9 degrees C)"
     },
     {
       "id": "S11",
-      "title": "Amazon Associates Central - Application review process (help)",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
-      "updated": "not stated",
-      "method": "excerpt",
-      "used_for": "Associates require at least three qualifying sales within the first 180 days; personal orders do not count. Sites must have robust original content; the help text gives 'at least 10 posts' as a rule of thumb. Tags must be embedded in links on the sites declared in the application.",
-      "status": "verified (excerpt; re-check manually)"
+      "title": "Chefman TurboFry Touch 6 Qt. Dual-Window Air Fryer - product page",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/products/turbofry-touch-dual-window-air-fryer",
+      "method": "fetched 2026-11-20",
+      "used_for": "P01 model number RJ38-SQPF-3TDB-2W, 6 qt capacity, 200-450 F, 1700W/120V, dimensions 13.38 x 11.81 x 10.63 in, 13.3 lb, cETL.",
+      "status": "verified"
     },
     {
       "id": "S12",
-      "title": "Amazon Seller Central: 'Prepare to sell' (names ASIN as 'Amazon Standard Identification Number')",
-      "publisher": "Amazon Seller Central (sell.amazon.com)",
-      "url": "",
-      "updated": "",
-      "method": "Not fetched and no link recorded (rule: leave unconfirmed values blank). Candidate page for manual check: sell.amazon.com/learn/prepare-to-sell (seen in search results as a snippet naming 'Amazon Standard Identification Number'; host not on the gate allowlist).",
-      "used_for": "Expansion of the term 'ASIN' only. 10-character format is supported by the observed amazon.com /dp/ URLs in S04 (all 10 characters). An Amazon page stating the format still needs manual review (FLG-012).",
-      "status": "not verified"
+      "title": "Chefman TurboFry 8 Qt. Air Fryer w/ High Fry - product page",
+      "publisher": "Chefman",
+      "url": "https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry",
+      "method": "fetched 2026-11-20",
+      "used_for": "P03 model number RJ38-8T-BLACK, 8 qt / 7.57 L, 450 F Hi-Fry finish, 1700W/120V, four functions, top-rack dishwasher-safe basket, cETL. The page does not state overall dimensions, so none are shown.",
+      "status": "verified"
     },
     {
       "id": "S13",
-      "title": "Amazon Associates Central help: OneLink and link support (Amazon full links and short links)",
-      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/GC4NVV7K3XNG99X5",
-      "updated": "",
-      "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
-      "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
-      "status": "excerpt verified; manual check pending"
+      "title": "Emeril Lagasse French Door AirFryer 360 Toaster Oven Combo, 26 QT - product page",
+      "publisher": "Emeril Everyday",
+      "url": "https://www.emerileveryday.com/products/emeril_lagasse_french_door_airfryer_360",
+      "method": "fetched 2026-11-20",
+      "used_for": "P02 26 qt / 24.6 L capacity, dimensions 16.9 x 15.8 x 14.8 in, 120 V, 26 qt french-door form. The page states both '25 Cooking Pre-sets' and '24 one-touch presets', so no preset count is published here (FLG-024).",
+      "status": "verified"
+    },
+    {
+      "id": "S14",
+      "title": "CHEF iQ Sense - product page",
+      "publisher": "CHEF iQ",
+      "url": "https://chefiq.com/products/iq-sense",
+      "method": "fetched 2026-11-20",
+      "used_for": "P05 five temperature sensors, ambient range to 1000 F, probe 0.19 in x 4.75 in, internal temperature range 32-212 F, Wi-Fi hub, USB-C, dishwasher-safe probe.",
+      "status": "verified"
+    },
+    {
+      "id": "S15",
+      "title": "CHEF iQ Sense FAQ",
+      "publisher": "CHEF iQ",
+      "url": "https://chefiq.com/pages/new-iq-sense-faq",
+      "method": "excerpt 2026-11-20 via search result of the official page",
+      "used_for": "Cross-check on P05 battery life. The FAQ says Gen 3 probes hold 'up to 60 hours', while the product page says '70+ hours', so no battery figure is published (FLG-023).",
+      "status": "excerpt"
+    },
+    {
+      "id": "S16",
+      "title": "Chefman TurboFry 8 Qt product detail on Amazon (model-number field)",
+      "publisher": "amazon.com",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "method": "observed 2026-11-20",
+      "used_for": "The Amazon listing's own 'item model number' field does not match the manufacturer model for this feature set (FLG-025). Used only as evidence of the mismatch.",
+      "status": "observed"
+    },
+    {
+      "id": "S17",
+      "title": "Associates Program Commission Income Statement - Qualifying Purchases and Session length",
+      "publisher": "Amazon.com Associates Central",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "method": "fetched 2026-11-20",
+      "used_for": "Explaining in plain English how a click earns: a 24-hour session, or up to 89 days if the item is added to the cart first.",
+      "status": "verified",
+      "quote": "during a single session, which is measured as beginning when a customer clicks through that Special Link and ending upon the first to occur of the following: (x) 24 hours elapse from that click"
     }
   ]
 }

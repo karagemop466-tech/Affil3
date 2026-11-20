@@ -3,107 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Measurement | Affil3</title>
-<meta name="description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
+<title>Measurement — Affil3</title>
+<meta name="description" content="The five events the site records, the privacy rules, and the honest current state: inactive until an endpoint is deployed.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/measurement/">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#fbf7ef">
 <meta property="og:title" content="Measurement">
-<meta property="og:description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
+<meta property="og:description" content="The five events the site records, the privacy rules, and the honest current state: inactive until an endpoint is deployed.">
 <meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/measurement/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Affil3">
-<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-kitchen.jpg">
-<meta property="og:image:alt" content="Illustration of a kitchen counter with an air fryer, a countertop oven and a probe thermometer">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/hero-counter.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="analytics-endpoint" content="">
 <link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23b8481f'/%3E%3C/svg%3E">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Affil3 — buying guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
 
 </head>
-<body data-page="page" >
+<body data-page="measurement" >
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead">
-  <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+  <div class="wrap">
+    <div class="masthead-top">
+      <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span><small>Kitchen buying guides</small></a>
+      <p class="masthead-issue"><b>Independent</b> · checked November 20, 2026</p>
+    </div>
     <nav class="nav" aria-label="Main">
-      <a href="/Affil3/">Home</a>
-      <a href="/Affil3/shop/">Shop</a>
-      <a href="/Affil3/compare/">Compare</a>
-      <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/about/">About</a>
+      <a href="/Affil3/shop/">The picks</a>
+      <a href="/Affil3/guides/">Buying guides</a>
+      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/about/">How we choose</a>
     </nav>
   </div>
 </header>
 <div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
-  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
+  <div class="wrap"><strong>Disclosure.</strong> <span>Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</span> <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
-<main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Measurement</p><h1>Measurement</h1><p class="deck">Proposed set (FLG-008, question Q-05). Client code records these only when analyticsEndpoint is set in config.json.</p></section>
-<div class="status-box"><strong>Live status:</strong> Inactive. No endpoint is configured, so the browser sends nothing. See suggestion S-03 and flag FLG-009.</div>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Event</th><th scope="col">Fires when</th><th scope="col">Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load.</td><td><code>path</code> <code>referrer_host</code></td></tr><tr><td><code>category_view</code></td><td>Once per category page load.</td><td><code>category</code></td></tr><tr><td><code>product_view</code></td><td>When a product row or card is shown on a page (once per page load).</td><td><code>product_id</code></td></tr><tr><td><code>outbound_click</code></td><td>When a reader clicks a product link. The link itself is not redirected; the browser goes straight to the Amazon URL.</td><td><code>product_id</code> <code>destination_host</code> <code>placement</code></td></tr><tr><td><code>guide_read_75</code></td><td>When a reader scrolls past 75% of a guide.</td><td><code>guide</code></td></tr></tbody></table></div>
+<main id="main">
+<div class="wrap">
+<section class="page-head"><p class="kicker">Measurement</p><h1>What we record, and what we refuse to</h1>
+<p class="deck">A proposed set of five events. The client records them only when analyticsEndpoint is set in data/config.json; today it is empty, so nothing is sent and no traffic figure exists.</p></section>
+<div class="status-box"><strong>Live status:</strong> Inactive. No endpoint is configured, so the browser sends nothing and no traffic figure exists. <a class="badge flag" href="/Affil3/flagged/#FLG-009">FLG-009</a></div>
+<div class="table-wrap"><table class="wide"><thead><tr><th scope="col">Event</th><th scope="col">Fires when</th><th scope="col">Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load.</td><td><code>path</code> <code>referrer_host</code></td></tr><tr><td><code>category_view</code></td><td>Once per category page load.</td><td><code>category</code></td></tr><tr><td><code>product_view</code></td><td>When a product page or product card is shown, once per page load.</td><td><code>product_id</code></td></tr><tr><td><code>outbound_click</code></td><td>When a reader clicks a buy link. The link is not redirected; the browser goes straight to the Amazon URL.</td><td><code>product_id</code> <code>destination_host</code> <code>placement</code></td></tr><tr><td><code>guide_read_75</code></td><td>When a reader scrolls past 75 percent of a guide.</td><td><code>guide</code></td></tr></tbody></table></div>
 <h2>Privacy</h2>
-<p>No cookies, no IP address stored, no user-agent stored, no fingerprinting. Browsers that send Do Not Track are not counted. Counts are aggregated per day.</p>
-<p>Not collected: cookies, IP address, user-agent, account data, anything typed into the page.</p>
+<p>No cookies. No IP address stored. No user-agent stored. No fingerprinting. No cross-site identifiers. Counts are aggregated per day, and browsers sending Do Not Track are not counted at all.</p>
+<p class="small muted">Not collected: cookies, IP address, user-agent, account data, anything typed into the page, cross-site identifiers.</p>
 <h2>Why clicks are not routed through a redirect</h2>
-<p>Associates Program Policies (v) prohibit cloaking the URL of a Site with Special Links, including by use of Redirecting Links (S02). The click counter therefore records the click in the browser and lets the link go directly to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies?tag=shopnow047c-20" rel="sponsored noopener">S02</a></p>
+<p>The Program Policies prohibit cloaking the URL of a site that carries Special Links, including by sending readers indirectly through an intermediate page. A redirect-based click counter is exactly that pattern, so the counter records the click in the browser and lets the link go straight to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
+<h2>How a click actually earns</h2>
+<p>A qualifying purchase begins when a reader clicks a tagged link and ends at the first of: 24 hours, an order, or a click on somebody else's link. If the item goes into the cart first, the window extends to 89 days. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S17</a></p>
+</div>
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-grid">
+    <div class="foot-top">
       <div>
-        <p class="foot-brand">Affil3<span class="dot">.</span></p>
-        <p class="foot-about">Kitchen buying guides for air fryers, air fryer ovens and thermometers. Every product fact is traced to its source, and anything unverified is left blank and flagged.</p>
-        <p class="foot-about"><a href="/Affil3/feed.xml">RSS feed</a> · <a href="/Affil3/sitemap.xml">Sitemap</a></p>
+        <a class="wordmark" href="/Affil3/">Affil3<span class="dot">.</span></a>
+        <p class="foot-blurb">An independent kitchen buying guide. Five appliances, compared by manufacturer specification, with every gap and every conflict written down instead of smoothed over.</p>
       </div>
       <div>
-        <p class="foot-h">Shop</p>
-        <ul class="foot-links">
-          <li><a href="/Affil3/shop/">All products</a></li>
-          <li><a href="/Affil3/compare/">Compare side by side</a></li>
-          <li><a href="/Affil3/categories/">Categories</a></li>
-          <li><a href="/Affil3/products/p01/">P01 · Air fryers</a></li>
-          <li><a href="/Affil3/products/p02/">P02 · Air fryer ovens</a></li>
-          <li><a href="/Affil3/products/p03/">P03 · Air fryers</a></li>
-          <li><a href="/Affil3/products/p04/">P04 · Cooking thermometers</a></li>
-          <li><a href="/Affil3/products/p05/">P05 · Cooking thermometers</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="foot-h">Guides</p>
-        <ul class="foot-links">
-          <li><a href="/Affil3/guides/basket-or-oven-style-air-fryer-what-should-you-compare/">Basket or oven-style air fryer</a></li>
-          <li><a href="/Affil3/guides/no-hype-checklist-comparing-air-fryer-capacity/">A no-hype checklist for comparing air fryer capacity</a></li>
-          <li><a href="/Affil3/guides/how-to-assess-cleanup-and-counter-space-tradeoffs/">How to assess cleanup and counter-space trade-offs</a></li>
-          <li><a href="/Affil3/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/">Questions to ask before buying a multi-function kitchen appliance</a></li>
-          <li><a href="/Affil3/guides/is-your-meat-thermometer-telling-you-the-right-number/">Is your meat thermometer telling you the right number?</a></li>
-          <li><a href="/Affil3/guides/dual-basket-air-fryer-when-two-baskets-earn-the-space/">Dual-basket air fryer</a></li>
-          <li><a href="/Affil3/guides/">All guides</a></li>
-        </ul>
-      </div>
-      <div>
-        <p class="foot-h">Records</p>
+        <h2 class="foot-h">Records and dashboards</h2>
         <ul class="foot-links">
           <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-          <li><a href="/Affil3/shop/">Shop register (all rows)</a></li>
-          <li><a href="/Affil3/compare/">Compare products</a></li>
-          <li><a href="/Affil3/categories/">Categories</a></li>
+          <li><a href="/Affil3/shop/">The full comparison table</a></li>
           <li><a href="/Affil3/sources/">Source register</a></li>
           <li><a href="/Affil3/questions/">Open questions</a></li>
-          <li><a href="/Affil3/suggestions/">Decision board</a></li>
+          <li><a href="/Affil3/suggestions/">Suggestions to review</a></li>
           <li><a href="/Affil3/flagged/">Flagged for review</a></li>
           <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
           <li><a href="/Affil3/measurement/">Measurement</a></li>
-          <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-          <li><a href="/Affil3/about/">About and editorial policy</a></li>
-          <li><a href="/Affil3/editorial/">Archive register (noindex)</a></li>
+          <li><a href="/Affil3/compliance/">Disclosure and compliance</a></li>
+          <li><a href="/Affil3/about/">About and corrections</a></li>
+          <li><a href="/Affil3/feed.xml">RSS feed</a></li>
+          <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
         </ul>
       </div>
     </div>
-    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by, endorsed by or affiliated with Amazon.com, Inc. beyond participation in the Amazon Associates program. Prices and availability are not shown on this site. Illustrations are decorative and are not product photography. Last reviewed November 20, 2026. Source links appear on every page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> As an Amazon Associate I earn from qualifying purchases. Some links here are affiliate links and are marked sponsored. Photography on this site is editorial illustration, not the reviewed units.</p>
+    <p class="fine">Affil3 is not sponsored by, endorsed by, or affiliated with Amazon.com, Inc. or any brand named on this site. Prices and availability are not shown here. Product photography is editorial illustration, not the reviewed unit. Last checked November 20, 2026. Source links appear on every claim, and the full register is in the footer.</p>
   </div>
 </footer>
 <script src="/Affil3/assets/analytics.js" defer></script>
