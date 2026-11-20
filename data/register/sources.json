@@ -179,6 +179,15 @@
       "url": "https://schema.org/Product",
       "supports": "Fields used in the JSON-LD product markup emitted for each review page.",
       "accessed": "2026-11-20"
+    },
+    {
+      "id": "S20",
+      "tier": "official",
+      "org": "ThermoMaven",
+      "title": "ThermoMaven F1 Ace Instant Read Thermometer",
+      "url": "https://www.thermomaven.com/products/f1-ace",
+      "supports": "NIST-certified +/-0.5 F accuracy, 1-second thermocouple read, waterproof design, built-in magnet, lifetime warranty registration for product P4.",
+      "accessed": "2026-11-20"
     }
   ]
 }

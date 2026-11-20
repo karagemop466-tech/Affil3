@@ -1,71 +1,77 @@
-# Affil3 — Countertop & Co.
+# Affil3
 
-An Amazon Associates publication covering countertop cooking appliances, built from a verified source
-register rather than from copy.
+Amazon Associates publications built from a verified source register. Tracking ID `shopnow047c-20`.
 
-**Live site:** https://karagemop466-tech.github.io/Affil3/
-**Tracking ID:** `shopnow047c-20`
+**Live:** https://karagemop466-tech.github.io/Affil3/
+
+GitHub Pages serves `main` at `/`, so the repository contains more than one published surface.
+Nothing was deleted to make room; each session's output is kept and reachable.
+
+## What is published
+
+| Path | Owner | What it is |
+|---|---|---|
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
+| `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
+
+`/editorial/` exists because its build was written against a different data model and its verification
+found things the other register did not. Keeping both builds preserves both verification passes rather
+than merging them into one file whose provenance nobody can reconstruct.
 
 ## Read these first
 
 | File | What it is |
 |---|---|
 | [`EXECUTIVE-SUMMARY.md`](EXECUTIVE-SUMMARY.md) | What the five links are, what was built, what is blocked |
+| [`EXECUTIVE_SUMMARY-6249757a.md`](EXECUTIVE_SUMMARY-6249757a.md) | The root site's summary |
 | [`QA-BRIEF.md`](QA-BRIEF.md) | 30 questions: answered, unanswered, and what closes each one |
-| [`COORDINATION.md`](COORDINATION.md) | Shared task board, claims, and the verification log |
-| [`data/`](data/) | The registers. These are the source of truth; the site is generated from them |
-| [`docs/`](docs/) | The generated site. Do not hand-edit — change `data/` and rebuild |
+| [`COORDINATION.md`](COORDINATION.md) | Three session boards, claims, verification logs, merge logs |
+| [`data/`](data/) | Register for the root site |
+| [`data/register/`](data/register/) | Register for `/editorial/` |
 
 ## Build
 
+**Root site** (Node, no dependencies):
+
 ```bash
-python3 tools/build.py        # data/*.json -> docs/
-python3 tools/check_site.py   # gate: links, prices, ratings, tags, disclosure, sitemap
+node tools/build.mjs     # data/*.json  -> repository root
+node tools/verify.mjs    # gates
 ```
 
-The build is deterministic. CI rebuilds from `data/` and fails if the committed `docs/` differs.
+**Editorial site** (Python, no dependencies):
 
-## What the gate refuses to let through
+```bash
+python3 tools/build.py       # data/register/*.json -> editorial/
+python3 tools/check_site.py  # gates
+```
+
+Both builds are deterministic. CI rebuilds both and fails if the committed output differs.
+
+## What the editorial gate refuses to let through
 
 - A price. No currency amount may appear in the HTML at all.
 - A star rating or review count.
 - A product call-to-action without `tag=shopnow047c-20`.
-- An Amazon citation that is not marked `rel="nofollow"`.
+- An Amazon citation not marked `rel="nofollow"`.
 - A page without the required Associates statement.
 - A spec row citing a source ID that does not exist.
-- A page missing from the sitemap.
+- A link that escapes the published subtree.
+- A page missing from that subtree's sitemap.
 
-This is why **no buy button renders yet**: the supplied links carry no tracking tag. See FLG-003 on the
-[Flagged for review](https://karagemop466-tech.github.io/Affil3/flagged/) page.
+This is why **no buy button renders on `/editorial/`**: the submitted links carry no tracking tag.
+See `FLG-003` on the [flagged page](https://karagemop466-tech.github.io/Affil3/editorial/flagged/).
 
-## Data model
+## The finding both sessions independently agree on
 
-| File | Holds |
-|---|---|
-| `data/sources.json` | 19 sources, tiered, each with what it supports and when it was read |
-| `data/products.json` | 5 entries plus 7 flags. Every spec carries `value`, `source`, and `note` |
-| `data/compliance.json` | 12 policy rules with quoted basis, plus the 5 measurement events |
-| `data/campaign-ledger.json` | Empty ledger schema. No row exists without an authorized report |
-| `data/suggestions.json` | 14 proposals held for a decision |
-| `data/questions.json` | 24 questions with owner and resolution method |
-
-A field is `null` when no official source stated it. A field is `listing_only: true` when the value came
-from a retailer page rather than the manufacturer. Neither is ever filled in to look complete.
-
-## Measurement
-
-`docs/assets/analytics.js` records five events — `page_view`, `outbound_product_click`, `guide_read`,
-`suggestion_vote`, `disclosure_view` — with no cookies, no identifiers, and no full URLs. The endpoint is
-unset by default, so it records nothing. Set it at build time:
-
-```bash
-ANALYTICS_ENDPOINT="https://your-endpoint.example/collect" python3 tools/build.py
-```
+Every submitted link resolves to an `amazon.com/dp/<ASIN>` URL **with no `tag=` parameter**. Amazon's
+Program Policies §2(b) require the Associates ID as a URL parameter on every link placed on a site.
+The links are untagged — that is a different claim from *invalid*, and only the first is made here.
 
 ## Licence and attribution
 
 Product names and trademarks belong to their owners. Specification values are quoted from the
-publisher's own pages and cited by source ID. This publication is not endorsed by or affiliated with
+publisher's own pages and cited by source ID. Neither publication is endorsed by or affiliated with
 Amazon.com, Inc. beyond participation in the Amazon Associates program.
 
 As an Amazon Associate I earn from qualifying purchases.

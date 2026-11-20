@@ -355,28 +355,91 @@
       "supplied_link": "https://link.amazon/B0c8moW59",
       "supplied_code": "B0c8moW59",
       "supplied_code_chars": 9,
-      "observed_redirect": null,
-      "observed_asins": [],
-      "redirect_had_tag": null,
-      "identity_status": "unresolved",
-      "identity_basis": "The supplied short link redirects to an Amazon 'Continue shopping' interstitial rather than a product page. A direct lookup of B0C8MOW59 returns 'No results for your search query'. No product can be named, so none is named. See FLG-004.",
-      "brand": null,
-      "name": null,
+      "observed_redirect": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_asins": [
+        "B0DHZTCNR5"
+      ],
+      "redirect_had_tag": false,
+      "identity_status": "resolved",
+      "identity_basis": "First fetch returned an Amazon 'Continue shopping' interstitial; a second fetch the same day resolved to detail page B0DHZTCNR5. The linked listing is the ThermoMaven instant-read thermometer, which matches the ThermoMaven F1 Ace family page. The observation is time-dependent and is recorded with that caveat rather than presented as stable.",
+      "brand": "ThermoMaven",
+      "name": "1 Sec Professional Digital Meat Thermometer",
       "model": null,
-      "category": "unresolved",
-      "category_label": "Unresolved",
-      "shape": null,
-      "best_for": null,
-      "one_liner": "This link does not resolve to a product. Nothing is published about it until it does.",
-      "specs": {},
-      "tradeoffs": {
-        "pros": [],
-        "cons": [],
-        "skip_if": null
+      "category": "thermometers",
+      "category_label": "Thermometers",
+      "shape": "instant-read",
+      "best_for": "A quick spot check at the grill, not a leave-in monitor.",
+      "one_liner": "A folding instant-read: one second to a number, NIST-certified accuracy, and a magnet so it lives on the side of the fridge.",
+      "specs": {
+        "read_time_sec": {
+          "value": 1,
+          "note": "Manufacturer states an instant read in 1 second on the F1 Ace page. The Amazon listing title says 1 sec; some other ThermoMaven models are advertised at 0.5 sec. No 0.5 figure is claimed here.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "accuracy_f": {
+          "value": "+/-0.5 °F",
+          "note": "Manufacturer states NIST-certified +/-0.5 F / +/-0.3 C.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "nist_certified": {
+          "value": true,
+          "source": "S20",
+          "listing_only": false
+        },
+        "waterproof": {
+          "value": "waterproof design",
+          "note": "Manufacturer says '100% waterproof design'. No IP rating is stated on the F1 Ace page, so none is claimed.",
+          "source": "S20",
+          "listing_only": false
+        },
+        "sensor_type": {
+          "value": "thermocouple",
+          "source": "S20",
+          "listing_only": false
+        },
+        "display": {
+          "value": "LCD, auto-rotating",
+          "source": "S20",
+          "listing_only": false
+        },
+        "magnet": {
+          "value": true,
+          "source": "S20",
+          "listing_only": false
+        },
+        "warranty_years": {
+          "value": null,
+          "note": "Manufacturer offers a lifetime warranty on registration within 30 days; no period is stated, so no number is given."
+        },
+        "leave_in_rated": {
+          "value": null,
+          "note": "The manufacturer page does not state a maximum ambient temperature or leave-in rating. Do not assume it can stay in the oven."
+        }
       },
-      "questions_answered": [],
-      "official_url": null,
+      "tradeoffs": {
+        "pros": [
+          "One-second read, so the oven door is open for less time.",
+          "NIST-certified +/-0.5 F accuracy, stated by the manufacturer.",
+          "Folds shut and switches itself off, which is why people keep using it.",
+          "Built-in magnet."
+        ],
+        "cons": [
+          "This is a spot-check tool. No leave-in rating is published, so it is not a substitute for a probe you leave in the meat.",
+          "No IP rating is stated on the manufacturer page, only 'waterproof design'.",
+          "Battery type and replacement interval are not stated on the page."
+        ],
+        "skip_if": "You want continuous monitoring through a long cook. That is the CHEF iQ Sense on this site, not this."
+      },
+      "questions_answered": [
+        "How fast is a reading?",
+        "Can I wash it under the tap?",
+        "Will it stay in the drawer or on the fridge?"
+      ],
+      "official_url": "https://www.thermomaven.com/products/f1-ace",
       "sources": [
+        "S20",
         "S16"
       ]
     },
@@ -531,14 +594,15 @@
     },
     {
       "id": "FLG-004",
-      "severity": "high",
+      "severity": "medium",
       "product": "P4",
-      "title": "Link 4 resolves to no product",
-      "detail": "https://link.amazon/B0c8moW59 lands on an Amazon 'Continue shopping' interstitial on repeated attempts. A direct catalog search for B0C8MOW59 returns 'No results for your search query'. No product name, brand, or specification is published for slot 4, because none could be confirmed. Note also that the code contains a lowercase letter and is 9 characters, so it is not in the standard 10-character ASIN format.",
+      "title": "Link 4 is time-dependent: an interstitial on first fetch, a product on the second",
+      "detail": "The first fetch of https://link.amazon/B0c8moW59 returned an Amazon 'Continue shopping' interstitial (checkpoint page) rather than a product. A second fetch on the same day resolved to amazon.com/dp/B0DHZTCNR5, the ThermoMaven instant-read thermometer. A catalog search for the bare code B0C8MOW59 returns no results, which is expected: the code is a short-link token, not an ASIN. The earlier 'unresolved' conclusion in this register was wrong and is corrected here with both observations retained.",
       "sources": [
-        "S16"
+        "S16",
+        "S20"
       ],
-      "action": "Re-issue the link from SiteStripe and confirm it opens a product detail page before slot 4 is used anywhere."
+      "action": "Re-confirm the link in a signed-in browser before relying on it; checkpoint pages are served to some clients intermittently."
     },
     {
       "id": "FLG-005",

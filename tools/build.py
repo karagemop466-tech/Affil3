@@ -21,8 +21,8 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "register"
-DOCS = ROOT / "docs"
-SITE = "https://karagemop466-tech.github.io/Affil3"
+DOCS = ROOT / "editorial"
+SITE = "https://karagemop466-tech.github.io/Affil3/editorial"
 TRACKING_ID = "shopnow047c-20"
 BRAND = "Countertop & Co."
 LEDGER = "https://github.com/karagemop466-tech/Affil3"
@@ -402,8 +402,8 @@ def page_home(products, sources, suggestions, flags) -> str:
 <section class="wrap section">
   <div class="section-head">
     <h2>Start with the one that fits</h2>
-    <p>Four products resolved to real listings. The fifth submitted link does not resolve to anything,
-    so nothing is published for it. <a href="/flagged/#FLG-004">That is flagged, not hidden.</a></p>
+    <p>All five submitted links resolved to a real listing when checked. One of them served a checkpoint page
+    on the first attempt and a product on the second, so it is marked time-dependent. <a href="/flagged/#FLG-004">FLG-004</a>.</p>
   </div>
   <div class="cards">{cards}</div>
 </section>
@@ -1198,8 +1198,9 @@ def main() -> int:
     write("/404.html", page_404())
     write("/sitemap.xml", sitemap())
     write("/feed.xml", feed())
-    write("/robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    write("/.nojekyll", "")
+    # robots.txt and .nojekyll are owned by the root-site session. Do not write them.
+    # Request logged in COORDINATION.md: point the root robots.txt sitemap line at
+    # /editorial/sitemap.xml so this subtree is discoverable.
 
     for asset in ("site.css", "analytics.js"):
         shutil.copyfile(ROOT / "tools" / "assets" / asset, DOCS / "assets" / asset)
