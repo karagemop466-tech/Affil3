@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurement · Affil3</title>
+<meta name="description" content="Measurement status: gated endpoint, proposed events, and an empty campaign ledger.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/measurement.html">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="feed.xml">
+<script src="assets/analytics.js" defer></script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Affil3</a>
+    <div class="dateline">Kitchen small appliances · Last updated 2026-11-20</div>
+  </div>
+  <div class="wrap nav">
+    <ul><li><a href="index.html">Shop</a></li><li><a href="categories.html">Categories</a></li><li><a href="guides/index.html">Guides</a></li><li><a href="dashboard.html" aria-current="page">Dashboard</a></li><li><a href="review.html">Review</a></li><li><a href="about.html">About</a></li></ul>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links marked “Sponsored” are Amazon Associates affiliate links. We may earn a commission from qualifying purchases. <a href="compliance.html">How we handle links</a></div>
+</div>
+<main>
+  <div class="wrap">
+
+    <p class="kicker">Dashboard · measurement</p>
+    <h1>Measurement</h1>
+    <div class="note warn"><strong>Status:</strong> GATED — no endpoint is configured. Nothing is recorded or sent. The click hook is built and inactive. Measurement needs a server the owner controls. See <a href="questions.html">Q06–Q07</a> and <a href="suggestions.html">Suggestions S04</a>.</div>
+    <h2>Five events (proposed)</h2>
+    <p class="prose">The brief asks for five defined events but does not list them. These are proposals only.</p>
+    <div class="table-wrap"><table class="data needs-source"><thead><tr><th>Event</th><th>Fields recorded</th><th>Status</th></tr></thead><tbody><tr class="unverified"><td><code>page_view</code></td><td>page path, timestamp (UTC)</td><td><span class="tag tag-amber">PROPOSED</span></td></tr><tr class="unverified"><td><code>outbound_click</code></td><td>product ID, destination host, timestamp (UTC)</td><td><span class="tag tag-amber">PROPOSED</span></td></tr><tr class="unverified"><td><code>category_nav_click</code></td><td>category slug, timestamp (UTC)</td><td><span class="tag tag-amber">PROPOSED</span></td></tr><tr class="unverified"><td><code>guide_scroll_75</code></td><td>guide slug, timestamp (UTC)</td><td><span class="tag tag-amber">PROPOSED</span></td></tr><tr class="unverified"><td><code>feed_click</code></td><td>feed name, timestamp (UTC)</td><td><span class="tag tag-amber">PROPOSED</span></td></tr></tbody></table></div>
+    <h2>Privacy design</h2>
+    <ul class="prose"><li>No cookies are set by the site&#x27;s own code.</li><li>No IP addresses or full URLs are stored in the code. Only the product ID and destination host would be sent.</li><li>Visitors with Global Privacy Control or Do Not Track enabled are not counted.</li><li>The endpoint, if added, must be disclosed on the site (SRC-02 §3(e)).</li></ul>
+    <p class="meta">Source for disclosure obligations: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="external noopener noreferrer" target="_blank">SRC-02 · Amazon Associates Central</a></p>
+    <h2>Campaign ledger</h2>
+    <p class="prose">Empty by design. Rows are added only from authorized first-party reports (Associates or Search Console), with a timestamp and provenance. No conversion score or revenue forecast is presented.</p>
+    <div class="table-wrap"><table class="data ledger"><thead><tr><th>timestamp_utc</th><th>source</th><th>channel</th><th>eligible_sessions</th><th>clicks</th><th>reported_orders</th><th>provenance_note</th><th>provenance_source_url</th></tr></thead><tbody><tr><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr></tbody></table></div>
+    <p class="meta">Source data file: <code>data/campaign_ledger.csv</code></p>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="disc"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links marked “Sponsored” are affiliate links, and we may earn a commission from qualifying purchases. Listing titles and categories are copied from Amazon pages observed on 2026-11-20; prices are not shown because they were not verified.</div>
+    <h4>All pages</h4>
+    <ul><li><a href="index.html">Shop (front page)</a></li><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="uncategorized.html">Uncategorized</a></li><li><a href="guides/index.html">Guides</a></li><li><a href="products.html">Product records</a></li><li><a href="analysis.html">Analysis &amp; findings</a></li><li><a href="sources.html">Sources</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance.html">Compliance</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="questions.html">Questions to resolve</a></li><li><a href="suggestions.html">Suggestions (choose a path)</a></li><li><a href="flagged.html">Flagged for Review</a></li><li><a href="about.html">About</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul>
+    <div class="legal">
+      <p>Every value on this site is either linked to an official source or marked unverified. Source register: <a href="sources.html">sources.html</a>. Project log: <a href="https://github.com/karagemop466-tech/Affil3/blob/main/COORDINATION.md" target="_blank" rel="external noopener noreferrer">COORDINATION.md</a> · <a href="https://github.com/karagemop466-tech/Affil3" target="_blank" rel="external noopener noreferrer">repository</a>.</p>
+      <p>© Affil3. Not affiliated with, endorsed by, or sponsored by Amazon.com, Inc. or its affiliates. “Amazon” and product names are used only to identify listings.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

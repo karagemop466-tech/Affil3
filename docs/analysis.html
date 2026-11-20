@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analysis &amp; findings · Affil3</title>
+<meta name="description" content="Findings from the verified product records, with sources and flags.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/analysis.html">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="feed.xml">
+<script src="assets/analytics.js" defer></script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Affil3</a>
+    <div class="dateline">Kitchen small appliances · Last updated 2026-11-20</div>
+  </div>
+  <div class="wrap nav">
+    <ul><li><a href="index.html">Shop</a></li><li><a href="categories.html">Categories</a></li><li><a href="guides/index.html">Guides</a></li><li><a href="dashboard.html" aria-current="page">Dashboard</a></li><li><a href="review.html">Review</a></li><li><a href="about.html">About</a></li></ul>
+  </div>
+</header>
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links marked “Sponsored” are Amazon Associates affiliate links. We may earn a commission from qualifying purchases. <a href="compliance.html">How we handle links</a></div>
+</div>
+<main>
+  <div class="wrap">
+
+    <p class="kicker">Dashboard · analysis</p>
+    <h1>Analysis & findings</h1>
+    <p class="lede">These counts are taken from the product records. They are not scores. The brief asks for no conversion score or revenue forecast, and none is shown.</p>
+    <div class="note warn">Pricing, reviews and commission potential cannot be analysed from verified data yet. The commission schedule needs Associates sign-in (FLG-09). Prices are excluded (FLG-10).</div>
+    <div class="table-wrap"><table class="data needs-source"><thead><tr><th>ID</th><th>Finding</th><th>Value</th><th>Detail</th><th>Source (official)</th><th>Flag</th></tr></thead><tbody><tr><td><strong>A1</strong></td><td>Intended identifiers passing the 10-character ASIN format check</td><td><strong>0 of 5</strong></td><td>All five are 9 characters with lowercase letters.</td><td><a href="https://sell.amazon.com/blog/what-is-an-asin" rel="external noopener noreferrer" target="_blank">SRC-12 · Amazon Selling Partner Blog (sell.amazon.com)</a><br><span class="tag tag-neutral">SRC-13 · owner brief</span></td><td><a href="flagged.html#FLG-01">FLG-01</a></td></tr><tr><td><strong>A2</strong></td><td>Intended ASIN matched by observed redirect ASIN</td><td><strong>0 of 5 match · 4 mismatch · 1 unresolved</strong></td><td>P1, P2, P3 and P5 reached a different product. P4 reached an interstitial.</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener noreferrer" target="_blank">SRC-07 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener noreferrer" target="_blank">SRC-08 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener noreferrer" target="_blank">SRC-09 · Amazon.com</a><br><a href="https://www.amazon.com/checkpoint/continue" rel="sponsored noopener noreferrer" target="_blank">SRC-10 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener noreferrer" target="_blank">SRC-11 · Amazon.com</a></td><td><a href="flagged.html#FLG-02">FLG-02</a></td></tr><tr><td><strong>A3</strong></td><td>Official listing URL verified for the intended ASIN</td><td><strong>0 of 5</strong></td><td>Direct fetches of each intended /dp/ page failed. Recorded as blank.</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener noreferrer" target="_blank">SRC-07 · Amazon.com</a><br><span class="tag tag-neutral">SRC-13 · owner brief</span></td><td><a href="flagged.html#FLG-01">FLG-01</a></td></tr><tr><td><strong>A4</strong></td><td>Observed destinations containing the tracking ID as a &#x27;tag=&#x27; parameter</td><td><strong>0 of 4 observed destinations</strong></td><td>P4 reached no product page, so 4 destinations were checked.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="external noopener noreferrer" target="_blank">SRC-02 · Amazon Associates Central</a><br><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener noreferrer" target="_blank">SRC-07 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener noreferrer" target="_blank">SRC-08 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener noreferrer" target="_blank">SRC-09 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener noreferrer" target="_blank">SRC-11 · Amazon.com</a></td><td><a href="flagged.html#FLG-04">FLG-04</a></td></tr><tr><td><strong>A5</strong></td><td>Category (from Amazon breadcrumb) for observed listings</td><td><strong>Air Fryers: 3 · Meat thermometers: 1 · Unknown: 1</strong></td><td>Breadcrumbs: Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Small Appliances &gt; Fryers &gt; Air Fryers (P1, P2, P3). Home &amp; Kitchen &gt; Kitchen &amp; Dining &gt; Kitchen Utensils &amp; Gadgets &gt; Thermometers &amp; Timers &gt; Meat (P5).</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener noreferrer" target="_blank">SRC-07 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener noreferrer" target="_blank">SRC-08 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener noreferrer" target="_blank">SRC-09 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener noreferrer" target="_blank">SRC-11 · Amazon.com</a></td><td><a href="flagged.html#FLG-16">FLG-16</a></td></tr><tr><td><strong>A6</strong></td><td>Main-listing price verified</td><td><strong>0 of 5</strong></td><td>Prices visible in the fetched pages belong to related items. Excluded.</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="external noopener noreferrer" target="_blank">SRC-02 · Amazon Associates Central</a><br><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener noreferrer" target="_blank">SRC-07 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener noreferrer" target="_blank">SRC-08 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener noreferrer" target="_blank">SRC-09 · Amazon.com</a><br><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener noreferrer" target="_blank">SRC-11 · Amazon.com</a></td><td><a href="flagged.html#FLG-10">FLG-10</a></td></tr><tr><td><strong>A7</strong></td><td>Commission rate verified for any category</td><td><strong>0</strong></td><td>The schedule page requires Associates sign-in. Commission potential is not stated.</td><td><a href="https://affiliate-program.amazon.com/help/operating/schedule" rel="external noopener noreferrer" target="_blank">SRC-03 · Amazon Associates Central</a></td><td><a href="flagged.html#FLG-09">FLG-09</a></td></tr><tr><td><strong>A8</strong></td><td>Click or conversion data in the campaign ledger</td><td><strong>0 rows</strong></td><td>The ledger is intentionally empty. It takes only data from authorized first-party Associates reports (see data/campaign_ledger.csv).</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="external noopener noreferrer" target="_blank">SRC-02 · Amazon Associates Central</a></td><td><a href="flagged.html#FLG-05">FLG-05</a></td></tr></tbody></table></div>
+
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="disc"><strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Links marked “Sponsored” are affiliate links, and we may earn a commission from qualifying purchases. Listing titles and categories are copied from Amazon pages observed on 2026-11-20; prices are not shown because they were not verified.</div>
+    <h4>All pages</h4>
+    <ul><li><a href="index.html">Shop (front page)</a></li><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="uncategorized.html">Uncategorized</a></li><li><a href="guides/index.html">Guides</a></li><li><a href="products.html">Product records</a></li><li><a href="analysis.html">Analysis &amp; findings</a></li><li><a href="sources.html">Sources</a></li><li><a href="measurement.html">Measurement</a></li><li><a href="compliance.html">Compliance</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="questions.html">Questions to resolve</a></li><li><a href="suggestions.html">Suggestions (choose a path)</a></li><li><a href="flagged.html">Flagged for Review</a></li><li><a href="about.html">About</a></li><li><a href="feed.xml">Feed (RSS)</a></li><li><a href="sitemap.xml">Sitemap</a></li></ul>
+    <div class="legal">
+      <p>Every value on this site is either linked to an official source or marked unverified. Source register: <a href="sources.html">sources.html</a>. Project log: <a href="https://github.com/karagemop466-tech/Affil3/blob/main/COORDINATION.md" target="_blank" rel="external noopener noreferrer">COORDINATION.md</a> · <a href="https://github.com/karagemop466-tech/Affil3" target="_blank" rel="external noopener noreferrer">repository</a>.</p>
+      <p>© Affil3. Not affiliated with, endorsed by, or sponsored by Amazon.com, Inc. or its affiliates. “Amazon” and product names are used only to identify listings.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
