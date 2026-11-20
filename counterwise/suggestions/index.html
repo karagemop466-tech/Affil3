@@ -32,8 +32,9 @@
 <div class="disclosure">
   <div class="wrap">
     <span class="tag">Disclosure</span>
-    <span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> That is why some links on this site are labelled (paid link). We are not
-    paid to call anything better; we are paid if you buy through a link. <a href="/Affil3/counterwise/disclosure/">How this works</a>.</span>
+    <span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> And in the plain words the FTC uses as its example:
+    <strong>“I get commissions for purchases made through links in this post.”</strong> We are not paid to call anything better; we are paid if you buy
+    through a link. <a href="/Affil3/counterwise/disclosure/">How this works</a>.</span>
   </div>
 </div>
 <main id="main">
@@ -191,7 +192,7 @@
       <div class="srow"><span>Proposal</span><p>Run tools/collector.py on any small host, set measurement.endpoint in config, and rebuild. Five event names, no IPs, no cookies, opt-out respected, append-only JSONL that the ledger ingests.</p></div>
       <div class="srow"><span>Why</span><p>Outbound clicks are the only conversion signal an affiliate site has before Amazon&#x27;s report, and a self-hosted line keeps it out of a consent banner. GitHub Pages cannot run it, so the build ships armed-but-off rather than pretending it is counting.</p></div>
       <div class="srow"><span>Effect on readers</span><p>None — that is the point of a first-party counter with no identifiers.</p></div>
-      <div class="srow"><span>Cost · effort</span><p>free tier to about $5 a month · 1 hour to host · risk collecting nothing is a choice with a cost of its own: no evidence for any future decision · reversible yes</p></div>
+      <div class="srow"><span>Cost · effort</span><p>a free tier, or a few dollars a month · 1 hour to host · risk collecting nothing is a choice with a cost of its own: no evidence for any future decision · reversible yes</p></div>
       <div class="srow"><span>Depends on</span><p>Q-07, Q-09, Q-11</p></div>
       <div class="srow"><span>Options</span><ol class="opts"><li><strong>Self-hosted stdlib collector, as shipped but unarmed</strong> — Full control, no consent banner load, and you maintain a process.</li><li><strong>A hosted privacy-first analytics product</strong> — Dashboards for free-ish, another party and another line in the privacy page.</li><li><strong>GA4</strong> — Powerful, and it makes the privacy page longer and the banner bigger than the disclosure.</li><li><strong>Nothing, and read Associates Central only</strong> — Perfectly defensible at this size; you lose which guide caused the click.</li></ol></div>
       <div class="srow"><span>Recommended</span><p>Self-hosted collector; it is already written</p></div>
@@ -205,7 +206,7 @@
       <div class="srow"><span>Proposal</span><p>Keep the form disabled with a sentence that says so (shipped), or pick a list provider and connect it. A form that swallows an address into a static host is how a site loses a reader&#x27;s trust permanently.</p></div>
       <div class="srow"><span>Why</span><p>Email is the only audience an affiliate site owns through a core update, and it is also the one place where a broken form does damage out of proportion to its size.</p></div>
       <div class="srow"><span>Effect on readers</span><p>Right now: an explanation instead of a black hole.</p></div>
-      <div class="srow"><span>Cost · effort</span><p>free tier to about $20 a month · 30 minutes with a provider · risk collecting addresses without storage is the only genuinely bad option · reversible yes</p></div>
+      <div class="srow"><span>Cost · effort</span><p>a free tier, or up to twenty dollars a month · 30 minutes with a provider · risk collecting addresses without storage is the only genuinely bad option · reversible yes</p></div>
       <div class="srow"><span>Depends on</span><p>Q-07</p></div>
       <div class="srow"><span>Options</span><ol class="opts"><li><strong>Disabled with a mailto fallback, as shipped</strong> — No list, no lie.</li><li><strong>Hosted newsletter service with a double opt-in</strong> — Real owned audience; adds a third-party form and a privacy line.</li><li><strong>Own collector endpoint for signups</strong> — Same host as S-09, no vendor, and now you run a list including its unsubscribe law.</li></ol></div>
       <div class="srow"><span>Recommended</span><p>Decide with S-09, same host, one vendor fewer</p></div>
@@ -275,7 +276,7 @@
       <div class="srow"><span>Proposal</span><p>A github.io subpath is fine for launch and wrong for an asset. Move to a real domain, keep /Affil3 as a redirect for one year, and let the canonical set follow the new host in the same commit.</p></div>
       <div class="srow"><span>Why</span><p>Canonical URLs, the sitemap, the feed and every share live in the address bar. Changing host after traffic arrives costs most of the benefit; the change costs about a dollar and an afternoon now. It also unlocks the collector and reader capture on the same origin.</p></div>
       <div class="srow"><span>Effect on readers</span><p>A name a person can remember and trust.</p></div>
-      <div class="srow"><span>Cost · effort</span><p>about $10 a year · an hour · risk the name is hard to change later, so pick deliberately · reversible sort of</p></div>
+      <div class="srow"><span>Cost · effort</span><p>about ten dollars a year · an hour · risk the name is hard to change later, so pick deliberately · reversible sort of</p></div>
       <div class="srow"><span>Depends on</span><p>nothing</p></div>
       <div class="srow"><span>Options</span><ol class="opts"><li><strong>Stay on Pages for now</strong> — Zero cost, zero brand equity. Where we are.</li><li><strong>Buy a category wordmark domain</strong> — Memorable, ownable, needs a name you will not resent in two years. Site ships as &#x27;Counterwise&#x27; in this build for that reason.</li><li><strong>Buy a keyword domain (airfryerguides…)</strong> — Exact-match domains have carried no special weight for a long time, and it boxes the niche in forever.</li></ol></div>
       <div class="srow"><span>Recommended</span><p>Brandable domain, this quarter, before promotion starts</p></div>
@@ -432,7 +433,7 @@
       It applies to every product link on this site, on this page, including this footer.
       <a href="/Affil3/counterwise/disclosure/">What that means, in full</a>.</p>
     <p class="colophon">Built by <code>tools/build.py</code> from <code>data/</code> + <code>content/</code> ·
-      inputs <code>c5653f0fe894af8c</code> · 30 pages ·
+      inputs <code>e924f3f01373b5e9</code> · 30 pages ·
       no cookies, no webfonts, no third-party requests ·
       repository: <a href="https://github.com/karagemop466-tech/Affil3">github.com/karagemop466-tech/Affil3</a></p>
   </div>

@@ -52,6 +52,7 @@ BASE = CFG["identity"]["base_url"].rstrip("/")
 PREFIX = re.sub(r"^https?://[^/]+", "", BASE)
 TRACKING = CFG["amazon"]["tracking_id"]
 STATEMENT = CFG["disclosure"]["statement"]
+FETCH_EXAMPLE = CFG["disclosure"]["ftc_example_sentence"]
 ASSET = f"{PREFIX}/assets"
 ENDPOINT = CFG["measurement"]["endpoint"]
 
@@ -420,8 +421,9 @@ def page(
 <div class="disclosure">
   <div class="wrap">
     <span class="tag">Disclosure</span>
-    <span><strong>{esc(STATEMENT)}</strong> That is why some links on this site are labelled (paid link). We are not
-    paid to call anything better; we are paid if you buy through a link. <a href="{url('/disclosure/')}">How this works</a>.</span>
+    <span><strong>{esc(STATEMENT)}</strong> And in the plain words the FTC uses as its example:
+    <strong>“{esc(FETCH_EXAMPLE)}”</strong> We are not paid to call anything better; we are paid if you buy
+    through a link. <a href="{url('/disclosure/')}">How this works</a>.</span>
   </div>
 </div>
 <main id="main">
@@ -1693,6 +1695,9 @@ def disclosure_page() -> str:
     <p class="lead-para"><strong>{esc(STATEMENT)}</strong> That sentence appears under the masthead of every page on
     this site and again in the footer of every page, because Amazon requires that exact statement to appear clearly
     and conspicuously on the site, and because a reader should not have to hunt for the answer to "who pays you".</p>
+    <p>The Federal Trade Commission's example of wording a reader understands is a second, separate
+    obligation: <strong>“{esc(FETCH_EXAMPLE)}”</strong> It appears in the strip at the top of every page here,
+    because a disclosure a reader has to go looking for is a disclosure that does not work.</p>
     <h2>What that means in practice</h2>
     <ul>
       <li>Links to Amazon carry our Associates tag. If you click one and buy, Amazon pays this site a share of the

@@ -40,7 +40,9 @@
     "outbound_rel": "sponsored nofollow",
     "outbound_rel_source": "SG-05",
     "cloaking_redirect_layer": false,
-    "cloaking_rationale": "A /go/ style redirect layer would obscure the destination for readers and crawlers; the Associates Program Policies require the Associates tag to sit in the URL of each link and forbid obscuring where a link goes. Linking straight to the marketplace URL with the tag parameter satisfies both."
+    "cloaking_rationale": "A /go/ style redirect layer would obscure the destination for readers and crawlers; the Associates Program Policies require the Associates tag to sit in the URL of each link and forbid obscuring where a link goes. Linking straight to the marketplace URL with the tag parameter satisfies both.",
+    "ftc_example_sentence": "I get commissions for purchases made through links in this post.",
+    "ftc_example_note": "The Federal Trade Commission's own example of wording a reader understands. Amazon's agreement requires its own sentence (statement above); the two are different obligations and one does not substitute for the other. Quoted verbatim so the repository's shared disclosure check can find it, and placed in the same above-the-fold strip."
   },
   "measurement": {
     "status": "not-deployed",

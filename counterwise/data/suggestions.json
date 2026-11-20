@@ -309,7 +309,7 @@
       "why": "Outbound clicks are the only conversion signal an affiliate site has before Amazon's report, and a self-hosted line keeps it out of a consent banner. GitHub Pages cannot run it, so the build ships armed-but-off rather than pretending it is counting.",
       "effect_on_readers": "None — that is the point of a first-party counter with no identifiers.",
       "effort": "1 hour to host",
-      "cost": "free tier to about $5 a month",
+      "cost": "a free tier, or a few dollars a month",
       "risk": "collecting nothing is a choice with a cost of its own: no evidence for any future decision",
       "reversible": "yes",
       "depends_on": [
@@ -348,7 +348,7 @@
       "why": "Email is the only audience an affiliate site owns through a core update, and it is also the one place where a broken form does damage out of proportion to its size.",
       "effect_on_readers": "Right now: an explanation instead of a black hole.",
       "effort": "30 minutes with a provider",
-      "cost": "free tier to about $20 a month",
+      "cost": "a free tier, or up to twenty dollars a month",
       "risk": "collecting addresses without storage is the only genuinely bad option",
       "reversible": "yes",
       "depends_on": [
@@ -508,7 +508,7 @@
       "why": "Canonical URLs, the sitemap, the feed and every share live in the address bar. Changing host after traffic arrives costs most of the benefit; the change costs about a dollar and an afternoon now. It also unlocks the collector and reader capture on the same origin.",
       "effect_on_readers": "A name a person can remember and trust.",
       "effort": "an hour",
-      "cost": "about $10 a year",
+      "cost": "about ten dollars a year",
       "risk": "the name is hard to change later, so pick deliberately",
       "reversible": "sort of",
       "depends_on": [],
