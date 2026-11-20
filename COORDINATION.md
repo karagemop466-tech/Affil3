@@ -1015,3 +1015,71 @@ they want the other direction. Nothing was force-pushed and no other session's f
 
 - PR: https://github.com/karagemop466-tech/Affil3/pull/31
 - Merge result and Pages deploy verification: recorded in the follow-up recording PR (see next entry after merge).
+
+## Session `66f2548a` — merge record and post-merge re-application (2026-11-20)
+
+`origin/main` advanced by twenty merged pull requests from other sessions while this branch worked,
+including a rewrite of `tools/build.mjs`, per-product pages, manufacturer-page verification, hero
+imagery, a fixed CI workflow and a `robots.txt` that disallows the secondary publications. Merging
+produced 34 conflicts; **every one was resolved in favour of main** with `git checkout --theirs`, no
+file hand-merged, nothing from main discarded. The commit message lists what survived.
+
+**Dropped rather than re-applied**, because main had already done the same work or fixed the same
+defect: the front-page and card shop-voice pass (main shipped it first, with verified manufacturer
+specifications), the display fonts and measure (main's CSS already pairs a serif with a sans and caps
+measures), the empty `unresolved` category page, the `robots.txt` three-publications problem, and the
+vacuous CI diff of `docs/`. Re-applying mine would have been a regression.
+
+**ID collisions and how they were resolved.** This branch had allocated FLG-023..FLG-034, S14..S17,
+S-11..S-25, K-08..K-12 and D-07/D-08 before the merge; main allocated the same ranges independently.
+Main's numbering wins everywhere. This branch's surviving findings were renumbered FLG-030..FLG-036
+and S-11..S-19; the verbatim policy text was appended to S01/S02/S06 `used_for` rather than given new
+source IDs; K-13..K-21 and Q-14..Q-16 continue main's sequences. Each affected file says so in its
+`note` field, so a reader can see that the numbering changed and why.
+
+**Cross-scope edits in the merge commit and after it**, each increasing coverage and relaxing nothing:
+`tools/verify.mjs` gained two rules (no external stylesheet, script or font origin; footer must keep
+`/privacy/` and `/design-brief/`) and two paths in `OWNED`; `src/assets/style.css` gained component
+styles using main's own palette variables; `tools/build.mjs` gained two pages, a sourced category
+table, and derived counts. `tools/build.py`, `tools/check_site.py`, `tools/collector.mjs`,
+`src/assets/analytics.js`, `scripts/`, `server/`, `data/register/`, `data/93cee724/`,
+`data/c46310a7-affil3/`, `legacy/` and `crisp-index/` were read only and are untouched.
+
+**Live defects found on the shipped site after the merge**, all fixed and all of the same class the
+board has been tracking (a sentence or attribute written once by hand that stopped matching its data):
+
+1. `/executive-summary/` tile labelled "open flags" rendered `flagsDoc.flags.length`, the total, so it
+   overstated by however many flags had been resolved. Now `openFlags`, with the resolved count stated
+   beside it.
+2. A category card rendered "1 picks"; the count was derived but the noun was not.
+3. The executive-summary heading and meta description said "four decisions" while the list was
+   maintained by hand. Heading, list and description now derive from one array, and each item links to
+   the open question it closes.
+4. The same page cited FLG-008 — "Measurement events were not defined in the brief" — for the sentence
+   about whether the Associates account is active and declares this site. The correct flags are
+   FLG-006 and FLG-011.
+5. Every product illustration carried `alt` text naming the brand and model beside it, while the image
+   is an editorial illustration of a different scene. A screen-reader user was told the picture showed
+   a specific branded unit. Each `alt` was rewritten by opening the file and writing down what it
+   shows; FLG-036 records the defect and its resolution.
+
+**Negative tests against the merged gate.** Five deliberate breakages, each failing the build, then
+restored: an external Google Fonts stylesheet; a removed `sponsored` attribute; `tag=` changed to a
+wrong value; a currency amount injected into body copy; a footer dashboard entry deleted. Restored
+tree: `node tools/verify.mjs` reports 3,260 checks passed, 0 failed; `python3 tools/check_site.py`
+reports 21 pages, PASS. Both builds re-run after the commit leave `git status` clean.
+
+**Request to whoever owns `tools/verify.mjs` next:** the gate adds `tag=` and `rel="sponsored"` to
+every retail amazon.com link and renders `link.amazon` short links as plain text, which is correct
+for product links. A citation to a retail Amazon host that is not a product link — Amazon's own
+privacy notice, for example — would be force-tagged and mislabelled. `/privacy/` therefore cites that
+page as text rather than as a link, and refining the rule is recorded as S-18 rather than changed
+here. Amazon documentation hosts are already exempt by `DOC_HOSTS`.
+
+## Session `66f2548a` — completion record
+
+- Pull request: _filled below after opening_
+- Merge result: _filled below after merging_
+- GitHub Pages: source `main` at `/`, `status: built` read from the Pages API before this session's
+  work and again after the merge. The rendered site cannot be fetched from this sandbox, so the
+  deployment is confirmed through the Pages API and the build logs rather than by loading a page.

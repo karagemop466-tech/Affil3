@@ -11,7 +11,7 @@ Nothing was deleted to make room; each session's output is kept and reachable.
 
 | Path | Owner | What it is |
 |---|---|---|
-| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance |
+| `/` | root site (`tools/build.mjs`) | Integrated publication: shop, categories, product pages, guides, sources, questions, suggestions, flagged, ledger, measurement, compliance, privacy, design brief |
 | `/editorial/` | `tools/build.py` | A second, independently generated publication: front page, 3 category pages, 5 product pages, 4 guides, source register, flagged-for-review, open questions, suggestions queue, dashboard, disclosure and method |
 | `/docs/` | session `arena/c46310a7-affil3` | A third, independently generated publication: shop front, product register with the product-intent confirmation record, 4 buyer guides, comparisons, analytics, suggestions, decision questions, flagged items, compliance, executive summary. Verified with `scripts/` (sitemap, feed, link checker, intake validator, source verifier) and a self-hosted analytics endpoint in `server/` |
 | `/legacy/arena-83a43a96/` | preserved | The first session's site, kept unchanged |
@@ -64,7 +64,7 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 
 ## What the root gate refuses to let through
 
-`node tools/verify.mjs` runs **2,808 checks** over the 28 published pages. It stops the build on:
+`node tools/verify.mjs` runs **3,260 checks** over the 30 published pages. It stops the build on:
 
 - a page without the Associates statement, the disclosure strip above `<main>`, or the footer repeat;
 - an Amazon retail link without `tag=shopnow047c-20`, or without `rel="sponsored"`;
@@ -73,7 +73,10 @@ output differs; the docs-site workflow (`.github/workflows/check.yml`) runs the 
 - an image that is missing, remote, or without `alt` text;
 - a page without a canonical URL, with more than one `h1`, or with a title longer than 90 characters;
 - a broken internal link, a missing anchor, or a page missing from the sitemap;
-- a source ID that does not exist, or a spec row citing one.
+- a source ID that does not exist, or a spec row citing one;
+- a stylesheet, script or webfont loaded from an external origin — the site makes no third-party
+  request, and `/privacy/` states that, so the rule keeps the page true;
+- a page whose footer drops any dashboard, including `/privacy/` and `/design-brief/`.
 
 The link rules are enforced by the build itself (`linkPolicy` in `tools/build.mjs`), so a new template
 cannot bypass them, and by the gate, so a hand-edited page cannot either.
@@ -146,3 +149,45 @@ python3 tools/check_links.py  # internal links + anchors
 **Find worth knowing:** the Amazon-owned ASIN definition that FLG-012 (board) recorded as
 "not located" exists at https://sell.amazon.com/blog/what-is-an-asin (10-character format;
 ASIN appears after `/dp/`). Cited as S-03 in `VERIFICATION.md`.
+
+---
+
+## Session `66f2548a` addition (integrated 2026-11-20; nothing above changed)
+
+Two pages, four register extensions and five live defects found on the shipped site.
+
+| Path | What it is |
+|---|---|
+| [`/privacy/`](https://karagemop466-tech.github.io/Affil3/privacy/) | What the click counter does, what it never collects, why the endpoint is unset, and what would change if a third-party analytics product were adopted. Required by Participation Requirements §3(e). A draft for owner review, not legal advice (Q-16). |
+| [`/design-brief/`](https://karagemop466-tech.github.io/Affil3/design-brief/) | The brief to hand whoever designs this site next: seven diagnoses with evidence and where each now stands, eight invariants no art direction may relax, twelve prescriptions with before-and-after copy, a forbidden list, a sequence, and the prompt itself. |
+
+[`DESIGN-BRIEF.md`](DESIGN-BRIEF.md) is generated from [`data/design-brief.json`](data/design-brief.json)
+by `tools/build.mjs`, so the file and the page cannot disagree. Edit the JSON and rebuild.
+
+**Register additions** (no IDs were renamed; this branch's earlier numbering was dropped rather
+than renumbered over main's, and each collision is recorded in the affected file):
+
+- `data/sources.json` — the Operating Agreement and Program Policies re-read **verbatim** rather
+  than from a search excerpt; S02 §2(a)-(b) promoted to full text. Newly recorded clauses: §5 (no ML
+  use of Special Links or Program Content without Amazon's written approval), §6(g), §6(s), §6(t),
+  §6(u), §6(v), §6(w), §6(y), §3(e), the material-breach preamble, and the 24-hour / 89-day /
+  180-day session mechanics.
+- `data/flags.json` — FLG-030…FLG-035; FLG-015 resolved (imagery shipped after the flag said there
+  was none); FLG-036 added and resolved (alt text).
+- `data/questions.json` — K-13…K-21, Q-14…Q-16, D-09…D-12, and `have` / `lack` / `who` on all of
+  main's unknowns. K-07 and K-09 are marked superseded by K-13 with their original wording kept.
+- `data/suggestions.json` — six tracks, a decision order computed from dependencies, and S-11…S-19.
+
+**Live defects found on the shipped site and fixed here:** the executive-summary tile labelled
+"open flags" rendered the total flag count including resolved ones; a category card rendered
+"1 picks"; the executive-summary heading and meta description said "four decisions" while the list
+was maintained by hand; the same page cited FLG-008 (measurement events) for account status, whose
+correct flags are FLG-006 and FLG-011; and every product illustration carried alt text naming the
+brand and model it does not depict. Category pages gained a sourced comparison table.
+
+**Verification:** a fourth independent read of all five submitted links, one fetch each, every query
+parameter enumerated — recorded in
+[`data/observations/2026-11-20-reverify-66f2548a.json`](data/observations/2026-11-20-reverify-66f2548a.json).
+All five resolve; none carries `tag=`; all agree with every register. Five negative tests were run
+against the gate (external font, removed `sponsored`, changed tag, injected price, dropped footer
+dashboard); each fails the build, and the restored tree passes 3,260 checks.
