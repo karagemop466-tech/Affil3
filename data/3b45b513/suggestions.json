@@ -1,0 +1,187 @@
+{
+  "note": "A decision queue, not a wish list. Each row states the problem, the options with their trade-offs, what this edition does by default, and the single decision that changes it. The SG-27..SG-30 rows are the four reader-facing items carried over from an earlier pass; they are marked shipped or gated so the reader can see which of them this build actually delivered.",
+  "updated": "2026-11-20",
+  "suggestions": [
+    {
+      "id": "SG-27",
+      "topic": "Navigation labels that a reader can act on",
+      "status": "shipped",
+      "category": "Reader experience",
+      "problem": "The earlier navigation read like an internal directory — 'shop table', 'source register', 'measurement' — which tells a reader where they are in our filing system rather than what they can do there.",
+      "options": [
+        { "id": "A", "label": "Keep dashboard labels in the primary navigation.", "tradeoff": "Familiar to the owner; opaque to a first-time reader." },
+        { "id": "B", "label": "Reader verbs in the top navigation, dashboard labels only in the footer group.", "tradeoff": "The front page reads as a publication; the owner has to scroll to reach the registers, which is exactly once per visit." }
+      ],
+      "chosen": "B",
+      "reasoning": "The front page should read like a magazine shelf, and a records page should be findable in one scroll rather than competing with the products for the top of the page.",
+      "implemented": "Top navigation is now The shelf / Buying guides / Counter space / About. Every register sits in one labelled footer group, plus a dedicated /review/ index for the operator surfaces.",
+      "prompt_improvement": "Next time, specify the two audiences in the brief itself — reader and operator — and ask for separate navigation surfaces rather than one navigation with everything in it."
+    },
+    {
+      "id": "SG-28",
+      "topic": "A shipped, valid RSS feed rather than a link to one",
+      "status": "shipped",
+      "category": "Discoverability",
+      "problem": "An earlier pass linked an RSS feed that was not regenerated when guides were added, so the feed listed four guides while the site published five.",
+      "options": [
+        { "id": "A", "label": "Keep the feed as a hand-maintained file.", "tradeoff": "No build work; it drifts the first time someone forgets." },
+        { "id": "B", "label": "Generate the feed from the same guide register as the pages, and fail the build if an item is missing.", "tradeoff": "A build dependency; the feed can never disagree with the site again." }
+      ],
+      "chosen": "B",
+      "reasoning": "A feed is a promise of currency. A stale feed is worse than no feed, because aggregators cache the staleness.",
+      "implemented": "feed.xml is generated from data/3b45b513/guides.json, sorted newest first, with a guid per guide. The gate asserts one item per guide and that every item appears in the sitemap.",
+      "prompt_improvement": "Ask for feeds and sitemaps to be generated from the same content register, and for the check to be an assertion rather than a review step."
+    },
+    {
+      "id": "SG-29",
+      "topic": "Search Console setup",
+      "status": "gated",
+      "category": "Discoverability",
+      "problem": "Query data is the only way to choose the next guide from evidence rather than from instinct, and no property exists.",
+      "options": [
+        { "id": "A", "label": "Skip it and keep publishing on editorial judgement.", "tradeoff": "No data; every topic decision stays a hypothesis forever." },
+        { "id": "B", "label": "Verify a URL-prefix property for the site, submit the sitemap, and review the Performance report after two weeks.", "tradeoff": "Needs the owner's Google account and ten minutes; gives impressions, queries and coverage errors." },
+        { "id": "C", "label": "Verify by DNS on a custom domain later.", "tradeoff": "Cleaner long term; blocked on a domain decision nobody has made." }
+      ],
+      "chosen": "B (blocked)",
+      "reasoning": "It is the cheapest measurement available and the only one that reports what readers searched for before they arrived.",
+      "implemented": "sitemap.xml, robots.txt and canonical URLs are generated and valid. Nothing can be verified from this build because no Google account is available; logged as CDF-12.",
+      "prompt_improvement": "Say which measurement sources are expected to be reachable from the build environment. A brief that asks for Search Console data without an account produces a page explaining why there is none."
+    },
+    {
+      "id": "SG-30",
+      "topic": "Reader capture",
+      "status": "gated",
+      "category": "Reader experience",
+      "problem": "There is no way for a reader who liked a guide to hear about the next one, so every visit starts from zero.",
+      "options": [
+        { "id": "A", "label": "No capture; the RSS feed is the only subscription route.", "tradeoff": "Nothing to maintain and no consent obligation; no direct channel." },
+        { "id": "B", "label": "Single-field email capture with double opt-in on guide pages.", "tradeoff": "Owns the audience; adds a provider, a privacy notice and a consent record." },
+        { "id": "C", "label": "A 'tell me when the next guide ships' mail-draft link.", "tradeoff": "Zero infrastructure and honest; converts at roughly nothing." }
+      ],
+      "chosen": "A now, B once there are guides worth returning for.",
+      "reasoning": "Asking for an email address before there is anything to send is how a small publication teaches its first hundred readers to ignore it.",
+      "implemented": "Feed only. The decision and its trade-offs are published here rather than quietly deferred.",
+      "prompt_improvement": "If capture is wanted, name the provider and the consent model in the brief. 'Add email capture' with no provider produces either nothing or a third-party script that starts collecting before anyone has written a privacy notice."
+    },
+    {
+      "id": "D-01",
+      "topic": "Which product each supplied short link was meant to reach",
+      "status": "open",
+      "category": "Owner decision",
+      "problem": "Every product row has an empty intent column. The site can say where a link landed on a given day; it cannot say what the owner meant it to reach, and no document in the repository does either.",
+      "options": [
+        { "id": "A", "label": "Fill the four intent fields from the campaign brief or the Associates link record.", "tradeoff": "Turns the register from an observation log into a verified record; needs whoever built the campaign to answer." },
+        { "id": "B", "label": "Accept the observed destinations as the intended products, dated and signed off.", "tradeoff": "Fast; freezes a live observation into a claim that will drift the first time Amazon reroutes a short link." },
+        { "id": "C", "label": "Leave the columns blank indefinitely.", "tradeoff": "Honest; the register never becomes usable for anything but reading." }
+      ],
+      "chosen": "A",
+      "reasoning": "B is the tempting option and the one that creates a false record. A is one message long.",
+      "prompt_improvement": "Ask for the campaign brief or link-generation export as an input. A register of intent cannot be reconstructed from observations alone."
+    },
+    {
+      "id": "D-02",
+      "topic": "Buy links while the tag is untested",
+      "status": "open",
+      "category": "Compliance",
+      "problem": "The tagged links match the formatting rule and have never been validated against a tracking report.",
+      "options": [
+        { "id": "A", "label": "Keep the buttons, labelled provisional, and test within a week.", "tradeoff": "The site can earn from day one; an untested link that silently fails credits nothing and looks identical to a working one." },
+        { "id": "B", "label": "Hide every buy button until gate G-02 passes.", "tradeoff": "Maximum compliance confidence; the publication becomes a brochure until someone tests." },
+        { "id": "C", "label": "Keep buttons and add a visible 'link not yet verified' note on each.", "tradeoff": "Honest and clickable; a visible caveat on every button is not a great look for a shop." }
+      ],
+      "chosen": "A",
+      "reasoning": "The links satisfy the formatting rule as published, and a page nobody can click teaches nothing. The one-week test is the condition attached to the choice.",
+      "prompt_improvement": "Ask for the test to be scheduled as a task with an owner and a date, not as an aspiration. 'Untested' is a status, not a plan."
+    },
+    {
+      "id": "D-03",
+      "topic": "Where the analytics collector runs",
+      "status": "open",
+      "category": "Measurement",
+      "problem": "The five-event schema and the collector exist; no endpoint is deployed, so the site records nothing.",
+      "options": [
+        { "id": "A", "label": "Self-host the collector on a small server behind HTTPS.", "tradeoff": "Full control of raw data; someone has to patch a server." },
+        { "id": "B", "label": "Run it as a serverless function.", "tradeoff": "No server to maintain; cold starts, and storage limits that need a decision." },
+        { "id": "C", "label": "Leave it off.", "tradeoff": "Zero maintenance; no data, so the ledger stays empty forever." }
+      ],
+      "chosen": "B",
+      "reasoning": "It removes the maintenance objection without handing the data to a third party, and the schema is already written.",
+      "prompt_improvement": "Name the hosting target in the brief. 'Add analytics' is three different projects depending on where it runs."
+    },
+    {
+      "id": "D-04",
+      "topic": "Two publications in one repository",
+      "status": "open",
+      "category": "Architecture",
+      "problem": "The repository carries several independently generated sites over the same five links — the root publication, /editorial/, /crisp-index/, /counterwise/, legacy archives, and this edition. They agree today on the destinations, but only because sessions keep cross-checking them by hand.",
+      "options": [
+        { "id": "A", "label": "Keep every edition public and reachable, each excluded from search except the root.", "tradeoff": "Nothing is lost and the history stays readable; the domain carries five identities and five data models." },
+        { "id": "B", "label": "Pick one publication, redirect or retire the rest, and keep one register.", "tradeoff": "One site, one identity, one gate; needs a redirect map and a decision about whose work becomes canonical." },
+        { "id": "C", "label": "Merge the best parts of each into the root publication by hand.", "tradeoff": "Best content outcome; the most work, and the most chance of two registers drifting again mid-merge." }
+      ],
+      "chosen": "A now, B as soon as the redirect map exists.",
+      "reasoning": "This edition is deliberately namespaced so it cannot collide with the others, but that is a truce, not a fix.",
+      "prompt_improvement": "For a repository worked by more than one session, specify one canonical generator and one register in the brief, and give every other output a namespace and an index. Without that, each session reasonably builds its own."
+    },
+    {
+      "id": "D-05",
+      "topic": "Prices and ratings",
+      "status": "open",
+      "category": "Compliance",
+      "problem": "Readers want to know the price. Amazon's rules only permit a site to show price and availability when Amazon serves that data or it comes through the Creators or PA API, and bar republishing star ratings and reviews without API-sourced data.",
+      "options": [
+        { "id": "A", "label": "Show no price and no rating; every button says what it opens.", "tradeoff": "Always accurate and compliant; a reader has to click to learn a budget." },
+        { "id": "B", "label": "Enrol in the Creators API and display Amazon-served prices with a timestamp.", "tradeoff": "Genuinely useful to a budget-led shopper; real engineering, and a stale price is a compliance risk." },
+        { "id": "C", "label": "Show a coarse band written as a range of tiers — starter, mid, premium — with the date the band was set.", "tradeoff": "Stable and useful; still a claim that ages, still not Amazon-served, and a tier boundary is itself a judgement nobody asked us to make." }
+      ],
+      "chosen": "A",
+      "reasoning": "Nothing on this site is currently permitted to show a price, so nothing does. The absence is stated on every product page rather than left to be noticed.",
+      "prompt_improvement": "If prices matter, ask for an API enrolment as a prerequisite task with a named owner, not as a display requirement."
+    },
+    {
+      "id": "D-06",
+      "topic": "Imagery",
+      "status": "open",
+      "category": "Reader experience",
+      "problem": "Product imagery sells. Amazon-hosted product images are Program Content and their use is limited by the IP License to Associates purposes, so this edition uses generated editorial illustration instead.",
+      "options": [
+        { "id": "A", "label": "Generated editorial illustration, captioned as illustration, no brand marks.", "tradeoff": "Consistent and licence-clean; a reader cannot see the actual machine." },
+        { "id": "B", "label": "Amazon-served product images through the approved tooling.", "tradeoff": "Shows the real product; images come from Amazon and can change without notice." },
+        { "id": "C", "label": "Photograph the units yourself.", "tradeoff": "Highest trust; needs the units and a morning." }
+      ],
+      "chosen": "A",
+      "reasoning": "A generated picture that says it is a generated picture is honest. A stock photo presented as the product is not.",
+      "prompt_improvement": "Say explicitly whether product photography exists. If it does not, ask for illustration plus captions rather than letting a build reach for a stock image."
+    },
+    {
+      "id": "D-07",
+      "topic": "Publishing cadence",
+      "status": "open",
+      "category": "Growth",
+      "problem": "Seven guides exist. A burst followed by silence reads as a generated site to both readers and crawlers.",
+      "options": [
+        { "id": "A", "label": "One new guide every two weeks.", "tradeoff": "Sustainable; slow cluster growth." },
+        { "id": "B", "label": "One a week.", "tradeoff": "Faster coverage; needs a real writing slot weekly, which is the part that fails." },
+        { "id": "C", "label": "A batch of eight now, then monthly.", "tradeoff": "Reaches a useful size quickly; thin pages are the usual result of a batch." }
+      ],
+      "chosen": "A",
+      "reasoning": "Ten thin guides are worse than five good ones, and a cadence nobody can hold is worse than both.",
+      "prompt_improvement": "Ask for a cadence with an owner and a first date attached. 'Regularly' is not a cadence."
+    },
+    {
+      "id": "D-08",
+      "topic": "The byline",
+      "status": "open",
+      "category": "Trust",
+      "problem": "Pages are published under a desk name because no editor was supplied. Inventing a plausible person would be a fabrication, so the absence is published instead.",
+      "options": [
+        { "id": "A", "label": "Keep the desk byline and log the weakness.", "tradeoff": "Honest and unchanging; a weaker trust signal than a person." },
+        { "id": "B", "label": "Add a named editor with a role, a short bio and a contact route.", "tradeoff": "The strongest cheap trust signal available; requires a real person who answers for corrections." }
+      ],
+      "chosen": "A until B is possible",
+      "reasoning": "A named author is worth several times what a team byline is worth, and only if the name is real.",
+      "prompt_improvement": "Ask for the author's name, role and contact channel as an input to the brief. Otherwise every session will either invent one or apologise for not having one."
+    }
+  ]
+}
