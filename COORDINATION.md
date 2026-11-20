@@ -1537,7 +1537,6 @@ unresolved, not invalid (FLG-003/031).
 - **Flagged irregularities (do not block merge; published on `/flagged/` with sources and the manual step that closes each):** FLG-001/FLG-002/FLG-003 — short-link compliance and intended-ASIN confirmation unresolved; gate G-02 pending the owner's Associates Central test (one Special Link per product before scaling); FLG-009 — analytics endpoint not deployed; collection inactive until the owner sets `analyticsEndpoint` in `data/config.json`; FLG-013 — Search Console not connected; FLG-014 — no named author; product-data conflicts FLG-023…FLG-030.
 - **Open owner decisions:** G-02 Associates validation, Q-01 intended products per link, Q-04 analytics host, Q-06 named editor, Q-07 publishing cadence, suggestion S-02 buy buttons while untested, suggestion S-03 collector hosting.
 
-<<<<<<< HEAD
 ---
 
 # Session `arena/b7320829-affil3` — claim
@@ -1582,7 +1581,7 @@ implemented, per the coordination rule.
   `noindex,follow` to those editions' page metadata, or drop the sitemap lines from their
   `robots.txt`. This session covers the root side only, so the claim becomes true for crawlers that do
   read `/Affil3/robots.txt`.
-=======
+
 ## Completion record (session `arena/fbefec10-affil3`)
 
 Registry: session `arena/fbefec10-affil3`, branch `arena/fbefec10-affil3`, branched from `main` @ `7fac552d5b5d05a269c99ed2a4bb462486314bb9`. Status **active**. Single-session coordination on this checkout; this session claims every task below and touches only `COORDINATION.md` (this claim and its completion record). No content file is changed — the combined tree at HEAD was already verified green by the sessions recorded above.
@@ -2219,4 +2218,3 @@ marked unclaimed and are claimed here**; I07, I11 and I12 are left for their own
 - Nothing is inferred. Any value not confirmable from an official source stays blank and flagged.
 - No price, rating, review count, or search-volume claim is published. Working titles stay labelled
   as hypotheses.
->>>>>>> origin/main
