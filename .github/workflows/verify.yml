@@ -1,5 +1,14 @@
 name: Verify site
 
+# Rebuilds both published surfaces from their registers and runs both gates.
+#
+# Corrected 2026-11-20 by session 66f2548a (FLG-023). The previous version of this file ran only
+# `python3 tools/build.py` and then asserted `git diff --quiet -- docs`. There is no docs/
+# directory in this repository - the root site is generated at the repository root and the
+# editorial site into editorial/ - so that assertion could never fail and reported success on
+# every run. The root site's 1300-check gate was never run in CI at all. This version diffs the
+# paths each build actually writes and runs both gates.
+
 on:
   push:
     branches: [main]
@@ -9,23 +18,61 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
-    name: Rebuild from data and run the gates
+    name: Rebuild from the registers and run both gates
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Rebuild the site from the registers
+
+      # The paths each build writes. Kept in step-level env so the diff below cannot silently
+      # drift from the generator's OWNED list; if build.mjs gains a path, add it here too.
+      - name: Rebuild the root site from data/*.json
+        run: node tools/build.mjs
+
+      - name: Rebuild the editorial site from data/register/*.json
         run: python3 tools/build.py
-      - name: Assert committed output matches a fresh build
+
+      - name: Assert the committed output matches a fresh build
         run: |
-          if ! git diff --quiet -- docs; then
-            echo "::error::docs/ is out of date with data/. Run tools/build.py and commit."
-            git diff --stat -- docs
-            exit 1
+          set -euo pipefail
+          ROOT_PATHS="index.html shop categories guides executive-summary sources questions \
+          suggestions flagged ledger measurement compliance about privacy design-brief 404.html \
+          feed.xml sitemap.xml robots.txt assets .nojekyll DESIGN-BRIEF.md"
+          fail=0
+          # Tracked files that changed.
+          if ! git diff --quiet -- $ROOT_PATHS editorial; then
+            echo "::error::Generated output is out of date with the registers. Run 'node tools/build.mjs && python3 tools/build.py' and commit."
+            git --no-pager diff --stat -- $ROOT_PATHS editorial
+            fail=1
           fi
-      - name: Gate - links, prices, ratings, tracking tags, disclosures, sitemap
+          # Untracked files the build produced but nobody committed. git diff cannot see these.
+          dirty="$(git status --porcelain -- $ROOT_PATHS editorial | grep -E '^\?\?' || true)"
+          if [ -n "$dirty" ]; then
+            echo "::error::The build produced files that are not committed:"
+            echo "$dirty"
+            fail=1
+          fi
+          exit $fail
+
+      - name: Gate the root site - links, prices, ratings, tracking tags, disclosures, sitemap, external requests
+        run: node tools/verify.mjs
+
+      - name: Gate the editorial site - links, prices, ratings, tracking tags, disclosures, sitemap
         run: python3 tools/check_site.py
+
+      - name: Report
+        if: success()
+        run: echo "Both surfaces rebuilt from their registers, both gates green, committed output byte-identical to a fresh build."

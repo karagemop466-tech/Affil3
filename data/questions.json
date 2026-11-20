@@ -1,35 +1,473 @@
 {
-  "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/.",
+  "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/. Every unknown now carries four fields: what we already have in hand, what is missing, who can supply it, and the step that closes it. K-08 to K-17 and Q-14 to Q-20 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; several of the new knowns quote policy text that an earlier session had only from a search excerpt.",
   "known": [
-    {"id": "K-01", "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S03"]},
-    {"id": "K-02", "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.", "sources": ["S01"]},
-    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a URL parameter.", "sources": ["S02"]},
-    {"id": "K-04", "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).", "sources": ["S02"]},
-    {"id": "K-05", "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.", "sources": ["S06"]},
-    {"id": "K-06", "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.", "sources": ["S04", "S05"]},
-    {"id": "K-07", "statement": "The submitted tokens are 9 characters long.", "sources": ["S05"]}
+    {
+      "id": "K-01",
+      "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.",
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "K-02",
+      "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-03",
+      "statement": "Special Links must carry the Associates tag as a URL parameter.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-04",
+      "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-05",
+      "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "K-06",
+      "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.",
+      "sources": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-07",
+      "statement": "The submitted tokens are 9 characters long.",
+      "sources": [
+        "S05"
+      ]
+    },
+    {
+      "id": "K-08",
+      "statement": "All five submitted short links resolve to a product detail page on www.amazon.com. Verified three times independently: the root register, the editorial register, and a fresh re-fetch on 2026-11-20 that enumerated every query parameter on each resolved URL. The five destinations are B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5 and B0DZFD6R9Z.",
+      "sources": [
+        "S05",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18"
+      ]
+    },
+    {
+      "id": "K-09",
+      "statement": "No resolved URL carries a tag= parameter. Participation Requirements 2(b), read verbatim rather than from an excerpt: \"you must include your Associates ID or 'tag' (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.\"",
+      "sources": [
+        "S02",
+        "S05"
+      ]
+    },
+    {
+      "id": "K-10",
+      "statement": "Participation Requirements 6(w) reads: \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\" The clause turns on whether the destination is unclear and does not ban shorteners as such. This is why the supplied links are recorded as unresolved rather than as a violation.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-11",
+      "statement": "Operating Agreement 5 requires the statement \"As an Amazon Associate I earn from qualifying purchases\" to be clearly and prominently stated on the Site, and Operating Agreement 6 provides that any violation of Section 5 is deemed a material breach. A missing or buried disclosure is therefore a termination-grade defect.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-12",
+      "statement": "Operating Agreement 4 states Amazon makes \"no representation, warranty, or covenant regarding the amount of traffic or commission income you can expect at any time\". This is the official basis for publishing no revenue forecast and no conversion score anywhere in this repository.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-13",
+      "statement": "Participation Requirements 6(t) bars displaying or using any customer review or star rating unless obtained through the Creators API or PA API, and 2(b) allows the Site to show prices and availability only where Amazon serves the link or the data comes from those APIs. Neither condition is met, so the build gate fails on any currency amount, star rating or review count in the HTML.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-14",
+      "statement": "Participation Requirements 5 bars using Special Links or Program Content \"to develop machine learning models or related technology\" without Amazon's express prior written approval. Participation Requirements 6(y) bars price tracking or price alerting functionality on the Site unless Amazon agrees. Both were read verbatim on 2026-11-20 and neither had been recorded before.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-15",
+      "statement": "Participation Requirements 6(u) bars purchasing through your own Special Links, and bars permitting, requesting or encouraging friends, relatives, employees or contractors to do so. Gate G-02 must therefore be tested by checking the destination and the tracking report, not by placing an order.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-16",
+      "statement": "A Qualifying Purchase requires a click through a Special Link, and the Session ends at the first of 24 hours elapsing, an order being placed for a non-digital Product, or a click through someone else's Special Link. Cart additions count for 89 days and the item must ship and be paid for within 180 days. An untagged link cannot start a Session at all.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-17",
+      "statement": "Google's guidance is that rel=\"sponsored\" marks links \"that are advertisements or paid placements (commonly called paid links)\", that multiple rel values may be space- or comma-separated, and that such links \"will generally not be followed\". Page last updated 2025-12-10 UTC.",
+      "sources": [
+        "S06"
+      ]
+    }
   ],
   "unknown": [
-    {"id": "Q-01", "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?", "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.", "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.", "sources": ["S05", "S04"], "blocking": true},
-    {"id": "Q-02", "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?", "why_it_matters": "Decides whether to keep, replace or drop the short links.", "how_to_close": "Check the links in Associates Central and against the policy text.", "sources": ["S02"], "blocking": true},
-    {"id": "Q-03", "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?", "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.", "how_to_close": "Check Associates Central account settings and the declared site list.", "sources": ["S11"], "blocking": true},
-    {"id": "Q-04", "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?", "why_it_matters": "This is gate G-02. No scaling until it passes.", "how_to_close": "Run the Associates test for one link per product and record the result.", "sources": ["S01", "S02"], "blocking": true},
-    {"id": "Q-05", "question": "Which five measurement events should be recorded?", "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).", "how_to_close": "Owner confirms or replaces the list.", "sources": [], "blocking": false},
-    {"id": "Q-06", "question": "Where should the analytics collector run, and who may access its data?", "why_it_matters": "GitHub Pages cannot run it (FLG-009).", "how_to_close": "Choose a hosting option (S-03).", "sources": [], "blocking": false},
-    {"id": "Q-07", "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)", "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).", "how_to_close": "Owner confirms the US marketplace.", "sources": ["S03", "S04"], "blocking": false},
-    {"id": "Q-08", "question": "Who is the named author, and what credentials, if any, should appear?", "why_it_matters": "Reader trust and publication polish (FLG-014).", "how_to_close": "Owner supplies a name and bio, or keeps the team byline.", "sources": [], "blocking": false},
-    {"id": "Q-09", "question": "What publishing cadence should be used?", "why_it_matters": "Sets how the feed and sitemap grow.", "how_to_close": "Choose a cadence (S-02).", "sources": [], "blocking": false},
-    {"id": "Q-10", "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?", "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).", "how_to_close": "Choose the approach in S-10.", "sources": ["S04"], "blocking": false},
-    {"id": "Q-11", "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?", "why_it_matters": "The ledger stays empty until authorized first-party reports exist.", "how_to_close": "Owner exports reports and provides them with their date and source.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).", "how_to_close": "Owner adds the property and verifies it.", "sources": ["S06"], "blocking": false},
-    {"id": "Q-13", "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?", "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.", "how_to_close": "Owner decides whether to obtain legal review.", "sources": [], "blocking": false}
+    {
+      "id": "Q-01",
+      "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?",
+      "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.",
+      "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true,
+      "have": "Three independent fetches agree on all five destinations, and each product's own official page is now a register row (S14-S18). The observed ASIN, title and breadcrumb are recorded for all five.",
+      "lack": "What nobody can derive from a destination page: whether that destination is the product you meant to submit. Intent lives in the account that generated the links.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-02",
+      "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?",
+      "why_it_matters": "Decides whether to keep, replace or drop the short links.",
+      "how_to_close": "Check the links in Associates Central and against the policy text.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": true,
+      "have": "The verbatim text of 6(w) and 2(b), and the observation that no resolved URL carries a tag. Amazon's help page (S13) says Amazon short links are supported in the OneLink setup and third-party shorteners are not.",
+      "lack": "Whether these five tokens were generated under shopnow047c-20 in your Associates account, and whether the tag is applied behind the redirect. Neither is observable from outside the account.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-03",
+      "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?",
+      "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.",
+      "how_to_close": "Check Associates Central account settings and the declared site list.",
+      "sources": [
+        "S11"
+      ],
+      "blocking": true,
+      "have": "The tag format from 2(b), and 6(b): links formatted with your Associates tag may not be displayed \"on a site that is not your Site\".",
+      "lack": "Whether the account is active, and whether karagemop466-tech.github.io/Affil3 (or a custom domain) is on its declared-site list.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-04",
+      "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?",
+      "why_it_matters": "This is gate G-02. No scaling until it passes.",
+      "how_to_close": "Run the Associates test for one link per product and record the result.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "blocking": true,
+      "have": "The exact required shape of the link, and 6(u), which rules out testing by purchase.",
+      "lack": "The result of generating one Special Link per product in Associates Central and reading the tracking report row. There is no Associates login in this environment.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-05",
+      "question": "Which five measurement events should be recorded?",
+      "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).",
+      "how_to_close": "Owner confirms or replaces the list.",
+      "sources": [],
+      "blocking": false,
+      "have": "Five events are proposed in data/events.json and the gate asserts that events.json, the browser script and the collector all agree on the same five names.",
+      "lack": "Whether those five are the five you meant. The brief says 'the five defined events' without naming them.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-06",
+      "question": "Where should the analytics collector run, and who may access its data?",
+      "why_it_matters": "GitHub Pages cannot run it (FLG-009).",
+      "how_to_close": "Choose a hosting option (S-03).",
+      "sources": [],
+      "blocking": false,
+      "have": "A working collector at tools/collector.mjs, tested for aggregate-only storage, rejection of unknown events, CORS preflight and oversize bodies.",
+      "lack": "A host with persistent storage and HTTPS, and a named person who may read the data. GitHub Pages cannot run it.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-07",
+      "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)",
+      "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).",
+      "how_to_close": "Owner confirms the US marketplace.",
+      "sources": [
+        "S03",
+        "S04"
+      ],
+      "blocking": false,
+      "have": "All five destinations are on www.amazon.com and the -20 suffix matches the US convention; the policy text read is the US Program Policies.",
+      "lack": "An explicit confirmation. Marketplace choice determines both the ASIN set and which Associates ID applies.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-08",
+      "question": "Who is the named author, and what credentials, if any, should appear?",
+      "why_it_matters": "Reader trust and publication polish (FLG-014).",
+      "how_to_close": "Owner supplies a name and bio, or keeps the team byline.",
+      "sources": [],
+      "blocking": false,
+      "have": "A team byline, an Organization JSON-LD author on every guide, and a stated editorial policy.",
+      "lack": "A name, and any credential worth stating. 2(b) bars misleading claims about a Product, so a claimed credential has to be real.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-09",
+      "question": "What publishing cadence should be used?",
+      "why_it_matters": "Sets how the feed and sitemap grow.",
+      "how_to_close": "Choose a cadence (S-02).",
+      "sources": [],
+      "blocking": false,
+      "have": "Five published guides, a feed with one item per guide, and a sitemap the gate checks for coverage.",
+      "lack": "Which cadence you can actually defend, and what the next ten topics are. S-15 would answer the second half from data.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-10",
+      "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?",
+      "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).",
+      "how_to_close": "Choose the approach in S-10.",
+      "sources": [
+        "S04"
+      ],
+      "blocking": false,
+      "have": "The three clauses that govern it (2(b), 6(t), 6(y)), all now read verbatim, and a gate that fails the build on any currency amount or rating.",
+      "lack": "An authorized data source. Without PA API or Creators API access the answer is fixed: no prices, no ratings.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-11",
+      "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?",
+      "why_it_matters": "The ledger stays empty until authorized first-party reports exist.",
+      "how_to_close": "Owner exports reports and provides them with their date and source.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false,
+      "have": "A ledger schema with timestamp, source, channel, eligible sessions, clicks and reported orders, and a dated provenance trail. It is empty by design.",
+      "lack": "Any authorized first-party report. Operating Agreement 4 disclaims any traffic or income representation, so nothing may be estimated to fill it.",
+      "who": "Account holder"
+    },
+    {
+      "id": "Q-12",
+      "question": "Who owns the Search Console property?",
+      "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).",
+      "how_to_close": "Owner adds the property and verifies it.",
+      "sources": [
+        "S06"
+      ],
+      "blocking": false,
+      "have": "A sitemap at a known URL, and the verification methods Google documents.",
+      "lack": "Property ownership. Someone has to add the property in a Google account and verify it.",
+      "who": "Site owner"
+    },
+    {
+      "id": "Q-13",
+      "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?",
+      "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.",
+      "how_to_close": "Owner decides whether to obtain legal review.",
+      "sources": [],
+      "blocking": false,
+      "have": "A counter that sets no cookies, no localStorage and no sessionStorage - the gate asserts this - and a draft /privacy/ page added this session.",
+      "lack": "Whether that draft is adequate where the site is operated from, and whether counsel should read it. This is a question for a lawyer, not a conclusion offered here.",
+      "who": "Site owner / counsel"
+    },
+    {
+      "id": "Q-14",
+      "question": "Is the product behind submitted link 4 the one you intend to promote, given that Amazon presents it as superseded?",
+      "have": "The official page for B0DHZTCNR5 carries a \"Newer Version Available\" block pointing at ASIN B0GL7Z4KP4, the same product name in Orange. Observed and recorded 2026-11-20 (S17, FLG-025).",
+      "lack": "Any indication of which of the two you meant. The successor ASIN was not submitted, so publishing it as a product row would be inventing intent.",
+      "who": "Account holder",
+      "why_it_matters": "A reader who clicks through to a variant Amazon labels as superseded has a worse experience and converts less well, and the site has promoted something its own source undercuts.",
+      "how_to_close": "Confirm the intended ASIN for slot 4. If it is B0GL7Z4KP4, supply it so the intended fields can be filled from an official source, then re-issue a tagged Special Link for it.",
+      "sources": [
+        "S17",
+        "S02"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-15",
+      "question": "How many accessories come in the box with the Emeril Lagasse 26QT?",
+      "have": "Two conflicting statements on the same official page: the title says six, the on-page product summary says seven premium accessories and names an air fry basket, rotisserie spit and bake pan (S15, FLG-026). The editorial register hit the same conflict independently.",
+      "lack": "A count that a single source states once. The page links a User Manual PDF that has not been read.",
+      "who": "Editor",
+      "why_it_matters": "Accessory count is one of the few comparison points that genuinely differs between an oven-style air fryer and a basket one, so it belongs in the comparison table. It cannot go in while the source disagrees with itself.",
+      "how_to_close": "Read the linked User Manual PDF or the manufacturer's own product page, record the count with that source, and note the conflict in the row.",
+      "sources": [
+        "S15"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-16",
+      "question": "Will you ask Amazon for prior written approval before any part of the platform uses Special Links or Program Content as model input?",
+      "have": "The clause, read verbatim: Participation Requirements 5 bars using Special Links or Program Content to develop machine learning models or related technology without express prior written approval (S02, FLG-027). Also the preamble, which makes any violation of the Participation Requirements a material breach.",
+      "lack": "An answer from Amazon, and a decision about whether the automation described in the brief needs one. Nothing built so far crosses the line, but the brief's own description of the platform does.",
+      "who": "Account holder",
+      "why_it_matters": "It decides how much of the brief may be built at all. Building the automated research pipeline first and asking afterwards risks the account, and Operating Agreement 6 makes a material breach grounds for immediate termination.",
+      "how_to_close": "Contact Associates support with a precise description of the intended automation and record the answer against FLG-027 before building it.",
+      "sources": [
+        "S02",
+        "S01"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-17",
+      "question": "Should this site have any price or price-tracking feature?",
+      "have": "6(y) bars price tracking and alerting functionality unless Amazon agrees. 2(b) allows prices only where Amazon serves the link or the data comes from the Creators API or PA API. The gate currently fails the build on any currency amount (S02, FLG-028).",
+      "lack": "An API approval, and a decision. The brief asks for pricing analysis, which is not the same act as shipping a price feature to readers, but the difference has to be chosen deliberately.",
+      "who": "Account holder",
+      "why_it_matters": "It sets a hard boundary on the comparison tables and on any 'best value' framing, and it decides whether the PA API application is worth making.",
+      "how_to_close": "Either confirm no price feature (current, and the safe reading) or apply for PA API / Creators API access and get Amazon's agreement under 6(y) before building one.",
+      "sources": [
+        "S02"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-18",
+      "question": "Which single publication should a search engine index?",
+      "have": "Three served surfaces covering the same five products, and a robots.txt that declares two sitemaps (FLG-034). All three exist because merging sessions preserved each other's work rather than deleting it.",
+      "lack": "A decision. Preserving provenance in git and serving three near-duplicate surfaces to a crawler are separable choices, and only the first has been made.",
+      "who": "Site owner",
+      "why_it_matters": "The brief asks for one site to index. Duplicate coverage of the same products splits ranking signal and gives a crawler no reason to prefer any version.",
+      "how_to_close": "Choose an option at S-18. Option B - noindex the second and third surfaces, keep them linked for humans, declare one sitemap - is reversible in one commit.",
+      "sources": [
+        "S06"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-19",
+      "question": "Is the draft privacy notice adequate, and does it need legal review?",
+      "have": "A draft /privacy/ page added this session stating what the counter does, what it does not collect, that the endpoint is unset, and what would change if a third-party analytics product were adopted. Participation Requirements 3(e) requires the disclosure (S02, FLG-029).",
+      "lack": "A review by anyone qualified to give one. The draft was written by the build session and should be treated as a first draft of a legal-adjacent page, not as settled wording.",
+      "who": "Site owner / counsel",
+      "why_it_matters": "3(e) is an Associates obligation, and separately the site is operated from a jurisdiction with its own notice rules (Q-13).",
+      "how_to_close": "Read the page, correct anything that overstates or understates what the code does, and decide whether counsel should review it before the endpoint is switched on.",
+      "sources": [
+        "S02",
+        "S07"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-20",
+      "question": "Should the suggestion rows the brief calls SG-27 to SG-30 be renumbered to match it?",
+      "have": "The four topics named in the brief - navigation labels, the shipped RSS feed, Search Console, reader capture - now each have a row: S-13, S-14, S-15, S-16. Two of the four already existed as S-11 and S-12 (FLG-030).",
+      "lack": "A decision on numbering. The brief's SG-27..SG-30 range does not exist in either register; the editorial register stops at SG-14 and the root register at S-12.",
+      "who": "Site owner",
+      "why_it_matters": "Two numbering schemes in one decision queue is what produced the gap in the first place. Whichever scheme is kept should be the only one.",
+      "how_to_close": "Confirm S-13..S-16, or ask for them to be renumbered into the SG range and the two registers' schemes reconciled.",
+      "sources": [],
+      "blocking": false
+    }
   ],
   "discovery": [
-    {"id": "D-01", "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.", "closes": ["Q-01", "Q-02"]},
-    {"id": "D-02", "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.", "closes": ["Q-04"]},
-    {"id": "D-03", "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.", "closes": ["Q-03", "Q-07"]},
-    {"id": "D-04", "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.", "closes": []},
-    {"id": "D-05", "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.", "closes": ["Q-12"]},
-    {"id": "D-06", "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.", "closes": ["Q-05", "Q-06"]}
+    {
+      "id": "D-01",
+      "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.",
+      "closes": [
+        "Q-01",
+        "Q-02"
+      ]
+    },
+    {
+      "id": "D-02",
+      "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.",
+      "closes": [
+        "Q-04"
+      ]
+    },
+    {
+      "id": "D-03",
+      "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.",
+      "closes": [
+        "Q-03",
+        "Q-07"
+      ]
+    },
+    {
+      "id": "D-04",
+      "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.",
+      "closes": []
+    },
+    {
+      "id": "D-05",
+      "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.",
+      "closes": [
+        "Q-12"
+      ]
+    },
+    {
+      "id": "D-06",
+      "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.",
+      "closes": [
+        "Q-05",
+        "Q-06"
+      ]
+    },
+    {
+      "id": "D-07",
+      "suggestion": "Read the User Manual PDF that Amazon links from the B09B7SB46R page and record the in-box accessory list once, with that document as the source.",
+      "closes": [
+        "Q-15"
+      ]
+    },
+    {
+      "id": "D-08",
+      "suggestion": "Ask Associates support one written question covering both clauses: does the intended automation need prior approval under Participation Requirements 5, and does the intended use of price data need agreement under 6(y). Keep the reply verbatim in the source register.",
+      "closes": [
+        "Q-16",
+        "Q-17"
+      ]
+    },
+    {
+      "id": "D-09",
+      "suggestion": "Before touching Search Console, decide how many publications exist and add noindex to the ones that should not be crawled. Submitting sitemaps first and retiring pages later leaves stale coverage reports.",
+      "closes": [
+        "Q-18"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Run a negative test on the CI gate after the fix: commit a page with a hand-written row count that contradicts its own table, and confirm the build fails. A gate that has never been seen to fail is not evidence of anything.",
+      "closes": []
+    },
+    {
+      "id": "D-11",
+      "suggestion": "For each of the five products, ask the manufacturer's own site for the spec page and record it as a register row, the way the editorial register already does for four of them. Manufacturer pages are the only source that states a spec once.",
+      "closes": [
+        "Q-15"
+      ]
+    },
+    {
+      "id": "D-12",
+      "suggestion": "Pick the next ten guide topics from a question list you can defend - the questions readers would ask in a store - rather than from search volume, until Search Console returns queries. Record the list on the Suggestions page so it can be reviewed before it is written.",
+      "closes": [
+        "Q-09"
+      ]
+    }
   ]
 }

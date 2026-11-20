@@ -1,0 +1,229 @@
+{
+  "title": "Design brief: making this read like a publication",
+  "purpose": "This is the brief to hand to whoever designs the site next, including a machine. It exists because 'make it look polished and not like AI slop' is not implementable as stated, and every attempt to implement a vague instruction produces vague output. Everything below is either a diagnosis with evidence from this repository, a rule that can be checked, or a decision that has to be made by a person. The page at /design-brief/ and the file DESIGN-BRIEF.md are both generated from this one JSON document, so they cannot disagree.",
+  "status": "Proposed. Nothing in here is implemented except where a row says so. The decisions it depends on are on the Suggestions page.",
+  "diagnosis": [
+    {
+      "id": "DX-1",
+      "problem": "The front page is about us, not the reader.",
+      "evidence": "Before this session the front page opened with the kicker 'Observed on 2026-11-20 - Amazon listings', the headline 'Five kitchen picks, each traced to its listing', and product cards whose only description was 'Observed ASIN B0CDY277D3' followed by 'Associates link check pending (gate G-02)'. Every string was true. None of them answered a question a buyer arrived with.",
+      "why_it_reads_as_generated": "A person writing for readers leads with the reader's problem. A system writing for auditors leads with its own provenance. The tell is not the vocabulary, it is the subject of the sentence."
+    },
+    {
+      "id": "DX-2",
+      "problem": "Every card is the same shape, so nothing is skimmable.",
+      "evidence": "Five identical cards in one row, each with a kicker, an h3, one muted line, one button, one status line. The two thermometers are functionally opposite products - one is a spot-check you hold in your hand, the other is a leave-in probe monitor - and they were rendered identically.",
+      "why_it_reads_as_generated": "Uniform card anatomy is what a loop produces. A shop gives the reader a reason to stop on one item: a different size, a badge, a pull-quote, a 'best for' line that differs in length because the products differ."
+    },
+    {
+      "id": "DX-3",
+      "problem": "There is no imagery at all.",
+      "evidence": "FLG-015. No page carries a product image, a diagram or an illustration. Before this session the category pages were text and buttons only; they now carry a comparison table, which is more useful but is still not a picture.",
+      "why_it_reads_as_generated": "A buying guide for kitchen appliances with no pictures of kitchens or appliances is the single loudest signal that nobody shopped for this. It is also a real constraint: Program Content rules govern what Amazon imagery may be used and how it may be altered, so this needs a decision (S-05), not a shortcut."
+    },
+    {
+      "id": "DX-4",
+      "problem": "Nobody is speaking.",
+      "evidence": "FLG-014. Every guide is bylined to 'Affil3 editorial team' and the JSON-LD author is an Organization. There is no face, no credential, no first person anywhere.",
+      "why_it_reads_as_generated": "Readers and search engines both ask who is talking. A team byline on a five-product site reads as a placeholder. Google's own guidance and the FTC's endorsement guidance both turn on the identity of the speaker, and Program Policies 2(b) bars misleading claims, so a credential may only be stated if it is real."
+    },
+    {
+      "id": "DX-5",
+      "problem": "Three publications compete for the same reader and the same crawler.",
+      "evidence": "FLG-034. The root site, /editorial/ and /legacy/arena-83a43a96/ all cover the same five products, and robots.txt declares two sitemaps.",
+      "why_it_reads_as_generated": "A reader who finds two versions of the same guide at different URLs concludes neither is maintained. Duplicate coverage also splits whatever ranking signal the site earns."
+    },
+    {
+      "id": "DX-6",
+      "problem": "The site name is a directory name.",
+      "evidence": "'Affil3' appears in the masthead, the title suffix, the OG site_name and the footer. It is the repository name.",
+      "why_it_reads_as_generated": "Nobody names a publication after its folder. It cannot be remembered, recommended, spelled from hearing, or typed into a search box, and it cannot become a brand a reader trusts enough to click through."
+    },
+    {
+      "id": "DX-7",
+      "problem": "Copy drifts from the data it describes.",
+      "evidence": "Three shipped instances: a shop page that said 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five. A fourth, an empty category page under a heading that promised an explanation (FLG-032).",
+      "why_it_reads_as_generated": "Hand-written sentences about generated tables go stale silently. This is a machinery problem with a reader-facing symptom, and it is the most damaging one on this list because it makes correct data look wrong."
+    }
+  ],
+  "invariants": [
+    "No price, star rating, review count or availability figure may appear in the HTML. Program Policies Participation Requirements 2(b) permits prices only where Amazon serves the link or the data comes from the Creators API or PA API, and 6(t) bars displaying customer reviews or star ratings without the same. The build gate fails on any currency amount. This is not a design preference and no art direction may relax it.",
+    "The statement 'As an Amazon Associate I earn from qualifying purchases.' stays above the fold on every page and is repeated in the footer. Operating Agreement 5 requires it to be clearly and prominently stated, and Operating Agreement 6 makes any violation of Section 5 a material breach. A redesign that moves it below a hero image fails the gate.",
+    "Every outbound Amazon link keeps rel=\"sponsored\" and keeps tag=shopnow047c-20 in the URL. Participation Requirements 2(b) requires the tag as a URL parameter on each link placed on the Site; Google's guidance requires sponsored for paid placements.",
+    "No specification appears without a source link on the same row. Where a value is not stated by an official source, the cell is blank and the reason is flagged. A blank cell is a feature; a plausible number is a defect.",
+    "No revenue forecast, conversion score, traffic estimate or claimed search volume. Operating Agreement 4 states Amazon makes no representation about traffic or commission income, so any such figure here would be invented.",
+    "No claim of popularity, superiority or search demand for a working title. The guide titles in the brief are editorial hypotheses and stay labelled as such.",
+    "The site may not gain price tracking or price alerting functionality. Participation Requirements 6(y) bars it unless Amazon agrees.",
+    "No Amazon content is used as model input. Participation Requirements 5 bars using Special Links or Program Content to develop machine learning models or related technology without Amazon's express prior written approval."
+  ],
+  "prescriptions": [
+    {
+      "id": "PB-1",
+      "area": "Front page",
+      "rule": "The first thing above the fold is a claim about the reader's problem, not a statement about our process. Provenance moves to a small muted line under the offer and to the product page.",
+      "before": "Kicker 'Observed on 2026-11-20 - Amazon listings' / H1 'Five kitchen picks, each traced to its listing' / card body 'Observed ASIN B0CDY277D3'.",
+      "after": "Kicker listing the three categories / H1 'Pick the right countertop cooker without reading forty reviews' / card body a one-line description and a 'Good for' line, with the ASIN and link-check status in a trace line beneath the button.",
+      "effort": "Done in this session for the front page and product cards. The rest of the site still uses process-first headings.",
+      "checkable": "A gate rule can assert that no h1 on a reader-facing page contains the words observed, verified, register or unresolved."
+    },
+    {
+      "id": "PB-2",
+      "area": "Card anatomy",
+      "rule": "Cards may differ. Give the reader a reason to stop: a shape badge, a 'Good for' line of genuinely different length, and one hero card per page that is larger than the rest.",
+      "before": "Five identical cards, identical line counts, identical button labels.",
+      "after": "A lead card at roughly double width carrying the strongest fit statement, then the rest; each card shows its shape (basket, oven, instant-read, wireless-probe) so two thermometers are visibly not the same product.",
+      "effort": "Half a day: a CSS grid change plus a 'lead' field on one product row. The grid hook is already in src/assets/style.css as .product.is-lead and is deliberately unused - promoting one card implies a verdict, and the editorial register already removed two 'winner' badges for exactly that reason (its SG-04). Use it only once there is a stated, sourced reason for one product to lead.",
+      "checkable": "Not mechanically. Review by eye."
+    },
+    {
+      "id": "PB-3",
+      "area": "Imagery",
+      "rule": "Decide the imagery source before designing around it. Three options, in ascending order of effort and descending order of risk: no imagery (current); original diagrams and photography that we make or license, which Program Content rules do not touch; Amazon Program Content imagery, which is governed by the IP License and by 6(a), which bars altering Program Content except resizing graphics proportionally or truncating text without changing its meaning.",
+      "before": "No image on any page.",
+      "after": "At minimum one original diagram per category - a basket versus an oven footprint drawn to scale, a probe-placement illustration - because those are the two things readers actually struggle to picture and no licence question attaches to our own drawings.",
+      "effort": "One to three days depending on the option chosen. Blocked on S-05.",
+      "checkable": "A gate rule can assert that every <img> on the site is either from an allowlisted host or has an explicit licence field in the data."
+    },
+    {
+      "id": "PB-4",
+      "area": "Voice",
+      "rule": "Second person, present tense, specific nouns. One idea per sentence where the idea matters. No sentence begins with 'In today's', 'When it comes to', 'Whether you're' or 'In this guide'. No paragraph of exactly the same length as its neighbour.",
+      "before": "'Capacity is one of the first numbers you see and one of the easiest to misread.' - this one is already good; much of the surrounding copy is not.",
+      "after": "'A 6 Qt dual basket is two 3 Qt baskets. That is a chicken thigh and a tray of fries each, not a whole chicken and a side. If you cook for four, 8 Qt in one basket beats 6 Qt split in two.'",
+      "effort": "A house style file plus a rewrite pass over five guides. Blocked on S-20.",
+      "checkable": "Banned opener phrases and uniform list-item length are both mechanically checkable. Whether the copy is any good is not."
+    },
+    {
+      "id": "PB-5",
+      "area": "Byline",
+      "rule": "Name a person or stop implying there is one. A byline block carries a name, one credential that is true, and what that person actually did - cooked with the product, read the manual, measured the counter. If nobody has, say so: 'We have not cooked with these units. Everything on this page is read from the manufacturer's and Amazon's own listings, and cited.' That sentence builds more trust than an invented reviewer.",
+      "before": "'Affil3 editorial team' on every guide, Organization in the JSON-LD.",
+      "after": "Either a named person with a real credential, or the honest disclosure above, repeated on the About page.",
+      "effort": "An hour once the decision is made. Blocked on S-06 and Q-08.",
+      "checkable": "A gate rule can assert that the JSON-LD author type matches the byline the page renders."
+    },
+    {
+      "id": "PB-6",
+      "area": "Navigation",
+      "rule": "Reader vocabulary in the masthead, internal vocabulary in one clearly-labelled footer group. Four items maximum above the fold.",
+      "before": "Masthead: Shop, Guides, Categories, About. Footer: fourteen entries under 'Dashboards and records', including 'Editorial register (second publication)'.",
+      "after": "Masthead: Shop, Buying guides, By category, How we review. Footer split into 'For readers' and 'Records and verification', the second group explicitly labelled as the audit trail.",
+      "effort": "An hour. Blocked on S-13.",
+      "checkable": "The gate already asserts that every dashboard is reachable from the footer; extend it to assert the two groups exist."
+    },
+    {
+      "id": "PB-7",
+      "area": "Typography and colour",
+      "rule": "Keep the serif/sans pairing and the warm paper, which are already right. Change three things: a display face with more character than Georgia for h1 and the brand, chosen from a system stack so no webfont request is added; a measure cap of about 70 characters on body copy; and reserve the saturated accent for actions only, moving links to a distinguisher that is not colour - an underline that thickens on hover, which the CSS already does.",
+      "before": "Correction to an earlier draft of this row: the current CSS is NOT a single sans throughout. src/assets/style.css already pairs a serif (Georgia) for headings with the system sans for body, uses a warm paper background (#fbf9f4) rather than pure white, and reserves one accent (#7a3b1d) for links. That is better than the generic default and it was verified by reading the file rather than assumed. What is actually missing: Georgia is the most generic serif available and gives the site no silhouette of its own; body copy has no line-length cap except on .deck, so paragraphs run to the full 1120px container; there is no defined type scale beyond three heading sizes; and the accent is used for links as well as actions, so a button does not stand out from a sentence.",
+      "after": "A display stack (Iowan Old Style, Palatino, Baskerville, then Georgia) for h1 and the brand, which reads as a magazine rather than a document; body copy capped near 70ch with wider tables allowed to overflow their own scroll container; links underlined in ink rather than coloured, so the one accent colour means 'you can act here' and nothing else.",
+      "effort": "Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate and stays open at S-04.",
+      "checkable": "Type scale and measure are not mechanically checkable. One thing is: a gate rule can assert that no stylesheet or page requests a font from an external origin, which keeps the site's zero-third-party-request property intact and keeps the privacy page true."
+    },
+    {
+      "id": "PB-8",
+      "area": "Seasonality",
+      "rule": "Seasonal angles are permitted but carry a takedown obligation. Participation Requirements 2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends, so any seasonal page needs an expiry date in its data and a gate rule that fails the build after that date.",
+      "before": "One guide mentions holiday gift framing informally; nothing has an expiry.",
+      "after": "A 'expires' field on any guide that references a promotion, and a build assertion that fails once the date passes. Evergreen seasonal framing - 'air fryers sell hardest in January' - is a claim about the market and needs a source, or it should be cut.",
+      "effort": "Two hours for the field and the rule. Blocked on S-08.",
+      "checkable": "Fully checkable. This is the rare prescription here that a build can enforce completely."
+    },
+    {
+      "id": "PB-9",
+      "area": "Cluster architecture",
+      "rule": "One pillar page per category, guides linking up to it and across to each other, and every product reachable from its category within two clicks. A guide that links to no other page on the site is a dead end and earns nothing for the rest of the site.",
+      "before": "Guides link to products; categories link to guides; guides do not link to each other.",
+      "after": "Each guide carries a 'Related' block with two sibling guides and a link up to its pillar. The pillar carries the comparison table.",
+      "effort": "Two hours in the generator, driven by the existing cluster_links field.",
+      "checkable": "A gate rule can assert that every guide page contains at least two internal links to other guides."
+    },
+    {
+      "id": "PB-10",
+      "area": "On-page SEO baseline",
+      "rule": "Title under about 60 characters and containing the reader's words, meta description under about 155 and stating what the page decides, one h1, headings that are claims rather than nouns, canonical on every page, Article JSON-LD on guides with a real author, FAQ or HowTo JSON-LD where the page genuinely answers questions in that shape.",
+      "before": "Canonical, OG tags and Article JSON-LD are present on every page and the feed and sitemap are gated. Titles are process-first ('Kitchen picks, traced to their listings') and the JSON-LD author is an Organization.",
+      "after": "Reader-shaped titles, and structured data that matches what is visibly on the page. Structured data that does not match visible content is worse than none.",
+      "effort": "Half a day. Depends on PB-5 for the author.",
+      "checkable": "Title and description length are trivially checkable and should be added to the gate."
+    },
+    {
+      "id": "PB-11",
+      "area": "Traffic acquisition",
+      "rule": "Only channels the policies permit. Participation Requirements 6(e) and 6(f) bar buying or bidding on Amazon trademarks and variations as search keywords where the result is a Prohibited Paid Search Placement, and require that paid or unpaid search results send users to your site rather than directly or indirectly to an Amazon Site. 6(g) bars any reward or incentive for using Special Links. 4 permits Special Links in email only where the communication was solicited.",
+      "before": "No acquisition plan exists. The only channel assumed is organic search.",
+      "after": "Organic search plus an opted-in email list plus the RSS feed. No paid search on Amazon terms, no giveaway or discount tied to clicking a link, no unsolicited outreach containing Special Links.",
+      "effort": "A decision, then ongoing work. Blocked on S-16 and S-15.",
+      "checkable": "The email opt-in requirement is checkable in the capture form's markup. The rest is process."
+    },
+    {
+      "id": "PB-12",
+      "area": "Machinery",
+      "rule": "Any number, count or list rendered on a page is computed from the rows that page renders. No hand-written sentence about the data. This is the only prescription on this list that prevents a defect rather than describing one, and this repository has shipped the violation four times.",
+      "before": "'Four short links resolved' written by hand above a table of five rows. A source row naming three ASINs after the register said five.",
+      "after": "Every such sentence generated from the collection it describes, and a gate rule that fails the build when a rendered section has an empty body under a non-empty heading.",
+      "effort": "Half a day. Done in part this session: the executive-summary sentence and the shop-page counts are now derived.",
+      "checkable": "Fully checkable, and it should be."
+    }
+  ],
+  "forbidden": [
+    "Openers: 'In today's fast-paced world', 'When it comes to', 'Whether you're a seasoned', 'In this guide, we'll', 'Look no further', 'In conclusion'.",
+    "Filler verbs and nouns: delve, tapestry, landscape (as a metaphor), realm, robust, seamless, effortless, game-changer, elevate, unlock, dive deep.",
+    "The tricolon habit: three comma-separated adjectives before every noun, and three-item lists in every section.",
+    "Hedged superlatives that say nothing: 'one of the best options available', 'a popular choice among home cooks', 'widely regarded as'.",
+    "Unattributed popularity claims of any kind. If we cannot cite it, we cannot say it.",
+    "Bolded pull-quotes in every section, emoji in headings, and centred body text.",
+    "Paragraphs of uniform length within a section, and list items of uniform length within a list.",
+    "Stock photography of smiling people in kitchens that we did not take and cannot licence.",
+    "A 'verdict' or 'winner' badge on a product we have not cooked with. The editorial register already replaced two such badges with fit statements for exactly this reason.",
+    "Any sentence that could be true of a different product. If swapping the product name leaves the sentence standing, cut it."
+  ],
+  "sequence": [
+    {
+      "step": 1,
+      "do": "Settle S-18 (how many publications a crawler sees). Everything downstream is wasted if it is applied to three sites.",
+      "depends": ""
+    },
+    {
+      "step": 2,
+      "do": "Settle S-04 (name) and S-06 / Q-08 (byline). These two change every template and every piece of copy.",
+      "depends": "S-18"
+    },
+    {
+      "step": 3,
+      "do": "PB-7 typography and colour. Highest visible impact, no dependencies once the name exists.",
+      "depends": "S-04"
+    },
+    {
+      "step": 4,
+      "do": "PB-1, PB-2 front page and card anatomy. Partly done; finish once the name and palette exist.",
+      "depends": "PB-7"
+    },
+    {
+      "step": 5,
+      "do": "PB-4 voice pass over the five guides, against the house style file from S-20.",
+      "depends": "PB-1"
+    },
+    {
+      "step": 6,
+      "do": "PB-3 imagery, after S-05 decides the source.",
+      "depends": "S-05"
+    },
+    {
+      "step": 7,
+      "do": "PB-9 cluster linking and PB-10 on-page SEO baseline.",
+      "depends": "PB-5"
+    },
+    {
+      "step": 8,
+      "do": "PB-11 acquisition, after S-15 and S-16.",
+      "depends": "S-15, S-16"
+    },
+    {
+      "step": 9,
+      "do": "PB-12 machinery. Do this first if you would rather stop the drift bugs than improve the look; it is the cheapest item here.",
+      "depends": ""
+    }
+  ],
+  "prompt": "You are redesigning an existing Amazon Associates publication. Read DESIGN-BRIEF.md and data/design-brief.json first; they are generated from one source and agree.\n\nHard constraints, enforced by tools/verify.mjs. Do not relax them and do not edit that gate to make your output pass. No price, star rating, review count or availability figure may appear in the HTML. The sentence 'As an Amazon Associate I earn from qualifying purchases.' must stay above the fold on every page and be repeated in the footer. Every outbound Amazon link keeps rel=\"sponsored\" and keeps tag=shopnow047c-20. Every specification keeps a source link on the same row, and a value with no official source stays blank and flagged. No revenue forecast, conversion score, traffic estimate or search-volume claim. No price tracking or alerting feature. No Amazon content used as model input.\n\nAlready decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.\n\nStill open, and listed on /suggestions/ with options: the site name (S-04), imagery source (S-05), byline (S-06), navigation labels (S-13), how many publications a crawler sees (S-18), house style (S-20), seasonality (S-08). Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.\n\nYour job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.\n\nWork through tools/build.mjs and src/assets/style.css. The site is generated from data/*.json; never hand-edit generated HTML, because the next build will discard it. Run node tools/build.mjs && node tools/verify.mjs and make it pass. Add gate rules for anything you make mechanically checkable, especially title and description length.\n\nWrite copy against the forbidden list in this brief. Read your own output aloud once before finishing: if a sentence could be true of a different product, cut it."
+}

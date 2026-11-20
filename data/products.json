@@ -28,7 +28,24 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "shop_name": "Chefman TurboFry Touch, 6 Qt dual basket",
+      "title_facts": [
+        "6 Quart",
+        "Dual Basket",
+        "Air Fryer Oven",
+        "Easy View Windows",
+        "Sync Finish",
+        "Hi-Fry",
+        "Auto Shutoff",
+        "2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets",
+        "Digital Double Air Fryer",
+        "Black"
+      ],
+      "shop_line": "Two independent 3 Qt baskets that finish together, with windows you can actually see through.",
+      "fits": "Two things at once - a protein and a side - without timing them against each other.",
+      "shape": "basket",
+      "outbound_status_reader": "Link check with Amazon still pending"
     },
     {
       "id": "P02",
@@ -55,7 +72,23 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "shop_name": "Emeril Lagasse French Door AirFryer 360, 26 QT",
+      "title_facts": [
+        "26QT",
+        "French Door",
+        "Multi-Function",
+        "Air Fryer Toaster Oven",
+        "Countertop Convection Cooker",
+        "24 One-Touch Preset Options",
+        "Extra Large Interior",
+        "Six Cooking Accessories Included"
+      ],
+      "shop_line": "A 26 QT countertop oven with french doors and 24 one-touch presets, sized to replace more than one appliance.",
+      "fits": "Replacing the toaster oven as well as the air fryer - if you have the counter space to give it.",
+      "shape": "oven",
+      "open_conflict": "The listing states the accessory count two ways - six in the title, seven in the on-page summary. No count is published here. See FLG-026.",
+      "outbound_status_reader": "Link check with Amazon still pending"
     },
     {
       "id": "P03",
@@ -91,7 +124,23 @@
         "correction": "This record was previously marked unresolved because the link landed on an Amazon \"Continue shopping\" checkpoint. That checkpoint is intermittent and bot-dependent, not evidence of a dead link: re-fetched on 2026-11-20 it resolved to B08DKYBTPH.",
         "corroboration": "The editorial register at data/register/products.json (record P3) also resolved this link to B08DKYBTPH.",
         "method": "Followed https://link.amazon/B00hJ57DV; read the page title and canonical /dp/ URL."
-      }
+      },
+      "shop_name": "Chefman TurboFry Touch, 8 Qt single basket",
+      "title_facts": [
+        "Air Fryer 8 Qt",
+        "TurboFry®",
+        "4-in-1",
+        "450°F Hi-Fry Option",
+        "Bake",
+        "Dehydrate",
+        "Frozen",
+        "XL Nonstick Dishwasher-Safe Basket",
+        "Stainless Steel"
+      ],
+      "shop_line": "One 8 Qt basket, 4-in-1 (air fry, bake, dehydrate, frozen), with a 450°F Hi-Fry setting and a dishwasher-safe nonstick basket.",
+      "fits": "Batch cooking for a household in one basket, with a 450°F Hi-Fry setting when you want more browning.",
+      "shape": "basket",
+      "outbound_status_reader": "Link check with Amazon still pending"
     },
     {
       "id": "P04",
@@ -127,7 +176,24 @@
         "correction": "This record listed B08DKYBTPH (a Chefman 8 Qt air fryer) as the destination of B0c8moW59. That was wrong. B0c8moW59 was fetched twice on 2026-11-20 and both fetches landed on B0DHZTCNR5, a ThermoMaven meat thermometer. B08DKYBTPH is the destination of B00hJ57DV.",
         "corroboration": "The independent editorial register at data/register/products.json (record P4) reached the same destination for this link, by a separate session.",
         "method": "Followed https://link.amazon/B0c8moW59 twice; read the page title and canonical /dp/ URL each time. Stable across both fetches."
-      }
+      },
+      "shop_name": "ThermoMaven 1 Sec instant-read thermometer",
+      "title_facts": [
+        "1 Sec",
+        "Professional Digital Meat Thermometer",
+        "±0.5℉ Accuracy",
+        "NIST&NSF Certified",
+        "Auto-Rotate Bright LED Screen",
+        "IP67 Waterproof",
+        "Grill BBQ",
+        "Black"
+      ],
+      "shop_line": "A one-second instant read at ±0.5℉, NIST and NSF certified, IP67 waterproof, with a screen that rotates for either hand.",
+      "fits": "Checking a finished cook at the counter or the grill, rather than leaving a probe in the whole time.",
+      "shape": "instant-read",
+      "observed_newer_version_asin": "B0GL7Z4KP4",
+      "superseded_note": "Amazon's page for this ASIN carries a 'Newer Version Available' block pointing at B0GL7Z4KP4 (same product name, Orange). The successor was not submitted and is not published as a product row. See FLG-025.",
+      "outbound_status_reader": "Link check with Amazon still pending"
     },
     {
       "id": "P05",
@@ -154,8 +220,28 @@
         "S04"
       ],
       "tagged_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-      "outbound_status": "Associates link check pending (gate G-02)"
+      "outbound_status": "Associates link check pending (gate G-02)",
+      "shop_name": "CHEF iQ Sense wireless probe thermometer, Gen3",
+      "title_facts": [
+        "CHEF iQ Sense",
+        "Smart Wireless Meat Thermometer",
+        "3 Ultra-Thin Probes",
+        "WiFi Unlimited Range",
+        "1000°F Heat Safe",
+        "5 Sensors",
+        "BBQ",
+        "Grill",
+        "Oven",
+        "Smoker",
+        "Air Fryer",
+        "Gen3"
+      ],
+      "shop_line": "Three ultra-thin wireless probes, WiFi range, 1000°F heat safe, five sensors - monitoring rather than spot-checking.",
+      "fits": "A long cook you want to walk away from: smoker, oven or grill, monitored from your phone.",
+      "shape": "wireless-probe",
+      "outbound_status_reader": "Link check with Amazon still pending"
     }
   ],
-  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022."
+  "reverified": "2026-11-20 — P03 and P04 re-fetched after two destinations were found transposed. See each record's \"reverification\" block and flag FLG-022.",
+  "display_note": "The shop_name, title_facts, shop_line, fits and shape fields were added by session 66f2548a for reader-facing copy only. Every fact used in shop_line and fits appears in that product's own observed_title, and title_facts lists those words so the derivation can be checked. No specification was taken from a review site, a search snippet or inference. These fields are display copy; they are not verified spec values, and the verified spec record stays in the observed_* fields and in data/register/products.json. outbound_status_reader was added in the same pass: it is the reader-facing wording of outbound_status for product cards. The audit wording is unchanged and is still shown verbatim on the shop table and the product pages. One comparative claim was withdrawn in this pass: an earlier draft described P03 as having \"the highest Hi-Fry temperature of the three here\", which cannot be supported, because P01's listing states a Hi-Fry option and no temperature. Ranking two products on a value that is only stated for one of them is exactly the inference this register exists to prevent."
 }

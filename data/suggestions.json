@@ -1,129 +1,1107 @@
 {
-  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
+  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option, except where a row says implemented in this session - those were done because leaving them undone meant shipping a known defect, and each one is still reversible in one commit and is listed here for review. Reply with the suggestion ID and option letter, for example 'S-18 B'.",
   "suggestions": [
     {
       "id": "S-01",
       "topic": "Outbound link handling",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
-        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
+        {
+          "id": "A",
+          "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).",
+          "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."
+        },
+        {
+          "id": "B",
+          "label": "Hide all buy buttons until gate G-02 passes.",
+          "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."
+        }
       ],
-      "recommendation": "B, until G-02 passes."
+      "recommendation": "B, until G-02 passes.",
+      "track": "revenue",
+      "problem": "The five supplied links resolve to Amazon product pages with no tag= parameter, so as supplied they cannot attribute a purchase. The site currently publishes constructed https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20 URLs, which have the shape Participation Requirements 2(b) asks for but have never been tested in Associates Central.",
+      "evidence": {
+        "sources": [
+          "S02",
+          "S05"
+        ],
+        "flags": [
+          "FLG-003",
+          "FLG-005"
+        ]
+      },
+      "depends_on": [],
+      "gate": "G-02",
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-02",
       "topic": "Publishing cadence",
       "current": "A",
       "options": [
-        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
-        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
-        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+        {
+          "id": "A",
+          "label": "One new guide every two weeks (proposed default).",
+          "tradeoff": "Steady growth; needs a writing slot every two weeks."
+        },
+        {
+          "id": "B",
+          "label": "One new guide per week.",
+          "tradeoff": "Faster growth; higher manual load."
+        },
+        {
+          "id": "C",
+          "label": "A batch of 10 guides before launch, then monthly.",
+          "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."
+        }
       ],
-      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review."
+      "recommendation": "C, to reach the 10-post rule of thumb before the Associates review.",
+      "track": "findability",
+      "problem": "Five guides exist. The brief asks for a cadence, and the Associates application review looks at content depth; an earlier session recorded the 'at least 10 posts' rule of thumb from S11 as an excerpt, not as a policy requirement.",
+      "evidence": {
+        "sources": [
+          "S11"
+        ],
+        "flags": [
+          "FLG-007"
+        ]
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-03",
       "topic": "Where the analytics collector runs",
       "current": "D",
       "options": [
-        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
-        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
-        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
-        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
+        {
+          "id": "A",
+          "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.",
+          "tradeoff": "Full control of raw data; you run the server."
+        },
+        {
+          "id": "B",
+          "label": "Run the collector on a platform that supports Node.js with persistent storage.",
+          "tradeoff": "Less server work; check the platform's data terms."
+        },
+        {
+          "id": "C",
+          "label": "Use a third-party privacy-focused analytics product.",
+          "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."
+        },
+        {
+          "id": "D",
+          "label": "No analytics for now (current).",
+          "tradeoff": "Nothing to maintain; no click or conversion data."
+        }
       ],
-      "recommendation": "A or B if you want measured queries before choosing the next topic."
+      "recommendation": "A or B if you want measured queries before choosing the next topic.",
+      "track": "measurement",
+      "problem": "The click counter ships on every page but the endpoint is empty, so nothing is recorded. GitHub Pages cannot run a receiver.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-009",
+          "FLG-029"
+        ]
+      },
+      "depends_on": [
+        "S-16"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-04",
       "topic": "Brand name",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
-        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
+        {
+          "id": "A",
+          "label": "Keep the working name 'Affil3' (current).",
+          "tradeoff": "Matches the repository."
+        },
+        {
+          "id": "B",
+          "label": "Choose a consumer-facing name and domain.",
+          "tradeoff": "Better recall; needs a domain and a naming check."
+        }
       ],
-      "recommendation": "B before wider promotion."
+      "recommendation": "B before wider promotion.",
+      "track": "trust",
+      "problem": "The site is called Affil3, which is a repository name rather than a publication a reader would remember, recommend or type into a search box.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-031"
+        ]
+      },
+      "depends_on": [
+        "S-13"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-05",
       "topic": "Imagery",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
-        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
-        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
+        {
+          "id": "A",
+          "label": "Typography and layout only, no product photos (current).",
+          "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."
+        },
+        {
+          "id": "B",
+          "label": "Original photography of products you own.",
+          "tradeoff": "Strong for reader trust; needs equipment and time."
+        },
+        {
+          "id": "C",
+          "label": "Amazon-supplied images through the Associates tools.",
+          "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."
+        }
       ],
-      "recommendation": "B for guides; A for the front page."
+      "recommendation": "B for guides; A for the front page.",
+      "track": "trust",
+      "problem": "No page carries a product image. Program Content rules govern what imagery may be used and how it may be altered, so this is a policy question before it is a design one.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-015"
+        ]
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-06",
       "topic": "Authorship",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
-        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
+        {
+          "id": "A",
+          "label": "Team byline 'Affil3 editorial team' (current).",
+          "tradeoff": "No invented person."
+        },
+        {
+          "id": "B",
+          "label": "Named author with a real bio and a review date.",
+          "tradeoff": "Stronger signal of accountability; needs a real person."
+        }
       ],
-      "recommendation": "B once a real reviewer is named."
+      "recommendation": "B once a real reviewer is named.",
+      "track": "trust",
+      "problem": "Every guide is bylined to an organisation. Google's own guidance and the FTC's endorsement guidance both turn on who is speaking, and Program Policies 2(b) bars misleading claims about a Product.",
+      "evidence": {
+        "sources": [
+          "S02",
+          "S06",
+          "S07"
+        ],
+        "flags": [
+          "FLG-014"
+        ]
+      },
+      "depends_on": [
+        "S-14"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-07",
       "topic": "Content depth before Associates review",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
-        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
+        {
+          "id": "A",
+          "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).",
+          "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."
+        },
+        {
+          "id": "B",
+          "label": "Hold the site from review until 10 original posts exist.",
+          "tradeoff": "Aligns with S11; delays the tag-based program."
+        }
       ],
-      "recommendation": "B."
+      "recommendation": "B.",
+      "track": "revenue",
+      "problem": "Content depth before the Associates application review.",
+      "evidence": {
+        "sources": [
+          "S11"
+        ],
+        "flags": [
+          "FLG-007"
+        ]
+      },
+      "depends_on": [
+        "S-02"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-08",
       "topic": "Seasonal content",
       "current": "B",
       "options": [
-        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
-        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+        {
+          "id": "A",
+          "label": "A gift and holiday-cooking guide hub for November and December 2026.",
+          "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."
+        },
+        {
+          "id": "B",
+          "label": "Evergreen guides only (current).",
+          "tradeoff": "Simpler; no seasonal claims."
+        }
       ],
-      "recommendation": "B until measured queries (from S-03) show interest."
+      "recommendation": "B until measured queries (from S-03) show interest.",
+      "track": "findability",
+      "problem": "Seasonal angles for countertop cooking. Program Policies 2(b) requires removing links and references to a limited-time promotion as soon as it ends, so seasonal content carries a takedown obligation, not just a writing one.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": []
+      },
+      "depends_on": [
+        "S-02"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-09",
       "topic": "Category focus",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
-        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
+        {
+          "id": "A",
+          "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).",
+          "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."
+        },
+        {
+          "id": "B",
+          "label": "Focus on air fryers and move the thermometer to a supporting note.",
+          "tradeoff": "Tighter topic; drops the thermometer cluster."
+        }
       ],
-      "recommendation": "A until the unresolved link is decided."
+      "recommendation": "A until the unresolved link is decided.",
+      "track": "findability",
+      "problem": "Whether to widen beyond the three clusters the five products imply.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": []
+      },
+      "depends_on": [
+        "S-01"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-10",
       "topic": "Prices and ratings",
       "current": "A",
       "options": [
-        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
-        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+        {
+          "id": "A",
+          "label": "Show no prices or ratings (current).",
+          "tradeoff": "No stale or unverified numbers."
+        },
+        {
+          "id": "B",
+          "label": "Show dated prices from an authorized source, refreshed on a schedule.",
+          "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."
+        }
       ],
-      "recommendation": "A now; B only after an authorized source is confirmed."
+      "recommendation": "A now; B only after an authorized source is confirmed.",
+      "track": "compliance",
+      "problem": "Prices and ratings. Participation Requirements 2(b) allows prices only where Amazon serves the link or the data comes from the Creators API or PA API, and 6(t) bars displaying customer reviews or star ratings without the same. 6(y) separately bars price tracking or alerting functionality on the Site unless Amazon agrees.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-016",
+          "FLG-028"
+        ]
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-11",
       "topic": "Reader capture (email list)",
       "current": "A",
       "options": [
-        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
-        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
+        {
+          "id": "A",
+          "label": "No email capture (current).",
+          "tradeoff": "No email data to store."
+        },
+        {
+          "id": "B",
+          "label": "Opt-in email list.",
+          "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."
+        }
       ],
-      "recommendation": "A until the email rules are reviewed."
+      "recommendation": "A until the email rules are reviewed.",
+      "track": "measurement",
+      "problem": "A reader email list. Program Policies 4 permits Special Links in email only where the communication was solicited, and 6(g) bars offering any reward or incentive for using Special Links.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-029"
+        ]
+      },
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     },
     {
       "id": "S-12",
       "topic": "Search Console",
       "current": "B",
       "options": [
-        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
-        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+        {
+          "id": "A",
+          "label": "Do not connect Search Console.",
+          "tradeoff": "No search data."
+        },
+        {
+          "id": "B",
+          "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).",
+          "tradeoff": "Needs a Google account owner (Q-12)."
+        }
       ],
-      "recommendation": "B."
+      "recommendation": "B.",
+      "track": "findability",
+      "problem": "Search Console is not connected, so no query data exists.",
+      "evidence": {
+        "sources": [
+          "S06"
+        ],
+        "flags": [
+          "FLG-013"
+        ]
+      },
+      "depends_on": [
+        "S-15"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-13",
+      "track": "trust",
+      "topic": "Navigation labels",
+      "problem": "The masthead reads Shop / Guides / Categories / About and the footer group is headed 'Dashboards and records' with fourteen entries. 'Shop' is the only label a buyer would use; the rest are internal vocabulary. A reader who wants the disclosure has to guess which of fourteen footer links carries it.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the current labels: Shop, Guides, Categories, About in the masthead; all fourteen dashboards in one footer group.",
+          "tradeoff": "No work. The footer group is a list of our nouns, not a reader's.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Relabel to reader vocabulary - Shop, Buying guides, By category, How we review - and split the footer into two headed groups, 'For readers' and 'Records and verification'.",
+          "tradeoff": "An hour in the generator. Nothing else changes; the same pages stay reachable.",
+          "effort": "1 hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Cut the masthead to three items and move every record page behind a single 'How we review' page.",
+          "tradeoff": "Cleanest for a buyer. Adds a click to reach the register, which the brief explicitly wants kept reachable.",
+          "effort": "2 hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. It satisfies the brief's 'one navigation group' and 'dashboards reachable from the footer' while stopping the footer reading like a file listing. C is the better answer once there is enough editorial content to carry a real 'How we review' page.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-030"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [
+        "S-04"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-14",
+      "track": "trust",
+      "topic": "The RSS feed that already ships",
+      "problem": "feed.xml exists, carries one item per guide, and the gate asserts that coverage. It is not linked from any page body, only from the footer, and it has no <updated> discipline beyond lastmod. A feed that ships but is never surfaced cannot gain subscribers, and the brief lists it as a row to carry.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the feed as it is: generated, gated, footer-linked.",
+          "tradeoff": "Zero work. It stays a compliance artefact rather than a channel.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Surface it where a reader finishes something: one line at the foot of every guide - 'New guides go out by RSS' - plus the existing footer link.",
+          "tradeoff": "Twenty minutes in the generator. No new dependency, no third party.",
+          "effort": "20 minutes",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add a JSON Feed alongside RSS.",
+          "tradeoff": "Some readers and apps prefer it; two feeds to keep in step for an audience of zero.",
+          "effort": "1 hour",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B. It is the cheapest change that turns an existing artefact into something a reader can act on. Do it with S-16 so the two offers sit together rather than competing.",
+      "evidence": {
+        "sources": [
+          "S06"
+        ],
+        "flags": [
+          "FLG-030"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-15",
+      "track": "findability",
+      "topic": "Search Console",
+      "problem": "Not connected, so there is no query data, no coverage report and no way to submit the sitemap. Every editorial choice is therefore made on instinct, which is exactly what the brief asks to stop doing.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Verify the property now, submit both sitemaps, and read the coverage report after two weeks.",
+          "tradeoff": "Needs a Google account and control of the domain; about an hour. Submitting two sitemaps assumes S-18 is settled first.",
+          "effort": "1 hour",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Not connected (current).",
+          "tradeoff": "Nothing to do. No measured queries, so the next guide topic is a guess.",
+          "effort": "none",
+          "risk": "none"
+        },
+        {
+          "id": "C",
+          "label": "Verify with the HTML-tag method rather than the file method, to avoid committing a verification file to the repository root.",
+          "tradeoff": "Same cost as A; keeps a third-party token out of the published tree. GitHub Pages serves whatever is committed, so the token would be public either way - it is a site-scoped token, not a credential.",
+          "effort": "1 hour",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "A or C, after S-18. Verifying before deciding how many publications exist means submitting sitemaps for pages you may then retire.",
+      "evidence": {
+        "sources": [
+          "S06"
+        ],
+        "flags": [
+          "FLG-013",
+          "FLG-034"
+        ]
+      },
+      "depends_on": [
+        "S-18"
+      ],
+      "blocks": [
+        "S-02",
+        "S-08"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-16",
+      "track": "trust",
+      "topic": "Reader capture",
+      "problem": "There is no way for a reader to come back. No email list, no feed subscription surfaced in the body, no bookmark prompt. For an affiliate site whose entire revenue depends on a returning reader clicking a tagged link, that is the missing half of the model.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "None (current).",
+          "tradeoff": "Nothing to maintain and nothing to comply with. Also nothing that brings a reader back.",
+          "effort": "none",
+          "risk": "none"
+        },
+        {
+          "id": "B",
+          "label": "RSS only - implement S-14 B and stop there.",
+          "tradeoff": "No personal data collected, so no privacy notice obligation attaches to it and no third-party processor appears. Weakest retention.",
+          "effort": "20 minutes",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "An email list via a third-party form provider.",
+          "tradeoff": "Real retention. Introduces a data processor, which needs the privacy notice at FLG-029, and Program Policies 4 permits Special Links in email only where the message was solicited, so the list must be genuine opt-in. 6(g) bars any incentive for clicking a Special Link, so no 'enter to win' framing.",
+          "effort": "half a day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B now, C once the privacy notice is reviewed and a provider is chosen. Do not run C without settling S-03 and FLG-029 first, or the site collects personal data with no notice on it.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-029",
+          "FLG-030"
+        ]
+      },
+      "depends_on": [
+        "S-14",
+        "S-03"
+      ],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-17",
+      "track": "platform",
+      "topic": "Derive every count on a page from the rows that page counts",
+      "problem": "This repository has now shipped the same class of bug three times. A shop page said 'four short links resolved' under a table of five. A flag with status resolved rendered as open. A source row named three ASINs after the data said five. In each case a sentence was written once by hand and never re-derived from the data it described.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Fix each instance as it is found (what has happened so far).",
+          "tradeoff": "Works until the next one. There is no mechanism preventing recurrence.",
+          "effort": "none",
+          "risk": "high"
+        },
+        {
+          "id": "B",
+          "label": "Add a gate rule: any digit-word or numeral in page copy that refers to a row count must be generated from that row set. Practically, forbid a small list of hand-written count phrases in templates and require the computed form.",
+          "tradeoff": "A few hours in tools/verify.mjs. Catches the class rather than the instance.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add a build-time assertion that every collection rendered on a page is non-empty unless the page says so explicitly, and that no rendered section has an empty body.",
+          "tradeoff": "Cheaper than B, catches the FLG-032 empty-cluster case as well as count drift.",
+          "effort": "2 hours",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B and C together. They are the only two rows on this page that prevent a defect rather than describe one, and both are small.",
+      "evidence": {
+        "sources": [],
+        "flags": [
+          "FLG-032",
+          "FLG-033"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-18",
+      "track": "findability",
+      "topic": "How many publications should a crawler see",
+      "problem": "Three surfaces publish the same five products: the root site, /editorial/, and /legacy/arena-83a43a96/. robots.txt advertises two of them. The brief asks for one site to index.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave all three served and both sitemaps declared (current).",
+          "tradeoff": "Preserves every session's provenance exactly as merged. Splits ranking signal three ways and gives a crawler no reason to prefer any of them.",
+          "effort": "none",
+          "risk": "high"
+        },
+        {
+          "id": "B",
+          "label": "Keep one publication indexed. Add noindex to /editorial/ and /legacy/, drop the second Sitemap line from robots.txt, and leave both fully reachable and linked from the footer for humans.",
+          "tradeoff": "One canonical surface for a crawler, nothing deleted, provenance intact. The second publication stops earning traffic, which is the point.",
+          "effort": "2 hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Merge the editorial register's verified spec data into the root register and retire /editorial/ as a served surface, keeping it in git history.",
+          "tradeoff": "The strongest single site, and it reunites the two verification passes. It is also the largest change here, and it discards a published surface another session built.",
+          "effort": "2-3 days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B now, C later if the data merge is wanted. B is reversible in one commit and immediately fixes the duplicate-coverage problem; C is a data-modelling project that should not be rushed into a compliance-sensitive register.",
+      "evidence": {
+        "sources": [
+          "S06"
+        ],
+        "flags": [
+          "FLG-034"
+        ]
+      },
+      "depends_on": [
+        "S-04"
+      ],
+      "blocks": [
+        "S-15"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-19",
+      "track": "trust",
+      "topic": "What the front page is for",
+      "problem": "The front page currently opens with the kicker 'Observed on 2026-11-20 - Amazon listings', the headline 'Five kitchen picks, each traced to its listing', and cards showing 'Observed ASIN B0CDY277D3' and 'Associates link check pending (gate G-02)'. Every one of those is true and every one is about us rather than the reader. It is the single clearest reason the site reads as generated.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep it (current). Fully traceable above the fold.",
+          "tradeoff": "Honest, and it costs every click. No buyer has ever wanted to know a link check is pending.",
+          "effort": "none",
+          "risk": "high"
+        },
+        {
+          "id": "B",
+          "label": "Lead with the reader's problem, keep the trace one line down. Headline becomes a claim about the category, each card leads with a human product name and a one-line 'who it fits', and 'observed ASIN / gate pending' moves to a small muted line under the button and to the product page.",
+          "tradeoff": "A day in the generator plus display-only fields in data/products.json. No verified value changes and nothing is removed from the record.",
+          "effort": "1 day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Full editorial redesign: hero, curated 'best for' slots, imagery, related-guide rail.",
+          "tradeoff": "What a real affiliate publication looks like. Depends on S-05 imagery and S-04 name being settled, and it is the largest single change on this page.",
+          "effort": "3-5 days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B immediately, C once S-04 and S-05 are decided. B is implemented in this session as far as it can be without inventing anything: the copy is rewritten from fields that already exist or from display-only fields, and every verification string is preserved somewhere on the page.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-014",
+          "FLG-015"
+        ]
+      },
+      "depends_on": [
+        "S-04",
+        "S-05"
+      ],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-20",
+      "track": "trust",
+      "topic": "A house style rule that can be checked",
+      "problem": "'Do not read like AI slop' is not implementable as stated. It becomes implementable as a short list of forbidden patterns that a build can test: the same sentence rhythm in every paragraph, a heading that is a noun phrase rather than a claim, every list item the same length, 'in today's fast-paced world' openers, a bolded pull-quote per section, and the word 'delve'.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Rely on editorial judgement per page.",
+          "tradeoff": "Free, and it is how the current copy was produced.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Write a house style file - a page of concrete do/don't rules with before-and-after examples drawn from this site's own copy - and check the mechanical parts in the gate: banned opener phrases, headings that are not claims, uniform list-item length within a section.",
+          "tradeoff": "Half a day. The gate catches the mechanical failures; the rest stays editorial. This is the row most likely to change how the site reads.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add a readability score threshold per page (Flesch-Kincaid or similar) to the gate.",
+          "tradeoff": "Objective and easy to implement, and it optimises for the wrong thing - it will push copy toward short dumb sentences, which is its own kind of slop.",
+          "effort": "2 hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B, and publish the house style file on the site so a reader can see the standard the copy is held to. That page does more for trust than any badge.",
+      "evidence": {
+        "sources": [
+          "S02"
+        ],
+        "flags": [
+          "FLG-014"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [
+        "S-19"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-21",
+      "track": "platform",
+      "topic": "Fix CI so the gate actually runs",
+      "problem": "The workflow diffs docs/, which does not exist, and never runs the root site's 1316-check gate. The assertion that committed output matches a fresh build therefore always passes without checking anything.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave it. The gate passes locally and that has been treated as sufficient.",
+          "tradeoff": "It has been sufficient until it has not: two of the three count-drift bugs in this repository's history shipped to main.",
+          "effort": "none",
+          "risk": "high"
+        },
+        {
+          "id": "B",
+          "label": "Rebuild both sites in CI, diff the paths each actually writes, and run both gates.",
+          "tradeoff": "About thirty lines of YAML. Makes the local gate a merge requirement rather than a habit.",
+          "effort": "1 hour",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B. Implemented in this session; review the diff.",
+      "evidence": {
+        "sources": [],
+        "flags": [
+          "FLG-023"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-22",
+      "track": "compliance",
+      "topic": "Record the two policy clauses that constrain the AI part of the brief",
+      "problem": "The brief asks for an AI-powered platform that automates product research and pricing analysis. Two clauses read verbatim in this session's re-fetch bear on that directly and neither had been recorded: Participation Requirements 5 bars using Special Links or Program Content to develop machine learning models without Amazon's express prior written approval, and 6(y) bars price tracking or alerting functionality on the Site unless Amazon agrees.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Treat the automation in the brief as unqualified and build it.",
+          "tradeoff": "Fastest path to the thing the brief describes, and the most likely path to a material breach. The preamble to the Program Policies makes any violation of the Participation Requirements a material breach of the Agreement.",
+          "effort": "none",
+          "risk": "high"
+        },
+        {
+          "id": "B",
+          "label": "Build only the automation that touches no Special Link and no Program Content: internal registers, the build, the gate, the analytics pipeline, drafts from manufacturer pages with citations. Keep pricing analysis off the Site entirely. Ask Amazon about 5 before going further.",
+          "tradeoff": "Slower, and it means part of the brief stays unbuilt. Everything already in this repository is inside it.",
+          "effort": "ongoing",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Request the PA API / Creators API and Amazon's written approval, then build the full pipeline.",
+          "tradeoff": "The only route to prices, ratings and the automated research the brief describes. Requires an approved account and a qualifying site, so it depends on S-01 and Q-03.",
+          "effort": "weeks",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B now, C as the destination. Published on the compliance page in this session so the constraint is visible to whoever builds next.",
+      "evidence": {
+        "sources": [
+          "S02",
+          "S01"
+        ],
+        "flags": [
+          "FLG-027",
+          "FLG-028"
+        ]
+      },
+      "depends_on": [
+        "S-01"
+      ],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-23",
+      "track": "compliance",
+      "topic": "A privacy notice for the click counter",
+      "problem": "Participation Requirements 3(e) requires disclosing cookies, pixels and other technologies and how visitor data is collected, used, stored and disclosed. The site loads a click counter on every page and publishes no notice. The only privacy page in the repository belongs to a superseded site.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Ship no notice (current).",
+          "tradeoff": "The counter sets no cookies and the endpoint is empty, so nothing is presently collected. The obligation to disclose the technology does not obviously disappear because the endpoint is unset.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Publish a short /privacy/ page stating what the counter does, what it does not collect, that the endpoint is unset, and what changes if a third-party analytics product is adopted.",
+          "tradeoff": "An hour. Written plainly rather than from a generator, and it should be reviewed rather than trusted.",
+          "effort": "1 hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Adopt a hosted consent and privacy service.",
+          "tradeoff": "Proportionate for a site with a real audience and third-party processors. Overkill now and adds a processor of its own.",
+          "effort": "a day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B, implemented in this session for review. It is a draft of a legal-adjacent page, not legal advice; Q-13 stands.",
+      "evidence": {
+        "sources": [
+          "S02",
+          "S07"
+        ],
+        "flags": [
+          "FLG-029"
+        ]
+      },
+      "depends_on": [
+        "S-03"
+      ],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-24",
+      "track": "platform",
+      "topic": "One register or two",
+      "problem": "Two product registers exist: data/products.json for the root site and data/register/products.json for /editorial/. They disagreed once, in a way that put a meat thermometer against the wrong submitted link, and the disagreement was only caught because a third session re-read both. Every verified fact is currently maintained twice.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep both, and re-check them against each other each session (current).",
+          "tradeoff": "No migration risk. The check is manual, and manual checks in this repository have a documented record of being missed.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a gate rule that fails the build when the two registers disagree on any shared field for any product.",
+          "tradeoff": "An hour. Does not remove the duplication but makes disagreement impossible to ship - which is the failure that actually happened.",
+          "effort": "1 hour",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Merge into one register with per-publication views.",
+          "tradeoff": "Removes the duplication permanently. It is the largest data change available here and touches files owned by two earlier sessions.",
+          "effort": "2 days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B now, C if S-18 C is chosen. B is a few dozen lines and it converts a class of silent error into a build failure.",
+      "evidence": {
+        "sources": [],
+        "flags": [
+          "FLG-022",
+          "FLG-034"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [
+        "S-18"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-25",
+      "track": "compliance",
+      "topic": "Should the gate tell a product link apart from a citation?",
+      "problem": "The gate requires every amazon.com hyperlink on the site to carry rel=\"sponsored\". For the links that pay for this site that is exactly right, and it is what Google's guidance asks for. It is over-broad for a citation: linking to Amazon's own privacy notice or help pages and marking them as paid placements tells Google something false about them. This surfaced while writing /privacy/ in this session - the gate correctly refused the page, and the link was removed rather than mislabelled or the gate weakened.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the blanket rule. Any amazon.com link must be rel=\"sponsored\", and pages cite Amazon URLs as plain text instead of linking them (current).",
+          "tradeoff": "Impossible to ship an untagged or unmarked product link, which is the failure that matters. Costs a few convenience links, and plain-text URLs are worse for readers on phones.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "Make the rule precise and fail-closed: a link is product-intent if it targets /dp/ or carries tag= or data-outbound, and must then be sponsored AND tagged; every other amazon.com link must NOT be sponsored. Anything that cannot be classified fails the build.",
+          "tradeoff": "Semantically correct against Google's guidance and it restores citation links. It is a change to a compliance gate, so it needs a negative test proving an untagged product link still fails, and it should not be made by a build session on its own authority.",
+          "effort": "2 hours",
+          "risk": "medium"
+        },
+        {
+          "id": "C",
+          "label": "Keep the blanket rule for product links and allow an explicit allowlist of informational Amazon hosts and paths, checked literally.",
+          "tradeoff": "Narrower than B and easier to audit - the allowlist is short and visible. It grows by hand and someone will eventually add a path they should not have.",
+          "effort": "1 hour",
+          "risk": "low"
+        }
+      ],
+      "recommendation": "B, with the negative test written first: break a product link's tag, confirm the build fails, then make the change. Do not adopt B without that test, because the blanket rule is currently the only thing standing between this site and an untagged outbound link.",
+      "evidence": {
+        "sources": [
+          "S06",
+          "S02"
+        ],
+        "flags": [
+          "FLG-003",
+          "FLG-029"
+        ]
+      },
+      "depends_on": [],
+      "blocks": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     }
-  ]
+  ],
+  "tracks": [
+    {
+      "id": "revenue",
+      "name": "1. Unblock revenue",
+      "why": "Nothing on this site earns until a tagged Special Link exists and has been tested once. These rows come first and are mostly owner-access tasks measured in minutes, not build work."
+    },
+    {
+      "id": "trust",
+      "name": "2. Reader trust and publication polish",
+      "why": "The brief's complaint is that the site reads like generated output. These rows are the design and editorial decisions that make it read like something a person published: a name, a voice, a byline, pictures, and a front page that leads with a promise instead of an audit trail."
+    },
+    {
+      "id": "findability",
+      "name": "3. Findability",
+      "why": "One site for a crawler to index, a sitemap and feed that grow with each guide, and a way to see which queries actually arrive. Without this the next topic is chosen by instinct."
+    },
+    {
+      "id": "measurement",
+      "name": "4. Measurement",
+      "why": "Click and conversion counting, and the campaign ledger. Deliberately last among the build tracks: measuring a page nobody can find produces zeros, and zeros are not a signal."
+    },
+    {
+      "id": "compliance",
+      "name": "5. Compliance gates",
+      "why": "Rules that should be enforced by the build rather than remembered by an editor. Two clauses found in this session's re-read had never been recorded and both change what may be built."
+    },
+    {
+      "id": "platform",
+      "name": "6. Platform and repo machinery",
+      "why": "CI, registers, and the failure modes that produced real errors in this repository's own history. Cheap to fix, and they are what stops the same mistake recurring."
+    }
+  ],
+  "how_to_use": "Read the tracks in order. Track 1 is mostly owner-access work measured in minutes and it gates every other track: until one tagged link has been tested in Associates Central, the site cannot earn and no amount of design work changes that. Track 2 is the answer to 'it should not read like AI slop' - it is deliberately concrete, because a vague instruction here produces vague copy. Tracks 3 and 4 are findability and measurement. Track 5 records two policy clauses found in this session's re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository's own repeated bugs came from.",
+  "sequence": [
+    {
+      "order": 1,
+      "id": "S-01",
+      "why": "Gate G-02. One tagged link, tested once, before anything scales. Minutes of owner time; unblocks all revenue."
+    },
+    {
+      "order": 2,
+      "id": "S-22",
+      "why": "Decide the automation boundary before building more automation, not after."
+    },
+    {
+      "order": 3,
+      "id": "S-18",
+      "why": "Settle how many publications a crawler sees before verifying Search Console, or you submit sitemaps for pages you may retire."
+    },
+    {
+      "order": 4,
+      "id": "S-19",
+      "why": "The front page is where the 'reads like generated output' complaint lands. Depends on S-04 for the name."
+    },
+    {
+      "order": 5,
+      "id": "S-04",
+      "why": "A publication needs a name. Cheap, and S-13, S-19 and S-20 all read better once it exists."
+    },
+    {
+      "order": 6,
+      "id": "S-20",
+      "why": "A checkable house style is what stops the next page regressing."
+    },
+    {
+      "order": 7,
+      "id": "S-15",
+      "why": "Search Console, after S-18, so the next topic is chosen from measured queries."
+    },
+    {
+      "order": 8,
+      "id": "S-03",
+      "why": "An analytics endpoint with an owner. Meaningless before there is traffic to measure."
+    },
+    {
+      "order": 9,
+      "id": "S-16",
+      "why": "Reader capture, after S-14 and after the privacy notice at S-23 is reviewed."
+    },
+    {
+      "order": 10,
+      "id": "S-02",
+      "why": "Cadence, once S-15 can tell you what to write next."
+    }
+  ],
+  "decision_log": [],
+  "open_count_note": "Computed at build time from the rows below; do not hard-code it."
 }

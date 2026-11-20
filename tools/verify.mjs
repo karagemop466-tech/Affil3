@@ -8,8 +8,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DOCS = ROOT; // generated site lives at the repository root
+// OWNED mirrors tools/build.mjs. 'privacy' and 'design-brief' were added by session 66f2548a so the
+// two new pages are gated rather than published unchecked. Adding a path here increases coverage;
+// it relaxes nothing. Logged in COORDINATION.md because this file belongs to the root-site session.
 const OWNED = ['index.html', 'shop', 'categories', 'guides', 'executive-summary', 'sources', 'questions', 'suggestions',
-  'flagged', 'ledger', 'measurement', 'compliance', 'about', '404.html'];
+  'flagged', 'ledger', 'measurement', 'compliance', 'about', 'privacy', 'design-brief', '404.html'];
 const read = (p) => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const cfg = read('data/config.json');
 const products = read('data/products.json').products;
@@ -110,6 +113,15 @@ if (!fs.existsSync(path.join(DOCS, 'index.html'))) {
     check(`${name}: footer repeats disclosure`, /<footer[\s\S]*<p class="disclosure-footer">[\s\S]*?Disclosure\./.test(html));
     check(`${name}: no meta refresh / redirect`, !/http-equiv="refresh"|window\.location\s*=/.test(html));
     check(`${name}: no price-like amounts`, !/\$\s?\d/.test(body), (body.match(/.{0,20}\$\s?\d.{0,20}/) || [''])[0]);
+    // Zero third-party requests. The site loads one stylesheet and one script, both same-origin, and
+    // /privacy/ says so. A webfont, analytics or widget from another origin would make that page
+    // false and would add a data processor nobody has reviewed (S-03, FLG-029).
+    check(`${name}: no external stylesheet, script or font origin`,
+      !/<link[^>]+href="https?:\/\/(?!karagemop466-tech\.github\.io)[^"]+"[^>]*rel="stylesheet"/i.test(html)
+      && !/<script[^>]+src="https?:\/\//i.test(html)
+      && !/@import\s+url\(\s*['"]?https?:/i.test(html)
+      && !/fonts\.(googleapis|gstatic)\.com/i.test(html),
+      (html.match(/<link[^>]+rel="stylesheet"[^>]*>|<script[^>]+src="https?:[^>]*>/i) || [''])[0]);
     // dashboards in footer
     const footer = (html.match(/<footer[\s\S]*<\/footer>/) || [''])[0];
     for (const d of ['/executive-summary/', '/shop/', '/sources/', '/questions/', '/suggestions/', '/flagged/', '/ledger/', '/measurement/', '/compliance/', '/about/']) {
