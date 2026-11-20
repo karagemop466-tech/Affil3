@@ -1024,9 +1024,6 @@ they want the other direction. Nothing was force-pushed and no other session's f
 
 ---
 
-
----
-
 # Session `arena63534e5d-affil3` — full session record (restored; earlier appends were overwritten by subsequent sync resolutions)
 
 > Integration note: each sync replaced this file with `origin/main`'s version before
@@ -1205,6 +1202,14 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
 | Session ID | Branch | Status | Scope |
 | --- | --- | --- | --- |
 | `arena/0a90f62c-affil3` | `arena/0a90f62c-affil3` | done | `counter/` (generated), `content/`, `data/products-0a90f62c.json`, `data/registers.json`, `scripts/build_site.py`, `scripts/check_site.py`, `tools/{verify_site,link_report,check_all_links}.py`, `server/collect.js`, `docs/EXECUTIVE-SUMMARY.md` |
+
+# Session `3b45b513` board (`arena/3b45b513-affil3` — appended; nothing above edited)
+
+## Session registry
+
+| Session ID | Branch | Status | Claimed non-overlapping file scope |
+| --- | --- | --- | --- |
+| `3b45b513` | `arena/3b45b513-affil3` | active | `counter-desk/**`, `data/3b45b513/**`, `tools/3b45b513/**`, `EXECUTIVE_SUMMARY-3b45b513.md`, `VERIFICATION-3b45b513.md`, `.github/workflows/counter-desk-3b45b513.yml`, `scripts/build_sitemap.py` + `scripts/check_links.py` (orphaned CI repair after PR #26 removed `docs/`), `README.md` (append-only surface entry), `COORDINATION.md` (this section only) |
 
 ## Task board
 
@@ -1621,6 +1626,62 @@ analytics go-live (FLG-009), Search Console (FLG-013), named author (FLG-014), p
 - **Follow-up:** this log entry was added in a separate log-only PR (see the next PR number in the commit message); no content changed.
 - **Not done in this session:** no claim that any short link is valid or invalid; no intended ASIN set; Associates Central test (G-02) still pending the owner.
 
+| CB-01 | Read `COORDINATION.md` & `origin/main`; register non-overlapping scope and push claim immediately | done | `3b45b513` | `COORDINATION.md` |
+| CB-02 | Line-by-line repo review across root (`data/*.json`, `tools/build.mjs`, `QA-BRIEF.md`, `EXECUTIVE-SUMMARY.md`), `/editorial/`, `/crisp-index/`, and CI workflows; log cross-session irregularities | done | `3b45b513` | `data/3b45b513/repo-audit.json`, `VERIFICATION-3b45b513.md`, `COORDINATION.md` |
+| CB-03 | Independent primary-source verification pass: all 5 `link.amazon` links, observed `/dp/` pages, all manufacturer pages (`chefman.com`, `emerileveryday.com`, `chefiq.com`, `thermomaven.com`), Amazon OA + Program Policies + ASIN guide, FTC 16 CFR 255, Google Search Central, USDA FSIS | done | `3b45b513` | `data/3b45b513/{sources,products,flags}.json`, `VERIFICATION-3b45b513.md` |
+| CB-04 | Policy-gated affiliate marketing platform engine & CLI (product intake, intent-vs-observed ledger, spec-completeness & niche matrix, verified guide scaffold generator, campaign ledger validator, 5-event privacy-preserving analytics collector) | done | `3b45b513` | `tools/3b45b513/{platform-cli.mjs,collector.mjs}`, `data/3b45b513/{events,ledger}.json` |
+| CB-05 | Publication front page, category clusters, product pages, interactive Counter-Space & Fit Finder, seasonal & trendy editorial guides + 4 working-title buyer guides (`SG-27..SG-30`), RSS feed, XML sitemap | done | `3b45b513` | `tools/3b45b513/{build.mjs,assets/*}`, `data/3b45b513/{config,guides}.json`, `counter-desk/**` |
+| CB-06 | Operator dashboards: Shop/Register table, Suggestions & Path Selector, Open Questions & Discovery Brief, Flagged for Review, Campaign Ledger, Measurement, Compliance & Gates, Executive Summary | done | `3b45b513` | `data/3b45b513/{suggestions,questions}.json`, `EXECUTIVE_SUMMARY-3b45b513.md`, `counter-desk/**` |
+| CB-07 | Automated compliance & broken-link gate + unit tests + CI repair for orphaned `check.yml` (`docs/` deletion in PR #26) | done (gate + tests + own workflow; the orphaned workflow was fixed on `main` by another session before this branch needed to) | `3b45b513` | `tools/3b45b513/{gate.mjs,gate.test.mjs}`, `.github/workflows/counter-desk-3b45b513.yml`, `scripts/{build_sitemap,check_links}.py` |
+| CB-08 | Final integration sync with `origin/main`, PR to `main`, merge, GitHub Pages live verification, completion log | done | `3b45b513` | `README.md`, `COORDINATION.md` |
+
+## Conflict & coordination log
+
+- **2026-11-20 — Rebase conflict resolved cleanly on claim push:** `origin/main` advanced from `09ae7e1` to `2afaf62` (PR #43 appending session `arena63534e5d-affil3`'s completion record at the tail of `COORDINATION.md`). Resolved without discarding a single line: `arena63534e5d-affil3`'s section is kept verbatim in full and this session's `3b45b513` section is appended below it.
+
+## Completion record — session `3b45b513`
+
+| Field | Value |
+|---|---|
+| Branch | `arena/3b45b513-affil3` |
+| Pull request | [#58](https://github.com/karagemop466-tech/Affil3/pull/58) |
+| Scope built | `counter-desk/**` (32 generated pages), `data/3b45b513/**` (9 registers), `tools/3b45b513/**` (generator, gate, 19 tests, collector, assets), `.github/workflows/counter-desk.yml`, `EXECUTIVE_SUMMARY-3b45b513.md`, `VERIFICATION-3b45b513.md`, one appended `README.md` row and this section |
+| Gates at PR time | counter-desk **4,266 checks / 0 failed**; gate tests **19 / 0 failed**; root `npm run check` **3,477 checks + 21 editorial pages / 0 failed**; disclosure gate **94 pages / 0 problems**; archive gate **100 pages / 3,152 refs / 0 broken** |
+| CI on the PR | `gate` (counter-desk) pass, `verify` pass, `disclosure` pass, `site-checks` pass, `publish-gate` pass |
+
+### What this session added that no earlier session had
+
+1. **A manufacturer page for the ThermoMaven unit.** Reading the listing's item-model field (`HT07`) located the maker's F1 Stealth page and its user manual, so that product's measured range, probe size, battery, accuracy and warranty are now published from official sources. Three earlier registers in this repository had recorded that no manufacturer page existed (`CDF-08`).
+2. **A correction to a published finding.** The claim that the 8 Qt Chefman listing and the maker "describe two different machines" was overstated: Chefman sells `RJ38-SQSS-8T`. Wattage and dimensions still conflict, so both stay withheld — with both official figures recorded (`CDF-05`, `CDF-09`).
+3. **A working decision tool rather than a described one.** The fit finder takes three real measurements, adds two inches of clearance, and prints its reasoning per product, using only dimension values already cited to manufacturer pages.
+4. **A gate that can be shown to fail.** Seven of the 19 tests deliberately break a page — untagged link, missing `sponsored`, a price, a missing disclosure bar, a broken internal link, a testing claim, an image with no alt text — and assert a non-zero exit.
+
+### What this session did not do, on purpose
+
+- It did not edit `data/*.json`, `tools/build.mjs`, `tools/verify.mjs`, `/editorial/`, `/crisp-index/`, `/counterwise/`, `/counter/` or `/legacy/`. The irregularities found in those files are written up in the cross-session request list above, with the exact wrong source ids, so the owning session can fix them without a conflicting edit from here.
+- It did not claim the supplied short links are invalid, and did not fill the four intent fields from the observed destinations. Both would have been easy and both would have been wrong.
+- It did not invent a named author, a price, an order count, a conversion rate or a revenue forecast.
+
+### The one thing worth reading if you read nothing else
+
+Three separate registers in this repository concluded that the ThermoMaven thermometer had **no manufacturer page**, and withheld every specification as a result. The page existed. The way it was found was to stop reading the listing's title and read its `item-model` field instead: `HT07`, which is the F1 Stealth. A search failure that gets written into a register becomes a fact that later sessions inherit and defend. The same lesson, from the opposite direction, is behind `CDF-05`: two official pages can disagree about wattage and size for the same model number, and the honest response is to withhold both figures, not to pick the one that reads better.
+
+---
+
+## Cross-session file-change requests (logged instead of editing files owned by other sessions)
+
+1. **Root register (`data/sources.json`, `data/flags.json`, `data/products.json`, `data/questions.json`, `tools/build.mjs`)** — logged for the root-site maintainer (`9abfdc62` / `63534e5d`):
+   - `data/flags.json` `FLG-001` & `FLG-012` cite `S12`, which in `data/sources.json` is now Chefman 8 Qt (`chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry`) rather than the ASIN definition (`S18` / `sell.amazon.com/blog/what-is-an-asin`).
+   - `data/flags.json` `FLG-003` cites `S13` for OneLink short-link help, which in `data/sources.json` is now Emeril 26 QT (`emerileveryday.com`).
+   - `data/flags.json` `FLG-006` & `FLG-007` cite `S11` for Associates application review (`G8TW5AE9XL2VX9VM`, now `S19`), while `S11` in `data/sources.json` is Chefman 6 Qt (`chefman.com`).
+   - `data/flags.json` `FLG-006` & `FLG-011` cite `S03` for the `-20` tracking-ID suffix, while `S03` in `data/sources.json` is now the §2(b) price/availability clause.
+   - `data/flags.json` `FLG-021` cites `S09` alongside `S10` for FSIS ground-meat temperature, while `S09` in `data/sources.json` is Google Search spam policies.
+   - `data/sources.json` `S16` cites `FLG-025` (ThermoMaven) instead of `FLG-026` (Chefman 8 Qt model mismatch).
+   - `data/products.json` `P02.blank_reason.presets` cites `FLG-005` instead of `FLG-024`, `P04.blank_reason.all_specs` cites `FLG-007` instead of `FLG-025`, and `P05.blank_reason.battery` cites `FLG-003` instead of `FLG-023`.
+   - `data/products.json` `P04.no_buy_link_reason`, `data/sources.json` `S05`, and `data/questions.json` `K-07` still state that `B0c8moW59` never resolved to a listing, contradicting `P04.observed_asin = "B0DHZTCNR5"` and `FLG-022` in the same register.
+   - `QA-BRIEF.md` and `EXECUTIVE-SUMMARY.md` still carry stale pre-PR-#12 text claiming link 4 resolved to nothing and link to moved `docs/*` paths instead of `editorial/*`.
+2. **Orphaned CI failure on `main` @ `09ae7e1` / `2afaf62` (`.github/workflows/check.yml`)**: PR #26 deleted `docs/` (from completed session `c46310a7`, PR #25 merged 2026-11-20T05:51Z), causing `scripts/build_sitemap.py --check` (`Site checks` workflow) to fail with `sitemap.xml missing`. Because `c46310a7` is completed and the brief instructs fixing failing checks before merge, this session claims the minimal fallback in `scripts/build_sitemap.py` and `scripts/check_links.py` so `Site checks` passes cleanly when `docs/` is absent.
+
 ## Session arena/c252594d-affil3 — merge record (2026-11-20)
 
 Main advanced with other sessions' registers while this branch was open. Resolution, deliberately conservative:
@@ -1765,6 +1826,19 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
 - `tools/build.mjs`: specification grid accepts extra stated rows (an ambient range beside an
   internal one, a sensor count); guide count and cluster count on the front page and the categories
   page are now read from the register instead of being written by hand.
+
+---
+
+# Session `e52ea644` — current-branch executive-summary correction (2026-11-20)
+
+- **Claim / scope:** `arena/e52ea644-affil3`; `EXECUTIVE-SUMMARY.md` and this appended log entry only. Read the existing task board first; did not modify product data, generated site pages, or another session's files.
+- **Finding:** the existing root executive summary contained claims inconsistent with the live register and current generated site (e.g. blanket statements that only four products were observed, that no buttons render, and old counts/paths). Replaced it with an executive brief grounded in current repository data and the passing build, and explicitly separated unverified product intent from observed destination.
+- **Sources linked for manual review:** Amazon Associates Operating Agreement (https://affiliate-program.amazon.com/help/operating/agreement), Program Policies (https://affiliate-program.amazon.com/help/operating/policies), FTC Endorsement Guides (https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking), and Google outbound-link guidance (https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links). Product source records remain in `data/sources.json`.
+- **Verification:** `npm run check` passed before the summary edit: build generated 32 pages, 3,484 checks passed, editorial build produced 21 pages, and the site checker passed all 21 pages. The summary edit is Markdown-only and does not alter generated pages. Working tree was clean after the check; final diff review remains required.
+- **Limits:** no external Amazon/FTC/Google page was fetched in this session. Linked source documents are provided for review, not newly asserted as re-verified. No login, Associates Central test, analytics deployment, Search Console property, or live conversion data was available. No PR or merge was created in this session.
+- **PR:** https://github.com/karagemop466-tech/Affil3/pull/59 — checks `disclosure`, `gate`, and `verify` all passed. Awaiting merge at the time this note was written.
+- **Completion record (session e52ea644):** PR #59 https://github.com/karagemop466-tech/Affil3/pull/59 — first merge attempt failed because main had advanced; merged `origin/main` into the branch, kept both coordination records (conflict only in this file), re-ran `npm run check` (40 pages, 4,588 checks, 0 failures), CI `disclosure`/`gate`/`verify`/`check-site`/Pages gate all passed. **Merged** into `main` as `c86d085b3e88e366ac41f23367b96aab9382cbf9`. Pages: latest build reported `built` for that commit; live https://karagemop466-tech.github.io/Affil3/flagged/ serves the current flagged page.
+- **Not done:** no intended ASIN, listing URL, or confirmation date set (FLG-002 owner step); no Associates Central Special Link test (G-02); no analytics endpoint, Search Console, or ledger data.
 - PR and merge result: recorded below after the PR is created and merged in this session.
 
 ---
