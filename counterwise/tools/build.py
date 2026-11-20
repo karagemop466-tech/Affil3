@@ -1943,8 +1943,8 @@ def render_aux_files(rep: dict) -> None:
         json.dumps(
             {
                 "inputs_hash": data_hash(),
-                "generated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 "builder": "tools/build.py",
+                "reproducible": "no wall-clock stamp in the manifest, so two builds of the same register produce byte-identical output and CI can require the committed site to match it",
                 "pages": sorted(ALL_PAGES.keys()),
                 "counts": {
                     "pages": len(page_plan()),

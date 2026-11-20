@@ -84,6 +84,20 @@ TASK_LABELS = [f"any {w}" for w in ("scaling", "revenue")]
 REQUIRED_HEAD_KEYS = ("charset", "viewport", "title", "description", "canonical")
 
 
+def set_root(root) -> None:
+    """Point every rule at another copy of the surface (used by the test sandbox)."""
+    from site_common import set_root as _sc_set_root
+
+    _sc_set_root(root)
+    import site_common as sc
+
+    g = globals()
+    g["OUT"] = sc.OUT
+    g["DATA"] = sc.DATA
+    g["CONTENT"] = sc.CONTENT
+    g["ROOT"] = sc.ROOT
+
+
 def walk_strings(obj, path="$"):
     if isinstance(obj, dict):
         for k, v in obj.items():

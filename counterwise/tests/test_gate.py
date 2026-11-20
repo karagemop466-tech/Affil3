@@ -26,29 +26,20 @@ class RegisterSandbox(unittest.TestCase):
     """Point the whole toolchain at a throwaway copy of data/, content/ and docs/."""
 
     def setUp(self) -> None:
+        # Copy the whole surface, then point the toolchain at the copy. Auditing a half-copied tree
+        # would let a rule pass against the real repo and fail against the fixture, which is worse
+        # than no test at all.
         self.tmp = Path(tempfile.mkdtemp(prefix="cw-test-"))
-        self.data = self.tmp / "data"
-        self.content = self.tmp / "content"
-        self.docs = self.tmp / "docs"
-        for src, dst in ((site_common.DATA, self.data), (site_common.CONTENT, self.content), (gate.OUT, self.docs)):
-            shutil.copytree(src, dst)
-        self._orig = (site_common.DATA, site_common.CONTENT, site_common.OUT, gate.OUT, gate.DATA, gate.CONTENT)
-        site_common.DATA = self.data
-        site_common.CONTENT = self.content
-        site_common.OUT = self.docs
-        gate.OUT = self.docs
-        gate.DATA = self.data
-        gate.CONTENT = self.content
+        self.real = site_common.SITE_ROOT
+        self.surface = self.tmp / "counterwise"
+        shutil.copytree(self.real, self.surface, ignore=shutil.ignore_patterns("__pycache__", ".git"))
+        gate.set_root(self.surface)
+        self.docs = gate.OUT
+        self.data = gate.DATA
+        self.content = gate.CONTENT
 
     def tearDown(self) -> None:
-        (
-            site_common.DATA,
-            site_common.CONTENT,
-            site_common.OUT,
-            gate.OUT,
-            gate.DATA,
-            gate.CONTENT,
-        ) = self._orig
+        gate.set_root(self.real)
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def patch_json(self, name: str, mutate) -> None:

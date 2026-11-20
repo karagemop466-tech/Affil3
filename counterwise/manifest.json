@@ -1,7 +1,7 @@
 {
-  "inputs_hash": "ff767d84aa189146",
-  "generated_at_utc": "2026-11-20T06:00:08+00:00",
+  "inputs_hash": "967dd5c6f957b1c8",
   "builder": "tools/build.py",
+  "reproducible": "no wall-clock stamp in the manifest, so two builds of the same register produce byte-identical output and CI can require the committed site to match it",
   "pages": [
     "404",
     "about",

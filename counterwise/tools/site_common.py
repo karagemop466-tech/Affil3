@@ -14,10 +14,25 @@ import json
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
-CONTENT = ROOT / "content"
-OUT = ROOT  # generated pages are written beside data/ and tools/, published at /Affil3/counterwise/
+# Everything is derived from one root so the tests can point the whole toolchain at a copy of the
+# surface without monkey-patching five module globals.
+SITE_ROOT = Path(__file__).resolve().parent.parent
+ROOT = SITE_ROOT
+DATA = SITE_ROOT / "data"
+CONTENT = SITE_ROOT / "content"
+ASSETS_SRC = SITE_ROOT / "assets-src"
+OUT = SITE_ROOT  # generated pages are written beside data/ and tools/, published at /Affil3/counterwise/
+
+
+def set_root(root: str | Path) -> None:
+    """Repoint DATA / CONTENT / ASSETS_SRC / OUT. Used by the tests to audit a throwaway copy."""
+    global SITE_ROOT, ROOT, DATA, CONTENT, ASSETS_SRC, OUT
+    SITE_ROOT = Path(root).resolve()
+    ROOT = SITE_ROOT
+    DATA = SITE_ROOT / "data"
+    CONTENT = SITE_ROOT / "content"
+    ASSETS_SRC = SITE_ROOT / "assets-src"
+    OUT = SITE_ROOT
 
 
 # --------------------------------------------------------------------------- data
@@ -44,18 +59,19 @@ def base_prefix(cfg: dict) -> str:
 def data_hash() -> str:
     """Hash of everything the site is generated from, so the gate can prove docs/ is current."""
     h = hashlib.sha256()
-    roots = []
-    for folder in (DATA, CONTENT):
+    # assets-src is hashed as well: the stylesheet and the beacon change what a page claims, so a
+    # change there must mark the output stale exactly like a data edit does.
+    for folder in (DATA, CONTENT, ASSETS_SRC):
         folder = Path(folder)
-        if folder.exists():
-            roots.append(folder)
-    for folder in roots:
-        base = folder.parent if folder.parent != folder else folder
+        if not folder.exists():
+            continue
         for p in sorted(folder.rglob("*")):
-            if p.is_file():
-                h.update(p.relative_to(base).as_posix().encode())
-                h.update(b"\0")
-                h.update(hashlib.sha256(p.read_bytes()).digest())
+            if not p.is_file():
+                continue
+            # keyed relative to the surface root, so a copied tree hashes identically to the real one
+            h.update(p.relative_to(SITE_ROOT).as_posix().encode())
+            h.update(b"\0")
+            h.update(hashlib.sha256(p.read_bytes()).digest())
     return h.hexdigest()[:16]
 
 
