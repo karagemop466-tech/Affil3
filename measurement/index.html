@@ -1,70 +1,176 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Measurement | Affil3</title>
-<meta name="description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
+<title>Measurement — Counter &amp; Crumb</title>
+<meta name="description" content="The five events this site records, what it never collects, and how the numbers reach the campaign ledger.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/measurement/">
-<meta property="og:title" content="Measurement">
-<meta property="og:description" content="Five proposed analytics events, privacy rules, and whether collection is active.">
-<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/measurement/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Affil3">
-<meta name="analytics-endpoint" content="">
-<link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
-
+<meta property="og:site_name" content="Counter &amp; Crumb">
+<meta property="og:title" content="Measurement — Counter &amp; Crumb">
+<meta property="og:description" content="The five events this site records, what it never collects, and how the numbers reach the campaign ledger.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/measurement/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Measurement — Counter &amp; Crumb">
+<meta name="twitter:description" content="The five events this site records, what it never collects, and how the numbers reach the campaign ledger.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta name="author" content="Counter &amp; Crumb desk">
+<link rel="alternate" type="application/rss+xml" title="Counter &amp; Crumb" href="/feed.xml">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<body data-page="page" >
-<a class="skip" href="#main">Skip to content</a>
+
 <header class="masthead">
-  <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
-    <nav class="nav" aria-label="Main">
-      <a href="/Affil3/shop/">Shop</a>
-      <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/categories/">Categories</a>
-      <a href="/Affil3/about/">About</a>
+  <div class="wrap masthead__inner">
+    <a class="brand" href="/">
+      <svg class="brand__mark" viewBox="0 0 40 40" role="img" aria-label="Counter and Crumb" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="1.5" width="37" height="37" rx="10" fill="#b23c12"/>
+        <path d="M13 25c0-4.4 3.1-8 7-8s7 3.6 7 8" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M11 27.5h18" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M16 17.5c0-2 1.8-3.6 4-3.6s4 1.6 4 3.6" stroke="#fdeee6" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Counter &amp; Crumb</span>
+        <span class="brand__tag">A buyer's desk</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/">Home</a><a href="/guides/">Guides</a><a href="/products/">Products</a><a href="/compare/">Compare</a>
     </nav>
   </div>
 </header>
-<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
-  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
-</div>
-<main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Measurement</p><h1>Measurement</h1><p class="deck">Proposed set (FLG-008, question Q-05). Client code records these only when analyticsEndpoint is set in config.json.</p></section>
-<div class="status-box"><strong>Live status:</strong> Inactive. No endpoint is configured, so the browser sends nothing. See suggestion S-03 and flag FLG-009.</div>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Event</th><th scope="col">Fires when</th><th scope="col">Properties</th></tr></thead><tbody><tr><td><code>page_view</code></td><td>Once per page load.</td><td><code>path</code> <code>referrer_host</code></td></tr><tr><td><code>category_view</code></td><td>Once per category page load.</td><td><code>category</code></td></tr><tr><td><code>product_view</code></td><td>When a product row or card is shown on a page (once per page load).</td><td><code>product_id</code></td></tr><tr><td><code>outbound_click</code></td><td>When a reader clicks a product link. The link itself is not redirected; the browser goes straight to the Amazon URL.</td><td><code>product_id</code> <code>destination_host</code> <code>placement</code></td></tr><tr><td><code>guide_read_75</code></td><td>When a reader scrolls past 75% of a guide.</td><td><code>guide</code></td></tr></tbody></table></div>
-<h2>Privacy</h2>
-<p>No cookies, no IP address stored, no user-agent stored, no fingerprinting. Browsers that send Do Not Track are not counted. Counts are aggregated per day.</p>
-<p>Not collected: cookies, IP address, user-agent, account data, anything typed into the page.</p>
-<h2>Why clicks are not routed through a redirect</h2>
-<p>Associates Program Policies (v) prohibit cloaking the URL of a Site with Special Links, including by use of Redirecting Links (S02). The click counter therefore records the click in the browser and lets the link go directly to Amazon. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
-</main>
-<footer class="site-footer">
+
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
   <div class="wrap">
-    <h2 class="foot-h">Dashboards and records</h2>
-    <ul class="foot-links">
-      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
-      <li><a href="/Affil3/categories/">Categories</a></li>
-      <li><a href="/Affil3/sources/">Source register</a></li>
-      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
-      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
-      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
-      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
-      <li><a href="/Affil3/measurement/">Measurement</a></li>
-      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-      <li><a href="/Affil3/about/">About and editorial policy</a></li>
-      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
-      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
-    </ul>
-    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <p><span class="disclosure__label">Disclosure</span>As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+  </div>
+</div>
+<main id="main">
+
+<div class="wrap">
+  <div class="page-head">
+    <h1>Measurement</h1>
+    <p class="lede">What this site records, what it deliberately does not, and how the
+      numbers reach the ledger.</p>
+  </div>
+
+  <div class="answer">
+    <span class="answer__label">The rule</span>
+    <p>The site's own counter records clicks and reading behaviour. It never records
+      anything that identifies a person. Orders come from Amazon's own report and
+      nowhere else. The two are never mixed in a single number.</p>
+  </div>
+
+  <h2>The five events</h2>
+  <div class="table-wrap">
+    <table class="data" id="events">
+      <caption>The complete event list. Nothing outside this table is sent.</caption>
+      <thead>
+        <tr>
+          <th data-col="id" aria-sort="none" scope="col">Event</th>
+          <th data-col="name" aria-sort="none" scope="col">Name</th>
+          <th data-col="fires" scope="col">Fires when</th>
+          <th scope="col">Fields</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-col="id" data-sort="page_view"><span class="mono">page_view</span></td>
+          <td data-col="name" data-sort="Page view">Page view</td>
+          <td data-col="fires" data-sort="Once per page load, on every page including 404.">Once per page load, on every page including 404.</td>
+          <td data-col="params" data-sort="path, referrer_host, viewport"><span class="mono">path, referrer_host, viewport</span></td>
+        </tr>
+        <tr>
+          <td data-col="id" data-sort="outbound_click"><span class="mono">outbound_click</span></td>
+          <td data-col="name" data-sort="Outbound affiliate click">Outbound affiliate click</td>
+          <td data-col="fires" data-sort="When a reader clicks a sponsored product link, before navigation.">When a reader clicks a sponsored product link, before navigation.</td>
+          <td data-col="params" data-sort="path, product_id, asin, placement"><span class="mono">path, product_id, asin, placement</span></td>
+        </tr>
+        <tr>
+          <td data-col="id" data-sort="guide_progress"><span class="mono">guide_progress</span></td>
+          <td data-col="name" data-sort="Guide read depth">Guide read depth</td>
+          <td data-col="fires" data-sort="At 25%, 50%, 75% and 100% scroll depth on a guide or comparison page.">At 25%, 50%, 75% and 100% scroll depth on a guide or comparison page.</td>
+          <td data-col="params" data-sort="path, depth"><span class="mono">path, depth</span></td>
+        </tr>
+        <tr>
+          <td data-col="id" data-sort="table_use"><span class="mono">table_use</span></td>
+          <td data-col="name" data-sort="Comparison table interaction">Comparison table interaction</td>
+          <td data-col="fires" data-sort="When a reader sorts, filters or expands a row in a comparison or register table.">When a reader sorts, filters or expands a row in a comparison or register table.</td>
+          <td data-col="params" data-sort="path, table_id, action, filter"><span class="mono">path, table_id, action, filter</span></td>
+        </tr>
+        <tr>
+          <td data-col="id" data-sort="reader_signup"><span class="mono">reader_signup</span></td>
+          <td data-col="name" data-sort="Reader capture">Reader capture</td>
+          <td data-col="fires" data-sort="When a reader submits the newsletter form.">When a reader submits the newsletter form.</td>
+          <td data-col="params" data-sort="path, placement"><span class="mono">path, placement</span></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <h2>What is never collected</h2>
+  <div class="grid grid--3">
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No IP address</h3><p>The browser does not send one and the collector does not store one.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No cookies</h3><p>Nothing is written to a cookie jar. The session id lives in sessionStorage and dies with the tab.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No advertising id</h3><p>No fingerprinting, no canvas reads, no font or plugin enumeration.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No email addresses</h3><p>Email is only ever sent to the list provider, never to the collector.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No user agent</h3><p>Not captured, not forwarded, not stored.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">No referrer URL</h3><p>Only the bare hostname of the referring site, and only when it is a different host. The collector rejects anything that is not a hostname.</p></div>
+    <div class="card"><h3 class="card__title" style="font-size:var(--step-0)">Do Not Track honoured</h3><p>If the browser sends DNT or GPC, no event leaves the page at all.</p></div>
+  </div>
+
+  <div class="callout" style="margin-top:2rem">
+    <span class="callout__title">One honest caveat</span>
+    <p>This site's collector is IP-free. The hosting platform is not. GitHub's
+      documentation states that when a GitHub Pages site is visited, the visitor's IP
+      address is logged and stored for security purposes, regardless of consent.
+      <a href="/desk/flags/">FLG-012 →</a></p>
+  </div>
+
+  <h2>How the collector works</h2>
+  <ol class="prose" style="max-width:64ch">
+    <li>The browser generates a random 128-bit id in sessionStorage. It is never linked
+      to a person, a device or an email address.</li>
+    <li>Each event is posted to the collector endpoint with the event name, the page
+      path and that event's listed fields.</li>
+    <li>The collector hashes the id against a server-side salt that never reaches the
+      browser, so the stored record cannot be reversed back into the value that was sent.</li>
+    <li>The record is appended as one NDJSON line. The collector rejects any event name
+      that is not on the list above.</li>
+  </ol>
+  <p class="table-note">The collector source is in
+    <span class="mono">tools/analytics_sink.py</span>. It is standard library only and
+    runs anywhere Python does.</p>
+
+  <h2>Where the numbers go</h2>
+  <p class="lede">The site's own events and Amazon's report land in the same ledger but
+    never in the same row. The ledger ships empty, with its columns already defined.</p>
+  <p><a class="btn btn--ghost btn--sm" href="/ledger/">Open the campaign ledger →</a></p>
+
+  <h2>Reader capture</h2>
+  <p class="lede">The signup form is built and it fires the reader_signup event, but no
+    list provider has been chosen. Until one is, the form tells the reader exactly that
+    and stores nothing. A capture box that quietly discards addresses is worse than no
+    capture box at all.</p>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid"><div><h2>Read</h2><ul><li><a href="/guides/">All guides</a></li><li><a href="/compare/">Comparisons</a></li><li><a href="/categories/air-fryers/">Air fryers</a></li><li><a href="/categories/thermometers/">Meat thermometers</a></li></ul></div><div><h2>The desk</h2><ul><li><a href="/desk/">Open questions</a></li><li><a href="/desk/suggestions/">Suggestions</a></li><li><a href="/desk/flags/">Flagged for review</a></li><li><a href="/executive-summary/">Executive summary</a></li></ul></div><div><h2>The method</h2><ul><li><a href="/methods/sources/">Source register</a></li><li><a href="/methods/verification/">How we verify</a></li><li><a href="/compliance/">Compliance</a></li><li><a href="/measurement/">Measurement</a></li><li><a href="/ledger/">Campaign ledger</a></li></ul></div><div><h2>About</h2><ul><li><a href="/about/">About this desk</a></li><li><a href="/about/#editorial-standards">Editorial standards</a></li></ul></div></div>
+    <div class="footer__bottom">
+      <p class="footer__disclosure"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+      <p>© <span data-year>2026</span> Counter &amp; Crumb · <a href="/feed.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/methods/sources/">Sources</a></p>
+    </div>
   </div>
 </footer>
-<script src="/Affil3/assets/analytics.js" defer></script>
+<button class="to-top" data-to-top type="button" aria-label="Back to top">↑</button>
+<script src="/assets/js/site-config.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>

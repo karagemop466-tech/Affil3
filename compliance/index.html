@@ -1,78 +1,172 @@
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compliance and gates | Affil3</title>
-<meta name="description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
+<title>Compliance — Counter &amp; Crumb</title>
+<meta name="description" content="Every compliance rule this site follows, mapped to the Amazon policy or FTC guidance it comes from, with a link to the source.">
 <link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/compliance/">
-<meta property="og:title" content="Compliance and gates">
-<meta property="og:description" content="How disclosure, sponsored links, tags and sources are handled, and the gates before scaling.">
-<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Affil3">
-<meta name="analytics-endpoint" content="">
-<link rel="stylesheet" href="/Affil3/assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
-
+<meta property="og:site_name" content="Counter &amp; Crumb">
+<meta property="og:title" content="Compliance — Counter &amp; Crumb">
+<meta property="og:description" content="Every compliance rule this site follows, mapped to the Amazon policy or FTC guidance it comes from, with a link to the source.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/compliance/">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compliance — Counter &amp; Crumb">
+<meta name="twitter:description" content="Every compliance rule this site follows, mapped to the Amazon policy or FTC guidance it comes from, with a link to the source.">
+<meta name="twitter:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-default.svg">
+<meta name="author" content="Counter &amp; Crumb desk">
+<link rel="alternate" type="application/rss+xml" title="Counter &amp; Crumb" href="/feed.xml">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css">
 </head>
-<body data-page="page" >
-<a class="skip" href="#main">Skip to content</a>
+
 <header class="masthead">
-  <div class="wrap masthead-inner">
-    <a class="brand" href="/Affil3/">Affil3</a>
-    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
-    <nav class="nav" aria-label="Main">
-      <a href="/Affil3/shop/">Shop</a>
-      <a href="/Affil3/guides/">Guides</a>
-      <a href="/Affil3/categories/">Categories</a>
-      <a href="/Affil3/about/">About</a>
+  <div class="wrap masthead__inner">
+    <a class="brand" href="/">
+      <svg class="brand__mark" viewBox="0 0 40 40" role="img" aria-label="Counter and Crumb" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.5" y="1.5" width="37" height="37" rx="10" fill="#b23c12"/>
+        <path d="M13 25c0-4.4 3.1-8 7-8s7 3.6 7 8" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M11 27.5h18" stroke="#fdeee6" stroke-width="2.4" stroke-linecap="round"/>
+        <path d="M16 17.5c0-2 1.8-3.6 4-3.6s4 1.6 4 3.6" stroke="#fdeee6" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">Counter &amp; Crumb</span>
+        <span class="brand__tag">A buyer's desk</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/">Home</a><a href="/guides/">Guides</a><a href="/products/">Products</a><a href="/compare/">Compare</a>
     </nav>
   </div>
 </header>
-<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
-  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
-</div>
-<main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Compliance</p><h1>Disclosure, link rules and gates</h1></section>
-<div class="prose">
-<h2>Required statement</h2>
-<p>Operating Agreement §5 requires the Site to state, clearly and prominently: <strong>“As an Amazon Associate I earn from qualifying purchases.”</strong> <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></p>
-<p>The disclosure strip sits under the masthead on every page, and it is repeated in the footer. The FTC guidance asks that a disclosure be hard to miss and placed with the endorsement, not only on an About page or behind a “more” link <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener external">S07</a>, and the Endorsement Guides define clear and conspicuous placement <a href="https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255" rel="noopener external">S08</a>.</p>
-<h2>Link rules applied</h2>
-<ul>
-<li>Every link to an Amazon host carries <code>rel="sponsored noopener"</code>. Google recommends this for paid links and affiliate links <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener external">S06</a>.</li>
-<li>Product links carry the tracking ID <code>shopnow047c-20</code> as a tag parameter <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
-<li>No redirect, cloaking or link-shortener is used for outbound links. The click counter does not route clicks <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>.</li>
-<li>The five submitted short links are shown only as source evidence, not as buy links (FLG-003).</li>
-</ul>
-<h2>Gates before scaling</h2>
-</div>
-<div class="table-wrap"><table class=""><thead><tr><th scope="col">Gate</th><th scope="col">Check</th><th scope="col">Method</th><th scope="col">Status</th></tr></thead><tbody><tr><td>G-01</td><td>Disclosure strip above the fold on every page and repeated in the footer</td><td>Automated (tools/verify.mjs); visibility on a phone is manual (FLG-010)</td><td>Passed (automated)</td></tr><tr><td>G-02</td><td>One Special Link per product tested in Associates Central, with destination and tracking report confirmed</td><td>Manual, requires Associates login</td><td><strong>Pending</strong> (FLG-005)</td></tr><tr><td>G-03</td><td>Every Amazon-hosted link carries rel="sponsored"</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-04</td><td>Every outbound product link uses tag shopnow047c-20</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-05</td><td>No redirect or cloaking pages generated</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-06</td><td>No prices, ratings or availability displayed</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-07</td><td>Every product row has at least one official source link</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-08</td><td>Ledger rows only from authorized first-party reports</td><td>Manual</td><td>Not applicable (ledger empty)</td></tr><tr><td>G-09</td><td>Analytics: only the five listed events; no cookies</td><td>Automated</td><td>Passed (automated)</td></tr><tr><td>G-10</td><td>Sitemap and feed cover every guide; no broken internal links</td><td>Automated</td><td>Passed (automated)</td></tr></tbody></table></div>
-<div class="prose"><p class="small">Automated gates are enforced by <code>tools/verify.mjs</code>; a failing gate stops the build from being published. Source wording for §2 of the Participation Requirements was read from search excerpts of the official page, and should be re-checked (see the source register).</p></div>
-</main>
-<footer class="site-footer">
+
+<div class="disclosure" role="note" aria-label="Affiliate disclosure">
   <div class="wrap">
-    <h2 class="foot-h">Dashboards and records</h2>
-    <ul class="foot-links">
-      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
-      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
-      <li><a href="/Affil3/categories/">Categories</a></li>
-      <li><a href="/Affil3/sources/">Source register</a></li>
-      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
-      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
-      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
-      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
-      <li><a href="/Affil3/measurement/">Measurement</a></li>
-      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
-      <li><a href="/Affil3/about/">About and editorial policy</a></li>
-      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
-      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
-    </ul>
-    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
-    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+    <p><span class="disclosure__label">Disclosure</span>As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+  </div>
+</div>
+<main id="main">
+
+<div class="wrap wrap--narrow">
+  <div class="page-head">
+    <h1>Compliance</h1>
+    <p class="lede">What this site does, which Amazon rule each thing comes from, and
+      where the rules were read.</p>
+  </div>
+
+  <div class="answer">
+    <span class="answer__label">The disclosure</span>
+    <p>Amazon's Operating Agreement 5 requires this exact statement, clearly and
+      prominently, wherever Program Content appears:</p>
+    <p><strong>"As an Amazon Associate I earn from qualifying purchases."</strong></p>
+    <p>It appears in a strip directly under the masthead on every page of this site,
+      and it is repeated in the footer. The FTC's <em>Disclosures 101</em> says a
+      disclosure is likely to be missed if it appears only on an About page or at the
+      end of a post, which is why this one is at the top of the page as well.</p>
+  </div>
+
+  <h2>Rule by rule</h2>
+  <div class="table-wrap">
+    <table class="data">
+      <thead><tr><th scope="col">What this site does</th><th scope="col">The rule</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Every outbound product link carries the Associates tag and points directly at amazon.com/dp.</td>
+          <td>Participation Requirements 2(b): Special Links must use the assigned Associates ID and be accessed directly from your Site.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>The five submitted link.amazon short links are recorded in the register but are not published as outbound links.</td>
+          <td>Program Policies 5(v) and 5(w) restrict Redirecting Links and link shorteners that make the Amazon destination unclear.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>No price is shown anywhere on the site.</td>
+          <td>Program Policies 2(b): a Site may only show prices and availability if Amazon serves the link that displays them, or the data comes from Creators API or PA API.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>No star rating, review count or review text appears anywhere on the site.</td>
+          <td>Program Policies 5(t): no customer reviews or star ratings unless obtained through Creators API or PA API.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>Every outbound product link is marked rel="sponsored nofollow" with a visible Sponsored marker.</td>
+          <td>Google Search Central: mark paid placements with rel="sponsored".</td>
+          <td><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener" target="_blank" aria-label="Source: Google Search Central">Google Search Central</a></td>
+        </tr>
+        <tr>
+          <td>Comparison pages carry original written analysis alongside the links.</td>
+          <td>Program Policies 2(b): links to pages with product lists require additional original content on your Site.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>No Amazon logo, wordmark or product photograph is used. All illustrations are original drawings.</td>
+          <td>Associates Program Trademark Guidelines; Program Content may not be used to advertise non-Amazon products.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+        <tr>
+          <td>No income figure, conversion rate, popularity ranking or revenue forecast appears anywhere.</td>
+          <td>Operating Agreement 4: Amazon makes no representation about expected traffic or commission income, so none is implied.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: Operating Agreement">Operating Agreement</a></td>
+        </tr>
+        <tr>
+          <td>Product specifications are attributed to the official listing title rather than presented as our own testing.</td>
+          <td>Program Policies 2(b): no inaccurate, overbroad, deceptive or misleading claims about any Product.</td>
+          <td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener" target="_blank" aria-label="Source: Program Policies">Program Policies</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>The disclosure rule, in the source's own words</h2>
+  <div class="prose">
+    <blockquote>
+      <p>You must clearly and prominently state the following, or any substantially similar
+        statement previously allowed under this Agreement, on your Site or any other
+        location where Amazon may authorize your display or other use of Program Content:
+        "As an Amazon Associate I earn from qualifying purchases."</p>
+      <footer class="muted" style="font-size:.82rem">Operating Agreement, Section 5 —
+        <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener" target="_blank" aria-label="Source: read the agreement">read the agreement</a></footer>
+    </blockquote>
+    <blockquote>
+      <p>Disclosures are likely to be missed if they appear only on an ABOUT ME or
+        profile page, at the end of posts or videos, or anywhere that requires a person
+        to click MORE.</p>
+      <footer class="muted" style="font-size:.82rem">FTC, Disclosures 101 —
+        <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener" target="_blank" aria-label="Source: read the guidance">read the guidance</a></footer>
+    </blockquote>
+  </div>
+
+  <h2>What still needs doing</h2>
+  <p class="lede">Two items are genuinely unfinished rather than merely unverified, and
+    both are on the Flagged for Review page with the same level of detail.</p>
+  <ul class="prose" style="max-width:60ch">
+    <li><strong>FLG-001</strong> — the tracking ID matches Amazon's published shape, but
+      no public page confirms it was issued to this account.</li>
+    <li><strong>FLG-003</strong> — one of the five submitted links should be tested end to
+      end inside the enrolled Associates workflow before the rest are trusted.</li>
+  </ul>
+</div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid"><div><h2>Read</h2><ul><li><a href="/guides/">All guides</a></li><li><a href="/compare/">Comparisons</a></li><li><a href="/categories/air-fryers/">Air fryers</a></li><li><a href="/categories/thermometers/">Meat thermometers</a></li></ul></div><div><h2>The desk</h2><ul><li><a href="/desk/">Open questions</a></li><li><a href="/desk/suggestions/">Suggestions</a></li><li><a href="/desk/flags/">Flagged for review</a></li><li><a href="/executive-summary/">Executive summary</a></li></ul></div><div><h2>The method</h2><ul><li><a href="/methods/sources/">Source register</a></li><li><a href="/methods/verification/">How we verify</a></li><li><a href="/compliance/">Compliance</a></li><li><a href="/measurement/">Measurement</a></li><li><a href="/ledger/">Campaign ledger</a></li></ul></div><div><h2>About</h2><ul><li><a href="/about/">About this desk</a></li><li><a href="/about/#editorial-standards">Editorial standards</a></li></ul></div></div>
+    <div class="footer__bottom">
+      <p class="footer__disclosure"><strong>As an Amazon Associate I earn from qualifying purchases.</strong> As an Amazon Associate I earn from qualifying purchases. Outbound product links are sponsored and may earn us a commission at no extra cost to you.</p>
+      <p>© <span data-year>2026</span> Counter &amp; Crumb · <a href="/feed.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/methods/sources/">Sources</a></p>
+    </div>
   </div>
 </footer>
-<script src="/Affil3/assets/analytics.js" defer></script>
+<button class="to-top" data-to-top type="button" aria-label="Back to top">↑</button>
+<script src="/assets/js/site-config.js" defer></script>
+<script src="/assets/js/analytics.js" defer></script>
+<script src="/assets/js/site.js" defer></script>
 </body>
 </html>
