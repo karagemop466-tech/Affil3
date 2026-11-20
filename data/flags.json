@@ -78,7 +78,7 @@
       "sources": [
         "S19"
       ],
-      "manual_step": "Decide the content plan (suggestion S-07) before submitting the site for Associates review."
+      "manual_step": "Decide the content plan (suggestion S-05) before submitting the site for Associates review."
     },
     {
       "id": "FLG-008",
@@ -86,7 +86,7 @@
       "title": "Measurement events were not defined in the brief",
       "detail": "The brief asks to 'record the five defined events' but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.",
       "sources": [],
-      "manual_step": "Confirm or replace the five events (question Q-05)."
+      "manual_step": "Confirm or replace the five events, together with the analytics decision (suggestion S-03)."
     },
     {
       "id": "FLG-009",
@@ -145,17 +145,17 @@
       "title": "Author is a team byline, not a named person",
       "detail": "No named author, credential or biography is supplied, so every byline reads with the team name held in data/config.json ('ShopNow Kitchen editorial team'). Inventing a person would be a fabrication, and a fabricated credential would also cut against the truthfulness the Program Policies ask of an Associates site. If a named editor is wanted, the name, the role and any claimed experience have to come from the owner (Q-06, suggestion S-08). Corrected 2026-11-20: this row quoted a byline string ('Affil3 editorial team') that the config has not held since the rename (FLG-044).",
       "sources": [],
-      "manual_step": "Decide on a named author and bio (suggestion S-06)."
+      "manual_step": "Decide on a named author and bio (suggestion S-08)."
     },
     {
       "id": "FLG-015",
       "severity": "medium",
       "title": "No product imagery is used",
-      "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).",
+      "detail": "Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-07).",
       "sources": [
         "S02"
       ],
-      "manual_step": "Decide the imagery approach (suggestion S-05)."
+      "manual_step": "Decide the imagery approach (suggestion S-07)."
     },
     {
       "id": "FLG-016",
@@ -165,7 +165,7 @@
       "sources": [
         "S04"
       ],
-      "manual_step": "If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source."
+      "manual_step": "If prices are wanted, decide the approach (suggestion S-04) and capture them only with a dated observation from an authorized source."
     },
     {
       "id": "FLG-017",
@@ -728,8 +728,43 @@
       "detail": "The five guide titles came from the editorial brief and from the questions the tracked products raise. No search-volume, keyword-difficulty or competitor data was used, because no keyword tool was available in this session. The titles are therefore a guess about what buyers ask, written as questions so that they read naturally whether or not anyone searches for them.",
       "sources": [],
       "manual_step": "Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions."
+    },
+    {
+      "id": "FLG-065",
+      "severity": "medium",
+      "status": "open",
+      "area": "findability",
+      "title": "The root robots.txt the site leans on is not read where the site is served, and the board said the editions were de-indexed",
+      "detail": "Wording: FLG-032 stated the non-root editions 'are excluded from the index through robots.txt and noindex metadata'. Google's pages say a robots.txt file 'is not a mechanism for keeping a web page out of Google', that a disallowed URL 'can still appear in search results' without a description, that 'Specifying the noindex rule in the robots.txt file is not supported by Google', and that a page blocked in robots.txt cannot have its noindex tag seen (S24, S26). Against the shipped files: /editorial/ carries noindex; /counter/, /counterwise/, /counter-desk/ and /crisp-index/ do not, and /counter/ and /counterwise/ advertise sitemaps of their own. That sentence is now replaced with what the files actually do. Mechanism: main's FLG-038 established that Google reads robots.txt from the host root, so /Affil3/robots.txt is not consulted for these URLs at all - which means the Disallow lines for the secondary editions, and the index,follow meta tag now on every root page, buy crawl-budget management and explicit intent for crawlers that read path-scoped files, and nothing for Google today. The only per-page control available without host access is a noindex meta tag in each edition's own generator, with those paths left crawlable so the tag can be read: S-20 option B. Moving an edition under /legacy/ is option C.",
+      "impact": "Either the site says plainly that four near-duplicate editions of the same five products are indexable and competing, or it does not get to claim it de-indexed them. The first is honest and fixable; the second is a promise the repository cannot keep from the root.",
+      "manual_step": "Pick S-20 option B (noindex,follow in each secondary edition's generator, no Disallow line on those paths) or option C (archive them off this Pages site). Each edition is built by its own session's tooling, so the request is logged in COORDINATION.md rather than executed here.",
+      "sources": [
+        "S24",
+        "S25",
+        "S26",
+        "S09"
+      ],
+      "resolution": "Remapped to the current registers on 2026-11-20. The workflow copy was fixed independently on main (ad43826 and later passes; the workflow page now cites FLG-044 for the citation class) and main's b7320829 pass corrected the design brief's PB-4 and sequence-step-5 references (data/design-brief.json amended note). Session arena/5a91ea5c-affil3 remapped the rest of data/design-brief.json (DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1/2/3/6/8 and the prompt: now S-06, S-07, S-08, S-11, S-16, S-19, S-47, S-48, Q-06, Q-18, S-43), re-pointed the five flags' manual steps (FLG-007, FLG-008, FLG-014, FLG-015, FLG-016), and replaced the remaining Q-04/SG-29 references in tools/build.mjs with Q-02/Q-12. FLG-007 stays open; what counts as a post is question Q-23. Renumbered three times at merge as main's waves took FLG-043/044 and then FLG-054/055; this row lands at FLG-065."
+    },
+    {
+      "id": "FLG-066",
+      "severity": "medium",
+      "status": "resolved",
+      "area": "citation",
+      "title": "Eleven cross-references pointed at rows that exist and say something else",
+      "detail": "Found while merging with main and by reading the registers against the documents they cite. Five guides - counter-space, dual-versus-single basket, how to read a listing, the preset guide and the chicken-breast guide - cite S22 for Chefman specification figures, but S22 in this register is the FTC Endorsement Guides page; those figures come from S23 (the maker's page for RJ38-SQSS-8T) and, for the matte-black High-Fry unit, S12. FLG-006 and FLG-007 credited S11, a Chefman product page, with the declared-site rule and the 'at least 10 posts' rule of thumb, which both live in S19, and the workflow page carried the same wrong id. FLG-012 credited S12 with support for the ASIN definition. FLG-014 quoted a byline string the config has not held since the rename. DESIGN-BRIEF PB-4 blocks on the house-style row but cites S-20, which is crawl control; the house-style row is S-19. And the chicken-breast guide cited S11 and S23 inline without declaring either in its own source list. All eleven corrected on 2026-11-20, and the last one was caught by the gate rule written for this class the moment it ran. Recorded together for one reason: every one of these ids resolves to a row that exists, so a check limited to existence passes all of them. The rules that do catch it now live in tools/verify.mjs - an inline citation must be declared by the guide that uses it, and a sentence carrying a measurement may not cite a policy or consumer-advice page (S-35).",
+      "impact": "A source id is the whole evidentiary claim of a row. Pointing a reader from a wattage figure to an FTC disclosure page is worse than no citation, because it looks like one.",
+      "resolution": "Corrections and both gate rules by session b7320829-affil3 on 2026-11-20, in the merge commit that resolves the branch.",
+      "manual_step": "If those guide figures are re-checked, compare against S23 and S12 - never S22.",
+      "sources": [
+        "S22",
+        "S23",
+        "S12",
+        "S19",
+        "S11"
+      ]
     }
   ],
-  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass.",
+  "note": "Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main's FLG-030 because this branch's earlier allocations were dropped in two merges rather than renumbered over main's. FLG-035 is recorded as resolved by main's own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-065 and FLG-066 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references; a work-log claim not carried by its merged PR), renumbered three times at merge as main took FLG-043/044 then FLG-054/055; ids 046 to 048 remain main's documented gaps. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass.",
   "checked": "2026-11-20"
 }

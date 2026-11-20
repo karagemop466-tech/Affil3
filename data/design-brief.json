@@ -41,15 +41,15 @@
     {
       "id": "DX-6",
       "problem": "The site name is a directory name.",
-      "evidence": "'Affil3' appears as the wordmark, the title suffix, the og:site_name and the footer. It is the repository name.",
-      "fixed": "Open. Nobody names a publication after its folder; it cannot be remembered, spelled from hearing, or typed into a search box. It is a decision for the owner because it touches every template and every piece of copy.",
+      "evidence": "Before the rebrand, 'Affil3' appeared as the wordmark, the title suffix, the og:site_name and the footer. It was the repository name.",
+      "fixed": "Addressed in practice; confirmation open. The wordmark, title and footer now read 'ShopNow Kitchen' (data/config.json, reader-facing name; priorName 'Affil3' is disclosed on /about/ and in the repository). Whether that name is the owner's confirmed final choice is open at question Q-18 (main's name row). This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-065).",
       "why_it_reads_as_generated": "It is the one string on the site that exists for the machine's convenience rather than a reader's."
     },
     {
       "id": "DX-7",
       "problem": "Copy drifted from the data it described.",
       "evidence": "Four shipped instances: a shop page saying 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five; an empty category page under a heading that promised an explanation. Two further instances were found live in November 2026: the executive-summary tile labelled 'open flags' rendered the total flag count including resolved ones, and a category card rendered '1 picks'.",
-      "fixed": "Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.",
+      "fixed": "Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. A third wave was found on 2026-11-20 by session arena/5a91ea5c-affil3: 'All five guides' as link text above the published guides, 'five question-led guides' in the executive summary, 'five original guides - below the 10-post rule' in the workflow page, and decision cross-references pointing at renumbered rows across the workflow copy, this brief and five flags. The counts are now derived from the register and the references remapped; recorded as FLG-065. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.",
       "why_it_reads_as_generated": "Hand-written sentences about generated tables go stale silently, and stale correctness is worse than a visible gap: it makes good data look wrong."
     }
   ],
@@ -97,7 +97,7 @@
       "rule": "Second person, present tense, specific nouns. One idea per sentence where the idea matters. No sentence begins with 'In today's', 'When it comes to', 'Whether you're' or 'In this guide'. No paragraph of exactly the same length as its neighbour.",
       "before": "'Capacity is one of the first numbers you see and one of the easiest to misread.' - this one is already good; much of the surrounding copy is not.",
       "after": "'A 6 Qt dual basket is two 3 Qt baskets. That is a chicken thigh and a tray of fries each, not a whole chicken and a side. If you cook for four, 8 Qt in one basket beats 6 Qt split in two.'",
-      "effort": "A house style file plus a rewrite pass over the guides (five when this was written, ten now). Blocked on S-19, the house style row on the decision board.",
+      "effort": "A house style file plus a rewrite pass over the guides (five when this was written; seventeen published as of 2026-11-20). Blocked on S-19, the house style row on the decision board.",
       "checkable": "Banned opener phrases and uniform list-item length are both mechanically checkable. Whether the copy is any good is not."
     },
     {
@@ -106,7 +106,7 @@
       "rule": "Name a person or stop implying there is one. A byline block carries a name, one credential that is true, and what that person actually did - cooked with the product, read the manual, measured the counter. If nobody has, say so: 'We have not cooked with these units. Everything on this page is read from the manufacturer's and Amazon's own listings, and cited.' That sentence builds more trust than an invented reviewer.",
       "before": "A team byline on every guide and an Organization author in the structured data, with the weakness disclosed on /about/ as FLG-014.",
       "after": "Either a named person with one credential that is true and a statement of what they actually did, or the honest sentence: 'We have not cooked with these units. Everything here is read from the manufacturer's and Amazon's own pages, and cited.' The second option is cheaper and builds more trust than the first if the first cannot be made true.",
-      "effort": "An hour once the decision is made. Blocked on S-06 and Q-08.",
+      "effort": "An hour once the decision is made. Blocked on S-08 (byline) and Q-06 (named editor).",
       "checkable": "A gate rule can assert the structured-data author type matches the byline the page renders."
     },
     {
@@ -124,7 +124,7 @@
       "rule": "Keep the pairing and the paper, both of which are already right. The open questions are whether the display face is distinctive enough to be recognisable in a search result, whether the accent is reserved for actions only, and whether adding a webfont would break the site's zero-third-party-request property - which /privacy/ states and the gate enforces.",
       "before": "Correction to an earlier draft: the CSS was never a single generic sans. It pairs a serif display with a system sans, caps measures at several widths, and uses a warm paper background. Verified by reading src/assets/style.css rather than assuming.",
       "after": "A display face with more character than the current system serif stack, loaded without a third-party request (self-hosted, subsetted, with the gate extended to keep it same-origin), and the accent reserved strictly for actions so a button is never mistaken for a link.",
-      "effort": "Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate and stays open at S-04.",
+      "effort": "Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate; the reader-facing name ships as ShopNow Kitchen, with owner confirmation open at Q-18.",
       "checkable": "Partly: the gate already asserts no external stylesheet, script or font origin, so any font change is automatically checked for the third-party property. Type scale and measure are not mechanically checkable."
     },
     {
@@ -133,7 +133,7 @@
       "rule": "Seasonal angles are permitted but carry a takedown obligation. Participation Requirements 2(b) requires removing links and references to a limited-time promotion as soon as that promotion ends, so any seasonal page needs an expiry date in its data and a gate rule that fails the build after that date.",
       "before": "One guide mentions holiday gift framing informally; nothing has an expiry.",
       "after": "A 'expires' field on any guide that references a promotion, and a build assertion that fails once the date passes. Evergreen seasonal framing - 'air fryers sell hardest in January' - is a claim about the market and needs a source, or it should be cut.",
-      "effort": "Two hours for the field and the rule. Blocked on S-08.",
+      "effort": "Two hours for the field and the rule. Blocked on S-47 (the seasonality decision; added 2026-11-20 because no row existed under any numbering).",
       "checkable": "Fully checkable. This is the rare prescription here that a build can enforce completely."
     },
     {
@@ -160,7 +160,7 @@
       "rule": "Only channels the policies permit. Participation Requirements 6(e) and 6(f) bar buying or bidding on Amazon trademarks and variations as search keywords where the result is a Prohibited Paid Search Placement, and require that paid or unpaid search results send users to your site rather than directly or indirectly to an Amazon Site. 6(g) bars any reward or incentive for using Special Links. 4 permits Special Links in email only where the communication was solicited.",
       "before": "No acquisition plan exists. The only channel assumed is organic search.",
       "after": "Organic search plus an opted-in email list plus the RSS feed. No paid search on Amazon terms, no giveaway or discount tied to clicking a link, no unsolicited outreach containing Special Links.",
-      "effort": "A decision, then ongoing work. Blocked on S-16 and S-15.",
+      "effort": "A decision, then ongoing work. Blocked on S-06 (reader capture) and S-16 (privacy notice).",
       "checkable": "The email opt-in requirement is checkable in the capture form's markup. The rest is process."
     },
     {
@@ -188,18 +188,18 @@
   "sequence": [
     {
       "step": 1,
-      "do": "Settle S-18 (how many publications a crawler sees). Everything downstream is wasted if it is applied to three sites.",
+      "do": "Settle S-11 (how many editions a crawler sees; S-01 covers the two-publication case). Everything downstream is wasted if it is applied to three sites.",
       "depends": ""
     },
     {
       "step": 2,
-      "do": "Settle S-04 (name) and S-06 / Q-08 (byline). These two change every template and every piece of copy.",
-      "depends": "S-18"
+      "do": "Confirm the reader-facing name (Q-18) and settle S-08 / Q-06 (byline). These two change every template and every piece of copy.",
+      "depends": "S-11"
     },
     {
       "step": 3,
       "do": "PB-7 typography and colour. Highest visible impact, no dependencies once the name exists.",
-      "depends": "S-04"
+      "depends": "Q-18"
     },
     {
       "step": 4,
@@ -213,8 +213,8 @@
     },
     {
       "step": 6,
-      "do": "PB-3 imagery, after S-05 decides the source.",
-      "depends": "S-05"
+      "do": "PB-3 imagery, after S-07 decides the source.",
+      "depends": "S-07"
     },
     {
       "step": 7,
@@ -223,8 +223,8 @@
     },
     {
       "step": 8,
-      "do": "PB-11 acquisition, after S-15 and S-16.",
-      "depends": "S-15, S-16"
+      "do": "PB-11 acquisition, after S-06 and S-16.",
+      "depends": "S-06, S-16"
     },
     {
       "step": 9,
@@ -232,6 +232,6 @@
       "depends": ""
     }
   ],
-  "prompt": "You are redesigning an existing Amazon Associates publication. Read DESIGN-BRIEF.md and data/design-brief.json first; they are generated from one source and agree.\n\nHard constraints, enforced by tools/verify.mjs. Do not relax them and do not edit that gate to make your output pass. No price, star rating, review count or availability figure may appear in the HTML. The sentence 'As an Amazon Associate I earn from qualifying purchases.' must stay above the fold on every page and be repeated in the footer. Every outbound Amazon link keeps rel=\"sponsored\" and keeps tag=shopnow047c-20. Every specification keeps a source link on the same row, and a value with no official source stays blank and flagged. No revenue forecast, conversion score, traffic estimate or search-volume claim. No price tracking or alerting feature. No Amazon content used as model input.\n\nAlready decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.\n\nStill open, and listed on /suggestions/ with options: the site name (S-04), imagery source (S-05), byline (S-06), navigation labels (S-13), how many publications a crawler sees (S-18), house style (S-20), seasonality (S-08). Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.\n\nYour job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.\n\nWork through tools/build.mjs and src/assets/style.css. The site is generated from data/*.json; never hand-edit generated HTML, because the next build will discard it. Run node tools/build.mjs && node tools/verify.mjs and make it pass. Add gate rules for anything you make mechanically checkable, especially title and description length.\n\nWrite copy against the forbidden list in this brief. Read your own output aloud once before finishing: if a sentence could be true of a different product, cut it.",
-  "amended": "Amended 2026-11-20 by session b7320829-affil3 during the merge with main: PB-4 blocked on 'S-20' for the house style file, but on main's board S-20 is crawl control and the house-style row is S-19. Both ids resolve, so an existence check would never have caught it (FLG-044). The reference is corrected to S-19; the PB-4 guide-count wording is stale in the useful direction, since the shelf now publishes seventeen guides. Nothing else here was rewritten - this is a plan written on a date, and it reads as one."
+  "prompt": "You are redesigning an existing Amazon Associates publication. Read DESIGN-BRIEF.md and data/design-brief.json first; they are generated from one source and agree.\n\nHard constraints, enforced by tools/verify.mjs. Do not relax them and do not edit that gate to make your output pass. No price, star rating, review count or availability figure may appear in the HTML. The sentence 'As an Amazon Associate I earn from qualifying purchases.' must stay above the fold on every page and be repeated in the footer. Every outbound Amazon link keeps rel=\"sponsored\" and keeps tag=shopnow047c-20. Every specification keeps a source link on the same row, and a value with no official source stays blank and flagged. No revenue forecast, conversion score, traffic estimate or search-volume claim. No price tracking or alerting feature. No Amazon content used as model input.\n\nAlready decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.\n\nStill open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-47), reader capture (S-06), navigation labels and footer gloss (S-48), and which assembled design prompt binds the next redesign (S-43); the reader-facing name confirmation is question Q-18. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.\n\nYour job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.\n\nWork through tools/build.mjs and src/assets/style.css. The site is generated from data/*.json; never hand-edit generated HTML, because the next build will discard it. Run node tools/build.mjs && node tools/verify.mjs and make it pass. Add gate rules for anything you make mechanically checkable, especially title and description length.\n\nWrite copy against the forbidden list in this brief. Read your own output aloud once before finishing: if a sentence could be true of a different product, cut it.",
+  "amended": "Amended 2026-11-20 by session b7320829-affil3 during the merge with main: PB-4 blocked on 'S-20' for the house style file, but on main's board S-20 is crawl control and the house-style row is S-19. Both ids resolve, so an existence check would never have caught it (FLG-044). The reference is corrected to S-19; the PB-4 guide-count wording is stale in the useful direction, since the shelf now publishes seventeen guides. Nothing else here was rewritten - this is a plan written on a date, and it reads as one. Amended again 2026-11-20 by session arena/5a91ea5c-affil3: DX-6, DX-7, PB-5, PB-7, PB-8, PB-11, sequence steps 1, 2, 3, 6, 8 and the prompt were remapped to the current registers (Q-18 for the name, S-47 for seasonality, S-48 for navigation, S-43 for the design prompt of record, FLG-065 for the cross-reference finding); the guide count in PB-4 was corrected from ten to seventeen; this session's earlier claim of these rows as FLG-043/FLG-044 and S-20/S-33 to S-37 was renumbered twice at merge because main had taken those ids."
 }

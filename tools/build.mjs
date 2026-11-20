@@ -1198,7 +1198,7 @@ add({
 <ol>
 <li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
 <li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
-<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
+<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-02).</li>
 <li>Choose options on the <a href="${esc(href('/suggestions/'))}">Suggestions</a> page. Nothing there is implemented until you choose.</li>
 </ol>
 <h2>Measure before expanding</h2>
@@ -1337,11 +1337,11 @@ add({
 <p>Current default: one new guide every two weeks (suggestion S-05, marked current, not yet chosen by the owner). A faster cadence or a pre-review batch of eight guides are on the decision board; nothing changes until you choose. At the current count, the site has ${guides.length} guides. Amazon's application-review help page gives “at least 10 posts” as a rule of thumb (S19; the sentence here credited S11, a Chefman product page, until 2026-11-20 — see FLG-044). That page does not say whether guides count as posts, so FLG-007 stays open.</p>
 <h2>From question to page</h2>
 <ol>
-<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03); until then, from the questions buyers ask, checked against the sources the guides cite. The decision board tracks this (S-03 and Q-07).</li>
+<li><strong>Pick the question.</strong> The next topic comes from measured queries once analytics is on (S-03, S-21); until then, from the questions buyers ask, checked against the sources the guides cite. The decision board tracks this (S-03, S-21 and Q-19).</li>
 <li><strong>Answer it honestly.</strong> Facts come from official sources only (the observed listings on the Shop table, USDA food-safety pages, Amazon's own help pages). Opinion and reasoning are labeled as such.</li>
 <li><strong>Link every claim.</strong> Each guide's Sources section lists the exact source IDs used; the <a href="${esc(href('/sources/'))}">source register</a> records how each one was checked.</li>
 <li><strong>Pass the gates.</strong> The build re-runs <code>tools/verify.mjs</code>: disclosure above the fold, sponsored attributes, tagged links, no prices, sitemap and feed coverage, no broken internal links. A failing check blocks the change (see <a href="${esc(href('/compliance/'))}">Compliance</a>).</li>
-<li><strong>Publish and index.</strong> The new guide is added to the sitemap and the RSS feed automatically at build time. Search Console submission is an owner step (FLG-013, SG-29).</li>
+<li><strong>Publish and index.</strong> The new guide is added to the sitemap and the RSS feed automatically at build time. Search Console submission is an owner step (FLG-013, Q-12).</li>
 </ol>
 <h2>Parallel-session coordination</h2>
 <p>This repository may be worked on by several agent sessions at once. The shared task board is <code>COORDINATION.md</code> at the repository root: tasks are claimed there, scopes do not overlap, and shared outputs (registers, navigation, the front page) are integrated only by a final integration pass that re-verifies everything. Conflicts are resolved without discarding the other session's work, and the resolution is logged.</p>

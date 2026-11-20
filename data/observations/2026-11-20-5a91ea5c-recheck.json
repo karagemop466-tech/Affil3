@@ -1,0 +1,69 @@
+{
+  "_about": "Dated first-hand re-check of the five submitted short links by session arena/5a91ea5c-affil3 on 2026-11-20. Observed values only. Nothing here sets an intended ASIN, a confirmation date or an official listing URL; those fields stay blank in data/products.json until the owner confirms intent (FLG-002). Prices and star ratings were visible on the fetched pages and were deliberately not recorded (site rule, S03 / Program Policies).",
+  "check_date": "2026-11-20",
+  "session": "arena/5a91ea5c-affil3",
+  "method": "fetch_page (unauthenticated), redirects followed, one fetch per link",
+  "short_links": [
+    {
+      "token": "B04G1MEwY",
+      "row": "P01",
+      "observed_final_url": "https://www.amazon.com/dp/B0CDY277D3?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-7b9ca6ffb4badae2&channelId=704&plpRedirect=mhFallback",
+      "observed_page_title": "Amazon.com: CHEFMAN 6 Quart Dual Basket Air Fryer Oven with Easy View Windows, Sync Finish, Hi-Fry, Auto Shutoff, 2 Independent 3Qt Nonstick Dishwasher Safe Frying Baskets, Digital Double Air Fryer - Black : Home & Kitchen",
+      "observed_asin": "B0CDY277D3",
+      "tag_in_destination": false,
+      "result": "Resolved to the product page",
+      "agrees_with_register_asin": true
+    },
+    {
+      "token": "B02NbDxp3",
+      "row": "P02",
+      "observed_final_url": "https://www.amazon.com/dp/B09B7SB46R?lv=shuf&btn_type=ss&gaOptInStatus=true&btn_ref=srctok-7cc16fb81caa8472&channelId=704&plpRedirect=mhFallback",
+      "observed_page_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+      "observed_asin": "B09B7SB46R",
+      "tag_in_destination": false,
+      "result": "Resolved to the product page",
+      "agrees_with_register_asin": true
+    },
+    {
+      "token": "B00hJ57DV",
+      "row": "P03",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "tag_in_destination": false,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-031; not evidence the link is dead)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B0c8moW59",
+      "row": "P04",
+      "observed_final_url": "https://www.amazon.com/",
+      "observed_page_title": "Amazon.com. Spend less. Smile more.",
+      "observed_asin": null,
+      "tag_in_destination": false,
+      "result": "Amazon home page, not a product page (same intermittent behaviour as FLG-031; not evidence the link is dead)",
+      "agrees_with_register_asin": "not testable from this round"
+    },
+    {
+      "token": "B0f3GKalj",
+      "row": "P05",
+      "observed_final_url": "https://www.amazon.com/dp/B0DZFD6R9Z?lv=shuf&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&btn_type=ss&gaOptInStatus=true&language=en_US&btn_ref=srctok-537c2279882271ac&channelId=500&plpRedirect=mhFallback",
+      "observed_page_title": "Amazon.com: CHEF iQ Sense | Smart Wireless Meat Thermometer | 3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | BBQ, Grill, Oven, Smoker, Air Fryer | Gen3: Home & Kitchen",
+      "observed_asin": "B0DZFD6R9Z",
+      "tag_in_destination": false,
+      "result": "Resolved to the product page",
+      "agrees_with_register_asin": true
+    }
+  ],
+  "summary": {
+    "resolved_to_expected_asin": 3,
+    "homepage_this_round": 2,
+    "destinations_carrying_tag": 0,
+    "note": "Three of five short links reached the register's expected /dp/ pages on this round; two returned the Amazon home page, which is the same session-sensitive behaviour recorded in FLG-031 and earlier rounds. No destination carried tag=shopnow047c-20, so as observed these links would not attribute a sale (FLG-003, FLG-005 stay open)."
+  },
+  "sources_read_first_hand_this_session": [
+    "https://affiliate-program.amazon.com/help/operating/policies (Program Policies, updated April 14, 2026; Commission Income Statement section 1 read)",
+    "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM (Application Review Process; 'at least 10 posts' rule of thumb, three sales in 180 days, tagged-link FAQ read in full)",
+    "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links (rel=sponsored guidance, last updated 2025-12-10)"
+  ]
+}

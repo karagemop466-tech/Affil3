@@ -47,7 +47,7 @@
   <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. I get commissions for purchases made through links in this post. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
 </div>
 <main id="main" class="wrap">
-<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main&#39;s FLG-030 because this branch&#39;s earlier allocations were dropped in two merges rather than renumbered over main&#39;s. FLG-035 is recorded as resolved by main&#39;s own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. Flags do not block publication.</p></section>
+<section class="page-head"><p class="kicker">Flagged for review</p><h1>Flagged for review</h1><p class="deck">Irregularities, conflicts between two official sources, and values that could not be confirmed. Each is published on the Flagged for review page with its source links and the manual step that would close it. Flags never block publication; they tell a reader what not to trust yet. Numbering is continuous across sessions, and a resolved flag is kept rather than deleted so the audit trail survives. FLG-031 to FLG-035 were added by session 66f2548a on 2026-11-20 after re-reading the Operating Agreement and the Program Policies verbatim; the numbering continues from main&#39;s FLG-030 because this branch&#39;s earlier allocations were dropped in two merges rather than renumbered over main&#39;s. FLG-035 is recorded as resolved by main&#39;s own /privacy/ page, which shipped independently of this session. FLG-043 to FLG-045 were added by session b7320829-affil3 on 2026-11-20, renumbered as main took the earlier ids while this branch was open; FLG-006, FLG-007, FLG-012, FLG-014 and FLG-032 carry corrections from the same pass. FLG-065 and FLG-066 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (stale decision cross-references; a work-log claim not carried by its merged PR), renumbered three times at merge as main took FLG-043/044 then FLG-054/055; ids 046 to 048 remain main&#39;s documented gaps. The stale manual-step references on FLG-007, FLG-008, FLG-014, FLG-015 and FLG-016 were re-pointed in the same pass. Flags do not block publication.</p></section>
 <section class="flag-card" id="FLG-001">
   <p class="flag-head"><span class="badge flag">FLG-001</span> <span class="badge sev-high">high</span> <strong>Submitted tokens are 9 characters, not 10</strong></p>
   <p>All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters long. The observed amazon.com product identifiers in S04 are all 10 characters, and secondary sources describe ASINs as 10-character identifiers. No Amazon-owned definition was retrieved (see FLG-012). Because the intended ASIN cannot be confirmed, the intended ASIN, official listing URL, confirmation date and confirmation source are left blank for every row.</p>
@@ -95,14 +95,14 @@
   <p>The Associates help text says a rule of thumb is at least 10 posts (S11). The site has 16 question-shaped guides and 5 product rows after the 2026-11-20 parallel sessions. Adding content is a decision for the user (see suggestion S-05). Citation corrected 2026-11-20: the rule of thumb was credited to S11, a Chefman product page; the row that holds it is S19 (FLG-044).</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a></p>
-  <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-07) before submitting the site for Associates review.</p>
+  <p class="small"><strong>Manual step:</strong> Decide the content plan (suggestion S-05) before submitting the site for Associates review.</p>
 </section>
 <section class="flag-card" id="FLG-008">
   <p class="flag-head"><span class="badge flag">FLG-008</span> <span class="badge sev-medium">medium</span> <strong>Measurement events were not defined in the brief</strong></p>
   <p>The brief asks to &#39;record the five defined events&#39; but does not list them. This build proposes five events: page_view, category_view, product_view, outbound_click, guide_read_75. They are not confirmed.</p>
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
-  <p class="small"><strong>Manual step:</strong> Confirm or replace the five events (question Q-05).</p>
+  <p class="small"><strong>Manual step:</strong> Confirm or replace the five events, together with the analytics decision (suggestion S-03).</p>
 </section>
 <section class="flag-card" id="FLG-009">
   <p class="flag-head"><span class="badge flag">FLG-009</span> <span class="badge sev-high">high</span> <strong>Analytics endpoint is not deployed; analytics is inactive on the live site</strong></p>
@@ -144,21 +144,21 @@
   <p>No named author, credential or biography is supplied, so every byline reads with the team name held in data/config.json (&#39;ShopNow Kitchen editorial team&#39;). Inventing a person would be a fabrication, and a fabricated credential would also cut against the truthfulness the Program Policies ask of an Associates site. If a named editor is wanted, the name, the role and any claimed experience have to come from the owner (Q-06, suggestion S-08). Corrected 2026-11-20: this row quoted a byline string (&#39;Affil3 editorial team&#39;) that the config has not held since the rename (FLG-044).</p>
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
-  <p class="small"><strong>Manual step:</strong> Decide on a named author and bio (suggestion S-06).</p>
+  <p class="small"><strong>Manual step:</strong> Decide on a named author and bio (suggestion S-08).</p>
 </section>
 <section class="flag-card" id="FLG-015">
   <p class="flag-head"><span class="badge flag">FLG-015</span> <span class="badge sev-medium">medium</span> <strong>No product imagery is used</strong></p>
-  <p>Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-05).</p>
+  <p>Amazon product images are Program Content. The IP License limits use of Program Content to the Associates purposes (S02), so the site uses typography and no product photography. Imagery is a decision (suggestion S-07).</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></p>
-  <p class="small"><strong>Manual step:</strong> Decide the imagery approach (suggestion S-05).</p>
+  <p class="small"><strong>Manual step:</strong> Decide the imagery approach (suggestion S-07).</p>
 </section>
 <section class="flag-card" id="FLG-016">
   <p class="flag-head"><span class="badge flag">FLG-016</span> <span class="badge sev-medium">medium</span> <strong>Prices, ratings and availability are not recorded</strong></p>
   <p>Prices and ratings were visible only in carousel items on the fetched pages, not as confirmed values for the observed product. They change over time. Nothing is recorded or displayed, so no unverified number appears on the site.</p>
   
   <p class="small"><strong>Sources:</strong> <a href="https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20" rel="sponsored noopener">S04</a></p>
-  <p class="small"><strong>Manual step:</strong> If prices are wanted, decide the approach (suggestion S-10) and capture them only with a dated observation from an authorized source.</p>
+  <p class="small"><strong>Manual step:</strong> If prices are wanted, decide the approach (suggestion S-04) and capture them only with a dated observation from an authorized source.</p>
 </section>
 <section class="flag-card" id="FLG-017">
   <p class="flag-head"><span class="badge flag">FLG-017</span> <span class="badge sev-medium">medium</span> <strong>Parallel sessions claim the same task on separate branches</strong></p>
@@ -474,6 +474,20 @@
   
   <p class="small"><strong>Sources:</strong> none (repo or owner input)</p>
   <p class="small"><strong>Manual step:</strong> Connect Search Console (Q-12, D-05) and read the Queries report after 30 days. Replace or rewrite any guide that receives no impressions.</p>
+</section>
+<section class="flag-card" id="FLG-065">
+  <p class="flag-head"><span class="badge flag">FLG-065</span> <span class="badge sev-medium">medium</span> <strong>The root robots.txt the site leans on is not read where the site is served, and the board said the editions were de-indexed</strong></p>
+  <p>Wording: FLG-032 stated the non-root editions &#39;are excluded from the index through robots.txt and noindex metadata&#39;. Google&#39;s pages say a robots.txt file &#39;is not a mechanism for keeping a web page out of Google&#39;, that a disallowed URL &#39;can still appear in search results&#39; without a description, that &#39;Specifying the noindex rule in the robots.txt file is not supported by Google&#39;, and that a page blocked in robots.txt cannot have its noindex tag seen (S24, S26). Against the shipped files: /editorial/ carries noindex; /counter/, /counterwise/, /counter-desk/ and /crisp-index/ do not, and /counter/ and /counterwise/ advertise sitemaps of their own. That sentence is now replaced with what the files actually do. Mechanism: main&#39;s FLG-038 established that Google reads robots.txt from the host root, so /Affil3/robots.txt is not consulted for these URLs at all - which means the Disallow lines for the secondary editions, and the index,follow meta tag now on every root page, buy crawl-budget management and explicit intent for crawlers that read path-scoped files, and nothing for Google today. The only per-page control available without host access is a noindex meta tag in each edition&#39;s own generator, with those paths left crawlable so the tag can be read: S-20 option B. Moving an edition under /legacy/ is option C.</p>
+  
+  <p class="small"><strong>Sources:</strong> <a href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" rel="noopener external">S24</a>, <a href="https://developers.google.com/crawling/docs/robots-txt/create-robots-txt" rel="noopener external">S25</a>, <a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" rel="noopener external">S26</a>, <a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener external">S09</a></p>
+  <p class="small"><strong>Manual step:</strong> Pick S-20 option B (noindex,follow in each secondary edition&#39;s generator, no Disallow line on those paths) or option C (archive them off this Pages site). Each edition is built by its own session&#39;s tooling, so the request is logged in COORDINATION.md rather than executed here.</p>
+</section>
+<section class="flag-card is-resolved" id="FLG-066">
+  <p class="flag-head"><span class="badge flag">FLG-066</span> <span class="badge sev-medium">medium</span> <strong>Eleven cross-references pointed at rows that exist and say something else</strong> <span class="badge resolved">resolved</span></p>
+  <p>Found while merging with main and by reading the registers against the documents they cite. Five guides - counter-space, dual-versus-single basket, how to read a listing, the preset guide and the chicken-breast guide - cite S22 for Chefman specification figures, but S22 in this register is the FTC Endorsement Guides page; those figures come from S23 (the maker&#39;s page for RJ38-SQSS-8T) and, for the matte-black High-Fry unit, S12. FLG-006 and FLG-007 credited S11, a Chefman product page, with the declared-site rule and the &#39;at least 10 posts&#39; rule of thumb, which both live in S19, and the workflow page carried the same wrong id. FLG-012 credited S12 with support for the ASIN definition. FLG-014 quoted a byline string the config has not held since the rename. DESIGN-BRIEF PB-4 blocks on the house-style row but cites S-20, which is crawl control; the house-style row is S-19. And the chicken-breast guide cited S11 and S23 inline without declaring either in its own source list. All eleven corrected on 2026-11-20, and the last one was caught by the gate rule written for this class the moment it ran. Recorded together for one reason: every one of these ids resolves to a row that exists, so a check limited to existence passes all of them. The rules that do catch it now live in tools/verify.mjs - an inline citation must be declared by the guide that uses it, and a sentence carrying a measurement may not cite a policy or consumer-advice page (S-35).</p>
+  <p class="resolution"><strong>Resolution:</strong> Corrections and both gate rules by session b7320829-affil3 on 2026-11-20, in the merge commit that resolves the branch.</p>
+  <p class="small"><strong>Sources:</strong> <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener external">S22</a>, <a href="https://chefman.com/collections/air-fryers-1/products/turbofry-touch-air-fryer-1" rel="noopener external">S23</a>, <a href="https://chefman.com/products/turbofry-8-qt-air-fryer-w-high-fry" rel="noopener external">S12</a>, <a href="https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM" rel="sponsored noopener">S19</a>, <a href="https://chefman.com/products/turbofry-touch-dual-window-air-fryer" rel="noopener external">S11</a></p>
+  <p class="small"><strong>Manual step:</strong> If those guide figures are re-checked, compare against S23 and S12 - never S22.</p>
 </section>
 </main>
 <footer class="site-footer">

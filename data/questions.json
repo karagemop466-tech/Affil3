@@ -401,11 +401,11 @@
     {
       "id": "Q-18",
       "question": "What is this publication called?",
-      "have": "A placeholder wordmark ('Affil3') that is the repository directory name, shipped in every title tag, og:site_name and footer; a design-brief row (DX-6) that names this as an open owner decision; a naming checklist drafted in suggestion S-22.",
+      "have": "A reader-facing name already ships: data/config.json has siteName 'ShopNow Kitchen' with priorName 'Affil3' disclosed on /about/, and the rendered <title> reads '… | ShopNow Kitchen'. What is missing is the owner's recorded confirmation — decision_log is empty — so an earlier version of this row (written before the rebrand was noticed) described a placeholder Affil3 wordmark that no longer exists; corrected 2026-11-20 by session arena/5a91ea5c-affil3. A naming checklist exists at suggestion S-22, and design-brief row DX-6 now records the post-rebrand state.",
       "lack": "A chosen name, and the trademark and Associates trademark-guideline checks that make the choice safe to ship.",
       "who": "Site owner",
       "why_it_matters": "Every polished detail on the site sits behind one generic string a reader cannot remember, spell from hearing, or associate with kitchens. The rename touches every template, so it gets more expensive every week it is deferred.",
-      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it.",
+      "how_to_close": "Work the S-22 checklist, run the USPTO search and re-read the Associates trademark guidelines, then reply 'S-22 B' with the name. One rename commit completes it. Or, if the name already shipping is right, reply 'keep ShopNow Kitchen' in the decision log — one line closes it.",
       "sources": [],
       "blocking": false
     },
@@ -539,6 +539,20 @@
       "how_to_close": "Choose an approved provider and authorized data sources; document costs and data terms; run a source-cited draft-only pilot with a human reviewer before considering automated publishing.",
       "sources": [],
       "blocking": false
+    },
+    {
+      "id": "Q-30",
+      "question": "Will each buy link be replaced by a Special Link generated in Associates Central, and when?",
+      "have": "Five constructed tagged links (observed ASIN + tag), the Program Policies clause they satisfy (S02), and gate G-02 saying none has been tested.",
+      "lack": "A link issued by Amazon for each product, and one confirmation that the click lands in the tracking report.",
+      "who": "The owner, in Associates Central. No agent can do this from the repository.",
+      "why_it_matters": "This is the difference between a site built to earn and a site that looks ready to. Everything else is presentation.",
+      "how_to_close": "S-02 option D: generate one link per product, paste it into the row's special_link field with its date, re-run the gate.",
+      "blocking": true,
+      "sources": [
+        "S01",
+        "S02"
+      ]
     }
   ],
   "discovery": [
@@ -722,7 +736,21 @@
       "closes": [
         "Q-14"
       ]
+    },
+    {
+      "id": "D-28",
+      "suggestion": "After the Search Console property is verified (D-05), export the Performance report's query rows on a fixed schedule and map each measured query to the guide that answers it (or note that none does). Keep the mapping in the repository so the next-topic decision is made against rows, not instinct - this is the evidence step that suggestion S-21 option C switches on.",
+      "closes": [
+        "Q-30"
+      ]
+    },
+    {
+      "id": "D-29",
+      "suggestion": "Draft the seasonal calendar now: list the recurring buying moments (Black Friday week, holiday hosting, New Year kitchen reset, spring cleaning, summer grilling), match each to an existing guide or a gap, and label every entry a hypothesis until query data arrives. Publish the calendar only if S-23 B is chosen; the draft itself costs an hour and makes the cadence decision (S-05) concrete.",
+      "closes": [
+        "Q-18"
+      ]
     }
   ],
-  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site."
+  "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at. Every open question carries what is already in hand, what is missing, who can supply it and the step that closes it. Where two sessions wanted the same id on the same day, the row that reached main first kept it and the other moved, so this session's findings sit at K-27 to K-30, Q-26 to Q-28 and D-23 to D-26. Q-28 is marked blocking because a marketplace choice sits underneath every buy button on the site. Q-30, D-28 and D-29 were added by session arena/5a91ea5c-affil3 on 2026-11-20 (which acquisition channels the owner will run, and how to confirm the name already shipping) and renumbered three times at merge as main took Q-24/D-19/D-20 then Q-29/D-27. Q-18's 'what we have' text was corrected in the same pass: the wordmark is ShopNow Kitchen, not Affil3; the session's original Q-25 had been dropped as a duplicate of Q-18."
 }

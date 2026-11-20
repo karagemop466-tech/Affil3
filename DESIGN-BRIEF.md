@@ -55,9 +55,9 @@ true is as bad as one that was never accurate.
 
 ### DX-6. The site name is a directory name. — addressed
 
-**Evidence.** 'Affil3' appears as the wordmark, the title suffix, the og:site_name and the footer. It is the repository name.
+**Evidence.** Before the rebrand, 'Affil3' appeared as the wordmark, the title suffix, the og:site_name and the footer. It was the repository name.
 
-**Where it stands now.** Open. Nobody names a publication after its folder; it cannot be remembered, spelled from hearing, or typed into a search box. It is a decision for the owner because it touches every template and every piece of copy.
+**Where it stands now.** Addressed in practice; confirmation open. The wordmark, title and footer now read 'ShopNow Kitchen' (data/config.json, reader-facing name; priorName 'Affil3' is disclosed on /about/ and in the repository). Whether that name is the owner's confirmed final choice is open at question Q-18 (main's name row). This row previously recorded the pre-rebrand state; corrected 2026-11-20 by session arena/5a91ea5c-affil3 (FLG-065).
 
 **Why it reads as generated.** It is the one string on the site that exists for the machine's convenience rather than a reader's.
 
@@ -65,7 +65,7 @@ true is as bad as one that was never accurate.
 
 **Evidence.** Four shipped instances: a shop page saying 'four short links resolved' above a table of five; a resolved flag rendered as open; a source row naming three ASINs after the data said five; an empty category page under a heading that promised an explanation. Two further instances were found live in November 2026: the executive-summary tile labelled 'open flags' rendered the total flag count including resolved ones, and a category card rendered '1 picks'.
 
-**Where it stands now.** Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.
+**Where it stands now.** Partly addressed. The four historical instances are fixed, and the two live ones found in November 2026 were corrected in the same pass that wrote this brief, with the counts derived from the rows. A third wave was found on 2026-11-20 by session arena/5a91ea5c-affil3: 'All five guides' as link text above the published guides, 'five question-led guides' in the executive summary, 'five original guides - below the 10-post rule' in the workflow page, and decision cross-references pointing at renumbered rows across the workflow copy, this brief and five flags. The counts are now derived from the register and the references remapped; recorded as FLG-065. The systematic fix - a gate rule that bans hand-written counts in templates - is still open at S-14, because a build cannot currently see a sentence that was wrong the first time it was written.
 
 **Why it reads as generated.** Hand-written sentences about generated tables go stale silently, and stale correctness is worse than a visible gap: it makes good data look wrong.
 
@@ -119,7 +119,7 @@ direction, it is a failed build.
 
 - **Before.** 'Capacity is one of the first numbers you see and one of the easiest to misread.' - this one is already good; much of the surrounding copy is not.
 - **After.** 'A 6 Qt dual basket is two 3 Qt baskets. That is a chicken thigh and a tray of fries each, not a whole chicken and a side. If you cook for four, 8 Qt in one basket beats 6 Qt split in two.'
-- **Effort.** A house style file plus a rewrite pass over the guides (five when this was written, ten now). Blocked on S-19, the house style row on the decision board.
+- **Effort.** A house style file plus a rewrite pass over the guides (five when this was written; seventeen published as of 2026-11-20). Blocked on S-19, the house style row on the decision board.
 - **Checkable?** Banned opener phrases and uniform list-item length are both mechanically checkable. Whether the copy is any good is not.
 
 ### PB-5. Byline
@@ -128,7 +128,7 @@ direction, it is a failed build.
 
 - **Before.** A team byline on every guide and an Organization author in the structured data, with the weakness disclosed on /about/ as FLG-014.
 - **After.** Either a named person with one credential that is true and a statement of what they actually did, or the honest sentence: 'We have not cooked with these units. Everything here is read from the manufacturer's and Amazon's own pages, and cited.' The second option is cheaper and builds more trust than the first if the first cannot be made true.
-- **Effort.** An hour once the decision is made. Blocked on S-06 and Q-08.
+- **Effort.** An hour once the decision is made. Blocked on S-08 (byline) and Q-06 (named editor).
 - **Checkable?** A gate rule can assert the structured-data author type matches the byline the page renders.
 
 ### PB-6. Navigation
@@ -146,7 +146,7 @@ direction, it is a failed build.
 
 - **Before.** Correction to an earlier draft: the CSS was never a single generic sans. It pairs a serif display with a system sans, caps measures at several widths, and uses a warm paper background. Verified by reading src/assets/style.css rather than assuming.
 - **After.** A display face with more character than the current system serif stack, loaded without a third-party request (self-hosted, subsetted, with the gate extended to keep it same-origin), and the accent reserved strictly for actions so a button is never mistaken for a link.
-- **Effort.** Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate and stays open at S-04.
+- **Effort.** Half a day, and partly done in this session: the display stack, the 70ch measure and the new component styles are in src/assets/style.css. Changing the site name is separate; the reader-facing name ships as ShopNow Kitchen, with owner confirmation open at Q-18.
 - **Checkable?** Partly: the gate already asserts no external stylesheet, script or font origin, so any font change is automatically checked for the third-party property. Type scale and measure are not mechanically checkable.
 
 ### PB-8. Seasonality
@@ -155,7 +155,7 @@ direction, it is a failed build.
 
 - **Before.** One guide mentions holiday gift framing informally; nothing has an expiry.
 - **After.** A 'expires' field on any guide that references a promotion, and a build assertion that fails once the date passes. Evergreen seasonal framing - 'air fryers sell hardest in January' - is a claim about the market and needs a source, or it should be cut.
-- **Effort.** Two hours for the field and the rule. Blocked on S-08.
+- **Effort.** Two hours for the field and the rule. Blocked on S-47 (the seasonality decision; added 2026-11-20 because no row existed under any numbering).
 - **Checkable?** Fully checkable. This is the rare prescription here that a build can enforce completely.
 
 ### PB-9. Cluster architecture
@@ -182,7 +182,7 @@ direction, it is a failed build.
 
 - **Before.** No acquisition plan exists. The only channel assumed is organic search.
 - **After.** Organic search plus an opted-in email list plus the RSS feed. No paid search on Amazon terms, no giveaway or discount tied to clicking a link, no unsolicited outreach containing Special Links.
-- **Effort.** A decision, then ongoing work. Blocked on S-16 and S-15.
+- **Effort.** A decision, then ongoing work. Blocked on S-06 (reader capture) and S-16 (privacy notice).
 - **Checkable?** The email opt-in requirement is checkable in the capture form's markup. The rest is process.
 
 ### PB-12. Machinery
@@ -213,14 +213,14 @@ Patterns that make copy read as machine-written. The last one is the test that m
 
 | Step | Do this | Depends on |
 |---|---|---|
-| 1 | Settle S-18 (how many publications a crawler sees). Everything downstream is wasted if it is applied to three sites. | — |
-| 2 | Settle S-04 (name) and S-06 / Q-08 (byline). These two change every template and every piece of copy. | S-18 |
-| 3 | PB-7 typography and colour. Highest visible impact, no dependencies once the name exists. | S-04 |
+| 1 | Settle S-11 (how many editions a crawler sees; S-01 covers the two-publication case). Everything downstream is wasted if it is applied to three sites. | — |
+| 2 | Confirm the reader-facing name (Q-18) and settle S-08 / Q-06 (byline). These two change every template and every piece of copy. | S-11 |
+| 3 | PB-7 typography and colour. Highest visible impact, no dependencies once the name exists. | Q-18 |
 | 4 | PB-1, PB-2 front page and card anatomy. Partly done; finish once the name and palette exist. | PB-7 |
 | 5 | PB-4 voice pass over the published guides, against the house style file from S-19. | PB-1 |
-| 6 | PB-3 imagery, after S-05 decides the source. | S-05 |
+| 6 | PB-3 imagery, after S-07 decides the source. | S-07 |
 | 7 | PB-9 cluster linking and PB-10 on-page SEO baseline. | PB-5 |
-| 8 | PB-11 acquisition, after S-15 and S-16. | S-15, S-16 |
+| 8 | PB-11 acquisition, after S-06 and S-16. | S-06, S-16 |
 | 9 | PB-12 machinery. Do this first if you would rather stop the drift bugs than improve the look; it is the cheapest item here. | — |
 
 ## The prompt to hand the next session
@@ -232,7 +232,7 @@ Hard constraints, enforced by tools/verify.mjs. Do not relax them and do not edi
 
 Already decided for you: the front page and product cards lead with the reader, and provenance sits in a trace line beneath the offer. Category pages carry a comparison table whose rows cite their own sources. Empty clusters are not rendered. Counts in copy are computed from the rows they describe.
 
-Still open, and listed on /suggestions/ with options: the site name (S-04), imagery source (S-05), byline (S-06), navigation labels (S-13), how many publications a crawler sees (S-18), house style (S-20), seasonality (S-08). Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
+Still open, and listed on /suggestions/ with options: imagery source (S-07), byline (S-08), how many editions a crawler sees (S-11), house style (S-19), seasonality and expiry (S-47), reader capture (S-06), navigation labels and footer gloss (S-48), and which assembled design prompt binds the next redesign (S-43); the reader-facing name confirmation is question Q-18. Do not pick one of these for the owner. Build so that each can be dropped in later without a rewrite, and say in your output which of them you had to assume.
 
 Your job: apply PB-2, PB-7, PB-9 and PB-10. Give the site a recognisable silhouette - one display face, one body face, three type sizes beyond the base, one accent colour reserved for actions, line length capped near 70 characters, warm neutral paper rather than pure white. Vary card anatomy and make one card per page larger than the rest. Add a related-guide block to every guide and a pillar link up to its category. Rewrite titles to be reader-shaped and under about 60 characters, and meta descriptions to state what the page decides, under about 155.
 

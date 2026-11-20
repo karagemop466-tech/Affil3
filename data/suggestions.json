@@ -1285,6 +1285,226 @@
       "recommendation": "B only after Q-14 and D-09 are answered; do not automate publication before evidence and review gates exist."
     },
     {
+      "id": "S-43",
+      "track": "growth",
+      "topic": "The design prompt of record (two prompts now exist)",
+      "problem": "The brief asks for suggestions that feed the prompt used to design the site. Two prompt surfaces now exist: /design-brief/ (diagnosis, invariants, prescriptions, prompt — its decision cross-references pointed at renumbered rows and were remapped by session arena/5a91ea5c-affil3 on 2026-11-20, FLG-043) and the assembled prompt at /decisions/ stored in data/decisions.json. What is open is which one binds the next redesign.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Treat both prompts as background reading only.",
+          "tradeoff": "No obligations, and the next redesign re-derives everything from a fresh opinion — which is how the stale references got there.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Pick one prompt of record (either /design-brief/ or the /decisions/ assembly), require any redesign session to read it first, to not relax its invariants, and to state which open decisions it had to assume. Keep the other as an archive.",
+          "tradeoff": "One file to maintain; a redesign still has to pass tools/verify.mjs — the gate, not the prompt, is the real enforcement.",
+          "effort": "an hour to choose and cross-link",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Merge the two prompts into one document.",
+          "tradeoff": "Cleanest end state, a day of reconciling two diagnoses written by different sessions, and it can wait until one of them is chosen at B.",
+          "effort": "a day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B, choosing /design-brief/ as the record: it carries the evidence, the invariants and the gate alignment, and its references were just remapped. The /decisions/ assembly keeps serving its own rows.",
+      "depends_on": [],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-44",
+      "track": "findability",
+      "topic": "How much structured data to publish",
+      "problem": "The shelf emits Article on guides and Product on product pages. Question-shaped guides with questions and answers on the page, and a hierarchy under one root, are both describable in machine-readable form - the cheapest findability lever available that needs no owner action and no host access, unlike the robots.txt problem in S-20.",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Article only (as shipped before 2026-11-20).",
+          "tradeoff": "Minimal and valid; nothing about site structure or the Q&A content is declared.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "An @graph per guide: Article (with wordCount, articleSection, inLanguage) + BreadcrumbList, plus FAQPage where the guide carries questions and answers on the page.",
+          "tradeoff": "Implemented 2026-11-20. It buys machine-readable structure, not a rich result: Google shows FAQ rich results mainly for well-known authoritative sites, so this is stated as structure rather than as a SERP promise.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Add Product offers and price data.",
+          "tradeoff": "Not available while the site publishes no prices: the price clause (S03) and the no-republished-prices rule both stand until the Creators API decision at S-04.",
+          "effort": "blocked",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B, shipped, and not sold as a rich-result win. C waits for an API enrolment decision.",
+      "depends_on": [
+        "S-04",
+        "S-20"
+      ]
+    },
+    {
+      "id": "S-45",
+      "track": "trust",
+      "topic": "A dated re-check ritual for listing copy",
+      "problem": "Four rounds have read the five listings; three matched, and the fourth could not reach the site at all. Listing titles, accessories and prices change without notice, and this site publishes the wording it saw with a date on it. That is honest, but it quietly ages - and an automated check cannot do the job, because unauthenticated fetches of Amazon fail or land on the home page (FLG-036, FLG-037).",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the dated reads as they are and let the dates speak.",
+          "tradeoff": "Zero work. A reader sees 'observed November 20, 2026' and can judge staleness themselves.",
+          "effort": "none",
+          "risk": "low"
+        },
+        {
+          "id": "B",
+          "label": "A monthly ten-minute manual re-check, written into data/observations/ with its date and rendered on the product page as a last-seen line.",
+          "tradeoff": "Recommended. It is the only check that sees the page a shopper sees, and it needs a person - which is why it is a suggestion and not an automation claim.",
+          "effort": "10 minutes a month",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Automate the fetch in CI.",
+          "tradeoff": "Rejected on this repository's own evidence: a scheduled job would raise a flag every week for reasons unrelated to the fact it claims to verify. Do not build an alarm nobody can trust.",
+          "effort": "hours",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B, and explicitly not C. The same logic that keeps gate G-02 manual keeps this manual: a check that fails for the wrong reason is worse than no check.",
+      "depends_on": [
+        "S-43"
+      ]
+    },
+    {
+      "id": "S-46",
+      "track": "platform",
+      "topic": "A citation check that catches wrong meaning, not just a dangling id",
+      "problem": "Eleven cross-reference defects shipped in this repository before anyone noticed, because every id involved resolved: five guides cited the FTC endorsement page for Chefman wattage figures, two flags credited a Chefman product page with Amazon's application-review text, a byline sentence named a team the config had already renamed, a design-brief row blocked on the wrong suggestion, and one guide used source ids it never declared. None of that is catchable by an existence check, and traceability is the whole claim this site makes about itself.",
+      "current": "C",
+      "options": [
+        {
+          "id": "A",
+          "label": "Rely on reviewers noticing.",
+          "tradeoff": "Eleven were missed across several sessions and found only by reading text against the documents it cites.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Gate rule: every S-id, FLG-id, S-nn, Q-id, K-id and D-id inside a register string or a rendered page must resolve to a real row.",
+          "tradeoff": "Implemented 2026-11-20. It catches the dangling-reference class and nothing else, because a mis-numbered but existing id still passes it.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Two further rules, implemented with B: an inline citation in a guide must be declared in that guide's own source list, and a sentence carrying a measurement (W, °F, qt, lb, in, litres, presets) may cite only a maker, an observed retailer page or USDA - never a policy, disclosure or developer page.",
+          "tradeoff": "Implemented 2026-11-20 in tools/verify.mjs; this is the pair that catches 'Chefman states 1700 W (S22)'. It can flag a legitimate comparison that quotes a regulator, and the answer then is to cite the regulator properly rather than to loosen the rule.",
+          "effort": "done",
+          "risk": "low"
+        },
+        {
+          "id": "D",
+          "label": "Also require every guide sentence to carry an inline source id.",
+          "tradeoff": "Maximum auditability, and every guide reads like a filing. The source list plus the product-page grid already do this job where the facts live.",
+          "effort": "hours",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B and C, shipped. Prose stays readable; the wiring gets tested. D stays rejected for the reason above. Recorded as FLG-044.",
+      "depends_on": [
+        "FLG-044",
+        "S-19"
+      ]
+    },
+    {
+      "id": "S-47",
+      "track": "growth",
+      "topic": "Cluster pillars and related-guide linking (PB-9)",
+      "problem": "Guides link to products and categories link to guides, but guides do not link to each other, so each guide is a dead end for a reader and for a crawler. Prescription PB-9 specifies the fix and the data (cluster_links) already exists in the register.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Leave the link graph as it is.",
+          "tradeoff": "No work; every guide keeps earning nothing for the rest of the site.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a related block to every guide (two siblings from cluster_links plus the pillar link up to its category) and a gate rule asserting each guide page carries at least two internal links to other guides.",
+          "tradeoff": "About two hours in the generator using data that already exists; the gate rule stops it regressing.",
+          "effort": "two hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Redo the information architecture from scratch.",
+          "tradeoff": "Days of work over a five-product site; PB-9 needs a related block, not a new hierarchy.",
+          "effort": "days",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "B. The data is already in the register; this is the cheapest structural traffic win on the board.",
+      "depends_on": [
+        "S-19"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
+      "id": "S-48",
+      "track": "growth",
+      "topic": "Reader-shaped titles, descriptions, and a length check",
+      "problem": "Titles are process-first ('Kitchen picks, traced to their listings') and no gate checks title or description length, so a redesign can silently ship a title nobody would type into a search box. This is prescription PB-10 with its mechanical half unimplemented.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep titles as they are.",
+          "tradeoff": "No work; process-first titles are a documented diagnosis item in the design brief.",
+          "effort": "none",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Editorial pass over titles and meta descriptions — each states what the page decides, under about 60 and 155 characters — plus gate rules asserting both lengths.",
+          "tradeoff": "Half a day; the lengths are mechanical, the wording stays editorial.",
+          "effort": "half a day",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Automate title rewriting.",
+          "tradeoff": "A template produces the uniform voice the design brief's forbidden list exists to stop.",
+          "effort": "a day",
+          "risk": "high"
+        }
+      ],
+      "recommendation": "B. It is PB-10 with the checkable half moved into the gate, which is how every other rule on this site is kept.",
+      "depends_on": [
+        "S-28"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
+    },
+    {
       "id": "SG-27",
       "topic": "Reader-facing identity: one brand, imagery that is what it says it is",
       "current": "A",
@@ -1357,7 +1577,7 @@
       "recommendation": "A until there are at least three guides worth returning for and the email rules have been read."
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-26 to S-31 were added on 2026-11-20 by session ca51f5b3, covering what a reader sees first, whether reader capture is worth a third-party origin, where the session records live, what happens to a seasonal page after the sale, which marketplace the buttons belong to, and whether the fit check should be measured. The G-02 purchase-link hold is a safety gate and cannot be bypassed without recorded validation. Added by session arena/5a91ea5c-affil3 on 2026-11-20 and renumbered three times at merge as main's integration waves took each id in turn; the final ids are the ones above. Duplicates of main's rows (seasonal lane S-23, measured queries S-21, name Q-18) were dropped rather than renumbered over the top. Final ids: S-43 (design prompt of record), S-44 to S-47 (growth track), S-48 (footer gloss).",
   "tracks": [
     {
       "id": "revenue",
@@ -1388,6 +1608,11 @@
       "id": "platform",
       "name": "6. Platform and repo machinery",
       "why": "Registers, gates and the failure modes that produced real errors in this repository's own history. Cheap to fix, and they are what stops the same mistake recurring."
+    },
+    {
+      "id": "growth",
+      "name": "7. Organic traffic and editorial growth",
+      "why": "Rows that feed the design and editorial prompt: what gets written next, how topics are chosen, how guides link to each other, how this board itself gets worked. No row here claims popularity, search volume or product superiority; titles stay labelled as editorial hypotheses until measured queries say otherwise."
     }
   ],
   "how_to_use": "Read the tracks in order. Track 1 is owner-access work measured in minutes and it gates everything else: until one tagged link has been tested against a tracking report, the site cannot earn and no amount of design work changes that. Track 2 is the answer to 'it should not read like AI slop' and is deliberately concrete. Tracks 3 and 4 are findability and measurement. Track 5 records clauses found in this session's verbatim re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository's own repeated bugs came from.",
