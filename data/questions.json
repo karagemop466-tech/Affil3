@@ -1,0 +1,125 @@
+{
+  "note": "Open questions that must be answered before certain decisions can be reasonably made, with what we already know, what is missing, and how to discover it. Status values: 'open', 'gated', 'partially answered'.",
+  "questions": [
+    {
+      "id": "Q-001",
+      "question": "What products do the five submitted link tokens intend to identify?",
+      "known": "The five submitted URLs and their tokens (S-14). Four submitted links resolved on 2026-11-20 to observed Amazon listings (P-01/02/03/05); those observed targets are recorded separately from the intended tokens and are not merged with them.",
+      "missing": "An authoritative statement of what each token is meant to be (the tokens themselves do not match Amazon's documented 10-character ASIN format — FLG-001).",
+      "discover": "Open each submitted link in the enrolled Associates account/browser session and record the destination; or have the owner confirm each intended product.",
+      "blocks": "Any statement that the site 'is about' five specific products; product-spec claims; scaling to more links.",
+      "status": "partially answered",
+      "flags": ["FLG-001", "FLG-004"]
+    },
+    {
+      "id": "Q-002",
+      "question": "Do the submitted short links — and the provisional tagged URLs on the site — satisfy the Associates Special Links requirements?",
+      "known": "The Operating Agreement requires links to use the special 'tagged' link formats Amazon provides (S-01). The brief says the short links' exact compliance status is unresolved and must not be called invalid (FLG-003).",
+      "missing": "Result of the one-link-per-product test in the enrolled Associates workflow (destination + tracking report).",
+      "discover": "Associates Central → SiteStripe/Link Checker on one link per product; check the Orders report after test clicks.",
+      "blocks": "Bulk link replacement, adding more products, any compliance sign-off.",
+      "status": "open",
+      "flags": ["FLG-003", "FLG-005"]
+    },
+    {
+      "id": "Q-003",
+      "question": "What are 'the five defined events' the brief asks the analytics endpoint to record?",
+      "known": "The brief says 'record the five defined events' but never enumerates them. The campaign-ledger row fields the brief does enumerate are timestamp, source, channel, eligible sessions, clicks, reported orders (data/ledger.json).",
+      "missing": "The authoritative five-event list.",
+      "discover": "Owner supplies the list, or accepts the proposed schema (SUG-003: page_view, outbound_click, guide_read, newsletter_signup, feedback_click).",
+      "blocks": "Freezing the analytics event schema; dashboard design.",
+      "status": "open",
+      "flags": ["FLG-006"]
+    },
+    {
+      "id": "Q-004",
+      "question": "Which host will run the self-hosted analytics endpoint?",
+      "known": "GitHub Pages cannot run server-side code (FLG-006). Reference implementations ship in tools/analytics-endpoint/ (Cloudflare Worker; Python stdlib server).",
+      "missing": "Owner's hosting choice and budget.",
+      "discover": "Owner decision from SUG-004 options.",
+      "blocks": "Turning on the click counter (currently dry-run).",
+      "status": "open",
+      "flags": ["FLG-006"]
+    },
+    {
+      "id": "Q-005",
+      "question": "Which reader-capture (newsletter) mechanism should the site use?",
+      "known": "Capture UI ships and is wired to site-config.js captureEndpoint; it collects nothing while the endpoint is null (FLG-008).",
+      "missing": "Provider decision (self-hosted Listmonk, Buttondown, MailerLite, etc.) and account.",
+      "discover": "Owner decision from SUG-005 options.",
+      "blocks": "Live email collection; first dispatch cadence.",
+      "status": "open",
+      "flags": ["FLG-008"]
+    },
+    {
+      "id": "Q-006",
+      "question": "What is the Google Search Console verification token for the site property?",
+      "known": "Sitemap, robots.txt, canonical URLs, and feed are ready (SG-28 done; SG-29 gated).",
+      "missing": "Verification token/file from the owner's Google account.",
+      "discover": "Owner creates the property and drops the token into the reserved slot (workshop page has steps).",
+      "blocks": "Search Console query data — which the brief wants to drive topic selection.",
+      "status": "open",
+      "flags": ["FLG-007"]
+    },
+    {
+      "id": "Q-007",
+      "question": "Is the Associates account for tag shopnow047c-20 enrolled and in good standing?",
+      "known": "The tracking ID is supplied in the brief (S-14). US-format tags end in '-20', consistent with shopnow047c-20.",
+      "missing": "Confirmation of enrollment status, and access to Associates reports/SiteStripe.",
+      "discover": "Owner signs in to Associates Central; record status here.",
+      "blocks": "FLG-003/FLG-005 link tests; first-party order data for the campaign ledger (Priority 4: authorized first-party reports only).",
+      "status": "open",
+      "flags": ["FLG-003", "FLG-005"]
+    },
+    {
+      "id": "Q-008",
+      "question": "What do spec codes S01, S02, S07, S24 and SG-27..SG-30 define in the source specification?",
+      "known": "The brief's own wording maps SG-27..SG-30 to nav labels, RSS feed, Search Console, reader capture; S02 appears against Special Links validation; S01/S07/S24 appear against disclosure/Operating Agreement/FTC review.",
+      "missing": "The source specification document these codes come from.",
+      "discover": "Owner supplies the spec, or confirms the provisional mapping (this register + FLG-009).",
+      "blocks": "Treating any of those rows as fully specified requirements.",
+      "status": "open",
+      "flags": ["FLG-009"]
+    },
+    {
+      "id": "Q-009",
+      "question": "What publishing cadence can the owner review and sustain?",
+      "known": "The brief requires a publishing cadence and measured topic selection. A proposal of two question-shaped guides per month plus seasonal anchors is on the decision queue (SUG-002).",
+      "missing": "Owner's available review time and any hard deadlines (e.g. holiday season windows).",
+      "discover": "Owner decision.",
+      "blocks": "Committing the editorial calendar on the About page.",
+      "status": "open",
+      "flags": []
+    },
+    {
+      "id": "Q-010",
+      "question": "Should the site display prices or ratings at all?",
+      "known": "Per verification rules, unconfirmed volatile values stay blank (FLG-010). The site currently shows none and says 'Check today's price'.",
+      "missing": "Decision on a compliant price/rating source (e.g. Product Advertising API) or continued omission.",
+      "discover": "Owner decision from SUG-006.",
+      "blocks": "Any price display feature.",
+      "status": "open",
+      "flags": ["FLG-010"]
+    },
+    {
+      "id": "Q-011",
+      "question": "Is the site brand 'The Crisp Index' approved?",
+      "known": "A brand is needed for the publication front page; 'The Crisp Index' is a session proposal (SUG-001), used provisionally so the site could ship.",
+      "missing": "Owner approval or a replacement name.",
+      "discover": "Owner decision.",
+      "blocks": "Nothing structural (name is a template constant), but masthead/marketing copy depends on it.",
+      "status": "open",
+      "flags": []
+    },
+    {
+      "id": "Q-012",
+      "question": "What counts as a 'reported order' for the campaign ledger and any optimization?",
+      "known": "The brief says the ledger takes reported orders only from authorized first-party reports (Amazon Associates reports), and that no conversion score or revenue forecast is presented (Priority 4).",
+      "missing": "Whether to count shipped orders, dispatched items, or returned-adjusted totals; which attribution window.",
+      "discover": "Owner decision aligned with Associates report semantics.",
+      "blocks": "Ledger population; any later optimization automation.",
+      "status": "open",
+      "flags": []
+    }
+  ]
+}

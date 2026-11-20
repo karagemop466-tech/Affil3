@@ -1,0 +1,131 @@
+{
+  "note": "Every externally checkable claim on the site and in the registers cites one of these sources by ID. Type 'official' = first-party page on the relevant organization's own domain. Accessed 2026-11-20 unless noted.",
+  "sources": [
+    {
+      "id": "S-01",
+      "type": "official",
+      "org": "Amazon Associates",
+      "title": "Associates Program Operating Agreement (updated October 15, 2025)",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "supports": "Section 1: Special Links must use the special 'tagged' link formats Amazon provides. Section 5: required on-site statement 'As an Amazon Associate I earn from qualifying purchases.'",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-02",
+      "type": "official",
+      "org": "Amazon Associates",
+      "title": "Associates Help — Why do I have to identify myself as an Associate? (disclosure requirements)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98",
+      "supports": "Link-level disclosure must be legally compliant (FTC), and the Operating Agreement statement must clearly and conspicuously appear on the site.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-03",
+      "type": "official",
+      "org": "Amazon (Sell on Amazon)",
+      "title": "Understanding ASINs: Your guide to Amazon's product identification system",
+      "url": "https://sell.amazon.com/blog/what-is-an-asin",
+      "supports": "ASIN = Amazon Standard Identification Number, a unique 10-character alphanumeric code; typically starts 'B0'; appears after /dp/ in the product detail page URL.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-04",
+      "type": "official",
+      "org": "U.S. Federal Trade Commission",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "supports": "Material connections must be disclosed; disclosures must be hard to miss, placed with the endorsement, in plain language ('advertisement', 'ad', 'sponsored').",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-05",
+      "type": "official",
+      "org": "U.S. Federal Trade Commission",
+      "title": "Advertisement Endorsements — Endorsement Guides topic hub",
+      "url": "https://www.ftc.gov/news-events/topics/truth-advertising/advertisement-endorsements",
+      "supports": "Endorsements must be truthful and not misleading; compensated promoters must disclose (Endorsement Guides, revised June 2023).",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-06",
+      "type": "official",
+      "org": "Amazon.com",
+      "title": "Listing observed for P-01 (resolved redirect target of https://link.amazon/B04G1MEwY)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "supports": "P-01 observed_* fields: listing title, category breadcrumb, observed ASIN B0CDY277D3. Observation date 2026-11-20.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-07",
+      "type": "official",
+      "org": "Amazon.com",
+      "title": "Listing observed for P-02 (resolved redirect target of https://link.amazon/B02NbDxp3)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "supports": "P-02 observed_* fields: listing title, category breadcrumb, observed ASIN B09B7SB46R. Observation date 2026-11-20.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-08",
+      "type": "official",
+      "org": "Amazon.com",
+      "title": "Listing observed for P-03 (resolved redirect target of https://link.amazon/B00hJ57DV)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "supports": "P-03 observed_* fields: listing title, category breadcrumb, observed ASIN B08DKYBTPH. Observation date 2026-11-20.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-09",
+      "type": "official",
+      "org": "Amazon.com",
+      "title": "Listing observed for P-05 (resolved redirect target of https://link.amazon/B0f3GKalj)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "supports": "P-05 observed_* fields: listing title, category breadcrumb, observed ASIN B0DZFD6R9Z. Observation date 2026-11-20.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-10",
+      "type": "observation",
+      "org": "Amazon.com (checkpoint)",
+      "title": "Observation log for P-04 (https://link.amazon/B0c8moW59) — Amazon checkpoint interstitial",
+      "url": "https://link.amazon/B0c8moW59",
+      "supports": "P-04 observed.* : two fetch attempts on 2026-11-20 returned Amazon's 'Continue shopping' bot-checkpoint interstitial (amazon.com/checkpoint/continue). No product page observed. Destination unverified (FLG-004).",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-11",
+      "type": "official",
+      "org": "Amazon Associates",
+      "title": "Associates Program Policies (incorporated into the Operating Agreement)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "supports": "Program Policies referenced by the Operating Agreement (Participation Requirements, IP License, Commission Income Statement, Trademark Guidelines).",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-12",
+      "type": "official",
+      "org": "Sitemaps.org",
+      "title": "Sitemaps.org protocol",
+      "url": "https://www.sitemaps.org/protocol.html",
+      "supports": "docs/sitemap.xml format.",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-13",
+      "type": "official",
+      "org": "RSS Advisory Board",
+      "title": "RSS 2.0 specification",
+      "url": "https://www.rssboard.org/rss-specification",
+      "supports": "docs/feed.xml format (SG-28).",
+      "accessed": "2026-11-20"
+    },
+    {
+      "id": "S-14",
+      "type": "internal",
+      "org": "Project record",
+      "title": "Owner-supplied project brief (session arena-93cee724-affil3, COORDINATION.md)",
+      "url": "https://github.com/karagemop466-tech/Affil3/blob/arena/93cee724-affil3/COORDINATION.md",
+      "supports": "Submission of the five links and their tokens; tracking ID shopnow047c-20; FLG-003 wording; working guide titles; requirement set.",
+      "accessed": "2026-11-20"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "note": "Flagged-for-Review register. Status values: 'needs review' (published here, does not block the build), 'informational'. Nothing here is marked verified unless it was checked against an official source (linked).",
+  "flags": [
+    {
+      "id": "FLG-001",
+      "title": "Submitted link tokens do not match the documented ASIN format",
+      "detail": "All five submitted tokens (B04G1MEwY, B02NbDxp3, B00hJ57DV, B0c8moW59, B0f3GKalj) are 9 characters with mixed case. Amazon's own ASIN guide documents ASINs as 10-character alphanumeric codes, typically 'B0' + 8 (S-03). The mismatch is a checkable format fact only. Per the project brief, no claim of invalidity is made; see FLG-003.",
+      "affects": ["P-01", "P-02", "P-03", "P-04", "P-05"],
+      "status": "needs review",
+      "sources": ["S-03", "S-14"],
+      "action": "Owner confirms the intended identifiers (Q-001) and runs the Associates link check (FLG-003)."
+    },
+    {
+      "id": "FLG-002",
+      "title": "link.amazon domain: resolves to Amazon, ownership/compliance status unresolved",
+      "detail": "Each submitted URL lives on https://link.amazon/. Fetching each one redirected into amazon.com (product pages for four of five, a checkpoint for one). The redirect behaviour is observed and recorded, but the domain's status as an Amazon-operated short-link service is not confirmed from an official source and is not claimed either way.",
+      "affects": ["P-01", "P-02", "P-03", "P-04", "P-05"],
+      "status": "needs review",
+      "sources": ["S-06", "S-07", "S-08", "S-09", "S-10"],
+      "action": "Owner or Associates support confirms whether link.amazon links are permitted link formats under the Operating Agreement (S-01)."
+    },
+    {
+      "id": "FLG-003",
+      "title": "Compliance status of the supplied short links is unresolved (per brief)",
+      "detail": "The project brief states: 'Do not claim that the supplied short links are invalid; their exact compliance status is unresolved in FLG-003.' This flag records exactly that. The Operating Agreement requires links to use the special 'tagged' link formats Amazon provides ('Special Links', S-01); whether the supplied short links qualify must be tested one link per product in the enrolled Associates workflow, confirming destination and tracking report before scaling.",
+      "affects": ["P-01", "P-02", "P-03", "P-04", "P-05"],
+      "status": "needs review",
+      "sources": ["S-01", "S-14"],
+      "action": "Run the one-link-per-product test in the enrolled Associates account (destination + tracking report), then scale or replace links. Gate on adding more products."
+    },
+    {
+      "id": "FLG-004",
+      "title": "P-04 destination unverified — Amazon checkpoint interstitial",
+      "detail": "https://link.amazon/B0c8moW59 returned Amazon's 'Continue shopping' bot-checkpoint interstitial on two fetch attempts (2026-11-20). No product page was observed, so P-04 has no observed ASIN, title, or category. All corresponding fields are blank, not inferred.",
+      "affects": ["P-04"],
+      "status": "needs review",
+      "sources": ["S-10"],
+      "action": "Open the submitted link in a normal signed-in browser session, record the destination, and complete the P-04 observed_* fields."
+    },
+    {
+      "id": "FLG-005",
+      "title": "Attribution untested in Associates reporting (Special Links workflow pending)",
+      "detail": "For P-01/02/03/05 the site links to the observed listing URL with ?tag=shopnow047c-20 appended. This is the standard tagged-URL pattern, but it has not been validated in the enrolled Associates workflow, and P-04's outbound link carries no verified attribution at all. Until the FLG-003 test confirms destinations and the tracking report, these links are provisional (brief item S02: replace ambiguous outbound links with validated Special Links).",
+      "affects": ["P-01", "P-02", "P-03", "P-04", "P-05"],
+      "status": "needs review",
+      "sources": ["S-01", "S-11", "S-14"],
+      "action": "Generate Special Links (e.g. SiteStripe) in the enrolled account, test one per product, confirm the tracking report shows them, then swap the provisional URLs (SUG-015)."
+    },
+    {
+      "id": "FLG-006",
+      "title": "Self-hosted analytics endpoint not yet deployed (counter shipped disabled)",
+      "detail": "The brief requires a privacy-preserving outbound-click counter plus a self-hosted analytics endpoint. GitHub Pages serves static files only and cannot host an endpoint, so the counter (assets/js/analytics.js) ships in dry-run mode with analyticsEndpoint: null in site-config.js. Reference implementations ship in tools/analytics-endpoint/ (Cloudflare Worker + stdlib Python server). Flipping the config is a one-line release once an endpoint is deployed.",
+      "affects": ["analytics"],
+      "status": "needs review",
+      "sources": ["S-14"],
+      "action": "Owner picks a host (SUG-004), deploys tools/analytics-endpoint, sets analyticsEndpoint in docs/site-config.js."
+    },
+    {
+      "id": "FLG-007",
+      "title": "Search Console verification token missing (SG-29)",
+      "detail": "The brief's parallel pass SG-29 asks for Search Console. Site verification requires a token from the owner's Google account; none was supplied, and none is invented. A slot is reserved in the page template and the sitemap is ready to submit.",
+      "affects": ["seo"],
+      "status": "needs review",
+      "sources": ["S-14"],
+      "action": "Owner creates the Search Console property for the site URL and supplies the verification token/file; then submit docs/sitemap.xml."
+    },
+    {
+      "id": "FLG-008",
+      "title": "Reader-capture endpoint missing (SG-30)",
+      "detail": "Newsletter signup UI ships on the front page and guide pages, but no list provider or endpoint was supplied and none is invented. The form is gated client-side and collects nothing until an endpoint is configured. 'No manual input' cannot conjure a third-party account; this is a gated item.",
+      "affects": ["reader-capture"],
+      "status": "needs review",
+      "sources": ["S-14"],
+      "action": "Owner chooses a capture stack (SUG-005); set captureEndpoint in docs/site-config.js."
+    },
+    {
+      "id": "FLG-009",
+      "title": "Referenced spec codes (S01, S02, S07, S24, SG-27..SG-30) have no source spec in the repo",
+      "detail": "The brief cites codes S01, S02, S07, S24 and SG-27..SG-30 whose definition document is not in this repository. Where the brief's own wording explains a code (e.g. SG-27..SG-30 = nav labels, RSS feed, Search Console, reader capture), it is mapped and implemented; the rest are recorded with provisional meanings and not treated as verified requirements.",
+      "affects": ["process"],
+      "status": "needs review",
+      "sources": ["S-14"],
+      "action": "Owner supplies the source specification, or confirms the provisional mapping in the questions register (Q-008)."
+    },
+    {
+      "id": "FLG-010",
+      "title": "Price, rating, and review-count fields intentionally blank",
+      "detail": "These values are volatile and were not verified for the resolved products at fetch time (carousel prices on the fetched pages referred to other items and are not attributable). Per the verification rule, unconfirmed values are left blank. The site shows no cached prices; CTAs say 'Check today's price'.",
+      "affects": ["P-01", "P-02", "P-03", "P-04", "P-05"],
+      "status": "informational",
+      "sources": ["S-14"],
+      "action": "If price display is wanted, integrate a compliant source (SUG-006)."
+    },
+    {
+      "id": "FLG-011",
+      "title": "Editorial display names derived from verbatim listing titles",
+      "detail": "Card titles shorten the verbatim listing titles for readability (e.g. 'Chefman 6-Quart Dual Basket Air Fryer Oven'). The verbatim titles are always shown alongside in the register and test-queue tables, so the derivation is visible and reversible.",
+      "affects": ["P-01", "P-02", "P-03", "P-05"],
+      "status": "informational",
+      "sources": ["S-06", "S-07", "S-08", "S-09"],
+      "action": "None; disclosure kept on-page."
+    }
+  ]
+}

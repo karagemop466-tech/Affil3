@@ -1,0 +1,35 @@
+{
+  "brand": "The Crisp Index",
+  "tagline": "Straight answers for the countertop kitchen",
+  "mission": "Question-first buying guides for air fryers, countertop ovens, and the gadgets between — with every claim sourced and every link disclosed.",
+  "base_url": "https://karagemop466-tech.github.io/Affil3/",
+  "tracking_id": "shopnow047c-20",
+  "build_date": "2026-11-20",
+  "locale": "en-US",
+  "editorial_author": "The Crisp Index Editorial Desk",
+  "exact_associates_statement": "As an Amazon Associate I earn from qualifying purchases.",
+  "nav": [
+    {"label": "Home", "path": "index.html"},
+    {"label": "Buyer's Guides", "path": "guides/index.html"},
+    {"label": "Compare", "path": "compare/index.html"},
+    {"label": "The Test Queue", "path": "products/index.html"},
+    {"label": "About", "path": "about/index.html"}
+  ],
+  "footer_workshop": [
+    {"label": "Executive summary", "path": "workshop/executive-summary.html"},
+    {"label": "Product register & verification", "path": "workshop/register.html"},
+    {"label": "Flagged for Review", "path": "workshop/flagged.html"},
+    {"label": "Suggestions & decisions", "path": "workshop/suggestions.html"},
+    {"label": "Open questions", "path": "workshop/questions.html"},
+    {"label": "Campaign ledger & analytics", "path": "workshop/ledger.html"},
+    {"label": "Disclosure policy", "path": "disclosure/index.html"},
+    {"label": "About & methodology", "path": "about/index.html"}
+  ],
+  "proposed_events": ["page_view", "outbound_click", "guide_read", "newsletter_signup", "feedback_click"],
+  "events_note": "PROPOSED schema (SUG-003) for the brief's undefined 'five defined events' (Q-003). Owner confirmation pending; sending is disabled until the self-hosted endpoint is deployed (FLG-006).",
+  "season": {
+    "name": "Holiday hosting 2026",
+    "window": "November–December 2026",
+    "guide": "guides/holiday-hosting-countertop.html"
+  }
+}
