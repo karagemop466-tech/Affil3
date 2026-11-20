@@ -1,42 +1,299 @@
 {
   "note": "What is established, what is not, and how each gap could be closed. This is the page to read before any decision is made, because it separates things we can prove from things we would be guessing at.",
   "known": [
-    {"id": "K-01", "statement": "The tracking ID supplied by the owner is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S01"]},
-    {"id": "K-02", "statement": "The Operating Agreement requires the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' to be stated clearly and prominently on the site.", "sources": ["S01"]},
-    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a parameter in the URL, and must be accessed directly from the site.", "sources": ["S02"]},
-    {"id": "K-04", "statement": "A site may show price and availability only if Amazon serves that data or it comes through the Creators or PA API. This site does neither, so it shows no prices.", "sources": ["S03"]},
-    {"id": "K-05", "statement": "Google asks that paid and affiliate links be marked with rel=\"sponsored\".", "sources": ["S06"]},
-    {"id": "K-06", "statement": "The FTC requires a material connection, including an affiliate commission, to be disclosed clearly and conspicuously, at the point of the endorsement.", "sources": ["S07", "S08"]},
-    {"id": "K-07", "statement": "Four of the five supplied short links resolved to a product page across three fetch rounds; one did not resolve to a product at all.", "sources": ["S05", "S04"]},
-    {"id": "K-08", "statement": "All five supplied link codes are 9 characters. Every resolved product page carries a 10-character ASIN.", "sources": ["S05", "S04"]},
-    {"id": "K-09", "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.", "sources": ["S05"]},
-    {"id": "K-10", "statement": "Four of the five products have a manufacturer specification page that states capacity, temperature, power or dimensions.", "sources": ["S11", "S12", "S13", "S14"]},
-    {"id": "K-11", "statement": "USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles.", "sources": ["S10"]},
-    {"id": "K-12", "statement": "A qualifying purchase session lasts 24 hours from the click, or up to 89 days if the item is added to the cart first.", "sources": ["S17"]}
+    {
+      "id": "K-01",
+      "statement": "The tracking ID supplied by the owner is shopnow047c-20, and the -20 suffix matches the US Associates convention.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-02",
+      "statement": "The Operating Agreement requires the exact sentence 'As an Amazon Associate I earn from qualifying purchases.' to be stated clearly and prominently on the site.",
+      "sources": [
+        "S01"
+      ]
+    },
+    {
+      "id": "K-03",
+      "statement": "Special Links must carry the Associates tag as a parameter in the URL, and must be accessed directly from the site.",
+      "sources": [
+        "S02"
+      ]
+    },
+    {
+      "id": "K-04",
+      "statement": "A site may show price and availability only if Amazon serves that data or it comes through the Creators or PA API. This site does neither, so it shows no prices.",
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "K-05",
+      "statement": "Google asks that paid and affiliate links be marked with rel=\"sponsored\".",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "K-06",
+      "statement": "The FTC requires a material connection, including an affiliate commission, to be disclosed clearly and conspicuously, at the point of the endorsement.",
+      "sources": [
+        "S07",
+        "S08"
+      ]
+    },
+    {
+      "id": "K-07",
+      "statement": "Four of the five supplied short links resolved to a product page across three fetch rounds; one did not resolve to a product at all.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
+    },
+    {
+      "id": "K-08",
+      "statement": "All five supplied link codes are 9 characters. Every resolved product page carries a 10-character ASIN.",
+      "sources": [
+        "S05",
+        "S04"
+      ]
+    },
+    {
+      "id": "K-09",
+      "statement": "The observed destination for the same short link differed between fetch rounds, so the mapping is time-dependent.",
+      "sources": [
+        "S05"
+      ]
+    },
+    {
+      "id": "K-10",
+      "statement": "Four of the five products have a manufacturer specification page that states capacity, temperature, power or dimensions.",
+      "sources": [
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "id": "K-11",
+      "statement": "USDA publishes safe minimum internal temperatures for meat, poultry, fish, eggs, leftovers and casseroles.",
+      "sources": [
+        "S10"
+      ]
+    },
+    {
+      "id": "K-12",
+      "statement": "A qualifying purchase session lasts 24 hours from the click, or up to 89 days if the item is added to the cart first.",
+      "sources": [
+        "S17"
+      ]
+    }
   ],
   "unknown": [
-    {"id": "Q-01", "question": "Which product did the owner intend each supplied short link to reach?", "why_it_matters": "Until this is answered, no product row can say 'this is the product you submitted'. The site can only say 'this is where the link landed on this date', which is a different claim.", "how_to_close": "Open each of the five short links in a signed-in Amazon session and name the product. One message closes it.", "sources": ["S05", "S04"], "blocking": true},
-    {"id": "Q-02", "question": "Does a buy link with our tag actually credit a sale?", "why_it_matters": "This is the only question that decides whether any of this earns anything. The links match the tagging rule, but matching the rule is not the same as appearing in a tracking report.", "how_to_close": "In Associates Central, click one link per product, confirm the destination, and confirm the click in the tracking report. This is gate G-02.", "sources": ["S01", "S02"], "blocking": true},
-    {"id": "Q-03", "question": "Is the Associates account active, and is this site declared in it?", "why_it_matters": "An account that has not declared the site, or has gone dormant, will not pay out however good the pages are.", "how_to_close": "Check account status and the declared site list in Associates Central.", "sources": ["S01"], "blocking": true},
-    {"id": "Q-04", "question": "Where will the analytics collector run?", "why_it_matters": "GitHub Pages is static, so it cannot run the collector. Without an endpoint there is no measurement, and without measurement the next topic is chosen on instinct.", "how_to_close": "Pick a host that runs Node, deploy tools/collector.mjs, and set analyticsEndpoint in data/config.json.", "sources": [], "blocking": false},
-    {"id": "Q-05", "question": "Which marketplace is the intended one?", "why_it_matters": "Each Amazon marketplace has its own ASINs and its own Associates ID. The -20 tag and the amazon.com pages point to the US program, but that is inference, not a statement from the owner.", "how_to_close": "Confirm the US marketplace and the amazon.com storefront.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-06", "question": "Who is the named editor?", "why_it_matters": "A named person with a contact route is a stronger trust signal for both readers and search engines than a team byline. Inventing one would be worse than not having one.", "how_to_close": "Supply the name and role of the person who answers for corrections.", "sources": ["S09"], "blocking": false},
-    {"id": "Q-07", "question": "What publishing cadence can be sustained?", "why_it_matters": "The feed and the sitemap only grow if guides keep shipping. A cadence nobody can keep is worse than a slower one that holds.", "how_to_close": "Choose an option on the suggestions page.", "sources": [], "blocking": false},
-    {"id": "Q-08", "question": "Should prices ever be displayed?", "why_it_matters": "Displaying price requires Amazon-served data or the Creators API. It also creates a maintenance obligation, since a stale price is a misleading claim.", "how_to_close": "Decide whether to enroll in the Creators API. Until then, no price appears anywhere.", "sources": ["S03"], "blocking": false},
-    {"id": "Q-09", "question": "What belongs in the campaign ledger?", "why_it_matters": "The ledger stays empty until there is an authorized first-party report to put in it. Importing scraped or estimated numbers would poison every decision made from it.", "how_to_close": "Export an Associates report and supply it with its date range and provenance.", "sources": ["S01"], "blocking": false},
-    {"id": "Q-10", "question": "Should the earlier /editorial/ publication be retired?", "why_it_matters": "Two publications in one repository splits the site's identity and its search signals. One site should be indexed.", "how_to_close": "Choose option S-01 on the suggestions page.", "sources": ["S09"], "blocking": false},
-    {"id": "Q-11", "question": "Does the click counter need a separate privacy notice?", "why_it_matters": "The counter stores no cookies, no IP address and no identifiers, which keeps it small. Whether that is enough is a question for the owner's counsel, not a conclusion this build should state.", "how_to_close": "Obtain legal review, or keep the counter off until it is reviewed.", "sources": [], "blocking": false},
-    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Without it, no query data exists and nobody can see which guides are actually being found.", "how_to_close": "Verify the property and submit the sitemap URL from robots.txt.", "sources": [], "blocking": false},
-    {"id": "Q-13", "question": "What is the target reader, precisely?", "why_it_matters": "A site for 'people buying kitchen gear' is not a site. A site for 'renters with two feet of counter who cook for two' produces different pages than 'families of six with a big kitchen'. This decision changes the guides.", "how_to_close": "Nominate one reader and one situation. Content decisions get easier immediately.", "sources": [], "blocking": false}
+    {
+      "id": "Q-01",
+      "question": "Which product did the owner intend each supplied short link to reach?",
+      "why_it_matters": "Until this is answered, no product row can say 'this is the product you submitted'. The site can only say 'this is where the link landed on this date', which is a different claim.",
+      "how_to_close": "Open each of the five short links in a signed-in Amazon session and name the product. One message closes it.",
+      "sources": [
+        "S05",
+        "S04"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-02",
+      "question": "Does a buy link with our tag actually credit a sale?",
+      "why_it_matters": "This is the only question that decides whether any of this earns anything. The links match the tagging rule, but matching the rule is not the same as appearing in a tracking report.",
+      "how_to_close": "In Associates Central, click one link per product, confirm the destination, and confirm the click in the tracking report. This is gate G-02.",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-03",
+      "question": "Is the Associates account active, and is this site declared in it?",
+      "why_it_matters": "An account that has not declared the site, or has gone dormant, will not pay out however good the pages are.",
+      "how_to_close": "Check account status and the declared site list in Associates Central.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": true
+    },
+    {
+      "id": "Q-04",
+      "question": "Where will the analytics collector run?",
+      "why_it_matters": "GitHub Pages is static, so it cannot run the collector. Without an endpoint there is no measurement, and without measurement the next topic is chosen on instinct.",
+      "how_to_close": "Pick a host that runs Node, deploy tools/collector.mjs, and set analyticsEndpoint in data/config.json.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-05",
+      "question": "Which marketplace is the intended one?",
+      "why_it_matters": "Each Amazon marketplace has its own ASINs and its own Associates ID. The -20 tag and the amazon.com pages point to the US program, but that is inference, not a statement from the owner.",
+      "how_to_close": "Confirm the US marketplace and the amazon.com storefront.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-06",
+      "question": "Who is the named editor?",
+      "why_it_matters": "A named person with a contact route is a stronger trust signal for both readers and search engines than a team byline. Inventing one would be worse than not having one.",
+      "how_to_close": "Supply the name and role of the person who answers for corrections.",
+      "sources": [
+        "S09"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-07",
+      "question": "What publishing cadence can be sustained?",
+      "why_it_matters": "The feed and the sitemap only grow if guides keep shipping. A cadence nobody can keep is worse than a slower one that holds.",
+      "how_to_close": "Choose an option on the suggestions page.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-08",
+      "question": "Should prices ever be displayed?",
+      "why_it_matters": "Displaying price requires Amazon-served data or the Creators API. It also creates a maintenance obligation, since a stale price is a misleading claim.",
+      "how_to_close": "Decide whether to enroll in the Creators API. Until then, no price appears anywhere.",
+      "sources": [
+        "S03"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-09",
+      "question": "What belongs in the campaign ledger?",
+      "why_it_matters": "The ledger stays empty until there is an authorized first-party report to put in it. Importing scraped or estimated numbers would poison every decision made from it.",
+      "how_to_close": "Export an Associates report and supply it with its date range and provenance.",
+      "sources": [
+        "S01"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-10",
+      "question": "Should the earlier /editorial/ publication be retired?",
+      "why_it_matters": "Two publications in one repository splits the site's identity and its search signals. One site should be indexed.",
+      "how_to_close": "Choose option S-01 on the suggestions page.",
+      "sources": [
+        "S09"
+      ],
+      "blocking": false
+    },
+    {
+      "id": "Q-11",
+      "question": "Does the click counter need a separate privacy notice?",
+      "why_it_matters": "The counter stores no cookies, no IP address and no identifiers, which keeps it small. Whether that is enough is a question for the owner's counsel, not a conclusion this build should state.",
+      "how_to_close": "Obtain legal review, or keep the counter off until it is reviewed.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-12",
+      "question": "Who owns the Search Console property?",
+      "why_it_matters": "Without it, no query data exists and nobody can see which guides are actually being found.",
+      "how_to_close": "Verify the property and submit the sitemap URL from robots.txt.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-13",
+      "question": "What is the target reader, precisely?",
+      "why_it_matters": "A site for 'people buying kitchen gear' is not a site. A site for 'renters with two feet of counter who cook for two' produces different pages than 'families of six with a big kitchen'. This decision changes the guides.",
+      "how_to_close": "Nominate one reader and one situation. Content decisions get easier immediately.",
+      "sources": [],
+      "blocking": false
+    },
+    {
+      "id": "Q-14",
+      "question": "Where will reader email capture run, and under what consent wording?",
+      "why_it_matters": "SG-30 asks for reader capture, but a mailing list creates a consent and privacy obligation this site cannot shoulder silently. The privacy notice must change before, not after, the first address is stored.",
+      "how_to_close": "Choose option S-06 B, name the provider and the double opt-in wording, and update the privacy notice first. Until then the front page advertises RSS alone.",
+      "sources": [],
+      "blocking": false
+    }
   ],
   "discovery": [
-    {"id": "D-01", "suggestion": "Open each supplied short link in a signed-in browser and record the product name and the 10-character ASIN from the URL.", "closes": ["Q-01"]},
-    {"id": "D-02", "suggestion": "Generate one Special Link per product inside Associates Central, then click it and confirm the row appears in the tracking report.", "closes": ["Q-02", "Q-03", "Q-05"]},
-    {"id": "D-03", "suggestion": "Export the account's tracking ID list and declared site list from Associates Central and keep the export with its date.", "closes": ["Q-03", "Q-05"]},
-    {"id": "D-04", "suggestion": "Run the collector against a known set of ten test clicks before trusting any number it produces.", "closes": ["Q-04"]},
-    {"id": "D-05", "suggestion": "Verify the site in Search Console, submit the sitemap, and read the Performance report after two weeks.", "closes": ["Q-12"]},
-    {"id": "D-06", "suggestion": "Write down the last five things actually cooked in the household, then match guides to that list instead of to guesses about search volume.", "closes": ["Q-13"]},
-    {"id": "D-07", "suggestion": "Contact each manufacturer's support line for any specification their own pages contradict, and keep the reply with the date.", "closes": []},
-    {"id": "D-08", "suggestion": "Read the manual PDF linked from each listing for the values the product page omits, such as overall dimensions and dishwasher guidance.", "closes": []}
+    {
+      "id": "D-01",
+      "suggestion": "Open each supplied short link in a signed-in browser and record the product name and the 10-character ASIN from the URL.",
+      "closes": [
+        "Q-01"
+      ]
+    },
+    {
+      "id": "D-02",
+      "suggestion": "Generate one Special Link per product inside Associates Central, then click it and confirm the row appears in the tracking report.",
+      "closes": [
+        "Q-02",
+        "Q-03",
+        "Q-05"
+      ]
+    },
+    {
+      "id": "D-03",
+      "suggestion": "Export the account's tracking ID list and declared site list from Associates Central and keep the export with its date.",
+      "closes": [
+        "Q-03",
+        "Q-05"
+      ]
+    },
+    {
+      "id": "D-04",
+      "suggestion": "Run the collector against a known set of ten test clicks before trusting any number it produces.",
+      "closes": [
+        "Q-04"
+      ]
+    },
+    {
+      "id": "D-05",
+      "suggestion": "Verify the site in Search Console, submit the sitemap, and read the Performance report after two weeks.",
+      "closes": [
+        "Q-12"
+      ]
+    },
+    {
+      "id": "D-06",
+      "suggestion": "Write down the last five things actually cooked in the household, then match guides to that list instead of to guesses about search volume.",
+      "closes": [
+        "Q-13"
+      ]
+    },
+    {
+      "id": "D-07",
+      "suggestion": "Contact each manufacturer's support line for any specification their own pages contradict, and keep the reply with the date.",
+      "closes": []
+    },
+    {
+      "id": "D-08",
+      "suggestion": "Read the manual PDF linked from each listing for the values the product page omits, such as overall dimensions and dishwasher guidance.",
+      "closes": []
+    },
+    {
+      "id": "D-09",
+      "suggestion": "After Search Console is verified, read the Performance report two weeks later and pick the next guide from the top unanswered query.",
+      "closes": [
+        "Q-12",
+        "Q-07"
+      ]
+    },
+    {
+      "id": "D-10",
+      "suggestion": "Name one reader persona from S-13 and write it at the top of the December commission list before any new guide is drafted.",
+      "closes": [
+        "Q-13"
+      ]
+    }
   ]
 }

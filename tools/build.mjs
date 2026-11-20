@@ -80,6 +80,8 @@ const tagged = (p) => p.tagged_outbound_url || '';
 const dateLong = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 const rfc822 = (iso) => new Date(iso + 'T00:00:00Z').toUTCString();
 const slugId = (t = '') => t.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+// Newest first; within the same date, later-published entries lead.
+const latestFirst = (list) => [...list].reverse().sort((a, b) => (a.date < b.date ? 1 : -1));
 
 // An editorial illustration block. Every image on the site is AI-generated artwork and is
 // labeled as such at the point of use; the credit line comes from data/config.json.
@@ -116,6 +118,7 @@ function page({ title, description, path: p, body, type = 'page', attrs = '', og
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImg)}">
 <meta name="analytics-endpoint" content="${esc(cfg.analyticsEndpoint || '')}">
+${cfg.searchConsoleToken ? `<meta name="google-site-verification" content="${esc(cfg.searchConsoleToken)}">` : ''}
 <link rel="icon" type="image/svg+xml" href="${esc(href('/assets/img/favicon.svg'))}">
 <link rel="stylesheet" href="${esc(href('/assets/style.css'))}">
 <link rel="alternate" type="application/rss+xml" title="${esc(cfg.siteName)} guides" href="${esc(abs('/feed.xml'))}">
@@ -132,6 +135,7 @@ ${jsonld}
       <a href="${esc(href('/guides/'))}">Guides</a>
       <a href="${esc(href('/categories/'))}">Categories</a>
       <a href="${esc(href('/about/'))}">About</a>
+      <a class="nav-desk" href="${esc(href('/executive-summary/'))}">The desk</a>
     </nav>
   </div>
 </header>
@@ -152,7 +156,7 @@ ${body}
       <h2 class="foot-h">Guides</h2>
       <ul class="foot-links">
         <li><a href="${esc(href('/guides/'))}">All guides</a></li>
-        ${guides.slice(0, 3).map((g) => `<li><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a></li>`).join('\n        ')}
+        ${latestFirst(guides).slice(0, 3).map((g) => `<li><a href="${esc(href('/guides/' + g.slug + '/'))}">${esc(g.title)}</a></li>`).join('\n        ')}
       </ul>
     </div>
     <div class="footer-col">
@@ -186,7 +190,7 @@ function productCard(p, placement) {
     <p class="kicker">${esc(cat)} · ${esc(p.id)}</p>
     <h3>${esc(title)}</h3>
     ${note ? `<p class="muted small">${esc(note)}</p>` : ''}
-    ${placement === 'front-shelf' ? '' : fit}
+    ${fit}
     ${placement === 'front-shelf' ? '' : `<p class="muted small">Observed ASIN <code>${esc(p.observed_asin)}</code></p>`}
     <p><a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="${esc(placement)}">View on Amazon</a></p>
     ${placement === 'front-shelf' ? '' : `<p class="status">${esc(p.outbound_status)}</p>`}
@@ -287,7 +291,7 @@ const add = (p) => pages.push(p);
 // Home (publication front page: products first)
 {
   const shelf = products.map((p) => productCard(p, 'front-shelf')).join('\n');
-  const newestGuides = [...guides].slice(0, 3);
+  const newestGuides = latestFirst(guides).slice(0, 4);
   const guideCards = newestGuides.map((g) => `<a class="card guide-card" href="${esc(href('/guides/' + g.slug + '/'))}">
   <div class="guide-card-art"><img src="${esc(href(g.image))}" alt="" loading="lazy" width="768" height="512"></div>
   <div class="card-body"><p class="kicker">${esc(catName(g.category))} · ${esc(dateLong(g.date))}</p><h3>${esc(g.title)}</h3><p class="muted small">${esc(g.deck)}</p><p class="read-more">Read the guide →</p></div>
@@ -306,13 +310,18 @@ const add = (p) => pages.push(p);
     body: `
 <section class="hero">
   <div class="hero-copy">
-    <p class="kicker">Independent kitchen buying guides · Updated ${esc(dateLong(cfg.lastReviewed))}</p>
+    <p class="kicker">The kitchen shortlist · Updated ${esc(dateLong(cfg.lastReviewed))}</p>
     <h1>Kitchen gear, explained like a friend would</h1>
-    <p class="deck">We track a small shelf of air fryers, oven-style cookers and a smart thermometer. Every pick links straight to its Amazon listing, and every claim on this site says where it came from. No hype, no invented ratings, no mystery methods.</p>
+    <p class="deck">Five appliances on one honest shelf: two air fryers, a countertop oven, and the thermometers that tell you when dinner is done. Plain-English picks, every fact linked to where it came from, and no buy button we cannot stand behind.</p>
     <div class="hero-ctas">
-      <a class="btn btn-primary" href="${esc(href('/shop/'))}">Browse the shelf</a>
+      <a class="btn btn-primary" href="#shelf">See the five picks</a>
       <a class="btn btn-ghost" href="${esc(href('/guides/'))}">Start with a question</a>
     </div>
+    <ul class="trust-chips">
+      <li>Specs from the makers' own pages</li>
+      <li>Every claim carries its source</li>
+      <li>Prices never shown — <a href="${esc(href('/compliance/'))}">here is why</a></li>
+    </ul>
   </div>
   <div class="hero-figure">
     <img src="${esc(href('/assets/img/hero.png'))}" alt="Editorial illustration of a basket-style air fryer with its drawer open beside a bowl of crispy bites and fresh herbs on a wooden counter; not the reviewed unit" width="1536" height="1024">
@@ -322,19 +331,31 @@ const add = (p) => pages.push(p);
 <section class="band" id="shelf">
   <a id="picks" class="picks-anchor" aria-hidden="true"></a>
   <div class="band-head">
-    <h2>On the shelf this month</h2>
-    <p>Five submitted products, each resolved to an observed Amazon listing and checked against the maker's own specification pages where those exist — including one unit where the listing and the maker describe two different machines (flagged on its product page). The buttons go straight to the listings.</p>
+    <h2>The five on the shelf</h2>
+    <p>Each one was resolved to an observed Amazon listing and checked against the manufacturer's own specification page wherever one exists. Where the maker and the listing disagree, the product page says so instead of smoothing it over. The buttons go straight to the listings.</p>
   </div>
   <div class="picks"><div class="shelf">${shelf}</div></div>
-  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link. Links are marked sponsored. We do not show prices or ratings anywhere on this site. See the <a href="${esc(href('/compliance/'))}">disclosure policy</a> and the <a href="${esc(href('/flagged/'))}">open flags</a>.</p>
+  <p class="shelf-note">Buttons open Amazon with our tracking ID in the link, and every one is marked sponsored: we earn a commission on qualifying purchases. Prices change constantly, so we show none here — the live listing always has the current one. Read the <a href="${esc(href('/compliance/'))}">disclosure policy</a> or the <a href="${esc(href('/shop/'))}">full findings table</a> for the fine print.</p>
+</section>
+<section class="band band-alt">
+  <div class="band-head">
+    <h2>Shop by the job</h2>
+    <p>Skip the spec war. Find the week you actually cook, and the shape follows.</p>
+  </div>
+  <div class="need-grid">
+    <a class="need-tile" href="${esc(href('/products/chefman-6-qt-dual-basket-air-fryer/'))}"><p class="kicker">Two foods, one finish</p><h3>The double-duty dinner</h3><p class="muted small">Two baskets, two timers, one finish time — for the house that always cooks a main and a side.</p><p class="read-more">The dual-basket pick →</p></a>
+    <a class="need-tile" href="${esc(href('/products/emeril-lagasse-26qt-french-door-air-fryer-oven/'))}"><p class="kicker">The whole meal, one oven</p><h3>Feeding a crowd</h3><p class="muted small">Racks, doors and 26 quarts of room — for the week the basket is the bottleneck.</p><p class="read-more">The oven-style pick →</p></a>
+    <a class="need-tile" href="${esc(href('/products/chefman-turbofry-8-qt-air-fryer/'))}"><p class="kicker">One big basket</p><h3>The big-batch night</h3><p class="muted small">Eight quarts, no dividers, one drawer — with a model-number note worth reading first.</p><p class="read-more">The single-basket pick →</p></a>
+    <a class="need-tile" href="${esc(href('/categories/cooking-thermometers/'))}"><p class="kicker">Never guess again</p><h3>Know exactly when it is done</h3><p class="muted small">Instant-read spot checks and leave-in wireless probes, with the USDA targets that go with them.</p><p class="read-more">The thermometers →</p></a>
+  </div>
 </section>
 <section class="band band-alt">
   <div class="band-head">
     <h2>Start with a question, not a product</h2>
-    <p>Each guide answers one question a real buyer asks, in the order you would ask it.</p>
+    <p>Each guide answers one question a real buyer asks, in the order you would ask it. Titles are working hypotheses, not popularity claims.</p>
   </div>
   <div class="guide-grid">${guideCards}</div>
-  <p><a class="text-link" href="${esc(href('/guides/'))}">All five guides →</a></p>
+  <p><a class="text-link" href="${esc(href('/guides/'))}">All ${guides.length} guides →</a></p>
 </section>
 <section class="band">
   <div class="band-head">
@@ -342,43 +363,66 @@ const add = (p) => pages.push(p);
   </div>
   <div class="cat-grid">${catCards}</div>
 </section>
-<section class="band band-alt">
-  <div class="band-head">
-    <h2>How we review</h2>
-    <p>Three rules, applied to every page on this site.</p>
-  </div>
-  <div class="steps">
-    <div class="step"><span class="step-n">1</span><h3>Read the official page</h3><p>Every product fact comes from the observed Amazon listing or another official source, linked on the spot. If a value cannot be confirmed, the cell stays blank and the row is flagged.</p></div>
-    <div class="step"><span class="step-n">2</span><h3>Say what we do not know</h3><p>Unverified things are labeled unverified. Open questions live on the <a href="${esc(href('/questions/'))}">questions page</a>; irregularities live on <a href="${esc(href('/flagged/'))}">Flagged for review</a>. Nothing is hidden in a footnote.</p></div>
-    <div class="step"><span class="step-n">3</span><h3>Disclose, then link</h3><p>The disclosure is at the top of every page, and every Amazon link is marked sponsored. As an Amazon Associate we earn from qualifying purchases, and we say so before you reach a single buy button.</p></div>
-  </div>
-</section>
 <section class="band seasonal">
   <div class="seasonal-copy">
-    <p class="kicker">Late November, in the kitchen</p>
-    <h2>The month of the big roast</h2>
-    <p>Holiday cooking season is thermometer season. If one appliance earns counter space this month, it is the one that tells you whether the bird is done, and the one that frees up oven space. Our guides keep working all year; the timing is yours.</p>
+    <p class="kicker">Seasonal · late November 2026</p>
+    <h2>Thanksgiving Thursday, deal banners Friday</h2>
+    <p>The big-roast week and the big-sale week land on top of each other. If the roast is your project, the thermometer guides answer the only question that matters: is it done? If the sale is your project, start with a checklist instead of a countdown timer.</p>
     <div class="hero-ctas">
-      <a class="btn btn-ghost" href="${esc(href('/guides/is-your-meat-thermometer-telling-you-the-right-number/'))}">Thermometer questions, answered</a>
-      <a class="btn btn-ghost" href="${esc(href('/guides/questions-to-ask-before-buying-a-multi-function-kitchen-appliance/'))}">Is a combo appliance worth it?</a>
+      <a class="btn btn-ghost" href="${esc(href('/guides/black-friday-kitchen-deals-a-shoppers-checklist/'))}">The deal-week checklist</a>
+      <a class="btn btn-ghost" href="${esc(href('/guides/smart-meat-thermometer-what-actually-matters/'))}">Thermometer questions, answered</a>
     </div>
   </div>
-  <div class="seasonal-art"><img src="${esc(href('/assets/img/guide-thermometer.png'))}" alt="" loading="lazy" width="768" height="512"></div>
+  <div class="seasonal-art"><img src="${esc(href('/assets/img/season-deal-week.png'))}" alt="Editorial illustration of a checklist notepad, pencil and coffee on a kitchen counter" loading="lazy" width="768" height="512"></div>
+</section>
+<section class="band band-alt">
+  <div class="band-head">
+    <h2>How we check</h2>
+    <p>Three rules, applied to every page. The long version lives on <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a>.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><span class="step-n">1</span><h3>Read the official page</h3><p>Every product fact comes from the observed Amazon listing or the manufacturer's own page, linked on the spot. A value we cannot confirm stays blank and gets flagged.</p></div>
+    <div class="step"><span class="step-n">2</span><h3>Say what we do not know</h3><p>Open questions live on the <a href="${esc(href('/questions/'))}">questions page</a>; irregularities live on <a href="${esc(href('/flagged/'))}">Flagged for review</a>. Nothing hides in a footnote.</p></div>
+    <div class="step"><span class="step-n">3</span><h3>Disclose, then link</h3><p>The disclosure sits at the top of every page, and every Amazon link is marked sponsored — before you reach a single buy button.</p></div>
+  </div>
+</section>
+<section class="band follow" id="follow">
+  <div class="follow-inner">
+    <div>
+      <h2>Follow the shelf</h2>
+      <p>New guides ship to the RSS feed first: no account, no algorithm, no pixel in your inbox. The feed is live today and every new guide lands in it automatically.</p>
+    </div>
+    <div class="follow-actions">
+      <a class="btn btn-primary" href="${esc(href('/feed.xml'))}">Subscribe via RSS</a>
+      <p class="small muted">An email list is on the decision board (<a href="${esc(href('/suggestions/'))}#S-06">S-06</a>). We will not ask for an address until the owner picks a provider and the privacy notice is updated first.</p>
+    </div>
+  </div>
 </section>
 <section class="band band-alt whatsite">
   <div class="band-head">
     <h2>What this site is</h2>
-    <p>An independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
+    <p>ShopNow Kitchen is an independent buying guide for a shortlist of five kitchen appliances submitted by the site's owner. We read the Amazon listing and the manufacturer's own specification pages for each one, we publish what we could and could not confirm, and we flag every conflict between the two instead of smoothing it over. We are not a test kitchen: nothing here is hands-on measurement, and no price, rating or availability is republished. <a href="${esc(href('/how-we-choose/'))}">How we choose and check</a> · <a href="${esc(href('/flagged/'))}">What is currently flagged</a></p>
   </div>
 </section>`,
   });
 }
 
-// Shop table
+// Shop table — a page a buyer can act on first; the full findings register stays below it.
 {
   const resolvedCount = products.filter((p) => p.observed_asin).length;
   const unanswered = products.filter((p) => !p.observed_asin);
   const taggedCount = products.filter((p) => p.tagged_outbound_url).length;
+  const buyerRows = products.map((p) => [
+    `<a href="${esc(href('/products/' + p.slug + '/'))}"><strong>${esc(p.short_name || p.name)}</strong></a><br><span class="muted small">${esc(p.brand || '')} · ${esc(catName(p.category))}</span>`,
+    esc(p.shape || ''),
+    cellText(p.capacity_qt ? `${p.capacity_qt} qt` : ''),
+    cellText(p.temp_min_f && p.temp_max_f ? `${p.temp_min_f}–${p.temp_max_f} °F` : (p.temp_max_f ? `up to ${p.temp_max_f} °F` : '')),
+    cellText(p.power_w ? `${p.power_w} W` : ''),
+    esc(p.best_for || ''),
+    esc(p.tradeoff || ''),
+    tagged(p) ? `<a class="btn" href="${esc(tagged(p))}" rel="sponsored noopener" data-outbound data-product="${esc(p.id)}" data-placement="shop-buyer-table">Check it on Amazon</a>` : (p.no_buy_link ? '<span class="muted small">Details page only for now</span>' : '<span class="muted small">no link published</span>'),
+    `${rowSources(p)}`,
+  ]);
   const rows = products.map((p) => [
     `<strong>${esc(p.id)}</strong>`,
     `<a href="${esc(href('/categories/' + p.category + '/'))}">${esc(catName(p.category))}</a>`,
@@ -394,19 +438,24 @@ const add = (p) => pages.push(p);
     `${rowSources(p)} <span class="small muted">observed ${esc(dateLong(p.observed_date))}</span>`,
   ]);
   add({
-    path: '/shop/', title: 'Shop: all submitted products and findings',
-    description: 'Every submitted product row: intended ASIN and listing fields (blank where unverified), observed redirect destinations kept separate, sources and flags.',
+    path: '/shop/', title: 'Shop: the five picks, compared side by side',
+    description: 'Compare the five tracked kitchen appliances side by side: shape, capacity, temperatures, what each is best for, and where to check the current listing. The full findings register sits below.',
     body: `
 <section class="page-head">
-  <p class="kicker">Shop · 5 rows</p>
-  <h1>All submitted products</h1>
-  <p class="deck">One row per submitted link. <strong>Intended</strong> fields come only from an official source; none are confirmed yet, so they are blank. <strong>Observed</strong> fields are what the Amazon page showed on 2026-11-20 and are kept separate.</p>
+  <p class="kicker">Shop · 5 products</p>
+  <h1>Five appliances, side by side</h1>
+  <p class="deck">The buyer's table first: what each one is, what the maker states, and which week it fits. Every figure comes from the manufacturer's own page where one exists; a blank cell means not stated, never a guess. The full findings register — intended fields, observed destinations, sources and flags — sits below the table.</p>
 </section>
 <section>
+  ${table(['The pick', 'Shape', 'Capacity', 'Temperatures', 'Power', 'Best for', 'The trade-off', 'Where to check it', 'Sources (official)'], buyerRows, 'wide buyer-table')}
+</section>
+<section class="band">
+  <h2>Full findings register</h2>
+  <p class="small muted">One row per submitted link. <strong>Intended</strong> fields come only from an official source; none are confirmed yet, so they are blank. <strong>Observed</strong> fields are what the Amazon page showed on 2026-11-20 and are kept separate. The two field groups are never merged.</p>
   ${table(['ID', 'Category', 'Observed title and breadcrumb', 'Observed ASIN and page', 'Submitted link', 'Intended ASIN', 'Official listing URL', 'Confirmation date', 'Confirmation source', 'Buy link status', 'Confirmation status', 'Sources (official)'], rows, 'wide')}
 </section>
 <section class="band">
-  <h2>What the table shows</h2>
+  <h2>What the register shows</h2>
   <ul class="findings">
     <li>All five submitted tokens are 9 characters. The observed Amazon product IDs are 10 characters. ${flagLinks(['FLG-001'])}</li>
     <li>${resolvedCount === 5 ? 'All five' : resolvedCount + ' of five'} short links resolved to a product page, and each product ID differs from the token in its link.${resolvedCount < 5 ? ' ' + unanswered.map((p) => `<code>${esc(p.submitted_token)}</code> has not resolved in a verified session, so no product is shown and no buy link is published. ${flagLinks(['FLG-004'])}`).join(' ') : ''} ${flagLinks(['FLG-002'])}</li>
@@ -580,10 +629,15 @@ add({
   path: '/executive-summary/', title: 'Executive summary',
   description: 'Executive summary: what is built, what is verified, what is blocked, and the decisions needed.',
   body: `<section class="page-head"><p class="kicker">Executive summary · ${esc(dateLong(cfg.lastReviewed))}</p><h1>Where this stands</h1></section>
+<section class="band desk-hub">
+  <h2>The research desk</h2>
+  <p class="small muted">Every dashboard and record for this publication, in one navigation group. The reader-facing pages never lead with these; they live here and in the footer.</p>
+  <div class="desk-grid">${DASHBOARDS.map(([u, t]) => `<a class="desk-card" href="${esc(href(u))}">${esc(t)} →</a>`).join('')}</div>
+</section>
 <div class="prose">
 <h2>What is built</h2>
 <ul>
-<li>A publication-style site with a products-first front page, a shop table, three category clusters, five question-led guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
+<li>A publication-style site with a products-first front page, a buyer-actionable shop table, three category clusters, eight question-shaped guides, disclosed editorial imagery, an RSS feed and a sitemap.</li>
 <li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, compliance, the publishing workflow, and a privacy notice. All are linked from the footer.</li>
 <li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
 <li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
@@ -866,7 +920,7 @@ ${sitemapPages.map((w) => `  <url><loc>${esc(abs(w.path))}</loc><lastmod>${cfg.l
 `);
 
 // Feed (guides only, newest first)
-const feedItems = [...guides].sort((a, b) => (a.date < b.date ? 1 : -1));
+const feedItems = latestFirst(guides);
 fs.writeFileSync(path.join(OUT, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
@@ -887,6 +941,6 @@ ${feedItems.map((g) => `  <item>
 </rss>
 `);
 
-fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+fs.writeFileSync(path.join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /editorial/\nDisallow: /legacy/\nDisallow: /crisp-index/\nDisallow: /counter/\nDisallow: /counterwise/\n\nSitemap: ${abs('/sitemap.xml')}\n`);
 
 console.log(`Built ${written.length} pages, ${feedItems.length} feed items, ${sitemapPages.length} sitemap URLs at the repository root`);

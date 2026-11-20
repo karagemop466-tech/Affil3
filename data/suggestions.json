@@ -220,6 +220,93 @@
         }
       ],
       "recommendation": "A. The FTC standard is that the disclosure must be hard to miss, and this one is."
+    },
+    {
+      "id": "S-11",
+      "topic": "Sub-editions and one indexed site",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Index only the root publication; keep the sub-editions readable but excluded from search via robots.txt (current).",
+          "tradeoff": "One site for search engines to rank and one identity for readers; the sub-editions still load for anyone who has the link."
+        },
+        {
+          "id": "B",
+          "label": "Also index the /counter/ edition and its sitemap.",
+          "tradeoff": "More surface in search, but two editions compete for the same five products and will drift apart."
+        },
+        {
+          "id": "C",
+          "label": "Retire the sub-editions into a single archive area and redirect or delist them.",
+          "tradeoff": "Cleanest repository; loses the live side-by-side comparison value the parallel sessions created."
+        }
+      ],
+      "recommendation": "A. The brief asks for one site to index; the sub-editions are preserved as history and for review, not as competing publications."
+    },
+    {
+      "id": "S-12",
+      "topic": "December content direction",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Holiday hosting cluster: roasts, capacity for a crowd, thermometer accuracy (current).",
+          "tradeoff": "Matches the seasonal questions readers actually have in December; heavily thermometer-weighted."
+        },
+        {
+          "id": "B",
+          "label": "Gift-guide cluster: small appliances as gifts, what to check before gifting.",
+          "tradeoff": "Wide appeal; a crowded field with big publishers owning most search results."
+        },
+        {
+          "id": "C",
+          "label": "Deal-week follow-ups: price-check method posts and post-holiday clearance guides.",
+          "tradeoff": "Timely and linkable; ages quickly and must be date-stamped."
+        }
+      ],
+      "recommendation": "A, with one C-style date-stamped post if deal week produces reader questions. The next topic after that should come from measured queries, not from this list."
+    },
+    {
+      "id": "S-13",
+      "topic": "Target reader",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Small-household weeknight cooks: one to three people, limited counter, limited time (current).",
+          "tradeoff": "Sharp and specific; deliberately excludes the holiday-crowd buyer except seasonally."
+        },
+        {
+          "id": "B",
+          "label": "Hosts and holiday cooks: bigger batches, oven capacity, thermometer confidence.",
+          "tradeoff": "Matches the seasonal spikes; thin the rest of the year."
+        },
+        {
+          "id": "C",
+          "label": "Gadget-first early adopters: smart features, apps, wireless probes.",
+          "tradeoff": "High engagement, high churn; the smallest shelf fit since only one product is a gadget-first item."
+        }
+      ],
+      "recommendation": "A as the default voice with seasonal B spikes, exactly the way the front page is now structured. Choose before the December batch (Q-13)."
+    },
+    {
+      "id": "S-14",
+      "topic": "Order of operations: measurement or content first",
+      "current": "B",
+      "options": [
+        {
+          "id": "A",
+          "label": "Deploy the analytics collector (S-03) and verify Search Console before the next guide batch.",
+          "tradeoff": "Every subsequent topic choice can be evidence-based; costs one hosting decision and one owner login."
+        },
+        {
+          "id": "B",
+          "label": "Keep publishing on editorial judgement until traffic exists, then measure (current).",
+          "tradeoff": "No setup work now; the early topics can never be evaluated, which is the instinct loop the brief asks to break."
+        }
+      ],
+      "recommendation": "A. The brief says turn measurement on before writing anything else; the machinery is shipped and idle, and one hosting choice unblocks it."
     }
   ]
 }
