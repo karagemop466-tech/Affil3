@@ -549,6 +549,61 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-20",
+      "track": "findability",
+      "topic": "Crawl control for a site served at a project path",
+      "problem": "robots.txt is generated at /Affil3/, but search engines read it only from the host root (FLG-038). The 'one site to index' goal therefore depends on noindex tags and on how the other editions are handled, not on robots.txt.",
+      "current": "A",
+      "options": [
+        {
+          "id": "A",
+          "label": "Keep the root publication as the only indexable site, submit sitemap.xml by hand in Search Console, and leave the other editions as they are (current).",
+          "tradeoff": "No change to the repository. The other editions stay publicly reachable and mostly without noindex, so duplicate copies can still surface in search.",
+          "effort": "minutes",
+          "risk": "medium"
+        },
+        {
+          "id": "B",
+          "label": "Add a noindex meta tag to every non-root page in the repository (counter/, counterwise/, crisp-index/, legacy/), then keep the root publication as the only indexed site.",
+          "tradeoff": "Works without host-root access. It edits generated pages owned by earlier sessions, so it needs an owner decision and a rebuild of each surface.",
+          "effort": "about 2 hours",
+          "risk": "low"
+        },
+        {
+          "id": "C",
+          "label": "Remove the other editions from the Pages site (archive them to a branch or a tag) so only one publication is served.",
+          "tradeoff": "Strongest single-site outcome and simplest to reason about. Loses the public evidence pages that the archive page links to; Q-10 and S-11 apply.",
+          "effort": "about 1 hour",
+          "risk": "medium"
+        },
+        {
+          "id": "D",
+          "label": "Serve the root publication from a repository named for the owner's GitHub Pages host, so robots.txt is read from the host root.",
+          "tradeoff": "Makes robots.txt work as written. Changes the public URL, so every link, the sitemap and any Search Console property must move.",
+          "effort": "about half a day",
+          "risk": "medium"
+        }
+      ],
+      "recommendation": "A for now, plus the manual Search Console submission (which is owner work and is needed under every option). Then B if the other editions stay online, or C if the owner decides to retire them (Q-10). D only if the owner wants a clean host-root URL. The current state does not meet the 'one site to index' goal, and this suggestion does not claim that it does.",
+      "evidence": {
+        "sources": [
+          "S25"
+        ],
+        "flags": [
+          "FLG-038",
+          "FLG-013"
+        ]
+      },
+      "depends_on": [
+        "S-11",
+        "Q-10",
+        "FLG-013"
+      ],
+      "decision": "undecided",
+      "decided_on": "",
+      "decided_by": ""
     }
   ],
   "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",

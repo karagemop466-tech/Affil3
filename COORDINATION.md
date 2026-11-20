@@ -1777,3 +1777,43 @@ found for the tracked instant-read unit, which stopped being true on 2026-11-20.
   and the generated root pages that `tools/build.mjs` owns.
 - Not claimed and not touched: every other session's directory (`editorial/`, `counter/`, `counterwise/`, `crisp-index/`, `legacy/`, `docs/`,
   `server/`, `scripts/`), `tools/*` other than the generator's output, `.github/workflows/*`.
+
+## Task board (session 478e6577)
+
+| ID | Task | Status | Files touched |
+|---|---|---|---|
+| R-01 | Repo review of the current root publication, its registers and its gate | done | none (read only) |
+| R-02 | Re-check the five submitted short links, unauthenticated, 2026-11-20 | done. Result: all five returned the Amazon home page; the same-day record conflicts (FLG-037) | `data/observations/2026-11-20-478e6577-recheck.json`, `data/flags.json` (FLG-037) |
+| R-03 | Re-read Operating Agreement §1 and §5 and Program Policies §2 and clauses (g), (u), (v), (w), (y), (z) | done. §5 sentence on the site matches verbatim. Tag rule is §2(b), not §2(a) | observation file; `README.md` |
+| R-04 | Crawl-control check: robots.txt location, host-root fetch, noindex coverage of each surface | done. Found robots.txt is not read at a project path; FLG-038 and S-20 added. robots.txt left unchanged on purpose | `data/flags.json` (FLG-038), `data/suggestions.json` (S-20), `data/sources.json` (S25) |
+| R-05 | Correct stale README claims (check count, `/docs/` row, tag citation, short-link paragraph) | done | `README.md`, `data/flags.json` (FLG-039) |
+| R-06 | Annotate K-13 (contested same-day record); add Q-17 | done | `data/questions.json` |
+| R-07 | Executive summary for this session | done | `EXECUTIVE-SUMMARY-478e6577.md`, `README.md` (link) |
+| R-08 | Internal-link, sitemap and feed check of all 40 root pages | done: 1,491 internal links, 0 problems; sitemap 39 URLs; feed 13 items | none |
+| R-09 | Gate and build (`npm run check`) | done: 4,607 checks, 0 failed; editorial build unchanged | generated root pages |
+| R-10 | Owner-only items (not done; need owner access): G-02 Associates Central test, signed-in short-link check, Search Console verification and sitemap submission, analytics endpoint host, named editor, cadence and crawl-control decisions | blocked on owner | none |
+| R-11 | PR from this branch to `main`, merge, GitHub Pages deploy check, record PR and merge result | in progress (see completion record) | `COORDINATION.md` |
+
+## Verification and source log (session 478e6577)
+
+| Source | Method | Used for | Status |
+|---|---|---|---|
+| [S01 Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) | fetched 2026-11-20, chunks 0 and 1 | §1 tagged link formats; §5 statement | verified (re-read this round) |
+| [S02 Program Policies](https://affiliate-program.amazon.com/help/operating/policies) | fetched 2026-11-20, chunks 0, 3, 4, 5, 6 | §2(a), §2(b), clauses (g), (u), (v), (w), (y), (z) | verified (re-read this round) |
+| [S25 Google robots.txt guide](https://developers.google.com/crawling/docs/robots-txt/create-robots-txt) | fetched 2026-11-20, chunk 0 | host-root location rule | verified |
+| [S05 submitted short links](https://link.amazon/B04G1MEwY) (x5) | fetched 2026-11-20 | destination observation (homepage) | observed; contested (FLG-037) |
+| https://karagemop466-tech.github.io/Affil3/robots.txt and https://karagemop466-tech.github.io/robots.txt | fetched 2026-11-20 | project-path robots.txt present; host-root robots.txt error | observed |
+
+## Irregularities raised by this session
+
+- **FLG-037 (medium):** same-day short-link observations conflict. Two rounds show homepage, three show product pages. Open.
+- **FLG-038 (medium):** robots.txt at a project path is not read by search engines; the other editions are not all noindexed; `/docs/` absent from the tree. Open; decision S-20.
+- **FLG-039 (low, resolved here):** README stale check count and `/docs/` row; tag citation corrected.
+- **Other stale text, not edited (other sessions' files):** `COORDINATION.md` earlier entries still describe the tag rule as §2(a) in places and refer to the 2,808 figure. These are historical logs and are left as written.
+- **Publishing cadence:** S-05 marks "one guide every two weeks" as the current default with no owner decision recorded. Reported as a default, not a decision.
+
+## Completion record (session 478e6577)
+
+- Pull request: _pending_ (from `arena/478e6577-affil3` to `main`)
+- Merge result: _pending_
+- GitHub Pages deploy: _pending_
