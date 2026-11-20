@@ -1,0 +1,750 @@
+{
+  "$comment": "Decision board, not a changelog. `status` is one of: shipped (already live in this build), needs-pick (a choice only you can make, options listed), proposed (queued, nothing done). `review_decision` is left blank on purpose for you to fill; the site renders whatever you put there. `prompt_snippet` is written to be pasted straight into a design brief.",
+  "board": [
+    {
+      "id": "S-01",
+      "title": "Lead with buying help, not with the verification process",
+      "priority": "Priority 1 — read like a shop",
+      "category": "design",
+      "status": "shipped",
+      "proposal": "Front page opens with a lead guide and a 'start here' question module, the four verified listings as a product rail below it, then clusters, then the seasonal note. The register, the gate report and the flag list move to a single footer group called Transparency.",
+      "why": "A buyer arrives with a question about dinner, not about our evidence chain. The register still has to be reachable, but it is a promise kept in the footer, not the front window.",
+      "effect_on_readers": "The first screen answers 'what should I compare'; the fifth screen proves we did not invent anything.",
+      "effort": "done",
+      "cost": "none",
+      "risk": "low — the audit material is one click away, not removed",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Product-led hero (deals first)",
+          "tradeoff": "Highest intent to click, looks like every other affiliate grid, and we have no prices to show, so it would be four cards with nothing on them."
+        },
+        {
+          "label": "Editorial-led front page",
+          "tradeoff": "Reads like a magazine and earns repeat visits; slightly slower to a buy click, which is why the rail sits one scroll down."
+        },
+        {
+          "label": "Hybrid, as shipped",
+          "tradeoff": "Editorial above the fold, product rail in the first two scrolls, transparency in the footer. Chosen."
+        }
+      ],
+      "recommended": "Hybrid, as shipped",
+      "review_decision": "",
+      "prompt_snippet": "Design a publication front page: one lead story with a one-sentence deck, a 'start here' question list, a horizontal product rail with status chips, then two cluster cards, then a seasonal note. Warm paper background, ink text, one accent colour, hairline rules, no gradient hero, no stock photo of a smiling person holding a spatula."
+    },
+    {
+      "id": "S-02",
+      "title": "Keep the disclosure above the fold on every page, including the front page",
+      "priority": "Priority 5 — compliance gate",
+      "category": "compliance",
+      "status": "shipped",
+      "proposal": "A strip directly under the masthead on all pages carrying the required statement, a plain-English sentence about what that means for the reader, and a link to /disclosure/. The same statement repeats in the footer. Every product link carries '(paid link)'.",
+      "why": "Amazon's help page requires the statement clearly and conspicuously on the site and link-level disclosure near each link; the FTC rule behind it is about the reader noticing. Both are placement duties, and placement is checkable in build.",
+      "effect_on_readers": "Nobody has to scroll to the footer to learn we get paid, which is the single most trust-building thing an affiliate page can do.",
+      "effort": "done",
+      "cost": "a 34px strip",
+      "risk": "if it were missing, the account is at risk; nothing about having it hurts",
+      "reversible": "no reason to",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Footer only",
+          "tradeoff": "What most sites do; Amazon's help text explicitly says readers shouldn't have to hunt for it."
+        },
+        {
+          "label": "Strip under the masthead plus footer, as shipped",
+          "tradeoff": "Visible on every page load, one line of height. Chosen."
+        },
+        {
+          "label": "Interstitial 'before you click' modal",
+          "tradeoff": "Maximally conspicuous, measurably annoying, and it can suppress the clicks we are trying to earn."
+        }
+      ],
+      "recommended": "Strip plus footer, as shipped",
+      "review_decision": "",
+      "prompt_snippet": "Add a disclosure strip below the masthead on every page: single line, accent-tinted background, 13-14px type, statement plus one plain sentence plus a link to the disclosure page. Do not dim it, do not make it dismissible."
+    },
+    {
+      "id": "S-03",
+      "title": "Type and palette: paper and ink, not the affiliate default",
+      "priority": "Priority 1 — read like a shop",
+      "category": "design",
+      "status": "needs-pick",
+      "proposal": "Ship the system stack now (ui-serif display, system-ui body, three greys plus one paprika accent, no webfont request). When the domain question (S-15) is settled, self-host one display face and one text face, subset, preloaded.",
+      "why": "The current look reads generated because it uses the same three ingredients every template uses: a gradient, a card grid, and Inter. A serif with real type scale and one warm accent is the cheapest distance from that. Self-hosting rather than a CDN keeps the first paint on the critical path and adds no third party to a privacy page that promises no trackers.",
+      "effect_on_readers": "Faster first paint on a phone, and a page that looks like a title rather than a funnel.",
+      "effort": "now: done · later: half a day",
+      "cost": "0 now; a licence only if you want a paid face",
+      "risk": "low",
+      "reversible": "yes",
+      "depends_on": [
+        "S-15"
+      ],
+      "options": [
+        {
+          "label": "System stack only",
+          "tradeoff": "Zero requests, renders differently per device, slightly less owned. Shipped in this build."
+        },
+        {
+          "label": "One self-hosted display face",
+          "tradeoff": "Real identity, ~30KB with a subset, one build step. Recommended next move."
+        },
+        {
+          "label": "Google Fonts CDN",
+          "tradeoff": "Fastest to do and it is the exact texture of a template site, plus a third-party request a privacy page has to explain."
+        }
+      ],
+      "recommended": "Ship the system stack now; add one self-hosted display face at the domain step",
+      "review_decision": "",
+      "prompt_snippet": "Use a serif for headlines at a 1.25 type scale, sans-serif for body at 17px/1.6, a warm off-white background, near-black text, one paprika accent used only for links, chips and the CTA. No gradients, no glassmorphism, no drop shadows above 8% opacity."
+    },
+    {
+      "id": "S-04",
+      "title": "Product data: keep prices and ratings off the page until an authorized feed exists",
+      "priority": "Priority 3 — trustworthy machinery",
+      "category": "data",
+      "status": "needs-pick",
+      "proposal": "Publish identity, category and seller-titled attributes with capture dates, and let the marketplace show the live price. Revisit only when PA-API credentials exist (Q-05).",
+      "why": "A price copied from a listing page is a screenshot of yesterday. It goes stale silently, it undercuts trust the first time the reader sees a different number, and Google's product rich-result documentation ties presentation to exactly the fields we cannot keep current.",
+      "effect_on_readers": "Nobody is told a number we cannot stand behind.",
+      "effort": "0 now · 1-2 days to wire an API refresh after access",
+      "cost": "0",
+      "risk": "showing no price may cost some clicks; showing a wrong one costs the reader",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-05"
+      ],
+      "options": [
+        {
+          "label": "Never publish prices",
+          "tradeoff": "Clean and honest; costs the 'from $X' affordance. Current state."
+        },
+        {
+          "label": "PA-API refresh on a schedule, price with a timestamp",
+          "tradeoff": "Best of both, blocked on credentials; also obliges us to refresh weekly or delete the field."
+        },
+        {
+          "label": "Scrape prices into the build",
+          "tradeoff": "Do not choose this. It is the fastest route to a banned account and to being wrong."
+        }
+      ],
+      "recommended": "Never publish prices until an authorized feed exists, then publish with a timestamp",
+      "review_decision": "",
+      "prompt_snippet": "In each product card, replace the price slot with a live-price button labelled 'Check the listing on Amazon (paid link)' and a caption reading 'Price shown by Amazon at click time; we do not store it.'"
+    },
+    {
+      "id": "S-05",
+      "title": "Artwork: own it, and say where it came from",
+      "priority": "Priority 4 — publication polish",
+      "category": "brand",
+      "status": "shipped",
+      "proposal": "Use generated editorial artwork — line-and-shape illustrations of baskets, doors, cavities, probes — with a caption on every page naming them as illustration, not product photography. No Amazon imagery, no stock photography.",
+      "why": "Listing photos are licensed through program tooling, not free to hotlink, and a scraped image is both a rights problem and the visual signature of a boiler-room affiliate site. Drawn diagrams also do a better job of the actual editorial point, which is about size and clearance.",
+      "effect_on_readers": "The page has a face that is not a manufacturer's render, and the caption prevents the art from being read as evidence.",
+      "effort": "done",
+      "cost": "generation time",
+      "risk": "low, as long as captions stay",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Generated editorial illustration, as shipped",
+          "tradeoff": "Owned, consistent, obviously not photographic once captioned."
+        },
+        {
+          "label": "Program-licensed product images via API",
+          "tradeoff": "What a real shop does; blocked on Q-05."
+        },
+        {
+          "label": "No imagery",
+          "tradeoff": "Fastest and safest, and it makes a lifestyle purchase feel like a spreadsheet."
+        }
+      ],
+      "recommended": "Illustration now, licensed product imagery when the API does",
+      "review_decision": "",
+      "prompt_snippet": "Commission a consistent set of technical illustrations: single basket, twin basket, oven-style cavity with French doors, and a probe inserted at the thickest point. Two colours on paper, thin strokes, dimension ticks, no photorealism, no text baked into the image."
+    },
+    {
+      "id": "S-06",
+      "title": "Replace ambiguous outbound links with tagged Special Links, and prove one before scaling",
+      "priority": "Priority 2 — findable and functional",
+      "category": "compliance",
+      "status": "shipped-pending-proof",
+      "proposal": "Rewrite every outbound link to https://www.amazon.com/dp/<observed-id>?tag=shopnow047c-20 with rel=\"sponsored nofollow\", and mark each link pending-test in the UI until the in-account click report confirms it. Do not claim the supplied link.amazon forms are invalid; their status is FLG-003.",
+      "why": "Amazon's Special Links clause requires the tag as a URL parameter. Our capture of the four resolved destinations showed parameters for channel, button and language and no tag at all, which is a lost-commission shape regardless of what the policy says.",
+      "effect_on_readers": "Identical destination; the reader cannot tell and does not need to.",
+      "effort": "build: done · proof: 20 minutes",
+      "cost": "0",
+      "risk": "the tag string itself is unverified in-account (FLG-009), so the proof step is not optional",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-03"
+      ],
+      "options": [
+        {
+          "label": "Tagged long links, as shipped",
+          "tradeoff": "Verifiable in the page source, no redirect layer, nothing hidden."
+        },
+        {
+          "label": "Branded /go/ redirect that appends the tag",
+          "tradeoff": "Prettier and ownable; adds a hop whose policy status we cannot settle here. See S-06a below."
+        },
+        {
+          "label": "Keep the supplied link.amazon codes",
+          "tradeoff": "Zero work, and every capture we took showed no tag at the destination."
+        }
+      ],
+      "recommended": "Tagged long links; test one per product in-account; only then consider /go/",
+      "review_decision": "",
+      "prompt_snippet": "Style the outbound link as a filled button with a small '(paid link)' label on the same line, and append a 12px caption 'Opens Amazon.com in a new tab · tagged with our associate ID'. Keep the href honest in the status bar: no wrapper domain."
+    },
+    {
+      "id": "S-06a",
+      "title": "Whether to add a branded redirect layer at all",
+      "priority": "Priority 5 — compliance gate",
+      "category": "architecture",
+      "status": "needs-pick",
+      "proposal": "Keep it off until Pages is replaced by a host that can run a redirect, and until FLG-003 is settled by a human who has read the current agreement.",
+      "why": "A redirect layer only buys link swapping without a rebuild and tidy click attribution. Both are real, and both are worth less than a policy question mark over every link on the site while the site is still small enough to rebuild in seconds.",
+      "effect_on_readers": "None today; later it means a hover target that does not obviously say Amazon, which is precisely the thing to be careful about.",
+      "effort": "half a day when a host exists",
+      "cost": "0 on Pages (it cannot run one)",
+      "risk": "medium — cloaking is the classic grounds for account closure",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-02",
+        "Q-07"
+      ],
+      "options": [
+        {
+          "label": "No redirect layer (current)",
+          "tradeoff": "Rebuilds instead of redirects. Chosen."
+        },
+        {
+          "label": "Redirect with the tag appended and the destination stated in the anchor text",
+          "tradeoff": "Acceptable under a permissive reading; needs the agreement read first."
+        },
+        {
+          "label": "Redirect with the destination hidden",
+          "tradeoff": "Do not choose this."
+        }
+      ],
+      "recommended": "Off until a host and a policy read both exist",
+      "review_decision": ""
+    },
+    {
+      "id": "S-07",
+      "title": "Structured data: ship what we can support, hold the rest",
+      "priority": "Priority 2 — findable",
+      "category": "seo",
+      "status": "shipped",
+      "proposal": "Emit WebSite, Organization, Article and BreadcrumbList on the relevant pages. Do not emit Product, Review or aggregateRating until an authorized offer feed and a genuine review process exist.",
+      "why": "Google's product documentation connects this markup to price, availability and ratings. We publish none of those deliberately. Marking up a review for a machine nobody cooked with is the kind of thing that turns a small site into a policy example.",
+      "effect_on_readers": "Search sees an accurately typed document instead of an over-decorated one.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "we give up rich-result garnish, which we have not earned",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Article + Breadcrumb only, as shipped",
+          "tradeoff": "Honest, minimal."
+        },
+        {
+          "label": "Add Product with name and URL only",
+          "tradeoff": "Technically allowed, delivers no enhancement without the missing fields; adds no value and one more thing to audit."
+        },
+        {
+          "label": "Add FAQPage from our own questions",
+          "tradeoff": "Consider later; FAQ rich results were restricted to prominent authoritative sites in 2023, so it is decoration with a caveat we have not verified this session."
+        }
+      ],
+      "recommended": "Article + Breadcrumb, revisit after S-04",
+      "review_decision": ""
+    },
+    {
+      "id": "S-08",
+      "title": "Verify Search Console before the second week of publishing",
+      "priority": "Priority 4 — measure before optimising",
+      "category": "measurement",
+      "status": "needs-pick",
+      "proposal": "Add the verification token to config, rebuild, submit docs/sitemap.xml, and let eight weeks of queries decide the next four topics instead of the queue in the front page.",
+      "why": "The brief's own rule is that the next topic is chosen from measured queries. Without a property there is no measurement, and every topic after this one is a guess dressed as a strategy.",
+      "effect_on_readers": "Invisible today, and the reason the site gets better on schedule.",
+      "effort": "15 minutes",
+      "cost": "0",
+      "risk": "none",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-07",
+        "Q-08"
+      ],
+      "options": [
+        {
+          "label": "URL-prefix property with a meta tag on Pages",
+          "tradeoff": "Works with no DNS control. Recommended while the host is undecided."
+        },
+        {
+          "label": "Domain property with a DNS TXT record",
+          "tradeoff": "Covers every subdomain and future host move; needs a domain (S-15)."
+        },
+        {
+          "label": "Also submit to Bing Webmaster",
+          "tradeoff": "Two extra minutes, an import-from-Google option, and a second opinion on indexing."
+        }
+      ],
+      "recommended": "Meta-tag property now, domain property when the domain exists",
+      "review_decision": "",
+      "prompt_snippet": "Add a verification meta tag block to the head template, driven by data/config.json → search_console.verification_token, and only emit it when the token is non-empty so the gate can prove the unverified state."
+    },
+    {
+      "id": "S-09",
+      "title": "Point the click beacon at a collector you own",
+      "priority": "Priority 4 — click and conversion measurement",
+      "category": "measurement",
+      "status": "shipped-unarmed",
+      "proposal": "Run tools/collector.py on any small host, set measurement.endpoint in config, and rebuild. Five event names, no IPs, no cookies, opt-out respected, append-only JSONL that the ledger ingests.",
+      "why": "Outbound clicks are the only conversion signal an affiliate site has before Amazon's report, and a self-hosted line keeps it out of a consent banner. GitHub Pages cannot run it, so the build ships armed-but-off rather than pretending it is counting.",
+      "effect_on_readers": "None — that is the point of a first-party counter with no identifiers.",
+      "effort": "1 hour to host",
+      "cost": "free tier to about $5 a month",
+      "risk": "collecting nothing is a choice with a cost of its own: no evidence for any future decision",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-07",
+        "Q-09",
+        "Q-11"
+      ],
+      "options": [
+        {
+          "label": "Self-hosted stdlib collector, as shipped but unarmed",
+          "tradeoff": "Full control, no consent banner load, and you maintain a process."
+        },
+        {
+          "label": "A hosted privacy-first analytics product",
+          "tradeoff": "Dashboards for free-ish, another party and another line in the privacy page."
+        },
+        {
+          "label": "GA4",
+          "tradeoff": "Powerful, and it makes the privacy page longer and the banner bigger than the disclosure."
+        },
+        {
+          "label": "Nothing, and read Associates Central only",
+          "tradeoff": "Perfectly defensible at this size; you lose which guide caused the click."
+        }
+      ],
+      "recommended": "Self-hosted collector; it is already written",
+      "review_decision": ""
+    },
+    {
+      "id": "S-10",
+      "title": "Reader capture: be honest that there is none",
+      "priority": "Priority 2 — findable",
+      "category": "growth",
+      "status": "needs-pick",
+      "proposal": "Keep the form disabled with a sentence that says so (shipped), or pick a list provider and connect it. A form that swallows an address into a static host is how a site loses a reader's trust permanently.",
+      "why": "Email is the only audience an affiliate site owns through a core update, and it is also the one place where a broken form does damage out of proportion to its size.",
+      "effect_on_readers": "Right now: an explanation instead of a black hole.",
+      "effort": "30 minutes with a provider",
+      "cost": "free tier to about $20 a month",
+      "risk": "collecting addresses without storage is the only genuinely bad option",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-07"
+      ],
+      "options": [
+        {
+          "label": "Disabled with a mailto fallback, as shipped",
+          "tradeoff": "No list, no lie."
+        },
+        {
+          "label": "Hosted newsletter service with a double opt-in",
+          "tradeoff": "Real owned audience; adds a third-party form and a privacy line."
+        },
+        {
+          "label": "Own collector endpoint for signups",
+          "tradeoff": "Same host as S-09, no vendor, and now you run a list including its unsubscribe law."
+        }
+      ],
+      "recommended": "Decide with S-09, same host, one vendor fewer",
+      "review_decision": ""
+    },
+    {
+      "id": "S-11",
+      "title": "Put a human name on it, or never write 'we tested'",
+      "priority": "Priority 1 — read like a publication",
+      "category": "editorial",
+      "status": "needs-pick",
+      "proposal": "Keep the desk byline and the sentence that says no product was tested until a person is named with credentials and a contact route. Then, and only then, add 'reviewed by' lines and author markup.",
+      "why": "The fastest way to read like generated content is an invented authority. The gate already refuses 'we tested', 'our experts' and 'editor's choice' — that ban is only safe while the byline stays institutional.",
+      "effect_on_readers": "A reader can tell exactly who is responsible for a claim, which is what a byline is for.",
+      "effort": "an afternoon with a contributor",
+      "cost": "reviewer time, ongoing",
+      "risk": "naming a person makes them answerable; that is the point",
+      "reversible": "hard once published",
+      "depends_on": [
+        "Q-09",
+        "Q-10"
+      ],
+      "options": [
+        {
+          "label": "Desk byline only, as shipped",
+          "tradeoff": "Honest and thin on authority."
+        },
+        {
+          "label": "Named editor, no testing claims",
+          "tradeoff": "Adds real accountability without changing what the site can say about products."
+        },
+        {
+          "label": "Named tester who actually cooks in them",
+          "tradeoff": "The only route to genuine review copy, and it costs a machine per reviewer plus real hours."
+        }
+      ],
+      "recommended": "Named editor now, tester only if the budget exists",
+      "review_decision": ""
+    },
+    {
+      "id": "S-12",
+      "title": "Keep the comparison static and crawlable, not a JavaScript widget",
+      "priority": "Priority 2 — findable",
+      "category": "design",
+      "status": "needs-pick",
+      "proposal": "Ship the comparison as a real table in the HTML (done) with an optional client-side picker that only filters the same rows. The picker is currently a plain two-select form that navigates, so nothing depends on it.",
+      "why": "A widget that builds the comparison in memory gives the reader a nicer click and gives the crawler an empty page. Filtering a server-rendered table keeps both.",
+      "effect_on_readers": "Works with JavaScript off, works in a text browser, works on a bad connection.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "low",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Static table with a filter form, as shipped",
+          "tradeoff": "Chosen."
+        },
+        {
+          "label": "Full interactive comparator with saved state",
+          "tradeoff": "Worth building once real traffic exists; measure first (S-09)."
+        }
+      ],
+      "recommended": "Static with filter; defer the app-like comparator",
+      "review_decision": ""
+    },
+    {
+      "id": "S-13",
+      "title": "Run the season we are in",
+      "priority": "Priority 1 — read like a shop",
+      "category": "editorial",
+      "status": "shipped",
+      "proposal": "It is late November: the front page carries a doneness angle and the thermometer, because that is what a reader is buying this fortnight, and the cluster pages say which guides are seasonal and which are evergreen.",
+      "why": "Seasonal fit is one of the few levers an unranked new site has: the query exists this month, the giants are slow to refresh, and 'what temperature is turkey done' is exactly the question our one non-air-fryer listing answers. A publication notices the calendar; a content farm does not.",
+      "effect_on_readers": "The site looks alive and timely on the day it is discovered.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "seasonal pages need retiring; the staleness rule (S-18) covers it",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Run the season, as shipped",
+          "tradeoff": "Chosen, with a retirement date on the module."
+        },
+        {
+          "label": "Evergreen only",
+          "tradeoff": "Less maintenance, and a new site competes with ten-year-old pages on their best day."
+        },
+        {
+          "label": "Prime Day / Black Friday event pages",
+          "tradeoff": "Highest volume, and product-list pages need additional original content under the policies clause; also event links have placement rules we have not read in-account."
+        }
+      ],
+      "recommended": "Seasonal module now, event pages only after Q-02 is answered",
+      "review_decision": ""
+    },
+    {
+      "id": "S-14",
+      "title": "A second commission line, later",
+      "priority": "Priority 4 — evidence-based iteration",
+      "category": "commercial",
+      "status": "proposed",
+      "proposal": "Once measured clicks exist, evaluate direct brand programs and Creator Connections against the same pages, and keep whichever pays per visit instead of adding links everywhere.",
+      "why": "One manufacturer's listing at an ambiguous 1.25% or 3.00% is a thin business. The comparison is only sound with data on what a visit is worth, which is why this is a later row and not an early one.",
+      "effect_on_readers": "None if done right; a page with three competing buy buttons is worse for the reader and for trust.",
+      "effort": "a day after data exists",
+      "cost": "0",
+      "risk": "disclosure complexity grows with every program added to a page",
+      "reversible": "yes",
+      "depends_on": [
+        "S-09",
+        "Q-04",
+        "Q-13"
+      ],
+      "options": [
+        {
+          "label": "Amazon only until clicks are measured",
+          "tradeoff": "Chosen for now."
+        },
+        {
+          "label": "Add one brand program on the matching product page only",
+          "tradeoff": "Best margin per click, more disclosure text on that page."
+        },
+        {
+          "label": "Join a large network now",
+          "tradeoff": "Inventory breadth nobody here has asked for yet."
+        }
+      ],
+      "recommended": "Wait for measured clicks",
+      "review_decision": ""
+    },
+    {
+      "id": "S-15",
+      "title": "Get a domain before the site earns anything",
+      "priority": "Priority 2 — findable",
+      "category": "brand",
+      "status": "needs-pick",
+      "proposal": "A github.io subpath is fine for launch and wrong for an asset. Move to a real domain, keep /Affil3 as a redirect for one year, and let the canonical set follow the new host in the same commit.",
+      "why": "Canonical URLs, the sitemap, the feed and every share live in the address bar. Changing host after traffic arrives costs most of the benefit; the change costs about a dollar and an afternoon now. It also unlocks the collector and reader capture on the same origin.",
+      "effect_on_readers": "A name a person can remember and trust.",
+      "effort": "an hour",
+      "cost": "about $10 a year",
+      "risk": "the name is hard to change later, so pick deliberately",
+      "reversible": "sort of",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Stay on Pages for now",
+          "tradeoff": "Zero cost, zero brand equity. Where we are."
+        },
+        {
+          "label": "Buy a category wordmark domain",
+          "tradeoff": "Memorable, ownable, needs a name you will not resent in two years. Site ships as 'Counterwise' in this build for that reason."
+        },
+        {
+          "label": "Buy a keyword domain (airfryerguides…)",
+          "tradeoff": "Exact-match domains have carried no special weight for a long time, and it boxes the niche in forever."
+        }
+      ],
+      "recommended": "Brandable domain, this quarter, before promotion starts",
+      "review_decision": ""
+    },
+    {
+      "id": "S-16",
+      "title": "No video, no social channels, until something is measured",
+      "priority": "Priority 4 — evidence-based iteration",
+      "category": "growth",
+      "status": "proposed",
+      "proposal": "Hold every channel that costs recurring effort. Revisit when the metrics page has 30 days of clicks and Search Console shows which query the traffic came from.",
+      "why": "Short-form video is the highest-effort, slowest-to-attribute channel available to a two-listing operation. Deciding to do it because it is what affiliate sites do is exactly the instinct-first pattern this project is supposed to break.",
+      "effect_on_readers": "None.",
+      "effort": "deferred",
+      "cost": "deferred",
+      "risk": "opportunity cost, which the ledger will show",
+      "reversible": "yes",
+      "depends_on": [
+        "S-08",
+        "S-09"
+      ],
+      "options": [
+        {
+          "label": "Hold (recommended)",
+          "tradeoff": "Nothing spent, nothing learned."
+        },
+        {
+          "label": "One 60-second clip per guide, unlisted",
+          "tradeoff": "Cheap experiment; still a permanent production habit once it works."
+        }
+      ],
+      "recommended": "Hold",
+      "review_decision": ""
+    },
+    {
+      "id": "S-17",
+      "title": "Put a scale rule on page creation, in the gate",
+      "priority": "Priority 4 — measure before automating",
+      "category": "risk",
+      "status": "needs-pick",
+      "proposal": "Automate collection, formatting, verification and measurement. Gate new pages: one page per buying question a real reader asked, and never more than two pages per question.",
+      "why": "Google's scaled content abuse policy targets many pages generated primarily to rank, however they are made — which is precisely the failure mode of an 'AI-powered affiliate platform'. The automation brief and the spam policy collide here, and the only durable answer is to automate the research and the plumbing instead of the word count.",
+      "effect_on_readers": "Fewer pages, each with a reason to exist.",
+      "effort": "policy choice, then a 20-line gate rule",
+      "cost": "0",
+      "risk": "growing slower than a spammy competitor, for a while",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-12"
+      ],
+      "options": [
+        {
+          "label": "Hard cap: one guide per verified question, 2 per week",
+          "tradeoff": "Recommended. Slow and defensible; the cadence file already assumes it."
+        },
+        {
+          "label": "Soft target with quarterly pruning of pages with zero impressions",
+          "tradeoff": "Faster growth; pruning without Search Console data is blind, so it depends on S-08."
+        },
+        {
+          "label": "Generate for the long tail first, refine later",
+          "tradeoff": "The classic 2019 playbook. It is now an explicitly named abuse pattern and the worst available choice for a new domain."
+        }
+      ],
+      "recommended": "Hard cap now, soft target only after eight weeks of queries",
+      "review_decision": "",
+      "prompt_snippet": "Add a build gate rule: fail if the guide count grows by more than 2 per week, if two guides share a normalized question stem, or if a guide cites fewer than two sources that resolve to a registered source ID."
+    },
+    {
+      "id": "S-18",
+      "title": "A 90-day staleness rule on every observation",
+      "priority": "Priority 3 — trustworthy machinery",
+      "category": "operations",
+      "status": "proposed",
+      "proposal": "A scheduled run of tools/resolve_links.py re-captures each listing title, path identifier and breadcrumb, writes a dated record, and the build stamps every gear and guide page with its capture date. Anything older than 90 days gets a visible 'data older than 90 days' notice, not a silent delete.",
+      "why": "Titles, accessories and category placement change without telling anyone. The dangerous state is not being wrong on day one; it is being right on day one and stale on day four hundred, with no marker on the page.",
+      "effect_on_readers": "The reader can see how old our evidence is, which is the only honest freshness signal available.",
+      "effort": "an hour for the workflow",
+      "cost": "0",
+      "risk": "an unattended fetch that starts failing will look like silence; the job must post its own status",
+      "reversible": "yes",
+      "depends_on": [
+        "Q-14"
+      ],
+      "options": [
+        {
+          "label": "Adopt 90 days, as proposed",
+          "tradeoff": "Chosen default."
+        },
+        {
+          "label": "Re-capture on every build",
+          "tradeoff": "Freshest, but the CI job needs network access to a site that rate-limits bots."
+        },
+        {
+          "label": "Manual refresh only",
+          "tradeoff": "What most small sites actually do, which is why most small sites are wrong."
+        }
+      ],
+      "recommended": "90 days, with the notice rendered on the page",
+      "review_decision": ""
+    },
+    {
+      "id": "S-19",
+      "title": "Teach the voice in the gate, not in the prompt",
+      "priority": "Priority 1 — read like a shop",
+      "category": "editorial",
+      "status": "shipped",
+      "proposal": "Keep the banned-vocabulary list in the build gate and let it fail the site: no 'we tested', no 'editor's choice', no 'best overall', no invented numbers, and none of the filler that signals generated text — 'seamless', 'curated', 'delve', 'unlock', 'elevate', 'look no further', 'in today's fast-paced'.",
+      "why": "Voice instructions decay the moment a model gets tired; a build rule does not. Anything a reader can smell as filler costs credibility on every other sentence on the page, and the only defence that survives automation is a mechanical one.",
+      "effect_on_readers": "Sentences that carry information instead of throat-clearing.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "a banlist can over-reach; every entry has a `why` and can be waived per page with a reason",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Banlist in the gate, as shipped",
+          "tradeoff": "Chosen."
+        },
+        {
+          "label": "Style guide for humans only",
+          "tradeoff": "Does not survive automation, which is the whole premise here."
+        },
+        {
+          "label": "Also add a readability floor",
+          "tradeoff": "Worth it later; short sentences are easier to trust, and it is a cheap rule to add."
+        }
+      ],
+      "recommended": "Keep the banlist; add a readability floor once there is more prose",
+      "review_decision": ""
+    },
+    {
+      "id": "S-20",
+      "title": "Privacy page, 404 and the boring furniture, now rather than after",
+      "priority": "Priority 3 — trustworthy machinery",
+      "category": "operations",
+      "status": "shipped",
+      "proposal": "Ship a short privacy page that matches what the code actually does (no cookies, no stored addresses, no third-party requests), a real 404 that points at the three useful places, and a manifest that records what was built from which inputs.",
+      "why": "A site asking for nothing and storing nothing can say so in eight lines, and saying it is what separates a shop from a funnel. The 404 is where a reader decides whether the site is finished.",
+      "effect_on_readers": "A page that reads like someone lives here.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "a privacy page must be updated if S-09 or S-10 changes; the gate checks that collecting and privacy stay consistent",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Ship it, as done",
+          "tradeoff": "Chosen."
+        },
+        {
+          "label": "Generator from a policy wizard",
+          "tradeoff": "Boilerplate the reader recognises as boilerplate."
+        }
+      ],
+      "recommended": "Keep the short one, update it the day collection turns on",
+      "review_decision": ""
+    },
+    {
+      "id": "S-21",
+      "title": "Give the buyer one decision to make per page",
+      "priority": "Priority 1 — read like a shop",
+      "category": "design",
+      "status": "shipped",
+      "proposal": "Every guide ends with a three-line 'what to do next': the checklist to run, the gear row that matches, the one link. No end-of-article wall of related posts.",
+      "why": "An affiliate page's job is a decision, and a reader who finishes with four options usually takes none. Related-post grids are also the layout that most reliably says 'generated'.",
+      "effect_on_readers": "One action, from a page that just earned the right to suggest it.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "fewer internal clicks per page, which the event schema will measure rather than assume",
+      "reversible": "yes",
+      "depends_on": [
+        "S-09"
+      ],
+      "options": [
+        {
+          "label": "One next step, as shipped",
+          "tradeoff": "Chosen."
+        },
+        {
+          "label": "Related grid",
+          "tradeoff": "More pageviews, less decision."
+        }
+      ],
+      "recommended": "One next step",
+      "review_decision": ""
+    },
+    {
+      "id": "S-22",
+      "title": "Publish the gate report next to the content it polices",
+      "priority": "Priority 3 — trustworthy machinery",
+      "category": "operations",
+      "status": "shipped",
+      "proposal": "The build writes a machine-readable report of which rules passed and what each one checks, rendered as a page. Anyone can see that a rule exists, runs, and can fail.",
+      "why": "'The machinery is trustworthy' is not a claim you can make about a private script. A public report with the rule text attached is the nearest thing to proof a static site can offer.",
+      "effect_on_readers": "A buyer who wants to check our work can check the checker.",
+      "effort": "done",
+      "cost": "0",
+      "risk": "it also publishes the gaps, which is intended",
+      "reversible": "yes",
+      "depends_on": [],
+      "options": [
+        {
+          "label": "Publish it, as shipped",
+          "tradeoff": "Chosen."
+        },
+        {
+          "label": "CI logs only",
+          "tradeoff": "Invisible to readers, so worth less as a promise."
+        }
+      ],
+      "recommended": "Publish",
+      "review_decision": ""
+    }
+  ],
+  "summary_counts": {
+    "shipped": 11,
+    "needs-pick": 9,
+    "proposed": 3,
+    "open_review_decisions": 23
+  }
+}

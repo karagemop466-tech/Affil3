@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How this site is generated, and what its gate refuses</title>
+<meta name="description" content="The register-to-HTML pipeline, the seventeen rules the gate enforces, the banned-voice list with reasons, the image policy and the publishing cadence.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/transparency/method/index.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counterwise">
+<meta property="og:title" content="How this site is generated, and what its gate refuses">
+<meta property="og:description" content="The register-to-HTML pipeline, the seventeen rules the gate enforces, the banned-voice list with reasons, the image policy and the publishing cadence.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/transparency/method/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="alternate" type="application/atom+xml" title="Counterwise — new guides" href="/Affil3/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 aria-hidden=%22true%22 focusable=%22false%22%3E%3Crect x=%221%22 y=%223%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Cpath d=%22M1 8h18%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Ccircle cx=%2215.4%22 cy=%225.5%22 r=%221.1%22 fill=%22currentColor%22/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="/Affil3/assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Counterwise", "item": "https://karagemop466-tech.github.io/Affil3/"}, {"@type": "ListItem", "position": 2, "name": "Transparency", "item": "https://karagemop466-tech.github.io/Affil3/transparency"}, {"@type": "ListItem", "position": 3, "name": "Method", "item": "https://karagemop466-tech.github.io/Affil3/transparency/method"}]}</script>
+</head>
+<body data-page="/transparency/method/index.html" data-page-kind="paperwork" data-allowed-events="page_view,product_link_click,comparison_started,checklist_item_toggled,email_signup_submitted" data-analytics-endpoint="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/Affil3/"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise<small>Countertop cooking, measured</small></span></a>
+    <nav class="nav" aria-label="Main"><a href="/Affil3/guides/">Guides</a><a href="/Affil3/gear/">Gear we track</a><a href="/Affil3/compare/">Compare</a><a href="/Affil3/summary/">Summary</a><a href="/Affil3/suggestions/">Suggestions</a></nav>
+    <span class="issue-tag">Issue 01 · November 2026</span>
+  </div>
+</header>
+<div class="disclosure">
+  <div class="wrap">
+    <span class="tag">Disclosure</span>
+    <span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> That is why some links on this site are labelled (paid link). We are not
+    paid to call anything better; we are paid if you buy through a link. <a href="/Affil3/disclosure/">How this works</a>.</span>
+  </div>
+</div>
+<main id="main">
+
+<section class="sec">
+  <div class="wrap">
+    <div class="page-head">
+      <span class="kicker">The machinery</span>
+      <h1>How this site is built, and what refuses to build</h1>
+      <p class="deck">Three commands stand between a data edit and a published page:
+      <code>python3 tools/build.py</code>, then <code>python3 tools/gate.py</code>, then a commit. The generator has
+      no opinions; the gate has seventeen of them.</p>
+    </div>
+    <div class="grid-2" style="align-items:start">
+      <div>
+        <h2>The pipeline</h2>
+        <ol>
+          <li><code>data/*.json</code> and <code>content/guides/*.md</code> are the only place facts are written.</li>
+          <li><code>tools/build.py</code> renders every page, the sitemap, the feed and this report from those files.
+              Nothing is hand-written in <code>docs/</code>.</li>
+          <li><code>tools/gate.py</code> checks the finished HTML against the register: sources, disclosure
+              placement, tagged and marked outbound links, resolvable internal links, banned voice, structured data
+              that never overclaims, and output freshness by content hash.</li>
+          <li>A failed gate exits non-zero, so the CI workflow on every push fails and the site cannot be published
+              broken or unsourced.</li>
+        </ol>
+        <h2>Where images come from</h2>
+        <p>Drawn for this site and captioned as illustration. No Amazon product imagery appears anywhere, because
+        program imagery is licensed through program tooling rather than scraped from a page, and because a
+        manufacturer's render is the visual signature of a template site. That reverses when an authorized feed
+        exists: <a href="/Affil3/questions/#Q-05">Q-05</a>.</p>
+        <h2>Editorial cadence</h2>
+        <dl class="kv">
+          <dt>Status</dt><dd>proposed</dd>
+          <dt>Rule</dt><dd>Two guides per week, Tuesday and Friday, for eight weeks; each new guide is added to data/guides.json and regenerated, which updates the sitemap and the feed in the same commit.</dd>
+          <dt>Window</dt><dd>2026-11-24 to 2027-01-15</dd>
+          <dt>Review</dt><dd>Week 3 (2026-12-08): the next four topics are chosen from Search Console queries and click events, not from preference.</dd>
+        </dl>
+        <h2>How to add or correct a row</h2>
+        <pre><code>edit data/products.json (or sources, guides, flags…)
+python3 tools/build.py      # regenerate docs/
+python3 tools/gate.py        # exit 0 or it does not ship
+python3 -m unittest discover -s tests</code></pre>
+      </div>
+      <div>
+        <h2>Gate rules and last finding counts</h2>
+        <div class="table-wrap"><table><thead><tr><th>Rule</th><th>What it enforces</th><th class="num">Findings</th></tr></thead>
+          <tbody><tr><td><code>R01</code></td><td>source register is complete and honest about how much was read</td><td class="num">0</td></tr><tr><td><code>R02</code></td><td>product-intent records keep confirmation and observation apart, and never fill a blank with an inference</td><td class="num">0</td></tr><tr><td><code>R03</code></td><td>link register states exactly what was followed, including the absence of a tag</td><td class="num">0</td></tr><tr><td><code>R04</code></td><td>every cross-reference resolves: flags, sources, products, clusters, events</td><td class="num">0</td></tr><tr><td><code>R05</code></td><td>recorded tallies match the data they describe</td><td class="num">0</td></tr><tr><td><code>R06</code></td><td>docs/ was generated from the current data/ and content/</td><td class="num">0</td></tr><tr><td><code>R07</code></td><td>every page: head furniture, disclosure above the fold and in the footer, tagged and marked outbound links, registered citations, no banned voice, no broken links</td><td class="num">0</td></tr><tr><td><code>R08</code></td><td>structured data parses and never claims more than the site can support</td><td class="num">0</td></tr><tr><td><code>R09</code></td><td>sitemap, feed and robots are consistent with the files on disk</td><td class="num">0</td></tr><tr><td><code>R10</code></td><td>measurement state in the markup agrees with config; opt-out is honoured</td><td class="num">0</td></tr><tr><td><code>R11</code></td><td>the campaign ledger has its schema and no unprovenanced numbers</td><td class="num">0</td></tr><tr><td><code>R12</code></td><td>no conversion score or revenue forecast appears anywhere</td><td class="num">0</td></tr></tbody></table></div>
+        <h2 style="margin-top:26px">Banned phrasing, and why</h2>
+        <div class="table-wrap"><table><thead><tr><th>Pattern</th><th>Applies to</th><th>Reason</th></tr></thead>
+          <tbody><tr><td><code>we (?:have )?(?:tested|tried|used|evaluated|hands-on|cooked in)</code></td><td>all</td><td>nobody at this project has cooked in these machines; the day someone does, the claim becomes true and this rule gets a waiver</td></tr><tr><td><code>our (?:top )?pick|editor&#x27;?s choice|best overall|best value|best budget|best air fryer</code></td><td>product</td><td>a ranking is a claim about superiority; the brief forbids presenting popularity or superiority as fact</td></tr><tr><td><code>\b(?:4|5)\.\d stars?|\d{1,2},\d{3} (?:ratings?|reviews?)|aggregate rating</code></td><td>all</td><td>ratings drift and were not captured verifiably; see FLG-007</td></tr><tr><td><code>\$\s?\d[\d,]*(?:\.\d\d)?</code></td><td>product</td><td>no prices on product-facing pages (S-04); hosting costs on the board are a different thing and are allowed</td></tr><tr><td><code>\bguarantee[ds]?\b|risk-?free|no-?risk</code></td><td>all</td><td>a promise we cannot underwrite</td></tr><tr><td><code>FDA[- ]approved|cures|prevents (?:cancer|disease)|kills \d+% of</code></td><td>all</td><td>health claims are out of scope for cookware and are the fastest route to a takedown</td></tr><tr><td><code>\bseamless(?:ly)?\b|\bcurate[d]?d?\b|\bcurat\b|\bdelve\b|\bunwind\b|\bunlock\b|\belevate\b|game-?changer|revolutioni[sz]e|top-?notch|look no further|in today[&#x27;’]s fast[- ]paced|whether you(?:&#x27;re| are)|it(?:&#x27;s| is) important to note</code></td><td>all</td><td>the vocabulary that makes a page read as generated filler (S-19)</td></tr><tr><td><code>in conclusion|final thought[s]?|at the end of the day|dive in</code></td><td>all</td><td>throat-clearing: the sentence after it usually says nothing</td></tr><tr><td><code>as an amazon associate, i earn</code></td><td>all</td><td>the required statement has exact wording (SG-01); a comma is a paraphrase</td></tr><tr><td><code>verified by (?:our|a panel of) experts|our experts (?:at|recommend)</code></td><td>all</td><td>no expert relationship exists to invoke (FLG-014)</td></tr></tbody></table></div>
+        <p class="paid-note">A pattern list is a blunderbuss, so every entry carries its reason and can be waived per
+        page in <code>tools/gate.py</code>. "not published by us" is allowed on this site; "we tested" is not, until
+        somebody does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/Affil3/" style="color:#fff">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise</span>
+        </a>
+        <p class="foot-lead" style="margin-top:10px">Countertop cooking, measured. Independent buyer research for
+        countertop cooking gear, assembled from listings we loaded and policies we read.</p>
+      </div>
+      <div>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/Affil3/guides/">All guides</a></li>
+          <li><a href="/Affil3/gear/">Gear we track</a></li>
+          <li><a href="/Affil3/compare/">Compare two machines</a></li>
+          <li><a href="/Affil3/clusters/doneness/">Knowing when it's done</a></li>
+          <li><a href="/Affil3/summary/">Executive summary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Verification</h4>
+        <ul>
+          <li><a href="/Affil3/transparency/">Transparency hub</a></li>
+          <li><a href="/Affil3/transparency/sources/">Source register (16)</a></li>
+          <li><a href="/Affil3/transparency/verification/">Link &amp; product evidence</a></li>
+          <li><a href="/Affil3/transparency/method/">How this is built</a></li>
+          <li><a href="/Affil3/transparency/gate-report/">Gate report</a></li>
+          <li><a href="/Affil3/metrics/">Measurement &amp; events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Decisions</h4>
+        <ul>
+          <li><a href="/Affil3/suggestions/">Suggestions board</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/review/" >Flagged for review (17)</a></li>
+          <li><a href="/Affil3/about/">Editorial policy</a></li>
+          <li><a href="/Affil3/disclosure/">Disclosure statement</a></li>
+          <li><a href="/Affil3/privacy/">Privacy</a></li>
+          <li><a href="/Affil3/feed.xml">Atom feed</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-disclosure" data-disclosure="footer"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+      It applies to every product link on this site, on this page, including this footer.
+      <a href="/Affil3/disclosure/">What that means, in full</a>.</p>
+    <p class="colophon">Built by <code>tools/build.py</code> from <code>data/</code> + <code>content/</code> ·
+      inputs <code>2f49ca22ffd78a26</code> · 30 pages ·
+      no cookies, no webfonts, no third-party requests ·
+      repository: <a href="https://github.com/karagemop466-tech/Affil3">github.com/karagemop466-tech/Affil3</a></p>
+  </div>
+</footer>
+<script src="/Affil3/assets/track.js" defer></script>
+</body>
+</html>

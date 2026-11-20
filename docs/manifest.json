@@ -1,0 +1,57 @@
+{
+  "inputs_hash": "2f49ca22ffd78a26",
+  "generated_at_utc": "2026-11-20T05:56:31+00:00",
+  "builder": "tools/build.py",
+  "pages": [
+    "404",
+    "about",
+    "cluster:doneness",
+    "cluster:dual-basket",
+    "cluster:oven-style",
+    "compare",
+    "disclosure",
+    "front",
+    "gate-report",
+    "gear",
+    "gear:P-01",
+    "gear:P-02",
+    "gear:P-03",
+    "gear:P-05",
+    "guide:G-01",
+    "guide:G-02",
+    "guide:G-03",
+    "guide:G-04",
+    "guide:G-05",
+    "guides",
+    "method",
+    "metrics",
+    "privacy",
+    "questions",
+    "review",
+    "sources",
+    "suggestions",
+    "summary",
+    "transparency",
+    "verification"
+  ],
+  "counts": {
+    "pages": 30,
+    "guides": 5,
+    "products": 5,
+    "published_product_links": 4,
+    "sources": 16,
+    "flags": 17,
+    "suggestions": 23,
+    "questions": 14
+  },
+  "measurement": {
+    "endpoint": "",
+    "status": "not-deployed"
+  },
+  "tracking_id": "shopnow047c-20",
+  "disclosure_statement": "As an Amazon Associate I earn from qualifying purchases.",
+  "gate": {
+    "rules": 12,
+    "findings": 0
+  }
+}

@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open questions to settle before deciding anything</title>
+<meta name="description" content="Fourteen decision-blocking questions with what is known, what is missing, how to find out, who can answer, and the fallback the site applies while each….">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/questions/index.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Counterwise">
+<meta property="og:title" content="Open questions to settle before deciding anything">
+<meta property="og:description" content="Fourteen decision-blocking questions with what is known, what is missing, how to find out, who can answer, and the fallback the site applies while each stays open.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/questions/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/assets/img/og-cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#f6f3ec">
+<link rel="alternate" type="application/atom+xml" title="Counterwise — new guides" href="/Affil3/feed.xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg width=%2220%22 height=%2220%22 viewBox=%220 0 20 20%22 aria-hidden=%22true%22 focusable=%22false%22%3E%3Crect x=%221%22 y=%223%22 width=%2218%22 height=%2214%22 rx=%222%22 fill=%22none%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Cpath d=%22M1 8h18%22 stroke=%22currentColor%22 stroke-width=%221.6%22/%3E%3Ccircle cx=%2215.4%22 cy=%225.5%22 r=%221.1%22 fill=%22currentColor%22/%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="/Affil3/assets/site.css">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Counterwise", "item": "https://karagemop466-tech.github.io/Affil3/"}, {"@type": "ListItem", "position": 2, "name": "Questions", "item": "https://karagemop466-tech.github.io/Affil3/questions"}]}</script>
+</head>
+<body data-page="/questions/index.html" data-page-kind="paperwork" data-allowed-events="page_view,product_link_click,comparison_started,checklist_item_toggled,email_signup_submitted" data-analytics-endpoint="">
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="/Affil3/"><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise<small>Countertop cooking, measured</small></span></a>
+    <nav class="nav" aria-label="Main"><a href="/Affil3/guides/">Guides</a><a href="/Affil3/gear/">Gear we track</a><a href="/Affil3/compare/">Compare</a><a href="/Affil3/summary/">Summary</a><a href="/Affil3/suggestions/">Suggestions</a></nav>
+    <span class="issue-tag">Issue 01 · November 2026</span>
+  </div>
+</header>
+<div class="disclosure">
+  <div class="wrap">
+    <span class="tag">Disclosure</span>
+    <span><strong>As an Amazon Associate I earn from qualifying purchases.</strong> That is why some links on this site are labelled (paid link). We are not
+    paid to call anything better; we are paid if you buy through a link. <a href="/Affil3/disclosure/">How this works</a>.</span>
+  </div>
+</div>
+<main id="main">
+
+<section class="sec">
+  <div class="wrap">
+    <div class="page-head">
+      <span class="kicker">Before a decision is reasonable</span>
+      <h1>Open questions, what we have, and how to get the rest</h1>
+      <p class="deck">14 questions. For each one: the information already in hand, the exact gap, the way
+      to close it, who can close it, and what this build does while waiting. 6
+      of them can only be answered inside the Associates account — no crawler, model or scrape substitutes for that,
+      which is why the site says so instead of guessing.</p>
+    </div>
+    <ul class="anchor-list" style="margin:6px 0 22px">
+      <li><a href="#Q-01">Q-01</a></li><li><a href="#Q-02">Q-02</a></li><li><a href="#Q-03">Q-03</a></li><li><a href="#Q-04">Q-04</a></li><li><a href="#Q-05">Q-05</a></li><li><a href="#Q-06">Q-06</a></li><li><a href="#Q-07">Q-07</a></li><li><a href="#Q-08">Q-08</a></li><li><a href="#Q-09">Q-09</a></li><li><a href="#Q-10">Q-10</a></li><li><a href="#Q-11">Q-11</a></li><li><a href="#Q-12">Q-12</a></li><li><a href="#Q-13">Q-13</a></li><li><a href="#Q-14">Q-14</a></li>
+    </ul>
+    <article class="qcard" id="Q-01">
+      <h3><span class="flagid">Q-01</span><br>For each of the five links, which listing did you actually mean to promote?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>Everything downstream hangs on it: the product table, the Special Link, the article claims, and whether Product structured data is honest. Four links resolved somewhere; intent is a different fact from destination.</p>
+        <span>We already have</span><p>The supplied URL for each link and, for four of them, the listing page it opened on 2026-11-20 with its title, path identifier and category breadcrumb (data/links.json).</p>
+        <span>Missing</span><p>A confirmation from the owner or the account that the observed listing is the intended one, and anything at all about LNK-04.</p>
+        <span>How to find out</span><p>Open each link.amazon URL in a browser while signed in to the account. For each, use SiteStripe → Get Link and save the produced /dp/ URL and ASIN into `intent` in data/products.json with the date. For LNK-04, run python3 tools/resolve_links.py from a normal connection, or look the product up by name if you know it.</p>
+        <span>Who can answer</span><p>Program owner (five minutes in-account).</p>
+        <span>Blocks</span><p>S-04 · S-07 · FLG-001 · FLG-004 · any product-level claim in a guide</p>
+        <span>Meanwhile</span><p>The site publishes the observed listing URL with the tracking tag, labelled &#x27;destination observed 2026-11-20, intent unconfirmed&#x27;. No ASIN is claimed as intended.</p>
+      </div>
+    </article><article class="qcard" id="Q-02">
+      <h3><span class="flagid">Q-02</span><br>Which version of the Operating Agreement governs this account, and does anything in it conflict with the layout we shipped?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>The agreement is the contract that can end the program&#x27;s income. Third-party summaries of it disagree with each other, and we could not read the US copy from here.</p>
+        <span>We already have</span><p>Amazon&#x27;s own help restatement of the disclosure requirement, read in full (SG-01), and the Special Links clause from a copy of the policies document (SG-02).</p>
+        <span>Missing</span><p>The agreement text itself: version date, the exact required statement wording, the participation requirements about site content, the rules on email, PDF, offline and app placements, and the bounty terms.</p>
+        <span>How to find out</span><p>Associates Central → Help → Operating Agreement. Read §Participation Requirements and §Links on your Site. Compare against docs/disclosure/index.html and the guide footers; note the version date in SG-03 and re-run python3 tools/gate.py.</p>
+        <span>Who can answer</span><p>Program owner, or anyone with account access.</p>
+        <span>Blocks</span><p>S-06 · S-10 · S-14 · FLG-006</p>
+        <span>Meanwhile</span><p>Layout follows the strictest reading we could verify: disclosure above the fold on every page and in the footer, link-level &#x27;(paid link)&#x27; on every product link, no cloaking layer, no email or offline link use.</p>
+      </div>
+    </article><article class="qcard" id="Q-03">
+      <h3><span class="flagid">Q-03</span><br>Is shopnow047c-20 live, and does a click through a link we publish show up in the reports?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>A tag that does not exist earns nothing no matter how good the pages are. This is the single test that separates a real affiliate operation from a hobby site with nice CSS.</p>
+        <span>We already have</span><p>The ID string as given, its format check, and links built with it.</p>
+        <span>Missing</span><p>Proof the ID exists on the account, and proof that a click on a link we generate is recorded.</p>
+        <span>How to find out</span><p>Associates Central → Tools → Tracking IDs: confirm the row exists. Then put one published product link on an unlisted page, click it from a clean browser profile, buy nothing, and check Reports → &#x27;Links&#x27; and &#x27;Clicks&#x27; for the next day. Record the date in data/products.json under `intent.confirmed_via`.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>any scaling decision · the campaign ledger&#x27;s first row · FLG-002 · FLG-009</p>
+        <span>Meanwhile</span><p>Every product link on the site carries data-link-state=&quot;pending-test&quot;, and the gear table says the links are tagged but not yet proven in-account.</p>
+      </div>
+    </article><article class="qcard" id="Q-04">
+      <h3><span class="flagid">Q-04</span><br>Which Table A commission row does Amazon apply to these listings?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>Home is 3.00% and Kitchen is 1.25% — a factor of 2.4 in the same machine. Priorities, the price floor worth chasing, and whether a thermometer at 1.25% or 3% is the better editorial bet all move with this answer.</p>
+        <span>We already have</span><p>Both rows, quoted verbatim from Amazon&#x27;s Onsite Commission Income Statement (SG-04), and the observed breadcrumbs that make the choice genuinely ambiguous.</p>
+        <span>Missing</span><p>The category Amazon assigns to these ASINs for fee purposes, and whether the account is on Table A or Table B at all.</p>
+        <span>How to find out</span><p>After the first attributed order: Associates Central → Reports → &#x27;Income Advisory Report&#x27; has a product-category column. Before that, PA-API Browse Node data would answer it if access exists (Q-05).</p>
+        <span>Who can answer</span><p>Report data only; not answerable from documentation.</p>
+        <span>Blocks</span><p>any revenue forecast · S-14 · topic prioritisation by margin</p>
+        <span>Meanwhile</span><p>No rate is presented as fact on the site, and no forecast is published anywhere. The executive summary shows both candidate rates side by side with the ambiguity named.</p>
+      </div>
+    </article><article class="qcard" id="Q-05">
+      <h3><span class="flagid">Q-05</span><br>Do we have Product Advertising API credentials, and at what rate tier?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>This is the difference between an affiliate platform and a page generator. API access is what makes price, availability, image and attribute refresh automated and legal at once.</p>
+        <span>We already have</span><p>The knowledge that the register&#x27;s `not_verified` columns are exactly the ones the API would fill, and a stdlib client skeleton in tools/special_links.py for the request shape.</p>
+        <span>Missing</span><p>An access key, a secret, a partner tag, and confirmation of the account&#x27;s eligibility. We did not accept third-party restatements of the eligibility rule as verified, so no threshold is asserted here.</p>
+        <span>How to find out</span><p>Associates Central → Tools → Product Advertising API → &#x27;Join or manage your account&#x27;. If the request button is live, the account qualifies. Create credentials, store them in the deployment&#x27;s secret store, never in this repo.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>S-04 · S-07 · the 90-day re-verification cycle in S-18 · FLG-007</p>
+        <span>Meanwhile</span><p>Prices and ratings are absent from the site by design; the gate fails a build that introduces them.</p>
+      </div>
+    </article><article class="qcard" id="Q-06">
+      <h3><span class="flagid">Q-06</span><br>Which marketplace are we enrolled in, and do readers outside it earn anything?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>A tag is marketplace-specific. An Italian reader who lands on amazon.it through an amazon.com tag credits nothing, and Amazon&#x27;s own policies say each marketplace is its own program.</p>
+        <span>We already have</span><p>The -20 suffix on the tracking ID, which is the US convention, and four resolved amazon.com listings.</p>
+        <span>Missing</span><p>Confirmation of the enrolled marketplace, and whether additional marketplace Associates accounts exist.</p>
+        <span>How to find out</span><p>Associates Central → Account settings → the marketplace listed on the account. If non-US traffic is expected, decide between per-marketplace links and a single US destination with a note to readers.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>international link rewriting · S-15</p>
+        <span>Meanwhile</span><p>Every link targets amazon.com. No geo-redirection is attempted, and nothing claims worldwide availability.</p>
+      </div>
+    </article><article class="qcard" id="Q-07">
+      <h3><span class="flagid">Q-07</span><br>Where does this live long-term — github.io or a domain we control?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>The base URL is written into canonical tags, the sitemap, the feed and the RSS guid. Moving hosts later means every one of those changes at once and search results follow the move imperfectly. A branded domain also decides whether we can serve the collector from the same origin, which decides whether click data is even collectable.</p>
+        <span>We already have</span><p>A working Pages deployment at karagemop466-tech.github.io/Affil3 and a build that takes base_url from config, so the change is one line plus a rebuild.</p>
+        <span>Missing</span><p>A chosen domain, DNS control, and the Pages CNAME.</p>
+        <span>How to find out</span><p>Decide, then: buy or point the domain, add docs/CNAME, set identity.base_url, rebuild, submit the new sitemap in Search Console.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>S-09 · S-10 · S-15</p>
+        <span>Meanwhile</span><p>Published on the existing Pages URL under /Affil3; all absolute URLs derive from config.identity.base_url so a domain change is a one-line edit.</p>
+      </div>
+    </article><article class="qcard" id="Q-08">
+      <h3><span class="flagid">Q-08</span><br>Is there a verified Search Console property for this site?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>The brief&#x27;s own instruction is that the next topic should be chosen from measured queries instead of instinct. Without a verified property there are no queries, so &#x27;measure then optimise&#x27; cannot start.</p>
+        <span>We already have</span><p>A sitemap.xml, a feed.xml, robots.txt pointing at the sitemap, and a documented submission path.</p>
+        <span>Missing</span><p>Ownership verification and any index coverage history.</p>
+        <span>How to find out</span><p>search.google.com/search-console → Add property → Domain or URL-prefix. For a URL-prefix property on Pages, the easiest proof is an HTML meta tag: paste the token into data/config.json → search_console.verification_token, rebuild, verify, submit /Affil3/sitemap.xml.</p>
+        <span>Who can answer</span><p>Program owner (account holder).</p>
+        <span>Blocks</span><p>the week-3 topic review in the cadence plan · FLG-010</p>
+        <span>Meanwhile</span><p>The metrics page states plainly that no query data exists yet and lists the first four topics as unmeasured hypotheses.</p>
+      </div>
+    </article><article class="qcard" id="Q-09">
+      <h3><span class="flagid">Q-09</span><br>Who has read the FTC endorsement rules as they apply to a site like this, as opposed to an influencer post?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>The site&#x27;s disclosure placement is designed to satisfy &#x27;clear and conspicuous&#x27;. Whether the comparison wording in a guide reads as an endorsement of a product, rather than a framework for choosing one, is an editorial and legal judgement, not a regex.</p>
+        <span>We already have</span><p>The structure of 16 CFR Part 255 and its section titles, read from the eCFR (SG-08), and Amazon&#x27;s own pointer to FTC guidance (SG-01).</p>
+        <span>Missing</span><p>A full read of the FTC business guidance pages named SG-09 and SG-10, and any human legal opinion at all.</p>
+        <span>How to find out</span><p>Read SG-09 and SG-10, then review the guide text against them; escalate only the &#x27;review&#x27; and &#x27;recommend&#x27; vocabulary, which is where the risk concentrates. Record the review date in SG-03&#x27;s row.</p>
+        <span>Who can answer</span><p>Owner, optionally counsel.</p>
+        <span>Blocks</span><p>using the word &#x27;review&#x27; in page titles · S-11 · any sample-or-gift relationship</p>
+        <span>Meanwhile</span><p>The site calls its pages guides, not reviews, states that no product was tested, and carries the disclosure strip above the fold plus link-level labels on every page.</p>
+      </div>
+    </article><article class="qcard" id="Q-10">
+      <h3><span class="flagid">Q-10</span><br>Who is the human of record behind the byline, if anyone?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>Reader trust, E-E-A-T and Amazon&#x27;s own preference for sites with a real editor all point at the same thing. A fake persona is the one mistake that would justify every &#x27;AI slop&#x27; accusation levelled at sites like this.</p>
+        <span>We already have</span><p>An honest sign-off: &#x27;Counterwise Editorial Desk&#x27;, with an About page that says the desk is automation with a verification gate and no hands-on testing.</p>
+        <span>Missing</span><p>A name, a role, credentials, a photo only if they consent, and a contact route.</p>
+        <span>How to find out</span><p>Decide whether a person will own this. If yes, write their bio and add author Person markup; if no, keep the desk byline and never write &#x27;our expert&#x27;.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>S-11 · author pages · FLG-014</p>
+        <span>Meanwhile</span><p>Desk byline with an explicit &#x27;what this is&#x27; statement on every About and Method page.</p>
+      </div>
+    </article><article class="qcard" id="Q-11">
+      <h3><span class="flagid">Q-11</span><br>How are the five events in the brief defined, and does anything else count as an event?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>The schema decides what the collector is allowed to write, which decides whether the ledger&#x27;s columns mean anything. A tracking plan nobody agreed on becomes numbers nobody can defend.</p>
+        <span>We already have</span><p>A proposed five — page_view, product_link_click, comparison_started, checklist_item_toggled, email_signup_submitted — each with a payload schema in data/events.json, and a collector that refuses any other name.</p>
+        <span>Missing</span><p>The owner&#x27;s definition. The brief says &#x27;the five defined events&#x27; but no definition exists anywhere in the materials available to this session.</p>
+        <span>How to find out</span><p>Edit data/events.json; the gate then enforces the new list automatically on both the collector and the front end.</p>
+        <span>Who can answer</span><p>Owner; any change is one file.</p>
+        <span>Blocks</span><p>S-09 · ledger column meanings</p>
+        <span>Meanwhile</span><p>The five proposed events are marked &#x27;proposed&#x27; in the schema and on the metrics page.</p>
+      </div>
+    </article><article class="qcard" id="Q-12">
+      <h3><span class="flagid">Q-12</span><br>What is the niche expansion rule, and who is allowed to say a product is in scope?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>A platform that can add any product to a topic list will do exactly that, and it is how affiliate sites end up on the wrong side of the scaled-content-abuse policy. A gate on topic addition matters more than a gate on writing quality.</p>
+        <span>We already have</span><p>A tight scope — countertop cooking and doneness, four listings, five guides, one cluster per buying decision — and a cadence proposal of two pieces a week with a review point.</p>
+        <span>Missing</span><p>An agreed rule: does a new cluster require measured queries, an existing click, or a listing we can verify? Who adds a row to data/clusters.json?</p>
+        <span>How to find out</span><p>Answer in writing on the suggestions board (S-17 has three candidate rules with trade-offs); the cadence file then enforces it in review.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>any new cluster · S-17 · S-13</p>
+        <span>Meanwhile</span><p>Nothing beyond the two clusters here is published, and the queue of next topics is explicitly labelled unmeasured hypothesis.</p>
+      </div>
+    </article><article class="qcard" id="Q-13">
+      <h3><span class="flagid">Q-13</span><br>Do we accept product samples or run any non-Amazon program on the same pages?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>A free unit is a material connection under 16 CFR 255 whether or not a post was requested, and a second affiliate network changes both the disclosure text and the link policy for the page it appears on.</p>
+        <span>We already have</span><p>One program (Amazon), one required statement, one disclosure page, and no sample relationships recorded.</p>
+        <span>Missing</span><p>Any history of received units from these brands, and a decision about competing networks.</p>
+        <span>How to find out</span><p>Ask the brands; log the answer per product under `intent.confirmed_via`. If samples ever arrive, add a per-page sample disclosure and note the date.</p>
+        <span>Who can answer</span><p>Program owner.</p>
+        <span>Blocks</span><p>S-14 · any &#x27;hands-on&#x27; sentence · FLG-014</p>
+        <span>Meanwhile</span><p>The site states no product was received or tested, which keeps the current text accurate by construction.</p>
+      </div>
+    </article><article class="qcard" id="Q-14">
+      <h3><span class="flagid">Q-14</span><br>How long may a page stand before its observations are treated as stale?</h3>
+      <div class="srow">
+        <span>Why it matters</span><p>Listing titles, included accessories and prices move constantly. The failure mode of an affiliate site is not a wrong claim on day one, it is a right claim on day four hundred.</p>
+        <span>We already have</span><p>Capture dates on every observation, a `not_verified` list per product, and a gate that fails when docs/ is out of step with data/.</p>
+        <span>Missing</span><p>An agreed staleness rule and a scheduled re-capture job.</p>
+        <span>How to find out</span><p>Adopt S-18 (90 days), add tools/resolve_links.py to a scheduled workflow, and let the build stamp &#x27;captured &lt;date&gt;&#x27; on every gear page.</p>
+        <span>Who can answer</span><p>Owner, or an automated workflow with no owner at all.</p>
+        <span>Blocks</span><p>S-18 · any long-running automation</p>
+        <span>Meanwhile</span><p>Every gear and guide page shows its capture date; the register labels a capture a snapshot, not a specification.</p>
+      </div>
+    </article>
+    <div class="notice notice--ok" style="margin-top:22px"><p><strong>Nothing here blocks the site going live.</strong>
+    The gaps change what the site is allowed to claim, not whether it can exist — that separation is the reason the
+    pages read like a shop instead of an apology.</p></div>
+  </div>
+</section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="/Affil3/" style="color:#fff">
+          <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><rect x="1" y="3" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M1 8h18" stroke="currentColor" stroke-width="1.6"/><circle cx="15.4" cy="5.5" r="1.1" fill="currentColor"/></svg><span>Counterwise</span>
+        </a>
+        <p class="foot-lead" style="margin-top:10px">Countertop cooking, measured. Independent buyer research for
+        countertop cooking gear, assembled from listings we loaded and policies we read.</p>
+      </div>
+      <div>
+        <h4>Read</h4>
+        <ul>
+          <li><a href="/Affil3/guides/">All guides</a></li>
+          <li><a href="/Affil3/gear/">Gear we track</a></li>
+          <li><a href="/Affil3/compare/">Compare two machines</a></li>
+          <li><a href="/Affil3/clusters/doneness/">Knowing when it's done</a></li>
+          <li><a href="/Affil3/summary/">Executive summary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Verification</h4>
+        <ul>
+          <li><a href="/Affil3/transparency/">Transparency hub</a></li>
+          <li><a href="/Affil3/transparency/sources/">Source register (16)</a></li>
+          <li><a href="/Affil3/transparency/verification/">Link &amp; product evidence</a></li>
+          <li><a href="/Affil3/transparency/method/">How this is built</a></li>
+          <li><a href="/Affil3/transparency/gate-report/">Gate report</a></li>
+          <li><a href="/Affil3/metrics/">Measurement &amp; events</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Decisions</h4>
+        <ul>
+          <li><a href="/Affil3/suggestions/">Suggestions board</a></li>
+          <li><a href="/Affil3/questions/">Open questions</a></li>
+          <li><a href="/Affil3/review/" >Flagged for review (17)</a></li>
+          <li><a href="/Affil3/about/">Editorial policy</a></li>
+          <li><a href="/Affil3/disclosure/">Disclosure statement</a></li>
+          <li><a href="/Affil3/privacy/">Privacy</a></li>
+          <li><a href="/Affil3/feed.xml">Atom feed</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-disclosure" data-disclosure="footer"><strong>As an Amazon Associate I earn from qualifying purchases.</strong>
+      It applies to every product link on this site, on this page, including this footer.
+      <a href="/Affil3/disclosure/">What that means, in full</a>.</p>
+    <p class="colophon">Built by <code>tools/build.py</code> from <code>data/</code> + <code>content/</code> ·
+      inputs <code>2f49ca22ffd78a26</code> · 30 pages ·
+      no cookies, no webfonts, no third-party requests ·
+      repository: <a href="https://github.com/karagemop466-tech/Affil3">github.com/karagemop466-tech/Affil3</a></p>
+  </div>
+</footer>
+<script src="/Affil3/assets/track.js" defer></script>
+</body>
+</html>
