@@ -1,145 +1,35 @@
 {
-  "schema": "shopnow.questions.v1",
-  "updated": "2026-11-20",
-  "note": "The decision-readiness register: the questions that must be answered before a reasonable decision can be made, what information we already have, what is missing, and how to discover it. Each question names the decision it blocks and where the answer should be recorded. Review alongside suggestions/index.html — choosing a path there may depend on answers here.",
-  "questions": [
-    {
-      "id": "Q-01",
-      "question": "Are the five submitted short links Associates-generated Special Links carrying tracking ID shopnow047c-20?",
-      "we_know": [
-        "All five URLs live under the .amazon gTLD operated by Amazon Registry Services, Inc. [S09].",
-        "Observation 2026-11-20: four of five resolved to amazon.com product pages; none of the observed landing URLs contained a tag=shopnow047c-20 parameter [FLG-003].",
-        "The Operating Agreement pays commission only on purchases that follow 'a Special Link' using its special tagged link formats [S01, S03]."
-      ],
-      "missing": "Whether each submitted link was generated inside Associates Central (SiteStripe / Link Builder) and whether clicks through it attribute to shopnow047c-20.",
-      "discovery": [
-        "Associates Central → Reports → 'Links' or 'Clicks' history: click one link from the site and check whether the click is attributed.",
-        "Rebuild one link per product with SiteStripe 'Get link' and compare destination + tracking ID.",
-        "Do not merge intent with observation: record observed targets only in the observation field of data/products.json."
-      ],
-      "blocks": "Whether public CTAs can be marked 'verified'; any conversion measurement we can trust.",
-      "priority": "P0",
-      "status": "open (FLG-003)"
-    },
-    {
-      "id": "Q-02",
-      "question": "Is tracking ID shopnow047c-20 enrolled and active, and for which marketplace?",
-      "we_know": [
-        "The ID was supplied in the brief; the '-20' suffix is the conventional US marketplace indicator, but this is convention, not verification.",
-        "No official source was reachable that could confirm the ID's existence or status (Associates Central is account-gated) [FLG-001]."
-      ],
-      "missing": "Enrollment status, account standing, and the exact marketplace(s) the ID applies to.",
-      "discovery": "Associates Central → Settings → Account info: confirm the tracked ID, marketplace, and payment status; screenshot for the review record.",
-      "blocks": "Everything downstream: attribution, reporting, Creators API prerequisites [S13].",
-      "priority": "P0",
-      "status": "open (FLG-001)"
-    },
-    {
-      "id": "Q-03",
-      "question": "Which exact products do the five submitted links intend? Do the observed landing ASINs match the intended ones?",
-      "we_know": [
-        "Submitted path identifiers are 9 characters; Amazon's official ASIN definition is 10 characters [S05].",
-        "Observed landing ASINs (10 characters) differ from the submitted path identifiers in every case where a landing page was observed: B04G1MEwY→B0CDY277D3, B02NbDxp3→B09B7SB46R, B00hJ57DV→B08DKYBTPH, B0f3GKalj→B0DZFD6R9Z; B0c8moW59 unresolved [FLG-003, FLG-004].",
-        "Intent and observation are kept in separate fields and never merged (products.json rules)."
-      ],
-      "missing": "Confirmation that each observed landing listing is the product the submitter intended.",
-      "discovery": [
-        "Ask the link submitter for the original product page URLs or a screenshot of each SiteStripe generation.",
-        "Once Creators API access is active, one GetItems call per ASIN confirms identity, title, and price [S13]."
-      ],
-      "blocks": "Product profiles' verified fields; comparison table; any 'best for' claims about specific products.",
-      "priority": "P0",
-      "status": "open (FLG-005)"
-    },
-    {
-      "id": "Q-04",
-      "question": "What is the actual niche and category scope the site should publish against?",
-      "we_know": [
-        "Four of the five observed landings are air fryers (dual-basket, oven-style French-door, family-size basket) and one is a wireless meat thermometer — consistent with the brief's air-fryer editorial hypotheses [FLG-003 observations].",
-        "The four guide working titles supplied in the brief are all air-fryer/kitchen-appliance questions."
-      ],
-      "missing": "Confirmation that the observed landings equal the intended products (see Q-03) — the niche plan is hypothesis, not fact, until then.",
-      "discovery": "Confirm Q-03 first. Then validate the four published guides' topics against the confirmed product set before adding clusters.",
-      "blocks": "Editorial calendar priorities; cluster expansion (e.g., 'Prep & precision' stays second fiddle if the thermometer is not intended).",
-      "priority": "P1",
-      "status": "working hypothesis, flagged"
-    },
-    {
-      "id": "Q-05",
-      "question": "Where should the self-hosted analytics endpoint live, and who owns it?",
-      "we_know": [
-        "GitHub Pages is static hosting; the endpoint needs a server component elsewhere [S10].",
-        "The five defined events and a local-queue fallback already ship (analytics.js)."
-      ],
-      "missing": "A hosting + ownership decision (options A/B/C on the suggestion board, SG-08).",
-      "discovery": "Choose an option on suggestions/index.html; wire window.SHOPNOW_CONFIG.analyticsEndpoint; keep the queue as fallback.",
-      "blocks": "Real click/conversion measurement; ledger population; measured topic selection.",
-      "priority": "P0",
-      "status": "open (FLG-002)"
-    },
-    {
-      "id": "Q-06",
-      "question": "When will product-data automation be possible (Creators API), and what do we need first?",
-      "we_know": [
-        "PA-API 5.0 is deprecated; the supported path is the Creators API [S12, S13].",
-        "Prerequisites per official docs: Associates enrollment for the target marketplace and at least 10 qualifying sales in the past 30 days [S13]."
-      ],
-      "missing": "Current sales history (account-gated), which gates the API threshold.",
-      "discovery": "Associates Central → Reports: check the trailing-30-day qualifying-sales figure; when ≥10, register for the Creators API through Associates Central.",
-      "blocks": "Automated price/spec refresh; verified comparison table; drop of manual verification steps.",
-      "priority": "P1",
-      "status": "open"
-    },
-    {
-      "id": "Q-07",
-      "question": "What imagery may the site use?",
-      "we_know": [
-        "All site imagery is AI-generated and labeled as illustrative; no Amazon product imagery, logos, or marks are used (Participation Requirements restrict use of Amazon marks and Content to the licensed scope) [S01, S02]."
-      ],
-      "missing": "A decision on future imagery: keep AI-generated illustrative art, add original photography, or license stock.",
-      "discovery": "Decide on the suggestion board (SG-10); update the imagery note in about/index.html in the same change.",
-      "blocks": "Product-card visuals once listings are verified (product photos are NOT usable except via licensed Content formats).",
-      "priority": "P2",
-      "status": "decision open (SG-10)"
-    },
-    {
-      "id": "Q-08",
-      "question": "Where should reader capture (email) deliveries go, and with which provider?",
-      "we_know": [
-        "The capture form currently queues nothing external: it records a reader_capture event and shows a confirmation. No address leaves the browser.",
-        "Associates rules prohibit affiliate links in email unless a separate written agreement exists [S02, clause 6] — the newsletter design keeps links on the site, not in email bodies, until that agreement exists."
-      ],
-      "missing": "A provider/destination decision (static-site compatible options: Buttondown, Listmonk, Formspree-class services).",
-      "discovery": "Pick one on the suggestion board (SG-11); wire the form action; keep the privacy note accurate.",
-      "blocks": "Newsletter cadence decision (SG-11); audience measurement.",
-      "priority": "P2",
-      "status": "open"
-    },
-    {
-      "id": "Q-09",
-      "question": "What publishing cadence should the site commit to?",
-      "we_know": [
-        "Four question-shaped guides published 2026-11-20; a seasonal calendar sketch exists on guides/index.html.",
-        "The brief's own principle: the next topic should be chosen from measured queries, not instinct."
-      ],
-      "missing": "A cadence the maintainer can sustain (weekly/biweekly), and Search Console data to choose topics from (needs Q-10 first).",
-      "discovery": "Commit to a cadence on the suggestion board (SG-12); re-evaluate after 30 days of Search Console query data.",
-      "blocks": "Editorial calendar; feed expectations for returning readers.",
-      "priority": "P2",
-      "status": "decision open (SG-12)"
-    },
-    {
-      "id": "Q-10",
-      "question": "Who owns Search Console verification for the Pages property?",
-      "we_know": [
-        "Verification methods and steps are documented by Google [S11]; the site head carries a ready placeholder for the HTML-tag method.",
-        "Verification requires a Google account the site owner controls — it cannot be completed by this session."
-      ],
-      "missing": "A Google account holder performing HTML-tag verification for https://karagemop466-tech.github.io/Affil3/ (and later the sitemap submission).",
-      "discovery": "Follow search-console/index.html step by step (10 minutes).",
-      "blocks": "Measured topic selection (Q-09); index-coverage monitoring.",
-      "priority": "P1",
-      "status": "open"
-    }
+  "note": "What is known, what is not known, and how each gap could be closed. Shown at /questions/.",
+  "known": [
+    {"id": "K-01", "statement": "The Associates tracking ID supplied is shopnow047c-20, and the -20 suffix matches the US Associates convention.", "sources": ["S03"]},
+    {"id": "K-02", "statement": "Associates Operating Agreement §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' to be clearly and prominently stated on the Site.", "sources": ["S01"]},
+    {"id": "K-03", "statement": "Special Links must carry the Associates tag as a URL parameter.", "sources": ["S02"]},
+    {"id": "K-04", "statement": "Cloaking the URL of a Site with Special Links, including by redirects, is prohibited by Participation Requirements (v).", "sources": ["S02"]},
+    {"id": "K-05", "statement": "Google recommends rel=\"sponsored\" for advertisements and paid placements.", "sources": ["S06"]},
+    {"id": "K-06", "statement": "Each submitted short link resolved to a different observed destination, or (one link) to a checkpoint page.", "sources": ["S04", "S05"]},
+    {"id": "K-07", "statement": "The submitted tokens are 9 characters long.", "sources": ["S05"]}
+  ],
+  "unknown": [
+    {"id": "Q-01", "question": "What is the intended Amazon product (10-character ASIN or product URL) behind each of the five submitted links?", "why_it_matters": "Without it, the intended ASIN and official listing URL cannot be filled, and the observed destination cannot be confirmed as the intended one.", "how_to_close": "Owner supplies the product URLs, or the owner opens each short link in a signed-in browser and confirms the product.", "sources": ["S05", "S04"], "blocking": true},
+    {"id": "Q-02", "question": "Were the five short links generated from the enrolled Associates account, and are they permitted under Participation Requirements (w)?", "why_it_matters": "Decides whether to keep, replace or drop the short links.", "how_to_close": "Check the links in Associates Central and against the policy text.", "sources": ["S02"], "blocking": true},
+    {"id": "Q-03", "question": "Is the Associates account active and does it declare this site (the GitHub Pages URL or a custom domain)?", "why_it_matters": "Tags must be embedded on declared sites (S11). The qualifying-sales requirement applies to new accounts.", "how_to_close": "Check Associates Central account settings and the declared site list.", "sources": ["S11"], "blocking": true},
+    {"id": "Q-04", "question": "Does one Special Link per product, generated in Associates Central, produce the expected destination and a tracking-report row?", "why_it_matters": "This is gate G-02. No scaling until it passes.", "how_to_close": "Run the Associates test for one link per product and record the result.", "sources": ["S01", "S02"], "blocking": true},
+    {"id": "Q-05", "question": "Which five measurement events should be recorded?", "why_it_matters": "The brief refers to five defined events but does not name them. The site currently proposes five (FLG-008).", "how_to_close": "Owner confirms or replaces the list.", "sources": [], "blocking": false},
+    {"id": "Q-06", "question": "Where should the analytics collector run, and who may access its data?", "why_it_matters": "GitHub Pages cannot run it (FLG-009).", "how_to_close": "Choose a hosting option (S-03).", "sources": [], "blocking": false},
+    {"id": "Q-07", "question": "Which Amazon marketplace is intended? (The observed pages and the -20 tag are consistent with amazon.com, the US program.)", "why_it_matters": "Each marketplace has its own ASINs and its own Associates ID (S04, S03).", "how_to_close": "Owner confirms the US marketplace.", "sources": ["S03", "S04"], "blocking": false},
+    {"id": "Q-08", "question": "Who is the named author, and what credentials, if any, should appear?", "why_it_matters": "Reader trust and publication polish (FLG-014).", "how_to_close": "Owner supplies a name and bio, or keeps the team byline.", "sources": [], "blocking": false},
+    {"id": "Q-09", "question": "What publishing cadence should be used?", "why_it_matters": "Sets how the feed and sitemap grow.", "how_to_close": "Choose a cadence (S-02).", "sources": [], "blocking": false},
+    {"id": "Q-10", "question": "Are any prices, ratings or availability values to be shown, and from which authorized source and date?", "why_it_matters": "Prices change and must be dated; none are shown now (FLG-016).", "how_to_close": "Choose the approach in S-10.", "sources": ["S04"], "blocking": false},
+    {"id": "Q-11", "question": "What campaign report data will be authorized for the ledger (for example, Associates reports exported by the owner)?", "why_it_matters": "The ledger stays empty until authorized first-party reports exist.", "how_to_close": "Owner exports reports and provides them with their date and source.", "sources": ["S01"], "blocking": false},
+    {"id": "Q-12", "question": "Who owns the Search Console property?", "why_it_matters": "Needed to verify the site and submit the sitemap (FLG-013).", "how_to_close": "Owner adds the property and verifies it.", "sources": ["S06"], "blocking": false},
+    {"id": "Q-13", "question": "Is a privacy notice and legal review needed for the click counter, given that the site is operated from California?", "why_it_matters": "The counter is privacy-preserving by design (no cookies, no IP storage), but a privacy notice is still a publishing decision. This is a question for counsel, not a legal conclusion.", "how_to_close": "Owner decides whether to obtain legal review.", "sources": [], "blocking": false}
+  ],
+  "discovery": [
+    {"id": "D-01", "suggestion": "Open each short link in a signed-in browser and record the product name and ASIN from the URL.", "closes": ["Q-01", "Q-02"]},
+    {"id": "D-02", "suggestion": "Use the Associates link tools to generate one Special Link per product and record the destination and tracking row.", "closes": ["Q-04"]},
+    {"id": "D-03", "suggestion": "Export the account's tracking-ID list and the account's declared sites from Associates Central.", "closes": ["Q-03", "Q-07"]},
+    {"id": "D-04", "suggestion": "Run the live site through a link checker after deploy and keep the output with the date.", "closes": []},
+    {"id": "D-05", "suggestion": "Add the site to Search Console, verify it, and review the coverage report after two weeks.", "closes": ["Q-12"]},
+    {"id": "D-06", "suggestion": "Turn on the collector for a fixed test window and review event counts against a known set of test clicks before trusting any number.", "closes": ["Q-05", "Q-06"]}
   ]
 }

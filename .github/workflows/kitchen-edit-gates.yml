@@ -1,0 +1,25 @@
+name: kitchen-edit-gates
+
+on:
+  push:
+    paths: ["kitchen-edit/**", "tools/build_kitchen_edit.py", "tools/validate_kitchen_edit.py"]
+  pull_request:
+    paths: ["kitchen-edit/**", "tools/build_kitchen_edit.py", "tools/validate_kitchen_edit.py"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    name: Gate the /kitchen-edit/ surface
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kitchen-edit compliance gates (G-A1..G-A7)
+        run: python3 tools/validate_kitchen_edit.py
+      - name: Page freshness check
+        run: python3 tools/build_kitchen_edit.py --check

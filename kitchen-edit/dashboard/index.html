@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working dashboard — ShopNow Kitchen Edit</title>
+<meta name="description" content="The maintainer's hub: event queue viewer and export, the Associates link pre-check tool, and pointers into every register.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/kitchen-edit/dashboard/index.html">
+<meta property="og:site_name" content="ShopNow Kitchen Edit">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Working dashboard — ShopNow Kitchen Edit">
+<meta property="og:description" content="The maintainer's hub: event queue viewer and export, the Associates link pre-check tool, and pointers into every register.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/kitchen-edit/dashboard/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/kitchen-edit/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console HTML-tag verification: paste the generated meta tag on the next line (see search-console/index.html) -->
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen Edit — Guides" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site-config.js" defer></script>
+<script src="../assets/js/analytics.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://karagemop466-tech.github.io/Affil3/kitchen-edit/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Working dashboard",
+   "item": "https://karagemop466-tech.github.io/Affil3/kitchen-edit/dashboard/index.html"
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="name">ShopNow Kitchen Edit<span class="tagline">Air fryers &amp; kitchen gear — chosen with the boring questions asked first</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="../guides/index.html">Guides</a>
+<a href="../products/index.html">Shop the picks</a>
+<a href="../sourcing/index.html">How we research</a>
+<a href="../about/index.html">About</a>
+      <a class="cta" href="../products/index.html">Shop the picks</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<main>
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Working dashboard</p>
+  <h1>Working dashboard</h1>
+  <p class="lede">The maintainer's hub: the live event queue for this browser, the export path that feeds
+  the ledger's provenance trail, and the Associates link pre-check tool. Everything here runs locally in
+  your browser — nothing is sent anywhere.</p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <div class="grid cols-2">
+      <div class="tool-box">
+        <h3>Event queue <span class="small">(this browser · <span id="event-queue-count">0</span> events)</span></h3>
+        <div class="tbl-wrap" style="box-shadow:none">
+          <table class="tbl" style="min-width:520px">
+            <thead><tr><th>Time</th><th>Event</th><th>Path</th><th>Payload</th></tr></thead>
+            <tbody id="event-queue-body"><tr><td colspan="4">Loading…</td></tr></tbody>
+          </table>
+        </div>
+        <p style="margin:12px 0 0">
+          <button class="btn btn-primary" id="export-events" type="button">Export queue (JSON)</button>
+          <button class="btn btn-ghost" id="clear-events" type="button">Clear</button>
+        </p>
+        <p class="note">Exports are the provenance trail for manual ledger rows: every ledger entry added
+        from an export cites it in <code>provenance_note</code> (event 5 records the export itself).</p>
+      </div>
+      <div>
+        <div class="tool-box">
+          <h3>Associates link pre-check</h3>
+          <label for="lb-asin">Validated ASIN (10 characters)</label>
+          <input type="text" id="lb-asin" placeholder="e.g. B0CDY277D3" autocomplete="off" spellcheck="false">
+          <div id="lb-msg" class="note"></div>
+          <output id="lb-out">—</output>
+          <p class="note">This is a <strong>pre-check</strong>, not a link generator. The real Special
+          Link must be produced inside Associates Central, its destination confirmed, and a test click
+          seen in reports (gate G5) — then the link and its confirmation go into
+          <code>data/products.json</code>, and every page's CTA updates from that one file.</p>
+        </div>
+        <div class="tool-box">
+          <h3>Kill switch</h3>
+          <p>If G5 fails or attribution can't be confirmed, flip
+          <code>require_verified_links</code> to <code>true</code> in
+          <code>data/products.json</code> and redeploy: every outbound CTA site-wide renders as a
+          disabled "Listing verification pending" button. One file, one flag, whole-site effect.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Every register, one click away</h2>
+    <div class="grid cols-3">
+      <div class="card"><div class="body"><h3><a href="../summary/index.html">Executive summary</a></h3><p>The project on one page, every claim sourced.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../suggestions/index.html">Suggestion board</a></h3><p>Review and choose paths before implementation.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../questions/index.html">Decision questions</a></h3><p>What must be answered before deciding.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../flagged/index.html">Flagged for review</a></h3><p>All open irregularities with sources.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../sourcing/index.html">Source register</a></h3><p>14 official sources, fetch-dated.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../products/index.html">Intent records</a></h3><p>Five products, intent ≠ observation.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../analytics/index.html">Analytics &amp; ledger</a></h3><p>Five events, privacy contract, empty ledger.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../compliance/index.html">Compliance gate</a></h3><p>Automated checks + manual gates.</p></div></div>
+      <div class="card"><div class="body"><h3><a href="../analysis/index.html">Findings &amp; analysis</a></h3><p>What the passes found, in plain language.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<script src="../assets/js/dashboard.js" defer></script>
+
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <div class="brand-line">ShopNow Kitchen Edit</div>
+      <p>A small, reader-supported publication about air fryers, multi-function ovens and the
+      tools that keep them honest. We publish what we can source, leave blank what we can't,
+      and review every suggestion before it changes the site.</p>
+      <p class="note">All site imagery is AI-generated illustration, not product photography.</p>
+    </div>
+    <div>
+      <h4>Read &amp; shop</h4>
+      <ul>
+        <li><a href="../products/index.html">Shop the picks</a></li>
+        <li><a href="../guides/index.html">Buying guides</a></li>
+        <li><a href="../guides/basket-or-oven-air-fryer.html">Basket vs oven-style</a></li>
+        <li><a href="../guides/air-fryer-capacity-checklist.html">Capacity checklist</a></li>
+        <li><a href="../about/index.html">About &amp; standards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project dashboard</h4>
+      <ul>
+<li><a href="../summary/index.html">Executive summary</a></li>
+<li><a href="../suggestions/index.html">Suggestion review board</a></li>
+<li><a href="../questions/index.html">Decision-readiness questions</a></li>
+<li><a href="../flagged/index.html">Flagged for review</a></li>
+<li><a href="../analysis/index.html">Findings & analysis</a></li>
+<li><a href="../analytics/index.html">Analytics & campaign ledger</a></li>
+<li><a href="../dashboard/index.html">Working dashboard</a></li>
+<li><a href="../compliance/index.html">Compliance gate</a></li>
+<li><a href="../sourcing/index.html">Source register</a></li>
+<li><a href="../search-console/index.html">Search Console setup</a></li>
+<li><a href="../feed.xml">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Canonical register</h4>
+      <p>The root publication is this site's register and compliance home:
+      <a href="../../index.html">Affil3 root publication</a> ·
+      <a href="../../flagged/index.html">root Flagged-for-Review</a> ·
+      <a href="../../sources/index.html">root source register</a>.
+      Outbound destinations and tracking status for every product are governed by the
+      canonical register there (<code>data/products.json</code>).</p>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p>New guides land in the <a href="../feed.xml">RSS feed</a> first. Prefer email?
+      The capture form below records interest locally until the newsletter decision lands.</p>
+      <form data-capture="footer">
+        <input type="email" placeholder="you@example.com" aria-label="Email for future newsletter" required>
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span class="assoc-statement">As an Amazon Associate we earn from qualifying purchases.</span>
+      <span>Product CTAs are marked <code>rel="sponsored"</code> and open Amazon in a new tab.
+      Listing identities and prices are shown only when confirmed; otherwise the record says so.
+      © 2026 ShopNow Kitchen Edit. Editorial content — not sponsored by any manufacturer.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

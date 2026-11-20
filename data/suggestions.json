@@ -1,236 +1,129 @@
 {
-  "schema": "shopnow.suggestions.v1",
-  "updated": "2026-11-20",
-  "note": "The suggestion review board. Every suggestion states what it changes, the evidence behind it, the realistic options, impact/effort/risk, and the decision needed. Status values: proposed / under review / approved / rejected / implemented. Suggestions are reviewed here BEFORE implementation — the board is the gate, not a changelog. (Items marked 'implemented' were the founding build's design decisions, recorded so the board starts honest; everything else awaits a choice.)",
+  "note": "Suggestions for you to choose between. Nothing on this list is implemented until you pick an option. The site currently reflects the 'current' option in each row. Reply with the suggestion ID and option letter (for example 'S-03 B').",
   "suggestions": [
     {
-      "id": "SG-01",
-      "title": "Rebuild the landing page as a publication front page",
-      "what": "Lead with the product picks and the four buyer-question guides; move every register/dashboard surface into the footer's single 'Project dashboard' navigation group.",
-      "evidence": "The brief's directive: 'Lead with the products, not with the verification process' and 'make it read like a shop, not an audit'.",
-      "options": {
-        "A": "Shop-first front page: picks grid, guide cards, disclosure strip, dashboard in footer.",
-        "B": "Magazine-first front page: guides hero, picks second, dashboard in footer."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "low",
-      "decision_needed": "None — brief directive. Chosen: A. Implemented in the founding build.",
-      "status": "implemented"
+      "id": "S-01",
+      "topic": "Outbound link handling",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep tagged /dp/ links on the observed products, marked as pending validation (current).", "tradeoff": "Readers can click now; the links are not yet validated in Associates Central."},
+        {"id": "B", "label": "Hide all buy buttons until gate G-02 passes.", "tradeoff": "Safer for compliance; the site has no paths to purchase until the owner tests."}
+      ],
+      "recommendation": "B, until G-02 passes."
     },
     {
-      "id": "SG-02",
-      "title": "Disclosure strip above the fold on every page, repeated in the footer",
-      "what": "A persistent reader-support + Associates statement strip directly under the masthead, plus the exact required statement in the footer; '(paid link)' labels on product CTAs.",
-      "evidence": "Associates help page S04 requires the statement clearly and conspicuously on the Site, and link-level disclosure that is clear and conspicuous ('They shouldn't have to hunt for it'); FTC Disclosures 101 (S07) requires placement 'hard to miss', warning against disclosures that appear only on profile/about pages or at the end of content.",
-      "options": {
-        "A": "Strip under masthead + footer repetition (chosen).",
-        "B": "Disclosure only on pages containing links."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "low",
-      "decision_needed": "None — compliance requirement. Implemented site-wide and enforced by the automated validator.",
-      "status": "implemented"
+      "id": "S-02",
+      "topic": "Publishing cadence",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "One new guide every two weeks (proposed default).", "tradeoff": "Steady growth; needs a writing slot every two weeks."},
+        {"id": "B", "label": "One new guide per week.", "tradeoff": "Faster growth; higher manual load."},
+        {"id": "C", "label": "A batch of 10 guides before launch, then monthly.", "tradeoff": "Meets the 'at least 10 posts' rule of thumb (S11) sooner."}
+      ],
+      "recommendation": "A after measurement is live. Review Search Console query and page performance monthly; choose the next question from reader intent and keep unmeasured ideas labeled as hypotheses."
     },
     {
-      "id": "SG-03",
-      "title": "Every outbound product link marked sponsored, driven from one config file",
-      "what": "All product CTAs carry rel='sponsored nofollow noopener', target='_blank', a data-product-intent attribute for click counting, and point at exactly one entry in data/products.json — so a validated Special Link swap later touches one file, not the pages.",
-      "evidence": "Brief directive ('Keep every outbound product link marked as sponsored'); Google's link-marking conventions for sponsored links; S01 Special Links definition.",
-      "options": {
-        "A": "Direct CTAs to submitted URLs with sponsored marking + kill switch (chosen, pending G5 verification).",
-        "B": "Hide CTAs entirely until every link is verified."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "medium — until G5 confirms tracking, clicks cannot be guaranteed to attribute (FLG-003). The kill switch (require_verified_links) is the gate.",
-      "decision_needed": "Owner choice after G5: keep submitted URLs, swap to freshly generated Special Links, or flip the kill switch.",
-      "status": "under review"
+      "id": "S-03",
+      "topic": "Where the analytics collector runs",
+      "current": "D",
+      "options": [
+        {"id": "A", "label": "Self-host tools/collector.mjs on a small VPS you control, behind HTTPS.", "tradeoff": "Full control of raw data; you run the server."},
+        {"id": "B", "label": "Run the collector on a platform that supports Node.js with persistent storage.", "tradeoff": "Less server work; check the platform's data terms."},
+        {"id": "C", "label": "Use a third-party privacy-focused analytics product.", "tradeoff": "Quickest setup; a separate processor, so it needs its own disclosure."},
+        {"id": "D", "label": "No analytics for now (current).", "tradeoff": "Nothing to maintain; no click or conversion data."}
+      ],
+      "recommendation": "A or B for on-site events. Use the verified Google Search Console Performance report for search queries and authorized Associates reporting for orders. Those are three different sources."
     },
     {
-      "id": "SG-04",
-      "title": "Publish question-shaped guides (the four working titles), labeled as hypotheses",
-      "what": "Four guides, each around the exact working titles supplied in the brief, with FAQ sections, internal linking, and a visible 'editorial hypothesis — not a popularity claim' note.",
-      "evidence": "Brief directive: 'Lead with useful, human-sounding buyer questions… working titles—not claims about popularity, search volume or product superiority.'",
-      "options": {
-        "A": "Publish all four now, measure, then write more (chosen).",
-        "B": "Publish one at a time on a strict cadence."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "low — titles carry no volume or superiority claims.",
-      "decision_needed": "None. Next-topic selection switches to measured queries after Q-09/Q-10 resolve.",
-      "status": "implemented"
+      "id": "S-04",
+      "topic": "Brand name",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep the working name 'Affil3' (current).", "tradeoff": "Matches the repository."},
+        {"id": "B", "label": "Choose a consumer-facing name and domain.", "tradeoff": "Better recall; needs a domain and a naming check."}
+      ],
+      "recommendation": "B before wider promotion."
     },
     {
-      "id": "SG-05",
-      "title": "Ship the RSS feed, sitemap, robots.txt, canonical URLs",
-      "what": "feed.xml (all guides), sitemap.xml (all pages, single canonical host), robots.txt, canonical link elements and JSON-LD on every page; one site for search engines to index.",
-      "evidence": "Brief directives SG-27..SG-30 ('the shipped RSS feed, Search Console, reader capture', 'give search engines one site to index').",
-      "options": {
-        "A": "Hand-rolled static feed + sitemap, validated by CI (chosen — deterministic on GitHub Pages).",
-        "B": "Jekyll plugin generation."
-      },
-      "impact": "medium",
-      "effort": "done",
-      "risk": "low",
-      "decision_needed": "None. Implemented.",
-      "status": "implemented"
+      "id": "S-05",
+      "topic": "Imagery",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Typography and layout only, no product photos (current).", "tradeoff": "Avoids use of Program Content outside the Associates purpose (S02)."},
+        {"id": "B", "label": "Original photography of products you own.", "tradeoff": "Strong for reader trust; needs equipment and time."},
+        {"id": "C", "label": "Amazon-supplied images through the Associates tools.", "tradeoff": "Allowed only as Program Content on your site; needs review against the IP License."}
+      ],
+      "recommendation": "B for guides; A for the front page."
     },
     {
-      "id": "SG-06",
-      "title": "Record five defined events now; keep the collector privacy-preserving",
-      "what": "page_view, outbound_product_click, guide_engaged, reader_capture_submitted, dashboard_event_exported — queued locally (no cookies, no fingerprinting, no cross-site identifiers) with a configurable endpoint and an export path on the dashboard.",
-      "evidence": "Brief directive: 'Add a privacy-preserving outbound-click counter and a self-hosted analytics endpoint; record the five defined events.'",
-      "options": {
-        "A": "Local queue + configurable endpoint now; endpoint decision later (chosen).",
-        "B": "Wait for the endpoint decision before instrumenting anything."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "low — the local queue means zero data leaves the visitor's browser until the endpoint exists.",
-      "decision_needed": "Endpoint hosting choice (SG-08).",
-      "status": "implemented (endpoint pending)"
+      "id": "S-06",
+      "topic": "Authorship",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Team byline 'Affil3 editorial team' (current).", "tradeoff": "No invented person."},
+        {"id": "B", "label": "Named author with a real bio and a review date.", "tradeoff": "Stronger signal of accountability; needs a real person."}
+      ],
+      "recommendation": "B once a real reviewer is named."
     },
     {
-      "id": "SG-07",
-      "title": "Start the campaign ledger empty but well-defined",
-      "what": "data/ledger/campaign-ledger.csv ships header-only with a documented schema: timestamp, source, channel, eligible_sessions, clicks, reported_orders, provenance_note, added_by, source_url. Populated only from authorized first-party reports, with a dated provenance trail.",
-      "evidence": "Brief directive, Priority 4: 'Measure before automating optimization… Start with an empty but well-defined campaign ledger… No conversion score or revenue forecast is presented here.'",
-      "options": {
-        "A": "CSV with strict schema + validator enforcement (chosen).",
-        "B": "Database-backed ledger (premature until endpoint exists)."
-      },
-      "impact": "medium",
-      "effort": "done",
-      "risk": "low",
-      "decision_needed": "None. Implemented; the validator fails any build that adds a row without provenance columns.",
-      "status": "implemented"
+      "id": "S-07",
+      "topic": "Content depth before Associates review",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Publish the 5 existing guides, then add more on the cadence chosen in S-02 (current).", "tradeoff": "Fewer than the 10-post rule of thumb at launch (FLG-007)."},
+        {"id": "B", "label": "Hold the site from review until 10 original posts exist.", "tradeoff": "Aligns with S11; delays the tag-based program."}
+      ],
+      "recommendation": "B."
     },
     {
-      "id": "SG-08",
-      "title": "DECISION: analytics endpoint hosting",
-      "what": "Choose where events POST to. Options: (A) a tiny self-hosted worker on free-tier serverless (e.g., Cloudflare Workers KV) writing to a KV ledger — cheapest true self-host; (B) a self-hosted container (Plausible/GA4-alternative like Umami) on a small VPS the owner controls; (C) keep local-only queues + periodic manual export from the dashboard (zero infrastructure, zero live measurement).",
-      "evidence": "FLG-002: GitHub Pages cannot host the server side [S10]. The brief requires 'a self-hosted analytics endpoint'.",
-      "options": {
-        "A": "Serverless worker + KV store (self-hosted code, managed storage).",
-        "B": "Self-hosted analytics app on a VPS (full control, monthly cost).",
-        "C": "Local queue only + manual exports (no infra, no live data)."
-      },
-      "impact": "high",
-      "effort": "B > A > C",
-      "risk": "A/B add a privacy contact point; C delays conversion measurement indefinitely.",
-      "decision_needed": "Owner chooses A, B, or C. Then set analyticsEndpoint and record the choice here.",
-      "status": "proposed"
+      "id": "S-08",
+      "topic": "Seasonal content",
+      "current": "B",
+      "options": [
+        {"id": "A", "label": "A gift and holiday-cooking guide hub for November and December 2026.", "tradeoff": "Seasonal relevance; needs a first-party reason to rank it, and no trend data is in hand."},
+        {"id": "B", "label": "Evergreen guides only (current).", "tradeoff": "Simpler; no seasonal claims."}
+      ],
+      "recommendation": "B until measured queries (from S-03) show interest."
     },
     {
-      "id": "SG-09",
-      "title": "Add a compliance gate to the publishing workflow (automate what can be automated; gate what cannot)",
-      "what": "CI validates disclosure presence, sponsored rels, JSON registers, sitemap↔files consistency, and ledger schema on every push; the manual gates (G5 link verification, G6 API policy, G7 endorsement context, G8 claims review) live on compliance/index.html as a checklist that must be walked before any new page or link swap ships.",
-      "evidence": "Brief directive, Priority 5; S01/S02/S04 (disclosure + Special Links), S12/S13 (API policy), S06/S07 (FTC context).",
-      "options": {
-        "A": "GitHub Actions gate + manual checklist page (chosen).",
-        "B": "Manual-only review."
-      },
-      "impact": "high",
-      "effort": "done",
-      "risk": "low",
-      "decision_needed": "None. Implemented.",
-      "status": "implemented"
+      "id": "S-09",
+      "topic": "Category focus",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Keep four clusters: air fryers, air fryer ovens, thermometers, unresolved (current).", "tradeoff": "Reflects the five links; the 'unresolved' cluster is a holding area."},
+        {"id": "B", "label": "Focus on air fryers and move the thermometer to a supporting note.", "tradeoff": "Tighter topic; drops the thermometer cluster."}
+      ],
+      "recommendation": "A until the unresolved link is decided."
     },
     {
-      "id": "SG-10",
-      "title": "DECISION: brand name + imagery policy",
-      "what": "Confirm the working brand ('ShopNow Kitchen Edit', derived from the tracking ID prefix and the observed niche) or replace it; and confirm imagery policy: AI-generated illustrative scenes (current, labeled), original photography, or licensed stock. Amazon product imagery is only usable through licensed Content formats, so it is not an option for cards [S01, S02].",
-      "evidence": "FLG-006.",
-      "options": {
-        "A": "Keep working brand + AI imagery.",
-        "B": "New brand name + AI imagery.",
-        "C": "New brand + original photography."
-      },
-      "impact": "medium",
-      "effort": "low (A) / medium (B, C)",
-      "risk": "low either way; affects masthead, footer, OG images, canonical host.",
-      "decision_needed": "Owner choice.",
-      "status": "proposed"
+      "id": "S-10",
+      "topic": "Prices and ratings",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "Show no prices or ratings (current).", "tradeoff": "No stale or unverified numbers."},
+        {"id": "B", "label": "Show dated prices from an authorized source, refreshed on a schedule.", "tradeoff": "Useful to buyers; needs an authorized data source and a refresh process (the Associates tools or PA-API access). Not set up here."}
+      ],
+      "recommendation": "A now; B only after an authorized source is confirmed."
     },
     {
-      "id": "SG-11",
-      "title": "Reader capture wiring (email) — provider + destination",
-      "what": "Pick a static-site-compatible newsletter provider and wire the capture form; keep affiliate links out of email bodies (Participation Requirements clause 6 bars them absent a separate written agreement) [S02].",
-      "evidence": "Brief SG-30 'reader capture'; Q-08.",
-      "options": {
-        "A": "Buttondown-style hosted newsletter.",
-        "B": "Self-hosted Listmonk (pairs with SG-08 B).",
-        "C": "Defer capture until measurement exists."
-      },
-      "impact": "medium",
-      "effort": "low",
-      "risk": "email must stay link-light for compliance; needs a written check before any affiliate email.",
-      "decision_needed": "Owner choice.",
-      "status": "proposed"
+      "id": "S-11",
+      "topic": "Reader capture (email list)",
+      "current": "A",
+      "options": [
+        {"id": "A", "label": "No email capture (current).", "tradeoff": "No email data to store."},
+        {"id": "B", "label": "Opt-in email list.", "tradeoff": "Direct reach; check the Trademark Guidelines (no Amazon Marks in email, S02) and the Program Policies for email before any Amazon link is sent."}
+      ],
+      "recommendation": "A until the email rules are reviewed."
     },
     {
-      "id": "SG-12",
-      "title": "Commit a publishing cadence, then let Search Console choose topics",
-      "what": "Commit to weekly or biweekly guides; after ~30 days of Search Console query data (Q-10), pick topics from measured impressions/queries and add each to the sitemap + feed on publish day.",
-      "evidence": "Brief: 'Set a publishing cadence… turn on real analytics so the next topic is chosen from measured queries instead of instinct.'",
-      "options": {
-        "A": "Weekly cadence.",
-        "B": "Biweekly cadence.",
-        "C": "Monthly + seasonal pushes."
-      },
-      "impact": "medium",
-      "effort": "ongoing",
-      "risk": "unsustainable cadence is the main failure mode — choose below capacity.",
-      "decision_needed": "Owner choice.",
-      "status": "proposed"
-    },
-    {
-      "id": "SG-13",
-      "title": "Verified comparison table page (gated on Q-03/Q-06)",
-      "what": "A products/comparison.html page with a row per confirmed ASIN — title, price, capacity claim, dishwasher parts, footprint — populated ONLY from Creators API GetItems data or the confirmed listing itself, each cell dated; blank cells stay visibly blank.",
-      "evidence": "Brief: 'It should contain all entries and findings in a simple, easy to read table format'; FLG-005.",
-      "options": {
-        "A": "Build the page now with empty-but-scaffolded rows (honest placeholder).",
-        "B": "Wait until API access is live, then build."
-      },
-      "impact": "high (post-verification)",
-      "effort": "medium",
-      "risk": "building too early invites inference; the scaffold must refuse blank-cell inference in CI.",
-      "decision_needed": "Owner choice on timing.",
-      "status": "proposed"
-    },
-    {
-      "id": "SG-14",
-      "title": "Seasonal editorial pushes tied to confirmed listings",
-      "what": "Seasonal clusters (holiday counter space, big-game snacks, spring de-clutter) go live only for products whose listings are confirmed [G5]; each seasonal page gets its own JSON-LD, feed item, and sitemap entry.",
-      "evidence": "Brief: 'brand, imagery, seasons, and clusters'.",
-      "options": {
-        "A": "Ship seasonal pages gated on verification (chosen shape).",
-        "B": "Ship generic seasonal pages now (risks claims without confirmed products)."
-      },
-      "impact": "medium",
-      "effort": "medium",
-      "risk": "low with the gate.",
-      "decision_needed": "Pick the first seasonal window after Q-03 resolves.",
-      "status": "proposed"
-    },
-    {
-      "id": "SG-15",
-      "title": "Ask-the-reader question box on every guide",
-      "what": "A one-field 'What would you compare next?' box on guide pages feeding the suggestion board queue (local event + endpoint once SG-08 lands), so topic selection has a direct reader input channel alongside Search Console data.",
-      "evidence": "Reader-capture directive; keeps 'publish question-shaped guides' loop honest.",
-      "options": {
-        "A": "Yes, lightweight box.",
-        "B": "No extra UI clutter."
-      },
-      "impact": "low-medium",
-      "effort": "low",
-      "risk": "low.",
-      "decision_needed": "Owner choice.",
-      "status": "proposed"
+      "id": "S-12",
+      "topic": "Search Console",
+      "current": "B",
+      "options": [
+        {"id": "A", "label": "Do not connect Search Console.", "tradeoff": "No search data."},
+        {"id": "B", "label": "Verify the site in Search Console and submit the sitemap after deploy (recommended).", "tradeoff": "Needs a Google account owner (Q-12)."}
+      ],
+      "recommendation": "B."
     }
   ]
 }

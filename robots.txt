@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://karagemop466-tech.github.io/Affil3/sitemap.xml
+Sitemap: https://karagemop466-tech.github.io/Affil3/editorial/sitemap.xml

@@ -1,147 +1,136 @@
 {
-  "schema": "shopnow.sources.v1",
-  "updated": "2026-11-20",
-  "verification_method": "Each source below was fetched in full from its official domain during session arena-0a417943-affil3 on 2026-11-20. verified=true means the page was retrieved and the quoted language was observed in the fetched content. Sources that could not be fetched are listed with verified=false and are never relied upon.",
+  "accessed": "2026-11-20",
+  "note": "Each row lists the official page used, how it was checked, and the strength of that check. 'fetched' = full page text retrieved and read in this session. 'excerpt' = text retrieved from a search-result excerpt of the official page; re-check the exact wording manually before relying on it. 'observed' = a value read from an Amazon page during this session; observations are dated and can change.",
   "sources": [
     {
       "id": "S01",
-      "title": "Associates Program Operating Agreement (Amazon Associates Central)",
+      "title": "Associates Program Operating Agreement",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
       "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "The links must properly use the special \"tagged\" link formats we provide and comply with this Agreement (\"Special Links\"). — Section 1; page states \"Updated: October 15, 2025\".",
-      "used_for": "Definition of Special Links; compliance-requirement framing; basis of the compliance gate."
+      "updated": "October 15, 2025 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "§1 defines 'Special Links' as tagged links in the formats Amazon provides; §5 requires the statement 'As an Amazon Associate I earn from qualifying purchases.' on the Site; §5 also bars misrepresenting or embellishing the Amazon relationship.",
+      "status": "verified"
     },
     {
       "id": "S02",
-      "title": "Associates Program Participation Requirements (Amazon Associates Central)",
-      "url": "https://affiliate-program.amazon.com/help/operating/participation/",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "Clause 5: \"link each use of the Content solely to the related Product detail page or other relevant page of the Amazon Site\"; Clause 6: prohibits promotional activity by email, SMS, or offline materials.",
-      "used_for": "Link-use restrictions; email/newsletter rule for reader capture design."
+      "title": "Associates Program Policies (Participation Requirements, Commission Income Statement, Products Statement, IP License, Trademark Guidelines)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "updated": "April 14, 2026 (as stated on the page)",
+      "method": "fetched (Commission Income Statement §1, Participation Requirements (g), (q), (s), (u), (v), (w), Trademark Guidelines 3(iv)); excerpt (Participation Requirements §2(a)-(b) tag requirement)",
+      "used_for": "Special Links must carry the Associates tag as a URL parameter (§2(a)-(b), excerpt). Cloaking and redirect-based hiding of the URL are prohibited (v). Link shorteners that make it unclear that the link goes to Amazon are restricted (w). No artificial clicks (s). Amazon Marks may not be used in email or offline material (Trademark Guidelines 3(iv)).",
+      "status": "verified (2 clauses by excerpt; re-check §2 wording)"
     },
     {
       "id": "S03",
-      "title": "Associates Program Policies incl. Commission Income Statement (Amazon Associates Central)",
-      "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"Qualifying Purchases … occur when: (a) a customer clicks through a Special Link on your Site to an Amazon Site…\" — page states \"Updated: April 14, 2026\".",
-      "used_for": "Why destination + tracking must be confirmed per link before conversion measurement is trusted."
+      "title": "Amazon.com Associates Central - Help: Can I change my Associates ID?",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GM6CHU93RDXZV7D8",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Associates IDs end in '-20' for the US program (the software adds '-20'); additional tracking IDs are requested through Customer Service.",
+      "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S04",
-      "title": "Associates Help: Why do I have to identify myself as an Associate?",
-      "url": "https://affiliate-program.amazon.com/help/node/topic/GHQNZAU6669EZS98",
+      "title": "Amazon product detail pages observed for the five submitted links (amazon.com/dp/ pages)",
       "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"the Operating Agreement requires that the following statement clearly and conspicuously appears on your Site: 'As an Amazon Associate I earn from qualifying purchases.'\" Link-level disclosure must be clear (\"(paid link)\", \"#ad\", \"#CommissionsEarned\") and conspicuous (\"placed near any affiliate link … They shouldn't have to hunt for it\").",
-      "used_for": "Disclosure strip copy and placement (above the fold, near links); footer statement; CTA '(paid link)' labels."
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "updated": "observed 2026-11-20",
+      "method": "observed (automated fetch; final page title and breadcrumb read; the same fetch returned pages for B09B7SB46R, B08DKYBTPH and B0DZFD6R9Z)",
+      "used_for": "Observed redirect destinations and the 10-character /dp/ ASINs that the destinations carry. Recorded as observations, not as the intended product for each submitted link.",
+      "status": "observed"
     },
     {
       "id": "S05",
-      "title": "Understanding ASIN numbers: Your guide to Amazon's product identification system (Sell on Amazon blog)",
-      "url": "https://sell.amazon.com/blog/what-is-an-asin",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"It's a unique 10-character alphanumeric code assigned to every product listed in the Amazon store.\" Also: \"Look at the URL for a product detail page in the Amazon store. The ASIN appears after '/dp/'.\"",
-      "used_for": "Format check for intended vs observed ASINs; the /dp/ URL convention used by the dashboard link-builder."
+      "title": "Submitted short links (link.amazon)",
+      "publisher": "Amazon.com, Inc. (link.amazon host as supplied by the user)",
+      "url": "https://link.amazon/B04G1MEwY",
+      "updated": "observed 2026-11-20",
+      "method": "observed (automated fetch of each of the five submitted links)",
+      "used_for": "Source of the five submitted tokens and of the observed redirect targets. Recorded only as observations.",
+      "status": "observed"
     },
     {
       "id": "S06",
-      "title": "FTC's Endorsement Guides: What People Are Asking",
-      "url": "https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking",
-      "publisher": "Federal Trade Commission",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"if there's a connection between an endorser and the marketer that a significant minority of consumers wouldn't expect and it would affect how they evaluate the endorsement, that connection should be disclosed clearly and conspicuously.\"",
-      "used_for": "Endorsement-context review in the publishing gate (S24 line of the project brief)."
+      "title": "Qualify your outbound links to Google (rel=\"sponsored\")",
+      "publisher": "Google Search Central",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "updated": "2025-12-10 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "rel=\"sponsored\" marks advertisements and paid placements (commonly paid links). nofollow is an accepted alternative. Google's guidance is that these attributes are hints.",
+      "status": "verified"
     },
     {
       "id": "S07",
-      "title": "Disclosures 101 for Social Media Influencers (FTC)",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "publisher": "U.S. Federal Trade Commission",
       "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "publisher": "Federal Trade Commission",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"Place it so it's hard to miss… The disclosure should be placed with the endorsement message itself. Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos…\"",
-      "used_for": "Above-the-fold disclosure placement standard; no buried-only disclosures."
+      "updated": "November 2019 (as stated on the page)",
+      "method": "fetched",
+      "used_for": "Disclosures must be hard to miss, placed with the endorsement, and in the same language. Disclosures that appear only on an About page or behind a 'more' link are likely to be missed. 'sp', 'spon', 'collab' and stand-alone 'thanks' or 'ambassador' are too vague.",
+      "status": "verified"
     },
     {
       "id": "S08",
-      "title": "16 CFR Part 255 — Guides Concerning the Use of Endorsements and Testimonials in Advertising (eCFR)",
+      "title": "16 CFR Part 255 - Guides Concerning Use of Endorsements and Testimonials in Advertising",
+      "publisher": "U.S. Federal Trade Commission / eCFR (U.S. Government Publishing Office)",
       "url": "https://www.ecfr.gov/current/title-16/chapter-I/subchapter-B/part-255",
-      "publisher": "U.S. Government (eCFR) / FTC",
-      "verified": false,
-      "verified_date": "2026-11-20",
-      "key_language": "Not fetched directly; the URL was captured from the verified FTC page S06, which cites it as \"the latest version of the Endorsement Guides … revised in 2023\".",
-      "used_for": "Regulatory reference behind S06/S07."
+      "updated": "current eCFR text (revised 2023)",
+      "method": "excerpt",
+      "used_for": "Definition of endorsement (§255.0(b)), general considerations (§255.1), and disclosure of material connections (§255.5). Used as the legal reference for disclosure placement on every page.",
+      "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S09",
-      "title": ".amazon Top-Level Domain — IANA Root Database",
-      "url": "https://www.iana.org/domains/root/db/amazon.html",
-      "publisher": "IANA",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "Manager: \"Amazon Registry Services, Inc.\"; generic top-level domain; \"Delegated since 2020-06-02\"; registry website nic.amazon.",
-      "used_for": "Factual context that link.amazon is a second-level domain under the .amazon gTLD operated by Amazon Registry Services — recorded as context only, no compliance verdict (FLG-003)."
+      "title": "Safe Minimum Internal Temperature Chart",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "updated": "not stated on the excerpt",
+      "method": "excerpt",
+      "used_for": "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F, rest at least 3 minutes. All poultry and ground poultry: 165 °F.",
+      "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S10",
-      "title": "What is GitHub Pages? (GitHub Docs)",
-      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
-      "publisher": "GitHub, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "Project sites' default location: \"http(s)://<owner>.github.io/<repositoryname>\".",
-      "used_for": "Site URL convention: https://karagemop466-tech.github.io/Affil3/"
+      "title": "Food Thermometers",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "updated": "July 9, 2026 (as indicated in the search index)",
+      "method": "excerpt",
+      "used_for": "Whole poultry: check the thigh, wing and thickest part of the breast, avoiding bone. Poultry parts: insert into the thickest area, avoiding bone.",
+      "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S11",
-      "title": "Verify your site ownership (Search Console Help)",
-      "url": "https://support.google.com/webmasters/answer/9008080",
-      "publisher": "Google",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "Verification methods include \"HTML file upload\" and \"HTML tag\" (\"requires the ability to edit the HTML source code of your site's homepage\").",
-      "used_for": "Search Console readiness page; HTML-tag placeholder in the site head."
+      "title": "Amazon Associates Central - Application review process (help)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/G8TW5AE9XL2VX9VM",
+      "updated": "not stated",
+      "method": "excerpt",
+      "used_for": "Associates require at least three qualifying sales within the first 180 days; personal orders do not count. Sites must have robust original content; the help text gives 'at least 10 posts' as a rule of thumb. Tags must be embedded in links on the sites declared in the application.",
+      "status": "verified (excerpt; re-check manually)"
     },
     {
       "id": "S12",
-      "title": "PA-API 5 Deprecation Notice (Amazon Associates Central / Creators API docs)",
-      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/paapiv5-deprecation",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "\"The Amazon Product Advertising API 5.0 (PA-API 5) has been deprecated and is being replaced by the Creators API.\"",
-      "used_for": "API-policy check in the publishing gate: any automated product-data integration must target the Creators API, not PA-API 5."
+      "title": "Amazon Seller Central: 'Prepare to sell' (names ASIN as 'Amazon Standard Identification Number')",
+      "publisher": "Amazon Seller Central (sell.amazon.com)",
+      "url": "",
+      "updated": "",
+      "method": "Not fetched and no link recorded (rule: leave unconfirmed values blank). Candidate page for manual check: sell.amazon.com/learn/prepare-to-sell (seen in search results as a snippet naming 'Amazon Standard Identification Number'; host not on the gate allowlist).",
+      "used_for": "Expansion of the term 'ASIN' only. 10-character format is supported by the observed amazon.com /dp/ URLs in S04 (all 10 characters). An Amazon page stating the format still needs manual review (FLG-012).",
+      "status": "not verified"
     },
     {
       "id": "S13",
-      "title": "Welcome to Creators API (Amazon Associates Central)",
-      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction",
-      "publisher": "Amazon.com, Inc.",
-      "verified": true,
-      "verified_date": "2026-11-20",
-      "key_language": "Prerequisites: \"Be enrolled in the Amazon Associates program for your target marketplace\"; \"Have at least 10 qualifying sales within the past 30 days to access the PA API through the Creators API\"; operations include GetItems — \"Retrieve detailed information for specific products by ASIN\".",
-      "used_for": "Discovery path for confirming ASINs, titles, and prices once thresholds are met (Q-03/Q-06)."
-    },
-    {
-      "id": "S14",
-      "title": "How To Use Amazon SiteStripe (Amazon Associates Central Resource Center)",
-      "url": "https://affiliate-program.amazon.com/resource-center/how-to-use-amazon-sitestripe",
-      "publisher": "Amazon.com, Inc.",
-      "verified": false,
-      "verified_date": "2026-11-20",
-      "key_language": "Fetch failed at verification time (2026-11-20). Listed only to document where SiteStripe guidance lives; NOT relied upon anywhere on the site.",
-      "used_for": "None (unverified; retained for transparency)."
+      "title": "Amazon Associates Central help: OneLink and link support (Amazon full links and short links)",
+      "publisher": "Amazon Associates Central (Amazon.com, Inc.)",
+      "url": "https://affiliate-program.amazon.com/help/node/topic/GC4NVV7K3XNG99X5",
+      "updated": "",
+      "method": "Seen in search results (excerpt); not fetched in full. States that Amazon full links and Amazon short links are supported, and that third-party shortened links are not supported.",
+      "used_for": "Context for FLG-003: Amazon's own short links are supported in this setup. It does not show the tag is attached to the observed redirects.",
+      "status": "excerpt verified; manual check pending"
     }
   ]
 }

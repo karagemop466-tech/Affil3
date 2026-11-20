@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics & campaign ledger — ShopNow Kitchen Edit</title>
+<meta name="description" content="The five defined events, the privacy contract, the endpoint decision, and the empty-but-defined campaign ledger schema. No conversion scores, no revenue forecasts.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/kitchen-edit/analytics/index.html">
+<meta property="og:site_name" content="ShopNow Kitchen Edit">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Analytics & campaign ledger — ShopNow Kitchen Edit">
+<meta property="og:description" content="The five defined events, the privacy contract, the endpoint decision, and the empty-but-defined campaign ledger schema. No conversion scores, no revenue forecasts.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/kitchen-edit/analytics/index.html">
+<meta property="og:image" content="https://karagemop466-tech.github.io/Affil3/kitchen-edit/assets/img/og-default.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Google Search Console HTML-tag verification: paste the generated meta tag on the next line (see search-console/index.html) -->
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="ShopNow Kitchen Edit — Guides" href="../feed.xml">
+<link rel="stylesheet" href="../assets/css/site.css">
+<script src="../assets/js/site-config.js" defer></script>
+<script src="../assets/js/analytics.js" defer></script>
+<script src="../assets/js/site.js" defer></script>
+<script type="application/ld+json">{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://karagemop466-tech.github.io/Affil3/kitchen-edit/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Analytics & campaign ledger",
+   "item": "https://karagemop466-tech.github.io/Affil3/kitchen-edit/analytics/index.html"
+  }
+ ]
+}</script>
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <a class="brand" href="../index.html">
+      <span class="mark" aria-hidden="true">S</span>
+      <span class="name">ShopNow Kitchen Edit<span class="tagline">Air fryers &amp; kitchen gear — chosen with the boring questions asked first</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="../guides/index.html">Guides</a>
+<a href="../products/index.html">Shop the picks</a>
+<a href="../sourcing/index.html">How we research</a>
+<a href="../about/index.html">About</a>
+      <a class="cta" href="../products/index.html">Shop the picks</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure" data-disclosure-strip><div class="wrap"><span><strong>Reader-supported:</strong> when you buy through links on this site, we may earn an affiliate commission. <em>As an Amazon Associate we earn from qualifying purchases.</em> Every pick carries its sourcing — see <a href="../sourcing/index.html">how we research</a> and our <a href="../compliance/index.html">compliance gate</a>.</span></div></div>
+<main>
+<div class="page-head">
+  <p class="breadcrumb"><a href="../index.html">Home</a> / Analytics &amp; campaign ledger</p>
+  <h1>Analytics &amp; campaign ledger</h1>
+  <p class="lede">Click and conversion measurement, defined before it exists: five events with a privacy
+  contract, one endpoint decision, and a campaign ledger that starts empty and stays honest. <strong>No
+  conversion score or revenue forecast appears anywhere on this site.</strong></p>
+</div>
+
+<section class="band">
+  <div class="wrap">
+    <h2>The five defined events</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>#</th><th>Event</th><th>Fires when</th><th>Payload</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td><code>page_view</code></td><td>Every page load</td><td>path, title, referrer</td></tr>
+          <tr><td>2</td><td><code>outbound_product_click</code></td><td>Any product CTA click (anchors with <code>data-product-intent</code>)</td><td>product_id, intended_asin, target_host, link_status, sponsored_rel</td></tr>
+          <tr><td>3</td><td><code>guide_engaged</code></td><td>Reader passes 75% of a guide (once per load)</td><td>path, depth_percent</td></tr>
+          <tr><td>4</td><td><code>reader_capture_submitted</code></td><td>Capture form submitted</td><td>placement, endpoint_configured</td></tr>
+          <tr><td>5</td><td><code>dashboard_event_exported</code></td><td>Maintainer exports the queue from the <a href="../dashboard/index.html">dashboard</a></td><td>count</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Machine-readable: <code>data/events-schema.json</code>. Collector:
+    <code>assets/js/analytics.js</code>.</p>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Privacy contract</h2>
+    <ul>
+      <li><strong>No cookies. No fingerprinting. No cross-site identifiers. No PII fields</strong> in any
+      event schema — payloads are page paths, event names, product IDs and host names.</li>
+      <li>Events queue in the visitor's own browser (localStorage, capped) and are <strong>never
+      transmitted</strong> until an endpoint is configured; the queue is viewable and exportable by the
+      visitor from the dashboard.</li>
+      <li>GitHub Pages' own access logging (IP for security) is GitHub's, not ours [S10] — we run no
+      server-side logs of our own today.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>The endpoint decision (SG-08) — open</h2>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Option</th><th>Shape</th><th>Cost</th><th>Trade-off</th></tr></thead>
+        <tbody>
+          <tr><td>A — Serverless worker + KV</td><td>Small worker function writes events to a KV store (self-hosted code, managed storage)</td><td>~free at this scale</td><td>Self-hosted control with minimal ops; storage lives with the provider</td></tr>
+          <tr><td>B — Self-hosted analytics app on a VPS</td><td>Full self-hosted analytics (e.g., Umami-class) on a small VPS</td><td>~$5/mo + ops time</td><td>Complete control, real dashboards; the most infrastructure</td></tr>
+          <tr><td>C — Local queue + manual exports</td><td>No endpoint; maintainers export queues from the dashboard</td><td>free</td><td>Zero infrastructure, but no live measurement and tiny sample</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Static hosting cannot run the server side [S10] — hence the decision. Choose on the
+    <a href="../suggestions/index.html">suggestion board</a>; then set
+    <code>window.SHOPNOW_CONFIG.analyticsEndpoint</code> in <code>assets/js/site-config.js</code>.</p>
+  </div>
+</section>
+
+<section class="band alt">
+  <div class="wrap">
+    <h2>Campaign ledger — empty by design</h2>
+    <p>The ledger (<code>data/ledger/campaign-ledger.csv</code>) ships with its schema and zero rows.
+    Rows are added <strong>only</strong> when obtained from authorized first-party reports (Associates
+    Central reports, or the endpoint once live), with a dated provenance trail:</p>
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <thead><tr><th>Column</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>timestamp</code></td><td>When the row was added (ISO date)</td></tr>
+          <tr><td><code>source</code></td><td>Where the numbers came from (e.g., "Associates Central → Reports → Summary")</td></tr>
+          <tr><td><code>channel</code></td><td>Which channel the row covers (site, feed, social)</td></tr>
+          <tr><td><code>eligible_sessions</code></td><td>Sessions eligible for attribution, as reported</td></tr>
+          <tr><td><code>clicks</code></td><td>Clicks as reported (never inferred from client events alone)</td></tr>
+          <tr><td><code>reported_orders</code></td><td>Reported orders (first-party only)</td></tr>
+          <tr><td><code>provenance_note</code></td><td>Dated trail: what was checked, by whom, citing the export</td></tr>
+          <tr><td><code>added_by</code></td><td>Session or person adding the row</td></tr>
+          <tr><td><code>source_url</code></td><td>Link to the report or export the row was taken from</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <strong>Measure before automating optimization.</strong> The brief's Priority 4 directive: no
+      conversion score, no revenue forecast, no "AI optimizer" — until this ledger has real,
+      sourced rows. The CI gate (G-A5) rejects malformed ledger rows, so the ledger can't quietly
+      fill with guesswork.
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <div class="brand-line">ShopNow Kitchen Edit</div>
+      <p>A small, reader-supported publication about air fryers, multi-function ovens and the
+      tools that keep them honest. We publish what we can source, leave blank what we can't,
+      and review every suggestion before it changes the site.</p>
+      <p class="note">All site imagery is AI-generated illustration, not product photography.</p>
+    </div>
+    <div>
+      <h4>Read &amp; shop</h4>
+      <ul>
+        <li><a href="../products/index.html">Shop the picks</a></li>
+        <li><a href="../guides/index.html">Buying guides</a></li>
+        <li><a href="../guides/basket-or-oven-air-fryer.html">Basket vs oven-style</a></li>
+        <li><a href="../guides/air-fryer-capacity-checklist.html">Capacity checklist</a></li>
+        <li><a href="../about/index.html">About &amp; standards</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Project dashboard</h4>
+      <ul>
+<li><a href="../summary/index.html">Executive summary</a></li>
+<li><a href="../suggestions/index.html">Suggestion review board</a></li>
+<li><a href="../questions/index.html">Decision-readiness questions</a></li>
+<li><a href="../flagged/index.html">Flagged for review</a></li>
+<li><a href="../analysis/index.html">Findings & analysis</a></li>
+<li><a href="../analytics/index.html">Analytics & campaign ledger</a></li>
+<li><a href="../dashboard/index.html">Working dashboard</a></li>
+<li><a href="../compliance/index.html">Compliance gate</a></li>
+<li><a href="../sourcing/index.html">Source register</a></li>
+<li><a href="../search-console/index.html">Search Console setup</a></li>
+<li><a href="../feed.xml">RSS feed</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Canonical register</h4>
+      <p>The root publication is this site's register and compliance home:
+      <a href="../../index.html">Affil3 root publication</a> ·
+      <a href="../../flagged/index.html">root Flagged-for-Review</a> ·
+      <a href="../../sources/index.html">root source register</a>.
+      Outbound destinations and tracking status for every product are governed by the
+      canonical register there (<code>data/products.json</code>).</p>
+    </div>
+    <div>
+      <h4>Stay in the loop</h4>
+      <p>New guides land in the <a href="../feed.xml">RSS feed</a> first. Prefer email?
+      The capture form below records interest locally until the newsletter decision lands.</p>
+      <form data-capture="footer">
+        <input type="email" placeholder="you@example.com" aria-label="Email for future newsletter" required>
+        <button class="btn btn-primary" type="submit">Keep me posted</button>
+      </form>
+    </div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span class="assoc-statement">As an Amazon Associate we earn from qualifying purchases.</span>
+      <span>Product CTAs are marked <code>rel="sponsored"</code> and open Amazon in a new tab.
+      Listing identities and prices are shown only when confirmed; otherwise the record says so.
+      © 2026 ShopNow Kitchen Edit. Editorial content — not sponsored by any manufacturer.</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
