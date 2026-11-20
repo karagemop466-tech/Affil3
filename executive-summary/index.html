@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Executive summary | Affil3</title>
+<meta name="description" content="Executive summary: what is built, what is verified, what is blocked, and the decisions needed.">
+<link rel="canonical" href="https://karagemop466-tech.github.io/Affil3/executive-summary/">
+<meta property="og:title" content="Executive summary">
+<meta property="og:description" content="Executive summary: what is built, what is verified, what is blocked, and the decisions needed.">
+<meta property="og:url" content="https://karagemop466-tech.github.io/Affil3/executive-summary/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Affil3">
+<meta name="analytics-endpoint" content="">
+<link rel="stylesheet" href="/Affil3/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Affil3 guides" href="https://karagemop466-tech.github.io/Affil3/feed.xml">
+
+</head>
+<body data-page="page" >
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap masthead-inner">
+    <a class="brand" href="/Affil3/">Affil3</a>
+    <p class="tagline">Kitchen buying guides, with every product fact traced to a source</p>
+    <nav class="nav" aria-label="Main">
+      <a href="/Affil3/shop/">Shop</a>
+      <a href="/Affil3/guides/">Guides</a>
+      <a href="/Affil3/categories/">Categories</a>
+      <a href="/Affil3/about/">About</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Affiliate disclosure">
+  <div class="wrap"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases. <a href="/Affil3/compliance/">How we disclose</a></div>
+</div>
+<main id="main" class="wrap">
+<section class="page-head"><p class="kicker">Executive summary · November 20, 2026</p><h1>Where this stands</h1></section>
+<div class="prose">
+<h2>What is built</h2>
+<ul>
+<li>A publication-style site with a front page led by the five submitted products, a shop table, four category clusters, five question-led guides, and an RSS feed and sitemap.</li>
+<li>Dashboards for sources, questions, suggestions, flagged items, the campaign ledger (empty), measurement, and compliance. All are linked from the footer.</li>
+<li>A disclosure strip under the masthead on every page, repeated in the footer, using the statement required by Operating Agreement §5.</li>
+<li>A privacy-preserving click counter in the browser and a self-hostable collector. The collector is inactive on the live site until an endpoint is set (FLG-009).</li>
+<li>Automated checks (tools/verify.mjs) for disclosure presence, sponsored attributes, tags, sources, sitemap and feed coverage, and internal links.</li>
+</ul>
+<h2>What is verified</h2>
+<ul>
+<li>The Associates disclosure statement, the Special Link and tag rules, and the anti-cloaking clause are read from the official Associates pages (S01, S02).</li>
+<li>The rel="sponsored" guidance (S06), FTC disclosure guidance (S07, S08), and USDA temperatures (S09, S10) are read from official pages.</li>
+<li>For each product, the observed Amazon ASIN, title and breadcrumb are read from the amazon.com page the link resolved to on 2026-11-20 (S04, S05).</li>
+</ul>
+<h2>What is not verified, and why</h2>
+<ul>
+<li>The intended ASIN, official listing URL, confirmation date and source are blank for all five products. The submitted tokens are 9 characters, and the observed destinations differ from the tokens (FLG-001, FLG-002).</li>
+<li>One link previously hit a checkpoint and later resolved to a listing (FLG-004). The short links’ compliance status remains unresolved (FLG-003).</li>
+<li>No Special Link has been tested in Associates Central. The sandbox has no Associates login (FLG-005, gate G-02).</li>
+<li>No prices, ratings, sales or commission figures are shown. The campaign ledger is empty and no conversion score or revenue forecast is presented.</li>
+</ul>
+<h2>Evidence needed before expanding</h2>
+<ol>
+<li>Use the original enrolled link-generation record or campaign brief to confirm intended products separately from observed redirects (Q-01).</li>
+<li>Confirm the account declares this site and that tracking ID shopnow047c-20 is on the account (Q-03, FLG-011).</li>
+<li>Run gate G-02 in Associates Central for each product. Record the destination and tracking report separately from site click data (Q-04).</li>
+<li>Choose options on the <a href="/Affil3/suggestions/">Suggestions</a> page. Nothing there is implemented until you choose.</li>
+</ol>
+<h2>Measure before expanding</h2>
+<p>Use <a href="https://developers.google.com/search/docs/monitor-debug/search-console-start">Google Search Console</a> for queries and impressions, the site collector for outbound clicks, and Amazon Associates reports (<a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a>) for reported orders. A site click is not an order. Compare dated reporting windows, and leave the ledger empty until authorized data is available.</p>
+<h2>Limits</h2>
+<p>This build cannot pull Amazon product data, prices or sales reports. Those require authorized access (for example the Product Advertising API or Associates reports), which the sandbox does not have. The site does not scrape Amazon.</p>
+</div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <h2 class="foot-h">Dashboards and records</h2>
+    <ul class="foot-links">
+      <li><a href="/Affil3/executive-summary/">Executive summary</a></li>
+      <li><a href="/Affil3/shop/">Shop table (all rows)</a></li>
+      <li><a href="/Affil3/categories/">Categories</a></li>
+      <li><a href="/Affil3/sources/">Source register</a></li>
+      <li><a href="/Affil3/questions/">Questions and gaps</a></li>
+      <li><a href="/Affil3/suggestions/">Suggestions (choose a path)</a></li>
+      <li><a href="/Affil3/flagged/">Flagged for review</a></li>
+      <li><a href="/Affil3/ledger/">Campaign ledger</a></li>
+      <li><a href="/Affil3/measurement/">Measurement</a></li>
+      <li><a href="/Affil3/compliance/">Compliance and gates</a></li>
+      <li><a href="/Affil3/about/">About and editorial policy</a></li>
+      <li><a href="/Affil3/editorial/">Editorial register (second publication)</a></li>
+      <li><a href="/Affil3/feed.xml">RSS feed (guides)</a></li>
+      <li><a href="/Affil3/sitemap.xml">Sitemap</a></li>
+    </ul>
+    <p class="disclosure-footer"><strong>Disclosure.</strong> Some links on this site are Amazon affiliate links, marked sponsored. As an Amazon Associate I earn from qualifying purchases.</p>
+    <p class="fine">Affil3 is not sponsored by or affiliated with Amazon.com, Inc. Prices and availability are not shown on this site. Last reviewed November 20, 2026. Source links are listed on each page and in the <a href="/Affil3/sources/">source register</a>.</p>
+  </div>
+</footer>
+<script src="/Affil3/assets/analytics.js" defer></script>
+</body>
+</html>
