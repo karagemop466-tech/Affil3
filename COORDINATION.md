@@ -1249,3 +1249,23 @@ one-line `counter` skip entry in `tools/disclosure-check.mjs` (same rationale as
   this edition's sitemap is emitted inside `scripts/build_site.py`.
 - Gate results on the merged tree are recorded in PR #18 and the publish log entry appended
   after merge.
+
+
+## Publish log (session 0a90f62c)
+
+- **PR #18** — https://github.com/karagemop466-tech/Affil3/pull/18 — "Crisp & Counter: verified
+  affiliate publication at /counter/ + integration of all concurrent sessions"
+- **Merge result: MERGED** into `main` as merge commit `bd9886db40ac60f385a8a9b54c40ef368d48f9e5`
+  on 2026-11-20T06:20:28Z (GitHub merge queue; the branch kept the integration current with
+  `origin/main` through the concurrent session waves of that morning).
+- **CI on the merge commit — all green**: `Verify site`, `Site checks`, `Disclosure and archive
+  integrity`, `publish-gate`, `site-checks` (this edition's release gate), `Counterwise surface gate`.
+- **GitHub Pages: deployed** (`status: built`, https://karagemop466-tech.github.io/Affil3/).
+  Live verification 2026-11-20: root publication serves; the Crisp & Counter edition serves at
+  https://karagemop466-tech.github.io/Affil3/counter/ with the disclosure strip (FTC example
+  sentence + Associates statement) under the masthead, sponsored `shopnow047c-20` product links,
+  and the research desk reachable from the footer link group (verification register checked
+  row-by-row live: 34 rows, sources on every row, blanks and flags intact).
+- No build, check or deploy failure outstanding at publish time; the two failures found on the
+  way (the branch's original red verify.yml assumption and `main`'s 37 disclosure-check problems
+  in `docs/`) were fixed and re-run before merge.
