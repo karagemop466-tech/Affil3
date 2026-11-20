@@ -311,6 +311,14 @@ def intent_record(product: dict, sources: dict) -> str:
 </tbody></table>"""
 
 
+def thermo_fact(product: dict, key: str, suffix: str) -> str:
+    item = product["specs"].get(key, {})
+    value = item.get("value") if isinstance(item, dict) else None
+    if value is None:
+        return '<span class="unverified">unverified</span>'
+    return f"{e(value)}{suffix}"
+
+
 def product_card(product: dict, sources: dict) -> str:
     if product["identity_status"] != "resolved":
         return f"""<article class="card card-unresolved">
@@ -320,6 +328,21 @@ def product_card(product: dict, sources: dict) -> str:
   be confirmed, so none is shown.</p>
   <p class="small"><a class="cite" href="{e(product['supplied_link'])}" rel="nofollow noopener" target="_blank">{e(product['supplied_link'])}</a>
   &middot; <a href="/flagged/#FLG-004">FLG-004</a></p>
+</article>"""
+
+    if product["category"] == "thermometers":
+        return f"""<article class="card">
+  <div class="card-eyebrow">{e(product['brand'])} &middot; {e(product['category_label'])}</div>
+  <h3><a href="/products/{e(product['id'].lower())}/">{e(product['name'])}</a></h3>
+  <p class="lede">{e(product['one_liner'])}</p>
+  <dl class="keyfacts">
+    <div><dt>Best for</dt><dd>{e(product['best_for'])}</dd></div>
+    <div><dt>Read</dt><dd>{thermo_fact(product, 'read_time_sec', ' sec')}</dd></div>
+    <div><dt>Accuracy</dt><dd>{thermo_fact(product, 'accuracy_f', '')}</dd></div>
+    <div><dt>Heat limit</dt><dd>{thermo_fact(product, 'ambient_max_f', ' &deg;F ambient')}</dd></div>
+  </dl>
+  {link_button(product)}
+  <p class="card-link"><a href="/products/{e(product['id'].lower())}/">The full comparison &rarr;</a></p>
 </article>"""
 
     cap_v = product["specs"].get("capacity_qt", {}).get("value")
@@ -354,6 +377,11 @@ def compare_table(products: list[dict], sources: dict, keys: list[str]) -> str:
     )
     rows = []
     for key in keys:
+        if all(
+            not (isinstance(p["specs"].get(key), dict) and p["specs"].get(key, {}).get("value") is not None)
+            for p in resolved
+        ):
+            continue  # a row of nothing but blanks teaches the reader nothing
         cells = []
         for p in resolved:
             item = p["specs"].get(key, {})
@@ -364,8 +392,7 @@ def compare_table(products: list[dict], sources: dict, keys: list[str]) -> str:
                 cells.append('<td><span class="unverified">unverified</span></td>')
             else:
                 cells.append(f'<td>{e(value)}</td>')
-        label = key.replace("_", " ")
-        rows.append(f'<tr><th scope="row">{e(label[0].upper() + label[1:])}</th>{"".join(cells)}</tr>')
+        rows.append(f'<tr><th scope="row">{e(label_for(key))}</th>{"".join(cells)}</tr>')
     return f"""<div class="table-scroll"><table class="table compare">
 <thead><tr><th scope="col">What differs</th>{head_cells}</tr></thead>
 <tbody>{''.join(rows)}</tbody></table></div>
@@ -421,7 +448,7 @@ def page_home(products, sources, suggestions, flags) -> str:
     <p>Does it fit where you plan to put it? Depth and height are the two numbers people skip.</p>
   </div>
   <div class="two-col">
-    {compare_table(products, sources, ["capacity_qt", "temp_max_f", "dimensions_in", "watts", "baskets", "presets"])}
+    {compare_table([x for x in products if x["category"] in ("air-fryers", "air-fryer-ovens")], sources, ["capacity_qt", "temp_max_f", "dimensions_in", "watts", "baskets", "presets"])}
     <aside class="aside">
       <h3>Measure before you click</h3>
       <p>Counter depth, cabinet clearance, and the space the door or drawer needs when open. The

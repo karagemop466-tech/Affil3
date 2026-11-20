@@ -54,10 +54,10 @@
   <p class="small"><strong>Manual step:</strong> Check the supplied short links against Associates Program Policies (w) and the Associates tracking reports. Decide whether to keep them as evidence only or to replace them completely.</p>
 </section>
 <section class="flag-card" id="FLG-004">
-  <p class="flag-head"><span class="badge flag">FLG-004</span> <span class="badge sev-high">high</span> <strong>One submitted link (B00hJ57DV) did not resolve to a product</strong></p>
-  <p>The link landed on an Amazon &#39;Continue shopping&#39; checkpoint page with no product title, price or ASIN. The fetch was not a signed-in browser session, so the result may depend on session, region or timing. No product is shown for this row and no buy link is published.</p>
+  <p class="flag-head"><span class="badge flag">FLG-004</span> <span class="badge sev-medium">medium</span> <strong>Link 3 is time-dependent: checkpoint on first fetch, product on the second</strong></p>
+  <p>The first fetch of https://link.amazon/B00hJ57DV returned an Amazon &#39;Continue shopping&#39; checkpoint page with no product. A second fetch on the same day resolved to amazon.com/dp/B08DKYBTPH, the Chefman 8 Qt TurboFry. The site now records the observed destination in separate fields and keeps the earlier observation in this flag rather than overwriting it. Re-confirm in a signed-in browser before relying on it.</p>
   <p class="small"><strong>Sources:</strong> <a href="https://link.amazon/B04G1MEwY" rel="sponsored noopener">S05</a></p>
-  <p class="small"><strong>Manual step:</strong> Open the link in a signed-in browser. Supply the intended product URL if it can be identified.</p>
+  <p class="small"><strong>Manual step:</strong> Open each submitted short link in a signed-in browser and confirm the product shown; checkpoint pages are served intermittently and a single failed fetch is not evidence the link is dead.</p>
 </section>
 <section class="flag-card" id="FLG-005">
   <p class="flag-head"><span class="badge flag">FLG-005</span> <span class="badge sev-high">high</span> <strong>Tagged Special Links are not yet validated in Associates Central</strong></p>

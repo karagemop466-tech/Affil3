@@ -142,7 +142,7 @@
       "category_label": "Air fryer ovens",
       "shape": "oven-style",
       "best_for": "Cooking a whole meal's worth at once, on more than one rack.",
-      "one_liner": "A countertop oven with french doors, three rack positions, and 26 quarts of room — the one to pick when the basket is the bottleneck.",
+      "one_liner": "A countertop oven with french doors and 26 quarts of room — the one to pick when the basket is the bottleneck.",
       "specs": {
         "capacity_qt": {
           "value": 26,
@@ -213,9 +213,7 @@
         ],
         "cons": [
           "16.9 in. deep and 14.8 in. tall — it eats counter depth and vertical clearance.",
-          "The grill plate is no longer included; the manufacturer sells it separately.",
-          "The manufacturer product page does not state a temperature range or a wattage, so neither is published here.",
-          "Preset count is inconsistent across the manufacturer's own page (see FLG-001)."
+          "The manufacturer product page does not state a temperature range, a wattage, or a preset count, so none of the three is claimed here."
         ],
         "skip_if": "Counter depth is tight, or you only ever cook one basket-sized portion."
       },
