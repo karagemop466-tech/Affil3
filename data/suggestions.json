@@ -827,9 +827,193 @@
       "decision": "undecided",
       "decided_on": "",
       "decided_by": ""
+    },
+    {
+      "id": "S-26",
+      "topic": "What size air fryer fits your counter — and your dinner?",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A buyer's checklist keyed to household size and counter footprint, using the dimensions already in the register.",
+          "tradeoff": "Useful and evergreen; it must stay grounded in the cited manufacturer dimensions and leave the footprint cell blank where a maker is silent."
+        },
+        {
+          "id": "B",
+          "label": "A side-by-side footprint and batch-size comparison of the three air fryers in the register.",
+          "tradeoff": "Strongest for a shopper deciding between two shapes; only as useful as the number of products compared, which is three."
+        },
+        {
+          "id": "C",
+          "label": "A trend-led 'small kitchen' roundup that leads with a lifestyle angle.",
+          "tradeoff": "Catchiest hook; the easiest to drift into hype and the hardest to keep every claim sourced."
+        }
+      ],
+      "recommendation": "A. It is the most searched question shape for the niche, it reuses dimensions already verified against manufacturer pages, and it does not need a single new fact to be written well."
+    },
+    {
+      "id": "S-27",
+      "topic": "Dual-basket or single-basket: cook two things at once, or one big batch?",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A decision guide that frames the choice around how many foods you cook on a normal night.",
+          "tradeoff": "Honest and concrete; it leans on the Sync-Finish and basket-size facts already in the register."
+        },
+        {
+          "id": "B",
+          "label": "A 'two dinners, one appliance' story built around the dual-basket model.",
+          "tradeoff": "Engaging and shareable; risks reading as advocacy for one product, which the register does not support."
+        },
+        {
+          "id": "C",
+          "label": "A short comparison table of basket count against batch size for all basket air fryers.",
+          "tradeoff": "Scannable and neutral; thinner as a standalone article and better folded into the /compare/ page."
+        }
+      ],
+      "recommendation": "A, with the comparison table (C) linked rather than duplicated. It answers a real buyer question without promising a winner the data does not name."
+    },
+    {
+      "id": "S-28",
+      "topic": "Watts, quarts and degrees: the three numbers that actually predict an air fryer",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A plain-English explainer of what wattage, capacity and temperature range each tell you before you buy.",
+          "tradeoff": "Educational and evergreen; it must state the wattage conflict on the Chefman 8 qt honestly rather than picking a number."
+        },
+        {
+          "id": "B",
+          "label": "A 'how to read the spec sheet' checklist with the register's own spec table as the example.",
+          "tradeoff": "Practical and reusable; it depends on the reader trusting the cited figures, which the sources support."
+        },
+        {
+          "id": "C",
+          "label": "A myth-busting piece on the single most-misread spec.",
+          "tradeoff": "Catchy and shareable; the 'myth' framing can overreach if a claim is not sourced, so every debunk needs a citation."
+        }
+      ],
+      "recommendation": "A. It turns the one genuine spec conflict in the register (FLG-026, wattage) into an honest teaching moment instead of a hidden gap, which is exactly the tone the site already holds."
+    },
+    {
+      "id": "S-29",
+      "topic": "Air fryer presets explained: what the buttons do and which you'll actually use",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A plain guide to what presets are and what the preset count on each model actually means.",
+          "tradeoff": "Clear and useful; it must report the 24-vs-25 preset disagreement on the Emeril oven rather than smoothing it over."
+        },
+        {
+          "id": "B",
+          "label": "A 'presets are a starting point, not a recipe' opinion piece.",
+          "tradeoff": "Strong voice and shareable; the least citation-heavy, so the few facts it states must still be sourced."
+        },
+        {
+          "id": "C",
+          "label": "A table of every model's preset count with the source for each.",
+          "tradeoff": "Scannable and verifiable; thin as a standalone article and best as a section inside option A."
+        }
+      ],
+      "recommendation": "A with C as a table inside it. Presets are a number buyers see first and misread most, and the register already carries the conflict to discuss honestly."
+    },
+    {
+      "id": "S-30",
+      "topic": "Leave the kitchen during the roast: when a wireless thermometer earns its keep",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A use-case guide: the situations (grilling, smoking, holiday cooking) where a leave-in wireless probe beats an instant-read.",
+          "tradeoff": "Practical and evergreen; it draws on the CHEF iQ sensor and range facts already verified."
+        },
+        {
+          "id": "B",
+          "label": "A 'cook the roast and actually relax' seasonal story.",
+          "tradeoff": "Catchy and timed to the holidays; the lifestyle framing must not imply the product is necessary for a safe cook, which the USDA temperature source governs."
+        },
+        {
+          "id": "C",
+          "label": "A wireless-vs-instant-read comparison keyed to cooking style.",
+          "tradeoff": "Useful for the thermometer cluster; it needs the USDA safe-temperature source to stay honest about food safety."
+        }
+      ],
+      "recommendation": "A. It answers a real behavioural question, uses the verified sensor and range specs, and lets the seasonal angle (B) live on the front page rather than in the guide."
+    },
+    {
+      "id": "S-31",
+      "topic": "Holiday oven-space survival: which countertop appliance buys the most oven room",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A seasonal guide comparing how much countertop oven capacity each model frees up for holiday cooking.",
+          "tradeoff": "Timely and useful; it is seasonal, so it carries a takedown date under Participation Requirements §2(b) (K-21)."
+        },
+        {
+          "id": "B",
+          "label": "A 'free your oven' roundup of the oven-style model specifically.",
+          "tradeoff": "Focused and catchy; it advocates one shape, which is only honest if the comparison is sourced and balanced."
+        },
+        {
+          "id": "C",
+          "label": "A general 'appliances that replace oven tasks' listicle.",
+          "tradeoff": "Broad and trendy; the most likely to drift into unsourced claims about what each appliance can replace."
+        }
+      ],
+      "recommendation": "A, with a published expiry date. Seasonal content is exactly what §2(b) governs, so the takedown date is not optional — it is the condition for publishing it."
+    },
+    {
+      "id": "S-32",
+      "topic": "Nonstick baskets that survive the dishwasher: what to look for before you buy",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A feature-led guide to dishwasher-safe baskets, citing each model's maker statement.",
+          "tradeoff": "Practical and evergreen; it depends on the dishwasher-safety claims being sourced to the manufacturer, which they are."
+        },
+        {
+          "id": "B",
+          "label": "A 'cleanup is the feature you'll use every week' opinion piece.",
+          "tradeoff": "Strong hook; the cleanup claims must stay tied to the cited maker pages, not to reader sentiment."
+        },
+        {
+          "id": "C",
+          "label": "A cleanup-feature comparison table across the basket air fryers.",
+          "tradeoff": "Scannable; thin alone and better as a section inside option A."
+        }
+      ],
+      "recommendation": "A with C inside it. Cleanup is a high-intent buyer question and the register already carries the dishwasher-safe and nonstick facts to answer it without guessing."
+    },
+    {
+      "id": "S-33",
+      "topic": "One appliance, many jobs: does a multi-function oven replace a toaster oven and an air fryer?",
+      "current": "not started",
+      "options": [
+        {
+          "id": "A",
+          "label": "A sober 'what it can and cannot replace' guide, listing the functions the maker actually states.",
+          "tradeoff": "Honest and evergreen; it must resist the temptation to declare a winner the sourced functions do not support."
+        },
+        {
+          "id": "B",
+          "label": "A 'one-appliance kitchen' trend piece on consolidating countertop gear.",
+          "tradeoff": "Catchy and on-trend; the consolidation claim is only defensible if every function stated is sourced to the maker."
+        },
+        {
+          "id": "C",
+          "label": "A functions-by-model table showing what each appliance is verified to do.",
+          "tradeoff": "Verifiable and neutral; it is a reference, not a story, and works best linked from a guide."
+        }
+      ],
+      "recommendation": "A, linking the functions table (C). Multi-function value is the exact question the existing 'multi-function kitchen appliance' guide touches, so this should complement it with the maker-stated functions rather than repeat it."
     }
   ],
-  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display.",
+  "note": "Every item here is a decision waiting on the owner. Nothing is implemented until an option is chosen, except where a row says it was implemented in this session - those were done because leaving them undone meant shipping a known defect, and each is reversible in one commit and is listed here for review. Reply with the suggestion ID and the option letter, for example “S-01 B”. S-11 to S-19 were added by session 66f2548a on 2026-11-20; numbering continues from main's S-10 because this branch had independently used S-11 to S-25 and those rows were dropped rather than renumbered over the top of main's. Four of the dropped rows duplicated topics main already carries: imagery, the byline, reader capture and pricing display. A seventh track (content ideas, S-26 to S-33) holds catchy, question-shaped article and topic ideas tied to the five promoted products, written as editorial hypotheses and working titles rather than claims about popularity, search volume or product superiority; choose a topic before it is written.",
   "tracks": [
     {
       "id": "revenue",
@@ -860,6 +1044,11 @@
       "id": "platform",
       "name": "6. Platform and repo machinery",
       "why": "Registers, gates and the failure modes that produced real errors in this repository's own history. Cheap to fix, and they are what stops the same mistake recurring."
+    },
+    {
+      "id": "content",
+      "name": "7. Content ideas (catchy, trendy, question-shaped)",
+      "why": "The brief asks for a polished marketing site that draws organic traffic with catchy, trendy articles and topics tied to the promoted products. These are working titles and editorial hypotheses to feed the design prompt and the publishing cadence. None is a claim about popularity, search volume or product superiority; each is answerable from the same sourced register, so writing one does not lower the verification bar."
     }
   ],
   "how_to_use": "Read the tracks in order. Track 1 is owner-access work measured in minutes and it gates everything else: until one tagged link has been tested against a tracking report, the site cannot earn and no amount of design work changes that. Track 2 is the answer to 'it should not read like AI slop' and is deliberately concrete. Tracks 3 and 4 are findability and measurement. Track 5 records clauses found in this session's verbatim re-read that constrain what may be built at all. Track 6 is the machinery, and it is where this repository's own repeated bugs came from.",

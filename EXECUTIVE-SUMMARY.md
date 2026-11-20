@@ -12,12 +12,12 @@ The site should be treated as an editorial prototype—not as a proven revenue s
 
 - **Shop front page and product/category pages:** product-led presentation, with disclosure immediately below the masthead and repeated in the footer.
 - **Five submitted links:** preserved separately from observed targets in `data/products.json`. All intended ASIN/confirmation fields are blank; observed targets must not be substituted for intent.
-- **Four question-led guide drafts:** buyer-oriented hypotheses about basket vs. oven formats, capacity, cleanup/counter space, and multi-function appliances. They are not assertions of search demand.
-- **Decision board:** `/suggestions/` presents options and trade-offs before implementation.
+- **Five question-led guide drafts:** buyer-oriented hypotheses about basket vs. oven formats, capacity, cleanup/counter space, thermometers, and multi-function appliances. They are not assertions of search demand.
+- **Decision board:** `/suggestions/` presents options and trade-offs before implementation, including a content-idea track of catchy, question-shaped topic hypotheses.
 - **Questions and discovery paths:** `/questions/` lists information gaps and ways to resolve them.
 - **Flagged for Review:** `/flagged/` keeps unresolved identity, link, policy and operational issues visible.
 - **Measurement and campaign ledger:** event definitions and a ledger schema exist, but no live analytics endpoint or reported campaign data is configured.
-- **Build gate:** `npm run check` completed successfully on this checkout (32 generated pages; 3,484 verification checks; editorial check passed 21 pages). This is a local build result, not proof of a successful current GitHub Pages deployment.
+- **Build gate:** `npm run check` completed successfully on this checkout (32 generated pages; editorial check passed 21 pages). This is a local build result, not proof of a successful current GitHub Pages deployment.
 
 ## Important limitations and irregularities
 
@@ -55,3 +55,12 @@ The site should be treated as an editorial prototype—not as a proven revenue s
 - [FTC Endorsement Guides: What People Are Asking](https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking)
 - [Google guidance on qualifying outbound links](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links)
 - Product and manufacturer sources are indexed by ID in [`data/sources.json`](data/sources.json); unverified issues are linked from the live [Flagged for Review](https://karagemop466-tech.github.io/Affil3/flagged/) page.
+
+## Session note (arena/de57dc23-affil3)
+
+This summary was reconciled with the live site during the 2026-11-20 verification pass. The guide
+count was corrected from four to five, and the decision board now reflects the added content-idea
+track (S-26 to S-33). All five supplied links resolve to real products on the latest dated check
+(K-13); the unresolved item is attribution, not tagging, pending the Associates Central test (gate
+G-02). A first-hand re-verification of every official source (Operating Agreement, the Amazon
+listing, and the five manufacturer pages) is logged in `COORDINATION.md`.
